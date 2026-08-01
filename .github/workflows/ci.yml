@@ -97,7 +97,8 @@ jobs:
       - run: pnpm --filter @thainaute/mobile run config:check
       - run: pnpm --filter @thainaute/mobile run native:check
       - run: pnpm --filter @thainaute/mobile exec expo prebuild --clean --no-install --platform android
-      - run: ./gradlew :app:assembleDebug --no-daemon
+      - name: Compile Android debug app for the representative arm64 ABI
+        run: ./gradlew :app:assembleDebug --no-daemon --console=plain -PreactNativeArchitectures=arm64-v8a
         working-directory: apps/mobile/android
 
   native-ios:
