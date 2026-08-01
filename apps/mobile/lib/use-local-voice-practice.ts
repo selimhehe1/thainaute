@@ -792,11 +792,11 @@ export function useLocalVoicePractice(
       session: RecorderSession,
       result: NativeStopResult,
       audioModeFailed: boolean,
-    ): null => {
+    ): void => {
       const deleted = discardRecorderUri(
         result.terminal?.url ?? readRecorderUri(),
       );
-      if (!deleted || !mountedRef.current) return null;
+      if (!deleted || !mountedRef.current) return;
 
       const feedback = discardedStopFeedback(
         reason,
@@ -806,7 +806,6 @@ export function useLocalVoicePractice(
       );
       showError(feedback.error);
       if (feedback.notice !== null) showNotice(feedback.notice);
-      return null;
     },
     [discardRecorderUri, readRecorderUri, showError, showNotice],
   );
@@ -893,12 +892,8 @@ export function useLocalVoicePractice(
 
         const audioModeFailed = await restoreAudioAfterStop(session, result);
         if (mustDiscardStoppedRecording(session, result)) {
-          return discardStoppedRecording(
-            reason,
-            session,
-            result,
-            audioModeFailed,
-          );
+          discardStoppedRecording(reason, session, result, audioModeFailed);
+          return null;
         }
 
         return await retainStoppedRecording(

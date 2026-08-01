@@ -43,6 +43,7 @@ const item = requiredFixtureValue(lesson.items[0], "item");
 
 type Stage = "intro" | "question" | "result";
 type StorageStatus = "loading" | "ready" | "error";
+type ExerciseRating = 0 | 1 | null;
 type VoicePractice = ReturnType<typeof useLocalVoicePractice>;
 type PlaybackTarget = "model" | "recording";
 
@@ -145,7 +146,7 @@ function getDueAtText(dueAt: string | null | undefined): string {
   }).format(new Date(dueAt));
 }
 
-function getFeedbackText(rating: 0 | 1 | null): string {
+function getFeedbackText(rating: ExerciseRating): string {
   if (rating === 1) return exercise.feedback.correctFr;
   return exercise.feedback.incorrectFr;
 }
@@ -170,8 +171,8 @@ function FixtureBanner({
   pendingAttempts,
   storageStatus,
 }: {
-  pendingAttempts: number;
-  storageStatus: StorageStatus;
+  readonly pendingAttempts: number;
+  readonly storageStatus: StorageStatus;
 }) {
   return (
     <View style={styles.fixtureBanner} accessibilityRole="summary">
@@ -185,11 +186,11 @@ function FixtureBanner({
 }
 
 interface IntroStageProps {
-  error: string;
-  onPlaySignal: () => void;
-  onRetryStorage: () => void;
-  onStart: () => void;
-  storageStatus: StorageStatus;
+  readonly error: string;
+  readonly onPlaySignal: () => void;
+  readonly onRetryStorage: () => void;
+  readonly onStart: () => void;
+  readonly storageStatus: StorageStatus;
 }
 
 function IntroStage({
@@ -249,12 +250,12 @@ function IntroStage({
 }
 
 interface QuestionStageProps {
-  isSaving: boolean;
-  message: string;
-  onPlaySignal: () => void;
-  onSelectOption: (optionId: string) => void;
-  onSubmit: () => void;
-  selectedOptionId: string | null;
+  readonly isSaving: boolean;
+  readonly message: string;
+  readonly onPlaySignal: () => void;
+  readonly onSelectOption: (optionId: string) => void;
+  readonly onSubmit: () => void;
+  readonly selectedOptionId: string | null;
 }
 
 function QuestionStage({
@@ -323,12 +324,12 @@ function QuestionStage({
 }
 
 interface PlaybackButtonProps {
-  active: boolean;
-  disabled: boolean;
-  onPause: () => void;
-  onPlay: () => void | Promise<void>;
-  paused: boolean;
-  target: PlaybackTarget;
+  readonly active: boolean;
+  readonly disabled: boolean;
+  readonly onPause: () => void;
+  readonly onPlay: () => void | Promise<void>;
+  readonly paused: boolean;
+  readonly target: PlaybackTarget;
 }
 
 function PlaybackButton({
@@ -369,7 +370,11 @@ function PlaybackButton({
   );
 }
 
-function RecordButton({ voicePractice }: { voicePractice: VoicePractice }) {
+function RecordButton({
+  voicePractice,
+}: {
+  readonly voicePractice: VoicePractice;
+}) {
   function handlePress(): void {
     if (voicePractice.isRecording) {
       void voicePractice.stopRecording();
@@ -405,7 +410,7 @@ function RecordButton({ voicePractice }: { voicePractice: VoicePractice }) {
 function VoicePracticeCard({
   voicePractice,
 }: {
-  voicePractice: VoicePractice;
+  readonly voicePractice: VoicePractice;
 }) {
   const modelPlayback = voicePractice.playback?.target === "model";
   const recordingPlayback = voicePractice.playback?.target === "recording";
@@ -485,11 +490,11 @@ function VoicePracticeCard({
 }
 
 interface ResultStageProps {
-  dueAt: string | null | undefined;
-  latestRating: 0 | 1 | null;
-  masteryScore: number;
-  onFinish: () => void;
-  voicePractice: VoicePractice;
+  readonly dueAt: string | null | undefined;
+  readonly latestRating: ExerciseRating;
+  readonly masteryScore: number;
+  readonly onFinish: () => void;
+  readonly voicePractice: VoicePractice;
 }
 
 function ResultStage({
@@ -565,21 +570,21 @@ function ResultStage({
 }
 
 interface StageContentProps {
-  dueAt: string | null | undefined;
-  isSaving: boolean;
-  latestRating: 0 | 1 | null;
-  masteryScore: number;
-  onFinish: () => void;
-  onPlaySignal: () => void;
-  onRetryStorage: () => void;
-  onSelectOption: (optionId: string) => void;
-  onStart: () => void;
-  onSubmit: () => void;
-  questionMessage: string;
-  selectedOptionId: string | null;
-  stage: Stage;
-  storageStatus: StorageStatus;
-  voicePractice: VoicePractice;
+  readonly dueAt: string | null | undefined;
+  readonly isSaving: boolean;
+  readonly latestRating: ExerciseRating;
+  readonly masteryScore: number;
+  readonly onFinish: () => void;
+  readonly onPlaySignal: () => void;
+  readonly onRetryStorage: () => void;
+  readonly onSelectOption: (optionId: string) => void;
+  readonly onStart: () => void;
+  readonly onSubmit: () => void;
+  readonly questionMessage: string;
+  readonly selectedOptionId: string | null;
+  readonly stage: Stage;
+  readonly storageStatus: StorageStatus;
+  readonly voicePractice: VoicePractice;
 }
 
 function StageContent(props: StageContentProps) {
@@ -635,7 +640,7 @@ export default function DemoScreen() {
   const [startedAt, setStartedAt] = useState(0);
   const [message, setMessage] = useState("");
   const [isSaving, setIsSaving] = useState(false);
-  const [latestRating, setLatestRating] = useState<0 | 1 | null>(null);
+  const [latestRating, setLatestRating] = useState<ExerciseRating>(null);
   const submissionInFlight = useRef(false);
   const finishInFlight = useRef(false);
 
