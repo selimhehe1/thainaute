@@ -1,7 +1,10 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { AccountExportInfrastructureError } from "../lib/server/account-export/errors";
-import { accountExportIdentityFromSupabaseUser } from "../lib/server/account-export/supabase-auth";
+import {
+  accountExportIdentityFromSupabaseUser,
+  verifySupabaseAccountExportIdentity,
+} from "../lib/server/account-export/supabase-auth";
 
 const USER_ID = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
 
@@ -131,5 +134,92 @@ describe("identité Auth de l'export de compte", () => {
         verifiedClaims,
       ),
     ).toThrow(AccountExportInfrastructureError);
+  });
+});
+
+describe("orchestration Auth vérifiée de l'export", () => {
+  function createAuth(input?: {
+    readonly claimsData?: { readonly claims: unknown } | null;
+    readonly claimsError?: { readonly status?: number } | null;
+    readonly userData?: { readonly user: unknown };
+    readonly userError?: { readonly status?: number } | null;
+  }) {
+    return {
+      getClaims: vi.fn().mockResolvedValue({
+        data:
+          input?.claimsData === undefined
+            ? { claims: verifiedClaims }
+            : input.claimsData,
+        error: input?.claimsError ?? null,
+      }),
+      getUser: vi.fn().mockResolvedValue({
+        data: input?.userData ?? { user: supabaseUser },
+        error: input?.userError ?? null,
+      }),
+    };
+  }
+
+  it("vérifie les claims et l'utilisateur avec exactement le même jeton", async () => {
+    const auth = createAuth();
+
+    await expect(
+      verifySupabaseAccountExportIdentity({
+        auth,
+        accessToken: "verified-access-token",
+      }),
+    ).resolves.toMatchObject({ id: USER_ID });
+    expect(auth.getClaims).toHaveBeenCalledWith("verified-access-token");
+    expect(auth.getUser).toHaveBeenCalledWith("verified-access-token");
+  });
+
+  it.each([400, 401, 403, 404, 422])(
+    "classe le rejet de credentials %i comme unauthorized",
+    async (status) => {
+      await expect(
+        verifySupabaseAccountExportIdentity({
+          auth: createAuth({ claimsError: { status } }),
+          accessToken: "rejected-access-token",
+        }),
+      ).rejects.toMatchObject({
+        code: "unauthorized",
+        status: 401,
+      });
+    },
+  );
+
+  it.each([408, 429, 500, 503])(
+    "conserve l'erreur Auth retryable %i comme indisponibilité",
+    async (status) => {
+      await expect(
+        verifySupabaseAccountExportIdentity({
+          auth: createAuth({ userError: { status } }),
+          accessToken: "temporarily-unavailable-token",
+        }),
+      ).rejects.toMatchObject({
+        code: "auth_unavailable",
+      });
+    },
+  );
+
+  it("ferme les données claims nulles et les exceptions transport", async () => {
+    await expect(
+      verifySupabaseAccountExportIdentity({
+        auth: createAuth({ claimsData: null }),
+        accessToken: "missing-claims-token",
+      }),
+    ).rejects.toMatchObject({
+      code: "auth_unavailable",
+    });
+
+    const auth = createAuth();
+    auth.getClaims.mockRejectedValueOnce(new Error("transport detail"));
+    await expect(
+      verifySupabaseAccountExportIdentity({
+        auth,
+        accessToken: "transport-failure-token",
+      }),
+    ).rejects.toMatchObject({
+      code: "auth_unavailable",
+    });
   });
 });

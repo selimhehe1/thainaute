@@ -40,6 +40,19 @@ const supabaseUserSchema = z
   })
   .passthrough();
 
+interface AccountExportSupabaseAuthClient {
+  readonly getClaims: (accessToken: string) => Promise<{
+    readonly data: { readonly claims: unknown } | null;
+    readonly error: { readonly status?: number | undefined } | null;
+  }>;
+  readonly getUser: (accessToken: string) => Promise<{
+    readonly data: { readonly user: unknown };
+    readonly error: { readonly status?: number | undefined } | null;
+  }>;
+}
+
+const CREDENTIAL_REJECTION_STATUSES = new Set([400, 401, 403, 404, 422]);
+
 function providersFromAppMetadata(metadata: unknown): string[] {
   if (metadata === undefined) return [];
   const parsedMetadata = appMetadataSchema.safeParse(metadata);
@@ -97,6 +110,56 @@ export function accountExportIdentityFromSupabaseUser(
   return result.data;
 }
 
+/**
+ * Croise les claims vérifiés avec la relecture Auth du même jeton. Les limites
+ * et pannes temporaires restent des 503 ; seules les erreurs de credentials
+ * documentées deviennent un 401 invitant réellement à se reconnecter.
+ */
+export async function verifySupabaseAccountExportIdentity(input: {
+  readonly auth: AccountExportSupabaseAuthClient;
+  readonly accessToken: string;
+}): Promise<AccountExportIdentity> {
+  try {
+    const [claimsResult, userResult] = await Promise.all([
+      input.auth.getClaims(input.accessToken),
+      input.auth.getUser(input.accessToken),
+    ]);
+    const authErrors = [claimsResult.error, userResult.error].filter(
+      (error) => error !== null,
+    );
+    if (authErrors.length > 0) {
+      if (
+        authErrors.some(
+          ({ status }) =>
+            status !== undefined && CREDENTIAL_REJECTION_STATUSES.has(status),
+        )
+      ) {
+        throw new AccountExportApiError("unauthorized");
+      }
+      throw new AccountExportInfrastructureError("auth_unavailable");
+    }
+    if (claimsResult.data === null) {
+      throw new AccountExportInfrastructureError("auth_unavailable");
+    }
+    const identity = accountExportIdentityFromSupabaseUser(
+      userResult.data.user,
+      claimsResult.data.claims,
+    );
+    if (identity === null) {
+      throw new AccountExportApiError("unauthorized");
+    }
+    return identity;
+  } catch (error) {
+    if (
+      error instanceof AccountExportApiError ||
+      error instanceof AccountExportInfrastructureError
+    ) {
+      throw error;
+    }
+    throw new AccountExportInfrastructureError("auth_unavailable");
+  }
+}
+
 export function createSupabaseAccountExportIdentityVerifier(input: {
   readonly url: string;
   readonly publishableKey: string;
@@ -112,47 +175,10 @@ export function createSupabaseAccountExportIdentityVerifier(input: {
         global: { fetch: createAccountExportSupabaseFetch(signal) },
       });
 
-      try {
-        const [claimsResult, userResult] = await Promise.all([
-          client.auth.getClaims(accessToken),
-          client.auth.getUser(accessToken),
-        ]);
-        const authErrors = [claimsResult.error, userResult.error].filter(
-          (error) => error !== null,
-        );
-        if (authErrors.length > 0) {
-          if (
-            authErrors.some(
-              (error) =>
-                typeof error.status === "number" &&
-                error.status >= 400 &&
-                error.status < 500,
-            )
-          ) {
-            throw new AccountExportApiError("unauthorized");
-          }
-          throw new AccountExportInfrastructureError("auth_unavailable");
-        }
-        if (claimsResult.data === null) {
-          throw new AccountExportInfrastructureError("auth_unavailable");
-        }
-        const identity = accountExportIdentityFromSupabaseUser(
-          userResult.data.user,
-          claimsResult.data.claims,
-        );
-        if (identity === null) {
-          throw new AccountExportApiError("unauthorized");
-        }
-        return identity;
-      } catch (error) {
-        if (
-          error instanceof AccountExportApiError ||
-          error instanceof AccountExportInfrastructureError
-        ) {
-          throw error;
-        }
-        throw new AccountExportInfrastructureError("auth_unavailable");
-      }
+      return verifySupabaseAccountExportIdentity({
+        auth: client.auth,
+        accessToken,
+      });
     },
   };
 }
