@@ -12,6 +12,7 @@ export default function HomePage() {
         </Link>
         <nav aria-label="Navigation principale">
           <Link href="#methode">Méthode</Link>
+          <Link href="/account">Compte</Link>
           <Link className="button buttonSmall buttonGhost" href="/learn/demo">
             Tester la boucle
           </Link>

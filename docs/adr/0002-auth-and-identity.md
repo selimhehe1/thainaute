@@ -13,6 +13,10 @@ Un utilisateur doit être authentifié avant tout achat. Aucun rapprochement de
 comptes, de droits ou de données ne se fait par email. La fusion local-vers-
 compte est explicite, idempotente et journalisée sans contenu sensible.
 
+ADR-0011 concrétise ce parcours avec un code email à six chiffres, un stockage
+de session natif chiffré, une fusion locale transactionnelle et une purge ciblée
+avant la déconnexion locale.
+
 ## Sécurité
 
 L'autorisation utilise la propriété de ligne et, si nécessaire,

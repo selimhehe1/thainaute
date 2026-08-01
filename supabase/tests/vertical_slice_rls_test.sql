@@ -70,7 +70,7 @@ values
     '32000000-0000-4000-8000-000000000001',
     '31000000-0000-4000-8000-000000000001',
     '42000000-0000-4000-8000-000000000001',
-    'listening', 1, '2026-08-01T10:00:00Z', 1000, 'srs-v0', repeat('e', 64)
+    'listening', 1, now() - interval '1 hour', 1000, 'srs-v0', repeat('e', 64)
   ),
   (
     '40000000-0000-4000-8000-000000000002',
@@ -80,7 +80,7 @@ values
     '32000000-0000-4000-8000-000000000001',
     '31000000-0000-4000-8000-000000000001',
     '42000000-0000-4000-8000-000000000001',
-    'listening', 1, '2026-08-01T10:00:00Z', 1000, 'srs-v0', repeat('f', 64)
+    'listening', 1, now() - interval '1 hour', 1000, 'srs-v0', repeat('f', 64)
   );
 
 insert into public.learner_item_state (
@@ -184,9 +184,14 @@ select ok(
   'un client ne peut pas écrire sa maîtrise'
 );
 select ok(
-  has_table_privilege('service_role', 'public.attempt_events', 'insert')
+  has_any_column_privilege(
+    'service_role', 'public.attempt_events', 'insert'
+  )
+  and not has_column_privilege(
+    'service_role', 'public.attempt_events', 'received_at', 'insert'
+  )
   and has_table_privilege('service_role', 'public.learner_item_state', 'update'),
-  'le rôle serveur possède les écritures minimales de projection'
+  'le rôle serveur possède les écritures minimales sans received_at'
 );
 select col_is_pk('public', 'attempt_events', 'event_id', 'event_id garantit la déduplication en base');
 

@@ -9,6 +9,7 @@ import {
 } from "@thainaute/sync";
 import { useAudioPlayer } from "expo-audio";
 import { randomUUID } from "expo-crypto";
+import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useSQLiteContext } from "expo-sqlite";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -44,7 +45,7 @@ type Stage = "intro" | "question" | "result";
 export default function DemoScreen() {
   const database = useSQLiteContext();
   const outboxStore = useMemo(
-    () => new MobileAttemptOutboxStore(database),
+    () => new MobileAttemptOutboxStore(database, undefined, "demo"),
     [database],
   );
   const player = useAudioPlayer(require("../assets/audio/fixture-tone.wav"));
@@ -239,7 +240,7 @@ export default function DemoScreen() {
             ? "Préparation du journal local…"
             : storageStatus === "error"
               ? "Journal local indisponible"
-              : `${pendingAttempts} tentative${pendingAttempts > 1 ? "s" : ""} en attente`}
+              : `${pendingAttempts} tentative${pendingAttempts > 1 ? "s" : ""} conservée${pendingAttempts > 1 ? "s" : ""} localement`}
         </Text>
       </View>
       <ScrollView contentContainerStyle={styles.content}>
@@ -375,8 +376,8 @@ export default function DemoScreen() {
               </Text>
             </View>
             <Text style={styles.privacy}>
-              Progression conservée sur cet appareil. Après création du compte,
-              le serveur la recalculera sans faire confiance à la note locale.
+              Cette démonstration technique reste isolée sur cet appareil et ne
+              sera jamais synchronisée comme contenu pédagogique.
             </Text>
             <Pressable
               accessibilityRole="button"
@@ -389,6 +390,16 @@ export default function DemoScreen() {
             >
               <Text style={styles.primaryButtonText}>Terminer</Text>
             </Pressable>
+            <Link href="/account" asChild>
+              <Pressable
+                accessibilityRole="button"
+                style={styles.secondaryButton}
+              >
+                <Text style={styles.secondaryButtonText}>
+                  Découvrir le compte
+                </Text>
+              </Pressable>
+            </Link>
           </View>
         )}
       </ScrollView>

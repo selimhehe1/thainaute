@@ -75,10 +75,75 @@ allégé doit recevoir une nouvelle clé d'idempotence, tandis que l'`eventId`
 préservé empêche un second effet si le premier envoi avait déjà été committé.
 
 Une erreur réseau ne modifie pas le snapshot : l'appel suivant à `prepare`
-reprend donc le lot durable. Le futur client authentifié reste responsable de
-ne déclencher cette synchronisation qu'après la fusion explicite choisie par
-l'apprenant. Le Route Handler Next.js conserve l'autorité sur
+reprend donc le lot durable. Le client authentifié ne déclenche la fusion
+qu'après le choix explicite de l'apprenant. Le Route Handler Next.js conserve
+l'autorité sur
 l'authentification, l'évaluation et la transaction serveur.
+
+## Fusion anonyme vers compte
+
+La machine pure de fusion impose un consentement affirmatif horodaté et un seul
+marqueur actif par installation. `startAnonymousProgressFusion` copie les
+tentatives dans l'espace compte en conservant `eventId` et `answeredAt`, remplace
+uniquement le `deviceId`, remet chaque nouvelle copie à `pending` sans
+`retryReason` et libère le lot `inFlight` anonyme. La révision et les projections
+du compte restent inchangées ; celles de l'espace anonyme ne sont jamais
+importées.
+
+Le marqueur, le snapshot anonyme et le snapshot compte retournés doivent être
+persistés ensemble dans une transaction IndexedDB ou SQLite. Après chaque accusé
+de lot, l'adaptateur appelle `applyAnonymousProgressFusionBatchSuccess`, qui
+applique la réponse d'outbox et met à jour le marqueur dans une même valeur à
+persister. Les événements déjà acceptés restent ainsi connus même après
+compaction immédiate de l'outbox. Une reprise avec
+`resumeAnonymousProgressFusion` rejoue uniquement les copies encore non accusées
+et échoue sans résultat partiel si un `eventId` porte un autre payload ou si la
+capacité pending serait dépassée.
+
+`completeAnonymousProgressFusion` refuse de terminer tant que chaque événement
+n'a pas reçu un résultat terminal. Après le dernier accusé, elle retire de la
+source les événements acceptés, conserve les rejets avec leur code fermé et
+conserve aussi les éventuels événements anonymes plus récents. Un rejet déjà
+classé n'est jamais recopié dans une fusion suivante.
+Un changement de compte doit rester bloqué tant que le marqueur est
+`awaiting_server_ack` ; la source anonyme n'est donc jamais supprimée avant la
+confirmation serveur.
+
+## Transport HTTP multiplateforme
+
+`createSyncHttpClient` fournit un adaptateur pur, sans React ni Supabase, pour :
+
+- `POST /api/v1/devices/register` ;
+- `POST /api/v1/attempts/batch` ;
+- `GET /api/v1/progress/snapshot`.
+
+Le web peut utiliser une `baseUrl` vide ; le mobile fournit l'origine absolue de
+l'API. La session et son jeton Bearer sont demandés juste avant chaque appel :
+son `userId` doit rester égal au propriétaire attendu de l'outbox, y compris
+après un refresh ou un changement de compte inter-onglets. `fetch` est
+injectable pour les tests et les runtimes concernés. Aucun cookie n'est joint
+par le client. HTTPS est obligatoire, sauf dérogation explicite d'un build
+local, et chaque requête possède un délai borné.
+
+Le client ne crée jamais de clé d'idempotence : `sendAttemptBatch` exige le
+`PreparedAttemptOutboxBatch` durable produit par l'outbox et réemploie donc sa
+clé lors d'une reprise. Il ne mute et n'acquitte aucun snapshot. Seule une
+réponse 2xx dont le média, le JSON, le schéma strict et l'ordre des `eventId`
+sont valides est rendue à l'appelant, qui peut alors appliquer
+`applyAttemptOutboxSuccess` dans sa transaction locale.
+
+Les réponses d'inscription doivent correspondre à l'appareil demandé. Le
+snapshot de progression accepte une révision initiale égale à zéro et des états
+uniques, triés par `itemId` puis `skill`. Les pannes réseau, absences de session,
+erreurs API et violations de protocole ont des classes distinctes ; leurs
+messages sont fixes et ne recopient ni jeton, ni corps, ni exception du réseau.
+
+`synchronizeAttemptOutbox` orchestre ensuite une passe bornée : il refuse tout
+journal anonyme ou appartenant à un autre compte, puis effectue l'inscription
+idempotente de l'appareil, l'hydratation de l'image autoritaire complète, la
+reprise des entrées `device_not_registered` et au plus vingt lots séquentiels.
+Une erreur conserve le lot `inFlight`; aucune voie d'erreur n'acquitte
+localement une tentative.
 
 Les versions SRS persistables sont listées explicitement dans
 `SUPPORTED_ATTEMPT_ALGORITHM_VERSIONS`. `OPEN-SRS-001` bloque tout changement

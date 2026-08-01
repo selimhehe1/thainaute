@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { WebAuthSessionProvider } from "@/lib/client/auth-session";
 import { createSiteMetadata } from "@/lib/server/site-metadata";
 
 import "./globals.css";
@@ -14,7 +15,9 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        <WebAuthSessionProvider>{children}</WebAuthSessionProvider>
+      </body>
     </html>
   );
 }

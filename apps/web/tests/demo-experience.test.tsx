@@ -10,6 +10,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { DemoExperience } from "../app/learn/demo/demo-experience";
 import { WebAttemptOutboxStore } from "../lib/client/attempt-outbox-store";
+import { WebAuthSessionProvider } from "../lib/client/auth-session";
 
 const lesson = {
   versionId: "10000000-0000-4000-8000-000000000002",
@@ -32,8 +33,16 @@ const lesson = {
   },
 };
 
+function renderDemo() {
+  return render(
+    <WebAuthSessionProvider>
+      <DemoExperience lesson={lesson} />
+    </WebAuthSessionProvider>,
+  );
+}
+
 beforeEach(async () => {
-  await new WebAttemptOutboxStore().deleteForTests();
+  await new WebAttemptOutboxStore("thainaute-demo-v1").deleteForTests();
 });
 
 afterEach(() => {
@@ -44,7 +53,7 @@ afterEach(() => {
 describe("leçon web fictive", () => {
   it("annonce le caractère non publiable et termine une tentative", async () => {
     const user = userEvent.setup();
-    render(<DemoExperience lesson={lesson} />);
+    renderDemo();
 
     expect(
       screen.getByText("Donnée fictive — non publiable"),
@@ -65,7 +74,7 @@ describe("leçon web fictive", () => {
 
   it("conserve un ancien journal illisible au lieu de l'écraser", async () => {
     window.localStorage.setItem("thainaute.fixture.attempts.v1", "{invalide");
-    render(<DemoExperience lesson={lesson} />);
+    renderDemo();
 
     expect(await screen.findByText("Journal local indisponible")).toBeVisible();
     expect(window.localStorage.getItem("thainaute.fixture.attempts.v1")).toBe(
@@ -78,7 +87,7 @@ describe("leçon web fictive", () => {
 
   it("n'enregistre qu'une tentative lors d'une double activation", async () => {
     const user = userEvent.setup();
-    const { unmount } = render(<DemoExperience lesson={lesson} />);
+    const { unmount } = renderDemo();
     const startButton = screen.getByRole("button", { name: "Commencer" });
     await waitFor(() => expect(startButton).toBeEnabled());
     await user.click(startButton);
@@ -92,8 +101,11 @@ describe("leçon web fictive", () => {
     });
     unmount();
 
-    const inspector = new WebAttemptOutboxStore();
+    const inspector = new WebAttemptOutboxStore("thainaute-demo-v1");
     expect((await inspector.read()).entries).toHaveLength(1);
     await inspector.deleteForTests();
+    const learningInspector = new WebAttemptOutboxStore();
+    expect((await learningInspector.read()).entries).toHaveLength(0);
+    await learningInspector.deleteForTests();
   });
 });

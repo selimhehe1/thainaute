@@ -10,6 +10,7 @@ import {
 } from "react-native";
 
 import { initializeDatabase } from "../lib/initialize-database";
+import { MobileAuthSessionProvider } from "../lib/auth-session";
 
 function DatabaseReady({ onReady }: { readonly onReady: () => void }) {
   useEffect(onReady, [onReady]);
@@ -67,7 +68,9 @@ export default function RootLayout() {
         onInit={initializeDatabase}
       >
         <DatabaseReady onReady={handleReady} />
-        <Stack screenOptions={{ headerShown: false }} />
+        <MobileAuthSessionProvider>
+          <Stack screenOptions={{ headerShown: false }} />
+        </MobileAuthSessionProvider>
       </SQLiteProvider>
       {databaseStatus === "loading" && (
         <View style={styles.loading} accessibilityLiveRegion="polite">

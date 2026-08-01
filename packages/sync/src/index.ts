@@ -66,3 +66,37 @@ export {
   type PrepareAttemptOutboxResult,
   type PreparedAttemptOutboxBatch,
 } from "./outbox";
+
+export {
+  MAX_ANONYMOUS_PROGRESS_FUSION_ATTEMPTS,
+  AnonymousProgressFusionAlreadyActiveError,
+  AnonymousProgressFusionAlreadyCompletedError,
+  AnonymousProgressFusionCapacityError,
+  AnonymousProgressFusionEventCollisionError,
+  AnonymousProgressFusionNotAcknowledgedError,
+  AnonymousProgressFusionOwnerError,
+  anonymousProgressFusionConsentSchema,
+  anonymousProgressFusionMarkerSchema,
+  applyAnonymousProgressFusionBatchSuccess,
+  completeAnonymousProgressFusion,
+  deserializeAnonymousProgressFusionMarker,
+  resumeAnonymousProgressFusion,
+  serializeAnonymousProgressFusionMarker,
+  startAnonymousProgressFusion,
+  type AnonymousProgressFusionConsent,
+  type AnonymousProgressFusionMarker,
+  type AppliedAnonymousProgressFusionBatchState,
+  type ApplyAnonymousProgressFusionBatchSuccessInput,
+  type AwaitingAnonymousProgressFusionMarker,
+  type CompleteAnonymousProgressFusionInput,
+  type CompletedAnonymousProgressFusionState,
+  type PendingAnonymousProgressFusionState,
+  type ResumeAnonymousProgressFusionInput,
+  type StartAnonymousProgressFusionInput,
+} from "./fusion";
+
+export * from "./device-identity";
+export * from "./client-contracts";
+export * from "./http-client";
+export * from "./hydration";
+export * from "./coordinator";

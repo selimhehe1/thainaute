@@ -64,8 +64,8 @@ doublon sans appliquer une seconde fois la progression.
 - La bascule modifie `/api/v1`, admis ici car aucune version distante n'a été
   distribuée. Toute future rupture exigera une nouvelle version ou une fenêtre
   de compatibilité explicite.
-- `OPEN-SYNC-001`, `OPEN-SRS-001` et `OPEN-OFFLINE-001` restent des portes
-  distinctes avant une bêta distante.
+- `OPEN-SRS-001` et `OPEN-OFFLINE-001` restent des portes distinctes avant une
+  bêta distante. `OPEN-SYNC-001` est résolue par l'ADR-0010.
 
 ## Références officielles
 

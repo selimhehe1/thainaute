@@ -17,6 +17,7 @@ const DEVICE_ID = "daaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
 const OTHER_DEVICE_ID = "dbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb";
 const EVENT_ID = "40000000-0000-4000-8000-000000000001";
 const SECOND_EVENT_ID = "40000000-0000-4000-8000-000000000002";
+const THIRD_EVENT_ID = "40000000-0000-4000-8000-000000000003";
 const EXERCISE_ID = "41000000-0000-4000-8000-000000000001";
 const ITEM_ID = "32000000-0000-4000-8000-000000000001";
 const VERSION_ID = "31000000-0000-4000-8000-000000000001";
@@ -25,6 +26,10 @@ const WRONG_OPTION_ID = "42000000-0000-4000-8000-000000000002";
 const UNKNOWN_OPTION_ID = "42000000-0000-4000-8000-000000000003";
 const IDEMPOTENCY_KEY = "50000000-0000-4000-8000-000000000001";
 const SECOND_IDEMPOTENCY_KEY = "50000000-0000-4000-8000-000000000002";
+const THIRD_IDEMPOTENCY_KEY = "50000000-0000-4000-8000-000000000003";
+const SERVER_NOW_MS = Date.parse("2026-08-02T10:00:00.000Z");
+const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1_000;
+const FIVE_MINUTES_MS = 5 * 60 * 1_000;
 
 const ANSWER_KEY: ServerExerciseAnswerKey = {
   exerciseId: EXERCISE_ID,
@@ -108,10 +113,17 @@ function batch(...attempts: ReturnType<typeof attempt>[]) {
   return attemptBatchSchema.parse({ attempts });
 }
 
+function synchronizer(
+  repository: AttemptRepository,
+  clock: () => number = () => SERVER_NOW_MS,
+) {
+  return createAttemptBatchSynchronizer(repository, clock);
+}
+
 describe("synchronisation autoritaire des tentatives", () => {
   it("calcule la note et l'identité côté serveur", async () => {
     const repository = new MemoryAttemptRepository();
-    const synchronize = createAttemptBatchSynchronizer(repository);
+    const synchronize = synchronizer(repository);
 
     const response = await synchronize({
       userId: USER_ID,
@@ -133,7 +145,7 @@ describe("synchronisation autoritaire des tentatives", () => {
 
   it("rejoue exactement la première réponse sans second effet", async () => {
     const repository = new MemoryAttemptRepository();
-    const synchronize = createAttemptBatchSynchronizer(repository);
+    const synchronize = synchronizer(repository);
     const input = {
       userId: USER_ID,
       idempotencyKey: IDEMPOTENCY_KEY,
@@ -150,7 +162,7 @@ describe("synchronisation autoritaire des tentatives", () => {
 
   it("marque un replay tardif avec son ancienne révision", async () => {
     const repository = new MemoryAttemptRepository();
-    const synchronize = createAttemptBatchSynchronizer(repository);
+    const synchronize = synchronizer(repository);
     const firstInput = {
       userId: USER_ID,
       idempotencyKey: IDEMPOTENCY_KEY,
@@ -177,7 +189,7 @@ describe("synchronisation autoritaire des tentatives", () => {
 
   it("refuse une clé réutilisée pour un autre corps", async () => {
     const repository = new MemoryAttemptRepository();
-    const synchronize = createAttemptBatchSynchronizer(repository);
+    const synchronize = synchronizer(repository);
     await synchronize({
       userId: USER_ID,
       idempotencyKey: IDEMPOTENCY_KEY,
@@ -198,7 +210,7 @@ describe("synchronisation autoritaire des tentatives", () => {
 
   it("traite une nouvelle clé et le même événement comme doublon", async () => {
     const repository = new MemoryAttemptRepository();
-    const synchronize = createAttemptBatchSynchronizer(repository);
+    const synchronize = synchronizer(repository);
     const requestBatch = batch(attempt());
     await synchronize({
       userId: USER_ID,
@@ -223,7 +235,7 @@ describe("synchronisation autoritaire des tentatives", () => {
 
   it("rejette une collision de contenu sans remplacer l'événement", async () => {
     const repository = new MemoryAttemptRepository();
-    const synchronize = createAttemptBatchSynchronizer(repository);
+    const synchronize = synchronizer(repository);
     await synchronize({
       userId: USER_ID,
       idempotencyKey: IDEMPOTENCY_KEY,
@@ -246,7 +258,7 @@ describe("synchronisation autoritaire des tentatives", () => {
 
   it("isole un appareil étranger dans un lot partiellement valide", async () => {
     const repository = new MemoryAttemptRepository();
-    const synchronize = createAttemptBatchSynchronizer(repository);
+    const synchronize = synchronizer(repository);
 
     const response = await synchronize({
       userId: USER_ID,
@@ -270,7 +282,7 @@ describe("synchronisation autoritaire des tentatives", () => {
 
   it("rejette une option étrangère à l'exercice", async () => {
     const repository = new MemoryAttemptRepository();
-    const synchronize = createAttemptBatchSynchronizer(repository);
+    const synchronize = synchronizer(repository);
 
     const response = await synchronize({
       userId: USER_ID,
@@ -301,7 +313,7 @@ describe("synchronisation autoritaire des tentatives", () => {
       collidingEventIds: [],
       answerKeys: [],
     });
-    const synchronize = createAttemptBatchSynchronizer(repository);
+    const synchronize = synchronizer(repository);
 
     const response = await synchronize({
       userId: USER_ID,
@@ -338,7 +350,7 @@ describe("synchronisation autoritaire des tentatives", () => {
         },
       ],
     });
-    const synchronize = createAttemptBatchSynchronizer(repository);
+    const synchronize = synchronizer(repository);
 
     await expect(
       synchronize({
@@ -350,10 +362,136 @@ describe("synchronisation autoritaire des tentatives", () => {
     expect(repository.commitCalls).toBe(0);
   });
 
+  it("accepte les deux bornes temporelles inclusives sans réécrire answeredAt", async () => {
+    const oldestAcceptedAt = new Date(
+      SERVER_NOW_MS - THIRTY_DAYS_MS,
+    ).toISOString();
+    const newestAcceptedAt = new Date(
+      SERVER_NOW_MS + FIVE_MINUTES_MS,
+    ).toISOString();
+    const pastRepository = new MemoryAttemptRepository();
+    const futureRepository = new MemoryAttemptRepository();
+
+    const pastResponse = await synchronizer(pastRepository)({
+      userId: USER_ID,
+      idempotencyKey: IDEMPOTENCY_KEY,
+      batch: batch(attempt({ answeredAt: oldestAcceptedAt })),
+    });
+    const futureResponse = await synchronizer(futureRepository)({
+      userId: USER_ID,
+      idempotencyKey: SECOND_IDEMPOTENCY_KEY,
+      batch: batch(
+        attempt({ eventId: SECOND_EVENT_ID, answeredAt: newestAcceptedAt }),
+      ),
+    });
+
+    expect(pastResponse.results[0]?.status).toBe("accepted");
+    expect(futureResponse.results[0]?.status).toBe("accepted");
+    expect(pastRepository.events[0]?.answeredAt).toBe(oldestAcceptedAt);
+    expect(futureRepository.events[0]?.answeredAt).toBe(newestAcceptedAt);
+  });
+
+  it("rejette les nouveaux eventId situés hors de la fenêtre temporelle", async () => {
+    const repository = new MemoryAttemptRepository();
+    const response = await synchronizer(repository)({
+      userId: USER_ID,
+      idempotencyKey: IDEMPOTENCY_KEY,
+      batch: batch(
+        attempt({
+          answeredAt: new Date(
+            SERVER_NOW_MS - THIRTY_DAYS_MS - 1,
+          ).toISOString(),
+        }),
+        attempt({
+          eventId: SECOND_EVENT_ID,
+          answeredAt: new Date(
+            SERVER_NOW_MS + FIVE_MINUTES_MS + 1,
+          ).toISOString(),
+        }),
+        attempt({
+          eventId: THIRD_EVENT_ID,
+          answeredAt: new Date(SERVER_NOW_MS).toISOString(),
+        }),
+      ),
+    });
+
+    expect(response.results).toEqual([
+      {
+        eventId: EVENT_ID,
+        status: "rejected",
+        code: "invalid_submission",
+      },
+      {
+        eventId: SECOND_EVENT_ID,
+        status: "rejected",
+        code: "invalid_submission",
+      },
+      {
+        eventId: THIRD_EVENT_ID,
+        status: "accepted",
+        rating: 1,
+      },
+    ]);
+    expect(response.states).toHaveLength(1);
+    expect(repository.events.map((event) => event.eventId)).toEqual([
+      THIRD_EVENT_ID,
+    ]);
+  });
+
+  it("classe un eventId historique avant de contrôler sa fenêtre temporelle", async () => {
+    const repository = new MemoryAttemptRepository();
+    const initialBatch = batch(
+      attempt({ answeredAt: new Date(SERVER_NOW_MS).toISOString() }),
+    );
+    await synchronizer(repository)({
+      userId: USER_ID,
+      idempotencyKey: IDEMPOTENCY_KEY,
+      batch: initialBatch,
+    });
+    const lateSynchronize = synchronizer(
+      repository,
+      () => SERVER_NOW_MS + THIRTY_DAYS_MS + 24 * 60 * 60 * 1_000,
+    );
+
+    const duplicate = await lateSynchronize({
+      userId: USER_ID,
+      idempotencyKey: SECOND_IDEMPOTENCY_KEY,
+      batch: initialBatch,
+    });
+    const collision = await lateSynchronize({
+      userId: USER_ID,
+      idempotencyKey: THIRD_IDEMPOTENCY_KEY,
+      batch: batch(
+        attempt({
+          answeredAt: new Date(SERVER_NOW_MS).toISOString(),
+          selectedOptionId: WRONG_OPTION_ID,
+        }),
+      ),
+    });
+
+    expect(duplicate.results[0]).toEqual({
+      eventId: EVENT_ID,
+      status: "duplicate",
+      rating: 1,
+    });
+    expect(collision.results[0]).toEqual({
+      eventId: EVENT_ID,
+      status: "rejected",
+      code: "event_id_collision",
+    });
+    expect(repository.events).toHaveLength(1);
+  });
+
   it("recharge et recalcule après un conflit de révision", async () => {
     const repository = new MemoryAttemptRepository();
     repository.forceOneRevisionConflict = true;
-    const synchronize = createAttemptBatchSynchronizer(repository);
+    let clockCalls = 0;
+    const synchronize = synchronizer(repository, () => {
+      clockCalls += 1;
+      return clockCalls === 1
+        ? SERVER_NOW_MS
+        : SERVER_NOW_MS + THIRTY_DAYS_MS + 1;
+    });
 
     const response = await synchronize({
       userId: USER_ID,
@@ -364,5 +502,6 @@ describe("synchronisation autoritaire des tentatives", () => {
     expect(response.results[0]?.status).toBe("accepted");
     expect(repository.loadCalls).toBe(2);
     expect(repository.commitCalls).toBe(2);
+    expect(clockCalls).toBe(1);
   });
 });

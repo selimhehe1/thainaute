@@ -38,6 +38,10 @@ anonyme depuis un espace compte ; la fusion restera une commande explicite,
 atomique et consentie. Changer de compte ne réutilise donc ni `syncRevision`, ni
 device, ni projections du compte précédent.
 
+ADR-0011 définit désormais le marqueur de reprise, le checkpoint des accusés,
+la transaction à deux snapshots et l’identité d’appareil dérivée d’un UUID
+d’installation opaque.
+
 La v3 retire aussi `itemId` et `skill` des soumissions clientes. La lecture
 accepte les snapshots v1/v2, conserve événements, statuts, propriétaire,
 révision et projections, puis supprime ces deux champs dérivés. Un ancien lot
@@ -58,8 +62,11 @@ sync. `OPEN-SRS-001` interdit de changer de version courante sans définir la
 rétrocompatibilité, le dispatch serveur et la migration des appareils restés
 hors ligne.
 
-La fixture technique continue d'être évaluée localement pour démontrer la
-boucle, mais elle n'est jamais envoyée au serveur. Le branchement distant reste
+La fixture technique continue d'être évaluée localement dans un namespace
+IndexedDB/SQLite séparé pour démontrer la boucle, mais elle n'est jamais reprise
+par l'outbox synchronisable ni envoyée au serveur. Le branchement distant reste
 conditionné à l'enregistrement serveur du profil et de l'appareil, à une fusion
 explicitement acceptée après authentification et aux décisions
-`OPEN-SYNC-001`/`OPEN-SRS-001`/`OPEN-OFFLINE-001`.
+`OPEN-SRS-001`/`OPEN-OFFLINE-001`. La confiance temporelle est fixée par
+l'ADR-0010 : un nouvel événement de plus de trente jours reste local et est
+rejeté par le serveur sans réécriture de son heure.

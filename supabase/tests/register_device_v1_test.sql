@@ -2,7 +2,7 @@ begin;
 create extension if not exists pgtap with schema extensions;
 set local search_path = public, extensions;
 
-select plan(27);
+select plan(28);
 
 insert into auth.users (id, aud, role, email, created_at, updated_at)
 values
@@ -50,8 +50,10 @@ select ok(
   'authenticated ne peut plus creer directement un profil'
 );
 select ok(
-  not has_any_column_privilege('authenticated', 'public.devices', 'insert'),
-  'authenticated ne peut plus creer directement un appareil'
+  not has_any_column_privilege('authenticated', 'public.devices', 'insert')
+  and not has_any_column_privilege('authenticated', 'public.devices', 'update')
+  and not has_any_column_privilege('anon', 'public.devices', 'update'),
+  'les roles client ne peuvent ni creer ni mettre a jour un appareil'
 );
 select ok(
   has_column_privilege('service_role', 'public.profiles', 'user_id', 'insert')
@@ -64,6 +66,11 @@ select ok(
   and has_column_privilege('service_role', 'public.devices', 'user_id', 'insert')
   and has_column_privilege('service_role', 'public.devices', 'platform', 'insert')
   and has_column_privilege('service_role', 'public.devices', 'app_version', 'insert')
+  and has_column_privilege('service_role', 'public.devices', 'app_version', 'update')
+  and not has_column_privilege('service_role', 'public.devices', 'id', 'update')
+  and not has_column_privilege('service_role', 'public.devices', 'user_id', 'update')
+  and not has_column_privilege('service_role', 'public.devices', 'platform', 'update')
+  and not has_column_privilege('service_role', 'public.devices', 'created_at', 'update')
   and not has_column_privilege('service_role', 'public.devices', 'created_at', 'insert')
   and not has_table_privilege('service_role', 'public.devices', 'update')
   and not has_table_privilege('service_role', 'public.devices', 'delete'),
@@ -141,8 +148,14 @@ select is(
     'web',
     '2.0.0'
   )->>'appVersion',
-  '1.0.0',
-  'un rejeu reste stable et ne reecrit pas les metadonnees initiales'
+  '2.0.0',
+  'un rejeu proprietaire actualise la version applicative'
+);
+select is(
+  (select app_version from public.devices
+   where id = 'daaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'),
+  '2.0.0',
+  'la version actualisee est persistee sur l appareil'
 );
 select is(
   (select count(*)::integer from public.devices

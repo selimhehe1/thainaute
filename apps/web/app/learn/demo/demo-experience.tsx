@@ -135,7 +135,12 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
 
   useEffect(() => {
     let active = true;
-    const instance = new WebAttemptOutboxStore();
+    const instance = new WebAttemptOutboxStore("thainaute-demo-v1");
+    queueMicrotask(() => {
+      if (!active) return;
+      setStorageStatus("loading");
+      setOutbox(createAttemptOutboxSnapshot());
+    });
     queueMicrotask(() => {
       if (active) setStore(instance);
     });
@@ -316,7 +321,7 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
           : storageStatus === "error"
             ? "Journal local indisponible"
             : online
-              ? `Journal local prêt · ${pendingAttempts} en attente`
+              ? `Journal local prêt · ${pendingAttempts} conservée${pendingAttempts > 1 ? "s" : ""}`
               : "Hors ligne · la tentative restera sur cet appareil"}
       </div>
 
@@ -443,12 +448,17 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
             </div>
           </div>
           <p className="privacyNote">
-            Cette progression reste sur cet appareil. Après création du compte,
-            le serveur la recalculera sans faire confiance à la note locale.
+            Cette démonstration technique reste isolée sur cet appareil et ne
+            sera jamais synchronisée comme contenu pédagogique.
           </p>
-          <Link className="button buttonPrimary" href="/">
-            Terminer
-          </Link>
+          <div className="lessonActions">
+            <Link className="button buttonPrimary" href="/account">
+              Découvrir le compte
+            </Link>
+            <Link className="button buttonGhost" href="/">
+              Continuer sans compte
+            </Link>
+          </div>
         </div>
       )}
     </section>

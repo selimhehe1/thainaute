@@ -7,3 +7,6 @@ appId: com.example.thainauteprototype
 - tapOn: "Valider"
 - assertVisible: "La boucle technique fonctionne."
 - assertVisible: "250 ‰"
+- tapOn: "Découvrir le compte"
+- assertVisible: "Compte non configuré ici"
+- assertVisible: "Cette build locale reste utilisable hors ligne sans compte."

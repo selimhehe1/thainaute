@@ -1,30 +1,45 @@
 import {
   ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
   AttemptOutboxCapacityError,
+  applyAnonymousProgressFusionBatchSuccess as applyFusionBatchSuccess,
   applyAttemptOutboxSuccess,
+  applyProgressSnapshot,
   attemptOutboxOwnerSchema,
   attemptOutboxOwnersAreEqual,
   attemptOutboxOwnerStorageKey,
   attemptSubmissionSchema,
   createAttemptOutboxSnapshot,
+  completeAnonymousProgressFusion as completeFusion,
+  deriveAccountDeviceId,
+  deserializeAnonymousProgressFusionMarker,
   deserializeAttemptOutboxSnapshot,
   enqueueAttempt,
   idempotencyKeySchema,
   prepareAttemptOutboxBatch,
+  resumeAnonymousProgressFusion as resumeFusion,
   resumeAttemptOutboxAfterDeviceRegistration,
   serializeAttemptOutboxSnapshot,
+  serializeAnonymousProgressFusionMarker,
+  startAnonymousProgressFusion as startFusion,
   type ApplyAttemptOutboxSuccessResult,
+  type AnonymousProgressFusionMarker,
   type AttemptBatchResponse,
   type AttemptOutboxOwner,
   type AttemptOutboxSnapshot,
+  type CompletedAnonymousProgressFusionState,
+  type PendingAnonymousProgressFusionState,
   type PrepareAttemptOutboxResult,
+  type ProgressSnapshotResponse,
+  type Sha256Hex,
   type ValidatedAttemptSubmission,
 } from "@thainaute/sync";
 import type { SQLiteDatabase } from "expo-sqlite";
 
 const OUTBOX_KEY = "attempts-v1";
 const DEVICE_KEY = "device_id";
+const INSTALLATION_KEY = "installation_id_v1";
 const LEGACY_MIGRATION_KEY = "legacy_attempt_journal_migrated_v1";
+const FUSION_MARKER_KEY = "anonymous_progress_fusion_v1";
 const SQLITE_BUSY_RETRY_COUNT = 3;
 
 interface MetadataRow {
@@ -46,6 +61,11 @@ export class MobileAttemptOutboxStorageError extends Error {
     super(message, options);
     this.name = "MobileAttemptOutboxStorageError";
   }
+}
+
+export interface ExpectedMobileAccountPurgeState {
+  readonly snapshot: AttemptOutboxSnapshot;
+  readonly fusionMarker: AnonymousProgressFusionMarker | null;
 }
 
 function isSqliteBusy(error: unknown): boolean {
@@ -87,15 +107,10 @@ function serializeDatabaseOperation<T>(
   return result;
 }
 
-async function readSnapshot(
-  database: SQLiteDatabase,
-  outboxKey: string,
+function parseStoredSnapshot(
+  row: OutboxRow | null,
   owner: AttemptOutboxOwner,
-): Promise<AttemptOutboxSnapshot> {
-  const row = await database.getFirstAsync<OutboxRow>(
-    "SELECT snapshot FROM attempt_outbox_state WHERE key = ?",
-    outboxKey,
-  );
+): AttemptOutboxSnapshot {
   if (row === null) return createAttemptOutboxSnapshot(owner);
 
   const snapshot = deserializeAttemptOutboxSnapshot(row.snapshot);
@@ -103,6 +118,20 @@ async function readSnapshot(
     throw new Error("Le propriétaire du journal local ne correspond pas.");
   }
   return snapshot;
+}
+
+async function readSnapshot(
+  database: SQLiteDatabase,
+  outboxKey: string,
+  owner: AttemptOutboxOwner,
+): Promise<AttemptOutboxSnapshot> {
+  return parseStoredSnapshot(
+    await database.getFirstAsync<OutboxRow>(
+      "SELECT snapshot FROM attempt_outbox_state WHERE key = ?",
+      outboxKey,
+    ),
+    owner,
+  );
 }
 
 async function writeSnapshot(
@@ -119,6 +148,25 @@ async function writeSnapshot(
     outboxKey,
     serializeAttemptOutboxSnapshot(snapshot),
     new Date().toISOString(),
+  );
+}
+
+function parseStoredFusionMarker(
+  row: MetadataRow | null,
+): AnonymousProgressFusionMarker | null {
+  if (row === null) return null;
+  return deserializeAnonymousProgressFusionMarker(row.value);
+}
+
+async function writeFusionMarker(
+  database: SQLiteDatabase,
+  marker: AnonymousProgressFusionMarker,
+): Promise<void> {
+  await database.runAsync(
+    `INSERT INTO local_metadata (key, value) VALUES (?, ?)
+     ON CONFLICT (key) DO UPDATE SET value = excluded.value`,
+    FUSION_MARKER_KEY,
+    serializeAnonymousProgressFusionMarker(marker),
   );
 }
 
@@ -151,18 +199,24 @@ export class MobileAttemptOutboxStore {
   public constructor(
     database: SQLiteDatabase,
     ownerInput: AttemptOutboxOwner = ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+    namespace: "learning" | "demo" = "learning",
   ) {
     this.#database = database;
     this.#owner = attemptOutboxOwnerSchema.parse(ownerInput);
     const scope = attemptOutboxOwnerStorageKey(this.#owner);
+    const prefix = namespace === "learning" ? "" : "demo:";
     this.#outboxKey =
-      this.#owner.kind === "anonymous" ? OUTBOX_KEY : `${OUTBOX_KEY}:${scope}`;
+      this.#owner.kind === "anonymous"
+        ? `${prefix}${OUTBOX_KEY}`
+        : `${prefix}${OUTBOX_KEY}:${scope}`;
     this.#deviceKey =
-      this.#owner.kind === "anonymous" ? DEVICE_KEY : `${DEVICE_KEY}:${scope}`;
+      this.#owner.kind === "anonymous"
+        ? `${prefix}${DEVICE_KEY}`
+        : `${prefix}${DEVICE_KEY}:${scope}`;
     this.#legacyMigrationKey =
       this.#owner.kind === "anonymous"
-        ? LEGACY_MIGRATION_KEY
-        : `${LEGACY_MIGRATION_KEY}:${scope}`;
+        ? `${prefix}${LEGACY_MIGRATION_KEY}`
+        : `${prefix}${LEGACY_MIGRATION_KEY}:${scope}`;
   }
 
   public async read(): Promise<AttemptOutboxSnapshot> {
@@ -234,31 +288,36 @@ export class MobileAttemptOutboxStore {
   }
 
   public async getOrCreateDeviceId(createUuid: () => string): Promise<string> {
-    try {
-      return await serializeDatabaseOperation(this.#database, async () => {
-        let deviceId = "";
-        await this.#database.withExclusiveTransactionAsync(
-          async (transaction) => {
-            const row = await transaction.getFirstAsync<MetadataRow>(
-              "SELECT value FROM local_metadata WHERE key = ?",
-              this.#deviceKey,
-            );
-            if (row !== null) {
-              deviceId = idempotencyKeySchema.parse(row.value);
-              return;
-            }
+    if (this.#owner.kind === "account") {
+      throw new MobileAttemptOutboxStorageError(
+        "Un compte doit utiliser un identifiant d’appareil dérivé de l’installation.",
+      );
+    }
+    return this.#getOrCreateMetadataUuid(this.#deviceKey, createUuid);
+  }
 
-            deviceId = idempotencyKeySchema.parse(createUuid());
-            await transaction.runAsync(
-              "INSERT INTO local_metadata (key, value) VALUES (?, ?)",
-              this.#deviceKey,
-              deviceId,
-            );
-          },
-        );
-        return deviceId;
+  public async getOrCreateAccountDeviceId(
+    createUuid: () => string,
+    sha256Hex: Sha256Hex,
+  ): Promise<string> {
+    if (this.#owner.kind !== "account") {
+      throw new MobileAttemptOutboxStorageError(
+        "Aucun compte n’est associé à ce journal local.",
+      );
+    }
+
+    try {
+      const installationId = await this.#getOrCreateMetadataUuid(
+        INSTALLATION_KEY,
+        createUuid,
+      );
+      return await deriveAccountDeviceId({
+        installationId,
+        userId: this.#owner.userId,
+        sha256Hex,
       });
     } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
       throw new MobileAttemptOutboxStorageError(
         "L'identité locale de cet appareil est indisponible.",
         { cause: error },
@@ -287,10 +346,15 @@ export class MobileAttemptOutboxStore {
   public applySuccess(
     response: AttemptBatchResponse,
   ): Promise<ApplyAttemptOutboxSuccessResult> {
-    return this.#replaceWithResult((snapshot) => {
-      const result = applyAttemptOutboxSuccess(snapshot, response);
-      return { snapshot: result.snapshot, result };
-    });
+    return this.#applySuccessWithFusion(response);
+  }
+
+  public applyProgressSnapshot(
+    response: ProgressSnapshotResponse,
+  ): Promise<AttemptOutboxSnapshot> {
+    return this.#replace((snapshot) =>
+      applyProgressSnapshot(snapshot, response),
+    );
   }
 
   public resumeAfterDeviceRegistration(
@@ -299,6 +363,408 @@ export class MobileAttemptOutboxStore {
     return this.#replace((snapshot) =>
       resumeAttemptOutboxAfterDeviceRegistration(snapshot, registeredDeviceId),
     );
+  }
+
+  public async readFusionMarker(): Promise<AnonymousProgressFusionMarker | null> {
+    try {
+      return await serializeDatabaseOperation(this.#database, async () =>
+        parseStoredFusionMarker(
+          await this.#database.getFirstAsync<MetadataRow>(
+            "SELECT value FROM local_metadata WHERE key = ?",
+            FUSION_MARKER_KEY,
+          ),
+        ),
+      );
+    } catch (error) {
+      throw new MobileAttemptOutboxStorageError(
+        "Le marqueur de fusion locale est illisible et n’a pas été écrasé.",
+        { cause: error },
+      );
+    }
+  }
+
+  public startAnonymousFusion(input: {
+    readonly fusionId: string;
+    readonly accountDeviceId: string;
+    readonly consentedAt: string;
+  }): Promise<PendingAnonymousProgressFusionState> {
+    return this.#mutateFusion((marker, anonymousSnapshot, accountSnapshot) =>
+      startFusion({
+        existingMarker: marker,
+        fusionId: input.fusionId,
+        consent: { accepted: true, consentedAt: input.consentedAt },
+        anonymousSnapshot,
+        accountSnapshot,
+        accountDeviceId: input.accountDeviceId,
+      }),
+    );
+  }
+
+  public async resumeAnonymousFusion(): Promise<PendingAnonymousProgressFusionState | null> {
+    return this.#mutateFusion((marker, anonymousSnapshot, accountSnapshot) => {
+      if (
+        marker === null ||
+        marker.status === "completed" ||
+        this.#owner.kind !== "account" ||
+        marker.targetUserId !== this.#owner.userId
+      ) {
+        return null;
+      }
+      return resumeFusion({ marker, anonymousSnapshot, accountSnapshot });
+    });
+  }
+
+  public async completeAnonymousFusion(
+    completedAt: string,
+  ): Promise<CompletedAnonymousProgressFusionState> {
+    return this.#mutateFusion((marker, anonymousSnapshot, accountSnapshot) => {
+      if (
+        marker === null ||
+        this.#owner.kind !== "account" ||
+        marker.targetUserId !== this.#owner.userId
+      ) {
+        throw new MobileAttemptOutboxStorageError(
+          "Aucune fusion locale de ce compte n’attend d’être terminée.",
+        );
+      }
+      return completeFusion({
+        marker,
+        anonymousSnapshot,
+        accountSnapshot,
+        completedAt,
+      });
+    });
+  }
+
+  /** Purge ciblée d'un espace; l'identité opaque d'installation est conservée. */
+  public async purgeOwnerData(): Promise<void> {
+    try {
+      await serializeDatabaseOperation(this.#database, () =>
+        this.#database.withExclusiveTransactionAsync(async (transaction) => {
+          const marker = parseStoredFusionMarker(
+            await transaction.getFirstAsync<MetadataRow>(
+              "SELECT value FROM local_metadata WHERE key = ?",
+              FUSION_MARKER_KEY,
+            ),
+          );
+          if (
+            this.#owner.kind === "anonymous" &&
+            marker?.status === "awaiting_server_ack"
+          ) {
+            throw new MobileAttemptOutboxStorageError(
+              "La progression anonyme participe à une fusion encore active.",
+            );
+          }
+          await transaction.runAsync(
+            "DELETE FROM attempt_outbox_state WHERE key = ?",
+            this.#outboxKey,
+          );
+          await transaction.runAsync(
+            "DELETE FROM local_metadata WHERE key IN (?, ?)",
+            this.#deviceKey,
+            this.#legacyMigrationKey,
+          );
+          if (
+            this.#owner.kind === "account" &&
+            marker?.targetUserId === this.#owner.userId
+          ) {
+            await transaction.runAsync(
+              "DELETE FROM local_metadata WHERE key = ?",
+              FUSION_MARKER_KEY,
+            );
+          }
+        }),
+      );
+    } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
+      throw new MobileAttemptOutboxStorageError(
+        "Les données locales du compte n’ont pas pu être supprimées.",
+        { cause: error },
+      );
+    }
+  }
+
+  /** Purge soldée, ou compare-and-purge strict après confirmation explicite. */
+  public async purgeAccountDataIfSettled(
+    expectedState?: ExpectedMobileAccountPurgeState,
+  ): Promise<boolean> {
+    if (this.#owner.kind !== "account") {
+      throw new MobileAttemptOutboxStorageError(
+        "La purge conditionnelle exige un espace compte.",
+      );
+    }
+    const owner = this.#owner;
+    if (
+      expectedState !== undefined &&
+      !attemptOutboxOwnersAreEqual(expectedState.snapshot.owner, owner)
+    ) {
+      throw new MobileAttemptOutboxStorageError(
+        "L’état confirmé appartient à un autre compte.",
+      );
+    }
+    const expectedSnapshot =
+      expectedState === undefined
+        ? undefined
+        : serializeAttemptOutboxSnapshot(expectedState.snapshot);
+    const expectedMarker =
+      expectedState === undefined
+        ? undefined
+        : expectedState.fusionMarker === null
+          ? null
+          : serializeAnonymousProgressFusionMarker(expectedState.fusionMarker);
+
+    try {
+      return await serializeDatabaseOperation(this.#database, async () => {
+        let purged = false;
+        await this.#database.withExclusiveTransactionAsync(
+          async (transaction) => {
+            const row = await transaction.getFirstAsync<OutboxRow>(
+              "SELECT snapshot FROM attempt_outbox_state WHERE key = ?",
+              this.#outboxKey,
+            );
+            const snapshot = parseStoredSnapshot(row, owner);
+            const marker = parseStoredFusionMarker(
+              await transaction.getFirstAsync<MetadataRow>(
+                "SELECT value FROM local_metadata WHERE key = ?",
+                FUSION_MARKER_KEY,
+              ),
+            );
+            const unsettled =
+              snapshot.inFlight !== null ||
+              snapshot.entries.some(({ status }) => status === "pending") ||
+              (marker?.status === "awaiting_server_ack" &&
+                marker.targetUserId === owner.userId);
+            const markerValue =
+              marker === null
+                ? null
+                : serializeAnonymousProgressFusionMarker(marker);
+            const matchesExpected =
+              expectedSnapshot !== undefined &&
+              serializeAttemptOutboxSnapshot(snapshot) === expectedSnapshot &&
+              markerValue === expectedMarker;
+            const alreadyPurged =
+              row === null &&
+              (marker === null || marker.targetUserId !== owner.userId);
+            if (expectedSnapshot !== undefined) {
+              if (!matchesExpected && !alreadyPurged) return;
+            } else if (unsettled) {
+              return;
+            }
+
+            await transaction.runAsync(
+              "DELETE FROM attempt_outbox_state WHERE key = ?",
+              this.#outboxKey,
+            );
+            await transaction.runAsync(
+              "DELETE FROM local_metadata WHERE key IN (?, ?)",
+              this.#deviceKey,
+              this.#legacyMigrationKey,
+            );
+            if (marker?.targetUserId === owner.userId) {
+              await transaction.runAsync(
+                "DELETE FROM local_metadata WHERE key = ?",
+                FUSION_MARKER_KEY,
+              );
+            }
+            purged = true;
+          },
+        );
+        return purged;
+      });
+    } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
+      throw new MobileAttemptOutboxStorageError(
+        "Les données locales du compte n’ont pas pu être vérifiées.",
+        { cause: error },
+      );
+    }
+  }
+
+  async #getOrCreateMetadataUuid(
+    key: string,
+    createUuid: () => string,
+  ): Promise<string> {
+    try {
+      return await serializeDatabaseOperation(this.#database, async () => {
+        let value = "";
+        await this.#database.withExclusiveTransactionAsync(
+          async (transaction) => {
+            const row = await transaction.getFirstAsync<MetadataRow>(
+              "SELECT value FROM local_metadata WHERE key = ?",
+              key,
+            );
+            if (row !== null) {
+              value = idempotencyKeySchema.parse(row.value);
+              return;
+            }
+
+            value = idempotencyKeySchema.parse(createUuid());
+            await transaction.runAsync(
+              "INSERT INTO local_metadata (key, value) VALUES (?, ?)",
+              key,
+              value,
+            );
+          },
+        );
+        return value;
+      });
+    } catch (error) {
+      throw new MobileAttemptOutboxStorageError(
+        "L'identité locale de cet appareil est indisponible.",
+        { cause: error },
+      );
+    }
+  }
+
+  async #mutateFusion<
+    T extends
+      | PendingAnonymousProgressFusionState
+      | CompletedAnonymousProgressFusionState
+      | null,
+  >(
+    update: (
+      marker: AnonymousProgressFusionMarker | null,
+      anonymousSnapshot: AttemptOutboxSnapshot,
+      accountSnapshot: AttemptOutboxSnapshot,
+    ) => T,
+  ): Promise<T> {
+    if (this.#owner.kind !== "account") {
+      throw new MobileAttemptOutboxStorageError(
+        "Une fusion locale exige un espace compte.",
+      );
+    }
+
+    try {
+      return await serializeDatabaseOperation(this.#database, async () => {
+        let returned: T | undefined;
+        await this.#database.withExclusiveTransactionAsync(
+          async (transaction) => {
+            const marker = parseStoredFusionMarker(
+              await transaction.getFirstAsync<MetadataRow>(
+                "SELECT value FROM local_metadata WHERE key = ?",
+                FUSION_MARKER_KEY,
+              ),
+            );
+            const result = update(
+              marker,
+              await readSnapshot(
+                transaction,
+                OUTBOX_KEY,
+                ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+              ),
+              await readSnapshot(transaction, this.#outboxKey, this.#owner),
+            );
+            if (result === null) {
+              returned = result;
+              return;
+            }
+            await writeSnapshot(
+              transaction,
+              OUTBOX_KEY,
+              result.anonymousSnapshot,
+            );
+            await writeSnapshot(
+              transaction,
+              this.#outboxKey,
+              result.accountSnapshot,
+            );
+            await writeFusionMarker(transaction, result.marker);
+            returned = result;
+          },
+        );
+        if (returned === undefined) {
+          throw new Error(
+            "La transaction de fusion n’a renvoyé aucun résultat.",
+          );
+        }
+        return returned;
+      });
+    } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
+      throw new MobileAttemptOutboxStorageError(
+        "La fusion locale n’a pas pu être enregistrée atomiquement.",
+        { cause: error },
+      );
+    }
+  }
+
+  async #applySuccessWithFusion(
+    response: AttemptBatchResponse,
+  ): Promise<ApplyAttemptOutboxSuccessResult> {
+    try {
+      return await serializeDatabaseOperation(this.#database, async () => {
+        let returned: ApplyAttemptOutboxSuccessResult | undefined;
+        await this.#database.withExclusiveTransactionAsync(
+          async (transaction) => {
+            const accountSnapshot = await readSnapshot(
+              transaction,
+              this.#outboxKey,
+              this.#owner,
+            );
+            const marker = parseStoredFusionMarker(
+              await transaction.getFirstAsync<MetadataRow>(
+                "SELECT value FROM local_metadata WHERE key = ?",
+                FUSION_MARKER_KEY,
+              ),
+            );
+            if (
+              this.#owner.kind !== "account" ||
+              marker === null ||
+              marker.status === "completed" ||
+              marker.targetUserId !== this.#owner.userId
+            ) {
+              const applied = applyAttemptOutboxSuccess(
+                accountSnapshot,
+                response,
+              );
+              await writeSnapshot(
+                transaction,
+                this.#outboxKey,
+                applied.snapshot,
+              );
+              returned = applied;
+              return;
+            }
+
+            const fused = applyFusionBatchSuccess({
+              marker,
+              anonymousSnapshot: await readSnapshot(
+                transaction,
+                OUTBOX_KEY,
+                ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+              ),
+              accountSnapshot,
+              response,
+            });
+            await writeSnapshot(
+              transaction,
+              OUTBOX_KEY,
+              fused.anonymousSnapshot,
+            );
+            await writeSnapshot(
+              transaction,
+              this.#outboxKey,
+              fused.accountSnapshot,
+            );
+            await writeFusionMarker(transaction, fused.marker);
+            returned = {
+              snapshot: fused.accountSnapshot,
+              requiresDeviceRegistration: fused.requiresDeviceRegistration,
+            };
+          },
+        );
+        if (returned === undefined) {
+          throw new Error("La transaction serveur n’a renvoyé aucun résultat.");
+        }
+        return returned;
+      });
+    } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
+      throw new MobileAttemptOutboxStorageError(
+        "La réponse serveur n’a pas pu être appliquée atomiquement.",
+        { cause: error },
+      );
+    }
   }
 
   async #replace(

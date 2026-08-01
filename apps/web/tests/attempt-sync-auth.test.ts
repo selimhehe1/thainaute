@@ -16,4 +16,13 @@ describe("identité issue des claims Supabase vérifiés", () => {
     expect(userIdFromVerifiedClaims({ role: "authenticated" })).toBeNull();
     expect(userIdFromVerifiedClaims({ sub: "user-controlled" })).toBeNull();
   });
+
+  it("refuse explicitement un utilisateur Supabase anonyme", () => {
+    expect(
+      userIdFromVerifiedClaims({
+        sub: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        is_anonymous: true,
+      }),
+    ).toBeNull();
+  });
 });

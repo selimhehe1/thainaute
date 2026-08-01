@@ -1,6 +1,6 @@
 # ADR-0007 — API autoritaire de synchronisation des tentatives
 
-- Statut : Accepted avec `OPEN-SYNC-001`
+- Statut : Accepted
 - Date : 2026-08-01
 - Critères concernés : `AC-LEARN-001`, `AC-OFFLINE-001`
 - Décisions verrouillées concernées : `DEC-005`, `DEC-007`, `DEC-008`
@@ -134,17 +134,14 @@ revanche les valeurs dérivées autoritaires.
   les rôles clients Supabase.
 - L'appareil doit appartenir au compte authentifié.
 
-## Décision ouverte
+## Confiance temporelle
 
-`OPEN-SYNC-001` doit fixer la politique de confiance de `answeredAt` avant une
-synchronisation distante de bêta : tolérance au décalage d'horloge, fenêtre
-passée/future, traitement d'un appareil resté longtemps hors ligne et horodatage
-serveur conservé pour l'audit. Le contrat actuel exige seulement un timestamp
-ISO 8601 à la milliseconde, normalisé vers UTC avant le hash et le journal ; il
-ne constitue pas encore une politique anti-manipulation de l'horloge.
-
-Cette ouverture ne bloque pas le prototype déterministe local. Elle bloque la
-qualification de l'API comme prête pour une bêta distante réelle.
+`OPEN-SYNC-001` est résolue par l'[ADR-0010](0010-attempt-temporal-trust.md).
+Une seule heure serveur est figée pour le lot et ses recalculs. Les nouveaux
+événements sont acceptés dans la fenêtre inclusive de trente jours dans le
+passé et cinq minutes dans le futur ; les doublons et collisions historiques
+sont classés avant cette fenêtre. `answeredAt` reste inchangé et PostgreSQL
+attribue séparément le `received_at` d'audit.
 
 ## Conséquences et validation
 

@@ -6,7 +6,12 @@
     "orientation": "portrait",
     "scheme": "thainaute-dev",
     "userInterfaceStyle": "light",
-    "plugins": ["expo-router", "expo-audio", "expo-sqlite"],
+    "plugins": [
+      "expo-router",
+      "expo-audio",
+      "expo-sqlite",
+      "expo-secure-store"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.example.thainauteprototype"

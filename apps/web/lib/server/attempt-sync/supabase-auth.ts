@@ -6,12 +6,17 @@ import type { AccessTokenVerifier } from "./ports";
 import { fetchSupabase } from "./supabase-fetch";
 
 const claimsSchema = z
-  .object({ sub: z.uuid().transform((uuid) => uuid.toLowerCase()) })
+  .object({
+    sub: z.uuid().transform((uuid) => uuid.toLowerCase()),
+    is_anonymous: z.boolean().optional(),
+  })
   .passthrough();
 
 export function userIdFromVerifiedClaims(claims: unknown): string | null {
   const result = claimsSchema.safeParse(claims);
-  return result.success ? result.data.sub : null;
+  return result.success && result.data.is_anonymous !== true
+    ? result.data.sub
+    : null;
 }
 
 export function createSupabaseAccessTokenVerifier(input: {

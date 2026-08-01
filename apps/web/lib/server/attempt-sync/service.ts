@@ -21,6 +21,10 @@ import type {
 } from "./ports";
 
 const MAX_COMMIT_ATTEMPTS = 3;
+const MAX_ANSWER_AGE_MS = 30 * 24 * 60 * 60 * 1_000;
+const MAX_FUTURE_CLOCK_SKEW_MS = 5 * 60 * 1_000;
+
+export type AttemptSyncClock = () => number;
 
 function attemptKey(attempt: {
   readonly itemId: string;
@@ -32,9 +36,13 @@ function attemptKey(attempt: {
 function preflightRejections(
   snapshot: AttemptSyncSnapshot,
   attempts: readonly ValidatedAttemptSubmission[],
+  serverNowMs: number,
 ): ReadonlyMap<string, AttemptRejectionCode> {
   const registeredDevices = new Set(snapshot.registeredDeviceIds);
   const collidingEvents = new Set(snapshot.collidingEventIds);
+  const existingEventIds = new Set(
+    snapshot.existingEvents.map((event) => event.eventId),
+  );
   const answerKeys = indexServerAnswerKeys(snapshot.answerKeys);
   const rejected = new Map<string, AttemptRejectionCode>();
 
@@ -47,6 +55,21 @@ function preflightRejections(
     if (collidingEvents.has(attempt.eventId)) {
       rejected.set(attempt.eventId, "event_id_collision");
       continue;
+    }
+
+    // Un UUID déjà connu doit atteindre l'ingestion pour être classé comme
+    // doublon ou collision, même si son horodatage a depuis quitté la fenêtre.
+    // Les nouvelles tentatives conservent leur answeredAt exact : aucun clamp
+    // ne doit modifier l'identité idempotente de l'événement.
+    if (!existingEventIds.has(attempt.eventId)) {
+      const answeredAtMs = Date.parse(attempt.answeredAt);
+      if (
+        answeredAtMs < serverNowMs - MAX_ANSWER_AGE_MS ||
+        answeredAtMs > serverNowMs + MAX_FUTURE_CLOCK_SKEW_MS
+      ) {
+        rejected.set(attempt.eventId, "invalid_submission");
+        continue;
+      }
     }
 
     const answerKey = answerKeys.get(answerKeyIdentity(attempt));
@@ -114,12 +137,13 @@ function buildCandidate(
   snapshot: AttemptSyncSnapshot,
   attempts: readonly ValidatedAttemptSubmission[],
   userId: string,
+  serverNowMs: number,
 ): {
   readonly response: AttemptBatchResponse;
   readonly acceptedEvents: readonly AttemptEvent[];
   readonly projections: readonly AttemptProjectionWrite[];
 } {
-  const preflight = preflightRejections(snapshot, attempts);
+  const preflight = preflightRejections(snapshot, attempts, serverNowMs);
   const eligibleAttempts = attempts.filter(
     (attempt) => !preflight.has(attempt.eventId),
   );
@@ -205,10 +229,19 @@ function buildCandidate(
   };
 }
 
-export function createAttemptBatchSynchronizer(repository: AttemptRepository) {
+export function createAttemptBatchSynchronizer(
+  repository: AttemptRepository,
+  clock: AttemptSyncClock = Date.now,
+) {
   return async function synchronizeAttemptBatch(
     input: SyncAttemptBatchInput,
   ): Promise<AttemptBatchResponse> {
+    const serverNowMs = clock();
+
+    if (!Number.isFinite(serverNowMs)) {
+      throw new AttemptApiError("internal_error");
+    }
+
     const requestSha256 = hashAttemptBatch(input.batch);
 
     for (
@@ -231,6 +264,7 @@ export function createAttemptBatchSynchronizer(repository: AttemptRepository) {
         snapshot,
         input.batch.attempts,
         input.userId,
+        serverNowMs,
       );
       let commitResult;
       try {

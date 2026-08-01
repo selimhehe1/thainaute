@@ -97,6 +97,7 @@ l'environnement et l'indexation reste désactivée sur toute URL temporaire.
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | web et serveur            | non     | clé publique soumise à RLS            |
 | `EXPO_PUBLIC_SUPABASE_URL`             | mobile                    | non     | URL publique du même environnement    |
 | `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | mobile                    | non     | clé publique soumise à RLS            |
+| `EXPO_PUBLIC_API_URL`                  | mobile                    | non     | origine HTTPS de l’API Next.js        |
 | `SUPABASE_SECRET_KEY`                  | serveur Next.js seulement | **oui** | accès serveur à la RPC restreinte     |
 
 `SUPABASE_SECRET_KEY` est enregistrée comme variable sensible dans Vercel. Elle
@@ -104,6 +105,24 @@ n'est ni copiée dans EAS, ni préfixée par `NEXT_PUBLIC_`, ni téléchargée d
 fichier commité. Les secrets RevenueCat et Stripe présents dans
 `.env.example` restent hors périmètre tant que les tranches de paiement ne sont
 pas commencées.
+
+Le projet Supabase local utilise `supabase/templates/magic_link.html` pour
+envoyer un OTP à six chiffres valable dix minutes. Dans un projet hébergé, le
+modèle équivalent, l'URL autorisée et un SMTP adapté doivent être configurés et
+testés dans Auth avant d'ouvrir la preview. Aucun contenu d'email ni adresse ne
+doit apparaître dans les logs applicatifs.
+
+La session native reste exclusivement dans SecureStore, fragmentée en valeurs
+bornées pour tolérer les limites variables du trousseau. Une bascule de compte
+pendant une synchronisation invalide la passe avant l'appel suivant : le sujet
+de session doit toujours correspondre au propriétaire de l'outbox.
+
+`EXPO_PUBLIC_API_URL` et l'URL Supabase mobile doivent être renseignées avec des
+origines joignables depuis l'appareil : l'adresse LAN de la machine en
+développement, `http://10.0.2.2:3000/` dans l'émulateur Android standard, ou les
+origines HTTPS de la preview. Le HTTP n'est accepté que dans un bundle de
+développement ; preview et production exigent HTTPS. `127.0.0.1` désigne le
+téléphone lui-même et n'est donc pas fourni comme valeur par défaut.
 
 En production, `THAINAUTE_SYNC_MODE=supabase` exige les trois valeurs Supabase
 web/serveur. Une configuration incomplète doit faire échouer la readiness et
@@ -145,7 +164,10 @@ Cette séquence est un runbook à exécuter seulement après autorisation :
 5. appliquer les migrations au projet de preview comme une tâche unique ;
 6. déployer la preview avec indexation désactivée ;
 7. vérifier `live`, `ready`, le scénario de synchronisation nominal, le rejeu
-   du même lot et le refus d'une clé réutilisée avec un autre corps ;
+   du même lot, le refus d'une clé réutilisée avec un autre corps, les quatre
+   bornes temporelles de l'ADR-0010, l'impossibilité d'insérer `received_at`, la
+   mise à jour de `app_version` sans nouvel appareil et la coupure d'une session
+   A→B en cours de passe ;
 8. vérifier qu'aucun token, email, corps de requête ou identifiant sensible
    n'apparaît dans les logs ;
 9. tester sauvegarde/restauration et documenter le rollback applicatif ;
@@ -156,19 +178,40 @@ migration de données n'est jamais annulée automatiquement avec le code : elle
 est d'abord validée sur un environnement isolé et reste compatible avec la
 version applicative précédente pendant la fenêtre de déploiement.
 
+### Surveillance de la confiance temporelle
+
+L'API accepte un nouvel `eventId` entre l'heure serveur moins trente jours et
+l'heure serveur plus cinq minutes, bornes incluses. Une métrique agrégée peut
+compter les rejets `invalid_submission`, mais aucun `eventId`, `answeredAt`,
+email ou corps de requête ne doit être journalisé. Une hausse doit d'abord faire
+vérifier l'horloge et la durée hors ligne des appareils, pas conduire à
+réécrire silencieusement les heures clientes.
+
+`received_at` est attribué par PostgreSQL et sert à l'audit. Avant promotion,
+vérifier le privilège de colonne, la contrainte de défense
+`[-31 jours, +10 minutes]` et l'index `(user_id, device_id)` avec pgTAP. La
+marge SQL ne doit jamais être reprise comme règle produit côté client.
+
 ## Limites connues avant tout hébergement
 
 - Aucun compte, projet, domaine, variable distante ou déploiement n'a été créé.
 - Docker ou un runtime compatible n'est pas disponible localement ; les
   migrations, la RPC, RLS et pgTAP ne sont donc pas encore vérifiés en exécution.
-- La politique de confiance de `answeredAt` reste `OPEN-SYNC-001`.
 - Le DTO/API de contenu gratuit est expurgé et les payloads bruts restent côté
   serveur, mais aucun catalogue, téléchargement audio opaque ou contenu réel
   autorisé n'est encore branché. La relation exercice/item est désormais
   dérivée côté serveur ; elle ne constitue plus une porte ouverte.
-- Les adaptateurs d'outbox sont durables mais aucun transport distant n'est
-  activé ; la fusion anonyme→compte, la suppression au logout et les décisions
-  `OPEN-SYNC-001`/`OPEN-SRS-001` restent des portes.
+- Le transport, la fusion anonyme→compte, le snapshot multi-appareil et la purge
+  au logout sont implémentés. Leur parcours Auth réel attend un projet Supabase
+  de preview, son SMTP OTP et les variables publiques ; `OPEN-SRS-001` et
+  `OPEN-OFFLINE-001` restent des portes pour leurs périmètres respectifs.
+- Une déconnexion explicite depuis l’écran compte purge le namespace local
+  après vérification du sujet de session et confirmation si nécessaire. Une
+  mutation concurrente après cette confirmation annule la purge et laisse le
+  journal verrouillé jusqu’à reconnexion. Une
+  expiration ou révocation distante purge seulement un namespace déjà soldé ;
+  les tentatives non confirmées restent verrouillées, et seule une reconnexion
+  au même identifiant Supabase permet de les reprendre ou de les effacer.
 - La limitation de débit par utilisateur/IP et la rétention du registre
   d'idempotence restent des portes avant bêta distante.
 - La sonde `ready` ne vérifie pas encore une connexion réelle à Supabase.

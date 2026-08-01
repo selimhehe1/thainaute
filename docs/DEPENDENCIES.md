@@ -3,19 +3,21 @@
 Dernière vérification : 1er août 2026. Les versions sont exactes dans chaque
 `package.json` et dans `pnpm-lock.yaml`.
 
-| Dépendance                      | Besoin                                                  | Licence / coût                            | Alternative examinée                                       |
-| ------------------------------- | ------------------------------------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
-| Next.js 16                      | Site SEO, application web, studio et API                | MIT ; hébergement au choix                | Vite seul ne fournit pas le cadre SSR/SEO retenu           |
-| Expo SDK 57 / React Native 0.86 | Applications iOS et Android                             | MIT ; EAS optionnel et payant selon usage | Développement natif séparé, trop coûteux pour une personne |
-| Supabase JS / CLI               | Auth, Data API, Storage et environnement Postgres local | MIT/Apache-2.0 ; cloud optionnel          | Postgres + services séparés, davantage d'exploitation      |
-| Zod 4                           | Validation stricte des contrats et du contenu           | MIT ; gratuit                             | JSON Schema/Ajv, moins direct avec TypeScript ici          |
-| Dexie 4                         | Journal hors ligne IndexedDB de l'application web       | Apache-2.0 ; gratuit, sans service        | API IndexedDB native, plus complexe à migrer et tester     |
-| fake-indexeddb 6                | Tester IndexedDB/Dexie sans navigateur réel             | Apache-2.0 ; test uniquement              | Playwright seul, plus lent pour les cas transactionnels    |
-| Turborepo / pnpm                | Graphe de tâches et workspaces                          | MIT ; gratuit                             | Nx, plus large que le besoin actuel                        |
-| Vitest / fast-check             | Tests unitaires et propriétés du SRS                    | MIT ; gratuits                            | Jest seul, moins intégré au socle ESM/Vite                 |
-| Playwright                      | Parcours web réels                                      | Apache-2.0 ; gratuit                      | Cypress, sans avantage décisif pour cette tranche          |
-| RevenueCat                      | Entitlement mobile partagé, phase ultérieure            | service commercial                        | Implémentation StoreKit/Play Billing maison, plus risquée  |
-| Stripe                          | Abonnements web, phase ultérieure                       | service facturé à l'usage                 | Paiement maison exclu pour sécurité et conformité          |
+| Dépendance                      | Besoin                                                          | Licence / coût                            | Alternative examinée                                       |
+| ------------------------------- | --------------------------------------------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
+| Next.js 16                      | Site SEO, application web, studio et API                        | MIT ; hébergement au choix                | Vite seul ne fournit pas le cadre SSR/SEO retenu           |
+| Expo SDK 57 / React Native 0.86 | Applications iOS et Android                                     | MIT ; EAS optionnel et payant selon usage | Développement natif séparé, trop coûteux pour une personne |
+| Supabase JS / CLI               | Auth, Data API, Storage et environnement Postgres local         | MIT/Apache-2.0 ; cloud optionnel          | Postgres + services séparés, davantage d'exploitation      |
+| Expo SecureStore                | Chiffrer la session Supabase fragmentée dans le trousseau natif | MIT ; gratuit                             | AsyncStorage/SQLite exposeraient les jetons en clair       |
+| React Native URL polyfill       | Contrat URL requis par Supabase JS sur React Native             | MIT ; gratuit                             | Polyfill local incomplet et plus difficile à maintenir     |
+| Zod 4                           | Validation stricte des contrats et du contenu                   | MIT ; gratuit                             | JSON Schema/Ajv, moins direct avec TypeScript ici          |
+| Dexie 4                         | Journal hors ligne IndexedDB de l'application web               | Apache-2.0 ; gratuit, sans service        | API IndexedDB native, plus complexe à migrer et tester     |
+| fake-indexeddb 6                | Tester IndexedDB/Dexie sans navigateur réel                     | Apache-2.0 ; test uniquement              | Playwright seul, plus lent pour les cas transactionnels    |
+| Turborepo / pnpm                | Graphe de tâches et workspaces                                  | MIT ; gratuit                             | Nx, plus large que le besoin actuel                        |
+| Vitest / fast-check             | Tests unitaires et propriétés du SRS                            | MIT ; gratuits                            | Jest seul, moins intégré au socle ESM/Vite                 |
+| Playwright                      | Parcours web réels                                              | Apache-2.0 ; gratuit                      | Cypress, sans avantage décisif pour cette tranche          |
+| RevenueCat                      | Entitlement mobile partagé, phase ultérieure                    | service commercial                        | Implémentation StoreKit/Play Billing maison, plus risquée  |
+| Stripe                          | Abonnements web, phase ultérieure                               | service facturé à l'usage                 | Paiement maison exclu pour sécurité et conformité          |
 
 TypeScript reste en `6.0.3` : le dist-tag `latest` pointe déjà vers TypeScript 7,
 mais Expo SDK 57 et `typescript-eslint` 8.65 bornent encore la version supportée

@@ -76,7 +76,7 @@ select
       'selected_option_id', '52000000-0000-4000-8000-000000000001',
       'dimension', 'listening',
       'rating', 1,
-      'answered_at', '2026-08-01T10:00:00.000Z',
+      'answered_at', now() - interval '1 day',
       'duration_ms', 1000,
       'algorithm_version', 'srs-v0',
       'payload_sha256', repeat('e', 64)
@@ -92,7 +92,7 @@ select
       'selected_option_id', '52000000-0000-4000-8000-000000000002',
       'dimension', 'listening',
       'rating', 0,
-      'answered_at', '2026-08-01T10:00:00.000Z',
+      'answered_at', now() - interval '1 day',
       'duration_ms', 1000,
       'algorithm_version', 'srs-v0',
       'payload_sha256', repeat('f', 64)
@@ -108,7 +108,7 @@ select
       'selected_option_id', '52000000-0000-4000-8000-000000000001',
       'dimension', 'listening',
       'rating', 1,
-      'answered_at', '2026-08-02T10:00:00.000Z',
+      'answered_at', now(),
       'duration_ms', 900,
       'algorithm_version', 'srs-v0',
       'payload_sha256', repeat('2', 64)

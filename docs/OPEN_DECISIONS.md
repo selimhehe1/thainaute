@@ -14,7 +14,6 @@ Une décision `OPEN` bloque seulement la fonctionnalité ou la phase indiquée.
 | OPEN-TAX-001     | pays de lancement et traitement fiscal                                 | avant paiement réel               | ouverte |
 | OPEN-AI-001      | fournisseurs texte, STT et TTS                                         | avant P1 IA                       | ouverte |
 | OPEN-TONE-001    | algorithme tonal et jeu d'évaluation natif                             | avant analyse tonale P1           | ouverte |
-| OPEN-SYNC-001    | bornes, retard hors-ligne et anti-manipulation de `answeredAt` client  | avant progression réelle/bêta     | ouverte |
 | OPEN-SRS-001     | versions SRS rétrocompatibles, durée de support et migration/dispatch  | avant toute nouvelle version SRS  | ouverte |
 | OPEN-OFFLINE-001 | correction différée ou matériel de notation local considéré non secret | avant vraie expérience hors ligne | ouverte |
 
@@ -23,3 +22,6 @@ Une décision `OPEN` bloque seulement la fonctionnalité ou la phase indiquée.
 - `OPEN-ATTEMPT-001` — résolue par dérivation serveur stricte dans
   [ADR-0009](adr/0009-server-derived-attempt-target.md). Le contrat client ne
   transporte ni `itemId` ni `skill`.
+- `OPEN-SYNC-001` — résolue par une fenêtre serveur inclusive de trente jours
+  dans le passé et cinq minutes dans le futur, sans réécriture de
+  `answeredAt`, dans [ADR-0010](adr/0010-attempt-temporal-trust.md).

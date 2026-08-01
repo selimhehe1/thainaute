@@ -156,6 +156,16 @@ class FakeSQLiteDatabase {
   }
 
   #run(query: string, ...parameters: string[]): void {
+    if (query.includes("DELETE FROM attempt_outbox_state")) {
+      const [key] = parameters;
+      if (key === undefined) throw new Error("Clé d'outbox absente.");
+      this.outboxes.delete(key);
+      return;
+    }
+    if (query.includes("DELETE FROM local_metadata")) {
+      for (const key of parameters) this.metadata.delete(key);
+      return;
+    }
     if (query.includes("attempt_outbox_state")) {
       const [key, snapshot] = parameters;
       if (key === undefined || snapshot === undefined) {
@@ -169,7 +179,9 @@ class FakeSQLiteDatabase {
       if (key === undefined || value === undefined) {
         throw new Error("Métadonnée incomplète.");
       }
-      if (this.metadata.has(key)) throw new Error("Clé dupliquée.");
+      if (this.metadata.has(key) && !query.includes("ON CONFLICT")) {
+        throw new Error("Clé dupliquée.");
+      }
       this.metadata.set(key, value);
       return;
     }
@@ -306,7 +318,77 @@ describe("outbox SQLite mobile", () => {
     ).toEqual([ids.event, ids.eventB]);
   });
 
-  it("sépare snapshots, révisions et device IDs de deux comptes", async () => {
+  it("isole la démonstration technique de l'outbox synchronisable", async () => {
+    const database = new FakeSQLiteDatabase();
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    await demo.enqueue(submission);
+
+    expect((await demo.read()).entries).toHaveLength(1);
+    expect((await learning.read()).entries).toHaveLength(0);
+  });
+
+  it("fusionne atomiquement puis efface la source après l'accusé serveur", async () => {
+    const database = new FakeSQLiteDatabase();
+    const anonymous = new MobileAttemptOutboxStore(asDatabase(database));
+    const account = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userA,
+    });
+    await anonymous.enqueue(submission);
+    const accountDeviceId = await account.getOrCreateAccountDeviceId(
+      () => ids.deviceB,
+      () => Promise.resolve("11".repeat(32)),
+    );
+
+    const started = await account.startAnonymousFusion({
+      fusionId: ids.idempotency,
+      accountDeviceId,
+      consentedAt: "2026-08-01T10:01:00.000Z",
+    });
+    expect(started.anonymousSnapshot.entries).toHaveLength(1);
+    expect(started.accountSnapshot.entries[0]?.submission).toMatchObject({
+      eventId: ids.event,
+      deviceId: accountDeviceId,
+      answeredAt: submission.answeredAt,
+    });
+    await expect(anonymous.purgeOwnerData()).rejects.toThrow(
+      "fusion encore active",
+    );
+    expect((await anonymous.read()).entries).toHaveLength(1);
+    expect((await account.read()).entries).toHaveLength(1);
+    expect((await account.readFusionMarker())?.status).toBe(
+      "awaiting_server_ack",
+    );
+    const otherAccount = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userB,
+    });
+    await expect(otherAccount.resumeAnonymousFusion()).resolves.toBeNull();
+    expect((await otherAccount.read()).entries).toHaveLength(0);
+
+    await account.prepare(ids.ignoredIdempotency);
+    await account.applySuccess({
+      syncRevision: 1,
+      results: [{ eventId: ids.event, status: "accepted", rating: 1 }],
+      states: [],
+    });
+    const completed = await account.completeAnonymousFusion(
+      "2026-08-01T10:02:00.000Z",
+    );
+    expect(completed.marker.status).toBe("completed");
+    expect((await anonymous.read()).entries).toHaveLength(0);
+    expect((await account.read()).entries[0]?.status).toBe("synced");
+    await account.purgeOwnerData();
+    expect(await account.readFusionMarker()).toBeNull();
+    expect((await account.read()).entries).toHaveLength(0);
+  });
+
+  it("sépare les snapshots et dérive un device opaque par compte", async () => {
     const database = new FakeSQLiteDatabase();
     const accountA = new MobileAttemptOutboxStore(asDatabase(database), {
       kind: "account",
@@ -317,12 +399,21 @@ describe("outbox SQLite mobile", () => {
       userId: ids.userB,
     });
 
-    expect(await accountA.getOrCreateDeviceId(() => ids.device)).toBe(
-      ids.device,
+    const sha256Hex = (material: string) =>
+      Promise.resolve(
+        material.endsWith(ids.userA) ? "11".repeat(32) : "22".repeat(32),
+      );
+    const deviceA = await accountA.getOrCreateAccountDeviceId(
+      () => ids.device,
+      sha256Hex,
     );
-    expect(await accountB.getOrCreateDeviceId(() => ids.deviceB)).toBe(
-      ids.deviceB,
+    const deviceB = await accountB.getOrCreateAccountDeviceId(
+      () => ids.deviceB,
+      sha256Hex,
     );
+    expect(deviceA).not.toBe(deviceB);
+    expect(deviceA[14]).toBe("8");
+    expect(deviceB[14]).toBe("8");
     await accountA.enqueue(submission);
 
     expect((await accountA.read()).entries).toHaveLength(1);
@@ -335,5 +426,48 @@ describe("outbox SQLite mobile", () => {
       kind: "account",
       userId: ids.userB,
     });
+    await expect(accountB.purgeAccountDataIfSettled()).resolves.toBe(true);
+    await expect(accountA.purgeAccountDataIfSettled()).resolves.toBe(false);
+    expect((await accountA.read()).entries).toHaveLength(1);
+    const observedBeforeLogout = await accountA.read();
+    await accountA.enqueue({
+      ...submission,
+      eventId: ids.eventB,
+      answeredAt: "2026-08-01T10:00:01.000Z",
+    });
+    await expect(
+      accountA.purgeAccountDataIfSettled({
+        snapshot: observedBeforeLogout,
+        fusionMarker: null,
+      }),
+    ).resolves.toBe(false);
+    expect((await accountA.read()).entries).toHaveLength(2);
+    await accountA.prepare(ids.idempotency);
+    await accountA.applySuccess({
+      syncRevision: 1,
+      results: [
+        { eventId: ids.event, status: "accepted", rating: 1 },
+        { eventId: ids.eventB, status: "accepted", rating: 1 },
+      ],
+      states: [],
+    });
+    await expect(
+      accountA.purgeAccountDataIfSettled({
+        snapshot: observedBeforeLogout,
+        fusionMarker: null,
+      }),
+    ).resolves.toBe(false);
+    await expect(
+      accountA.purgeAccountDataIfSettled({
+        snapshot: await accountA.read(),
+        fusionMarker: null,
+      }),
+    ).resolves.toBe(true);
+    expect((await accountA.read()).entries).toHaveLength(0);
+    await expect(
+      accountA.getOrCreateAccountDeviceId(() => {
+        throw new Error("l’installation doit être conservée");
+      }, sha256Hex),
+    ).resolves.toBe(deviceA);
   });
 });
