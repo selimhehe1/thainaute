@@ -17,8 +17,9 @@ de suppression du compte.
 
 ## Contrôles serveur
 
-- [x] Jeton vérifié par Supabase Auth avec `getUser`, puis identité dérivée du
-      sujet authentifié ; aucun identifiant utilisateur n’est accepté en entrée.
+- [x] Jeton vérifié par Supabase Auth avec `getClaims` et `getUser`, puis
+      identité liée au `sub` et au claim `is_anonymous` vérifiés ; aucun
+      identifiant utilisateur n’est accepté en entrée.
 - [x] Lectures avec clé publiable et JWT utilisateur sous RLS, avec filtre
       propriétaire explicite ; aucune clé `service_role` dans ce chemin.
 - [x] Bornes strictes et refus du document entier plutôt que troncature.

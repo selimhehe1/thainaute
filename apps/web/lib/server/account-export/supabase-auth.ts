@@ -17,6 +17,12 @@ const providerSourceSchema = z.array(providerNameSchema).max(64);
 const appMetadataSchema = z
   .object({ providers: z.unknown().optional() })
   .passthrough();
+const verifiedJwtClaimsSchema = z
+  .object({
+    sub: z.uuid().transform((uuid) => uuid.toLowerCase()),
+    is_anonymous: z.boolean(),
+  })
+  .passthrough();
 const supabaseUserSchema = z
   .object({
     id: z.uuid().transform((uuid) => uuid.toLowerCase()),
@@ -27,7 +33,9 @@ const supabaseUserSchema = z
     last_sign_in_at: z.string().nullable().optional(),
     email_confirmed_at: z.string().nullable().optional(),
     phone_confirmed_at: z.string().nullable().optional(),
-    is_anonymous: z.boolean(),
+    // Certaines versions locales de Supabase Auth omettent encore ce champ
+    // dans `/user`. Le claim JWT vérifié ci-dessus reste alors autoritaire.
+    is_anonymous: z.boolean().optional(),
     app_metadata: z.unknown().optional(),
   })
   .passthrough();
@@ -54,12 +62,23 @@ function providersFromAppMetadata(metadata: unknown): string[] {
  */
 export function accountExportIdentityFromSupabaseUser(
   value: unknown,
+  verifiedClaimsValue: unknown,
 ): AccountExportIdentity | null {
   const user = supabaseUserSchema.safeParse(value);
-  if (!user.success) {
+  const verifiedClaims = verifiedJwtClaimsSchema.safeParse(verifiedClaimsValue);
+  if (!user.success || !verifiedClaims.success) {
     throw new AccountExportInfrastructureError("auth_unavailable");
   }
-  if (user.data.is_anonymous !== false) return null;
+  if (user.data.id !== verifiedClaims.data.sub) {
+    throw new AccountExportInfrastructureError("auth_unavailable");
+  }
+  if (
+    user.data.is_anonymous !== undefined &&
+    user.data.is_anonymous !== verifiedClaims.data.is_anonymous
+  ) {
+    throw new AccountExportInfrastructureError("auth_unavailable");
+  }
+  if (verifiedClaims.data.is_anonymous) return null;
 
   const result = accountExportIdentitySchema.safeParse({
     id: user.data.id,
@@ -94,15 +113,33 @@ export function createSupabaseAccountExportIdentityVerifier(input: {
       });
 
       try {
-        const { data, error } = await client.auth.getUser(accessToken);
-        if (error !== null) {
-          const status = typeof error.status === "number" ? error.status : 0;
-          if (status >= 400 && status < 500) {
+        const [claimsResult, userResult] = await Promise.all([
+          client.auth.getClaims(accessToken),
+          client.auth.getUser(accessToken),
+        ]);
+        const authErrors = [claimsResult.error, userResult.error].filter(
+          (error) => error !== null,
+        );
+        if (authErrors.length > 0) {
+          if (
+            authErrors.some(
+              (error) =>
+                typeof error.status === "number" &&
+                error.status >= 400 &&
+                error.status < 500,
+            )
+          ) {
             throw new AccountExportApiError("unauthorized");
           }
           throw new AccountExportInfrastructureError("auth_unavailable");
         }
-        const identity = accountExportIdentityFromSupabaseUser(data.user);
+        if (claimsResult.data === null) {
+          throw new AccountExportInfrastructureError("auth_unavailable");
+        }
+        const identity = accountExportIdentityFromSupabaseUser(
+          userResult.data.user,
+          claimsResult.data.claims,
+        );
         if (identity === null) {
           throw new AccountExportApiError("unauthorized");
         }

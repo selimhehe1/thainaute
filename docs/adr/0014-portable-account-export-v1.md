@@ -17,9 +17,13 @@ incomplet ou incohérent.
 ## Décision
 
 `GET /api/v1/account/export` exige un Bearer Supabase. La route appelle
-`auth.getUser(accessToken)` avec la clé publiable : cette requête réseau valide
-le jeton auprès d'Auth avant toute lecture sensible et refuse les utilisateurs
-Supabase anonymes.
+`auth.getClaims(accessToken)` et `auth.getUser(accessToken)` avec la clé
+publiable. Le premier vérifie le JWT et rend le claim `is_anonymous`
+autoritaire ; le second relit l'identité auprès d'Auth. Le `sub` vérifié doit
+être identique à l'UUID utilisateur et toute divergence ferme l'export. Cette
+double preuve reste compatible avec les versions locales d'Auth qui omettent
+encore `is_anonymous` dans l'objet `/user`, sans accepter un claim absent ni un
+utilisateur Supabase anonyme.
 
 L'identité exportée suit une whitelist fermée : UUID Auth, email, téléphone,
 dates de création, mise à jour, dernière connexion et confirmations, ainsi que
@@ -92,6 +96,7 @@ et la release : jamais de jeton, UUID utilisateur, email ou contenu exporté.
 ## Références
 
 - [Checklist de confidentialité de l’export](../privacy/account-export.md)
+- [Supabase — `auth.getClaims`](https://supabase.com/docs/reference/javascript/auth-getclaims)
 - [Supabase — `auth.getUser`](https://supabase.com/docs/reference/javascript/auth-getuser)
 - [Supabase — JWT et option `accessToken`](https://supabase.com/docs/guides/auth/jwts)
 - [Supabase — sécuriser la Data API](https://supabase.com/docs/guides/api/securing-your-api)
