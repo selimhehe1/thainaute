@@ -362,8 +362,19 @@ function expectAttemptRow(
 test("fusionne puis rejoue une progression sur deux transports et deux navigateurs", async ({
   browser,
   page,
+  request,
 }) => {
   test.setTimeout(60_000);
+  const readinessResponse = await request.get("/api/v1/health/ready");
+  expect(readinessResponse.status()).toBe(200);
+  expect(await readinessResponse.json()).toMatchObject({
+    status: "ok",
+    checks: {
+      auth: { status: "ok" },
+      dataApi: { status: "ok" },
+    },
+  });
+
   const webAttempt: ValidatedAttemptSubmission = {
     eventId: WEB_EVENT_ID,
     deviceId: ANONYMOUS_DEVICE_ID,

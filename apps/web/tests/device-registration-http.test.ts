@@ -66,6 +66,7 @@ describe("transport HTTP d'enregistrement d'appareil", () => {
     const response = await handler(request(undefined, { Authorization: "" }));
 
     expect(response.status).toBe(401);
+    expect(response.headers.get("www-authenticate")).toBe("Bearer");
     expect(deps.accessTokenVerifier.verify).not.toHaveBeenCalled();
     expect(deps.registerDevice).not.toHaveBeenCalled();
   });

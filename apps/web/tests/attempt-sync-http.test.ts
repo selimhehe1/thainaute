@@ -97,6 +97,7 @@ describe("transport HTTP des tentatives", () => {
     const response = await handler(request(undefined, { Authorization: "" }));
 
     expect(response.status).toBe(401);
+    expect(response.headers.get("www-authenticate")).toBe("Bearer");
     expect(deps.synchronize).not.toHaveBeenCalled();
     expect(
       apiErrorResponseSchema.safeParse(await response.json()).success,

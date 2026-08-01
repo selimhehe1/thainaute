@@ -44,7 +44,9 @@ est donnée.
 Les environnements de test/preview et de production ne partagent jamais une
 base ni des clés. Les migrations sont appliquées comme une étape contrôlée et
 unique, jamais au démarrage de chaque instance web. RLS, privilèges Data API
-explicites, pgTAP et advisors restent des portes avant promotion.
+explicites, pgTAP, lint PL/pgSQL et Security Advisors restent des portes avant
+promotion. Les Performance Advisors restent visibles et doivent être triés,
+mais ne bloquent pas automatiquement une CI sans charge représentative.
 
 ### Expo EAS
 
@@ -98,11 +100,13 @@ l'environnement et l'indexation reste désactivée sur toute URL temporaire.
 | `EXPO_PUBLIC_SUPABASE_URL`             | mobile                    | non     | URL publique du même environnement    |
 | `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | mobile                    | non     | clé publique soumise à RLS            |
 | `EXPO_PUBLIC_API_URL`                  | mobile                    | non     | origine HTTPS de l’API Next.js        |
-| `SUPABASE_SECRET_KEY`                  | serveur Next.js seulement | **oui** | accès serveur à la RPC restreinte     |
+| `SUPABASE_SECRET_KEY`                  | serveur Next.js seulement | **oui** | accès élevé `service_role`/BYPASSRLS  |
 
 `SUPABASE_SECRET_KEY` est enregistrée comme variable sensible dans Vercel. Elle
 n'est ni copiée dans EAS, ni préfixée par `NEXT_PUBLIC_`, ni téléchargée dans un
-fichier commité. Les secrets RevenueCat et Stripe présents dans
+fichier commité. Elle n'est utilisée que derrière les autorisations serveur et
+les RPC explicitement accordées ; sa portée réelle reste élevée. Les secrets
+RevenueCat et Stripe présents dans
 `.env.example` restent hors périmètre tant que les tranches de paiement ne sont
 pas commencées.
 
@@ -142,14 +146,21 @@ non protégée.
 
 - vérifie l'origine publique, l'indexation, le mode de synchronisation et la
   présence des variables Supabase requises ;
-- renvoie `200` si la configuration est cohérente, sinon `503` avec uniquement
-  des codes de diagnostic fermés ;
+- en mode `supabase`, sonde en parallèle Auth (`/auth/v1/health`) et la Data API
+  avec une lecture `HEAD` sans rapatrier de ligne ; chaque dépendance est bornée
+  à 2,5 secondes ;
+- renvoie `200` uniquement si la configuration, Auth et la Data API sont prêts,
+  sinon `503` avec des statuts et codes de diagnostic fermés ;
+- en mode `disabled`, n'appelle aucune dépendance externe ;
 - ne révèle aucune valeur de secret.
 
-La readiness actuelle est une sonde de **configuration**, pas encore un test de
-connexion à Auth/Postgres/Storage. Un contrôle synthétique séparé doit tester
-la vraie dépendance en preview et en production sans créer de donnée sensible.
-Les deux sondes sont non cachables et portent `nosniff`.
+La sonde Data API traverse PostgREST et Postgres sans créer de donnée. Elle ne
+valide ni Storage, ni l'envoi SMTP, ni la configuration hébergée des advisors :
+ces dépendances conservent leurs contrôles synthétiques dédiés en preview. Les
+deux contrôles distants utilisent la clé publiable et ne valident donc pas directement la
+clé serveur ; le scénario connecté couvre ensuite son accès aux RPC. Les sondes
+sont non cachables ; toute la surface `/api/v1` porte `nosniff`, une politique
+de référent fermée, une CSP d'API et une Permissions Policy restrictive.
 
 ## Chemin de mise en service
 
@@ -160,18 +171,21 @@ Cette séquence est un runbook à exécuter seulement après autorisation :
 2. configurer les variables par environnement dans les coffres Vercel/EAS ;
 3. exécuter lint, types, tests, audit de production et build en CI Linux ;
 4. démarrer Supabase local, appliquer les migrations, puis exécuter pgTAP, les
-   tests RLS utilisateur A/utilisateur B/anonyme et les advisors ;
+   tests RLS utilisateur A/utilisateur B/anonyme, `db:lint`, les Security
+   Advisors bloquants et les Performance Advisors visibles ;
 5. appliquer les migrations au projet de preview comme une tâche unique ;
-6. déployer la preview avec indexation désactivée ;
-7. vérifier `live`, `ready`, le scénario de synchronisation nominal, le rejeu
+6. relancer les advisors sur la preview hébergée, sans exposer ses identifiants,
+   et résoudre tout finding de sécurité avant promotion ;
+7. déployer la preview avec indexation désactivée ;
+8. vérifier `live`, `ready`, le scénario de synchronisation nominal, le rejeu
    du même lot, le refus d'une clé réutilisée avec un autre corps, les quatre
    bornes temporelles de l'ADR-0010, l'impossibilité d'insérer `received_at`, la
    mise à jour de `app_version` sans nouvel appareil et la coupure d'une session
    A→B en cours de passe ;
-8. vérifier qu'aucun token, email, corps de requête ou identifiant sensible
+9. vérifier qu'aucun token, email, corps de requête ou identifiant sensible
    n'apparaît dans les logs ;
-9. tester sauvegarde/restauration et documenter le rollback applicatif ;
-10. promouvoir manuellement la même release après go/no-go.
+10. tester sauvegarde/restauration et documenter le rollback applicatif ;
+11. promouvoir manuellement la même release après go/no-go.
 
 Un rollback Vercel réassigne une version applicative déjà construite. Une
 migration de données n'est jamais annulée automatiquement avec le code : elle
@@ -202,19 +216,44 @@ ni un contenu publiable en production.
 
 `pnpm test:e2e:web:connected` couvre ensuite, avec un seul worker et sans trace :
 
-1. un vrai OTP Supabase récupéré dans le Mailpit local ;
-2. le consentement explicite à la fusion d'une tentative anonyme IndexedDB ;
-3. l'enregistrement de l'appareil web, le snapshot et le commit autoritaire ;
-4. un envoi Android via le client HTTP partagé, rejoué avec la même clé
+1. une readiness réelle d'Auth et de la Data API ;
+2. un vrai OTP Supabase récupéré dans le Mailpit local ;
+3. le consentement explicite à la fusion d'une tentative anonyme IndexedDB ;
+4. l'enregistrement de l'appareil web, le snapshot et le commit autoritaire ;
+5. un envoi Android via le client HTTP partagé, rejoué avec la même clé
    d'idempotence et le même corps ;
-5. l'hydratation d'un second navigateur sans IndexedDB préalable ;
-6. la relecture des deux événements par la Data API avec la clé publiable et le
+6. l'hydratation d'un second navigateur sans IndexedDB préalable ;
+7. la relecture des deux événements par la Data API avec la clé publiable et le
    JWT utilisateur, donc sous RLS.
 
 Les clés locales restent dans le processus de l'étape Bash : aucun `.env`,
 secret GitHub, artefact, email, OTP ou Bearer n'est écrit ou journalisé. Cette
 preuve valide le contrat transport/données Android ; elle ne remplace pas le
 scénario Maestro dans une vraie application Expo.
+
+### Portes des Database Advisors
+
+La CLI Supabase est épinglée à `2.111.0`. Le job `database` exécute les portes
+suivantes immédiatement après `pnpm db:lint`, avant le chargement de toute
+fixture E2E :
+
+- `pnpm db:advisors:security` inspecte la base locale avec
+  `--type security --level warn --fail-on warn`. Tout finding de niveau `warn`
+  ou `error` arrête la CI ;
+- `pnpm db:advisors:performance` affiche tous les findings à partir de `info`
+  avec `--fail-on none`. Sa sortie reste donc visible sans rendre la CI rouge,
+  car certaines recommandations dépendent du volume et des requêtes réelles.
+
+La réussite locale prouve la posture du schéma migré, pas la configuration
+complète d'un projet hébergé. Les advisors doivent être relancés sur la preview
+après migration et avant promotion. Un finding de performance est trié avec une
+mesure et une décision documentée ; il n'est ni ignoré silencieusement, ni
+« corrigé » par un index ou une policy sans vérifier le chemin de requête.
+
+Cette tranche ne choisit volontairement ni les seuils de limitation de débit,
+ni la durée de conservation des réponses idempotentes. `OPEN-API-001` et
+`OPEN-SYNC-002` bloquent ces mécanismes avant la bêta distante sans empêcher
+les contrôles locaux.
 
 ## Limites connues avant tout hébergement
 
@@ -259,9 +298,14 @@ scénario Maestro dans une vraie application Expo.
   doivent encore être vérifiées sur iPhone et
   Android réels ; un crash natif peut laisser un orphelin dans le cache jusqu'à
   la purge par l'OS, comme documenté dans l'ADR-0012.
-- La limitation de débit par utilisateur/IP et la rétention du registre
-  d'idempotence restent des portes avant bêta distante.
-- La sonde `ready` ne vérifie pas encore une connexion réelle à Supabase.
+- La limitation de débit par compte/IP n'est pas encore implémentée : ses
+  seuils, fenêtres, rafales et comportement de repli relèvent de
+  `OPEN-API-001` avant bêta distante.
+- `private.attempt_sync_commits` conserve actuellement ses réponses sans purge
+  temporelle. La durée minimale compatible avec les retries, la suppression et
+  la supervision relèvent de `OPEN-SYNC-002` avant bêta distante.
+- La sonde `ready` couvre Auth et Postgres via la Data API, mais pas encore
+  Storage, l'envoi SMTP ni les réglages spécifiques au projet Supabase hébergé.
 - EAS n'est pas encore configuré et aucun build distribué n'a été produit.
 - L’identité mobile est réservée dans la configuration (`Thaïnaute`, slug et
   scheme `thainaute`, bundle/package `com.thainaute.app`, version `0.1.0`) mais
@@ -276,6 +320,8 @@ scénario Maestro dans une vraie application Expo.
 - [Supabase — régions disponibles](https://supabase.com/docs/guides/platform/regions)
 - [Supabase — checklist de production](https://supabase.com/docs/guides/deployment/going-into-prod)
 - [Supabase — développement local](https://supabase.com/docs/guides/local-development/cli-workflows)
+- [Supabase — Database Advisors](https://supabase.com/docs/guides/database/database-advisors)
+- [Supabase CLI 2.111.0 — notes de version](https://github.com/supabase/cli/releases/tag/v2.111.0)
 - [Supabase — changement des privilèges Data API](https://supabase.com/changelog/45329-breaking-change-tables-not-exposed-to-data-and-graphql-api-automatically)
 - [Expo — EAS Build](https://docs.expo.dev/build/introduction/)
 - [Expo — variables d'environnement EAS](https://docs.expo.dev/eas/environment-variables/)

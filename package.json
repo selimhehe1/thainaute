@@ -23,6 +23,8 @@
     "content:audit": "pnpm --filter @thainaute/content content:audit",
     "db:test": "supabase test db --local",
     "db:lint": "supabase db lint --local --level warning --fail-on error",
+    "db:advisors:security": "supabase db advisors --local --type security --level warn --fail-on warn",
+    "db:advisors:performance": "supabase db advisors --local --type performance --level info --fail-on none",
     "db:reset": "supabase db reset --local",
     "test:e2e:web": "pnpm --filter @thainaute/web test:e2e",
     "test:e2e:web:connected": "pnpm --filter @thainaute/web exec playwright test e2e/connected-sync.spec.ts --project=chromium --workers=1 --retries=0 --trace=off",

@@ -63,6 +63,11 @@ describe("transport HTTP du contenu publie", () => {
     );
     expect(second.status).toBe(304);
     expect(second.headers.get("etag")).toBe(etag);
+    expect(second.headers.get("cache-control")).toBe(
+      first.headers.get("cache-control"),
+    );
+    expect(second.headers.get("x-content-type-options")).toBe("nosniff");
+    expect(second.headers.get("www-authenticate")).toBeNull();
     expect(await second.text()).toBe("");
   });
 

@@ -9,6 +9,7 @@ import {
 
 import { AttemptApiError, AttemptInfrastructureError } from "./errors";
 import type { AccessTokenVerifier, SyncAttemptBatchInput } from "./ports";
+import { apiResponseHeaders } from "../api-http";
 
 const MAX_REQUEST_BYTES = 64 * 1_024;
 
@@ -35,12 +36,11 @@ function jsonResponse(
 ): Response {
   return Response.json(body, {
     status,
-    headers: {
+    headers: apiResponseHeaders(status, {
       "Cache-Control": "no-store, max-age=0",
       Pragma: "no-cache",
-      "X-Content-Type-Options": "nosniff",
       "X-Request-Id": requestId,
-    },
+    }),
   });
 }
 

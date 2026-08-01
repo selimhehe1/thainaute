@@ -57,6 +57,7 @@ describe("GET /api/v1/progress/snapshot", () => {
     })(request(""));
 
     expect(response.status).toBe(401);
+    expect(response.headers.get("www-authenticate")).toBe("Bearer");
     expect(verify).not.toHaveBeenCalled();
     expect(readSnapshot).not.toHaveBeenCalled();
   });
