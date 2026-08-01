@@ -25,6 +25,7 @@
     "db:lint": "supabase db lint --local --level warning --fail-on error",
     "db:reset": "supabase db reset --local",
     "test:e2e:web": "pnpm --filter @thainaute/web test:e2e",
+    "test:e2e:web:connected": "pnpm --filter @thainaute/web exec playwright test e2e/connected-sync.spec.ts --project=chromium --workers=1 --retries=0 --trace=off",
     "test:e2e:mobile": "maestro test apps/mobile/maestro",
     "generate:test-audio": "node scripts/generate-test-audio.mjs"
   },
