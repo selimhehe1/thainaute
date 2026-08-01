@@ -109,12 +109,15 @@ select is(
   'l appareil appartient a l utilisateur authentifie par le serveur'
 );
 select is(
-  jsonb_object_length(
-    public.register_device_v1(
-      'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
-      'daaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
-      'web',
-      '1.0.0'
+  (
+    select count(*)::integer
+    from pg_catalog.jsonb_object_keys(
+      public.register_device_v1(
+        'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
+        'daaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
+        'web',
+        '1.0.0'
+      )
     )
   ),
   4,
