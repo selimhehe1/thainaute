@@ -56,6 +56,27 @@ const acceptedResponse = {
   results: [{ eventId: ids.event, status: "accepted" as const, rating: 1 }],
   states: [],
 };
+const accountExportDocument = (identityId: string = ids.user) => ({
+  format: "thainaute.account-export/v1" as const,
+  exportedAt: "2026-08-02T10:00:00.000Z",
+  identity: {
+    id: identityId,
+    email: "apprenant@example.test",
+    phone: null,
+    providers: ["email"],
+    createdAt: "2026-08-01T10:00:00.000Z",
+    updatedAt: "2026-08-02T09:00:00.000Z",
+    lastSignInAt: "2026-08-02T09:00:00.000Z",
+    emailConfirmedAt: "2026-08-01T10:05:00.000Z",
+    phoneConfirmedAt: null,
+  },
+  data: {
+    profile: null,
+    devices: [],
+    attemptEvents: [],
+    learnerItemStates: [],
+  },
+});
 
 function jsonResponse(body: unknown, status = 200): Response {
   return Response.json(body, { status });
@@ -436,6 +457,152 @@ describe("client HTTP de synchronisation", () => {
     expect(calls[0]?.credentials).toBe("omit");
     expect(calls[0]?.body).toBeUndefined();
     expect(headersOf(calls[0] ?? {})["Idempotency-Key"]).toBeUndefined();
+  });
+
+  it("exporte le compte par GET puis relit son sujet avant remise", async () => {
+    const calls: RequestInit[] = [];
+    let sessionReads = 0;
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => {
+        sessionReads += 1;
+        return authenticatedSession();
+      },
+      fetch: (url, init) => {
+        expect(url).toBe("/api/v1/account/export");
+        calls.push(init);
+        return Promise.resolve(jsonResponse(accountExportDocument()));
+      },
+    });
+
+    await expect(client.getAccountExport()).resolves.toEqual(
+      accountExportDocument(),
+    );
+    expect(sessionReads).toBe(2);
+    expect(calls).toHaveLength(1);
+    expect(calls[0]?.method).toBe("GET");
+    expect(calls[0]?.credentials).toBe("omit");
+    expect(calls[0]?.body).toBeUndefined();
+    expect(headersOf(calls[0] ?? {}).Authorization).toBe(
+      `Bearer ${SECRET_TOKEN}`,
+    );
+    expect(headersOf(calls[0] ?? {})["Idempotency-Key"]).toBeUndefined();
+  });
+
+  it("ne remet pas l'export si le sujet change après la réponse", async () => {
+    let sessionReads = 0;
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => {
+        sessionReads += 1;
+        return authenticatedSession(
+          sessionReads === 1 ? ids.user : ids.otherUser,
+        );
+      },
+      fetch: () => Promise.resolve(jsonResponse(accountExportDocument())),
+    });
+
+    await expect(client.getAccountExport()).rejects.toMatchObject({
+      name: "SyncHttpAuthenticationError",
+      endpoint: "account_export",
+    });
+    expect(sessionReads).toBe(2);
+  });
+
+  it("refuse un export d'un autre sujet ou enrichi hors contrat", async () => {
+    const responses = [
+      accountExportDocument(ids.otherUser),
+      { ...accountExportDocument(), internalUserId: ids.user },
+    ];
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => authenticatedSession(),
+      fetch: () =>
+        Promise.resolve(
+          jsonResponse(responses.shift() ?? accountExportDocument()),
+        ),
+    });
+
+    await expect(client.getAccountExport()).rejects.toMatchObject({
+      name: "SyncHttpProtocolError",
+      reason: "response_mismatch",
+    });
+    await expect(client.getAccountExport()).rejects.toMatchObject({
+      name: "SyncHttpProtocolError",
+      reason: "invalid_success_response",
+    });
+  });
+
+  it("propage l'annulation externe à l'export sans exposer le Bearer", async () => {
+    const externalController = new AbortController();
+    let receivedSignal: AbortSignal | null = null;
+    let markFetchStarted: (() => void) | undefined;
+    const fetchStarted = new Promise<void>((resolve) => {
+      markFetchStarted = resolve;
+    });
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => authenticatedSession(),
+      fetch: (_url, init) => {
+        receivedSignal = init.signal ?? null;
+        markFetchStarted?.();
+        return new Promise<Response>((_resolve, reject) => {
+          init.signal?.addEventListener("abort", () =>
+            reject(new Error(`aborted ${SECRET_TOKEN}`)),
+          );
+        });
+      },
+    });
+
+    const exportPromise = client.getAccountExport(externalController.signal);
+    await fetchStarted;
+    externalController.abort();
+    await expect(exportPromise).rejects.toMatchObject({
+      name: "SyncHttpTransportError",
+      endpoint: "account_export",
+    });
+    expect((receivedSignal as AbortSignal | null)?.aborted).toBe(true);
+  });
+
+  it("décode les erreurs dédiées de l'export sans reprendre leur message", async () => {
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => authenticatedSession(),
+      fetch: () =>
+        Promise.resolve(
+          jsonResponse(
+            {
+              error: {
+                code: "export_capacity_exceeded",
+                message: `détail privé ${SECRET_TOKEN}`,
+                requestId: ids.request,
+              },
+            },
+            409,
+          ),
+        ),
+    });
+
+    let failure: unknown;
+    try {
+      await client.getAccountExport();
+    } catch (error) {
+      failure = error;
+    }
+    expect(failure).toMatchObject({
+      name: "SyncHttpApiError",
+      endpoint: "account_export",
+      status: 409,
+      code: "export_capacity_exceeded",
+      requestId: ids.request,
+      retryable: false,
+    });
+    expect(String(failure)).not.toContain(SECRET_TOKEN);
   });
 
   it("refuse un snapshot 2xx invalide", async () => {

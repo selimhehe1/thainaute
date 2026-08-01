@@ -3,6 +3,7 @@ import { useSQLiteContext } from "expo-sqlite";
 import { useCallback, useEffect, useState } from "react";
 import {
   Pressable,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -11,6 +12,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { AccountExportSection } from "../components/account-export-section";
 import {
   discardMobileAnonymousProgress,
   purgeMobileAccountData,
@@ -18,6 +20,7 @@ import {
   synchronizeMobileAccount,
 } from "../lib/account-sync";
 import { useMobileAuthSession } from "../lib/auth-session";
+import { useMobileAccountExport } from "../lib/use-mobile-account-export";
 
 type LocalState = Awaited<ReturnType<typeof readMobileAccountLocalState>>;
 
@@ -37,6 +40,12 @@ export default function AccountScreen() {
     string | null
   >(null);
   const userId = auth.session?.user.id ?? null;
+  const accountExport = useMobileAccountExport({
+    expectedUserId: userId,
+    platform: Platform.OS === "ios" ? "ios" : "android",
+    sessionBoundaryRevision: auth.sessionBoundaryRevision,
+  });
+  const accountOperationBusy = busy || accountExport.isBusy;
   const currentLocalState =
     userId !== null &&
     localState?.accountSnapshot.owner.kind === "account" &&
@@ -233,6 +242,10 @@ export default function AccountScreen() {
   ).length;
   const anonymousRejectedCount =
     anonymousEntries.length - anonymousImportableCount;
+  const accountPendingCount =
+    currentLocalState?.accountSnapshot.entries.filter(
+      ({ status }) => status === "pending",
+    ).length ?? 0;
   const activeFusionForCurrent =
     currentLocalState?.fusionMarker?.status === "awaiting_server_ack" &&
     currentLocalState.fusionMarker.targetUserId === userId?.toLowerCase();
@@ -329,11 +342,7 @@ export default function AccountScreen() {
               />
               <Metric
                 label="tentatives compte en attente"
-                value={
-                  currentLocalState?.accountSnapshot.entries.filter(
-                    ({ status }) => status === "pending",
-                  ).length ?? 0
-                }
+                value={accountPendingCount}
               />
               <Metric
                 label="tentatives anonymes"
@@ -363,13 +372,13 @@ export default function AccountScreen() {
                   </Text>
                   {anonymousImportableCount > 0 && (
                     <ActionButton
-                      disabled={busy}
+                      disabled={accountOperationBusy}
                       label="Fusionner et synchroniser"
                       onPress={() => void synchronize(true)}
                     />
                   )}
                   <SecondaryButton
-                    disabled={busy}
+                    disabled={accountOperationBusy}
                     label={
                       deletionConfirmationUserId === userId
                         ? "Confirmer la suppression locale"
@@ -389,13 +398,20 @@ export default function AccountScreen() {
                 </View>
               )}
             <ActionButton
-              disabled={busy}
+              disabled={accountOperationBusy}
               label={busy ? "Synchronisation…" : "Synchroniser maintenant"}
               onPress={() => void synchronize(false)}
             />
+            <AccountExportSection
+              anonymousAttemptCount={anonymousEntries.length}
+              disabled={busy}
+              exportState={accountExport}
+              fusionInProgress={activeFusionForCurrent}
+              pendingAccountAttemptCount={accountPendingCount}
+            />
             <SecondaryButton
               danger={logoutConfirmationUserId === userId}
-              disabled={busy || currentLocalState === null}
+              disabled={accountOperationBusy || currentLocalState === null}
               label={
                 logoutConfirmationUserId === userId
                   ? "Effacer les données locales liées à ce compte et me déconnecter"

@@ -19,6 +19,12 @@ import {
   type DeviceRegistrationResponse,
   type ProgressSnapshotResponse,
 } from "./client-contracts";
+import {
+  accountExportDocumentSchema,
+  accountExportErrorResponseSchema,
+  type AccountExportDocument,
+  type AccountExportErrorCode,
+} from "./account-export-contracts";
 import type { PreparedAttemptOutboxBatch } from "./outbox";
 
 const ACCESS_TOKEN_MAX_LENGTH = 16 * 1_024;
@@ -40,13 +46,15 @@ const preparedAttemptBatchSchema = z.strictObject({
 });
 
 const ENDPOINT_PATHS = {
+  account_export: "/api/v1/account/export",
   device_registration: "/api/v1/devices/register",
   attempt_batch: "/api/v1/attempts/batch",
   progress_snapshot: "/api/v1/progress/snapshot",
 } as const;
 
 export type SyncHttpEndpoint = keyof typeof ENDPOINT_PATHS;
-export type SyncHttpApiErrorCode = ApiErrorCode | DeviceRegistrationErrorCode;
+export type SyncHttpApiErrorCode =
+  ApiErrorCode | DeviceRegistrationErrorCode | AccountExportErrorCode;
 
 export interface AuthenticatedSyncSession {
   readonly accessToken: string;
@@ -175,6 +183,7 @@ export interface SyncHttpClient {
     prepared: PreparedAttemptOutboxBatch,
   ): Promise<AttemptBatchResponse>;
   getProgressSnapshot(): Promise<ProgressSnapshotResponse>;
+  getAccountExport(signal?: AbortSignal): Promise<AccountExportDocument>;
 }
 
 function normalizeBaseUrl(input: string, allowInsecureHttp: boolean): string {
@@ -321,8 +330,16 @@ export function createSyncHttpClient(
     readonly method: "GET" | "POST";
     readonly body?: unknown;
     readonly idempotencyKey?: string;
+    readonly signal?: AbortSignal;
   }): Promise<unknown> {
+    const externalSignalIsAborted = () => input.signal?.aborted === true;
+    if (externalSignalIsAborted()) {
+      throw new SyncHttpTransportError(input.endpoint);
+    }
     const token = await accessToken(input.endpoint);
+    if (externalSignalIsAborted()) {
+      throw new SyncHttpTransportError(input.endpoint);
+    }
     const headers: Record<string, string> = {
       Accept: "application/json",
       Authorization: `Bearer ${token}`,
@@ -335,6 +352,10 @@ export function createSyncHttpClient(
     let response: Response;
     let payload: unknown;
     const controller = new AbortController();
+    const abortFromExternalSignal = () => controller.abort();
+    input.signal?.addEventListener("abort", abortFromExternalSignal, {
+      once: true,
+    });
     const timeout = setTimeout(() => controller.abort(), timeoutMs);
     try {
       try {
@@ -360,14 +381,20 @@ export function createSyncHttpClient(
       );
     } finally {
       clearTimeout(timeout);
+      input.signal?.removeEventListener("abort", abortFromExternalSignal);
     }
 
     if (response.ok) return payload;
 
-    const errorResult =
-      input.endpoint === "device_registration"
-        ? deviceRegistrationErrorResponseSchema.safeParse(payload)
-        : apiErrorResponseSchema.safeParse(payload);
+    const errorResult = (() => {
+      if (input.endpoint === "account_export") {
+        return accountExportErrorResponseSchema.safeParse(payload);
+      }
+      if (input.endpoint === "device_registration") {
+        return deviceRegistrationErrorResponseSchema.safeParse(payload);
+      }
+      return apiErrorResponseSchema.safeParse(payload);
+    })();
     if (!errorResult.success) {
       throw new SyncHttpProtocolError(
         input.endpoint,
@@ -443,6 +470,31 @@ export function createSyncHttpClient(
           "progress_snapshot",
           "invalid_success_response",
         );
+      }
+      return response.data;
+    },
+
+    async getAccountExport(signal) {
+      const payload = await request({
+        endpoint: "account_export",
+        method: "GET",
+        ...(signal === undefined ? {} : { signal }),
+      });
+      const response = accountExportDocumentSchema.safeParse(payload);
+      if (!response.success) {
+        throw new SyncHttpProtocolError(
+          "account_export",
+          "invalid_success_response",
+        );
+      }
+      if (response.data.identity.id !== expectedUserId) {
+        throw new SyncHttpProtocolError("account_export", "response_mismatch");
+      }
+
+      // Une réponse valide du compte A ne doit jamais être remise après A→B.
+      await accessToken("account_export");
+      if (signal?.aborted === true) {
+        throw new SyncHttpTransportError("account_export");
       }
       return response.data;
     },

@@ -11,6 +11,7 @@ import {
 
 import { initializeDatabase } from "../lib/initialize-database";
 import { MobileAuthSessionProvider } from "../lib/auth-session";
+import { purgeMobileAccountExportCache } from "../lib/mobile-account-export";
 
 function DatabaseReady({ onReady }: { readonly onReady: () => void }) {
   useEffect(onReady, [onReady]);
@@ -24,6 +25,15 @@ export default function RootLayout() {
   const [databaseStatus, setDatabaseStatus] =
     useState<DatabaseStatus>("loading");
   const errorQueued = useRef(false);
+
+  useEffect(() => {
+    try {
+      purgeMobileAccountExportCache();
+    } catch {
+      // Le prochain export retente la même purge ciblée et reste bloqué tant
+      // que le système refuse l’effacement du fichier temporaire au nom fixe.
+    }
+  }, []);
 
   const handleReady = useCallback(() => {
     errorQueued.current = false;

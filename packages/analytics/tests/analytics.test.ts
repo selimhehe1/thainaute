@@ -12,4 +12,17 @@ describe("analytics soumis au consentement", () => {
     });
     expect(capture).not.toHaveBeenCalled();
   });
+
+  it("décrit une demande d’export sans identité ni contenu personnel", () => {
+    const capture = vi.fn();
+    createConsentAwareAnalytics(true, { capture }).capture({
+      name: "account_export_requested",
+      platform: "web",
+    });
+
+    expect(capture).toHaveBeenCalledWith({
+      name: "account_export_requested",
+      platform: "web",
+    });
+  });
 });
