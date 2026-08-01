@@ -475,6 +475,134 @@ h1 em {
   color: var(--jade);
   font-size: 24px;
 }
+.voiceComparison {
+  width: 100%;
+  margin-bottom: 28px;
+  padding: clamp(22px, 4vw, 30px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #f8fbfa;
+}
+.voiceComparisonHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.voiceComparisonHeader .eyebrow {
+  margin-bottom: 8px;
+}
+.voiceComparison h2 {
+  max-width: 560px;
+  margin: 0;
+  font-size: clamp(24px, 4vw, 34px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+.localOnlyBadge {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: #286e5a;
+  background: #dff3eb;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.voicePrivacy {
+  max-width: 700px;
+  margin: 18px 0 22px;
+  color: #58657b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.voiceTracks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.voiceTracks article {
+  min-width: 0;
+  min-height: 112px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  border-radius: 16px;
+  background: white;
+}
+.voiceTrackLabel {
+  color: #5c687e;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.voiceTracks audio {
+  width: 100%;
+  min-height: 44px;
+}
+.voiceEmpty {
+  min-height: 44px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  color: #737d8f;
+  font-size: 13px;
+}
+.recordingProgress {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #59657a;
+  font-size: 13px;
+  font-weight: 750;
+}
+.recordingProgress progress {
+  width: min(320px, 100%);
+  height: 10px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: #dfe6e8;
+}
+.recordingProgress progress::-webkit-progress-bar {
+  border-radius: 999px;
+  background: #dfe6e8;
+}
+.recordingProgress progress::-webkit-progress-value {
+  border-radius: 999px;
+  background: var(--coral);
+}
+.recordingProgress progress::-moz-progress-bar {
+  border-radius: 999px;
+  background: var(--coral);
+}
+.voiceActions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.voiceActions .button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+.voiceDelete {
+  border-color: #d88782;
+  color: #8e332e;
+  background: #fff5f4;
+}
+.voiceMessage {
+  margin: 14px 0 0;
+  color: #536078;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.voiceMessage.inlineError {
+  color: #a23d38;
+}
 .privacyNote {
   max-width: 650px;
   margin: 0 0 28px;
@@ -600,8 +728,17 @@ h1 em {
     min-height: 610px;
   }
   .answerList,
-  .masteryPanel {
+  .masteryPanel,
+  .voiceTracks {
     grid-template-columns: 1fr;
+  }
+  .voiceComparisonHeader,
+  .recordingProgress {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .voiceActions .button {
+    width: 100%;
   }
   .submitAnswer {
     width: 100%;

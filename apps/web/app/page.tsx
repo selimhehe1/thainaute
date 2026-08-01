@@ -22,7 +22,7 @@ export default function HomePage() {
       <section className="hero shell">
         <div className="heroCopy">
           <p className="eyebrow">
-            Prototype local · nom à confirmer juridiquement
+            Bêta privée · marque à confirmer juridiquement
           </p>
           <h1>
             Le thaï, enfin pensé <em>en français.</em>

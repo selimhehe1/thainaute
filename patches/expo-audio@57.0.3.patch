@@ -1,0 +1,1526 @@
+diff --git a/android/src/main/java/expo/modules/audio/AudioExceptions.kt b/android/src/main/java/expo/modules/audio/AudioExceptions.kt
+index 48026058e83c7f8ce462dc26227996b7c76b06c8..174d886e9feffd4235b2f1a0a1cd233d12a0015f 100644
+--- a/android/src/main/java/expo/modules/audio/AudioExceptions.kt
++++ b/android/src/main/java/expo/modules/audio/AudioExceptions.kt
+@@ -38,6 +38,9 @@ internal class AudioRecorderPrepareException(cause: Throwable) :
+ internal class AudioRecorderAlreadyPreparedException :
+   CodedException("AudioRecorder has already been prepared. Stop or release the current session before preparing again.")
+ 
++internal class AudioRecorderInvalidatedException :
++  CodedException("The AudioRecorder was interrupted before recording could start.")
++
+ internal fun getPlaybackServiceErrorMessage(
+   message: String?,
+   tip: String = defaultPlaybackServiceTip
+diff --git a/android/src/main/java/expo/modules/audio/AudioModule.kt b/android/src/main/java/expo/modules/audio/AudioModule.kt
+index 992239ba7631ce0c97c0b41c5fbf61cc842386fe..c93ce073dae064eafad4267ed225bbced6e0f632 100644
+--- a/android/src/main/java/expo/modules/audio/AudioModule.kt
++++ b/android/src/main/java/expo/modules/audio/AudioModule.kt
+@@ -6,10 +6,14 @@ import android.content.Context
+ import android.content.IntentFilter
+ import android.content.pm.PackageManager
+ import android.media.AudioAttributes
++import android.media.AudioDeviceCallback
++import android.media.AudioDeviceInfo
+ import android.media.AudioFocusRequest
+ import android.media.AudioManager
+ import android.net.Uri
+ import android.os.Build
++import android.os.Handler
++import android.os.Looper
+ import android.util.Log
+ import androidx.core.content.ContextCompat
+ import androidx.core.net.toUri
+@@ -61,6 +65,7 @@ class AudioModule : Module() {
+   private var interruptionMode: InterruptionMode? = null
+   private var allowsBackgroundRecording = false
+   private var playsInSilentMode = true
++  private var audioDeviceCallbackRegistered = false
+ 
+   private val allPlayables: Sequence<Playable>
+     get() = players.values.asSequence() + playlists.values.asSequence()
+@@ -76,6 +81,26 @@ class AudioModule : Module() {
+     }
+   }
+ 
++  private val audioDeviceCallback = object : AudioDeviceCallback() {
++    override fun onAudioDevicesAdded(addedDevices: Array<out AudioDeviceInfo>) {
++      interruptRecordersForRouteChange(addedDevices)
++    }
++
++    override fun onAudioDevicesRemoved(removedDevices: Array<out AudioDeviceInfo>) {
++      interruptRecordersForRouteChange(removedDevices)
++    }
++  }
++
++  private fun interruptRecordersForRouteChange(devices: Array<out AudioDeviceInfo>) {
++    if (devices.isEmpty()) {
++      return
++    }
++
++    recorders.values.forEach { recorder ->
++      recorder.stopForInterruption()
++    }
++  }
++
+   private var audioFocusRequest: AudioFocusRequest? = null
+   private val audioFocusChangeListener = AudioManager.OnAudioFocusChangeListener { focusChange ->
+     appContext.mainQueue.launch {
+@@ -122,10 +147,6 @@ class AudioModule : Module() {
+ 
+           allPlayables.forEach { playable ->
+             playable.setVolume(playable.previousVolume)
+-            if (playable.isPaused) {
+-              playable.isPaused = false
+-              playable.play()
+-            }
+           }
+         }
+       }
+@@ -206,6 +227,10 @@ class AudioModule : Module() {
+     OnCreate {
+       audioManager = appContext.reactContext?.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+       context.registerReceiver(ringerModeReceiver, IntentFilter(AudioManager.RINGER_MODE_CHANGED_ACTION))
++      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
++        audioManager.registerAudioDeviceCallback(audioDeviceCallback, Handler(Looper.getMainLooper()))
++        audioDeviceCallbackRegistered = true
++      }
+     }
+ 
+     AsyncFunction("setAudioModeAsync") { mode: AudioMode ->
+@@ -295,43 +320,22 @@ class AudioModule : Module() {
+       }
+       if (!allowsBackgroundRecording) {
+         recorders.values.forEach { recorder ->
+-          if (recorder.isRecording) {
+-            recorder.pauseRecording()
+-          }
++          recorder.stopForInterruption()
+         }
+       }
+     }
+ 
+     OnActivityEntersForeground {
+-      if (!shouldPlayInBackground) {
+-        if (!shouldPlayInSilentMode()) {
+-          return@OnActivityEntersForeground
+-        }
+-
+-        if (allPlayables.any { it.isPaused }) {
+-          requestAudioFocus()
+-        }
+-
+-        allPlayables.forEach { playable ->
+-          if (playable.isPaused) {
+-            playable.isPaused = false
+-            playable.play()
+-          }
+-        }
+-      }
+-      if (!allowsBackgroundRecording) {
+-        recorders.values.forEach { recorder ->
+-          if (recorder.isPaused) {
+-            recorder.record()
+-          }
+-        }
+-      }
+       if (shouldRouteThroughEarpiece) {
+         updatePlaySoundThroughEarpiece(true)
+       }
+     }
+ 
+     OnDestroy {
++      if (audioDeviceCallbackRegistered) {
++        audioManager.unregisterAudioDeviceCallback(audioDeviceCallback)
++        audioDeviceCallbackRegistered = false
++      }
+       context.unregisterReceiver(ringerModeReceiver)
+       GlobalScope.launch(Dispatchers.Main) {
+         releaseAudioFocus()
+@@ -551,7 +555,8 @@ class AudioModule : Module() {
+         val recorder = AudioRecorder(
+           appContext.throwingActivity.applicationContext,
+           appContext,
+-          options
++          options,
++          { recorderId -> recorders.remove(recorderId) }
+         )
+         recorder.useForegroundService = allowsBackgroundRecording
+         recorders[recorder.id] = recorder
+@@ -563,17 +568,23 @@ class AudioModule : Module() {
+       }
+ 
+       Property("uri") { recorder ->
+-        recorder.filePath?.let {
+-          Uri.fromFile(File(it)).toString()
+-        } ?: ""
++        runOnMain {
++          recorder.filePath?.let {
++            Uri.fromFile(File(it)).toString()
++          } ?: ""
++        }
+       }
+ 
+       Property("isRecording") { recorder ->
+-        recorder.isRecording
++        runOnMain {
++          recorder.isRecording
++        }
+       }
+ 
+       Property("currentTime") { recorder ->
+-        recorder.getCurrentTimeSeconds()
++        runOnMain {
++          recorder.getCurrentTimeSeconds()
++        }
+       }
+ 
+       AsyncFunction("prepareToRecordAsync") Coroutine { recorder: AudioRecorder, options: RecordingOptions? ->
+@@ -582,48 +593,56 @@ class AudioModule : Module() {
+       }
+ 
+       Function("record") { recorder: AudioRecorder, options: RecordOptions? ->
+-        checkRecordingPermission()
+-        if (recorder.isPrepared) {
++        runOnMain {
++          checkRecordingPermission()
+           recorder.recordWithOptions(options?.atTime, options?.forDuration)
+         }
+       }
+ 
+       Function("recordForDuration") { recorder: AudioRecorder, seconds: Double ->
+-        checkRecordingPermission()
+-        if (recorder.isPrepared) {
++        runOnMain {
++          checkRecordingPermission()
+           recorder.recordForDuration(seconds)
+         }
+       }
+ 
+       Function("pause") { recorder: AudioRecorder ->
+-        checkRecordingPermission()
+-        recorder.pauseRecording()
++        runOnMain {
++          checkRecordingPermission()
++          recorder.pauseRecording()
++        }
+       }
+ 
+       AsyncFunction("stop") { recorder: AudioRecorder ->
+         checkRecordingPermission()
+         recorder.stopRecording()
+-      }
++      }.runOnQueue(Queues.MAIN)
+ 
+       Function("getStatus") { recorder: AudioRecorder ->
+-        recorder.getAudioRecorderStatus()
++        runOnMain {
++          recorder.getAudioRecorderStatus()
++        }
+       }
+ 
+       AsyncFunction("getCurrentInput") { recorder: AudioRecorder ->
+         recorder.getCurrentInput(audioManager)
+-      }
++      }.runOnQueue(Queues.MAIN)
+ 
+       Function("getAvailableInputs") { recorder: AudioRecorder ->
+-        return@Function recorder.getAvailableInputs(audioManager)
++        runOnMain {
++          recorder.getAvailableInputs(audioManager)
++        }
+       }
+ 
+       Function("setInput") { recorder: AudioRecorder, input: String ->
+-        recorder.setInput(input, audioManager)
++        runOnMain {
++          recorder.setInput(input, audioManager)
++        }
+       }
+ 
+       Function("startRecordingAtTime") { recorder: AudioRecorder, seconds: Double ->
+-        checkRecordingPermission()
+-        if (recorder.isPrepared) {
++        runOnMain {
++          checkRecordingPermission()
+           recorder.startRecordingAtTime(seconds)
+         }
+       }
+diff --git a/android/src/main/java/expo/modules/audio/AudioRecorder.kt b/android/src/main/java/expo/modules/audio/AudioRecorder.kt
+index 9a7683666fe0838b21ed4b8502b91d151f76d601..2a5f164c24adfd7dbbc73d3294629ace78e0ad7f 100644
+--- a/android/src/main/java/expo/modules/audio/AudioRecorder.kt
++++ b/android/src/main/java/expo/modules/audio/AudioRecorder.kt
+@@ -5,12 +5,14 @@ import android.content.Context
+ import android.content.pm.PackageManager
+ import android.media.AudioDeviceInfo
+ import android.media.AudioManager
++import android.media.AudioRecordingConfiguration
++import android.media.AudioRouting
+ import android.media.MediaRecorder
+-import android.media.MediaRecorder.MEDIA_ERROR_SERVER_DIED
+-import android.media.MediaRecorder.MEDIA_RECORDER_ERROR_UNKNOWN
+ import android.media.MediaRecorder.MEDIA_RECORDER_INFO_MAX_FILESIZE_REACHED
+ import android.os.Build
+ import android.os.Bundle
++import android.os.Handler
++import android.os.Looper
+ import androidx.core.content.ContextCompat
+ import androidx.core.net.toUri
+ import expo.modules.audio.service.AudioRecordingServiceConnection
+@@ -32,25 +34,58 @@ private const val RECORDING_STATUS_UPDATE = "recordingStatusUpdate"
+ class AudioRecorder(
+   private val context: Context,
+   appContext: AppContext,
+-  private val options: RecordingOptions
++  private val options: RecordingOptions,
++  private val onRelease: (String) -> Unit
+ ) : SharedObject(appContext),
+   MediaRecorder.OnErrorListener,
+   MediaRecorder.OnInfoListener {
+   var filePath: String? = null
+   private var meteringEnabled = options.isMeteringEnabled
+   private var durationAlreadyRecorded = 0L
+-  var isPrepared = false
+-
+-  private var recorder: MediaRecorder? = null
++  @Volatile var isPrepared = false
++
++  @Volatile private var recorder: MediaRecorder? = null
++  @Volatile private var captureInvalidated = false
++  @Volatile private var isPreparing = false
++  @Volatile private var isReleased = false
++  private var prepareGeneration = 0L
++  private var pendingFilePath: String? = null
+   val id = UUID.randomUUID().toString()
+   var startTime = 0L
+-  var isRecording = false
+-  var isPaused = false
++  @Volatile var isRecording = false
++  @Volatile var isPaused = false
+   private var recordingTimerJob: Job? = null
++  private var recordingCallbackRegistered = false
++  private var routedDeviceId: Int? = null
++  private var routingChangeListenerRegistered = false
+   var useForegroundService = false
+ 
+   val serviceConnection = AudioRecordingServiceConnection(WeakReference(this), appContext)
+ 
++  private val audioRecordingCallback = object : AudioManager.AudioRecordingCallback() {
++    override fun onRecordingConfigChanged(configs: MutableList<AudioRecordingConfiguration>) {
++      if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
++        return
++      }
++
++      val expectedRecorder = recorder ?: return
++      val configuration = try {
++        expectedRecorder.activeRecordingConfiguration
++      } catch (_: Exception) {
++        null
++      } ?: return
++
++      handleRecordingConfiguration(expectedRecorder, configuration)
++    }
++  }
++
++  private val routingChangedListener = AudioRouting.OnRoutingChangedListener { routing ->
++    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
++      val expectedRecorder = routing as? MediaRecorder ?: return@OnRoutingChangedListener
++      handleRoutingChange(expectedRecorder)
++    }
++  }
++
+   private val _appContext: AppContext
+     get() {
+       return appContext ?: throw Exceptions.AppContextLost()
+@@ -81,34 +116,116 @@ class AudioRecorder(
+   }
+ 
+   suspend fun prepareRecording(options: RecordingOptions?) {
+-    if (recorder != null || isPrepared || isRecording || isPaused) {
+-      throw AudioRecorderAlreadyPreparedException()
+-    }
++    val generation = synchronized(this) {
++      if (isReleased) {
++        throw AudioRecorderInvalidatedException()
++      }
++      if (isPreparing || recorder != null || isPrepared || isRecording || isPaused) {
++        throw AudioRecorderAlreadyPreparedException()
++      }
++      if (useForegroundService && !hasNotificationPermissions()) {
++        throw NotificationPermissionsException()
++      }
+ 
+-    if (useForegroundService && !hasNotificationPermissions()) {
+-      throw NotificationPermissionsException()
++      isPreparing = true
++      captureInvalidated = false
++      prepareGeneration += 1
++      prepareGeneration
+     }
+ 
+     val recordingOptions = options ?: this.options
+-    val mediaRecorder = createRecorder(recordingOptions)
+-    recorder = mediaRecorder
+-
++    var mediaRecorder: MediaRecorder? = null
++    var mediaRecorderReleased = false
++    var outputFilePath: String? = null
+     try {
++      val pendingOutputFilePath = createRecordingFilePath(recordingOptions)
++      outputFilePath = pendingOutputFilePath
++      synchronized(this) {
++        if (isReleased || captureInvalidated || !isPreparing || prepareGeneration != generation) {
++          throw AudioRecorderInvalidatedException()
++        }
++        pendingFilePath = pendingOutputFilePath
++      }
++
++      val preparedRecorder = createRecorder(recordingOptions, pendingOutputFilePath)
++      mediaRecorder = preparedRecorder
++
++      synchronized(this) {
++        if (isReleased || captureInvalidated || !isPreparing || prepareGeneration != generation) {
++          throw AudioRecorderInvalidatedException()
++        }
++      }
+       if (useForegroundService) {
+         serviceConnection.bindWithService()
+       }
+-      mediaRecorder.prepare()
+-      isPrepared = true
++
++      synchronized(this) {
++        if (isReleased || captureInvalidated || !isPreparing || prepareGeneration != generation) {
++          throw AudioRecorderInvalidatedException()
++        }
++      }
++
++      preparedRecorder.prepare()
++      synchronized(this) {
++        if (isReleased || captureInvalidated || !isPreparing || prepareGeneration != generation) {
++          throw AudioRecorderInvalidatedException()
++        }
++
++        recorder = preparedRecorder
++        try {
++          registerCaptureMonitoring(preparedRecorder)
++          isPrepared = true
++          isPreparing = false
++          filePath = pendingOutputFilePath
++          pendingFilePath = null
++        } catch (e: Exception) {
++          unregisterCaptureMonitoring()
++          recorder = null
++          isPrepared = false
++          isPreparing = false
++          preparedRecorder.setOnErrorListener(null)
++          preparedRecorder.setOnInfoListener(null)
++          preparedRecorder.release()
++          mediaRecorderReleased = true
++          throw e
++        }
++      }
+     } catch (e: Exception) {
+-      mediaRecorder.release()
+-      recorder = null
+-      isPrepared = false
++      synchronized(this) {
++        if (prepareGeneration == generation) {
++          isPreparing = false
++        }
++        if (pendingFilePath == outputFilePath) {
++          pendingFilePath = null
++        }
++        if (mediaRecorder != null && recorder === mediaRecorder) {
++          unregisterCaptureMonitoring()
++          recorder = null
++          isPrepared = false
++        }
++      }
++
++      if (!mediaRecorderReleased) {
++        try {
++          mediaRecorder?.setOnErrorListener(null)
++          mediaRecorder?.setOnInfoListener(null)
++          mediaRecorder?.release()
++        } catch (_: Exception) {
++          // The local recorder is already unusable; preparation still fails closed.
++        }
++      }
++
++      deleteRecordingFile(outputFilePath)
+ 
+       throw e as? CodedException ?: AudioRecorderPrepareException(e)
+     }
+   }
+ 
++  @Synchronized
+   fun record() {
++    if (isReleased || isPreparing || captureInvalidated || !isPrepared || recorder == null) {
++      throw AudioRecorderInvalidatedException()
++    }
+     if (useForegroundService) {
+       serviceConnection.recordingServiceBinder?.service?.registerRecorder(this) ?: run {
+         throw AudioRecordingServiceException("The service connection is not bound, but `allowsBackgroundRecording` is set to `true`")
+@@ -123,8 +240,10 @@ class AudioRecorder(
+     startTime = System.currentTimeMillis()
+     isRecording = true
+     isPaused = false
++    refreshActiveRecordingConfiguration()
+   }
+ 
++  @Synchronized
+   fun recordWithOptions(atTimeSeconds: Double? = null, forDurationSeconds: Double? = null) {
+     recordingTimerJob?.cancel()
+ 
+@@ -154,15 +273,37 @@ class AudioRecorder(
+     recordWithOptions(atTimeSeconds = seconds)
+   }
+ 
++  @Synchronized
+   fun pauseRecording() {
++    if (!isRecording) {
++      return
++    }
+     recorder?.pause()
+     durationAlreadyRecorded = getAudioRecorderDurationMillis()
+     isRecording = false
+     isPaused = true
+   }
+ 
++  @Synchronized
+   fun stopRecording(): Bundle {
+     val url = currentFileUrl()
++    val outputFilePath = filePath
++    if (isPreparing && recorder == null) {
++      captureInvalidated = true
++      return Bundle().apply {
++        putBoolean("canRecord", false)
++        putBoolean("isRecording", false)
++        putLong("durationMillis", 0)
++      }
++    }
++    if (recorder == null && !isPrepared && !isRecording && !isPaused) {
++      return Bundle().apply {
++        putBoolean("canRecord", false)
++        putBoolean("isRecording", false)
++        putLong("durationMillis", 0)
++      }
++    }
++
+     var durationMillis: Long
+     var stopFailed = false
+     var stopError: String? = null
+@@ -182,6 +323,11 @@ class AudioRecorder(
+       reset()
+     }
+ 
++    if (stopFailed) {
++      filePath = null
++      deleteRecordingFile(outputFilePath)
++    }
++
+     val status = Bundle().apply {
+       putBoolean("canRecord", false)
+       putBoolean("isRecording", false)
+@@ -208,10 +354,73 @@ class AudioRecorder(
+     return status
+   }
+ 
++  @Synchronized
++  fun stopForInterruption() {
++    stopForInterruptionLocked()
++  }
++
++  @Synchronized
++  private fun stopForInterruption(expectedRecorder: MediaRecorder?) {
++    if (expectedRecorder == null || expectedRecorder !== recorder) {
++      return
++    }
++    stopForInterruptionLocked()
++  }
++
++  private fun stopForInterruptionLocked() {
++    captureInvalidated = true
++    if (isPreparing && recorder == null) {
++      return
++    }
++    if (!isRecording && !isPaused && !isPrepared) {
++      return
++    }
++
++    val interruptedFilePath = filePath
++
++    if (useForegroundService) {
++      serviceConnection.recordingServiceBinder?.service?.unregisterRecorder(this)
++    }
++
++    // A route, lifecycle or capture-policy interruption must never silently
++    // continue. Suppress MediaRecorder callbacks and emit one authoritative
++    // terminal error after releasing the native recorder.
++    recorder?.setOnErrorListener(null)
++    recorder?.setOnInfoListener(null)
++    try {
++      recorder?.stop()
++    } catch (_: RuntimeException) {
++      // MediaRecorder requires the app to delete an invalid output after a
++      // failed stop. Cleanup below is idempotent when stop succeeds too.
++    } finally {
++      reset()
++      filePath = null
++      deleteRecordingFile(interruptedFilePath)
++    }
++
++    appContext?.mainQueue?.launch {
++      emit(
++        RECORDING_STATUS_UPDATE,
++        mapOf(
++          "id" to id,
++          "isFinished" to true,
++          "hasError" to true,
++          "error" to "Recording was interrupted by the system",
++          "url" to null
++        )
++      )
++    }
++  }
++
++  @Synchronized
+   private fun reset() {
+     recordingTimerJob?.cancel()
+     recordingTimerJob = null
+ 
++    unregisterCaptureMonitoring()
++
++    recorder?.setOnErrorListener(null)
++    recorder?.setOnInfoListener(null)
+     recorder?.release()
+     recorder = null
+     isRecording = false
+@@ -221,15 +430,130 @@ class AudioRecorder(
+     isPrepared = false
+   }
+ 
++  private fun registerCaptureMonitoring(mediaRecorder: MediaRecorder) {
++    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
++      mediaRecorder.addOnRoutingChangedListener(
++        routingChangedListener,
++        Handler(Looper.getMainLooper())
++      )
++      routingChangeListenerRegistered = true
++    }
++    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
++      mediaRecorder.registerAudioRecordingCallback(context.mainExecutor, audioRecordingCallback)
++      recordingCallbackRegistered = true
++    }
++  }
++
++  private fun unregisterCaptureMonitoring() {
++    val currentRecorder = recorder ?: return
++    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && recordingCallbackRegistered) {
++      try {
++        currentRecorder.unregisterAudioRecordingCallback(audioRecordingCallback)
++      } catch (_: Exception) {
++        // Cleanup continues and the recorder is released below.
++      }
++      recordingCallbackRegistered = false
++    }
++    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && routingChangeListenerRegistered) {
++      try {
++        currentRecorder.removeOnRoutingChangedListener(routingChangedListener)
++      } catch (_: Exception) {
++        // Cleanup continues and the recorder is released below.
++      }
++      routingChangeListenerRegistered = false
++    }
++    routedDeviceId = null
++  }
++
++  @Synchronized
++  private fun refreshActiveRecordingConfiguration() {
++    if (!isRecording && !isPaused) {
++      return
++    }
++    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
++      val configuration = try {
++        recorder?.activeRecordingConfiguration
++      } catch (_: Exception) {
++        null
++      }
++      if (configuration != null) {
++        handleRecordingConfiguration(configuration)
++        return
++      }
++    }
++    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
++      routedDeviceId = try {
++        recorder?.routedDevice?.id
++      } catch (_: Exception) {
++        null
++      }
++    }
++  }
++
++  @Synchronized
++  private fun handleRecordingConfiguration(configuration: AudioRecordingConfiguration) {
++    if (!isRecording && !isPaused) {
++      return
++    }
++    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && configuration.isClientSilenced) {
++      stopForInterruption()
++      return
++    }
++    handleRoutedDevice(configuration.audioDevice?.id)
++  }
++
++  @Synchronized
++  private fun handleRecordingConfiguration(
++    expectedRecorder: MediaRecorder,
++    configuration: AudioRecordingConfiguration
++  ) {
++    if (expectedRecorder !== recorder) {
++      return
++    }
++    handleRecordingConfiguration(configuration)
++  }
++
++  @Synchronized
++  private fun handleRoutingChange(expectedRecorder: MediaRecorder) {
++    if (expectedRecorder !== recorder || Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
++      return
++    }
++    val nextDeviceId = try {
++      expectedRecorder.routedDevice?.id
++    } catch (_: Exception) {
++      null
++    }
++    handleRoutedDevice(nextDeviceId)
++  }
++
++  @Synchronized
++  private fun handleRoutedDevice(nextDeviceId: Int?) {
++    if (!isRecording && !isPaused) {
++      return
++    }
++    val previousDeviceId = routedDeviceId
++    if (previousDeviceId == null) {
++      routedDeviceId = nextDeviceId
++      return
++    }
++    if (nextDeviceId == null || nextDeviceId != previousDeviceId) {
++      stopForInterruption()
++    }
++  }
++
+   @Suppress("DEPRECATION")
+-  private fun createRecorder(options: RecordingOptions): MediaRecorder {
+-    val outputFilePath = createRecordingFilePath(options)
++  private fun createRecorder(options: RecordingOptions, outputFilePath: String): MediaRecorder {
+     val mediaRecorder = MediaRecorder()
+ 
+     try {
+       setRecordingOptions(mediaRecorder, options, outputFilePath)
+     } catch (e: Exception) {
+-      mediaRecorder.release()
++      try {
++        mediaRecorder.release()
++      } catch (_: Exception) {
++        // The failed recorder has no usable lifecycle left.
++      }
++      deleteRecordingFile(outputFilePath)
+       throw e
+     }
+ 
+@@ -258,6 +582,9 @@ class AudioRecorder(
+     }
+     with(recorder) {
+       setAudioSource(options.audioSource?.toAudioSource() ?: MediaRecorder.AudioSource.MIC)
++      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
++        setPrivacySensitive(true)
++      }
+       if (options.outputFormat != null) {
+         setOutputFormat(options.outputFormat.toMediaOutputFormat())
+       } else {
+@@ -281,30 +608,67 @@ class AudioRecorder(
+         setMaxFileSize(it.toLong())
+       }
+ 
+-      filePath = outputFilePath
+       setOnErrorListener(this@AudioRecorder)
+       setOnInfoListener(this@AudioRecorder)
+       setOutputFile(outputFilePath)
+-      isPrepared = false
+     }
+   }
+ 
++  private fun deleteRecordingFile(path: String?) {
++    if (path == null) {
++      return
++    }
++    try {
++      File(path).delete()
++    } catch (_: SecurityException) {
++      // Best-effort privacy cleanup for an app-owned path.
++    }
++  }
++
++  @Synchronized
+   override fun sharedObjectDidRelease() {
+     super.sharedObjectDidRelease()
+ 
+-    // Mark recorder as released
+-    serviceConnection.release()
++    val recordingFiles = listOfNotNull(filePath, pendingFilePath).distinct()
++    isReleased = true
++    isPreparing = false
++    captureInvalidated = true
++    prepareGeneration += 1
++    filePath = null
++    pendingFilePath = null
++    try {
++      onRelease(id)
+ 
+-    if (useForegroundService) {
+-      serviceConnection.recordingServiceBinder?.service?.unregisterRecorder(this)
+-      // Unbind service connection
+-      serviceConnection.unbind()
+-      // Clean up service connection resources
+-      serviceConnection.cleanup()
++      // Mark recorder as released
++      serviceConnection.release()
++
++      if (useForegroundService) {
++        serviceConnection.recordingServiceBinder?.service?.unregisterRecorder(this)
++        // Unbind service connection
++        serviceConnection.unbind()
++        // Clean up service connection resources
++        serviceConnection.cleanup()
++      }
++    } finally {
++      try {
++        if (isRecording || isPaused) {
++          try {
++            recorder?.stop()
++          } catch (_: RuntimeException) {
++            // A failed stop leaves an invalid output, deleted below.
++          }
++        }
++      } finally {
++        try {
++          reset()
++        } finally {
++          recordingFiles.forEach(::deleteRecordingFile)
++        }
++      }
+     }
+-    reset()
+   }
+ 
++  @Synchronized
+   fun getAudioRecorderStatus() = if (hasRecordingPermissions()) {
+     Bundle().apply {
+       putBoolean("canRecord", isPrepared)
+@@ -324,6 +688,7 @@ class AudioRecorder(
+     }
+   }
+ 
++  @Synchronized
+   private fun getAudioRecorderDurationMillis(): Long {
+     var duration = durationAlreadyRecorded
+     if (isRecording) {
+@@ -337,49 +702,13 @@ class AudioRecorder(
+   }
+ 
+   override fun onError(mr: MediaRecorder?, what: Int, extra: Int) {
+-    val error = when (what) {
+-      MEDIA_RECORDER_ERROR_UNKNOWN -> "An unknown recording error occurred"
+-      MEDIA_ERROR_SERVER_DIED -> "The media server has crashed"
+-      else -> "An unknown recording error occurred"
+-    }
+-    emit(
+-      RECORDING_STATUS_UPDATE,
+-      mapOf(
+-        "isFinished" to true,
+-        "hasError" to true,
+-        "error" to error,
+-        "url" to null
+-      )
+-    )
++    stopForInterruption(mr)
+   }
+ 
+   override fun onInfo(mr: MediaRecorder?, what: Int, extra: Int) {
+     when (what) {
+       MEDIA_RECORDER_INFO_MAX_FILESIZE_REACHED -> {
+-        val url = currentFileUrl()
+-
+-        if (useForegroundService) {
+-          serviceConnection.recordingServiceBinder?.service?.unregisterRecorder(this)
+-          // Unbind the service connection
+-          serviceConnection.unbind()
+-        }
+-
+-        try {
+-          recorder?.stop()
+-        } catch (_: RuntimeException) {
+-          // Ignore stop errors
+-        } finally {
+-          reset()
+-        }
+-        emit(
+-          RECORDING_STATUS_UPDATE,
+-          mapOf(
+-            "isFinished" to true,
+-            "hasError" to true,
+-            "error" to null,
+-            "url" to url
+-          )
+-        )
++        stopForInterruption(mr)
+       }
+     }
+   }
+diff --git a/ios/AudioModule.swift b/ios/AudioModule.swift
+index d26560627c2dfa97370440ad28304617f3f9f0f7..6d0eeecf6cbcc3a52c786e470667b46c304a9620 100644
+--- a/ios/AudioModule.swift
++++ b/ios/AudioModule.swift
+@@ -101,20 +101,15 @@ public class AudioModule: Module {
+       }
+       #if os(iOS)
+       if !allowsBackgroundRecording {
+-        pauseAllRecorders()
++        registry.allRecorders.values.forEach { recorder in
++          recorder.stopForInterruption()
++        }
+       }
+       #endif
+     }
+ 
+     OnAppEntersForeground {
+-      if !shouldPlayInBackground {
+-        resumeAllPlayers()
+-      }
+-      #if os(iOS)
+-      if !allowsBackgroundRecording {
+-        resumeAllRecorders()
+-      }
+-      #endif
++      // Playback remains paused until the user explicitly resumes it.
+     }
+ 
+     // swiftlint:disable:next closure_body_length
+@@ -439,31 +434,14 @@ public class AudioModule: Module {
+ 
+       AsyncFunction("prepareToRecordAsync") { (recorder, options: RecordingOptions?) in
+         try recorder.prepare(options: options, sessionOptions: sessionOptions)
+-      }
++      }.runOnQueue(.main)
+ 
+       Function("record") { (recorder: AudioRecorder, options: RecordOptions?) in
+         try checkPermissions()
+-
+-        switch (options?.atTime, options?.forDuration) {
+-        case let (atTime?, forDuration?):
+-          // Convert relative delay to absolute device time
+-          let absoluteTime = recorder.ref.deviceCurrentTime + TimeInterval(atTime)
+-          recorder.ref.record(atTime: absoluteTime, forDuration: TimeInterval(forDuration))
+-          recorder.updateStateForDirectRecording()
+-          return recorder.getRecordingStatus()
+-        case let (atTime?, nil):
+-          // Convert relative delay to absolute device time
+-          let absoluteTime = recorder.ref.deviceCurrentTime + TimeInterval(atTime)
+-          recorder.ref.record(atTime: absoluteTime)
+-          recorder.updateStateForDirectRecording()
+-          return recorder.getRecordingStatus()
+-        case let (nil, forDuration?):
+-          recorder.ref.record(forDuration: TimeInterval(forDuration))
+-          recorder.updateStateForDirectRecording()
+-          return recorder.getRecordingStatus()
+-        case (nil, nil):
+-          return try recorder.startRecording()
+-        }
++        return try recorder.record(
++          atTime: options?.atTime,
++          forDuration: options?.forDuration
++        )
+       }
+ 
+       Function("pause") { recorder in
+@@ -474,7 +452,7 @@ public class AudioModule: Module {
+       AsyncFunction("stop") { recorder in
+         try checkPermissions()
+         recorder.stopRecording()
+-      }
++      }.runOnQueue(.main)
+ 
+       Function("getStatus") { recorder -> [String: Any] in
+         recorder.getRecordingStatus()
+@@ -482,12 +460,12 @@ public class AudioModule: Module {
+ 
+       Function("startRecordingAtTime") { (recorder, seconds: Double) in
+         try checkPermissions()
+-        recorder.ref.record(atTime: TimeInterval(seconds))
++        _ = try recorder.record(atTime: seconds, forDuration: nil)
+       }
+ 
+       Function("recordForDuration") { (recorder, seconds: Double) in
+         try checkPermissions()
+-        recorder.ref.record(forDuration: TimeInterval(seconds))
++        _ = try recorder.record(atTime: nil, forDuration: seconds)
+       }
+ 
+       Function("getAvailableInputs") {
+@@ -574,12 +552,13 @@ public class AudioModule: Module {
+       handleInterruptionBegan()
+ 
+     case .ended:
++      let options: AVAudioSession.InterruptionOptions
+       if let optionsRaw = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt {
+-        let options = AVAudioSession.InterruptionOptions(rawValue: optionsRaw)
+-        handleInterruptionEnded(with: options)
++        options = AVAudioSession.InterruptionOptions(rawValue: optionsRaw)
+       } else {
+-        handleInterruptionEnded(with: [])
++        options = []
+       }
++      handleInterruptionEnded(with: options)
+ 
+     @unknown default:
+       break
+@@ -605,22 +584,13 @@ public class AudioModule: Module {
+ 
+ #if os(iOS)
+     registry.allRecorders.values.forEach { recorder in
+-      if recorder.isRecording {
+-        recorder.pauseRecording()
+-      }
++      recorder.stopForInterruption()
+     }
+ #endif
+   }
+ 
+-  private func handleInterruptionEnded(with options: AVAudioSession.InterruptionOptions) {
+-    do {
+-      try AVAudioSession.sharedInstance().setActive(true)
+-      if options.contains(.shouldResume) {
+-        resumeInterruptedPlayers()
+-      }
+-    } catch {
+-      print("Failed to reactivate audio session: \(error)")
+-    }
++  private func handleInterruptionEnded(with _: AVAudioSession.InterruptionOptions) {
++    finishInterruptedPlayersWithoutResuming()
+   }
+ 
+   @objc private func handleAudioSessionRouteChange(_ notification: Notification) {
+@@ -631,8 +601,22 @@ public class AudioModule: Module {
+     }
+ 
+     switch reason {
+-    case .oldDeviceUnavailable:
+-      pauseAllPlayers()
++    case .newDeviceAvailable, .oldDeviceUnavailable:
++      let interruptedRecorders = registry.allRecorders.values.compactMap { recorder -> (AudioRecorder, AVAudioRecorder)? in
++        guard let expectedRecorder = recorder.markCaptureInterrupted() else {
++          return nil
++        }
++        return (recorder, expectedRecorder)
++      }
++      DispatchQueue.main.async { [weak self] in
++        guard let self = self else {
++          return
++        }
++        self.pauseAllPlayers()
++        interruptedRecorders.forEach { (recorder, expectedRecorder) in
++          recorder.stopForInterruption(expectedRecorder: expectedRecorder)
++        }
++      }
+     default:
+       break
+     }
+@@ -666,7 +650,7 @@ public class AudioModule: Module {
+   }
+   #endif
+ 
+-  private func resumeInterruptedPlayers() {
++  private func finishInterruptedPlayersWithoutResuming() {
+     registry.allPlayables.forEach { playable in
+       if interruptedPlayers.contains(playable.id) {
+         switch interruptionMode {
+@@ -675,19 +659,11 @@ public class AudioModule: Module {
+             playable.volume = originalVolume
+           }
+         case .doNotMix, .mixWithOthers:
+-          playable.resumePlayback()
++          break
+         }
+       }
+     }
+ 
+-#if os(iOS)
+-    registry.allRecorders.values.forEach { recorder in
+-      if recorder.allowsRecording && !recorder.isRecording {
+-        _ = try? recorder.startRecording()
+-      }
+-    }
+-#endif
+-
+     interruptedPlayers.removeAll()
+     playerVolumes.removeAll()
+   }
+@@ -701,15 +677,6 @@ public class AudioModule: Module {
+     }
+   }
+ 
+-  private func resumeAllPlayers() {
+-    registry.allPlayables.forEach { playable in
+-      if playable.wasPlaying {
+-        playable.resumePlayback()
+-        playable.wasPlaying = false
+-      }
+-    }
+-  }
+-
+   private func pauseAllRecorders() {
+ #if os(iOS)
+     registry.allRecorders.values.forEach { recorder in
+diff --git a/ios/AudioPlayer.swift b/ios/AudioPlayer.swift
+index 074294321e872bb53c0b2d41044dac3c612f14f0..e5a50ea71df9ee48c48a1eb7308c30aa3f2b2ca9 100644
+--- a/ios/AudioPlayer.swift
++++ b/ios/AudioPlayer.swift
+@@ -292,7 +292,7 @@ public class AudioPlayer: SharedRef<AVPlayer>, Playable {
+     }
+ 
+     // Store these before we reset
+-    let shouldResume = wasPlaying
++    let shouldResume = false
+     let savedTime = currentTime
+     let savedRate = currentRate > 0 ? currentRate : 1.0
+     let wasSamplingEnabled = samplingEnabled
+diff --git a/ios/AudioRecorder.swift b/ios/AudioRecorder.swift
+index 20020bff9f8ba7bb6e7f61c99b4de5d29eee00db..d6ec4e3d214b88634892998342b40c47190f900d 100644
+--- a/ios/AudioRecorder.swift
++++ b/ios/AudioRecorder.swift
+@@ -14,6 +14,7 @@ enum RecordingState {
+ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+   let id = UUID().uuidString
+   private var recordingDelegate: RecordingDelegate?
++  private let stateLock = NSRecursiveLock()
+   private var startTimestamp = 0
+   private var totalRecordedDuration = 0
+   private var currentState: RecordingState = .idle
+@@ -21,6 +22,9 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+   var allowsRecording = false
+   weak var owningRegistry: AudioComponentRegistry?
+   private var mediaServicesDidReset = false
++  private var captureInvalidated = false
++  private var isReleased = false
++  private var interruptionTerminalPending = false
+   private var currentOptions: RecordingOptions?
+   private var currentSessionOptions: AVAudioSession.CategoryOptions = []
+ 
+@@ -36,21 +40,29 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+   }
+ 
+   var isRecording: Bool {
+-    ref.isRecording
++    stateLock.lock()
++    defer { stateLock.unlock() }
++    return ref.isRecording
+   }
+ 
+   var currentTime: Double {
++    stateLock.lock()
++    defer { stateLock.unlock() }
+     let time = ref.currentTime * 1000
+     return time.isNaN ? 0 : time
+   }
+ 
+   var deviceCurrentTime: Int {
++    stateLock.lock()
++    defer { stateLock.unlock() }
+     let time = ref.deviceCurrentTime * 1000
+     return time.isNaN ? 0 : Int(time)
+   }
+ 
+   var uri: String {
+-    ref.url.absoluteString
++    stateLock.lock()
++    defer { stateLock.unlock() }
++    return ref.url.absoluteString
+   }
+ 
+   private var currentSessionDuration: Int {
+@@ -72,9 +84,19 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+   }
+ 
+   func prepare(options: RecordingOptions?, sessionOptions: AVAudioSession.CategoryOptions = []) throws {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
++    guard !isReleased else {
++      throw AudioRecordingException("Recorder was released before it could be prepared")
++    }
++
+     if currentState == .recording {
++      let abandonedRecordingURL = ref.url
+       ref.stop()
++      deleteRecordingFile(at: abandonedRecordingURL)
+     }
++    captureInvalidated = false
+     resetDurationTracking()
+     mediaServicesDidReset = false
+ 
+@@ -87,21 +109,34 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+       throw AudioRecordingException("Failed to configure audio session: \(error.localizedDescription)")
+     }
+ 
+-    if let options {
++    // If an interruption did not produce a delegate callback, replace the
++    // underlying recorder before the next take so a late callback cannot be
++    // attributed to the new recording.
++    var replacementOptions = options
++    if replacementOptions == nil && interruptionTerminalPending {
++      replacementOptions = currentOptions
++    }
++    if let replacementOptions {
+       let newRecorder: AVAudioRecorder
+       do {
+-        newRecorder = try AudioUtils.createRecorder(directory: recordingDirectory(for: options), with: options)
++        newRecorder = try AudioUtils.createRecorder(
++          directory: recordingDirectory(for: replacementOptions),
++          with: replacementOptions
++        )
+       } catch {
+         currentState = .error
+         try? session.setActive(false)
+         throw error
+       }
+ 
+-      currentOptions = options
++      currentOptions = replacementOptions
+       currentSessionOptions = sessionOptions
++      let replacedRecordingURL = ref.url
+       ref.delegate = nil
+       ref = newRecorder
+       ref.delegate = recordingDelegate
++      interruptionTerminalPending = false
++      deleteRecordingFile(at: replacedRecordingURL)
+     }
+ 
+     let prepared = ref.prepareToRecord()
+@@ -109,6 +144,8 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+       currentState = .prepared
+     } else {
+       currentState = .error
++      ref.stop()
++      deleteRecordingFile(at: ref.url)
+       throw AudioRecordingException("Failed to prepare recorder")
+     }
+   }
+@@ -119,10 +156,20 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+   }
+ 
+   func startRecording() throws -> [String: Any] {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
++    guard !isReleased else {
++      throw AudioRecordingException("Recorder was released before it could start")
++    }
+     guard allowsRecording else {
+       throw RecordingDisabledException()
+     }
+ 
++    guard !captureInvalidated else {
++      throw AudioRecordingException("Recorder was interrupted before it could start")
++    }
++
+     guard currentState == .prepared || currentState == .paused else {
+       return [:]
+     }
+@@ -131,7 +178,57 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+       resetDurationTracking()
+     }
+ 
+-    ref.record()
++    guard ref.record() else {
++      currentState = .error
++      ref.stop()
++      deleteRecordingFile(at: ref.url)
++      throw AudioRecordingException("Failed to start recorder")
++    }
++
++    startTimestamp = deviceCurrentTime
++    currentState = .recording
++    return getRecordingStatus()
++  }
++
++  func record(atTime: Double?, forDuration: Double?) throws -> [String: Any] {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
++    guard !isReleased else {
++      throw AudioRecordingException("Recorder was released before it could start")
++    }
++    guard allowsRecording else {
++      throw RecordingDisabledException()
++    }
++    guard !captureInvalidated else {
++      throw AudioRecordingException("Recorder was interrupted before it could start")
++    }
++    guard currentState == .prepared || currentState == .paused else {
++      return [:]
++    }
++    if currentState != .paused {
++      resetDurationTracking()
++    }
++
++    let started: Bool
++    switch (atTime, forDuration) {
++    case let (atTime?, forDuration?):
++      let absoluteTime = ref.deviceCurrentTime + TimeInterval(atTime)
++      started = ref.record(atTime: absoluteTime, forDuration: TimeInterval(forDuration))
++    case let (atTime?, nil):
++      let absoluteTime = ref.deviceCurrentTime + TimeInterval(atTime)
++      started = ref.record(atTime: absoluteTime)
++    case let (nil, forDuration?):
++      started = ref.record(forDuration: TimeInterval(forDuration))
++    case (nil, nil):
++      started = ref.record()
++    }
++    guard started else {
++      currentState = .error
++      ref.stop()
++      deleteRecordingFile(at: ref.url)
++      throw AudioRecordingException("Failed to start recorder")
++    }
+ 
+     startTimestamp = deviceCurrentTime
+     currentState = .recording
+@@ -140,6 +237,9 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+ 
+   // Public method to update state when calling native recording methods directly
+   func updateStateForDirectRecording() {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
+     if currentState != .paused {
+       resetDurationTracking()
+     }
+@@ -148,16 +248,27 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+   }
+ 
+   func stopRecording() {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
+     guard currentState == .recording || currentState == .paused else {
+       return
+     }
+ 
++    if captureInvalidated {
++      stopForInterruption(expectedRecorder: ref)
++      return
++    }
++
+     ref.stop()
+     currentState = .stopped
+     resetDurationTracking()
+   }
+ 
+   func pauseRecording() {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
+     guard currentState == .recording else {
+       return
+     }
+@@ -168,7 +279,54 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+     currentState = .paused
+   }
+ 
++  func markCaptureInterrupted() -> AVAudioRecorder? {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
++    guard currentState == .prepared || currentState == .recording || currentState == .paused else {
++      return nil
++    }
++    captureInvalidated = true
++    return ref
++  }
++
++  func stopForInterruption(expectedRecorder: AVAudioRecorder? = nil) {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
++    if let expectedRecorder, expectedRecorder !== ref {
++      return
++    }
++
++    guard currentState == .prepared || currentState == .recording || currentState == .paused else {
++      return
++    }
++    captureInvalidated = true
++
++    // Apple does not guarantee audioRecorderDidFinishRecording after an
++    // interruption. Emit a terminal error synchronously and suppress a
++    // possible late delegate callback so JavaScript sees exactly one result.
++    interruptionTerminalPending = true
++    if currentState == .prepared || currentState == .recording || currentState == .paused {
++      ref.stop()
++    }
++    deleteRecordingFile(at: ref.url)
++    currentState = .stopped
++    resetDurationTracking()
++
++    emit(event: recordingStatus, payload: [
++      "id": id,
++      "isFinished": true,
++      "hasError": true,
++      "error": "Recording was interrupted by the system",
++      "url": nil
++    ])
++  }
++
+   func getRecordingStatus() -> [String: Any] {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
+     var result: [String: Any] = [
+       "canRecord": isPrepared,
+       "isRecording": currentState == .recording,
+@@ -186,6 +344,13 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+   }
+ 
+   func handleMediaServicesReset() {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
++    guard !isReleased else {
++      return
++    }
++
+     mediaServicesDidReset = true
+     resetDurationTracking()
+ 
+@@ -216,23 +381,74 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+   }
+ 
+   func didFinish(_ recorder: AVAudioRecorder, successfully flag: Bool) {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
++    guard !isReleased else {
++      return
++    }
++
++    // A replaced recorder may still have queued a delegate callback. It must
++    // never mutate or finish the state of the next take.
++    guard recorder === ref else {
++      return
++    }
++
++    if interruptionTerminalPending {
++      interruptionTerminalPending = false
++      return
++    }
++
++    if captureInvalidated {
++      stopForInterruption(expectedRecorder: recorder)
++      return
++    }
++
+     // Update internal state when recording finishes automatically (e.g., from recordForDuration)
+     currentState = .stopped
+     resetDurationTracking()
+ 
++    let errorMessage: String? = flag ? nil : "Recording did not finish successfully"
++    let recordingURL: String? = flag ? recorder.url.absoluteString : nil
++    if !flag {
++      deleteRecordingFile(at: recorder.url)
++    }
++
+     emit(event: recordingStatus, payload: [
+       "id": id,
+       "isFinished": true,
+-      "hasError": false,
+-      "error": nil,
+-      "url": recorder.url.absoluteString
++      "hasError": !flag,
++      "error": errorMessage,
++      "url": recordingURL
+     ])
+   }
+ 
+   func encodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
++    guard !isReleased else {
++      return
++    }
++
++    guard recorder === ref else {
++      return
++    }
++
++    if interruptionTerminalPending {
++      interruptionTerminalPending = false
++      return
++    }
++
++    // Close the recorder before removing its output. A stop may queue the
++    // finish delegate, which must not emit a second terminal result.
++    interruptionTerminalPending = true
++    recorder.stop()
++
+     // Update internal state on error
+     currentState = .error
+     resetDurationTracking()
++    deleteRecordingFile(at: recorder.url)
+ 
+     emit(event: recordingStatus, payload: [
+       "id": id,
+@@ -251,14 +467,27 @@ class AudioRecorder: SharedRef<AVAudioRecorder>, RecordingResultHandler {
+     return URL(fileURLWithPath: path)
+   }
+ 
++  private func deleteRecordingFile(at url: URL) {
++    try? FileManager.default.removeItem(at: url)
++  }
++
+   override func sharedObjectWillRelease() {
++    stateLock.lock()
++    defer { stateLock.unlock() }
++
++    isReleased = true
++    captureInvalidated = true
+     owningRegistry?.remove(self)
+ 
+-    if currentState == .recording {
++    let recordingURL = ref.url
++    if currentState == .prepared || currentState == .recording || currentState == .paused {
+       ref.stop()
+     }
++    currentState = .stopped
++    resetDurationTracking()
+ 
+     ref.delegate = nil
+     recordingDelegate = nil
++    deleteRecordingFile(at: recordingURL)
+   }
+ }
+diff --git a/ios/AudioUtils.swift b/ios/AudioUtils.swift
+index 79c7c0b256581a768c42a0291bf84bdff4c4b142..52c566f151f7dd8d2d88daf3c3a4a0d0f811c0f4 100644
+--- a/ios/AudioUtils.swift
++++ b/ios/AudioUtils.swift
+@@ -62,6 +62,7 @@ struct AudioUtils {
+       recorder.isMeteringEnabled = options.isMeteringEnabled
+       return recorder
+     } catch {
++      try? FileManager.default.removeItem(at: fileUrl)
+       throw AudioRecordingException("Failed to create recorder: \(error.localizedDescription)")
+     }
+   }

@@ -1,12 +1,23 @@
-appId: com.example.thainauteprototype
+appId: com.thainaute.app
 ---
-- launchApp
+- launchApp:
+    permissions:
+      all: deny
+      microphone: allow
 - assertVisible: "Donnée fictive — non publiable"
 - tapOn: "Commencer"
 - tapOn: "Option A"
 - tapOn: "Valider"
 - assertVisible: "La boucle technique fonctionne."
 - assertVisible: "250 ‰"
+- tapOn: "M’enregistrer sur cet appareil"
+- assertVisible: "Arrêter mon enregistrement,.*"
+- waitForAnimationToEnd:
+    timeout: 1000
+- tapOn: "Arrêter mon enregistrement,.*"
+- assertVisible: "B, écouter ma voix"
+- tapOn: "Supprimer définitivement mon essai vocal local"
+- assertVisible: "Essai vocal supprimé du cache local."
 - tapOn: "Découvrir le compte"
 - assertVisible: "Compte non configuré ici"
 - assertVisible: "Cette build locale reste utilisable hors ligne sans compte."

@@ -70,6 +70,77 @@ jobs:
       - run: pnpm --filter @thainaute/web exec playwright install --with-deps chromium
       - run: pnpm test:e2e:web
 
+  native-android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Install pnpm
+        uses: pnpm/action-setup@d15e628ca66d93ee5f352c71671a7bc6a97af5c9 # v6.0.8
+      - name: Install Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - name: Install Java
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Configure Gradle cache
+        uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @thainaute/mobile run config:check
+      - run: pnpm --filter @thainaute/mobile run native:check
+      - run: pnpm --filter @thainaute/mobile exec expo prebuild --clean --no-install --platform android
+      - run: ./gradlew :app:assembleDebug --no-daemon
+        working-directory: apps/mobile/android
+
+  native-ios:
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Install pnpm
+        uses: pnpm/action-setup@d15e628ca66d93ee5f352c71671a7bc6a97af5c9 # v6.0.8
+      - name: Install Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - name: Select Xcode 26.4
+        run: |
+          sudo xcode-select -s /Applications/Xcode_26.4.app/Contents/Developer
+          xcodebuild -version
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @thainaute/mobile run config:check
+      - run: pnpm --filter @thainaute/mobile run native:check
+      - run: pnpm --filter @thainaute/mobile exec expo prebuild --clean --platform ios
+      - name: Compile the iOS simulator app
+        run: |
+          shopt -s nullglob
+          workspaces=(apps/mobile/ios/*.xcworkspace)
+          if [[ ${#workspaces[@]} -ne 1 ]]; then
+            echo "Expected exactly one generated iOS workspace, found ${#workspaces[@]}." >&2
+            exit 1
+          fi
+          workspace="${workspaces[0]}"
+          scheme="$(basename "$workspace" .xcworkspace)"
+          xcodebuild \
+            -workspace "$workspace" \
+            -scheme "$scheme" \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
   database:
     runs-on: ubuntu-latest
     timeout-minutes: 25

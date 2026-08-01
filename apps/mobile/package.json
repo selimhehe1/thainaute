@@ -3,11 +3,27 @@
   "version": "0.0.0",
   "private": true,
   "main": "expo-router/entry",
+  "expo": {
+    "autolinking": {
+      "android": {
+        "buildFromSource": [
+          "expo-audio"
+        ]
+      },
+      "ios": {
+        "buildFromSource": [
+          "expo-audio"
+        ]
+      }
+    }
+  },
   "scripts": {
-    "build": "expo export --platform android --output-dir dist/android && expo export --platform ios --output-dir dist/ios",
+    "build": "pnpm run config:check && pnpm run native:check && expo export --platform android --output-dir dist/android && expo export --platform ios --output-dir dist/ios",
+    "config:check": "node scripts/check-native-config.mjs",
     "dev": "expo start",
     "doctor": "expo-doctor",
     "lint": "eslint .",
+    "native:check": "node scripts/check-native-patch.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run --passWithNoTests"
   },
@@ -24,6 +40,7 @@
     "expo-audio": "57.0.3",
     "expo-constants": "57.0.8",
     "expo-crypto": "57.0.1",
+    "expo-file-system": "57.0.1",
     "expo-linking": "57.0.4",
     "expo-router": "57.0.9",
     "expo-secure-store": "57.0.1",
@@ -38,9 +55,11 @@
     "react-native-worklets": "0.10.1"
   },
   "devDependencies": {
+    "@testing-library/react": "16.3.2",
     "@types/react": "19.2.18",
     "eslint-config-expo": "57.0.1",
     "expo-doctor": "1.20.1",
+    "jsdom": "30.0.1",
     "typescript": "6.0.3",
     "vitest": "4.1.10"
   }

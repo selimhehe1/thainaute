@@ -28,6 +28,7 @@ import {
   MobileAttemptOutboxStorageError,
   MobileAttemptOutboxStore,
 } from "../lib/attempt-outbox-store";
+import { useLocalVoicePractice } from "../lib/use-local-voice-practice";
 
 const lesson = fixtureLesson;
 
@@ -49,6 +50,7 @@ export default function DemoScreen() {
     [database],
   );
   const player = useAudioPlayer(require("../assets/audio/fixture-tone.wav"));
+  const voicePractice = useLocalVoicePractice(player);
   const [stage, setStage] = useState<Stage>("intro");
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [outbox, setOutbox] = useState<AttemptOutboxSnapshot>(() =>
@@ -63,6 +65,7 @@ export default function DemoScreen() {
   const [isSaving, setIsSaving] = useState(false);
   const [latestRating, setLatestRating] = useState<0 | 1 | null>(null);
   const submissionInFlight = useRef(false);
+  const finishInFlight = useRef(false);
   const resultHeading = useRef<Text>(null);
 
   useEffect(() => {
@@ -111,12 +114,7 @@ export default function DemoScreen() {
 
   function playSignal() {
     setMessage("");
-    void player
-      .seekTo(0)
-      .then(() => player.play())
-      .catch(() =>
-        setMessage("Le signal audio est indisponible. Vous pouvez continuer."),
-      );
+    void voicePractice.playModel();
   }
 
   async function submitAnswer(): Promise<void> {
@@ -208,6 +206,30 @@ export default function DemoScreen() {
     });
   }
 
+  function handleFinish(): void {
+    if (
+      finishInFlight.current ||
+      voicePractice.isBusy ||
+      voicePractice.isRecording
+    ) {
+      return;
+    }
+
+    finishInFlight.current = true;
+    voicePractice.pausePlayback();
+    void voicePractice
+      .deleteRecording()
+      .then((deleted) => {
+        if (!deleted) return;
+        setStage("intro");
+        setSelectedOptionId(null);
+        setLatestRating(null);
+      })
+      .finally(() => {
+        finishInFlight.current = false;
+      });
+  }
+
   useEffect(() => {
     if (stage !== "result") return;
     const node = findNodeHandle(resultHeading.current);
@@ -217,6 +239,10 @@ export default function DemoScreen() {
   const pendingAttempts = outbox.entries.filter(
     ({ status }) => status === "pending",
   ).length;
+  const questionMessage =
+    message !== "" ? message : stage === "question" ? voicePractice.error : "";
+  const modelPlayback = voicePractice.playback?.target === "model";
+  const recordingPlayback = voicePractice.playback?.target === "recording";
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -284,6 +310,11 @@ export default function DemoScreen() {
             >
               <Text style={styles.secondaryButtonText}>Écouter le signal</Text>
             </Pressable>
+            {voicePractice.error !== "" && (
+              <Text accessibilityRole="alert" style={styles.error}>
+                {voicePractice.error}
+              </Text>
+            )}
           </View>
         )}
 
@@ -323,9 +354,9 @@ export default function DemoScreen() {
                 );
               })}
             </View>
-            {message !== "" && (
+            {questionMessage !== "" && (
               <Text accessibilityRole="alert" style={styles.error}>
-                {message}
+                {questionMessage}
               </Text>
             )}
             <Pressable
@@ -347,7 +378,7 @@ export default function DemoScreen() {
         )}
 
         {stage === "result" && (
-          <View style={styles.screen} accessibilityLiveRegion="polite">
+          <View style={styles.screen}>
             <Text style={styles.eyebrow}>TENTATIVE CONSERVÉE HORS LIGNE</Text>
             <Text
               ref={resultHeading}
@@ -375,28 +406,229 @@ export default function DemoScreen() {
                     }).format(new Date(projection.dueAt))}
               </Text>
             </View>
+            <View style={styles.voiceCard}>
+              <Text style={styles.voiceEyebrow}>
+                PRATIQUE VOCALE OPTIONNELLE
+              </Text>
+              <Text style={styles.voiceTitle}>Comparez A et B</Text>
+              <Text style={styles.voiceBody}>
+                Écoutez le modèle, puis enregistrez jusqu’à 20 secondes pour
+                comparer sur cet appareil.
+              </Text>
+
+              <View style={styles.voiceActions}>
+                <Pressable
+                  accessibilityLabel={
+                    modelPlayback && !voicePractice.playback?.paused
+                      ? "Mettre le modèle en pause"
+                      : modelPlayback
+                        ? "Reprendre le modèle"
+                        : "A, écouter le modèle"
+                  }
+                  accessibilityRole="button"
+                  accessibilityState={{
+                    disabled: voicePractice.isRecording || voicePractice.isBusy,
+                  }}
+                  disabled={voicePractice.isRecording || voicePractice.isBusy}
+                  style={({ pressed }) => [
+                    styles.voiceButton,
+                    modelPlayback && styles.voiceButtonActive,
+                    pressed && styles.pressed,
+                    (voicePractice.isRecording || voicePractice.isBusy) &&
+                      styles.disabled,
+                  ]}
+                  onPress={() => {
+                    if (modelPlayback && !voicePractice.playback?.paused) {
+                      voicePractice.pausePlayback();
+                      return;
+                    }
+                    void voicePractice.playModel();
+                  }}
+                >
+                  <Text style={styles.voiceButtonText}>
+                    {modelPlayback && !voicePractice.playback?.paused
+                      ? "Pause modèle"
+                      : modelPlayback
+                        ? "Reprendre le modèle"
+                        : "A · Écouter le modèle"}
+                  </Text>
+                </Pressable>
+
+                <Pressable
+                  accessibilityLabel={
+                    recordingPlayback && !voicePractice.playback?.paused
+                      ? "Mettre ma voix en pause"
+                      : recordingPlayback
+                        ? "Reprendre ma voix"
+                        : "B, écouter ma voix"
+                  }
+                  accessibilityRole="button"
+                  accessibilityState={{
+                    disabled:
+                      !voicePractice.canPlayRecording ||
+                      voicePractice.isRecording ||
+                      voicePractice.isBusy,
+                  }}
+                  disabled={
+                    !voicePractice.canPlayRecording ||
+                    voicePractice.isRecording ||
+                    voicePractice.isBusy
+                  }
+                  style={({ pressed }) => [
+                    styles.voiceButton,
+                    recordingPlayback && styles.voiceButtonActive,
+                    pressed && styles.pressed,
+                    (!voicePractice.canPlayRecording ||
+                      voicePractice.isRecording ||
+                      voicePractice.isBusy) &&
+                      styles.disabled,
+                  ]}
+                  onPress={() => {
+                    if (recordingPlayback && !voicePractice.playback?.paused) {
+                      voicePractice.pausePlayback();
+                      return;
+                    }
+                    void voicePractice.playRecording();
+                  }}
+                >
+                  <Text style={styles.voiceButtonText}>
+                    {recordingPlayback && !voicePractice.playback?.paused
+                      ? "Pause ma voix"
+                      : recordingPlayback
+                        ? "Reprendre ma voix"
+                        : "B · Écouter ma voix"}
+                  </Text>
+                </Pressable>
+              </View>
+
+              <Pressable
+                accessibilityLabel={
+                  voicePractice.isRecording
+                    ? `Arrêter mon enregistrement, ${voicePractice.remainingSeconds} secondes restantes au maximum`
+                    : "M’enregistrer sur cet appareil"
+                }
+                accessibilityRole="button"
+                accessibilityState={{
+                  busy: voicePractice.isBusy,
+                  disabled: voicePractice.isBusy,
+                }}
+                disabled={voicePractice.isBusy}
+                style={({ pressed }) => [
+                  styles.recordButton,
+                  voicePractice.isRecording && styles.recordButtonActive,
+                  pressed && styles.pressed,
+                  voicePractice.isBusy && styles.disabled,
+                ]}
+                onPress={() => {
+                  if (voicePractice.isRecording) {
+                    void voicePractice.stopRecording();
+                    return;
+                  }
+                  void voicePractice.startRecording();
+                }}
+              >
+                <Text style={styles.recordButtonText}>
+                  {voicePractice.isRecording
+                    ? `Arrêter · ${voicePractice.remainingSeconds} s max.`
+                    : voicePractice.isBusy
+                      ? "Préparation…"
+                      : voicePractice.hasRecording
+                        ? "Refaire mon essai"
+                        : "M’enregistrer"}
+                </Text>
+              </Pressable>
+
+              {voicePractice.hasRecording && (
+                <Pressable
+                  accessibilityLabel="Supprimer définitivement mon essai vocal local"
+                  accessibilityRole="button"
+                  accessibilityState={{ disabled: voicePractice.isBusy }}
+                  disabled={voicePractice.isBusy}
+                  style={({ pressed }) => [
+                    styles.deleteVoiceButton,
+                    pressed && styles.pressed,
+                    voicePractice.isBusy && styles.disabled,
+                  ]}
+                  onPress={() => {
+                    void voicePractice.deleteRecording();
+                  }}
+                >
+                  <Text style={styles.deleteVoiceButtonText}>
+                    Supprimer ma voix
+                  </Text>
+                </Pressable>
+              )}
+
+              {voicePractice.notice !== "" && (
+                <Text
+                  accessibilityLiveRegion="polite"
+                  style={styles.voiceStatus}
+                >
+                  {voicePractice.notice}
+                </Text>
+              )}
+              {voicePractice.error !== "" && (
+                <Text accessibilityRole="alert" style={styles.error}>
+                  {voicePractice.error}
+                </Text>
+              )}
+              <Text style={styles.voicePrivacy}>
+                Cache local temporaire uniquement. Votre voix n’est ni
+                synchronisée, ni envoyée, ni analysée. Elle est supprimable à
+                tout moment et à la fermeture normale de cet écran.
+              </Text>
+            </View>
             <Text style={styles.privacy}>
               Cette démonstration technique reste isolée sur cet appareil et ne
               sera jamais synchronisée comme contenu pédagogique.
             </Text>
             <Pressable
               accessibilityRole="button"
-              style={styles.primaryButton}
-              onPress={() => {
-                setStage("intro");
-                setSelectedOptionId(null);
-                setLatestRating(null);
+              accessibilityState={{
+                busy: voicePractice.isBusy,
+                disabled: voicePractice.isBusy || voicePractice.isRecording,
               }}
+              disabled={voicePractice.isBusy || voicePractice.isRecording}
+              style={[
+                styles.primaryButton,
+                (voicePractice.isBusy || voicePractice.isRecording) &&
+                  styles.disabled,
+              ]}
+              onPress={handleFinish}
             >
-              <Text style={styles.primaryButtonText}>Terminer</Text>
+              <Text style={styles.primaryButtonText}>
+                {voicePractice.isRecording
+                  ? "Arrêtez d’abord l’enregistrement"
+                  : "Terminer"}
+              </Text>
             </Pressable>
             <Link href="/account" asChild>
               <Pressable
                 accessibilityRole="button"
-                style={styles.secondaryButton}
+                accessibilityState={{
+                  disabled:
+                    voicePractice.hasRecording ||
+                    voicePractice.isRecording ||
+                    voicePractice.isBusy,
+                }}
+                disabled={
+                  voicePractice.hasRecording ||
+                  voicePractice.isRecording ||
+                  voicePractice.isBusy
+                }
+                style={[
+                  styles.secondaryButton,
+                  (voicePractice.hasRecording ||
+                    voicePractice.isRecording ||
+                    voicePractice.isBusy) &&
+                    styles.disabled,
+                ]}
+                onPress={voicePractice.pausePlayback}
               >
                 <Text style={styles.secondaryButtonText}>
-                  Découvrir le compte
+                  {voicePractice.hasRecording || voicePractice.isRecording
+                    ? "Supprimez l’essai avant de quitter"
+                    : "Découvrir le compte"}
                 </Text>
               </Pressable>
             </Link>
@@ -541,5 +773,92 @@ const styles = StyleSheet.create({
   },
   metricValue: { color: "#43a283", fontSize: 28, fontWeight: "800" },
   metricDate: { color: "#283450", fontSize: 19, fontWeight: "700" },
+  voiceCard: {
+    marginTop: 24,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: "#cfe7df",
+    borderRadius: 22,
+    backgroundColor: "#f2faf7",
+  },
+  voiceEyebrow: {
+    color: "#2d7c66",
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 1,
+  },
+  voiceTitle: {
+    marginTop: 8,
+    color: "#283450",
+    fontSize: 24,
+    fontWeight: "800",
+  },
+  voiceBody: {
+    marginTop: 8,
+    color: "#5e6980",
+    fontSize: 15,
+    lineHeight: 22,
+  },
+  voiceActions: {
+    marginTop: 18,
+    flexDirection: "row",
+    gap: 10,
+  },
+  voiceButton: {
+    minHeight: 52,
+    paddingHorizontal: 12,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "#aeb8c7",
+    borderRadius: 14,
+    backgroundColor: "white",
+  },
+  voiceButtonActive: {
+    borderColor: "#43a283",
+    backgroundColor: "#e3f5ef",
+  },
+  voiceButtonText: {
+    color: "#283450",
+    fontSize: 13,
+    fontWeight: "800",
+    textAlign: "center",
+  },
+  recordButton: {
+    minHeight: 52,
+    marginTop: 12,
+    paddingHorizontal: 18,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 999,
+    backgroundColor: "#283450",
+  },
+  recordButtonActive: { backgroundColor: "#a23d38" },
+  recordButtonText: { color: "white", fontSize: 15, fontWeight: "800" },
+  deleteVoiceButton: {
+    minHeight: 48,
+    marginTop: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  deleteVoiceButtonText: {
+    color: "#8f3834",
+    fontSize: 14,
+    fontWeight: "700",
+    textDecorationLine: "underline",
+  },
+  voiceStatus: {
+    marginTop: 12,
+    color: "#325f54",
+    fontSize: 13,
+    lineHeight: 19,
+  },
+  voicePrivacy: {
+    marginTop: 14,
+    color: "#687287",
+    fontSize: 12,
+    lineHeight: 18,
+  },
   privacy: { marginTop: 20, color: "#697389", fontSize: 13, lineHeight: 20 },
 });

@@ -19,7 +19,7 @@ export function createSiteMetadata(
       template: "%s · Thaïnaute",
     },
     description:
-      "Prototype local d'une méthode de thaï conçue pour les francophones.",
+      "Bêta privée d'une méthode de thaï conçue pour les francophones.",
     ...(diagnostic.publicOrigin === null
       ? {}
       : {
