@@ -69,6 +69,18 @@ const MIME_TYPE_CANDIDATES = [
 ] as const;
 const STOP_FINALIZATION_TIMEOUT_MS = 2_000;
 
+type StopReason =
+  "cancelled" | "error" | "interrupted" | "limit" | "manual" | null;
+
+function errorCodeForStopReason(
+  stopReason: StopReason,
+): LocalVoiceRecorderErrorCode {
+  if (stopReason === "cancelled" || stopReason === "interrupted") {
+    return stopReason;
+  }
+  return "unknown";
+}
+
 function stopTracks(stream: MediaStream): void {
   for (const track of stream.getTracks()) {
     try {
@@ -229,9 +241,7 @@ export function createBrowserLocalVoiceRecorder(
 
       const chunks: Blob[] = [];
       const startedAt = now();
-      let stopReason:
-        "cancelled" | "error" | "interrupted" | "limit" | "manual" | null =
-        null;
+      let stopReason: StopReason = null;
       let settled = false;
       let stopRequested = false;
       const timerState: {
@@ -287,13 +297,7 @@ export function createBrowserLocalVoiceRecorder(
         if (settled) return;
         if (stopRequested) return;
         if (recorder.state === "inactive") {
-          finishWithError(
-            stopReason === "cancelled"
-              ? "cancelled"
-              : stopReason === "interrupted"
-                ? "interrupted"
-                : "unknown",
-          );
+          finishWithError(errorCodeForStopReason(stopReason));
           return;
         }
         try {
@@ -302,13 +306,7 @@ export function createBrowserLocalVoiceRecorder(
           if (settled) return;
           releaseTracks();
           timerState.finalization = scheduleTimeout(() => {
-            finishWithError(
-              stopReason === "cancelled"
-                ? "cancelled"
-                : stopReason === "interrupted"
-                  ? "interrupted"
-                  : "unknown",
-            );
+            finishWithError(errorCodeForStopReason(stopReason));
           }, STOP_FINALIZATION_TIMEOUT_MS);
         } catch {
           finishWithError("unknown");
@@ -329,13 +327,7 @@ export function createBrowserLocalVoiceRecorder(
           stopReason === "error" ||
           stopReason === null
         ) {
-          finishWithError(
-            stopReason === "cancelled"
-              ? "cancelled"
-              : stopReason === "interrupted"
-                ? "interrupted"
-                : "unknown",
-          );
+          finishWithError(errorCodeForStopReason(stopReason));
           return;
         }
 

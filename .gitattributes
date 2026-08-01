@@ -19,6 +19,7 @@
 *.toml text eol=lf
 *.ts text eol=lf
 *.tsx text eol=lf
+*.vtt text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
 

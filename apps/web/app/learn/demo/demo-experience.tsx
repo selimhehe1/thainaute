@@ -171,18 +171,11 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
       setAudioError(true);
     };
 
-    try {
-      void audio.play().catch(() => {
-        if (lessonAudio.current !== audio) return;
-        stopSignal();
-        setAudioError(true);
-      });
-    } catch {
-      if (lessonAudio.current === audio) {
-        stopSignal();
-        setAudioError(true);
-      }
-    }
+    void audio.play().catch(() => {
+      if (lessonAudio.current !== audio) return;
+      stopSignal();
+      setAudioError(true);
+    });
   }, [stopSignal]);
 
   useEffect(() => {

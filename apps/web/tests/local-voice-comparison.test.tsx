@@ -138,6 +138,10 @@ describe("comparaison vocale locale web", () => {
     const modelBeforePermission = screen.getByLabelText(
       "Lire le signal modèle fictif",
     );
+    expect(
+      modelBeforePermission.querySelector('track[kind="captions"]'),
+    ).toHaveAttribute("src", "/captions/fixture-tone.fr.vtt");
+    expect(screen.getByText(/une note pure de 440 hertz/)).toBeInTheDocument();
     const pauseBeforePermission = vi.fn();
     (modelBeforePermission as HTMLAudioElement).pause = pauseBeforePermission;
 
@@ -156,6 +160,10 @@ describe("comparaison vocale locale web", () => {
 
     const localAudio = await screen.findByLabelText("Lire ma prise locale");
     expect(localAudio).toHaveAttribute("src", "blob:local-voice");
+    expect(localAudio.querySelector('track[kind="captions"]')).toHaveAttribute(
+      "src",
+      "/captions/local-voice.fr.vtt",
+    );
     const modelAudio = screen.getByLabelText("Lire le signal modèle fictif");
     const pauseModel = vi.fn();
     const pauseLocal = vi.fn();
@@ -181,7 +189,9 @@ describe("comparaison vocale locale web", () => {
     expect(
       screen.queryByLabelText("Lire ma prise locale"),
     ).not.toBeInTheDocument();
-    expect(screen.getByText("Prise supprimée de cet onglet.")).toBeVisible();
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "Prise supprimée de cet onglet.",
+    );
   });
 
   it("verrouille et repause le signal A des la demande de permission", async () => {

@@ -92,7 +92,8 @@ jobs:
           java-version: "17"
       - name: Configure Gradle cache
         uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
-      - run: pnpm install --frozen-lockfile
+      - name: Install locked dependencies with allowlisted build scripts
+        run: pnpm install --frozen-lockfile # NOSONAR -- allowBuilds in pnpm-workspace.yaml is explicit.
       - run: pnpm --filter @thainaute/mobile run config:check
       - run: pnpm --filter @thainaute/mobile run native:check
       - run: pnpm --filter @thainaute/mobile exec expo prebuild --clean --no-install --platform android
@@ -118,7 +119,8 @@ jobs:
         run: |
           sudo xcode-select -s /Applications/Xcode_26.4.app/Contents/Developer
           xcodebuild -version
-      - run: pnpm install --frozen-lockfile
+      - name: Install locked dependencies with allowlisted build scripts
+        run: pnpm install --frozen-lockfile # NOSONAR -- allowBuilds in pnpm-workspace.yaml is explicit.
       - run: pnpm --filter @thainaute/mobile run config:check
       - run: pnpm --filter @thainaute/mobile run native:check
       - run: pnpm --filter @thainaute/mobile exec expo prebuild --clean --platform ios

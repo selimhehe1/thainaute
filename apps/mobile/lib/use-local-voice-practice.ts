@@ -20,6 +20,7 @@ import {
   LOCAL_VOICE_MAX_DURATION_MS,
   LocalVoiceEpochGate,
   LocalVoiceRecorderTerminalLatch,
+  type LocalVoiceRecorderTerminalResult,
   deleteLocalVoiceResource,
   getLocalVoiceRemainingMs,
   isFinitePositiveAudioDuration,
@@ -79,6 +80,16 @@ interface RecorderSession {
   terminalArmed: boolean;
 }
 
+interface NativeStopResult {
+  readonly stopFailed: boolean;
+  readonly terminal: LocalVoiceRecorderTerminalResult | null;
+}
+
+interface VoiceFeedback {
+  readonly error: string;
+  readonly notice: string | null;
+}
+
 function monotonicNow(): number {
   return (
     globalThis as unknown as { readonly performance: { now(): number } }
@@ -122,6 +133,107 @@ function permissionError(canAskAgain: boolean): string {
     return "Accès au microphone refusé pour cette fois. Appuyez de nouveau sur « M’enregistrer » pour réessayer.";
   }
   return "Accès au microphone bloqué. Autorisez Thaïnaute dans les réglages de l’appareil pour utiliser cet exercice optionnel.";
+}
+
+function isDiscardingStopReason(reason: StopReason): boolean {
+  return (
+    reason === "background" || reason === "interruption" || reason === "route"
+  );
+}
+
+function mustDiscardStoppedRecording(
+  session: RecorderSession,
+  result: NativeStopResult,
+): boolean {
+  return (
+    session.forceDiscard ||
+    result.stopFailed ||
+    result.terminal === null ||
+    result.terminal.outcome === "discard"
+  );
+}
+
+function discardedStopFeedback(
+  reason: StopReason,
+  session: RecorderSession,
+  result: NativeStopResult,
+  audioModeFailed: boolean,
+): VoiceFeedback {
+  if (result.terminal === null) {
+    return {
+      error:
+        "La finalisation native n’a pas été confirmée. La prise a été supprimée et l’enregistrement reste verrouillé jusqu’à la réouverture de cet écran.",
+      notice: null,
+    };
+  }
+  if (result.stopFailed) {
+    return {
+      error:
+        "La finalisation a échoué. La prise incomplète a été supprimée du cache local.",
+      notice: null,
+    };
+  }
+  if (result.terminal.outcome === "discard") {
+    return {
+      error:
+        "Une interruption audio a été détectée. La prise incomplète a été supprimée du cache local.",
+      notice: null,
+    };
+  }
+  if (session.forceDiscard) {
+    return { error: "", notice: stopNotice("interruption") };
+  }
+  if (audioModeFailed) {
+    return {
+      error:
+        "La prise interrompue a été supprimée, mais la session audio devra être relancée.",
+      notice: null,
+    };
+  }
+  return { error: "", notice: stopNotice(reason) };
+}
+
+function createRecorderSession(
+  epoch: number,
+  protectedRecordingUri: string | null,
+): RecorderSession {
+  return {
+    epoch,
+    forceDiscard: false,
+    latch: new LocalVoiceRecorderTerminalLatch(),
+    observedRecording: false,
+    phase: "preparing",
+    preserveProtectedRecording: protectedRecordingUri !== null,
+    protectedRecordingUri,
+    startedAtMillis: null,
+    terminalArmed: false,
+  };
+}
+
+function recordingStartIsBlocked(
+  operation: VoiceOperation,
+  hasRecorderSession: boolean,
+  hasStopInFlight: boolean,
+): boolean {
+  return operation !== "idle" || hasRecorderSession || hasStopInFlight;
+}
+
+function playbackStartIsBlocked(
+  operation: VoiceOperation,
+  hasRecorderSession: boolean,
+  hasStopInFlight: boolean,
+): boolean {
+  return (
+    hasRecorderSession ||
+    hasStopInFlight ||
+    (operation !== "idle" && operation !== "playback")
+  );
+}
+
+function playbackError(target: VoicePlaybackTarget): string {
+  return target === "model"
+    ? "Le modèle audio est momentanément indisponible."
+    : "Votre essai local ne peut pas être lu. Vous pouvez toujours le supprimer.";
 }
 
 export function useLocalVoicePractice(
@@ -615,6 +727,143 @@ export function useLocalVoicePractice(
     ],
   );
 
+  const stopNativeRecorder = useCallback(
+    async (session: RecorderSession): Promise<NativeStopResult> => {
+      let stopFailed = false;
+      const terminalPromise = session.latch.wait({
+        settleMs: RECORDER_TERMINAL_SETTLE_MS,
+        timeoutMs: RECORDER_TERMINAL_TIMEOUT_MS,
+      });
+      const markStopFailure = () => {
+        stopFailed = true;
+        session.forceDiscard = true;
+        session.latch.observe({
+          hasError: true,
+          isFinished: true,
+          url: null,
+        });
+      };
+
+      try {
+        // A logically active recorder is always stopped, even when the native
+        // property reports a transient paused state.
+        void recorder.stop().catch(markStopFailure);
+      } catch {
+        markStopFailure();
+      }
+
+      const terminal = await terminalPromise;
+      return { stopFailed, terminal };
+    },
+    [recorder],
+  );
+
+  const restoreAudioAfterStop = useCallback(
+    async (
+      session: RecorderSession,
+      result: NativeStopResult,
+    ): Promise<boolean> => {
+      const canRestorePlaybackMode =
+        result.terminal !== null &&
+        !result.stopFailed &&
+        !session.forceDiscard &&
+        mountedRef.current &&
+        routeFocusedRef.current &&
+        windowFocusedRef.current &&
+        appStateRef.current === "active";
+
+      try {
+        if (canRestorePlaybackMode) {
+          await setAudioModeAsync(PLAYBACK_AUDIO_MODE);
+        } else {
+          await deactivateAudioSession();
+        }
+        return false;
+      } catch {
+        return true;
+      }
+    },
+    [deactivateAudioSession],
+  );
+
+  const discardStoppedRecording = useCallback(
+    (
+      reason: StopReason,
+      session: RecorderSession,
+      result: NativeStopResult,
+      audioModeFailed: boolean,
+    ): null => {
+      const deleted = discardRecorderUri(
+        result.terminal?.url ?? readRecorderUri(),
+      );
+      if (!deleted || !mountedRef.current) return null;
+
+      const feedback = discardedStopFeedback(
+        reason,
+        session,
+        result,
+        audioModeFailed,
+      );
+      showError(feedback.error);
+      if (feedback.notice !== null) showNotice(feedback.notice);
+      return null;
+    },
+    [discardRecorderUri, readRecorderUri, showError, showNotice],
+  );
+
+  const retainStoppedRecording = useCallback(
+    async (
+      reason: StopReason,
+      session: RecorderSession,
+      terminalUri: string | null,
+      audioModeFailed: boolean,
+    ): Promise<string | null> => {
+      if (terminalUri === null || terminalUri.trim() === "") {
+        const deleted = discardRecorderUri(readRecorderUri());
+        if (deleted) {
+          showError(
+            "L’enregistrement s’est terminé sans produire de fichier local utilisable.",
+          );
+        }
+        return null;
+      }
+
+      const retainedUri = await validateAndAttachRecording(
+        terminalUri,
+        session,
+      );
+      if (retainedUri === null) {
+        const terminalDeleted = discardRecorderUri(terminalUri);
+        const fallbackUri = readRecorderUri();
+        const fallbackDeleted =
+          fallbackUri === terminalUri || discardRecorderUri(fallbackUri);
+        if (terminalDeleted && fallbackDeleted) {
+          showError(
+            "La prise locale est absente, vide ou illisible. Elle a été supprimée et ne peut pas être écoutée.",
+          );
+        }
+        return null;
+      }
+
+      if (audioModeFailed) {
+        showError(
+          "Votre essai est conservé dans le cache, mais la session audio devra être relancée avant l’écoute.",
+        );
+      } else {
+        showError("");
+        showNotice(stopNotice(reason));
+      }
+      return retainedUri;
+    },
+    [
+      discardRecorderUri,
+      readRecorderUri,
+      showError,
+      showNotice,
+      validateAndAttachRecording,
+    ],
+  );
+
   const stopRecordingInternal = useCallback(
     (reason: StopReason): Promise<string | null> => {
       const existingStop = stopInFlightRef.current;
@@ -629,138 +878,35 @@ export function useLocalVoicePractice(
       clearStopTimer();
       clearHealthTimer();
       session.phase = "stopping";
-      if (
-        reason === "background" ||
-        reason === "interruption" ||
-        reason === "route"
-      ) {
+      if (isDiscardingStopReason(reason)) {
         session.forceDiscard = true;
       }
       if (mountedRef.current) setIsRecording(false);
       setOperationState("stopping");
 
       const task = (async (): Promise<string | null> => {
-        let stopFailed = false;
-        const terminalPromise = session.latch.wait({
-          settleMs: RECORDER_TERMINAL_SETTLE_MS,
-          timeoutMs: RECORDER_TERMINAL_TIMEOUT_MS,
-        });
-        const markStopFailure = () => {
-          stopFailed = true;
-          session.forceDiscard = true;
-          session.latch.observe({
-            hasError: true,
-            isFinished: true,
-            url: null,
-          });
-        };
-        try {
-          // A logically active recorder is always stopped, even when the native
-          // property reports a transient paused state.
-          void recorder.stop().catch(markStopFailure);
-        } catch {
-          markStopFailure();
-        }
-
-        const terminal = await terminalPromise;
-        if (terminal === null) {
+        const result = await stopNativeRecorder(session);
+        if (result.terminal === null) {
           recorderPoisonedRef.current = true;
           session.forceDiscard = true;
         }
 
-        let audioModeFailed = false;
-        try {
-          if (
-            terminal !== null &&
-            !stopFailed &&
-            !session.forceDiscard &&
-            mountedRef.current &&
-            routeFocusedRef.current &&
-            windowFocusedRef.current &&
-            appStateRef.current === "active"
-          ) {
-            await setAudioModeAsync(PLAYBACK_AUDIO_MODE);
-          } else {
-            await deactivateAudioSession();
-          }
-        } catch {
-          audioModeFailed = true;
-        }
-
-        const mustDiscard =
-          session.forceDiscard ||
-          stopFailed ||
-          terminal === null ||
-          terminal.outcome === "discard";
-        if (mustDiscard) {
-          const deleted = discardRecorderUri(
-            terminal?.url ?? readRecorderUri(),
+        const audioModeFailed = await restoreAudioAfterStop(session, result);
+        if (mustDiscardStoppedRecording(session, result)) {
+          return discardStoppedRecording(
+            reason,
+            session,
+            result,
+            audioModeFailed,
           );
-          if (deleted && mountedRef.current) {
-            if (terminal === null) {
-              showError(
-                "La finalisation native n’a pas été confirmée. La prise a été supprimée et l’enregistrement reste verrouillé jusqu’à la réouverture de cet écran.",
-              );
-            } else if (stopFailed) {
-              showError(
-                "La finalisation a échoué. La prise incomplète a été supprimée du cache local.",
-              );
-            } else if (terminal.outcome === "discard") {
-              showError(
-                "Une interruption audio a été détectée. La prise incomplète a été supprimée du cache local.",
-              );
-            } else if (session.forceDiscard) {
-              showError("");
-              showNotice(stopNotice("interruption"));
-            } else if (audioModeFailed) {
-              showError(
-                "La prise interrompue a été supprimée, mais la session audio devra être relancée.",
-              );
-            } else {
-              showError("");
-              showNotice(stopNotice(reason));
-            }
-          }
-          return null;
         }
 
-        const terminalUri = terminal.url;
-        if (terminalUri === null || terminalUri.trim() === "") {
-          const deleted = discardRecorderUri(readRecorderUri());
-          if (deleted) {
-            showError(
-              "L’enregistrement s’est terminé sans produire de fichier local utilisable.",
-            );
-          }
-          return null;
-        }
-
-        const retainedUri = await validateAndAttachRecording(
-          terminalUri,
+        return await retainStoppedRecording(
+          reason,
           session,
+          result.terminal?.url ?? null,
+          audioModeFailed,
         );
-        if (retainedUri === null) {
-          const terminalDeleted = discardRecorderUri(terminalUri);
-          const fallbackUri = readRecorderUri();
-          const fallbackDeleted =
-            fallbackUri === terminalUri || discardRecorderUri(fallbackUri);
-          if (terminalDeleted && fallbackDeleted) {
-            showError(
-              "La prise locale est absente, vide ou illisible. Elle a été supprimée et ne peut pas être écoutée.",
-            );
-          }
-          return null;
-        }
-
-        if (audioModeFailed) {
-          showError(
-            "Votre essai est conservé dans le cache, mais la session audio devra être relancée avant l’écoute.",
-          );
-        } else {
-          showError("");
-          showNotice(stopNotice(reason));
-        }
-        return retainedUri;
       })().finally(() => {
         session.terminalArmed = false;
         if (recorderSessionRef.current === session) {
@@ -779,101 +925,62 @@ export function useLocalVoicePractice(
       abortPreparingSession,
       clearHealthTimer,
       clearStopTimer,
-      deactivateAudioSession,
-      discardRecorderUri,
+      discardStoppedRecording,
       finishOperation,
-      readRecorderUri,
-      recorder,
+      restoreAudioAfterStop,
+      retainStoppedRecording,
       setOperationState,
-      showError,
-      showNotice,
-      validateAndAttachRecording,
+      stopNativeRecorder,
     ],
   );
 
-  const startRecording = useCallback(async (): Promise<void> => {
-    if (
-      operationRef.current !== "idle" ||
-      recorderSessionRef.current !== null ||
-      stopInFlightRef.current !== null
-    ) {
-      return;
-    }
-    if (recorderPoisonedRef.current) {
-      showError(
-        "La session d’enregistrement doit être réinitialisée. Quittez puis rouvrez cet écran avant de recommencer.",
-      );
-      return;
-    }
+  const abortStalePreparingSession = useCallback(
+    async (session: RecorderSession): Promise<boolean> => {
+      if (isCaptureContextCurrent(session.epoch)) return false;
+      await abortPreparingSession(session);
+      return true;
+    },
+    [abortPreparingSession, isCaptureContextCurrent],
+  );
 
-    const epoch = captureGateRef.current.begin();
-    if (epoch === null || !isCaptureContextCurrent(epoch)) return;
-    playbackGateRef.current.supersede();
-    pauseBothPlayers(false);
-    setOperationState("permission");
-    showError("");
-    showNotice("Le microphone est demandé uniquement après cette action.");
-
-    const session: RecorderSession = {
-      epoch,
-      forceDiscard: false,
-      latch: new LocalVoiceRecorderTerminalLatch(),
-      observedRecording: false,
-      phase: "preparing",
-      preserveProtectedRecording: recordingUriRef.current !== null,
-      protectedRecordingUri: recordingUriRef.current,
-      startedAtMillis: null,
-      terminalArmed: false,
-    };
-    recorderSessionRef.current = session;
-
-    try {
+  const prepareRecordingSession = useCallback(
+    async (session: RecorderSession): Promise<boolean> => {
       const permission = await AudioModule.requestRecordingPermissionsAsync();
-      if (!isCaptureContextCurrent(epoch)) {
-        await abortPreparingSession(session);
-        return;
-      }
+      if (await abortStalePreparingSession(session)) return false;
       if (!permission.granted) {
         recorderSessionRef.current = null;
         showError(permissionError(permission.canAskAgain));
-        return;
+        return false;
       }
 
       const previousUri = recordingUriRef.current;
       if (previousUri !== null && !disposeRecordingUri(previousUri)) {
         recorderSessionRef.current = null;
-        return;
+        return false;
       }
       session.preserveProtectedRecording = false;
 
       const pendingDeactivation = audioDeactivationInFlightRef.current;
       if (pendingDeactivation !== null) await pendingDeactivation;
-      if (!isCaptureContextCurrent(epoch)) {
-        await abortPreparingSession(session);
-        return;
-      }
+      if (await abortStalePreparingSession(session)) return false;
 
       playbackDeactivationRequiredRef.current = false;
       await setIsAudioActiveAsync(true);
-      if (!isCaptureContextCurrent(epoch)) {
-        await abortPreparingSession(session);
-        return;
-      }
+      if (await abortStalePreparingSession(session)) return false;
 
       await setAudioModeAsync(RECORDING_AUDIO_MODE);
-      if (!isCaptureContextCurrent(epoch)) {
-        await abortPreparingSession(session);
-        return;
-      }
+      if (await abortStalePreparingSession(session)) return false;
 
-      // Passing explicit options forces a fresh AVAudioRecorder after a prior
-      // iOS interruption and detaches any possible late delegate callback.
+      // Explicit options force a fresh AVAudioRecorder after an interruption
+      // and detach any possible late delegate callback on iOS.
       await recorder.prepareToRecordAsync(LOCAL_RECORDING_OPTIONS);
-      if (!isCaptureContextCurrent(epoch)) {
-        await abortPreparingSession(session);
-        return;
-      }
+      return !(await abortStalePreparingSession(session));
+    },
+    [abortStalePreparingSession, disposeRecordingUri, recorder, showError],
+  );
 
+  const startPreparedRecorder = useCallback(
+    (session: RecorderSession): boolean => {
       session.terminalArmed = true;
       session.phase = "recording";
       session.startedAtMillis = monotonicNow();
@@ -887,21 +994,16 @@ export function useLocalVoicePractice(
         session.terminalArmed = false;
         throw recordingError;
       }
-      if (session.forceDiscard || session.phase !== "recording") {
-        await stopRecordingInternal("interruption");
-        return;
-      }
-      session.observedRecording = recorder.getStatus().isRecording;
-      if (!isCaptureContextCurrent(epoch)) {
-        session.forceDiscard = true;
-        await stopRecordingInternal("interruption");
-        return;
-      }
 
-      if (mountedRef.current) setIsRecording(true);
-      showNotice(
-        "Enregistrement local en cours. Arrêt automatique après 20 secondes.",
-      );
+      if (session.forceDiscard || session.phase !== "recording") return false;
+      session.observedRecording = recorder.getStatus().isRecording;
+      return true;
+    },
+    [recorder],
+  );
+
+  const armRecordingHealthChecks = useCallback(
+    (session: RecorderSession): void => {
       stopTimerRef.current = setTimeout(() => {
         void stopRecordingInternal("limit");
       }, LOCAL_VOICE_MAX_DURATION_MS);
@@ -913,6 +1015,7 @@ export function useLocalVoicePractice(
         ) {
           return;
         }
+
         let current: ReturnType<typeof recorder.getStatus>;
         try {
           current = recorder.getStatus();
@@ -928,29 +1031,86 @@ export function useLocalVoicePractice(
         session.forceDiscard = true;
         void stopRecordingInternal("interruption");
       }, RECORDER_HEALTH_GRACE_MS);
-    } catch {
+    },
+    [recorder, stopRecordingInternal],
+  );
+
+  const handleRecordingStartFailure = useCallback(
+    async (session: RecorderSession): Promise<void> => {
       if (session.phase === "recording") {
         session.forceDiscard = true;
         await stopRecordingInternal("interruption");
-      } else {
-        const deleted = await abortPreparingSession(session);
-        if (deleted) {
-          showError(
-            "Le microphone n’a pas pu démarrer. Aucune prise incomplète n’a été conservée ni envoyée.",
-          );
-        }
+        return;
       }
+
+      const deleted = await abortPreparingSession(session);
+      if (deleted) {
+        showError(
+          "Le microphone n’a pas pu démarrer. Aucune prise incomplète n’a été conservée ni envoyée.",
+        );
+      }
+    },
+    [abortPreparingSession, showError, stopRecordingInternal],
+  );
+
+  const startRecording = useCallback(async (): Promise<void> => {
+    if (
+      recordingStartIsBlocked(
+        operationRef.current,
+        recorderSessionRef.current !== null,
+        stopInFlightRef.current !== null,
+      )
+    )
+      return;
+    if (recorderPoisonedRef.current) {
+      showError(
+        "La session d’enregistrement doit être réinitialisée. Quittez puis rouvrez cet écran avant de recommencer.",
+      );
+      return;
+    }
+
+    const epoch = captureGateRef.current.begin();
+    if (epoch === null || !isCaptureContextCurrent(epoch)) return;
+    playbackGateRef.current.supersede();
+    pauseBothPlayers(false);
+    setOperationState("permission");
+    showError("");
+    showNotice("Le microphone est demandé uniquement après cette action.");
+
+    const session = createRecorderSession(epoch, recordingUriRef.current);
+    recorderSessionRef.current = session;
+
+    try {
+      if (!(await prepareRecordingSession(session))) return;
+      if (!startPreparedRecorder(session)) {
+        await stopRecordingInternal("interruption");
+        return;
+      }
+      if (!isCaptureContextCurrent(epoch)) {
+        session.forceDiscard = true;
+        await stopRecordingInternal("interruption");
+        return;
+      }
+
+      if (mountedRef.current) setIsRecording(true);
+      showNotice(
+        "Enregistrement local en cours. Arrêt automatique après 20 secondes.",
+      );
+      armRecordingHealthChecks(session);
+    } catch {
+      await handleRecordingStartFailure(session);
     } finally {
       finishOperation("permission");
     }
   }, [
-    abortPreparingSession,
-    disposeRecordingUri,
+    armRecordingHealthChecks,
     finishOperation,
+    handleRecordingStartFailure,
     isCaptureContextCurrent,
     pauseBothPlayers,
-    recorder,
+    prepareRecordingSession,
     setOperationState,
+    startPreparedRecorder,
     showError,
     showNotice,
     stopRecordingInternal,
@@ -995,12 +1155,55 @@ export function useLocalVoicePractice(
     showNotice,
   ]);
 
+  const abortStalePlayback = useCallback(
+    async (epoch: number): Promise<boolean> => {
+      if (isPlaybackContextCurrent(epoch)) return false;
+
+      const mustDeactivate =
+        playbackDeactivationRequiredRef.current ||
+        !mountedRef.current ||
+        !routeFocusedRef.current ||
+        !windowFocusedRef.current ||
+        appStateRef.current !== "active";
+      if (mustDeactivate) await deactivateAudioSession();
+      return true;
+    },
+    [deactivateAudioSession, isPlaybackContextCurrent],
+  );
+
+  const startPlaybackTarget = useCallback(
+    async (target: VoicePlaybackTarget, epoch: number): Promise<void> => {
+      const player =
+        target === "model" ? modelPlayer : recordingPlayerRef.current;
+      if (
+        player === null ||
+        (target === "recording" && !recordingPlayableRef.current)
+      ) {
+        throw new Error("missing validated local recording player");
+      }
+
+      await player.seekTo(0);
+      if (await abortStalePlayback(epoch)) return;
+
+      if (target === "model") {
+        recordingPlayerRef.current?.pause();
+      } else {
+        modelPlayer.pause();
+      }
+      setPlaybackState({ paused: false, target });
+      player.play();
+    },
+    [abortStalePlayback, modelPlayer, setPlaybackState],
+  );
+
   const playTarget = useCallback(
     async (target: VoicePlaybackTarget): Promise<void> => {
       if (
-        recorderSessionRef.current !== null ||
-        stopInFlightRef.current !== null ||
-        (operationRef.current !== "idle" && operationRef.current !== "playback")
+        playbackStartIsBlocked(
+          operationRef.current,
+          recorderSessionRef.current !== null,
+          stopInFlightRef.current !== null,
+        )
       ) {
         return;
       }
@@ -1018,81 +1221,17 @@ export function useLocalVoicePractice(
 
       try {
         await setIsAudioActiveAsync(true);
-        if (!isPlaybackContextCurrent(epoch)) {
-          if (
-            playbackDeactivationRequiredRef.current ||
-            !mountedRef.current ||
-            !routeFocusedRef.current ||
-            !windowFocusedRef.current ||
-            appStateRef.current !== "active"
-          ) {
-            await deactivateAudioSession();
-          }
-          return;
-        }
+        if (await abortStalePlayback(epoch)) return;
         await setAudioModeAsync(PLAYBACK_AUDIO_MODE);
-        if (!isPlaybackContextCurrent(epoch)) {
-          if (
-            playbackDeactivationRequiredRef.current ||
-            !mountedRef.current ||
-            !routeFocusedRef.current ||
-            !windowFocusedRef.current ||
-            appStateRef.current !== "active"
-          ) {
-            await deactivateAudioSession();
-          }
-          return;
-        }
+        if (await abortStalePlayback(epoch)) return;
 
         // Reassert exclusivity after every asynchronous SDK boundary.
         pauseBothPlayers(false);
-        if (target === "model") {
-          await modelPlayer.seekTo(0);
-          if (!isPlaybackContextCurrent(epoch)) {
-            if (
-              playbackDeactivationRequiredRef.current ||
-              !mountedRef.current ||
-              !routeFocusedRef.current ||
-              !windowFocusedRef.current ||
-              appStateRef.current !== "active"
-            ) {
-              await deactivateAudioSession();
-            }
-            return;
-          }
-          recordingPlayerRef.current?.pause();
-          setPlaybackState({ paused: false, target });
-          modelPlayer.play();
-        } else {
-          const player = recordingPlayerRef.current;
-          if (player === null || !recordingPlayableRef.current) {
-            throw new Error("missing validated local recording player");
-          }
-          await player.seekTo(0);
-          if (!isPlaybackContextCurrent(epoch)) {
-            if (
-              playbackDeactivationRequiredRef.current ||
-              !mountedRef.current ||
-              !routeFocusedRef.current ||
-              !windowFocusedRef.current ||
-              appStateRef.current !== "active"
-            ) {
-              await deactivateAudioSession();
-            }
-            return;
-          }
-          modelPlayer.pause();
-          setPlaybackState({ paused: false, target });
-          player.play();
-        }
+        await startPlaybackTarget(target, epoch);
       } catch {
         if (isPlaybackContextCurrent(epoch)) {
           setPlaybackState(null);
-          showError(
-            target === "model"
-              ? "Le modèle audio est momentanément indisponible."
-              : "Votre essai local ne peut pas être lu. Vous pouvez toujours le supprimer.",
-          );
+          showError(playbackError(target));
         }
       } finally {
         if (playbackGateRef.current.isCurrent(epoch)) {
@@ -1101,14 +1240,14 @@ export function useLocalVoicePractice(
       }
     },
     [
-      deactivateAudioSession,
+      abortStalePlayback,
       finishOperation,
       isPlaybackContextCurrent,
-      modelPlayer,
       pauseBothPlayers,
       setOperationState,
       setPlaybackState,
       showError,
+      startPlaybackTarget,
     ],
   );
 

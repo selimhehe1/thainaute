@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import {
   createBrowserLocalVoiceRecorder,
@@ -307,6 +314,47 @@ export function LocalVoiceComparison({
   const isStopping = phase === "stopping";
   const isCaptureBusy = isRequesting || isRecording || isStopping;
 
+  let recordButtonLabel = "Refaire ma prise";
+  if (capture === null) recordButtonLabel = "M’enregistrer";
+  if (isRequesting) {
+    recordButtonLabel = "Autorisation du microphone…";
+  }
+
+  let captureAction: ReactNode;
+  if (isRecording) {
+    captureAction = (
+      <button
+        className="button buttonGhost"
+        type="button"
+        onClick={stopRecording}
+      >
+        Arrêter l’enregistrement
+      </button>
+    );
+  } else if (isStopping) {
+    captureAction = (
+      <button
+        aria-busy="true"
+        className="button buttonGhost"
+        disabled
+        type="button"
+      >
+        Finalisation de la prise…
+      </button>
+    );
+  } else {
+    captureAction = (
+      <button
+        className="button buttonGhost"
+        disabled={isRequesting}
+        type="button"
+        onClick={() => void beginRecording()}
+      >
+        {recordButtonLabel}
+      </button>
+    );
+  }
+
   return (
     <section
       className="voiceComparison"
@@ -328,7 +376,12 @@ export function LocalVoiceComparison({
       <div className="voiceTracks">
         <article>
           <span className="voiceTrackLabel">A · signal modèle fictif</span>
+          <span className="srOnly" id="model-audio-description">
+            Signal sonore fictif : une note pure de 440 hertz pendant 0,32
+            seconde, sans parole.
+          </span>
           <audio
+            aria-describedby="model-audio-description"
             aria-label="Lire le signal modèle fictif"
             aria-disabled={isCaptureBusy}
             controls={!isCaptureBusy}
@@ -348,12 +401,25 @@ export function LocalVoiceComparison({
             preload="metadata"
             ref={modelAudio}
             src={modelAudioSrc}
-          />
+          >
+            <track
+              default
+              kind="captions"
+              label="Description française du signal"
+              src="/captions/fixture-tone.fr.vtt"
+              srcLang="fr"
+            />
+          </audio>
         </article>
         <article>
           <span className="voiceTrackLabel">B · votre prise locale</span>
+          <span className="srOnly" id="local-voice-audio-description">
+            Votre propre prise vocale, conservée localement sans transcription
+            automatique.
+          </span>
           {capture !== null ? (
             <audio
+              aria-describedby="local-voice-audio-description"
               aria-label="Lire ma prise locale"
               controls
               onError={() => {
@@ -369,7 +435,15 @@ export function LocalVoiceComparison({
               }}
               preload="metadata"
               ref={bindRecordedAudio}
-            />
+            >
+              <track
+                default
+                kind="captions"
+                label="Description française de la prise locale"
+                src="/captions/local-voice.fr.vtt"
+                srcLang="fr"
+              />
+            </audio>
           ) : (
             <p className="voiceEmpty">Aucune prise conservée.</p>
           )}
@@ -389,37 +463,7 @@ export function LocalVoiceComparison({
       )}
 
       <div className="voiceActions">
-        {isRecording ? (
-          <button
-            className="button buttonGhost"
-            type="button"
-            onClick={stopRecording}
-          >
-            Arrêter l’enregistrement
-          </button>
-        ) : isStopping ? (
-          <button
-            aria-busy="true"
-            className="button buttonGhost"
-            disabled
-            type="button"
-          >
-            Finalisation de la prise…
-          </button>
-        ) : (
-          <button
-            className="button buttonGhost"
-            disabled={isRequesting}
-            type="button"
-            onClick={() => void beginRecording()}
-          >
-            {isRequesting
-              ? "Autorisation du microphone…"
-              : capture === null
-                ? "M’enregistrer"
-                : "Refaire ma prise"}
-          </button>
-        )}
+        {captureAction}
         {capture !== null && !isRecording && (
           <button
             className="button voiceDelete"
@@ -436,9 +480,10 @@ export function LocalVoiceComparison({
           className={
             phase === "error" ? "inlineError voiceMessage" : "voiceMessage"
           }
-          role={phase === "error" ? "alert" : "status"}
         >
-          {message}
+          <output role={phase === "error" ? "alert" : undefined}>
+            {message}
+          </output>
         </p>
       )}
       {playbackError !== "" && (
