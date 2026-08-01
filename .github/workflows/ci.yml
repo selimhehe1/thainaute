@@ -165,6 +165,10 @@ jobs:
       - run: pnpm db:reset
       - run: pnpm db:test
       - run: pnpm db:lint
+      - name: Block security advisor warnings
+        run: pnpm db:advisors:security
+      - name: Report performance advisor findings
+        run: pnpm db:advisors:performance
       - name: Load connected sync fixture
         run: pnpm exec supabase db query --local --file supabase/fixtures/connected_sync.sql
       - name: Install Chromium for the connected sync test

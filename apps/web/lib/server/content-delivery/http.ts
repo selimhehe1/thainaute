@@ -11,6 +11,7 @@ import {
   ContentInfrastructureError,
   ContentIntegrityError,
 } from "./errors";
+import { apiResponseHeaders } from "../api-http";
 import { toPublicLessonResponse } from "./mapper";
 import type { PublishedLessonRepository } from "./ports";
 
@@ -40,12 +41,11 @@ function errorResponse(
   });
   return Response.json(body, {
     status: error.status,
-    headers: {
+    headers: apiResponseHeaders(error.status, {
       "Cache-Control": "no-store, max-age=0",
       Pragma: "no-cache",
-      "X-Content-Type-Options": "nosniff",
       "X-Request-Id": requestId,
-    },
+    }),
   });
 }
 
@@ -63,12 +63,11 @@ function matchesIfNoneMatch(value: string | null, etag: string): boolean {
   });
 }
 
-function successHeaders(etag: string): HeadersInit {
-  return {
+function successHeaders(status: 200 | 304, etag: string): Headers {
+  return apiResponseHeaders(status, {
     "Cache-Control": REVOCABLE_CACHE_CONTROL,
     ETag: etag,
-    "X-Content-Type-Options": "nosniff",
-  };
+  });
 }
 
 export function createPublishedLessonHttpHandler(
@@ -117,12 +116,12 @@ export function createPublishedLessonHttpHandler(
       if (matchesIfNoneMatch(request.headers.get("if-none-match"), etag)) {
         return new Response(null, {
           status: 304,
-          headers: successHeaders(etag),
+          headers: successHeaders(304, etag),
         });
       }
       return Response.json(responseBody, {
         status: 200,
-        headers: successHeaders(etag),
+        headers: successHeaders(200, etag),
       });
     } catch (error) {
       const apiError =

@@ -11,6 +11,7 @@ import {
   AttemptInfrastructureError,
 } from "../attempt-sync/errors";
 import type { AccessTokenVerifier } from "../attempt-sync/ports";
+import { apiResponseHeaders } from "../api-http";
 
 export interface ProgressSnapshotHttpDependencies {
   readonly accessTokenVerifier: AccessTokenVerifier;
@@ -33,12 +34,11 @@ function parseBearerAuthorization(value: string | null): string {
 function jsonResponse(body: unknown, status: number, requestId: string) {
   return Response.json(body, {
     status,
-    headers: {
+    headers: apiResponseHeaders(status, {
       "Cache-Control": "no-store, max-age=0",
       Pragma: "no-cache",
-      "X-Content-Type-Options": "nosniff",
       "X-Request-Id": requestId,
-    },
+    }),
   });
 }
 

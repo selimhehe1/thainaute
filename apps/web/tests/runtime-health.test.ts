@@ -57,6 +57,13 @@ describe("configuration et sondes de santé", () => {
     expect(response.headers.get("cache-control")).toBe("no-store, max-age=0");
     expect(response.headers.get("pragma")).toBe("no-cache");
     expect(response.headers.get("x-content-type-options")).toBe("nosniff");
+    expect(response.headers.get("www-authenticate")).toBeNull();
+  });
+
+  it("ajoute le challenge Bearer à toute réponse de santé 401", () => {
+    const response = healthJson({ status: "unauthorized" }, 401);
+
+    expect(response.headers.get("www-authenticate")).toBe("Bearer");
   });
 
   it("garde l'indexation fermée par défaut et sur une configuration incomplète", () => {

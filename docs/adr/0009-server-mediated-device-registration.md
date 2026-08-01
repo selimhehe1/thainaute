@@ -23,9 +23,10 @@ profil et l'appareil dans une transaction PostgreSQL. Les insertions directes
 de `authenticated` sont révoquées.
 
 L'UUID d'appareil est la clé naturelle d'idempotence. Un rejeu par le même
-compte et la même plateforme retourne l'enregistrement initial, y compris si
-la version applicative a changé. Une collision de propriétaire ou de plateforme
-est refusée avec un code fermé ; aucun transfert implicite n'est possible.
+compte et la même plateforme retourne le même enregistrement et actualise
+uniquement `app_version` si la version applicative a changé. Il ne crée pas un
+nouvel appareil. Une collision de propriétaire ou de plateforme est refusée
+avec un code fermé ; aucun transfert implicite n'est possible.
 
 Un compte peut enregistrer au plus **20 appareils**. La RPC verrouille la ligne
 `profiles` du compte avant de compter puis d'insérer : deux créations
@@ -46,11 +47,12 @@ transférer silencieusement un UUID existant.
 - les clients doivent s'enregistrer avant d'envoyer leurs tentatives ;
 - le vingt-et-unième appareil est refusé tant qu'une révocation explicite n'a
   pas libéré de place ;
-- `app_version` représente la version de création, pas une présence courante ;
-- un futur suivi de version ou de dernière activité utilisera une mutation
-  séparée et explicitement autorisée ;
-- la validation en base doit encore être exécutée avec Supabase local avant la
-  bêta.
+- `app_version` représente la dernière version déclarée lors d'un
+  enregistrement propriétaire réussi, pas une présence courante ;
+- un futur suivi de dernière activité utilisera une mutation séparée et
+  explicitement autorisée ;
+- pgTAP, les tests RLS et les Security Advisors locaux restent des portes à
+  chaque changement de schéma et avant toute promotion.
 
 ## Retour arrière
 

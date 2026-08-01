@@ -1,15 +1,16 @@
 import { healthJson } from "@/lib/server/health";
-import { diagnoseRuntime } from "@/lib/server/runtime-config";
+import { assessReadiness } from "@/lib/server/health-readiness";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-export function GET() {
-  const diagnostic = diagnoseRuntime();
+export async function GET() {
+  const assessment = await assessReadiness();
+  const { diagnostic } = assessment;
 
   return healthJson(
     {
-      status: diagnostic.ready ? "ok" : "error",
+      status: assessment.ready ? "ok" : "error",
       release: diagnostic.release,
       checks: {
         publicOrigin: {
@@ -29,9 +30,15 @@ export function GET() {
             : "ok",
           mode: diagnostic.syncMode,
         },
+        auth: {
+          status: assessment.dependencies.auth,
+        },
+        dataApi: {
+          status: assessment.dependencies.dataApi,
+        },
       },
       issues: diagnostic.issues,
     },
-    diagnostic.ready ? 200 : 503,
+    assessment.ready ? 200 : 503,
   );
 }
