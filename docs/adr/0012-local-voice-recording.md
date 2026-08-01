@@ -69,15 +69,26 @@ culpabilisation.
 
 ### Cycle de vie et suppression
 
-« Supprimer ma prise » révoque d’abord toute lecture en cours, libère les
-ressources audio, efface immédiatement le fichier de cache natif ou révoque
-l’URL d’objet web, puis retire la référence de l’état d’interface. Il n’existe
-ni corbeille, ni délai de grâce, ni copie cachée.
+« Supprimer cette prise locale » révoque d’abord toute lecture en cours et
+libère les ressources audio. Le web révoque immédiatement l’URL d’objet. Le
+natif tente immédiatement d’effacer le fichier de cache privé, puis retire la
+référence de l’état d’interface en cas de succès. Il n’existe ni corbeille, ni
+délai de grâce, ni copie cachée créée par Thaïnaute.
+
+Si le système refuse exceptionnellement l’effacement natif, la prise devient
+immédiatement non rejouable et son URI reste uniquement dans l’état privé du
+hook afin de permettre une nouvelle tentative explicite. L’interface signale
+l’échec ; elle ne présente jamais le fichier comme supprimé physiquement avant
+la réussite de cette tentative.
 
 La même suppression est exécutée lors :
 
 - du remplacement par une nouvelle prise ;
-- de la sortie de l’exercice ou de la déconnexion ;
+- de la sortie de l’exercice ;
+- de chaque événement `SIGNED_OUT` reçu, y compris après une déconnexion dans
+  un autre onglet ou une révocation distante détectée, d’une connexion depuis
+  l’état déconnecté et d’un passage direct d’un utilisateur A à un utilisateur
+  B ;
 - du passage de l’application en arrière-plan pendant une capture ;
 - d’une interruption, d’une révocation de permission ou d’une erreur de
   finalisation.
@@ -85,14 +96,23 @@ La même suppression est exécutée lors :
 La fermeture normale d’un écran ne doit pas dépendre d’une future tâche réseau
 pour terminer cette suppression.
 
+Le fournisseur de session transforme ces événements en une révision monotone
+de frontière de session. Le composant web ou le hook natif observe cette
+révision et réalise le nettoyage hors du callback Supabase : le callback
+`onAuthStateChange` reste synchrone et ne bloque jamais une opération Auth.
+Une révocation effectuée sur un autre appareil n’est observable qu’au moment où
+Supabase émet un événement ou détecte la session invalide lors d’un
+rafraîchissement ; aucune purge instantanée avant cette détection n’est promise.
+
 Sur Android, l’ouverture du panneau système émet un événement `blur` sans
 nécessairement faire passer `AppState` en arrière-plan. Cet événement invalide
 toute préparation, capture ou lecture en cours et empêche une reprise native
 tardive. Une prise B déjà finalisée reste toutefois disponible : elle n’est
 supprimée qu’à la sortie, à une interruption de route ou sur action explicite.
 
-Un crash natif peut interrompre ce nettoyage et laisser un fichier orphelin
-dans le cache privé générique jusqu’à sa purge par le système d’exploitation.
+Un crash natif, ou le démontage du hook après un refus d’effacement par le
+système, peut interrompre ce nettoyage et laisser un fichier orphelin dans le
+cache privé générique jusqu’à sa purge par le système d’exploitation.
 L’application ne persiste pas l’URI pour tenter un nettoyage différé. Une
 garantie de scan et de purge ciblés au démarrage attend une future capacité sûre
 permettant d’identifier uniquement les fichiers créés par cette fonction, sans
@@ -219,10 +239,11 @@ prise ne produit aucun appel réseau.
   sauvegarde inexistante.
 - L’audio local n’entre pas dans l’export de compte puisqu’il n’est jamais
   détenu par le serveur.
-- La suppression est immédiate dans tous les cycles contrôlés, mais un crash
-  natif peut laisser un fichier orphelin dans le cache privé jusqu’à sa purge
-  par le système d’exploitation. Cette limite résiduelle ne justifie ni la
-  persistance d’une URI ni une suppression non ciblée du cache générique.
+- L’accès est révoqué immédiatement et l’effacement est tenté dans tous les
+  cycles contrôlés. Un crash natif, ou le démontage après un refus du système,
+  peut laisser un fichier orphelin dans le cache privé jusqu’à sa purge par le
+  système d’exploitation. Cette limite résiduelle ne justifie ni la persistance
+  d’une URI ni une suppression non ciblée du cache générique.
 - Une analyse distante, une transcription, un envoi à un fournisseur, une
   durée de rétention distante ou un usage d’entraînement exigera une décision
   séparée. Cet ADR ne tranche ni la politique concernant les mineurs ni
@@ -235,16 +256,20 @@ prise ne produit aucun appel réseau.
 - demande de permission uniquement après action utilisateur ;
 - refus, blocage et indisponibilité sans création de fichier ;
 - arrêt automatique à 20 secondes avec horloge injectée ;
-- suppression immédiate et idempotente lors de « Supprimer ma prise », d’une
-  nouvelle prise, de la sortie et de la déconnexion ;
-- interruption, arrière-plan et erreur supprimant toute prise partielle dans un
-  cycle encore contrôlé par l’application ;
+- révocation immédiate et tentative d’effacement idempotente lors de
+  « Supprimer cette prise locale », d’une nouvelle prise, de la sortie, de
+  chaque `SIGNED_OUT` reçu, d’une connexion depuis l’état déconnecté et d’un
+  passage direct d’un utilisateur A à un utilisateur B ;
+- interruption, arrière-plan et erreur révoquant l’accès à toute prise partielle
+  et tentant son effacement dans un cycle encore contrôlé par l’application ;
 - absence de persistance de l’URI, y compris pour un nettoyage différé après
   redémarrage ;
 - absence d’URI, d’audio ou de message natif dans logs et analytics simulés ;
 - web : révocation de l’URL d’objet et absence d’écriture persistante ;
 - mobile : fichier limité au cache applicatif privé générique et suppression
-  physique des cycles contrôlés vérifiée par l’adaptateur de fichiers simulé.
+  physique vérifiée par l’adaptateur simulé lorsque celui-ci l’autorise ; un
+  refus conserve une référence non rejouable seulement jusqu’à une nouvelle
+  tentative ou au démontage du hook.
 - mobile : invalidation de chaque attente de démarrage lors d’un arrière-plan,
   blur ou démontage ; terminal tardif, erreur prioritaire, timeout et recorder
   verrouillé ; absence, taille nulle, entête invalide ou échec de décodage
@@ -270,9 +295,10 @@ charge. Elle couvre : refus puis révocation de permission, borne de 20 secondes
 verrouillage et arrière-plan, appel ou interruption audio, haut-parleur et
 casque Bluetooth, manque d’espace simulé lorsque possible, suppression puis
 refaire, sortie et interruption, crash natif forcé lorsque reproductible,
-redémarrage sans promesse de scan ou de purge ciblés, et inspection réseau sans
-upload. Le résidu éventuel après crash est consigné comme limite jusqu’à la
-purge du cache par le système d’exploitation.
+refus d’effacement suivi d’un démontage lorsque simulable, redémarrage sans
+promesse de scan ou de purge ciblés, et inspection réseau sans upload. Le
+résidu éventuel après crash ou refus est consigné comme limite jusqu’à la purge
+du cache par le système d’exploitation.
 
 Les résultats, versions d’OS, modèles d’appareils et limites non reproductibles
 sont consignés dans la preuve de bêta. Aucun test automatisé ne doit être

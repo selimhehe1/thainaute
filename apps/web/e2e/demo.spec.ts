@@ -33,9 +33,13 @@ test("enregistre, compare puis supprime une prise locale", async ({ page }) => {
   await stop.click();
 
   await expect(page.getByLabel("Lire ma prise locale")).toBeVisible();
-  await page.getByRole("button", { name: "Supprimer ma prise" }).click();
+  await page
+    .getByRole("button", { name: "Supprimer cette prise locale" })
+    .click();
   await expect(page.getByLabel("Lire ma prise locale")).toHaveCount(0);
-  await expect(page.getByText("Prise supprimée de cet onglet.")).toBeVisible();
+  await expect(
+    page.getByText("Prise locale supprimée de cet onglet."),
+  ).toBeVisible();
 });
 
 test("le compte échoue proprement quand Supabase n'est pas configuré", async ({

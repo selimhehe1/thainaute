@@ -180,7 +180,7 @@ export function AccountExperience() {
     ) {
       setLogoutConfirmationUserId(userId);
       setMessage(
-        "Des tentatives ne sont pas confirmées par le serveur. Synchronisez-les ou confirmez leur suppression locale.",
+        "Des tentatives ne sont pas encore synchronisées. Synchronisez-les ou confirmez leur effacement uniquement sur cet appareil. Votre compte reste en ligne.",
       );
       return;
     }
@@ -202,14 +202,14 @@ export function AccountExperience() {
       setCodeRequested(false);
       setMessage(
         purged
-          ? "Déconnecté. Les données du compte ont été purgées de cet appareil."
-          : "Session déconnectée. Le journal a changé pendant l’opération : ses nouvelles données restent verrouillées jusqu’à la reconnexion au même compte.",
+          ? "Vous êtes déconnecté de cet appareil. Les données locales liées à ce compte ont été effacées ; le compte et sa progression synchronisée restent en ligne."
+          : "Vous êtes déconnecté de cet appareil. Le journal local a changé pendant l’opération : ses nouvelles données restent verrouillées jusqu’à la reconnexion au même compte.",
       );
     } catch {
       if (signedOut) {
         setLocalState(null);
         setMessage(
-          "Session déconnectée. Les données locales restent verrouillées ; reconnectez le même compte pour les reprendre ou les supprimer.",
+          "Vous êtes déconnecté de cet appareil. Les données locales restent verrouillées ; reconnectez le même compte pour les reprendre ou les supprimer.",
         );
       } else {
         setMessage(
@@ -403,8 +403,8 @@ export function AccountExperience() {
                 type="button"
               >
                 {deletionConfirmationUserId === userId
-                  ? "Confirmer la suppression"
-                  : "Supprimer"}
+                  ? "Confirmer la suppression locale"
+                  : "Supprimer la progression locale"}
               </button>
             </div>
             {anonymousRejectedCount > 0 && (
@@ -439,8 +439,8 @@ export function AccountExperience() {
           type="button"
         >
           {logoutConfirmationUserId === userId
-            ? "Supprimer et me déconnecter"
-            : "Me déconnecter"}
+            ? "Effacer les données locales liées à ce compte et me déconnecter"
+            : "Me déconnecter de cet appareil"}
         </button>
       </div>
       {message !== "" && (

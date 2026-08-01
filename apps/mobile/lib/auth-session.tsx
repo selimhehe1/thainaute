@@ -20,6 +20,7 @@ type AuthStatus = "loading" | "unconfigured" | "signed_out" | "signed_in";
 interface MobileAuthSessionValue {
   readonly status: AuthStatus;
   readonly session: Session | null;
+  readonly sessionBoundaryRevision: number;
   readonly requestEmailCode: (email: string) => Promise<void>;
   readonly verifyEmailCode: (email: string, code: string) => Promise<void>;
   readonly signOutLocal: (expectedUserId: string) => Promise<void>;
@@ -52,7 +53,8 @@ export function MobileAuthSessionProvider({
   const [status, setStatus] = useState<AuthStatus>(
     client === null ? "unconfigured" : "loading",
   );
-  const lastDurableUserId = useRef<string | null>(null);
+  const [sessionBoundaryRevision, setSessionBoundaryRevision] = useState(0);
+  const lastDurableUserId = useRef<string | null | undefined>(undefined);
   const expectedLocalSignOuts = useRef(new Set<string>());
 
   useEffect(() => {
@@ -60,11 +62,26 @@ export function MobileAuthSessionProvider({
     let active = true;
     let authEventRevision = 0;
 
-    const applySession = (nextSession: Session | null, signedOut: boolean) => {
+    const applySession = (
+      nextSession: Session | null,
+      signedOut: boolean,
+      bootstrap: boolean,
+    ) => {
       const current = isDurableSession(nextSession) ? nextSession : null;
       const nextUserId = current?.user.id.toLowerCase() ?? null;
       const previousUserId = lastDurableUserId.current;
-      if (previousUserId !== null && previousUserId !== nextUserId) {
+      const previousResolvedUserId = previousUserId ?? null;
+      const durableSubjectChanged =
+        (previousUserId !== undefined || !bootstrap) &&
+        previousResolvedUserId !== nextUserId;
+      if (signedOut || durableSubjectChanged) {
+        setSessionBoundaryRevision((revision) => revision + 1);
+      }
+      if (
+        previousUserId !== undefined &&
+        previousUserId !== null &&
+        previousUserId !== nextUserId
+      ) {
         const expected =
           signedOut && expectedLocalSignOuts.current.delete(previousUserId);
         if (!expected) {
@@ -101,17 +118,21 @@ export function MobileAuthSessionProvider({
       .getSession()
       .then(({ data, error }) => {
         if (!active || authEventRevision !== 0) return;
-        applySession(error === null ? data.session : null, false);
+        applySession(error === null ? data.session : null, false, true);
       })
       .catch(() => {
         if (!active || authEventRevision !== 0) return;
-        applySession(null, false);
+        applySession(null, false, true);
       });
 
     const { data } = client.auth.onAuthStateChange((event, nextSession) => {
       if (!active) return;
       authEventRevision += 1;
-      applySession(nextSession, event === "SIGNED_OUT");
+      applySession(
+        nextSession,
+        event === "SIGNED_OUT",
+        event === "INITIAL_SESSION",
+      );
     });
 
     return () => {
@@ -168,6 +189,7 @@ export function MobileAuthSessionProvider({
       value={{
         status,
         session,
+        sessionBoundaryRevision,
         requestEmailCode,
         verifyEmailCode,
         signOutLocal,

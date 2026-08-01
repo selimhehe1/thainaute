@@ -1308,6 +1308,186 @@ describe("useLocalVoicePractice", () => {
     },
   );
 
+  it("annule une autorisation en attente quand la frontière de session change", async () => {
+    const pending = deferStartBoundary("permission");
+    const modelPlayer = createPlayer();
+    const { result, rerender } = renderHook(
+      ({ revision }) => useLocalVoicePractice(modelPlayer as never, revision),
+      { initialProps: { revision: 0 } },
+    );
+    let startPromise!: Promise<void>;
+
+    act(() => {
+      startPromise = result.current.startRecording();
+    });
+    await pending.waitUntilReached();
+    rerender({ revision: 1 });
+    await act(async () => {
+      pending.resolve();
+      await startPromise;
+    });
+
+    expect(testState.recorder.record).not.toHaveBeenCalled();
+    expect(testState.recorder.stop).toHaveBeenCalledOnce();
+    expect(testState.setIsAudioActiveAsync).toHaveBeenCalledWith(false);
+    expect(result.current.isRecording).toBe(false);
+    expect(result.current.hasRecording).toBe(false);
+    expect(result.current.notice).toMatch(
+      /session a changé.*n’est plus accessible/i,
+    );
+  });
+
+  it("reste silencieux quand la frontière change sans activité vocale", async () => {
+    const modelPlayer = createPlayer();
+    const { result, rerender } = renderHook(
+      ({ revision }) => useLocalVoicePractice(modelPlayer as never, revision),
+      { initialProps: { revision: 0 } },
+    );
+
+    rerender({ revision: 1 });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(testState.recorder.stop).not.toHaveBeenCalled();
+    expect(result.current.hasRecording).toBe(false);
+    expect(result.current.notice).toBe("");
+    expect(result.current.error).toBe("");
+  });
+
+  it("arrête et purge une prise active quand la frontière de session change", async () => {
+    vi.useFakeTimers();
+    const uri = "file:///private/cache/session-active.m4a";
+    testState.recorder.uri = uri;
+    testState.files.set(uri, {
+      deleteCalls: 0,
+      exists: true,
+      header: new Uint8Array(),
+      size: 12,
+    });
+    const modelPlayer = createPlayer();
+    const { result, rerender } = renderHook(
+      ({ revision }) => useLocalVoicePractice(modelPlayer as never, revision),
+      { initialProps: { revision: 0 } },
+    );
+    await beginRecording(result.current.startRecording);
+
+    rerender({ revision: 1 });
+    await act(async () => {
+      await Promise.resolve();
+    });
+    expect(testState.recorder.stop).toHaveBeenCalledOnce();
+    act(() => {
+      emitRecorderStatus({
+        hasError: false,
+        isFinished: true,
+        isRecording: false,
+        url: uri,
+      });
+    });
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(75);
+    });
+
+    expect(testState.files.get(uri)).toMatchObject({
+      deleteCalls: 1,
+      exists: false,
+    });
+    expect(result.current.hasRecording).toBe(false);
+    expect(result.current.canPlayRecording).toBe(false);
+    expect(result.current.isRecording).toBe(false);
+    expect(result.current.notice).toMatch(
+      /session a changé.*n’est plus accessible/i,
+    );
+
+    await act(async () => {
+      await result.current.startRecording();
+    });
+    expect(testState.recorder.record).toHaveBeenCalledTimes(2);
+    act(() => {
+      emitRecorderStatus({
+        hasError: true,
+        isFinished: true,
+        isRecording: false,
+        url: null,
+      });
+    });
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(75);
+    });
+  });
+
+  it("interdit toute relecture si la purge de session échoue", async () => {
+    vi.useFakeTimers();
+    const uri = "file:///private/cache/session-undeletable.m4a";
+    testState.recorder.uri = uri;
+    testState.files.set(uri, {
+      deleteCalls: 0,
+      exists: true,
+      header: Uint8Array.from([
+        0x00, 0x00, 0x00, 0x18, 0x66, 0x74, 0x79, 0x70, 0x4d, 0x34, 0x41, 0x20,
+      ]),
+      size: 12,
+    });
+    const modelPlayer = createPlayer();
+    const { result, rerender } = renderHook(
+      ({ revision }) => useLocalVoicePractice(modelPlayer as never, revision),
+      { initialProps: { revision: 0 } },
+    );
+    await beginRecording(result.current.startRecording);
+    let stopPromise!: Promise<void>;
+
+    act(() => {
+      stopPromise = result.current.stopRecording();
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+    act(() => {
+      emitRecorderStatus({
+        hasError: false,
+        isFinished: true,
+        isRecording: false,
+        url: uri,
+      });
+    });
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(75);
+      await stopPromise;
+    });
+    expect(result.current.canPlayRecording).toBe(true);
+    const recordingPlayer = testState.createAudioPlayer.mock.results[0]!
+      .value as ReturnType<typeof createPlayer>;
+    const file = testState.files.get(uri)!;
+    file.deleteError = new Error("busy");
+
+    rerender({ revision: 1 });
+    await act(async () => {
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+
+    expect(file).toMatchObject({ deleteCalls: 1, exists: true });
+    expect(recordingPlayer.remove).toHaveBeenCalledOnce();
+    expect(result.current.hasRecording).toBe(true);
+    expect(result.current.canPlayRecording).toBe(false);
+    expect(result.current.error).toMatch(/suppression locale n’a pas abouti/i);
+    expect(result.current.notice).toMatch(
+      /session a changé.*n’est plus accessible/i,
+    );
+
+    await act(async () => {
+      await result.current.playRecording();
+    });
+    expect(recordingPlayer.play).not.toHaveBeenCalled();
+
+    delete file.deleteError;
+    await act(async () => {
+      expect(await result.current.deleteRecording()).toBe(true);
+    });
+    expect(file).toMatchObject({ deleteCalls: 2, exists: false });
+  });
+
   it("keeps a failed invalid-take deletion visible and retryable", async () => {
     vi.useFakeTimers();
     const uri = "file:///private/cache/undeletable-invalid.m4a";
