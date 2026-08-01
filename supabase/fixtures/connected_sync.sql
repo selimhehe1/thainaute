@@ -1,9 +1,8 @@
 -- TEST LOCAL UNIQUEMENT : fixture E2E hardcodée, sans valeur pédagogique.
 -- Ne jamais charger ce fichier en staging/production, ni comme migration ou seed.
 
-begin;
-
-insert into public.content_releases (
+with inserted_release as (
+  insert into public.content_releases (
   id,
   version,
   status,
@@ -16,9 +15,12 @@ values (
   'published',
   'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
   '2026-08-01T10:00:00.000Z'::timestamptz
-);
+  )
+  returning id
+),
+inserted_lesson as (
 
-insert into public.lesson_versions (
+  insert into public.lesson_versions (
   id,
   lesson_id,
   version,
@@ -33,7 +35,7 @@ values (
   '10000000-0000-4000-8000-000000000002',
   '10000000-0000-4000-8000-000000000001',
   1,
-  '30000000-0000-4000-8000-000000000001',
+  (select id from inserted_release),
   'published',
   'Boucle technique locale',
   $connected_sync_bundle$
@@ -223,7 +225,9 @@ values (
   $connected_sync_bundle$::jsonb,
   'bcfc85787a0717f222b5fa2df0e8d19c0a5b6db49883b6dc04ddf407da880c81',
   '2026-08-01T10:00:00.000Z'::timestamptz
-);
+  )
+  returning id
+)
 
 insert into public.learning_items (
   id,
@@ -234,10 +238,8 @@ insert into public.learning_items (
 )
 values (
   '10000000-0000-4000-8000-000000000003',
-  '10000000-0000-4000-8000-000000000002',
+  (select id from inserted_lesson),
   0,
   'listening',
   '{}'::jsonb
 );
-
-commit;
