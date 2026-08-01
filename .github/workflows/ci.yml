@@ -146,7 +146,7 @@ jobs:
 
   database:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -160,10 +160,48 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec supabase start
+      - name: Start local Supabase without logging generated keys
+        run: pnpm exec supabase start --log-level error > /dev/null
       - run: pnpm db:reset
       - run: pnpm db:test
       - run: pnpm db:lint
+      - name: Load connected sync fixture
+        run: pnpm exec supabase db query --local --file supabase/fixtures/connected_sync.sql
+      - name: Install Chromium for the connected sync test
+        run: pnpm --filter @thainaute/web exec playwright install --with-deps chromium
+      - name: Run connected account sync end to end
+        env:
+          CI: "1"
+          NEXT_TELEMETRY_DISABLED: "1"
+          THAINAUTE_PUBLIC_INDEXING: disabled
+          THAINAUTE_PUBLIC_URL: http://localhost:3000/
+          THAINAUTE_RELEASE: ci-connected
+          THAINAUTE_SYNC_MODE: supabase
+        run: |
+          set -euo pipefail
+          supabase_env="$(
+            pnpm exec supabase status -o env \
+              --override-name api.url=NEXT_PUBLIC_SUPABASE_URL \
+              --override-name auth.anon_key=NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY \
+              --override-name auth.service_role_key=SUPABASE_SECRET_KEY |
+              grep -E '^(NEXT_PUBLIC_SUPABASE_URL|NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY|SUPABASE_SECRET_KEY)='
+          )"
+          for required_name in \
+            NEXT_PUBLIC_SUPABASE_URL \
+            NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY \
+            SUPABASE_SECRET_KEY
+          do
+            if ! grep -q "^${required_name}=" <<< "${supabase_env}"; then
+              echo "Missing required local Supabase variable: ${required_name}." >&2
+              exit 1
+            fi
+          done
+          set -a
+          source /dev/stdin <<< "${supabase_env}"
+          set +a
+          unset supabase_env
+          pnpm --filter @thainaute/web exec playwright test e2e/connected-sync.spec.ts \
+            --project=chromium --workers=1 --retries=0 --trace=off
       - name: Stop local Supabase
         if: always()
         run: pnpm exec supabase stop --no-backup

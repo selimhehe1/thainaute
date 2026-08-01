@@ -23,6 +23,13 @@ test("enregistre, compare puis supprime une prise locale", async ({ page }) => {
   await expect(
     page.getByRole("progressbar", { name: "Temps restant pour la prise" }),
   ).toHaveAttribute("aria-valuetext", /^\d+ secondes? restantes?$/);
+  await expect
+    .poll(() =>
+      page
+        .getByRole("progressbar", { name: "Temps restant pour la prise" })
+        .evaluate((element: HTMLProgressElement) => element.value),
+    )
+    .toBeLessThan(20);
   await stop.click();
 
   await expect(page.getByLabel("Lire ma prise locale")).toBeVisible();

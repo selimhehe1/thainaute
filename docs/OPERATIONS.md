@@ -192,6 +192,30 @@ vérifier le privilège de colonne, la contrainte de défense
 `[-31 jours, +10 minutes]` et l'index `(user_id, device_id)` avec pgTAP. La
 marge SQL ne doit jamais être reprise comme règle produit côté client.
 
+### Preuve connectée locale
+
+Le job CI `database` démarre une stack Supabase locale complète sans afficher
+ses clés, applique les migrations, exécute pgTAP et `db:lint`, puis charge la
+fixture isolée `supabase/fixtures/connected_sync.sql`. Cette fixture est
+strictement réservée au test : elle n'est ni une migration, ni un seed partagé,
+ni un contenu publiable en production.
+
+`pnpm test:e2e:web:connected` couvre ensuite, avec un seul worker et sans trace :
+
+1. un vrai OTP Supabase récupéré dans le Mailpit local ;
+2. le consentement explicite à la fusion d'une tentative anonyme IndexedDB ;
+3. l'enregistrement de l'appareil web, le snapshot et le commit autoritaire ;
+4. un envoi Android via le client HTTP partagé, rejoué avec la même clé
+   d'idempotence et le même corps ;
+5. l'hydratation d'un second navigateur sans IndexedDB préalable ;
+6. la relecture des deux événements par la Data API avec la clé publiable et le
+   JWT utilisateur, donc sous RLS.
+
+Les clés locales restent dans le processus de l'étape Bash : aucun `.env`,
+secret GitHub, artefact, email, OTP ou Bearer n'est écrit ou journalisé. Cette
+preuve valide le contrat transport/données Android ; elle ne remplace pas le
+scénario Maestro dans une vraie application Expo.
+
 ## Limites connues avant tout hébergement
 
 - Aucun compte, projet, domaine, variable distante ou déploiement n'a été créé.
@@ -204,9 +228,11 @@ marge SQL ne doit jamais être reprise comme règle produit côté client.
   autorisé n'est encore branché. La relation exercice/item est désormais
   dérivée côté serveur ; elle ne constitue plus une porte ouverte.
 - Le transport, la fusion anonyme→compte, le snapshot multi-appareil et la purge
-  au logout sont implémentés. Leur parcours Auth réel attend un projet Supabase
-  de preview, son SMTP OTP et les variables publiques ; `OPEN-SRS-001` et
-  `OPEN-OFFLINE-001` restent des portes pour leurs périmètres respectifs.
+  au logout sont implémentés. Leur parcours Auth/OTP, fusion, rejeu idempotent,
+  hydratation multi-appareil et lecture RLS est exécuté contre Supabase local en
+  CI. Un projet de preview, son SMTP et ses variables restent nécessaires pour
+  la recette distante ; `OPEN-SRS-001` et `OPEN-OFFLINE-001` restent des portes
+  pour leurs périmètres respectifs.
 - Une déconnexion explicite depuis l’écran compte purge le namespace local
   après vérification du sujet de session et confirmation si nécessaire. Une
   mutation concurrente après cette confirmation annule la purge et laisse le
@@ -220,9 +246,10 @@ marge SQL ne doit jamais être reprise comme règle produit côté client.
   applicatif. iOS et Android dépendent du patch pnpm versionné d'`expo-audio`
   57.0.3 : Expo Go et `expo export` ne compilent pas ses changements Swift et
   Kotlin. L’autolinking force `expo-audio` depuis ses sources et la CI compile
-  désormais un prebuild Android avec Gradle ainsi qu’un prebuild iOS simulateur
-  avec CocoaPods/Xcode 26.4 sur macOS 26 ; ces deux jobs sont des portes de
-  fusion. Une vraie
+  désormais un prebuild Android arm64 avec Gradle ainsi qu’un prebuild iOS
+  simulateur avec CocoaPods/Xcode 26.4 sur macOS 26 ; ces deux jobs sont des
+  portes de fusion. Le contrôle PR Android compile une ABI représentative ; un
+  AAB de distribution devra conserver toutes les ABI prises en charge. Une vraie
   build native reconstruite sur appareils reste une porte de bêta.
   `pnpm --filter @thainaute/mobile run config:check` verrouille la surface de
   permissions sans accès Face ID, stockage externe, overlay, vibration ni

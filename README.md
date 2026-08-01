@@ -41,14 +41,16 @@ pnpm exec supabase start
 pnpm db:reset
 pnpm db:test
 pnpm db:lint
+pnpm exec supabase db query --local --file supabase/fixtures/connected_sync.sql
+pnpm test:e2e:web:connected
 ```
 
 Ces commandes exigent Docker. `pnpm test:e2e:mobile` exige Maestro et une
 application mobile en cours d'exécution.
 
-Les identifiants natifs `com.example.thainauteprototype` sont des placeholders
-locaux. Ils devront être remplacés une seule fois, après la clearance du nom et
-avant toute création d'application dans les boutiques.
+Les identifiants natifs réservés localement sont `com.thainaute.app` pour iOS
+et Android. Ils ne créent aucune fiche boutique et restent soumis à la
+clearance du nom avant toute réservation Apple, Google ou EAS.
 
 La source de vérité produit est [docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md).
 Les décisions d'architecture sont consignées dans [docs/adr](docs/adr).
