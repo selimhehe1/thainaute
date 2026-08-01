@@ -11,6 +11,7 @@ import {
 } from "@thainaute/sync";
 import Link from "next/link";
 import {
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -22,6 +23,8 @@ import {
   AttemptOutboxStorageError,
   WebAttemptOutboxStore,
 } from "@/lib/client/attempt-outbox-store";
+
+import { LocalVoiceComparison } from "./local-voice-comparison";
 
 interface DemoLesson {
   versionId: string;
@@ -127,11 +130,53 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
   const [latestRating, setLatestRating] = useState<0 | 1 | null>(null);
   const submissionInFlight = useRef(false);
   const resultHeading = useRef<HTMLHeadingElement>(null);
+  const lessonAudio = useRef<HTMLAudioElement | null>(null);
   const online = useSyncExternalStore(
     subscribeToNetworkStatus,
     () => navigator.onLine,
     () => true,
   );
+
+  const stopSignal = useCallback((): void => {
+    const audio = lessonAudio.current;
+    lessonAudio.current = null;
+    if (audio === null) return;
+
+    audio.onended = null;
+    audio.onerror = null;
+    try {
+      audio.pause();
+    } catch {
+      // Le nettoyage continue sans exposer le détail du navigateur.
+    }
+    try {
+      audio.removeAttribute("src");
+      audio.load();
+    } catch {
+      // Le lecteur détaché sera libéré par le navigateur.
+    }
+  }, []);
+
+  const playSignal = useCallback((): void => {
+    stopSignal();
+    setAudioError(false);
+    const audio = new Audio("/audio/fixture-tone.wav");
+    lessonAudio.current = audio;
+    audio.onended = () => {
+      if (lessonAudio.current === audio) lessonAudio.current = null;
+    };
+    audio.onerror = () => {
+      if (lessonAudio.current !== audio) return;
+      stopSignal();
+      setAudioError(true);
+    };
+
+    void audio.play().catch(() => {
+      if (lessonAudio.current !== audio) return;
+      stopSignal();
+      setAudioError(true);
+    });
+  }, [stopSignal]);
 
   useEffect(() => {
     let active = true;
@@ -149,6 +194,15 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
       instance.close();
     };
   }, []);
+
+  useEffect(() => {
+    const stopOnPageExit = () => stopSignal();
+    window.addEventListener("pagehide", stopOnPageExit);
+    return () => {
+      window.removeEventListener("pagehide", stopOnPageExit);
+      stopSignal();
+    };
+  }, [stopSignal]);
 
   useEffect(() => {
     if (store === null) return;
@@ -172,8 +226,9 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
   }, [store, storageRetryToken]);
 
   useEffect(() => {
+    stopSignal();
     if (stage === "result") resultHeading.current?.focus();
-  }, [stage]);
+  }, [stage, stopSignal]);
 
   const localIngestion = ingestAttemptBatch({
     existingEvents: [],
@@ -196,14 +251,9 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
   )?.state;
 
   function startExercise(event: ReactMouseEvent<HTMLButtonElement>) {
+    stopSignal();
     setStartedAt(event.timeStamp);
     setStage("question");
-  }
-
-  function playSignal() {
-    setAudioError(false);
-    const audio = new Audio("/audio/fixture-tone.wav");
-    void audio.play().catch(() => setAudioError(true));
   }
 
   function handleSubmitAnswer(event: ReactMouseEvent<HTMLButtonElement>): void {
@@ -294,6 +344,7 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
     }
     setLatestRating(accepted.rating);
     setValidationMessage("");
+    stopSignal();
     setStage("result");
   }
 
@@ -447,6 +498,10 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
               </strong>
             </div>
           </div>
+          <LocalVoiceComparison
+            modelAudioSrc="/audio/fixture-tone.wav"
+            onBeforeCapture={stopSignal}
+          />
           <p className="privacyNote">
             Cette démonstration technique reste isolée sur cet appareil et ne
             sera jamais synchronisée comme contenu pédagogique.

@@ -3,26 +3,45 @@
 Dernière vérification : 1er août 2026. Les versions sont exactes dans chaque
 `package.json` et dans `pnpm-lock.yaml`.
 
-| Dépendance                      | Besoin                                                          | Licence / coût                            | Alternative examinée                                       |
-| ------------------------------- | --------------------------------------------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
-| Next.js 16                      | Site SEO, application web, studio et API                        | MIT ; hébergement au choix                | Vite seul ne fournit pas le cadre SSR/SEO retenu           |
-| Expo SDK 57 / React Native 0.86 | Applications iOS et Android                                     | MIT ; EAS optionnel et payant selon usage | Développement natif séparé, trop coûteux pour une personne |
-| Supabase JS / CLI               | Auth, Data API, Storage et environnement Postgres local         | MIT/Apache-2.0 ; cloud optionnel          | Postgres + services séparés, davantage d'exploitation      |
-| Expo SecureStore                | Chiffrer la session Supabase fragmentée dans le trousseau natif | MIT ; gratuit                             | AsyncStorage/SQLite exposeraient les jetons en clair       |
-| React Native URL polyfill       | Contrat URL requis par Supabase JS sur React Native             | MIT ; gratuit                             | Polyfill local incomplet et plus difficile à maintenir     |
-| Zod 4                           | Validation stricte des contrats et du contenu                   | MIT ; gratuit                             | JSON Schema/Ajv, moins direct avec TypeScript ici          |
-| Dexie 4                         | Journal hors ligne IndexedDB de l'application web               | Apache-2.0 ; gratuit, sans service        | API IndexedDB native, plus complexe à migrer et tester     |
-| fake-indexeddb 6                | Tester IndexedDB/Dexie sans navigateur réel                     | Apache-2.0 ; test uniquement              | Playwright seul, plus lent pour les cas transactionnels    |
-| Turborepo / pnpm                | Graphe de tâches et workspaces                                  | MIT ; gratuit                             | Nx, plus large que le besoin actuel                        |
-| Vitest / fast-check             | Tests unitaires et propriétés du SRS                            | MIT ; gratuits                            | Jest seul, moins intégré au socle ESM/Vite                 |
-| Playwright                      | Parcours web réels                                              | Apache-2.0 ; gratuit                      | Cypress, sans avantage décisif pour cette tranche          |
-| RevenueCat                      | Entitlement mobile partagé, phase ultérieure                    | service commercial                        | Implémentation StoreKit/Play Billing maison, plus risquée  |
-| Stripe                          | Abonnements web, phase ultérieure                               | service facturé à l'usage                 | Paiement maison exclu pour sécurité et conformité          |
+| Dépendance                      | Besoin                                                          | Licence / coût                            | Alternative examinée                                                                      |
+| ------------------------------- | --------------------------------------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Next.js 16                      | Site SEO, application web, studio et API                        | MIT ; hébergement au choix                | Vite seul ne fournit pas le cadre SSR/SEO retenu                                          |
+| Expo SDK 57 / React Native 0.86 | Applications iOS et Android                                     | MIT ; EAS optionnel et payant selon usage | Développement natif séparé, trop coûteux pour une personne                                |
+| Expo Audio / FileSystem 57      | Capture A/B locale, validation et suppression du cache privé    | MIT ; gratuits                            | Deux modules natifs maison augmenteraient fortement le risque de cycle de vie et de fuite |
+| Supabase JS / CLI               | Auth, Data API, Storage et environnement Postgres local         | MIT/Apache-2.0 ; cloud optionnel          | Postgres + services séparés, davantage d'exploitation                                     |
+| Expo SecureStore                | Chiffrer la session Supabase fragmentée dans le trousseau natif | MIT ; gratuit                             | AsyncStorage/SQLite exposeraient les jetons en clair                                      |
+| React Native URL polyfill       | Contrat URL requis par Supabase JS sur React Native             | MIT ; gratuit                             | Polyfill local incomplet et plus difficile à maintenir                                    |
+| Zod 4                           | Validation stricte des contrats et du contenu                   | MIT ; gratuit                             | JSON Schema/Ajv, moins direct avec TypeScript ici                                         |
+| Dexie 4                         | Journal hors ligne IndexedDB de l'application web               | Apache-2.0 ; gratuit, sans service        | API IndexedDB native, plus complexe à migrer et tester                                    |
+| fake-indexeddb 6                | Tester IndexedDB/Dexie sans navigateur réel                     | Apache-2.0 ; test uniquement              | Playwright seul, plus lent pour les cas transactionnels                                   |
+| Turborepo / pnpm                | Graphe de tâches et workspaces                                  | MIT ; gratuit                             | Nx, plus large que le besoin actuel                                                       |
+| Vitest / fast-check             | Tests unitaires et propriétés du SRS                            | MIT ; gratuits                            | Jest seul, moins intégré au socle ESM/Vite                                                |
+| Testing Library React / jsdom   | Courses du hook vocal testées avec React et cycle de vie simulé | MIT ; test uniquement                     | Helpers purs seuls ne prouvent pas l’intégration ; React Test Renderer est déprécié       |
+| Playwright                      | Parcours web réels                                              | Apache-2.0 ; gratuit                      | Cypress, sans avantage décisif pour cette tranche                                         |
+| RevenueCat                      | Entitlement mobile partagé, phase ultérieure                    | service commercial                        | Implémentation StoreKit/Play Billing maison, plus risquée                                 |
+| Stripe                          | Abonnements web, phase ultérieure                               | service facturé à l'usage                 | Paiement maison exclu pour sécurité et conformité                                         |
 
 TypeScript reste en `6.0.3` : le dist-tag `latest` pointe déjà vers TypeScript 7,
 mais Expo SDK 57 et `typescript-eslint` 8.65 bornent encore la version supportée
 à une version antérieure à 6.1. React est épinglé par application : Next et Expo
 n'ont pas exactement le même contrat de pair.
+
+`expo-audio` reste épinglé à `57.0.3` et reçoit le patch pnpm versionné décrit
+par l’ADR-0012. Une montée de version ne peut pas conserver aveuglément ce
+patch : elle doit d’abord vérifier le comportement natif amont, puis compiler
+et recetter une nouvelle build iOS et Android sur appareils. Le patch stoppe
+les interruptions iOS et les changements physiques de route audio sur les deux
+plateformes ; il n’ajoute aucune permission. `expo-file-system` 57.0.1 est
+utilisé uniquement pour confirmer la présence, la taille, l’entête et la
+suppression du fichier privé avant d’autoriser B ; il n’accorde aucun accès aux
+fichiers partagés de l’utilisateur.
+
+Expo distribue certains modules sous forme d’artefacts natifs précompilés. La
+configuration d’autolinking mobile force donc uniquement `expo-audio` à être
+compilé depuis ses sources sur Android et iOS ; le reste du SDK conserve son
+chemin de build normal. Ce réglage n’ajoute aucune dépendance, licence ou coût.
+Les jobs natifs de CI doivent rester verts, car un simple `expo export` ou un
+contrôle textuel du patch ne compile pas le Kotlin et le Swift modifiés.
 
 ESLint reste en `9.39.5` bien que la ligne 10 soit stable : les plugins React,
 import et accessibilité embarqués par les configurations officielles Next/Expo

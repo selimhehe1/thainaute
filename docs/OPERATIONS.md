@@ -195,8 +195,10 @@ marge SQL ne doit jamais être reprise comme règle produit côté client.
 ## Limites connues avant tout hébergement
 
 - Aucun compte, projet, domaine, variable distante ou déploiement n'a été créé.
-- Docker ou un runtime compatible n'est pas disponible localement ; les
-  migrations, la RPC, RLS et pgTAP ne sont donc pas encore vérifiés en exécution.
+- Docker ou un runtime compatible n'est pas disponible localement. La CI
+  GitHub exécute toutefois un démarrage Supabase complet, `db:reset`, pgTAP et
+  `db:lint` ; ces contrôles ont validé les migrations, RPC, privilèges et RLS
+  sur l'état poussé. Une exécution locale reste indisponible sur ce poste.
 - Le DTO/API de contenu gratuit est expurgé et les payloads bruts restent côté
   serveur, mais aucun catalogue, téléchargement audio opaque ou contenu réel
   autorisé n'est encore branché. La relation exercice/item est désormais
@@ -212,10 +214,31 @@ marge SQL ne doit jamais être reprise comme règle produit côté client.
   expiration ou révocation distante purge seulement un namespace déjà soldé ;
   les tentatives non confirmées restent verrouillées, et seule une reconnexion
   au même identifiant Supabase permet de les reprendre ou de les effacer.
+- L'enregistrement vocal local et la comparaison A/B sont implémentés sur web
+  et mobile, sans persistance, synchronisation ni télémétrie. Les cycles
+  contrôlés révoquent l'URL web ou suppriment le fichier natif borné au cache
+  applicatif. iOS et Android dépendent du patch pnpm versionné d'`expo-audio`
+  57.0.3 : Expo Go et `expo export` ne compilent pas ses changements Swift et
+  Kotlin. L’autolinking force `expo-audio` depuis ses sources et la CI compile
+  désormais un prebuild Android avec Gradle ainsi qu’un prebuild iOS simulateur
+  avec CocoaPods/Xcode 26.4 sur macOS 26 ; ces deux jobs sont des portes de
+  fusion. Une vraie
+  build native reconstruite sur appareils reste une porte de bêta.
+  `pnpm --filter @thainaute/mobile run config:check` verrouille la surface de
+  permissions sans accès Face ID, stockage externe, overlay, vibration ni
+  audio de fond ; `native:check` verrouille l’arrêt sans reprise en
+  arrière-plan et les callbacks de route du patch installé. Les interruptions,
+  routes audio, Bluetooth, suppression native ciblée et absence de reprise
+  doivent encore être vérifiées sur iPhone et
+  Android réels ; un crash natif peut laisser un orphelin dans le cache jusqu'à
+  la purge par l'OS, comme documenté dans l'ADR-0012.
 - La limitation de débit par utilisateur/IP et la rétention du registre
   d'idempotence restent des portes avant bêta distante.
 - La sonde `ready` ne vérifie pas encore une connexion réelle à Supabase.
 - EAS n'est pas encore configuré et aucun build distribué n'a été produit.
+- L’identité mobile est réservée dans la configuration (`Thaïnaute`, slug et
+  scheme `thainaute`, bundle/package `com.thainaute.app`, version `0.1.0`) mais
+  aucun projet EAS, identifiant Apple ou fiche Google Play n’a été créé.
 - La clearance de la marque et l'autorisation d'indexer restent des portes
   séparées de la réussite technique.
 

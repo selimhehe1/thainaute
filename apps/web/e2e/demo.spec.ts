@@ -12,6 +12,25 @@ test("termine la leçon fictive", async ({ page }) => {
   await expect(page.getByText("250 ‰")).toBeVisible();
 });
 
+test("enregistre, compare puis supprime une prise locale", async ({ page }) => {
+  await page.goto("/learn/demo");
+  await page.getByRole("button", { name: "Commencer" }).click();
+  await page.getByRole("radio", { name: "Option A" }).check();
+  await page.getByRole("button", { name: "Valider" }).click();
+  await page.getByRole("button", { name: "M’enregistrer" }).click();
+  const stop = page.getByRole("button", { name: "Arrêter l’enregistrement" });
+  await expect(stop).toBeVisible();
+  await expect(
+    page.getByRole("progressbar", { name: "Temps restant pour la prise" }),
+  ).toHaveAttribute("aria-valuetext", /^\d+ secondes? restantes?$/);
+  await stop.click();
+
+  await expect(page.getByLabel("Lire ma prise locale")).toBeVisible();
+  await page.getByRole("button", { name: "Supprimer ma prise" }).click();
+  await expect(page.getByLabel("Lire ma prise locale")).toHaveCount(0);
+  await expect(page.getByText("Prise supprimée de cet onglet.")).toBeVisible();
+});
+
 test("le compte échoue proprement quand Supabase n'est pas configuré", async ({
   page,
 }) => {

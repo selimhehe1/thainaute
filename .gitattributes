@@ -13,11 +13,13 @@
 *.json text eol=lf
 *.md text eol=lf whitespace=-blank-at-eol
 *.mjs text eol=lf
+*.patch text eol=lf whitespace=-blank-at-eol
 *.sql text eol=lf
 *.svg text eol=lf
 *.toml text eol=lf
 *.ts text eol=lf
 *.tsx text eol=lf
+*.vtt text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
 
