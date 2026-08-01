@@ -1,0 +1,35 @@
+# Dependencies and task caches
+node_modules/
+.pnpm-store/
+.turbo/
+
+# Builds and test artifacts
+.next/
+dist/
+coverage/
+playwright-report/
+test-results/
+.expo/
+web-build/
+*.tsbuildinfo
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Supabase local state
+supabase/.branches/
+supabase/.temp/
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*

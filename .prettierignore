@@ -1,0 +1,11 @@
+AGENTS.md
+docs/PROJECT_BRIEF.md
+pnpm-lock.yaml
+supabase/config.toml
+**/.expo/**
+**/.next/**
+**/next-env.d.ts
+**/coverage/**
+**/dist/**
+**/node_modules/**
+**/*.wav

@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Thaïnaute Prototype",
+    "slug": "thainaute-prototype",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "scheme": "thainaute-dev",
+    "userInterfaceStyle": "light",
+    "plugins": ["expo-router", "expo-audio", "expo-sqlite"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.thainauteprototype"
+    },
+    "android": {
+      "package": "com.example.thainauteprototype"
+    },
+    "experiments": { "typedRoutes": true }
+  }
+}

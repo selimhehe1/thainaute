@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "sourceId": "TEST_ONLY",
+  "label": "Fixture structurelle créée par le projet",
+  "kind": "synthetic_fixture",
+  "versionSource": "fixture-v1",
+  "confidence": "low",
+  "license": "INTERNAL-TEST-ONLY",
+  "commercialUse": false,
+  "redistribution": false,
+  "publicationAuthorized": false,
+  "consultedAt": "2026-08-01T00:00:00.000Z"
+}

@@ -1,0 +1,273 @@
+import type { AttemptEvent, LearnerItemState } from "@thainaute/domain";
+import {
+  attemptBatchResponseSchema,
+  ingestAttemptBatch,
+  type AttemptBatchResponse,
+  type AttemptBatchResult,
+  type AttemptRejectionCode,
+  type LearnerItemState as PublicLearnerItemState,
+  type RejectedAttempt,
+  type ValidatedAttemptSubmission,
+} from "@thainaute/sync";
+
+import { answerKeyIdentity, indexServerAnswerKeys } from "./answer-key-index";
+import { hashAttemptBatch } from "./canonical-json";
+import { AttemptApiError, AttemptInfrastructureError } from "./errors";
+import type {
+  AttemptProjectionWrite,
+  AttemptRepository,
+  AttemptSyncSnapshot,
+  SyncAttemptBatchInput,
+} from "./ports";
+
+const MAX_COMMIT_ATTEMPTS = 3;
+
+function attemptKey(attempt: {
+  readonly itemId: string;
+  readonly skill: string;
+}): string {
+  return `${attempt.itemId}\u0000${attempt.skill}`;
+}
+
+function preflightRejections(
+  snapshot: AttemptSyncSnapshot,
+  attempts: readonly ValidatedAttemptSubmission[],
+): ReadonlyMap<string, AttemptRejectionCode> {
+  const registeredDevices = new Set(snapshot.registeredDeviceIds);
+  const collidingEvents = new Set(snapshot.collidingEventIds);
+  const answerKeys = indexServerAnswerKeys(snapshot.answerKeys);
+  const rejected = new Map<string, AttemptRejectionCode>();
+
+  for (const attempt of attempts) {
+    if (!registeredDevices.has(attempt.deviceId)) {
+      rejected.set(attempt.eventId, "device_not_registered");
+      continue;
+    }
+
+    if (collidingEvents.has(attempt.eventId)) {
+      rejected.set(attempt.eventId, "event_id_collision");
+      continue;
+    }
+
+    const answerKey = answerKeys.get(answerKeyIdentity(attempt));
+    if (
+      answerKey !== undefined &&
+      !answerKey.validOptionIds.includes(attempt.selectedOptionId)
+    ) {
+      rejected.set(attempt.eventId, "invalid_submission");
+    }
+  }
+
+  return rejected;
+}
+
+function toPublicState(state: LearnerItemState): PublicLearnerItemState {
+  if (state.dueAt === null || state.totalAttempts < 1) {
+    throw new AttemptApiError("internal_error");
+  }
+
+  return {
+    itemId: state.itemId,
+    skill: state.skill,
+    masteryPermille: state.masteryScore,
+    status: state.status,
+    attemptCount: state.totalAttempts,
+    successfulAttempts: state.successfulAttempts,
+    consecutiveCorrect: state.consecutiveCorrect,
+    dueAt: state.dueAt,
+    algorithmVersion: state.algorithmVersion,
+  };
+}
+
+function projectionWrites(
+  projections: ReturnType<typeof ingestAttemptBatch>["projections"],
+  affectedKeys: ReadonlySet<string>,
+  events: readonly AttemptEvent[],
+  userId: string,
+): readonly AttemptProjectionWrite[] {
+  const eventById = new Map(events.map((event) => [event.eventId, event]));
+
+  return projections
+    .filter(
+      (projection) =>
+        projection.learner.kind === "account" &&
+        projection.learner.userId === userId &&
+        affectedKeys.has(attemptKey(projection.state)),
+    )
+    .map((projection) => {
+      const lastEventId = projection.state.lastEventId;
+      const lastEvent =
+        lastEventId === null ? undefined : eventById.get(lastEventId);
+
+      if (lastEvent === undefined) {
+        throw new AttemptApiError("internal_error");
+      }
+
+      return {
+        state: projection.state,
+        contentVersionId: lastEvent.contentVersionId,
+      };
+    });
+}
+
+function buildCandidate(
+  snapshot: AttemptSyncSnapshot,
+  attempts: readonly ValidatedAttemptSubmission[],
+  userId: string,
+): {
+  readonly response: AttemptBatchResponse;
+  readonly acceptedEvents: readonly AttemptEvent[];
+  readonly projections: readonly AttemptProjectionWrite[];
+} {
+  const preflight = preflightRejections(snapshot, attempts);
+  const eligibleAttempts = attempts.filter(
+    (attempt) => !preflight.has(attempt.eventId),
+  );
+  const ingestion = ingestAttemptBatch({
+    authenticatedUserId: userId,
+    existingEvents: snapshot.existingEvents,
+    submissions: eligibleAttempts,
+    answerKeys: snapshot.answerKeys,
+  });
+
+  const acceptedIds = new Set(ingestion.acceptedEventIds);
+  const duplicateIds = new Set(ingestion.duplicateEventIds);
+  const rejected = new Map<string, RejectedAttempt>(
+    ingestion.rejected.map((entry) => [entry.eventId, entry]),
+  );
+  const eventById = new Map(
+    ingestion.events.map((event) => [event.eventId, event]),
+  );
+  const affectedKeys = new Set<string>();
+
+  const results: AttemptBatchResult[] = attempts.map((attempt) => {
+    const preflightCode = preflight.get(attempt.eventId);
+    if (preflightCode !== undefined) {
+      return {
+        eventId: attempt.eventId,
+        status: "rejected",
+        code: preflightCode,
+      };
+    }
+
+    const event = eventById.get(attempt.eventId);
+    if (acceptedIds.has(attempt.eventId) && event !== undefined) {
+      affectedKeys.add(attemptKey(event));
+      return {
+        eventId: attempt.eventId,
+        status: "accepted",
+        rating: event.rating,
+      };
+    }
+
+    if (duplicateIds.has(attempt.eventId) && event !== undefined) {
+      affectedKeys.add(attemptKey(event));
+      return {
+        eventId: attempt.eventId,
+        status: "duplicate",
+        rating: event.rating,
+      };
+    }
+
+    const rejection = rejected.get(attempt.eventId);
+    if (rejection !== undefined) {
+      return {
+        eventId: attempt.eventId,
+        status: "rejected",
+        code: rejection.code,
+      };
+    }
+
+    throw new AttemptApiError("internal_error");
+  });
+
+  const writes = projectionWrites(
+    ingestion.projections,
+    affectedKeys,
+    ingestion.events,
+    userId,
+  );
+  const states = writes
+    .map(({ state }) => toPublicState(state))
+    .sort((left, right) => attemptKey(left).localeCompare(attemptKey(right)));
+  const response = attemptBatchResponseSchema.parse({
+    syncRevision: snapshot.revision + 1,
+    results,
+    states,
+  });
+
+  return {
+    response,
+    acceptedEvents: ingestion.events.filter((event) =>
+      acceptedIds.has(event.eventId),
+    ),
+    projections: writes,
+  };
+}
+
+export function createAttemptBatchSynchronizer(repository: AttemptRepository) {
+  return async function synchronizeAttemptBatch(
+    input: SyncAttemptBatchInput,
+  ): Promise<AttemptBatchResponse> {
+    const requestSha256 = hashAttemptBatch(input.batch);
+
+    for (
+      let commitAttempt = 0;
+      commitAttempt < MAX_COMMIT_ATTEMPTS;
+      commitAttempt += 1
+    ) {
+      let snapshot: AttemptSyncSnapshot;
+      try {
+        snapshot = await repository.loadSnapshot({
+          userId: input.userId,
+          attempts: input.batch.attempts,
+        });
+      } catch (error) {
+        if (error instanceof AttemptInfrastructureError) throw error;
+        throw new AttemptInfrastructureError("database_unavailable");
+      }
+
+      const candidate = buildCandidate(
+        snapshot,
+        input.batch.attempts,
+        input.userId,
+      );
+      let commitResult;
+      try {
+        commitResult = await repository.commit({
+          userId: input.userId,
+          idempotencyKey: input.idempotencyKey,
+          requestSha256,
+          expectedRevision: snapshot.revision,
+          events: candidate.acceptedEvents,
+          projections: candidate.projections,
+          response: candidate.response,
+        });
+      } catch (error) {
+        if (error instanceof AttemptInfrastructureError) throw error;
+        throw new AttemptInfrastructureError("database_unavailable");
+      }
+
+      if (
+        commitResult.kind === "committed" ||
+        commitResult.kind === "replayed"
+      ) {
+        return attemptBatchResponseSchema.parse(commitResult.response);
+      }
+
+      if (commitResult.kind === "idempotency_conflict") {
+        throw new AttemptApiError("idempotency_key_reused");
+      }
+
+      // Une révision ou un UUID concurrent exige de recharger puis recalculer.
+      if (
+        commitResult.kind === "revision_conflict" ||
+        commitResult.kind === "event_collision"
+      ) {
+        continue;
+      }
+    }
+
+    throw new AttemptApiError("concurrent_update");
+  };
+}

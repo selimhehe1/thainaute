@@ -1,0 +1,9 @@
+appId: com.example.thainauteprototype
+---
+- launchApp
+- assertVisible: "Donnée fictive — non publiable"
+- tapOn: "Commencer"
+- tapOn: "Option A"
+- tapOn: "Valider"
+- assertVisible: "La boucle technique fonctionne."
+- assertVisible: "250 ‰"

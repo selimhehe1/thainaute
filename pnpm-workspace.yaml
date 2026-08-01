@@ -1,0 +1,17 @@
+packages:
+  - apps/*
+  - packages/*
+
+allowBuilds:
+  "@swc/core": true
+  esbuild: true
+  sharp: true
+  supabase: true
+  unrs-resolver: true
+
+engineStrict: true
+nodeVersion: 24.18.1
+overrides:
+  "next@16.2.12>postcss": 8.5.25
+  "next@16.2.12>sharp": 0.35.3
+strictPeerDependencies: true

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "lessonId": "10000000-0000-4000-8000-000000000001",
+  "versionId": "10000000-0000-4000-8000-000000000002",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "fixture",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Boucle technique locale",
+  "objectiveFr": "Vérifier le rendu Unicode, l'audio local et la révision sans enseigner de contenu.",
+  "requiredEntitlement": null,
+  "audioManifestId": "10000000-0000-4000-8000-000000000006",
+  "items": [
+    {
+      "id": "10000000-0000-4000-8000-000000000003",
+      "thaiRaw": "ก่",
+      "unicodeCodePoints": ["U+0E01", "U+0E48"],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v0-draft",
+        "value": null
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ก่",
+          "ipa": null,
+          "tone": null,
+          "vowelLength": null,
+          "initial": null,
+          "final": null
+        }
+      ],
+      "register": null,
+      "sourceIds": ["TEST_ONLY"]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "10000000-0000-4000-8000-000000000004",
+      "type": "audio_choice",
+      "itemId": "10000000-0000-4000-8000-000000000003",
+      "skill": "listening",
+      "audioAssetId": "10000000-0000-4000-8000-000000000005",
+      "promptFr": "Sélectionnez l'option technique A après avoir écouté le signal.",
+      "options": [
+        { "id": "20000000-0000-4000-8000-000000000001", "labelFr": "Option A" },
+        { "id": "20000000-0000-4000-8000-000000000002", "labelFr": "Option B" }
+      ],
+      "correctOptionId": "20000000-0000-4000-8000-000000000001",
+      "feedback": {
+        "correctFr": "La boucle technique fonctionne.",
+        "incorrectFr": "Réessayez avec l'option technique A."
+      }
+    }
+  ],
+  "provenance": {
+    "sourceIds": ["TEST_ONLY"],
+    "generationActors": [
+      { "actorId": "TEST_AUTHOR", "kind": "human", "role": "author" }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": [
+      {
+        "code": "FIXTURE_ONLY",
+        "status": "open",
+        "blocking": true,
+        "note": "Donnée de test sans valeur pédagogique ni validation linguistique."
+      }
+    ]
+  }
+}

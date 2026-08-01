@@ -1,0 +1,42 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "@thainaute/analytics#build": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "@thainaute/content#build": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "@thainaute/design-tokens#build": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "@thainaute/domain#build": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "@thainaute/sync#build": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
+    },
+    "test": {
+      "dependsOn": ["^test"]
+    }
+  }
+}
