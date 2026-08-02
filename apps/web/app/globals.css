@@ -188,7 +188,7 @@ h1 em {
   text-align: center;
   color: var(--ink);
   font:
-    650 112px/1.34 "Noto Sans Thai",
+    600 112px/1.34 "Noto Sans Thai",
     Tahoma,
     sans-serif;
 }
@@ -383,7 +383,7 @@ h1 em {
   margin-block: 34px;
   text-align: center;
   font:
-    650 100px/1.4 "Noto Sans Thai",
+    600 100px/1.4 "Noto Sans Thai",
     Tahoma,
     sans-serif;
 }

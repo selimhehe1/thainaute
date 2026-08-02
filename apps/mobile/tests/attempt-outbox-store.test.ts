@@ -17,6 +17,11 @@ const ids = {
   userA: "20000000-0000-4000-8000-000000000001",
   userB: "20000000-0000-4000-8000-000000000002",
   deviceB: "20000000-0000-4000-8000-000000000003",
+  fixtureEvent: "30000000-0000-4000-8000-000000000001",
+  fixtureExercise: "10000000-0000-4000-8000-000000000004",
+  fixtureOptionA: "20000000-0000-4000-8000-000000000001",
+  fixtureOptionB: "20000000-0000-4000-8000-000000000002",
+  fixtureVersion: "10000000-0000-4000-8000-000000000002",
 } as const;
 
 const submission = {
@@ -27,6 +32,17 @@ const submission = {
   answeredAt: "2026-08-01T10:00:00.000Z",
   durationMs: 1_000,
   contentVersionId: ids.version,
+  algorithmVersion: SRS_ALGORITHM_VERSION,
+};
+
+const legacyFixtureSubmission = {
+  eventId: ids.fixtureEvent,
+  deviceId: ids.device,
+  exerciseId: ids.fixtureExercise,
+  selectedOptionId: ids.fixtureOptionA,
+  answeredAt: "2026-08-01T09:59:00.000Z",
+  durationMs: 900,
+  contentVersionId: ids.fixtureVersion,
   algorithmVersion: SRS_ALGORITHM_VERSION,
 };
 
@@ -283,6 +299,84 @@ describe("outbox SQLite mobile", () => {
     expect((await store.migrateLegacyJournal()).entries).toHaveLength(1);
   });
 
+  it("importe le journal brut dans learning avant d'isoler uniquement la fixture", async () => {
+    const database = new FakeSQLiteDatabase();
+    database.legacyPayloads.push(
+      JSON.stringify(legacyFixtureSubmission),
+      JSON.stringify(submission),
+    );
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+
+    const migratedDemo = await demo.migrateLegacyFixtureAttemptsToDemo();
+
+    expect(database.legacyPayloads).toHaveLength(0);
+    expect(
+      (await learning.read()).entries.map(
+        ({ submission: item }) => item.eventId,
+      ),
+    ).toEqual([ids.event]);
+    expect(
+      migratedDemo.entries.map(({ submission: item }) => item.eventId),
+    ).toEqual([ids.fixtureEvent]);
+  });
+
+  it("répare atomiquement les vraies tentatives rangées en démo par l'ancien écran", async () => {
+    const database = new FakeSQLiteDatabase();
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+    await demo.enqueue(legacyFixtureSubmission);
+    await demo.enqueue(submission);
+    database.metadata.set("demo:legacy_attempt_journal_migrated_v1", "done");
+
+    const repairedDemo = await demo.migrateLegacyFixtureAttemptsToDemo();
+
+    expect(
+      (await learning.read()).entries.map(
+        ({ submission: item }) => item.eventId,
+      ),
+    ).toEqual([ids.event]);
+    expect(
+      repairedDemo.entries.map(({ submission: item }) => item.eventId),
+    ).toEqual([ids.fixtureEvent]);
+    expect(database.metadata.get("legacy_demo_namespace_repaired_v1")).toBe(
+      "done",
+    );
+  });
+
+  it("conserve les deux namespaces si la réparation démo rencontre une collision", async () => {
+    const database = new FakeSQLiteDatabase();
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+    await learning.enqueue(submission);
+    await demo.enqueue({ ...submission, selectedOptionId: ids.fixtureOptionB });
+    database.metadata.set("demo:legacy_attempt_journal_migrated_v1", "done");
+    const learningBefore = database.outboxes.get("attempts-v1");
+    const demoBefore = database.outboxes.get("demo:attempts-v1");
+
+    await expect(demo.migrateLegacyFixtureAttemptsToDemo()).rejects.toThrow(
+      "n'ont pas pu être isolées",
+    );
+
+    expect(database.outboxes.get("attempts-v1")).toBe(learningBefore);
+    expect(database.outboxes.get("demo:attempts-v1")).toBe(demoBefore);
+    expect(database.metadata.has("legacy_demo_namespace_repaired_v1")).toBe(
+      false,
+    );
+  });
+
   it("refuse un marqueur de migration corrompu sans purger l'historique", async () => {
     const database = new FakeSQLiteDatabase();
     database.metadata.set("legacy_attempt_journal_migrated_v1", "corrupt");
@@ -330,6 +424,245 @@ describe("outbox SQLite mobile", () => {
 
     expect((await demo.read()).entries).toHaveLength(1);
     expect((await learning.read()).entries).toHaveLength(0);
+  });
+
+  it("déplace atomiquement l'ancienne fixture et conserve les vraies tentatives", async () => {
+    const database = new FakeSQLiteDatabase();
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+    await learning.enqueue(legacyFixtureSubmission);
+    await learning.enqueue(submission);
+
+    const migrated = await demo.migrateLegacyFixtureAttemptsToDemo();
+
+    expect(
+      migrated.entries.map(({ submission: item }) => item.eventId),
+    ).toEqual([ids.fixtureEvent]);
+    expect(
+      (await learning.read()).entries.map(
+        ({ submission: item }) => item.eventId,
+      ),
+    ).toEqual([ids.event]);
+  });
+
+  it("rejoue la migration sans doublon si le payload exact existe déjà", async () => {
+    const database = new FakeSQLiteDatabase();
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+    await learning.enqueue(legacyFixtureSubmission);
+    await demo.enqueue(legacyFixtureSubmission);
+
+    expect(
+      (await demo.migrateLegacyFixtureAttemptsToDemo()).entries,
+    ).toHaveLength(1);
+    expect(
+      (await demo.migrateLegacyFixtureAttemptsToDemo()).entries,
+    ).toHaveLength(1);
+    expect((await learning.read()).entries).toHaveLength(0);
+  });
+
+  it("refuse une collision de fixture sans modifier aucun namespace", async () => {
+    const database = new FakeSQLiteDatabase();
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+    await learning.enqueue(legacyFixtureSubmission);
+    await demo.enqueue({
+      ...legacyFixtureSubmission,
+      selectedOptionId: ids.fixtureOptionB,
+    });
+    const learningBefore = database.outboxes.get("attempts-v1");
+    const demoBefore = database.outboxes.get("demo:attempts-v1");
+
+    await expect(demo.migrateLegacyFixtureAttemptsToDemo()).rejects.toThrow(
+      "n'ont pas pu être isolées",
+    );
+    expect(database.outboxes.get("attempts-v1")).toBe(learningBefore);
+    expect(database.outboxes.get("demo:attempts-v1")).toBe(demoBefore);
+  });
+
+  it("conserve la source si le namespace démo est corrompu", async () => {
+    const database = new FakeSQLiteDatabase();
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+    await learning.enqueue(legacyFixtureSubmission);
+    database.outboxes.set("demo:attempts-v1", "{corrompu");
+    const learningBefore = database.outboxes.get("attempts-v1");
+
+    await expect(demo.migrateLegacyFixtureAttemptsToDemo()).rejects.toThrow(
+      "n'ont pas pu être isolées",
+    );
+    expect(database.outboxes.get("attempts-v1")).toBe(learningBefore);
+    expect(database.outboxes.get("demo:attempts-v1")).toBe("{corrompu");
+  });
+
+  it("refuse un lot fixture en vol sans le réécrire partiellement", async () => {
+    const database = new FakeSQLiteDatabase();
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+    await learning.enqueue(legacyFixtureSubmission);
+    await learning.prepare(ids.idempotency);
+    const learningBefore = database.outboxes.get("attempts-v1");
+
+    await expect(demo.migrateLegacyFixtureAttemptsToDemo()).rejects.toThrow(
+      "n'ont pas pu être isolées",
+    );
+    expect(database.outboxes.get("attempts-v1")).toBe(learningBefore);
+    expect(database.outboxes.has("demo:attempts-v1")).toBe(false);
+  });
+
+  it("refuse d'altérer une fixture déjà engagée dans une fusion active", async () => {
+    const database = new FakeSQLiteDatabase();
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+    await learning.enqueue(legacyFixtureSubmission);
+    database.metadata.set(
+      "anonymous_progress_fusion_v1",
+      JSON.stringify({
+        schemaVersion: 1,
+        status: "awaiting_server_ack",
+        fusionId: ids.idempotency,
+        targetUserId: ids.userA,
+        accountDeviceId: ids.deviceB,
+        consentedAt: "2026-08-01T10:01:00.000Z",
+        submissions: [{ ...legacyFixtureSubmission, deviceId: ids.deviceB }],
+        acknowledgedEventIds: [],
+      }),
+    );
+    const learningBefore = database.outboxes.get("attempts-v1");
+
+    await expect(demo.migrateLegacyFixtureAttemptsToDemo()).rejects.toThrow(
+      "n'ont pas pu être isolées",
+    );
+    expect(database.outboxes.get("attempts-v1")).toBe(learningBefore);
+    expect(database.outboxes.has("demo:attempts-v1")).toBe(false);
+  });
+
+  it("bloque lecture, reprise et batch d'une ancienne fusion contaminée", async () => {
+    const database = new FakeSQLiteDatabase();
+    const account = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userA,
+    });
+    const accountFixture = {
+      ...legacyFixtureSubmission,
+      deviceId: ids.deviceB,
+    };
+    await account.enqueue(accountFixture);
+    await account.prepare(ids.ignoredIdempotency);
+    database.metadata.set(
+      "anonymous_progress_fusion_v1",
+      JSON.stringify({
+        schemaVersion: 1,
+        status: "awaiting_server_ack",
+        fusionId: ids.idempotency,
+        targetUserId: ids.userA,
+        accountDeviceId: ids.deviceB,
+        consentedAt: "2026-08-01T10:01:00.000Z",
+        submissions: [accountFixture],
+        acknowledgedEventIds: [],
+      }),
+    );
+    const accountKey = `attempts-v1:account:${ids.userA}`;
+    const accountBefore = database.outboxes.get(accountKey);
+
+    await expect(account.read()).rejects.toThrow("illisible");
+    await expect(account.readFusionMarker()).rejects.toThrow("illisible");
+    await expect(account.resumeAnonymousFusion()).rejects.toThrow(
+      "fusion locale",
+    );
+    await expect(account.prepare(ids.idempotency)).rejects.toThrow(
+      "n'a pas pu être mis à jour",
+    );
+    await expect(
+      account.applySuccess({
+        syncRevision: 1,
+        results: [{ eventId: ids.fixtureEvent, status: "accepted", rating: 1 }],
+        states: [],
+      }),
+    ).rejects.toThrow("réponse serveur");
+    expect(database.outboxes.get(accountKey)).toBe(accountBefore);
+  });
+
+  it("fusionne learning sain sans lire un namespace démo corrompu", async () => {
+    const database = new FakeSQLiteDatabase();
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const account = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userA,
+    });
+    await learning.enqueue(submission);
+    database.outboxes.set("demo:attempts-v1", "{corrompu");
+
+    const started = await account.startAnonymousFusion({
+      fusionId: ids.idempotency,
+      accountDeviceId: ids.deviceB,
+      consentedAt: "2026-08-01T10:01:00.000Z",
+    });
+
+    expect(started.marker.status).toBe("awaiting_server_ack");
+    expect(started.marker.submissions).toHaveLength(1);
+    expect(database.outboxes.get("demo:attempts-v1")).toBe("{corrompu");
+  });
+
+  it("isole la fixture dans la même transaction avant toute fusion", async () => {
+    const database = new FakeSQLiteDatabase();
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+    const account = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userA,
+    });
+    await learning.enqueue(legacyFixtureSubmission);
+    await learning.enqueue(submission);
+
+    const started = await account.startAnonymousFusion({
+      fusionId: ids.idempotency,
+      accountDeviceId: ids.deviceB,
+      consentedAt: "2026-08-01T10:01:00.000Z",
+    });
+
+    expect(started.marker.status).toBe("awaiting_server_ack");
+    if (started.marker.status !== "awaiting_server_ack") {
+      throw new Error("Le marqueur de fusion devrait être actif.");
+    }
+    expect(started.marker.submissions).toHaveLength(1);
+    expect(started.marker.submissions[0]?.exerciseId).toBe(ids.exercise);
+    expect(
+      started.anonymousSnapshot.entries.map(
+        ({ submission: item }) => item.eventId,
+      ),
+    ).toEqual([ids.event]);
+    expect(
+      (await demo.read()).entries.map(({ submission: item }) => item.eventId),
+    ).toEqual([ids.fixtureEvent]);
   });
 
   it("fusionne atomiquement puis efface la source après l'accusé serveur", async () => {

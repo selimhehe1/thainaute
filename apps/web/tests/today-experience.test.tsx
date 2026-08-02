@@ -1,4 +1,8 @@
-import { completeLocalOnboarding } from "@thainaute/sync";
+import {
+  beginLocalOnboarding,
+  completeLocalOnboarding,
+  updateLocalOnboarding,
+} from "@thainaute/sync";
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Dexie from "dexie";
@@ -154,6 +158,33 @@ describe("écran Aujourd’hui web", () => {
       name: "onboarding_started",
       platform: "web",
     });
+  });
+
+  it("affiche un identifiant inconnu comme un choix neutre et bloque la fin", async () => {
+    const store = new WebLocalExperienceStore();
+    await store.update((snapshot) =>
+      updateLocalOnboarding(
+        beginLocalOnboarding(snapshot, "2026-08-02T08:00:00.000Z"),
+        {
+          goalOptionId: "ancienne_taxonomie",
+          motivationOptionId: "travel",
+          experienceOptionId: "beginner",
+        },
+        "2026-08-02T08:00:01.000Z",
+      ),
+    );
+    store.close();
+
+    render(<TodayExperience lesson={lesson} />);
+
+    await screen.findByRole("heading", {
+      name: "Préparons votre première session.",
+    });
+    expect(screen.getByRole("radio", { name: "5 minutes" })).not.toBeChecked();
+    expect(screen.getByRole("radio", { name: "10 minutes" })).not.toBeChecked();
+    expect(
+      screen.getByRole("button", { name: "Préparer ma session" }),
+    ).toBeDisabled();
   });
 
   it("décrit honnêtement les limites hors ligne", async () => {

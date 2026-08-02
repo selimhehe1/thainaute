@@ -4,7 +4,10 @@ import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
 import Dexie from "dexie";
 import { describe, expect, it } from "vitest";
 
-import { WebAttemptOutboxStore } from "../lib/client/attempt-outbox-store";
+import {
+  WebAttemptOutboxStore,
+  migrateLegacyDemoFixtureAttempts,
+} from "../lib/client/attempt-outbox-store";
 
 const ids = {
   device: "10000000-0000-4000-8000-000000000001",
@@ -19,6 +22,11 @@ const ids = {
   userA: "20000000-0000-4000-8000-000000000001",
   userB: "20000000-0000-4000-8000-000000000002",
   deviceB: "20000000-0000-4000-8000-000000000003",
+  fixtureEvent: "30000000-0000-4000-8000-000000000001",
+  fixtureExercise: "10000000-0000-4000-8000-000000000004",
+  fixtureOptionA: "20000000-0000-4000-8000-000000000001",
+  fixtureOptionB: "20000000-0000-4000-8000-000000000002",
+  fixtureVersion: "10000000-0000-4000-8000-000000000002",
 } as const;
 
 const submission = {
@@ -32,8 +40,71 @@ const submission = {
   algorithmVersion: SRS_ALGORITHM_VERSION,
 };
 
+const legacyFixtureSubmission = {
+  eventId: ids.fixtureEvent,
+  deviceId: ids.device,
+  exerciseId: ids.fixtureExercise,
+  selectedOptionId: ids.fixtureOptionA,
+  answeredAt: "2026-08-01T09:59:00.000Z",
+  durationMs: 900,
+  contentVersionId: ids.fixtureVersion,
+  algorithmVersion: SRS_ALGORITHM_VERSION,
+};
+
 function databaseName(): string {
   return `thainaute-test-${crypto.randomUUID()}`;
+}
+
+function migrationDatabaseNames(): {
+  readonly learningDatabaseName: string;
+  readonly demoDatabaseName: string;
+} {
+  const suffix = crypto.randomUUID();
+  return {
+    learningDatabaseName: `thainaute-learning-test-${suffix}`,
+    demoDatabaseName: `thainaute-demo-test-${suffix}`,
+  };
+}
+
+async function readRawOutboxRow(
+  databaseName: string,
+  key: string,
+): Promise<{ readonly key: string; readonly snapshot: string } | undefined> {
+  const database = new Dexie(databaseName);
+  database.version(1).stores({ metadata: "&key", outbox: "&key" });
+  try {
+    return await database
+      .table<{ readonly key: string; readonly snapshot: string }>("outbox")
+      .get(key);
+  } finally {
+    database.close();
+  }
+}
+
+async function seedFusionMarker(
+  databaseName: string,
+  marker: unknown,
+): Promise<void> {
+  const database = new Dexie(databaseName);
+  database.version(1).stores({ metadata: "&key", outbox: "&key" });
+  try {
+    await database.table("metadata").put({
+      key: "anonymous-progress-fusion-v1",
+      value: JSON.stringify(marker),
+    });
+  } finally {
+    database.close();
+  }
+}
+
+async function deleteMigrationDatabases(names: {
+  readonly learningDatabaseName: string;
+  readonly demoDatabaseName: string;
+}): Promise<void> {
+  await Promise.all([
+    Dexie.delete(names.learningDatabaseName),
+    Dexie.delete(names.demoDatabaseName),
+  ]);
 }
 
 function legacyV2Snapshot(): string {
@@ -131,6 +202,358 @@ describe("outbox IndexedDB web", () => {
     expect(prepared.prepared?.batch.attempts[0]).not.toHaveProperty("skill");
     expect((await store.read()).schemaVersion).toBe(3);
     await store.deleteForTests();
+  });
+
+  it("déplace la fixture historique et conserve toutes les vraies tentatives", async () => {
+    const names = migrationDatabaseNames();
+    const learning = new WebAttemptOutboxStore(names.learningDatabaseName);
+    const demo = new WebAttemptOutboxStore(names.demoDatabaseName);
+    await learning.enqueueMany([legacyFixtureSubmission, submission]);
+    await demo.enqueue({
+      ...submission,
+      eventId: ids.eventB,
+      answeredAt: "2026-08-01T10:01:00.000Z",
+    });
+    learning.close();
+    demo.close();
+
+    await expect(migrateLegacyDemoFixtureAttempts(names)).resolves.toEqual({
+      status: "migrated",
+      copiedEntries: 1,
+      deduplicatedEntries: 0,
+    });
+
+    const learningInspector = new WebAttemptOutboxStore(
+      names.learningDatabaseName,
+    );
+    const demoInspector = new WebAttemptOutboxStore(names.demoDatabaseName);
+    expect(
+      (await learningInspector.read()).entries.map(
+        ({ submission: item }) => item.eventId,
+      ),
+    ).toEqual([ids.event]);
+    expect(
+      (await demoInspector.read()).entries.map(
+        ({ submission: item }) => item.eventId,
+      ),
+    ).toEqual([ids.fixtureEvent, ids.eventB]);
+    learningInspector.close();
+    demoInspector.close();
+    await deleteMigrationDatabases(names);
+  });
+
+  it("rejoue une copie exacte sans doublon puis nettoie la quarantaine", async () => {
+    const names = migrationDatabaseNames();
+    const learning = new WebAttemptOutboxStore(names.learningDatabaseName);
+    const demo = new WebAttemptOutboxStore(names.demoDatabaseName);
+    await learning.enqueue(legacyFixtureSubmission);
+    await demo.enqueue(legacyFixtureSubmission);
+    learning.close();
+    demo.close();
+
+    await expect(migrateLegacyDemoFixtureAttempts(names)).resolves.toEqual({
+      status: "migrated",
+      copiedEntries: 0,
+      deduplicatedEntries: 1,
+    });
+    await expect(migrateLegacyDemoFixtureAttempts(names)).resolves.toEqual({
+      status: "not_needed",
+      copiedEntries: 0,
+      deduplicatedEntries: 0,
+    });
+    expect(
+      await readRawOutboxRow(
+        names.learningDatabaseName,
+        "legacy-demo-fixture-quarantine-v1",
+      ),
+    ).toBeUndefined();
+
+    const demoInspector = new WebAttemptOutboxStore(names.demoDatabaseName);
+    expect((await demoInspector.read()).entries).toHaveLength(1);
+    demoInspector.close();
+    await deleteMigrationDatabases(names);
+  });
+
+  it("refuse un eventId en conflit sans modifier la source", async () => {
+    const names = migrationDatabaseNames();
+    const learning = new WebAttemptOutboxStore(names.learningDatabaseName);
+    const demo = new WebAttemptOutboxStore(names.demoDatabaseName);
+    await learning.enqueue(legacyFixtureSubmission);
+    await demo.enqueue({
+      ...legacyFixtureSubmission,
+      selectedOptionId: ids.fixtureOptionB,
+    });
+    learning.close();
+    demo.close();
+
+    await expect(migrateLegacyDemoFixtureAttempts(names)).rejects.toThrow(
+      "conflit",
+    );
+    const learningInspector = new WebAttemptOutboxStore(
+      names.learningDatabaseName,
+    );
+    expect((await learningInspector.read()).entries).toHaveLength(1);
+    expect(
+      await readRawOutboxRow(
+        names.learningDatabaseName,
+        "legacy-demo-fixture-quarantine-v1",
+      ),
+    ).toBeUndefined();
+    learningInspector.close();
+    await deleteMigrationDatabases(names);
+  });
+
+  it("conserve la source byte-identique si la base demo est corrompue", async () => {
+    const names = migrationDatabaseNames();
+    const learning = new WebAttemptOutboxStore(names.learningDatabaseName);
+    await learning.enqueue(legacyFixtureSubmission);
+    learning.close();
+    const learningBefore = await readRawOutboxRow(
+      names.learningDatabaseName,
+      "attempts-v1",
+    );
+    const corruptDemo = new Dexie(names.demoDatabaseName);
+    corruptDemo.version(1).stores({ metadata: "&key", outbox: "&key" });
+    await corruptDemo.table("outbox").put({
+      key: "attempts-v1",
+      snapshot: "{corrompu",
+    });
+    corruptDemo.close();
+
+    await expect(migrateLegacyDemoFixtureAttempts(names)).rejects.toThrow(
+      "illisible",
+    );
+    expect(
+      await readRawOutboxRow(names.learningDatabaseName, "attempts-v1"),
+    ).toEqual(learningBefore);
+    expect(
+      await readRawOutboxRow(
+        names.learningDatabaseName,
+        "legacy-demo-fixture-quarantine-v1",
+      ),
+    ).toBeUndefined();
+    expect(
+      await readRawOutboxRow(names.demoDatabaseName, "attempts-v1"),
+    ).toEqual({ key: "attempts-v1", snapshot: "{corrompu" });
+    await deleteMigrationDatabases(names);
+  });
+
+  it("refuse un payload identique avec un état d'entry différent", async () => {
+    const names = migrationDatabaseNames();
+    const learning = new WebAttemptOutboxStore(names.learningDatabaseName);
+    const demo = new WebAttemptOutboxStore(names.demoDatabaseName);
+    await learning.enqueue(legacyFixtureSubmission);
+    await demo.enqueue(legacyFixtureSubmission);
+    await demo.prepare(ids.idempotency);
+    await demo.applySuccess({
+      syncRevision: 1,
+      results: [{ eventId: ids.fixtureEvent, status: "accepted", rating: 1 }],
+      states: [],
+    });
+    learning.close();
+    demo.close();
+
+    await expect(migrateLegacyDemoFixtureAttempts(names)).rejects.toThrow(
+      "état de synchronisation différent",
+    );
+    const learningInspector = new WebAttemptOutboxStore(
+      names.learningDatabaseName,
+    );
+    expect((await learningInspector.read()).entries[0]?.status).toBe("pending");
+    learningInspector.close();
+    await deleteMigrationDatabases(names);
+  });
+
+  it("conserve une fixture engagée dans un lot en vol", async () => {
+    const names = migrationDatabaseNames();
+    const learning = new WebAttemptOutboxStore(names.learningDatabaseName);
+    await learning.enqueue(legacyFixtureSubmission);
+    await learning.prepare(ids.idempotency);
+    learning.close();
+
+    await expect(migrateLegacyDemoFixtureAttempts(names)).rejects.toThrow(
+      "lot learning en vol",
+    );
+    const learningInspector = new WebAttemptOutboxStore(
+      names.learningDatabaseName,
+    );
+    expect((await learningInspector.read()).inFlight).not.toBeNull();
+    learningInspector.close();
+    await deleteMigrationDatabases(names);
+  });
+
+  it("isole la fixture hors lot sans interrompre un lot réel en vol", async () => {
+    const names = migrationDatabaseNames();
+    const learning = new WebAttemptOutboxStore(names.learningDatabaseName);
+    await learning.enqueue(submission);
+    await learning.prepare(ids.idempotency);
+    await learning.enqueue(legacyFixtureSubmission);
+    learning.close();
+
+    await expect(migrateLegacyDemoFixtureAttempts(names)).resolves.toEqual({
+      status: "migrated",
+      copiedEntries: 1,
+      deduplicatedEntries: 0,
+    });
+
+    const learningInspector = new WebAttemptOutboxStore(
+      names.learningDatabaseName,
+    );
+    const demoInspector = new WebAttemptOutboxStore(names.demoDatabaseName);
+    expect((await learningInspector.read()).inFlight?.eventIds).toEqual([
+      ids.event,
+    ]);
+    expect(
+      (await learningInspector.read()).entries.map(
+        ({ submission: item }) => item.eventId,
+      ),
+    ).toEqual([ids.event]);
+    expect(
+      (await demoInspector.read()).entries.map(
+        ({ submission: item }) => item.eventId,
+      ),
+    ).toEqual([ids.fixtureEvent]);
+    learningInspector.close();
+    demoInspector.close();
+    await deleteMigrationDatabases(names);
+  });
+
+  it("isole une fixture hors marqueur puis laisse reprendre la fusion active", async () => {
+    const names = migrationDatabaseNames();
+    const learning = new WebAttemptOutboxStore(names.learningDatabaseName);
+    const account = new WebAttemptOutboxStore(names.learningDatabaseName, {
+      kind: "account",
+      userId: ids.userA,
+    });
+    await learning.enqueue(submission);
+    await account.startAnonymousFusion({
+      fusionId: ids.idempotency,
+      accountDeviceId: ids.deviceB,
+      consentedAt: "2026-08-01T10:01:00.000Z",
+    });
+    await learning.enqueue(legacyFixtureSubmission);
+
+    await expect(migrateLegacyDemoFixtureAttempts(names)).resolves.toEqual({
+      status: "migrated",
+      copiedEntries: 1,
+      deduplicatedEntries: 0,
+    });
+    await expect(account.resumeAnonymousFusion()).resolves.toMatchObject({
+      marker: {
+        status: "awaiting_server_ack",
+        submissions: [expect.objectContaining({ eventId: ids.event })],
+      },
+    });
+    expect(
+      (await learning.read()).entries.map(
+        ({ submission: item }) => item.eventId,
+      ),
+    ).toEqual([ids.event]);
+    learning.close();
+    account.close();
+    await deleteMigrationDatabases(names);
+  });
+
+  it("ne touche pas une fusion active sans fixture", async () => {
+    const names = migrationDatabaseNames();
+    const learning = new WebAttemptOutboxStore(names.learningDatabaseName);
+    const account = new WebAttemptOutboxStore(names.learningDatabaseName, {
+      kind: "account",
+      userId: ids.userA,
+    });
+    await learning.enqueue(submission);
+    await account.startAnonymousFusion({
+      fusionId: ids.idempotency,
+      accountDeviceId: ids.deviceB,
+      consentedAt: "2026-08-01T10:01:00.000Z",
+    });
+
+    await expect(migrateLegacyDemoFixtureAttempts(names)).resolves.toEqual({
+      status: "not_needed",
+      copiedEntries: 0,
+      deduplicatedEntries: 0,
+    });
+    expect((await account.readFusionMarker())?.status).toBe(
+      "awaiting_server_ack",
+    );
+    expect((await learning.read()).entries).toHaveLength(1);
+    learning.close();
+    account.close();
+    await deleteMigrationDatabases(names);
+  });
+
+  it("refuse de démarrer une fusion tant que la fixture reste dans learning", async () => {
+    const names = migrationDatabaseNames();
+    const learning = new WebAttemptOutboxStore(names.learningDatabaseName);
+    const account = new WebAttemptOutboxStore(names.learningDatabaseName, {
+      kind: "account",
+      userId: ids.userA,
+    });
+    await learning.enqueue(legacyFixtureSubmission);
+
+    await expect(
+      account.startAnonymousFusion({
+        fusionId: ids.idempotency,
+        accountDeviceId: ids.deviceB,
+        consentedAt: "2026-08-01T10:01:00.000Z",
+      }),
+    ).rejects.toThrow("doit être isolée");
+    expect((await learning.read()).entries).toHaveLength(1);
+    learning.close();
+    account.close();
+    await deleteMigrationDatabases(names);
+  });
+
+  it("bloque lecture, reprise, prepare et batch d'une fusion contaminée", async () => {
+    const names = migrationDatabaseNames();
+    const account = new WebAttemptOutboxStore(names.learningDatabaseName, {
+      kind: "account",
+      userId: ids.userA,
+    });
+    const accountFixture = {
+      ...legacyFixtureSubmission,
+      deviceId: ids.deviceB,
+    };
+    await account.enqueue(accountFixture);
+    await account.prepare(ids.ignoredIdempotency);
+    await seedFusionMarker(names.learningDatabaseName, {
+      schemaVersion: 1,
+      status: "awaiting_server_ack",
+      fusionId: ids.idempotency,
+      targetUserId: ids.userA,
+      accountDeviceId: ids.deviceB,
+      consentedAt: "2026-08-01T10:01:00.000Z",
+      submissions: [accountFixture],
+      acknowledgedEventIds: [],
+    });
+    const accountKey = `attempts-v1:account:${ids.userA}`;
+    const accountBefore = await readRawOutboxRow(
+      names.learningDatabaseName,
+      accountKey,
+    );
+
+    await expect(account.read()).rejects.toThrow("fixture technique");
+    await expect(account.readFusionMarker()).rejects.toThrow(
+      "fixture technique",
+    );
+    await expect(account.resumeAnonymousFusion()).rejects.toThrow(
+      "fixture technique",
+    );
+    await expect(account.prepare(ids.idempotency)).rejects.toThrow(
+      "fixture technique",
+    );
+    await expect(
+      account.applySuccess({
+        syncRevision: 1,
+        results: [{ eventId: ids.fixtureEvent, status: "accepted", rating: 1 }],
+        states: [],
+      }),
+    ).rejects.toThrow("fixture technique");
+    expect(
+      await readRawOutboxRow(names.learningDatabaseName, accountKey),
+    ).toEqual(accountBefore);
+    account.close();
+    await deleteMigrationDatabases(names);
   });
 
   it("sérialise deux écritures concurrentes sans perdre de tentative", async () => {

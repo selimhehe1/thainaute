@@ -1,3 +1,4 @@
+import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { SQLiteProvider } from "expo-sqlite";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -11,6 +12,7 @@ import {
 
 import { initializeDatabase } from "../lib/initialize-database";
 import { MobileAuthSessionProvider } from "../lib/auth-session";
+import { embeddedThaiFonts } from "../lib/embedded-thai-fonts";
 import { purgeMobileAccountExportCache } from "../lib/mobile-account-export";
 
 function DatabaseReady({ onReady }: { readonly onReady: () => void }) {
@@ -21,6 +23,7 @@ function DatabaseReady({ onReady }: { readonly onReady: () => void }) {
 type DatabaseStatus = "loading" | "ready" | "error";
 
 export default function RootLayout() {
+  const [thaiFontsLoaded, thaiFontError] = useFonts(embeddedThaiFonts);
   const [providerKey, setProviderKey] = useState(0);
   const [databaseStatus, setDatabaseStatus] =
     useState<DatabaseStatus>("loading");
@@ -45,6 +48,18 @@ export default function RootLayout() {
     errorQueued.current = true;
     setTimeout(() => setDatabaseStatus("error"), 0);
   }, []);
+
+  if (thaiFontError !== null) {
+    return (
+      <View style={styles.fallback} accessibilityLiveRegion="assertive">
+        <Text style={styles.fallbackTitle}>Ressources locales incomplètes</Text>
+        <Text style={styles.fallbackBody}>
+          La police thaïe embarquée n’a pas pu être chargée. Mettez
+          l’application à jour avant de commencer une leçon.
+        </Text>
+      </View>
+    );
+  }
 
   if (databaseStatus === "error") {
     return (
@@ -78,14 +93,18 @@ export default function RootLayout() {
         onInit={initializeDatabase}
       >
         <DatabaseReady onReady={handleReady} />
-        <MobileAuthSessionProvider>
-          <Stack screenOptions={{ headerShown: false }} />
-        </MobileAuthSessionProvider>
+        {databaseStatus === "ready" && thaiFontsLoaded ? (
+          <MobileAuthSessionProvider>
+            <Stack screenOptions={{ headerShown: false }} />
+          </MobileAuthSessionProvider>
+        ) : null}
       </SQLiteProvider>
-      {databaseStatus === "loading" && (
+      {(databaseStatus === "loading" || !thaiFontsLoaded) && (
         <View style={styles.loading} accessibilityLiveRegion="polite">
           <ActivityIndicator color="#283450" size="large" />
-          <Text style={styles.loadingText}>Préparation du stockage local…</Text>
+          <Text style={styles.loadingText}>
+            Préparation des ressources locales…
+          </Text>
         </View>
       )}
     </View>

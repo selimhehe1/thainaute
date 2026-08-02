@@ -4,6 +4,7 @@ import {
   LocalExperienceAttemptIntegrityError,
   LocalExperienceOwnerError,
   LocalExperienceTransitionError,
+  abandonLocalLessonForVersionChange,
   completeLocalOnboarding,
   confirmLocalLessonResult,
   createAttemptOutboxSnapshot,
@@ -28,6 +29,8 @@ const OTHER_OPTION_ID = "20000000-0000-4000-8000-000000000002";
 const EVENT_ID = "30000000-0000-4000-8000-000000000001";
 const OTHER_EVENT_ID = "30000000-0000-4000-8000-000000000002";
 const DEVICE_ID = "40000000-0000-4000-8000-000000000001";
+const NEXT_LESSON_ID = "50000000-0000-4000-8000-000000000002";
+const NEXT_EXERCISE_ID = "50000000-0000-4000-8000-000000000004";
 const STARTED_AT = "2026-08-02T08:00:00.000Z";
 const ANSWERED_AT = "2026-08-02T08:01:00.000Z";
 
@@ -366,5 +369,156 @@ describe("parcours local versionné", () => {
     expect(() =>
       finishLocalLesson(completed, createAttemptOutboxSnapshot(), ANSWERED_AT),
     ).toThrow(LocalExperienceAttemptIntegrityError);
+  });
+
+  it("abandonne explicitement une ancienne introduction ou question", () => {
+    const intro = startLocalLesson(onboarded(), {
+      lessonVersionId: LESSON_ID,
+      exerciseId: EXERCISE_ID,
+      startedAt: STARTED_AT,
+    });
+    const opened = openLocalLessonQuestion(intro, STARTED_AT);
+    const replacement = {
+      lessonVersionId: NEXT_LESSON_ID,
+      exerciseId: NEXT_EXERCISE_ID,
+    };
+
+    expect(
+      abandonLocalLessonForVersionChange(intro, intro.lesson!, replacement)
+        .lesson,
+    ).toBeNull();
+    expect(
+      abandonLocalLessonForVersionChange(opened, opened.lesson!, replacement)
+        .lesson,
+    ).toBeNull();
+    expect(
+      abandonLocalLessonForVersionChange(intro, intro.lesson!, {
+        lessonVersionId: LESSON_ID,
+        exerciseId: NEXT_EXERCISE_ID,
+      }).lesson,
+    ).toBeNull();
+  });
+
+  it("exige la tentative durable exacte avant d'abandonner submitting ou result", () => {
+    const prepared = prepareLocalLessonSubmission(
+      question(),
+      submission(),
+      ANSWERED_AT,
+    );
+    const replacement = {
+      lessonVersionId: NEXT_LESSON_ID,
+      exerciseId: NEXT_EXERCISE_ID,
+    };
+    const durable = enqueueAttempt(createAttemptOutboxSnapshot(), submission());
+    const result = confirmLocalLessonResult(prepared, durable, ANSWERED_AT);
+
+    expect(() =>
+      abandonLocalLessonForVersionChange(
+        prepared,
+        prepared.lesson!,
+        replacement,
+      ),
+    ).toThrow(LocalExperienceAttemptIntegrityError);
+    expect(
+      abandonLocalLessonForVersionChange(
+        prepared,
+        prepared.lesson!,
+        replacement,
+        durable,
+      ).lesson,
+    ).toBeNull();
+    expect(
+      abandonLocalLessonForVersionChange(
+        result,
+        result.lesson!,
+        replacement,
+        durable,
+      ).lesson,
+    ).toBeNull();
+    expect(() =>
+      abandonLocalLessonForVersionChange(result, result.lesson!, replacement, {
+        ...durable,
+        entries: [
+          {
+            status: "rejected",
+            submission: submission(),
+            code: "invalid_submission",
+          },
+        ],
+      }),
+    ).toThrow(LocalExperienceAttemptIntegrityError);
+  });
+
+  it("refuse une confirmation périmée, une même cible et un payload divergent", () => {
+    const prepared = prepareLocalLessonSubmission(
+      question(),
+      submission(),
+      ANSWERED_AT,
+    );
+    const durable = enqueueAttempt(createAttemptOutboxSnapshot(), submission());
+    const result = confirmLocalLessonResult(prepared, durable, ANSWERED_AT);
+    const replacement = {
+      lessonVersionId: NEXT_LESSON_ID,
+      exerciseId: NEXT_EXERCISE_ID,
+    };
+
+    expect(() =>
+      abandonLocalLessonForVersionChange(
+        result,
+        prepared.lesson!,
+        replacement,
+        durable,
+      ),
+    ).toThrow(LocalExperienceTransitionError);
+    expect(() =>
+      abandonLocalLessonForVersionChange(
+        result,
+        result.lesson!,
+        { lessonVersionId: LESSON_ID, exerciseId: EXERCISE_ID },
+        durable,
+      ),
+    ).toThrow(LocalExperienceTransitionError);
+
+    const divergent = enqueueAttempt(
+      createAttemptOutboxSnapshot(),
+      submission({ selectedOptionId: OTHER_OPTION_ID }),
+    );
+    expect(() =>
+      abandonLocalLessonForVersionChange(
+        result,
+        result.lesson!,
+        replacement,
+        divergent,
+      ),
+    ).toThrow(LocalExperienceAttemptIntegrityError);
+  });
+
+  it("permet d'abandonner un checkpoint déjà clôturé", () => {
+    const prepared = prepareLocalLessonSubmission(
+      question(),
+      submission(),
+      ANSWERED_AT,
+    );
+    const durable = enqueueAttempt(createAttemptOutboxSnapshot(), submission());
+    const completed = finishLocalLesson(
+      confirmLocalLessonResult(prepared, durable, ANSWERED_AT),
+      durable,
+      "2026-08-02T08:01:01.000Z",
+    );
+
+    expect(() =>
+      startLocalLesson(completed, {
+        lessonVersionId: NEXT_LESSON_ID,
+        exerciseId: NEXT_EXERCISE_ID,
+        startedAt: "2026-08-02T08:01:02.000Z",
+      }),
+    ).toThrow(LocalExperienceTransitionError);
+
+    expect(
+      abandonLocalLessonForVersionChange(completed, completed.lesson!, {
+        lessonVersionId: NEXT_LESSON_ID,
+        exerciseId: NEXT_EXERCISE_ID,
+      }).lesson,
+    ).toBeNull();
   });
 });

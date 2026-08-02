@@ -3,6 +3,7 @@
 import { noOpAnalytics, type AnalyticsSink } from "@thainaute/analytics";
 import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
 import {
+  abandonLocalLessonForVersionChange,
   attemptSubmissionSchema,
   confirmLocalLessonResult,
   createAttemptOutboxSnapshot,
@@ -30,6 +31,7 @@ import {
 import {
   AttemptOutboxStorageError,
   WebAttemptOutboxStore,
+  migrateLegacyDemoFixtureAttempts,
 } from "@/lib/client/attempt-outbox-store";
 import { useWebAuthSession } from "@/lib/client/auth-session";
 import {
@@ -217,6 +219,7 @@ export function DemoExperience({
   const [isSaving, setIsSaving] = useState(false);
   const [latestRating, setLatestRating] = useState<0 | 1 | null>(null);
   const [checkpointMessage, setCheckpointMessage] = useState("");
+  const [replacementConfirmation, setReplacementConfirmation] = useState(false);
   const submissionInFlight = useRef(false);
   const resultHeading = useRef<HTMLHeadingElement>(null);
   const lessonAudio = useRef<HTMLAudioElement | null>(null);
@@ -302,21 +305,12 @@ export function DemoExperience({
     const activeExperienceStore = experienceStore;
 
     async function hydrateLocalSession(): Promise<void> {
+      await migrateLegacyDemoFixtureAttempts();
       await migrateLegacyStorage(activeOutboxStore);
       let nextOutbox = await activeOutboxStore.read();
       let nextExperience = await activeExperienceStore.read();
 
       if (nextExperience.onboarding.status === "completed") {
-        if (
-          nextExperience.lesson !== null &&
-          !checkpointMatchesLesson(nextExperience, lesson) &&
-          nextExperience.lesson.phase !== "completed"
-        ) {
-          throw new LocalExperienceStorageError(
-            "Une autre session locale doit être terminée avant celle-ci.",
-          );
-        }
-
         if (nextExperience.lesson?.phase === "submitting") {
           nextOutbox = await activeOutboxStore.enqueue(
             nextExperience.lesson.submission,
@@ -391,6 +385,7 @@ export function DemoExperience({
       setLatestRating(resumedRating);
       setValidationMessage("");
       setCheckpointMessage("");
+      setReplacementConfirmation(false);
       setStorageStatus("ready");
     }
 
@@ -456,6 +451,12 @@ export function DemoExperience({
   const latestProjection = localIngestion.projections.find(
     ({ state }) => state.itemId === lesson.itemId,
   )?.state;
+  const staleCheckpoint =
+    experienceSnapshot?.onboarding.status === "completed" &&
+    experienceSnapshot.lesson !== null &&
+    !checkpointMatchesLesson(experienceSnapshot, lesson)
+      ? experienceSnapshot.lesson
+      : null;
 
   function startExercise(): void {
     if (experienceStore === null || storageStatus !== "ready") return;
@@ -466,11 +467,7 @@ export function DemoExperience({
     void experienceStore
       .update((current) => {
         let activeSession = current;
-        if (
-          current.lesson === null ||
-          (!checkpointMatchesLesson(current, lesson) &&
-            current.lesson.phase === "completed")
-        ) {
+        if (current.lesson === null) {
           activeSession = startLocalLesson(current, {
             lessonVersionId: lesson.versionId,
             exerciseId: lesson.exercise.id,
@@ -503,6 +500,69 @@ export function DemoExperience({
           error instanceof LocalExperienceStorageError
             ? error.message
             : "La session n’a pas pu être ouverte localement.",
+        );
+      })
+      .finally(() => setIsSaving(false));
+  }
+
+  function replaceOldLessonVersion(): void {
+    if (
+      experienceStore === null ||
+      staleCheckpoint === null ||
+      storageStatus !== "ready" ||
+      isSaving
+    ) {
+      return;
+    }
+
+    stopSignal();
+    setIsSaving(true);
+    setCheckpointMessage("");
+    const openedAt = new Date().toISOString();
+    const expectedCheckpoint = staleCheckpoint;
+    const durableOutbox = outbox;
+    void experienceStore
+      .update((current) => {
+        const abandoned = abandonLocalLessonForVersionChange(
+          current,
+          expectedCheckpoint,
+          {
+            lessonVersionId: lesson.versionId,
+            exerciseId: lesson.exercise.id,
+          },
+          durableOutbox,
+        );
+        return openLocalLessonQuestion(
+          startLocalLesson(abandoned, {
+            lessonVersionId: lesson.versionId,
+            exerciseId: lesson.exercise.id,
+            startedAt: openedAt,
+          }),
+          openedAt,
+        );
+      })
+      .then((next) => {
+        setExperienceSnapshot(next);
+        setSelectedOptionId(null);
+        setLatestRating(null);
+        setStartedAt(
+          next.lesson === null
+            ? Date.parse(openedAt)
+            : Date.parse(next.lesson.sessionStartedAt),
+        );
+        setStage("question");
+        setReplacementConfirmation(false);
+        captureSafely(analytics, {
+          name: "lesson_started",
+          lessonVersionId: lesson.versionId,
+          platform: "web",
+        });
+      })
+      .catch((error) => {
+        setCheckpointMessage(
+          error instanceof LocalExperienceStorageError
+            ? error.message
+            : "L’ancienne session n’a pas été abandonnée. Réessayez après avoir relu le stockage local.",
         );
       })
       .finally(() => setIsSaving(false));
@@ -691,7 +751,64 @@ export function DemoExperience({
               : "Hors ligne · la fixture continue avec les ressources déjà chargées"}
       </div>
 
-      {stage === "intro" && (
+      {staleCheckpoint !== null && (
+        <div className="lessonBody">
+          <p className="eyebrow">Version locale plus ancienne</p>
+          <h1 id="lesson-title">
+            Une session précédente est encore conservée.
+          </h1>
+          <p className="lessonObjective">
+            Thaïnaute ne la remplace jamais automatiquement. Une tentative déjà
+            soumise reste dans le journal durable ; une réponse non validée sera
+            abandonnée avec son point de reprise.
+          </p>
+          {replacementConfirmation ? (
+            <div className="lessonActions">
+              <p className="inlineError" role="alert">
+                Deuxième confirmation : abandonner ce point de reprise et
+                démarrer la version actuellement chargée ?
+              </p>
+              <button
+                className="button buttonPrimary"
+                type="button"
+                aria-busy={isSaving}
+                disabled={isSaving}
+                onClick={replaceOldLessonVersion}
+              >
+                {isSaving ? "Remplacement…" : "Confirmer l’abandon et démarrer"}
+              </button>
+              <button
+                className="button buttonGhost"
+                type="button"
+                disabled={isSaving}
+                onClick={() => setReplacementConfirmation(false)}
+              >
+                Conserver l’ancienne session
+              </button>
+            </div>
+          ) : (
+            <div className="lessonActions">
+              <button
+                className="button buttonPrimary"
+                type="button"
+                onClick={() => setReplacementConfirmation(true)}
+              >
+                Abandonner cette ancienne session
+              </button>
+              <Link className="button buttonGhost" href="/today">
+                Retour à Aujourd’hui
+              </Link>
+            </div>
+          )}
+          {checkpointMessage && (
+            <p className="inlineError" role="alert">
+              {checkpointMessage}
+            </p>
+          )}
+        </div>
+      )}
+
+      {staleCheckpoint === null && stage === "intro" && (
         <div className="lessonBody">
           <p className="eyebrow">Étape 1 sur 1</p>
           <h1 id="lesson-title">{lesson.title}</h1>
@@ -751,7 +868,7 @@ export function DemoExperience({
         </div>
       )}
 
-      {stage === "question" && (
+      {staleCheckpoint === null && stage === "question" && (
         <div className="lessonBody">
           <p className="eyebrow">Écoute · donnée technique</p>
           <h1 id="lesson-title">{lesson.exercise.prompt}</h1>
@@ -813,7 +930,7 @@ export function DemoExperience({
         </div>
       )}
 
-      {stage === "result" && (
+      {staleCheckpoint === null && stage === "result" && (
         <div className="lessonBody resultBody" aria-live="polite">
           <p className="eyebrow">Tentative enregistrée localement</p>
           <h1 id="lesson-title" ref={resultHeading} tabIndex={-1}>

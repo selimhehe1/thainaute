@@ -246,6 +246,40 @@ describe("onboarding mobile local", () => {
     expect(testState.begin).not.toHaveBeenCalled();
   });
 
+  it("laisse un ancien identifiant neutre et interdit la finalisation", async () => {
+    testState.read.mockResolvedValue(
+      inProgress({
+        goalOptionId: "ancienne_taxonomie",
+        motivationOptionId: "prototype_motivation_travel",
+        experienceOptionId: "prototype_experience_new",
+      }),
+    );
+    render(<OnboardingScreen />);
+
+    expect(
+      (
+        (await screen.findByRole("radio", {
+          name: "5 minutes",
+        })) as { getAttribute: (name: string) => string | null }
+      ).getAttribute("aria-checked"),
+    ).toBe("false");
+    expect(
+      (
+        screen.getByRole("radio", {
+          name: "10 minutes",
+        }) as { getAttribute: (name: string) => string | null }
+      ).getAttribute("aria-checked"),
+    ).toBe("false");
+    expect(
+      (
+        screen.getByRole("button", {
+          name: "Voir ma séance du jour",
+        }) as { disabled?: boolean }
+      ).disabled,
+    ).toBe(true);
+    expect(testState.complete).not.toHaveBeenCalled();
+  });
+
   it("reste fail-closed et permet de relire le stockage", async () => {
     testState.read
       .mockRejectedValueOnce(new Error("corrupt"))

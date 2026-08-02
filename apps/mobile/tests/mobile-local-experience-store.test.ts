@@ -17,6 +17,8 @@ const ids = {
   exercise: "10000000-0000-4000-8000-000000000003",
   option: "10000000-0000-4000-8000-000000000004",
   lesson: "10000000-0000-4000-8000-000000000005",
+  nextExercise: "20000000-0000-4000-8000-000000000003",
+  nextLesson: "20000000-0000-4000-8000-000000000005",
 } as const;
 const startedAt = "2026-08-02T08:00:00.000Z";
 
@@ -150,6 +152,40 @@ describe("stockage du parcours local mobile", () => {
         },
       },
     });
+  });
+
+  it("remplace une ancienne version atomiquement après confirmation", async () => {
+    const { database, store } = createStore();
+    await completedOnboarding(store);
+    await store.startLesson({
+      lessonVersionId: ids.lesson,
+      exerciseId: ids.exercise,
+      startedAt,
+    });
+    const oldSnapshot = await store.openLessonQuestion(
+      "2026-08-02T08:00:01.000Z",
+    );
+    if (oldSnapshot.lesson === null) throw new Error("Checkpoint attendu");
+    const transactionsBeforeReplacement = database.transactionCount;
+
+    await expect(
+      store.replaceLessonVersion(
+        oldSnapshot.lesson,
+        {
+          lessonVersionId: ids.nextLesson,
+          exerciseId: ids.nextExercise,
+          startedAt: "2026-08-02T08:00:02.000Z",
+        },
+        createAttemptOutboxSnapshot(),
+      ),
+    ).resolves.toMatchObject({
+      lesson: {
+        phase: "intro",
+        lessonVersionId: ids.nextLesson,
+        exerciseId: ids.nextExercise,
+      },
+    });
+    expect(database.transactionCount).toBe(transactionsBeforeReplacement + 1);
   });
 
   it("refuse une ligne corrompue sans l’écraser", async () => {

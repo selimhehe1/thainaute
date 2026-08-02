@@ -136,6 +136,11 @@ export const localLessonCheckpointSchema = z
     }
   });
 
+const localLessonReplacementTargetSchema = z.strictObject({
+  lessonVersionId: canonicalUuidSchema,
+  exerciseId: canonicalUuidSchema,
+});
+
 export const localExperienceSnapshotSchema = z
   .strictObject({
     schemaVersion: z.literal(LOCAL_EXPERIENCE_SCHEMA_VERSION),
@@ -183,6 +188,9 @@ export type LocalOnboardingSelection = z.infer<
 >;
 export type LocalOnboardingState = z.infer<typeof localOnboardingStateSchema>;
 export type LocalLessonCheckpoint = z.infer<typeof localLessonCheckpointSchema>;
+export type LocalLessonReplacementTarget = z.infer<
+  typeof localLessonReplacementTargetSchema
+>;
 export type LocalExperienceSnapshot = z.infer<
   typeof localExperienceSnapshotSchema
 >;
@@ -250,6 +258,40 @@ function submissionsAreEqual(
     left.durationMs === right.durationMs &&
     left.contentVersionId === right.contentVersionId &&
     left.algorithmVersion === right.algorithmVersion
+  );
+}
+
+function lessonCheckpointsAreEqual(
+  left: LocalLessonCheckpoint,
+  right: LocalLessonCheckpoint,
+): boolean {
+  if (
+    left.phase !== right.phase ||
+    left.lessonVersionId !== right.lessonVersionId ||
+    left.exerciseId !== right.exerciseId ||
+    left.sessionStartedAt !== right.sessionStartedAt ||
+    left.updatedAt !== right.updatedAt
+  ) {
+    return false;
+  }
+
+  if (left.phase === "intro") return right.phase === "intro";
+  if (left.phase === "question") {
+    return (
+      right.phase === "question" &&
+      left.selectedOptionId === right.selectedOptionId
+    );
+  }
+  if (left.phase === "completed") {
+    return (
+      right.phase === "completed" &&
+      left.completedAt === right.completedAt &&
+      submissionsAreEqual(left.submission, right.submission)
+    );
+  }
+  return (
+    right.phase === left.phase &&
+    submissionsAreEqual(left.submission, right.submission)
   );
 }
 
@@ -391,9 +433,9 @@ export function startLocalLesson(
       "L’onboarding doit être terminé avant la séance.",
     );
   }
-  if (snapshot.lesson !== null && snapshot.lesson.phase !== "completed") {
+  if (snapshot.lesson !== null) {
     throw new LocalExperienceTransitionError(
-      "Une séance locale est déjà active et doit être reprise.",
+      "Une séance locale est déjà conservée et doit être reprise ou abandonnée explicitement.",
     );
   }
   const startedAt = canonicalTimestamp(input.startedAt);
@@ -406,6 +448,55 @@ export function startLocalLesson(
       sessionStartedAt: startedAt,
       updatedAt: startedAt,
     },
+  });
+}
+
+/**
+ * Abandonne explicitement un checkpoint lorsque le client dispose d'une
+ * version de remplacement. L'état attendu protège contre une confirmation
+ * devenue obsolète. Une tentative encore en cours doit déjà exister, à
+ * l'identique et non rejetée, dans l'outbox propriétaire.
+ */
+export function abandonLocalLessonForVersionChange(
+  snapshotInput: LocalExperienceSnapshot,
+  expectedCheckpointInput: LocalLessonCheckpoint,
+  replacementTargetInput: LocalLessonReplacementTarget,
+  outboxInput?: AttemptOutboxSnapshot,
+): LocalExperienceSnapshot {
+  const snapshot = localExperienceSnapshotSchema.parse(snapshotInput);
+  const lesson = requiredLesson(snapshot);
+  const expectedCheckpoint = localLessonCheckpointSchema.parse(
+    expectedCheckpointInput,
+  );
+  const replacementTarget = localLessonReplacementTargetSchema.parse(
+    replacementTargetInput,
+  );
+
+  if (!lessonCheckpointsAreEqual(lesson, expectedCheckpoint)) {
+    throw new LocalExperienceTransitionError(
+      "La séance locale a changé depuis la confirmation d’abandon.",
+    );
+  }
+  if (
+    replacementTarget.lessonVersionId === lesson.lessonVersionId &&
+    replacementTarget.exerciseId === lesson.exerciseId
+  ) {
+    throw new LocalExperienceTransitionError(
+      "L’abandon exige une autre cible de leçon.",
+    );
+  }
+  if (lesson.phase === "submitting" || lesson.phase === "result") {
+    if (
+      outboxInput === undefined ||
+      !hasDurableSubmission(snapshot.owner, outboxInput, lesson.submission)
+    ) {
+      throw new LocalExperienceAttemptIntegrityError();
+    }
+  }
+
+  return localExperienceSnapshotSchema.parse({
+    ...snapshot,
+    lesson: null,
   });
 }
 

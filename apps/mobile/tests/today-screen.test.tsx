@@ -19,9 +19,11 @@ const testState = vi.hoisted(() => ({
   focusCleanup: null as (() => void) | null,
   focusEffect: null as (() => void | (() => void)) | null,
   migrate: vi.fn(),
+  migrateFixture: vi.fn(),
   push: vi.fn(),
   read: vi.fn(),
   replace: vi.fn(),
+  replaceVersion: vi.fn(),
   startLesson: vi.fn(),
 }));
 const testRouter = vi.hoisted(() => ({
@@ -57,12 +59,14 @@ vi.mock("../lib/mobile-local-experience-store", () => ({
   MobileLocalExperienceStore: class {
     read = testState.read;
     startLesson = testState.startLesson;
+    replaceLessonVersion = testState.replaceVersion;
     confirmLessonResult = testState.confirm;
   },
 }));
 
 vi.mock("../lib/attempt-outbox-store", () => ({
   MobileAttemptOutboxStore: class {
+    migrateLegacyFixtureAttemptsToDemo = testState.migrateFixture;
     migrateLegacyJournal = testState.migrate;
     enqueue = testState.enqueue;
   },
@@ -157,6 +161,7 @@ beforeEach(() => {
   testState.focusCleanup = null;
   testState.focusEffect = null;
   testState.read.mockResolvedValue(experience());
+  testState.migrateFixture.mockResolvedValue(createAttemptOutboxSnapshot());
   testState.migrate.mockResolvedValue(createAttemptOutboxSnapshot());
   testState.startLesson.mockResolvedValue(
     experience({
@@ -169,6 +174,15 @@ beforeEach(() => {
   );
   testState.enqueue.mockImplementation(async (submission) =>
     enqueueAttempt(createAttemptOutboxSnapshot(), submission),
+  );
+  testState.replaceVersion.mockResolvedValue(
+    experience({
+      phase: "intro",
+      lessonVersionId: "10000000-0000-4000-8000-000000000002",
+      exerciseId: "10000000-0000-4000-8000-000000000004",
+      sessionStartedAt: startedAt,
+      updatedAt: startedAt,
+    }),
   );
 });
 
@@ -185,6 +199,9 @@ describe("écran Aujourd’hui mobile", () => {
     ).toBeTruthy();
     expect(screen.getByText("Disponible hors connexion")).toBeTruthy();
     expect(screen.getByText(/Objectif choisi : 5 minutes/iu)).toBeTruthy();
+    expect(testState.migrateFixture.mock.invocationCallOrder[0]).toBeLessThan(
+      testState.migrate.mock.invocationCallOrder[0] ?? Number.MAX_SAFE_INTEGER,
+    );
 
     fireEvent.click(
       screen.getByRole("button", { name: "Commencer la démo locale" }),
@@ -276,6 +293,107 @@ describe("écran Aujourd’hui mobile", () => {
       expect.any(String),
     );
     expect(testState.startLesson).not.toHaveBeenCalled();
+  });
+
+  it("récupère un ancien submitting puis exige deux confirmations", async () => {
+    const exact = {
+      eventId: "30000000-0000-4000-8000-000000000011",
+      deviceId: "40000000-0000-4000-8000-000000000011",
+      exerciseId: "10000000-0000-4000-8000-000000000014",
+      selectedOptionId: "20000000-0000-4000-8000-000000000001",
+      answeredAt: "2026-08-02T08:01:00.000Z",
+      durationMs: 1_000,
+      contentVersionId: "10000000-0000-4000-8000-000000000012",
+      algorithmVersion: "srs-v0",
+    } as const;
+    const recoveredOutbox = enqueueAttempt(
+      createAttemptOutboxSnapshot(),
+      exact,
+    );
+    testState.read.mockResolvedValue(
+      experience({
+        phase: "submitting",
+        lessonVersionId: exact.contentVersionId,
+        exerciseId: exact.exerciseId,
+        submission: exact,
+        sessionStartedAt: startedAt,
+        updatedAt: exact.answeredAt,
+      }),
+    );
+    testState.enqueue.mockResolvedValue(recoveredOutbox);
+    const recovered = experience({
+      phase: "result",
+      lessonVersionId: exact.contentVersionId,
+      exerciseId: exact.exerciseId,
+      submission: exact,
+      sessionStartedAt: startedAt,
+      updatedAt: exact.answeredAt,
+    });
+    testState.confirm.mockResolvedValue(recovered);
+    render(<TodayScreen />);
+
+    const firstConfirmation = await screen.findByRole("button", {
+      name: "Abandonner cette ancienne session",
+    });
+    expect(testState.enqueue).toHaveBeenCalledWith(exact);
+    expect(testState.confirm).toHaveBeenCalledWith(
+      recoveredOutbox,
+      expect.any(String),
+    );
+    expect(testState.replaceVersion).not.toHaveBeenCalled();
+
+    fireEvent.click(firstConfirmation);
+    expect(testState.replaceVersion).not.toHaveBeenCalled();
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Confirmer l’abandon et démarrer",
+      }),
+    );
+    await waitFor(() => expect(testState.replaceVersion).toHaveBeenCalled());
+    expect(testState.replaceVersion).toHaveBeenCalledWith(
+      recovered.lesson,
+      expect.objectContaining({
+        lessonVersionId: "10000000-0000-4000-8000-000000000002",
+        exerciseId: "10000000-0000-4000-8000-000000000004",
+      }),
+      recoveredOutbox,
+    );
+    expect(testState.push).toHaveBeenCalledWith("/lesson");
+  });
+
+  it("ouvre un checkpoint completed sans redémarrer la leçon", async () => {
+    const exact = {
+      eventId: "30000000-0000-4000-8000-000000000001",
+      deviceId: "40000000-0000-4000-8000-000000000001",
+      exerciseId: "10000000-0000-4000-8000-000000000004",
+      selectedOptionId: "20000000-0000-4000-8000-000000000001",
+      answeredAt: "2026-08-02T08:01:00.000Z",
+      durationMs: 1_000,
+      contentVersionId: "10000000-0000-4000-8000-000000000002",
+      algorithmVersion: "srs-v0",
+    } as const;
+    testState.migrate.mockResolvedValue(
+      enqueueAttempt(createAttemptOutboxSnapshot(), exact),
+    );
+    testState.read.mockResolvedValue(
+      experience({
+        phase: "completed",
+        lessonVersionId: exact.contentVersionId,
+        exerciseId: exact.exerciseId,
+        submission: exact,
+        sessionStartedAt: startedAt,
+        completedAt: "2026-08-02T08:02:00.000Z",
+        updatedAt: "2026-08-02T08:02:00.000Z",
+      }),
+    );
+    render(<TodayScreen />);
+
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Revoir la démo locale" }),
+    );
+    await waitFor(() => expect(testState.push).toHaveBeenCalledWith("/lesson"));
+    expect(testState.startLesson).not.toHaveBeenCalled();
+    expect(testState.replaceVersion).not.toHaveBeenCalled();
   });
 
   it("relit le checkpoint quand Aujourd’hui reprend le focus", async () => {

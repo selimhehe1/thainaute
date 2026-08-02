@@ -84,6 +84,7 @@ export default function TodayScreen() {
   const [outbox, setOutbox] = useState<AttemptOutboxSnapshot | null>(null);
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
+  const [replacementConfirmation, setReplacementConfirmation] = useState(false);
   const requestedRevisionRef = useRef(0);
 
   useFocusEffect(
@@ -93,7 +94,7 @@ export default function TodayScreen() {
       setStatus("loading");
       void Promise.all([
         experienceStore.read(),
-        outboxStore.migrateLegacyJournal(),
+        outboxStore.migrateLegacyFixtureAttemptsToDemo(),
       ])
         .then(async ([experience, currentOutbox]) => {
           let recoveredExperience = experience;
@@ -112,6 +113,7 @@ export default function TodayScreen() {
           }
           setSnapshot(recoveredExperience);
           setOutbox(recoveredOutbox);
+          setReplacementConfirmation(false);
           setStatus("ready");
         })
         .catch(() => {
@@ -139,7 +141,7 @@ export default function TodayScreen() {
     setMessage("");
     try {
       const currentLesson = snapshot.lesson;
-      if (currentLesson === null || currentLesson.phase === "completed") {
+      if (currentLesson === null) {
         const next = await experienceStore.startLesson({
           lessonVersionId: lesson.versionId,
           exerciseId: exercise.id,
@@ -150,15 +152,58 @@ export default function TodayScreen() {
         currentLesson.lessonVersionId !== lesson.versionId ||
         currentLesson.exerciseId !== exercise.id
       ) {
-        setMessage(
-          "Cette séance locale appartient à une autre version et n’a pas été modifiée.",
-        );
+        setReplacementConfirmation(true);
         return;
       }
       router.push("/lesson");
     } catch {
       setMessage(
         "La séance n’a pas pu être préparée. Vos données existantes sont conservées.",
+      );
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function replaceOldLessonVersion(): Promise<void> {
+    const expectedCheckpoint = snapshot?.lesson;
+    if (
+      expectedCheckpoint === undefined ||
+      expectedCheckpoint === null ||
+      outbox === null ||
+      busy
+    ) {
+      return;
+    }
+    if (
+      expectedCheckpoint.lessonVersionId === lesson.versionId &&
+      expectedCheckpoint.exerciseId === exercise.id
+    ) {
+      setReplacementConfirmation(false);
+      setMessage(
+        "La séance locale a changé. Relisez son état avant de continuer.",
+      );
+      return;
+    }
+
+    setBusy(true);
+    setMessage("");
+    try {
+      const next = await experienceStore.replaceLessonVersion(
+        expectedCheckpoint,
+        {
+          lessonVersionId: lesson.versionId,
+          exerciseId: exercise.id,
+          startedAt: new Date().toISOString(),
+        },
+        outbox,
+      );
+      setSnapshot(next);
+      setReplacementConfirmation(false);
+      router.push("/lesson");
+    } catch {
+      setMessage(
+        "L’ancienne session n’a pas été abandonnée. Vos données existantes sont conservées.",
       );
     } finally {
       setBusy(false);
@@ -217,8 +262,13 @@ export default function TodayScreen() {
   }
 
   const lessonPhase = snapshot.lesson?.phase ?? null;
-  const actionLabel =
-    lessonPhase === "question"
+  const hasOlderVersion =
+    snapshot.lesson !== null &&
+    (snapshot.lesson.lessonVersionId !== lesson.versionId ||
+      snapshot.lesson.exerciseId !== exercise.id);
+  const actionLabel = hasOlderVersion
+    ? "Abandonner cette ancienne session"
+    : lessonPhase === "question"
       ? "Reprendre l’exercice"
       : lessonPhase === "result"
         ? "Voir mon résultat"
@@ -278,17 +328,49 @@ export default function TodayScreen() {
               Prochaine révision calculée : {formatDueAt(dueAt)}
             </Text>
           )}
-          <Pressable
-            accessibilityRole="button"
-            accessibilityState={{ busy, disabled: busy }}
-            disabled={busy}
-            style={[styles.primaryButton, busy && styles.disabled]}
-            onPress={() => void openLesson()}
-          >
-            <Text style={styles.primaryText}>
-              {busy ? "Préparation…" : actionLabel}
-            </Text>
-          </Pressable>
+          {hasOlderVersion && replacementConfirmation ? (
+            <View style={styles.replacementConfirmation}>
+              <Text accessibilityRole="alert" style={styles.warningText}>
+                Deuxième confirmation : abandonner ce point de reprise et
+                démarrer la version actuellement chargée ? Une tentative déjà
+                soumise reste dans le journal durable.
+              </Text>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ busy, disabled: busy }}
+                disabled={busy}
+                style={[styles.primaryButton, busy && styles.disabled]}
+                onPress={() => void replaceOldLessonVersion()}
+              >
+                <Text style={styles.primaryText}>
+                  {busy ? "Remplacement…" : "Confirmer l’abandon et démarrer"}
+                </Text>
+              </Pressable>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ disabled: busy }}
+                disabled={busy}
+                style={[styles.secondaryButton, busy && styles.disabled]}
+                onPress={() => setReplacementConfirmation(false)}
+              >
+                <Text style={styles.secondaryText}>
+                  Conserver l’ancienne session
+                </Text>
+              </Pressable>
+            </View>
+          ) : (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityState={{ busy, disabled: busy }}
+              disabled={busy}
+              style={[styles.primaryButton, busy && styles.disabled]}
+              onPress={() => void openLesson()}
+            >
+              <Text style={styles.primaryText}>
+                {busy ? "Préparation…" : actionLabel}
+              </Text>
+            </Pressable>
+          )}
         </View>
 
         {message !== "" && (
@@ -396,6 +478,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#283450",
   },
   primaryText: { color: "white", fontSize: 16, fontWeight: "800" },
+  replacementConfirmation: { marginTop: 18 },
+  warningText: { color: "#7b2f2b", fontSize: 15, lineHeight: 22 },
+  secondaryButton: {
+    minHeight: 48,
+    marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "#aab2c0",
+    borderRadius: 999,
+  },
+  secondaryText: { color: "#283450", fontWeight: "700" },
   disabled: { opacity: 0.5 },
   error: { marginTop: 18, color: "#9b3732", fontSize: 14, lineHeight: 21 },
 });

@@ -35,6 +35,7 @@ const testState = vi.hoisted(() => ({
   finish: vi.fn(),
   getDeviceId: vi.fn(),
   migrate: vi.fn(),
+  migrateFixture: vi.fn(),
   openQuestion: vi.fn(),
   outboxNamespaces: [] as (string | undefined)[],
   pausePlayback: vi.fn(),
@@ -107,6 +108,7 @@ vi.mock("../lib/attempt-outbox-store", () => ({
     constructor(_database: unknown, _owner: unknown, namespace?: string) {
       testState.outboxNamespaces.push(namespace);
     }
+    migrateLegacyFixtureAttemptsToDemo = testState.migrateFixture;
     migrateLegacyJournal = testState.migrate;
     getOrCreateDeviceId = testState.getDeviceId;
     enqueue = testState.enqueue;
@@ -135,15 +137,18 @@ vi.mock("react-native", async () => {
     children?: ReactNode;
     disabled?: boolean;
     onPress?: () => void;
+    style?: { color?: string; fontFamily?: string };
   };
   const container = ({ children }: NativeProps) =>
     React.createElement("div", null, children);
   const Text = React.forwardRef<HTMLElement, NativeProps>(
-    ({ accessibilityLiveRegion, accessibilityRole, children }, ref) =>
+    ({ accessibilityLiveRegion, accessibilityRole, children, style }, ref) =>
       React.createElement(
         accessibilityRole === "header" ? "h1" : "p",
         {
           "aria-live": accessibilityLiveRegion,
+          "data-color": style?.color,
+          "data-font-family": style?.fontFamily,
           ref,
           role: accessibilityRole === "alert" ? "alert" : undefined,
         },
@@ -265,6 +270,18 @@ function resultExperience(exact = submission()) {
   });
 }
 
+function completedExperience(exact = submission()) {
+  return baseExperience({
+    phase: "completed",
+    lessonVersionId: ids.lesson,
+    exerciseId: ids.exercise,
+    submission: exact,
+    sessionStartedAt,
+    completedAt: "2026-08-02T00:01:00.000Z",
+    updatedAt: "2026-08-02T00:01:00.000Z",
+  });
+}
+
 let outbox: AttemptOutboxSnapshot;
 
 beforeEach(() => {
@@ -272,6 +289,7 @@ beforeEach(() => {
   testState.outboxNamespaces.splice(0);
   outbox = createAttemptOutboxSnapshot();
   testState.read.mockResolvedValue(introExperience());
+  testState.migrateFixture.mockImplementation(async () => outbox);
   testState.migrate.mockImplementation(async () => outbox);
   testState.getDeviceId.mockResolvedValue(ids.device);
   testState.randomUUID.mockReturnValue(ids.event);
@@ -375,6 +393,14 @@ describe("reprise de la leçon mobile", () => {
     );
     render(<LessonExperience analytics={{ capture }} />);
 
+    expect(
+      (
+        (await screen.findByText("ก่")) as {
+          getAttribute: (name: string) => string | null;
+        }
+      ).getAttribute("data-font-family"),
+    ).toBe("NotoSansThai_400Regular");
+
     fireEvent.click(await screen.findByRole("button", { name: "Commencer" }));
     await waitFor(() => expect(testState.openQuestion).toHaveBeenCalledOnce());
     fireEvent.click(screen.getByRole("radio", { name: "Option A" }));
@@ -409,5 +435,50 @@ describe("reprise de la leçon mobile", () => {
       testState.finish.mock.invocationCallOrder[0] ?? Number.MAX_SAFE_INTEGER,
     );
     expect(testState.replace).toHaveBeenCalledWith("/");
+  });
+
+  it("revoit un résultat completed sans recréer ni compléter la tentative", async () => {
+    const exact = submission();
+    outbox = enqueueAttempt(createAttemptOutboxSnapshot(), exact);
+    testState.read.mockResolvedValue(completedExperience(exact));
+    const capture = vi.fn();
+    render(<LessonExperience analytics={{ capture }} />);
+
+    expect(
+      await screen.findByText("La boucle technique fonctionne."),
+    ).toBeTruthy();
+    expect(
+      (
+        screen.getByText("250 ‰") as {
+          getAttribute: (name: string) => string | null;
+        }
+      ).getAttribute("data-color"),
+    ).toBe("#236b58");
+    fireEvent.click(
+      screen.getByRole("button", { name: "Retour à Aujourd’hui" }),
+    );
+
+    await waitFor(() => expect(testState.replace).toHaveBeenCalledWith("/"));
+    expect(testState.finish).not.toHaveBeenCalled();
+    expect(testState.deleteRecording).toHaveBeenCalledOnce();
+    expect(capture).not.toHaveBeenCalledWith(
+      expect.objectContaining({ name: "lesson_completed" }),
+    );
+  });
+
+  it("refuse un résultat dont le payload durable diverge malgré le même eventId", async () => {
+    const exact = submission();
+    outbox = enqueueAttempt(createAttemptOutboxSnapshot(), {
+      ...exact,
+      selectedOptionId: ids.optionB,
+    });
+    testState.read.mockResolvedValue(resultExperience(exact));
+
+    render(<LessonExperience />);
+
+    expect(
+      await screen.findByRole("button", { name: "Réessayer le stockage" }),
+    ).toBeTruthy();
+    expect(screen.queryByText("La boucle technique fonctionne.")).toBeNull();
   });
 });

@@ -1,4 +1,5 @@
 import {
+  abandonLocalLessonForVersionChange,
   beginLocalOnboarding,
   completeLocalOnboarding,
   confirmLocalLessonResult,
@@ -18,6 +19,8 @@ import {
   type AttemptOutboxOwner,
   type AttemptOutboxSnapshot,
   type LocalExperienceSnapshot,
+  type LocalLessonCheckpoint,
+  type LocalLessonReplacementTarget,
   type LocalOnboardingSelection,
   type ValidatedAttemptSubmission,
 } from "@thainaute/sync";
@@ -173,6 +176,28 @@ export class MobileLocalExperienceStore {
   }): Promise<LocalExperienceSnapshot> {
     return this.#replace(input.startedAt, (snapshot) =>
       startLocalLesson(snapshot, input),
+    );
+  }
+
+  public replaceLessonVersion(
+    expectedCheckpoint: LocalLessonCheckpoint,
+    replacement: LocalLessonReplacementTarget & { readonly startedAt: string },
+    outbox: AttemptOutboxSnapshot,
+  ): Promise<LocalExperienceSnapshot> {
+    const replacementTarget = {
+      lessonVersionId: replacement.lessonVersionId,
+      exerciseId: replacement.exerciseId,
+    };
+    return this.#replace(replacement.startedAt, (snapshot) =>
+      startLocalLesson(
+        abandonLocalLessonForVersionChange(
+          snapshot,
+          expectedCheckpoint,
+          replacementTarget,
+          outbox,
+        ),
+        replacement,
+      ),
     );
   }
 

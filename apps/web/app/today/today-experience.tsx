@@ -52,6 +52,13 @@ type GoalOptionId = (typeof GOAL_OPTIONS)[number]["id"];
 type MotivationOptionId = (typeof MOTIVATION_OPTIONS)[number]["id"];
 type ExperienceOptionId = (typeof EXPERIENCE_OPTIONS)[number]["id"];
 
+function knownOptionId<Options extends readonly { readonly id: string }[]>(
+  options: Options,
+  optionId: string | null,
+): Options[number]["id"] | null {
+  return options.find(({ id }) => id === optionId)?.id ?? null;
+}
+
 function subscribeToNetworkStatus(callback: () => void): () => void {
   window.addEventListener("online", callback);
   window.addEventListener("offline", callback);
@@ -122,13 +129,19 @@ export function TodayExperience({
         setStorageStatus("ready");
         if (current.onboarding.status === "in_progress") {
           setGoalOptionId(
-            current.onboarding.goalOptionId as GoalOptionId | null,
+            knownOptionId(GOAL_OPTIONS, current.onboarding.goalOptionId),
           );
           setMotivationOptionId(
-            current.onboarding.motivationOptionId as MotivationOptionId | null,
+            knownOptionId(
+              MOTIVATION_OPTIONS,
+              current.onboarding.motivationOptionId,
+            ),
           );
           setExperienceOptionId(
-            current.onboarding.experienceOptionId as ExperienceOptionId | null,
+            knownOptionId(
+              EXPERIENCE_OPTIONS,
+              current.onboarding.experienceOptionId,
+            ),
           );
         }
         if (didStartOnboarding) {
@@ -351,19 +364,23 @@ export function TodayExperience({
   }
 
   const completedOnboarding = snapshot.onboarding;
+  const storedCheckpoint = snapshot.lesson;
   const checkpoint =
-    snapshot.lesson?.lessonVersionId === lesson.versionId &&
-    snapshot.lesson.exerciseId === lesson.exerciseId
-      ? snapshot.lesson
+    storedCheckpoint?.lessonVersionId === lesson.versionId &&
+    storedCheckpoint.exerciseId === lesson.exerciseId
+      ? storedCheckpoint
       : null;
-  const actionLabel =
-    checkpoint === null || checkpoint.phase === "intro"
+  const hasOlderVersion = storedCheckpoint !== null && checkpoint === null;
+  const actionLabel = hasOlderVersion
+    ? "Traiter l’ancienne session"
+    : checkpoint === null || checkpoint.phase === "intro"
       ? "Commencer la session"
       : checkpoint.phase === "question" || checkpoint.phase === "submitting"
         ? "Reprendre la session"
         : "Revoir mon résultat";
-  const sessionStatus =
-    checkpoint === null || checkpoint.phase === "intro"
+  const sessionStatus = hasOlderVersion
+    ? "Ancienne version à confirmer"
+    : checkpoint === null || checkpoint.phase === "intro"
       ? "Prête à commencer"
       : checkpoint.phase === "question"
         ? "Session en cours"

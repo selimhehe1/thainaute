@@ -6,6 +6,7 @@ import {
   applyAnonymousProgressFusionBatchSuccess as applyFusionBatchSuccess,
   applyAttemptOutboxSuccess,
   applyProgressSnapshot,
+  attemptOutboxSnapshotSchema,
   attemptOutboxOwnerSchema,
   attemptOutboxOwnersAreEqual,
   attemptOutboxOwnerStorageKey,
@@ -25,6 +26,7 @@ import {
   type ApplyAttemptOutboxSuccessResult,
   type AnonymousProgressFusionMarker,
   type AttemptBatchResponse,
+  type AttemptOutboxEntry,
   type AttemptOutboxSnapshot,
   type AttemptOutboxOwner,
   type PrepareAttemptOutboxResult,
@@ -40,6 +42,17 @@ const OUTBOX_KEY = "attempts-v1";
 const DEVICE_KEY = "device-id-v1";
 const INSTALLATION_KEY = "installation-id-v1";
 const FUSION_MARKER_KEY = "anonymous-progress-fusion-v1";
+const DEFAULT_LEARNING_DATABASE_NAME = "thainaute-learning-v1";
+const DEFAULT_DEMO_DATABASE_NAME = "thainaute-demo-v1";
+const LEGACY_DEMO_FIXTURE_QUARANTINE_KEY = "legacy-demo-fixture-quarantine-v1";
+const LEGACY_DEMO_FIXTURE_EXERCISE_ID = "10000000-0000-4000-8000-000000000004";
+const LEGACY_DEMO_FIXTURE_CONTENT_VERSION_ID =
+  "10000000-0000-4000-8000-000000000002";
+const LEGACY_DEMO_FIXTURE_OPTION_IDS = new Set([
+  "20000000-0000-4000-8000-000000000001",
+  "20000000-0000-4000-8000-000000000002",
+]);
+const LEGACY_DEMO_FIXTURE_ALGORITHM_VERSION = "srs-v0";
 
 interface MetadataRow {
   readonly key: string;
@@ -67,6 +80,23 @@ export interface ExpectedWebAccountPurgeState {
   readonly snapshot: AttemptOutboxSnapshot;
   readonly fusionMarker: AnonymousProgressFusionMarker | null;
 }
+
+export interface LegacyDemoFixtureMigrationOptions {
+  readonly learningDatabaseName?: string;
+  readonly demoDatabaseName?: string;
+}
+
+export type LegacyDemoFixtureMigrationResult =
+  | {
+      readonly status: "not_needed";
+      readonly copiedEntries: 0;
+      readonly deduplicatedEntries: 0;
+    }
+  | {
+      readonly status: "migrated";
+      readonly copiedEntries: number;
+      readonly deduplicatedEntries: number;
+    };
 
 function openDatabase(name: string): LearningDatabase {
   const database = new Dexie(name) as LearningDatabase;
@@ -111,6 +141,465 @@ function parseStoredFusionMarker(
   }
 }
 
+function parseStoredFixtureQuarantine(
+  row: OutboxRow | undefined,
+): AttemptOutboxSnapshot {
+  if (row === undefined) {
+    return createAttemptOutboxSnapshot(ANONYMOUS_ATTEMPT_OUTBOX_OWNER);
+  }
+
+  try {
+    const snapshot = deserializeAttemptOutboxSnapshot(row.snapshot);
+    const isDedicatedSnapshot =
+      attemptOutboxOwnersAreEqual(
+        snapshot.owner,
+        ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+      ) &&
+      snapshot.syncRevision === 0 &&
+      snapshot.authoritativeStates.length === 0 &&
+      snapshot.inFlight === null &&
+      snapshot.entries.length > 0 &&
+      snapshot.entries.every(isLegacyDemoFixtureEntry);
+    if (!isDedicatedSnapshot) {
+      throw new Error("La quarantaine contient un état inattendu.");
+    }
+    return snapshot;
+  } catch (error) {
+    throw new AttemptOutboxStorageError(
+      "La quarantaine de la fixture historique est illisible et a été conservée.",
+      { cause: error },
+    );
+  }
+}
+
+function isLegacyDemoFixtureSubmission(
+  submission: ValidatedAttemptSubmission,
+): boolean {
+  return (
+    submission.exerciseId === LEGACY_DEMO_FIXTURE_EXERCISE_ID &&
+    submission.contentVersionId === LEGACY_DEMO_FIXTURE_CONTENT_VERSION_ID &&
+    LEGACY_DEMO_FIXTURE_OPTION_IDS.has(submission.selectedOptionId) &&
+    submission.algorithmVersion === LEGACY_DEMO_FIXTURE_ALGORITHM_VERSION
+  );
+}
+
+function isLegacyDemoFixtureEntry(entry: AttemptOutboxEntry): boolean {
+  return isLegacyDemoFixtureSubmission(entry.submission);
+}
+
+function assertFusionIsNotContaminated(
+  marker: AnonymousProgressFusionMarker | null,
+): void {
+  if (
+    marker?.status === "awaiting_server_ack" &&
+    marker.submissions.some(isLegacyDemoFixtureSubmission)
+  ) {
+    throw new AttemptOutboxStorageError(
+      "La fusion locale contient une fixture technique et a été bloquée sans modification.",
+    );
+  }
+}
+
+function assertSnapshotHasNoLegacyDemoFixture(
+  snapshot: AttemptOutboxSnapshot,
+): void {
+  if (snapshot.entries.some(isLegacyDemoFixtureEntry)) {
+    throw new AttemptOutboxStorageError(
+      "La progression anonyme contient une fixture technique et doit être isolée avant la fusion.",
+    );
+  }
+}
+
+function attemptPayloadsAreEqual(
+  left: ValidatedAttemptSubmission,
+  right: ValidatedAttemptSubmission,
+): boolean {
+  return (
+    left.eventId === right.eventId &&
+    left.deviceId === right.deviceId &&
+    left.exerciseId === right.exerciseId &&
+    left.selectedOptionId === right.selectedOptionId &&
+    left.answeredAt === right.answeredAt &&
+    left.durationMs === right.durationMs &&
+    left.contentVersionId === right.contentVersionId &&
+    left.algorithmVersion === right.algorithmVersion
+  );
+}
+
+function attemptEntriesAreEqual(
+  left: AttemptOutboxEntry,
+  right: AttemptOutboxEntry,
+): boolean {
+  if (!attemptPayloadsAreEqual(left.submission, right.submission)) return false;
+  if (left.status === "pending") {
+    return right.status === "pending" && left.retryReason === right.retryReason;
+  }
+  if (left.status === "synced") {
+    return (
+      right.status === "synced" &&
+      left.serverStatus === right.serverStatus &&
+      left.rating === right.rating
+    );
+  }
+  return right.status === "rejected" && left.code === right.code;
+}
+
+function compareOutboxEntries(
+  left: AttemptOutboxEntry,
+  right: AttemptOutboxEntry,
+): number {
+  const timestampDifference =
+    Date.parse(left.submission.answeredAt) -
+    Date.parse(right.submission.answeredAt);
+  return timestampDifference === 0
+    ? left.submission.eventId.localeCompare(right.submission.eventId)
+    : timestampDifference;
+}
+
+function assertMigrationCanMutate(
+  snapshot: AttemptOutboxSnapshot,
+  marker: AnonymousProgressFusionMarker | null,
+  fixtureEntries: readonly AttemptOutboxEntry[],
+  databaseLabel: "learning" | "demo",
+): void {
+  const fixtureEventIds = new Set(
+    fixtureEntries.map(({ submission }) => submission.eventId),
+  );
+  if (
+    snapshot.inFlight?.eventIds.some((eventId) => fixtureEventIds.has(eventId))
+  ) {
+    throw new AttemptOutboxStorageError(
+      `La migration de la fixture attend la fin du lot ${databaseLabel} en vol.`,
+    );
+  }
+  if (
+    marker?.status === "awaiting_server_ack" &&
+    marker.submissions.some(isLegacyDemoFixtureSubmission)
+  ) {
+    throw new AttemptOutboxStorageError(
+      `La migration de la fixture attend la fin de la fusion ${databaseLabel}.`,
+    );
+  }
+}
+
+function mergeFixtureEntries(
+  destination: AttemptOutboxSnapshot,
+  sourceEntries: readonly AttemptOutboxEntry[],
+): {
+  readonly snapshot: AttemptOutboxSnapshot;
+  readonly copiedEntries: number;
+  readonly deduplicatedEntries: number;
+} {
+  const mergedEntries = [...destination.entries];
+  const destinationByEventId = new Map(
+    destination.entries.map((entry) => [entry.submission.eventId, entry]),
+  );
+  let copiedEntries = 0;
+  let deduplicatedEntries = 0;
+
+  for (const sourceEntry of sourceEntries) {
+    const existing = destinationByEventId.get(sourceEntry.submission.eventId);
+    if (existing !== undefined) {
+      if (
+        !attemptPayloadsAreEqual(existing.submission, sourceEntry.submission)
+      ) {
+        throw new AttemptOutboxStorageError(
+          "La fixture historique entre en conflit avec une tentative demo existante.",
+        );
+      }
+      if (!attemptEntriesAreEqual(existing, sourceEntry)) {
+        throw new AttemptOutboxStorageError(
+          "Le payload de fixture existe avec un état de synchronisation différent.",
+        );
+      }
+      deduplicatedEntries += 1;
+      continue;
+    }
+
+    mergedEntries.push(sourceEntry);
+    destinationByEventId.set(sourceEntry.submission.eventId, sourceEntry);
+    copiedEntries += 1;
+  }
+
+  return {
+    snapshot: attemptOutboxSnapshotSchema.parse({
+      ...destination,
+      entries: mergedEntries.sort(compareOutboxEntries),
+    }),
+    copiedEntries,
+    deduplicatedEntries,
+  };
+}
+
+function fixturePayloadSetsAreEqual(
+  left: readonly AttemptOutboxEntry[],
+  right: readonly AttemptOutboxEntry[],
+): boolean {
+  if (left.length !== right.length) return false;
+  const rightByEventId = new Map(
+    right.map((entry) => [entry.submission.eventId, entry]),
+  );
+  return left.every((entry) => {
+    const matching = rightByEventId.get(entry.submission.eventId);
+    return matching !== undefined && attemptEntriesAreEqual(entry, matching);
+  });
+}
+
+async function inspectLegacyFixtureSource(
+  database: LearningDatabase,
+): Promise<readonly AttemptOutboxEntry[]> {
+  return database.transaction(
+    "r",
+    database.metadata,
+    database.outbox,
+    async () => {
+      const learningSnapshot = parseStoredSnapshot(
+        await database.outbox.get(OUTBOX_KEY),
+        ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+      );
+      const fixtureEntries = learningSnapshot.entries.filter(
+        isLegacyDemoFixtureEntry,
+      );
+      const quarantineRow = await database.outbox.get(
+        LEGACY_DEMO_FIXTURE_QUARANTINE_KEY,
+      );
+      if (fixtureEntries.length === 0 && quarantineRow === undefined) return [];
+
+      const marker = parseStoredFusionMarker(
+        await database.metadata.get(FUSION_MARKER_KEY),
+      );
+      const quarantine = parseStoredFixtureQuarantine(quarantineRow);
+      const migrationEntries = mergeFixtureEntries(quarantine, fixtureEntries)
+        .snapshot.entries;
+      assertMigrationCanMutate(
+        learningSnapshot,
+        marker,
+        migrationEntries,
+        "learning",
+      );
+      return migrationEntries;
+    },
+  );
+}
+
+async function assertDemoCanReceiveFixture(
+  database: LearningDatabase,
+  fixtureEntries: readonly AttemptOutboxEntry[],
+): Promise<void> {
+  await database.transaction(
+    "r",
+    database.metadata,
+    database.outbox,
+    async () => {
+      const snapshot = parseStoredSnapshot(
+        await database.outbox.get(OUTBOX_KEY),
+        ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+      );
+      const marker = parseStoredFusionMarker(
+        await database.metadata.get(FUSION_MARKER_KEY),
+      );
+      assertMigrationCanMutate(snapshot, marker, fixtureEntries, "demo");
+      mergeFixtureEntries(snapshot, fixtureEntries);
+    },
+  );
+}
+
+async function quarantineLegacyFixtureSource(
+  database: LearningDatabase,
+): Promise<readonly AttemptOutboxEntry[]> {
+  return database.transaction(
+    "rw",
+    database.metadata,
+    database.outbox,
+    async () => {
+      const learningRow = await database.outbox.get(OUTBOX_KEY);
+      const learningSnapshot = parseStoredSnapshot(
+        learningRow,
+        ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+      );
+      const fixtureEntries = learningSnapshot.entries.filter(
+        isLegacyDemoFixtureEntry,
+      );
+      const quarantineRow = await database.outbox.get(
+        LEGACY_DEMO_FIXTURE_QUARANTINE_KEY,
+      );
+      if (fixtureEntries.length === 0 && quarantineRow === undefined) return [];
+
+      const marker = parseStoredFusionMarker(
+        await database.metadata.get(FUSION_MARKER_KEY),
+      );
+      const quarantine = parseStoredFixtureQuarantine(quarantineRow);
+      const quarantined = mergeFixtureEntries(quarantine, fixtureEntries);
+      assertMigrationCanMutate(
+        learningSnapshot,
+        marker,
+        quarantined.snapshot.entries,
+        "learning",
+      );
+
+      if (fixtureEntries.length > 0) {
+        const retainedSnapshot = attemptOutboxSnapshotSchema.parse({
+          ...learningSnapshot,
+          entries: learningSnapshot.entries.filter(
+            (entry) => !isLegacyDemoFixtureEntry(entry),
+          ),
+        });
+        await database.outbox.bulkPut([
+          {
+            key: OUTBOX_KEY,
+            snapshot: serializeAttemptOutboxSnapshot(retainedSnapshot),
+          },
+          {
+            key: LEGACY_DEMO_FIXTURE_QUARANTINE_KEY,
+            snapshot: serializeAttemptOutboxSnapshot(quarantined.snapshot),
+          },
+        ]);
+      }
+
+      return quarantined.snapshot.entries;
+    },
+  );
+}
+
+async function copyFixtureToDemo(
+  database: LearningDatabase,
+  fixtureEntries: readonly AttemptOutboxEntry[],
+): Promise<{
+  readonly copiedEntries: number;
+  readonly deduplicatedEntries: number;
+}> {
+  return database.transaction(
+    "rw",
+    database.metadata,
+    database.outbox,
+    async () => {
+      const snapshot = parseStoredSnapshot(
+        await database.outbox.get(OUTBOX_KEY),
+        ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+      );
+      const marker = parseStoredFusionMarker(
+        await database.metadata.get(FUSION_MARKER_KEY),
+      );
+      assertMigrationCanMutate(snapshot, marker, fixtureEntries, "demo");
+      const merged = mergeFixtureEntries(snapshot, fixtureEntries);
+      await database.outbox.put({
+        key: OUTBOX_KEY,
+        snapshot: serializeAttemptOutboxSnapshot(merged.snapshot),
+      });
+      return {
+        copiedEntries: merged.copiedEntries,
+        deduplicatedEntries: merged.deduplicatedEntries,
+      };
+    },
+  );
+}
+
+async function clearFixtureQuarantine(
+  database: LearningDatabase,
+  expectedEntries: readonly AttemptOutboxEntry[],
+): Promise<void> {
+  await database.transaction(
+    "rw",
+    database.metadata,
+    database.outbox,
+    async () => {
+      const quarantineRow = await database.outbox.get(
+        LEGACY_DEMO_FIXTURE_QUARANTINE_KEY,
+      );
+      if (quarantineRow === undefined) return;
+
+      const learningSnapshot = parseStoredSnapshot(
+        await database.outbox.get(OUTBOX_KEY),
+        ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+      );
+      const marker = parseStoredFusionMarker(
+        await database.metadata.get(FUSION_MARKER_KEY),
+      );
+      assertMigrationCanMutate(
+        learningSnapshot,
+        marker,
+        expectedEntries,
+        "learning",
+      );
+      if (learningSnapshot.entries.some(isLegacyDemoFixtureEntry)) {
+        throw new AttemptOutboxStorageError(
+          "Une nouvelle tentative fixture doit être quarantainée avant le nettoyage.",
+        );
+      }
+
+      const quarantine = parseStoredFixtureQuarantine(quarantineRow);
+      if (!fixturePayloadSetsAreEqual(quarantine.entries, expectedEntries)) {
+        throw new AttemptOutboxStorageError(
+          "La quarantaine a changé pendant la migration et a été conservée.",
+        );
+      }
+      await database.outbox.delete(LEGACY_DEMO_FIXTURE_QUARANTINE_KEY);
+    },
+  );
+}
+
+/**
+ * IndexedDB limite une transaction aux object stores d'une seule base. La
+ * fixture est donc d'abord neutralisée atomiquement dans une quarantaine de la
+ * base learning, puis copiée dans demo. Une interruption laisse la copie
+ * source, la quarantaine ou les deux : le rejeu strict termine sans perte et
+ * la fusion de compte ne lit jamais la clé de quarantaine.
+ */
+export async function migrateLegacyDemoFixtureAttempts(
+  options: LegacyDemoFixtureMigrationOptions = {},
+): Promise<LegacyDemoFixtureMigrationResult> {
+  const learningDatabase = openDatabase(
+    options.learningDatabaseName ?? DEFAULT_LEARNING_DATABASE_NAME,
+  );
+  const demoDatabase = openDatabase(
+    options.demoDatabaseName ?? DEFAULT_DEMO_DATABASE_NAME,
+  );
+
+  try {
+    const inspectedEntries = await inspectLegacyFixtureSource(learningDatabase);
+    if (inspectedEntries.length === 0) {
+      return {
+        status: "not_needed",
+        copiedEntries: 0,
+        deduplicatedEntries: 0,
+      };
+    }
+
+    // Le préflight laisse encore la source principale intacte en cas de conflit
+    // déjà présent dans demo. La transaction de copie revalide après quarantaine.
+    await assertDemoCanReceiveFixture(demoDatabase, inspectedEntries);
+    const quarantinedEntries =
+      await quarantineLegacyFixtureSource(learningDatabase);
+    if (quarantinedEntries.length === 0) {
+      return {
+        status: "not_needed",
+        copiedEntries: 0,
+        deduplicatedEntries: 0,
+      };
+    }
+
+    const destinationResult = await copyFixtureToDemo(
+      demoDatabase,
+      quarantinedEntries,
+    );
+    await clearFixtureQuarantine(learningDatabase, quarantinedEntries);
+    return {
+      status: "migrated",
+      copiedEntries: destinationResult.copiedEntries,
+      deduplicatedEntries: destinationResult.deduplicatedEntries,
+    };
+  } catch (error) {
+    if (error instanceof AttemptOutboxStorageError) throw error;
+    throw new AttemptOutboxStorageError(
+      "La fixture historique n'a pas pu être déplacée sans risque.",
+      { cause: error },
+    );
+  } finally {
+    learningDatabase.close();
+    demoDatabase.close();
+  }
+}
+
 /**
  * Adaptateur IndexedDB minimal. Le snapshot complet, y compris le lot en vol,
  * est remplacé dans une transaction afin qu'un retry conserve exactement sa
@@ -123,7 +612,7 @@ export class WebAttemptOutboxStore {
   readonly #deviceKey: string;
 
   public constructor(
-    databaseName = "thainaute-learning-v1",
+    databaseName = DEFAULT_LEARNING_DATABASE_NAME,
     ownerInput: AttemptOutboxOwner = ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
   ) {
     this.#database = openDatabase(databaseName);
@@ -137,9 +626,21 @@ export class WebAttemptOutboxStore {
 
   public async read(): Promise<AttemptOutboxSnapshot> {
     try {
-      return parseStoredSnapshot(
-        await this.#database.outbox.get(this.#outboxKey),
-        this.#owner,
+      return await this.#database.transaction(
+        "r",
+        this.#database.metadata,
+        this.#database.outbox,
+        async () => {
+          assertFusionIsNotContaminated(
+            parseStoredFusionMarker(
+              await this.#database.metadata.get(FUSION_MARKER_KEY),
+            ),
+          );
+          return parseStoredSnapshot(
+            await this.#database.outbox.get(this.#outboxKey),
+            this.#owner,
+          );
+        },
       );
     } catch (error) {
       if (error instanceof AttemptOutboxStorageError) throw error;
@@ -241,9 +742,11 @@ export class WebAttemptOutboxStore {
 
   public async readFusionMarker(): Promise<AnonymousProgressFusionMarker | null> {
     try {
-      return parseStoredFusionMarker(
+      const marker = parseStoredFusionMarker(
         await this.#database.metadata.get(FUSION_MARKER_KEY),
       );
+      assertFusionIsNotContaminated(marker);
+      return marker;
     } catch (error) {
       if (error instanceof AttemptOutboxStorageError) throw error;
       throw new AttemptOutboxStorageError(
@@ -258,16 +761,18 @@ export class WebAttemptOutboxStore {
     readonly accountDeviceId: string;
     readonly consentedAt: string;
   }): Promise<PendingAnonymousProgressFusionState> {
-    return this.#mutateFusion((marker, anonymousSnapshot, accountSnapshot) =>
-      startFusion({
+    return this.#mutateFusion((marker, anonymousSnapshot, accountSnapshot) => {
+      assertFusionIsNotContaminated(marker);
+      assertSnapshotHasNoLegacyDemoFixture(anonymousSnapshot);
+      return startFusion({
         existingMarker: marker,
         fusionId: input.fusionId,
         consent: { accepted: true, consentedAt: input.consentedAt },
         anonymousSnapshot,
         accountSnapshot,
         accountDeviceId: input.accountDeviceId,
-      }),
-    );
+      });
+    });
   }
 
   public async resumeAnonymousFusion(): Promise<PendingAnonymousProgressFusionState | null> {
@@ -280,6 +785,7 @@ export class WebAttemptOutboxStore {
       ) {
         return null;
       }
+      assertFusionIsNotContaminated(marker);
       return resumeFusion({ marker, anonymousSnapshot, accountSnapshot });
     });
   }
@@ -297,6 +803,7 @@ export class WebAttemptOutboxStore {
           "Aucune fusion locale de ce compte n’attend d’être terminée.",
         );
       }
+      assertFusionIsNotContaminated(marker);
       return completeFusion({
         marker,
         anonymousSnapshot,
@@ -491,6 +998,7 @@ export class WebAttemptOutboxStore {
           const marker = parseStoredFusionMarker(
             await this.#database.metadata.get(FUSION_MARKER_KEY),
           );
+          assertFusionIsNotContaminated(marker);
           const anonymousSnapshot = parseStoredSnapshot(
             await this.#database.outbox.get(OUTBOX_KEY),
             ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
@@ -545,6 +1053,7 @@ export class WebAttemptOutboxStore {
           const marker = parseStoredFusionMarker(
             await this.#database.metadata.get(FUSION_MARKER_KEY),
           );
+          assertFusionIsNotContaminated(marker);
           if (
             this.#owner.kind !== "account" ||
             marker === null ||
@@ -562,6 +1071,7 @@ export class WebAttemptOutboxStore {
             return applied;
           }
 
+          assertFusionIsNotContaminated(marker);
           const fused = applyFusionBatchSuccess({
             marker,
             anonymousSnapshot: parseStoredSnapshot(
@@ -618,8 +1128,14 @@ export class WebAttemptOutboxStore {
     try {
       return await this.#database.transaction(
         "rw",
+        this.#database.metadata,
         this.#database.outbox,
         async () => {
+          assertFusionIsNotContaminated(
+            parseStoredFusionMarker(
+              await this.#database.metadata.get(FUSION_MARKER_KEY),
+            ),
+          );
           const current = parseStoredSnapshot(
             await this.#database.outbox.get(this.#outboxKey),
             this.#owner,

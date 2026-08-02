@@ -323,7 +323,7 @@ describe("leçon web fictive", () => {
     expect(entries[0]?.submission.durationMs).toBeLessThan(90_000);
   });
 
-  it("ouvre une nouvelle version après la clôture de la précédente", async () => {
+  it("exige deux confirmations avant de remplacer une version clôturée", async () => {
     const user = userEvent.setup();
     const firstRender = renderDemo();
     const startButton = screen.getByRole("button", { name: "Commencer" });
@@ -356,18 +356,36 @@ describe("leçon web fictive", () => {
     };
     renderDemo(undefined, nextLesson);
 
-    const nextStartButton = await screen.findByRole("button", {
-      name: "Commencer",
+    const abandon = await screen.findByRole("button", {
+      name: "Abandonner cette ancienne session",
     });
-    await waitFor(() => expect(nextStartButton).toBeEnabled());
-    await user.click(nextStartButton);
+    let inspector = new WebLocalExperienceStore();
+    expect((await inspector.read()).lesson).toMatchObject({
+      phase: "completed",
+      lessonVersionId: lesson.versionId,
+    });
+    inspector.close();
+
+    await user.click(abandon);
+    inspector = new WebLocalExperienceStore();
+    expect((await inspector.read()).lesson).toMatchObject({
+      phase: "completed",
+      lessonVersionId: lesson.versionId,
+    });
+    inspector.close();
+
+    await user.click(
+      screen.getByRole("button", {
+        name: "Confirmer l’abandon et démarrer",
+      }),
+    );
     expect(
       await screen.findByRole("heading", {
         name: nextLesson.exercise.prompt,
       }),
     ).toBeVisible();
 
-    const inspector = new WebLocalExperienceStore();
+    inspector = new WebLocalExperienceStore();
     const checkpoint = (await inspector.read()).lesson;
     inspector.close();
     expect(checkpoint).toMatchObject({
@@ -375,6 +393,80 @@ describe("leçon web fictive", () => {
       lessonVersionId: nextLesson.versionId,
       exerciseId: nextLesson.exercise.id,
     });
+  });
+
+  it("récupère exactement un submitting d’ancienne version avant l’abandon", async () => {
+    const user = userEvent.setup();
+    const oldVersionId = "10000000-0000-4000-8000-000000000012";
+    const oldExerciseId = "10000000-0000-4000-8000-000000000014";
+    const eventId = "30000000-0000-4000-8000-000000000011";
+    const deviceId = "40000000-0000-4000-8000-000000000011";
+    const startedAt = new Date(Date.now() - 60_000).toISOString();
+    const answeredAt = new Date(Date.now() - 1_000).toISOString();
+    const selectedOptionId = lesson.exercise.options[0]?.id;
+    if (selectedOptionId === undefined) throw new Error("Fixture invalide");
+
+    const exact = {
+      eventId,
+      deviceId,
+      exerciseId: oldExerciseId,
+      selectedOptionId,
+      answeredAt,
+      durationMs: 59_000,
+      contentVersionId: oldVersionId,
+      algorithmVersion: "srs-v0",
+    } as const;
+    const checkpointStore = new WebLocalExperienceStore();
+    await checkpointStore.update((snapshot) =>
+      prepareLocalLessonSubmission(
+        selectLocalLessonOption(
+          openLocalLessonQuestion(
+            startLocalLesson(snapshot, {
+              lessonVersionId: oldVersionId,
+              exerciseId: oldExerciseId,
+              startedAt,
+            }),
+            startedAt,
+          ),
+          selectedOptionId,
+          answeredAt,
+        ),
+        exact,
+        answeredAt,
+      ),
+    );
+    checkpointStore.close();
+
+    renderDemo();
+    await screen.findByRole("button", {
+      name: "Abandonner cette ancienne session",
+    });
+
+    const outboxInspector = new WebAttemptOutboxStore("thainaute-demo-v1");
+    expect((await outboxInspector.read()).entries).toEqual([
+      expect.objectContaining({ submission: exact }),
+    ]);
+    outboxInspector.close();
+    const recoveredInspector = new WebLocalExperienceStore();
+    expect((await recoveredInspector.read()).lesson).toMatchObject({
+      phase: "result",
+      submission: exact,
+    });
+    recoveredInspector.close();
+
+    await user.click(
+      screen.getByRole("button", {
+        name: "Abandonner cette ancienne session",
+      }),
+    );
+    await user.click(
+      screen.getByRole("button", {
+        name: "Confirmer l’abandon et démarrer",
+      }),
+    );
+    expect(
+      await screen.findByRole("heading", { name: lesson.exercise.prompt }),
+    ).toBeVisible();
   });
 
   it("refuse de fusionner le parcours demo avec un propriétaire étranger", async () => {

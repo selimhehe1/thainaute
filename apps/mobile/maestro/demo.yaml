@@ -14,6 +14,7 @@ appId: com.thainaute.app
 - assertVisible: "Disponible hors connexion"
 - tapOn: "Commencer la démo locale"
 - assertVisible: "Donnée fictive — non publiable"
+- assertVisible: "ก่"
 - tapOn: "Commencer"
 - tapOn: "Option A"
 - waitForAnimationToEnd:

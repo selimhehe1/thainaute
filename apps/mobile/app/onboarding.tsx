@@ -1,5 +1,8 @@
 import { noOpAnalytics, type AnalyticsSink } from "@thainaute/analytics";
-import { type LocalOnboardingSelection } from "@thainaute/sync";
+import {
+  type LocalOnboardingSelection,
+  type LocalOnboardingState,
+} from "@thainaute/sync";
 import { useRouter } from "expo-router";
 import { useSQLiteContext } from "expo-sqlite";
 import { useEffect, useMemo, useState } from "react";
@@ -40,6 +43,34 @@ const experienceOptions = [
   { value: "prototype_experience_basics", label: "J’ai quelques bases" },
   { value: "prototype_experience_returning", label: "Je reprends le thaï" },
 ] as const;
+
+function knownOptionValue<
+  Options extends readonly { readonly value: string }[],
+>(
+  options: Options,
+  optionId: string | null,
+): Options[number]["value"] | undefined {
+  return options.find(({ value }) => value === optionId)?.value;
+}
+
+function selectionFromOnboarding(
+  onboarding: Extract<LocalOnboardingState, { status: "in_progress" }>,
+): Partial<LocalOnboardingSelection> {
+  const goalOptionId = knownOptionValue(goalOptions, onboarding.goalOptionId);
+  const motivationOptionId = knownOptionValue(
+    motivationOptions,
+    onboarding.motivationOptionId,
+  );
+  const experienceOptionId = knownOptionValue(
+    experienceOptions,
+    onboarding.experienceOptionId,
+  );
+  return {
+    ...(goalOptionId === undefined ? {} : { goalOptionId }),
+    ...(motivationOptionId === undefined ? {} : { motivationOptionId }),
+    ...(experienceOptionId === undefined ? {} : { experienceOptionId }),
+  };
+}
 
 function safeCapture(
   analytics: AnalyticsSink,
@@ -127,17 +158,7 @@ export function OnboardingScreen({
         if (snapshot.onboarding.status !== "in_progress") {
           throw new Error("État d’onboarding inattendu.");
         }
-        setSelection({
-          ...(snapshot.onboarding.goalOptionId === null
-            ? {}
-            : { goalOptionId: snapshot.onboarding.goalOptionId }),
-          ...(snapshot.onboarding.motivationOptionId === null
-            ? {}
-            : { motivationOptionId: snapshot.onboarding.motivationOptionId }),
-          ...(snapshot.onboarding.experienceOptionId === null
-            ? {}
-            : { experienceOptionId: snapshot.onboarding.experienceOptionId }),
-        });
+        setSelection(selectionFromOnboarding(snapshot.onboarding));
         setStatus("ready");
         if (startsNow) {
           safeCapture(analytics, {
@@ -166,17 +187,7 @@ export function OnboardingScreen({
         new Date().toISOString(),
       );
       if (snapshot.onboarding.status !== "in_progress") return;
-      setSelection({
-        ...(snapshot.onboarding.goalOptionId === null
-          ? {}
-          : { goalOptionId: snapshot.onboarding.goalOptionId }),
-        ...(snapshot.onboarding.motivationOptionId === null
-          ? {}
-          : { motivationOptionId: snapshot.onboarding.motivationOptionId }),
-        ...(snapshot.onboarding.experienceOptionId === null
-          ? {}
-          : { experienceOptionId: snapshot.onboarding.experienceOptionId }),
-      });
+      setSelection(selectionFromOnboarding(snapshot.onboarding));
     } catch {
       setMessage("Ce choix n’a pas pu être enregistré. Réessayez.");
     } finally {

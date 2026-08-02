@@ -34,6 +34,7 @@ import {
 } from "../lib/attempt-outbox-store";
 import { useMobileAuthSession } from "../lib/auth-session";
 import { MobileLocalExperienceStore } from "../lib/mobile-local-experience-store";
+import { THAI_FONT_REGULAR, THAI_FONT_SEMIBOLD } from "../lib/typography";
 import { useLocalVoicePractice } from "../lib/use-local-voice-practice";
 
 const lesson = fixtureLesson;
@@ -83,6 +84,22 @@ function durationBucket(
   if (durationMs < 10_000) return "under_10s";
   if (durationMs <= 30_000) return "10_to_30s";
   return "over_30s";
+}
+
+function submissionsAreEqual(
+  left: ValidatedAttemptSubmission,
+  right: ValidatedAttemptSubmission,
+): boolean {
+  return (
+    left.eventId === right.eventId &&
+    left.deviceId === right.deviceId &&
+    left.exerciseId === right.exerciseId &&
+    left.selectedOptionId === right.selectedOptionId &&
+    left.answeredAt === right.answeredAt &&
+    left.durationMs === right.durationMs &&
+    left.contentVersionId === right.contentVersionId &&
+    left.algorithmVersion === right.algorithmVersion
+  );
 }
 
 type Stage = "intro" | "question" | "result";
@@ -541,6 +558,7 @@ function VoicePracticeCard({
 }
 
 interface ResultStageProps {
+  readonly completedReview: boolean;
   readonly dueAt: string | null | undefined;
   readonly latestRating: ExerciseRating;
   readonly masteryScore: number;
@@ -549,6 +567,7 @@ interface ResultStageProps {
 }
 
 function ResultStage({
+  completedReview,
   dueAt,
   latestRating,
   masteryScore,
@@ -563,7 +582,9 @@ function ResultStage({
     voicePractice.isBusy;
   const finishButtonText = voicePractice.isRecording
     ? "Arrêtez d’abord l’enregistrement"
-    : "Terminer";
+    : completedReview
+      ? "Retour à Aujourd’hui"
+      : "Terminer";
   const accountButtonText =
     voicePractice.hasRecording || voicePractice.isRecording
       ? "Supprimez l’essai avant de quitter"
@@ -621,6 +642,7 @@ function ResultStage({
 }
 
 interface StageContentProps {
+  readonly completedReview: boolean;
   readonly dueAt: string | null | undefined;
   readonly isSaving: boolean;
   readonly latestRating: ExerciseRating;
@@ -664,6 +686,7 @@ function StageContent(props: StageContentProps) {
   }
   return (
     <ResultStage
+      completedReview={props.completedReview}
       dueAt={props.dueAt}
       latestRating={props.latestRating}
       masteryScore={props.masteryScore}
@@ -715,26 +738,18 @@ export function LessonExperience({
     let active = true;
 
     void Promise.all([
-      outboxStore.migrateLegacyJournal(),
+      outboxStore.migrateLegacyFixtureAttemptsToDemo(),
       experienceStore.read(),
     ])
       .then(async ([storedOutbox, storedExperience]) => {
         const checkpoint = storedExperience.lesson;
         if (
           storedExperience.onboarding.status !== "completed" ||
-          checkpoint === null ||
-          checkpoint.phase === "completed"
+          checkpoint === null
         ) {
           if (active) router.replace("/");
           return;
         }
-        if (
-          checkpoint.lessonVersionId !== lesson.versionId ||
-          checkpoint.exerciseId !== exercise.id
-        ) {
-          throw new Error("La séance locale appartient à une autre version.");
-        }
-
         let recoveredOutbox = storedOutbox;
         let recoveredExperience = storedExperience;
         if (checkpoint.phase === "submitting") {
@@ -748,14 +763,39 @@ export function LessonExperience({
         const recoveredCheckpoint = recoveredExperience.lesson;
         if (
           recoveredCheckpoint === null ||
-          recoveredCheckpoint.phase === "completed" ||
           recoveredCheckpoint.phase === "submitting"
         ) {
           throw new Error("La reprise locale n'a pas pu être confirmée.");
         }
+        if (
+          recoveredCheckpoint.lessonVersionId !== lesson.versionId ||
+          recoveredCheckpoint.exerciseId !== exercise.id
+        ) {
+          if (active) router.replace("/");
+          return;
+        }
 
         let recoveredRating: ExerciseRating = null;
-        if (recoveredCheckpoint.phase === "result") {
+        if (
+          recoveredCheckpoint.phase === "result" ||
+          recoveredCheckpoint.phase === "completed"
+        ) {
+          const durableEntry = recoveredOutbox.entries.find(
+            ({ submission }) =>
+              submission.eventId === recoveredCheckpoint.submission.eventId,
+          );
+          if (
+            durableEntry === undefined ||
+            durableEntry.status === "rejected" ||
+            !submissionsAreEqual(
+              durableEntry.submission,
+              recoveredCheckpoint.submission,
+            )
+          ) {
+            throw new Error(
+              "Le résultat local ne correspond plus au journal durable.",
+            );
+          }
           recoveredRating =
             ingestDemoOutbox(recoveredOutbox).events.find(
               ({ eventId }) =>
@@ -772,13 +812,18 @@ export function LessonExperience({
         setSelectedOptionId(
           recoveredCheckpoint.phase === "question"
             ? recoveredCheckpoint.selectedOptionId
-            : recoveredCheckpoint.phase === "result"
+            : recoveredCheckpoint.phase === "result" ||
+                recoveredCheckpoint.phase === "completed"
               ? recoveredCheckpoint.submission.selectedOptionId
               : null,
         );
         setLatestRating(recoveredRating);
         setStartedAt(Date.parse(recoveredCheckpoint.sessionStartedAt));
-        setStage(recoveredCheckpoint.phase);
+        setStage(
+          recoveredCheckpoint.phase === "completed"
+            ? "result"
+            : recoveredCheckpoint.phase,
+        );
         setStorageStatus("ready");
       })
       .catch(() => {
@@ -926,11 +971,17 @@ export function LessonExperience({
     }
 
     finishInFlight.current = true;
+    const reviewingCompleted =
+      experienceSnapshot?.lesson?.phase === "completed";
     voicePractice.pausePlayback();
     void voicePractice
       .deleteRecording()
       .then(async (deleted) => {
         if (!deleted) return;
+        if (reviewingCompleted) {
+          router.replace("/");
+          return;
+        }
         const completed = await experienceStore.finishLesson(
           outbox,
           new Date().toISOString(),
@@ -1024,6 +1075,7 @@ export function LessonExperience({
       />
       <ScrollView contentContainerStyle={styles.content}>
         <StageContent
+          completedReview={experienceSnapshot?.lesson?.phase === "completed"}
           dueAt={projection?.dueAt}
           isSaving={isSaving}
           latestRating={latestRating}
@@ -1073,7 +1125,12 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: "#283450",
   },
-  logoThai: { color: "white", fontSize: 23, lineHeight: 34 },
+  logoThai: {
+    color: "white",
+    fontFamily: THAI_FONT_SEMIBOLD,
+    fontSize: 23,
+    lineHeight: 34,
+  },
   brand: { marginLeft: 10, color: "#283450", fontSize: 18, fontWeight: "800" },
   step: { marginLeft: "auto", color: "#6b7486", fontSize: 12 },
   fixtureBanner: {
@@ -1109,6 +1166,7 @@ const styles = StyleSheet.create({
   glyph: {
     marginVertical: 36,
     color: "#283450",
+    fontFamily: THAI_FONT_REGULAR,
     fontSize: 92,
     lineHeight: 126,
     textAlign: "center",
@@ -1181,7 +1239,7 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     letterSpacing: 1,
   },
-  metricValue: { color: "#43a283", fontSize: 28, fontWeight: "800" },
+  metricValue: { color: "#236b58", fontSize: 28, fontWeight: "800" },
   metricDate: { color: "#283450", fontSize: 19, fontWeight: "700" },
   voiceCard: {
     marginTop: 24,
