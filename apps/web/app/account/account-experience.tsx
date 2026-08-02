@@ -174,7 +174,7 @@ function AccountMetrics({
 >) {
   return (
     <div className="accountMetrics" aria-live="polite">
-      <div>
+      <div data-testid="account-metric-synced-states">
         <strong>{stateCount}</strong>
         <span>états maîtrisés synchronisés</span>
       </div>

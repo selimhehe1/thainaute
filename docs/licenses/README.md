@@ -1,5 +1,17 @@
 # Polices et licences embarquées
 
+## Manrope
+
+- Famille : Manrope (fonte variable, axe de graisse 200 à 800).
+- Source amont : dépôt
+  [`google/fonts`](https://github.com/google/fonts/tree/main/ofl/manrope).
+- Licence : SIL Open Font License 1.1 ; copie conservée dans
+  `OFL-1.1-Manrope.txt`.
+- Intégration web : `@fontsource-variable/manrope` 5.2.5, sous-ensembles
+  latins, famille CSS « Manrope Variable ».
+- Intégration mobile : à venir avec la tranche mobile de la refonte.
+- Vérification : 2 août 2026.
+
 ## Noto Sans Thai
 
 - Famille : Noto Sans Thai.

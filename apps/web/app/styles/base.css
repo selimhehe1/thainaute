@@ -1,0 +1,16 @@
+/* Alias historiques vers les tokens générés (@thainaute/design-tokens).
+   Ils disparaîtront avec styles/legacy.css à la fin de la refonte : les
+   nouveaux composants consomment directement les variables --color-*. */
+:root {
+  --jasmine: var(--color-jasmine);
+  --ink: var(--color-ink);
+  --coral: var(--color-coral);
+  --jade: var(--color-jade);
+  --jade-ink: var(--color-jade-ink);
+  --saffron: var(--color-saffron);
+  --mist: var(--color-mist);
+  /* Valeurs historiques non tokenisées, conservées à l'identique le temps
+     de la migration page par page. */
+  --line: color-mix(in srgb, var(--ink) 18%, transparent);
+  --shadow: 0 24px 70px rgb(40 52 80 / 12%);
+}
