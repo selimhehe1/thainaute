@@ -1,0 +1,38 @@
+.header {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.brand {
+  min-height: var(--touch-target);
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+}
+
+.nav > a {
+  min-height: var(--touch-target);
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-ink);
+}
+
+.nav > a:hover {
+  color: var(--color-coral-deep);
+}
+
+@media (max-width: 560px) {
+  .nav {
+    gap: var(--space-md);
+  }
+}

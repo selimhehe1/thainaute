@@ -93,7 +93,7 @@ describe("écran Aujourd’hui web", () => {
     expect(
       screen
         .getAllByRole("link")
-        .filter((link) => link.classList.contains("buttonPrimary")),
+        .filter((link) => link.className.includes("primary")),
     ).toHaveLength(1);
     expect(capture).toHaveBeenCalledWith({
       name: "onboarding_completed",

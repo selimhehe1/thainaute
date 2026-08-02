@@ -21,6 +21,10 @@ import {
   WebLocalExperienceStore,
 } from "@/lib/client/local-experience-store";
 import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
+import { ToneCurve } from "@/components/brand/tone-curve";
+import { buttonClass } from "@/components/ui/button";
+
+import styles from "./today.module.css";
 
 interface TodayLesson {
   readonly versionId: string;
@@ -224,30 +228,34 @@ export function TodayExperience({
 
   if (storageStatus === "error") {
     return (
-      <section className="todayPanel" aria-labelledby="today-error-title">
-        <p className="eyebrow">Stockage local indisponible</p>
+      <section className={styles.panel} aria-labelledby="today-error-title">
+        <p className={styles.eyebrow}>Stockage local indisponible</p>
         <h1 id="today-error-title">Vos données existantes sont conservées.</h1>
-        <p className="todayLede">
+        <p className={styles.lede}>
           Thaïnaute n’écrase pas un parcours illisible. Réessayez après avoir
           vérifié que le stockage du navigateur est autorisé.
         </p>
-        <button
-          className="button buttonPrimary"
-          type="button"
-          onClick={() => setRetryToken((current) => current + 1)}
-        >
-          Réessayer
-        </button>
+        <div className={styles.actionRow}>
+          <button
+            className={buttonClass("primary")}
+            type="button"
+            onClick={() => setRetryToken((current) => current + 1)}
+          >
+            Réessayer
+          </button>
+        </div>
       </section>
     );
   }
 
   if (storageStatus === "loading" || snapshot === null) {
     return (
-      <section className="todayPanel" aria-busy="true" aria-live="polite">
-        <p className="eyebrow">Aujourd’hui</p>
+      <section className={styles.panel} aria-busy="true" aria-live="polite">
+        <p className={styles.eyebrow}>Aujourd’hui</p>
         <h1>Préparation de votre parcours local…</h1>
-        <p className="todayLede">Aucune création de compte n’est nécessaire.</p>
+        <p className={styles.lede}>
+          Aucune création de compte n’est nécessaire.
+        </p>
       </section>
     );
   }
@@ -260,27 +268,31 @@ export function TodayExperience({
       !isSaving;
 
     return (
-      <section className="todayPanel" aria-labelledby="onboarding-title">
-        <div className="networkStatus" aria-live="polite">
+      <section className={styles.panel} aria-labelledby="onboarding-title">
+        <div className={styles.networkStatus} aria-live="polite">
           <span
-            className={online ? "statusDot online" : "statusDot"}
+            className={
+              online
+                ? `${styles.statusDot} ${styles.statusDotOnline}`
+                : styles.statusDot
+            }
             aria-hidden="true"
           />
           {online
             ? "Parcours local prêt"
             : "Hors ligne · vos choix restent sur cet appareil"}
         </div>
-        <p className="eyebrow">Bienvenue · moins d’une minute</p>
+        <p className={styles.eyebrow}>Bienvenue · moins d’une minute</p>
         <h1 id="onboarding-title">Préparons votre première session.</h1>
-        <p className="todayLede">
+        <p className={styles.lede}>
           Ces préférences restent locales et ne modifient pas encore le parcours
           pédagogique.
         </p>
 
-        <form className="onboardingForm" onSubmit={completeOnboarding}>
+        <form className={styles.form} onSubmit={completeOnboarding}>
           <fieldset>
             <legend>Quel rythme vous convient aujourd’hui ?</legend>
-            <div className="onboardingChoices">
+            <div className={styles.choices}>
               {GOAL_OPTIONS.map((option) => (
                 <label key={option.id}>
                   <input
@@ -302,7 +314,7 @@ export function TodayExperience({
 
           <fieldset>
             <legend>Qu’est-ce qui vous motive ?</legend>
-            <div className="onboardingChoices">
+            <div className={styles.choices}>
               {MOTIVATION_OPTIONS.map((option) => (
                 <label key={option.id}>
                   <input
@@ -326,7 +338,7 @@ export function TodayExperience({
 
           <fieldset>
             <legend>Où en êtes-vous avec le thaï ?</legend>
-            <div className="onboardingChoices">
+            <div className={styles.choices}>
               {EXPERIENCE_OPTIONS.map((option) => (
                 <label key={option.id}>
                   <input
@@ -349,12 +361,12 @@ export function TodayExperience({
           </fieldset>
 
           {message && (
-            <p className="inlineError" role="alert">
+            <p className={styles.inlineError} role="alert">
               {message}
             </p>
           )}
           <button
-            className="button buttonPrimary todayPrimaryAction"
+            className={`${buttonClass("primary")} ${styles.primaryAction}`}
             type="submit"
             aria-busy={isSaving}
             disabled={!canSubmit}
@@ -397,45 +409,55 @@ export function TodayExperience({
       ?.label ?? "session courte";
 
   return (
-    <section className="todayPanel" aria-labelledby="today-title">
-      <div className="networkStatus" aria-live="polite">
+    <section className={styles.panel} aria-labelledby="today-title">
+      <ToneCurve
+        className={styles.panelCurve}
+        tone="rising"
+        width={120}
+        height={64}
+        strokeWidth={7}
+      />
+      <div className={styles.networkStatus} aria-live="polite">
         <span
-          className={online ? "statusDot online" : "statusDot"}
+          className={
+            online
+              ? `${styles.statusDot} ${styles.statusDotOnline}`
+              : styles.statusDot
+          }
           aria-hidden="true"
         />
         {online
           ? "En ligne · parcours local prêt"
           : "Hors ligne · les données déjà chargées restent locales"}
       </div>
-      <p className="eyebrow">Aujourd’hui · objectif local</p>
+      <p className={styles.eyebrow}>Aujourd’hui · objectif local</p>
       <h1 id="today-title">Une seule étape, bien comprise.</h1>
-      <p className="todayLede">
+      <p className={styles.lede}>
         Objectif choisi : {goalLabel}. Cette fixture valide la reprise technique
         sans enseigner de contenu thaï.
       </p>
 
-      <article className="todaySession" aria-labelledby="today-session-title">
+      <article className={styles.session} aria-labelledby="today-session-title">
         <div>
-          <span className="todaySessionStatus">{sessionStatus}</span>
+          <span className={styles.sessionStatus}>{sessionStatus}</span>
           <h2 id="today-session-title">{lesson.title}</h2>
           <p>{lesson.objective}</p>
         </div>
-        <span className="fixtureBadge">Fixture · non publiable</span>
+        <span className={styles.fixtureBadge}>Fixture · non publiable</span>
       </article>
 
       {!online && (
-        <p className="offlineNote" role="status">
+        <p className={styles.offlineNote} role="status">
           Aucun démarrage à froid hors ligne n’est garanti. Continuez seulement
           si les ressources de cette fixture sont déjà chargées.
         </p>
       )}
 
-      <Link
-        className="button buttonPrimary todayPrimaryAction"
-        href="/learn/demo"
-      >
-        {actionLabel}
-      </Link>
+      <div className={styles.actionRow}>
+        <Link className={buttonClass("primary")} href="/learn/demo">
+          {actionLabel}
+        </Link>
+      </div>
     </section>
   );
 }

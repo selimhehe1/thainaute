@@ -1,0 +1,70 @@
+.base {
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.01em;
+  border-radius: var(--radius-pill);
+  padding: 13px 26px;
+  min-height: var(--touch-target);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--motion-base) var(--ease-standard);
+}
+
+.base:focus-visible {
+  outline: 3px solid var(--color-coral);
+  outline-offset: 3px;
+}
+
+.base[aria-busy="true"],
+.base:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.primary {
+  background: var(--color-coral);
+  color: var(--color-paper);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--color-coral-deep);
+}
+
+.secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1.5px solid var(--color-ink);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--color-mist);
+}
+
+.ghost {
+  background: none;
+  color: var(--color-ink);
+  padding: 13px 8px;
+  position: relative;
+}
+
+.ghost::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  height: 3px;
+  background: no-repeat center / 100% 100%
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M2,6 C30,7 55,5 98,2" fill="none" stroke="%23e9615c" stroke-width="2.5" stroke-linecap="round"/></svg>');
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .base {
+    transition: none;
+  }
+}
