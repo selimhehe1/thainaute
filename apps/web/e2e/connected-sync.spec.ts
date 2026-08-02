@@ -10,6 +10,8 @@ import {
 } from "@playwright/test";
 import {
   anonymousProgressFusionMarkerSchema,
+  accountExportDocumentSchema,
+  accountExportErrorResponseSchema,
   attemptBatchResponseSchema,
   attemptBatchSchema,
   attemptOutboxSnapshotSchema,
@@ -19,6 +21,7 @@ import {
   type AttemptOutboxSnapshot,
   type ValidatedAttemptSubmission,
 } from "@thainaute/sync";
+import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 
 const WEB_ORIGIN = "http://localhost:3000";
@@ -256,6 +259,47 @@ async function readLocalOtp(email: string): Promise<string> {
   throw new Error(
     "Le code OTP local n'a pas été trouvé dans le délai imparti.",
   );
+}
+
+async function createLocalAuthenticatedSession(): Promise<{
+  readonly accessToken: string;
+  readonly userId: string;
+}> {
+  const email = `connected-export-b-${randomUUID()}@thainaute.invalid`;
+  const client = createClient(
+    requiredEnvironment("NEXT_PUBLIC_SUPABASE_URL"),
+    requiredEnvironment("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"),
+    {
+      auth: {
+        autoRefreshToken: false,
+        detectSessionInUrl: false,
+        persistSession: false,
+      },
+    },
+  );
+  const otpRequest = await client.auth.signInWithOtp({
+    email,
+    options: { shouldCreateUser: true },
+  });
+  if (otpRequest.error !== null) {
+    throw new Error("Le compte B local n'a pas pu demander son OTP.");
+  }
+  const verification = await client.auth.verifyOtp({
+    email,
+    token: await readLocalOtp(email),
+    type: "email",
+  });
+  if (
+    verification.error !== null ||
+    verification.data.session === null ||
+    verification.data.user === null
+  ) {
+    throw new Error("Le compte B local n'a pas pu ouvrir sa session.");
+  }
+  return {
+    accessToken: verification.data.session.access_token,
+    userId: verification.data.user.id.toLowerCase(),
+  };
 }
 
 function bearerSession(authorization: string | undefined): {
@@ -661,4 +705,52 @@ test("fusionne puis rejoue une progression sur deux transports et deux navigateu
   }
   expectAttemptRow(webRow, submittedWebAttempt, session.userId);
   expectAttemptRow(androidRow, androidAttempt, session.userId);
+
+  const accountAExportResponse = await request.get("/api/v1/account/export", {
+    headers: { Authorization: `Bearer ${session.accessToken}` },
+  });
+  expect(accountAExportResponse.status()).toBe(200);
+  expect(accountAExportResponse.headers()["cache-control"]).toContain(
+    "no-store",
+  );
+  expect(accountAExportResponse.headers()["content-disposition"]).toBe(
+    'attachment; filename="thainaute-account-export-v1.json"',
+  );
+  const accountAExport = accountExportDocumentSchema.parse(
+    await accountAExportResponse.json(),
+  );
+  expect(accountAExport.identity.id).toBe(session.userId);
+  expect(accountAExport.data.profile?.syncRevision).toBe(2);
+  expect(
+    accountAExport.data.attemptEvents.map((event) => event.eventId),
+  ).toEqual([WEB_EVENT_ID, ANDROID_EVENT_ID]);
+  expect(accountAExport.data.learnerItemStates).toHaveLength(1);
+  expect(accountAExport.data.devices.map((device) => device.id)).toEqual(
+    expect.arrayContaining([registration.device.deviceId, ANDROID_DEVICE_ID]),
+  );
+
+  const accountBSession = await createLocalAuthenticatedSession();
+  const accountBExportResponse = await request.get("/api/v1/account/export", {
+    headers: { Authorization: `Bearer ${accountBSession.accessToken}` },
+  });
+  expect(accountBExportResponse.status()).toBe(200);
+  const accountBExport = accountExportDocumentSchema.parse(
+    await accountBExportResponse.json(),
+  );
+  expect(accountBExport.identity.id).toBe(accountBSession.userId);
+  expect(accountBExport.data).toEqual({
+    profile: null,
+    devices: [],
+    attemptEvents: [],
+    learnerItemStates: [],
+  });
+  expect(JSON.stringify(accountBExport)).not.toContain(session.userId);
+  expect(JSON.stringify(accountBExport)).not.toContain(WEB_EVENT_ID);
+
+  const anonymousExportResponse = await request.get("/api/v1/account/export");
+  expect(anonymousExportResponse.status()).toBe(401);
+  expect(
+    accountExportErrorResponseSchema.parse(await anonymousExportResponse.json())
+      .error.code,
+  ).toBe("unauthorized");
 });

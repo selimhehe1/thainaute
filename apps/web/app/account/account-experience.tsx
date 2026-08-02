@@ -11,6 +11,8 @@ import {
 } from "@/lib/client/account-sync";
 import { useWebAuthSession } from "@/lib/client/auth-session";
 
+import { AccountExportSection } from "./account-export-section";
+
 type LocalState = Awaited<ReturnType<typeof readWebAccountLocalState>>;
 
 interface SignedOutAccountPanelProps {
@@ -326,6 +328,7 @@ interface SignedInAccountPanelProps {
   readonly onKeepAnonymous: () => void;
   readonly onLogout: () => void;
   readonly onSynchronize: (startAnonymousFusion: boolean) => void;
+  readonly sessionBoundaryRevision: number;
   readonly userId: string | null;
 }
 
@@ -339,6 +342,7 @@ function SignedInAccountPanel({
   onKeepAnonymous,
   onLogout,
   onSynchronize,
+  sessionBoundaryRevision,
   userId,
 }: SignedInAccountPanelProps) {
   const summary = summarizeSignedInAccount(currentLocalState, userId);
@@ -363,6 +367,18 @@ function SignedInAccountPanel({
         onKeep={onKeepAnonymous}
         onSynchronize={() => onSynchronize(true)}
       />
+      {userId !== null && (
+        <AccountExportSection
+          anonymousAttemptCount={summary.anonymousCount}
+          expectedUserId={userId}
+          fusionPending={
+            summary.activeFusionForCurrent ||
+            summary.activeFusionForAnotherAccount
+          }
+          pendingAttemptCount={summary.accountPending}
+          sessionBoundaryRevision={sessionBoundaryRevision}
+        />
+      )}
       <SignedInAccountActions
         busy={busy}
         canLogout={currentLocalState !== null}
@@ -651,6 +667,7 @@ export function AccountExperience() {
       onSynchronize={(startAnonymousFusion) =>
         void synchronize(startAnonymousFusion)
       }
+      sessionBoundaryRevision={auth.sessionBoundaryRevision}
       userId={userId}
     />
   );

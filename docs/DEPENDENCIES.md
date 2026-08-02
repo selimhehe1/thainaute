@@ -1,6 +1,6 @@
 # Registre des dépendances
 
-Dernière vérification : 1er août 2026. Les versions sont exactes dans chaque
+Dernière vérification : 2 août 2026. Les versions sont exactes dans chaque
 `package.json` et dans `pnpm-lock.yaml`.
 
 | Dépendance                      | Besoin                                                          | Licence / coût                            | Alternative examinée                                                                      |
@@ -8,6 +8,7 @@ Dernière vérification : 1er août 2026. Les versions sont exactes dans chaque
 | Next.js 16                      | Site SEO, application web, studio et API                        | MIT ; hébergement au choix                | Vite seul ne fournit pas le cadre SSR/SEO retenu                                          |
 | Expo SDK 57 / React Native 0.86 | Applications iOS et Android                                     | MIT ; EAS optionnel et payant selon usage | Développement natif séparé, trop coûteux pour une personne                                |
 | Expo Audio / FileSystem 57      | Capture A/B locale, validation et suppression du cache privé    | MIT ; gratuits                            | Deux modules natifs maison augmenteraient fortement le risque de cycle de vie et de fuite |
+| Expo Sharing 57                 | Remise explicite de l’export JSON via le panneau natif          | MIT ; gratuit                             | `Share` React Native vise surtout le texte ; un envoi cloud ajouterait une rétention      |
 | Supabase JS / CLI               | Auth, Data API, Storage et environnement Postgres local         | MIT/Apache-2.0 ; cloud optionnel          | Postgres + services séparés, davantage d'exploitation                                     |
 | Expo SecureStore                | Chiffrer la session Supabase fragmentée dans le trousseau natif | MIT ; gratuit                             | AsyncStorage/SQLite exposeraient les jetons en clair                                      |
 | React Native URL polyfill       | Contrat URL requis par Supabase JS sur React Native             | MIT ; gratuit                             | Polyfill local incomplet et plus difficile à maintenir                                    |
@@ -35,6 +36,13 @@ plateformes ; il n’ajoute aucune permission. `expo-file-system` 57.0.1 est
 utilisé uniquement pour confirmer la présence, la taille, l’entête et la
 suppression du fichier privé avant d’autoriser B ; il n’accorde aucun accès aux
 fichiers partagés de l’utilisateur.
+
+`expo-sharing` 57.0.8 est épinglé à la version compatible avec Expo SDK 57. Il
+n’est appelé qu’après vérification de sa disponibilité et seulement pour un
+fichier JSON temporaire placé sur un chemin applicatif dédié du cache privé. Le
+fichier est supprimé après fermeture du panneau, lors d’une frontière de
+session et avant chaque nouvel export. Le module n’ajoute ici ni service cloud,
+ni permission, ni configuration native de réception de fichiers.
 
 Expo distribue certains modules sous forme d’artefacts natifs précompilés. La
 configuration d’autolinking mobile force donc uniquement `expo-audio` à être

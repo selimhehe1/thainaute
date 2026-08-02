@@ -699,6 +699,32 @@ h1 em {
 .accountActions {
   margin-top: 28px;
 }
+.accountExport {
+  margin-top: 28px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #f8fafb;
+}
+.accountExport h2 {
+  margin-top: 0;
+}
+.accountExport p {
+  color: #536078;
+  line-height: 1.55;
+}
+.accountExportPrivacy {
+  font-weight: 750;
+}
+.accountExportWarnings {
+  margin: 0 0 20px;
+  padding-left: 22px;
+  color: #684c0d;
+  line-height: 1.55;
+}
+.accountExportStatus {
+  margin-bottom: 0;
+}
 .accountDanger {
   border-color: #d88782;
   color: #8e332e;

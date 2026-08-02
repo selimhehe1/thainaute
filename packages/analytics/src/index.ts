@@ -21,6 +21,10 @@ export type AnalyticsEvent =
       name: "review_due";
       lessonVersionId: string;
       platform: "web" | "ios" | "android";
+    }
+  | {
+      name: "account_export_requested";
+      platform: "web" | "ios" | "android";
     };
 
 export interface AnalyticsSink {

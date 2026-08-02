@@ -75,6 +75,9 @@ describe("parcours compte web", () => {
     ).toBeVisible();
     expect(screen.queryByLabelText("Adresse email")).not.toBeInTheDocument();
     expect(
+      screen.queryByRole("button", { name: "Télécharger mon export JSON" }),
+    ).not.toBeInTheDocument();
+    expect(
       screen.getByRole("link", { name: "Continuer hors ligne" }),
     ).toHaveAttribute("href", "/learn/demo");
   });
@@ -111,6 +114,9 @@ describe("parcours compte web", () => {
       name: "Me déconnecter de cet appareil",
     });
     await waitFor(() => expect(logout).toBeEnabled());
+    expect(
+      screen.getByRole("button", { name: "Télécharger mon export JSON" }),
+    ).toBeEnabled();
     fireEvent.click(logout);
 
     expect(

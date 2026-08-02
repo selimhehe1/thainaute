@@ -115,7 +115,8 @@ confirmation serveur.
 
 - `POST /api/v1/devices/register` ;
 - `POST /api/v1/attempts/batch` ;
-- `GET /api/v1/progress/snapshot`.
+- `GET /api/v1/progress/snapshot` ;
+- `GET /api/v1/account/export`.
 
 Le web peut utiliser une `baseUrl` vide ; le mobile fournit l'origine absolue de
 l'API. La session et son jeton Bearer sont demandés juste avant chaque appel :
@@ -124,6 +125,12 @@ après un refresh ou un changement de compte inter-onglets. `fetch` est
 injectable pour les tests et les runtimes concernés. Aucun cookie n'est joint
 par le client. HTTPS est obligatoire, sauf dérogation explicite d'un build
 local, et chaque requête possède un délai borné.
+
+L’export applique en plus le schéma fermé
+`thainaute.account-export/v1`, vérifie que l’identité du document correspond au
+compte attendu, puis relit la session après la réponse avant de remettre les
+données au navigateur ou à l’application native. Un `AbortSignal` externe
+permet à la frontière de session d’annuler cette lecture sensible.
 
 Le client ne crée jamais de clé d'idempotence : `sendAttemptBatch` exige le
 `PreparedAttemptOutboxBatch` durable produit par l'outbox et réemploie donc sa

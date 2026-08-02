@@ -53,4 +53,7 @@ test("le compte échoue proprement quand Supabase n'est pas configuré", async (
     page.getByRole("link", { name: "Continuer hors ligne" }),
   ).toBeVisible();
   await expect(page.getByLabel("Adresse email")).toHaveCount(0);
+  await expect(
+    page.getByRole("button", { name: "Télécharger mon export JSON" }),
+  ).toHaveCount(0);
 });

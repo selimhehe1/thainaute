@@ -310,6 +310,17 @@ les contrôles locaux.
   Android réels ; un crash natif, ou le démontage après un refus d’effacement
   par le système, peut laisser un orphelin dans le cache jusqu'à la purge par
   l'OS, comme documenté dans l'ADR-0012.
+- L’export portable synchrone du compte est disponible sur web et mobile via
+  `GET /api/v1/account/export`. Il valide le Bearer auprès de Supabase Auth,
+  lit uniquement les lignes du sujet sous RLS et refuse tout document tronqué
+  ou rendu pendant un snapshot mouvant. Les réponses HTTP ne sont pas mises en
+  cache. Le navigateur révoque son URL objet après le téléchargement ; le
+  mobile remet un fichier JSON depuis un chemin ciblé du cache privé, puis en
+  vérifie la suppression. Une interruption brutale peut laisser ce fichier
+  jusqu’à la purge au prochain lancement/export ou celle du système. Le fichier
+  remis par le navigateur ou le panneau natif relève ensuite de l’emplacement
+  choisi par l’utilisateur. Voir l’ADR-0014 et la checklist
+  `docs/privacy/account-export.md`.
 - La limitation de débit par compte/IP n'est pas encore implémentée : ses
   seuils, fenêtres, rafales et comportement de repli relèvent de
   `OPEN-API-001` avant bêta distante.
