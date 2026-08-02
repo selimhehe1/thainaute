@@ -89,9 +89,25 @@ vi.mock("react-native", async () => {
     children?: ReactNode;
     disabled?: boolean;
     onPress?: () => void;
+    style?: {
+      flexShrink?: number;
+      flexWrap?: string;
+      minHeight?: number;
+      paddingVertical?: number;
+    };
+    testID?: string;
   };
-  const container = ({ children }: NativeProps) =>
-    React.createElement("div", null, children);
+  const container = ({ children, style, testID }: NativeProps) =>
+    React.createElement(
+      "div",
+      {
+        "data-flex-shrink": style?.flexShrink,
+        "data-flex-wrap": style?.flexWrap,
+        "data-padding-vertical": style?.paddingVertical,
+        "data-testid": testID,
+      },
+      children,
+    );
   return {
     ActivityIndicator: () => React.createElement("span", null, "chargement"),
     Pressable: ({
@@ -100,12 +116,14 @@ vi.mock("react-native", async () => {
       children,
       disabled,
       onPress,
+      style,
     }: NativeProps) =>
       React.createElement(
         "button",
         {
           "aria-busy": accessibilityState?.busy,
           "aria-disabled": accessibilityState?.disabled,
+          "data-min-height": style?.minHeight,
           disabled,
           onClick: onPress,
           role: accessibilityRole === "button" ? undefined : accessibilityRole,
@@ -139,6 +157,14 @@ vi.mock("react-native", async () => {
 import TodayScreen from "../app/index";
 
 const startedAt = "2026-08-02T08:00:00.000Z";
+
+function attributeValue(element: unknown, name: string): string | null {
+  return (
+    element as {
+      readonly getAttribute: (attributeName: string) => string | null;
+    }
+  ).getAttribute(name);
+}
 
 function experience(lesson: Record<string, unknown> | null = null) {
   return {
@@ -189,6 +215,26 @@ beforeEach(() => {
 afterEach(() => cleanup());
 
 describe("écran Aujourd’hui mobile", () => {
+  it("ouvre Parcours depuis une cible d’en-tête de 44 points", async () => {
+    render(<TodayScreen />);
+
+    await screen.findByRole("heading", {
+      name: "Une petite écoute, à votre rythme.",
+    });
+    const pathButton = screen.getByRole("button", { name: "Parcours" });
+    const header = screen.getByTestId("today-header");
+    const actions = screen.getByTestId("today-header-actions");
+    expect(attributeValue(header, "data-flex-wrap")).toBe("wrap");
+    expect(attributeValue(header, "data-padding-vertical")).toBe("8");
+    expect(attributeValue(actions, "data-flex-wrap")).toBe("wrap");
+    expect(attributeValue(actions, "data-flex-shrink")).toBe("1");
+    expect(attributeValue(pathButton, "data-min-height")).toBe("44");
+
+    fireEvent.click(pathButton);
+
+    expect(testState.push).toHaveBeenCalledWith("/path");
+  });
+
   it("annonce honnêtement la fixture locale et persiste avant navigation", async () => {
     render(<TodayScreen />);
 

@@ -12,7 +12,10 @@ export default function HomePage() {
         </Link>
         <nav aria-label="Navigation principale">
           <Link href="#methode">Méthode</Link>
-          <Link href="/account">Compte</Link>
+          <Link href="/path">Parcours</Link>
+          <Link className="siteAccountLink" href="/account">
+            Compte
+          </Link>
           <Link className="button buttonSmall buttonGhost" href="/today">
             Aujourd’hui
           </Link>
