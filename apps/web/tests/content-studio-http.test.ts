@@ -6,6 +6,7 @@ import {
 import { describe, expect, it, vi } from "vitest";
 
 import { ContentStudioError } from "../lib/server/content-studio/errors";
+import { EMPTY_CONTENT_REPORT_AGGREGATE } from "../lib/content-studio-contracts";
 import {
   createContentStudioHttpHandler,
   hiddenContentStudioResponse,
@@ -30,7 +31,7 @@ function dependencies() {
 }
 
 describe("GET /api/v1/studio/content/review", () => {
-  it("retourne uniquement le rapport avec des headers privés", async () => {
+  it("retourne le rapport et les seuls agrégats anonymes avec des headers privés", async () => {
     const deps = dependencies();
     const response = await createContentStudioHttpHandler(deps)(request());
 
@@ -44,7 +45,10 @@ describe("GET /api/v1/studio/content/review", () => {
     expect(response.headers.get("x-frame-options")).toBe("DENY");
     expect(response.headers.get("referrer-policy")).toBe("no-referrer");
     expect(response.headers.get("x-request-id")).toBe(REQUEST_ID);
-    await expect(response.json()).resolves.toEqual(REPORT);
+    await expect(response.json()).resolves.toEqual({
+      review: REPORT,
+      userReports: EMPTY_CONTENT_REPORT_AGGREGATE,
+    });
     expect(deps.authorizer.authorize).toHaveBeenCalledWith({
       accessToken: ACCESS_TOKEN,
       signal: expect.any(AbortSignal),
@@ -57,6 +61,30 @@ describe("GET /api/v1/studio/content/review", () => {
     expect(serialized).not.toContain("20000000-0000-4000-8000-000000000001");
     expect(serialized).not.toContain("selim@example.test");
     expect(serialized).not.toContain(ACCESS_TOKEN);
+  });
+
+  it("joint les agrégats après autorisation sans exposer d'identité", async () => {
+    const deps = dependencies();
+    const read = vi.fn().mockResolvedValue({
+      total: 2,
+      byCategory: {
+        ...EMPTY_CONTENT_REPORT_AGGREGATE.byCategory,
+        tone: 2,
+      },
+    });
+    const response = await createContentStudioHttpHandler({
+      ...deps,
+      reportAggregateReader: { read },
+    })(request());
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({
+      userReports: { total: 2, byCategory: { tone: 2 } },
+    });
+    expect(read).toHaveBeenCalledWith({
+      contentVersionId: REPORT.summary?.lesson.versionId,
+      signal: expect.any(AbortSignal),
+    });
   });
 
   it.each([

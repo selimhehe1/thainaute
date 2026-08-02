@@ -3,13 +3,16 @@ import { describe, expect, it, vi } from "vitest";
 import { AccountExportInfrastructureError } from "../lib/server/account-export/errors";
 import {
   readBoundedAccountExportPages,
+  readContentReports,
   readConsistentAccountExportData,
   type AccountExportSnapshotReader,
+  type ContentReportRow,
   type DeviceRow,
   type ProfileRow,
 } from "../lib/server/account-export/supabase-repository";
 
 const USER_ID = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
+const OTHER_USER_ID = "99999999-9999-4999-8999-999999999999";
 const PROFILE_CREATED_AT = "2026-08-01T09:00:00.000Z";
 
 function profile(syncRevision: number): ProfileRow {
@@ -30,17 +33,35 @@ function device(appVersion: string): DeviceRow {
   };
 }
 
+function contentReport(): ContentReportRow {
+  return {
+    user_id: USER_ID,
+    idempotency_key: "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+    lesson_version_id: "dddddddd-dddd-4ddd-8ddd-dddddddddddd",
+    item_id: "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
+    exercise_id: "ffffffff-ffff-4fff-8fff-ffffffffffff",
+    category: "tone",
+    platform: "web",
+    received_at: "2026-08-01T09:05:00.000Z",
+  };
+}
+
 function reader(input: {
   readonly profiles: Array<ProfileRow | null>;
   readonly devices?: DeviceRow[][];
+  readonly contentReports?: ContentReportRow[][];
 }): AccountExportSnapshotReader {
   const profiles = [...input.profiles];
   const devices = [...(input.devices ?? [[], []])];
+  const contentReports = [...(input.contentReports ?? [[]])];
   return {
     readProfile: vi.fn(() => Promise.resolve(profiles.shift() ?? profile(999))),
     readDevices: vi.fn(() => Promise.resolve(devices.shift() ?? [])),
     readAttemptEvents: vi.fn(() => Promise.resolve([])),
     readLearnerItemStates: vi.fn(() => Promise.resolve([])),
+    readContentReports: vi.fn(() =>
+      Promise.resolve(contentReports.shift() ?? []),
+    ),
   };
 }
 
@@ -109,6 +130,32 @@ describe("pagination bornée de l'export de compte", () => {
   });
 });
 
+describe("lecture privilégiée des signalements exportés", () => {
+  it("applique le filtre propriétaire avant toute page lue", async () => {
+    const range = vi.fn().mockResolvedValue({
+      data: [],
+      error: null,
+      count: 0,
+    });
+    const secondOrder = vi.fn(() => ({ range }));
+    const firstOrder = vi.fn(() => ({ order: secondOrder }));
+    const eq = vi.fn(() => ({ order: firstOrder }));
+    const select = vi.fn(() => ({ eq }));
+    const from = vi.fn(() => ({ select }));
+
+    await expect(
+      readContentReports(
+        { from } as unknown as Parameters<typeof readContentReports>[0],
+        USER_ID,
+      ),
+    ).resolves.toEqual([]);
+
+    expect(from).toHaveBeenCalledWith("content_reports");
+    expect(eq).toHaveBeenCalledWith("user_id", USER_ID);
+    expect(range).toHaveBeenCalledWith(0, 999);
+  });
+});
+
 describe("cohérence du snapshot de compte", () => {
   it("relit une fois après changement de révision puis rend la passe stable", async () => {
     const snapshotReader = reader({
@@ -146,6 +193,42 @@ describe("cohérence du snapshot de compte", () => {
       devices: [{ appVersion: "1.1.0" }],
     });
     expect(snapshotReader.readAttemptEvents).toHaveBeenCalledTimes(2);
+  });
+
+  it("inclut les signalements du sujet dans la révision stable", async () => {
+    const snapshotReader = reader({
+      profiles: [profile(4), profile(4)],
+      contentReports: [[contentReport()]],
+    });
+
+    await expect(
+      readConsistentAccountExportData({
+        userId: USER_ID,
+        reader: snapshotReader,
+      }),
+    ).resolves.toMatchObject({
+      contentReports: [
+        {
+          idempotencyKey: "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+          category: "tone",
+          platform: "web",
+        },
+      ],
+    });
+  });
+
+  it("refuse toute ligne de signalement d'un autre sujet malgré la clé serveur", async () => {
+    const snapshotReader = reader({
+      profiles: [profile(4), profile(4)],
+      contentReports: [[{ ...contentReport(), user_id: OTHER_USER_ID }]],
+    });
+
+    await expect(
+      readConsistentAccountExportData({
+        userId: USER_ID,
+        reader: snapshotReader,
+      }),
+    ).rejects.toBeInstanceOf(AccountExportInfrastructureError);
   });
 
   it("renvoie un conflit après deux snapshots mouvants", async () => {

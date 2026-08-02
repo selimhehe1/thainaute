@@ -1,6 +1,11 @@
 import {
   ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
   AttemptOutboxCapacityError,
+  ContentReportOutboxAckMismatchError,
+  ContentReportOutboxCapacityError,
+  ContentReportOutboxCollisionError,
+  ContentReportOutboxRejectionMismatchError,
+  ackContentReport,
   applyAnonymousProgressFusionBatchSuccess as applyFusionBatchSuccess,
   applyAttemptOutboxSuccess,
   applyProgressSnapshot,
@@ -11,17 +16,23 @@ import {
   attemptSubmissionSchema,
   createAttemptOutboxSnapshot,
   completeAnonymousProgressFusion as completeFusion,
+  createContentReportOutbox,
   deriveDeletedAccountSubjectFingerprint,
   deriveAccountDeviceId,
   deserializeAnonymousProgressFusionMarker,
   deserializeAttemptOutboxSnapshot,
+  deserializeContentReportOutbox,
+  discardRejectedContentReport,
+  enqueueContentReport,
   enqueueAttempt,
   idempotencyKeySchema,
   prepareAttemptOutboxBatch,
+  rejectContentReport,
   resumeAnonymousProgressFusion as resumeFusion,
   resumeAttemptOutboxAfterDeviceRegistration,
   serializeAttemptOutboxSnapshot,
   serializeAnonymousProgressFusionMarker,
+  serializeContentReportOutbox,
   startAnonymousProgressFusion as startFusion,
   type ApplyAttemptOutboxSuccessResult,
   type AnonymousProgressFusionMarker,
@@ -30,6 +41,11 @@ import {
   type AttemptOutboxOwner,
   type AttemptOutboxSnapshot,
   type CompletedAnonymousProgressFusionState,
+  type ContentReportOutboxEntry,
+  type ContentReportOutboxRejection,
+  type ContentReportOutboxSnapshot,
+  type ContentReportRejectionReason,
+  type ContentReportResponse,
   type PendingAnonymousProgressFusionState,
   type PrepareAttemptOutboxResult,
   type ProgressSnapshotResponse,
@@ -39,6 +55,7 @@ import {
 import type { SQLiteDatabase } from "expo-sqlite";
 
 const OUTBOX_KEY = "attempts-v1";
+const CONTENT_REPORT_OUTBOX_KEY = "content-reports-v1";
 const DEVICE_KEY = "device_id";
 const INSTALLATION_KEY = "installation_id_v1";
 const LEGACY_MIGRATION_KEY = "legacy_attempt_journal_migrated_v1";
@@ -92,6 +109,7 @@ export class MobileAccountDataTombstonedError extends MobileAttemptOutboxStorage
 export interface ExpectedMobileAccountPurgeState {
   readonly snapshot: AttemptOutboxSnapshot;
   readonly fusionMarker: AnonymousProgressFusionMarker | null;
+  readonly contentReportOutbox: ContentReportOutboxSnapshot;
 }
 
 function isSqliteBusy(error: unknown): boolean {
@@ -173,6 +191,43 @@ async function writeSnapshot(
        updated_at = excluded.updated_at`,
     outboxKey,
     serializeAttemptOutboxSnapshot(snapshot),
+    new Date().toISOString(),
+  );
+}
+
+function parseStoredContentReportOutbox(
+  row: OutboxRow | null,
+): ContentReportOutboxSnapshot {
+  return row === null
+    ? createContentReportOutbox()
+    : deserializeContentReportOutbox(row.snapshot);
+}
+
+async function readContentReportOutbox(
+  database: SQLiteDatabase,
+  outboxKey: string,
+): Promise<ContentReportOutboxSnapshot> {
+  return parseStoredContentReportOutbox(
+    await database.getFirstAsync<OutboxRow>(
+      "SELECT snapshot FROM attempt_outbox_state WHERE key = ?",
+      outboxKey,
+    ),
+  );
+}
+
+async function writeContentReportOutbox(
+  database: SQLiteDatabase,
+  outboxKey: string,
+  snapshot: ContentReportOutboxSnapshot,
+): Promise<void> {
+  await database.runAsync(
+    `INSERT INTO attempt_outbox_state (key, snapshot, updated_at)
+     VALUES (?, ?, ?)
+     ON CONFLICT (key) DO UPDATE SET
+       snapshot = excluded.snapshot,
+       updated_at = excluded.updated_at`,
+    outboxKey,
+    serializeContentReportOutbox(snapshot),
     new Date().toISOString(),
   );
 }
@@ -420,6 +475,7 @@ export class MobileAttemptOutboxStore {
   readonly #database: SQLiteDatabase;
   readonly #owner: AttemptOutboxOwner;
   readonly #outboxKey: string;
+  readonly #contentReportOutboxKey: string | null;
   readonly #deviceKey: string;
   readonly #legacyMigrationKey: string;
   readonly #namespace: MobileAttemptOutboxNamespace;
@@ -441,6 +497,10 @@ export class MobileAttemptOutboxStore {
       this.#owner.kind === "anonymous"
         ? `${prefix}${OUTBOX_KEY}`
         : `${prefix}${OUTBOX_KEY}:${scope}`;
+    this.#contentReportOutboxKey =
+      this.#owner.kind === "account" && namespace === "learning"
+        ? `${CONTENT_REPORT_OUTBOX_KEY}:${scope}`
+        : null;
     this.#deviceKey =
       this.#owner.kind === "anonymous"
         ? `${prefix}${DEVICE_KEY}`
@@ -480,6 +540,61 @@ export class MobileAttemptOutboxStore {
         { cause: error },
       );
     }
+  }
+
+  /** File de signalements strictement réservée au namespace du compte. */
+  public async readContentReports(): Promise<ContentReportOutboxSnapshot> {
+    const outboxKey = this.#requireContentReportOutboxKey();
+    try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
+      return await serializeDatabaseOperation(this.#database, async () => {
+        await this.#assertAccountWritable(this.#database, tombstoneKey);
+        return readContentReportOutbox(this.#database, outboxKey);
+      });
+    } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
+      throw new MobileAttemptOutboxStorageError(
+        "La file locale de signalements est illisible et n'a pas été écrasée.",
+        { cause: error },
+      );
+    }
+  }
+
+  public enqueueContentReport(
+    entry: ContentReportOutboxEntry,
+  ): Promise<ContentReportOutboxSnapshot> {
+    return this.#replaceContentReports((snapshot) =>
+      enqueueContentReport(snapshot, entry),
+    );
+  }
+
+  public ackContentReport(
+    entry: ContentReportOutboxEntry,
+    response: ContentReportResponse,
+  ): Promise<ContentReportOutboxSnapshot> {
+    return this.#replaceContentReports((snapshot) =>
+      ackContentReport(snapshot, entry, response),
+    );
+  }
+
+  public rejectContentReport(
+    entry: ContentReportOutboxEntry,
+    rejection: {
+      readonly reason: ContentReportRejectionReason;
+      readonly rejectedAt: string;
+    },
+  ): Promise<ContentReportOutboxSnapshot> {
+    return this.#replaceContentReports((snapshot) =>
+      rejectContentReport(snapshot, entry, rejection),
+    );
+  }
+
+  public discardRejectedContentReport(
+    rejection: ContentReportOutboxRejection,
+  ): Promise<ContentReportOutboxSnapshot> {
+    return this.#replaceContentReports((snapshot) =>
+      discardRejectedContentReport(snapshot, rejection),
+    );
   }
 
   public async migrateLegacyJournal(): Promise<AttemptOutboxSnapshot> {
@@ -824,6 +939,12 @@ export class MobileAttemptOutboxStore {
             "DELETE FROM attempt_outbox_state WHERE key = ?",
             this.#outboxKey,
           );
+          if (this.#contentReportOutboxKey !== null) {
+            await transaction.runAsync(
+              "DELETE FROM attempt_outbox_state WHERE key = ?",
+              this.#contentReportOutboxKey,
+            );
+          }
           await transaction.runAsync(
             "DELETE FROM local_metadata WHERE key IN (?, ?)",
             this.#deviceKey,
@@ -913,6 +1034,12 @@ export class MobileAttemptOutboxStore {
             "DELETE FROM attempt_outbox_state WHERE key = ?",
             this.#outboxKey,
           );
+          if (this.#contentReportOutboxKey !== null) {
+            await transaction.runAsync(
+              "DELETE FROM attempt_outbox_state WHERE key = ?",
+              this.#contentReportOutboxKey,
+            );
+          }
           await transaction.runAsync(
             "DELETE FROM local_metadata WHERE key IN (?, ?)",
             this.#deviceKey,
@@ -963,6 +1090,10 @@ export class MobileAttemptOutboxStore {
         : expectedState.fusionMarker === null
           ? null
           : serializeAnonymousProgressFusionMarker(expectedState.fusionMarker);
+    const expectedContentReports =
+      expectedState === undefined
+        ? undefined
+        : serializeContentReportOutbox(expectedState.contentReportOutbox);
 
     try {
       const tombstoneKey = await this.#resolveAccountTombstoneKey();
@@ -976,6 +1107,14 @@ export class MobileAttemptOutboxStore {
               this.#outboxKey,
             );
             const snapshot = parseStoredSnapshot(row, owner);
+            const contentReportOutboxKey =
+              this.#requireContentReportOutboxKey();
+            const contentReportRow = await transaction.getFirstAsync<OutboxRow>(
+              "SELECT snapshot FROM attempt_outbox_state WHERE key = ?",
+              contentReportOutboxKey,
+            );
+            const contentReportOutbox =
+              parseStoredContentReportOutbox(contentReportRow);
             const marker = parseStoredFusionMarker(
               await transaction.getFirstAsync<MetadataRow>(
                 "SELECT value FROM local_metadata WHERE key = ?",
@@ -985,6 +1124,7 @@ export class MobileAttemptOutboxStore {
             const unsettled =
               snapshot.inFlight !== null ||
               snapshot.entries.some(({ status }) => status === "pending") ||
+              contentReportOutbox.entries.length > 0 ||
               (marker?.status === "awaiting_server_ack" &&
                 marker.targetUserId === owner.userId);
             const markerValue =
@@ -994,9 +1134,12 @@ export class MobileAttemptOutboxStore {
             const matchesExpected =
               expectedSnapshot !== undefined &&
               serializeAttemptOutboxSnapshot(snapshot) === expectedSnapshot &&
-              markerValue === expectedMarker;
+              markerValue === expectedMarker &&
+              serializeContentReportOutbox(contentReportOutbox) ===
+                expectedContentReports;
             const alreadyPurged =
               row === null &&
+              contentReportRow === null &&
               (marker === null || marker.targetUserId !== owner.userId);
             if (expectedSnapshot !== undefined) {
               if (!matchesExpected && !alreadyPurged) return;
@@ -1007,6 +1150,10 @@ export class MobileAttemptOutboxStore {
             await transaction.runAsync(
               "DELETE FROM attempt_outbox_state WHERE key = ?",
               this.#outboxKey,
+            );
+            await transaction.runAsync(
+              "DELETE FROM attempt_outbox_state WHERE key = ?",
+              contentReportOutboxKey,
             );
             await transaction.runAsync(
               "DELETE FROM local_metadata WHERE key IN (?, ?)",
@@ -1281,6 +1428,61 @@ export class MobileAttemptOutboxStore {
       if (error instanceof MobileAttemptOutboxStorageError) throw error;
       throw new MobileAttemptOutboxStorageError(
         "La réponse serveur n’a pas pu être appliquée atomiquement.",
+        { cause: error },
+      );
+    }
+  }
+
+  #requireContentReportOutboxKey(): string {
+    if (this.#contentReportOutboxKey === null) {
+      throw new MobileAttemptOutboxStorageError(
+        "Les signalements exigent le namespace d'un compte permanent.",
+      );
+    }
+    return this.#contentReportOutboxKey;
+  }
+
+  async #replaceContentReports(
+    update: (
+      snapshot: ContentReportOutboxSnapshot,
+    ) => ContentReportOutboxSnapshot,
+  ): Promise<ContentReportOutboxSnapshot> {
+    const outboxKey = this.#requireContentReportOutboxKey();
+    try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
+      return await serializeDatabaseOperation(this.#database, async () => {
+        let returned: ContentReportOutboxSnapshot | undefined;
+        await this.#database.withExclusiveTransactionAsync(
+          async (transaction) => {
+            await this.#assertAccountWritable(transaction, tombstoneKey);
+            const next = update(
+              await readContentReportOutbox(transaction, outboxKey),
+            );
+            await writeContentReportOutbox(transaction, outboxKey, next);
+            returned = next;
+          },
+        );
+        if (returned === undefined) {
+          throw new Error(
+            "La transaction de signalement n'a renvoyé aucun résultat.",
+          );
+        }
+        return returned;
+      });
+    } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
+      if (
+        error instanceof ContentReportOutboxCapacityError ||
+        error instanceof ContentReportOutboxCollisionError ||
+        error instanceof ContentReportOutboxAckMismatchError ||
+        error instanceof ContentReportOutboxRejectionMismatchError
+      ) {
+        throw new MobileAttemptOutboxStorageError(error.message, {
+          cause: error,
+        });
+      }
+      throw new MobileAttemptOutboxStorageError(
+        "La file locale de signalements n'a pas pu être mise à jour.",
         { cause: error },
       );
     }

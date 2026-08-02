@@ -1,5 +1,9 @@
 import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
-import type { AttemptOutboxOwner } from "@thainaute/sync";
+import {
+  createContentReportOutbox,
+  createContentReportOutboxEntry,
+  type AttemptOutboxOwner,
+} from "@thainaute/sync";
 import type { SQLiteDatabase } from "expo-sqlite";
 import { describe, expect, it } from "vitest";
 
@@ -15,6 +19,8 @@ const ids = {
   version: "10000000-0000-4000-8000-000000000006",
   idempotency: "10000000-0000-4000-8000-000000000007",
   ignoredIdempotency: "10000000-0000-4000-8000-000000000008",
+  reportIdempotency: "10000000-0000-4000-8000-000000000010",
+  reportIdempotencyB: "10000000-0000-4000-8000-000000000011",
   userA: "20000000-0000-4000-8000-000000000001",
   userB: "20000000-0000-4000-8000-000000000002",
   deviceB: "20000000-0000-4000-8000-000000000003",
@@ -66,6 +72,17 @@ const legacyFixtureSubmission = {
   contentVersionId: ids.fixtureVersion,
   algorithmVersion: SRS_ALGORITHM_VERSION,
 };
+
+const contentReport = createContentReportOutboxEntry({
+  idempotencyKey: ids.reportIdempotency,
+  body: {
+    contentVersionId: ids.version,
+    exerciseId: ids.exercise,
+    category: "tone",
+    platform: "android",
+  },
+  createdAt: "2026-08-02T04:00:00.000Z",
+});
 
 function legacyV2Snapshot(): string {
   return JSON.stringify({
@@ -798,6 +815,7 @@ describe("outbox SQLite mobile", () => {
       accountA.purgeAccountDataIfSettled({
         snapshot: observedBeforeLogout,
         fusionMarker: null,
+        contentReportOutbox: createContentReportOutbox(),
       }),
     ).resolves.toBe(false);
     expect((await accountA.read()).entries).toHaveLength(2);
@@ -814,12 +832,14 @@ describe("outbox SQLite mobile", () => {
       accountA.purgeAccountDataIfSettled({
         snapshot: observedBeforeLogout,
         fusionMarker: null,
+        contentReportOutbox: createContentReportOutbox(),
       }),
     ).resolves.toBe(false);
     await expect(
       accountA.purgeAccountDataIfSettled({
         snapshot: await accountA.read(),
         fusionMarker: null,
+        contentReportOutbox: createContentReportOutbox(),
       }),
     ).resolves.toBe(true);
     expect((await accountA.read()).entries).toHaveLength(0);
@@ -828,6 +848,133 @@ describe("outbox SQLite mobile", () => {
         throw new Error("l’installation doit être conservée");
       }, sha256Hex),
     ).resolves.toBe(deviceA);
+  });
+
+  it("conserve les signalements par compte et les acquitte strictement en FIFO", async () => {
+    const database = new FakeSQLiteDatabase();
+    const accountA = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userA,
+    });
+    const accountB = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userB,
+    });
+    const secondReport = createContentReportOutboxEntry({
+      ...contentReport,
+      idempotencyKey: ids.reportIdempotencyB,
+      body: { ...contentReport.body, category: "audio" },
+      createdAt: "2026-08-02T04:00:01.000Z",
+    });
+
+    await accountA.enqueueContentReport(contentReport);
+    await accountA.enqueueContentReport(secondReport);
+
+    const reopenedA = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userA,
+    });
+    expect((await reopenedA.readContentReports()).entries).toEqual([
+      contentReport,
+      secondReport,
+    ]);
+    expect((await accountB.readContentReports()).entries).toEqual([]);
+    await expect(
+      new MobileAttemptOutboxStore(asDatabase(database)).readContentReports(),
+    ).rejects.toThrow("compte permanent");
+
+    await reopenedA.ackContentReport(contentReport, { status: "received" });
+    expect((await reopenedA.readContentReports()).entries).toEqual([
+      secondReport,
+    ]);
+    await expect(
+      reopenedA.ackContentReport(contentReport, { status: "duplicate" }),
+    ).rejects.toThrow("tête de la file");
+    expect((await reopenedA.readContentReports()).entries).toEqual([
+      secondReport,
+    ]);
+  });
+
+  it("conserve un refus exact jusqu'au retrait explicite puis reprend la FIFO", async () => {
+    const database = new FakeSQLiteDatabase();
+    const account = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userA,
+    });
+    const secondReport = createContentReportOutboxEntry({
+      ...contentReport,
+      idempotencyKey: ids.reportIdempotencyB,
+      body: { ...contentReport.body, category: "audio" },
+      createdAt: "2026-08-02T04:00:01.000Z",
+    });
+    await account.enqueueContentReport(contentReport);
+    await account.enqueueContentReport(secondReport);
+    const rejected = await account.rejectContentReport(contentReport, {
+      reason: "idempotency_key_reused",
+      rejectedAt: "2026-08-02T12:00:00.000Z",
+    });
+    if (rejected.rejection === null) throw new Error("Expected rejection.");
+
+    await expect(
+      account.ackContentReport(contentReport, { status: "received" }),
+    ).rejects.toThrow("tête de la file");
+    await expect(
+      account.discardRejectedContentReport({
+        ...rejected.rejection,
+        reason: "invalid_request",
+      }),
+    ).rejects.toThrow("refus ne correspond pas");
+    const resumed = await account.discardRejectedContentReport(
+      rejected.rejection,
+    );
+    expect(resumed.entries).toEqual([secondReport]);
+    expect(resumed.rejection).toBeNull();
+  });
+
+  it("refuse la purge implicite et compare exactement la confirmation explicite", async () => {
+    const database = new FakeSQLiteDatabase();
+    const account = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userA,
+    });
+    const contentReportOutbox =
+      await account.enqueueContentReport(contentReport);
+    const snapshot = await account.read();
+
+    await expect(account.purgeAccountDataIfSettled()).resolves.toBe(false);
+    const concurrentReport = createContentReportOutboxEntry({
+      ...contentReport,
+      idempotencyKey: ids.reportIdempotencyB,
+      body: { ...contentReport.body, category: "naturalness" },
+      createdAt: "2026-08-02T04:00:01.000Z",
+    });
+    await account.enqueueContentReport(concurrentReport);
+    await expect(
+      account.purgeAccountDataIfSettled({
+        snapshot,
+        fusionMarker: null,
+        contentReportOutbox,
+      }),
+    ).resolves.toBe(false);
+    expect((await account.readContentReports()).entries).toEqual([
+      contentReport,
+      concurrentReport,
+    ]);
+
+    const accountB = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userB,
+    });
+    const accountBReports = await accountB.enqueueContentReport(contentReport);
+    const accountBSnapshot = await accountB.read();
+    await expect(
+      accountB.purgeAccountDataIfSettled({
+        snapshot: accountBSnapshot,
+        fusionMarker: null,
+        contentReportOutbox: accountBReports,
+      }),
+    ).resolves.toBe(true);
+    expect((await accountB.readContentReports()).entries).toEqual([]);
   });
 
   it("scelle atomiquement le compte et refuse une réponse sync tardive", async () => {
@@ -849,6 +996,7 @@ describe("outbox SQLite mobile", () => {
     await anonymous.enqueue(submission);
     await accountB.enqueue(submission);
     await accountASecondTask.enqueue(submission);
+    await accountASecondTask.enqueueContentReport(contentReport);
     await accountASecondTask.prepare(ids.idempotency);
     expect(await accountASecondTask.isAccountTombstoned()).toBe(false);
 
@@ -877,6 +1025,11 @@ describe("outbox SQLite mobile", () => {
         states: [],
       }),
     ).rejects.toThrow("ne peut plus être réécrit");
+    await expect(
+      accountASecondTask.ackContentReport(contentReport, {
+        status: "received",
+      }),
+    ).rejects.toThrow("ne peut plus être réécrit");
     await expect(accountASecondTask.read()).rejects.toThrow(
       "ne peut plus être réécrit",
     );
@@ -891,6 +1044,9 @@ describe("outbox SQLite mobile", () => {
     expect(database.outboxes.has(`attempts-v1:account:${ids.userA}`)).toBe(
       false,
     );
+    expect(
+      database.outboxes.has(`content-reports-v1:account:${ids.userA}`),
+    ).toBe(false);
     expect(
       database.metadata.get(`deleted_account_subject_v1:${"11".repeat(32)}`),
     ).toBe("deleted");

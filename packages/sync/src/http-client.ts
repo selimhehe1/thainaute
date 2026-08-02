@@ -35,6 +35,13 @@ import {
   type AccountDeletionHeaders,
   type AccountDeletionReceipt,
 } from "./account-deletion-contracts";
+import {
+  contentReportOutboxEntrySchema,
+  contentReportResponseSchema,
+  type ContentReportOutboxEntry,
+  type ContentReportRejectionReason,
+  type ContentReportResponse,
+} from "./content-report-outbox";
 import type { PreparedAttemptOutboxBatch } from "./outbox";
 
 const ACCESS_TOKEN_MAX_LENGTH = 16 * 1_024;
@@ -58,6 +65,7 @@ const preparedAttemptBatchSchema = z.strictObject({
 const ENDPOINT_PATHS = {
   account_deletion: "/api/v1/account",
   account_export: "/api/v1/account/export",
+  content_report: "/api/v1/content/reports",
   device_registration: "/api/v1/devices/register",
   attempt_batch: "/api/v1/attempts/batch",
   progress_snapshot: "/api/v1/progress/snapshot",
@@ -190,6 +198,30 @@ export class SyncHttpApiError extends Error {
   }
 }
 
+/**
+ * Seuls les refus fermés que le même rejeu ne peut jamais réparer deviennent
+ * des rejets locaux. Auth, suppression, transport, throttling, 5xx et dérive
+ * de protocole restent hors de cette classification.
+ */
+export function classifyContentReportRejection(
+  error: unknown,
+): ContentReportRejectionReason | null {
+  if (
+    !(error instanceof SyncHttpApiError) ||
+    error.endpoint !== "content_report" ||
+    error.retryable
+  ) {
+    return null;
+  }
+  if (error.status === 409 && error.code === "idempotency_key_reused") {
+    return "idempotency_key_reused";
+  }
+  if (error.status === 422 && error.code === "invalid_request") {
+    return "invalid_request";
+  }
+  return null;
+}
+
 export interface SyncHttpClient {
   registerDevice(
     registration: DeviceRegistrationRequest,
@@ -197,6 +229,9 @@ export interface SyncHttpClient {
   sendAttemptBatch(
     prepared: PreparedAttemptOutboxBatch,
   ): Promise<AttemptBatchResponse>;
+  sendContentReport(
+    entry: ContentReportOutboxEntry,
+  ): Promise<ContentReportResponse>;
   getProgressSnapshot(): Promise<ProgressSnapshotResponse>;
   getAccountExport(signal?: AbortSignal): Promise<AccountExportDocument>;
   deleteAccount(
@@ -500,6 +535,31 @@ export function createSyncHttpClient(
         );
       }
       assertAttemptResponseMatchesBatch(response.data, prepared.batch);
+      return response.data;
+    },
+
+    async sendContentReport(entryInput) {
+      const entry = parseRequest(
+        contentReportOutboxEntrySchema,
+        entryInput,
+        "content_report",
+      );
+      const payload = await request({
+        endpoint: "content_report",
+        method: "POST",
+        body: entry.body,
+        idempotencyKey: entry.idempotencyKey,
+      });
+      const response = contentReportResponseSchema.safeParse(payload);
+      if (!response.success) {
+        throw new SyncHttpProtocolError(
+          "content_report",
+          "invalid_success_response",
+        );
+      }
+
+      // Une réponse du compte A ne doit jamais acquitter sa file après A→B.
+      await accessToken("content_report");
       return response.data;
     },
 

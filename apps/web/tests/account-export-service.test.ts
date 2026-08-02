@@ -27,6 +27,7 @@ describe("service d'export de compte", () => {
         devices: [],
         attemptEvents: [],
         learnerItemStates: [],
+        contentReports: [],
       }),
     );
     const exporter = createAccountExporter({
@@ -38,7 +39,7 @@ describe("service d'export de compte", () => {
     await expect(
       exporter({ accessToken: ACCESS_TOKEN, signal }),
     ).resolves.toMatchObject({
-      format: "thainaute.account-export/v1",
+      format: "thainaute.account-export/v2",
       exportedAt: "2026-08-02T10:00:00.000Z",
       identity: { id: USER_ID },
     });

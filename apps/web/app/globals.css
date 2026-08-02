@@ -637,6 +637,53 @@ h1 em {
   font-size: 13px;
   line-height: 1.55;
 }
+.contentReport {
+  margin-block: 0 28px;
+}
+.contentReportPanel {
+  max-width: 650px;
+  margin-top: 14px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--mist);
+}
+.contentReportPanel h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.contentReportPanel > p,
+.contentReportSignedOut p {
+  color: #5f6b82;
+  line-height: 1.55;
+}
+.contentReportForm {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+.contentReportForm label {
+  font-weight: 800;
+}
+.contentReportForm select {
+  min-height: 48px;
+  padding-inline: 14px;
+  border: 2px solid white;
+  border-radius: 12px;
+  color: var(--ink);
+  background: white;
+}
+.contentReportForm select:focus {
+  border-color: var(--jade);
+}
+.contentReportForm .button,
+.contentReportSignedOut .button {
+  justify-self: start;
+}
+.contentReportPanel .privacyNote,
+.contentReportPanel .inlineError {
+  margin: 16px 0;
+}
 .lessonEmpty {
   padding-block: 100px;
 }
@@ -694,7 +741,7 @@ h1 em {
 .accountMetrics {
   margin-block: 34px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 .accountMetrics > div {

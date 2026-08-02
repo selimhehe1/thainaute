@@ -14,6 +14,7 @@ const ids = {
   item: "50000000-0000-4000-8000-000000000001",
   lesson: "60000000-0000-4000-8000-000000000001",
   option: "70000000-0000-4000-8000-000000000001",
+  report: "80000000-0000-4000-8000-000000000001",
 } as const;
 
 const identity = {
@@ -78,10 +79,21 @@ const document = {
         updatedAt: "2026-08-01T10:00:01.000Z",
       },
     ],
+    contentReports: [
+      {
+        idempotencyKey: ids.report,
+        contentVersionId: ids.lesson,
+        itemId: ids.item,
+        exerciseId: ids.exercise,
+        category: "tone" as const,
+        platform: "web" as const,
+        receivedAt: "2026-08-01T10:05:00.000Z",
+      },
+    ],
   },
 };
 
-describe("contrat de l'export de compte v1", () => {
+describe("contrat de l'export de compte v2", () => {
   it("valide un document portable fermé et versionné", () => {
     expect(accountExportDocumentSchema.parse(document)).toEqual(document);
     expect(
@@ -150,6 +162,7 @@ describe("contrat de l'export de compte v1", () => {
           devices: [],
           attemptEvents: [],
           learnerItemStates: [],
+          contentReports: [],
         },
       }).success,
     ).toBe(true);

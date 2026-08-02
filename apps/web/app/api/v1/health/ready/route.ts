@@ -30,9 +30,26 @@ export async function GET() {
             : "ok",
           mode: diagnostic.syncMode,
         },
+        contentReport: {
+          status: diagnostic.issues.some((issue) =>
+            [
+              "content_report_config_missing",
+              "content_report_mode_invalid",
+              "content_report_rate_limit_missing",
+              "content_report_sync_required",
+            ].includes(issue),
+          )
+            ? "error"
+            : "ok",
+          mode: diagnostic.contentReportMode,
+        },
         studio: {
           status: diagnostic.issues.some((issue) =>
-            ["studio_mode_invalid", "studio_config_missing"].includes(issue),
+            [
+              "studio_mode_invalid",
+              "studio_config_missing",
+              "studio_report_config_missing",
+            ].includes(issue),
           )
             ? "error"
             : "ok",

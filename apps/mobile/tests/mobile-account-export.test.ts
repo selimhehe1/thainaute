@@ -122,10 +122,10 @@ import {
 } from "../lib/mobile-account-export";
 
 const USER_ID = "10000000-0000-4000-8000-000000000001";
-const EXPORT_URI = "file:///private/cache/thainaute-account-export-v1.json";
+const EXPORT_URI = "file:///private/cache/thainaute-account-export-v2.json";
 
 const document: AccountExportDocument = {
-  format: "thainaute.account-export/v1",
+  format: "thainaute.account-export/v2",
   exportedAt: "2026-08-02T12:00:00.000Z",
   identity: {
     id: USER_ID,
@@ -143,6 +143,7 @@ const document: AccountExportDocument = {
     devices: [],
     attemptEvents: [],
     learnerItemStates: [],
+    contentReports: [],
   },
 };
 

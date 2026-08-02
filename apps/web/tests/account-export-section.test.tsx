@@ -27,7 +27,7 @@ vi.mock("../lib/client/account-export", () => ({
 import { AccountExportSection } from "../app/account/account-export-section";
 
 const exportDocument = {
-  format: "thainaute.account-export/v1",
+  format: "thainaute.account-export/v2",
   exportedAt: "2026-08-02T10:00:00.000Z",
   identity: {
     id: ids.userA,
@@ -45,6 +45,7 @@ const exportDocument = {
     devices: [],
     attemptEvents: [],
     learnerItemStates: [],
+    contentReports: [],
   },
 } satisfies AccountExportDocument;
 
@@ -80,7 +81,7 @@ describe("section d'export du compte web", () => {
     ).toBeVisible();
     expect(screen.getByText(/identité, appareils, tentatives/u)).toBeVisible();
     expect(
-      screen.getByText(/prises de voix ne sont pas incluses/u),
+      screen.getByText(/prises de voix ne sont pas inclus/u),
     ).toBeVisible();
     expect(screen.getByText(/données personnelles/u)).toBeVisible();
     expect(screen.getByText(/2 tentatives.*ne figureront/u)).toBeVisible();

@@ -55,15 +55,21 @@ export interface SupabaseAttemptSyncConfiguration {
   readonly secretKey: string;
 }
 
-export function readSupabaseAttemptSyncConfiguration(
+/** Configuration serveur Supabase partagée par les capacités `/api/v1`. */
+export function readSupabaseServerConfiguration(
   environment: Environment = process.env,
 ): SupabaseAttemptSyncConfiguration | null {
-  if (environment.THAINAUTE_SYNC_MODE !== "supabase") return null;
-
   const result = configurationSchema.safeParse({
     url: environment.NEXT_PUBLIC_SUPABASE_URL,
     publishableKey: environment.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
     secretKey: environment.SUPABASE_SECRET_KEY,
   });
   return result.success ? result.data : null;
+}
+
+export function readSupabaseAttemptSyncConfiguration(
+  environment: Environment = process.env,
+): SupabaseAttemptSyncConfiguration | null {
+  if (environment.THAINAUTE_SYNC_MODE !== "supabase") return null;
+  return readSupabaseServerConfiguration(environment);
 }

@@ -1,5 +1,6 @@
 import {
   createAttemptOutboxSnapshot,
+  createContentReportOutbox,
   type AttemptOutboxOwner,
 } from "@thainaute/sync";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -36,6 +37,11 @@ vi.mock("../lib/client/attempt-outbox-store", () => ({
       return null;
     }
 
+    async readContentReports() {
+      testState.calls.push("read-content-reports");
+      return createContentReportOutbox();
+    }
+
     async purgeOwnerData() {
       testState.calls.push("purge-anonymous");
     }
@@ -66,7 +72,7 @@ describe("orchestration locale du compte web", () => {
   beforeEach(() => testState.calls.splice(0));
 
   it("isole la fixture avant de présenter la progression anonyme", async () => {
-    await readWebAccountLocalState(userId);
+    const state = await readWebAccountLocalState(userId);
 
     expect(testState.calls[0]).toBe("migrate");
     expect(testState.calls.indexOf("migrate")).toBeLessThan(
@@ -75,6 +81,7 @@ describe("orchestration locale du compte web", () => {
     expect(testState.calls.indexOf("migrate")).toBeLessThan(
       testState.calls.indexOf("construct-anonymous"),
     );
+    expect(state.contentReportOutbox).toEqual(createContentReportOutbox());
   });
 
   it("isole la fixture avant un abandon explicite", async () => {

@@ -118,6 +118,7 @@ interface SignedInAccountSummary {
   readonly anonymousCount: number;
   readonly anonymousImportableCount: number;
   readonly anonymousRejectedCount: number;
+  readonly contentReportPending: number;
   readonly stateCount: number;
 }
 
@@ -146,6 +147,8 @@ function summarizeSignedInAccount(
     anonymousCount,
     anonymousImportableCount,
     anonymousRejectedCount: anonymousCount - anonymousImportableCount,
+    contentReportPending:
+      currentLocalState?.contentReportOutbox.entries.length ?? 0,
     stateCount:
       currentLocalState?.accountSnapshot.authoritativeStates.length ?? 0,
   };
@@ -154,10 +157,11 @@ function summarizeSignedInAccount(
 function AccountMetrics({
   accountPending,
   anonymousCount,
+  contentReportPending,
   stateCount,
 }: Pick<
   SignedInAccountSummary,
-  "accountPending" | "anonymousCount" | "stateCount"
+  "accountPending" | "anonymousCount" | "contentReportPending" | "stateCount"
 >) {
   return (
     <div className="accountMetrics" aria-live="polite">
@@ -172,6 +176,10 @@ function AccountMetrics({
       <div>
         <strong>{anonymousCount}</strong>
         <span>tentatives anonymes locales</span>
+      </div>
+      <div>
+        <strong>{contentReportPending}</strong>
+        <span>signalements en attente</span>
       </div>
     </div>
   );
@@ -518,12 +526,33 @@ export function AccountExperience() {
         startAnonymousFusion,
       });
       await refreshLocalState();
-      setMessage(
+      const progressMessage =
         result.fusionCompleted && result.fusionRejectedCount > 0
           ? `${result.fusionRejectedCount} tentative${result.fusionRejectedCount > 1 ? "s" : ""} non importable${result.fusionRejectedCount > 1 ? "s" : ""} ${result.fusionRejectedCount > 1 ? "sont conservées" : "est conservée"} localement ; le reste est synchronisé.`
           : result.fusionCompleted
             ? "Progression fusionnée et synchronisée."
-            : "Progression du compte synchronisée.",
+            : "Progression du compte synchronisée.";
+      const sentReportMessage =
+        result.contentReportsSent > 0
+          ? `${result.contentReportsSent} signalement${result.contentReportsSent > 1 ? "s" : ""} envoyé${result.contentReportsSent > 1 ? "s" : ""}.`
+          : "";
+      const pendingReportMessage =
+        result.contentReportsPending > 0
+          ? `${result.contentReportsPending} signalement${result.contentReportsPending > 1 ? "s restent" : " reste"} conservé${result.contentReportsPending > 1 ? "s" : ""} sur cet appareil.`
+          : "Aucun signalement en attente.";
+      const rejectedReportMessage =
+        result.contentReportsRejected > 0
+          ? "Un signalement a été refusé définitivement. Revenez à la leçon concernée pour le retirer explicitement et reprendre les suivants."
+          : "";
+      setMessage(
+        [
+          progressMessage,
+          sentReportMessage,
+          rejectedReportMessage,
+          pendingReportMessage,
+        ]
+          .filter((part) => part !== "")
+          .join(" "),
       );
     } catch {
       setMessage(
@@ -563,16 +592,17 @@ export function AccountExperience() {
     const pendingCount = logoutState.accountSnapshot.entries.filter(
       ({ status }) => status === "pending",
     ).length;
+    const pendingReportCount = logoutState.contentReportOutbox.entries.length;
     const activeFusion =
       logoutState.fusionMarker?.status === "awaiting_server_ack" &&
       logoutState.fusionMarker.targetUserId === userId.toLowerCase();
     if (
-      (pendingCount > 0 || activeFusion) &&
+      (pendingCount > 0 || pendingReportCount > 0 || activeFusion) &&
       logoutConfirmationUserId !== userId
     ) {
       setLogoutConfirmationUserId(userId);
       setMessage(
-        "Des tentatives ne sont pas encore synchronisées. Synchronisez-les ou confirmez leur effacement uniquement sur cet appareil. Votre compte reste en ligne.",
+        "Des tentatives ou signalements ne sont pas encore synchronisés. Synchronisez-les ou confirmez leur effacement uniquement sur cet appareil. Votre compte reste en ligne.",
       );
       return;
     }
@@ -585,6 +615,7 @@ export function AccountExperience() {
       const purged = await purgeWebAccountData(userId, {
         snapshot: logoutState.accountSnapshot,
         fusionMarker: logoutState.fusionMarker,
+        contentReportOutbox: logoutState.contentReportOutbox,
       });
       setLocalState(null);
       setLogoutConfirmationUserId(null);

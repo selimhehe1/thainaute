@@ -1,10 +1,12 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import {
   MAX_ACCOUNT_EXPORT_ATTEMPTS,
+  MAX_ACCOUNT_EXPORT_CONTENT_REPORTS,
   MAX_ACCOUNT_EXPORT_DEVICES,
   MAX_ACCOUNT_EXPORT_LEARNER_STATES,
   accountExportDataSchema,
   type AccountExportAttemptEvent,
+  type AccountExportContentReport,
   type AccountExportData,
   type AccountExportDevice,
   type AccountExportLearnerItemState,
@@ -66,11 +68,31 @@ const learnerItemStateRowSchema = z.strictObject({
   algorithm_version: z.string(),
   updated_at: z.string(),
 });
+const contentReportRowSchema = z.strictObject({
+  user_id: canonicalUuidSchema,
+  idempotency_key: canonicalUuidSchema,
+  lesson_version_id: canonicalUuidSchema,
+  item_id: canonicalUuidSchema,
+  exercise_id: canonicalUuidSchema,
+  category: z.enum([
+    "orthography",
+    "meaning",
+    "pronunciation",
+    "tone",
+    "vowel_length",
+    "register",
+    "naturalness",
+    "audio",
+  ]),
+  platform: z.enum(["web", "ios", "android"]),
+  received_at: z.string(),
+});
 
 export type ProfileRow = z.infer<typeof profileRowSchema>;
 export type DeviceRow = z.infer<typeof deviceRowSchema>;
 export type AttemptEventRow = z.infer<typeof attemptEventRowSchema>;
 export type LearnerItemStateRow = z.infer<typeof learnerItemStateRowSchema>;
+export type ContentReportRow = z.infer<typeof contentReportRowSchema>;
 
 interface PageResponse {
   readonly data: unknown[] | null;
@@ -223,6 +245,29 @@ async function readLearnerItemStates(
   return parseRows(learnerItemStateRowSchema, rows);
 }
 
+export async function readContentReports(
+  client: SupabaseClient,
+  userId: string,
+): Promise<ContentReportRow[]> {
+  const rows = await readBoundedAccountExportPages({
+    maxRows: MAX_ACCOUNT_EXPORT_CONTENT_REPORTS,
+    readPage: async (from, to, includeExactCount) => {
+      const { data, error, count } = await client
+        .from("content_reports")
+        .select(
+          "user_id,idempotency_key,lesson_version_id,item_id,exercise_id,category,platform,received_at",
+          includeExactCount ? { count: "exact" } : undefined,
+        )
+        .eq("user_id", userId)
+        .order("received_at", { ascending: true })
+        .order("idempotency_key", { ascending: true })
+        .range(from, to);
+      return { data, error, count };
+    },
+  });
+  return parseRows(contentReportRowSchema, rows);
+}
+
 function sameProfileRevision(
   before: ProfileRow | null,
   after: ProfileRow | null,
@@ -261,6 +306,7 @@ export interface AccountExportSnapshotReader {
   readonly readDevices: () => Promise<DeviceRow[]>;
   readonly readAttemptEvents: () => Promise<AttemptEventRow[]>;
   readonly readLearnerItemStates: () => Promise<LearnerItemStateRow[]>;
+  readonly readContentReports: () => Promise<ContentReportRow[]>;
 }
 
 function assertOwnRows<T extends { readonly user_id: string }>(
@@ -278,6 +324,7 @@ export function accountExportDataFromRows(input: {
   readonly devices: readonly DeviceRow[];
   readonly attemptEvents: readonly AttemptEventRow[];
   readonly learnerItemStates: readonly LearnerItemStateRow[];
+  readonly contentReports: readonly ContentReportRow[];
 }): AccountExportData {
   if (input.profile !== null && input.profile.user_id !== input.userId) {
     throwDatabaseUnavailable();
@@ -285,6 +332,7 @@ export function accountExportDataFromRows(input: {
   assertOwnRows(input.devices, input.userId);
   assertOwnRows(input.attemptEvents, input.userId);
   assertOwnRows(input.learnerItemStates, input.userId);
+  assertOwnRows(input.contentReports, input.userId);
 
   const profile: AccountExportProfile | null =
     input.profile === null
@@ -331,12 +379,24 @@ export function accountExportDataFromRows(input: {
       algorithmVersion: state.algorithm_version,
       updatedAt: state.updated_at,
     }));
+  const contentReports: AccountExportContentReport[] = input.contentReports.map(
+    (report) => ({
+      idempotencyKey: report.idempotency_key,
+      contentVersionId: report.lesson_version_id,
+      itemId: report.item_id,
+      exerciseId: report.exercise_id,
+      category: report.category,
+      platform: report.platform,
+      receivedAt: report.received_at,
+    }),
+  );
 
   const result = accountExportDataSchema.safeParse({
     profile,
     devices,
     attemptEvents,
     learnerItemStates,
+    contentReports,
   });
   if (!result.success) throwDatabaseUnavailable();
   return result.data;
@@ -352,11 +412,13 @@ export async function readConsistentAccountExportData(input: {
     snapshotAttempt += 1
   ) {
     const profileBefore = await input.reader.readProfile();
-    const [devices, attemptEvents, learnerItemStates] = await Promise.all([
-      input.reader.readDevices(),
-      input.reader.readAttemptEvents(),
-      input.reader.readLearnerItemStates(),
-    ]);
+    const [devices, attemptEvents, learnerItemStates, contentReports] =
+      await Promise.all([
+        input.reader.readDevices(),
+        input.reader.readAttemptEvents(),
+        input.reader.readLearnerItemStates(),
+        input.reader.readContentReports(),
+      ]);
     const [profileAfter, devicesAfter] = await Promise.all([
       input.reader.readProfile(),
       input.reader.readDevices(),
@@ -374,6 +436,7 @@ export async function readConsistentAccountExportData(input: {
       devices,
       attemptEvents,
       learnerItemStates,
+      contentReports,
     });
   }
   throw new AccountExportApiError("concurrent_update");
@@ -382,11 +445,20 @@ export async function readConsistentAccountExportData(input: {
 export function createSupabaseAccountExportRepository(input: {
   readonly url: string;
   readonly publishableKey: string;
+  readonly secretKey: string;
 }): AccountExportRepository {
   return {
     async read({ userId, accessToken, signal }) {
       const client = createClient(input.url, input.publishableKey, {
         accessToken: async () => accessToken,
+        auth: {
+          autoRefreshToken: false,
+          detectSessionInUrl: false,
+          persistSession: false,
+        },
+        global: { fetch: createAccountExportSupabaseFetch(signal) },
+      });
+      const serverClient = createClient(input.url, input.secretKey, {
         auth: {
           autoRefreshToken: false,
           detectSessionInUrl: false,
@@ -403,6 +475,7 @@ export function createSupabaseAccountExportRepository(input: {
             readDevices: () => readDevices(client, userId),
             readAttemptEvents: () => readAttemptEvents(client, userId),
             readLearnerItemStates: () => readLearnerItemStates(client, userId),
+            readContentReports: () => readContentReports(serverClient, userId),
           },
         });
       } catch (error) {

@@ -40,6 +40,7 @@ import {
 } from "@/lib/client/local-experience-store";
 
 import { LocalVoiceComparison } from "./local-voice-comparison";
+import { ContentReportPanel } from "./content-report-panel";
 
 interface DemoLesson {
   versionId: string;
@@ -964,6 +965,12 @@ export function DemoExperience({
             Cette démonstration technique reste isolée sur cet appareil et ne
             sera jamais synchronisée comme contenu pédagogique.
           </p>
+          <ContentReportPanel
+            analytics={analytics}
+            contentVersionId={lesson.versionId}
+            exerciseId={lesson.exercise.id}
+            online={online}
+          />
           {checkpointMessage && (
             <p className="inlineError" role="alert">
               {checkpointMessage}

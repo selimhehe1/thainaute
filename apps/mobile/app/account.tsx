@@ -172,12 +172,24 @@ export default function AccountScreen() {
           assertNoPendingMobileAccountDeletion(userId),
       });
       await refreshLocalState();
-      setMessage(
+      const progressionMessage =
         result.fusionCompleted && result.fusionRejectedCount > 0
           ? `${result.fusionRejectedCount} tentative${result.fusionRejectedCount > 1 ? "s" : ""} non importable${result.fusionRejectedCount > 1 ? "s" : ""} ${result.fusionRejectedCount > 1 ? "sont conservées" : "est conservée"} localement.`
           : result.fusionCompleted
             ? "Progression fusionnée et synchronisée."
-            : "Progression du compte synchronisée.",
+            : "Progression du compte synchronisée.";
+      const reportMessage =
+        result.contentReportsRejected > 0
+          ? "Un signalement a été refusé définitivement. Revenez à la leçon concernée pour le retirer explicitement et reprendre les suivants."
+          : result.contentReportsPending > 0
+            ? `${result.contentReportsPending} signalement${result.contentReportsPending > 1 ? "s restent" : " reste"} conservé${result.contentReportsPending > 1 ? "s" : ""} pour une prochaine tentative d’envoi.`
+            : result.contentReportsSent > 0
+              ? `${result.contentReportsSent} signalement${result.contentReportsSent > 1 ? "s" : ""} envoyé${result.contentReportsSent > 1 ? "s" : ""}.`
+              : "";
+      setMessage(
+        reportMessage === ""
+          ? progressionMessage
+          : `${progressionMessage} ${reportMessage}`,
       );
     } catch {
       setMessage(
@@ -225,13 +237,20 @@ export default function AccountScreen() {
     const pending = logoutState.accountSnapshot.entries.filter(
       ({ status }) => status === "pending",
     ).length;
+    const pendingContentReports =
+      logoutState.contentReportOutbox.entries.length;
     const activeFusion =
       logoutState.fusionMarker?.status === "awaiting_server_ack" &&
       logoutState.fusionMarker.targetUserId === userId.toLowerCase();
-    if ((pending > 0 || activeFusion) && logoutConfirmationUserId !== userId) {
+    if (
+      (pending > 0 || pendingContentReports > 0 || activeFusion) &&
+      logoutConfirmationUserId !== userId
+    ) {
       setLogoutConfirmationUserId(userId);
       setMessage(
-        "Des tentatives ne sont pas encore synchronisées. Synchronisez-les ou confirmez leur effacement uniquement sur cet appareil. Votre compte reste en ligne.",
+        pendingContentReports > 0
+          ? "Des signalements ne sont pas encore envoyés. Réessayez depuis la leçon ou confirmez leur effacement uniquement sur cet appareil avant la déconnexion. Votre compte reste en ligne."
+          : "Des tentatives ne sont pas encore synchronisées. Synchronisez-les ou confirmez leur effacement uniquement sur cet appareil. Votre compte reste en ligne.",
       );
       return;
     }
@@ -244,6 +263,7 @@ export default function AccountScreen() {
       const purged = await purgeMobileAccountData(database, userId, {
         snapshot: logoutState.accountSnapshot,
         fusionMarker: logoutState.fusionMarker,
+        contentReportOutbox: logoutState.contentReportOutbox,
       });
       setLocalState(null);
       setLogoutConfirmationUserId(null);
@@ -282,6 +302,8 @@ export default function AccountScreen() {
     currentLocalState?.accountSnapshot.entries.filter(
       ({ status }) => status === "pending",
     ).length ?? 0;
+  const pendingContentReportCount =
+    currentLocalState?.contentReportOutbox.entries.length ?? 0;
   const activeFusionForCurrent =
     currentLocalState?.fusionMarker?.status === "awaiting_server_ack" &&
     currentLocalState.fusionMarker.targetUserId === userId?.toLowerCase();
@@ -383,6 +405,10 @@ export default function AccountScreen() {
               <Metric
                 label="tentatives anonymes"
                 value={anonymousEntries.length}
+              />
+              <Metric
+                label="signalements en attente"
+                value={pendingContentReportCount}
               />
             </View>
             {activeFusionForAnotherAccount && (

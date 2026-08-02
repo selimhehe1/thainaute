@@ -6,9 +6,14 @@ import {
   ContentStudioClientError,
   requestFixtureContentReview,
 } from "../lib/client/content-studio";
+import { EMPTY_CONTENT_REPORT_AGGREGATE } from "../lib/content-studio-contracts";
 
 const ACCESS_TOKEN = "header.payload.editor-token";
 const report = reviewContentBundle(readFixtureBundle());
+const envelope = {
+  review: report,
+  userReports: EMPTY_CONTENT_REPORT_AGGREGATE,
+};
 
 function jsonResponse(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
@@ -21,11 +26,11 @@ describe("client HTTP du studio", () => {
   it("valide le rapport et envoie seulement le Bearer nécessaire", async () => {
     const fetcher = vi
       .fn<typeof fetch>()
-      .mockResolvedValue(jsonResponse(report));
+      .mockResolvedValue(jsonResponse(envelope));
 
     await expect(
       requestFixtureContentReview({ accessToken: ACCESS_TOKEN, fetcher }),
-    ).resolves.toEqual(report);
+    ).resolves.toEqual(envelope);
     expect(fetcher).toHaveBeenCalledWith(
       "/api/v1/studio/content/review",
       expect.objectContaining({
@@ -86,7 +91,7 @@ describe("client HTTP du studio", () => {
     ).rejects.toMatchObject({ kind: "unavailable" });
 
     fetcher.mockResolvedValueOnce(
-      jsonResponse({ ...report, correctOptionId: "ne-doit-pas-sortir" }),
+      jsonResponse({ ...envelope, correctOptionId: "ne-doit-pas-sortir" }),
     );
     await expect(
       requestFixtureContentReview({ accessToken: ACCESS_TOKEN, fetcher }),

@@ -21,6 +21,7 @@ const STUDIO_ENVIRONMENT = {
   THAINAUTE_STUDIO_MODE: "fixture",
   NEXT_PUBLIC_SUPABASE_URL: "https://project.supabase.co",
   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_example_public_value",
+  SUPABASE_SECRET_KEY: "sb_secret_example_server_value",
 } as const;
 
 describe("readiness des dépendances Supabase", () => {
@@ -33,6 +34,7 @@ describe("readiness des dépendances Supabase", () => {
     const probe: SupabaseReadinessProbePort = {
       checkAuth: vi.fn(),
       checkDataApi: vi.fn(),
+      checkContentReportsDataApi: vi.fn(),
     };
 
     const assessment = await assessReadiness({ environment: {}, probe });
@@ -43,6 +45,7 @@ describe("readiness des dépendances Supabase", () => {
     });
     expect(probe.checkAuth).not.toHaveBeenCalled();
     expect(probe.checkDataApi).not.toHaveBeenCalled();
+    expect(probe.checkContentReportsDataApi).not.toHaveBeenCalled();
   });
 
   it("garde les contrôles de configuration actifs en mode désactivé", async () => {
@@ -61,10 +64,11 @@ describe("readiness des dépendances Supabase", () => {
     });
   });
 
-  it("sonde uniquement Auth pour un studio fixture sans synchronisation", async () => {
+  it("sonde Auth et l'agrégat historique pour un studio fixture", async () => {
     const probe: SupabaseReadinessProbePort = {
       checkAuth: vi.fn().mockResolvedValue(true),
       checkDataApi: vi.fn(),
+      checkContentReportsDataApi: vi.fn().mockResolvedValue(true),
     };
 
     const assessment = await assessReadiness({
@@ -75,7 +79,7 @@ describe("readiness des dépendances Supabase", () => {
     expect(assessment).toMatchObject({
       ready: true,
       diagnostic: { studioMode: "fixture", syncMode: "disabled" },
-      dependencies: { auth: "ok", dataApi: "disabled" },
+      dependencies: { auth: "ok", dataApi: "ok" },
     });
     expect(probe.checkAuth).toHaveBeenCalledWith({
       url: STUDIO_ENVIRONMENT.NEXT_PUBLIC_SUPABASE_URL,
@@ -83,12 +87,18 @@ describe("readiness des dépendances Supabase", () => {
       signal: expect.any(AbortSignal),
     });
     expect(probe.checkDataApi).not.toHaveBeenCalled();
+    expect(probe.checkContentReportsDataApi).toHaveBeenCalledWith({
+      url: STUDIO_ENVIRONMENT.NEXT_PUBLIC_SUPABASE_URL,
+      secretKey: STUDIO_ENVIRONMENT.SUPABASE_SECRET_KEY,
+      signal: expect.any(AbortSignal),
+    });
   });
 
   it("ferme la readiness du studio avant toute sonde si Auth est incomplète", async () => {
     const probe: SupabaseReadinessProbePort = {
       checkAuth: vi.fn(),
       checkDataApi: vi.fn(),
+      checkContentReportsDataApi: vi.fn(),
     };
 
     const assessment = await assessReadiness({
@@ -98,10 +108,34 @@ describe("readiness des dépendances Supabase", () => {
 
     expect(assessment).toMatchObject({
       ready: false,
-      dependencies: { auth: "error", dataApi: "disabled" },
+      dependencies: { auth: "error", dataApi: "error" },
     });
     expect(probe.checkAuth).not.toHaveBeenCalled();
     expect(probe.checkDataApi).not.toHaveBeenCalled();
+  });
+
+  it("signale explicitement l'agrégat Studio mal configuré dans la route", async () => {
+    vi.stubEnv("THAINAUTE_STUDIO_MODE", "fixture");
+    vi.stubEnv(
+      "NEXT_PUBLIC_SUPABASE_URL",
+      STUDIO_ENVIRONMENT.NEXT_PUBLIC_SUPABASE_URL,
+    );
+    vi.stubEnv(
+      "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+      STUDIO_ENVIRONMENT.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
+    );
+    vi.stubEnv("SUPABASE_SECRET_KEY", "");
+
+    const response = await getReadiness();
+
+    expect(response.status).toBe(503);
+    await expect(response.json()).resolves.toMatchObject({
+      status: "error",
+      checks: {
+        studio: { status: "error", mode: "fixture" },
+      },
+      issues: expect.arrayContaining(["studio_report_config_missing"]),
+    });
   });
 
   it("sonde Auth et PostgREST en parallèle avec les bonnes clés", async () => {
@@ -119,7 +153,7 @@ describe("readiness des dépendances Supabase", () => {
       ready: true,
       dependencies: { auth: "ok", dataApi: "ok" },
     });
-    expect(fetcher).toHaveBeenCalledTimes(2);
+    expect(fetcher).toHaveBeenCalledTimes(3);
 
     const requests = fetcher.mock.calls.map(([url, init]) => ({
       url: String(url),
@@ -128,6 +162,9 @@ describe("readiness des dépendances Supabase", () => {
     const auth = requests.find(({ url }) => url.endsWith("/auth/v1/health"));
     const dataApi = requests.find(({ url }) =>
       url.includes("/rest/v1/content_releases"),
+    );
+    const contentReportsDataApi = requests.find(({ url }) =>
+      url.includes("/rest/v1/content_reports"),
     );
 
     expect(auth?.init).toMatchObject({
@@ -149,13 +186,25 @@ describe("readiness des dépendances Supabase", () => {
     expect(new Headers(dataApi?.init?.headers).has("authorization")).toBe(
       false,
     );
-    expect(JSON.stringify(requests)).not.toContain(
+    expect(contentReportsDataApi?.init).toMatchObject({
+      method: "HEAD",
+      cache: "no-store",
+      redirect: "error",
+      headers: { apikey: SUPABASE_ENVIRONMENT.SUPABASE_SECRET_KEY },
+    });
+    expect(
+      new Headers(contentReportsDataApi?.init?.headers).has("authorization"),
+    ).toBe(false);
+    expect(JSON.stringify([auth, dataApi])).not.toContain(
       SUPABASE_ENVIRONMENT.SUPABASE_SECRET_KEY,
     );
     expect(dataApi?.url).toContain("select=id");
     expect(dataApi?.url).toContain("limit=1");
+    expect(contentReportsDataApi?.url).toContain("select=idempotency_key");
+    expect(contentReportsDataApi?.url).toContain("limit=1");
     expect(auth?.init?.signal).toBeInstanceOf(AbortSignal);
     expect(dataApi?.init?.signal).toBeInstanceOf(AbortSignal);
+    expect(contentReportsDataApi?.init?.signal).toBeInstanceOf(AbortSignal);
   });
 
   it("libère le corps de la réponse Auth sans le lire", async () => {
@@ -177,10 +226,32 @@ describe("readiness des dépendances Supabase", () => {
     expect(cancel).toHaveBeenCalledOnce();
   });
 
+  it("porte le rôle PostgREST uniquement pour une clé service_role JWT locale", async () => {
+    const fetcher = vi
+      .fn<HealthFetchPort>()
+      .mockResolvedValue(new Response(null, { status: 200 }));
+    const probe = createSupabaseReadinessProbe(fetcher);
+    const legacyServiceRole =
+      "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIn0.signature";
+
+    await expect(
+      probe.checkContentReportsDataApi({
+        url: SUPABASE_ENVIRONMENT.NEXT_PUBLIC_SUPABASE_URL,
+        secretKey: legacyServiceRole,
+        signal: new AbortController().signal,
+      }),
+    ).resolves.toBe(true);
+
+    const headers = new Headers(fetcher.mock.calls[0]?.[1]?.headers);
+    expect(headers.get("apikey")).toBe(legacyServiceRole);
+    expect(headers.get("authorization")).toBe(`Bearer ${legacyServiceRole}`);
+  });
+
   it("reste fermé sans lancer de sonde si la configuration Supabase est incomplète", async () => {
     const probe: SupabaseReadinessProbePort = {
       checkAuth: vi.fn(),
       checkDataApi: vi.fn(),
+      checkContentReportsDataApi: vi.fn(),
     };
 
     const assessment = await assessReadiness({
@@ -201,6 +272,7 @@ describe("readiness des dépendances Supabase", () => {
     const probe: SupabaseReadinessProbePort = {
       checkAuth: vi.fn().mockResolvedValue(true),
       checkDataApi: vi.fn().mockRejectedValue(new Error(upstreamDetail)),
+      checkContentReportsDataApi: vi.fn(),
     };
 
     const assessment = await assessReadiness({
@@ -216,6 +288,26 @@ describe("readiness des dépendances Supabase", () => {
     expect(JSON.stringify(assessment)).not.toContain(
       SUPABASE_ENVIRONMENT.SUPABASE_SECRET_KEY,
     );
+  });
+
+  it("ferme aussi l'export v2 si content_reports manque en mode sync seul", async () => {
+    const probe: SupabaseReadinessProbePort = {
+      checkAuth: vi.fn().mockResolvedValue(true),
+      checkDataApi: vi.fn().mockResolvedValue(true),
+      checkContentReportsDataApi: vi.fn().mockResolvedValue(false),
+    };
+
+    const assessment = await assessReadiness({
+      environment: SUPABASE_ENVIRONMENT,
+      probe,
+    });
+
+    expect(assessment).toMatchObject({
+      ready: false,
+      diagnostic: { contentReportMode: "disabled", syncMode: "supabase" },
+      dependencies: { auth: "ok", dataApi: "error" },
+    });
+    expect(probe.checkContentReportsDataApi).toHaveBeenCalledOnce();
   });
 
   it("ferme la route en 503 sans exposer le détail amont", async () => {
@@ -254,6 +346,7 @@ describe("readiness des dépendances Supabase", () => {
     const probe: SupabaseReadinessProbePort = {
       checkAuth: vi.fn().mockReturnValue(never),
       checkDataApi: vi.fn().mockResolvedValue(true),
+      checkContentReportsDataApi: vi.fn().mockResolvedValue(true),
     };
     const startedAt = performance.now();
 

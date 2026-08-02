@@ -114,6 +114,9 @@ describe("suppression de compte web", () => {
     const requestButton = await screen.findByRole("button", {
       name: "Recevoir le code de suppression",
     });
+    expect(
+      screen.getByText(/signalements linguistiques conservés localement/iu),
+    ).toHaveTextContent(/en attente ou refusés/iu);
     expect(requestButton).toBeDisabled();
     fireEvent.click(
       screen.getByRole("checkbox", {

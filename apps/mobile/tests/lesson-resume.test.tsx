@@ -91,6 +91,10 @@ vi.mock("../lib/use-local-voice-practice", () => ({
   }),
 }));
 
+vi.mock("../components/content-report-panel", () => ({
+  MobileContentReportPanel: () => null,
+}));
+
 vi.mock("../lib/mobile-local-experience-store", () => ({
   MobileLocalExperienceStore: class {
     read = testState.read;

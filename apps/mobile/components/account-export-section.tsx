@@ -25,11 +25,12 @@ export function AccountExportSection(props: {
       </Text>
       <Text style={styles.body}>
         Le fichier JSON contient l’identité du compte, les appareils
-        enregistrés, les tentatives et la progression déjà synchronisées.
+        enregistrés, les tentatives, la progression synchronisée et les
+        signalements linguistiques déjà reçus.
       </Text>
       <Text style={styles.body}>
-        Il n’inclut ni progression anonyme, ni tentative encore locale, ni prise
-        de voix. Vos voix restent uniquement sur cet appareil.
+        Il n’inclut ni progression anonyme, ni tentative ou signalement encore
+        local, ni prise de voix. Vos voix restent uniquement sur cet appareil.
       </Text>
       <Text style={styles.sensitiveNotice}>
         Ce fichier peut contenir votre adresse e-mail ou votre numéro de

@@ -52,6 +52,12 @@ export function AccountDeletionSection(props: {
           continuer.
         </Text>
       )}
+      <Text style={styles.warning}>
+        Les signalements linguistiques conservés localement pour ce compte
+        seront aussi effacés, y compris ceux en attente ou refusés. Revenez à la
+        leçon avant de continuer si vous souhaitez les envoyer ou résoudre un
+        refus.
+      </Text>
       {props.fusionInProgress && (
         <Text style={styles.warning}>
           Une fusion locale est encore en cours pour ce compte. Sa copie dans le

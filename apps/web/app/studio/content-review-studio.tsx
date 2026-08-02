@@ -1,6 +1,5 @@
 "use client";
 
-import type { ContentReviewResponse } from "@thainaute/content/studio";
 import Link from "next/link";
 import {
   useCallback,
@@ -15,6 +14,7 @@ import {
   requestFixtureContentReview,
 } from "@/lib/client/content-studio";
 import { useWebAuthSession } from "@/lib/client/auth-session";
+import type { ContentStudioReviewEnvelope } from "@/lib/content-studio-contracts";
 
 const AUDIT_LABELS = {
   orthography: "Orthographe",
@@ -85,7 +85,10 @@ function TruncationNotice({
   );
 }
 
-function StudioReport({ report }: Readonly<{ report: ContentReviewResponse }>) {
+function StudioReport({
+  report: envelope,
+}: Readonly<{ report: ContentStudioReviewEnvelope }>) {
+  const report = envelope.review;
   const summary = report.summary;
   if (summary === null) {
     return (
@@ -145,6 +148,29 @@ function StudioReport({ report }: Readonly<{ report: ContentReviewResponse }>) {
           <dd>{summary.findings.openBlocking}</dd>
         </div>
       </dl>
+
+      <section className="studioSection" aria-labelledby="studio-reports-title">
+        <h3 id="studio-reports-title">Signalements apprenants</h3>
+        <p>
+          {envelope.userReports.total} signalement
+          {envelope.userReports.total > 1 ? "s" : ""} structuré
+          {envelope.userReports.total > 1 ? "s" : ""}, sans identité affichée.
+        </p>
+        <ul className="studioAuditGrid">
+          {Object.entries(envelope.userReports.byCategory).map(
+            ([category, count]) => (
+              <li key={category}>
+                <span>
+                  {category === "audio"
+                    ? "Audio"
+                    : AUDIT_LABELS[category as keyof typeof AUDIT_LABELS]}
+                </span>
+                <strong>{count}</strong>
+              </li>
+            ),
+          )}
+        </ul>
+      </section>
 
       <section
         className="studioSection"
@@ -316,7 +342,7 @@ export function ContentReviewStudio() {
   } | null>(null);
   const [ownedReport, setOwnedReport] = useState<{
     readonly subjectId: string;
-    readonly report: ContentReviewResponse;
+    readonly report: ContentStudioReviewEnvelope;
   } | null>(null);
   const [reportRevision, setReportRevision] = useState(0);
   const activeRequest = useRef<{
@@ -435,9 +461,9 @@ export function ContentReviewStudio() {
       setOwnedReport({ subjectId: expectedSubjectId, report: nextReport });
       setOwnedMessage({
         subjectId: expectedSubjectId,
-        text: nextReport.publishable
+        text: nextReport.review.publishable
           ? "Préflight terminé. Aucune publication n’a été effectuée."
-          : `${nextReport.blockers.length} cause(s) bloquent la publication.`,
+          : `${nextReport.review.blockers.length} cause(s) bloquent la publication.`,
       });
       setReportRevision((revision) => revision + 1);
     } catch (error) {

@@ -177,6 +177,11 @@ describe("leçon web fictive", () => {
       screen.getByRole("heading", { name: "Écouter A, puis votre prise B." }),
     ).toBeVisible();
     expect(screen.getByRole("button", { name: "M’enregistrer" })).toBeEnabled();
+    await user.click(
+      screen.getByRole("button", { name: "Signaler une erreur" }),
+    );
+    expect(screen.getByText(/Connectez un compte permanent/u)).toBeVisible();
+    expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
     await waitFor(() =>
       expect(capture).toHaveBeenCalledWith({
         name: "lesson_completed",

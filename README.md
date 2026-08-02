@@ -43,6 +43,8 @@ pnpm db:test
 pnpm db:lint
 pnpm exec supabase db query --local --file supabase/fixtures/connected_sync.sql
 pnpm test:e2e:web:connected
+# Avec THAINAUTE_CONTENT_REPORT_MODE=supabase dans le même processus :
+pnpm test:e2e:web:connected:reports
 ```
 
 Ces commandes exigent Docker. `pnpm test:e2e:mobile` exige Maestro et une

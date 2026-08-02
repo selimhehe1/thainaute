@@ -174,11 +174,13 @@ export function AccountExportSection({
       <h2 id="account-export-title">Exporter les données de mon compte</h2>
       <p>
         Téléchargez une copie JSON des données enregistrées pour votre compte en
-        ligne : identité, appareils, tentatives et progression synchronisée.
+        ligne : identité, appareils, tentatives, progression synchronisée et
+        signalements linguistiques déjà reçus.
       </p>
       <p>
-        Les tentatives encore locales, la progression anonyme et vos prises de
-        voix ne sont pas incluses. Les voix restent uniquement sur cet appareil.
+        Les tentatives ou signalements encore locaux, la progression anonyme et
+        vos prises de voix ne sont pas inclus. Les voix restent uniquement sur
+        cet appareil.
       </p>
       <p className="accountExportPrivacy" id="account-export-personal-warning">
         Ce fichier peut contenir des données personnelles. Conservez-le dans un

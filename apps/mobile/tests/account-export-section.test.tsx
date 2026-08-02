@@ -108,7 +108,7 @@ describe("section d’export du compte mobile", () => {
         name: "Exporter les données de mon compte",
       }),
     ).toBeTruthy();
-    expect(screen.getByText(/progression déjà synchronisées/i)).toBeTruthy();
+    expect(screen.getByText(/progression synchronisée/i)).toBeTruthy();
     expect(elementText(screen.getByText(/ni progression anonyme/i))).toContain(
       "ni prise de voix",
     );

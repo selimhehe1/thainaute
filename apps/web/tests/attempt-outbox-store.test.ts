@@ -1,7 +1,11 @@
 import "fake-indexeddb/auto";
 
 import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
-import type { AttemptOutboxOwner } from "@thainaute/sync";
+import {
+  createContentReportOutbox,
+  createContentReportOutboxEntry,
+  type AttemptOutboxOwner,
+} from "@thainaute/sync";
 import Dexie from "dexie";
 import { describe, expect, it } from "vitest";
 
@@ -19,6 +23,8 @@ const ids = {
   version: "10000000-0000-4000-8000-000000000006",
   idempotency: "10000000-0000-4000-8000-000000000007",
   ignoredIdempotency: "10000000-0000-4000-8000-000000000008",
+  reportIdempotency: "10000000-0000-4000-8000-000000000010",
+  reportIdempotencyB: "10000000-0000-4000-8000-000000000011",
   eventB: "10000000-0000-4000-8000-000000000009",
   userA: "20000000-0000-4000-8000-000000000001",
   userB: "20000000-0000-4000-8000-000000000002",
@@ -66,6 +72,17 @@ const legacyFixtureSubmission = {
   contentVersionId: ids.fixtureVersion,
   algorithmVersion: SRS_ALGORITHM_VERSION,
 };
+
+const contentReport = createContentReportOutboxEntry({
+  idempotencyKey: ids.reportIdempotency,
+  body: {
+    contentVersionId: ids.version,
+    exerciseId: ids.exercise,
+    category: "tone",
+    platform: "web",
+  },
+  createdAt: "2026-08-01T10:01:00.000Z",
+});
 
 function databaseName(): string {
   return `thainaute-test-${crypto.randomUUID()}`;
@@ -720,6 +737,7 @@ describe("outbox IndexedDB web", () => {
       accountA.purgeAccountDataIfSettled({
         snapshot: observedBeforeLogout,
         fusionMarker: null,
+        contentReportOutbox: createContentReportOutbox(),
       }),
     ).resolves.toBe(false);
     expect((await accountA.read()).entries).toHaveLength(2);
@@ -736,12 +754,14 @@ describe("outbox IndexedDB web", () => {
       accountA.purgeAccountDataIfSettled({
         snapshot: observedBeforeLogout,
         fusionMarker: null,
+        contentReportOutbox: createContentReportOutbox(),
       }),
     ).resolves.toBe(false);
     await expect(
       accountA.purgeAccountDataIfSettled({
         snapshot: await accountA.read(),
         fusionMarker: null,
+        contentReportOutbox: createContentReportOutbox(),
       }),
     ).resolves.toBe(true);
     expect((await accountA.read()).entries).toHaveLength(0);
@@ -753,6 +773,110 @@ describe("outbox IndexedDB web", () => {
     ).resolves.toBe(deviceA);
     accountB.close();
     await accountA.deleteForTests();
+  });
+
+  it("persiste les signalements en FIFO et les isole strictement par compte", async () => {
+    const name = databaseName();
+    const accountA = new WebAttemptOutboxStore(name, {
+      kind: "account",
+      userId: ids.userA,
+    });
+    const accountB = new WebAttemptOutboxStore(name, {
+      kind: "account",
+      userId: ids.userB,
+    });
+    const secondReport = createContentReportOutboxEntry({
+      ...contentReport,
+      idempotencyKey: ids.reportIdempotencyB,
+      body: { ...contentReport.body, category: "audio" },
+      createdAt: "2026-08-01T10:02:00.000Z",
+    });
+
+    await accountA.enqueueContentReport(contentReport);
+    await accountA.enqueueContentReport(secondReport);
+    expect((await accountA.readContentReports()).entries).toEqual([
+      contentReport,
+      secondReport,
+    ]);
+    expect((await accountB.readContentReports()).entries).toEqual([]);
+    accountA.close();
+
+    const reopenedA = new WebAttemptOutboxStore(name, {
+      kind: "account",
+      userId: ids.userA,
+    });
+    await expect(
+      reopenedA.ackContentReport(secondReport, { status: "received" }),
+    ).rejects.toThrow("tête de la file");
+    expect(
+      (
+        await reopenedA.ackContentReport(contentReport, {
+          status: "received",
+        })
+      ).entries,
+    ).toEqual([secondReport]);
+    accountB.close();
+    await reopenedA.deleteForTests();
+  });
+
+  it("conserve un refus exact jusqu'au retrait explicite puis reprend la FIFO", async () => {
+    const name = databaseName();
+    const account = new WebAttemptOutboxStore(name, {
+      kind: "account",
+      userId: ids.userA,
+    });
+    const secondReport = createContentReportOutboxEntry({
+      ...contentReport,
+      idempotencyKey: ids.reportIdempotencyB,
+      body: { ...contentReport.body, category: "audio" },
+      createdAt: "2026-08-01T10:02:00.000Z",
+    });
+    await account.enqueueContentReport(contentReport);
+    await account.enqueueContentReport(secondReport);
+    const rejected = await account.rejectContentReport(contentReport, {
+      reason: "invalid_request",
+      rejectedAt: "2026-08-02T12:00:00.000Z",
+    });
+    if (rejected.rejection === null) throw new Error("Expected rejection.");
+
+    await expect(
+      account.ackContentReport(contentReport, { status: "received" }),
+    ).rejects.toThrow("tête de la file");
+    await expect(
+      account.discardRejectedContentReport({
+        ...rejected.rejection,
+        rejectedAt: "2026-08-02T12:00:01.000Z",
+      }),
+    ).rejects.toThrow("refus ne correspond pas");
+    const resumed = await account.discardRejectedContentReport(
+      rejected.rejection,
+    );
+    expect(resumed.entries).toEqual([secondReport]);
+    expect(resumed.rejection).toBeNull();
+    await account.deleteForTests();
+  });
+
+  it("refuse la purge implicite avec un signalement en attente mais accepte l'effacement confirmé exact", async () => {
+    const name = databaseName();
+    const account = new WebAttemptOutboxStore(name, {
+      kind: "account",
+      userId: ids.userA,
+    });
+    const contentReportOutbox =
+      await account.enqueueContentReport(contentReport);
+    const snapshot = await account.read();
+
+    await expect(account.purgeAccountDataIfSettled()).resolves.toBe(false);
+    expect((await account.readContentReports()).entries).toHaveLength(1);
+    await expect(
+      account.purgeAccountDataIfSettled({
+        snapshot,
+        fusionMarker: null,
+        contentReportOutbox,
+      }),
+    ).resolves.toBe(true);
+    expect((await account.readContentReports()).entries).toHaveLength(0);
+    await account.deleteForTests();
   });
 
   it("scelle atomiquement un compte entre deux onglets et refuse la réponse tardive", async () => {
@@ -774,6 +898,7 @@ describe("outbox IndexedDB web", () => {
     await anonymous.enqueue(submission);
     await accountB.enqueue(submission);
     await accountASecondTab.enqueue(submission);
+    await accountASecondTab.enqueueContentReport(contentReport);
     await accountASecondTab.prepare(ids.idempotency);
     expect(await accountASecondTab.isAccountTombstoned()).toBe(false);
 
@@ -792,6 +917,11 @@ describe("outbox IndexedDB web", () => {
         answeredAt: "2026-08-01T10:00:01.000Z",
       }),
     ).rejects.toThrow("ne peut plus être réécrit");
+    await expect(
+      accountASecondTab.ackContentReport(contentReport, {
+        status: "received",
+      }),
+    ).rejects.toThrow("ne peut plus être réécrit");
     await expect(accountASecondTab.read()).rejects.toThrow(
       "ne peut plus être réécrit",
     );
@@ -805,6 +935,9 @@ describe("outbox IndexedDB web", () => {
     ).resolves.toBeUndefined();
     expect(
       await readRawOutboxRow(name, `attempts-v1:account:${ids.userA}`),
+    ).toBeUndefined();
+    expect(
+      await readRawOutboxRow(name, `content-reports-v1:account:${ids.userA}`),
     ).toBeUndefined();
     expect((await anonymous.read()).entries).toHaveLength(1);
     expect((await accountB.read()).entries).toHaveLength(1);

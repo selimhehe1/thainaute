@@ -1,4 +1,8 @@
-import { readSupabaseAttemptSyncConfiguration } from "./attempt-sync/runtime";
+import {
+  readSupabaseAttemptSyncConfiguration,
+  readSupabaseServerConfiguration,
+} from "./attempt-sync/runtime";
+import { readContentReportConfiguration } from "./content-report/runtime";
 import { readContentStudioConfiguration } from "./content-studio/runtime";
 import { diagnoseRuntime, type RuntimeDiagnostic } from "./runtime-config";
 
@@ -31,6 +35,11 @@ export interface SupabaseReadinessProbePort {
     readonly publishableKey: string;
     readonly signal: AbortSignal;
   }): Promise<boolean>;
+  checkContentReportsDataApi(input: {
+    readonly url: string;
+    readonly secretKey: string;
+    readonly signal: AbortSignal;
+  }): Promise<boolean>;
 }
 
 export type HealthFetchPort = (
@@ -46,6 +55,17 @@ async function releaseResponse(response: Response): Promise<boolean> {
   } catch {
     return false;
   }
+}
+
+function contentReportsProbeHeaders(secretKey: string): Record<string, string> {
+  const headers: Record<string, string> = { apikey: secretKey };
+  // La CLI locale fournit encore un `service_role` JWT. Contrairement aux
+  // clés opaques `sb_secret_`, ce format doit aussi porter le rôle PostgREST
+  // dans Authorization. La valeur ne quitte jamais cette requête serveur.
+  if (/^eyJ[A-Za-z0-9_-]*\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/u.test(secretKey)) {
+    headers.Authorization = `Bearer ${secretKey}`;
+  }
+  return headers;
 }
 
 /**
@@ -83,6 +103,25 @@ export function createSupabaseReadinessProbe(
           headers: {
             apikey: publishableKey,
           },
+          cache: "no-store",
+          redirect: "error",
+          signal,
+        });
+        return await releaseResponse(response);
+      } catch {
+        return false;
+      }
+    },
+
+    async checkContentReportsDataApi({ url, secretKey, signal }) {
+      const endpoint = new URL("/rest/v1/content_reports", url);
+      endpoint.searchParams.set("select", "idempotency_key");
+      endpoint.searchParams.set("limit", "1");
+
+      try {
+        const response = await fetcher(endpoint, {
+          method: "HEAD",
+          headers: contentReportsProbeHeaders(secretKey),
           cache: "no-store",
           redirect: "error",
           signal,
@@ -139,9 +178,12 @@ export async function assessReadiness(
   const environment = options.environment ?? process.env;
   const diagnostic = diagnoseRuntime(environment);
   const studioConfiguration = readContentStudioConfiguration(environment);
+  const reportConfiguration = readContentReportConfiguration(environment);
+  const serverConfiguration = readSupabaseServerConfiguration(environment);
 
   if (
     diagnostic.syncMode === "disabled" &&
+    diagnostic.contentReportMode === "disabled" &&
     diagnostic.studioMode !== "fixture"
   ) {
     return {
@@ -159,18 +201,32 @@ export async function assessReadiness(
       dependencies: { auth: "error", dataApi: "error" },
     };
   }
-  if (diagnostic.studioMode === "fixture" && studioConfiguration === null) {
+  if (
+    diagnostic.contentReportMode === "supabase" &&
+    reportConfiguration === null
+  ) {
+    return {
+      ready: false,
+      diagnostic,
+      dependencies: { auth: "error", dataApi: "error" },
+    };
+  }
+  if (
+    diagnostic.studioMode === "fixture" &&
+    (studioConfiguration === null || serverConfiguration === null)
+  ) {
     return {
       ready: false,
       diagnostic,
       dependencies: {
         auth: "error",
-        dataApi: diagnostic.syncMode === "supabase" ? "error" : "disabled",
+        dataApi: "error",
       },
     };
   }
 
-  const authConfiguration = syncConfiguration ?? studioConfiguration;
+  const authConfiguration =
+    syncConfiguration ?? reportConfiguration ?? studioConfiguration;
   if (authConfiguration === null) {
     return {
       ready: false,
@@ -181,28 +237,58 @@ export async function assessReadiness(
 
   const probe = options.probe ?? createSupabaseReadinessProbe();
   const timeoutMs = normalizeTimeout(options.timeoutMs);
-  const [auth, dataApi] = await Promise.all([
-    runBoundedProbe(
-      (signal) =>
-        probe.checkAuth({
-          url: authConfiguration.url,
-          publishableKey: authConfiguration.publishableKey,
-          signal,
-        }),
-      timeoutMs,
-    ),
-    syncConfiguration === null
-      ? Promise.resolve<null>(null)
-      : runBoundedProbe(
-          (signal) =>
-            probe.checkDataApi({
-              url: syncConfiguration.url,
-              publishableKey: syncConfiguration.publishableKey,
-              signal,
-            }),
-          timeoutMs,
-        ),
+  const authPromise = runBoundedProbe(
+    (signal) =>
+      probe.checkAuth({
+        url: authConfiguration.url,
+        publishableKey: authConfiguration.publishableKey,
+        signal,
+      }),
+    timeoutMs,
+  );
+  const dataApiPromises: Promise<boolean>[] = [];
+  if (syncConfiguration !== null) {
+    dataApiPromises.push(
+      runBoundedProbe(
+        (signal) =>
+          probe.checkDataApi({
+            url: syncConfiguration.url,
+            publishableKey: syncConfiguration.publishableKey,
+            signal,
+          }),
+        timeoutMs,
+      ),
+    );
+  }
+  // L'export de compte v2 lit toujours `content_reports`, y compris lorsque
+  // les nouvelles soumissions sont désactivées. Une migration ou un GRANT
+  // absent doit donc fermer la readiness de tout runtime de synchronisation.
+  const contentReportsConfiguration =
+    reportConfiguration ??
+    syncConfiguration ??
+    (diagnostic.studioMode === "fixture" ? serverConfiguration : null);
+  if (contentReportsConfiguration !== null) {
+    dataApiPromises.push(
+      runBoundedProbe(
+        (signal) =>
+          probe.checkContentReportsDataApi({
+            url: contentReportsConfiguration.url,
+            secretKey: contentReportsConfiguration.secretKey,
+            signal,
+          }),
+        timeoutMs,
+      ),
+    );
+  }
+
+  const [auth, dataApiResults] = await Promise.all([
+    authPromise,
+    Promise.all(dataApiPromises),
   ]);
+  const dataApi =
+    dataApiResults.length === 0
+      ? null
+      : dataApiResults.every((result) => result);
 
   return {
     ready: diagnostic.ready && auth && (dataApi ?? true),

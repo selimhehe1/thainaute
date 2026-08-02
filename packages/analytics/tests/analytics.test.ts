@@ -39,6 +39,19 @@ describe("analytics soumis au consentement", () => {
     });
   });
 
+  it("mesure un signalement sans catégorie, contenu ni identité", () => {
+    const capture = vi.fn();
+    createConsentAwareAnalytics(true, { capture }).capture({
+      name: "content_reported",
+      platform: "ios",
+    });
+
+    expect(capture).toHaveBeenCalledWith({
+      name: "content_reported",
+      platform: "ios",
+    });
+  });
+
   it("garde les réponses d’onboarding hors du catalogue analytics", () => {
     const capture = vi.fn();
     const analytics = createConsentAwareAnalytics(true, { capture });

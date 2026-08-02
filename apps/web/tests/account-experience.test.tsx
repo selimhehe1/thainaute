@@ -103,6 +103,14 @@ describe("parcours compte web", () => {
       },
       anonymousSnapshot: { entries: [] },
       fusionMarker: null,
+      contentReportOutbox: {
+        format: "thainaute.content-report-outbox/v1",
+        entries: [
+          {
+            idempotencyKey: "30000000-0000-4000-8000-000000000001",
+          },
+        ],
+      },
     });
 
     render(
@@ -130,6 +138,84 @@ describe("parcours compte web", () => {
     );
     expect(screen.getByRole("status")).toHaveTextContent(
       "Votre compte reste en ligne",
+    );
+    expect(screen.getByRole("status")).toHaveTextContent("signalements");
+    expect(
+      screen.getByText("signalements en attente").parentElement,
+    ).toHaveTextContent("1");
+  });
+
+  it("rend les signalements envoyés et encore en attente observables après la synchronisation", async () => {
+    const currentSession = session(ids.userA);
+    mocks.state.client = {
+      auth: {
+        getSession: vi.fn(() =>
+          Promise.resolve({ data: { session: currentSession }, error: null }),
+        ),
+        onAuthStateChange: vi.fn(() => ({
+          data: { subscription: { unsubscribe: vi.fn() } },
+        })),
+      },
+    };
+    const localState = (pendingReports: number) => ({
+      accountSnapshot: {
+        authoritativeStates: [],
+        entries: [],
+        owner: { kind: "account", userId: ids.userA },
+      },
+      anonymousSnapshot: { entries: [] },
+      fusionMarker: null,
+      contentReportOutbox: {
+        format: "thainaute.content-report-outbox/v1",
+        entries: Array.from({ length: pendingReports }, (_, index) => ({
+          idempotencyKey: `30000000-0000-4000-8000-${String(index + 1).padStart(12, "0")}`,
+        })),
+      },
+    });
+    mocks.readLocalState
+      .mockResolvedValueOnce(localState(2))
+      .mockResolvedValueOnce(localState(1));
+    mocks.synchronize.mockResolvedValue({
+      snapshot: localState(1).accountSnapshot,
+      batchesSent: 0,
+      fusionCompleted: false,
+      fusionRejectedCount: 0,
+      contentReportsSent: 1,
+      contentReportsPending: 1,
+      contentReportsRejected: 1,
+    });
+
+    render(
+      <WebAuthSessionProvider>
+        <AccountExperience />
+      </WebAuthSessionProvider>,
+    );
+
+    const synchronize = await screen.findByRole("button", {
+      name: "Synchroniser maintenant",
+    });
+    await waitFor(() => expect(synchronize).toBeEnabled());
+    fireEvent.click(synchronize);
+
+    await waitFor(() =>
+      expect(mocks.synchronize).toHaveBeenCalledWith({
+        userId: ids.userA,
+        startAnonymousFusion: false,
+      }),
+    );
+    expect(await screen.findByRole("status")).toHaveTextContent(
+      "1 signalement envoyé",
+    );
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "1 signalement reste conservé",
+    );
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "Un signalement a été refusé définitivement",
+    );
+    await waitFor(() =>
+      expect(
+        screen.getByText("signalements en attente").parentElement,
+      ).toHaveTextContent("1"),
     );
   });
 });

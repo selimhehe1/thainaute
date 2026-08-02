@@ -1,5 +1,13 @@
-import { readSupabaseAttemptSyncConfiguration } from "./attempt-sync/runtime";
+import {
+  readSupabaseAttemptSyncConfiguration,
+  readSupabaseServerConfiguration,
+} from "./attempt-sync/runtime";
 import { readAccountDeletionConfiguration } from "./account-deletion/runtime";
+import {
+  readContentReportConfiguration,
+  readContentReportMode,
+  type ContentReportMode,
+} from "./content-report/runtime";
 import { readContentStudioConfiguration } from "./content-studio/runtime";
 
 const LOCAL_PUBLIC_URL = "http://localhost:3000/";
@@ -12,10 +20,15 @@ export type StudioMode = "disabled" | "fixture";
 
 export type RuntimeIssue =
   | "account_deletion_config_missing"
+  | "content_report_config_missing"
+  | "content_report_mode_invalid"
+  | "content_report_rate_limit_missing"
+  | "content_report_sync_required"
   | "public_indexing_invalid"
   | "public_url_invalid"
   | "release_invalid"
   | "studio_config_missing"
+  | "studio_report_config_missing"
   | "studio_mode_invalid"
   | "supabase_config_missing"
   | "sync_mode_invalid";
@@ -26,6 +39,7 @@ export interface RuntimeDiagnostic {
   readonly publicOrigin: string | null;
   readonly publicIndexing: boolean;
   readonly syncMode: SyncMode | null;
+  readonly contentReportMode: ContentReportMode | null;
   readonly studioMode: StudioMode | null;
   readonly issues: readonly RuntimeIssue[];
 }
@@ -109,6 +123,22 @@ export function diagnoseRuntime(
     issues.push("account_deletion_config_missing");
   }
 
+  const contentReportMode = readContentReportMode(environment);
+  if (contentReportMode === null) {
+    issues.push("content_report_mode_invalid");
+  } else if (contentReportMode === "supabase") {
+    if (readContentReportConfiguration(environment) === null) {
+      issues.push("content_report_config_missing");
+    }
+    if (syncMode !== "supabase") {
+      issues.push("content_report_sync_required");
+    }
+    // OPEN-API-001 : le endpoint preview fonctionne, mais ne peut pas être
+    // promu tant que ses seuils compte/IP et son comportement de repli restent
+    // indécis et non implémentés.
+    issues.push("content_report_rate_limit_missing");
+  }
+
   const studioMode = resolveStudioMode(environment.THAINAUTE_STUDIO_MODE);
   if (studioMode === null) {
     issues.push("studio_mode_invalid");
@@ -117,6 +147,11 @@ export function diagnoseRuntime(
     readContentStudioConfiguration(environment) === null
   ) {
     issues.push("studio_config_missing");
+  } else if (
+    studioMode === "fixture" &&
+    readSupabaseServerConfiguration(environment) === null
+  ) {
+    issues.push("studio_report_config_missing");
   }
 
   return {
@@ -125,6 +160,7 @@ export function diagnoseRuntime(
     publicOrigin: publicUrl?.origin ?? null,
     publicIndexing,
     syncMode,
+    contentReportMode,
     studioMode,
     issues,
   };

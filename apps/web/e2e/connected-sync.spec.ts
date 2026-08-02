@@ -714,7 +714,7 @@ test("fusionne puis rejoue une progression sur deux transports et deux navigateu
     "no-store",
   );
   expect(accountAExportResponse.headers()["content-disposition"]).toBe(
-    'attachment; filename="thainaute-account-export-v1.json"',
+    'attachment; filename="thainaute-account-export-v2.json"',
   );
   const accountAExport = accountExportDocumentSchema.parse(
     await accountAExportResponse.json(),
@@ -743,6 +743,7 @@ test("fusionne puis rejoue une progression sur deux transports et deux navigateu
     devices: [],
     attemptEvents: [],
     learnerItemStates: [],
+    contentReports: [],
   });
   expect(JSON.stringify(accountBExport)).not.toContain(session.userId);
   expect(JSON.stringify(accountBExport)).not.toContain(WEB_EVENT_ID);
