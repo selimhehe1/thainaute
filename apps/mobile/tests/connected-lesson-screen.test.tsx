@@ -117,6 +117,9 @@ vi.mock("../components/content-report-panel", () => ({
 vi.mock("../lib/auth-session", () => ({
   useMobileAuthSession: state.auth,
 }));
+vi.mock("../lib/analytics-provider", () => ({
+  useMobileAnalytics: () => ({ analytics: { capture: vi.fn() } }),
+}));
 vi.mock("../lib/expo-public-audio-cache", () => ({
   ensureExpoPublicAudioCached: state.audio,
 }));

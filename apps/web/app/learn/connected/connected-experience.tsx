@@ -1,6 +1,5 @@
 "use client";
 
-import { noOpAnalytics } from "@thainaute/analytics";
 import type { PublicAudioAsset } from "@thainaute/content/public";
 import type {
   AttemptOutboxEntry,
@@ -28,6 +27,7 @@ import {
   type ConnectedPublicLesson,
 } from "@/lib/client/connected-public-lesson";
 import { useWebAuthSession } from "@/lib/client/auth-session";
+import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
 import { readWebLessonProgress } from "@/lib/client/lesson-progress";
 import {
   loadVerifiedWebAudio,
@@ -74,6 +74,7 @@ function dueAtLabel(value: string | null): string {
 
 export function ConnectedExperience() {
   const auth = useWebAuthSession();
+  const { analytics } = useWebAnalyticsConsent();
   const userId =
     auth.status === "signed_in" ? (auth.session?.user.id ?? null) : null;
   const subjectKey = `${auth.sessionBoundaryRevision}:${userId ?? "signed-out"}`;
@@ -607,7 +608,7 @@ export function ConnectedExperience() {
       )}
 
       <ContentReportPanel
-        analytics={noOpAnalytics}
+        analytics={analytics}
         contentVersionId={lesson.versionId}
         exerciseId={exercise.id}
         online={online}

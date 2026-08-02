@@ -1,6 +1,6 @@
 "use client";
 
-import { noOpAnalytics, type AnalyticsSink } from "@thainaute/analytics";
+import type { AnalyticsSink } from "@thainaute/analytics";
 import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
 import {
   abandonLocalLessonForVersionChange,
@@ -34,6 +34,7 @@ import {
   migrateLegacyDemoFixtureAttempts,
 } from "@/lib/client/attempt-outbox-store";
 import { useWebAuthSession } from "@/lib/client/auth-session";
+import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
 import {
   LocalExperienceStorageError,
   WebLocalExperienceStore,
@@ -194,11 +195,13 @@ function subscribeToNetworkStatus(callback: () => void): () => void {
 
 export function DemoExperience({
   lesson,
-  analytics = noOpAnalytics,
+  analytics: analyticsOverride,
 }: {
   lesson: DemoLesson;
   analytics?: AnalyticsSink;
 }) {
+  const { analytics: consentAwareAnalytics } = useWebAnalyticsConsent();
+  const analytics = analyticsOverride ?? consentAwareAnalytics;
   const { sessionBoundaryRevision } = useWebAuthSession();
   const [store, setStore] = useState<WebAttemptOutboxStore | null>(null);
   const [experienceStore, setExperienceStore] =

@@ -202,6 +202,8 @@ vi.mock("react-native", async () => {
 // eslint-disable-next-line import/first
 import { LessonExperience } from "../app/lesson";
 
+const silentAnalytics = { capture() {} };
+
 function baseExperience(lesson: Record<string, unknown>) {
   return {
     schemaVersion: 1,
@@ -329,7 +331,7 @@ afterEach(() => cleanup());
 describe("reprise de la leçon mobile", () => {
   it("restaure la question et l’option persistée", async () => {
     testState.read.mockResolvedValue(questionExperience(ids.optionB));
-    render(<LessonExperience />);
+    render(<LessonExperience analytics={silentAnalytics} />);
 
     expect(await screen.findByRole("radio", { name: "Option B" })).toBeTruthy();
     expect(
@@ -350,7 +352,7 @@ describe("reprise de la leçon mobile", () => {
     testState.read.mockResolvedValue(questionExperience(ids.optionB));
 
     try {
-      render(<LessonExperience />);
+      render(<LessonExperience analytics={silentAnalytics} />);
       fireEvent.click(await screen.findByRole("radio", { name: "Option A" }));
       await waitFor(() =>
         expect(testState.selectOption).toHaveBeenCalledOnce(),
@@ -370,7 +372,7 @@ describe("reprise de la leçon mobile", () => {
     const exact = submission();
     testState.read.mockResolvedValue(submittingExperience(exact));
     testState.confirm.mockResolvedValue(resultExperience(exact));
-    render(<LessonExperience />);
+    render(<LessonExperience analytics={silentAnalytics} />);
 
     expect(
       await screen.findByText("La boucle technique fonctionne."),
@@ -478,7 +480,7 @@ describe("reprise de la leçon mobile", () => {
     });
     testState.read.mockResolvedValue(resultExperience(exact));
 
-    render(<LessonExperience />);
+    render(<LessonExperience analytics={silentAnalytics} />);
 
     expect(
       await screen.findByRole("button", { name: "Réessayer le stockage" }),
