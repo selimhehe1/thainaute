@@ -32,8 +32,8 @@ inserted_lesson as (
   published_at
 )
 values (
-  '10000000-0000-4000-8000-000000000002',
-  '10000000-0000-4000-8000-000000000001',
+  '30000000-0000-4000-8000-000000000102',
+  '30000000-0000-4000-8000-000000000101',
   1,
   (select id from inserted_release),
   'published',
@@ -42,8 +42,8 @@ values (
   {
     "lesson": {
       "schemaVersion": 1,
-      "lessonId": "10000000-0000-4000-8000-000000000001",
-      "versionId": "10000000-0000-4000-8000-000000000002",
+      "lessonId": "30000000-0000-4000-8000-000000000101",
+      "versionId": "30000000-0000-4000-8000-000000000102",
       "revision": 1,
       "workflowStatus": "published",
       "visibility": "public",
@@ -52,10 +52,10 @@ values (
       "titleFr": "Boucle technique locale",
       "objectiveFr": "Vérifier le rendu Unicode, l'audio local et la révision sans enseigner de contenu.",
       "requiredEntitlement": null,
-      "audioManifestId": "10000000-0000-4000-8000-000000000006",
+      "audioManifestId": "30000000-0000-4000-8000-000000000106",
       "items": [
         {
-          "id": "10000000-0000-4000-8000-000000000003",
+          "id": "30000000-0000-4000-8000-000000000103",
           "thaiRaw": "ก่",
           "unicodeCodePoints": ["U+0E01", "U+0E48"],
           "translationFr": "Fixture juridique et technique",
@@ -79,23 +79,23 @@ values (
       ],
       "exercises": [
         {
-          "id": "10000000-0000-4000-8000-000000000004",
+          "id": "30000000-0000-4000-8000-000000000104",
           "type": "audio_choice",
-          "itemId": "10000000-0000-4000-8000-000000000003",
+          "itemId": "30000000-0000-4000-8000-000000000103",
           "skill": "listening",
-          "audioAssetId": "10000000-0000-4000-8000-000000000005",
+          "audioAssetId": "30000000-0000-4000-8000-000000000105",
           "promptFr": "Sélectionnez l'option technique A après avoir écouté le signal.",
           "options": [
             {
-              "id": "20000000-0000-4000-8000-000000000001",
+              "id": "30000000-0000-4000-8000-000000000201",
               "labelFr": "Option A"
             },
             {
-              "id": "20000000-0000-4000-8000-000000000002",
+              "id": "30000000-0000-4000-8000-000000000202",
               "labelFr": "Option B"
             }
           ],
-          "correctOptionId": "20000000-0000-4000-8000-000000000001",
+          "correctOptionId": "30000000-0000-4000-8000-000000000201",
           "feedback": {
             "correctFr": "La boucle technique fonctionne.",
             "incorrectFr": "Réessayez avec l'option technique A."
@@ -188,12 +188,12 @@ values (
     },
     "audioManifest": {
       "schemaVersion": 1,
-      "manifestId": "10000000-0000-4000-8000-000000000006",
-      "lessonVersionId": "10000000-0000-4000-8000-000000000002",
+      "manifestId": "30000000-0000-4000-8000-000000000106",
+      "lessonVersionId": "30000000-0000-4000-8000-000000000102",
       "entries": [
         {
-          "assetId": "10000000-0000-4000-8000-000000000005",
-          "itemId": "10000000-0000-4000-8000-000000000003",
+          "assetId": "30000000-0000-4000-8000-000000000105",
+          "itemId": "30000000-0000-4000-8000-000000000103",
           "variant": "natural",
           "canonicalPath": "bucket-prive/chemin-interne.wav",
           "distributionPaths": ["distribution/chemin-interne.wav"],
@@ -223,7 +223,7 @@ values (
     ]
   }
   $connected_sync_bundle$::jsonb,
-  'bcfc85787a0717f222b5fa2df0e8d19c0a5b6db49883b6dc04ddf407da880c81',
+  '39223840c8619f4a81e6ac38b499cddf587082327074e78a0c3b5eb3a6166843',
   '2026-08-01T10:00:00.000Z'::timestamptz
   )
   returning id
@@ -237,7 +237,7 @@ insert into public.learning_items (
   payload
 )
 values (
-  '10000000-0000-4000-8000-000000000003',
+  '30000000-0000-4000-8000-000000000103',
   (select id from inserted_lesson),
   0,
   'listening',

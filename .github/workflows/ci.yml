@@ -181,6 +181,8 @@ jobs:
           THAINAUTE_PUBLIC_URL: http://localhost:3000/
           THAINAUTE_RELEASE: ci-connected
           THAINAUTE_SYNC_MODE: supabase
+          THAINAUTE_PUBLIC_CONTENT_RELEASE_ID: 30000000-0000-4000-8000-000000000001
+          ACCOUNT_DELETION_RECEIPT_PEPPER: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         run: |
           set -euo pipefail
           supabase_env="$(
