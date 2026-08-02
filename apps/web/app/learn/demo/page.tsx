@@ -1,7 +1,7 @@
 import { readFixtureBundle } from "@thainaute/content";
 import Link from "next/link";
 
-import { Logotype } from "@/components/brand/logotype";
+import { LessonHeader } from "@/components/layout/lesson-header";
 import { buttonClass } from "@/components/ui/button";
 import panel from "@/components/ui/panel.module.css";
 
@@ -36,12 +36,7 @@ export default function DemoLessonPage() {
 
   return (
     <main className={styles.shell}>
-      <header className={styles.header}>
-        <Link className={styles.brand} href="/" aria-label="Thaïnaute, accueil">
-          <Logotype />
-        </Link>
-        <span className={styles.step}>Tranche verticale · 1 exercice</span>
-      </header>
+      <LessonHeader step="Tranche verticale · 1 exercice" />
       <DemoExperience
         lesson={{
           versionId: lesson.versionId,

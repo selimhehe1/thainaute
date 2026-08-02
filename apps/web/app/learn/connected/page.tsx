@@ -1,21 +1,14 @@
-import Link from "next/link";
+import { LessonHeader } from "@/components/layout/lesson-header";
 
 import { ConnectedExperience } from "./connected-experience";
+import styles from "./connected.module.css";
 
 export const metadata = { title: "Preview connectée" };
 
 export default function ConnectedLessonPage() {
   return (
-    <main className="lessonShell connectedLessonShell">
-      <header className="lessonHeader">
-        <Link className="brand" href="/" aria-label="Thaïnaute, accueil">
-          <span aria-hidden="true" className="brandMark">
-            ท
-          </span>
-          <span>Thaïnaute</span>
-        </Link>
-        <span className="lessonStep">Preview technique · compte requis</span>
-      </header>
+    <main className={styles.shell}>
+      <LessonHeader step="Preview technique · compte requis" />
       <ConnectedExperience />
     </main>
   );
