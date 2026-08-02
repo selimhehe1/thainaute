@@ -72,6 +72,10 @@ function providersFromAppMetadata(metadata: unknown): string[] {
   });
 }
 
+function nullableAuthContact(value: string | null | undefined): string | null {
+  return value === undefined || value === null || value === "" ? null : value;
+}
+
 function hasPermanentAccountEvidence(input: {
   readonly claimMarker: boolean | undefined;
   readonly userMarker: boolean | undefined;
@@ -127,8 +131,8 @@ export function accountExportIdentityFromSupabaseUser(
 
   const result = accountExportIdentitySchema.safeParse({
     id: user.data.id,
-    email: user.data.email ?? null,
-    phone: user.data.phone ?? null,
+    email: nullableAuthContact(user.data.email),
+    phone: nullableAuthContact(user.data.phone),
     providers: providersFromAppMetadata(user.data.app_metadata),
     createdAt: user.data.created_at,
     updatedAt: user.data.updated_at ?? null,

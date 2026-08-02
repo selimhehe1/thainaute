@@ -54,6 +54,15 @@ describe("identité Auth de l'export de compte", () => {
     ).not.toContain("never-exported");
   });
 
+  it("normalise les contacts Auth explicitement absents", () => {
+    expect(
+      accountExportIdentityFromSupabaseUser(
+        { ...supabaseUser, email: undefined, phone: "" },
+        verifiedClaims,
+      ),
+    ).toMatchObject({ email: null, phone: null });
+  });
+
   it("refuse les comptes anonymes", () => {
     expect(
       accountExportIdentityFromSupabaseUser(

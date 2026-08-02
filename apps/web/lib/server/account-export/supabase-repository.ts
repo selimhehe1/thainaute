@@ -117,9 +117,7 @@ export async function readBoundedAccountExportPages(input: {
     );
     const pageData = validatedPageData(page);
 
-    if (expectedCount === null) {
-      expectedCount = validatedExpectedCount(page.count, input.maxRows);
-    }
+    expectedCount ??= validatedExpectedCount(page.count, input.maxRows);
 
     rows.push(...pageData);
     if (rows.length > input.maxRows) {
