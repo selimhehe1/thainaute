@@ -8,6 +8,8 @@ import {
   useRef,
   useState,
 } from "react";
+import { buttonClass } from "@/components/ui/button";
+import lessonStyles from "./lesson.module.css";
 
 import {
   createBrowserLocalVoiceRecorder,
@@ -342,7 +344,7 @@ export function LocalVoiceComparison({
   if (isRecording) {
     captureAction = (
       <button
-        className="button buttonGhost"
+        className={buttonClass("ghost")}
         type="button"
         onClick={stopRecording}
       >
@@ -353,7 +355,7 @@ export function LocalVoiceComparison({
     captureAction = (
       <button
         aria-busy="true"
-        className="button buttonGhost"
+        className={buttonClass("ghost")}
         disabled
         type="button"
       >
@@ -363,7 +365,7 @@ export function LocalVoiceComparison({
   } else {
     captureAction = (
       <button
-        className="button buttonGhost"
+        className={buttonClass("ghost")}
         disabled={isRequesting}
         type="button"
         onClick={() => void beginRecording()}
@@ -484,7 +486,7 @@ export function LocalVoiceComparison({
         {captureAction}
         {capture !== null && !isRecording && (
           <button
-            className="button voiceDelete"
+            className={buttonClass("danger")}
             type="button"
             onClick={deleteRecording}
           >
@@ -505,7 +507,7 @@ export function LocalVoiceComparison({
         </p>
       )}
       {playbackError !== "" && (
-        <p className="inlineError voiceMessage" role="alert">
+        <p className={lessonStyles.inlineError} role="alert">
           {playbackError}
         </p>
       )}

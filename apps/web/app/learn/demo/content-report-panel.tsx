@@ -6,6 +6,8 @@ import {
   type ContentReportCategory,
   type ContentReportOutboxRejection,
 } from "@thainaute/sync";
+import { buttonClass } from "@/components/ui/button";
+import lessonStyles from "./lesson.module.css";
 import Link from "next/link";
 import { type FormEvent, useEffect, useRef, useState } from "react";
 
@@ -286,7 +288,7 @@ export function ContentReportPanel({
   return (
     <section className="contentReport" aria-label="Signalement linguistique">
       <button
-        className="button buttonGhost"
+        className={buttonClass("ghost")}
         type="button"
         aria-expanded={open}
         aria-controls="content-report-panel"
@@ -309,7 +311,7 @@ export function ContentReportPanel({
                 Connectez un compte permanent pour conserver et suivre ce
                 signalement sur le bon contenu.
               </p>
-              <Link className="button buttonGhost" href="/account">
+              <Link className={buttonClass("ghost")} href="/account">
                 Me connecter
               </Link>
             </div>
@@ -333,7 +335,7 @@ export function ContentReportPanel({
                 ))}
               </select>
               <button
-                className="button buttonGhost"
+                className={buttonClass("ghost")}
                 type="submit"
                 aria-busy={status === "submitting"}
                 disabled={
@@ -355,7 +357,11 @@ export function ContentReportPanel({
 
           {message !== "" && (
             <p
-              className={status === "error" ? "inlineError" : "privacyNote"}
+              className={
+                status === "error"
+                  ? lessonStyles.inlineError
+                  : lessonStyles.note
+              }
               role={
                 status === "error" || status === "rejected" ? "alert" : "status"
               }
@@ -370,7 +376,7 @@ export function ContentReportPanel({
           )}
           {userId !== null && rejectedHead !== null && !busy && (
             <button
-              className="button buttonGhost"
+              className={buttonClass("ghost")}
               type="button"
               onClick={() => void discardRejected()}
             >
@@ -384,7 +390,7 @@ export function ContentReportPanel({
             status !== "loading" &&
             status !== "submitting" && (
               <button
-                className="button buttonGhost"
+                className={buttonClass("ghost")}
                 type="button"
                 onClick={() => void retry()}
               >

@@ -35,6 +35,8 @@ import {
 } from "@/lib/client/attempt-outbox-store";
 import { useWebAuthSession } from "@/lib/client/auth-session";
 import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
+import { buttonClass } from "@/components/ui/button";
+import styles from "./lesson.module.css";
 import {
   LocalExperienceStorageError,
   WebLocalExperienceStore,
@@ -733,17 +735,21 @@ export function DemoExperience({
     experienceSnapshot?.onboarding.status === "completed";
 
   return (
-    <section className="lessonCard" aria-labelledby="lesson-title">
-      <div className="fixtureBanner" role="note">
-        <strong>Donnée fictive — non publiable</strong>
+    <section className={styles.card} aria-labelledby="lesson-title">
+      <div className={styles.fixtureBanner} role="note">
+        <strong>Donnée fictive · non publiable</strong>
         <span>
           Ce graphème et ce signal valident uniquement la chaîne technique.
         </span>
       </div>
 
-      <div className="networkStatus" aria-live="polite">
+      <div className={styles.networkStatus} aria-live="polite">
         <span
-          className={online ? "statusDot online" : "statusDot"}
+          className={
+            online
+              ? styles.statusDot + " " + styles.statusDotOnline
+              : styles.statusDot
+          }
           aria-hidden="true"
         />
         {storageStatus === "loading"
@@ -756,24 +762,24 @@ export function DemoExperience({
       </div>
 
       {staleCheckpoint !== null && (
-        <div className="lessonBody">
-          <p className="eyebrow">Version locale plus ancienne</p>
+        <div className={styles.body}>
+          <p className={styles.eyebrow}>Version locale plus ancienne</p>
           <h1 id="lesson-title">
             Une session précédente est encore conservée.
           </h1>
-          <p className="lessonObjective">
+          <p className={styles.objective}>
             Thaïnaute ne la remplace jamais automatiquement. Une tentative déjà
             soumise reste dans le journal durable ; une réponse non validée sera
             abandonnée avec son point de reprise.
           </p>
           {replacementConfirmation ? (
-            <div className="lessonActions">
-              <p className="inlineError" role="alert">
+            <div className={styles.actions}>
+              <p className={styles.inlineError} role="alert">
                 Deuxième confirmation : abandonner ce point de reprise et
                 démarrer la version actuellement chargée ?
               </p>
               <button
-                className="button buttonPrimary"
+                className={buttonClass("primary")}
                 type="button"
                 aria-busy={isSaving}
                 disabled={isSaving}
@@ -782,7 +788,7 @@ export function DemoExperience({
                 {isSaving ? "Remplacement…" : "Confirmer l’abandon et démarrer"}
               </button>
               <button
-                className="button buttonGhost"
+                className={buttonClass("ghost")}
                 type="button"
                 disabled={isSaving}
                 onClick={() => setReplacementConfirmation(false)}
@@ -791,21 +797,21 @@ export function DemoExperience({
               </button>
             </div>
           ) : (
-            <div className="lessonActions">
+            <div className={styles.actions}>
               <button
-                className="button buttonPrimary"
+                className={buttonClass("primary")}
                 type="button"
                 onClick={() => setReplacementConfirmation(true)}
               >
                 Abandonner cette ancienne session
               </button>
-              <Link className="button buttonGhost" href="/today">
+              <Link className={buttonClass("ghost")} href="/today">
                 Retour à Aujourd’hui
               </Link>
             </div>
           )}
           {checkpointMessage && (
-            <p className="inlineError" role="alert">
+            <p className={styles.inlineError} role="alert">
               {checkpointMessage}
             </p>
           )}
@@ -813,21 +819,21 @@ export function DemoExperience({
       )}
 
       {staleCheckpoint === null && stage === "intro" && (
-        <div className="lessonBody">
-          <p className="eyebrow">Étape 1 sur 1</p>
+        <div className={styles.body}>
+          <p className={styles.eyebrow}>Étape 1 sur 1</p>
           <h1 id="lesson-title">{lesson.title}</h1>
-          <p className="lessonObjective">{lesson.objective}</p>
+          <p className={styles.objective}>{lesson.objective}</p>
           <div
-            className="lessonGlyph"
+            className={styles.glyph}
             lang="th"
             aria-label="Graphème thaï fictif de test"
           >
             {lesson.thaiRaw}
           </div>
-          <div className="lessonActions">
+          <div className={styles.actions}>
             {storageStatus === "error" ? (
               <button
-                className="button buttonPrimary"
+                className={buttonClass("primary")}
                 type="button"
                 onClick={() => {
                   setStorageStatus("loading");
@@ -837,12 +843,12 @@ export function DemoExperience({
                 Réessayer le stockage
               </button>
             ) : !onboardingCompleted && storageStatus === "ready" ? (
-              <Link className="button buttonPrimary" href="/today">
+              <Link className={buttonClass("primary")} href="/today">
                 Préparer mon parcours
               </Link>
             ) : (
               <button
-                className="button buttonPrimary"
+                className={buttonClass("primary")}
                 type="button"
                 aria-busy={isSaving}
                 disabled={storageStatus !== "ready" || isSaving}
@@ -852,7 +858,7 @@ export function DemoExperience({
               </button>
             )}
             <button
-              className="button buttonGhost"
+              className={buttonClass("ghost")}
               type="button"
               onClick={playSignal}
             >
@@ -860,12 +866,12 @@ export function DemoExperience({
             </button>
           </div>
           {audioError && (
-            <p className="inlineError" role="alert">
+            <p className={styles.inlineError} role="alert">
               Le signal audio est indisponible. Vous pouvez continuer.
             </p>
           )}
           {checkpointMessage && (
-            <p className="inlineError" role="alert">
+            <p className={styles.inlineError} role="alert">
               {checkpointMessage}
             </p>
           )}
@@ -873,18 +879,24 @@ export function DemoExperience({
       )}
 
       {staleCheckpoint === null && stage === "question" && (
-        <div className="lessonBody">
-          <p className="eyebrow">Écoute · donnée technique</p>
+        <div className={styles.body}>
+          <p className={styles.eyebrow}>Écoute · donnée technique</p>
           <h1 id="lesson-title">{lesson.exercise.prompt}</h1>
-          <button className="audioControl" type="button" onClick={playSignal}>
+          <button
+            className={styles.audioControl}
+            type="button"
+            onClick={playSignal}
+          >
             <span aria-hidden="true">▶</span> Réécouter le signal
           </button>
-          <fieldset className="answerList">
+          <fieldset className={styles.answerList}>
             <legend className="srOnly">Options de réponse</legend>
             {lesson.exercise.options.map((option) => (
               <label
                 className={
-                  selectedOptionId === option.id ? "answer selected" : "answer"
+                  selectedOptionId === option.id
+                    ? styles.answer + " " + styles.answerSelected
+                    : styles.answer
                 }
                 key={option.id}
               >
@@ -900,18 +912,18 @@ export function DemoExperience({
             ))}
           </fieldset>
           {validationMessage && (
-            <p className="inlineError" role="alert">
+            <p className={styles.inlineError} role="alert">
               {validationMessage}
             </p>
           )}
           {checkpointMessage && (
-            <p className="inlineError" role="alert">
+            <p className={styles.inlineError} role="alert">
               {checkpointMessage}
             </p>
           )}
           {storageStatus === "error" ? (
             <button
-              className="button buttonPrimary submitAnswer"
+              className={buttonClass("primary") + " " + styles.submit}
               type="button"
               onClick={() => {
                 setStorageStatus("loading");
@@ -922,7 +934,7 @@ export function DemoExperience({
             </button>
           ) : (
             <button
-              className="button buttonPrimary submitAnswer"
+              className={buttonClass("primary") + " " + styles.submit}
               type="button"
               aria-busy={isSaving}
               disabled={isSaving || storageStatus !== "ready"}
@@ -935,14 +947,14 @@ export function DemoExperience({
       )}
 
       {staleCheckpoint === null && stage === "result" && (
-        <div className="lessonBody resultBody" aria-live="polite">
-          <p className="eyebrow">Tentative enregistrée localement</p>
+        <div className={styles.body} aria-live="polite">
+          <p className={styles.eyebrow}>Tentative enregistrée localement</p>
           <h1 id="lesson-title" ref={resultHeading} tabIndex={-1}>
             {wasCorrect
               ? lesson.exercise.feedback.correctFr
               : lesson.exercise.feedback.incorrectFr}
           </h1>
-          <div className="masteryPanel">
+          <div className={styles.masteryPanel}>
             <div>
               <span>Maîtrise estimée</span>
               <strong>{latestProjection?.masteryScore ?? 0} ‰</strong>
@@ -964,7 +976,7 @@ export function DemoExperience({
             onBeforeCapture={stopSignal}
             sessionBoundaryRevision={sessionBoundaryRevision}
           />
-          <p className="privacyNote">
+          <p className={styles.note}>
             Cette démonstration technique reste isolée sur cet appareil et ne
             sera jamais synchronisée comme contenu pédagogique.
           </p>
@@ -975,15 +987,15 @@ export function DemoExperience({
             online={online}
           />
           {checkpointMessage && (
-            <p className="inlineError" role="alert">
+            <p className={styles.inlineError} role="alert">
               {checkpointMessage}
             </p>
           )}
-          <div className="lessonActions">
-            <Link className="button buttonPrimary" href="/account">
+          <div className={styles.actions}>
+            <Link className={buttonClass("primary")} href="/account">
               Découvrir le compte
             </Link>
-            <Link className="button buttonGhost" href="/today">
+            <Link className={buttonClass("ghost")} href="/today">
               Retour à Aujourd’hui
             </Link>
           </div>

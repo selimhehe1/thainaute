@@ -1,7 +1,12 @@
 import { readFixtureBundle } from "@thainaute/content";
 import Link from "next/link";
 
+import { Logotype } from "@/components/brand/logotype";
+import { buttonClass } from "@/components/ui/button";
+import panel from "@/components/ui/panel.module.css";
+
 import { DemoExperience } from "./demo-experience";
+import styles from "./lesson.module.css";
 
 export const metadata = { title: "Leçon fictive" };
 
@@ -12,28 +17,30 @@ export default function DemoLessonPage() {
 
   if (exercise === undefined || item === undefined) {
     return (
-      <main className="lessonShell lessonEmpty">
-        <h1>La fixture est indisponible.</h1>
-        <p>
-          La validation de contenu doit être relancée avant cette démonstration.
-        </p>
-        <Link className="button buttonGhost" href="/">
-          Retour à l’accueil
-        </Link>
+      <main className={styles.shell}>
+        <section className={panel.panel}>
+          <h1>La fixture est indisponible.</h1>
+          <p className={panel.lede}>
+            La validation de contenu doit être relancée avant cette
+            démonstration.
+          </p>
+          <div className={panel.actions}>
+            <Link className={buttonClass("ghost")} href="/">
+              Retour à l’accueil
+            </Link>
+          </div>
+        </section>
       </main>
     );
   }
 
   return (
-    <main className="lessonShell">
-      <header className="lessonHeader">
-        <Link className="brand" href="/" aria-label="Thaïnaute, accueil">
-          <span aria-hidden="true" className="brandMark">
-            ท
-          </span>
-          <span>Thaïnaute</span>
+    <main className={styles.shell}>
+      <header className={styles.header}>
+        <Link className={styles.brand} href="/" aria-label="Thaïnaute, accueil">
+          <Logotype />
         </Link>
-        <span className="lessonStep">Tranche verticale · 1 exercice</span>
+        <span className={styles.step}>Tranche verticale · 1 exercice</span>
       </header>
       <DemoExperience
         lesson={{
