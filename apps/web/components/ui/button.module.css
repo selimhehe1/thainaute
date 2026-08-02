@@ -53,6 +53,16 @@
   background: var(--color-mist);
 }
 
+.danger {
+  background: transparent;
+  color: var(--color-coral-deep);
+  border: 1.5px solid var(--color-coral);
+}
+
+.danger:hover:not(:disabled) {
+  background: var(--color-coral-pale);
+}
+
 .ghost {
   background: none;
   color: var(--color-ink);

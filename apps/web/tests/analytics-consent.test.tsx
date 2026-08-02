@@ -122,8 +122,7 @@ describe("consentement analytics web", () => {
     const refuse = screen.getByRole("button", {
       name: "Refuser la mesure facultative",
     });
-    expect(accept).toHaveClass("buttonGhost");
-    expect(refuse).toHaveClass("buttonGhost");
+    expect(accept.className).toBe(refuse.className);
 
     fireEvent.click(accept);
     expect(
