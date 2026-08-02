@@ -165,8 +165,8 @@ describe("leçon web fictive", () => {
     const startButton = screen.getByRole("button", { name: "Commencer" });
     await waitFor(() => expect(startButton).toBeEnabled());
     await user.click(startButton);
-    await user.click(screen.getByRole("radio", { name: "Option A" }));
-    await user.click(screen.getByRole("button", { name: "Valider" }));
+    await user.click(await screen.findByRole("radio", { name: "Option A" }));
+    await user.click(await screen.findByRole("button", { name: "Valider" }));
 
     const result = await screen.findByRole("heading", {
       name: "La boucle technique fonctionne.",
