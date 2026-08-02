@@ -18,12 +18,15 @@ incomplet ou incohérent.
 
 `GET /api/v1/account/export` exige un Bearer Supabase. La route appelle
 `auth.getClaims(accessToken)` et `auth.getUser(accessToken)` avec la clé
-publiable. Le premier vérifie le JWT et rend le claim `is_anonymous`
-autoritaire ; le second relit l'identité auprès d'Auth. Le `sub` vérifié doit
-être identique à l'UUID utilisateur et toute divergence ferme l'export. Cette
-double preuve reste compatible avec les versions locales d'Auth qui omettent
-encore `is_anonymous` dans l'objet `/user`, sans accepter un claim absent ni un
-utilisateur Supabase anonyme.
+publiable. Le premier vérifie le JWT ; le second relit l’identité auprès
+d’Auth. Le `sub` vérifié doit être identique à l’UUID utilisateur et toute
+divergence ferme l’export. Un marqueur `is_anonymous: true` sur l’un des deux
+canaux interdit l’export et deux marqueurs contradictoires ferment la
+vérification. Le compte est permanent si l’un des canaux porte explicitement
+`is_anonymous: false`. Pour les anciennes images Auth locales qui omettent les
+deux marqueurs, seule une adresse email ou un téléphone confirmé relu par Auth
+est accepté comme preuve de conversion ; sans cette preuve, l’export est
+refusé.
 
 L'identité exportée suit une whitelist fermée : UUID Auth, email, téléphone,
 dates de création, mise à jour, dernière connexion et confirmations, ainsi que

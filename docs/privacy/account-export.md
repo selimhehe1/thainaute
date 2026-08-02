@@ -18,7 +18,9 @@ de suppression du compte.
 ## Contrôles serveur
 
 - [x] Jeton vérifié par Supabase Auth avec `getClaims` et `getUser`, puis
-      identité liée au `sub` et au claim `is_anonymous` vérifiés ; aucun
+      identité liée au `sub` vérifié ; compte anonyme refusé par les marqueurs
+      Auth concordants ou, sur une image locale historique sans marqueurs, par
+      l’absence de tout canal email/téléphone confirmé ; aucun
       identifiant utilisateur n’est accepté en entrée.
 - [x] Lectures avec clé publiable et JWT utilisateur sous RLS, avec filtre
       propriétaire explicite ; aucune clé `service_role` dans ce chemin.
