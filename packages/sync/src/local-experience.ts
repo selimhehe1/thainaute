@@ -136,7 +136,7 @@ export const localLessonCheckpointSchema = z
     }
   });
 
-const localLessonReplacementTargetSchema = z.strictObject({
+export const localLessonReplacementTargetSchema = z.strictObject({
   lessonVersionId: canonicalUuidSchema,
   exerciseId: canonicalUuidSchema,
 });

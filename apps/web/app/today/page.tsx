@@ -11,16 +11,22 @@ export default function TodayPage() {
 
   return (
     <main className="lessonShell">
-      <header className="lessonHeader">
+      <header className="lessonHeader todayPageHeader">
         <Link className="brand" href="/" aria-label="Thaïnaute, accueil">
           <span aria-hidden="true" className="brandMark">
             ท
           </span>
           <span>Thaïnaute</span>
         </Link>
-        <Link className="button buttonSmall buttonGhost" href="/account">
-          Compte
-        </Link>
+        <nav
+          className="pathHeaderNav todayHeaderNav"
+          aria-label="Navigation de la session"
+        >
+          <Link href="/path">Parcours</Link>
+          <Link className="button buttonSmall buttonGhost" href="/account">
+            Compte
+          </Link>
+        </nav>
       </header>
       {exercise === undefined ? (
         <section className="todayPanel" aria-labelledby="today-empty-title">

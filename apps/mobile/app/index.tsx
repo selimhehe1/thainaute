@@ -287,13 +287,22 @@ export default function TodayScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar style="dark" />
-      <View style={styles.header}>
+      <View testID="today-header" style={styles.header}>
         <Text style={styles.brand}>Thaïnaute</Text>
-        <Link href="/account" asChild>
-          <Pressable accessibilityRole="button" style={styles.accountButton}>
-            <Text style={styles.accountText}>Compte</Text>
+        <View testID="today-header-actions" style={styles.headerActions}>
+          <Pressable
+            accessibilityRole="button"
+            style={styles.pathButton}
+            onPress={() => router.push("/path")}
+          >
+            <Text style={styles.headerActionText}>Parcours</Text>
           </Pressable>
-        </Link>
+          <Link href="/account" asChild>
+            <Pressable accessibilityRole="button" style={styles.accountButton}>
+              <Text style={styles.headerActionText}>Compte</Text>
+            </Pressable>
+          </Link>
+        </View>
       </View>
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.eyebrow}>AUJOURD’HUI</Text>
@@ -396,20 +405,52 @@ const styles = StyleSheet.create({
   header: {
     minHeight: 68,
     paddingHorizontal: 20,
+    paddingVertical: 8,
     flexDirection: "row",
+    flexWrap: "wrap",
     alignItems: "center",
+    rowGap: 4,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: "#cbd0d8",
   },
-  brand: { color: "#283450", fontSize: 18, fontWeight: "800" },
-  accountButton: {
-    minWidth: 72,
-    minHeight: 44,
+  brand: {
+    flexGrow: 1,
+    flexShrink: 1,
+    color: "#283450",
+    fontSize: 18,
+    fontWeight: "800",
+  },
+  headerActions: {
+    maxWidth: "100%",
     marginLeft: "auto",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    flexShrink: 1,
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
+  pathButton: {
+    minWidth: 88,
+    minHeight: 44,
+    paddingHorizontal: 10,
+    flexShrink: 1,
     alignItems: "center",
     justifyContent: "center",
   },
-  accountText: { color: "#283450", fontWeight: "700" },
+  accountButton: {
+    minWidth: 72,
+    minHeight: 44,
+    paddingHorizontal: 10,
+    flexShrink: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  headerActionText: {
+    flexShrink: 1,
+    color: "#283450",
+    fontWeight: "700",
+    textAlign: "center",
+  },
   content: {
     width: "100%",
     maxWidth: 720,

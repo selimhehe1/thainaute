@@ -75,6 +75,14 @@ nav {
   font-size: 14px;
   font-weight: 650;
 }
+.siteHeader nav > a,
+.pathHeaderNav > a {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 .hero {
   min-height: 670px;
   padding-block: 88px;
@@ -271,6 +279,12 @@ h1 em {
   .siteHeader nav > a:first-child {
     display: none;
   }
+  .siteHeader .siteAccountLink {
+    display: none;
+  }
+  .siteHeader nav {
+    gap: 14px;
+  }
   .hero {
     min-height: 0;
     padding-block: 62px 80px;
@@ -289,6 +303,18 @@ h1 em {
   }
   .siteFooter {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 360px) {
+  .siteHeader {
+    padding-block: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .siteHeader nav {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 
@@ -933,6 +959,185 @@ h1 em {
   opacity: 0.55;
 }
 
+.pathShell {
+  padding-bottom: 80px;
+}
+.pathHeaderNav {
+  gap: 16px;
+}
+.pathPanel {
+  width: min(840px, 100%);
+  overflow: hidden;
+  margin: 40px auto 0;
+  border: 1px solid white;
+  border-radius: 30px;
+  background: white;
+  box-shadow: var(--shadow);
+}
+.pathNotice,
+.pathContent {
+  padding: clamp(30px, 6vw, 64px);
+}
+.pathPanel h1 {
+  max-width: 740px;
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 0.98;
+}
+.pathLede {
+  max-width: 680px;
+  margin: 24px 0 34px;
+  color: #536078;
+  font-size: 17px;
+  line-height: 1.65;
+}
+.pathFixtureWarning {
+  margin: 0 0 34px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid #eed58f;
+  border-radius: 14px;
+  color: #684c0d;
+  background: #fff8e4;
+}
+.pathFixtureWarning strong {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.pathFixtureWarning span {
+  color: #796331;
+  font-size: 12px;
+  text-align: right;
+}
+.pathProgress {
+  margin: 34px 0 18px;
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--mist);
+}
+.pathProgress > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+.pathProgress h2 {
+  margin: 0;
+  font-size: 17px;
+}
+.pathProgress > div span {
+  color: var(--jade-ink);
+  font-size: 22px;
+  font-weight: 850;
+}
+.pathProgress progress {
+  width: 100%;
+  height: 12px;
+  overflow: hidden;
+  margin: 18px 0 8px;
+  border: 0;
+  border-radius: 999px;
+  background: #dce2e7;
+}
+.pathProgress progress::-webkit-progress-bar {
+  border-radius: 999px;
+  background: #dce2e7;
+}
+.pathProgress progress::-webkit-progress-value {
+  border-radius: 999px;
+  background: var(--jade);
+}
+.pathProgress progress::-moz-progress-bar {
+  border-radius: 999px;
+  background: var(--jade);
+}
+.pathProgress p {
+  margin: 0;
+  color: #647087;
+  font-size: 13px;
+}
+.pathUnit {
+  padding: clamp(22px, 4vw, 30px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+}
+.pathUnitHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+}
+.pathUnitIndex {
+  color: #6b7589;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.pathUnit h2 {
+  margin: 8px 0 0;
+  font-size: clamp(27px, 4vw, 38px);
+  letter-spacing: -0.035em;
+}
+.pathUnitStatus {
+  width: fit-content;
+  padding: 7px 10px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  color: var(--jade-ink);
+  background: #e8f4ef;
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.35;
+  text-align: center;
+  text-transform: uppercase;
+}
+.pathUnitStatus-onboarding_required,
+.pathUnitStatus-version_conflict {
+  color: #684c0d;
+  background: #fff4d6;
+}
+.pathUnitObjective,
+.pathUnitDescription,
+.pathFuture p {
+  color: #59657a;
+  line-height: 1.6;
+}
+.pathUnitObjective {
+  margin: 22px 0 8px;
+  font-weight: 750;
+}
+.pathUnitDescription {
+  margin: 0;
+}
+.pathPrimaryAction {
+  margin-top: 26px;
+}
+.pathFuture {
+  margin-top: 18px;
+  padding: 24px;
+  border: 1px dashed #bdc4ce;
+  border-radius: 20px;
+  background: #fafbfc;
+}
+.pathFutureStatus {
+  color: #6c7485;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.pathFuture h2 {
+  margin: 9px 0 10px;
+  font-size: clamp(23px, 4vw, 31px);
+  letter-spacing: -0.025em;
+}
+.pathFuture p {
+  margin: 0;
+}
+
 @media (max-width: 640px) {
   .accountMetrics {
     grid-template-columns: 1fr;
@@ -948,6 +1153,41 @@ h1 em {
   }
   .todayPrimaryAction {
     width: 100%;
+  }
+  .pathHeaderNav {
+    gap: 10px;
+  }
+  .pathPanel {
+    margin-top: 24px;
+  }
+  .pathNotice,
+  .pathContent {
+    padding-inline: 22px;
+  }
+  .pathFixtureWarning,
+  .pathUnitHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .pathFixtureWarning span {
+    text-align: left;
+  }
+  .pathPrimaryAction {
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .pathShell .pathHeaderOptional {
+    display: none;
+  }
+  .todayPageHeader {
+    padding-block: 10px;
+    flex-wrap: wrap;
+  }
+  .todayHeaderNav {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 
