@@ -96,6 +96,8 @@ l'environnement et l'indexation reste désactivée sur toute URL temporaire.
 | `THAINAUTE_RELEASE`                    | serveur                   | non     | identifiant court de release          |
 | `THAINAUTE_SYNC_MODE`                  | serveur                   | non     | `disabled` ou `supabase`              |
 | `THAINAUTE_CONTENT_REPORT_MODE`        | serveur                   | non     | `disabled` ou `supabase`              |
+| `THAINAUTE_PUBLIC_CONTENT_MODE`        | serveur                   | non     | `disabled` ou `supabase`              |
+| `THAINAUTE_PUBLIC_CONTENT_RELEASE_ID`  | serveur                   | non     | UUID de la release publique active    |
 | `THAINAUTE_STUDIO_MODE`                | serveur                   | non     | `disabled` ou `fixture`               |
 | `NEXT_PUBLIC_SUPABASE_URL`             | web et serveur            | non     | URL publique du projet Supabase       |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | web et serveur            | non     | clé publique soumise à RLS            |
@@ -147,9 +149,11 @@ développement ; preview et production exigent HTTPS. `127.0.0.1` désigne le
 téléphone lui-même et n'est donc pas fourni comme valeur par défaut.
 
 En production, `THAINAUTE_SYNC_MODE=supabase` exige les trois valeurs Supabase
-web/serveur et le pepper de suppression. Une configuration incomplète doit
-faire échouer la readiness et laisser les API synchronisées indisponibles,
-jamais basculer vers une écriture non protégée.
+web/serveur, le pepper de suppression et l'UUID explicite de la release active.
+La route de tentative recoupe chaque version avec cette release, même lorsque la
+livraison publique reste désactivée. Une configuration incomplète doit faire
+échouer la readiness et laisser les API synchronisées indisponibles, jamais
+basculer vers une écriture non protégée.
 
 Les signalements linguistiques restent désactivés par défaut. Le mode
 `THAINAUTE_CONTENT_REPORT_MODE=supabase` ouvre seulement la capacité de preview
@@ -165,6 +169,26 @@ pas être déclarée prête ni promue. Il ajoute aussi
 le Route Handler refuse alors toute collecte, même si les clés Supabase sont
 présentes. Une readiness dégradée ne constitue jamais l'unique barrière entre
 la collecte et la base commune d'export/suppression.
+
+La livraison publique reste elle aussi désactivée par défaut.
+`THAINAUTE_PUBLIC_CONTENT_MODE=supabase` exige l'URL Supabase, la clé serveur et
+un `THAINAUTE_PUBLIC_CONTENT_RELEASE_ID` UUID explicite. Les routes servent alors
+le manifeste courant, ses leçons expurgées et l'audio privé par identifiants
+opaques. La progression personnelle par exercice et la preview connectée exigent
+en plus `THAINAUTE_SYNC_MODE=supabase`, sa clé publiable et le pepper de
+suppression. Une ligne incohérente invalide toute la release ; aucun fallback
+vers la fixture du build n'est permis. Tant que `OPEN-API-001` reste ouvert, l'issue
+`public_content_rate_limit_missing` maintient la readiness en échec et interdit
+une promotion distante. Les écrans `/learn/connected` et
+`/connected-lesson` restent identifiés comme previews techniques. Voir
+l'ADR-0020.
+
+Le bootstrap audio est exclusivement local. Il faut placer dans le même
+processus `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SECRET_KEY` et
+`THAINAUTE_LOCAL_FIXTURE_BOOTSTRAP=1`, puis exécuter
+`pnpm fixture:bootstrap-local-audio`. Le script refuse toute cible autre qu'une
+boucle locale, contrôle le fichier avant et après upload et ne révèle aucune
+clé. Cette commande n'est jamais utilisée contre une preview hébergée.
 
 Le studio reste désactivé par défaut. `THAINAUTE_STUDIO_MODE=fixture` ouvre
 uniquement le préflight de la fixture technique et exige Auth ainsi que le rôle
@@ -187,16 +211,19 @@ en base, ni publication et la page reste non indexable. Voir l'ADR-0017.
 ### `GET /api/v1/health/ready`
 
 - vérifie l'origine publique, l'indexation, les modes de synchronisation, de
-  signalement et de studio, les variables Supabase et le pepper de suppression
+  signalement, de contenu public et de studio, les variables Supabase et le
+  pepper de suppression
   requis ;
-- en mode `supabase`, sonde en parallèle Auth (`/auth/v1/health`) et la Data API
-  avec une lecture `HEAD` sans rapatrier de ligne ; chaque dépendance est bornée
-  à 2,5 secondes ;
-- renvoie `200` uniquement si la configuration, Auth et la Data API sont prêts,
-  sinon `503` avec des statuts et codes de diagnostic fermés ;
-- lorsque synchronisation, signalements et studio sont désactivés, n'appelle
-  aucune dépendance externe ; le studio fixture sonde Auth et son agrégat
-  `content_reports` ;
+- en mode `supabase`, sonde la Data API avec une lecture `HEAD` sans rapatrier
+  de ligne et sonde aussi Auth (`/auth/v1/health`) dès qu'une capacité de compte
+  est active ; le mode contenu public seul n'active pas la sonde Auth ; chaque
+  dépendance est bornée à 2,5 secondes ;
+- renvoie `200` uniquement si la configuration et toutes les dépendances requises
+  par les capacités actives sont prêtes, sinon `503` avec des statuts et codes
+  de diagnostic fermés ;
+- lorsque synchronisation, signalements, contenu public et studio sont
+  désactivés, n'appelle aucune dépendance externe ; le studio fixture sonde Auth
+  et son agrégat `content_reports` ;
 - ne révèle aucune valeur de secret.
 
 Les sondes Data API traversent PostgREST et Postgres sans créer ni lire de
@@ -266,6 +293,16 @@ fixture isolée `supabase/fixtures/connected_sync.sql`. Cette fixture est
 strictement réservée au test : elle n'est ni une migration, ni un seed partagé,
 ni un contenu publiable en production.
 
+Pour le scénario UI connecté, la même étape crée ensuite un bucket Storage
+privé strictement local via `pnpm fixture:bootstrap-local-audio`. L'objet est
+relu et vérifié par taille et SHA-256 avant le démarrage de Next.js. Cette
+création locale ne documente ni n'autorise aucun bucket hébergé.
+
+Les trois scénarios connectés envoient quatre OTP dans la même stack. La limite
+`auth.rate_limit.email_sent = 10` de `supabase/config.toml` leur laisse une
+marge locale bornée ; elle ne choisit ni ne documente le seuil d'un projet
+hébergé, qui reste une porte sécurité distincte avant bêta.
+
 `pnpm test:e2e:web:connected` couvre ensuite, avec un seul worker et sans trace :
 
 1. une readiness réelle d'Auth et de la Data API ;
@@ -278,22 +315,30 @@ ni un contenu publiable en production.
 7. la relecture des deux événements par la Data API avec la clé publiable et le
    JWT utilisateur, donc sous RLS.
 
+`pnpm test:e2e:web:connected:ui` traverse ensuite le manifeste, la leçon,
+l'audio privé vérifié, la tentative et la progression à 25 %. Un second contexte
+de navigateur réutilise uniquement la session Auth, sans IndexedDB, puis relit
+la projection autoritaire : il ne réutilise ni cache de contenu ni ancien OTP.
+
 Le même job redémarre ensuite le serveur avec
 `THAINAUTE_CONTENT_REPORT_MODE=supabase` pour exécuter isolément
 `pnpm test:e2e:web:connected:reports` (`connected-content-report.spec.ts`). Ce
 scénario crée un compte permanent et son profil, obtient `received` puis
 `duplicate`, vérifie la collision HTTP 409, l'export v2 de l'unique ligne et le
 refus de toute lecture directe de `content_reports` avec la clé publiable et le
-JWT utilisateur. Le premier scénario conserve le mode signalement désactivé et
-sa readiness à 200 ; le second accepte volontairement la readiness non prête
-imposée par `OPEN-API-001` sans la contourner. En local, la commande reports
+JWT utilisateur. Le scénario de synchronisation conserve les modes contenu
+public et signalement désactivés, avec une readiness à 200 ; les scénarios UI
+et signalement acceptent volontairement la readiness non prête imposée par
+`OPEN-API-001` sans la contourner. En local, la commande reports
 exige que `THAINAUTE_CONTENT_REPORT_MODE=supabase` soit défini dans le même
 processus que Playwright ; sinon le scénario est explicitement ignoré.
 
 Les clés locales restent dans le processus de l'étape Bash : aucun `.env`,
-secret GitHub, artefact, email, OTP ou Bearer n'est écrit ou journalisé. Cette
-preuve valide le contrat transport/données Android ; elle ne remplace pas le
-scénario Maestro dans une vraie application Expo.
+secret GitHub, artefact, email, OTP ou Bearer n'est écrit dans le dépôt ou les
+artefacts, ni journalisé par l'application. Mailpit conserve temporairement les
+emails et OTP locaux nécessaires aux scénarios. Cette preuve valide le contrat
+transport/données Android ; elle ne remplace pas le scénario Maestro dans une
+vraie application Expo.
 
 ### Portes des Database Advisors
 
@@ -329,21 +374,23 @@ les contrôles locaux.
   facturation GitHub du compte. La migration de suppression et ses 62
   assertions pgTAP restent donc une porte non obtenue ; seules leur analyse
   statique et leur syntaxe PostgreSQL ont été vérifiées sur ce poste.
-- Le DTO/API de contenu gratuit est expurgé et les payloads bruts restent côté
-  serveur, mais aucun catalogue, téléchargement audio opaque ou contenu réel
-  autorisé n'est encore branché. La relation exercice/item est désormais
-  dérivée côté serveur ; elle ne constitue plus une porte ouverte.
+- Le manifeste, les leçons expurgées et le téléchargement audio opaque sont
+  branchés sur une release explicitement configurée et vérifiés avec la fixture
+  locale. Aucun catalogue ni contenu thaï réel autorisé n'est encore publié. La
+  relation exercice/item est dérivée côté serveur ; elle ne constitue plus une
+  porte ouverte.
 - Le Studio de prépublication est masqué par défaut. En mode `fixture`, il
   relit le rôle `content_editor` dans `app_metadata` puis affiche uniquement un
   rapport borné de la fixture technique. Il ne persiste aucun brouillon, ne
   modifie aucune release et ne résout pas `OPEN-CONTENT-001`. Un workflow
   éditorial immuable et transactionnel reste nécessaire avant tout corpus réel.
 - Le transport, la fusion anonyme→compte, le snapshot multi-appareil et la purge
-  au logout sont implémentés. Leur parcours Auth/OTP, fusion, rejeu idempotent,
-  hydratation multi-appareil et lecture RLS est exécuté contre Supabase local en
-  CI. Un projet de preview, son SMTP et ses variables restent nécessaires pour
-  la recette distante ; `OPEN-SRS-001` et `OPEN-OFFLINE-001` restent des portes
-  pour leurs périmètres respectifs.
+  au logout sont implémentés. Le job CI couvre leur parcours Auth/OTP, fusion,
+  rejeu idempotent, hydratation multi-appareil et lecture RLS contre Supabase
+  local, mais cette porte n'a pas encore été obtenue à cause du blocage de
+  facturation indiqué ci-dessus. Un projet de preview, son SMTP et ses variables
+  restent nécessaires pour la recette distante ; `OPEN-SRS-001` et
+  `OPEN-OFFLINE-001` restent des portes pour leurs périmètres respectifs.
 - Une déconnexion explicite depuis l’écran compte purge le namespace local
   après vérification du sujet de session et confirmation si nécessaire. Une
   mutation concurrente après cette confirmation annule la purge et laisse le

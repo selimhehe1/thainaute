@@ -12,3 +12,15 @@ export async function browserSha256Hex(value: string): Promise<string> {
     .map((byte) => byte.toString(16).padStart(2, "0"))
     .join("");
 }
+
+/** Variante binaire pour les caches audio vérifiés. */
+export async function browserBytesSha256Hex(
+  value: ArrayBuffer,
+): Promise<string> {
+  const subtle = globalThis.crypto?.subtle;
+  if (subtle === undefined) throw new Error("Web Crypto indisponible.");
+  const digest = await subtle.digest("SHA-256", value);
+  return [...new Uint8Array(digest)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   SyncHttpApiError,
+  SyncHttpAuthenticationError,
   SyncHttpProtocolError,
   SyncHttpRequestValidationError,
   SyncHttpTransportError,
@@ -174,6 +175,39 @@ describe("transport partagé des signalements linguistiques", () => {
       retryable: false,
     });
     expect(String(failure)).not.toContain(SECRET_TOKEN);
+  });
+
+  it("ne remet pas un conflit permanent du compte A après A→B", async () => {
+    let currentUserId: string = ids.user;
+    let sessionReads = 0;
+    const httpClient = createSyncHttpClient({
+      baseUrl: "https://api.example.test/",
+      expectedUserId: ids.user,
+      getSession: () => {
+        sessionReads += 1;
+        return { accessToken: SECRET_TOKEN, userId: currentUserId };
+      },
+      fetch: () => {
+        currentUserId = "10000000-0000-4000-8000-000000000002";
+        return Promise.resolve(
+          jsonResponse(
+            {
+              error: {
+                code: "idempotency_key_reused",
+                message: "Cette clé existe déjà.",
+                requestId: ids.request,
+              },
+            },
+            409,
+          ),
+        );
+      },
+    });
+
+    await expect(
+      httpClient.sendContentReport(contentReportEntry),
+    ).rejects.toBeInstanceOf(SyncHttpAuthenticationError);
+    expect(sessionReads).toBe(2);
   });
 
   it.each([

@@ -10,6 +10,7 @@ import {
 
 const SUPABASE_ENVIRONMENT = {
   THAINAUTE_SYNC_MODE: "supabase",
+  THAINAUTE_PUBLIC_CONTENT_RELEASE_ID: "30000000-0000-4000-8000-000000000001",
   NEXT_PUBLIC_SUPABASE_URL: "https://project.supabase.co",
   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_example_public_value",
   SUPABASE_SECRET_KEY: "sb_secret_example_server_value",
@@ -35,6 +36,7 @@ describe("readiness des dépendances Supabase", () => {
       checkAuth: vi.fn(),
       checkDataApi: vi.fn(),
       checkContentReportsDataApi: vi.fn(),
+      checkPublicContentDataApi: vi.fn(),
     };
 
     const assessment = await assessReadiness({ environment: {}, probe });
@@ -46,6 +48,7 @@ describe("readiness des dépendances Supabase", () => {
     expect(probe.checkAuth).not.toHaveBeenCalled();
     expect(probe.checkDataApi).not.toHaveBeenCalled();
     expect(probe.checkContentReportsDataApi).not.toHaveBeenCalled();
+    expect(probe.checkPublicContentDataApi).not.toHaveBeenCalled();
   });
 
   it("garde les contrôles de configuration actifs en mode désactivé", async () => {
@@ -69,6 +72,7 @@ describe("readiness des dépendances Supabase", () => {
       checkAuth: vi.fn().mockResolvedValue(true),
       checkDataApi: vi.fn(),
       checkContentReportsDataApi: vi.fn().mockResolvedValue(true),
+      checkPublicContentDataApi: vi.fn(),
     };
 
     const assessment = await assessReadiness({
@@ -99,6 +103,7 @@ describe("readiness des dépendances Supabase", () => {
       checkAuth: vi.fn(),
       checkDataApi: vi.fn(),
       checkContentReportsDataApi: vi.fn(),
+      checkPublicContentDataApi: vi.fn(),
     };
 
     const assessment = await assessReadiness({
@@ -252,6 +257,7 @@ describe("readiness des dépendances Supabase", () => {
       checkAuth: vi.fn(),
       checkDataApi: vi.fn(),
       checkContentReportsDataApi: vi.fn(),
+      checkPublicContentDataApi: vi.fn(),
     };
 
     const assessment = await assessReadiness({
@@ -267,12 +273,34 @@ describe("readiness des dépendances Supabase", () => {
     expect(probe.checkDataApi).not.toHaveBeenCalled();
   });
 
+  it("marque la synchronisation en erreur sans release active", async () => {
+    for (const [name, value] of Object.entries({
+      ...SUPABASE_ENVIRONMENT,
+      THAINAUTE_PUBLIC_CONTENT_RELEASE_ID: "",
+    })) {
+      vi.stubEnv(name, value);
+    }
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => new Response(null, { status: 200 })),
+    );
+
+    const response = await getReadiness();
+
+    expect(response.status).toBe(503);
+    await expect(response.json()).resolves.toMatchObject({
+      checks: { sync: { status: "error", mode: "supabase" } },
+      issues: expect.arrayContaining(["sync_release_config_missing"]),
+    });
+  });
+
   it("retourne seulement un statut d'erreur quand un amont échoue", async () => {
     const upstreamDetail = "SUPABASE_SECRET_KEY=do-not-expose database failed";
     const probe: SupabaseReadinessProbePort = {
       checkAuth: vi.fn().mockResolvedValue(true),
       checkDataApi: vi.fn().mockRejectedValue(new Error(upstreamDetail)),
       checkContentReportsDataApi: vi.fn(),
+      checkPublicContentDataApi: vi.fn(),
     };
 
     const assessment = await assessReadiness({
@@ -295,6 +323,7 @@ describe("readiness des dépendances Supabase", () => {
       checkAuth: vi.fn().mockResolvedValue(true),
       checkDataApi: vi.fn().mockResolvedValue(true),
       checkContentReportsDataApi: vi.fn().mockResolvedValue(false),
+      checkPublicContentDataApi: vi.fn(),
     };
 
     const assessment = await assessReadiness({
@@ -347,6 +376,7 @@ describe("readiness des dépendances Supabase", () => {
       checkAuth: vi.fn().mockReturnValue(never),
       checkDataApi: vi.fn().mockResolvedValue(true),
       checkContentReportsDataApi: vi.fn().mockResolvedValue(true),
+      checkPublicContentDataApi: vi.fn(),
     };
     const startedAt = performance.now();
 

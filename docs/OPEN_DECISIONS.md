@@ -22,8 +22,10 @@ Une décision `OPEN` bloque seulement la fonctionnalité ou la phase indiquée.
 ## Décisions résolues
 
 - `OPEN-ATTEMPT-001` — résolue par dérivation serveur stricte dans
-  [ADR-0009](adr/0009-server-derived-attempt-target.md). Le contrat client ne
-  transporte ni `itemId` ni `skill`.
+  [ADR-0009](adr/0009-server-derived-attempt-target.md). La commande de
+  tentative cliente ne transporte ni `itemId` ni `skill` et ne peut donc pas
+  choisir la projection à affecter. La projection générique de réponse v1
+  conserve l'identifiant opaque documenté par l'ADR-0007.
 - `OPEN-SYNC-001` — résolue par une fenêtre serveur inclusive de trente jours
   dans le passé et cinq minutes dans le futur, sans réécriture de
   `answeredAt`, dans [ADR-0010](adr/0010-attempt-temporal-trust.md).

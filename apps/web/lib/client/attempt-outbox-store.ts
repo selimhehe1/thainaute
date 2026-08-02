@@ -28,6 +28,7 @@ import {
   enqueueAttempt,
   idempotencyKeySchema,
   prepareAttemptOutboxBatch,
+  rejectAttemptOutboxInFlightIdempotencyConflict,
   rejectContentReport as applyContentReportRejection,
   resumeAnonymousProgressFusion as resumeFusion,
   resumeAttemptOutboxAfterDeviceRegistration,
@@ -296,7 +297,8 @@ function attemptEntriesAreEqual(
     return (
       right.status === "synced" &&
       left.serverStatus === right.serverStatus &&
-      left.rating === right.rating
+      left.rating === right.rating &&
+      left.feedbackFr === right.feedbackFr
     );
   }
   return right.status === "rejected" && left.code === right.code;
@@ -859,6 +861,12 @@ export class WebAttemptOutboxStore {
     response: AttemptBatchResponse,
   ): Promise<ApplyAttemptOutboxSuccessResult> {
     return this.#applySuccessWithFusion(response);
+  }
+
+  public rejectInFlightIdempotencyConflict(): Promise<AttemptOutboxSnapshot> {
+    return this.#replace((snapshot) =>
+      rejectAttemptOutboxInFlightIdempotencyConflict(snapshot),
+    );
   }
 
   public applyProgressSnapshot(

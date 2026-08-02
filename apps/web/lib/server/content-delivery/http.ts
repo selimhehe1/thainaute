@@ -2,8 +2,10 @@ import { randomUUID } from "node:crypto";
 
 import {
   publicContentErrorResponseSchema,
+  publicContentReleaseIdSchema,
   publicLessonVersionIdSchema,
   type PublicLessonResponse,
+  type PublicReleaseResponse,
 } from "@thainaute/content/public";
 
 import {
@@ -12,14 +14,18 @@ import {
   ContentIntegrityError,
 } from "./errors";
 import { apiResponseHeaders } from "../api-http";
-import { toPublicLessonResponse } from "./mapper";
-import type { PublishedLessonRepository } from "./ports";
+import { toPublicLessonResponse, toPublicReleaseResponse } from "./mapper";
+import type {
+  PublishedLessonRepository,
+  PublishedReleaseRepository,
+} from "./ports";
 
 const REVOCABLE_CACHE_CONTROL =
   "public, max-age=0, s-maxage=300, must-revalidate";
 
 export interface PublishedLessonHttpDependencies {
   readonly repository: PublishedLessonRepository;
+  readonly activeReleaseId: string;
   readonly requestIdFactory?: () => string;
   readonly reportOperationalFailure?: (event: {
     readonly operation: "published_lesson_read";
@@ -28,7 +34,7 @@ export interface PublishedLessonHttpDependencies {
   }) => void;
 }
 
-function errorResponse(
+export function contentDeliveryErrorResponse(
   error: ContentDeliveryError,
   requestId: string,
 ): Response {
@@ -51,6 +57,10 @@ function errorResponse(
 
 function contentEtag(response: PublicLessonResponse): string {
   return `"sha256-${response.contentSha256}"`;
+}
+
+function releaseEtag(response: PublicReleaseResponse): string {
+  return `"sha256-${response.manifestSha256}"`;
 }
 
 function matchesIfNoneMatch(value: string | null, etag: string): boolean {
@@ -107,6 +117,9 @@ export function createPublishedLessonHttpHandler(
       if (verified === null) {
         throw new ContentDeliveryError("content_not_found");
       }
+      if (verified.release.id !== dependencies.activeReleaseId) {
+        throw new ContentDeliveryError("content_not_found");
+      }
       const responseBody = toPublicLessonResponse(verified);
       if (responseBody === null) {
         throw new ContentDeliveryError("content_not_found");
@@ -138,15 +151,99 @@ export function createPublishedLessonHttpHandler(
           requestId,
         });
       }
-      return errorResponse(apiError, requestId);
+      return contentDeliveryErrorResponse(apiError, requestId);
     }
   };
 }
 
 export function unavailablePublishedLessonResponse(): Response {
   const requestId = randomUUID();
-  return errorResponse(
+  return contentDeliveryErrorResponse(
     new ContentDeliveryError("content_unavailable"),
     requestId,
   );
+}
+
+export interface PublishedReleaseHttpDependencies {
+  readonly repository: PublishedReleaseRepository;
+  readonly requestIdFactory?: () => string;
+  readonly reportOperationalFailure?: (event: {
+    readonly operation: "published_release_read";
+    readonly errorKind: "content_integrity_failed" | "content_unavailable";
+    readonly requestId: string;
+  }) => void;
+}
+
+export function createPublishedReleaseHttpHandler(
+  dependencies: PublishedReleaseHttpDependencies,
+) {
+  return async function handlePublishedRelease(
+    request: Request,
+    rawReleaseId: string,
+  ): Promise<Response> {
+    const requestId = (dependencies.requestIdFactory ?? randomUUID)();
+
+    try {
+      const releaseIdResult =
+        publicContentReleaseIdSchema.safeParse(rawReleaseId);
+      if (!releaseIdResult.success) {
+        throw new ContentDeliveryError("invalid_content_id");
+      }
+
+      let verified;
+      try {
+        verified = await dependencies.repository.loadPublishedRelease(
+          releaseIdResult.data,
+        );
+      } catch (error) {
+        if (error instanceof ContentInfrastructureError) throw error;
+        if (error instanceof ContentIntegrityError) {
+          dependencies.reportOperationalFailure?.({
+            operation: "published_release_read",
+            errorKind: "content_integrity_failed",
+            requestId,
+          });
+          throw new ContentDeliveryError("content_not_found");
+        }
+        throw new ContentInfrastructureError();
+      }
+
+      if (verified === null)
+        throw new ContentDeliveryError("content_not_found");
+      const responseBody = toPublicReleaseResponse(verified);
+      if (responseBody === null) {
+        dependencies.reportOperationalFailure?.({
+          operation: "published_release_read",
+          errorKind: "content_integrity_failed",
+          requestId,
+        });
+        throw new ContentDeliveryError("content_not_found");
+      }
+
+      const etag = releaseEtag(responseBody);
+      if (matchesIfNoneMatch(request.headers.get("if-none-match"), etag)) {
+        return new Response(null, {
+          status: 304,
+          headers: successHeaders(304, etag),
+        });
+      }
+      return Response.json(responseBody, {
+        status: 200,
+        headers: successHeaders(200, etag),
+      });
+    } catch (error) {
+      const apiError =
+        error instanceof ContentDeliveryError
+          ? error
+          : new ContentDeliveryError("content_unavailable");
+      if (apiError.code === "content_unavailable") {
+        dependencies.reportOperationalFailure?.({
+          operation: "published_release_read",
+          errorKind: "content_unavailable",
+          requestId,
+        });
+      }
+      return contentDeliveryErrorResponse(apiError, requestId);
+    }
+  };
 }

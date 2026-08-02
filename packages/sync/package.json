@@ -17,6 +17,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
+    "@thainaute/content": "workspace:*",
     "@thainaute/domain": "workspace:*",
     "zod": "4.4.3"
   },

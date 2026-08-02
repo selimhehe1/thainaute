@@ -1,5 +1,5 @@
 import type { AccountDeletionReceipt } from "@thainaute/sync";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   WEB_ACCOUNT_DELETION_STORAGE_KEY,
@@ -11,6 +11,7 @@ import {
   completePendingWebAccountDeletion,
   createPendingWebAccountDeletion,
   readPendingWebAccountDeletion,
+  withNoPendingWebAccountDeletion,
 } from "../lib/client/account-deletion";
 
 const ids = {
@@ -81,6 +82,10 @@ describe("suppression de compte web locale", () => {
     lockManager = new SerialLockManager();
   });
 
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
   it("persiste une operation versionnee avec 32 octets CSPRNG sans donnee de session", async () => {
     const operation = await createPendingWebAccountDeletion(ids.userA, {
       crypto: cryptoPort,
@@ -147,6 +152,39 @@ describe("suppression de compte web locale", () => {
     expect(() =>
       assertNoPendingWebAccountDeletion(ids.userB, storage),
     ).not.toThrow();
+  });
+
+  it("sérialise une mutation réelle avant la création concurrente de la suppression", async () => {
+    vi.stubGlobal("localStorage", storage);
+    vi.stubGlobal("navigator", { locks: lockManager });
+    let markStarted!: () => void;
+    let releaseMutation!: () => void;
+    const started = new Promise<void>((resolve) => {
+      markStarted = resolve;
+    });
+    const gate = new Promise<void>((resolve) => {
+      releaseMutation = resolve;
+    });
+    const mutation = withNoPendingWebAccountDeletion(ids.userA, async () => {
+      markStarted();
+      await gate;
+    });
+    await started;
+
+    const deletion = createPendingWebAccountDeletion(ids.userA, {
+      crypto: cryptoPort,
+      lockManager,
+      storage,
+    });
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(storage.getItem(WEB_ACCOUNT_DELETION_STORAGE_KEY)).toBeNull();
+
+    releaseMutation();
+    await mutation;
+    await expect(deletion).resolves.toMatchObject({
+      expectedUserId: ids.userA,
+    });
   });
 
   it("garde la reprise apres une reponse perdue puis rejoue les memes identifiants", async () => {

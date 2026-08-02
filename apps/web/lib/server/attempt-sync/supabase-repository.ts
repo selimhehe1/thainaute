@@ -148,11 +148,18 @@ function toAttemptEvent(
 
 export function derivePublishedAnswerKeys(
   rows: unknown,
+  activeReleaseId: string,
 ): ServerExerciseAnswerKey[] {
   const answerKeys: ServerExerciseAnswerKey[] = [];
 
-  for (const { bundle } of verifyPublishedBundleRows(rows)) {
+  for (const { bundle, release } of verifyPublishedBundleRows(rows)) {
     const { lesson } = bundle;
+    if (
+      release.id !== activeReleaseId.toLowerCase() ||
+      lesson.requiredEntitlement !== null
+    ) {
+      continue;
+    }
 
     const itemIds = new Set(lesson.items.map((item) => item.id));
     for (const exercise of lesson.exercises) {
@@ -172,6 +179,7 @@ export function derivePublishedAnswerKeys(
         skill: exercise.skill,
         contentVersionId: lesson.versionId,
         validOptionIds,
+        feedback: exercise.feedback,
       });
     }
   }
@@ -306,6 +314,7 @@ async function callCommitRpc(
 export function createSupabaseAttemptRepository(input: {
   readonly url: string;
   readonly secretKey: string;
+  readonly releaseId: string;
 }): AttemptRepository {
   const client = createClient(input.url, input.secretKey, {
     auth: {
@@ -337,6 +346,7 @@ export function createSupabaseAttemptRepository(input: {
             "id,lesson_id,version,release_id,status,title_fr,payload,payload_sha256,published_at,content_releases!inner(id,version,status,published_at)",
           )
           .in("id", contentVersionIds)
+          .eq("release_id", input.releaseId)
           .eq("status", "published")
           .eq("content_releases.status", "published");
         const eventIdentityPromise = client
@@ -374,7 +384,10 @@ export function createSupabaseAttemptRepository(input: {
         }
 
         const devices = parseRows(deviceRowSchema, devicesResponse.data);
-        const answerKeys = derivePublishedAnswerKeys(lessonsResponse.data);
+        const answerKeys = derivePublishedAnswerKeys(
+          lessonsResponse.data,
+          input.releaseId,
+        );
         const { itemIds, requestedPairs } = deriveAuthoritativeAttemptScope(
           attempts,
           answerKeys,

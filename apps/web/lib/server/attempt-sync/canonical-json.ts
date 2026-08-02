@@ -39,9 +39,14 @@ export function hashCanonical(namespace: string, value: unknown): string {
   return createHash("sha256").update(canonicalValue, "utf8").digest("hex");
 }
 
-export function hashAttemptBatch(batch: unknown): string {
-  return hashCanonical(
-    "thainaute.attempt-batch/v1:/api/v1/attempts/batch",
+export function hashAttemptBatch(
+  batch: unknown,
+  activeReleaseId: string,
+  contentEligibility: unknown,
+): string {
+  return hashCanonical("thainaute.attempt-batch/v2:/api/v1/attempts/batch", {
+    activeReleaseId,
     batch,
-  );
+    contentEligibility,
+  });
 }

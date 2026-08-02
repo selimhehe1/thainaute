@@ -6,6 +6,7 @@ import {
   MAX_ATTEMPTS_PER_BATCH,
   attemptBatchResponseSchema,
   attemptBatchSchema,
+  attemptFeedbackSchema,
   attemptRejectionCodeSchema,
   attemptSubmissionSchema,
   idempotencyKeySchema,
@@ -69,6 +70,8 @@ const syncedAttemptOutboxEntrySchema = z.strictObject({
   submission: attemptSubmissionSchema,
   serverStatus: z.enum(["accepted", "duplicate"]),
   rating: attemptRatingSchema,
+  /** Optionnel pour relire les snapshots et réponses persistés avant feedback. */
+  feedbackFr: attemptFeedbackSchema.optional(),
 });
 
 const rejectedAttemptOutboxEntrySchema = z.strictObject({
@@ -568,6 +571,9 @@ export function applyAttemptOutboxSuccess(
       submission: entry.submission,
       serverStatus: result.status,
       rating: result.rating,
+      ...(result.feedbackFr === undefined
+        ? {}
+        : { feedbackFr: result.feedbackFr }),
     };
   });
   const responseIsCurrent = response.syncRevision >= snapshot.syncRevision;
@@ -589,6 +595,40 @@ export function applyAttemptOutboxSuccess(
         entry.retryReason === "device_not_registered",
     ),
   };
+}
+
+/**
+ * Libère durablement un lot dont la clé est entrée en conflit avec un commit
+ * serveur existant. Le même lot ne peut plus être rejoué sous cette clé ; les
+ * entrées suivantes doivent néanmoins pouvoir continuer à se synchroniser.
+ */
+export function rejectAttemptOutboxInFlightIdempotencyConflict(
+  snapshotInput: AttemptOutboxSnapshot,
+): AttemptOutboxSnapshot {
+  const snapshot = attemptOutboxSnapshotSchema.parse(snapshotInput);
+  const inFlight = snapshot.inFlight;
+  if (inFlight === null) {
+    throw new AttemptOutboxResponseMismatchError(
+      "Aucun lot en vol ne peut recevoir ce conflit d’idempotence.",
+    );
+  }
+
+  const inFlightIds = new Set(inFlight.eventIds);
+  const entries = snapshot.entries.map((entry): AttemptOutboxEntry =>
+    inFlightIds.has(entry.submission.eventId)
+      ? {
+          status: "rejected",
+          submission: entry.submission,
+          code: "invalid_submission",
+        }
+      : entry,
+  );
+
+  return attemptOutboxSnapshotSchema.parse({
+    ...snapshot,
+    entries: compactTerminalEntries(entries),
+    inFlight: null,
+  });
 }
 
 /** JSON canonique validé avant écriture dans IndexedDB ou SQLite. */

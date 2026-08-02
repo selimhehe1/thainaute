@@ -231,6 +231,24 @@ describe("outbox IndexedDB web", () => {
     await second.deleteForTests();
   });
 
+  it("persiste la libération terminale d'un conflit d'idempotence", async () => {
+    const name = databaseName();
+    const first = new WebAttemptOutboxStore(name);
+    await first.enqueue(submission);
+    await first.prepare(ids.idempotency);
+    await first.rejectInFlightIdempotencyConflict();
+    first.close();
+
+    const reopened = new WebAttemptOutboxStore(name);
+    const persisted = await reopened.read();
+    expect(persisted.inFlight).toBeNull();
+    expect(persisted.entries[0]).toMatchObject({
+      status: "rejected",
+      code: "invalid_submission",
+    });
+    await reopened.deleteForTests();
+  });
+
   it("migre un snapshot IndexedDB v2 avant de préparer un nouveau lot", async () => {
     const name = databaseName();
     const seed = new Dexie(name);
@@ -318,6 +336,47 @@ describe("outbox IndexedDB web", () => {
     const demoInspector = new WebAttemptOutboxStore(names.demoDatabaseName);
     expect((await demoInspector.read()).entries).toHaveLength(1);
     demoInspector.close();
+    await deleteMigrationDatabases(names);
+  });
+
+  it("refuse de dédupliquer deux entries synchronisées dont le feedback diffère", async () => {
+    const names = migrationDatabaseNames();
+    const learning = new WebAttemptOutboxStore(names.learningDatabaseName);
+    const demo = new WebAttemptOutboxStore(names.demoDatabaseName);
+    await learning.enqueue(legacyFixtureSubmission);
+    await learning.prepare(ids.idempotency);
+    await learning.applySuccess({
+      syncRevision: 1,
+      results: [
+        {
+          eventId: ids.fixtureEvent,
+          status: "accepted",
+          rating: 1,
+          feedbackFr: "Correction source.",
+        },
+      ],
+      states: [],
+    });
+    await demo.enqueue(legacyFixtureSubmission);
+    await demo.prepare(ids.ignoredIdempotency);
+    await demo.applySuccess({
+      syncRevision: 1,
+      results: [
+        {
+          eventId: ids.fixtureEvent,
+          status: "accepted",
+          rating: 1,
+          feedbackFr: "Correction destination.",
+        },
+      ],
+      states: [],
+    });
+    learning.close();
+    demo.close();
+
+    await expect(migrateLegacyDemoFixtureAttempts(names)).rejects.toThrow(
+      "état de synchronisation différent",
+    );
     await deleteMigrationDatabases(names);
   });
 

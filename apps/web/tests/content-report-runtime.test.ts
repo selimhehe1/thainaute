@@ -14,6 +14,7 @@ import {
 } from "../lib/server/content-report/runtime";
 
 const SUPABASE_ENVIRONMENT = {
+  THAINAUTE_PUBLIC_CONTENT_RELEASE_ID: "30000000-0000-4000-8000-000000000001",
   NEXT_PUBLIC_SUPABASE_URL: "https://project.supabase.co",
   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_example_public_value",
   SUPABASE_SECRET_KEY: "sb_secret_example_server_value",
@@ -89,6 +90,7 @@ describe("configuration des signalements structurés", () => {
       checkAuth: vi.fn().mockResolvedValue(true),
       checkDataApi: vi.fn().mockResolvedValue(true),
       checkContentReportsDataApi: vi.fn().mockResolvedValue(true),
+      checkPublicContentDataApi: vi.fn(),
     };
     const environment = {
       THAINAUTE_CONTENT_REPORT_MODE: "supabase",
@@ -190,6 +192,7 @@ describe("configuration des signalements structurés", () => {
       checkAuth: vi.fn().mockResolvedValue(true),
       checkDataApi: vi.fn().mockResolvedValue(true),
       checkContentReportsDataApi: vi.fn().mockResolvedValue(false),
+      checkPublicContentDataApi: vi.fn(),
     };
     const assessment = await assessReadiness({
       environment: {

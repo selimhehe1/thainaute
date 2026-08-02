@@ -178,8 +178,18 @@ describe("outbox locale sérialisable", () => {
     const applied = applyAttemptOutboxSuccess(prepared.snapshot, {
       syncRevision: 1,
       results: [
-        { eventId: eventId(1), status: "accepted", rating: 1 },
-        { eventId: eventId(2), status: "duplicate", rating: 0 },
+        {
+          eventId: eventId(1),
+          status: "accepted",
+          rating: 1,
+          feedbackFr: "Bonne réponse.",
+        },
+        {
+          eventId: eventId(2),
+          status: "duplicate",
+          rating: 0,
+          feedbackFr: "Réponse à revoir.",
+        },
         {
           eventId: eventId(3),
           status: "rejected",
@@ -192,11 +202,30 @@ describe("outbox locale sérialisable", () => {
     expect(applied.snapshot.inFlight).toBeNull();
     expect(applied.snapshot.syncRevision).toBe(1);
     expect(applied.snapshot.entries).toMatchObject([
-      { status: "synced", serverStatus: "accepted", rating: 1 },
-      { status: "synced", serverStatus: "duplicate", rating: 0 },
+      {
+        status: "synced",
+        serverStatus: "accepted",
+        rating: 1,
+        feedbackFr: "Bonne réponse.",
+      },
+      {
+        status: "synced",
+        serverStatus: "duplicate",
+        rating: 0,
+        feedbackFr: "Réponse à revoir.",
+      },
       { status: "rejected", code: "invalid_submission" },
     ]);
     expect(applied.snapshot.authoritativeStates).toEqual([state()]);
+
+    const restored = deserializeAttemptOutboxSnapshot(
+      serializeAttemptOutboxSnapshot(applied.snapshot),
+    );
+    expect(restored.entries).toMatchObject([
+      { feedbackFr: "Bonne réponse." },
+      { feedbackFr: "Réponse à revoir." },
+      { status: "rejected" },
+    ]);
   });
 
   it("refuse une réponse sans lot ou dont les résultats ne correspondent pas", () => {

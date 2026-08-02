@@ -38,6 +38,7 @@ const utcIsoTimestampSchema = z.iso
   .datetime({ precision: 3, offset: true })
   .transform((timestamp) => new Date(timestamp).toISOString());
 const attemptRatingSchema = z.union([z.literal(0), z.literal(1)]);
+export const attemptFeedbackSchema = z.string().min(1).max(280);
 const canonicalUuidSchema = z.uuid().transform((uuid) => uuid.toLowerCase());
 
 /** Valeur attendue dans l'en-tête HTTP `Idempotency-Key`. */
@@ -87,11 +88,15 @@ export const attemptBatchResultSchema = z.discriminatedUnion("status", [
     eventId: canonicalUuidSchema,
     status: z.literal("accepted"),
     rating: attemptRatingSchema,
+    /** Absent seulement lors du rejeu d'une réponse v1 déjà persistée. */
+    feedbackFr: attemptFeedbackSchema.optional(),
   }),
   z.strictObject({
     eventId: canonicalUuidSchema,
     status: z.literal("duplicate"),
     rating: attemptRatingSchema,
+    /** Absent seulement lors du rejeu d'une réponse v1 déjà persistée. */
+    feedbackFr: attemptFeedbackSchema.optional(),
   }),
   z.strictObject({
     eventId: canonicalUuidSchema,

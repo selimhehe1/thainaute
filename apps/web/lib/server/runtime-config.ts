@@ -8,6 +8,12 @@ import {
   readContentReportMode,
   type ContentReportMode,
 } from "./content-report/runtime";
+import {
+  readActiveContentReleaseId,
+  readPublicContentConfiguration,
+  readPublicContentMode,
+  type PublicContentMode,
+} from "./content-delivery/runtime";
 import { readContentStudioConfiguration } from "./content-studio/runtime";
 
 const LOCAL_PUBLIC_URL = "http://localhost:3000/";
@@ -24,9 +30,13 @@ export type RuntimeIssue =
   | "content_report_mode_invalid"
   | "content_report_rate_limit_missing"
   | "content_report_sync_required"
+  | "public_content_config_missing"
+  | "public_content_mode_invalid"
+  | "public_content_rate_limit_missing"
   | "public_indexing_invalid"
   | "public_url_invalid"
   | "release_invalid"
+  | "sync_release_config_missing"
   | "studio_config_missing"
   | "studio_report_config_missing"
   | "studio_mode_invalid"
@@ -40,6 +50,7 @@ export interface RuntimeDiagnostic {
   readonly publicIndexing: boolean;
   readonly syncMode: SyncMode | null;
   readonly contentReportMode: ContentReportMode | null;
+  readonly publicContentMode: PublicContentMode | null;
   readonly studioMode: StudioMode | null;
   readonly issues: readonly RuntimeIssue[];
 }
@@ -122,6 +133,12 @@ export function diagnoseRuntime(
   ) {
     issues.push("account_deletion_config_missing");
   }
+  if (
+    syncMode === "supabase" &&
+    readActiveContentReleaseId(environment) === null
+  ) {
+    issues.push("sync_release_config_missing");
+  }
 
   const contentReportMode = readContentReportMode(environment);
   if (contentReportMode === null) {
@@ -137,6 +154,18 @@ export function diagnoseRuntime(
     // promu tant que ses seuils compte/IP et son comportement de repli restent
     // indécis et non implémentés.
     issues.push("content_report_rate_limit_missing");
+  }
+
+  const publicContentMode = readPublicContentMode(environment);
+  if (publicContentMode === null) {
+    issues.push("public_content_mode_invalid");
+  } else if (publicContentMode === "supabase") {
+    if (readPublicContentConfiguration(environment) === null) {
+      issues.push("public_content_config_missing");
+    }
+    // OPEN-API-001 couvre aussi les lectures publiques. Le cache réduit la
+    // charge normale, mais ne remplace pas une limite autoritaire par IP.
+    issues.push("public_content_rate_limit_missing");
   }
 
   const studioMode = resolveStudioMode(environment.THAINAUTE_STUDIO_MODE);
@@ -161,6 +190,7 @@ export function diagnoseRuntime(
     publicIndexing,
     syncMode,
     contentReportMode,
+    publicContentMode,
     studioMode,
     issues,
   };

@@ -104,6 +104,10 @@ export async function synchronizeWebAccount(input: {
         assertNoPendingWebAccountDeletion(input.userId);
         return store.applySuccess(response);
       },
+      rejectInFlightIdempotencyConflict: async () => {
+        assertNoPendingWebAccountDeletion(input.userId);
+        return store.rejectInFlightIdempotencyConflict();
+      },
       applyProgressSnapshot: async (
         response: Parameters<typeof store.applyProgressSnapshot>[0],
       ) => {

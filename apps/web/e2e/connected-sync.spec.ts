@@ -510,6 +510,7 @@ test("fusionne puis rejoue une progression sur deux transports et deux navigateu
     eventId: WEB_EVENT_ID,
     status: "accepted",
     rating: 1,
+    feedbackFr: "La boucle technique fonctionne.",
   });
   expect(
     singleItem(webBatch.states, "Le lot web doit produire un état."),
@@ -548,6 +549,7 @@ test("fusionne puis rejoue une progression sur deux transports et deux navigateu
     submission: submittedWebAttempt,
     serverStatus: "accepted",
     rating: 1,
+    feedbackFr: "La boucle technique fonctionne.",
   });
 
   const androidClient = createSyncHttpClient({
@@ -601,6 +603,7 @@ test("fusionne puis rejoue une progression sur deux transports et deux navigateu
     eventId: ANDROID_EVENT_ID,
     status: "accepted",
     rating: 1,
+    feedbackFr: "La boucle technique fonctionne.",
   });
   expect(
     singleItem(

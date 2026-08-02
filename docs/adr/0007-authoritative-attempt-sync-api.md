@@ -118,10 +118,17 @@ Le serveur calcule un SHA-256 canonique du contrat et du corps validé :
 - révision concurrente : rechargement et recalcul bornés à trois tentatives,
   puis `409 concurrent_update`.
 
-Le hash est calculé sur le corps client canonique, sans `itemId` ni `skill`, et
-pas sur les octets JSON bruts : les différences sans effet de sérialisation ne
-créent pas de fausse divergence. Le hash de l'événement persistant inclut en
-revanche les valeurs dérivées autoritaires.
+Le hash est calculé sur le corps client canonique, l'UUID de la release active et
+l'empreinte des clés de correction actuellement éligibles, sans exposer cette
+empreinte au client. Il ne porte pas sur les octets JSON bruts : les différences
+sans effet de sérialisation ne créent pas de fausse divergence. Une bascule ou
+révocation ne peut donc pas rejouer une ancienne correction. Une première
+soumission mixte conserve toutefois un résultat par tentative, afin qu'un rejet
+de contenu obsolète n'annule pas les tentatives valides du lot. Le hash de
+l'événement persistant inclut en revanche les valeurs dérivées autoritaires. Si
+un commit antérieur entre alors en conflit, le client classe durablement son lot
+en vol comme terminal, libère la file et poursuit les tentatives suivantes ; les
+autres erreurs de transport conservent le rejeu exact.
 
 ## Sécurité et confidentialité
 

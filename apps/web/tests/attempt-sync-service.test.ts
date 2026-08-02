@@ -27,9 +27,13 @@ const UNKNOWN_OPTION_ID = "42000000-0000-4000-8000-000000000003";
 const IDEMPOTENCY_KEY = "50000000-0000-4000-8000-000000000001";
 const SECOND_IDEMPOTENCY_KEY = "50000000-0000-4000-8000-000000000002";
 const THIRD_IDEMPOTENCY_KEY = "50000000-0000-4000-8000-000000000003";
+const ACTIVE_RELEASE_ID = "60000000-0000-4000-8000-000000000001";
+const NEXT_RELEASE_ID = "60000000-0000-4000-8000-000000000002";
 const SERVER_NOW_MS = Date.parse("2026-08-02T10:00:00.000Z");
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1_000;
 const FIVE_MINUTES_MS = 5 * 60 * 1_000;
+const CORRECT_FEEDBACK = "Bonne réponse autoritaire.";
+const INCORRECT_FEEDBACK = "Cette réponse doit être revue.";
 
 const ANSWER_KEY: ServerExerciseAnswerKey = {
   exerciseId: EXERCISE_ID,
@@ -38,6 +42,10 @@ const ANSWER_KEY: ServerExerciseAnswerKey = {
   skill: "listening",
   contentVersionId: VERSION_ID,
   validOptionIds: [CORRECT_OPTION_ID, WRONG_OPTION_ID],
+  feedback: {
+    correctFr: CORRECT_FEEDBACK,
+    incorrectFr: INCORRECT_FEEDBACK,
+  },
 };
 
 function attempt(overrides: Readonly<Record<string, unknown>> = {}) {
@@ -62,6 +70,7 @@ interface StoredIdempotency {
 class MemoryAttemptRepository implements AttemptRepository {
   public revision = 0;
   public events: AttemptEvent[] = [];
+  public answerKeys: ServerExerciseAnswerKey[] = [ANSWER_KEY];
   public commitCalls = 0;
   public loadCalls = 0;
   public forceOneRevisionConflict = false;
@@ -74,7 +83,7 @@ class MemoryAttemptRepository implements AttemptRepository {
       registeredDeviceIds: [DEVICE_ID],
       existingEvents: [...this.events],
       collidingEventIds: [],
-      answerKeys: [ANSWER_KEY],
+      answerKeys: [...this.answerKeys],
     };
   }
 
@@ -116,8 +125,12 @@ function batch(...attempts: ReturnType<typeof attempt>[]) {
 function synchronizer(
   repository: AttemptRepository,
   clock: () => number = () => SERVER_NOW_MS,
+  activeReleaseId: string = ACTIVE_RELEASE_ID,
 ) {
-  return createAttemptBatchSynchronizer(repository, clock);
+  return createAttemptBatchSynchronizer(repository, {
+    activeReleaseId,
+    clock,
+  });
 }
 
 describe("synchronisation autoritaire des tentatives", () => {
@@ -132,7 +145,12 @@ describe("synchronisation autoritaire des tentatives", () => {
     });
 
     expect(response.results).toEqual([
-      { eventId: EVENT_ID, status: "accepted", rating: 1 },
+      {
+        eventId: EVENT_ID,
+        status: "accepted",
+        rating: 1,
+        feedbackFr: CORRECT_FEEDBACK,
+      },
     ]);
     expect(response.syncRevision).toBe(1);
     expect(response.states[0]).toMatchObject({
@@ -141,6 +159,27 @@ describe("synchronisation autoritaire des tentatives", () => {
       attemptCount: 1,
     });
     expect(repository.events[0]).toMatchObject({ userId: USER_ID, rating: 1 });
+  });
+
+  it("retourne le feedback incorrect du bundle publié", async () => {
+    const repository = new MemoryAttemptRepository();
+    const synchronize = synchronizer(repository);
+
+    const response = await synchronize({
+      userId: USER_ID,
+      idempotencyKey: IDEMPOTENCY_KEY,
+      batch: batch(attempt({ selectedOptionId: WRONG_OPTION_ID })),
+    });
+
+    expect(response.results).toEqual([
+      {
+        eventId: EVENT_ID,
+        status: "accepted",
+        rating: 0,
+        feedbackFr: INCORRECT_FEEDBACK,
+      },
+    ]);
+    expect(repository.events[0]?.rating).toBe(0);
   });
 
   it("rejoue exactement la première réponse sans second effet", async () => {
@@ -157,6 +196,41 @@ describe("synchronisation autoritaire des tentatives", () => {
 
     expect(replay).toEqual(first);
     expect(replay.results[0]?.status).toBe("accepted");
+    expect(repository.events).toHaveLength(1);
+  });
+
+  it("ne rejoue pas une correction après une bascule de release", async () => {
+    const repository = new MemoryAttemptRepository();
+    const input = {
+      userId: USER_ID,
+      idempotencyKey: IDEMPOTENCY_KEY,
+      batch: batch(attempt()),
+    };
+    await synchronizer(repository)(input);
+
+    await expect(
+      synchronizer(repository, () => SERVER_NOW_MS, NEXT_RELEASE_ID)(input),
+    ).rejects.toMatchObject({
+      code: "idempotency_key_reused",
+    } satisfies Partial<AttemptApiError>);
+    expect(repository.events).toHaveLength(1);
+  });
+
+  it("ne rejoue pas une correction si la même release devient inéligible", async () => {
+    const repository = new MemoryAttemptRepository();
+    const synchronize = synchronizer(repository);
+    const input = {
+      userId: USER_ID,
+      idempotencyKey: IDEMPOTENCY_KEY,
+      batch: batch(attempt()),
+    };
+    await synchronize(input);
+    repository.answerKeys = [];
+
+    await expect(synchronize(input)).rejects.toMatchObject({
+      code: "idempotency_key_reused",
+    } satisfies Partial<AttemptApiError>);
+    expect(repository.commitCalls).toBe(2);
     expect(repository.events).toHaveLength(1);
   });
 
@@ -228,6 +302,7 @@ describe("synchronisation autoritaire des tentatives", () => {
       eventId: EVENT_ID,
       status: "duplicate",
       rating: 1,
+      feedbackFr: CORRECT_FEEDBACK,
     });
     expect(response.states[0]?.attemptCount).toBe(1);
     expect(repository.events).toHaveLength(1);
@@ -270,7 +345,12 @@ describe("synchronisation autoritaire des tentatives", () => {
     });
 
     expect(response.results).toEqual([
-      { eventId: EVENT_ID, status: "accepted", rating: 1 },
+      {
+        eventId: EVENT_ID,
+        status: "accepted",
+        rating: 1,
+        feedbackFr: CORRECT_FEEDBACK,
+      },
       {
         eventId: SECOND_EVENT_ID,
         status: "rejected",
@@ -304,7 +384,7 @@ describe("synchronisation autoritaire des tentatives", () => {
     expect(repository.events).toHaveLength(0);
   });
 
-  it("ne révèle pas pourquoi la clé publiée est absente", async () => {
+  it("rejette sans correction la tentative dont la clé publiée est absente", async () => {
     const repository = new MemoryAttemptRepository();
     repository.loadSnapshot = async () => ({
       revision: 0,
@@ -333,6 +413,44 @@ describe("synchronisation autoritaire des tentatives", () => {
       states: [],
     });
     expect(repository.events).toHaveLength(0);
+    expect(repository.commitCalls).toBe(1);
+  });
+
+  it("rejette l'ancien contenu sans annuler une tentative active du même lot", async () => {
+    const repository = new MemoryAttemptRepository();
+    const synchronize = synchronizer(repository);
+
+    const response = await synchronize({
+      userId: USER_ID,
+      idempotencyKey: IDEMPOTENCY_KEY,
+      batch: batch(
+        attempt({
+          exerciseId: "41000000-0000-4000-8000-000000000099",
+          contentVersionId: "31000000-0000-4000-8000-000000000099",
+        }),
+        attempt({
+          eventId: SECOND_EVENT_ID,
+          answeredAt: "2026-08-01T10:01:00.000Z",
+        }),
+      ),
+    });
+
+    expect(response.results).toEqual([
+      {
+        eventId: EVENT_ID,
+        status: "rejected",
+        code: "answer_key_not_found",
+      },
+      {
+        eventId: SECOND_EVENT_ID,
+        status: "accepted",
+        rating: 1,
+        feedbackFr: CORRECT_FEEDBACK,
+      },
+    ]);
+    expect(repository.events.map(({ eventId }) => eventId)).toEqual([
+      SECOND_EVENT_ID,
+    ]);
   });
 
   it("échoue fermée si deux clés serveur divergent", async () => {
@@ -430,6 +548,7 @@ describe("synchronisation autoritaire des tentatives", () => {
         eventId: THIRD_EVENT_ID,
         status: "accepted",
         rating: 1,
+        feedbackFr: CORRECT_FEEDBACK,
       },
     ]);
     expect(response.states).toHaveLength(1);
@@ -473,6 +592,7 @@ describe("synchronisation autoritaire des tentatives", () => {
       eventId: EVENT_ID,
       status: "duplicate",
       rating: 1,
+      feedbackFr: CORRECT_FEEDBACK,
     });
     expect(collision.results[0]).toEqual({
       eventId: EVENT_ID,

@@ -163,6 +163,10 @@ export async function synchronizeMobileAccount(input: {
       await input.assertAccountWritable();
       return store.applySuccess(response);
     },
+    rejectInFlightIdempotencyConflict: async () => {
+      await input.assertAccountWritable();
+      return store.rejectInFlightIdempotencyConflict();
+    },
     applyProgressSnapshot: async (
       response: Parameters<typeof store.applyProgressSnapshot>[0],
     ) => {
