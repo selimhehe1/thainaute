@@ -63,10 +63,12 @@ export function LocalVoiceComparison({
   modelAudioSrc,
   onBeforeCapture,
   recorder,
+  sessionBoundaryRevision,
 }: {
   readonly modelAudioSrc: string;
   readonly onBeforeCapture?: () => void;
   readonly recorder?: LocalVoiceRecorder;
+  readonly sessionBoundaryRevision: number;
 }) {
   const localRecorder = useMemo(
     () => recorder ?? createBrowserLocalVoiceRecorder(),
@@ -89,6 +91,7 @@ export function LocalVoiceComparison({
   const mounted = useRef(true);
   const operationId = useRef(0);
   const captureBlocksPlayback = useRef(false);
+  const lastSessionBoundaryRevision = useRef(sessionBoundaryRevision);
 
   const stopCountdown = useCallback((): void => {
     if (countdownTimer.current !== null) {
@@ -181,6 +184,21 @@ export function LocalVoiceComparison({
       releaseVoiceResources();
     };
   }, [releaseVoiceResources, resetVoiceUi, stopPlaybacks]);
+
+  useEffect(() => {
+    if (lastSessionBoundaryRevision.current === sessionBoundaryRevision) return;
+    lastSessionBoundaryRevision.current = sessionBoundaryRevision;
+    const hadLocalVoiceActivity =
+      permissionRequest.current !== null ||
+      activeRecording.current !== null ||
+      recordingUrl.current !== null ||
+      capture !== null;
+    resetVoiceUi(
+      hadLocalVoiceActivity
+        ? "La session a changé : la prise locale a été supprimée de cet onglet."
+        : "",
+    );
+  }, [capture, resetVoiceUi, sessionBoundaryRevision]);
 
   function startCountdown(startedAt: number): void {
     stopCountdown();
@@ -306,7 +324,7 @@ export function LocalVoiceComparison({
 
   function deleteRecording(): void {
     if (capture === null) return;
-    resetVoiceUi("Prise supprimée de cet onglet.");
+    resetVoiceUi("Prise locale supprimée de cet onglet.");
   }
 
   const isRequesting = phase === "requesting_permission";
@@ -470,7 +488,7 @@ export function LocalVoiceComparison({
             type="button"
             onClick={deleteRecording}
           >
-            Supprimer ma prise
+            Supprimer cette prise locale
           </button>
         )}
       </div>

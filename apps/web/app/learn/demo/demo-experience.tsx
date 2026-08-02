@@ -23,6 +23,7 @@ import {
   AttemptOutboxStorageError,
   WebAttemptOutboxStore,
 } from "@/lib/client/attempt-outbox-store";
+import { useWebAuthSession } from "@/lib/client/auth-session";
 
 import { LocalVoiceComparison } from "./local-voice-comparison";
 
@@ -113,6 +114,7 @@ function subscribeToNetworkStatus(callback: () => void): () => void {
 }
 
 export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
+  const { sessionBoundaryRevision } = useWebAuthSession();
   const [store, setStore] = useState<WebAttemptOutboxStore | null>(null);
   const [stage, setStage] = useState<Stage>("intro");
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
@@ -501,6 +503,7 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
           <LocalVoiceComparison
             modelAudioSrc="/audio/fixture-tone.wav"
             onBeforeCapture={stopSignal}
+            sessionBoundaryRevision={sessionBoundaryRevision}
           />
           <p className="privacyNote">
             Cette démonstration technique reste isolée sur cet appareil et ne

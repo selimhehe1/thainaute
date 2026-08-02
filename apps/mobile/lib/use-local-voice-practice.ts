@@ -52,11 +52,15 @@ const RECORDER_HEALTH_GRACE_MS = 400;
 const RECORDER_TERMINAL_SETTLE_MS = 75;
 const RECORDER_TERMINAL_TIMEOUT_MS = 2_000;
 const RECORDING_PLAYER_TIMEOUT_MS = 2_500;
+const SESSION_BOUNDARY_NOTICE =
+  "La session a changé : l’activité vocale locale précédente a été interrompue et n’est plus accessible.";
 
 type VoiceOperation =
   "idle" | "permission" | "stopping" | "deleting" | "playback";
 type VoicePlaybackTarget = "model" | "recording";
 type StopReason = "background" | "interruption" | "limit" | "manual" | "route";
+type VoiceDeactivationReason =
+  "background" | "blur" | "route" | "session" | "unmount";
 type RecorderSessionPhase = "preparing" | "recording" | "stopping";
 
 export interface VoicePlaybackState {
@@ -88,6 +92,14 @@ interface NativeStopResult {
 interface VoiceFeedback {
   readonly error: string;
   readonly notice: string | null;
+}
+
+interface VoiceActivitySnapshot {
+  readonly hasRecorderSession: boolean;
+  readonly hasRecordingUri: boolean;
+  readonly hasStopInFlight: boolean;
+  readonly operation: VoiceOperation;
+  readonly playbackTarget: VoicePlaybackTarget | null;
 }
 
 function monotonicNow(): number {
@@ -230,6 +242,22 @@ function playbackStartIsBlocked(
   );
 }
 
+function detectSessionBoundVoiceActivity(
+  reason: VoiceDeactivationReason,
+  activity: VoiceActivitySnapshot,
+): boolean {
+  return (
+    reason === "session" &&
+    (activity.operation === "permission" ||
+      activity.operation === "stopping" ||
+      activity.operation === "deleting" ||
+      activity.hasRecorderSession ||
+      activity.hasStopInFlight ||
+      activity.hasRecordingUri ||
+      activity.playbackTarget === "recording")
+  );
+}
+
 function playbackError(target: VoicePlaybackTarget): string {
   return target === "model"
     ? "Le modèle audio est momentanément indisponible."
@@ -238,6 +266,7 @@ function playbackError(target: VoicePlaybackTarget): string {
 
 export function useLocalVoicePractice(
   modelPlayer: AudioPlayer,
+  sessionBoundaryRevision = 0,
 ): LocalVoicePractice {
   const recorderStatusListenerRef = useRef<(status: RecordingStatus) => void>(
     () => undefined,
@@ -281,6 +310,7 @@ export function useLocalVoicePractice(
   const stopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const healthTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const stopInFlightRef = useRef<Promise<string | null> | null>(null);
+  const observedSessionBoundaryRevisionRef = useRef(sessionBoundaryRevision);
 
   const setOperationState = useCallback((next: VoiceOperation) => {
     operationRef.current = next;
@@ -1255,13 +1285,30 @@ export function useLocalVoicePractice(
   }, [playTarget]);
 
   const deactivateVoice = useCallback(
-    async (reason: "background" | "blur" | "route" | "unmount") => {
+    async (reason: VoiceDeactivationReason) => {
+      const hadSessionBoundVoiceActivity = detectSessionBoundVoiceActivity(
+        reason,
+        {
+          hasRecorderSession: recorderSessionRef.current !== null,
+          hasRecordingUri: recordingUriRef.current !== null,
+          hasStopInFlight: stopInFlightRef.current !== null,
+          operation: operationRef.current,
+          playbackTarget: playbackRef.current?.target ?? null,
+        },
+      );
       captureGateRef.current.invalidate();
       playbackGateRef.current.invalidate();
       playbackDeactivationRequiredRef.current = true;
       cancelPendingPlayerValidation();
       pauseBothPlayers(false);
       finishOperation("playback");
+
+      if (reason === "session") {
+        const uri = recordingUriRef.current;
+        if (uri !== null) setRecordingState(uri, false);
+        showError("");
+        showNotice(hadSessionBoundVoiceActivity ? SESSION_BOUNDARY_NOTICE : "");
+      }
 
       const session = recorderSessionRef.current;
       if (session !== null) {
@@ -1273,12 +1320,15 @@ export function useLocalVoicePractice(
         }
       }
 
-      if (reason === "route" || reason === "unmount") {
+      if (reason === "route" || reason === "session" || reason === "unmount") {
         const uri = recordingUriRef.current;
         if (uri !== null) disposeRecordingUri(uri);
       }
 
       await deactivateAudioSession();
+      if (hadSessionBoundVoiceActivity) {
+        showNotice(SESSION_BOUNDARY_NOTICE);
+      }
     },
     [
       cancelPendingPlayerValidation,
@@ -1286,9 +1336,36 @@ export function useLocalVoicePractice(
       disposeRecordingUri,
       finishOperation,
       pauseBothPlayers,
+      setRecordingState,
+      showError,
+      showNotice,
       stopRecordingInternal,
     ],
   );
+
+  useEffect(() => {
+    if (
+      observedSessionBoundaryRevisionRef.current === sessionBoundaryRevision
+    ) {
+      return;
+    }
+
+    observedSessionBoundaryRevisionRef.current = sessionBoundaryRevision;
+    const handledRevision = sessionBoundaryRevision;
+    void deactivateVoice("session").then(() => {
+      if (
+        observedSessionBoundaryRevisionRef.current !== handledRevision ||
+        !mountedRef.current ||
+        !routeFocusedRef.current ||
+        !windowFocusedRef.current ||
+        appStateRef.current !== "active"
+      ) {
+        return;
+      }
+      captureGateRef.current.activate();
+      playbackGateRef.current.activate();
+    });
+  }, [deactivateVoice, sessionBoundaryRevision]);
 
   useEffect(() => {
     recorderStatusListenerRef.current = (status) => {

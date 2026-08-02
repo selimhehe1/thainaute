@@ -41,11 +41,21 @@ n’autorise aucun traitement vocal distant.
 
 ## Suppression et vérification
 
-- [ ] « Supprimer ma prise » arrête la lecture, libère les ressources et efface
-      immédiatement le fichier ou révoque l’URL d’objet, sans corbeille.
-- [ ] Refaire une prise, sortir de l’exercice, se déconnecter ou subir une
-      interruption déclenche la même suppression immédiate tant que
-      l’application contrôle encore le cycle.
+- [ ] « Supprimer cette prise locale » arrête la lecture, libère les ressources
+      et révoque immédiatement l’URL d’objet web ou tente l’effacement du
+      fichier natif privé, sans corbeille.
+- [ ] Si le système refuse l’effacement natif, la prise est immédiatement
+      non rejouable et son URI reste seulement dans l’état privé du hook, tant
+      qu’il reste monté, pour permettre une nouvelle tentative ; l’interface
+      signale l’échec sans prétendre que le fichier a déjà disparu.
+- [ ] Refaire une prise, sortir de l’exercice, recevoir un événement
+      `SIGNED_OUT`, se connecter depuis l’état déconnecté, passer directement
+      d’un utilisateur A à B ou subir une interruption déclenche la même
+      révocation immédiate et la tentative d’effacement tant que l’application
+      contrôle encore le cycle.
+- [ ] Une déconnexion dans un autre onglet ou une révocation distante déclenche
+      la purge dès que Supabase la signale ou détecte la session invalide ; la
+      checklist ne promet pas une détection distante instantanée.
 - [ ] Une inspection du stockage confirme l’absence de copie persistante ou de
       sauvegarde ; une inspection réseau confirme l’absence d’upload.
 - [ ] Les essais sur iPhone, Android réel et navigateurs pris en charge couvrent
@@ -56,8 +66,9 @@ n’autorise aucun traitement vocal distant.
 
 ### Limite résiduelle connue
 
-- [ ] La preuve de bêta indique qu’un crash natif peut laisser un fichier
-      orphelin dans le cache privé générique jusqu’à sa purge par le système
+- [ ] La preuve de bêta indique qu’un crash natif, ou le démontage du hook après
+      un refus d’effacement par le système, peut laisser un fichier orphelin
+      dans le cache privé générique jusqu’à sa purge par le système
       d’exploitation. Le redémarrage ne promet ni scan ni purge ciblés : cette
       garantie attend une future capacité sûre permettant d’identifier les
       prises sans persister leur URI ni supprimer indistinctement le cache.

@@ -6,15 +6,35 @@ import {
   waitFor,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import type { ComponentProps } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { LocalVoiceComparison } from "../app/learn/demo/local-voice-comparison";
+import { LocalVoiceComparison as LocalVoiceComparisonUnderTest } from "../app/learn/demo/local-voice-comparison";
 import {
   type ActiveLocalVoiceRecording,
   type LocalVoiceCapture,
   type LocalVoiceRecorder,
   LocalVoiceRecorderError,
 } from "../lib/client/local-voice-recorder";
+
+type TestLocalVoiceComparisonProps = Omit<
+  ComponentProps<typeof LocalVoiceComparisonUnderTest>,
+  "sessionBoundaryRevision"
+> & {
+  readonly sessionBoundaryRevision?: number;
+};
+
+function LocalVoiceComparison({
+  sessionBoundaryRevision = 0,
+  ...props
+}: TestLocalVoiceComparisonProps) {
+  return (
+    <LocalVoiceComparisonUnderTest
+      {...props}
+      sessionBoundaryRevision={sessionBoundaryRevision}
+    />
+  );
+}
 
 function fakeRecording() {
   let resolve!: (capture: LocalVoiceCapture) => void;
@@ -179,7 +199,7 @@ describe("comparaison vocale locale web", () => {
     );
 
     await user.click(
-      screen.getByRole("button", { name: "Supprimer ma prise" }),
+      screen.getByRole("button", { name: "Supprimer cette prise locale" }),
     );
 
     expect(URL.revokeObjectURL).toHaveBeenCalledWith("blob:local-voice");
@@ -190,7 +210,131 @@ describe("comparaison vocale locale web", () => {
       screen.queryByLabelText("Lire ma prise locale"),
     ).not.toBeInTheDocument();
     expect(screen.getByRole("status")).toHaveTextContent(
-      "Prise supprimée de cet onglet.",
+      "Prise locale supprimée de cet onglet.",
+    );
+  });
+
+  it("révoque une prise finalisée quand la frontière de session change", async () => {
+    const user = userEvent.setup();
+    const first = fakeRecording();
+    const recorder = fakeRecorder(first);
+    const { rerender } = render(
+      <LocalVoiceComparison
+        modelAudioSrc="/audio/fixture-tone.wav"
+        recorder={recorder}
+        sessionBoundaryRevision={0}
+      />,
+    );
+    await user.click(screen.getByRole("button", { name: "M’enregistrer" }));
+    await user.click(
+      await screen.findByRole("button", { name: "Arrêter l’enregistrement" }),
+    );
+    const localAudio = await screen.findByLabelText("Lire ma prise locale");
+
+    rerender(
+      <LocalVoiceComparison
+        modelAudioSrc="/audio/fixture-tone.wav"
+        recorder={recorder}
+        sessionBoundaryRevision={1}
+      />,
+    );
+
+    await waitFor(() =>
+      expect(URL.revokeObjectURL).toHaveBeenCalledWith("blob:local-voice"),
+    );
+    expect(localAudio).not.toHaveAttribute("src");
+    expect(
+      screen.queryByLabelText("Lire ma prise locale"),
+    ).not.toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "La session a changé : la prise locale a été supprimée de cet onglet.",
+    );
+  });
+
+  it("reste silencieux quand la frontière change sans activité vocale", () => {
+    const recorder = fakeRecorder(fakeRecording());
+    const { rerender } = render(
+      <LocalVoiceComparison
+        modelAudioSrc="/audio/fixture-tone.wav"
+        recorder={recorder}
+        sessionBoundaryRevision={0}
+      />,
+    );
+
+    rerender(
+      <LocalVoiceComparison
+        modelAudioSrc="/audio/fixture-tone.wav"
+        recorder={recorder}
+        sessionBoundaryRevision={1}
+      />,
+    );
+
+    expect(recorder.start).not.toHaveBeenCalled();
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+  });
+
+  it("annule une capture active quand la frontière de session change", async () => {
+    const user = userEvent.setup();
+    const first = fakeRecording();
+    const recorder = fakeRecorder(first);
+    const { rerender } = render(
+      <LocalVoiceComparison
+        modelAudioSrc="/audio/fixture-tone.wav"
+        recorder={recorder}
+        sessionBoundaryRevision={0}
+      />,
+    );
+    await user.click(screen.getByRole("button", { name: "M’enregistrer" }));
+    await screen.findByRole("button", { name: "Arrêter l’enregistrement" });
+
+    rerender(
+      <LocalVoiceComparison
+        modelAudioSrc="/audio/fixture-tone.wav"
+        recorder={recorder}
+        sessionBoundaryRevision={1}
+      />,
+    );
+
+    expect(first.active.cancel).toHaveBeenCalledOnce();
+    expect(screen.getByRole("button", { name: "M’enregistrer" })).toBeEnabled();
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "La session a changé : la prise locale a été supprimée de cet onglet.",
+    );
+  });
+
+  it("annule une permission en attente quand la frontière de session change", async () => {
+    const user = userEvent.setup();
+    let permissionSignal: AbortSignal | undefined;
+    const recorder: LocalVoiceRecorder = {
+      start: vi.fn((options) => {
+        permissionSignal = options?.signal;
+        return new Promise<ActiveLocalVoiceRecording>(() => undefined);
+      }),
+    };
+    const { rerender } = render(
+      <LocalVoiceComparison
+        modelAudioSrc="/audio/fixture-tone.wav"
+        recorder={recorder}
+        sessionBoundaryRevision={0}
+      />,
+    );
+    await user.click(screen.getByRole("button", { name: "M’enregistrer" }));
+    await screen.findByRole("button", {
+      name: "Autorisation du microphone…",
+    });
+
+    rerender(
+      <LocalVoiceComparison
+        modelAudioSrc="/audio/fixture-tone.wav"
+        recorder={recorder}
+        sessionBoundaryRevision={1}
+      />,
+    );
+
+    expect(permissionSignal?.aborted).toBe(true);
+    expect(screen.getByRole("button", { name: "M’enregistrer" })).toBeEnabled();
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "La session a changé : la prise locale a été supprimée de cet onglet.",
     );
   });
 

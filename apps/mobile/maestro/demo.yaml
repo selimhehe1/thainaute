@@ -16,7 +16,7 @@ appId: com.thainaute.app
     timeout: 1000
 - tapOn: "Arrêter mon enregistrement,.*"
 - assertVisible: "B, écouter ma voix"
-- tapOn: "Supprimer définitivement mon essai vocal local"
+- tapOn: "Supprimer cette prise locale"
 - assertVisible: "Essai vocal supprimé du cache local."
 - tapOn: "Découvrir le compte"
 - assertVisible: "Compte non configuré ici"

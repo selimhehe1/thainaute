@@ -279,10 +279,21 @@ les contrôles locaux.
   expiration ou révocation distante purge seulement un namespace déjà soldé ;
   les tentatives non confirmées restent verrouillées, et seule une reconnexion
   au même identifiant Supabase permet de les reprendre ou de les effacer.
+- Sur web et mobile, chaque événement `SIGNED_OUT` reçu, chaque connexion depuis
+  l’état déconnecté et chaque passage direct d’un utilisateur A à B incrémente
+  une frontière de session qui purge aussi la prise vocale locale hors du
+  callback Auth. Seuls le bootstrap `getSession()` et l’événement
+  `INITIAL_SESSION` initialisent le premier sujet sans créer de fausse
+  frontière ; tout autre premier `SIGNED_IN` est traité comme un changement.
+  Une déconnexion dans un autre onglet est couverte dès sa
+  propagation. Une révocation distante n’est observable qu’au prochain
+  événement ou rafraîchissement Supabase : aucune purge antérieure à cette
+  détection n’est garantie.
 - L'enregistrement vocal local et la comparaison A/B sont implémentés sur web
   et mobile, sans persistance, synchronisation ni télémétrie. Les cycles
-  contrôlés révoquent l'URL web ou suppriment le fichier natif borné au cache
-  applicatif. iOS et Android dépendent du patch pnpm versionné d'`expo-audio`
+  contrôlés révoquent l'URL web ou rendent immédiatement le fichier natif
+  non rejouable puis tentent son effacement ciblé dans le cache applicatif. iOS
+  et Android dépendent du patch pnpm versionné d'`expo-audio`
   57.0.3 : Expo Go et `expo export` ne compilent pas ses changements Swift et
   Kotlin. L’autolinking force `expo-audio` depuis ses sources et la CI compile
   désormais un prebuild Android arm64 avec Gradle ainsi qu’un prebuild iOS
@@ -296,8 +307,9 @@ les contrôles locaux.
   arrière-plan et les callbacks de route du patch installé. Les interruptions,
   routes audio, Bluetooth, suppression native ciblée et absence de reprise
   doivent encore être vérifiées sur iPhone et
-  Android réels ; un crash natif peut laisser un orphelin dans le cache jusqu'à
-  la purge par l'OS, comme documenté dans l'ADR-0012.
+  Android réels ; un crash natif, ou le démontage après un refus d’effacement
+  par le système, peut laisser un orphelin dans le cache jusqu'à la purge par
+  l'OS, comme documenté dans l'ADR-0012.
 - La limitation de débit par compte/IP n'est pas encore implémentée : ses
   seuils, fenêtres, rafales et comportement de repli relèvent de
   `OPEN-API-001` avant bêta distante.

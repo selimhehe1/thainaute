@@ -186,7 +186,7 @@ export default function AccountScreen() {
     if ((pending > 0 || activeFusion) && logoutConfirmationUserId !== userId) {
       setLogoutConfirmationUserId(userId);
       setMessage(
-        "Des tentatives ne sont pas confirmées. Synchronisez-les ou confirmez leur suppression.",
+        "Des tentatives ne sont pas encore synchronisées. Synchronisez-les ou confirmez leur effacement uniquement sur cet appareil. Votre compte reste en ligne.",
       );
       return;
     }
@@ -208,14 +208,14 @@ export default function AccountScreen() {
       setCodeRequested(false);
       setMessage(
         purged
-          ? "Déconnecté et données du compte purgées de cet appareil."
-          : "Session déconnectée. Le journal a changé : ses nouvelles données restent verrouillées jusqu’à la reconnexion au même compte.",
+          ? "Vous êtes déconnecté de cet appareil. Les données locales liées à ce compte ont été effacées ; le compte et sa progression synchronisée restent en ligne."
+          : "Vous êtes déconnecté de cet appareil. Le journal local a changé : ses nouvelles données restent verrouillées jusqu’à la reconnexion au même compte.",
       );
     } catch {
       if (signedOut) {
         setLocalState(null);
         setMessage(
-          "Session déconnectée. Les données locales restent verrouillées jusqu’à la reconnexion au même compte.",
+          "Vous êtes déconnecté de cet appareil. Les données locales restent verrouillées jusqu’à la reconnexion au même compte.",
         );
       } else {
         setMessage(
@@ -372,8 +372,8 @@ export default function AccountScreen() {
                     disabled={busy}
                     label={
                       deletionConfirmationUserId === userId
-                        ? "Confirmer la suppression"
-                        : "Supprimer"
+                        ? "Confirmer la suppression locale"
+                        : "Supprimer la progression locale"
                     }
                     danger
                     onPress={() => void discardAnonymous()}
@@ -398,8 +398,8 @@ export default function AccountScreen() {
               disabled={busy || currentLocalState === null}
               label={
                 logoutConfirmationUserId === userId
-                  ? "Supprimer et me déconnecter"
-                  : "Me déconnecter"
+                  ? "Effacer les données locales liées à ce compte et me déconnecter"
+                  : "Me déconnecter de cet appareil"
               }
               onPress={() => void logout()}
             />

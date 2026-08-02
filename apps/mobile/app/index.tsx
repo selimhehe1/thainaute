@@ -28,6 +28,7 @@ import {
   MobileAttemptOutboxStorageError,
   MobileAttemptOutboxStore,
 } from "../lib/attempt-outbox-store";
+import { useMobileAuthSession } from "../lib/auth-session";
 import { useLocalVoicePractice } from "../lib/use-local-voice-practice";
 
 const lesson = fixtureLesson;
@@ -453,7 +454,7 @@ function VoicePracticeCard({
 
       {voicePractice.hasRecording && (
         <Pressable
-          accessibilityLabel="Supprimer définitivement mon essai vocal local"
+          accessibilityLabel="Supprimer cette prise locale"
           accessibilityRole="button"
           accessibilityState={{ disabled: voicePractice.isBusy }}
           disabled={voicePractice.isBusy}
@@ -466,7 +467,9 @@ function VoicePracticeCard({
             void voicePractice.deleteRecording();
           }}
         >
-          <Text style={styles.deleteVoiceButtonText}>Supprimer ma voix</Text>
+          <Text style={styles.deleteVoiceButtonText}>
+            Supprimer cette prise locale
+          </Text>
         </Pressable>
       )}
 
@@ -624,12 +627,16 @@ function StageContent(props: StageContentProps) {
 
 export default function DemoScreen() {
   const database = useSQLiteContext();
+  const auth = useMobileAuthSession();
   const outboxStore = useMemo(
     () => new MobileAttemptOutboxStore(database, undefined, "demo"),
     [database],
   );
   const player = useAudioPlayer(require("../assets/audio/fixture-tone.wav"));
-  const voicePractice = useLocalVoicePractice(player);
+  const voicePractice = useLocalVoicePractice(
+    player,
+    auth.sessionBoundaryRevision,
+  );
   const [stage, setStage] = useState<Stage>("intro");
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [outbox, setOutbox] = useState<AttemptOutboxSnapshot>(() =>

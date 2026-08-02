@@ -13,6 +13,386 @@ import { useWebAuthSession } from "@/lib/client/auth-session";
 
 type LocalState = Awaited<ReturnType<typeof readWebAccountLocalState>>;
 
+interface SignedOutAccountPanelProps {
+  readonly busy: boolean;
+  readonly code: string;
+  readonly codeRequested: boolean;
+  readonly email: string;
+  readonly message: string;
+  readonly onCodeChange: (code: string) => void;
+  readonly onEmailChange: (email: string) => void;
+  readonly onRequestCode: (event: FormEvent) => void;
+  readonly onResetCodeRequest: () => void;
+  readonly onVerifyCode: (event: FormEvent) => void;
+}
+
+function SignedOutAccountPanel({
+  busy,
+  code,
+  codeRequested,
+  email,
+  message,
+  onCodeChange,
+  onEmailChange,
+  onRequestCode,
+  onResetCodeRequest,
+  onVerifyCode,
+}: SignedOutAccountPanelProps) {
+  return (
+    <div className="accountPanel">
+      <p className="eyebrow">Après une première réussite</p>
+      <h1>Retrouver sa progression partout.</h1>
+      <p className="lede accountLede">
+        Un code à six chiffres suffit. La progression locale ne sera jamais
+        fusionnée sans votre accord explicite.
+      </p>
+      <p className="accountMessage">
+        Après une expiration distante, toute progression non synchronisée reste
+        verrouillée jusqu’à la reconnexion au même compte.
+      </p>
+      {!codeRequested ? (
+        <form className="accountForm" onSubmit={onRequestCode}>
+          <label htmlFor="account-email">Adresse email</label>
+          <input
+            autoComplete="email"
+            id="account-email"
+            inputMode="email"
+            required
+            type="email"
+            value={email}
+            onChange={(event) => onEmailChange(event.target.value)}
+          />
+          <button
+            className="button buttonPrimary"
+            disabled={busy}
+            type="submit"
+          >
+            {busy ? "Envoi…" : "Recevoir mon code"}
+          </button>
+        </form>
+      ) : (
+        <form className="accountForm" onSubmit={onVerifyCode}>
+          <label htmlFor="account-code">Code reçu par email</label>
+          <input
+            autoComplete="one-time-code"
+            id="account-code"
+            inputMode="numeric"
+            maxLength={6}
+            pattern="[0-9]{6}"
+            required
+            value={code}
+            onChange={(event) => onCodeChange(event.target.value)}
+          />
+          <button
+            className="button buttonPrimary"
+            disabled={busy}
+            type="submit"
+          >
+            {busy ? "Vérification…" : "Me connecter"}
+          </button>
+          <button
+            className="button buttonGhost"
+            type="button"
+            onClick={onResetCodeRequest}
+          >
+            Changer d’email
+          </button>
+        </form>
+      )}
+      {message !== "" && (
+        <p className="inlineError">
+          <output>{message}</output>
+        </p>
+      )}
+    </div>
+  );
+}
+
+interface SignedInAccountSummary {
+  readonly accountPending: number;
+  readonly activeFusionForAnotherAccount: boolean;
+  readonly activeFusionForCurrent: boolean;
+  readonly anonymousCount: number;
+  readonly anonymousImportableCount: number;
+  readonly anonymousRejectedCount: number;
+  readonly stateCount: number;
+}
+
+function summarizeSignedInAccount(
+  currentLocalState: LocalState | null,
+  userId: string | null,
+): SignedInAccountSummary {
+  const anonymousEntries = currentLocalState?.anonymousSnapshot.entries ?? [];
+  const anonymousCount = anonymousEntries.length;
+  const anonymousImportableCount = anonymousEntries.filter(
+    ({ status }) => status !== "rejected",
+  ).length;
+  const fusionMarker = currentLocalState?.fusionMarker;
+  const activeFusion = fusionMarker?.status === "awaiting_server_ack";
+  const normalizedUserId = userId?.toLowerCase();
+
+  return {
+    accountPending:
+      currentLocalState?.accountSnapshot.entries.filter(
+        ({ status }) => status === "pending",
+      ).length ?? 0,
+    activeFusionForAnotherAccount:
+      activeFusion && fusionMarker.targetUserId !== normalizedUserId,
+    activeFusionForCurrent:
+      activeFusion && fusionMarker.targetUserId === normalizedUserId,
+    anonymousCount,
+    anonymousImportableCount,
+    anonymousRejectedCount: anonymousCount - anonymousImportableCount,
+    stateCount:
+      currentLocalState?.accountSnapshot.authoritativeStates.length ?? 0,
+  };
+}
+
+function AccountMetrics({
+  accountPending,
+  anonymousCount,
+  stateCount,
+}: Pick<
+  SignedInAccountSummary,
+  "accountPending" | "anonymousCount" | "stateCount"
+>) {
+  return (
+    <div className="accountMetrics" aria-live="polite">
+      <div>
+        <strong>{stateCount}</strong>
+        <span>états maîtrisés synchronisés</span>
+      </div>
+      <div>
+        <strong>{accountPending}</strong>
+        <span>tentatives compte en attente</span>
+      </div>
+      <div>
+        <strong>{anonymousCount}</strong>
+        <span>tentatives anonymes locales</span>
+      </div>
+    </div>
+  );
+}
+
+function ForeignFusionNotice({ active }: Readonly<{ active: boolean }>) {
+  if (!active) return null;
+  return (
+    <section className="accountChoice" aria-labelledby="foreign-fusion-title">
+      <h2 id="foreign-fusion-title">Fusion locale déjà engagée</h2>
+      <p>
+        Reconnectez le compte qui l’a commencée pour la terminer. Ce compte peut
+        continuer à synchroniser sa propre progression.
+      </p>
+    </section>
+  );
+}
+
+function RejectedAnonymousAttempts({ count }: Readonly<{ count: number }>) {
+  if (count === 0) return null;
+  const plural = count > 1;
+  return (
+    <p className="accountMessage">
+      {count} tentative{plural ? "s" : ""} non importable{plural ? "s" : ""}{" "}
+      reste{plural ? "nt" : ""} locale{plural ? "s" : ""} jusqu’à suppression.
+    </p>
+  );
+}
+
+interface AnonymousProgressChoiceProps {
+  readonly activeFusionForAnotherAccount: boolean;
+  readonly activeFusionForCurrent: boolean;
+  readonly anonymousCount: number;
+  readonly anonymousImportableCount: number;
+  readonly anonymousRejectedCount: number;
+  readonly busy: boolean;
+  readonly deletionConfirmationPending: boolean;
+  readonly onDiscard: () => void;
+  readonly onKeep: () => void;
+  readonly onSynchronize: () => void;
+}
+
+function AnonymousProgressChoice({
+  activeFusionForAnotherAccount,
+  activeFusionForCurrent,
+  anonymousCount,
+  anonymousImportableCount,
+  anonymousRejectedCount,
+  busy,
+  deletionConfirmationPending,
+  onDiscard,
+  onKeep,
+  onSynchronize,
+}: AnonymousProgressChoiceProps) {
+  if (
+    anonymousCount === 0 ||
+    activeFusionForCurrent ||
+    activeFusionForAnotherAccount
+  ) {
+    return null;
+  }
+
+  return (
+    <section className="accountChoice" aria-labelledby="fusion-title">
+      <h2 id="fusion-title">Que faire de la progression locale ?</h2>
+      <p>
+        La fusion conserve les heures et identifiants des tentatives, puis
+        laisse le serveur recalculer la maîtrise.
+      </p>
+      <div className="lessonActions">
+        {anonymousImportableCount > 0 && (
+          <button
+            className="button buttonPrimary"
+            disabled={busy}
+            onClick={onSynchronize}
+            type="button"
+          >
+            Fusionner et synchroniser
+          </button>
+        )}
+        <button
+          className="button buttonGhost"
+          disabled={busy}
+          onClick={onKeep}
+          type="button"
+        >
+          Garder pour plus tard
+        </button>
+        <button
+          className="button accountDanger"
+          disabled={busy}
+          onClick={onDiscard}
+          type="button"
+        >
+          {deletionConfirmationPending
+            ? "Confirmer la suppression locale"
+            : "Supprimer la progression locale"}
+        </button>
+      </div>
+      <RejectedAnonymousAttempts count={anonymousRejectedCount} />
+    </section>
+  );
+}
+
+interface SignedInAccountActionsProps {
+  readonly busy: boolean;
+  readonly canLogout: boolean;
+  readonly logoutConfirmationPending: boolean;
+  readonly onLogout: () => void;
+  readonly onSynchronize: () => void;
+}
+
+function SignedInAccountActions({
+  busy,
+  canLogout,
+  logoutConfirmationPending,
+  onLogout,
+  onSynchronize,
+}: SignedInAccountActionsProps) {
+  return (
+    <div className="lessonActions accountActions">
+      <button
+        className="button buttonPrimary"
+        disabled={busy}
+        onClick={onSynchronize}
+        type="button"
+      >
+        {busy ? "Synchronisation…" : "Synchroniser maintenant"}
+      </button>
+      <button
+        className={
+          logoutConfirmationPending
+            ? "button accountDanger"
+            : "button buttonGhost"
+        }
+        disabled={busy || !canLogout}
+        onClick={onLogout}
+        type="button"
+      >
+        {logoutConfirmationPending
+          ? "Effacer les données locales liées à ce compte et me déconnecter"
+          : "Me déconnecter de cet appareil"}
+      </button>
+    </div>
+  );
+}
+
+interface SignedInAccountPanelProps {
+  readonly busy: boolean;
+  readonly currentLocalState: LocalState | null;
+  readonly deletionConfirmationUserId: string | null;
+  readonly logoutConfirmationUserId: string | null;
+  readonly message: string;
+  readonly onDiscardAnonymous: () => void;
+  readonly onKeepAnonymous: () => void;
+  readonly onLogout: () => void;
+  readonly onSynchronize: (startAnonymousFusion: boolean) => void;
+  readonly userId: string | null;
+}
+
+function SignedInAccountPanel({
+  busy,
+  currentLocalState,
+  deletionConfirmationUserId,
+  logoutConfirmationUserId,
+  message,
+  onDiscardAnonymous,
+  onKeepAnonymous,
+  onLogout,
+  onSynchronize,
+  userId,
+}: SignedInAccountPanelProps) {
+  const summary = summarizeSignedInAccount(currentLocalState, userId);
+  const deletionConfirmationPending = deletionConfirmationUserId === userId;
+  const logoutConfirmationPending = logoutConfirmationUserId === userId;
+
+  return (
+    <div className="accountPanel">
+      <p className="eyebrow">Compte connecté</p>
+      <h1>Votre progression, sous votre contrôle.</h1>
+      <AccountMetrics {...summary} />
+      <ForeignFusionNotice active={summary.activeFusionForAnotherAccount} />
+      <AnonymousProgressChoice
+        activeFusionForAnotherAccount={summary.activeFusionForAnotherAccount}
+        activeFusionForCurrent={summary.activeFusionForCurrent}
+        anonymousCount={summary.anonymousCount}
+        anonymousImportableCount={summary.anonymousImportableCount}
+        anonymousRejectedCount={summary.anonymousRejectedCount}
+        busy={busy}
+        deletionConfirmationPending={deletionConfirmationPending}
+        onDiscard={onDiscardAnonymous}
+        onKeep={onKeepAnonymous}
+        onSynchronize={() => onSynchronize(true)}
+      />
+      <SignedInAccountActions
+        busy={busy}
+        canLogout={currentLocalState !== null}
+        logoutConfirmationPending={logoutConfirmationPending}
+        onLogout={onLogout}
+        onSynchronize={() => onSynchronize(false)}
+      />
+      {message !== "" && (
+        <p className="accountMessage">
+          <output>{message}</output>
+        </p>
+      )}
+    </div>
+  );
+}
+
+function selectCurrentLocalState(
+  localState: LocalState | null,
+  userId: string | null,
+): LocalState | null {
+  if (
+    userId === null ||
+    localState?.accountSnapshot.owner.kind !== "account" ||
+    localState.accountSnapshot.owner.userId !== userId.toLowerCase()
+  ) {
+    return null;
+  }
+  return localState;
+}
+
 export function AccountExperience() {
   const auth = useWebAuthSession();
   const [email, setEmail] = useState("");
@@ -29,12 +409,7 @@ export function AccountExperience() {
   >(null);
 
   const userId = auth.session?.user.id ?? null;
-  const currentLocalState =
-    userId !== null &&
-    localState?.accountSnapshot.owner.kind === "account" &&
-    localState.accountSnapshot.owner.userId === userId.toLowerCase()
-      ? localState
-      : null;
+  const currentLocalState = selectCurrentLocalState(localState, userId);
   const refreshLocalState = useCallback(async () => {
     if (userId === null) {
       setLocalState(null);
@@ -180,7 +555,7 @@ export function AccountExperience() {
     ) {
       setLogoutConfirmationUserId(userId);
       setMessage(
-        "Des tentatives ne sont pas confirmées par le serveur. Synchronisez-les ou confirmez leur suppression locale.",
+        "Des tentatives ne sont pas encore synchronisées. Synchronisez-les ou confirmez leur effacement uniquement sur cet appareil. Votre compte reste en ligne.",
       );
       return;
     }
@@ -202,14 +577,14 @@ export function AccountExperience() {
       setCodeRequested(false);
       setMessage(
         purged
-          ? "Déconnecté. Les données du compte ont été purgées de cet appareil."
-          : "Session déconnectée. Le journal a changé pendant l’opération : ses nouvelles données restent verrouillées jusqu’à la reconnexion au même compte.",
+          ? "Vous êtes déconnecté de cet appareil. Les données locales liées à ce compte ont été effacées ; le compte et sa progression synchronisée restent en ligne."
+          : "Vous êtes déconnecté de cet appareil. Le journal local a changé pendant l’opération : ses nouvelles données restent verrouillées jusqu’à la reconnexion au même compte.",
       );
     } catch {
       if (signedOut) {
         setLocalState(null);
         setMessage(
-          "Session déconnectée. Les données locales restent verrouillées ; reconnectez le même compte pour les reprendre ou les supprimer.",
+          "Vous êtes déconnecté de cet appareil. Les données locales restent verrouillées ; reconnectez le même compte pour les reprendre ou les supprimer.",
         );
       } else {
         setMessage(
@@ -242,212 +617,41 @@ export function AccountExperience() {
 
   if (auth.status === "signed_out") {
     return (
-      <div className="accountPanel">
-        <p className="eyebrow">Après une première réussite</p>
-        <h1>Retrouver sa progression partout.</h1>
-        <p className="lede accountLede">
-          Un code à six chiffres suffit. La progression locale ne sera jamais
-          fusionnée sans votre accord explicite.
-        </p>
-        <p className="accountMessage">
-          Après une expiration distante, toute progression non synchronisée
-          reste verrouillée jusqu’à la reconnexion au même compte.
-        </p>
-        {!codeRequested ? (
-          <form className="accountForm" onSubmit={requestCode}>
-            <label htmlFor="account-email">Adresse email</label>
-            <input
-              autoComplete="email"
-              id="account-email"
-              inputMode="email"
-              required
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <button
-              className="button buttonPrimary"
-              disabled={busy}
-              type="submit"
-            >
-              {busy ? "Envoi…" : "Recevoir mon code"}
-            </button>
-          </form>
-        ) : (
-          <form className="accountForm" onSubmit={verifyCode}>
-            <label htmlFor="account-code">Code reçu par email</label>
-            <input
-              autoComplete="one-time-code"
-              id="account-code"
-              inputMode="numeric"
-              maxLength={6}
-              pattern="[0-9]{6}"
-              required
-              value={code}
-              onChange={(event) => setCode(event.target.value)}
-            />
-            <button
-              className="button buttonPrimary"
-              disabled={busy}
-              type="submit"
-            >
-              {busy ? "Vérification…" : "Me connecter"}
-            </button>
-            <button
-              className="button buttonGhost"
-              type="button"
-              onClick={() => {
-                setCodeRequested(false);
-                setCode("");
-                setMessage("");
-              }}
-            >
-              Changer d’email
-            </button>
-          </form>
-        )}
-        {message !== "" && (
-          <p className="inlineError" role="status">
-            {message}
-          </p>
-        )}
-      </div>
+      <SignedOutAccountPanel
+        busy={busy}
+        code={code}
+        codeRequested={codeRequested}
+        email={email}
+        message={message}
+        onCodeChange={setCode}
+        onEmailChange={setEmail}
+        onRequestCode={(event) => void requestCode(event)}
+        onResetCodeRequest={() => {
+          setCodeRequested(false);
+          setCode("");
+          setMessage("");
+        }}
+        onVerifyCode={(event) => void verifyCode(event)}
+      />
     );
   }
 
-  const anonymousEntries = currentLocalState?.anonymousSnapshot.entries ?? [];
-  const anonymousCount = anonymousEntries.length;
-  const anonymousImportableCount = anonymousEntries.filter(
-    ({ status }) => status !== "rejected",
-  ).length;
-  const anonymousRejectedCount = anonymousCount - anonymousImportableCount;
-  const accountPending =
-    currentLocalState?.accountSnapshot.entries.filter(
-      ({ status }) => status === "pending",
-    ).length ?? 0;
-  const stateCount =
-    currentLocalState?.accountSnapshot.authoritativeStates.length ?? 0;
-  const activeFusionForCurrent =
-    currentLocalState?.fusionMarker?.status === "awaiting_server_ack" &&
-    currentLocalState.fusionMarker.targetUserId === userId?.toLowerCase();
-  const activeFusionForAnotherAccount =
-    currentLocalState?.fusionMarker?.status === "awaiting_server_ack" &&
-    currentLocalState.fusionMarker.targetUserId !== userId?.toLowerCase();
-
   return (
-    <div className="accountPanel">
-      <p className="eyebrow">Compte connecté</p>
-      <h1>Votre progression, sous votre contrôle.</h1>
-      <div className="accountMetrics" aria-live="polite">
-        <div>
-          <strong>{stateCount}</strong>
-          <span>états maîtrisés synchronisés</span>
-        </div>
-        <div>
-          <strong>{accountPending}</strong>
-          <span>tentatives compte en attente</span>
-        </div>
-        <div>
-          <strong>{anonymousCount}</strong>
-          <span>tentatives anonymes locales</span>
-        </div>
-      </div>
-
-      {activeFusionForAnotherAccount && (
-        <section
-          className="accountChoice"
-          aria-labelledby="foreign-fusion-title"
-        >
-          <h2 id="foreign-fusion-title">Fusion locale déjà engagée</h2>
-          <p>
-            Reconnectez le compte qui l’a commencée pour la terminer. Ce compte
-            peut continuer à synchroniser sa propre progression.
-          </p>
-        </section>
-      )}
-
-      {anonymousCount > 0 &&
-        !activeFusionForCurrent &&
-        !activeFusionForAnotherAccount && (
-          <section className="accountChoice" aria-labelledby="fusion-title">
-            <h2 id="fusion-title">Que faire de la progression locale ?</h2>
-            <p>
-              La fusion conserve les heures et identifiants des tentatives, puis
-              laisse le serveur recalculer la maîtrise.
-            </p>
-            <div className="lessonActions">
-              {anonymousImportableCount > 0 && (
-                <button
-                  className="button buttonPrimary"
-                  disabled={busy}
-                  onClick={() => void synchronize(true)}
-                  type="button"
-                >
-                  Fusionner et synchroniser
-                </button>
-              )}
-              <button
-                className="button buttonGhost"
-                disabled={busy}
-                onClick={() =>
-                  setMessage("Progression anonyme conservée pour plus tard.")
-                }
-                type="button"
-              >
-                Garder pour plus tard
-              </button>
-              <button
-                className="button accountDanger"
-                disabled={busy}
-                onClick={() => void discardAnonymous()}
-                type="button"
-              >
-                {deletionConfirmationUserId === userId
-                  ? "Confirmer la suppression"
-                  : "Supprimer"}
-              </button>
-            </div>
-            {anonymousRejectedCount > 0 && (
-              <p className="accountMessage">
-                {anonymousRejectedCount} tentative
-                {anonymousRejectedCount > 1 ? "s" : ""} non importable
-                {anonymousRejectedCount > 1 ? "s" : ""} reste
-                {anonymousRejectedCount > 1 ? "nt" : ""} locale
-                {anonymousRejectedCount > 1 ? "s" : ""} jusqu’à suppression.
-              </p>
-            )}
-          </section>
-        )}
-
-      <div className="lessonActions accountActions">
-        <button
-          className="button buttonPrimary"
-          disabled={busy}
-          onClick={() => void synchronize(false)}
-          type="button"
-        >
-          {busy ? "Synchronisation…" : "Synchroniser maintenant"}
-        </button>
-        <button
-          className={
-            logoutConfirmationUserId === userId
-              ? "button accountDanger"
-              : "button buttonGhost"
-          }
-          disabled={busy || currentLocalState === null}
-          onClick={() => void logout()}
-          type="button"
-        >
-          {logoutConfirmationUserId === userId
-            ? "Supprimer et me déconnecter"
-            : "Me déconnecter"}
-        </button>
-      </div>
-      {message !== "" && (
-        <p className="accountMessage" role="status">
-          {message}
-        </p>
-      )}
-    </div>
+    <SignedInAccountPanel
+      busy={busy}
+      currentLocalState={currentLocalState}
+      deletionConfirmationUserId={deletionConfirmationUserId}
+      logoutConfirmationUserId={logoutConfirmationUserId}
+      message={message}
+      onDiscardAnonymous={() => void discardAnonymous()}
+      onKeepAnonymous={() =>
+        setMessage("Progression anonyme conservée pour plus tard.")
+      }
+      onLogout={() => void logout()}
+      onSynchronize={(startAnonymousFusion) =>
+        void synchronize(startAnonymousFusion)
+      }
+      userId={userId}
+    />
   );
 }
