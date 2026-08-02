@@ -1,7 +1,18 @@
 import { expect, test } from "@playwright/test";
 
+async function openDemoAfterOnboarding(
+  page: import("@playwright/test").Page,
+): Promise<void> {
+  await page.goto("/today");
+  await page.getByRole("radio", { name: "5 minutes" }).check();
+  await page.getByRole("radio", { name: "Préparer un séjour" }).check();
+  await page.getByRole("radio", { name: "Je débute" }).check();
+  await page.getByRole("button", { name: "Préparer ma session" }).click();
+  await page.getByRole("link", { name: "Commencer la session" }).click();
+}
+
 test("termine la leçon fictive", async ({ page }) => {
-  await page.goto("/learn/demo");
+  await openDemoAfterOnboarding(page);
   await expect(page.getByText("Donnée fictive — non publiable")).toBeVisible();
   await page.getByRole("button", { name: "Commencer" }).click();
   await page.getByRole("radio", { name: "Option A" }).check();
@@ -13,7 +24,7 @@ test("termine la leçon fictive", async ({ page }) => {
 });
 
 test("enregistre, compare puis supprime une prise locale", async ({ page }) => {
-  await page.goto("/learn/demo");
+  await openDemoAfterOnboarding(page);
   await page.getByRole("button", { name: "Commencer" }).click();
   await page.getByRole("radio", { name: "Option A" }).check();
   await page.getByRole("button", { name: "Valider" }).click();

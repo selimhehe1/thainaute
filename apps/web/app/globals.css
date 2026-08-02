@@ -3,6 +3,7 @@
   --ink: #283450;
   --coral: #e9615c;
   --jade: #43a283;
+  --jade-ink: #236b58;
   --saffron: #f1b84b;
   --mist: #eef1f4;
   --line: color-mix(in srgb, var(--ink) 18%, transparent);
@@ -84,7 +85,7 @@ nav {
 }
 .eyebrow {
   margin: 0 0 18px;
-  color: var(--jade);
+  color: var(--jade-ink);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -736,9 +737,138 @@ h1 em {
   line-height: 1.55;
 }
 
+.todayPanel {
+  width: min(780px, 100%);
+  margin: 40px auto 0;
+  padding: clamp(30px, 6vw, 64px);
+  border: 1px solid white;
+  border-radius: 30px;
+  background: white;
+  box-shadow: var(--shadow);
+}
+.todayPanel h1 {
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 0.98;
+}
+.todayLede {
+  max-width: 650px;
+  margin: 24px 0 34px;
+  color: #536078;
+  font-size: 17px;
+  line-height: 1.65;
+}
+.onboardingForm {
+  display: grid;
+  gap: 28px;
+}
+.onboardingForm fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.onboardingForm legend {
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+.onboardingChoices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.onboardingChoices label {
+  min-height: 52px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid var(--mist);
+  border-radius: 14px;
+  cursor: pointer;
+}
+.onboardingChoices label:has(input:checked) {
+  border-color: var(--jade);
+  background: #eff9f5;
+}
+.onboardingChoices input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  accent-color: var(--jade);
+}
+.onboardingChoices span {
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+.todaySession {
+  margin-top: 30px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  border-radius: 20px;
+  background: var(--mist);
+}
+.todaySession h2 {
+  margin: 8px 0 10px;
+  font-size: clamp(26px, 4vw, 36px);
+  letter-spacing: -0.035em;
+}
+.todaySession p {
+  max-width: 540px;
+  margin: 0;
+  color: #5d687d;
+  line-height: 1.55;
+}
+.todaySessionStatus {
+  color: var(--jade-ink);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.fixtureBadge {
+  height: fit-content;
+  padding: 7px 10px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  color: #684c0d;
+  background: #fff4d6;
+  font-size: 11px;
+  font-weight: 800;
+}
+.offlineNote {
+  margin: 20px 0 0;
+  padding: 14px 16px;
+  border-left: 4px solid var(--saffron);
+  color: #684c0d;
+  background: #fffaf0;
+  line-height: 1.5;
+}
+.todayPrimaryAction {
+  margin-top: 28px;
+}
+.todayPrimaryAction:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 @media (max-width: 640px) {
   .accountMetrics {
     grid-template-columns: 1fr;
+  }
+  .onboardingChoices {
+    grid-template-columns: 1fr;
+  }
+  .todaySession {
+    flex-direction: column;
+  }
+  .fixtureBadge {
+    align-self: flex-start;
+  }
+  .todayPrimaryAction {
+    width: 100%;
   }
 }
 
