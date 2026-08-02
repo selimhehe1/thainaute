@@ -142,23 +142,12 @@
     transform var(--motion-fast) var(--ease-standard);
 }
 
-.choices label::before {
-  content: "";
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  border: 2px solid var(--color-line);
-  background: var(--color-jasmine);
-  transition: inherit;
-}
-
 .choices label:hover {
   border-color: var(--color-ink-soft);
   transform: translateX(2px);
 }
 
-.choices label:hover::before {
+.choices label:hover input {
   border-color: var(--color-ink-soft);
 }
 
@@ -168,32 +157,41 @@
   font-weight: var(--weight-bold);
 }
 
-.choices label:has(input:checked)::before {
-  border-color: var(--color-jade-ink);
-  background: var(--color-jade-ink) no-repeat center / 13px
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5 L6 12 L13.5 4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-}
-
 .choices label:has(input:focus-visible) {
   outline: 3px solid var(--color-coral);
   outline-offset: 2px;
 }
 
+/* L'input lui-même est l'anneau dessiné : il reste visible, cliquable et
+   contrôlable par Playwright comme par les lecteurs d'écran. */
 .choices input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  clip-path: inset(50%);
-  overflow: hidden;
-  white-space: nowrap;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid var(--color-line);
+  background: var(--color-jasmine);
+  cursor: pointer;
+  transition:
+    border-color var(--motion-base) var(--ease-standard),
+    background-color var(--motion-base) var(--ease-standard);
+}
+
+.choices input:checked {
+  border-color: var(--color-jade-ink);
+  background: var(--color-jade-ink) no-repeat center / 13px
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5 L6 12 L13.5 4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+.choices input:focus-visible {
+  outline: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .choices label,
-  .choices label::before {
+  .choices input {
     transition: none;
   }
 
