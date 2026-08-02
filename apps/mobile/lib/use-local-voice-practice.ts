@@ -94,6 +94,14 @@ interface VoiceFeedback {
   readonly notice: string | null;
 }
 
+interface VoiceActivitySnapshot {
+  readonly hasRecorderSession: boolean;
+  readonly hasRecordingUri: boolean;
+  readonly hasStopInFlight: boolean;
+  readonly operation: VoiceOperation;
+  readonly playbackTarget: VoicePlaybackTarget | null;
+}
+
 function monotonicNow(): number {
   return (
     globalThis as unknown as { readonly performance: { now(): number } }
@@ -231,6 +239,22 @@ function playbackStartIsBlocked(
     hasRecorderSession ||
     hasStopInFlight ||
     (operation !== "idle" && operation !== "playback")
+  );
+}
+
+function detectSessionBoundVoiceActivity(
+  reason: VoiceDeactivationReason,
+  activity: VoiceActivitySnapshot,
+): boolean {
+  return (
+    reason === "session" &&
+    (activity.operation === "permission" ||
+      activity.operation === "stopping" ||
+      activity.operation === "deleting" ||
+      activity.hasRecorderSession ||
+      activity.hasStopInFlight ||
+      activity.hasRecordingUri ||
+      activity.playbackTarget === "recording")
   );
 }
 
@@ -1262,15 +1286,16 @@ export function useLocalVoicePractice(
 
   const deactivateVoice = useCallback(
     async (reason: VoiceDeactivationReason) => {
-      const hadSessionBoundVoiceActivity =
-        reason === "session" &&
-        (operationRef.current === "permission" ||
-          operationRef.current === "stopping" ||
-          operationRef.current === "deleting" ||
-          recorderSessionRef.current !== null ||
-          stopInFlightRef.current !== null ||
-          recordingUriRef.current !== null ||
-          playbackRef.current?.target === "recording");
+      const hadSessionBoundVoiceActivity = detectSessionBoundVoiceActivity(
+        reason,
+        {
+          hasRecorderSession: recorderSessionRef.current !== null,
+          hasRecordingUri: recordingUriRef.current !== null,
+          hasStopInFlight: stopInFlightRef.current !== null,
+          operation: operationRef.current,
+          playbackTarget: playbackRef.current?.target ?? null,
+        },
+      );
       captureGateRef.current.invalidate();
       playbackGateRef.current.invalidate();
       playbackDeactivationRequiredRef.current = true;

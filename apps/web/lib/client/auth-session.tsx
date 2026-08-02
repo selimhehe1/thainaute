@@ -168,17 +168,27 @@ export function WebAuthSessionProvider({
     }
   }, []);
 
+  const contextValue = useMemo<AuthSessionValue>(
+    () => ({
+      status,
+      session,
+      sessionBoundaryRevision,
+      requestEmailCode,
+      verifyEmailCode,
+      signOutLocal,
+    }),
+    [
+      requestEmailCode,
+      session,
+      sessionBoundaryRevision,
+      signOutLocal,
+      status,
+      verifyEmailCode,
+    ],
+  );
+
   return (
-    <AuthSessionContext.Provider
-      value={{
-        status,
-        session,
-        sessionBoundaryRevision,
-        requestEmailCode,
-        verifyEmailCode,
-        signOutLocal,
-      }}
-    >
+    <AuthSessionContext.Provider value={contextValue}>
       {children}
     </AuthSessionContext.Provider>
   );

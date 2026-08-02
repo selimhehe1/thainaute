@@ -184,17 +184,27 @@ export function MobileAuthSessionProvider({
     }
   }, []);
 
+  const contextValue = useMemo<MobileAuthSessionValue>(
+    () => ({
+      status,
+      session,
+      sessionBoundaryRevision,
+      requestEmailCode,
+      verifyEmailCode,
+      signOutLocal,
+    }),
+    [
+      requestEmailCode,
+      session,
+      sessionBoundaryRevision,
+      signOutLocal,
+      status,
+      verifyEmailCode,
+    ],
+  );
+
   return (
-    <MobileAuthSessionContext.Provider
-      value={{
-        status,
-        session,
-        sessionBoundaryRevision,
-        requestEmailCode,
-        verifyEmailCode,
-        signOutLocal,
-      }}
-    >
+    <MobileAuthSessionContext.Provider value={contextValue}>
       {children}
     </MobileAuthSessionContext.Provider>
   );
