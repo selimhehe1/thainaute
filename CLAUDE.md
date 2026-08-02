@@ -17,7 +17,7 @@ peut montrer, tester, faire tester puis publier :
 - applications iOS et Android installables ;
 - direction artistique distinctive et homogène ;
 - parcours d'apprentissage réel, avec cours et révisions ;
-- voix natives, enregistrement de l'apprenant et retour vocal prudent ;
+- audio thaï traçable, enregistrement de l'apprenant et retour vocal prudent ;
 - comptes, synchronisation, hors-ligne et progression ;
 - freemium et paiements testés de bout en bout ;
 - studio éditorial, provenance et audit linguistique ;
@@ -143,13 +143,31 @@ originale. Tout contenu publié suit obligatoirement :
 
 `draft -> review -> approved -> published`.
 
-Une personne native qualifiée doit finalement auditer séparément orthographe, sens,
-prononciation, ton, longueur vocalique, registre et naturalité. Conserver pour
-chaque fait la source, la licence, la version, la date et le niveau de confiance.
-L'absence momentanée d'auditeur ne doit pas arrêter la production : constituer
-le curriculum, générer les brouillons, préparer les sources, les scripts audio et
-les dossiers d'audit, mais conserver leur statut `draft` ou `review` et ne rien
-présenter comme publiable avant la validation humaine requise.
+### Décision fondateur — lancement sans auditeur natif payé
+
+Selim n'a pas le budget initial pour engager un locuteur ou auditeur thaï. Cette
+absence ne doit ni arrêter le curriculum ni bloquer la première mise sur le
+marché. La porte initiale de publication repose donc sur une chaîne documentée :
+
+1. génération originale par un premier modèle ;
+2. vérification phrase par phrase contre des sources identifiées ;
+3. contre-audit indépendant par plusieurs modèles, dont `Fable 5 ULTRA` et
+   `GPT-5.6 SOL ULTRA` ;
+4. audits séparés orthographe, sens, prononciation, ton, longueur, registre,
+   naturalité, Unicode et licence ;
+5. blocage de tout conflit, citation introuvable ou confiance insuffisante ;
+6. validation manuelle du dossier de preuve avant changement de statut ;
+7. signalement simple dans l'application et correction par nouvelle version.
+
+Conserver pour chaque fait la source, la licence, la version, la date, les
+modèles/relectures et le niveau de confiance. L'application et le studio doivent
+indiquer honnêtement `Revue native : en attente` ; ne jamais employer « validé
+par un natif » avant que ce soit vrai.
+
+La revue par un Thaï natif devient une phase financée uniquement si les revenus
+de l'application sont suffisants. À ce moment-là, auditer d'abord les leçons les
+plus utilisées et les éléments les moins confiants, corriger par versions
+immuables et mesurer les erreurs découvertes pour renforcer toute la chaîne.
 
 ### Curriculum fondamental à proposer puis faire valider
 
@@ -172,8 +190,8 @@ accord. La proposition doit couvrir au minimum un parcours débutant cohérent :
 
 Pour permettre une décision concrète, partir d'une hypothèse de travail de
 `12 unités × 5 leçons = 60 leçons`, puis faire valider ce volume, la profondeur
-et le niveau cible par Selim et l'auditeur linguistique. Ne jamais transformer
-cette hypothèse en engagement publié sans validation.
+et le niveau cible par Selim. Ne jamais transformer cette hypothèse en engagement
+publié sans sa validation.
 
 ### Contrat d'une leçon publiable
 
@@ -183,7 +201,8 @@ Chaque leçon doit avoir :
 - contenu thaï versionné, segmenté et sourcé ;
 - traduction française naturelle et explication originale ;
 - transcription pédagogique versionnée, ton et longueur par syllabe ;
-- enregistrements humains natifs, naturel et pédagogique lorsque nécessaire ;
+- audio thaï naturel et pédagogique, avec fournisseur, modèle ou intervenant,
+  droits, version et méthode de contrôle explicitement conservés ;
 - séquence courte d'enseignement puis pratique ;
 - exercices d'écoute, association, ordre des mots, rappel et lecture lorsque
   pédagogiquement pertinents ;
@@ -192,7 +211,8 @@ Chaque leçon doit avoir :
 - note culturelle contextualisée et sourcée si elle contient un fait ;
 - items SRS et critères de maîtrise ;
 - tests Unicode, schéma, licences et portes de publication ;
-- validation finale de l'auditeur natif.
+- validation finale de la chaîne multi-modèles et sources, avec l'état de revue
+  native conservé séparément et affiché honnêtement.
 
 Ne pas remplir artificiellement chaque leçon avec les cinq formats : utiliser le
 format qui mesure réellement l'objectif, tout en garantissant les cinq mécaniques
@@ -202,9 +222,13 @@ dans le produit et une couverture équilibrée sur le parcours.
 
 - Préparer les scripts, conventions de nommage, feuille de session et contrôle
   qualité avant enregistrement.
-- Employer une ou plusieurs voix natives humaines pour le contenu principal.
-- Conserver droits, consentement, attribution éventuelle, version et prises.
-- Ne pas remplacer silencieusement les voix principales par du TTS.
+- Si aucune voix humaine n'est finançable, utiliser au lancement une voix
+  synthétique thaïe clairement déclarée et préalablement comparée entre plusieurs
+  fournisseurs/modèles. Ne jamais la présenter comme un enregistrement humain.
+- Conserver droits, consentement éventuel, attribution, fournisseur, modèle,
+  version, paramètres et fichiers sources.
+- Prévoir la réenregistrement progressif par des voix natives humaines uniquement
+  lorsque les revenus le permettent, en commençant par le fondamental.
 - Contrôler bruit, niveau, découpe, débit, ton, longueur et correspondance exacte
   avec la version de contenu.
 
@@ -237,13 +261,15 @@ Comparer au minimum :
 - un fournisseur de pronunciation assessment prenant `th-TH` en charge ;
 - une analyse locale explicable du contour F0 et de la durée vocalique.
 
-Créer un corpus gold validé par au moins deux auditeurs natifs, mesurer les
-confusions entre les cinq tons, la reconnaissance du mot, la longueur vocalique,
-les faux positifs et la stabilité entre voix. Afficher des résultats séparés et
-un niveau de confiance. En cas de désaccord ou de faible confiance, proposer de
-réessayer au lieu d'inventer une note. Toute analyse distante exige consentement,
-quota serveur, stockage privé, suppression et budget dur. Obtenir l'accord de
-Selim avant le premier appel facturable.
+Mesurer les confusions entre les cinq tons, la reconnaissance du mot, la longueur
+vocalique, les faux positifs et la stabilité entre voix. Tant qu'aucun corpus gold
+natif n'est finançable, limiter la fonction à une bêta explicitement
+expérimentale, afficher des résultats séparés et un niveau de confiance, et ne
+faire aucune promesse de notation certaine. En cas de désaccord ou de faible
+confiance, proposer de réessayer au lieu d'inventer une note. Constituer un corpus
+gold avec au moins deux auditeurs natifs dès que les revenus le permettent. Toute
+analyse distante exige consentement, quota serveur, stockage privé, suppression
+et budget dur. Obtenir l'accord de Selim avant le premier appel facturable.
 
 ## Fonctions indispensables avant une bêta réelle
 
@@ -279,8 +305,8 @@ Selim avant le premier appel facturable.
 4. Livrer verticalement les cinq exercices avec reprise web/mobile.
 5. Faire valider le curriculum et le volume de bêta, puis produire les leçons par
    unités complètes plutôt que des dizaines de brouillons dispersés.
-6. Organiser audit natif et production audio, puis publier seulement les versions
-   ayant franchi toutes les portes.
+6. Exécuter la chaîne de génération, sources et audits multi-modèles, produire
+   l'audio traçable et publier seulement les versions ayant franchi ces portes.
 7. Finaliser hors-ligne, synchronisation, quotas et progression.
 8. Implémenter et tester les paiements en sandbox.
 9. Construire et évaluer le retour vocal ; ne l'activer que si les métriques sont
@@ -295,7 +321,8 @@ Préparer tout ce qui peut l'être, puis demander une action précise au bon mom
 
 - résultat et décision de clearance INPI/EUIPO, domaines et dépôt de marque ;
 - choix du volume de cours et du niveau cible de la bêta ;
-- recrutement/validation d'un auditeur thaï natif et des voix natives ;
+- lorsque les revenus le permettront, budget et recrutement d'un auditeur thaï
+  natif et de voix humaines ; ces éléments ne bloquent pas le lancement initial ;
 - comptes et accès Apple, Google, Supabase, Vercel, Stripe, RevenueCat, Sentry,
   PostHog et fournisseur vocal ;
 - prix, essai, pays de lancement, TVA/fiscalité et validation comptable ;
@@ -311,7 +338,8 @@ bloque la prochaine tranche démontrable.
 Thaïnaute n'est terminé que lorsque les preuves suivantes existent :
 
 - aucun écran principal n'affiche de fixture, placeholder ou texte technique ;
-- le parcours de cours convenu est sourcé, licencié, audité, enregistré et publié ;
+- le parcours convenu est original, sourcé, audité par la chaîne multi-modèles,
+  enregistré et publié, avec l'absence de revue native clairement tracée ;
 - un nouvel utilisateur peut apprendre sans compte, réussir, créer son compte et
   retrouver exactement sa progression sur web, iOS et Android ;
 - les cinq formats, le SRS, le hors-ligne, la reprise et la synchronisation ont des
