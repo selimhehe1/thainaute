@@ -4,6 +4,7 @@ const STUDIO_ENVIRONMENT = {
   THAINAUTE_STUDIO_MODE: "fixture",
   NEXT_PUBLIC_SUPABASE_URL: "https://project.supabase.co",
   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_example_public_value",
+  SUPABASE_SECRET_KEY: "sb_secret_example_server_value",
 } as const;
 
 async function importRoute() {
@@ -21,6 +22,7 @@ describe("activation de la route Studio", () => {
     vi.stubEnv("THAINAUTE_STUDIO_MODE", "");
     vi.stubEnv("NEXT_PUBLIC_SUPABASE_URL", "");
     vi.stubEnv("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY", "");
+    vi.stubEnv("SUPABASE_SECRET_KEY", "");
   });
 
   afterEach(() => {

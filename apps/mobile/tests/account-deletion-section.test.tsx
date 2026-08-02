@@ -122,6 +122,10 @@ describe("section de suppression du compte mobile", () => {
     expect(screen.getByText(/prises de voix/i)).toBeTruthy();
     expect(screen.getByText(/progression anonyme.*onboarding/i)).toBeTruthy();
     expect(screen.getByText(/2 tentatives locales/i)).toBeTruthy();
+    expect(
+      screen.getByText(/signalements linguistiques conservés localement/iu),
+    ).toBeTruthy();
+    expect(screen.getByText(/en attente ou refusés/iu)).toBeTruthy();
     expect(screen.getByText(/fusion locale est encore en cours/i)).toBeTruthy();
 
     fireEvent.click(

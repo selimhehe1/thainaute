@@ -1,12 +1,15 @@
 import { randomUUID } from "node:crypto";
 
-import { contentReviewResponseSchema } from "@thainaute/content/studio";
-
 import { apiResponseHeaders } from "../api-http";
+import {
+  contentStudioReviewEnvelopeSchema,
+  EMPTY_CONTENT_REPORT_AGGREGATE,
+} from "../../content-studio-contracts";
 import { ContentStudioError } from "./errors";
 import type {
   ContentStudioAuthorizer,
   ContentStudioFixtureReviewer,
+  ContentStudioReportAggregateReader,
 } from "./ports";
 
 export const CONTENT_STUDIO_TIMEOUT_MS = 10_000;
@@ -15,6 +18,7 @@ const ACCESS_TOKEN_MAX_LENGTH = 16 * 1_024;
 export interface ContentStudioHttpDependencies {
   readonly authorizer: ContentStudioAuthorizer;
   readonly reviewFixture: ContentStudioFixtureReviewer;
+  readonly reportAggregateReader?: ContentStudioReportAggregateReader;
   readonly requestIdFactory?: () => string;
   readonly timeoutMs?: number;
 }
@@ -100,9 +104,20 @@ export function createContentStudioHttpHandler(
         timeoutMs: dependencies.timeoutMs ?? CONTENT_STUDIO_TIMEOUT_MS,
         run: async (signal) => {
           await dependencies.authorizer.authorize({ accessToken, signal });
-          return contentReviewResponseSchema.parse(
-            dependencies.reviewFixture(),
-          );
+          const review = dependencies.reviewFixture();
+          const contentVersionId = review.summary?.lesson.versionId;
+          const userReports =
+            dependencies.reportAggregateReader === undefined ||
+            contentVersionId === undefined
+              ? EMPTY_CONTENT_REPORT_AGGREGATE
+              : await dependencies.reportAggregateReader.read({
+                  contentVersionId,
+                  signal,
+                });
+          return contentStudioReviewEnvelopeSchema.parse({
+            review,
+            userReports,
+          });
         },
       });
 

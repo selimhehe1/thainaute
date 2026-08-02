@@ -1,6 +1,8 @@
 "use client";
 
 import {
+  countPendingContentReports,
+  countRejectedContentReports,
   createSyncHttpClient,
   synchronizeAttemptOutbox,
   type AuthenticatedSyncSession,
@@ -15,12 +17,16 @@ import {
 import { assertNoPendingWebAccountDeletion } from "./account-deletion";
 import { browserSha256Hex } from "./sha256";
 import { getWebSupabaseAuthClient } from "./supabase-auth";
+import { synchronizeWebContentReports } from "./content-report";
 
 export interface WebAccountSyncResult {
   readonly snapshot: AttemptOutboxSnapshot;
   readonly batchesSent: number;
   readonly fusionCompleted: boolean;
   readonly fusionRejectedCount: number;
+  readonly contentReportsSent: number;
+  readonly contentReportsPending: number;
+  readonly contentReportsRejected: 0 | 1;
 }
 
 function authenticatedSessionProvider(expectedUserId: string) {
@@ -119,6 +125,9 @@ export async function synchronizeWebAccount(input: {
       ),
     });
 
+    let snapshot = synchronized.snapshot;
+    let fusionCompleted = false;
+    let fusionRejectedCount = 0;
     assertNoPendingWebAccountDeletion(input.userId);
     const marker = await store.readFusionMarker();
     if (
@@ -130,21 +139,51 @@ export async function synchronizeWebAccount(input: {
         new Date().toISOString(),
       );
       const fusionEventIds = new Set(completed.marker.eventIds);
-      return {
-        snapshot: completed.accountSnapshot,
-        batchesSent: synchronized.batchesSent,
-        fusionCompleted: true,
-        fusionRejectedCount: completed.anonymousSnapshot.entries.filter(
-          (entry) =>
-            entry.status === "rejected" &&
-            fusionEventIds.has(entry.submission.eventId),
-        ).length,
-      };
+      snapshot = completed.accountSnapshot;
+      fusionCompleted = true;
+      fusionRejectedCount = completed.anonymousSnapshot.entries.filter(
+        (entry) =>
+          entry.status === "rejected" &&
+          fusionEventIds.has(entry.submission.eventId),
+      ).length;
     }
+
+    assertNoPendingWebAccountDeletion(input.userId);
+    const reportsBefore = await store.readContentReports();
+    let contentReportsSent = 0;
+    let contentReportsPending = countPendingContentReports(reportsBefore);
+    let contentReportsRejected = countRejectedContentReports(reportsBefore);
+    if (reportsBefore.entries.length > 0) {
+      try {
+        const reportResult = await synchronizeWebContentReports(input.userId);
+        contentReportsSent = reportResult.acknowledgedIdempotencyKeys.length;
+        contentReportsPending = reportResult.pendingCount;
+        contentReportsRejected = reportResult.rejectedHead === null ? 0 : 1;
+      } catch (error) {
+        // Un endpoint indisponible ne doit pas masquer une progression déjà
+        // synchronisée. En revanche une bascule de sujet reste une frontière.
+        if ((await getSession()) === null) throw error;
+        assertNoPendingWebAccountDeletion(input.userId);
+        const reportsAfter = await store.readContentReports();
+        const remainingKeys = new Set(
+          reportsAfter.entries.map(({ idempotencyKey }) => idempotencyKey),
+        );
+        contentReportsSent = reportsBefore.entries.filter(
+          ({ idempotencyKey }) => !remainingKeys.has(idempotencyKey),
+        ).length;
+        contentReportsPending = countPendingContentReports(reportsAfter);
+        contentReportsRejected = countRejectedContentReports(reportsAfter);
+      }
+    }
+
     return {
-      ...synchronized,
-      fusionCompleted: false,
-      fusionRejectedCount: 0,
+      snapshot,
+      batchesSent: synchronized.batchesSent,
+      fusionCompleted,
+      fusionRejectedCount,
+      contentReportsSent,
+      contentReportsPending,
+      contentReportsRejected,
     };
   } finally {
     store.close();
@@ -232,13 +271,23 @@ export async function readWebAccountLocalState(userId: string) {
   );
   const anonymous = new WebAttemptOutboxStore();
   try {
-    const [accountSnapshot, anonymousSnapshot, fusionMarker] =
-      await Promise.all([
-        account.read(),
-        anonymous.read(),
-        account.readFusionMarker(),
-      ]);
-    return { accountSnapshot, anonymousSnapshot, fusionMarker };
+    const [
+      accountSnapshot,
+      anonymousSnapshot,
+      fusionMarker,
+      contentReportOutbox,
+    ] = await Promise.all([
+      account.read(),
+      anonymous.read(),
+      account.readFusionMarker(),
+      account.readContentReports(),
+    ]);
+    return {
+      accountSnapshot,
+      anonymousSnapshot,
+      fusionMarker,
+      contentReportOutbox,
+    };
   } finally {
     account.close();
     anonymous.close();

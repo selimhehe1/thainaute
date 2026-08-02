@@ -95,6 +95,7 @@ l'environnement et l'indexation reste désactivée sur toute URL temporaire.
 | `THAINAUTE_PUBLIC_INDEXING`            | serveur                   | non     | `disabled` ou `enabled`               |
 | `THAINAUTE_RELEASE`                    | serveur                   | non     | identifiant court de release          |
 | `THAINAUTE_SYNC_MODE`                  | serveur                   | non     | `disabled` ou `supabase`              |
+| `THAINAUTE_CONTENT_REPORT_MODE`        | serveur                   | non     | `disabled` ou `supabase`              |
 | `THAINAUTE_STUDIO_MODE`                | serveur                   | non     | `disabled` ou `fixture`               |
 | `NEXT_PUBLIC_SUPABASE_URL`             | web et serveur            | non     | URL publique du projet Supabase       |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | web et serveur            | non     | clé publique soumise à RLS            |
@@ -111,6 +112,14 @@ les RPC explicitement accordées ; sa portée réelle reste élevée. Les secret
 RevenueCat et Stripe présents dans
 `.env.example` restent hors périmètre tant que les tranches de paiement ne sont
 pas commencées.
+
+Turborepo fonctionne en mode d'environnement strict. Les variables publiques
+et les modes `THAINAUTE_*` déclarés dans `turbo.json` sont donc transmis aux
+tâches et participent à leur clé de cache. Les secrets serveur n'entrent pas
+dans les builds mobiles : ils sont autorisés uniquement pour la tâche
+`@thainaute/web#dev` lancée depuis la racine, puis injectés directement par la
+plateforme au runtime déployé. Toute nouvelle variable qui façonne un build doit
+être ajoutée explicitement à cette politique avant activation.
 
 `ACCOUNT_DELETION_RECEIPT_PEPPER` contient exactement 32 octets aléatoires
 encodés en base64url canonique sans `=` (43 caractères). Il est distinct de
@@ -142,11 +151,29 @@ web/serveur et le pepper de suppression. Une configuration incomplète doit
 faire échouer la readiness et laisser les API synchronisées indisponibles,
 jamais basculer vers une écriture non protégée.
 
+Les signalements linguistiques restent désactivés par défaut. Le mode
+`THAINAUTE_CONTENT_REPORT_MODE=supabase` ouvre seulement la capacité de preview
+`POST /api/v1/content/reports` aux comptes permanents. Son corps fermé contient
+la version, l'exercice, une catégorie prédéfinie et la plateforme ; aucun texte
+libre, audio, email ou identifiant d'item fourni par le client n'est accepté.
+La clé serveur reste confinée au Route Handler et à la RPC explicitement
+accordée. Tant que les seuils compte/IP de `OPEN-API-001` ne sont pas décidés et
+implémentés, ce mode ajoute l'issue de readiness
+`content_report_rate_limit_missing` : la preview peut être testée, mais ne peut
+pas être déclarée prête ni promue. Il ajoute aussi
+`content_report_sync_required` si `THAINAUTE_SYNC_MODE` n'est pas `supabase` :
+le Route Handler refuse alors toute collecte, même si les clés Supabase sont
+présentes. Une readiness dégradée ne constitue jamais l'unique barrière entre
+la collecte et la base commune d'export/suppression.
+
 Le studio reste désactivé par défaut. `THAINAUTE_STUDIO_MODE=fixture` ouvre
 uniquement le préflight de la fixture technique et exige Auth ainsi que le rôle
 `content_editor` dans `app_metadata`, relu en direct. Le dépôt n'attribue ce
-rôle à aucun compte. Ce mode ne permet ni import, ni édition, ni écriture en
-base, ni publication et la page reste non indexable. Voir l'ADR-0017.
+rôle à aucun compte. La clé serveur est également requise pour joindre les
+agrégats historiques de `content_reports`, indépendamment de l'activation des
+nouvelles soumissions ; une absence de configuration ferme la route au lieu
+d'afficher un faux zéro. Ce mode ne permet ni import, ni édition, ni écriture
+en base, ni publication et la page reste non indexable. Voir l'ADR-0017.
 
 ## Sondes de santé
 
@@ -159,24 +186,33 @@ base, ni publication et la page reste non indexable. Voir l'ADR-0017.
 
 ### `GET /api/v1/health/ready`
 
-- vérifie l'origine publique, l'indexation, les modes de synchronisation et de
-  studio, les variables Supabase et le pepper de suppression requis ;
+- vérifie l'origine publique, l'indexation, les modes de synchronisation, de
+  signalement et de studio, les variables Supabase et le pepper de suppression
+  requis ;
 - en mode `supabase`, sonde en parallèle Auth (`/auth/v1/health`) et la Data API
   avec une lecture `HEAD` sans rapatrier de ligne ; chaque dépendance est bornée
   à 2,5 secondes ;
 - renvoie `200` uniquement si la configuration, Auth et la Data API sont prêts,
   sinon `503` avec des statuts et codes de diagnostic fermés ;
-- lorsque synchronisation et studio sont désactivés, n'appelle aucune
-  dépendance externe ; le studio fixture seul sonde uniquement Auth ;
+- lorsque synchronisation, signalements et studio sont désactivés, n'appelle
+  aucune dépendance externe ; le studio fixture sonde Auth et son agrégat
+  `content_reports` ;
 - ne révèle aucune valeur de secret.
 
-La sonde Data API traverse PostgREST et Postgres sans créer de donnée. Elle ne
-valide ni Storage, ni l'envoi SMTP, ni la configuration hébergée des advisors :
-ces dépendances conservent leurs contrôles synthétiques dédiés en preview. Les
-deux contrôles distants utilisent la clé publiable et ne valident donc pas directement la
-clé serveur ; le scénario connecté couvre ensuite son accès aux RPC. Les sondes
-sont non cachables ; toute la surface `/api/v1` porte `nosniff`, une politique
-de référent fermée, une CSP d'API et une Permissions Policy restrictive.
+Les sondes Data API traversent PostgREST et Postgres sans créer ni lire de
+donnée. La synchronisation vérifie `content_releases` avec la clé publiable et
+`content_reports` en `HEAD` avec la clé serveur dans `apikey`, car l'export de
+compte v2 dépend de cette table même lorsque les
+nouvelles soumissions sont désactivées. Une preview de signalement sans
+synchronisation exécute elle aussi cette seconde sonde. Pour la CLI locale, la
+clé JWT historique `service_role` est également portée dans `Authorization` ;
+une clé opaque `sb_secret_` ne l'est jamais. Une migration ou un `GRANT` manquant
+ferme donc la readiness. Aucune valeur de clé ne rejoint la réponse ou les logs.
+Cette preuve ne valide pas encore l'exécution de la RPC, Storage,
+l'envoi SMTP ni la configuration hébergée des advisors ; pgTAP et le scénario
+connecté couvrent ces portes en preview. Les sondes sont non cachables ; toute
+la surface `/api/v1` porte `nosniff`, une politique de référent fermée, une CSP
+d'API et une Permissions Policy restrictive.
 
 ## Chemin de mise en service
 
@@ -241,6 +277,18 @@ ni un contenu publiable en production.
 6. l'hydratation d'un second navigateur sans IndexedDB préalable ;
 7. la relecture des deux événements par la Data API avec la clé publiable et le
    JWT utilisateur, donc sous RLS.
+
+Le même job redémarre ensuite le serveur avec
+`THAINAUTE_CONTENT_REPORT_MODE=supabase` pour exécuter isolément
+`pnpm test:e2e:web:connected:reports` (`connected-content-report.spec.ts`). Ce
+scénario crée un compte permanent et son profil, obtient `received` puis
+`duplicate`, vérifie la collision HTTP 409, l'export v2 de l'unique ligne et le
+refus de toute lecture directe de `content_reports` avec la clé publiable et le
+JWT utilisateur. Le premier scénario conserve le mode signalement désactivé et
+sa readiness à 200 ; le second accepte volontairement la readiness non prête
+imposée par `OPEN-API-001` sans la contourner. En local, la commande reports
+exige que `THAINAUTE_CONTENT_REPORT_MODE=supabase` soit défini dans le même
+processus que Playwright ; sinon le scénario est explicitement ignoré.
 
 Les clés locales restent dans le processus de l'étape Bash : aucun `.env`,
 secret GitHub, artefact, email, OTP ou Bearer n'est écrit ou journalisé. Cette
@@ -336,14 +384,16 @@ les contrôles locaux.
   l'OS, comme documenté dans l'ADR-0012.
 - L’export portable synchrone du compte est disponible sur web et mobile via
   `GET /api/v1/account/export`. Il valide le Bearer auprès de Supabase Auth,
-  lit uniquement les lignes du sujet sous RLS et refuse tout document tronqué
-  ou rendu pendant un snapshot mouvant. Les réponses HTTP ne sont pas mises en
-  cache. Le navigateur révoque son URL objet après le téléchargement ; le
+  lit la progression du sujet sous RLS et ses signalements avec la clé serveur,
+  un filtre propriétaire explicite et une validation ligne par ligne. Le format
+  fermé `thainaute.account-export/v2` refuse tout document tronqué ou rendu
+  pendant un snapshot mouvant. Les réponses HTTP ne sont pas mises en cache. Le
+  navigateur révoque son URL objet après le téléchargement ; le
   mobile remet un fichier JSON depuis un chemin ciblé du cache privé, puis en
   vérifie la suppression. Une interruption brutale peut laisser ce fichier
   jusqu’à la purge au prochain lancement/export ou celle du système. Le fichier
   remis par le navigateur ou le panneau natif relève ensuite de l’emplacement
-  choisi par l’utilisateur. Voir l’ADR-0014 et la checklist
+  choisi par l’utilisateur. Voir les ADR-0014 et ADR-0019 ainsi que la checklist
   `docs/privacy/account-export.md`.
 - La suppression de compte est exposée par `DELETE /api/v1/account` avec OTP
   récent, reçu privé reprenable et hard delete Auth. La continuation de 32
@@ -360,7 +410,23 @@ les contrôles locaux.
   `docs/privacy/account-deletion.md`.
 - La limitation de débit par compte/IP n'est pas encore implémentée : ses
   seuils, fenêtres, rafales et comportement de repli relèvent de
-  `OPEN-API-001` avant bêta distante.
+  `OPEN-API-001` avant bêta distante. L'activation Supabase des signalements
+  rend donc explicitement la readiness non prête avec
+  `content_report_rate_limit_missing` ; le mode doit rester `disabled` dans
+  tout environnement promouvable jusque-là.
+- Les outboxes de signalement lisent l'ancien format v1 et écrivent le format
+  fermé `thainaute.content-report-outbox/v2`. Seuls
+  `409/idempotency_key_reused` et `422/invalid_request` placent la tête en état
+  rejeté durable. Elle n'est jamais supprimée automatiquement : le compte et le
+  panneau l'affichent séparément des reports pendants, puis une action
+  utilisateur compare le rejet exact avant de le retirer et de reprendre les
+  suivants. Auth, suppression, transport, `408`, `429`, `5xx` et violations de
+  protocole restent non retirables. Aucun analytics n'est émis pour un rejet ou
+  son retrait ; seuls les accusés `received|duplicate` sont mesurés.
+- Le flux SQLite → HTTP → accusé est couvert par tests unitaires React Native,
+  mais pas encore par Maestro sur un appareil ni par une build iOS/Android
+  connectée au Supabase local. Cette preuve sur appareil reste obligatoire
+  avant bêta.
 - `private.attempt_sync_commits` conserve actuellement ses réponses sans purge
   temporelle. La durée minimale compatible avec les retries, la suppression et
   la supervision relèvent de `OPEN-SYNC-002` avant bêta distante.

@@ -28,6 +28,7 @@ function accountExportHandler(): Handler | null {
       repository: createSupabaseAccountExportRepository({
         url: configuration.url,
         publishableKey: configuration.publishableKey,
+        secretKey: configuration.secretKey,
       }),
     }),
     reportOperationalFailure: reportAccountExportFailure,

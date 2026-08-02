@@ -116,6 +116,7 @@ confirmation serveur.
 - `POST /api/v1/devices/register` ;
 - `DELETE /api/v1/account` ;
 - `POST /api/v1/attempts/batch` ;
+- `POST /api/v1/content/reports` ;
 - `GET /api/v1/progress/snapshot` ;
 - `GET /api/v1/account/export`.
 
@@ -128,7 +129,7 @@ par le client. HTTPS est obligatoire, sauf dérogation explicite d'un build
 local, et chaque requête possède un délai borné.
 
 L’export applique en plus le schéma fermé
-`thainaute.account-export/v1`, vérifie que l’identité du document correspond au
+`thainaute.account-export/v2`, vérifie que l’identité du document correspond au
 compte attendu, puis relit la session après la réponse avant de remettre les
 données au navigateur ou à l’application native. Un `AbortSignal` externe
 permet à la frontière de session d’annuler cette lecture sensible.
@@ -139,6 +140,13 @@ clé lors d'une reprise. Il ne mute et n'acquitte aucun snapshot. Seule une
 réponse 2xx dont le média, le JSON, le schéma strict et l'ordre des `eventId`
 sont valides est rendue à l'appelant, qui peut alors appliquer
 `applyAttemptOutboxSuccess` dans sa transaction locale.
+
+`sendContentReport` applique la même frontière de session à une entrée de file
+durable. Il transmet uniquement son corps structuré et sa clé d'idempotence ;
+`createdAt` reste local. Seules les réponses strictes `received` ou `duplicate`
+sont rendues à l'adaptateur qui peut alors acquitter la tête FIFO. La session
+est relue après cette réponse : une bascule A→B interdit donc tout acquittement
+de l'ancienne file.
 
 Les réponses d'inscription doivent correspondre à l'appareil demandé. Le
 snapshot de progression accepte une révision initiale égale à zéro et des états

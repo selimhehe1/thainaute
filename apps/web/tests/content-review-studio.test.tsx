@@ -38,9 +38,18 @@ vi.mock("../lib/client/content-studio", async (importOriginal) => {
 
 import { ContentReviewStudio } from "../app/studio/content-review-studio";
 import { ContentStudioClientError } from "../lib/client/content-studio";
+import { EMPTY_CONTENT_REPORT_AGGREGATE } from "../lib/content-studio-contracts";
 
 const fixtureReport = reviewContentBundle(readFixtureBundle());
 const invalidReport = reviewContentBundle({ invalid: true });
+const fixtureEnvelope = {
+  review: fixtureReport,
+  userReports: EMPTY_CONTENT_REPORT_AGGREGATE,
+};
+const invalidEnvelope = {
+  review: invalidReport,
+  userReports: EMPTY_CONTENT_REPORT_AGGREGATE,
+};
 const fixtureTitle = fixtureReport.summary?.lesson.titleFr;
 if (fixtureTitle === undefined) throw new Error("Fixture de revue incomplète.");
 
@@ -100,7 +109,7 @@ describe("studio web de prépublication", () => {
   });
 
   it("affiche le refus, les sept audits, les droits et l’Unicode sans publier", async () => {
-    mocks.request.mockResolvedValue(fixtureReport);
+    mocks.request.mockResolvedValue(fixtureEnvelope);
     render(<ContentReviewStudio />);
 
     fireEvent.click(
@@ -119,7 +128,7 @@ describe("studio web de prépublication", () => {
       screen.getByText("Confiance faible · consultée le 2026-08-01"),
     ).toBeVisible();
     expect(screen.getByText("U+0E01 U+0E48")).toBeVisible();
-    expect(screen.getByText("Orthographe")).toBeVisible();
+    expect(screen.getAllByText("Orthographe")[0]).toBeVisible();
     expect(screen.getAllByText("À contrôler")).toHaveLength(7);
     expect(screen.getAllByText("À contrôler")[0]).toHaveClass(
       "studioAuditStatus-pending",
@@ -129,6 +138,33 @@ describe("studio web de prépublication", () => {
       accessToken: "header.payload.editor-token",
       signal: expect.any(AbortSignal),
     });
+  });
+
+  it("affiche seulement les comptes agrégés des signalements", async () => {
+    mocks.request.mockResolvedValue({
+      review: fixtureReport,
+      userReports: {
+        total: 3,
+        byCategory: {
+          ...EMPTY_CONTENT_REPORT_AGGREGATE.byCategory,
+          tone: 2,
+          audio: 1,
+        },
+      },
+    });
+    render(<ContentReviewStudio />);
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Vérifier la publication" }),
+    );
+
+    expect(
+      await screen.findByRole("heading", { name: "Signalements apprenants" }),
+    ).toBeVisible();
+    expect(
+      screen.getByText(/3 signalements structurés, sans identité affichée/u),
+    ).toBeVisible();
+    expect(screen.queryByText(/@/u)).not.toBeInTheDocument();
   });
 
   it("signale chaque liste de rapport tronquée", async () => {
@@ -143,7 +179,10 @@ describe("studio web de prépublication", () => {
     summary.findings.total = 53;
     summary.audio.truncated = true;
     summary.audio.total = 54;
-    mocks.request.mockResolvedValue(truncatedReport);
+    mocks.request.mockResolvedValue({
+      review: truncatedReport,
+      userReports: EMPTY_CONTENT_REPORT_AGGREGATE,
+    });
     render(<ContentReviewStudio />);
 
     fireEvent.click(
@@ -198,7 +237,7 @@ describe("studio web de prépublication", () => {
   );
 
   it("présente un schéma refusé sans essayer de le publier", async () => {
-    mocks.request.mockResolvedValue(invalidReport);
+    mocks.request.mockResolvedValue(invalidEnvelope);
     render(<ContentReviewStudio />);
 
     fireEvent.click(
@@ -221,7 +260,7 @@ describe("studio web de prépublication", () => {
       configurable: true,
       value: false,
     });
-    mocks.request.mockResolvedValue(fixtureReport);
+    mocks.request.mockResolvedValue(fixtureEnvelope);
     render(<ContentReviewStudio />);
 
     const button = screen.getByRole("button", {
@@ -244,10 +283,10 @@ describe("studio web de prépublication", () => {
   });
 
   it("annule une revue en cours dès que le réseau tombe", async () => {
-    let resolveReview!: (value: typeof fixtureReport) => void;
+    let resolveReview!: (value: typeof fixtureEnvelope) => void;
     mocks.request.mockImplementation(
       () =>
-        new Promise<typeof fixtureReport>((resolve) => {
+        new Promise<typeof fixtureEnvelope>((resolve) => {
           resolveReview = resolve;
         }),
     );
@@ -269,7 +308,7 @@ describe("studio web de prépublication", () => {
     expect(
       screen.getByRole("button", { name: "Vérification…" }),
     ).toBeDisabled();
-    await act(async () => resolveReview(fixtureReport));
+    await act(async () => resolveReview(fixtureEnvelope));
     await waitFor(() =>
       expect(
         screen.getByRole("button", { name: "Vérifier la publication" }),
@@ -280,7 +319,7 @@ describe("studio web de prépublication", () => {
 
   it("retire un ancien rapport avant une nouvelle revue en échec", async () => {
     mocks.request
-      .mockResolvedValueOnce(fixtureReport)
+      .mockResolvedValueOnce(fixtureEnvelope)
       .mockRejectedValueOnce(new Error("indisponible"));
     render(<ContentReviewStudio />);
 
@@ -305,7 +344,7 @@ describe("studio web de prépublication", () => {
   });
 
   it("masque immédiatement le rapport A lors du passage au compte B", async () => {
-    mocks.request.mockResolvedValue(fixtureReport);
+    mocks.request.mockResolvedValue(fixtureEnvelope);
     const view = render(<ContentReviewStudio />);
     fireEvent.click(
       screen.getByRole("button", { name: "Vérifier la publication" }),
@@ -343,10 +382,10 @@ describe("studio web de prépublication", () => {
   });
 
   it("annule et ignore une revue A encore en cours après le passage à B", async () => {
-    let resolveReview!: (value: typeof fixtureReport) => void;
+    let resolveReview!: (value: typeof fixtureEnvelope) => void;
     mocks.request.mockImplementation(
       () =>
-        new Promise<typeof fixtureReport>((resolve) => {
+        new Promise<typeof fixtureEnvelope>((resolve) => {
           resolveReview = resolve;
         }),
     );
@@ -366,7 +405,7 @@ describe("studio web de prépublication", () => {
     view.rerender(<ContentReviewStudio />);
 
     expect(requestSignal?.aborted).toBe(true);
-    await act(async () => resolveReview(fixtureReport));
+    await act(async () => resolveReview(fixtureEnvelope));
     expect(
       await screen.findByText(
         "Session changée. Lancez une nouvelle revue pour ce compte.",
@@ -376,7 +415,7 @@ describe("studio web de prépublication", () => {
   });
 
   it("retire le rapport et place le focus sur la connexion après déconnexion", async () => {
-    mocks.request.mockResolvedValue(fixtureReport);
+    mocks.request.mockResolvedValue(fixtureEnvelope);
     const view = render(<ContentReviewStudio />);
     fireEvent.click(
       screen.getByRole("button", { name: "Vérifier la publication" }),

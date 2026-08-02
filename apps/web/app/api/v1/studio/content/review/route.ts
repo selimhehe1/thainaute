@@ -5,8 +5,10 @@ import {
   createContentStudioHttpHandler,
   hiddenContentStudioResponse,
 } from "@/lib/server/content-studio/http";
+import { createSupabaseContentReportAggregateReader } from "@/lib/server/content-studio/content-report-aggregate";
 import { readContentStudioConfiguration } from "@/lib/server/content-studio/runtime";
 import { createSupabaseContentStudioAuthorizer } from "@/lib/server/content-studio/supabase-auth";
+import { readSupabaseServerConfiguration } from "@/lib/server/attempt-sync/runtime";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -17,11 +19,14 @@ let cachedHandler: Handler | undefined;
 function contentStudioHandler(): Handler | null {
   if (cachedHandler !== undefined) return cachedHandler;
   const configuration = readContentStudioConfiguration();
-  if (configuration === null) return null;
+  const reportConfiguration = readSupabaseServerConfiguration();
+  if (configuration === null || reportConfiguration === null) return null;
 
   cachedHandler = createContentStudioHttpHandler({
     authorizer: createSupabaseContentStudioAuthorizer(configuration),
     reviewFixture: () => reviewContentBundle(readFixtureBundle()),
+    reportAggregateReader:
+      createSupabaseContentReportAggregateReader(reportConfiguration),
   });
   return cachedHandler;
 }

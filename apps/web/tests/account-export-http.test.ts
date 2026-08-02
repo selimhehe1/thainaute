@@ -7,7 +7,7 @@ const REQUEST_ID = "10000000-0000-4000-8000-000000000001";
 const USER_ID = "20000000-0000-4000-8000-000000000001";
 const ACCESS_TOKEN = "header.payload.sensitive-token";
 const document = {
-  format: "thainaute.account-export/v1" as const,
+  format: "thainaute.account-export/v2" as const,
   exportedAt: "2026-08-02T10:00:00.000Z",
   identity: {
     id: USER_ID,
@@ -25,6 +25,7 @@ const document = {
     devices: [],
     attemptEvents: [],
     learnerItemStates: [],
+    contentReports: [],
   },
 };
 
@@ -47,7 +48,7 @@ describe("GET /api/v1/account/export", () => {
     expect(response.headers.get("pragma")).toBe("no-cache");
     expect(response.headers.get("vary")).toBe("Authorization");
     expect(response.headers.get("content-disposition")).toBe(
-      'attachment; filename="thainaute-account-export-v1.json"',
+      'attachment; filename="thainaute-account-export-v2.json"',
     );
     expect(response.headers.get("content-type")).toBe(
       "application/json; charset=utf-8",

@@ -1,7 +1,7 @@
 import {
-  contentReviewResponseSchema,
-  type ContentReviewResponse,
-} from "@thainaute/content/studio";
+  contentStudioReviewEnvelopeSchema,
+  type ContentStudioReviewEnvelope,
+} from "../content-studio-contracts";
 
 const CONTENT_STUDIO_CLIENT_TIMEOUT_MS = 15_000;
 const CONTENT_STUDIO_MAX_RESPONSE_BYTES = 256 * 1_024;
@@ -70,7 +70,7 @@ export async function requestFixtureContentReview(input: {
   readonly fetcher?: typeof fetch;
   readonly signal?: AbortSignal;
   readonly timeoutMs?: number;
-}): Promise<ContentReviewResponse> {
+}): Promise<ContentStudioReviewEnvelope> {
   if (
     input.accessToken.length === 0 ||
     input.accessToken.length > ACCESS_TOKEN_MAX_LENGTH ||
@@ -106,7 +106,7 @@ export async function requestFixtureContentReview(input: {
     const body = await readBoundedJson(response);
     if (!response.ok) throw mapStatus(response.status);
 
-    const parsed = contentReviewResponseSchema.safeParse(body);
+    const parsed = contentStudioReviewEnvelopeSchema.safeParse(body);
     if (!parsed.success) throw new ContentStudioClientError("unavailable");
     return parsed.data;
   } catch (error) {

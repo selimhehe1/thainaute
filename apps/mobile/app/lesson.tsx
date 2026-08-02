@@ -28,6 +28,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { MobileContentReportPanel } from "../components/content-report-panel";
 import {
   MobileAttemptOutboxStorageError,
   MobileAttemptOutboxStore,
@@ -558,6 +559,7 @@ function VoicePracticeCard({
 }
 
 interface ResultStageProps {
+  readonly analytics: AnalyticsSink;
   readonly completedReview: boolean;
   readonly dueAt: string | null | undefined;
   readonly latestRating: ExerciseRating;
@@ -567,6 +569,7 @@ interface ResultStageProps {
 }
 
 function ResultStage({
+  analytics,
   completedReview,
   dueAt,
   latestRating,
@@ -637,11 +640,17 @@ function ResultStage({
           <Text style={styles.secondaryButtonText}>{accountButtonText}</Text>
         </Pressable>
       </Link>
+      <MobileContentReportPanel
+        analytics={analytics}
+        contentVersionId={lesson.versionId}
+        exerciseId={exercise.id}
+      />
     </View>
   );
 }
 
 interface StageContentProps {
+  readonly analytics: AnalyticsSink;
   readonly completedReview: boolean;
   readonly dueAt: string | null | undefined;
   readonly isSaving: boolean;
@@ -686,6 +695,7 @@ function StageContent(props: StageContentProps) {
   }
   return (
     <ResultStage
+      analytics={props.analytics}
       completedReview={props.completedReview}
       dueAt={props.dueAt}
       latestRating={props.latestRating}
@@ -1075,6 +1085,7 @@ export function LessonExperience({
       />
       <ScrollView contentContainerStyle={styles.content}>
         <StageContent
+          analytics={analytics}
           completedReview={experienceSnapshot?.lesson?.phase === "completed"}
           dueAt={projection?.dueAt}
           isSaving={isSaving}

@@ -181,6 +181,7 @@ jobs:
           THAINAUTE_PUBLIC_URL: http://localhost:3000/
           THAINAUTE_RELEASE: ci-connected
           THAINAUTE_SYNC_MODE: supabase
+          ACCOUNT_DELETION_RECEIPT_PEPPER: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         run: |
           set -euo pipefail
           supabase_env="$(
@@ -206,6 +207,10 @@ jobs:
           unset supabase_env
           pnpm --filter @thainaute/web exec playwright test e2e/connected-sync.spec.ts \
             --project=chromium --workers=1 --retries=0 --trace=off
+          THAINAUTE_CONTENT_REPORT_MODE=supabase \
+            pnpm --filter @thainaute/web exec playwright test \
+              e2e/connected-content-report.spec.ts \
+              --project=chromium --workers=1 --retries=0 --trace=off
       - name: Stop local Supabase
         if: always()
         run: pnpm exec supabase stop --no-backup

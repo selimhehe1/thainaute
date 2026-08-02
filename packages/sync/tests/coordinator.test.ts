@@ -84,6 +84,7 @@ function client(
   return {
     deleteAccount: () => Promise.reject(new Error("Non utilisé ici.")),
     getAccountExport: () => Promise.reject(new Error("Non utilisé ici.")),
+    sendContentReport: () => Promise.reject(new Error("Not used here.")),
     registerDevice: () =>
       Promise.resolve({
         device: {

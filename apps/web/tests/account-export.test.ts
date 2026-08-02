@@ -39,7 +39,7 @@ function session(userId: string): Session {
 
 function exportDocument(): AccountExportDocument {
   return {
-    format: "thainaute.account-export/v1",
+    format: "thainaute.account-export/v2",
     exportedAt: "2026-08-02T10:00:00.000Z",
     identity: {
       id: ids.user,
@@ -57,6 +57,7 @@ function exportDocument(): AccountExportDocument {
       devices: [],
       attemptEvents: [],
       learnerItemStates: [],
+      contentReports: [],
     },
   };
 }

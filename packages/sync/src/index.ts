@@ -104,3 +104,4 @@ export * from "./account-export-contracts";
 export * from "./account-deletion-contracts";
 export * from "./local-experience";
 export * from "./fixture-learning-path";
+export * from "./content-report-outbox";

@@ -1,8 +1,18 @@
 import {
+  classifyContentReportRejection,
+  contentReportOutboxEntriesAreEqual,
+  countPendingContentReports,
+  countRejectedContentReports,
   createSyncHttpClient,
+  peekContentReport,
+  readContentReportOutboxRejection,
+  SyncHttpApiError,
+  SyncHttpProtocolError,
+  SyncHttpTransportError,
   synchronizeAttemptOutbox,
   type AuthenticatedSyncSession,
   type AttemptOutboxSnapshot,
+  type ContentReportResponse,
 } from "@thainaute/sync";
 import Constants from "expo-constants";
 import { randomUUID } from "expo-crypto";
@@ -11,6 +21,7 @@ import { Platform } from "react-native";
 
 import {
   type ExpectedMobileAccountPurgeState,
+  MobileAttemptOutboxStorageError,
   MobileAttemptOutboxStore,
 } from "./attempt-outbox-store";
 import { getMobileSupabaseAuthClient } from "./supabase-auth";
@@ -21,6 +32,18 @@ export interface MobileAccountSyncResult {
   readonly batchesSent: number;
   readonly fusionCompleted: boolean;
   readonly fusionRejectedCount: number;
+  readonly contentReportsSent: number;
+  readonly contentReportsPending: number;
+  readonly contentReportsRejected: 0 | 1;
+}
+
+function isContentReportRemoteFailure(error: unknown): boolean {
+  return (
+    (error instanceof SyncHttpTransportError ||
+      error instanceof SyncHttpProtocolError ||
+      error instanceof SyncHttpApiError) &&
+    error.endpoint === "content_report"
+  );
 }
 
 function readMobileApiOrigin(): string {
@@ -164,31 +187,144 @@ export async function synchronizeMobileAccount(input: {
   });
 
   await input.assertAccountWritable();
+  if ((await getSession()) === null) {
+    throw new Error("La session du compte a changé avant la fusion.");
+  }
   const marker = await store.readFusionMarker();
+  let finalSnapshot = synchronized.snapshot;
+  let fusionCompleted = false;
+  let fusionRejectedCount = 0;
   if (
     marker?.status === "awaiting_server_ack" &&
     marker.targetUserId === input.userId.toLowerCase()
   ) {
     await input.assertAccountWritable();
+    if ((await getSession()) === null) {
+      throw new Error("La session du compte a changé pendant la fusion.");
+    }
     const completed = await store.completeAnonymousFusion(
       new Date().toISOString(),
     );
     const fusionEventIds = new Set(completed.marker.eventIds);
-    return {
-      snapshot: completed.accountSnapshot,
-      batchesSent: synchronized.batchesSent,
-      fusionCompleted: true,
-      fusionRejectedCount: completed.anonymousSnapshot.entries.filter(
-        (entry) =>
-          entry.status === "rejected" &&
-          fusionEventIds.has(entry.submission.eventId),
-      ).length,
-    };
+    finalSnapshot = completed.accountSnapshot;
+    fusionCompleted = true;
+    fusionRejectedCount = completed.anonymousSnapshot.entries.filter(
+      (entry) =>
+        entry.status === "rejected" &&
+        fusionEventIds.has(entry.submission.eventId),
+    ).length;
   }
+
+  // La progression et sa fusion sont finalisées avant cette livraison
+  // auxiliaire. Un endpoint report absent ou invalide ne doit jamais laisser
+  // la fusion durable bloquée en `awaiting_server_ack`.
+  await input.assertAccountWritable();
+  if ((await getSession()) === null) {
+    throw new Error("La session du compte a changé avant les signalements.");
+  }
+  let contentReportSnapshot = await store.readContentReports();
+  const acknowledgedContentReportKeys: string[] = [];
+  let contentReportHead = peekContentReport(contentReportSnapshot);
+  while (contentReportHead !== null) {
+    await input.assertAccountWritable();
+    let response: ContentReportResponse;
+    try {
+      response = await client.sendContentReport(contentReportHead);
+    } catch (error) {
+      if (!isContentReportRemoteFailure(error)) throw error;
+      // Une indisponibilité report n'est différée qu'après avoir prouvé que le
+      // sujet permanent et la frontière de suppression sont toujours stables.
+      await input.assertAccountWritable();
+      if ((await getSession()) === null) {
+        throw new Error(
+          "La session du compte a changé pendant les signalements.",
+        );
+      }
+      if (
+        error instanceof SyncHttpApiError &&
+        error.code === "deletion_in_progress"
+      ) {
+        throw error;
+      }
+      const rejectionReason = classifyContentReportRejection(error);
+      if (rejectionReason !== null) {
+        try {
+          contentReportSnapshot = await store.rejectContentReport(
+            contentReportHead,
+            {
+              reason: rejectionReason,
+              rejectedAt: new Date().toISOString(),
+            },
+          );
+        } catch (storageError) {
+          if (!(storageError instanceof MobileAttemptOutboxStorageError)) {
+            throw storageError;
+          }
+          contentReportSnapshot = await store.readContentReports();
+          const durableRejection = readContentReportOutboxRejection(
+            contentReportSnapshot,
+          );
+          if (
+            durableRejection !== null &&
+            contentReportOutboxEntriesAreEqual(
+              durableRejection.entry,
+              contentReportHead,
+            ) &&
+            durableRejection.reason === rejectionReason
+          ) {
+            break;
+          }
+          if (
+            contentReportSnapshot.entries.some(
+              ({ idempotencyKey }) =>
+                idempotencyKey === contentReportHead?.idempotencyKey,
+            )
+          ) {
+            throw storageError;
+          }
+          contentReportHead = peekContentReport(contentReportSnapshot);
+          continue;
+        }
+      }
+      break;
+    }
+    // Une réponse de A ne doit jamais être appliquée si la session est passée
+    // à B pendant l'appel réseau.
+    if ((await getSession()) === null) {
+      throw new Error(
+        "La session du compte a changé pendant les signalements.",
+      );
+    }
+    try {
+      contentReportSnapshot = await store.ackContentReport(
+        contentReportHead,
+        response,
+      );
+      acknowledgedContentReportKeys.push(contentReportHead.idempotencyKey);
+    } catch (error) {
+      if (!(error instanceof MobileAttemptOutboxStorageError)) throw error;
+      contentReportSnapshot = await store.readContentReports();
+      if (
+        contentReportSnapshot.entries.some(
+          ({ idempotencyKey }) =>
+            idempotencyKey === contentReportHead?.idempotencyKey,
+        )
+      ) {
+        throw error;
+      }
+      acknowledgedContentReportKeys.push(contentReportHead.idempotencyKey);
+    }
+    contentReportHead = peekContentReport(contentReportSnapshot);
+  }
+
   return {
-    ...synchronized,
-    fusionCompleted: false,
-    fusionRejectedCount: 0,
+    snapshot: finalSnapshot,
+    batchesSent: synchronized.batchesSent,
+    fusionCompleted,
+    fusionRejectedCount,
+    contentReportsSent: acknowledgedContentReportKeys.length,
+    contentReportsPending: countPendingContentReports(contentReportSnapshot),
+    contentReportsRejected: countRejectedContentReports(contentReportSnapshot),
   };
 }
 
@@ -265,10 +401,21 @@ export async function readMobileAccountLocalState(
     mobileSha256Hex,
   );
   const anonymous = new MobileAttemptOutboxStore(database);
-  const [accountSnapshot, anonymousSnapshot, fusionMarker] = await Promise.all([
+  const [
+    accountSnapshot,
+    anonymousSnapshot,
+    fusionMarker,
+    contentReportOutbox,
+  ] = await Promise.all([
     account.read(),
     anonymous.read(),
     account.readFusionMarker(),
+    account.readContentReports(),
   ]);
-  return { accountSnapshot, anonymousSnapshot, fusionMarker };
+  return {
+    accountSnapshot,
+    anonymousSnapshot,
+    fusionMarker,
+    contentReportOutbox,
+  };
 }

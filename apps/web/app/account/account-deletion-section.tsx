@@ -428,6 +428,13 @@ export function AccountDeletionSection({
               &eacute;t&eacute; synchronis&eacute;es.
             </li>
             <li>
+              Les signalements linguistiques conserv&eacute;s localement pour ce
+              compte seront aussi effac&eacute;s, y compris ceux en attente ou
+              refus&eacute;s. Revenez &agrave; la le&ccedil;on avant de
+              continuer si vous souhaitez les envoyer ou r&eacute;soudre un
+              refus.
+            </li>
+            <li>
               Les prises de voix locales ouvertes sur cet appareil seront
               retir&eacute;es de la session.
             </li>

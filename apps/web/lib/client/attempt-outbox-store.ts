@@ -3,6 +3,11 @@
 import {
   ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
   AttemptOutboxCapacityError,
+  ContentReportOutboxAckMismatchError,
+  ContentReportOutboxCapacityError,
+  ContentReportOutboxCollisionError,
+  ContentReportOutboxRejectionMismatchError,
+  ackContentReport as applyContentReportAck,
   applyAnonymousProgressFusionBatchSuccess as applyFusionBatchSuccess,
   applyAttemptOutboxSuccess,
   applyProgressSnapshot,
@@ -12,17 +17,23 @@ import {
   attemptOutboxOwnerStorageKey,
   createAttemptOutboxSnapshot,
   completeAnonymousProgressFusion as completeFusion,
+  createContentReportOutbox,
   deriveDeletedAccountSubjectFingerprint,
   deriveAccountDeviceId,
   deserializeAnonymousProgressFusionMarker,
   deserializeAttemptOutboxSnapshot,
+  deserializeContentReportOutbox,
+  discardRejectedContentReport as applyContentReportRejectionDiscard,
+  enqueueContentReport as appendContentReport,
   enqueueAttempt,
   idempotencyKeySchema,
   prepareAttemptOutboxBatch,
+  rejectContentReport as applyContentReportRejection,
   resumeAnonymousProgressFusion as resumeFusion,
   resumeAttemptOutboxAfterDeviceRegistration,
   serializeAttemptOutboxSnapshot,
   serializeAnonymousProgressFusionMarker,
+  serializeContentReportOutbox,
   startAnonymousProgressFusion as startFusion,
   type ApplyAttemptOutboxSuccessResult,
   type AnonymousProgressFusionMarker,
@@ -33,6 +44,11 @@ import {
   type PrepareAttemptOutboxResult,
   type ProgressSnapshotResponse,
   type CompletedAnonymousProgressFusionState,
+  type ContentReportOutboxEntry,
+  type ContentReportOutboxRejection,
+  type ContentReportOutboxSnapshot,
+  type ContentReportRejectionReason,
+  type ContentReportResponse,
   type PendingAnonymousProgressFusionState,
   type Sha256Hex,
   type ValidatedAttemptSubmission,
@@ -43,6 +59,7 @@ const OUTBOX_KEY = "attempts-v1";
 const DEVICE_KEY = "device-id-v1";
 const INSTALLATION_KEY = "installation-id-v1";
 const FUSION_MARKER_KEY = "anonymous-progress-fusion-v1";
+const CONTENT_REPORT_OUTBOX_KEY = "content-reports-v1";
 const DEFAULT_LEARNING_DATABASE_NAME = "thainaute-learning-v1";
 const DEFAULT_DEMO_DATABASE_NAME = "thainaute-demo-v1";
 const LEGACY_DEMO_FIXTURE_QUARANTINE_KEY = "legacy-demo-fixture-quarantine-v1";
@@ -91,6 +108,7 @@ export class WebAccountDataTombstonedError extends AttemptOutboxStorageError {
 export interface ExpectedWebAccountPurgeState {
   readonly snapshot: AttemptOutboxSnapshot;
   readonly fusionMarker: AnonymousProgressFusionMarker | null;
+  readonly contentReportOutbox: ContentReportOutboxSnapshot;
 }
 
 export interface LegacyDemoFixtureMigrationOptions {
@@ -134,6 +152,21 @@ function parseStoredSnapshot(
   } catch (error) {
     throw new AttemptOutboxStorageError(
       "Le journal local est illisible et n'a pas été écrasé.",
+      { cause: error },
+    );
+  }
+}
+
+function parseStoredContentReportOutbox(
+  row: OutboxRow | undefined,
+): ContentReportOutboxSnapshot {
+  if (row === undefined) return createContentReportOutbox();
+
+  try {
+    return deserializeContentReportOutbox(row.snapshot);
+  } catch (error) {
+    throw new AttemptOutboxStorageError(
+      "La file locale de signalements est illisible et n'a pas été écrasée.",
       { cause: error },
     );
   }
@@ -634,6 +667,7 @@ export class WebAttemptOutboxStore {
   readonly #database: LearningDatabase;
   readonly #owner: AttemptOutboxOwner;
   readonly #outboxKey: string;
+  readonly #contentReportOutboxKey: string | null;
   readonly #deviceKey: string;
   readonly #sha256Hex: Sha256Hex | null;
   #accountTombstoneKeyPromise: Promise<string> | null = null;
@@ -654,6 +688,10 @@ export class WebAttemptOutboxStore {
     const scope = attemptOutboxOwnerStorageKey(this.#owner);
     this.#outboxKey =
       this.#owner.kind === "anonymous" ? OUTBOX_KEY : `${OUTBOX_KEY}:${scope}`;
+    this.#contentReportOutboxKey =
+      this.#owner.kind === "account"
+        ? `${CONTENT_REPORT_OUTBOX_KEY}:${scope}`
+        : null;
     this.#deviceKey =
       this.#owner.kind === "anonymous" ? DEVICE_KEY : `${DEVICE_KEY}:${scope}`;
     this.#sha256Hex =
@@ -741,6 +779,67 @@ export class WebAttemptOutboxStore {
         (current, submission) => enqueueAttempt(current, submission),
         snapshot,
       ),
+    );
+  }
+
+  public async readContentReports(): Promise<ContentReportOutboxSnapshot> {
+    const key = this.#requireContentReportOutboxKey();
+    try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
+      return await this.#database.transaction(
+        "r",
+        this.#database.metadata,
+        this.#database.outbox,
+        async () => {
+          await this.#assertAccountWritable(tombstoneKey);
+          return parseStoredContentReportOutbox(
+            await this.#database.outbox.get(key),
+          );
+        },
+      );
+    } catch (error) {
+      if (error instanceof AttemptOutboxStorageError) throw error;
+      throw new AttemptOutboxStorageError(
+        "La file locale de signalements est temporairement indisponible.",
+        { cause: error },
+      );
+    }
+  }
+
+  public enqueueContentReport(
+    entry: ContentReportOutboxEntry,
+  ): Promise<ContentReportOutboxSnapshot> {
+    return this.#replaceContentReports((snapshot) =>
+      appendContentReport(snapshot, entry),
+    );
+  }
+
+  public ackContentReport(
+    entry: ContentReportOutboxEntry,
+    response: ContentReportResponse,
+  ): Promise<ContentReportOutboxSnapshot> {
+    return this.#replaceContentReports((snapshot) =>
+      applyContentReportAck(snapshot, entry, response),
+    );
+  }
+
+  public rejectContentReport(
+    entry: ContentReportOutboxEntry,
+    rejection: {
+      readonly reason: ContentReportRejectionReason;
+      readonly rejectedAt: string;
+    },
+  ): Promise<ContentReportOutboxSnapshot> {
+    return this.#replaceContentReports((snapshot) =>
+      applyContentReportRejection(snapshot, entry, rejection),
+    );
+  }
+
+  public discardRejectedContentReport(
+    rejection: ContentReportOutboxRejection,
+  ): Promise<ContentReportOutboxSnapshot> {
+    return this.#replaceContentReports((snapshot) =>
+      applyContentReportRejectionDiscard(snapshot, rejection),
     );
   }
 
@@ -885,6 +984,9 @@ export class WebAttemptOutboxStore {
             );
           }
           await this.#database.outbox.delete(this.#outboxKey);
+          if (this.#contentReportOutboxKey !== null) {
+            await this.#database.outbox.delete(this.#contentReportOutboxKey);
+          }
           await this.#database.metadata.delete(this.#deviceKey);
           if (
             this.#owner.kind === "account" &&
@@ -960,6 +1062,9 @@ export class WebAttemptOutboxStore {
             value: DELETED_ACCOUNT_TOMBSTONE_VALUE,
           });
           await this.#database.outbox.delete(this.#outboxKey);
+          await this.#database.outbox.delete(
+            this.#requireContentReportOutboxKey(),
+          );
           await this.#database.metadata.delete(this.#deviceKey);
           if (removeFusionMarker) {
             await this.#database.metadata.delete(FUSION_MARKER_KEY);
@@ -1007,6 +1112,10 @@ export class WebAttemptOutboxStore {
         : expectedState.fusionMarker === null
           ? null
           : serializeAnonymousProgressFusionMarker(expectedState.fusionMarker);
+    const expectedContentReportOutbox =
+      expectedState === undefined
+        ? undefined
+        : serializeContentReportOutbox(expectedState.contentReportOutbox);
 
     try {
       const tombstoneKey = await this.#resolveAccountTombstoneKey();
@@ -1017,13 +1126,19 @@ export class WebAttemptOutboxStore {
         async () => {
           await this.#assertAccountWritable(tombstoneKey);
           const row = await this.#database.outbox.get(this.#outboxKey);
+          const contentReportRow = await this.#database.outbox.get(
+            this.#requireContentReportOutboxKey(),
+          );
           const snapshot = parseStoredSnapshot(row, owner);
+          const contentReportOutbox =
+            parseStoredContentReportOutbox(contentReportRow);
           const marker = parseStoredFusionMarker(
             await this.#database.metadata.get(FUSION_MARKER_KEY),
           );
           const unsettled =
             snapshot.inFlight !== null ||
             snapshot.entries.some(({ status }) => status === "pending") ||
+            contentReportOutbox.entries.length > 0 ||
             (marker?.status === "awaiting_server_ack" &&
               marker.targetUserId === owner.userId);
           const markerValue =
@@ -1033,9 +1148,12 @@ export class WebAttemptOutboxStore {
           const matchesExpected =
             expectedSnapshot !== undefined &&
             serializeAttemptOutboxSnapshot(snapshot) === expectedSnapshot &&
-            markerValue === expectedMarker;
+            markerValue === expectedMarker &&
+            serializeContentReportOutbox(contentReportOutbox) ===
+              expectedContentReportOutbox;
           const alreadyPurged =
             row === undefined &&
+            contentReportRow === undefined &&
             (marker === null || marker.targetUserId !== owner.userId);
           if (expectedSnapshot !== undefined) {
             if (!matchesExpected && !alreadyPurged) return false;
@@ -1044,6 +1162,9 @@ export class WebAttemptOutboxStore {
           }
 
           await this.#database.outbox.delete(this.#outboxKey);
+          await this.#database.outbox.delete(
+            this.#requireContentReportOutboxKey(),
+          );
           await this.#database.metadata.delete(this.#deviceKey);
           if (marker?.targetUserId === owner.userId) {
             await this.#database.metadata.delete(FUSION_MARKER_KEY);
@@ -1082,6 +1203,15 @@ export class WebAttemptOutboxStore {
       (fingerprint) => `${DELETED_ACCOUNT_TOMBSTONE_PREFIX}${fingerprint}`,
     );
     return this.#accountTombstoneKeyPromise;
+  }
+
+  #requireContentReportOutboxKey(): string {
+    if (this.#contentReportOutboxKey === null) {
+      throw new AttemptOutboxStorageError(
+        "Les signalements exigent un espace lié à un compte permanent.",
+      );
+    }
+    return this.#contentReportOutboxKey;
   }
 
   async #assertAccountWritable(tombstoneKey: string | null): Promise<void> {
@@ -1273,6 +1403,48 @@ export class WebAttemptOutboxStore {
       const next = update(snapshot);
       return { snapshot: next, result: next };
     });
+  }
+
+  async #replaceContentReports(
+    update: (
+      snapshot: ContentReportOutboxSnapshot,
+    ) => ContentReportOutboxSnapshot,
+  ): Promise<ContentReportOutboxSnapshot> {
+    const key = this.#requireContentReportOutboxKey();
+    try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
+      return await this.#database.transaction(
+        "rw",
+        this.#database.metadata,
+        this.#database.outbox,
+        async () => {
+          await this.#assertAccountWritable(tombstoneKey);
+          const current = parseStoredContentReportOutbox(
+            await this.#database.outbox.get(key),
+          );
+          const next = update(current);
+          await this.#database.outbox.put({
+            key,
+            snapshot: serializeContentReportOutbox(next),
+          });
+          return next;
+        },
+      );
+    } catch (error) {
+      if (error instanceof AttemptOutboxStorageError) throw error;
+      if (
+        error instanceof ContentReportOutboxCapacityError ||
+        error instanceof ContentReportOutboxCollisionError ||
+        error instanceof ContentReportOutboxAckMismatchError ||
+        error instanceof ContentReportOutboxRejectionMismatchError
+      ) {
+        throw new AttemptOutboxStorageError(error.message, { cause: error });
+      }
+      throw new AttemptOutboxStorageError(
+        "La file locale de signalements n'a pas pu être mise à jour.",
+        { cause: error },
+      );
+    }
   }
 
   async #replaceWithResult<T>(

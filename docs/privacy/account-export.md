@@ -1,19 +1,23 @@
 # Checklist de confidentialité — export de compte
 
-Cette checklist complète l’[ADR-0014](../adr/0014-portable-account-export-v1.md).
-Elle couvre la première version synchrone de l’export et ne vaut pas procédure
+Cette checklist complète les [ADR-0014](../adr/0014-portable-account-export-v1.md)
+et [ADR-0019](../adr/0019-structured-content-reports.md). Elle couvre la version
+synchrone courante de l’export et ne vaut pas procédure
 de suppression du compte.
 
 ## Périmètre remis à l’utilisateur
 
 - [x] Identité Auth limitée à l’UUID, aux coordonnées du compte, aux dates de
       cycle de vie et aux noms de fournisseurs de connexion.
-- [x] Profil, appareils, tentatives et progression synchronisés uniquement.
+- [x] Profil, appareils, tentatives, progression et signalements linguistiques
+      reçus par le serveur uniquement.
 - [x] Absence de `user_metadata`, identités OAuth détaillées, jetons, secrets,
       données de paiement, journaux internes et réponses idempotentes.
 - [x] Exclusion explicite des prises de voix, de la progression anonyme, des
       tentatives encore locales et des caches hors ligne.
 - [x] Contrat JSON fermé, versionné et validé avant remise.
+- [x] Le format v2 expose la catégorie et la cible versionnée d’un signalement,
+      jamais son hash interne ni une donnée libre.
 
 ## Contrôles serveur
 
@@ -22,8 +26,9 @@ de suppression du compte.
       Auth concordants ou, sur une image locale historique sans marqueurs, par
       l’absence de tout canal email/téléphone confirmé ; aucun
       identifiant utilisateur n’est accepté en entrée.
-- [x] Lectures avec clé publiable et JWT utilisateur sous RLS, avec filtre
-      propriétaire explicite ; aucune clé `service_role` dans ce chemin.
+- [x] Progression lue avec la clé publiable et le JWT du sujet sous RLS ; les
+      signalements non exposés au client sont lus avec la clé serveur, filtrés
+      sur l’UUID Auth vérifié puis contrôlés ligne par ligne.
 - [x] Bornes strictes et refus du document entier plutôt que troncature.
 - [x] Détection d’une mutation pendant la lecture et un seul nouvel essai.
 - [x] Réponses `no-store`, délai global et journal opérationnel sans donnée

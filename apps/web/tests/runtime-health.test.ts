@@ -28,12 +28,21 @@ describe("configuration et sondes de santé", () => {
       NEXT_PUBLIC_SUPABASE_URL: "https://project.supabase.co",
       NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY:
         "sb_publishable_example_public_value",
+      SUPABASE_SECRET_KEY: "sb_secret_example_server_value",
     });
     expect(configured).toMatchObject({
       ready: true,
       studioMode: "fixture",
       syncMode: "disabled",
     });
+
+    const aggregateMissing = diagnoseRuntime({
+      THAINAUTE_STUDIO_MODE: "fixture",
+      NEXT_PUBLIC_SUPABASE_URL: "https://project.supabase.co",
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY:
+        "sb_publishable_example_public_value",
+    });
+    expect(aggregateMissing.issues).toContain("studio_report_config_missing");
   });
 
   it("refuse un mode studio inconnu", () => {

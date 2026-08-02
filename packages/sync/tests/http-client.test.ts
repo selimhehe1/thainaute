@@ -60,7 +60,7 @@ const acceptedResponse = {
   states: [],
 };
 const accountExportDocument = (identityId: string = ids.user) => ({
-  format: "thainaute.account-export/v1" as const,
+  format: "thainaute.account-export/v2" as const,
   exportedAt: "2026-08-02T10:00:00.000Z",
   identity: {
     id: identityId,
@@ -78,6 +78,7 @@ const accountExportDocument = (identityId: string = ids.user) => ({
     devices: [],
     attemptEvents: [],
     learnerItemStates: [],
+    contentReports: [],
   },
 });
 const accountDeletionReceipt = {

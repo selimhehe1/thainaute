@@ -1,4 +1,5 @@
 import type { ContentReviewResponse } from "@thainaute/content/studio";
+import type { ContentReportAggregate } from "@thainaute/sync";
 
 export interface ContentStudioAuthorizer {
   readonly authorize: (input: {
@@ -8,3 +9,10 @@ export interface ContentStudioAuthorizer {
 }
 
 export type ContentStudioFixtureReviewer = () => ContentReviewResponse;
+
+export interface ContentStudioReportAggregateReader {
+  read(input: {
+    readonly contentVersionId: string;
+    readonly signal: AbortSignal;
+  }): Promise<ContentReportAggregate>;
+}

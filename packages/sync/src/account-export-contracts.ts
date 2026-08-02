@@ -1,8 +1,8 @@
 import { SKILL_DIMENSIONS } from "@thainaute/domain";
 import { z } from "zod";
 
-export const ACCOUNT_EXPORT_FORMAT = "thainaute.account-export/v1" as const;
-export const ACCOUNT_EXPORT_FILE_NAME = "thainaute-account-export-v1.json";
+export const ACCOUNT_EXPORT_FORMAT = "thainaute.account-export/v2" as const;
+export const ACCOUNT_EXPORT_FILE_NAME = "thainaute-account-export-v2.json";
 
 /**
  * Bornes du premier export synchrone. Les adaptateurs doivent refuser le
@@ -11,6 +11,7 @@ export const ACCOUNT_EXPORT_FILE_NAME = "thainaute-account-export-v1.json";
 export const MAX_ACCOUNT_EXPORT_DEVICES = 20;
 export const MAX_ACCOUNT_EXPORT_ATTEMPTS = 10_000;
 export const MAX_ACCOUNT_EXPORT_LEARNER_STATES = 10_000;
+export const MAX_ACCOUNT_EXPORT_CONTENT_REPORTS = 10_000;
 export const MAX_ACCOUNT_EXPORT_JSON_BYTES = 4_000_000;
 
 export const ACCOUNT_EXPORT_ERROR_CODES = [
@@ -87,6 +88,25 @@ export const accountExportAttemptEventSchema = z.strictObject({
   receivedAt: utcIsoTimestampSchema,
 });
 
+export const accountExportContentReportSchema = z.strictObject({
+  idempotencyKey: canonicalUuidSchema,
+  contentVersionId: canonicalUuidSchema,
+  itemId: canonicalUuidSchema,
+  exerciseId: canonicalUuidSchema,
+  category: z.enum([
+    "orthography",
+    "meaning",
+    "pronunciation",
+    "tone",
+    "vowel_length",
+    "register",
+    "naturalness",
+    "audio",
+  ]),
+  platform: z.enum(["web", "ios", "android"]),
+  receivedAt: utcIsoTimestampSchema,
+});
+
 export const accountExportLearnerItemStateSchema = z
   .strictObject({
     itemId: canonicalUuidSchema,
@@ -147,6 +167,9 @@ export const accountExportDataSchema = z
     learnerItemStates: z
       .array(accountExportLearnerItemStateSchema)
       .max(MAX_ACCOUNT_EXPORT_LEARNER_STATES),
+    contentReports: z
+      .array(accountExportContentReportSchema)
+      .max(MAX_ACCOUNT_EXPORT_CONTENT_REPORTS),
   })
   .superRefine((data, context) => {
     assertStrictOrder(
@@ -168,12 +191,20 @@ export const accountExportDataSchema = z
       "learnerItemStates",
       context,
     );
+    assertStrictOrder(
+      data.contentReports.map(
+        (report) => `${report.receivedAt}\u0000${report.idempotencyKey}`,
+      ),
+      "contentReports",
+      context,
+    );
 
     if (
       data.profile === null &&
       (data.devices.length > 0 ||
         data.attemptEvents.length > 0 ||
-        data.learnerItemStates.length > 0)
+        data.learnerItemStates.length > 0 ||
+        data.contentReports.length > 0)
     ) {
       context.addIssue({
         code: "custom",
@@ -241,6 +272,9 @@ export type AccountExportProfile = z.infer<typeof accountExportProfileSchema>;
 export type AccountExportDevice = z.infer<typeof accountExportDeviceSchema>;
 export type AccountExportAttemptEvent = z.infer<
   typeof accountExportAttemptEventSchema
+>;
+export type AccountExportContentReport = z.infer<
+  typeof accountExportContentReportSchema
 >;
 export type AccountExportLearnerItemState = z.infer<
   typeof accountExportLearnerItemStateSchema
