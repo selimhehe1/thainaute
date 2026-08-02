@@ -12,7 +12,6 @@ import { WebAnalyticsConsentProvider } from "@/lib/client/analytics-consent";
 import { createSiteMetadata } from "@/lib/server/site-metadata";
 
 import "./styles/base.css";
-import "./styles/legacy.css";
 
 export function generateMetadata(): Metadata {
   return createSiteMetadata();

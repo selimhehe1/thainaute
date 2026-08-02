@@ -1,6 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { buttonClass } from "@/components/ui/button";
+import panel from "@/components/ui/panel.module.css";
+import styles from "./studio.module.css";
 import {
   useCallback,
   useEffect,
@@ -79,7 +82,7 @@ function TruncationNotice({
 }>) {
   if (!truncated) return null;
   return (
-    <p className="studioTruncationNote">
+    <p className={styles.truncationNote}>
       Affichage limité à {shown} {label} sur {total}.
     </p>
   );
@@ -92,12 +95,14 @@ function StudioReport({
   const summary = report.summary;
   if (summary === null) {
     return (
-      <section className="studioReport" aria-labelledby="studio-result-title">
-        <p className="studioVerdict studioVerdictBlocked">Schéma refusé</p>
+      <section className={styles.report} aria-labelledby="studio-result-title">
+        <p className={styles.verdict + " " + styles.verdictBlocked}>
+          Schéma refusé
+        </p>
         <h2 id="studio-result-title" tabIndex={-1}>
           Le document ne peut pas être contrôlé.
         </h2>
-        <ul className="studioIssueList">
+        <ul className={styles.issueList}>
           {report.issues.map((issue, index) => (
             <li key={`${issue.code}-${index}`}>
               <strong>{issue.path.join(" › ") || "document"}</strong>
@@ -110,12 +115,12 @@ function StudioReport({
   }
 
   return (
-    <section className="studioReport" aria-labelledby="studio-result-title">
+    <section className={styles.report} aria-labelledby="studio-result-title">
       <p
         className={
           report.publishable
-            ? "studioVerdict studioVerdictPass"
-            : "studioVerdict studioVerdictBlocked"
+            ? styles.verdict + " " + styles.verdictPass
+            : styles.verdict + " " + styles.verdictBlocked
         }
       >
         {report.publishable ? "Préflight sans blocage" : "Publication refusée"}
@@ -123,12 +128,12 @@ function StudioReport({
       <h2 id="studio-result-title" tabIndex={-1}>
         {summary.lesson.titleFr}
       </h2>
-      <p className="studioSafetyNote">
+      <p className={styles.safetyNote}>
         Rapport seulement : aucune écriture, aucune release et aucune
         publication n’ont été effectuées.
       </p>
 
-      <dl className="studioMetrics">
+      <dl className={styles.metrics}>
         <div>
           <dt>Workflow</dt>
           <dd>{summary.lesson.workflowStatus}</dd>
@@ -149,14 +154,17 @@ function StudioReport({
         </div>
       </dl>
 
-      <section className="studioSection" aria-labelledby="studio-reports-title">
+      <section
+        className={styles.section}
+        aria-labelledby="studio-reports-title"
+      >
         <h3 id="studio-reports-title">Signalements apprenants</h3>
         <p>
           {envelope.userReports.total} signalement
           {envelope.userReports.total > 1 ? "s" : ""} structuré
           {envelope.userReports.total > 1 ? "s" : ""}, sans identité affichée.
         </p>
-        <ul className="studioAuditGrid">
+        <ul className={styles.auditGrid}>
           {Object.entries(envelope.userReports.byCategory).map(
             ([category, count]) => (
               <li key={category}>
@@ -173,14 +181,14 @@ function StudioReport({
       </section>
 
       <section
-        className="studioSection"
+        className={styles.section}
         aria-labelledby="studio-blockers-title"
       >
         <h3 id="studio-blockers-title">Portes de publication</h3>
         {report.blockers.length === 0 ? (
           <p>Aucune cause de refus détectée par le préflight.</p>
         ) : (
-          <ol className="studioBlockerList">
+          <ol className={styles.blockerList}>
             {report.blockers.map((blocker) => (
               <li key={blocker.code}>
                 <code>{blocker.code}</code>
@@ -191,14 +199,22 @@ function StudioReport({
         )}
       </section>
 
-      <section className="studioSection" aria-labelledby="studio-audits-title">
+      <section className={styles.section} aria-labelledby="studio-audits-title">
         <h3 id="studio-audits-title">Sept contrôles linguistiques</h3>
-        <ul className="studioAuditGrid">
+        <ul className={styles.auditGrid}>
           {summary.audits.entries.map((audit) => (
             <li key={audit.dimension}>
               <span>{AUDIT_LABELS[audit.dimension]}</span>
               <strong
-                className={`studioAuditStatus studioAuditStatus-${audit.status}`}
+                className={
+                  styles.auditStatus +
+                  " " +
+                  (audit.status === "passed"
+                    ? styles.auditPassed
+                    : audit.status === "pending"
+                      ? styles.auditPending
+                      : styles.auditFailed)
+                }
               >
                 {AUDIT_STATUS_LABELS[audit.status]}
               </strong>
@@ -210,7 +226,10 @@ function StudioReport({
         </ul>
       </section>
 
-      <section className="studioSection" aria-labelledby="studio-sources-title">
+      <section
+        className={styles.section}
+        aria-labelledby="studio-sources-title"
+      >
         <h3 id="studio-sources-title">Sources et droits</h3>
         <TruncationNotice
           label="sources"
@@ -220,11 +239,11 @@ function StudioReport({
         />
         <div
           aria-label="Tableau des sources et droits"
-          className="studioTableScroll"
+          className={styles.tableScroll}
           role="region"
           tabIndex={0}
         >
-          <table className="studioTable">
+          <table className={styles.table}>
             <thead>
               <tr>
                 <th scope="col">Source</th>
@@ -265,7 +284,10 @@ function StudioReport({
         </div>
       </section>
 
-      <section className="studioSection" aria-labelledby="studio-unicode-title">
+      <section
+        className={styles.section}
+        aria-labelledby="studio-unicode-title"
+      >
         <h3 id="studio-unicode-title">Unicode thaï</h3>
         <TruncationNotice
           label="éléments"
@@ -273,10 +295,10 @@ function StudioReport({
           total={summary.items.total}
           truncated={summary.items.truncated}
         />
-        <ul className="studioUnicodeList">
+        <ul className={styles.unicodeList}>
           {summary.items.entries.map((item) => (
             <li key={item.itemId}>
-              <span className="studioThai" lang="th">
+              <span className={styles.thai} lang="th">
                 {item.thaiRaw}
               </span>
               <code>{item.actualCodePoints.join(" ")}</code>
@@ -287,7 +309,7 @@ function StudioReport({
       </section>
 
       <section
-        className="studioSection"
+        className={styles.section}
         aria-labelledby="studio-findings-title"
       >
         <h3 id="studio-findings-title">Findings</h3>
@@ -300,7 +322,7 @@ function StudioReport({
         {summary.findings.entries.length === 0 ? (
           <p>Aucun finding enregistré.</p>
         ) : (
-          <ul className="studioFindingList">
+          <ul className={styles.findingList}>
             {summary.findings.entries.map((finding) => (
               <li key={finding.code}>
                 <code>{finding.code}</code>
@@ -314,7 +336,7 @@ function StudioReport({
         )}
       </section>
 
-      <section className="studioSection" aria-labelledby="studio-audio-title">
+      <section className={styles.section} aria-labelledby="studio-audio-title">
         <h3 id="studio-audio-title">Audio</h3>
         <TruncationNotice
           label="assets audio détaillés"
@@ -492,7 +514,7 @@ export function ContentReviewStudio() {
 
   if (auth.status === "unconfigured") {
     return (
-      <section className="studioNotice" role="status">
+      <section className={styles.notice} role="status">
         <h1 ref={sessionFocusTarget} tabIndex={-1}>
           Studio indisponible.
         </h1>
@@ -503,8 +525,8 @@ export function ContentReviewStudio() {
 
   if (auth.status === "signed_out") {
     return (
-      <section className="studioNotice">
-        <p className="eyebrow">Surface privée</p>
+      <section className={styles.notice}>
+        <p className={panel.eyebrow}>Surface privée</p>
         <h1 ref={sessionFocusTarget} tabIndex={-1}>
           Connectez un compte autorisé.
         </h1>
@@ -512,7 +534,7 @@ export function ContentReviewStudio() {
           Le studio ne révèle aucun dossier avant la vérification serveur du
           rôle éditorial.
         </p>
-        <Link className="button buttonPrimary" href="/account">
+        <Link className={buttonClass("primary")} href="/account">
           Ouvrir le compte
         </Link>
       </section>
@@ -520,16 +542,16 @@ export function ContentReviewStudio() {
   }
 
   return (
-    <div className="studioPanel">
-      <p className="eyebrow">Prépublication · fixture uniquement</p>
+    <div className={styles.panel}>
+      <p className={panel.eyebrow}>Prépublication · fixture uniquement</p>
       <h1 ref={sessionFocusTarget} tabIndex={-1}>
         Voir chaque porte avant toute publication.
       </h1>
-      <p className="studioLede">
+      <p className={styles.lede}>
         Le serveur relit la fixture technique versionnée et produit un rapport
         sans enregistrer, corriger ou publier quoi que ce soit.
       </p>
-      <aside className="fixtureBanner studioFixtureBanner" role="note">
+      <aside className={styles.fixtureBanner} role="note">
         <strong>Contenu technique non pédagogique</strong>
         <span>
           Aucun vrai mot, aucune source autorisée et aucun audit validé ne sont
@@ -538,14 +560,14 @@ export function ContentReviewStudio() {
       </aside>
 
       {!online && (
-        <p className="offlineNote" role="status">
+        <p className={styles.offlineNote} role="status">
           Le studio exige une vérification Auth en ligne. La revue pourra être
           relancée après la reconnexion.
         </p>
       )}
 
       <button
-        className="button buttonPrimary studioPrimaryAction"
+        className={buttonClass("primary")}
         disabled={busy || !online}
         type="button"
         onClick={() => void reviewFixture()}
@@ -553,7 +575,7 @@ export function ContentReviewStudio() {
         {busy ? "Vérification…" : "Vérifier la publication"}
       </button>
 
-      <p className="studioStatus" aria-live="polite">
+      <p className={styles.status} aria-live="polite">
         {message}
       </p>
       {report !== null && (

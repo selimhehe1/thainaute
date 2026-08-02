@@ -286,7 +286,10 @@ export function ContentReportPanel({
   const busy = status === "loading" || status === "submitting";
 
   return (
-    <section className="contentReport" aria-label="Signalement linguistique">
+    <section
+      className={lessonStyles.report}
+      aria-label="Signalement linguistique"
+    >
       <button
         className={buttonClass("ghost")}
         type="button"
@@ -298,7 +301,7 @@ export function ContentReportPanel({
       </button>
 
       {open && (
-        <div className="contentReportPanel" id="content-report-panel">
+        <div className={lessonStyles.reportPanel} id="content-report-panel">
           <h2 id="content-report-title">Quel type d’erreur avez-vous vu ?</h2>
           <p>
             Choisissez une catégorie. Aucun texte libre, réponse ou audio n’est
@@ -306,7 +309,7 @@ export function ContentReportPanel({
           </p>
 
           {userId === null ? (
-            <div className="contentReportSignedOut">
+            <div className={lessonStyles.reportSignedOut}>
               <p role="status">
                 Connectez un compte permanent pour conserver et suivre ce
                 signalement sur le bon contenu.
@@ -316,7 +319,7 @@ export function ContentReportPanel({
               </Link>
             </div>
           ) : (
-            <form className="contentReportForm" onSubmit={submit}>
+            <form className={lessonStyles.reportForm} onSubmit={submit}>
               <label htmlFor="content-report-category">Catégorie</label>
               <select
                 id="content-report-category"
