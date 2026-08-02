@@ -75,6 +75,11 @@ disponible qu'avec `THAINAUTE_PUBLIC_CONTENT_MODE=supabase`, une release locale
 explicite et un compte permanent. Elle reste une fixture technique non
 publiable ; aucun corrigé n'est embarqué dans les clients.
 
+Le centre `/privacy` sur le web et le mobile conserve un consentement analytics
+indépendant du compte. La valeur initiale ferme le flux et aucun événement
+antérieur n'est rejoué après acceptation. Cette tranche n'active aucun
+fournisseur, SDK, cookie analytics ou transport distant.
+
 Les identifiants natifs réservés localement sont `com.thainaute.app` pour iOS
 et Android. Ils ne créent aucune fiche boutique et restent soumis à la
 clearance du nom avant toute réservation Apple, Google ou EAS.

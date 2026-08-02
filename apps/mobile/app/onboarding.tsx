@@ -1,4 +1,4 @@
-import { noOpAnalytics, type AnalyticsSink } from "@thainaute/analytics";
+import type { AnalyticsSink } from "@thainaute/analytics";
 import {
   type LocalOnboardingSelection,
   type LocalOnboardingState,
@@ -18,6 +18,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { MobileLocalExperienceStore } from "../lib/mobile-local-experience-store";
+import { useMobileAnalytics } from "../lib/analytics-provider";
 
 type Status = "loading" | "ready" | "error";
 
@@ -123,9 +124,9 @@ function ChoiceGroup<T extends string | number>(props: {
 }
 
 export function OnboardingScreen({
-  analytics = noOpAnalytics,
+  analytics,
 }: {
-  readonly analytics?: AnalyticsSink;
+  readonly analytics: AnalyticsSink;
 }) {
   const database = useSQLiteContext();
   const router = useRouter();
@@ -332,7 +333,8 @@ export function OnboardingScreen({
 }
 
 export default function OnboardingRoute() {
-  return <OnboardingScreen />;
+  const { analytics } = useMobileAnalytics();
+  return <OnboardingScreen analytics={analytics} />;
 }
 
 const styles = StyleSheet.create({

@@ -1,4 +1,3 @@
-import { noOpAnalytics } from "@thainaute/analytics";
 import type { PublicAudioAsset } from "@thainaute/content/public";
 import type {
   AttemptOutboxEntry,
@@ -26,6 +25,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { MobileContentReportPanel } from "../components/content-report-panel";
 import { useMobileAuthSession } from "../lib/auth-session";
+import { useMobileAnalytics } from "../lib/analytics-provider";
 import { ensureExpoPublicAudioCached } from "../lib/expo-public-audio-cache";
 import {
   enqueueConnectedMobileAttempt,
@@ -70,6 +70,7 @@ function dueAtLabel(value: string | null): string {
 export default function ConnectedLessonScreen() {
   const database = useSQLiteContext();
   const auth = useMobileAuthSession();
+  const { analytics } = useMobileAnalytics();
   const player = useAudioPlayer();
   const userId =
     auth.status === "signed_in" ? (auth.session?.user.id ?? null) : null;
@@ -619,7 +620,7 @@ export default function ConnectedLessonScreen() {
         )}
 
         <MobileContentReportPanel
-          analytics={noOpAnalytics}
+          analytics={analytics}
           contentVersionId={lesson.versionId}
           exerciseId={exercise.id}
         />

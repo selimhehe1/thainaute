@@ -1,6 +1,6 @@
 "use client";
 
-import { noOpAnalytics, type AnalyticsSink } from "@thainaute/analytics";
+import type { AnalyticsSink } from "@thainaute/analytics";
 import {
   beginLocalOnboarding,
   completeLocalOnboarding,
@@ -20,6 +20,7 @@ import {
   LocalExperienceStorageError,
   WebLocalExperienceStore,
 } from "@/lib/client/local-experience-store";
+import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
 
 interface TodayLesson {
   readonly versionId: string;
@@ -81,8 +82,10 @@ function captureSafely(
 
 export function TodayExperience({
   lesson,
-  analytics = noOpAnalytics,
+  analytics: analyticsOverride,
 }: TodayExperienceProps) {
+  const { analytics: consentAwareAnalytics } = useWebAnalyticsConsent();
+  const analytics = analyticsOverride ?? consentAwareAnalytics;
   const [store, setStore] = useState<WebLocalExperienceStore | null>(null);
   const [snapshot, setSnapshot] = useState<LocalExperienceSnapshot | null>(
     null,

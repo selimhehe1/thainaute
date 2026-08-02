@@ -12,6 +12,7 @@ import {
 
 import { initializeDatabase } from "../lib/initialize-database";
 import { MobileAccountDeletionBootstrap } from "../lib/account-deletion-bootstrap";
+import { MobileAnalyticsBootstrap } from "../lib/analytics-provider";
 import { MobileAuthSessionProvider } from "../lib/auth-session";
 import { embeddedThaiFonts } from "../lib/embedded-thai-fonts";
 import { purgeMobileAccountExportCache } from "../lib/mobile-account-export";
@@ -95,10 +96,12 @@ export default function RootLayout() {
       >
         <DatabaseReady onReady={handleReady} />
         {databaseStatus === "ready" && thaiFontsLoaded ? (
-          <MobileAuthSessionProvider>
-            <MobileAccountDeletionBootstrap />
-            <Stack screenOptions={{ headerShown: false }} />
-          </MobileAuthSessionProvider>
+          <MobileAnalyticsBootstrap>
+            <MobileAuthSessionProvider>
+              <MobileAccountDeletionBootstrap />
+              <Stack screenOptions={{ headerShown: false }} />
+            </MobileAuthSessionProvider>
+          </MobileAnalyticsBootstrap>
         ) : null}
       </SQLiteProvider>
       {(databaseStatus === "loading" || !thaiFontsLoaded) && (

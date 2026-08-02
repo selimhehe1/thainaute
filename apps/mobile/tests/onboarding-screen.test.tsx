@@ -20,6 +20,7 @@ const testState = vi.hoisted(() => ({
 }));
 
 const testRouter = vi.hoisted(() => ({ replace: testState.replace }));
+const silentAnalytics = { capture() {} };
 
 vi.mock("expo-router", () => ({
   useRouter: () => testRouter,
@@ -254,7 +255,7 @@ describe("onboarding mobile local", () => {
         experienceOptionId: "prototype_experience_new",
       }),
     );
-    render(<OnboardingScreen />);
+    render(<OnboardingScreen analytics={silentAnalytics} />);
 
     expect(
       (
@@ -284,7 +285,7 @@ describe("onboarding mobile local", () => {
     testState.read
       .mockRejectedValueOnce(new Error("corrupt"))
       .mockResolvedValueOnce(inProgress());
-    render(<OnboardingScreen />);
+    render(<OnboardingScreen analytics={silentAnalytics} />);
 
     expect(
       await screen.findByRole("heading", {

@@ -123,6 +123,30 @@ dans les builds mobiles : ils sont autorisés uniquement pour la tâche
 plateforme au runtime déployé. Toute nouvelle variable qui façonne un build doit
 être ajoutée explicitement à cette politique avant activation.
 
+### Consentement analytics local
+
+Cette tranche n'ajoute aucune variable analytics. Les providers web et mobile
+utilisent un sink nul, même après un accord : aucune requête, cookie, clé projet
+ou identifiant fournisseur n'est créé. La préférence versionnée est conservée
+dans `localStorage` sous `thainaute.analytics-consent.v1` sur le web et dans la
+clé `analytics_consent_v1` de `local_metadata` sur mobile. Un refus mobile est
+conservé sous `analytics_consent_denied_v1` comme tombstone prioritaire sur tout
+ancien accord ; un nouvel accord remplace le snapshot et retire ce tombstone
+dans la même transaction. Ces valeurs ne contiennent ni compte, ni contenu, ni
+donnée de session.
+
+Avant d'activer un transport distant, créer une tranche distincte qui documente
+au minimum le fournisseur et sa région, la clé publique attendue, la rétention,
+le registre de sous-traitance, la purge de l'identifiant local, les CSP/egress,
+les tests de retrait et la mise à jour de la politique de confidentialité. Une
+clé ou un SDK présent ne doit jamais suffire à contourner l'état `unknown` ou
+`denied`. Le snapshot v1, même `granted`, n'autorise aucun transport distant :
+la tranche doit incrémenter le schéma, invalider les anciens accords vers
+`unknown` sans migration implicite, puis recueillir un nouveau consentement
+informé avant la première requête. La purge d'identifiant du fournisseur devra
+être idempotente et sérialisée ; aucune réactivation ne pourra précéder la fin
+d'une purge déjà lancée, même après un remontage du provider.
+
 `ACCOUNT_DELETION_RECEIPT_PEPPER` contient exactement 32 octets aléatoires
 encodés en base64url canonique sans `=` (43 caractères). Il est distinct de
 toute clé Supabase, Stripe ou RevenueCat et n'est jamais envoyé au navigateur
@@ -498,4 +522,6 @@ les contrôles locaux.
 - [Supabase — changement des privilèges Data API](https://supabase.com/changelog/45329-breaking-change-tables-not-exposed-to-data-and-graphql-api-automatically)
 - [Expo — EAS Build](https://docs.expo.dev/build/introduction/)
 - [Expo — variables d'environnement EAS](https://docs.expo.dev/eas/environment-variables/)
+- [Expo — SQLite](https://docs.expo.dev/versions/latest/sdk/sqlite/)
+- [CNIL — règles relatives aux cookies et autres traceurs](https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles)
 - [Cloudflare — mode DNS-only](https://developers.cloudflare.com/dns/proxy-status/)

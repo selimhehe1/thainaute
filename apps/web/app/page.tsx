@@ -100,6 +100,9 @@ export default function HomePage() {
 
       <footer className="shell siteFooter">
         <span>Thaïnaute · fondation technique privée</span>
+        <Link className="privacyFooterLink" href="/privacy">
+          Confidentialité et mesure d’audience
+        </Link>
         <span>Le nom et le contenu restent non publiés.</span>
       </footer>
     </main>

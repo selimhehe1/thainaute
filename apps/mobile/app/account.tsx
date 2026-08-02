@@ -21,6 +21,7 @@ import {
   synchronizeMobileAccount,
 } from "../lib/account-sync";
 import { useMobileAuthSession } from "../lib/auth-session";
+import { useMobileAnalytics } from "../lib/analytics-provider";
 import { assertNoPendingMobileAccountDeletion } from "../lib/mobile-account-deletion";
 import { useMobileAccountExport } from "../lib/use-mobile-account-export";
 import { useMobileAccountDeletion } from "../lib/use-mobile-account-deletion";
@@ -44,6 +45,7 @@ function accountLocalStateForUser(
 export default function AccountScreen() {
   const database = useSQLiteContext();
   const auth = useMobileAuthSession();
+  const { analytics } = useMobileAnalytics();
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [codeRequested, setCodeRequested] = useState(false);
@@ -58,11 +60,13 @@ export default function AccountScreen() {
   >(null);
   const userId = auth.session?.user.id ?? null;
   const accountExport = useMobileAccountExport({
+    analytics,
     expectedUserId: userId,
     platform: Platform.OS === "ios" ? "ios" : "android",
     sessionBoundaryRevision: auth.sessionBoundaryRevision,
   });
   const accountDeletion = useMobileAccountDeletion({
+    analytics,
     database,
     currentUserId: userId,
     platform: Platform.OS === "ios" ? "ios" : "android",
@@ -517,6 +521,22 @@ export default function AccountScreen() {
               />
             </View>
           )}
+
+        <View style={styles.card}>
+          <Text style={styles.eyebrow}>CONFIDENTIALITÉ</Text>
+          <Text style={styles.title}>Choisir la mesure facultative.</Text>
+          <Text style={styles.body}>
+            Ce choix reste indépendant du compte et peut être retiré à tout
+            moment sans bloquer les leçons.
+          </Text>
+          <Link href="/privacy" asChild>
+            <Pressable accessibilityRole="button" style={styles.previewButton}>
+              <Text style={styles.previewButtonText}>
+                Gérer mon consentement
+              </Text>
+            </Pressable>
+          </Link>
+        </View>
 
         {message !== "" && (
           <Text accessibilityLiveRegion="polite" style={styles.message}>

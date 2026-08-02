@@ -1,5 +1,6 @@
 "use client";
 
+import type { AnalyticsSink } from "@thainaute/analytics";
 import Link from "next/link";
 import {
   type FormEvent,
@@ -16,6 +17,7 @@ import {
   synchronizeWebAccount,
 } from "@/lib/client/account-sync";
 import { assertNoPendingWebAccountDeletion } from "@/lib/client/account-deletion";
+import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
 import { useWebAuthSession } from "@/lib/client/auth-session";
 
 import { AccountDeletionSection } from "./account-deletion-section";
@@ -350,6 +352,7 @@ function SignedInAccountActions({
 }
 
 interface SignedInAccountPanelProps {
+  readonly analytics: AnalyticsSink;
   readonly busy: boolean;
   readonly currentLocalState: LocalState | null;
   readonly deletionConfirmationUserId: string | null;
@@ -367,6 +370,7 @@ interface SignedInAccountPanelProps {
 }
 
 function SignedInAccountPanel({
+  analytics,
   busy,
   currentLocalState,
   deletionConfirmationUserId,
@@ -404,6 +408,7 @@ function SignedInAccountPanel({
       />
       {userId !== null && (
         <AccountExportSection
+          analytics={analytics}
           anonymousAttemptCount={summary.anonymousCount}
           expectedUserId={userId}
           fusionPending={
@@ -447,6 +452,7 @@ function selectCurrentLocalState(
 
 export function AccountExperience() {
   const auth = useWebAuthSession();
+  const { analytics } = useWebAnalyticsConsent();
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [codeRequested, setCodeRequested] = useState(false);
@@ -688,7 +694,7 @@ export function AccountExperience() {
             Continuer hors ligne
           </Link>
         </div>
-        <AccountDeletionSection expectedUserId={null} />
+        <AccountDeletionSection analytics={analytics} expectedUserId={null} />
       </>
     );
   }
@@ -712,7 +718,7 @@ export function AccountExperience() {
           }}
           onVerifyCode={(event) => void verifyCode(event)}
         />
-        <AccountDeletionSection expectedUserId={null} />
+        <AccountDeletionSection analytics={analytics} expectedUserId={null} />
       </>
     );
   }
@@ -720,6 +726,7 @@ export function AccountExperience() {
   return (
     <>
       <SignedInAccountPanel
+        analytics={analytics}
         busy={busy}
         currentLocalState={currentLocalState}
         deletionConfirmationUserId={deletionConfirmationUserId}
@@ -750,7 +757,7 @@ export function AccountExperience() {
         sessionBoundaryRevision={auth.sessionBoundaryRevision}
         userId={userId}
       />
-      <AccountDeletionSection expectedUserId={userId} />
+      <AccountDeletionSection analytics={analytics} expectedUserId={userId} />
     </>
   );
 }

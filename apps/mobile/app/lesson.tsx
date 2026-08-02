@@ -1,4 +1,4 @@
-import { noOpAnalytics, type AnalyticsSink } from "@thainaute/analytics";
+import type { AnalyticsSink } from "@thainaute/analytics";
 import { fixtureLesson } from "@thainaute/content/fixture";
 import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
 import {
@@ -34,6 +34,7 @@ import {
   MobileAttemptOutboxStore,
 } from "../lib/attempt-outbox-store";
 import { useMobileAuthSession } from "../lib/auth-session";
+import { useMobileAnalytics } from "../lib/analytics-provider";
 import { MobileLocalExperienceStore } from "../lib/mobile-local-experience-store";
 import { THAI_FONT_REGULAR, THAI_FONT_SEMIBOLD } from "../lib/typography";
 import { useLocalVoicePractice } from "../lib/use-local-voice-practice";
@@ -707,9 +708,9 @@ function StageContent(props: StageContentProps) {
 }
 
 export function LessonExperience({
-  analytics = noOpAnalytics,
+  analytics,
 }: {
-  readonly analytics?: AnalyticsSink;
+  readonly analytics: AnalyticsSink;
 }) {
   const database = useSQLiteContext();
   const auth = useMobileAuthSession();
@@ -1109,7 +1110,8 @@ export function LessonExperience({
 }
 
 export default function LessonRoute() {
-  return <LessonExperience />;
+  const { analytics } = useMobileAnalytics();
+  return <LessonExperience analytics={analytics} />;
 }
 
 const styles = StyleSheet.create({
