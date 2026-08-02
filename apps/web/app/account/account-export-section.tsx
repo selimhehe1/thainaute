@@ -222,17 +222,16 @@ export function AccountExportSection({
         {isLoading ? "Préparation du fichier…" : "Télécharger mon export JSON"}
       </button>
       {exportState.message !== "" && (
-        <p
+        <output
           aria-atomic="true"
           className={
             exportState.phase === "error"
               ? "accountExportStatus inlineError"
               : "accountExportStatus"
           }
-          role="status"
         >
           {exportState.message}
-        </p>
+        </output>
       )}
     </section>
   );

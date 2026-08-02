@@ -89,12 +89,29 @@ describe("identité Auth de l'export de compte", () => {
     };
     delete claimsWithoutAnonymousMarker.is_anonymous;
 
-    expect(() =>
+    expect(
       accountExportIdentityFromSupabaseUser(
         supabaseUser,
         claimsWithoutAnonymousMarker,
       ),
-    ).toThrow(AccountExportInfrastructureError);
+    ).toMatchObject({ id: USER_ID });
+  });
+
+  it("accepte le compte email local historique sans marqueurs d'anonymat", () => {
+    const legacyUser: Record<string, unknown> = { ...supabaseUser };
+    const legacyClaims: Record<string, unknown> = { ...verifiedClaims };
+    delete legacyUser.is_anonymous;
+    delete legacyClaims.is_anonymous;
+
+    expect(
+      accountExportIdentityFromSupabaseUser(legacyUser, legacyClaims),
+    ).toMatchObject({ id: USER_ID });
+
+    legacyUser.email_confirmed_at = null;
+    legacyUser.phone_confirmed_at = null;
+    expect(
+      accountExportIdentityFromSupabaseUser(legacyUser, legacyClaims),
+    ).toBeNull();
   });
 
   it("ferme une divergence entre le claim vérifié et l'objet user", () => {

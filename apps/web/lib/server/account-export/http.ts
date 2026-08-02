@@ -64,6 +64,26 @@ function errorResponse(error: AccountExportApiError, requestId: string) {
   });
 }
 
+function asAccountExportApiError(error: unknown): AccountExportApiError {
+  if (error instanceof AccountExportApiError) return error;
+  if (error instanceof AccountExportInfrastructureError) {
+    return new AccountExportApiError(error.code);
+  }
+  return new AccountExportApiError("internal_error");
+}
+
+function operationalErrorKind(
+  error: AccountExportApiError,
+): "auth_unavailable" | "database_unavailable" | "internal_error" {
+  if (
+    error.code === "auth_unavailable" ||
+    error.code === "database_unavailable"
+  ) {
+    return error.code;
+  }
+  return "internal_error";
+}
+
 async function runWithDeadline<T>(input: {
   readonly requestSignal: AbortSignal;
   readonly timeoutMs: number;
@@ -124,20 +144,11 @@ export function createAccountExportHttpHandler(
         }),
       });
     } catch (error) {
-      const apiError =
-        error instanceof AccountExportApiError
-          ? error
-          : error instanceof AccountExportInfrastructureError
-            ? new AccountExportApiError(error.code)
-            : new AccountExportApiError("internal_error");
+      const apiError = asAccountExportApiError(error);
       if (apiError.status >= 500) {
         dependencies.reportOperationalFailure?.({
           operation: "account_export",
-          errorKind:
-            apiError.code === "auth_unavailable" ||
-            apiError.code === "database_unavailable"
-              ? apiError.code
-              : "internal_error",
+          errorKind: operationalErrorKind(apiError),
           requestId,
         });
       }

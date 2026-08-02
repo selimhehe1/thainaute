@@ -20,7 +20,7 @@ const appMetadataSchema = z
 const verifiedJwtClaimsSchema = z
   .object({
     sub: z.uuid().transform((uuid) => uuid.toLowerCase()),
-    is_anonymous: z.boolean(),
+    is_anonymous: z.boolean().optional(),
   })
   .passthrough();
 const supabaseUserSchema = z
@@ -65,7 +65,36 @@ function providersFromAppMetadata(metadata: unknown): string[] {
   if (!parsedProviders.success) {
     throw new AccountExportInfrastructureError("auth_unavailable");
   }
-  return [...new Set(parsedProviders.data)].sort();
+  return [...new Set(parsedProviders.data)].sort((left, right) => {
+    if (left < right) return -1;
+    if (left > right) return 1;
+    return 0;
+  });
+}
+
+function hasPermanentAccountEvidence(input: {
+  readonly claimMarker: boolean | undefined;
+  readonly userMarker: boolean | undefined;
+  readonly emailConfirmedAt: string | null | undefined;
+  readonly phoneConfirmedAt: string | null | undefined;
+}): boolean {
+  if (
+    input.claimMarker !== undefined &&
+    input.userMarker !== undefined &&
+    input.claimMarker !== input.userMarker
+  ) {
+    throw new AccountExportInfrastructureError("auth_unavailable");
+  }
+  if (input.claimMarker === true || input.userMarker === true) return false;
+  if (input.claimMarker === false || input.userMarker === false) return true;
+
+  // Les anciennes images Auth locales peuvent omettre les deux marqueurs.
+  // Une adresse ou un telephone confirmes par Auth constituent alors une
+  // preuve serveur de conversion en compte permanent.
+  return (
+    (input.emailConfirmedAt !== null && input.emailConfirmedAt !== undefined) ||
+    (input.phoneConfirmedAt !== null && input.phoneConfirmedAt !== undefined)
+  );
 }
 
 /**
@@ -86,12 +115,15 @@ export function accountExportIdentityFromSupabaseUser(
     throw new AccountExportInfrastructureError("auth_unavailable");
   }
   if (
-    user.data.is_anonymous !== undefined &&
-    user.data.is_anonymous !== verifiedClaims.data.is_anonymous
+    !hasPermanentAccountEvidence({
+      claimMarker: verifiedClaims.data.is_anonymous,
+      userMarker: user.data.is_anonymous,
+      emailConfirmedAt: user.data.email_confirmed_at,
+      phoneConfirmedAt: user.data.phone_confirmed_at,
+    })
   ) {
-    throw new AccountExportInfrastructureError("auth_unavailable");
+    return null;
   }
-  if (verifiedClaims.data.is_anonymous) return null;
 
   const result = accountExportIdentitySchema.safeParse({
     id: user.data.id,

@@ -36,7 +36,7 @@ export const accountExportIdentitySchema = z
     email: z.email().max(320).nullable(),
     phone: z
       .string()
-      .regex(/^\+[1-9][0-9]{1,14}$/u)
+      .regex(/^\+[1-9]\d{1,14}$/u)
       .nullable(),
     providers: z.array(providerNameSchema).max(16),
     createdAt: utcIsoTimestampSchema,

@@ -24,6 +24,20 @@ import { useMobileAccountExport } from "../lib/use-mobile-account-export";
 
 type LocalState = Awaited<ReturnType<typeof readMobileAccountLocalState>>;
 
+function accountLocalStateForUser(
+  localState: LocalState | null,
+  userId: string | null,
+): LocalState | null {
+  if (
+    userId === null ||
+    localState?.accountSnapshot.owner.kind !== "account" ||
+    localState.accountSnapshot.owner.userId !== userId.toLowerCase()
+  ) {
+    return null;
+  }
+  return localState;
+}
+
 export default function AccountScreen() {
   const database = useSQLiteContext();
   const auth = useMobileAuthSession();
@@ -46,12 +60,7 @@ export default function AccountScreen() {
     sessionBoundaryRevision: auth.sessionBoundaryRevision,
   });
   const accountOperationBusy = busy || accountExport.isBusy;
-  const currentLocalState =
-    userId !== null &&
-    localState?.accountSnapshot.owner.kind === "account" &&
-    localState.accountSnapshot.owner.userId === userId.toLowerCase()
-      ? localState
-      : null;
+  const currentLocalState = accountLocalStateForUser(localState, userId);
 
   const refreshLocalState = useCallback(async () => {
     if (userId === null) {

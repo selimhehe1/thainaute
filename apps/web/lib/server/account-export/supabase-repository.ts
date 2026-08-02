@@ -74,12 +74,27 @@ export type LearnerItemStateRow = z.infer<typeof learnerItemStateRowSchema>;
 
 interface PageResponse {
   readonly data: unknown[] | null;
-  readonly error: unknown | null;
+  readonly error: unknown;
   readonly count: number | null;
 }
 
 function throwDatabaseUnavailable(): never {
   throw new AccountExportInfrastructureError("database_unavailable");
+}
+
+function validatedPageData(page: PageResponse): unknown[] {
+  if (page.error !== null || page.data === null) throwDatabaseUnavailable();
+  return page.data;
+}
+
+function validatedExpectedCount(count: number | null, maxRows: number): number {
+  if (count === null || !Number.isSafeInteger(count) || count < 0) {
+    throwDatabaseUnavailable();
+  }
+  if (count > maxRows) {
+    throw new AccountExportApiError("export_capacity_exceeded");
+  }
+  return count;
 }
 
 /** Lit toutes les pages annoncées par `count=exact`, ou refuse le lot entier. */
@@ -100,30 +115,18 @@ export async function readBoundedAccountExportPages(input: {
       rows.length + ACCOUNT_EXPORT_PAGE_SIZE - 1,
       expectedCount === null,
     );
-    if (page.error !== null || page.data === null) {
-      throwDatabaseUnavailable();
-    }
+    const pageData = validatedPageData(page);
 
     if (expectedCount === null) {
-      if (
-        page.count === null ||
-        !Number.isSafeInteger(page.count) ||
-        page.count < 0
-      ) {
-        throwDatabaseUnavailable();
-      }
-      if (page.count > input.maxRows) {
-        throw new AccountExportApiError("export_capacity_exceeded");
-      }
-      expectedCount = page.count;
+      expectedCount = validatedExpectedCount(page.count, input.maxRows);
     }
 
-    rows.push(...page.data);
+    rows.push(...pageData);
     if (rows.length > input.maxRows) {
       throw new AccountExportApiError("export_capacity_exceeded");
     }
     if (rows.length >= expectedCount) return rows;
-    if (page.data.length === 0) throwDatabaseUnavailable();
+    if (pageData.length === 0) throwDatabaseUnavailable();
   }
 
   return rows;
