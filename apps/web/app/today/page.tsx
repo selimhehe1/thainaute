@@ -1,7 +1,11 @@
 import { readFixtureBundle } from "@thainaute/content";
 import Link from "next/link";
 
+import { SiteHeader } from "@/components/layout/site-header";
+import { buttonClass } from "@/components/ui/button";
+
 import { TodayExperience } from "./today-experience";
+import styles from "./today.module.css";
 
 export const metadata = { title: "Aujourd’hui" };
 
@@ -10,29 +14,18 @@ export default function TodayPage() {
   const exercise = lesson.exercises[0];
 
   return (
-    <main className="lessonShell">
-      <header className="lessonHeader todayPageHeader">
-        <Link className="brand" href="/" aria-label="Thaïnaute, accueil">
-          <span aria-hidden="true" className="brandMark">
-            ท
-          </span>
-          <span>Thaïnaute</span>
+    <main className={styles.shell}>
+      <SiteHeader navLabel="Navigation de la session">
+        <Link href="/path">Parcours</Link>
+        <Link className={buttonClass("ghost")} href="/account">
+          Compte
         </Link>
-        <nav
-          className="pathHeaderNav todayHeaderNav"
-          aria-label="Navigation de la session"
-        >
-          <Link href="/path">Parcours</Link>
-          <Link className="button buttonSmall buttonGhost" href="/account">
-            Compte
-          </Link>
-        </nav>
-      </header>
+      </SiteHeader>
       {exercise === undefined ? (
-        <section className="todayPanel" aria-labelledby="today-empty-title">
-          <p className="eyebrow">Aujourd’hui</p>
+        <section className={styles.panel} aria-labelledby="today-empty-title">
+          <p className={styles.eyebrow}>Aujourd’hui</p>
           <h1 id="today-empty-title">La session est indisponible.</h1>
-          <p className="todayLede">
+          <p className={styles.lede}>
             La fixture doit être validée avant de pouvoir préparer cette
             démonstration locale.
           </p>

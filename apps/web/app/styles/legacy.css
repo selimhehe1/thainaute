@@ -27,13 +27,6 @@ input {
   width: min(1160px, calc(100% - 40px));
   margin-inline: auto;
 }
-.siteHeader {
-  min-height: 82px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--line);
-}
 .brand {
   min-height: 44px;
   display: inline-flex;
@@ -71,14 +64,6 @@ nav {
   align-items: center;
   justify-content: center;
 }
-.hero {
-  min-height: 670px;
-  padding-block: 88px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.72fr);
-  align-items: center;
-  gap: clamp(48px, 8vw, 120px);
-}
 .eyebrow {
   margin: 0 0 18px;
   color: var(--jade-ink);
@@ -112,12 +97,6 @@ h1 em {
   font-size: clamp(18px, 2vw, 22px);
   line-height: 1.62;
 }
-.heroActions {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  flex-wrap: wrap;
-}
 .button {
   min-height: 48px;
   padding: 0 22px;
@@ -145,175 +124,11 @@ h1 em {
   min-height: 44px;
   padding-inline: 18px;
 }
-.quiet {
-  max-width: 230px;
-  color: #6d7689;
-  font-size: 12px;
-  line-height: 1.5;
-}
-.heroArtifact {
-  position: relative;
-  padding: 26px;
-  border: 1px solid white;
-  border-radius: 32px;
-  background: rgb(255 255 255 / 78%);
-  box-shadow: var(--shadow);
-  transform: rotate(1.5deg);
-}
-.heroArtifact::before {
-  content: "";
-  position: absolute;
-  inset: -18px 22px auto -24px;
-  height: 58px;
-  z-index: -1;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--saffron) 44%, transparent);
-  filter: blur(4px);
-}
-.artifactTop,
-.artifactBottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #6c7485;
-  font-size: 12px;
-  font-weight: 750;
-}
-.thaiSpecimen {
-  margin-block: 44px 14px;
-  text-align: center;
-  color: var(--ink);
-  font:
-    600 112px/1.34 "Noto Sans Thai",
-    Tahoma,
-    sans-serif;
-}
-.heroArtifact > p {
-  margin: 0 0 32px;
-  text-align: center;
-  color: #6d7689;
-  font-size: 13px;
-}
-.meter {
-  height: 10px;
-  overflow: hidden;
-  margin-bottom: 14px;
-  border-radius: 99px;
-  background: var(--mist);
-}
-.meter span {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--jade);
-}
-.artifactBottom strong {
-  color: var(--jade);
-  font-size: 22px;
-}
-.principles {
-  padding-block: 100px;
-  border-top: 1px solid var(--line);
-}
-.principles h2 {
-  max-width: 620px;
-  margin: 0 0 55px;
-  font-size: clamp(38px, 5vw, 66px);
-  line-height: 1.03;
-  letter-spacing: -0.05em;
-}
-.principleGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-.principleGrid article {
-  min-height: 250px;
-  padding: 28px;
-  border-radius: 24px;
-  background: var(--mist);
-}
-.principleGrid article:nth-child(2) {
-  background: #e8f4ef;
-}
-.principleGrid article:nth-child(3) {
-  background: #fff1e9;
-}
-.principleGrid span {
-  color: #7c8597;
-  font-size: 12px;
-  font-weight: 800;
-}
-.principleGrid h3 {
-  margin: 52px 0 12px;
-  font-size: 24px;
-}
-.principleGrid p {
-  margin: 0;
-  color: #5d687d;
-  line-height: 1.65;
-}
-.siteFooter {
-  padding-block: 30px 54px;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  border-top: 1px solid var(--line);
-  color: #727b8c;
-  font-size: 12px;
-}
-.privacyFooterLink {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 @media (max-width: 780px) {
-  .siteHeader nav > a:first-child {
-    display: none;
-  }
-  .siteHeader .siteAccountLink {
-    display: none;
-  }
-  .siteHeader nav {
-    gap: 14px;
-  }
-  .hero {
-    min-height: 0;
-    padding-block: 62px 80px;
-    grid-template-columns: 1fr;
-  }
   h1 {
     font-size: clamp(48px, 15vw, 74px);
   }
-  .heroArtifact {
-    width: min(100%, 430px);
-    margin-inline: auto;
-    transform: none;
-  }
-  .principleGrid {
-    grid-template-columns: 1fr;
-  }
-  .siteFooter {
-    flex-direction: column;
-  }
 }
-
-@media (max-width: 360px) {
-  .siteHeader {
-    padding-block: 12px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .siteHeader nav {
-    width: 100%;
-    justify-content: space-between;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -326,7 +141,6 @@ h1 em {
     transition-duration: 0.01ms !important;
   }
 }
-
 .lessonShell {
   width: min(940px, calc(100% - 32px));
   min-height: 100vh;
@@ -696,7 +510,6 @@ h1 em {
   white-space: nowrap;
   border: 0;
 }
-
 .accountPanel,
 .accountNotice {
   width: min(760px, 100%);
@@ -884,108 +697,6 @@ h1 em {
 .accountDeletionStatus {
   margin: 18px 0 0;
 }
-
-.todayPanel {
-  width: min(780px, 100%);
-  margin: 40px auto 0;
-  padding: clamp(30px, 6vw, 64px);
-  border: 1px solid white;
-  border-radius: 30px;
-  background: white;
-  box-shadow: var(--shadow);
-}
-.todayPanel h1 {
-  font-size: clamp(42px, 7vw, 72px);
-  line-height: 0.98;
-}
-.todayLede {
-  max-width: 650px;
-  margin: 24px 0 34px;
-  color: #536078;
-  font-size: 17px;
-  line-height: 1.65;
-}
-.onboardingForm {
-  display: grid;
-  gap: 28px;
-}
-.onboardingForm fieldset {
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-.onboardingForm legend {
-  margin-bottom: 12px;
-  font-weight: 800;
-}
-.onboardingChoices {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-.onboardingChoices label {
-  min-height: 52px;
-  padding: 12px 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border: 2px solid var(--mist);
-  border-radius: 14px;
-  cursor: pointer;
-}
-.onboardingChoices label:has(input:checked) {
-  border-color: var(--jade);
-  background: #eff9f5;
-}
-.onboardingChoices input {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 auto;
-  accent-color: var(--jade);
-}
-.onboardingChoices span {
-  font-size: 13px;
-  font-weight: 750;
-  line-height: 1.35;
-}
-.todaySession {
-  margin-top: 30px;
-  padding: 24px;
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  border-radius: 20px;
-  background: var(--mist);
-}
-.todaySession h2 {
-  margin: 8px 0 10px;
-  font-size: clamp(26px, 4vw, 36px);
-  letter-spacing: -0.035em;
-}
-.todaySession p {
-  max-width: 540px;
-  margin: 0;
-  color: #5d687d;
-  line-height: 1.55;
-}
-.todaySessionStatus {
-  color: var(--jade-ink);
-  font-size: 12px;
-  font-weight: 850;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-.fixtureBadge {
-  height: fit-content;
-  padding: 7px 10px;
-  flex: 0 0 auto;
-  border-radius: 999px;
-  color: #684c0d;
-  background: #fff4d6;
-  font-size: 11px;
-  font-weight: 800;
-}
 .offlineNote {
   margin: 20px 0 0;
   padding: 14px 16px;
@@ -994,14 +705,6 @@ h1 em {
   background: #fffaf0;
   line-height: 1.5;
 }
-.todayPrimaryAction {
-  margin-top: 28px;
-}
-.todayPrimaryAction:disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
-}
-
 .pathShell {
   padding-bottom: 80px;
 }
@@ -1180,22 +883,9 @@ h1 em {
 .pathFuture p {
   margin: 0;
 }
-
 @media (max-width: 640px) {
   .accountMetrics {
     grid-template-columns: 1fr;
-  }
-  .onboardingChoices {
-    grid-template-columns: 1fr;
-  }
-  .todaySession {
-    flex-direction: column;
-  }
-  .fixtureBadge {
-    align-self: flex-start;
-  }
-  .todayPrimaryAction {
-    width: 100%;
   }
   .pathHeaderNav {
     gap: 10px;
@@ -1219,21 +909,11 @@ h1 em {
     width: 100%;
   }
 }
-
 @media (max-width: 380px) {
   .pathShell .pathHeaderOptional {
     display: none;
   }
-  .todayPageHeader {
-    padding-block: 10px;
-    flex-wrap: wrap;
-  }
-  .todayHeaderNav {
-    width: 100%;
-    justify-content: space-between;
-  }
 }
-
 @media (max-width: 640px) {
   .lessonStep {
     display: none;
@@ -1262,7 +942,6 @@ h1 em {
     width: 100%;
   }
 }
-
 .studioShell {
   padding-bottom: 80px;
 }
@@ -1501,14 +1180,12 @@ h1 em {
 .studioUnicodeList strong {
   margin-left: auto;
 }
-
 @media (max-width: 780px) {
   .studioMetrics,
   .studioAuditGrid {
     grid-template-columns: 1fr 1fr;
   }
 }
-
 @media (max-width: 520px) {
   .studioPanel,
   .studioNotice {
@@ -1532,7 +1209,6 @@ h1 em {
     margin-left: 0;
   }
 }
-
 .connectedLessonShell {
   min-height: 100vh;
 }
@@ -1672,7 +1348,6 @@ h1 em {
   font-size: 19px;
   font-weight: 850;
 }
-
 @media (max-width: 620px) {
   .connectedPanel {
     margin-top: 24px;

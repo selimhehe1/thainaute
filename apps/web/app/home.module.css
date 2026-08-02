@@ -1,0 +1,238 @@
+.shell {
+  width: min(1160px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.hero {
+  position: relative;
+  padding: 72px 0 40px;
+  overflow: hidden;
+}
+
+.heroHalo {
+  position: absolute;
+  right: -80px;
+  top: 20px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(
+    closest-side,
+    var(--color-saffron-halo),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.heroSpecimen {
+  position: absolute;
+  right: -14px;
+  top: -6px;
+  font-family: var(--font-thai);
+  font-weight: 700;
+  font-size: clamp(150px, 26vw, 300px);
+  line-height: 1.2;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(40 52 80 / 13%);
+  transform: rotate(1.5deg);
+  user-select: none;
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--color-coral);
+  margin: 0 0 10px;
+}
+
+.heroTitle {
+  font-size: clamp(44px, 7.5vw, 92px);
+  font-weight: var(--weight-display);
+  letter-spacing: -0.055em;
+  line-height: 0.96;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  text-wrap: balance;
+}
+
+.heroTitle em {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-coral);
+  letter-spacing: -0.02em;
+}
+
+.heroCurve {
+  display: block;
+  margin: 10px 0 16px;
+  color: var(--color-coral);
+  position: relative;
+  z-index: 1;
+}
+
+.heroCurve path {
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  animation: heroTrace var(--motion-trace) var(--ease-standard) 200ms forwards;
+}
+
+@keyframes heroTrace {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.lede {
+  color: var(--color-ink-soft);
+  font-size: 18px;
+  line-height: 1.65;
+  max-width: 52ch;
+  margin: 0 0 26px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  position: relative;
+  z-index: 1;
+}
+
+.quiet {
+  color: var(--color-ink-soft);
+  font-size: 13.5px;
+}
+
+.tones {
+  padding: 64px 0 24px;
+}
+
+.sectionTitle {
+  font-size: clamp(26px, 3.6vw, 38px);
+  font-weight: var(--weight-display);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+
+.sectionNote {
+  color: var(--color-ink-soft);
+  max-width: 62ch;
+  margin: 0 0 30px;
+}
+
+.toneGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.toneCard {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  box-shadow: var(--shadow-card);
+  color: var(--color-ink);
+}
+
+.toneName {
+  font-weight: var(--weight-bold);
+  font-size: 14.5px;
+  margin: 10px 0 0;
+}
+
+.principles {
+  padding: 64px 0 24px;
+}
+
+.principleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  counter-reset: principle;
+}
+
+.principleGrid article {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-left: 5px solid var(--color-coral);
+  border-radius: var(--radius-md);
+  padding: 22px 22px 18px;
+  box-shadow: var(--shadow-card);
+}
+
+.principleGrid article:nth-child(2) {
+  border-left-color: var(--color-jade);
+}
+
+.principleGrid article:nth-child(3) {
+  border-left-color: var(--color-saffron);
+}
+
+.principleGrid span {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  font-size: 30px;
+  color: var(--color-ink-soft);
+  opacity: 0.55;
+}
+
+.principleGrid h3 {
+  font-size: 19px;
+  font-weight: var(--weight-display);
+  letter-spacing: -0.02em;
+  margin: 6px 0 6px;
+}
+
+.principleGrid p {
+  color: var(--color-ink-soft);
+  font-size: 14.5px;
+  margin: 0;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--color-line);
+  margin-top: 56px;
+  padding: 26px 0 40px;
+  color: var(--color-ink-soft);
+  font-size: 13.5px;
+}
+
+.footer a {
+  color: var(--color-ink);
+  font-weight: var(--weight-semibold);
+  min-height: var(--touch-target);
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer a:hover {
+  color: var(--color-coral-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroCurve path {
+    animation: none;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .heroSpecimen {
+    opacity: 0.45;
+  }
+}

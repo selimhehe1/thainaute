@@ -1,0 +1,22 @@
+.header,
+.hero {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-display);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: var(--color-ink);
+}
+
+.header {
+  font-size: 21px;
+}
+
+.hero {
+  font-size: clamp(56px, 9vw, 112px);
+  letter-spacing: -0.06em;
+  line-height: 0.94;
+}
+
+.naute {
+  color: var(--color-coral);
+}
