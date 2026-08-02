@@ -685,9 +685,9 @@ test("fusionne puis rejoue une progression sur deux transports et deux navigateu
       entries: [],
       inFlight: null,
     });
-    const synchronizedMetric = secondPage
-      .locator(".accountMetrics > div")
-      .filter({ hasText: "états maîtrisés synchronisés" });
+    const synchronizedMetric = secondPage.getByTestId(
+      "account-metric-synced-states",
+    );
     await expect(synchronizedMetric.locator("strong")).toHaveText("1");
   } finally {
     await secondContext.close();

@@ -1,3 +1,7 @@
+// Source de vérité du système visuel « Carnet de terrain » (ADR-0022).
+// TS pur sans DOM : consommé par le web (via tokens.css généré) et, à terme,
+// par le mobile React Native (import direct de ce module).
+
 export const colors = {
   jasmine: "#fbfaf7",
   ink: "#283450",
@@ -5,6 +9,14 @@ export const colors = {
   jade: "#43a283",
   saffron: "#f1b84b",
   mist: "#eef1f4",
+  paper: "#ffffff",
+  inkSoft: "#56607a",
+  coralDeep: "#cf4a45",
+  coralPale: "#fbeae8",
+  jadeInk: "#236b58",
+  jadePale: "#e6f3ee",
+  saffronHalo: "rgba(241, 184, 75, 0.16)",
+  line: "#e7e4da",
 } as const;
 
 export const spacing = {
@@ -17,4 +29,46 @@ export const spacing = {
 } as const;
 
 export const radii = { sm: 8, md: 16, lg: 28, pill: 999 } as const;
+
 export const minimumTouchTarget = 44;
+
+export const fontFamilies = {
+  sans: '"Manrope Variable", "Segoe UI", system-ui, sans-serif',
+  thai: '"Noto Sans Thai", sans-serif',
+  serifAccent: 'Georgia, "Times New Roman", serif',
+} as const;
+
+// Poids cibles normalisés : les valeurs historiques 750 et 850 se replient
+// sur bold et display (l'axe variable de Manrope s'arrête à 800).
+export const fontWeights = {
+  body: 430,
+  medium: 500,
+  semibold: 650,
+  bold: 700,
+  display: 800,
+} as const;
+
+// Le thaï est toujours rendu plus grand que le latin environnant.
+export const thaiScale = 1.18;
+
+export const motionDurations = {
+  fast: 120,
+  base: 200,
+  slow: 320,
+  trace: 900,
+} as const;
+
+export const motionEasings = {
+  standard: "cubic-bezier(0.4, 0, 0.2, 1)",
+} as const;
+
+export const shadows = {
+  card: "0 1px 2px rgba(40, 52, 80, 0.05), 0 10px 28px rgba(40, 52, 80, 0.07)",
+} as const;
+
+export {
+  toneCurves,
+  brandCurves,
+  TONE_CURVE_VIEW_BOX,
+  type ToneCurveName,
+} from "./motifs";

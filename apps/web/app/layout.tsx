@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import "@fontsource-variable/manrope/index.css";
 import "@fontsource/noto-sans-thai/thai-400.css";
 import "@fontsource/noto-sans-thai/thai-600.css";
+import "@thainaute/design-tokens/tokens.css";
 
 import { WebAuthSessionProvider } from "@/lib/client/auth-session";
 import { WebAccountDeletionBootstrap } from "@/lib/client/account-deletion-bootstrap";
 import { WebAnalyticsConsentProvider } from "@/lib/client/analytics-consent";
 import { createSiteMetadata } from "@/lib/server/site-metadata";
 
-import "./globals.css";
+import "./styles/base.css";
+import "./styles/legacy.css";
 
 export function generateMetadata(): Metadata {
   return createSiteMetadata();

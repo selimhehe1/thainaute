@@ -9,3 +9,6 @@ supabase/config.toml
 **/dist/**
 **/node_modules/**
 **/*.wav
+
+# Généré par design-tokens generate:css, verrouillé par test anti-dérive
+packages/design-tokens/src/tokens.css

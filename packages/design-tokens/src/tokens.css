@@ -1,0 +1,44 @@
+/* Généré par `pnpm --filter @thainaute/design-tokens generate:css`.
+   Ne pas modifier à la main : la source de vérité est src/index.ts. */
+:root {
+  --color-jasmine: #fbfaf7;
+  --color-ink: #283450;
+  --color-coral: #e9615c;
+  --color-jade: #43a283;
+  --color-saffron: #f1b84b;
+  --color-mist: #eef1f4;
+  --color-paper: #ffffff;
+  --color-ink-soft: #56607a;
+  --color-coral-deep: #cf4a45;
+  --color-coral-pale: #fbeae8;
+  --color-jade-ink: #236b58;
+  --color-jade-pale: #e6f3ee;
+  --color-saffron-halo: rgba(241, 184, 75, 0.16);
+  --color-line: #e7e4da;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-xxl: 64px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --font-sans: "Manrope Variable", "Segoe UI", system-ui, sans-serif;
+  --font-thai: "Noto Sans Thai", sans-serif;
+  --font-serif-accent: Georgia, "Times New Roman", serif;
+  --weight-body: 430;
+  --weight-medium: 500;
+  --weight-semibold: 650;
+  --weight-bold: 700;
+  --weight-display: 800;
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-slow: 320ms;
+  --motion-trace: 900ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-card: 0 1px 2px rgba(40, 52, 80, 0.05), 0 10px 28px rgba(40, 52, 80, 0.07);
+  --thai-scale: 1.18;
+  --touch-target: 44px;
+}
