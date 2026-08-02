@@ -6,7 +6,8 @@
   "exports": {
     ".": "./src/index.ts",
     "./fixture": "./src/fixture.ts",
-    "./public": "./src/public-contracts.ts"
+    "./public": "./src/public-contracts.ts",
+    "./studio": "./src/studio.ts"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json --noEmit",

@@ -1,4 +1,5 @@
 import { readSupabaseAttemptSyncConfiguration } from "./attempt-sync/runtime";
+import { readContentStudioConfiguration } from "./content-studio/runtime";
 import { diagnoseRuntime, type RuntimeDiagnostic } from "./runtime-config";
 
 const DEFAULT_DEPENDENCY_TIMEOUT_MS = 2_500;
@@ -137,8 +138,12 @@ export async function assessReadiness(
 ): Promise<ReadinessAssessment> {
   const environment = options.environment ?? process.env;
   const diagnostic = diagnoseRuntime(environment);
+  const studioConfiguration = readContentStudioConfiguration(environment);
 
-  if (diagnostic.syncMode === "disabled") {
+  if (
+    diagnostic.syncMode === "disabled" &&
+    diagnostic.studioMode !== "fixture"
+  ) {
     return {
       ready: diagnostic.ready,
       diagnostic,
@@ -146,12 +151,31 @@ export async function assessReadiness(
     };
   }
 
-  const configuration = readSupabaseAttemptSyncConfiguration(environment);
-  if (diagnostic.syncMode !== "supabase" || configuration === null) {
+  const syncConfiguration = readSupabaseAttemptSyncConfiguration(environment);
+  if (diagnostic.syncMode === "supabase" && syncConfiguration === null) {
     return {
       ready: false,
       diagnostic,
       dependencies: { auth: "error", dataApi: "error" },
+    };
+  }
+  if (diagnostic.studioMode === "fixture" && studioConfiguration === null) {
+    return {
+      ready: false,
+      diagnostic,
+      dependencies: {
+        auth: "error",
+        dataApi: diagnostic.syncMode === "supabase" ? "error" : "disabled",
+      },
+    };
+  }
+
+  const authConfiguration = syncConfiguration ?? studioConfiguration;
+  if (authConfiguration === null) {
+    return {
+      ready: false,
+      diagnostic,
+      dependencies: { auth: "error", dataApi: "disabled" },
     };
   }
 
@@ -161,29 +185,31 @@ export async function assessReadiness(
     runBoundedProbe(
       (signal) =>
         probe.checkAuth({
-          url: configuration.url,
-          publishableKey: configuration.publishableKey,
+          url: authConfiguration.url,
+          publishableKey: authConfiguration.publishableKey,
           signal,
         }),
       timeoutMs,
     ),
-    runBoundedProbe(
-      (signal) =>
-        probe.checkDataApi({
-          url: configuration.url,
-          publishableKey: configuration.publishableKey,
-          signal,
-        }),
-      timeoutMs,
-    ),
+    syncConfiguration === null
+      ? Promise.resolve<null>(null)
+      : runBoundedProbe(
+          (signal) =>
+            probe.checkDataApi({
+              url: syncConfiguration.url,
+              publishableKey: syncConfiguration.publishableKey,
+              signal,
+            }),
+          timeoutMs,
+        ),
   ]);
 
   return {
-    ready: diagnostic.ready && auth && dataApi,
+    ready: diagnostic.ready && auth && (dataApi ?? true),
     diagnostic,
     dependencies: {
       auth: auth ? "ok" : "error",
-      dataApi: dataApi ? "ok" : "error",
+      dataApi: dataApi === null ? "disabled" : dataApi ? "ok" : "error",
     },
   };
 }

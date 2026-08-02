@@ -17,6 +17,12 @@ const SUPABASE_ENVIRONMENT = {
     "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 } as const;
 
+const STUDIO_ENVIRONMENT = {
+  THAINAUTE_STUDIO_MODE: "fixture",
+  NEXT_PUBLIC_SUPABASE_URL: "https://project.supabase.co",
+  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_example_public_value",
+} as const;
+
 describe("readiness des dépendances Supabase", () => {
   afterEach(() => {
     vi.unstubAllEnvs();
@@ -53,6 +59,49 @@ describe("readiness des dépendances Supabase", () => {
       auth: "disabled",
       dataApi: "disabled",
     });
+  });
+
+  it("sonde uniquement Auth pour un studio fixture sans synchronisation", async () => {
+    const probe: SupabaseReadinessProbePort = {
+      checkAuth: vi.fn().mockResolvedValue(true),
+      checkDataApi: vi.fn(),
+    };
+
+    const assessment = await assessReadiness({
+      environment: STUDIO_ENVIRONMENT,
+      probe,
+    });
+
+    expect(assessment).toMatchObject({
+      ready: true,
+      diagnostic: { studioMode: "fixture", syncMode: "disabled" },
+      dependencies: { auth: "ok", dataApi: "disabled" },
+    });
+    expect(probe.checkAuth).toHaveBeenCalledWith({
+      url: STUDIO_ENVIRONMENT.NEXT_PUBLIC_SUPABASE_URL,
+      publishableKey: STUDIO_ENVIRONMENT.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
+      signal: expect.any(AbortSignal),
+    });
+    expect(probe.checkDataApi).not.toHaveBeenCalled();
+  });
+
+  it("ferme la readiness du studio avant toute sonde si Auth est incomplète", async () => {
+    const probe: SupabaseReadinessProbePort = {
+      checkAuth: vi.fn(),
+      checkDataApi: vi.fn(),
+    };
+
+    const assessment = await assessReadiness({
+      environment: { THAINAUTE_STUDIO_MODE: "fixture" },
+      probe,
+    });
+
+    expect(assessment).toMatchObject({
+      ready: false,
+      dependencies: { auth: "error", dataApi: "disabled" },
+    });
+    expect(probe.checkAuth).not.toHaveBeenCalled();
+    expect(probe.checkDataApi).not.toHaveBeenCalled();
   });
 
   it("sonde Auth et PostgREST en parallèle avec les bonnes clés", async () => {
