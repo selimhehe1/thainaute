@@ -23,6 +23,14 @@ interface MobileAuthSessionValue {
   readonly sessionBoundaryRevision: number;
   readonly requestEmailCode: (email: string) => Promise<void>;
   readonly verifyEmailCode: (email: string, code: string) => Promise<void>;
+  readonly requestAccountDeletionReauthenticationCode: (
+    expectedUserId: string,
+  ) => Promise<void>;
+  readonly verifyAccountDeletionReauthenticationCode: (
+    expectedUserId: string,
+    code: string,
+  ) => Promise<void>;
+  readonly clearDeletedSession: (expectedUserId: string) => Promise<void>;
   readonly signOutLocal: (expectedUserId: string) => Promise<void>;
 }
 
@@ -56,6 +64,10 @@ export function MobileAuthSessionProvider({
   const [sessionBoundaryRevision, setSessionBoundaryRevision] = useState(0);
   const lastDurableUserId = useRef<string | null | undefined>(undefined);
   const expectedLocalSignOuts = useRef(new Set<string>());
+  const accountDeletionReauthentication = useRef<{
+    readonly expectedUserId: string;
+    readonly email: string;
+  } | null>(null);
 
   useEffect(() => {
     if (client === null) return;
@@ -99,6 +111,11 @@ export function MobileAuthSessionProvider({
       }
       if (nextUserId !== null) {
         expectedLocalSignOuts.current.delete(nextUserId);
+      }
+      if (
+        accountDeletionReauthentication.current?.expectedUserId !== nextUserId
+      ) {
+        accountDeletionReauthentication.current = null;
       }
       lastDurableUserId.current = nextUserId;
       setSession(current);
@@ -162,6 +179,127 @@ export function MobileAuthSessionProvider({
     }
   }, []);
 
+  const requestAccountDeletionReauthenticationCode = useCallback(
+    async (expectedUserIdInput: string) => {
+      const auth = assertConfigured().auth;
+      const expectedUserId = expectedUserIdInput.toLowerCase();
+      let currentSession: Session | null;
+      try {
+        const { data, error } = await auth.getSession();
+        currentSession = error === null ? data.session : null;
+      } catch {
+        currentSession = null;
+      }
+      if (
+        !isDurableSession(currentSession) ||
+        currentSession.user.id.toLowerCase() !== expectedUserId ||
+        typeof currentSession.user.email !== "string" ||
+        currentSession.user.email === ""
+      ) {
+        throw new Error(
+          "Reconnectez le compte concerné avant de demander le code.",
+        );
+      }
+
+      const email = currentSession.user.email;
+      const { error } = await auth.signInWithOtp({
+        email,
+        options: { shouldCreateUser: false },
+      });
+      if (error !== null) {
+        throw new Error("Le code de sécurité n’a pas pu être envoyé.");
+      }
+      accountDeletionReauthentication.current = { expectedUserId, email };
+    },
+    [],
+  );
+
+  const verifyAccountDeletionReauthenticationCode = useCallback(
+    async (expectedUserIdInput: string, code: string) => {
+      const auth = assertConfigured().auth;
+      const expectedUserId = expectedUserIdInput.toLowerCase();
+      const challenge = accountDeletionReauthentication.current;
+      if (
+        challenge === null ||
+        challenge.expectedUserId !== expectedUserId ||
+        !/^\d{6}$/u.test(code)
+      ) {
+        throw new Error("Le code de sécurité est invalide ou a expiré.");
+      }
+
+      let currentSession: Session | null;
+      try {
+        const { data, error } = await auth.getSession();
+        currentSession = error === null ? data.session : null;
+      } catch {
+        currentSession = null;
+      }
+      if (
+        !isDurableSession(currentSession) ||
+        currentSession.user.id.toLowerCase() !== expectedUserId
+      ) {
+        accountDeletionReauthentication.current = null;
+        throw new Error(
+          "La session a changé. Reconnectez le compte concerné puis recommencez.",
+        );
+      }
+
+      const { data, error } = await auth.verifyOtp({
+        email: challenge.email,
+        token: code,
+        type: "email",
+      });
+      if (
+        error !== null ||
+        !isDurableSession(data.session) ||
+        data.session.user.id.toLowerCase() !== expectedUserId
+      ) {
+        throw new Error("Le code de sécurité est invalide ou a expiré.");
+      }
+      accountDeletionReauthentication.current = null;
+    },
+    [],
+  );
+
+  const clearDeletedSession = useCallback(
+    async (expectedUserIdInput: string) => {
+      const client = getMobileSupabaseAuthClient();
+      if (client === null) {
+        throw new Error(
+          "La session supprimée ne peut pas être vérifiée sur cette build.",
+        );
+      }
+      const expectedUserId = expectedUserIdInput.toLowerCase();
+      let currentSession: Session | null;
+      try {
+        const { data, error } = await client.auth.getSession();
+        if (error !== null) throw error;
+        currentSession = data.session;
+      } catch {
+        throw new Error(
+          "La session supprimée ne peut pas être vérifiée localement.",
+        );
+      }
+
+      // L'absence est déjà l'état voulu. Un autre sujet ne doit jamais être
+      // déconnecté par la reprise d'une suppression antérieure.
+      if (!isDurableSession(currentSession)) return;
+      if (currentSession.user.id.toLowerCase() !== expectedUserId) return;
+
+      expectedLocalSignOuts.current.add(expectedUserId);
+      try {
+        const { error } = await client.auth.signOut({ scope: "local" });
+        if (error !== null) throw error;
+      } catch {
+        expectedLocalSignOuts.current.delete(expectedUserId);
+        throw new Error(
+          "La session supprimée n’a pas pu être effacée localement.",
+        );
+      }
+    },
+    [],
+  );
+
   const signOutLocal = useCallback(async (expectedUserId: string) => {
     const auth = assertConfigured().auth;
     const expected = expectedUserId.toLowerCase();
@@ -191,14 +329,20 @@ export function MobileAuthSessionProvider({
       sessionBoundaryRevision,
       requestEmailCode,
       verifyEmailCode,
+      requestAccountDeletionReauthenticationCode,
+      verifyAccountDeletionReauthenticationCode,
+      clearDeletedSession,
       signOutLocal,
     }),
     [
       requestEmailCode,
+      requestAccountDeletionReauthenticationCode,
+      clearDeletedSession,
       session,
       sessionBoundaryRevision,
       signOutLocal,
       status,
+      verifyAccountDeletionReauthenticationCode,
       verifyEmailCode,
     ],
   );

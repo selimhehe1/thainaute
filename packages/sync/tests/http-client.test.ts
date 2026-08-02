@@ -30,9 +30,12 @@ const ids = {
   otherBatch: "70000000-0000-4000-8000-000000000002",
   item: "80000000-0000-4000-8000-000000000001",
   request: "90000000-0000-4000-8000-000000000001",
+  receipt: "a0000000-0000-4000-8000-000000000001",
 } as const;
 
 const SECRET_TOKEN = "header.payload.sensitive-token";
+const DELETION_CONTINUATION_SECRET =
+  "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA";
 const authenticatedSession = (userId: string = ids.user) => ({
   accessToken: SECRET_TOKEN,
   userId,
@@ -77,6 +80,12 @@ const accountExportDocument = (identityId: string = ids.user) => ({
     learnerItemStates: [],
   },
 });
+const accountDeletionReceipt = {
+  format: "thainaute.account-deletion-receipt/v1" as const,
+  receiptId: ids.receipt,
+  completedAt: "2026-08-02T10:00:00.000Z",
+  deleted: true as const,
+};
 
 function jsonResponse(body: unknown, status = 200): Response {
   return Response.json(body, { status });
@@ -603,6 +612,259 @@ describe("client HTTP de synchronisation", () => {
       retryable: false,
     });
     expect(String(failure)).not.toContain(SECRET_TOKEN);
+  });
+
+  it("supprime le compte par DELETE avec la session attendue et les champs exacts", async () => {
+    const calls: Array<{ readonly url: string; readonly init: RequestInit }> =
+      [];
+    let sessionReads = 0;
+    const client = createSyncHttpClient({
+      baseUrl: "https://api.example.test/root/",
+      expectedUserId: ids.user,
+      getSession: () => {
+        sessionReads += 1;
+        return authenticatedSession();
+      },
+      fetch: (url, init) => {
+        calls.push({ url, init });
+        return Promise.resolve(jsonResponse(accountDeletionReceipt));
+      },
+    });
+
+    await expect(
+      client.deleteAccount({
+        idempotencyKey: ids.batch.toUpperCase(),
+        continuationSecret: DELETION_CONTINUATION_SECRET,
+      }),
+    ).resolves.toEqual(accountDeletionReceipt);
+
+    expect(sessionReads).toBe(1);
+    expect(calls).toHaveLength(1);
+    expect(calls[0]?.url).toBe("https://api.example.test/root/api/v1/account");
+    expect(calls[0]?.init.method).toBe("DELETE");
+    expect(calls[0]?.init.credentials).toBe("omit");
+    expect(headersOf(calls[0]?.init ?? {})).toEqual({
+      Accept: "application/json",
+      Authorization: `Bearer ${SECRET_TOKEN}`,
+      "Content-Type": "application/json",
+      "Idempotency-Key": ids.batch,
+      "Account-Deletion-Continuation": DELETION_CONTINUATION_SECRET,
+    });
+    expect(bodyOf(calls[0]?.init ?? {})).toBe(
+      '{"confirmation":"delete_account"}',
+    );
+  });
+
+  it.each([
+    ["sans session", () => null],
+    [
+      "après échec de lecture de session",
+      () => Promise.reject(new Error(`session ${SECRET_TOKEN}`)),
+    ],
+  ])(
+    "reprend la suppression %s avec le secret seul",
+    async (_label, getSession) => {
+      const calls: RequestInit[] = [];
+      const client = createSyncHttpClient({
+        baseUrl: "",
+        expectedUserId: ids.user,
+        getSession,
+        fetch: (url, init) => {
+          expect(url).toBe("/api/v1/account");
+          calls.push(init);
+          return Promise.resolve(jsonResponse(accountDeletionReceipt));
+        },
+      });
+
+      await expect(
+        client.deleteAccount({
+          idempotencyKey: ids.batch,
+          continuationSecret: DELETION_CONTINUATION_SECRET,
+        }),
+      ).resolves.toEqual(accountDeletionReceipt);
+
+      expect(calls).toHaveLength(1);
+      expect(headersOf(calls[0] ?? {})).not.toHaveProperty("Authorization");
+    },
+  );
+
+  it("n'envoie jamais la session d'un autre compte pendant une reprise", async () => {
+    let fetchCalls = 0;
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => authenticatedSession(ids.otherUser),
+      fetch: (_url, init) => {
+        fetchCalls += 1;
+        expect(headersOf(init)).not.toHaveProperty("Authorization");
+        return Promise.resolve(jsonResponse(accountDeletionReceipt));
+      },
+    });
+
+    await expect(
+      client.deleteAccount({
+        idempotencyKey: ids.batch,
+        continuationSecret: DELETION_CONTINUATION_SECRET,
+      }),
+    ).resolves.toEqual(accountDeletionReceipt);
+    expect(fetchCalls).toBe(1);
+
+    await expect(client.getProgressSnapshot()).rejects.toMatchObject({
+      name: "SyncHttpAuthenticationError",
+      endpoint: "progress_snapshot",
+    });
+    expect(fetchCalls).toBe(1);
+  });
+
+  it("décode l'erreur dédiée de suppression sans recopier son message", async () => {
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => null,
+      fetch: () =>
+        Promise.resolve(
+          jsonResponse(
+            {
+              error: {
+                code: "deletion_in_progress",
+                message: `détail privé ${SECRET_TOKEN}`,
+                requestId: ids.request,
+              },
+            },
+            409,
+          ),
+        ),
+    });
+
+    let failure: unknown;
+    try {
+      await client.deleteAccount({
+        idempotencyKey: ids.batch,
+        continuationSecret: DELETION_CONTINUATION_SECRET,
+      });
+    } catch (error) {
+      failure = error;
+    }
+
+    expect(failure).toMatchObject({
+      name: "SyncHttpApiError",
+      endpoint: "account_deletion",
+      status: 409,
+      code: "deletion_in_progress",
+      requestId: ids.request,
+      retryable: true,
+    });
+    expect(String(failure)).not.toContain(SECRET_TOKEN);
+  });
+
+  it("refuse les entrées, erreurs et reçus de suppression hors contrat", async () => {
+    let fetchCalls = 0;
+    const responses = [
+      jsonResponse(
+        {
+          error: {
+            code: "unknown_deletion_error",
+            message: "Erreur inconnue.",
+            requestId: ids.request,
+          },
+        },
+        500,
+      ),
+      jsonResponse({
+        ...accountDeletionReceipt,
+        continuationSecret: DELETION_CONTINUATION_SECRET,
+      }),
+    ];
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => null,
+      fetch: () => {
+        fetchCalls += 1;
+        return Promise.resolve(
+          responses.shift() ?? jsonResponse(accountDeletionReceipt),
+        );
+      },
+    });
+
+    await expect(
+      client.deleteAccount({
+        idempotencyKey: "not-a-uuid",
+        continuationSecret: DELETION_CONTINUATION_SECRET,
+      }),
+    ).rejects.toMatchObject({
+      name: "SyncHttpRequestValidationError",
+      endpoint: "account_deletion",
+    });
+    expect(fetchCalls).toBe(0);
+
+    await expect(
+      client.deleteAccount({
+        idempotencyKey: ids.batch,
+        continuationSecret: DELETION_CONTINUATION_SECRET,
+      }),
+    ).rejects.toMatchObject({
+      name: "SyncHttpProtocolError",
+      endpoint: "account_deletion",
+      reason: "invalid_error_response",
+      retryable: true,
+    });
+    await expect(
+      client.deleteAccount({
+        idempotencyKey: ids.batch,
+        continuationSecret: DELETION_CONTINUATION_SECRET,
+      }),
+    ).rejects.toMatchObject({
+      name: "SyncHttpProtocolError",
+      endpoint: "account_deletion",
+      reason: "invalid_success_response",
+    });
+  });
+
+  it("propage l'annulation externe pendant la suppression", async () => {
+    const externalController = new AbortController();
+    let receivedSignal: AbortSignal | null = null;
+    let markFetchStarted: (() => void) | undefined;
+    const fetchStarted = new Promise<void>((resolve) => {
+      markFetchStarted = resolve;
+    });
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => null,
+      fetch: (_url, init) => {
+        receivedSignal = init.signal ?? null;
+        markFetchStarted?.();
+        return new Promise<Response>((_resolve, reject) => {
+          init.signal?.addEventListener("abort", () =>
+            reject(new Error(`aborted ${DELETION_CONTINUATION_SECRET}`)),
+          );
+        });
+      },
+    });
+
+    const deletionPromise = client.deleteAccount(
+      {
+        idempotencyKey: ids.batch,
+        continuationSecret: DELETION_CONTINUATION_SECRET,
+      },
+      externalController.signal,
+    );
+    await fetchStarted;
+    externalController.abort();
+
+    let failure: unknown;
+    try {
+      await deletionPromise;
+    } catch (error) {
+      failure = error;
+    }
+    expect(failure).toMatchObject({
+      name: "SyncHttpTransportError",
+      endpoint: "account_deletion",
+    });
+    expect(String(failure)).not.toContain(DELETION_CONTINUATION_SECRET);
+    expect((receivedSignal as AbortSignal | null)?.aborted).toBe(true);
   });
 
   it("refuse un snapshot 2xx invalide", async () => {

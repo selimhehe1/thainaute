@@ -114,6 +114,7 @@ confirmation serveur.
 `createSyncHttpClient` fournit un adaptateur pur, sans React ni Supabase, pour :
 
 - `POST /api/v1/devices/register` ;
+- `DELETE /api/v1/account` ;
 - `POST /api/v1/attempts/batch` ;
 - `GET /api/v1/progress/snapshot` ;
 - `GET /api/v1/account/export`.

@@ -12,6 +12,7 @@ import {
   WebAttemptOutboxStore,
   migrateLegacyDemoFixtureAttempts,
 } from "./attempt-outbox-store";
+import { assertNoPendingWebAccountDeletion } from "./account-deletion";
 import { browserSha256Hex } from "./sha256";
 import { getWebSupabaseAuthClient } from "./supabase-auth";
 
@@ -24,6 +25,7 @@ export interface WebAccountSyncResult {
 
 function authenticatedSessionProvider(expectedUserId: string) {
   return async (): Promise<AuthenticatedSyncSession | null> => {
+    assertNoPendingWebAccountDeletion(expectedUserId);
     const client = getWebSupabaseAuthClient();
     if (client === null) return null;
     const { data, error } = await client.auth.getSession();
@@ -53,16 +55,19 @@ export async function synchronizeWebAccount(input: {
     throw new Error("La session du compte a changé avant la synchronisation.");
   }
   await migrateLegacyDemoFixtureAttempts();
-  const store = new WebAttemptOutboxStore("thainaute-learning-v1", {
-    kind: "account",
-    userId: input.userId,
-  });
+  const store = new WebAttemptOutboxStore(
+    "thainaute-learning-v1",
+    { kind: "account", userId: input.userId },
+    browserSha256Hex,
+  );
 
   try {
+    assertNoPendingWebAccountDeletion(input.userId);
     const deviceId = await store.getOrCreateAccountDeviceId(
       globalThis.crypto.randomUUID.bind(globalThis.crypto),
       browserSha256Hex,
     );
+    assertNoPendingWebAccountDeletion(input.userId);
     if (input.startAnonymousFusion) {
       await store.startAnonymousFusion({
         fusionId: globalThis.crypto.randomUUID(),
@@ -78,8 +83,34 @@ export async function synchronizeWebAccount(input: {
       expectedUserId: input.userId,
       getSession,
     });
+    const deletionGuardedStore = {
+      read: async () => {
+        assertNoPendingWebAccountDeletion(input.userId);
+        return store.read();
+      },
+      prepare: async (idempotencyKey: string) => {
+        assertNoPendingWebAccountDeletion(input.userId);
+        return store.prepare(idempotencyKey);
+      },
+      applySuccess: async (
+        response: Parameters<typeof store.applySuccess>[0],
+      ) => {
+        assertNoPendingWebAccountDeletion(input.userId);
+        return store.applySuccess(response);
+      },
+      applyProgressSnapshot: async (
+        response: Parameters<typeof store.applyProgressSnapshot>[0],
+      ) => {
+        assertNoPendingWebAccountDeletion(input.userId);
+        return store.applyProgressSnapshot(response);
+      },
+      resumeAfterDeviceRegistration: async (registeredDeviceId: string) => {
+        assertNoPendingWebAccountDeletion(input.userId);
+        return store.resumeAfterDeviceRegistration(registeredDeviceId);
+      },
+    };
     const synchronized = await synchronizeAttemptOutbox({
-      store,
+      store: deletionGuardedStore,
       client,
       expectedUserId: input.userId,
       device: { deviceId, platform: "web", appVersion: "0.0.1" },
@@ -88,11 +119,13 @@ export async function synchronizeWebAccount(input: {
       ),
     });
 
+    assertNoPendingWebAccountDeletion(input.userId);
     const marker = await store.readFusionMarker();
     if (
       marker?.status === "awaiting_server_ack" &&
       marker.targetUserId === input.userId.toLowerCase()
     ) {
+      assertNoPendingWebAccountDeletion(input.userId);
       const completed = await store.completeAnonymousFusion(
         new Date().toISOString(),
       );
@@ -132,10 +165,11 @@ export async function purgeWebAccountData(
   userId: string,
   expectedState: ExpectedWebAccountPurgeState,
 ): Promise<boolean> {
-  const store = new WebAttemptOutboxStore("thainaute-learning-v1", {
-    kind: "account",
-    userId,
-  });
+  const store = new WebAttemptOutboxStore(
+    "thainaute-learning-v1",
+    { kind: "account", userId },
+    browserSha256Hex,
+  );
   try {
     return await store.purgeAccountDataIfSettled(expectedState);
   } finally {
@@ -146,10 +180,11 @@ export async function purgeWebAccountData(
 export async function purgeSettledWebAccountData(
   userId: string,
 ): Promise<boolean> {
-  const store = new WebAttemptOutboxStore("thainaute-learning-v1", {
-    kind: "account",
-    userId,
-  });
+  const store = new WebAttemptOutboxStore(
+    "thainaute-learning-v1",
+    { kind: "account", userId },
+    browserSha256Hex,
+  );
   try {
     return await store.purgeAccountDataIfSettled();
   } finally {
@@ -157,12 +192,44 @@ export async function purgeSettledWebAccountData(
   }
 }
 
+/** Purge irréversible après reçu serveur, avec tombstone local atomique. */
+export async function forcePurgeDeletedWebAccountData(
+  userId: string,
+): Promise<void> {
+  const store = new WebAttemptOutboxStore(
+    "thainaute-learning-v1",
+    { kind: "account", userId },
+    browserSha256Hex,
+  );
+  try {
+    await store.tombstoneAndPurgeAccountData();
+  } finally {
+    store.close();
+  }
+}
+
+export async function isDeletedWebAccountTombstoned(
+  userId: string,
+): Promise<boolean> {
+  const store = new WebAttemptOutboxStore(
+    "thainaute-learning-v1",
+    { kind: "account", userId },
+    browserSha256Hex,
+  );
+  try {
+    return await store.isAccountTombstoned();
+  } finally {
+    store.close();
+  }
+}
+
 export async function readWebAccountLocalState(userId: string) {
   await migrateLegacyDemoFixtureAttempts();
-  const account = new WebAttemptOutboxStore("thainaute-learning-v1", {
-    kind: "account",
-    userId,
-  });
+  const account = new WebAttemptOutboxStore(
+    "thainaute-learning-v1",
+    { kind: "account", userId },
+    browserSha256Hex,
+  );
   const anonymous = new WebAttemptOutboxStore();
   try {
     const [accountSnapshot, anonymousSnapshot, fusionMarker] =

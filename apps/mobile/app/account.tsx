@@ -13,6 +13,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { AccountExportSection } from "../components/account-export-section";
+import { AccountDeletionSection } from "../components/account-deletion-section";
 import {
   discardMobileAnonymousProgress,
   purgeMobileAccountData,
@@ -20,7 +21,9 @@ import {
   synchronizeMobileAccount,
 } from "../lib/account-sync";
 import { useMobileAuthSession } from "../lib/auth-session";
+import { assertNoPendingMobileAccountDeletion } from "../lib/mobile-account-deletion";
 import { useMobileAccountExport } from "../lib/use-mobile-account-export";
+import { useMobileAccountDeletion } from "../lib/use-mobile-account-deletion";
 
 type LocalState = Awaited<ReturnType<typeof readMobileAccountLocalState>>;
 
@@ -59,7 +62,21 @@ export default function AccountScreen() {
     platform: Platform.OS === "ios" ? "ios" : "android",
     sessionBoundaryRevision: auth.sessionBoundaryRevision,
   });
-  const accountOperationBusy = busy || accountExport.isBusy;
+  const accountDeletion = useMobileAccountDeletion({
+    database,
+    currentUserId: userId,
+    platform: Platform.OS === "ios" ? "ios" : "android",
+    clearDeletedSession: auth.clearDeletedSession,
+    requestReauthenticationCode:
+      auth.requestAccountDeletionReauthenticationCode,
+    verifyReauthenticationCode: auth.verifyAccountDeletionReauthenticationCode,
+  });
+  const accountOperationBusy =
+    busy ||
+    accountExport.isBusy ||
+    accountDeletion.isBusy ||
+    (accountDeletion.hasPendingOperation &&
+      accountDeletion.pendingTargetsCurrentUser);
   const currentLocalState = accountLocalStateForUser(localState, userId);
 
   const refreshLocalState = useCallback(async () => {
@@ -151,6 +168,8 @@ export default function AccountScreen() {
         database,
         userId,
         startAnonymousFusion,
+        assertAccountWritable: () =>
+          assertNoPendingMobileAccountDeletion(userId),
       });
       await refreshLocalState();
       setMessage(
@@ -193,6 +212,14 @@ export default function AccountScreen() {
 
   async function logout() {
     if (userId === null) return;
+    try {
+      await assertNoPendingMobileAccountDeletion(userId);
+    } catch {
+      setMessage(
+        "Terminez d’abord la suppression en attente avant de vous déconnecter.",
+      );
+      return;
+    }
     const logoutState = currentLocalState;
     if (logoutState === null) return;
     const pending = logoutState.accountSnapshot.entries.filter(
@@ -413,7 +440,7 @@ export default function AccountScreen() {
             />
             <AccountExportSection
               anonymousAttemptCount={anonymousEntries.length}
-              disabled={busy}
+              disabled={accountOperationBusy}
               exportState={accountExport}
               fusionInProgress={activeFusionForCurrent}
               pendingAccountAttemptCount={accountPendingCount}
@@ -428,8 +455,27 @@ export default function AccountScreen() {
               }
               onPress={() => void logout()}
             />
+            <AccountDeletionSection
+              deletionState={accountDeletion}
+              disabled={busy || accountExport.isBusy}
+              fusionInProgress={activeFusionForCurrent}
+              pendingAccountAttemptCount={accountPendingCount}
+            />
           </View>
         )}
+
+        {auth.status !== "signed_in" &&
+          (accountDeletion.status !== "idle" ||
+            accountDeletion.hasPendingOperation) && (
+            <View style={styles.card}>
+              <AccountDeletionSection
+                deletionState={accountDeletion}
+                disabled={busy || accountExport.isBusy}
+                fusionInProgress={false}
+                pendingAccountAttemptCount={0}
+              />
+            </View>
+          )}
 
         {message !== "" && (
           <Text accessibilityLiveRegion="polite" style={styles.message}>

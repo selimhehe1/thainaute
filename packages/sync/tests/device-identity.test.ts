@@ -1,11 +1,25 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { deriveAccountDeviceId } from "../src/device-identity";
+import {
+  deriveAccountDeviceId,
+  deriveDeletedAccountSubjectFingerprint,
+} from "../src/device-identity";
 
 const installationId = "11111111-1111-4111-8111-111111111111";
 const userId = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
 
 describe("identité d'appareil par compte", () => {
+  it("dérive une empreinte de suppression sans conserver le UUID brut", async () => {
+    const sha256Hex = vi.fn(() => Promise.resolve("AB".repeat(32)));
+
+    await expect(
+      deriveDeletedAccountSubjectFingerprint({ userId, sha256Hex }),
+    ).resolves.toBe("ab".repeat(32));
+    expect(sha256Hex).toHaveBeenCalledWith(
+      `thainaute/deleted-account-subject/v1\u0000${userId}`,
+    );
+  });
+
   it("dérive un UUIDv8 déterministe à partir d'un condensat SHA-256", async () => {
     const sha256Hex = vi.fn(() => Promise.resolve("00".repeat(32)));
 
@@ -40,6 +54,18 @@ describe("identité d'appareil par compte", () => {
   });
 
   it("refuse les identités et condensats non canoniques", async () => {
+    await expect(
+      deriveDeletedAccountSubjectFingerprint({
+        userId: "not-a-user",
+        sha256Hex: () => Promise.resolve("00".repeat(32)),
+      }),
+    ).rejects.toThrow();
+    await expect(
+      deriveDeletedAccountSubjectFingerprint({
+        userId,
+        sha256Hex: () => Promise.resolve("not-a-digest"),
+      }),
+    ).rejects.toThrow();
     await expect(
       deriveAccountDeviceId({
         installationId: "installation",

@@ -1,8 +1,9 @@
 import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
+import type { AttemptOutboxOwner } from "@thainaute/sync";
 import type { SQLiteDatabase } from "expo-sqlite";
 import { describe, expect, it } from "vitest";
 
-import { MobileAttemptOutboxStore } from "../lib/attempt-outbox-store";
+import { MobileAttemptOutboxStore as RealMobileAttemptOutboxStore } from "../lib/attempt-outbox-store";
 
 const ids = {
   device: "10000000-0000-4000-8000-000000000001",
@@ -23,6 +24,26 @@ const ids = {
   fixtureOptionB: "20000000-0000-4000-8000-000000000002",
   fixtureVersion: "10000000-0000-4000-8000-000000000002",
 } as const;
+
+const testSha256Hex = (material: string): Promise<string> =>
+  Promise.resolve(
+    material.endsWith(ids.userB) ? "22".repeat(32) : "11".repeat(32),
+  );
+
+class MobileAttemptOutboxStore extends RealMobileAttemptOutboxStore {
+  public constructor(
+    database: SQLiteDatabase,
+    owner?: AttemptOutboxOwner,
+    namespace?: "learning" | "demo",
+  ) {
+    super(
+      database,
+      owner,
+      namespace,
+      owner?.kind === "account" ? testSha256Hex : undefined,
+    );
+  }
+}
 
 const submission = {
   eventId: ids.event,
@@ -93,6 +114,7 @@ class FakeSQLiteDatabase {
   readonly metadata = new Map<string, string>();
   readonly outboxes = new Map<string, string>();
   readonly legacyPayloads: string[] = [];
+  failNextOutboxDelete = false;
   #transactionOpen = false;
 
   async getFirstAsync<T>(query: string, key: string): Promise<T | null> {
@@ -173,6 +195,10 @@ class FakeSQLiteDatabase {
 
   #run(query: string, ...parameters: string[]): void {
     if (query.includes("DELETE FROM attempt_outbox_state")) {
+      if (this.failNextOutboxDelete) {
+        this.failNextOutboxDelete = false;
+        throw new Error("Suppression d'outbox simulée impossible.");
+      }
       const [key] = parameters;
       if (key === undefined) throw new Error("Clé d'outbox absente.");
       this.outboxes.delete(key);
@@ -802,5 +828,107 @@ describe("outbox SQLite mobile", () => {
         throw new Error("l’installation doit être conservée");
       }, sha256Hex),
     ).resolves.toBe(deviceA);
+  });
+
+  it("scelle atomiquement le compte et refuse une réponse sync tardive", async () => {
+    const database = new FakeSQLiteDatabase();
+    const anonymous = new MobileAttemptOutboxStore(asDatabase(database));
+    const accountAFirstTask = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      { kind: "account", userId: ids.userA },
+    );
+    const accountASecondTask = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      { kind: "account", userId: ids.userA },
+    );
+    const accountB = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userB,
+    });
+
+    await anonymous.enqueue(submission);
+    await accountB.enqueue(submission);
+    await accountASecondTask.enqueue(submission);
+    await accountASecondTask.prepare(ids.idempotency);
+    expect(await accountASecondTask.isAccountTombstoned()).toBe(false);
+
+    database.failNextOutboxDelete = true;
+    await expect(
+      accountAFirstTask.tombstoneAndPurgeAccountData(),
+    ).rejects.toThrow("atomiquement");
+    expect(database.outboxes.has(`attempts-v1:account:${ids.userA}`)).toBe(
+      true,
+    );
+    expect(
+      database.metadata.has(`deleted_account_subject_v1:${"11".repeat(32)}`),
+    ).toBe(false);
+
+    await accountAFirstTask.tombstoneAndPurgeAccountData();
+    await expect(
+      accountASecondTask.applySuccess({
+        syncRevision: 1,
+        results: [{ eventId: ids.event, status: "accepted", rating: 1 }],
+        states: [],
+      }),
+    ).rejects.toThrow("ne peut plus être réécrit");
+    await expect(
+      accountASecondTask.applyProgressSnapshot({
+        syncRevision: 2,
+        states: [],
+      }),
+    ).rejects.toThrow("ne peut plus être réécrit");
+    await expect(accountASecondTask.read()).rejects.toThrow(
+      "ne peut plus être réécrit",
+    );
+    await expect(accountASecondTask.purgeOwnerData()).rejects.toThrow(
+      "ne peut plus être réécrit",
+    );
+
+    expect(await accountASecondTask.isAccountTombstoned()).toBe(true);
+    await expect(
+      accountASecondTask.tombstoneAndPurgeAccountData(),
+    ).resolves.toBeUndefined();
+    expect(database.outboxes.has(`attempts-v1:account:${ids.userA}`)).toBe(
+      false,
+    );
+    expect(
+      database.metadata.get(`deleted_account_subject_v1:${"11".repeat(32)}`),
+    ).toBe("deleted");
+    expect(JSON.stringify([...database.metadata])).not.toContain(ids.userA);
+    expect((await anonymous.read()).entries).toHaveLength(1);
+    expect((await accountB.read()).entries).toHaveLength(1);
+  });
+
+  it("scelle le compte malgré un marqueur de fusion corrompu et conserve la source anonyme", async () => {
+    const database = new FakeSQLiteDatabase();
+    const anonymous = new MobileAttemptOutboxStore(asDatabase(database));
+    const account = new MobileAttemptOutboxStore(asDatabase(database), {
+      kind: "account",
+      userId: ids.userA,
+    });
+    await anonymous.enqueue(submission);
+    await account.enqueue(submission);
+    await account.prepare(ids.idempotency);
+    const anonymousBefore = database.outboxes.get("attempts-v1");
+    const corruptMarker = JSON.stringify({ schemaVersion: "corrupt" });
+    database.metadata.set("anonymous_progress_fusion_v1", corruptMarker);
+
+    await account.tombstoneAndPurgeAccountData();
+
+    expect(await account.isAccountTombstoned()).toBe(true);
+    expect(database.outboxes.has(`attempts-v1:account:${ids.userA}`)).toBe(
+      false,
+    );
+    expect(database.outboxes.get("attempts-v1")).toBe(anonymousBefore);
+    expect(database.metadata.get("anonymous_progress_fusion_v1")).toBe(
+      corruptMarker,
+    );
+    await expect(
+      account.applySuccess({
+        syncRevision: 1,
+        results: [{ eventId: ids.event, status: "accepted", rating: 1 }],
+        states: [],
+      }),
+    ).rejects.toThrow("ne peut plus être réécrit");
   });
 });

@@ -29,7 +29,10 @@ const mocks = vi.hoisted(() => {
       },
     ),
     purgeSettledAccount: vi.fn(() => Promise.resolve(false)),
+    getUser: vi.fn(),
+    signInWithOtp: vi.fn(),
     signOut: vi.fn(() => Promise.resolve({ error: null })),
+    verifyOtp: vi.fn(),
     state,
   };
 });
@@ -42,8 +45,11 @@ vi.mock("../lib/client/supabase-auth", () => ({
   getWebSupabaseAuthClient: () => ({
     auth: {
       getSession: mocks.getSession,
+      getUser: mocks.getUser,
       onAuthStateChange: mocks.onAuthStateChange,
+      signInWithOtp: mocks.signInWithOtp,
       signOut: mocks.signOut,
+      verifyOtp: mocks.verifyOtp,
     },
   }),
 }));
@@ -65,6 +71,7 @@ function session(userId: string): Session {
       created_at: "2026-08-01T10:00:00.000Z",
       id: userId,
       is_anonymous: false,
+      email: `${userId === ids.userA ? "a" : "b"}@example.test`,
       user_metadata: {},
     },
   } as Session;
@@ -104,6 +111,42 @@ function SignOutHarness() {
   );
 }
 
+function DeletionAuthHarness() {
+  const auth = useWebAuthSession();
+  const [result, setResult] = useState("idle");
+  const execute = (operation: Promise<void>) => {
+    void operation
+      .then(() => setResult("ok"))
+      .catch(() => setResult("refused"));
+  };
+  return (
+    <>
+      <span>{auth.status}</span>
+      <button
+        type="button"
+        onClick={() => execute(auth.requestAccountDeletionCode(ids.userA))}
+      >
+        Demander suppression A
+      </button>
+      <button
+        type="button"
+        onClick={() =>
+          execute(auth.verifyAccountDeletionCode(ids.userA, "123456"))
+        }
+      >
+        Verifier suppression A
+      </button>
+      <button
+        type="button"
+        onClick={() => execute(auth.clearDeletedSession(ids.userA))}
+      >
+        Effacer session A
+      </button>
+      <span data-testid="deletion-auth-result">{result}</span>
+    </>
+  );
+}
+
 describe("session Auth web", () => {
   afterEach(() => {
     cleanup();
@@ -111,10 +154,25 @@ describe("session Auth web", () => {
 
   beforeEach(() => {
     mocks.getSession.mockReset();
+    mocks.getUser.mockReset();
+    mocks.signInWithOtp.mockReset();
     mocks.signOut.mockClear();
+    mocks.verifyOtp.mockReset();
     mocks.onAuthStateChange.mockClear();
     mocks.purgeSettledAccount.mockClear();
     mocks.state.authStateChange = null;
+    mocks.getUser.mockResolvedValue({
+      data: { user: session(ids.userA).user },
+      error: null,
+    });
+    mocks.signInWithOtp.mockResolvedValue({ data: {}, error: null });
+    mocks.verifyOtp.mockResolvedValue({
+      data: {
+        session: session(ids.userA),
+        user: session(ids.userA).user,
+      },
+      error: null,
+    });
   });
 
   it("incrémente la frontière sur SIGNED_OUT", async () => {
@@ -234,6 +292,172 @@ describe("session Auth web", () => {
     expect(await screen.findByText("signed_in")).toBeVisible();
     fireEvent.click(screen.getByRole("button", { name: "Déconnecter A" }));
     await waitFor(() => expect(screen.getByText("refused")).toBeVisible());
+    expect(mocks.signOut).not.toHaveBeenCalled();
+  });
+
+  it("demande un OTP sans creer de compte sur l'email exact du sujet", async () => {
+    mocks.getSession.mockResolvedValue({
+      data: { session: session(ids.userA) },
+      error: null,
+    });
+
+    render(
+      <WebAuthSessionProvider>
+        <DeletionAuthHarness />
+      </WebAuthSessionProvider>,
+    );
+    expect(await screen.findByText("signed_in")).toBeVisible();
+    fireEvent.click(
+      screen.getByRole("button", { name: "Demander suppression A" }),
+    );
+
+    await waitFor(() =>
+      expect(screen.getByTestId("deletion-auth-result")).toHaveTextContent(
+        "ok",
+      ),
+    );
+    expect(mocks.signInWithOtp).toHaveBeenCalledWith({
+      email: "a@example.test",
+      options: { shouldCreateUser: false },
+    });
+  });
+
+  it("refuse l'OTP si la session appartient a un autre sujet", async () => {
+    mocks.getSession.mockResolvedValue({
+      data: { session: session(ids.userB) },
+      error: null,
+    });
+
+    render(
+      <WebAuthSessionProvider>
+        <DeletionAuthHarness />
+      </WebAuthSessionProvider>,
+    );
+    expect(await screen.findByText("signed_in")).toBeVisible();
+    fireEvent.click(
+      screen.getByRole("button", { name: "Demander suppression A" }),
+    );
+
+    await waitFor(() =>
+      expect(screen.getByTestId("deletion-auth-result")).toHaveTextContent(
+        "refused",
+      ),
+    );
+    expect(mocks.signInWithOtp).not.toHaveBeenCalled();
+  });
+
+  it("verifie l'OTP puis le meme utilisateur durable", async () => {
+    mocks.getSession.mockResolvedValue({
+      data: { session: session(ids.userA) },
+      error: null,
+    });
+
+    render(
+      <WebAuthSessionProvider>
+        <DeletionAuthHarness />
+      </WebAuthSessionProvider>,
+    );
+    expect(await screen.findByText("signed_in")).toBeVisible();
+    fireEvent.click(
+      screen.getByRole("button", { name: "Verifier suppression A" }),
+    );
+
+    await waitFor(() =>
+      expect(screen.getByTestId("deletion-auth-result")).toHaveTextContent(
+        "ok",
+      ),
+    );
+    expect(mocks.verifyOtp).toHaveBeenCalledWith({
+      email: "a@example.test",
+      token: "123456",
+      type: "email",
+    });
+    expect(mocks.getUser).toHaveBeenCalledWith("unit-test-access");
+  });
+
+  it("refuse un utilisateur durable different apres verifyOtp", async () => {
+    mocks.getSession.mockResolvedValue({
+      data: { session: session(ids.userA) },
+      error: null,
+    });
+    mocks.getUser.mockResolvedValue({
+      data: { user: session(ids.userB).user },
+      error: null,
+    });
+
+    render(
+      <WebAuthSessionProvider>
+        <DeletionAuthHarness />
+      </WebAuthSessionProvider>,
+    );
+    expect(await screen.findByText("signed_in")).toBeVisible();
+    fireEvent.click(
+      screen.getByRole("button", { name: "Verifier suppression A" }),
+    );
+
+    await waitFor(() =>
+      expect(screen.getByTestId("deletion-auth-result")).toHaveTextContent(
+        "refused",
+      ),
+    );
+  });
+
+  it("efface seulement la session locale du compte supprime", async () => {
+    mocks.getSession.mockResolvedValue({
+      data: { session: session(ids.userA) },
+      error: null,
+    });
+
+    render(
+      <WebAuthSessionProvider>
+        <DeletionAuthHarness />
+      </WebAuthSessionProvider>,
+    );
+    expect(await screen.findByText("signed_in")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Effacer session A" }));
+
+    await waitFor(() => expect(mocks.signOut).toHaveBeenCalledTimes(1));
+    expect(mocks.signOut).toHaveBeenCalledWith({ scope: "local" });
+  });
+
+  it("tolere une session absente et ne deconnecte jamais le compte B", async () => {
+    mocks.getSession.mockResolvedValue({
+      data: { session: null },
+      error: null,
+    });
+
+    const first = render(
+      <WebAuthSessionProvider>
+        <DeletionAuthHarness />
+      </WebAuthSessionProvider>,
+    );
+    expect(await screen.findByText("signed_out")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Effacer session A" }));
+    await waitFor(() =>
+      expect(screen.getByTestId("deletion-auth-result")).toHaveTextContent(
+        "ok",
+      ),
+    );
+    expect(mocks.signOut).not.toHaveBeenCalled();
+    first.unmount();
+
+    mocks.getSession.mockReset();
+    mocks.getSession.mockResolvedValue({
+      data: { session: session(ids.userB) },
+      error: null,
+    });
+    render(
+      <WebAuthSessionProvider>
+        <DeletionAuthHarness />
+      </WebAuthSessionProvider>,
+    );
+    expect(await screen.findByText("signed_in")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Effacer session A" }));
+    await waitFor(() =>
+      expect(screen.getByTestId("deletion-auth-result")).toHaveTextContent(
+        "ok",
+      ),
+    );
     expect(mocks.signOut).not.toHaveBeenCalled();
   });
 });

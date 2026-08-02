@@ -11,6 +11,7 @@ import {
   attemptSubmissionSchema,
   createAttemptOutboxSnapshot,
   completeAnonymousProgressFusion as completeFusion,
+  deriveDeletedAccountSubjectFingerprint,
   deriveAccountDeviceId,
   deserializeAnonymousProgressFusionMarker,
   deserializeAttemptOutboxSnapshot,
@@ -43,6 +44,8 @@ const INSTALLATION_KEY = "installation_id_v1";
 const LEGACY_MIGRATION_KEY = "legacy_attempt_journal_migrated_v1";
 const LEGACY_DEMO_NAMESPACE_REPAIR_KEY = "legacy_demo_namespace_repaired_v1";
 const FUSION_MARKER_KEY = "anonymous_progress_fusion_v1";
+const DELETED_ACCOUNT_TOMBSTONE_PREFIX = "deleted_account_subject_v1:";
+const DELETED_ACCOUNT_TOMBSTONE_VALUE = "deleted";
 const SQLITE_BUSY_RETRY_COUNT = 3;
 const DEMO_OUTBOX_KEY = `demo:${OUTBOX_KEY}`;
 const LEGACY_FIXTURE_EXERCISE_ID = "10000000-0000-4000-8000-000000000004";
@@ -74,6 +77,15 @@ export class MobileAttemptOutboxStorageError extends Error {
   public constructor(message: string, options?: ErrorOptions) {
     super(message, options);
     this.name = "MobileAttemptOutboxStorageError";
+  }
+}
+
+export class MobileAccountDataTombstonedError extends MobileAttemptOutboxStorageError {
+  public constructor() {
+    super(
+      "Ce compte a été supprimé de cet appareil et ne peut plus être réécrit.",
+    );
+    this.name = "MobileAccountDataTombstonedError";
   }
 }
 
@@ -170,6 +182,19 @@ function parseStoredFusionMarker(
 ): AnonymousProgressFusionMarker | null {
   if (row === null) return null;
   return deserializeAnonymousProgressFusionMarker(row.value);
+}
+
+function validFusionMarkerTargetsAccount(
+  row: MetadataRow | null,
+  userId: string,
+): boolean {
+  try {
+    return parseStoredFusionMarker(row)?.targetUserId === userId;
+  } catch {
+    // Une frontière de suppression ne doit pas être annulée par un marqueur
+    // global illisible. Il reste intact pour éviter toute perte anonyme.
+    return false;
+  }
 }
 
 async function writeFusionMarker(
@@ -398,11 +423,14 @@ export class MobileAttemptOutboxStore {
   readonly #deviceKey: string;
   readonly #legacyMigrationKey: string;
   readonly #namespace: MobileAttemptOutboxNamespace;
+  readonly #sha256Hex: Sha256Hex | null;
+  #accountTombstoneKeyPromise: Promise<string> | null = null;
 
   public constructor(
     database: SQLiteDatabase,
     ownerInput: AttemptOutboxOwner = ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
     namespace: MobileAttemptOutboxNamespace = "learning",
+    sha256Hex?: Sha256Hex,
   ) {
     this.#database = database;
     this.#owner = attemptOutboxOwnerSchema.parse(ownerInput);
@@ -421,11 +449,20 @@ export class MobileAttemptOutboxStore {
       this.#owner.kind === "anonymous"
         ? `${prefix}${LEGACY_MIGRATION_KEY}`
         : `${prefix}${LEGACY_MIGRATION_KEY}:${scope}`;
+    if (this.#owner.kind === "account" && sha256Hex === undefined) {
+      throw new MobileAttemptOutboxStorageError(
+        "Une empreinte SHA-256 est requise pour protéger les données du compte.",
+      );
+    }
+    this.#sha256Hex =
+      this.#owner.kind === "account" ? (sha256Hex ?? null) : null;
   }
 
   public async read(): Promise<AttemptOutboxSnapshot> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
+        await this.#assertAccountWritable(this.#database, tombstoneKey);
         assertFusionMarkerContainsNoLegacyFixture(
           parseStoredFusionMarker(
             await this.#database.getFirstAsync<MetadataRow>(
@@ -437,6 +474,7 @@ export class MobileAttemptOutboxStore {
         return readSnapshot(this.#database, this.#outboxKey, this.#owner);
       });
     } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
       throw new MobileAttemptOutboxStorageError(
         "Le journal local est illisible et n'a pas été écrasé.",
         { cause: error },
@@ -446,10 +484,12 @@ export class MobileAttemptOutboxStore {
 
   public async migrateLegacyJournal(): Promise<AttemptOutboxSnapshot> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let migrated = createAttemptOutboxSnapshot(this.#owner);
         await this.#database.withExclusiveTransactionAsync(
           async (transaction) => {
+            await this.#assertAccountWritable(transaction, tombstoneKey);
             const marker = await transaction.getFirstAsync<MetadataRow>(
               "SELECT value FROM local_metadata WHERE key = ?",
               this.#legacyMigrationKey,
@@ -492,6 +532,7 @@ export class MobileAttemptOutboxStore {
         return migrated;
       });
     } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
       throw new MobileAttemptOutboxStorageError(
         "L'ancien journal local n'a pas pu être migré.",
         { cause: error },
@@ -682,7 +723,9 @@ export class MobileAttemptOutboxStore {
 
   public async readFusionMarker(): Promise<AnonymousProgressFusionMarker | null> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
+        await this.#assertAccountWritable(this.#database, tombstoneKey);
         const marker = parseStoredFusionMarker(
           await this.#database.getFirstAsync<MetadataRow>(
             "SELECT value FROM local_metadata WHERE key = ?",
@@ -693,6 +736,7 @@ export class MobileAttemptOutboxStore {
         return marker;
       });
     } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
       throw new MobileAttemptOutboxStorageError(
         "Le marqueur de fusion locale est illisible et n’a pas été écrasé.",
         { cause: error },
@@ -758,8 +802,10 @@ export class MobileAttemptOutboxStore {
   /** Purge ciblée d'un espace; l'identité opaque d'installation est conservée. */
   public async purgeOwnerData(): Promise<void> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       await serializeDatabaseOperation(this.#database, () =>
         this.#database.withExclusiveTransactionAsync(async (transaction) => {
+          await this.#assertAccountWritable(transaction, tombstoneKey);
           const marker = parseStoredFusionMarker(
             await transaction.getFirstAsync<MetadataRow>(
               "SELECT value FROM local_metadata WHERE key = ?",
@@ -803,6 +849,92 @@ export class MobileAttemptOutboxStore {
     }
   }
 
+  public async isAccountTombstoned(): Promise<boolean> {
+    if (this.#owner.kind !== "account") {
+      throw new MobileAttemptOutboxStorageError(
+        "La lecture du tombstone exige un espace compte.",
+      );
+    }
+    try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
+      if (tombstoneKey === null) return false;
+      return await serializeDatabaseOperation(
+        this.#database,
+        async () =>
+          (await this.#database.getFirstAsync<MetadataRow>(
+            "SELECT value FROM local_metadata WHERE key = ?",
+            tombstoneKey,
+          )) !== null,
+      );
+    } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
+      throw new MobileAttemptOutboxStorageError(
+        "Le tombstone local du compte est indisponible.",
+        { cause: error },
+      );
+    }
+  }
+
+  /**
+   * Scelle définitivement le sujet puis purge son namespace dans la même
+   * transaction SQLite. Le tombstone opaque est conservé sans UUID brut.
+   */
+  public async tombstoneAndPurgeAccountData(): Promise<void> {
+    const owner = this.#owner;
+    if (owner.kind !== "account") {
+      throw new MobileAttemptOutboxStorageError(
+        "Le tombstone de suppression exige un espace compte.",
+      );
+    }
+
+    try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
+      if (tombstoneKey === null) {
+        throw new MobileAttemptOutboxStorageError(
+          "L’empreinte de suppression du compte est indisponible.",
+        );
+      }
+      await serializeDatabaseOperation(this.#database, () =>
+        this.#database.withExclusiveTransactionAsync(async (transaction) => {
+          const removeFusionMarker = validFusionMarkerTargetsAccount(
+            await transaction.getFirstAsync<MetadataRow>(
+              "SELECT value FROM local_metadata WHERE key = ?",
+              FUSION_MARKER_KEY,
+            ),
+            owner.userId,
+          );
+          await transaction.runAsync(
+            `INSERT INTO local_metadata (key, value) VALUES (?, ?)
+             ON CONFLICT (key) DO UPDATE SET value = excluded.value`,
+            tombstoneKey,
+            DELETED_ACCOUNT_TOMBSTONE_VALUE,
+          );
+          await transaction.runAsync(
+            "DELETE FROM attempt_outbox_state WHERE key = ?",
+            this.#outboxKey,
+          );
+          await transaction.runAsync(
+            "DELETE FROM local_metadata WHERE key IN (?, ?)",
+            this.#deviceKey,
+            this.#legacyMigrationKey,
+          );
+          if (removeFusionMarker) {
+            await transaction.runAsync(
+              "DELETE FROM local_metadata WHERE key = ?",
+              FUSION_MARKER_KEY,
+            );
+          }
+        }),
+      );
+    } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
+      throw new MobileAttemptOutboxStorageError(
+        "Le compte local n’a pas pu être scellé et supprimé atomiquement.",
+        { cause: error },
+      );
+    }
+  }
+
   /** Purge soldée, ou compare-and-purge strict après confirmation explicite. */
   public async purgeAccountDataIfSettled(
     expectedState?: ExpectedMobileAccountPurgeState,
@@ -833,10 +965,12 @@ export class MobileAttemptOutboxStore {
           : serializeAnonymousProgressFusionMarker(expectedState.fusionMarker);
 
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let purged = false;
         await this.#database.withExclusiveTransactionAsync(
           async (transaction) => {
+            await this.#assertAccountWritable(transaction, tombstoneKey);
             const row = await transaction.getFirstAsync<OutboxRow>(
               "SELECT snapshot FROM attempt_outbox_state WHERE key = ?",
               this.#outboxKey,
@@ -899,15 +1033,50 @@ export class MobileAttemptOutboxStore {
     }
   }
 
+  async #resolveAccountTombstoneKey(): Promise<string | null> {
+    if (this.#owner.kind !== "account") return null;
+    if (this.#sha256Hex === null) {
+      throw new MobileAttemptOutboxStorageError(
+        "L’empreinte SHA-256 du compte est indisponible.",
+      );
+    }
+    this.#accountTombstoneKeyPromise ??= deriveDeletedAccountSubjectFingerprint(
+      {
+        userId: this.#owner.userId,
+        sha256Hex: this.#sha256Hex,
+      },
+    ).then(
+      (fingerprint) => `${DELETED_ACCOUNT_TOMBSTONE_PREFIX}${fingerprint}`,
+    );
+    return this.#accountTombstoneKeyPromise;
+  }
+
+  async #assertAccountWritable(
+    database: SQLiteDatabase,
+    tombstoneKey: string | null,
+  ): Promise<void> {
+    if (
+      tombstoneKey !== null &&
+      (await database.getFirstAsync<MetadataRow>(
+        "SELECT value FROM local_metadata WHERE key = ?",
+        tombstoneKey,
+      )) !== null
+    ) {
+      throw new MobileAccountDataTombstonedError();
+    }
+  }
+
   async #getOrCreateMetadataUuid(
     key: string,
     createUuid: () => string,
   ): Promise<string> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let value = "";
         await this.#database.withExclusiveTransactionAsync(
           async (transaction) => {
+            await this.#assertAccountWritable(transaction, tombstoneKey);
             const row = await transaction.getFirstAsync<MetadataRow>(
               "SELECT value FROM local_metadata WHERE key = ?",
               key,
@@ -928,6 +1097,7 @@ export class MobileAttemptOutboxStore {
         return value;
       });
     } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
       throw new MobileAttemptOutboxStorageError(
         "L'identité locale de cet appareil est indisponible.",
         { cause: error },
@@ -955,10 +1125,12 @@ export class MobileAttemptOutboxStore {
     }
 
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let returned: T | undefined;
         await this.#database.withExclusiveTransactionAsync(
           async (transaction) => {
+            await this.#assertAccountWritable(transaction, tombstoneKey);
             const marker = parseStoredFusionMarker(
               await transaction.getFirstAsync<MetadataRow>(
                 "SELECT value FROM local_metadata WHERE key = ?",
@@ -1036,10 +1208,12 @@ export class MobileAttemptOutboxStore {
     response: AttemptBatchResponse,
   ): Promise<ApplyAttemptOutboxSuccessResult> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let returned: ApplyAttemptOutboxSuccessResult | undefined;
         await this.#database.withExclusiveTransactionAsync(
           async (transaction) => {
+            await this.#assertAccountWritable(transaction, tombstoneKey);
             const accountSnapshot = await readSnapshot(
               transaction,
               this.#outboxKey,
@@ -1128,10 +1302,12 @@ export class MobileAttemptOutboxStore {
     },
   ): Promise<T> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let returned: T | undefined;
         await this.#database.withExclusiveTransactionAsync(
           async (transaction) => {
+            await this.#assertAccountWritable(transaction, tombstoneKey);
             assertFusionMarkerContainsNoLegacyFixture(
               parseStoredFusionMarker(
                 await transaction.getFirstAsync<MetadataRow>(

@@ -101,6 +101,7 @@ l'environnement et l'indexation reste désactivée sur toute URL temporaire.
 | `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | mobile                    | non     | clé publique soumise à RLS            |
 | `EXPO_PUBLIC_API_URL`                  | mobile                    | non     | origine HTTPS de l’API Next.js        |
 | `SUPABASE_SECRET_KEY`                  | serveur Next.js seulement | **oui** | accès élevé `service_role`/BYPASSRLS  |
+| `ACCOUNT_DELETION_RECEIPT_PEPPER`      | serveur Next.js seulement | **oui** | HMAC des reçus de suppression         |
 
 `SUPABASE_SECRET_KEY` est enregistrée comme variable sensible dans Vercel. Elle
 n'est ni copiée dans EAS, ni préfixée par `NEXT_PUBLIC_`, ni téléchargée dans un
@@ -109,6 +110,13 @@ les RPC explicitement accordées ; sa portée réelle reste élevée. Les secret
 RevenueCat et Stripe présents dans
 `.env.example` restent hors périmètre tant que les tranches de paiement ne sont
 pas commencées.
+
+`ACCOUNT_DELETION_RECEIPT_PEPPER` contient exactement 32 octets aléatoires
+encodés en base64url canonique sans `=` (43 caractères). Il est distinct de
+toute clé Supabase, Stripe ou RevenueCat et n'est jamais envoyé au navigateur
+ou à Expo. Sa rotation exige une fenêtre de lecture de l'ancienne version tant
+que des reçus peuvent être rejoués ; aucune rotation destructive n'est donc
+permise avant d'avoir fixé leur rétention dans `OPEN-SYNC-002`.
 
 Le projet Supabase local utilise `supabase/templates/magic_link.html` pour
 envoyer un OTP à six chiffres valable dix minutes. Dans un projet hébergé, le
@@ -129,9 +137,9 @@ développement ; preview et production exigent HTTPS. `127.0.0.1` désigne le
 téléphone lui-même et n'est donc pas fourni comme valeur par défaut.
 
 En production, `THAINAUTE_SYNC_MODE=supabase` exige les trois valeurs Supabase
-web/serveur. Une configuration incomplète doit faire échouer la readiness et
-laisser l'API de synchronisation indisponible, jamais basculer vers une écriture
-non protégée.
+web/serveur et le pepper de suppression. Une configuration incomplète doit
+faire échouer la readiness et laisser les API synchronisées indisponibles,
+jamais basculer vers une écriture non protégée.
 
 ## Sondes de santé
 
@@ -144,8 +152,8 @@ non protégée.
 
 ### `GET /api/v1/health/ready`
 
-- vérifie l'origine publique, l'indexation, le mode de synchronisation et la
-  présence des variables Supabase requises ;
+- vérifie l'origine publique, l'indexation, le mode de synchronisation, les
+  variables Supabase et le pepper de suppression requis ;
 - en mode `supabase`, sonde en parallèle Auth (`/auth/v1/health`) et la Data API
   avec une lecture `HEAD` sans rapatrier de ligne ; chaque dépendance est bornée
   à 2,5 secondes ;
@@ -257,11 +265,14 @@ les contrôles locaux.
 
 ## Limites connues avant tout hébergement
 
-- Aucun compte, projet, domaine, variable distante ou déploiement n'a été créé.
-- Docker ou un runtime compatible n'est pas disponible localement. La CI
-  GitHub exécute toutefois un démarrage Supabase complet, `db:reset`, pgTAP et
-  `db:lint` ; ces contrôles ont validé les migrations, RPC, privilèges et RLS
-  sur l'état poussé. Une exécution locale reste indisponible sur ce poste.
+- Aucune ressource d'hébergement Vercel, Supabase ou EAS, aucun domaine, aucune
+  variable distante et aucun déploiement n'ont été créés pour Thaïnaute.
+- Docker ou un runtime compatible n'est pas disponible localement. Le job CI
+  sait démarrer Supabase, exécuter `db:reset`, pgTAP et `db:lint`, mais les
+  workflows de la branche courante ne démarrent pas en raison du blocage de
+  facturation GitHub du compte. La migration de suppression et ses 62
+  assertions pgTAP restent donc une porte non obtenue ; seules leur analyse
+  statique et leur syntaxe PostgreSQL ont été vérifiées sur ce poste.
 - Le DTO/API de contenu gratuit est expurgé et les payloads bruts restent côté
   serveur, mais aucun catalogue, téléchargement audio opaque ou contenu réel
   autorisé n'est encore branché. La relation exercice/item est désormais
@@ -321,6 +332,19 @@ les contrôles locaux.
   remis par le navigateur ou le panneau natif relève ensuite de l’emplacement
   choisi par l’utilisateur. Voir l’ADR-0014 et la checklist
   `docs/privacy/account-export.md`.
+- La suppression de compte est exposée par `DELETE /api/v1/account` avec OTP
+  récent, reçu privé reprenable et hard delete Auth. La continuation de 32
+  octets est persistée seulement sur l'appareil initiateur, jamais renvoyée ni
+  journalisée, puis supprimée après la purge locale du namespace compte. Le
+  schéma actuel ne contient aucun bucket Storage utilisateur : toute future
+  migration de fichiers privés devra compléter le registre de purge avant sa
+  fusion. Sur l'appareil initiateur, un tombstone SHA-256 opaque est posé dans
+  la même transaction que la purge du namespace compte ; il ferme les réponses
+  sync tardives et les autres onglets sans contenir l'UUID brut. Une suppression
+  manuelle de tout le stockage local ou une réinstallation efface aussi ce
+  tombstone. La durée de conservation des reçus et la rotation du pepper restent
+  bloquées par `OPEN-SYNC-002`; voir l'ADR-0016 et
+  `docs/privacy/account-deletion.md`.
 - La limitation de débit par compte/IP n'est pas encore implémentée : ses
   seuils, fenêtres, rafales et comportement de repli relèvent de
   `OPEN-API-001` avant bêta distante.

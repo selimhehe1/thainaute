@@ -1,4 +1,5 @@
 import { readSupabaseAttemptSyncConfiguration } from "./attempt-sync/runtime";
+import { readAccountDeletionConfiguration } from "./account-deletion/runtime";
 
 const LOCAL_PUBLIC_URL = "http://localhost:3000/";
 const RELEASE_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/u;
@@ -8,6 +9,7 @@ type Environment = Readonly<Record<string, string | undefined>>;
 export type SyncMode = "disabled" | "supabase";
 
 export type RuntimeIssue =
+  | "account_deletion_config_missing"
   | "public_indexing_invalid"
   | "public_url_invalid"
   | "release_invalid"
@@ -88,6 +90,11 @@ export function diagnoseRuntime(
     !hasSupabaseConfiguration(environment)
   ) {
     issues.push("supabase_config_missing");
+  } else if (
+    syncMode === "supabase" &&
+    readAccountDeletionConfiguration(environment) === null
+  ) {
+    issues.push("account_deletion_config_missing");
   }
 
   return {

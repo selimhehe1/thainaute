@@ -40,6 +40,15 @@ vi.mock("../lib/client/attempt-outbox-store", () => ({
       testState.calls.push("purge-anonymous");
     }
 
+    async tombstoneAndPurgeAccountData() {
+      testState.calls.push("tombstone-account");
+    }
+
+    async isAccountTombstoned() {
+      testState.calls.push("read-tombstone");
+      return true;
+    }
+
     close() {
       testState.calls.push("close");
     }
@@ -48,6 +57,8 @@ vi.mock("../lib/client/attempt-outbox-store", () => ({
 
 import {
   discardWebAnonymousProgress,
+  forcePurgeDeletedWebAccountData,
+  isDeletedWebAccountTombstoned,
   readWebAccountLocalState,
 } from "../lib/client/account-sync";
 
@@ -73,6 +84,23 @@ describe("orchestration locale du compte web", () => {
       "migrate",
       "construct-anonymous",
       "purge-anonymous",
+    ]);
+  });
+
+  it("expose la purge scellée et sa relecture au coordinateur", async () => {
+    await forcePurgeDeletedWebAccountData(userId);
+    expect(testState.calls).toEqual([
+      "construct-account",
+      "tombstone-account",
+      "close",
+    ]);
+
+    testState.calls.splice(0);
+    await expect(isDeletedWebAccountTombstoned(userId)).resolves.toBe(true);
+    expect(testState.calls).toEqual([
+      "construct-account",
+      "read-tombstone",
+      "close",
     ]);
   });
 });

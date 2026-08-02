@@ -12,6 +12,7 @@ import {
   attemptOutboxOwnerStorageKey,
   createAttemptOutboxSnapshot,
   completeAnonymousProgressFusion as completeFusion,
+  deriveDeletedAccountSubjectFingerprint,
   deriveAccountDeviceId,
   deserializeAnonymousProgressFusionMarker,
   deserializeAttemptOutboxSnapshot,
@@ -45,6 +46,8 @@ const FUSION_MARKER_KEY = "anonymous-progress-fusion-v1";
 const DEFAULT_LEARNING_DATABASE_NAME = "thainaute-learning-v1";
 const DEFAULT_DEMO_DATABASE_NAME = "thainaute-demo-v1";
 const LEGACY_DEMO_FIXTURE_QUARANTINE_KEY = "legacy-demo-fixture-quarantine-v1";
+const DELETED_ACCOUNT_TOMBSTONE_PREFIX = "deleted-account-subject-v1:";
+const DELETED_ACCOUNT_TOMBSTONE_VALUE = "deleted";
 const LEGACY_DEMO_FIXTURE_EXERCISE_ID = "10000000-0000-4000-8000-000000000004";
 const LEGACY_DEMO_FIXTURE_CONTENT_VERSION_ID =
   "10000000-0000-4000-8000-000000000002";
@@ -73,6 +76,15 @@ export class AttemptOutboxStorageError extends Error {
   public constructor(message: string, options?: ErrorOptions) {
     super(message, options);
     this.name = "AttemptOutboxStorageError";
+  }
+}
+
+export class WebAccountDataTombstonedError extends AttemptOutboxStorageError {
+  public constructor() {
+    super(
+      "Ce compte a été supprimé de cet appareil et ne peut plus être réécrit.",
+    );
+    this.name = "WebAccountDataTombstonedError";
   }
 }
 
@@ -138,6 +150,19 @@ function parseStoredFusionMarker(
       "Le marqueur de fusion locale est illisible et n’a pas été écrasé.",
       { cause: error },
     );
+  }
+}
+
+function validFusionMarkerTargetsAccount(
+  row: MetadataRow | undefined,
+  userId: string,
+): boolean {
+  try {
+    return parseStoredFusionMarker(row)?.targetUserId === userId;
+  } catch {
+    // Une frontière de suppression ne doit pas être annulée par un marqueur
+    // global illisible. Il reste intact pour éviter toute perte anonyme.
+    return false;
   }
 }
 
@@ -610,27 +635,40 @@ export class WebAttemptOutboxStore {
   readonly #owner: AttemptOutboxOwner;
   readonly #outboxKey: string;
   readonly #deviceKey: string;
+  readonly #sha256Hex: Sha256Hex | null;
+  #accountTombstoneKeyPromise: Promise<string> | null = null;
 
   public constructor(
     databaseName = DEFAULT_LEARNING_DATABASE_NAME,
     ownerInput: AttemptOutboxOwner = ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+    sha256Hex?: Sha256Hex,
   ) {
+    const owner = attemptOutboxOwnerSchema.parse(ownerInput);
+    if (owner.kind === "account" && sha256Hex === undefined) {
+      throw new AttemptOutboxStorageError(
+        "Une empreinte SHA-256 est requise pour protéger les données du compte.",
+      );
+    }
     this.#database = openDatabase(databaseName);
-    this.#owner = attemptOutboxOwnerSchema.parse(ownerInput);
+    this.#owner = owner;
     const scope = attemptOutboxOwnerStorageKey(this.#owner);
     this.#outboxKey =
       this.#owner.kind === "anonymous" ? OUTBOX_KEY : `${OUTBOX_KEY}:${scope}`;
     this.#deviceKey =
       this.#owner.kind === "anonymous" ? DEVICE_KEY : `${DEVICE_KEY}:${scope}`;
+    this.#sha256Hex =
+      this.#owner.kind === "account" ? (sha256Hex ?? null) : null;
   }
 
   public async read(): Promise<AttemptOutboxSnapshot> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await this.#database.transaction(
         "r",
         this.#database.metadata,
         this.#database.outbox,
         async () => {
+          await this.#assertAccountWritable(tombstoneKey);
           assertFusionIsNotContaminated(
             parseStoredFusionMarker(
               await this.#database.metadata.get(FUSION_MARKER_KEY),
@@ -742,11 +780,19 @@ export class WebAttemptOutboxStore {
 
   public async readFusionMarker(): Promise<AnonymousProgressFusionMarker | null> {
     try {
-      const marker = parseStoredFusionMarker(
-        await this.#database.metadata.get(FUSION_MARKER_KEY),
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
+      return await this.#database.transaction(
+        "r",
+        this.#database.metadata,
+        async () => {
+          await this.#assertAccountWritable(tombstoneKey);
+          const marker = parseStoredFusionMarker(
+            await this.#database.metadata.get(FUSION_MARKER_KEY),
+          );
+          assertFusionIsNotContaminated(marker);
+          return marker;
+        },
       );
-      assertFusionIsNotContaminated(marker);
-      return marker;
     } catch (error) {
       if (error instanceof AttemptOutboxStorageError) throw error;
       throw new AttemptOutboxStorageError(
@@ -820,11 +866,13 @@ export class WebAttemptOutboxStore {
   /** Purge ciblée d'un espace; l'identité opaque d'installation est conservée. */
   public async purgeOwnerData(): Promise<void> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       await this.#database.transaction(
         "rw",
         this.#database.metadata,
         this.#database.outbox,
         async () => {
+          await this.#assertAccountWritable(tombstoneKey);
           const marker = parseStoredFusionMarker(
             await this.#database.metadata.get(FUSION_MARKER_KEY),
           );
@@ -850,6 +898,78 @@ export class WebAttemptOutboxStore {
       if (error instanceof AttemptOutboxStorageError) throw error;
       throw new AttemptOutboxStorageError(
         "Les données locales du compte n’ont pas pu être supprimées.",
+        { cause: error },
+      );
+    }
+  }
+
+  public async isAccountTombstoned(): Promise<boolean> {
+    if (this.#owner.kind !== "account") {
+      throw new AttemptOutboxStorageError(
+        "La lecture du tombstone exige un espace compte.",
+      );
+    }
+    try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
+      if (tombstoneKey === null) return false;
+      return await this.#database.transaction(
+        "r",
+        this.#database.metadata,
+        async () =>
+          (await this.#database.metadata.get(tombstoneKey)) !== undefined,
+      );
+    } catch (error) {
+      if (error instanceof AttemptOutboxStorageError) throw error;
+      throw new AttemptOutboxStorageError(
+        "Le tombstone local du compte est indisponible.",
+        { cause: error },
+      );
+    }
+  }
+
+  /**
+   * Scelle définitivement le sujet puis purge son namespace dans un même
+   * commit IndexedDB. Le tombstone opaque est conservé sans UUID brut.
+   */
+  public async tombstoneAndPurgeAccountData(): Promise<void> {
+    const owner = this.#owner;
+    if (owner.kind !== "account") {
+      throw new AttemptOutboxStorageError(
+        "Le tombstone de suppression exige un espace compte.",
+      );
+    }
+
+    try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
+      if (tombstoneKey === null) {
+        throw new AttemptOutboxStorageError(
+          "L’empreinte de suppression du compte est indisponible.",
+        );
+      }
+      await this.#database.transaction(
+        "rw",
+        this.#database.metadata,
+        this.#database.outbox,
+        async () => {
+          const removeFusionMarker = validFusionMarkerTargetsAccount(
+            await this.#database.metadata.get(FUSION_MARKER_KEY),
+            owner.userId,
+          );
+          await this.#database.metadata.put({
+            key: tombstoneKey,
+            value: DELETED_ACCOUNT_TOMBSTONE_VALUE,
+          });
+          await this.#database.outbox.delete(this.#outboxKey);
+          await this.#database.metadata.delete(this.#deviceKey);
+          if (removeFusionMarker) {
+            await this.#database.metadata.delete(FUSION_MARKER_KEY);
+          }
+        },
+      );
+    } catch (error) {
+      if (error instanceof AttemptOutboxStorageError) throw error;
+      throw new AttemptOutboxStorageError(
+        "Le compte local n’a pas pu être scellé et supprimé atomiquement.",
         { cause: error },
       );
     }
@@ -889,11 +1009,13 @@ export class WebAttemptOutboxStore {
           : serializeAnonymousProgressFusionMarker(expectedState.fusionMarker);
 
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await this.#database.transaction(
         "rw",
         this.#database.metadata,
         this.#database.outbox,
         async () => {
+          await this.#assertAccountWritable(tombstoneKey);
           const row = await this.#database.outbox.get(this.#outboxKey);
           const snapshot = parseStoredSnapshot(row, owner);
           const marker = parseStoredFusionMarker(
@@ -944,15 +1066,44 @@ export class WebAttemptOutboxStore {
     await Dexie.delete(name);
   }
 
+  async #resolveAccountTombstoneKey(): Promise<string | null> {
+    if (this.#owner.kind !== "account") return null;
+    if (this.#sha256Hex === null) {
+      throw new AttemptOutboxStorageError(
+        "L’empreinte SHA-256 du compte est indisponible.",
+      );
+    }
+    this.#accountTombstoneKeyPromise ??= deriveDeletedAccountSubjectFingerprint(
+      {
+        userId: this.#owner.userId,
+        sha256Hex: this.#sha256Hex,
+      },
+    ).then(
+      (fingerprint) => `${DELETED_ACCOUNT_TOMBSTONE_PREFIX}${fingerprint}`,
+    );
+    return this.#accountTombstoneKeyPromise;
+  }
+
+  async #assertAccountWritable(tombstoneKey: string | null): Promise<void> {
+    if (
+      tombstoneKey !== null &&
+      (await this.#database.metadata.get(tombstoneKey)) !== undefined
+    ) {
+      throw new WebAccountDataTombstonedError();
+    }
+  }
+
   async #getOrCreateMetadataUuid(
     key: string,
     createUuid: () => string,
   ): Promise<string> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await this.#database.transaction(
         "rw",
         this.#database.metadata,
         async () => {
+          await this.#assertAccountWritable(tombstoneKey);
           const stored = await this.#database.metadata.get(key);
           if (stored !== undefined) {
             return idempotencyKeySchema.parse(stored.value);
@@ -964,6 +1115,7 @@ export class WebAttemptOutboxStore {
         },
       );
     } catch (error) {
+      if (error instanceof AttemptOutboxStorageError) throw error;
       throw new AttemptOutboxStorageError(
         "L'identité locale de cet appareil est indisponible.",
         { cause: error },
@@ -990,11 +1142,13 @@ export class WebAttemptOutboxStore {
     }
 
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await this.#database.transaction(
         "rw",
         this.#database.metadata,
         this.#database.outbox,
         async (): Promise<T> => {
+          await this.#assertAccountWritable(tombstoneKey);
           const marker = parseStoredFusionMarker(
             await this.#database.metadata.get(FUSION_MARKER_KEY),
           );
@@ -1041,11 +1195,13 @@ export class WebAttemptOutboxStore {
     response: AttemptBatchResponse,
   ): Promise<ApplyAttemptOutboxSuccessResult> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await this.#database.transaction(
         "rw",
         this.#database.metadata,
         this.#database.outbox,
         async () => {
+          await this.#assertAccountWritable(tombstoneKey);
           const accountSnapshot = parseStoredSnapshot(
             await this.#database.outbox.get(this.#outboxKey),
             this.#owner,
@@ -1126,11 +1282,13 @@ export class WebAttemptOutboxStore {
     },
   ): Promise<T> {
     try {
+      const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await this.#database.transaction(
         "rw",
         this.#database.metadata,
         this.#database.outbox,
         async () => {
+          await this.#assertAccountWritable(tombstoneKey);
           assertFusionIsNotContaminated(
             parseStoredFusionMarker(
               await this.#database.metadata.get(FUSION_MARKER_KEY),

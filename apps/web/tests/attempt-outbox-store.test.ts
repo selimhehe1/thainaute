@@ -1,11 +1,12 @@
 import "fake-indexeddb/auto";
 
 import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
+import type { AttemptOutboxOwner } from "@thainaute/sync";
 import Dexie from "dexie";
 import { describe, expect, it } from "vitest";
 
 import {
-  WebAttemptOutboxStore,
+  WebAttemptOutboxStore as RealWebAttemptOutboxStore,
   migrateLegacyDemoFixtureAttempts,
 } from "../lib/client/attempt-outbox-store";
 
@@ -28,6 +29,21 @@ const ids = {
   fixtureOptionB: "20000000-0000-4000-8000-000000000002",
   fixtureVersion: "10000000-0000-4000-8000-000000000002",
 } as const;
+
+const testSha256Hex = (material: string): Promise<string> =>
+  Promise.resolve(
+    material.endsWith(ids.userB) ? "22".repeat(32) : "11".repeat(32),
+  );
+
+class WebAttemptOutboxStore extends RealWebAttemptOutboxStore {
+  public constructor(databaseName?: string, owner?: AttemptOutboxOwner) {
+    super(
+      databaseName,
+      owner,
+      owner?.kind === "account" ? testSha256Hex : undefined,
+    );
+  }
+}
 
 const submission = {
   eventId: ids.event,
@@ -76,6 +92,20 @@ async function readRawOutboxRow(
     return await database
       .table<{ readonly key: string; readonly snapshot: string }>("outbox")
       .get(key);
+  } finally {
+    database.close();
+  }
+}
+
+async function readRawMetadataRows(
+  databaseName: string,
+): Promise<readonly { readonly key: string; readonly value: string }[]> {
+  const database = new Dexie(databaseName);
+  database.version(1).stores({ metadata: "&key", outbox: "&key" });
+  try {
+    return await database
+      .table<{ readonly key: string; readonly value: string }>("metadata")
+      .toArray();
   } finally {
     database.close();
   }
@@ -723,5 +753,119 @@ describe("outbox IndexedDB web", () => {
     ).resolves.toBe(deviceA);
     accountB.close();
     await accountA.deleteForTests();
+  });
+
+  it("scelle atomiquement un compte entre deux onglets et refuse la réponse tardive", async () => {
+    const name = databaseName();
+    const anonymous = new WebAttemptOutboxStore(name);
+    const accountAFirstTab = new WebAttemptOutboxStore(name, {
+      kind: "account",
+      userId: ids.userA,
+    });
+    const accountASecondTab = new WebAttemptOutboxStore(name, {
+      kind: "account",
+      userId: ids.userA,
+    });
+    const accountB = new WebAttemptOutboxStore(name, {
+      kind: "account",
+      userId: ids.userB,
+    });
+
+    await anonymous.enqueue(submission);
+    await accountB.enqueue(submission);
+    await accountASecondTab.enqueue(submission);
+    await accountASecondTab.prepare(ids.idempotency);
+    expect(await accountASecondTab.isAccountTombstoned()).toBe(false);
+
+    await accountAFirstTab.tombstoneAndPurgeAccountData();
+    await expect(
+      accountASecondTab.applySuccess({
+        syncRevision: 1,
+        results: [{ eventId: ids.event, status: "accepted", rating: 1 }],
+        states: [],
+      }),
+    ).rejects.toThrow("ne peut plus être réécrit");
+    await expect(
+      accountASecondTab.enqueue({
+        ...submission,
+        eventId: ids.eventB,
+        answeredAt: "2026-08-01T10:00:01.000Z",
+      }),
+    ).rejects.toThrow("ne peut plus être réécrit");
+    await expect(accountASecondTab.read()).rejects.toThrow(
+      "ne peut plus être réécrit",
+    );
+    await expect(accountASecondTab.purgeOwnerData()).rejects.toThrow(
+      "ne peut plus être réécrit",
+    );
+
+    expect(await accountASecondTab.isAccountTombstoned()).toBe(true);
+    await expect(
+      accountASecondTab.tombstoneAndPurgeAccountData(),
+    ).resolves.toBeUndefined();
+    expect(
+      await readRawOutboxRow(name, `attempts-v1:account:${ids.userA}`),
+    ).toBeUndefined();
+    expect((await anonymous.read()).entries).toHaveLength(1);
+    expect((await accountB.read()).entries).toHaveLength(1);
+
+    const metadataRows = await readRawMetadataRows(name);
+    const tombstones = metadataRows.filter(({ key }) =>
+      key.startsWith("deleted-account-subject-v1:"),
+    );
+    expect(tombstones).toEqual([
+      {
+        key: `deleted-account-subject-v1:${"11".repeat(32)}`,
+        value: "deleted",
+      },
+    ]);
+    expect(JSON.stringify(tombstones)).not.toContain(ids.userA);
+
+    anonymous.close();
+    accountAFirstTab.close();
+    accountASecondTab.close();
+    accountB.close();
+    await Dexie.delete(name);
+  });
+
+  it("scelle le compte malgré un marqueur de fusion corrompu sans toucher sa source anonyme", async () => {
+    const name = databaseName();
+    const anonymous = new WebAttemptOutboxStore(name);
+    const account = new WebAttemptOutboxStore(name, {
+      kind: "account",
+      userId: ids.userA,
+    });
+    await anonymous.enqueue(submission);
+    await account.enqueue(submission);
+    await account.prepare(ids.idempotency);
+    const anonymousBefore = await readRawOutboxRow(name, "attempts-v1");
+    const corruptMarker = JSON.stringify({ schemaVersion: "corrupt" });
+    await seedFusionMarker(name, { schemaVersion: "corrupt" });
+
+    await account.tombstoneAndPurgeAccountData();
+
+    expect(await account.isAccountTombstoned()).toBe(true);
+    expect(
+      await readRawOutboxRow(name, `attempts-v1:account:${ids.userA}`),
+    ).toBeUndefined();
+    expect(await readRawOutboxRow(name, "attempts-v1")).toEqual(
+      anonymousBefore,
+    );
+    expect(
+      (await readRawMetadataRows(name)).find(
+        ({ key }) => key === "anonymous-progress-fusion-v1",
+      )?.value,
+    ).toBe(corruptMarker);
+    await expect(
+      account.applySuccess({
+        syncRevision: 1,
+        results: [{ eventId: ids.event, status: "accepted", rating: 1 }],
+        states: [],
+      }),
+    ).rejects.toThrow("ne peut plus être réécrit");
+
+    anonymous.close();
+    account.close();
+    await Dexie.delete(name);
   });
 });

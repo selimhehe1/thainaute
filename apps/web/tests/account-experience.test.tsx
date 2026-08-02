@@ -60,6 +60,7 @@ describe("parcours compte web", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    window.localStorage.clear();
     mocks.state.client = null;
   });
 

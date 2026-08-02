@@ -11,6 +11,7 @@ import {
 } from "@/lib/client/account-sync";
 import { useWebAuthSession } from "@/lib/client/auth-session";
 
+import { AccountDeletionSection } from "./account-deletion-section";
 import { AccountExportSection } from "./account-export-section";
 
 type LocalState = Awaited<ReturnType<typeof readWebAccountLocalState>>;
@@ -618,57 +619,66 @@ export function AccountExperience() {
 
   if (auth.status === "unconfigured") {
     return (
-      <div className="accountNotice" role="status">
-        <h1>Compte non configuré ici</h1>
-        <p>
-          Cette copie locale ne possède aucune clé publique Supabase. La leçon
-          hors ligne reste utilisable sans compte.
-        </p>
-        <Link className="button buttonPrimary" href="/learn/demo">
-          Continuer hors ligne
-        </Link>
-      </div>
+      <>
+        <div className="accountNotice" role="status">
+          <h1>Compte non configuré ici</h1>
+          <p>
+            Cette copie locale ne possède aucune clé publique Supabase. La leçon
+            hors ligne reste utilisable sans compte.
+          </p>
+          <Link className="button buttonPrimary" href="/learn/demo">
+            Continuer hors ligne
+          </Link>
+        </div>
+        <AccountDeletionSection expectedUserId={null} />
+      </>
     );
   }
 
   if (auth.status === "signed_out") {
     return (
-      <SignedOutAccountPanel
-        busy={busy}
-        code={code}
-        codeRequested={codeRequested}
-        email={email}
-        message={message}
-        onCodeChange={setCode}
-        onEmailChange={setEmail}
-        onRequestCode={(event) => void requestCode(event)}
-        onResetCodeRequest={() => {
-          setCodeRequested(false);
-          setCode("");
-          setMessage("");
-        }}
-        onVerifyCode={(event) => void verifyCode(event)}
-      />
+      <>
+        <SignedOutAccountPanel
+          busy={busy}
+          code={code}
+          codeRequested={codeRequested}
+          email={email}
+          message={message}
+          onCodeChange={setCode}
+          onEmailChange={setEmail}
+          onRequestCode={(event) => void requestCode(event)}
+          onResetCodeRequest={() => {
+            setCodeRequested(false);
+            setCode("");
+            setMessage("");
+          }}
+          onVerifyCode={(event) => void verifyCode(event)}
+        />
+        <AccountDeletionSection expectedUserId={null} />
+      </>
     );
   }
 
   return (
-    <SignedInAccountPanel
-      busy={busy}
-      currentLocalState={currentLocalState}
-      deletionConfirmationUserId={deletionConfirmationUserId}
-      logoutConfirmationUserId={logoutConfirmationUserId}
-      message={message}
-      onDiscardAnonymous={() => void discardAnonymous()}
-      onKeepAnonymous={() =>
-        setMessage("Progression anonyme conservée pour plus tard.")
-      }
-      onLogout={() => void logout()}
-      onSynchronize={(startAnonymousFusion) =>
-        void synchronize(startAnonymousFusion)
-      }
-      sessionBoundaryRevision={auth.sessionBoundaryRevision}
-      userId={userId}
-    />
+    <>
+      <SignedInAccountPanel
+        busy={busy}
+        currentLocalState={currentLocalState}
+        deletionConfirmationUserId={deletionConfirmationUserId}
+        logoutConfirmationUserId={logoutConfirmationUserId}
+        message={message}
+        onDiscardAnonymous={() => void discardAnonymous()}
+        onKeepAnonymous={() =>
+          setMessage("Progression anonyme conservée pour plus tard.")
+        }
+        onLogout={() => void logout()}
+        onSynchronize={(startAnonymousFusion) =>
+          void synchronize(startAnonymousFusion)
+        }
+        sessionBoundaryRevision={auth.sessionBoundaryRevision}
+        userId={userId}
+      />
+      <AccountDeletionSection expectedUserId={userId} />
+    </>
   );
 }

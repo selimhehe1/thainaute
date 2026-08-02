@@ -11,17 +11,18 @@ import {
 } from "./errors";
 import type { AccountExportIdentityVerifier } from "./ports";
 import { createAccountExportSupabaseFetch } from "./supabase-fetch";
+import {
+  SupabaseAuthenticationError,
+  validatePermanentSupabaseUser,
+  verifySupabasePermanentUser,
+  type SupabaseUserAuthClient,
+  type VerifiedPermanentSupabaseUser,
+} from "../supabase-auth/verified-user";
 
 const providerNameSchema = z.string().regex(/^[a-z0-9][a-z0-9._-]{0,63}$/u);
 const providerSourceSchema = z.array(providerNameSchema).max(64);
 const appMetadataSchema = z
   .object({ providers: z.unknown().optional() })
-  .passthrough();
-const verifiedJwtClaimsSchema = z
-  .object({
-    sub: z.uuid().transform((uuid) => uuid.toLowerCase()),
-    is_anonymous: z.boolean().optional(),
-  })
   .passthrough();
 const supabaseUserSchema = z
   .object({
@@ -33,25 +34,10 @@ const supabaseUserSchema = z
     last_sign_in_at: z.string().nullable().optional(),
     email_confirmed_at: z.string().nullable().optional(),
     phone_confirmed_at: z.string().nullable().optional(),
-    // Certaines versions locales de Supabase Auth omettent encore ce champ
-    // dans `/user`. Le claim JWT vérifié ci-dessus reste alors autoritaire.
     is_anonymous: z.boolean().optional(),
     app_metadata: z.unknown().optional(),
   })
   .passthrough();
-
-interface AccountExportSupabaseAuthClient {
-  readonly getClaims: (accessToken: string) => Promise<{
-    readonly data: { readonly claims: unknown } | null;
-    readonly error: { readonly status?: number | undefined } | null;
-  }>;
-  readonly getUser: (accessToken: string) => Promise<{
-    readonly data: { readonly user: unknown };
-    readonly error: { readonly status?: number | undefined } | null;
-  }>;
-}
-
-const CREDENTIAL_REJECTION_STATUSES = new Set([400, 401, 403, 404, 422]);
 
 function providersFromAppMetadata(metadata: unknown): string[] {
   if (metadata === undefined) return [];
@@ -76,31 +62,6 @@ function nullableAuthContact(value: string | null | undefined): string | null {
   return value === undefined || value === null || value === "" ? null : value;
 }
 
-function hasPermanentAccountEvidence(input: {
-  readonly claimMarker: boolean | undefined;
-  readonly userMarker: boolean | undefined;
-  readonly emailConfirmedAt: string | null | undefined;
-  readonly phoneConfirmedAt: string | null | undefined;
-}): boolean {
-  if (
-    input.claimMarker !== undefined &&
-    input.userMarker !== undefined &&
-    input.claimMarker !== input.userMarker
-  ) {
-    throw new AccountExportInfrastructureError("auth_unavailable");
-  }
-  if (input.claimMarker === true || input.userMarker === true) return false;
-  if (input.claimMarker === false || input.userMarker === false) return true;
-
-  // Les anciennes images Auth locales peuvent omettre les deux marqueurs.
-  // Une adresse ou un telephone confirmes par Auth constituent alors une
-  // preuve serveur de conversion en compte permanent.
-  return (
-    (input.emailConfirmedAt !== null && input.emailConfirmedAt !== undefined) ||
-    (input.phoneConfirmedAt !== null && input.phoneConfirmedAt !== undefined)
-  );
-}
-
 /**
  * Produit uniquement la whitelist publique du document. Les identités OAuth,
  * `user_metadata` et les autres clés de `app_metadata` sont volontairement
@@ -110,23 +71,31 @@ export function accountExportIdentityFromSupabaseUser(
   value: unknown,
   verifiedClaimsValue: unknown,
 ): AccountExportIdentity | null {
-  const user = supabaseUserSchema.safeParse(value);
-  const verifiedClaims = verifiedJwtClaimsSchema.safeParse(verifiedClaimsValue);
-  if (!user.success || !verifiedClaims.success) {
+  try {
+    return accountExportIdentityFromVerifiedSupabaseUser(
+      validatePermanentSupabaseUser({
+        claims: verifiedClaimsValue,
+        user: value,
+      }),
+    );
+  } catch (error) {
+    if (
+      error instanceof SupabaseAuthenticationError &&
+      error.kind === "unauthorized"
+    ) {
+      return null;
+    }
+    if (error instanceof AccountExportInfrastructureError) throw error;
     throw new AccountExportInfrastructureError("auth_unavailable");
   }
-  if (user.data.id !== verifiedClaims.data.sub) {
+}
+
+function accountExportIdentityFromVerifiedSupabaseUser(
+  verified: VerifiedPermanentSupabaseUser,
+): AccountExportIdentity {
+  const user = supabaseUserSchema.safeParse(verified.user);
+  if (!user.success || user.data.id !== verified.userId) {
     throw new AccountExportInfrastructureError("auth_unavailable");
-  }
-  if (
-    !hasPermanentAccountEvidence({
-      claimMarker: verifiedClaims.data.is_anonymous,
-      userMarker: user.data.is_anonymous,
-      emailConfirmedAt: user.data.email_confirmed_at,
-      phoneConfirmedAt: user.data.phone_confirmed_at,
-    })
-  ) {
-    return null;
   }
 
   const result = accountExportIdentitySchema.safeParse({
@@ -152,40 +121,20 @@ export function accountExportIdentityFromSupabaseUser(
  * documentées deviennent un 401 invitant réellement à se reconnecter.
  */
 export async function verifySupabaseAccountExportIdentity(input: {
-  readonly auth: AccountExportSupabaseAuthClient;
+  readonly auth: SupabaseUserAuthClient;
   readonly accessToken: string;
 }): Promise<AccountExportIdentity> {
   try {
-    const [claimsResult, userResult] = await Promise.all([
-      input.auth.getClaims(input.accessToken),
-      input.auth.getUser(input.accessToken),
-    ]);
-    const authErrors = [claimsResult.error, userResult.error].filter(
-      (error) => error !== null,
+    return accountExportIdentityFromVerifiedSupabaseUser(
+      await verifySupabasePermanentUser(input),
     );
-    if (authErrors.length > 0) {
-      if (
-        authErrors.some(
-          ({ status }) =>
-            status !== undefined && CREDENTIAL_REJECTION_STATUSES.has(status),
-        )
-      ) {
+  } catch (error) {
+    if (error instanceof SupabaseAuthenticationError) {
+      if (error.kind === "unauthorized") {
         throw new AccountExportApiError("unauthorized");
       }
       throw new AccountExportInfrastructureError("auth_unavailable");
     }
-    if (claimsResult.data === null) {
-      throw new AccountExportInfrastructureError("auth_unavailable");
-    }
-    const identity = accountExportIdentityFromSupabaseUser(
-      userResult.data.user,
-      claimsResult.data.claims,
-    );
-    if (identity === null) {
-      throw new AccountExportApiError("unauthorized");
-    }
-    return identity;
-  } catch (error) {
     if (
       error instanceof AccountExportApiError ||
       error instanceof AccountExportInfrastructureError

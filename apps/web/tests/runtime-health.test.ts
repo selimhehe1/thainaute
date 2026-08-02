@@ -32,6 +32,19 @@ describe("configuration et sondes de santé", () => {
     expect(diagnostic.issues).toContain("supabase_config_missing");
   });
 
+  it("exige le pepper de reçu quand la synchronisation distante est active", () => {
+    const diagnostic = diagnoseRuntime({
+      THAINAUTE_SYNC_MODE: "supabase",
+      NEXT_PUBLIC_SUPABASE_URL: "https://project.supabase.co",
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY:
+        "sb_publishable_example_public_value",
+      SUPABASE_SECRET_KEY: "sb_secret_example_server_value",
+    });
+
+    expect(diagnostic.ready).toBe(false);
+    expect(diagnostic.issues).toContain("account_deletion_config_missing");
+  });
+
   it("refuse un secret public ou une URL HTTP distante pour Supabase", () => {
     const sharedKey = "sb_secret_never_publish_this_value";
     const diagnostic = diagnoseRuntime({
@@ -90,6 +103,8 @@ describe("configuration et sondes de santé", () => {
       NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY:
         "sb_publishable_example_public_value",
       SUPABASE_SECRET_KEY: "sb_secret_example_server_value",
+      ACCOUNT_DELETION_RECEIPT_PEPPER:
+        "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     });
 
     expect(metadata.robots).toEqual({ index: true, follow: true });
