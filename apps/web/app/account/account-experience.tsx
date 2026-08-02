@@ -100,8 +100,8 @@ function SignedOutAccountPanel({
         </form>
       )}
       {message !== "" && (
-        <p className="inlineError" role="status">
-          {message}
+        <p className="inlineError">
+          <output>{message}</output>
         </p>
       )}
     </div>
@@ -371,8 +371,8 @@ function SignedInAccountPanel({
         onSynchronize={() => onSynchronize(false)}
       />
       {message !== "" && (
-        <p className="accountMessage" role="status">
-          {message}
+        <p className="accountMessage">
+          <output>{message}</output>
         </p>
       )}
     </div>
