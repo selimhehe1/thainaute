@@ -228,7 +228,7 @@ describe("écran Parcours web", () => {
       expect(
         screen
           .getAllByRole("link")
-          .filter((link) => link.classList.contains("buttonPrimary")),
+          .filter((link) => link.className.includes("primary")),
       ).toHaveLength(1);
     },
   );

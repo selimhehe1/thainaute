@@ -11,6 +11,10 @@ import {
 } from "react";
 
 import { WebLocalExperienceStore } from "@/lib/client/local-experience-store";
+import { ToneCurve } from "@/components/brand/tone-curve";
+import { buttonClass } from "@/components/ui/button";
+import panel from "@/components/ui/panel.module.css";
+import styles from "./path.module.css";
 
 interface PathLesson {
   readonly versionId: string;
@@ -173,20 +177,17 @@ export function PathExperience({ lesson }: PathExperienceProps) {
 
   if (storageStatus === "error") {
     return (
-      <section
-        className="pathPanel pathNotice"
-        aria-labelledby="path-error-title"
-      >
-        <p className="eyebrow">Stockage local indisponible</p>
+      <section className={panel.panel} aria-labelledby="path-error-title">
+        <p className={panel.eyebrow}>Stockage local indisponible</p>
         <h1 id="path-error-title" ref={errorHeadingRef} tabIndex={-1}>
           Votre parcours existant reste intact.
         </h1>
-        <p className="pathLede">
+        <p className={panel.lede}>
           Thaïnaute n’écrase pas une progression illisible. Vérifiez que le
           stockage du navigateur est autorisé, puis réessayez.
         </p>
         <button
-          className="button buttonPrimary pathPrimaryAction"
+          className={buttonClass("primary")}
           type="button"
           onClick={requestRead}
         >
@@ -199,14 +200,14 @@ export function PathExperience({ lesson }: PathExperienceProps) {
   if (storageStatus === "loading" || snapshot === null) {
     return (
       <section
-        className="pathPanel pathNotice"
+        className={panel.panel}
         aria-busy="true"
         aria-live="polite"
         aria-labelledby="path-loading-title"
       >
-        <p className="eyebrow">Parcours technique</p>
+        <p className={panel.eyebrow}>Parcours technique</p>
         <h1 id="path-loading-title">Lecture de votre progression locale…</h1>
-        <p className="pathLede">
+        <p className={panel.lede}>
           Aucune donnée existante n’est modifiée pendant ce chargement.
         </p>
       </section>
@@ -220,10 +221,21 @@ export function PathExperience({ lesson }: PathExperienceProps) {
   const presentation = presentationFor(projection);
 
   return (
-    <section className="pathPanel" aria-labelledby="path-title">
-      <div className="networkStatus" aria-live="polite">
+    <section className={panel.panel} aria-labelledby="path-title">
+      <ToneCurve
+        className={panel.panelCurve}
+        tone="high"
+        width={120}
+        height={64}
+        strokeWidth={7}
+      />
+      <div className={styles.networkStatus} aria-live="polite">
         <span
-          className={online ? "statusDot online" : "statusDot"}
+          className={
+            online
+              ? styles.statusDot + " " + styles.statusDotOnline
+              : styles.statusDot
+          }
           aria-hidden="true"
         />
         {online
@@ -231,81 +243,94 @@ export function PathExperience({ lesson }: PathExperienceProps) {
           : "Hors ligne · progression lue sur cet appareil"}
       </div>
 
-      <div className="pathContent">
-        <aside className="pathFixtureWarning" aria-label="Statut du contenu">
+      <div>
+        <aside className={styles.warning} aria-label="Statut du contenu">
           <strong>DONNÉE FICTIVE · NON PUBLIABLE</strong>
           <span>Aucune valeur pédagogique ou linguistique.</span>
         </aside>
 
-        <p className="eyebrow">Parcours technique local</p>
+        <p className={panel.eyebrow}>Parcours technique local</p>
         <h1 id="path-title">Votre progression, sans faux contenu.</h1>
-        <p className="pathLede">
+        <p className={panel.lede}>
           Cette carte rend visible une seule unité de test. Elle vérifie la
           reprise du produit, pas l’apprentissage du thaï.
         </p>
 
-        <section className="pathProgress" aria-labelledby="path-progress-title">
-          <div>
-            <h2 id="path-progress-title">Progression de la fixture</h2>
-            <span>{projection.progressPercent} %</span>
-          </div>
-          <progress
-            aria-label="Progression de l’unité technique"
-            max={100}
-            value={projection.progressPercent}
+        <div className={styles.itinerary}>
+          <section
+            className={styles.stop + " " + styles.progressBlock}
+            aria-labelledby="path-progress-title"
           >
-            {projection.progressPercent} %
-          </progress>
-          <p>
-            Étapes techniques terminées : {projection.completedSteps} sur{" "}
-            {projection.totalSteps}.
-          </p>
-        </section>
-
-        <article className="pathUnit" aria-labelledby="path-unit-title">
-          <div className="pathUnitHeading">
-            <div>
-              <span className="pathUnitIndex">
-                Unité technique · prototype local
-              </span>
-              <h2 id="path-unit-title">{lesson.title}</h2>
+            <div className={styles.progressHead}>
+              <h2 id="path-progress-title">Progression de la fixture</h2>
+              <span>{projection.progressPercent} %</span>
             </div>
-            <span
-              className={`pathUnitStatus pathUnitStatus-${projection.status}`}
+            <progress
+              aria-label="Progression de l’unité technique"
+              max={100}
+              value={projection.progressPercent}
             >
-              {presentation.statusLabel}
-            </span>
-          </div>
-          <p className="pathUnitObjective">{lesson.objective}</p>
-          <p className="pathUnitDescription">
-            {presentation.statusDescription}
-          </p>
-
-          {!online && (
-            <p className="offlineNote" role="status">
-              La lecture de cet état fonctionne hors ligne. La démonstration
-              suivante exige que ses ressources aient déjà été chargées.
+              {projection.progressPercent} %
+            </progress>
+            <p>
+              Étapes techniques terminées : {projection.completedSteps} sur{" "}
+              {projection.totalSteps}.
             </p>
-          )}
+          </section>
 
-          <Link
-            className="button buttonPrimary pathPrimaryAction"
-            href={presentation.actionHref}
+          <article
+            className={styles.stop + " " + styles.unit}
+            aria-labelledby="path-unit-title"
           >
-            {presentation.actionLabel}
-          </Link>
-        </article>
+            <div className={styles.unitHeading}>
+              <div>
+                <span className={styles.unitIndex}>
+                  Unité technique · prototype local
+                </span>
+                <h2 id="path-unit-title">{lesson.title}</h2>
+              </div>
+              <span className={styles.unitStatus}>
+                {presentation.statusLabel}
+              </span>
+            </div>
+            <p className={styles.unitObjective}>{lesson.objective}</p>
+            <p className={styles.unitDescription}>
+              {presentation.statusDescription}
+            </p>
 
-        <section className="pathFuture" aria-labelledby="path-future-title">
-          <span className="pathFutureStatus">Suite volontairement bloquée</span>
-          <h2 id="path-future-title">
-            Les prochaines unités ne sont pas inventées.
-          </h2>
-          <p>
-            Le vrai parcours attend les décisions produit et pédagogiques, puis
-            du contenu sourcé, audité et autorisé à la publication.
-          </p>
-        </section>
+            {!online && (
+              <p className={styles.offlineNote} role="status">
+                La lecture de cet état fonctionne hors ligne. La démonstration
+                suivante exige que ses ressources aient déjà été chargées.
+              </p>
+            )}
+
+            <Link
+              className={buttonClass("primary")}
+              href={presentation.actionHref}
+            >
+              {presentation.actionLabel}
+            </Link>
+          </article>
+
+          <section
+            className={
+              styles.stop + " " + styles.stopFuture + " " + styles.future
+            }
+            aria-labelledby="path-future-title"
+          >
+            <span className={styles.futureStatus}>
+              Suite volontairement bloquée
+            </span>
+            <h2 id="path-future-title">
+              Les prochaines unités ne sont pas inventées.
+            </h2>
+            <p>
+              Le vrai parcours attend les décisions produit et pédagogiques,
+              puis du contenu sourcé, audité et autorisé à la publication.
+            </p>
+          </section>
+        </div>
       </div>
     </section>
   );

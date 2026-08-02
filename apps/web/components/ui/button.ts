@@ -1,6 +1,6 @@
 import styles from "./button.module.css";
 
-export type ButtonVariant = "primary" | "secondary" | "ghost";
+export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
 
 /** Classes du bouton carnet, utilisables sur <button> comme sur <Link>. */
 export function buttonClass(variant: ButtonVariant): string {

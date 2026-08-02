@@ -1,23 +1,21 @@
 import Link from "next/link";
 
+import { SiteHeader } from "@/components/layout/site-header";
+import { buttonClass } from "@/components/ui/button";
+import panel from "@/components/ui/panel.module.css";
+
 import { PrivacyExperience } from "./privacy-experience";
 
 export const metadata = { title: "Confidentialité et mesure d’audience" };
 
 export default function PrivacyPage() {
   return (
-    <main className="lessonShell">
-      <header className="lessonHeader">
-        <Link className="brand" href="/" aria-label="Thaïnaute, accueil">
-          <span aria-hidden="true" className="brandMark">
-            ท
-          </span>
-          <span>Thaïnaute</span>
-        </Link>
-        <Link className="button buttonSmall buttonGhost" href="/">
+    <main className={panel.shell}>
+      <SiteHeader navLabel="Navigation">
+        <Link className={buttonClass("ghost")} href="/">
           Retour à l’accueil
         </Link>
-      </header>
+      </SiteHeader>
       <PrivacyExperience />
     </main>
   );

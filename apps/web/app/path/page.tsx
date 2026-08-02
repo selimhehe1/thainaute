@@ -1,7 +1,12 @@
 import { readFixtureBundle } from "@thainaute/content";
 import Link from "next/link";
 
+import { SiteHeader } from "@/components/layout/site-header";
+import { buttonClass } from "@/components/ui/button";
+import panel from "@/components/ui/panel.module.css";
+
 import { PathExperience } from "./path-experience";
+import styles from "./path.module.css";
 
 export const metadata = {
   title: "Parcours technique",
@@ -13,32 +18,21 @@ export default function PathPage() {
   const exercise = lesson.exercises[0];
 
   return (
-    <main className="lessonShell pathShell">
-      <header className="lessonHeader">
-        <Link className="brand" href="/" aria-label="Thaïnaute, accueil">
-          <span aria-hidden="true" className="brandMark">
-            ท
-          </span>
-          <span>Thaïnaute</span>
+    <main className={panel.shell}>
+      <SiteHeader navLabel="Navigation du parcours">
+        <Link className={styles.optional} href="/account">
+          Compte
         </Link>
-        <nav className="pathHeaderNav" aria-label="Navigation du parcours">
-          <Link className="pathHeaderOptional" href="/account">
-            Compte
-          </Link>
-          <Link className="button buttonSmall buttonGhost" href="/today">
-            Aujourd’hui
-          </Link>
-        </nav>
-      </header>
+        <Link className={buttonClass("ghost")} href="/today">
+          Aujourd’hui
+        </Link>
+      </SiteHeader>
 
       {exercise === undefined ? (
-        <section
-          className="pathPanel pathNotice"
-          aria-labelledby="path-empty-title"
-        >
-          <p className="eyebrow">Parcours technique</p>
+        <section className={panel.panel} aria-labelledby="path-empty-title">
+          <p className={panel.eyebrow}>Parcours technique</p>
           <h1 id="path-empty-title">Aucune unité technique disponible.</h1>
-          <p className="pathLede">
+          <p className={panel.lede}>
             La fixture doit rester valide avant d’être affichée. Aucun contenu
             de remplacement n’est inventé.
           </p>
