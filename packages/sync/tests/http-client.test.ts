@@ -321,7 +321,65 @@ describe("client HTTP de synchronisation", () => {
     );
 
     expect(sentKeys).toEqual([ids.batch, ids.batch]);
-    expect(tokenReads).toBe(2);
+    expect(tokenReads).toBe(3);
+  });
+
+  it("n'acquitte pas un lot du compte A après une bascule de session vers B", async () => {
+    let currentSession = authenticatedSession();
+    let appliedResponse: unknown;
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => currentSession,
+      fetch: () => {
+        currentSession = authenticatedSession(ids.otherUser);
+        return Promise.resolve(jsonResponse(acceptedResponse));
+      },
+    });
+
+    await expect(
+      client.sendAttemptBatch(prepared).then((response) => {
+        appliedResponse = response;
+      }),
+    ).rejects.toMatchObject({
+      name: "SyncHttpAuthenticationError",
+      endpoint: "attempt_batch",
+    });
+    expect(appliedResponse).toBeUndefined();
+  });
+
+  it("ne remet pas un conflit 409 du compte A après une bascule vers B", async () => {
+    let currentSession = authenticatedSession();
+    let sessionReads = 0;
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => {
+        sessionReads += 1;
+        return currentSession;
+      },
+      fetch: () => {
+        currentSession = authenticatedSession(ids.otherUser);
+        return Promise.resolve(
+          jsonResponse(
+            {
+              error: {
+                code: "idempotency_key_reused",
+                message: "Conflit fermé.",
+                requestId: ids.request,
+              },
+            },
+            409,
+          ),
+        );
+      },
+    });
+
+    await expect(client.sendAttemptBatch(prepared)).rejects.toMatchObject({
+      name: "SyncHttpAuthenticationError",
+      endpoint: "attempt_batch",
+    });
+    expect(sessionReads).toBe(2);
   });
 
   it("n'acquitte pas l'outbox sur panne ou réponse incohérente", async () => {
@@ -467,6 +525,31 @@ describe("client HTTP de synchronisation", () => {
     expect(calls[0]?.credentials).toBe("omit");
     expect(calls[0]?.body).toBeUndefined();
     expect(headersOf(calls[0] ?? {})["Idempotency-Key"]).toBeUndefined();
+  });
+
+  it("n'applique pas le snapshot du compte A après une bascule de session vers B", async () => {
+    let currentSession = authenticatedSession();
+    let appliedSnapshot: unknown;
+    const snapshot = { syncRevision: 1, states: [] };
+    const client = createSyncHttpClient({
+      baseUrl: "",
+      expectedUserId: ids.user,
+      getSession: () => currentSession,
+      fetch: () => {
+        currentSession = authenticatedSession(ids.otherUser);
+        return Promise.resolve(jsonResponse(snapshot));
+      },
+    });
+
+    await expect(
+      client.getProgressSnapshot().then((response) => {
+        appliedSnapshot = response;
+      }),
+    ).rejects.toMatchObject({
+      name: "SyncHttpAuthenticationError",
+      endpoint: "progress_snapshot",
+    });
+    expect(appliedSnapshot).toBeUndefined();
   });
 
   it("exporte le compte par GET puis relit son sujet avant remise", async () => {

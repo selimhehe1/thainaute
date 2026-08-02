@@ -1,7 +1,8 @@
 import { publicRelease } from "../runtime-config";
 
-interface ContentDeliveryOperationalFailure {
-  readonly operation: "published_lesson_read";
+export interface ContentDeliveryOperationalFailure {
+  readonly operation:
+    "published_audio_read" | "published_lesson_read" | "published_release_read";
   readonly errorKind: "content_integrity_failed" | "content_unavailable";
   readonly requestId: string;
 }

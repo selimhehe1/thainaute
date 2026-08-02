@@ -3,6 +3,7 @@ import {
   readSupabaseServerConfiguration,
 } from "./attempt-sync/runtime";
 import { readContentReportConfiguration } from "./content-report/runtime";
+import { readPublicContentConfiguration } from "./content-delivery/runtime";
 import { readContentStudioConfiguration } from "./content-studio/runtime";
 import { diagnoseRuntime, type RuntimeDiagnostic } from "./runtime-config";
 
@@ -36,6 +37,11 @@ export interface SupabaseReadinessProbePort {
     readonly signal: AbortSignal;
   }): Promise<boolean>;
   checkContentReportsDataApi(input: {
+    readonly url: string;
+    readonly secretKey: string;
+    readonly signal: AbortSignal;
+  }): Promise<boolean>;
+  checkPublicContentDataApi(input: {
     readonly url: string;
     readonly secretKey: string;
     readonly signal: AbortSignal;
@@ -131,6 +137,25 @@ export function createSupabaseReadinessProbe(
         return false;
       }
     },
+
+    async checkPublicContentDataApi({ url, secretKey, signal }) {
+      const endpoint = new URL("/rest/v1/lesson_versions", url);
+      endpoint.searchParams.set("select", "id");
+      endpoint.searchParams.set("limit", "1");
+
+      try {
+        const response = await fetcher(endpoint, {
+          method: "HEAD",
+          headers: contentReportsProbeHeaders(secretKey),
+          cache: "no-store",
+          redirect: "error",
+          signal,
+        });
+        return await releaseResponse(response);
+      } catch {
+        return false;
+      }
+    },
   };
 }
 
@@ -179,11 +204,14 @@ export async function assessReadiness(
   const diagnostic = diagnoseRuntime(environment);
   const studioConfiguration = readContentStudioConfiguration(environment);
   const reportConfiguration = readContentReportConfiguration(environment);
+  const publicContentConfiguration =
+    readPublicContentConfiguration(environment);
   const serverConfiguration = readSupabaseServerConfiguration(environment);
 
   if (
     diagnostic.syncMode === "disabled" &&
     diagnostic.contentReportMode === "disabled" &&
+    diagnostic.publicContentMode !== "supabase" &&
     diagnostic.studioMode !== "fixture"
   ) {
     return {
@@ -212,6 +240,16 @@ export async function assessReadiness(
     };
   }
   if (
+    diagnostic.publicContentMode === "supabase" &&
+    publicContentConfiguration === null
+  ) {
+    return {
+      ready: false,
+      diagnostic,
+      dependencies: { auth: "disabled", dataApi: "error" },
+    };
+  }
+  if (
     diagnostic.studioMode === "fixture" &&
     (studioConfiguration === null || serverConfiguration === null)
   ) {
@@ -227,25 +265,21 @@ export async function assessReadiness(
 
   const authConfiguration =
     syncConfiguration ?? reportConfiguration ?? studioConfiguration;
-  if (authConfiguration === null) {
-    return {
-      ready: false,
-      diagnostic,
-      dependencies: { auth: "error", dataApi: "disabled" },
-    };
-  }
 
   const probe = options.probe ?? createSupabaseReadinessProbe();
   const timeoutMs = normalizeTimeout(options.timeoutMs);
-  const authPromise = runBoundedProbe(
-    (signal) =>
-      probe.checkAuth({
-        url: authConfiguration.url,
-        publishableKey: authConfiguration.publishableKey,
-        signal,
-      }),
-    timeoutMs,
-  );
+  const authPromise =
+    authConfiguration === null
+      ? Promise.resolve<boolean | null>(null)
+      : runBoundedProbe(
+          (signal) =>
+            probe.checkAuth({
+              url: authConfiguration.url,
+              publishableKey: authConfiguration.publishableKey,
+              signal,
+            }),
+          timeoutMs,
+        );
   const dataApiPromises: Promise<boolean>[] = [];
   if (syncConfiguration !== null) {
     dataApiPromises.push(
@@ -280,6 +314,19 @@ export async function assessReadiness(
       ),
     );
   }
+  if (publicContentConfiguration !== null) {
+    dataApiPromises.push(
+      runBoundedProbe(
+        (signal) =>
+          probe.checkPublicContentDataApi({
+            url: publicContentConfiguration.url,
+            secretKey: publicContentConfiguration.secretKey,
+            signal,
+          }),
+        timeoutMs,
+      ),
+    );
+  }
 
   const [auth, dataApiResults] = await Promise.all([
     authPromise,
@@ -291,10 +338,10 @@ export async function assessReadiness(
       : dataApiResults.every((result) => result);
 
   return {
-    ready: diagnostic.ready && auth && (dataApi ?? true),
+    ready: diagnostic.ready && (auth ?? true) && (dataApi ?? true),
     diagnostic,
     dependencies: {
-      auth: auth ? "ok" : "error",
+      auth: auth === null ? "disabled" : auth ? "ok" : "error",
       dataApi: dataApi === null ? "disabled" : dataApi ? "ok" : "error",
     },
   };

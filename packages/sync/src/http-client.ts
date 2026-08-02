@@ -42,6 +42,13 @@ import {
   type ContentReportRejectionReason,
   type ContentReportResponse,
 } from "./content-report-outbox";
+import {
+  lessonProgressErrorResponseSchema,
+  lessonProgressResponseSchema,
+  lessonProgressVersionIdSchema,
+  type LessonProgressErrorCode,
+  type LessonProgressResponse,
+} from "./lesson-progress-contracts";
 import type { PreparedAttemptOutboxBatch } from "./outbox";
 
 const ACCESS_TOKEN_MAX_LENGTH = 16 * 1_024;
@@ -68,6 +75,7 @@ const ENDPOINT_PATHS = {
   content_report: "/api/v1/content/reports",
   device_registration: "/api/v1/devices/register",
   attempt_batch: "/api/v1/attempts/batch",
+  lesson_progress: "/api/v1/progress/lessons",
   progress_snapshot: "/api/v1/progress/snapshot",
 } as const;
 
@@ -76,7 +84,8 @@ export type SyncHttpApiErrorCode =
   | ApiErrorCode
   | DeviceRegistrationErrorCode
   | AccountExportErrorCode
-  | AccountDeletionErrorCode;
+  | AccountDeletionErrorCode
+  | LessonProgressErrorCode;
 
 export interface AuthenticatedSyncSession {
   readonly accessToken: string;
@@ -232,6 +241,7 @@ export interface SyncHttpClient {
   sendContentReport(
     entry: ContentReportOutboxEntry,
   ): Promise<ContentReportResponse>;
+  getLessonProgress(versionId: string): Promise<LessonProgressResponse>;
   getProgressSnapshot(): Promise<ProgressSnapshotResponse>;
   getAccountExport(signal?: AbortSignal): Promise<AccountExportDocument>;
   deleteAccount(
@@ -265,8 +275,12 @@ function normalizeBaseUrl(input: string, allowInsecureHttp: boolean): string {
   return url.href.replace(/\/+$/u, "");
 }
 
-function endpointUrl(baseUrl: string, endpoint: SyncHttpEndpoint): string {
-  return `${baseUrl}${ENDPOINT_PATHS[endpoint]}`;
+function endpointUrl(
+  baseUrl: string,
+  endpoint: SyncHttpEndpoint,
+  pathSuffix = "",
+): string {
+  return `${baseUrl}${ENDPOINT_PATHS[endpoint]}${pathSuffix}`;
 }
 
 function assertJsonResponse(
@@ -400,6 +414,7 @@ export function createSyncHttpClient(
     readonly body?: unknown;
     readonly idempotencyKey?: string;
     readonly continuationSecret?: string;
+    readonly pathSuffix?: string;
     readonly signal?: AbortSignal;
   }): Promise<unknown> {
     const externalSignalIsAborted = () => input.signal?.aborted === true;
@@ -436,7 +451,7 @@ export function createSyncHttpClient(
     try {
       try {
         response = await fetchImplementation(
-          endpointUrl(baseUrl, input.endpoint),
+          endpointUrl(baseUrl, input.endpoint, input.pathSuffix),
           {
             method: input.method,
             headers,
@@ -471,6 +486,9 @@ export function createSyncHttpClient(
       }
       if (input.endpoint === "device_registration") {
         return deviceRegistrationErrorResponseSchema.safeParse(payload);
+      }
+      if (input.endpoint === "lesson_progress") {
+        return lessonProgressErrorResponseSchema.safeParse(payload);
       }
       return apiErrorResponseSchema.safeParse(payload);
     })();
@@ -521,12 +539,23 @@ export function createSyncHttpClient(
         preparedInput,
         "attempt_batch",
       );
-      const payload = await request({
-        endpoint: "attempt_batch",
-        method: "POST",
-        body: prepared.batch,
-        idempotencyKey: prepared.idempotencyKey,
-      });
+      let payload: unknown;
+      try {
+        payload = await request({
+          endpoint: "attempt_batch",
+          method: "POST",
+          body: prepared.batch,
+          idempotencyKey: prepared.idempotencyKey,
+        });
+      } catch (error) {
+        // Le coordinateur peut transformer un 409 en mutation locale durable.
+        // Relire le sujet avant de lui remettre cette erreur empêche A→B de
+        // terminaliser la file du compte A.
+        if (error instanceof SyncHttpApiError) {
+          await accessToken("attempt_batch");
+        }
+        throw error;
+      }
       const response = attemptBatchResponseSchema.safeParse(payload);
       if (!response.success) {
         throw new SyncHttpProtocolError(
@@ -535,6 +564,9 @@ export function createSyncHttpClient(
         );
       }
       assertAttemptResponseMatchesBatch(response.data, prepared.batch);
+
+      // Une réponse personnelle du compte A ne doit jamais acquitter sa file après A→B.
+      await accessToken("attempt_batch");
       return response.data;
     },
 
@@ -544,12 +576,20 @@ export function createSyncHttpClient(
         entryInput,
         "content_report",
       );
-      const payload = await request({
-        endpoint: "content_report",
-        method: "POST",
-        body: entry.body,
-        idempotencyKey: entry.idempotencyKey,
-      });
+      let payload: unknown;
+      try {
+        payload = await request({
+          endpoint: "content_report",
+          method: "POST",
+          body: entry.body,
+          idempotencyKey: entry.idempotencyKey,
+        });
+      } catch (error) {
+        if (error instanceof SyncHttpApiError) {
+          await accessToken("content_report");
+        }
+        throw error;
+      }
       const response = contentReportResponseSchema.safeParse(payload);
       if (!response.success) {
         throw new SyncHttpProtocolError(
@@ -560,6 +600,33 @@ export function createSyncHttpClient(
 
       // Une réponse du compte A ne doit jamais acquitter sa file après A→B.
       await accessToken("content_report");
+      return response.data;
+    },
+
+    async getLessonProgress(versionIdInput) {
+      const versionId = parseRequest(
+        lessonProgressVersionIdSchema,
+        versionIdInput,
+        "lesson_progress",
+      );
+      const payload = await request({
+        endpoint: "lesson_progress",
+        method: "GET",
+        pathSuffix: `/${versionId}`,
+      });
+      const response = lessonProgressResponseSchema.safeParse(payload);
+      if (!response.success) {
+        throw new SyncHttpProtocolError(
+          "lesson_progress",
+          "invalid_success_response",
+        );
+      }
+      if (response.data.lessonVersionId !== versionId) {
+        throw new SyncHttpProtocolError("lesson_progress", "response_mismatch");
+      }
+
+      // Une réponse personnelle du compte A ne doit jamais être livrée après A→B.
+      await accessToken("lesson_progress");
       return response.data;
     },
 
@@ -575,6 +642,9 @@ export function createSyncHttpClient(
           "invalid_success_response",
         );
       }
+
+      // Une projection personnelle du compte A ne doit jamais être livrée après A→B.
+      await accessToken("progress_snapshot");
       return response.data;
     },
 

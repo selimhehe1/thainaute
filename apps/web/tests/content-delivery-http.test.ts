@@ -30,6 +30,7 @@ function dependencies() {
           verifiedBundle() as ReturnType<typeof verifiedBundle> | null,
       ),
     },
+    activeReleaseId: verifiedBundle().release.id,
     requestIdFactory: () => "content-request-1",
     reportOperationalFailure: vi.fn(),
   };
@@ -96,6 +97,17 @@ describe("transport HTTP du contenu publie", () => {
       VERSION_ID,
     );
     expect(response.status).toBe(404);
+  });
+
+  it("ne sert jamais une version d'une release qui n'est plus active", async () => {
+    const deps = dependencies();
+    deps.activeReleaseId = "20000000-0000-4000-8000-000000000001";
+    const handler = createPublishedLessonHttpHandler(deps);
+
+    const response = await handler(request(), VERSION_ID);
+
+    expect(response.status).toBe(404);
+    expect(response.headers.get("cache-control")).toContain("no-store");
   });
 
   it("ne revele pas une exception Supabase", async () => {

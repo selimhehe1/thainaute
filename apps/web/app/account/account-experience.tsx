@@ -1,7 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { type FormEvent, useCallback, useEffect, useState } from "react";
+import {
+  type FormEvent,
+  type MouseEvent,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 
 import {
   discardWebAnonymousProgress,
@@ -9,6 +15,7 @@ import {
   readWebAccountLocalState,
   synchronizeWebAccount,
 } from "@/lib/client/account-sync";
+import { assertNoPendingWebAccountDeletion } from "@/lib/client/account-deletion";
 import { useWebAuthSession } from "@/lib/client/auth-session";
 
 import { AccountDeletionSection } from "./account-deletion-section";
@@ -289,6 +296,9 @@ interface SignedInAccountActionsProps {
   readonly canLogout: boolean;
   readonly logoutConfirmationPending: boolean;
   readonly onLogout: () => void;
+  readonly onOpenConnectedPreview: (
+    event: MouseEvent<HTMLAnchorElement>,
+  ) => void;
   readonly onSynchronize: () => void;
 }
 
@@ -297,6 +307,7 @@ function SignedInAccountActions({
   canLogout,
   logoutConfirmationPending,
   onLogout,
+  onOpenConnectedPreview,
   onSynchronize,
 }: SignedInAccountActionsProps) {
   return (
@@ -309,6 +320,17 @@ function SignedInAccountActions({
       >
         {busy ? "Synchronisation…" : "Synchroniser maintenant"}
       </button>
+      <Link
+        aria-disabled={busy}
+        className="button buttonGhost"
+        href="/learn/connected"
+        onClick={(event) => {
+          if (busy) event.preventDefault();
+          else onOpenConnectedPreview(event);
+        }}
+      >
+        Ouvrir la preview connectée
+      </Link>
       <button
         className={
           logoutConfirmationPending
@@ -336,6 +358,9 @@ interface SignedInAccountPanelProps {
   readonly onDiscardAnonymous: () => void;
   readonly onKeepAnonymous: () => void;
   readonly onLogout: () => void;
+  readonly onOpenConnectedPreview: (
+    event: MouseEvent<HTMLAnchorElement>,
+  ) => void;
   readonly onSynchronize: (startAnonymousFusion: boolean) => void;
   readonly sessionBoundaryRevision: number;
   readonly userId: string | null;
@@ -350,6 +375,7 @@ function SignedInAccountPanel({
   onDiscardAnonymous,
   onKeepAnonymous,
   onLogout,
+  onOpenConnectedPreview,
   onSynchronize,
   sessionBoundaryRevision,
   userId,
@@ -393,6 +419,7 @@ function SignedInAccountPanel({
         canLogout={currentLocalState !== null}
         logoutConfirmationPending={logoutConfirmationPending}
         onLogout={onLogout}
+        onOpenConnectedPreview={onOpenConnectedPreview}
         onSynchronize={() => onSynchronize(false)}
       />
       {message !== "" && (
@@ -703,6 +730,20 @@ export function AccountExperience() {
           setMessage("Progression anonyme conservée pour plus tard.")
         }
         onLogout={() => void logout()}
+        onOpenConnectedPreview={(event) => {
+          if (userId === null) {
+            event.preventDefault();
+            return;
+          }
+          try {
+            assertNoPendingWebAccountDeletion(userId);
+          } catch {
+            event.preventDefault();
+            setMessage(
+              "Terminez d’abord la suppression en attente avant d’ouvrir la preview.",
+            );
+          }
+        }}
         onSynchronize={(startAnonymousFusion) =>
           void synchronize(startAnonymousFusion)
         }

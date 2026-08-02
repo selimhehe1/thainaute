@@ -7,6 +7,7 @@ import { readSupabaseAttemptSyncConfiguration } from "@/lib/server/attempt-sync/
 import { createAttemptBatchSynchronizer } from "@/lib/server/attempt-sync/service";
 import { createSupabaseAccessTokenVerifier } from "@/lib/server/attempt-sync/supabase-auth";
 import { createSupabaseAttemptRepository } from "@/lib/server/attempt-sync/supabase-repository";
+import { readActiveContentReleaseId } from "@/lib/server/content-delivery/runtime";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -18,18 +19,22 @@ function attemptBatchHandler(): Handler | null {
   if (cachedHandler !== undefined) return cachedHandler;
 
   const configuration = readSupabaseAttemptSyncConfiguration();
-  if (configuration === null) return null;
+  const activeReleaseId = readActiveContentReleaseId();
+  if (configuration === null || activeReleaseId === null) return null;
 
   const repository = createSupabaseAttemptRepository({
     url: configuration.url,
     secretKey: configuration.secretKey,
+    releaseId: activeReleaseId,
   });
   cachedHandler = createAttemptBatchHttpHandler({
     accessTokenVerifier: createSupabaseAccessTokenVerifier({
       url: configuration.url,
       publishableKey: configuration.publishableKey,
     }),
-    synchronize: createAttemptBatchSynchronizer(repository),
+    synchronize: createAttemptBatchSynchronizer(repository, {
+      activeReleaseId,
+    }),
     reportOperationalFailure,
   });
   return cachedHandler;

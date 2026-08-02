@@ -2,7 +2,7 @@ import type {
   DevicePlatform,
   ProgressSnapshotResponse,
 } from "./client-contracts";
-import type { SyncHttpClient } from "./http-client";
+import { SyncHttpApiError, type SyncHttpClient } from "./http-client";
 import {
   attemptOutboxOwnerSchema,
   type ApplyAttemptOutboxSuccessResult,
@@ -19,6 +19,7 @@ export interface AttemptSyncStore {
   applySuccess(
     response: AttemptBatchResponse,
   ): Promise<ApplyAttemptOutboxSuccessResult>;
+  rejectInFlightIdempotencyConflict(): Promise<AttemptOutboxSnapshot>;
   applyProgressSnapshot(
     response: ProgressSnapshotResponse,
   ): Promise<AttemptOutboxSnapshot>;
@@ -119,9 +120,26 @@ export async function synchronizeAttemptOutbox(
       return { snapshot: prepared.snapshot, batchesSent };
     }
 
-    const applied = await input.store.applySuccess(
-      await input.client.sendAttemptBatch(prepared.prepared),
-    );
+    let response: AttemptBatchResponse;
+    try {
+      response = await input.client.sendAttemptBatch(prepared.prepared);
+    } catch (error) {
+      if (
+        error instanceof SyncHttpApiError &&
+        error.endpoint === "attempt_batch" &&
+        error.status === 409 &&
+        error.code === "idempotency_key_reused"
+      ) {
+        assertExpectedOwner(
+          await input.store.rejectInFlightIdempotencyConflict(),
+          input.expectedUserId,
+        );
+        continue;
+      }
+      throw error;
+    }
+
+    const applied = await input.store.applySuccess(response);
     assertExpectedOwner(applied.snapshot, input.expectedUserId);
     if (applied.requiresDeviceRegistration) {
       const replayedRegistration = await input.client.registerDevice(

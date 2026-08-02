@@ -42,6 +42,11 @@ export interface VerifiedPublishedBundle {
   };
 }
 
+export interface VerifiedPublishedRelease {
+  readonly release: VerifiedPublishedBundle["release"];
+  readonly lessons: readonly VerifiedPublishedBundle[];
+}
+
 function normalizeTimestamp(value: string): string {
   return new Date(value).toISOString();
 }
@@ -112,4 +117,41 @@ export function verifyPublishedBundleRows(
     const verified = verifyPublishedBundleRow(row);
     return verified === null ? [] : [verified];
   });
+}
+
+/**
+ * Une release est atomique côté distribution : une seule ligne invalide ferme
+ * tout le manifeste au lieu d'être filtrée silencieusement.
+ */
+export function verifyPublishedReleaseRows(
+  value: unknown,
+  expectedReleaseId: string,
+): VerifiedPublishedRelease | null {
+  if (!Array.isArray(value) || value.length === 0) return null;
+  const lessons: VerifiedPublishedBundle[] = [];
+  for (const row of value) {
+    const verified = verifyPublishedBundleRow(row);
+    if (
+      verified === null ||
+      verified.release.id !== expectedReleaseId.toLowerCase()
+    ) {
+      return null;
+    }
+    lessons.push(verified);
+  }
+
+  const release = lessons[0]?.release;
+  if (release === undefined) return null;
+  if (
+    lessons.some(
+      (lesson) =>
+        lesson.release.id !== release.id ||
+        lesson.release.version !== release.version ||
+        lesson.release.publishedAt !== release.publishedAt,
+    )
+  ) {
+    return null;
+  }
+
+  return { release, lessons };
 }

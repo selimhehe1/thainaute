@@ -9,26 +9,28 @@ import {
 import {
   makePublishableBundle,
   makePublishedLessonRow,
+  RELEASE_ID,
 } from "./content-delivery-test-data";
 
 describe("porte serveur des clés de correction publiées", () => {
   it("accepte seulement un bundle complet, cohérent et hashé", () => {
     const bundle = makePublishableBundle();
 
-    expect(derivePublishedAnswerKeys([makePublishedLessonRow(bundle)])).toEqual(
-      [
-        {
-          exerciseId: bundle.lesson.exercises[0]?.id,
-          itemId: bundle.lesson.exercises[0]?.itemId,
-          correctOptionId: bundle.lesson.exercises[0]?.correctOptionId,
-          skill: "listening",
-          contentVersionId: bundle.lesson.versionId,
-          validOptionIds: bundle.lesson.exercises[0]?.options.map(
-            (option) => option.id,
-          ),
-        },
-      ],
-    );
+    expect(
+      derivePublishedAnswerKeys([makePublishedLessonRow(bundle)], RELEASE_ID),
+    ).toEqual([
+      {
+        exerciseId: bundle.lesson.exercises[0]?.id,
+        itemId: bundle.lesson.exercises[0]?.itemId,
+        correctOptionId: bundle.lesson.exercises[0]?.correctOptionId,
+        skill: "listening",
+        contentVersionId: bundle.lesson.versionId,
+        validOptionIds: bundle.lesson.exercises[0]?.options.map(
+          (option) => option.id,
+        ),
+        feedback: bundle.lesson.exercises[0]?.feedback,
+      },
+    ]);
   });
 
   it("refuse une altération postérieure au hash", () => {
@@ -36,7 +38,7 @@ describe("porte serveur des clés de correction publiées", () => {
     const row = makePublishedLessonRow(bundle);
     bundle.lesson.titleFr = "Titre altéré après signature";
 
-    expect(derivePublishedAnswerKeys([row])).toEqual([]);
+    expect(derivePublishedAnswerKeys([row], RELEASE_ID)).toEqual([]);
   });
 
   it("refuse une source sans droit commercial", () => {
@@ -45,9 +47,9 @@ describe("porte serveur des clés de correction publiées", () => {
     if (source === undefined) throw new Error("Fixture source manquante.");
     source.commercialUse = false;
 
-    expect(derivePublishedAnswerKeys([makePublishedLessonRow(bundle)])).toEqual(
-      [],
-    );
+    expect(
+      derivePublishedAnswerKeys([makePublishedLessonRow(bundle)], RELEASE_ID),
+    ).toEqual([]);
   });
 
   it("refuse une source non redistribuable ou synthetique", () => {
@@ -58,7 +60,10 @@ describe("porte serveur des clés de correction publiées", () => {
     }
     restrictedSource.redistribution = false;
     expect(
-      derivePublishedAnswerKeys([makePublishedLessonRow(restricted)]),
+      derivePublishedAnswerKeys(
+        [makePublishedLessonRow(restricted)],
+        RELEASE_ID,
+      ),
     ).toEqual([]);
 
     const synthetic = makePublishableBundle();
@@ -68,15 +73,35 @@ describe("porte serveur des clés de correction publiées", () => {
     }
     syntheticSource.kind = "synthetic_fixture";
     expect(
-      derivePublishedAnswerKeys([makePublishedLessonRow(synthetic)]),
+      derivePublishedAnswerKeys(
+        [makePublishedLessonRow(synthetic)],
+        RELEASE_ID,
+      ),
+    ).toEqual([]);
+  });
+
+  it("refuse une ancienne release et une leçon Premium", () => {
+    const free = makePublishableBundle();
+    expect(
+      derivePublishedAnswerKeys(
+        [makePublishedLessonRow(free)],
+        "30000000-0000-4000-8000-000000000099",
+      ),
+    ).toEqual([]);
+
+    const premium = makePublishableBundle();
+    premium.lesson.requiredEntitlement = "premium";
+    expect(
+      derivePublishedAnswerKeys([makePublishedLessonRow(premium)], RELEASE_ID),
     ).toEqual([]);
   });
 
   it("dérive le périmètre historique uniquement depuis la clé publiée", () => {
     const bundle = makePublishableBundle();
-    const answerKeys = derivePublishedAnswerKeys([
-      makePublishedLessonRow(bundle),
-    ]);
+    const answerKeys = derivePublishedAnswerKeys(
+      [makePublishedLessonRow(bundle)],
+      RELEASE_ID,
+    );
     const exercise = bundle.lesson.exercises[0];
     if (exercise === undefined) throw new Error("Fixture exercice manquante.");
     const attempt = attemptBatchSchema.parse({
@@ -105,9 +130,10 @@ describe("porte serveur des clés de correction publiées", () => {
 
   it("échoue fermée si deux clés autoritaires divergent", () => {
     const bundle = makePublishableBundle();
-    const answerKey = derivePublishedAnswerKeys([
-      makePublishedLessonRow(bundle),
-    ])[0];
+    const answerKey = derivePublishedAnswerKeys(
+      [makePublishedLessonRow(bundle)],
+      RELEASE_ID,
+    )[0];
     if (answerKey === undefined) throw new Error("Fixture clé manquante.");
     const attempt = attemptBatchSchema.parse({
       attempts: [

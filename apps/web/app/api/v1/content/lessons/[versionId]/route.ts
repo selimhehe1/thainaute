@@ -3,7 +3,7 @@ import {
   unavailablePublishedLessonResponse,
 } from "@/lib/server/content-delivery/http";
 import { reportContentDeliveryFailure } from "@/lib/server/content-delivery/operational-log";
-import { readSupabaseContentConfiguration } from "@/lib/server/content-delivery/runtime";
+import { readPublicContentConfiguration } from "@/lib/server/content-delivery/runtime";
 import { createSupabasePublishedLessonRepository } from "@/lib/server/content-delivery/supabase-repository";
 
 export const dynamic = "force-dynamic";
@@ -14,11 +14,12 @@ let cachedHandler: Handler | undefined;
 
 function publishedLessonHandler(): Handler | null {
   if (cachedHandler !== undefined) return cachedHandler;
-  const configuration = readSupabaseContentConfiguration();
+  const configuration = readPublicContentConfiguration();
   if (configuration === null) return null;
 
   cachedHandler = createPublishedLessonHttpHandler({
     repository: createSupabasePublishedLessonRepository(configuration),
+    activeReleaseId: configuration.releaseId,
     reportOperationalFailure: reportContentDeliveryFailure,
   });
   return cachedHandler;

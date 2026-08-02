@@ -1,6 +1,6 @@
 import type { SQLiteDatabase } from "expo-sqlite";
 
-export const LOCAL_DATABASE_VERSION = 3;
+export const LOCAL_DATABASE_VERSION = 4;
 
 /** Migrations locales séquentielles, transactionnelles et sans downgrade. */
 export async function initializeDatabase(
@@ -58,6 +58,19 @@ export async function initializeDatabase(
           updated_at TEXT NOT NULL
         );
         PRAGMA user_version = 3;
+      `);
+    }
+
+    if (currentVersion < 4) {
+      await transaction.execAsync(`
+        CREATE TABLE IF NOT EXISTS public_content_cache (
+          kind TEXT NOT NULL CHECK (kind IN ('release', 'lesson')),
+          cache_key TEXT NOT NULL,
+          payload TEXT NOT NULL,
+          validated_at TEXT NOT NULL,
+          PRIMARY KEY (kind, cache_key)
+        );
+        PRAGMA user_version = 4;
       `);
     }
   });

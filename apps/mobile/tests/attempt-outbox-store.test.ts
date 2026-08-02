@@ -311,6 +311,22 @@ describe("outbox SQLite mobile", () => {
     expect(persisted.authoritativeStates).toEqual([state]);
   });
 
+  it("persiste la libération terminale d'un conflit d'idempotence", async () => {
+    const database = new FakeSQLiteDatabase();
+    const first = new MobileAttemptOutboxStore(asDatabase(database));
+    await first.enqueue(submission);
+    await first.prepare(ids.idempotency);
+    await first.rejectInFlightIdempotencyConflict();
+
+    const reopened = new MobileAttemptOutboxStore(asDatabase(database));
+    const persisted = await reopened.read();
+    expect(persisted.inFlight).toBeNull();
+    expect(persisted.entries[0]).toMatchObject({
+      status: "rejected",
+      code: "invalid_submission",
+    });
+  });
+
   it("migre un snapshot SQLite v2 avant de préparer un nouveau lot", async () => {
     const database = new FakeSQLiteDatabase();
     database.outboxes.set("attempts-v1", legacyV2Snapshot());
@@ -413,6 +429,56 @@ describe("outbox SQLite mobile", () => {
       "n'ont pas pu être isolées",
     );
 
+    expect(database.outboxes.get("attempts-v1")).toBe(learningBefore);
+    expect(database.outboxes.get("demo:attempts-v1")).toBe(demoBefore);
+    expect(database.metadata.has("legacy_demo_namespace_repaired_v1")).toBe(
+      false,
+    );
+  });
+
+  it("refuse de fusionner deux entries synchronisées dont le feedback diffère", async () => {
+    const database = new FakeSQLiteDatabase();
+    const learning = new MobileAttemptOutboxStore(asDatabase(database));
+    const demo = new MobileAttemptOutboxStore(
+      asDatabase(database),
+      undefined,
+      "demo",
+    );
+    await learning.enqueue(submission);
+    await learning.prepare(ids.idempotency);
+    await learning.applySuccess({
+      syncRevision: 1,
+      results: [
+        {
+          eventId: ids.event,
+          status: "accepted",
+          rating: 1,
+          feedbackFr: "Correction learning.",
+        },
+      ],
+      states: [],
+    });
+    await demo.enqueue(submission);
+    await demo.prepare(ids.ignoredIdempotency);
+    await demo.applySuccess({
+      syncRevision: 1,
+      results: [
+        {
+          eventId: ids.event,
+          status: "accepted",
+          rating: 1,
+          feedbackFr: "Correction démo.",
+        },
+      ],
+      states: [],
+    });
+    database.metadata.set("demo:legacy_attempt_journal_migrated_v1", "done");
+    const learningBefore = database.outboxes.get("attempts-v1");
+    const demoBefore = database.outboxes.get("demo:attempts-v1");
+
+    await expect(demo.migrateLegacyFixtureAttemptsToDemo()).rejects.toThrow(
+      "n'ont pas pu être isolées",
+    );
     expect(database.outboxes.get("attempts-v1")).toBe(learningBefore);
     expect(database.outboxes.get("demo:attempts-v1")).toBe(demoBefore);
     expect(database.metadata.has("legacy_demo_namespace_repaired_v1")).toBe(

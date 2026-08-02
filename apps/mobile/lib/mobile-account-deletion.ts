@@ -24,6 +24,19 @@ const ACCOUNT_DELETION_TIMEOUT_MS = 40_000;
 const BASE64URL_ALPHABET =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 
+let mobileAccountDeletionBarrier: Promise<void> = Promise.resolve();
+
+function serializeMobileAccountDeletionState<T>(
+  operation: () => Promise<T>,
+): Promise<T> {
+  const result = mobileAccountDeletionBarrier.then(operation, operation);
+  mobileAccountDeletionBarrier = result.then(
+    () => undefined,
+    () => undefined,
+  );
+  return result;
+}
+
 type MobileAccountDeletionOperationBase = {
   readonly format: typeof MOBILE_ACCOUNT_DELETION_OPERATION_FORMAT;
   readonly expectedUserId: string;
@@ -216,6 +229,19 @@ export async function assertNoPendingMobileAccountDeletion(
   }
 }
 
+/** Ordonne les mutations du compte avec la persistance SecureStore de sa suppression. */
+export function withNoPendingMobileAccountDeletion<T>(
+  expectedUserId: string,
+  operation: () => Promise<T>,
+): Promise<T> {
+  return serializeMobileAccountDeletionState(async () => {
+    await assertNoPendingMobileAccountDeletion(expectedUserId);
+    const result = await operation();
+    await assertNoPendingMobileAccountDeletion(expectedUserId);
+    return result;
+  });
+}
+
 async function clearMobileAccountDeletionOperation(): Promise<void> {
   try {
     await SecureStore.deleteItemAsync(MOBILE_ACCOUNT_DELETION_OPERATION_KEY);
@@ -229,45 +255,47 @@ export async function createMobileAccountDeletionOperation(
   expectedUserIdInput: string,
   options: Readonly<{ onCreated?: () => void }> = {},
 ): Promise<MobileAccountDeletionOperation> {
-  const expectedUserId = idempotencyKeySchema.safeParse(expectedUserIdInput);
-  if (!expectedUserId.success) {
-    throw new MobileAccountDeletionError("operation_corrupt");
-  }
-
-  const existing = await readMobileAccountDeletionOperation();
-  if (existing !== null) {
-    if (existing.expectedUserId !== expectedUserId.data) {
-      throw new MobileAccountDeletionError("pending_subject_changed");
+  return serializeMobileAccountDeletionState(async () => {
+    const expectedUserId = idempotencyKeySchema.safeParse(expectedUserIdInput);
+    if (!expectedUserId.success) {
+      throw new MobileAccountDeletionError("operation_corrupt");
     }
-    return existing;
-  }
 
-  let headers: AccountDeletionHeaders;
-  try {
-    const continuationBytes = await getRandomBytesAsync(
-      ACCOUNT_DELETION_CONTINUATION_SECRET_BYTES,
-    );
-    headers = accountDeletionHeadersSchema.parse({
-      idempotencyKey: randomUUID(),
-      continuationSecret: encodeBase64Url(continuationBytes),
-    });
-  } catch {
-    throw new MobileAccountDeletionError("secure_random_unavailable");
-  }
-  const operation: MobileAccountDeletionOperation = {
-    format: MOBILE_ACCOUNT_DELETION_OPERATION_FORMAT,
-    status: "awaiting_server_receipt",
-    expectedUserId: expectedUserId.data,
-    idempotencyKey: headers.idempotencyKey,
-    continuationSecret: headers.continuationSecret,
-  };
-  await persistOperation(operation);
-  try {
-    options.onCreated?.();
-  } catch {
-    // Une mesure non essentielle ne bloque jamais la commande durable.
-  }
-  return operation;
+    const existing = await readMobileAccountDeletionOperation();
+    if (existing !== null) {
+      if (existing.expectedUserId !== expectedUserId.data) {
+        throw new MobileAccountDeletionError("pending_subject_changed");
+      }
+      return existing;
+    }
+
+    let headers: AccountDeletionHeaders;
+    try {
+      const continuationBytes = await getRandomBytesAsync(
+        ACCOUNT_DELETION_CONTINUATION_SECRET_BYTES,
+      );
+      headers = accountDeletionHeadersSchema.parse({
+        idempotencyKey: randomUUID(),
+        continuationSecret: encodeBase64Url(continuationBytes),
+      });
+    } catch {
+      throw new MobileAccountDeletionError("secure_random_unavailable");
+    }
+    const operation: MobileAccountDeletionOperation = {
+      format: MOBILE_ACCOUNT_DELETION_OPERATION_FORMAT,
+      status: "awaiting_server_receipt",
+      expectedUserId: expectedUserId.data,
+      idempotencyKey: headers.idempotencyKey,
+      continuationSecret: headers.continuationSecret,
+    };
+    await persistOperation(operation);
+    try {
+      options.onCreated?.();
+    } catch {
+      // Une mesure non essentielle ne bloque jamais la commande durable.
+    }
+    return operation;
+  });
 }
 
 function readMobileApiOrigin(): string {

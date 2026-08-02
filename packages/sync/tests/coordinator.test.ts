@@ -3,11 +3,14 @@ import { describe, expect, it, vi } from "vitest";
 import {
   AttemptSyncRunLimitError,
   AttemptSyncOwnerMismatchError,
+  SyncHttpApiError,
+  SyncHttpAuthenticationError,
   applyAttemptOutboxSuccess,
   applyProgressSnapshot,
   createAttemptOutboxSnapshot,
   enqueueAttempt,
   prepareAttemptOutboxBatch,
+  rejectAttemptOutboxInFlightIdempotencyConflict,
   resumeAttemptOutboxAfterDeviceRegistration,
   synchronizeAttemptOutbox,
   type AttemptOutboxSnapshot,
@@ -19,9 +22,13 @@ const ids = {
   user: "10000000-0000-4000-8000-000000000001",
   device: "20000000-0000-4000-8000-000000000001",
   event: "30000000-0000-4000-8000-000000000001",
+  secondEvent: "30000000-0000-4000-8000-000000000002",
   exercise: "40000000-0000-4000-8000-000000000001",
+  secondExercise: "40000000-0000-4000-8000-000000000002",
   option: "50000000-0000-4000-8000-000000000001",
+  secondOption: "50000000-0000-4000-8000-000000000002",
   version: "60000000-0000-4000-8000-000000000001",
+  secondVersion: "60000000-0000-4000-8000-000000000002",
   batch: "70000000-0000-4000-8000-000000000001",
 } as const;
 
@@ -62,6 +69,13 @@ class MemoryStore implements AttemptSyncStore {
     return Promise.resolve(result);
   }
 
+  public rejectInFlightIdempotencyConflict() {
+    this.snapshot = rejectAttemptOutboxInFlightIdempotencyConflict(
+      this.snapshot,
+    );
+    return Promise.resolve(this.snapshot);
+  }
+
   public applyProgressSnapshot(
     response: Parameters<typeof applyProgressSnapshot>[1],
   ) {
@@ -84,6 +98,7 @@ function client(
   return {
     deleteAccount: () => Promise.reject(new Error("Non utilisé ici.")),
     getAccountExport: () => Promise.reject(new Error("Non utilisé ici.")),
+    getLessonProgress: () => Promise.reject(new Error("Non utilisé ici.")),
     sendContentReport: () => Promise.reject(new Error("Not used here.")),
     registerDevice: () =>
       Promise.resolve({
@@ -145,6 +160,86 @@ describe("coordinateur de synchronisation", () => {
     ).rejects.toThrow("offline");
     expect(store.snapshot.inFlight?.idempotencyKey).toBe(ids.batch);
     expect(store.snapshot.entries[0]?.status).toBe("pending");
+  });
+
+  it("laisse le lot en vol intact si la session bascule avant un 409", async () => {
+    const store = new MemoryStore();
+    await expect(
+      synchronizeAttemptOutbox({
+        store,
+        client: client(() =>
+          Promise.reject(new SyncHttpAuthenticationError("attempt_batch")),
+        ),
+        expectedUserId: ids.user,
+        device: {
+          deviceId: ids.device,
+          platform: "web",
+          appVersion: "0.0.1",
+        },
+        createIdempotencyKey: () => ids.batch,
+      }),
+    ).rejects.toBeInstanceOf(SyncHttpAuthenticationError);
+    expect(store.snapshot.inFlight?.idempotencyKey).toBe(ids.batch);
+    expect(store.snapshot.entries[0]?.status).toBe("pending");
+  });
+
+  it("libère un lot devenu inéligible puis synchronise les tentatives suivantes", async () => {
+    const store = new MemoryStore();
+    let calls = 0;
+    const send = vi.fn(
+      (prepared: Parameters<SyncHttpClient["sendAttemptBatch"]>[0]) => {
+        calls += 1;
+        if (calls === 1) {
+          store.snapshot = enqueueAttempt(store.snapshot, {
+            eventId: ids.secondEvent,
+            deviceId: ids.device,
+            exerciseId: ids.secondExercise,
+            selectedOptionId: ids.secondOption,
+            answeredAt: "2026-08-01T10:01:00.000Z",
+            durationMs: 900,
+            contentVersionId: ids.secondVersion,
+            algorithmVersion: "srs-v0",
+          });
+          return Promise.reject(
+            new SyncHttpApiError({
+              endpoint: "attempt_batch",
+              status: 409,
+              code: "idempotency_key_reused",
+            }),
+          );
+        }
+        return Promise.resolve({
+          syncRevision: 2,
+          results: prepared.batch.attempts.map(({ eventId }) => ({
+            eventId,
+            status: "accepted" as const,
+            rating: 1 as const,
+          })),
+          states: [],
+        });
+      },
+    );
+
+    const result = await synchronizeAttemptOutbox({
+      store,
+      client: client(send),
+      expectedUserId: ids.user,
+      device: { deviceId: ids.device, platform: "web", appVersion: "0.0.1" },
+      createIdempotencyKey: () => crypto.randomUUID(),
+    });
+
+    expect(send).toHaveBeenCalledTimes(2);
+    expect(result.snapshot.inFlight).toBeNull();
+    expect(
+      result.snapshot.entries.find(
+        ({ submission }) => submission.eventId === ids.event,
+      ),
+    ).toMatchObject({ status: "rejected", code: "invalid_submission" });
+    expect(
+      result.snapshot.entries.find(
+        ({ submission }) => submission.eventId === ids.secondEvent,
+      ),
+    ).toMatchObject({ status: "synced", serverStatus: "accepted" });
   });
 
   it("borne une passe qui ne termine jamais", async () => {

@@ -181,6 +181,7 @@ jobs:
           THAINAUTE_PUBLIC_URL: http://localhost:3000/
           THAINAUTE_RELEASE: ci-connected
           THAINAUTE_SYNC_MODE: supabase
+          THAINAUTE_PUBLIC_CONTENT_RELEASE_ID: 30000000-0000-4000-8000-000000000001
           ACCOUNT_DELETION_RECEIPT_PEPPER: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         run: |
           set -euo pipefail
@@ -207,6 +208,12 @@ jobs:
           unset supabase_env
           pnpm --filter @thainaute/web exec playwright test e2e/connected-sync.spec.ts \
             --project=chromium --workers=1 --retries=0 --trace=off
+          THAINAUTE_LOCAL_FIXTURE_BOOTSTRAP=1 \
+            pnpm fixture:bootstrap-local-audio
+          THAINAUTE_PUBLIC_CONTENT_MODE=supabase \
+            pnpm --filter @thainaute/web exec playwright test \
+              e2e/connected-learning-ui.spec.ts \
+              --project=chromium --workers=1 --retries=0 --trace=off
           THAINAUTE_CONTENT_REPORT_MODE=supabase \
             pnpm --filter @thainaute/web exec playwright test \
               e2e/connected-content-report.spec.ts \

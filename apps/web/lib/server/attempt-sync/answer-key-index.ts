@@ -21,6 +21,8 @@ export function indexServerAnswerKeys(
       (existing.itemId !== answerKey.itemId ||
         existing.skill !== answerKey.skill ||
         existing.correctOptionId !== answerKey.correctOptionId ||
+        existing.feedback.correctFr !== answerKey.feedback.correctFr ||
+        existing.feedback.incorrectFr !== answerKey.feedback.incorrectFr ||
         existing.validOptionIds.length !== answerKey.validOptionIds.length ||
         existing.validOptionIds.some(
           (optionId, index) => optionId !== answerKey.validOptionIds[index],

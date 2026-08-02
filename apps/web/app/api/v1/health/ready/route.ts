@@ -24,7 +24,11 @@ export async function GET() {
         },
         sync: {
           status: diagnostic.issues.some((issue) =>
-            ["sync_mode_invalid", "supabase_config_missing"].includes(issue),
+            [
+              "sync_mode_invalid",
+              "supabase_config_missing",
+              "sync_release_config_missing",
+            ].includes(issue),
           )
             ? "error"
             : "ok",
@@ -42,6 +46,18 @@ export async function GET() {
             ? "error"
             : "ok",
           mode: diagnostic.contentReportMode,
+        },
+        publicContent: {
+          status: diagnostic.issues.some((issue) =>
+            [
+              "public_content_config_missing",
+              "public_content_mode_invalid",
+              "public_content_rate_limit_missing",
+            ].includes(issue),
+          )
+            ? "error"
+            : "ok",
+          mode: diagnostic.publicContentMode,
         },
         studio: {
           status: diagnostic.issues.some((issue) =>

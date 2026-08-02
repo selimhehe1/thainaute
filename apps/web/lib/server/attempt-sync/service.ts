@@ -26,6 +26,11 @@ const MAX_FUTURE_CLOCK_SKEW_MS = 5 * 60 * 1_000;
 
 export type AttemptSyncClock = () => number;
 
+export interface AttemptBatchSynchronizerOptions {
+  readonly activeReleaseId: string;
+  readonly clock?: AttemptSyncClock;
+}
+
 function attemptKey(attempt: {
   readonly itemId: string;
   readonly skill: string;
@@ -144,6 +149,7 @@ function buildCandidate(
   readonly projections: readonly AttemptProjectionWrite[];
 } {
   const preflight = preflightRejections(snapshot, attempts, serverNowMs);
+  const answerKeys = indexServerAnswerKeys(snapshot.answerKeys);
   const eligibleAttempts = attempts.filter(
     (attempt) => !preflight.has(attempt.eventId),
   );
@@ -176,20 +182,32 @@ function buildCandidate(
 
     const event = eventById.get(attempt.eventId);
     if (acceptedIds.has(attempt.eventId) && event !== undefined) {
+      const answerKey = answerKeys.get(answerKeyIdentity(attempt));
+      if (answerKey === undefined) throw new AttemptApiError("internal_error");
       affectedKeys.add(attemptKey(event));
       return {
         eventId: attempt.eventId,
         status: "accepted",
         rating: event.rating,
+        feedbackFr:
+          event.rating === 1
+            ? answerKey.feedback.correctFr
+            : answerKey.feedback.incorrectFr,
       };
     }
 
     if (duplicateIds.has(attempt.eventId) && event !== undefined) {
+      const answerKey = answerKeys.get(answerKeyIdentity(attempt));
+      if (answerKey === undefined) throw new AttemptApiError("internal_error");
       affectedKeys.add(attemptKey(event));
       return {
         eventId: attempt.eventId,
         status: "duplicate",
         rating: event.rating,
+        feedbackFr:
+          event.rating === 1
+            ? answerKey.feedback.correctFr
+            : answerKey.feedback.incorrectFr,
       };
     }
 
@@ -229,20 +247,39 @@ function buildCandidate(
   };
 }
 
+function currentContentEligibility(
+  snapshot: AttemptSyncSnapshot,
+  attempts: readonly ValidatedAttemptSubmission[],
+): readonly unknown[] {
+  const answerKeys = indexServerAnswerKeys(snapshot.answerKeys);
+  return attempts.map((attempt) => {
+    const answerKey = answerKeys.get(answerKeyIdentity(attempt));
+    return answerKey === undefined
+      ? null
+      : {
+          contentVersionId: answerKey.contentVersionId,
+          correctOptionId: answerKey.correctOptionId,
+          exerciseId: answerKey.exerciseId,
+          feedback: answerKey.feedback,
+          itemId: answerKey.itemId,
+          skill: answerKey.skill,
+          validOptionIds: answerKey.validOptionIds,
+        };
+  });
+}
+
 export function createAttemptBatchSynchronizer(
   repository: AttemptRepository,
-  clock: AttemptSyncClock = Date.now,
+  options: AttemptBatchSynchronizerOptions,
 ) {
   return async function synchronizeAttemptBatch(
     input: SyncAttemptBatchInput,
   ): Promise<AttemptBatchResponse> {
-    const serverNowMs = clock();
+    const serverNowMs = (options.clock ?? Date.now)();
 
     if (!Number.isFinite(serverNowMs)) {
       throw new AttemptApiError("internal_error");
     }
-
-    const requestSha256 = hashAttemptBatch(input.batch);
 
     for (
       let commitAttempt = 0;
@@ -260,6 +297,15 @@ export function createAttemptBatchSynchronizer(
         throw new AttemptInfrastructureError("database_unavailable");
       }
 
+      // L'éligibilité et les corrections autoritaires courantes font partie du
+      // hash, jamais du corps public. Un retry après révocation rencontre donc
+      // un conflit fermé au lieu de rejouer une ancienne correction. Une
+      // première soumission mixte garde en revanche ses rejets par tentative.
+      const requestSha256 = hashAttemptBatch(
+        input.batch,
+        options.activeReleaseId,
+        currentContentEligibility(snapshot, input.batch.attempts),
+      );
       const candidate = buildCandidate(
         snapshot,
         input.batch.attempts,

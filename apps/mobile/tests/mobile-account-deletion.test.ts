@@ -72,6 +72,7 @@ import {
   parseMobileAccountDeletionOperation,
   readMobileAccountDeletionOperation,
   resumeMobileAccountDeletion,
+  withNoPendingMobileAccountDeletion,
 } from "../lib/mobile-account-deletion";
 
 function persistedOperation() {
@@ -265,6 +266,33 @@ describe("suppression de compte mobile reprise depuis le trousseau", () => {
     await expect(
       assertNoPendingMobileAccountDeletion(ids.userB),
     ).resolves.toBeUndefined();
+  });
+
+  it("sérialise une mutation réelle avant la création concurrente de la suppression", async () => {
+    let markStarted!: () => void;
+    let releaseMutation!: () => void;
+    const started = new Promise<void>((resolve) => {
+      markStarted = resolve;
+    });
+    const gate = new Promise<void>((resolve) => {
+      releaseMutation = resolve;
+    });
+    const mutation = withNoPendingMobileAccountDeletion(ids.userA, async () => {
+      markStarted();
+      await gate;
+    });
+    await started;
+
+    const deletion = createMobileAccountDeletionOperation(ids.userA);
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(testState.setItem).not.toHaveBeenCalled();
+
+    releaseMutation();
+    await mutation;
+    await expect(deletion).resolves.toMatchObject({
+      expectedUserId: ids.userA,
+    });
   });
 
   it("n'envoie rien si le générateur cryptographique natif échoue", async () => {

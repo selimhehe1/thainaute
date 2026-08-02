@@ -56,6 +56,7 @@ export {
   deserializeAttemptOutboxSnapshot,
   enqueueAttempt,
   prepareAttemptOutboxBatch,
+  rejectAttemptOutboxInFlightIdempotencyConflict,
   resumeAttemptOutboxAfterDeviceRegistration,
   serializeAttemptOutboxSnapshot,
   type ApplyAttemptOutboxSuccessResult,
@@ -105,3 +106,6 @@ export * from "./account-deletion-contracts";
 export * from "./local-experience";
 export * from "./fixture-learning-path";
 export * from "./content-report-outbox";
+export * from "./public-content-client";
+export * from "./public-content-integrity";
+export * from "./lesson-progress-contracts";

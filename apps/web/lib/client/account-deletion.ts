@@ -286,6 +286,38 @@ export function assertNoPendingWebAccountDeletion(
   }
 }
 
+/**
+ * Sérialise une mutation locale avec la création de la reprise de
+ * suppression. Avec Web Locks, deux onglets obtiennent un ordre total. Sans
+ * cette API, la suppression ne peut pas être créée par ce client et les deux
+ * lectures ferment tout de même une reprise déjà persistée.
+ */
+export async function withNoPendingWebAccountDeletion<T>(
+  expectedUserId: string,
+  operation: () => Promise<T>,
+): Promise<T> {
+  const execute = async (): Promise<T> => {
+    assertNoPendingWebAccountDeletion(expectedUserId);
+    const result = await operation();
+    assertNoPendingWebAccountDeletion(expectedUserId);
+    return result;
+  };
+
+  let lockManager: WebAccountDeletionLockManager | null = null;
+  try {
+    lockManager = browserLockManager();
+  } catch (error) {
+    if (!(error instanceof WebAccountDeletionLocalStateError)) throw error;
+  }
+  return lockManager === null
+    ? execute()
+    : lockManager.request(
+        WEB_ACCOUNT_DELETION_LOCK_NAME,
+        { mode: "exclusive" },
+        execute,
+      );
+}
+
 async function currentDeletionSession(
   expectedUserId: string,
 ): Promise<AuthenticatedSyncSession | null> {

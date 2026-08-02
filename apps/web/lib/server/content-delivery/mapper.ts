@@ -1,11 +1,17 @@
 import {
   publicLessonResponseSchema,
   publicLessonSchema,
+  publicReleaseResponseSchema,
+  publicReleaseSchema,
   type PublicLessonResponse,
+  type PublicReleaseResponse,
 } from "@thainaute/content/public";
 
 import { hashCanonical } from "../attempt-sync/canonical-json";
-import type { VerifiedPublishedBundle } from "./verified-bundle";
+import type {
+  VerifiedPublishedBundle,
+  VerifiedPublishedRelease,
+} from "./verified-bundle";
 
 function publicOptions(
   versionId: string,
@@ -74,5 +80,51 @@ export function toPublicLessonResponse(
     schemaVersion: 1,
     contentSha256,
     lesson: publicLessonResult.data,
+  });
+}
+
+/** Construit un manifeste technique sans inventer de curriculum ni d'unité. */
+export function toPublicReleaseResponse(
+  verified: VerifiedPublishedRelease,
+): PublicReleaseResponse | null {
+  const lessons = verified.lessons
+    .map(toPublicLessonResponse)
+    .sort((left, right) => {
+      if (left === null || right === null) return 0;
+      const lessonOrder = left.lesson.lessonId.localeCompare(
+        right.lesson.lessonId,
+      );
+      return lessonOrder === 0
+        ? left.lesson.versionId.localeCompare(right.lesson.versionId)
+        : lessonOrder;
+    });
+  if (lessons.some((lesson) => lesson === null)) return null;
+
+  const releaseResult = publicReleaseSchema.safeParse({
+    releaseId: verified.release.id,
+    releaseVersion: verified.release.version,
+    publishedAt: verified.release.publishedAt,
+    lessons: lessons.map((response) => {
+      if (response === null) throw new Error("Leçon publique absente.");
+      return {
+        lessonId: response.lesson.lessonId,
+        versionId: response.lesson.versionId,
+        revision: response.lesson.revision,
+        titleFr: response.lesson.titleFr,
+        objectiveFr: response.lesson.objectiveFr,
+        access: response.lesson.access,
+        contentSha256: response.contentSha256,
+      };
+    }),
+  });
+  if (!releaseResult.success) return null;
+
+  return publicReleaseResponseSchema.parse({
+    schemaVersion: 1,
+    manifestSha256: hashCanonical(
+      "thainaute.public-release/v1",
+      releaseResult.data,
+    ),
+    release: releaseResult.data,
   });
 }

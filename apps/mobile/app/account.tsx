@@ -464,6 +464,21 @@ export default function AccountScreen() {
               label={busy ? "Synchronisation…" : "Synchroniser maintenant"}
               onPress={() => void synchronize(false)}
             />
+            <Link href="/connected-lesson" asChild>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ disabled: accountOperationBusy }}
+                disabled={accountOperationBusy}
+                style={[
+                  styles.previewButton,
+                  accountOperationBusy && styles.disabled,
+                ]}
+              >
+                <Text style={styles.previewButtonText}>
+                  Ouvrir la preview connectée
+                </Text>
+              </Pressable>
+            </Link>
             <AccountExportSection
               anonymousAttemptCount={anonymousEntries.length}
               disabled={accountOperationBusy}
@@ -646,6 +661,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#eff9f5",
   },
   choiceTitle: { color: "#283450", fontSize: 20, fontWeight: "800" },
+  previewButton: {
+    minHeight: 52,
+    marginTop: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "#cdd3dc",
+    borderRadius: 999,
+  },
+  previewButtonText: { color: "#283450", fontSize: 16, fontWeight: "800" },
   message: {
     maxWidth: 680,
     marginTop: 18,

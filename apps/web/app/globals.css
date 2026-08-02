@@ -1536,3 +1536,157 @@ h1 em {
     margin-left: 0;
   }
 }
+
+.connectedLessonShell {
+  min-height: 100vh;
+}
+.connectedPanel {
+  max-width: 880px;
+  margin: 44px auto 80px;
+  padding: clamp(24px, 5vw, 52px);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: white;
+  box-shadow: var(--shadow);
+}
+.connectedPanel > h1 {
+  max-width: 760px;
+  margin-top: 10px;
+  font-size: clamp(38px, 7vw, 70px);
+  line-height: 1;
+}
+.connectedBanner {
+  margin-bottom: 28px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  color: #684c0d;
+  background: #fff6dc;
+  font-weight: 800;
+}
+.connectedLede {
+  max-width: 720px;
+}
+.connectedAudio,
+.connectedQuestion,
+.connectedStatus,
+.connectedProgress {
+  margin-top: 34px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+.connectedAudio {
+  display: grid;
+  gap: 16px;
+}
+.connectedAudio h2,
+.connectedProgress h2,
+.connectedStatus h2 {
+  margin: 0;
+  font-size: clamp(25px, 4vw, 34px);
+}
+.connectedAudio p,
+.connectedStatus p,
+.connectedProgress p,
+.connectedAccountGate p {
+  color: #536078;
+  line-height: 1.6;
+}
+.connectedAudio audio {
+  width: min(100%, 520px);
+}
+.connectedQuestion fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.connectedQuestion legend {
+  max-width: 720px;
+  font-size: clamp(23px, 4vw, 32px);
+  font-weight: 850;
+  line-height: 1.25;
+}
+.connectedOptions {
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+}
+.connectedOptions label {
+  min-height: 56px;
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  cursor: pointer;
+}
+.connectedOptions label:has(input:checked) {
+  border-color: var(--navy);
+  background: var(--mist);
+}
+.connectedOptions input {
+  width: 20px;
+  height: 20px;
+}
+.connectedSubmit,
+.connectedAccountGate {
+  margin-top: 24px;
+}
+.connectedAccountGate {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.connectedAccountGate p {
+  width: 100%;
+}
+.connectedStatus {
+  padding: 24px;
+  border: 0;
+  border-radius: 18px;
+  background: var(--mist);
+}
+.connectedStatus-result {
+  background: #e8f4ef;
+}
+.connectedStatus-rejected,
+.connectedStatus-error {
+  background: #fff0ef;
+}
+.connectedProgress dl {
+  margin: 22px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.connectedProgress dl > div {
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--mist);
+}
+.connectedProgress dt {
+  color: #687286;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.connectedProgress dd {
+  margin: 6px 0 0;
+  font-size: 19px;
+  font-weight: 850;
+}
+
+@media (max-width: 620px) {
+  .connectedPanel {
+    margin-top: 24px;
+    padding-inline: 21px;
+  }
+  .connectedProgress dl {
+    grid-template-columns: 1fr;
+  }
+  .connectedSubmit,
+  .connectedAccountGate .button {
+    width: 100%;
+  }
+}

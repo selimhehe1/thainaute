@@ -11,6 +11,10 @@ import type {
 
 export interface ServerExerciseAnswerKey extends ExerciseAnswerKey {
   readonly validOptionIds: readonly string[];
+  readonly feedback: {
+    readonly correctFr: string;
+    readonly incorrectFr: string;
+  };
 }
 
 export interface AttemptSyncSnapshot {
