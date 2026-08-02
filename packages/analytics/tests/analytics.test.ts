@@ -298,4 +298,63 @@ describe("analytics soumis au consentement", () => {
     );
     expect(Object.isFrozen(capture.mock.calls[0]?.[0])).toBe(true);
   });
+
+  it("décrit une demande d’export sans identité ni contenu personnel", () => {
+    const capture = vi.fn();
+    createConsentAwareAnalytics(true, { capture }).capture({
+      name: "account_export_requested",
+      platform: "web",
+    });
+
+    expect(capture).toHaveBeenCalledWith({
+      name: "account_export_requested",
+      platform: "web",
+    });
+  });
+
+  it("décrit une demande de suppression avec la seule plateforme", () => {
+    const capture = vi.fn();
+    createConsentAwareAnalytics(true, { capture }).capture({
+      name: "account_deletion_requested",
+      platform: "android",
+    });
+
+    expect(capture).toHaveBeenCalledWith({
+      name: "account_deletion_requested",
+      platform: "android",
+    });
+  });
+
+  it("mesure un signalement sans catégorie, contenu ni identité", () => {
+    const capture = vi.fn();
+    createConsentAwareAnalytics(true, { capture }).capture({
+      name: "content_reported",
+      platform: "ios",
+    });
+
+    expect(capture).toHaveBeenCalledWith({
+      name: "content_reported",
+      platform: "ios",
+    });
+  });
+
+  it("garde les réponses d’onboarding hors du catalogue analytics", () => {
+    const capture = vi.fn();
+    const analytics = createConsentAwareAnalytics(true, { capture });
+
+    analytics.capture({ name: "onboarding_started", platform: "web" });
+    analytics.capture({ name: "onboarding_completed", platform: "android" });
+
+    expect(capture).toHaveBeenNthCalledWith(1, {
+      name: "onboarding_started",
+      platform: "web",
+    });
+    expect(capture).toHaveBeenNthCalledWith(2, {
+      name: "onboarding_completed",
+      platform: "android",
+    });
+    expect(JSON.stringify(capture.mock.calls)).not.toMatch(
+      /motivation|experience|goal/i,
+    );
+  });
 });

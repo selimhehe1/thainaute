@@ -2,8 +2,13 @@ name: CI
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, labeled]
   push:
     branches: [main]
+  schedule:
+    # Vérification native hebdomadaire (lundi 06:00 UTC) en filet de sécurité.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -71,6 +76,11 @@ jobs:
       - run: pnpm test:e2e:web
 
   native-android:
+    # Les compilations natives ne tournent ni sur les poussées de PR ni sur
+    # main (les fusions rapprochées épuisaient le quota Actions) : elles
+    # restent garanties par le cron hebdomadaire, le label « native » ou le
+    # déclenchement manuel.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'native'))
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -102,6 +112,9 @@ jobs:
         working-directory: apps/mobile/android
 
   native-ios:
+    # Runner macOS facturé à un multiplicateur x10 sur dépôt privé : même
+    # politique que native-android pour préserver le quota Actions.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'native'))
     runs-on: macos-26
     timeout-minutes: 45
     steps:
