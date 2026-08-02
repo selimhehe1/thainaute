@@ -1,12 +1,28 @@
 appId: com.thainaute.app
 ---
 - launchApp:
+    clearState: true
     permissions:
       all: deny
       microphone: allow
+- assertVisible: "Un départ simple, pensé pour vous."
+- tapOn: "5 minutes"
+- tapOn: "Voyager"
+- tapOn: "Je débute"
+- tapOn: "Voir ma séance du jour"
+- assertVisible: "AUJOURD’HUI"
+- assertVisible: "Disponible hors connexion"
+- tapOn: "Commencer la démo locale"
 - assertVisible: "Donnée fictive — non publiable"
 - tapOn: "Commencer"
 - tapOn: "Option A"
+- waitForAnimationToEnd:
+    timeout: 1000
+- stopApp
+- launchApp
+- assertVisible: "Reprendre l’exercice"
+- tapOn: "Reprendre l’exercice"
+- assertVisible: "Option A"
 - tapOn: "Valider"
 - assertVisible: "La boucle technique fonctionne."
 - assertVisible: "250 ‰"
@@ -18,6 +34,8 @@ appId: com.thainaute.app
 - assertVisible: "B, écouter ma voix"
 - tapOn: "Supprimer cette prise locale"
 - assertVisible: "Essai vocal supprimé du cache local."
-- tapOn: "Découvrir le compte"
+- tapOn: "Terminer"
+- assertVisible: "Revoir la démo locale"
+- tapOn: "Compte"
 - assertVisible: "Compte non configuré ici"
 - assertVisible: "Cette build locale reste utilisable hors ligne sans compte."
