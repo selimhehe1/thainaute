@@ -157,6 +157,19 @@ Les versions SRS persistables sont listées explicitement dans
 de version avant ajout du dispatch rétrocompatible. La relation exercice/item
 est résolue côté serveur conformément à l'ADR-0009.
 
+## Expérience locale v1
+
+`local-experience.ts` versionne l’onboarding et le checkpoint d’une séance sans
+dupliquer la progression. Il ne conserve ni texte libre, ni note, ni maîtrise,
+ni clé de correction. Le checkpoint `submitting` réserve le payload exact avant
+l’enqueue. Après un crash, la reprise réessaie cet enqueue idempotent puis
+n’affiche le résultat que lorsque ce même `eventId` est durable dans l’outbox.
+
+Ce contrat sert uniquement la fixture technique tant que
+`OPEN-OFFLINE-001` n’a pas défini la correction du vrai contenu hors connexion.
+Les catégories d’onboarding ne personnalisent pas le parcours avant
+`OPEN-PRODUCT-001`.
+
 ## Dépendances
 
 - Zod (MIT, gratuit) fournit la validation runtime du contrat public ;

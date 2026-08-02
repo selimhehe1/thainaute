@@ -1,13 +1,23 @@
 "use client";
 
+import { noOpAnalytics, type AnalyticsSink } from "@thainaute/analytics";
 import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
 import {
+  abandonLocalLessonForVersionChange,
   attemptSubmissionSchema,
+  confirmLocalLessonResult,
   createAttemptOutboxSnapshot,
+  finishLocalLesson,
   idempotencyKeySchema,
   ingestAttemptBatch,
   MAX_ATTEMPT_DURATION_MS,
+  openLocalLessonQuestion,
+  prepareLocalLessonSubmission,
+  selectLocalLessonOption,
+  startLocalLesson,
   type AttemptOutboxSnapshot,
+  type LocalExperienceSnapshot,
+  type ValidatedAttemptSubmission,
 } from "@thainaute/sync";
 import Link from "next/link";
 import {
@@ -16,14 +26,18 @@ import {
   useRef,
   useState,
   useSyncExternalStore,
-  type MouseEvent as ReactMouseEvent,
 } from "react";
 
 import {
   AttemptOutboxStorageError,
   WebAttemptOutboxStore,
+  migrateLegacyDemoFixtureAttempts,
 } from "@/lib/client/attempt-outbox-store";
 import { useWebAuthSession } from "@/lib/client/auth-session";
+import {
+  LocalExperienceStorageError,
+  WebLocalExperienceStore,
+} from "@/lib/client/local-experience-store";
 
 import { LocalVoiceComparison } from "./local-voice-comparison";
 
@@ -45,6 +59,70 @@ interface DemoLesson {
 type Stage = "intro" | "question" | "result";
 const journalKey = "thainaute.fixture.attempts.v1";
 const deviceKey = "thainaute.fixture.device.v1";
+
+function captureSafely(
+  analytics: AnalyticsSink,
+  event: Parameters<AnalyticsSink["capture"]>[0],
+): void {
+  try {
+    analytics.capture(event);
+  } catch {
+    // La mesure optionnelle ne bloque jamais la leçon locale.
+  }
+}
+
+function durationBucket(
+  durationMs: number,
+): "under_10s" | "10_to_30s" | "over_30s" {
+  if (durationMs < 10_000) return "under_10s";
+  return durationMs <= 30_000 ? "10_to_30s" : "over_30s";
+}
+
+function checkpointMatchesLesson(
+  snapshot: LocalExperienceSnapshot,
+  lesson: DemoLesson,
+): boolean {
+  return (
+    snapshot.lesson !== null &&
+    snapshot.lesson.lessonVersionId === lesson.versionId &&
+    snapshot.lesson.exerciseId === lesson.exercise.id
+  );
+}
+
+function submissionsAreEqual(
+  left: ValidatedAttemptSubmission,
+  right: ValidatedAttemptSubmission,
+): boolean {
+  return (
+    left.eventId === right.eventId &&
+    left.deviceId === right.deviceId &&
+    left.exerciseId === right.exerciseId &&
+    left.selectedOptionId === right.selectedOptionId &&
+    left.answeredAt === right.answeredAt &&
+    left.durationMs === right.durationMs &&
+    left.contentVersionId === right.contentVersionId &&
+    left.algorithmVersion === right.algorithmVersion
+  );
+}
+
+function ingestDemoOutbox(outbox: AttemptOutboxSnapshot, lesson: DemoLesson) {
+  return ingestAttemptBatch({
+    existingEvents: [],
+    submissions: outbox.entries
+      .filter(({ status }) => status !== "rejected")
+      .map(({ submission }) => submission),
+    answerKeys: [
+      {
+        exerciseId: lesson.exercise.id,
+        itemId: lesson.itemId,
+        correctOptionId: lesson.exercise.correctOptionId,
+        skill: "listening",
+        contentVersionId: lesson.versionId,
+      },
+    ],
+    authenticatedUserId: null,
+  });
+}
 
 function readLegacySubmissions(): unknown[] {
   const serialized = window.localStorage.getItem(journalKey);
@@ -113,9 +191,19 @@ function subscribeToNetworkStatus(callback: () => void): () => void {
   };
 }
 
-export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
+export function DemoExperience({
+  lesson,
+  analytics = noOpAnalytics,
+}: {
+  lesson: DemoLesson;
+  analytics?: AnalyticsSink;
+}) {
   const { sessionBoundaryRevision } = useWebAuthSession();
   const [store, setStore] = useState<WebAttemptOutboxStore | null>(null);
+  const [experienceStore, setExperienceStore] =
+    useState<WebLocalExperienceStore | null>(null);
+  const [experienceSnapshot, setExperienceSnapshot] =
+    useState<LocalExperienceSnapshot | null>(null);
   const [stage, setStage] = useState<Stage>("intro");
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [outbox, setOutbox] = useState<AttemptOutboxSnapshot>(() =>
@@ -130,6 +218,8 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
   const [validationMessage, setValidationMessage] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [latestRating, setLatestRating] = useState<0 | 1 | null>(null);
+  const [checkpointMessage, setCheckpointMessage] = useState("");
+  const [replacementConfirmation, setReplacementConfirmation] = useState(false);
   const submissionInFlight = useRef(false);
   const resultHeading = useRef<HTMLHeadingElement>(null);
   const lessonAudio = useRef<HTMLAudioElement | null>(null);
@@ -182,18 +272,20 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
 
   useEffect(() => {
     let active = true;
-    const instance = new WebAttemptOutboxStore("thainaute-demo-v1");
+    const outboxInstance = new WebAttemptOutboxStore("thainaute-demo-v1");
+    const experienceInstance = new WebLocalExperienceStore();
     queueMicrotask(() => {
       if (!active) return;
       setStorageStatus("loading");
       setOutbox(createAttemptOutboxSnapshot());
-    });
-    queueMicrotask(() => {
-      if (active) setStore(instance);
+      setExperienceSnapshot(null);
+      setStore(outboxInstance);
+      setExperienceStore(experienceInstance);
     });
     return () => {
       active = false;
-      instance.close();
+      outboxInstance.close();
+      experienceInstance.close();
     };
   }, []);
 
@@ -207,67 +299,307 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
   }, [stopSignal]);
 
   useEffect(() => {
-    if (store === null) return;
+    if (store === null || experienceStore === null) return;
     let active = true;
+    const activeOutboxStore = store;
+    const activeExperienceStore = experienceStore;
 
-    void migrateLegacyStorage(store)
-      .then(() => store.read())
-      .then((snapshot) => {
+    async function hydrateLocalSession(): Promise<void> {
+      await migrateLegacyDemoFixtureAttempts();
+      await migrateLegacyStorage(activeOutboxStore);
+      let nextOutbox = await activeOutboxStore.read();
+      let nextExperience = await activeExperienceStore.read();
+
+      if (nextExperience.onboarding.status === "completed") {
+        if (nextExperience.lesson?.phase === "submitting") {
+          nextOutbox = await activeOutboxStore.enqueue(
+            nextExperience.lesson.submission,
+          );
+          const durableOutbox = nextOutbox;
+          nextExperience = await activeExperienceStore.update((current) =>
+            confirmLocalLessonResult(
+              current,
+              durableOutbox,
+              new Date().toISOString(),
+            ),
+          );
+        }
+      }
+
+      const checkpoint = nextExperience.lesson;
+      let resumedStage: Stage = "intro";
+      let resumedOptionId: string | null = null;
+      let resumedStartedAt = 0;
+      let resumedRating: 0 | 1 | null = null;
+
+      if (
+        checkpoint !== null &&
+        checkpointMatchesLesson(nextExperience, lesson)
+      ) {
+        if (checkpoint.phase === "question") {
+          resumedStage = "question";
+          resumedOptionId = checkpoint.selectedOptionId;
+          resumedStartedAt = Date.parse(checkpoint.sessionStartedAt);
+        } else if (
+          checkpoint.phase === "result" ||
+          checkpoint.phase === "completed"
+        ) {
+          const durableEntry = nextOutbox.entries.find(
+            ({ submission }) =>
+              submission.eventId === checkpoint.submission.eventId,
+          );
+          if (
+            durableEntry === undefined ||
+            durableEntry.status === "rejected" ||
+            !submissionsAreEqual(durableEntry.submission, checkpoint.submission)
+          ) {
+            throw new LocalExperienceStorageError(
+              "Le résultat local ne correspond plus au journal durable.",
+            );
+          }
+          const evaluated = ingestDemoOutbox(nextOutbox, lesson).events.find(
+            ({ eventId }) => eventId === checkpoint.submission.eventId,
+          );
+          if (evaluated === undefined) {
+            throw new LocalExperienceStorageError(
+              "Le résultat local ne peut pas être reconstruit.",
+            );
+          }
+          resumedStage = "result";
+          resumedOptionId = checkpoint.submission.selectedOptionId;
+          resumedStartedAt = Date.parse(checkpoint.sessionStartedAt);
+          resumedRating = evaluated.rating;
+        } else if (checkpoint.phase === "submitting") {
+          throw new LocalExperienceStorageError(
+            "La tentative locale n’a pas pu être finalisée.",
+          );
+        }
+      }
+
+      if (!active) return;
+      setOutbox(nextOutbox);
+      setExperienceSnapshot(nextExperience);
+      setStage(resumedStage);
+      setSelectedOptionId(resumedOptionId);
+      setStartedAt(resumedStartedAt);
+      setLatestRating(resumedRating);
+      setValidationMessage("");
+      setCheckpointMessage("");
+      setReplacementConfirmation(false);
+      setStorageStatus("ready");
+    }
+
+    void hydrateLocalSession().catch(() => {
+      if (!active) return;
+      setStorageStatus("error");
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [experienceStore, lesson, storageRetryToken, store]);
+
+  useEffect(() => {
+    if (
+      stage !== "result" ||
+      experienceStore === null ||
+      experienceSnapshot?.lesson?.phase !== "result"
+    ) {
+      return;
+    }
+    let active = true;
+    const durableOutbox = outbox;
+
+    void experienceStore
+      .update((current) =>
+        finishLocalLesson(current, durableOutbox, new Date().toISOString()),
+      )
+      .then((completed) => {
         if (!active) return;
-        setOutbox(snapshot);
-        setStorageStatus("ready");
+        setExperienceSnapshot(completed);
+        captureSafely(analytics, {
+          name: "lesson_completed",
+          lessonVersionId: lesson.versionId,
+          platform: "web",
+        });
       })
       .catch(() => {
         if (!active) return;
-        setStorageStatus("error");
+        setCheckpointMessage(
+          "Le résultat reste visible, mais sa clôture locale doit être réessayée.",
+        );
       });
 
     return () => {
       active = false;
     };
-  }, [store, storageRetryToken]);
+  }, [
+    analytics,
+    experienceSnapshot,
+    experienceStore,
+    lesson.versionId,
+    outbox,
+    stage,
+  ]);
 
   useEffect(() => {
     stopSignal();
     if (stage === "result") resultHeading.current?.focus();
   }, [stage, stopSignal]);
 
-  const localIngestion = ingestAttemptBatch({
-    existingEvents: [],
-    submissions: outbox.entries
-      .filter(({ status }) => status !== "rejected")
-      .map(({ submission }) => submission),
-    answerKeys: [
-      {
-        exerciseId: lesson.exercise.id,
-        itemId: lesson.itemId,
-        correctOptionId: lesson.exercise.correctOptionId,
-        skill: "listening",
-        contentVersionId: lesson.versionId,
-      },
-    ],
-    authenticatedUserId: null,
-  });
+  const localIngestion = ingestDemoOutbox(outbox, lesson);
   const latestProjection = localIngestion.projections.find(
     ({ state }) => state.itemId === lesson.itemId,
   )?.state;
+  const staleCheckpoint =
+    experienceSnapshot?.onboarding.status === "completed" &&
+    experienceSnapshot.lesson !== null &&
+    !checkpointMatchesLesson(experienceSnapshot, lesson)
+      ? experienceSnapshot.lesson
+      : null;
 
-  function startExercise(event: ReactMouseEvent<HTMLButtonElement>) {
+  function startExercise(): void {
+    if (experienceStore === null || storageStatus !== "ready") return;
     stopSignal();
-    setStartedAt(event.timeStamp);
-    setStage("question");
+    setIsSaving(true);
+    setCheckpointMessage("");
+    const openedAt = new Date().toISOString();
+    void experienceStore
+      .update((current) => {
+        let activeSession = current;
+        if (current.lesson === null) {
+          activeSession = startLocalLesson(current, {
+            lessonVersionId: lesson.versionId,
+            exerciseId: lesson.exercise.id,
+            startedAt: openedAt,
+          });
+        }
+        if (!checkpointMatchesLesson(activeSession, lesson)) {
+          throw new LocalExperienceStorageError(
+            "Une autre session locale doit être terminée avant celle-ci.",
+          );
+        }
+        return openLocalLessonQuestion(activeSession, openedAt);
+      })
+      .then((next) => {
+        setExperienceSnapshot(next);
+        setStartedAt(
+          next.lesson === null
+            ? Date.parse(openedAt)
+            : Date.parse(next.lesson.sessionStartedAt),
+        );
+        setStage("question");
+        captureSafely(analytics, {
+          name: "lesson_started",
+          lessonVersionId: lesson.versionId,
+          platform: "web",
+        });
+      })
+      .catch((error) => {
+        setCheckpointMessage(
+          error instanceof LocalExperienceStorageError
+            ? error.message
+            : "La session n’a pas pu être ouverte localement.",
+        );
+      })
+      .finally(() => setIsSaving(false));
   }
 
-  function handleSubmitAnswer(event: ReactMouseEvent<HTMLButtonElement>): void {
+  function replaceOldLessonVersion(): void {
+    if (
+      experienceStore === null ||
+      staleCheckpoint === null ||
+      storageStatus !== "ready" ||
+      isSaving
+    ) {
+      return;
+    }
+
+    stopSignal();
+    setIsSaving(true);
+    setCheckpointMessage("");
+    const openedAt = new Date().toISOString();
+    const expectedCheckpoint = staleCheckpoint;
+    const durableOutbox = outbox;
+    void experienceStore
+      .update((current) => {
+        const abandoned = abandonLocalLessonForVersionChange(
+          current,
+          expectedCheckpoint,
+          {
+            lessonVersionId: lesson.versionId,
+            exerciseId: lesson.exercise.id,
+          },
+          durableOutbox,
+        );
+        return openLocalLessonQuestion(
+          startLocalLesson(abandoned, {
+            lessonVersionId: lesson.versionId,
+            exerciseId: lesson.exercise.id,
+            startedAt: openedAt,
+          }),
+          openedAt,
+        );
+      })
+      .then((next) => {
+        setExperienceSnapshot(next);
+        setSelectedOptionId(null);
+        setLatestRating(null);
+        setStartedAt(
+          next.lesson === null
+            ? Date.parse(openedAt)
+            : Date.parse(next.lesson.sessionStartedAt),
+        );
+        setStage("question");
+        setReplacementConfirmation(false);
+        captureSafely(analytics, {
+          name: "lesson_started",
+          lessonVersionId: lesson.versionId,
+          platform: "web",
+        });
+      })
+      .catch((error) => {
+        setCheckpointMessage(
+          error instanceof LocalExperienceStorageError
+            ? error.message
+            : "L’ancienne session n’a pas été abandonnée. Réessayez après avoir relu le stockage local.",
+        );
+      })
+      .finally(() => setIsSaving(false));
+  }
+
+  function selectOption(optionId: string): void {
+    setSelectedOptionId(optionId);
+    setValidationMessage("");
+    setCheckpointMessage("");
+    if (experienceStore === null || storageStatus !== "ready") return;
+
+    const selectedAt = new Date().toISOString();
+    void experienceStore
+      .update((current) =>
+        selectLocalLessonOption(current, optionId, selectedAt),
+      )
+      .then(setExperienceSnapshot)
+      .catch((error) => {
+        setCheckpointMessage(
+          error instanceof LocalExperienceStorageError
+            ? error.message
+            : "Le choix reste affiché, mais n’a pas pu être conservé.",
+        );
+      });
+  }
+
+  function handleSubmitAnswer(): void {
     if (submissionInFlight.current) return;
     submissionInFlight.current = true;
     setIsSaving(true);
 
+    const answeredAt = new Date().toISOString();
+    const answeredAtMs = Date.parse(answeredAt);
     const durationMs = Math.min(
       MAX_ATTEMPT_DURATION_MS,
-      Math.max(0, Math.round(event.timeStamp - startedAt)),
+      Math.max(0, Math.round(answeredAtMs - startedAt)),
     );
-    const answeredAt = new Date().toISOString();
     void persistAnswer(answeredAt, durationMs).finally(() => {
       submissionInFlight.current = false;
       setIsSaving(false);
@@ -283,7 +615,11 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
       return;
     }
 
-    if (store === null || storageStatus !== "ready") {
+    if (
+      store === null ||
+      experienceStore === null ||
+      storageStatus !== "ready"
+    ) {
       setValidationMessage("Le journal local n’est pas encore disponible.");
       return;
     }
@@ -292,6 +628,7 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
     try {
       deviceId = await store.getOrCreateDeviceId(() => crypto.randomUUID());
     } catch (error) {
+      setStorageStatus("error");
       setValidationMessage(
         error instanceof AttemptOutboxStorageError
           ? error.message
@@ -310,50 +647,86 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
       contentVersionId: lesson.versionId,
       algorithmVersion: SRS_ALGORITHM_VERSION,
     });
-    const result = ingestAttemptBatch({
-      existingEvents: localIngestion.events,
-      submissions: [submission],
-      answerKeys: [
-        {
-          exerciseId: lesson.exercise.id,
-          itemId: lesson.itemId,
-          correctOptionId: lesson.exercise.correctOptionId,
-          skill: "listening",
-          contentVersionId: lesson.versionId,
-        },
-      ],
-      authenticatedUserId: null,
-    });
+    let nextOutbox: AttemptOutboxSnapshot;
+    let confirmedExperience: LocalExperienceSnapshot;
+    try {
+      const prepared = await experienceStore.update((current) => {
+        const withSelection = selectLocalLessonOption(
+          current,
+          selectedOptionId,
+          answeredAt,
+        );
+        return prepareLocalLessonSubmission(
+          withSelection,
+          submission,
+          answeredAt,
+        );
+      });
+      if (prepared.lesson?.phase !== "submitting") {
+        throw new LocalExperienceStorageError(
+          "La tentative locale n’a pas été réservée.",
+        );
+      }
+      nextOutbox = await store.enqueue(prepared.lesson.submission);
+      const durableOutbox = nextOutbox;
+      confirmedExperience = await experienceStore.update((current) =>
+        confirmLocalLessonResult(
+          current,
+          durableOutbox,
+          new Date().toISOString(),
+        ),
+      );
+      if (
+        confirmedExperience.lesson?.phase !== "result" &&
+        confirmedExperience.lesson?.phase !== "completed"
+      ) {
+        throw new LocalExperienceStorageError(
+          "La tentative durable n’a pas pu être confirmée.",
+        );
+      }
+    } catch (error) {
+      setStorageStatus("error");
+      setValidationMessage(
+        error instanceof AttemptOutboxStorageError ||
+          error instanceof LocalExperienceStorageError
+          ? error.message
+          : "La tentative n’a pas pu être conservée hors ligne.",
+      );
+      return;
+    }
 
-    const acceptedId = result.acceptedEventIds[0];
+    const result = ingestDemoOutbox(nextOutbox, lesson);
     const accepted = result.events.find(
-      ({ eventId }) => eventId === acceptedId,
+      ({ eventId }) => eventId === submission.eventId,
     );
     if (accepted === undefined) {
       setValidationMessage("La tentative locale n’a pas pu être évaluée.");
       return;
     }
 
-    try {
-      setOutbox(await store.enqueue(submission));
-    } catch (error) {
-      setValidationMessage(
-        error instanceof AttemptOutboxStorageError
-          ? error.message
-          : "La tentative n’a pas pu être conservée hors ligne.",
-      );
-      return;
-    }
+    setOutbox(nextOutbox);
+    setExperienceSnapshot(confirmedExperience);
     setLatestRating(accepted.rating);
     setValidationMessage("");
+    setCheckpointMessage("");
     stopSignal();
     setStage("result");
+    captureSafely(analytics, {
+      name: "exercise_answered",
+      lessonVersionId: lesson.versionId,
+      exerciseType: "audio_choice",
+      correct: accepted.rating === 1,
+      durationBucket: durationBucket(durationMs),
+      platform: "web",
+    });
   }
 
   const wasCorrect = latestRating === 1;
   const pendingAttempts = outbox.entries.filter(
     ({ status }) => status === "pending",
   ).length;
+  const onboardingCompleted =
+    experienceSnapshot?.onboarding.status === "completed";
 
   return (
     <section className="lessonCard" aria-labelledby="lesson-title">
@@ -375,10 +748,67 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
             ? "Journal local indisponible"
             : online
               ? `Journal local prêt · ${pendingAttempts} conservée${pendingAttempts > 1 ? "s" : ""}`
-              : "Hors ligne · la tentative restera sur cet appareil"}
+              : "Hors ligne · la fixture continue avec les ressources déjà chargées"}
       </div>
 
-      {stage === "intro" && (
+      {staleCheckpoint !== null && (
+        <div className="lessonBody">
+          <p className="eyebrow">Version locale plus ancienne</p>
+          <h1 id="lesson-title">
+            Une session précédente est encore conservée.
+          </h1>
+          <p className="lessonObjective">
+            Thaïnaute ne la remplace jamais automatiquement. Une tentative déjà
+            soumise reste dans le journal durable ; une réponse non validée sera
+            abandonnée avec son point de reprise.
+          </p>
+          {replacementConfirmation ? (
+            <div className="lessonActions">
+              <p className="inlineError" role="alert">
+                Deuxième confirmation : abandonner ce point de reprise et
+                démarrer la version actuellement chargée ?
+              </p>
+              <button
+                className="button buttonPrimary"
+                type="button"
+                aria-busy={isSaving}
+                disabled={isSaving}
+                onClick={replaceOldLessonVersion}
+              >
+                {isSaving ? "Remplacement…" : "Confirmer l’abandon et démarrer"}
+              </button>
+              <button
+                className="button buttonGhost"
+                type="button"
+                disabled={isSaving}
+                onClick={() => setReplacementConfirmation(false)}
+              >
+                Conserver l’ancienne session
+              </button>
+            </div>
+          ) : (
+            <div className="lessonActions">
+              <button
+                className="button buttonPrimary"
+                type="button"
+                onClick={() => setReplacementConfirmation(true)}
+              >
+                Abandonner cette ancienne session
+              </button>
+              <Link className="button buttonGhost" href="/today">
+                Retour à Aujourd’hui
+              </Link>
+            </div>
+          )}
+          {checkpointMessage && (
+            <p className="inlineError" role="alert">
+              {checkpointMessage}
+            </p>
+          )}
+        </div>
+      )}
+
+      {staleCheckpoint === null && stage === "intro" && (
         <div className="lessonBody">
           <p className="eyebrow">Étape 1 sur 1</p>
           <h1 id="lesson-title">{lesson.title}</h1>
@@ -402,14 +832,19 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
               >
                 Réessayer le stockage
               </button>
+            ) : !onboardingCompleted && storageStatus === "ready" ? (
+              <Link className="button buttonPrimary" href="/today">
+                Préparer mon parcours
+              </Link>
             ) : (
               <button
                 className="button buttonPrimary"
                 type="button"
-                disabled={storageStatus !== "ready"}
+                aria-busy={isSaving}
+                disabled={storageStatus !== "ready" || isSaving}
                 onClick={startExercise}
               >
-                Commencer
+                {isSaving ? "Ouverture…" : "Commencer"}
               </button>
             )}
             <button
@@ -425,10 +860,15 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
               Le signal audio est indisponible. Vous pouvez continuer.
             </p>
           )}
+          {checkpointMessage && (
+            <p className="inlineError" role="alert">
+              {checkpointMessage}
+            </p>
+          )}
         </div>
       )}
 
-      {stage === "question" && (
+      {staleCheckpoint === null && stage === "question" && (
         <div className="lessonBody">
           <p className="eyebrow">Écoute · donnée technique</p>
           <h1 id="lesson-title">{lesson.exercise.prompt}</h1>
@@ -449,10 +889,7 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
                   name="answer"
                   value={option.id}
                   checked={selectedOptionId === option.id}
-                  onChange={() => {
-                    setSelectedOptionId(option.id);
-                    setValidationMessage("");
-                  }}
+                  onChange={() => selectOption(option.id)}
                 />
                 <span>{option.labelFr}</span>
               </label>
@@ -463,19 +900,37 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
               {validationMessage}
             </p>
           )}
-          <button
-            className="button buttonPrimary submitAnswer"
-            type="button"
-            aria-busy={isSaving}
-            disabled={isSaving}
-            onClick={handleSubmitAnswer}
-          >
-            {isSaving ? "Enregistrement…" : "Valider"}
-          </button>
+          {checkpointMessage && (
+            <p className="inlineError" role="alert">
+              {checkpointMessage}
+            </p>
+          )}
+          {storageStatus === "error" ? (
+            <button
+              className="button buttonPrimary submitAnswer"
+              type="button"
+              onClick={() => {
+                setStorageStatus("loading");
+                setStorageRetryToken((current) => current + 1);
+              }}
+            >
+              Réessayer le stockage
+            </button>
+          ) : (
+            <button
+              className="button buttonPrimary submitAnswer"
+              type="button"
+              aria-busy={isSaving}
+              disabled={isSaving || storageStatus !== "ready"}
+              onClick={handleSubmitAnswer}
+            >
+              {isSaving ? "Enregistrement…" : "Valider"}
+            </button>
+          )}
         </div>
       )}
 
-      {stage === "result" && (
+      {staleCheckpoint === null && stage === "result" && (
         <div className="lessonBody resultBody" aria-live="polite">
           <p className="eyebrow">Tentative enregistrée localement</p>
           <h1 id="lesson-title" ref={resultHeading} tabIndex={-1}>
@@ -509,12 +964,17 @@ export function DemoExperience({ lesson }: { lesson: DemoLesson }) {
             Cette démonstration technique reste isolée sur cet appareil et ne
             sera jamais synchronisée comme contenu pédagogique.
           </p>
+          {checkpointMessage && (
+            <p className="inlineError" role="alert">
+              {checkpointMessage}
+            </p>
+          )}
           <div className="lessonActions">
             <Link className="button buttonPrimary" href="/account">
               Découvrir le compte
             </Link>
-            <Link className="button buttonGhost" href="/">
-              Continuer sans compte
+            <Link className="button buttonGhost" href="/today">
+              Retour à Aujourd’hui
             </Link>
           </div>
         </div>

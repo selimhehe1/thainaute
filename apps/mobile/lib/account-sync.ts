@@ -69,6 +69,16 @@ function authenticatedSessionProvider(expectedUserId: string) {
   };
 }
 
+async function migrateLegacyMobileAttempts(
+  database: SQLiteDatabase,
+): Promise<void> {
+  await new MobileAttemptOutboxStore(
+    database,
+    undefined,
+    "demo",
+  ).migrateLegacyFixtureAttemptsToDemo();
+}
+
 export async function synchronizeMobileAccount(input: {
   readonly database: SQLiteDatabase;
   readonly userId: string;
@@ -78,6 +88,7 @@ export async function synchronizeMobileAccount(input: {
   if ((await getSession()) === null) {
     throw new Error("La session du compte a changé avant la synchronisation.");
   }
+  await migrateLegacyMobileAttempts(input.database);
   const store = new MobileAttemptOutboxStore(input.database, {
     kind: "account",
     userId: input.userId,
@@ -142,10 +153,11 @@ export async function synchronizeMobileAccount(input: {
   };
 }
 
-export function discardMobileAnonymousProgress(
+export async function discardMobileAnonymousProgress(
   database: SQLiteDatabase,
 ): Promise<void> {
-  return new MobileAttemptOutboxStore(database).purgeOwnerData();
+  await migrateLegacyMobileAttempts(database);
+  await new MobileAttemptOutboxStore(database).purgeOwnerData();
 }
 
 export function purgeMobileAccountData(
@@ -173,6 +185,7 @@ export async function readMobileAccountLocalState(
   database: SQLiteDatabase,
   userId: string,
 ) {
+  await migrateLegacyMobileAttempts(database);
   const account = new MobileAttemptOutboxStore(database, {
     kind: "account",
     userId,

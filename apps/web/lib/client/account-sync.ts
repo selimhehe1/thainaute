@@ -10,6 +10,7 @@ import {
 import {
   type ExpectedWebAccountPurgeState,
   WebAttemptOutboxStore,
+  migrateLegacyDemoFixtureAttempts,
 } from "./attempt-outbox-store";
 import { browserSha256Hex } from "./sha256";
 import { getWebSupabaseAuthClient } from "./supabase-auth";
@@ -51,6 +52,7 @@ export async function synchronizeWebAccount(input: {
   if ((await getSession()) === null) {
     throw new Error("La session du compte a changé avant la synchronisation.");
   }
+  await migrateLegacyDemoFixtureAttempts();
   const store = new WebAttemptOutboxStore("thainaute-learning-v1", {
     kind: "account",
     userId: input.userId,
@@ -117,6 +119,7 @@ export async function synchronizeWebAccount(input: {
 }
 
 export async function discardWebAnonymousProgress(): Promise<void> {
+  await migrateLegacyDemoFixtureAttempts();
   const store = new WebAttemptOutboxStore();
   try {
     await store.purgeOwnerData();
@@ -155,6 +158,7 @@ export async function purgeSettledWebAccountData(
 }
 
 export async function readWebAccountLocalState(userId: string) {
+  await migrateLegacyDemoFixtureAttempts();
   const account = new WebAttemptOutboxStore("thainaute-learning-v1", {
     kind: "account",
     userId,

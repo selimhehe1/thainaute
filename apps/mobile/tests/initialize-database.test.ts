@@ -48,7 +48,7 @@ class FakeMigrationDatabase {
 }
 
 describe("initialisation SQLite mobile", () => {
-  it("applique v1 puis v2 dans une transaction sur une nouvelle base", async () => {
+  it("applique v1, v2 puis v3 dans une transaction sur une nouvelle base", async () => {
     const database = new FakeMigrationDatabase(0);
     await initializeDatabase(database as unknown as SQLiteDatabase);
 
@@ -59,15 +59,34 @@ describe("initialisation SQLite mobile", () => {
     expect(database.transactionStatements.join("\n")).toContain(
       "PRAGMA user_version = 2",
     );
+    expect(database.transactionStatements.join("\n")).toContain(
+      "PRAGMA user_version = 3",
+    );
   });
 
   it("reprend séquentiellement depuis v1 sans recréer le journal historique", async () => {
     const database = new FakeMigrationDatabase(1);
     await initializeDatabase(database as unknown as SQLiteDatabase);
 
-    expect(database.transactionStatements).toHaveLength(1);
+    expect(database.transactionStatements).toHaveLength(2);
     expect(database.transactionStatements[0]).toContain("attempt_outbox_state");
     expect(database.transactionStatements[0]).not.toContain("attempt_journal");
+    expect(database.transactionStatements[1]).toContain(
+      "local_experience_state",
+    );
+  });
+
+  it("reprend depuis v2 en ajoutant seulement le parcours local", async () => {
+    const database = new FakeMigrationDatabase(2);
+    await initializeDatabase(database as unknown as SQLiteDatabase);
+
+    expect(database.transactionStatements).toHaveLength(1);
+    expect(database.transactionStatements[0]).toContain(
+      "local_experience_state",
+    );
+    expect(database.transactionStatements[0]).not.toContain(
+      "attempt_outbox_state",
+    );
   });
 
   it("refuse une base plus récente sans tenter de downgrade", async () => {

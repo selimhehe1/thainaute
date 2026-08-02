@@ -1,8 +1,41 @@
 import { expect, test } from "@playwright/test";
 
+async function openDemoAfterOnboarding(
+  page: import("@playwright/test").Page,
+): Promise<void> {
+  await page.goto("/today");
+  await page.getByRole("radio", { name: "5 minutes" }).check();
+  await page.getByRole("radio", { name: "Préparer un séjour" }).check();
+  await page.getByRole("radio", { name: "Je débute" }).check();
+  await page.getByRole("button", { name: "Préparer ma session" }).click();
+  await page.getByRole("link", { name: "Commencer la session" }).click();
+}
+
 test("termine la leçon fictive", async ({ page }) => {
-  await page.goto("/learn/demo");
+  const fontRequests: string[] = [];
+  page.on("request", (request) => {
+    if (request.resourceType() === "font") fontRequests.push(request.url());
+  });
+  await openDemoAfterOnboarding(page);
   await expect(page.getByText("Donnée fictive — non publiable")).toBeVisible();
+  const thaiGlyph = page.getByLabel("Graphème thaï fictif de test");
+  const loadedThaiFaces = await page.evaluate(
+    async () =>
+      (await document.fonts.load('600 100px "Noto Sans Thai"', "ก่")).length,
+  );
+  expect(loadedThaiFaces).toBeGreaterThan(0);
+  await expect(thaiGlyph).toHaveCSS("font-family", /Noto Sans Thai/iu);
+  expect((await thaiGlyph.boundingBox())?.height).toBeGreaterThan(100);
+  expect(fontRequests).not.toHaveLength(0);
+  const appOrigin = new URL(page.url()).origin;
+  expect(fontRequests.every((url) => new URL(url).origin === appOrigin)).toBe(
+    true,
+  );
+  expect(
+    fontRequests.some((url) =>
+      url.includes("/_next/static/media/noto-sans-thai"),
+    ),
+  ).toBe(true);
   await page.getByRole("button", { name: "Commencer" }).click();
   await page.getByRole("radio", { name: "Option A" }).check();
   await page.getByRole("button", { name: "Valider" }).click();
@@ -13,7 +46,7 @@ test("termine la leçon fictive", async ({ page }) => {
 });
 
 test("enregistre, compare puis supprime une prise locale", async ({ page }) => {
-  await page.goto("/learn/demo");
+  await openDemoAfterOnboarding(page);
   await page.getByRole("button", { name: "Commencer" }).click();
   await page.getByRole("radio", { name: "Option A" }).check();
   await page.getByRole("button", { name: "Valider" }).click();

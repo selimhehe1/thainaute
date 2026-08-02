@@ -25,4 +25,24 @@ describe("analytics soumis au consentement", () => {
       platform: "web",
     });
   });
+
+  it("garde les réponses d’onboarding hors du catalogue analytics", () => {
+    const capture = vi.fn();
+    const analytics = createConsentAwareAnalytics(true, { capture });
+
+    analytics.capture({ name: "onboarding_started", platform: "web" });
+    analytics.capture({ name: "onboarding_completed", platform: "android" });
+
+    expect(capture).toHaveBeenNthCalledWith(1, {
+      name: "onboarding_started",
+      platform: "web",
+    });
+    expect(capture).toHaveBeenNthCalledWith(2, {
+      name: "onboarding_completed",
+      platform: "android",
+    });
+    expect(JSON.stringify(capture.mock.calls)).not.toMatch(
+      /motivation|experience|goal/i,
+    );
+  });
 });

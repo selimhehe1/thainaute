@@ -4,6 +4,7 @@ import {
   applyAnonymousProgressFusionBatchSuccess as applyFusionBatchSuccess,
   applyAttemptOutboxSuccess,
   applyProgressSnapshot,
+  attemptOutboxSnapshotSchema,
   attemptOutboxOwnerSchema,
   attemptOutboxOwnersAreEqual,
   attemptOutboxOwnerStorageKey,
@@ -24,6 +25,7 @@ import {
   type ApplyAttemptOutboxSuccessResult,
   type AnonymousProgressFusionMarker,
   type AttemptBatchResponse,
+  type AttemptOutboxEntry,
   type AttemptOutboxOwner,
   type AttemptOutboxSnapshot,
   type CompletedAnonymousProgressFusionState,
@@ -39,8 +41,20 @@ const OUTBOX_KEY = "attempts-v1";
 const DEVICE_KEY = "device_id";
 const INSTALLATION_KEY = "installation_id_v1";
 const LEGACY_MIGRATION_KEY = "legacy_attempt_journal_migrated_v1";
+const LEGACY_DEMO_NAMESPACE_REPAIR_KEY = "legacy_demo_namespace_repaired_v1";
 const FUSION_MARKER_KEY = "anonymous_progress_fusion_v1";
 const SQLITE_BUSY_RETRY_COUNT = 3;
+const DEMO_OUTBOX_KEY = `demo:${OUTBOX_KEY}`;
+const LEGACY_FIXTURE_EXERCISE_ID = "10000000-0000-4000-8000-000000000004";
+const LEGACY_FIXTURE_CONTENT_VERSION_ID =
+  "10000000-0000-4000-8000-000000000002";
+const LEGACY_FIXTURE_OPTION_IDS = new Set([
+  "20000000-0000-4000-8000-000000000001",
+  "20000000-0000-4000-8000-000000000002",
+]);
+const LEGACY_FIXTURE_ALGORITHM_VERSION = "srs-v0";
+
+type MobileAttemptOutboxNamespace = "learning" | "demo";
 
 interface MetadataRow {
   readonly value: string;
@@ -188,6 +202,194 @@ function parseLegacySubmission(payload: string): ValidatedAttemptSubmission {
   });
 }
 
+function isProvenLegacyFixtureSubmission(
+  submission: ValidatedAttemptSubmission,
+): boolean {
+  return (
+    submission.exerciseId === LEGACY_FIXTURE_EXERCISE_ID &&
+    submission.contentVersionId === LEGACY_FIXTURE_CONTENT_VERSION_ID &&
+    LEGACY_FIXTURE_OPTION_IDS.has(submission.selectedOptionId) &&
+    submission.algorithmVersion === LEGACY_FIXTURE_ALGORITHM_VERSION
+  );
+}
+
+function submissionsAreExactlyEqual(
+  left: ValidatedAttemptSubmission,
+  right: ValidatedAttemptSubmission,
+): boolean {
+  return (
+    left.eventId === right.eventId &&
+    left.deviceId === right.deviceId &&
+    left.exerciseId === right.exerciseId &&
+    left.selectedOptionId === right.selectedOptionId &&
+    left.answeredAt === right.answeredAt &&
+    left.durationMs === right.durationMs &&
+    left.contentVersionId === right.contentVersionId &&
+    left.algorithmVersion === right.algorithmVersion
+  );
+}
+
+function entriesAreExactlyEqual(
+  left: AttemptOutboxEntry,
+  right: AttemptOutboxEntry,
+): boolean {
+  if (!submissionsAreExactlyEqual(left.submission, right.submission)) {
+    return false;
+  }
+  if (left.status === "pending") {
+    return right.status === "pending" && left.retryReason === right.retryReason;
+  }
+  if (left.status === "synced") {
+    return (
+      right.status === "synced" &&
+      left.serverStatus === right.serverStatus &&
+      left.rating === right.rating
+    );
+  }
+  return right.status === "rejected" && left.code === right.code;
+}
+
+function compareAttemptEntries(
+  left: AttemptOutboxEntry,
+  right: AttemptOutboxEntry,
+): number {
+  const timestampDifference =
+    Date.parse(left.submission.answeredAt) -
+    Date.parse(right.submission.answeredAt);
+  return timestampDifference === 0
+    ? left.submission.eventId.localeCompare(right.submission.eventId)
+    : timestampDifference;
+}
+
+interface IsolatedLegacyFixtureSnapshots {
+  readonly demoSnapshot: AttemptOutboxSnapshot;
+  readonly learningSnapshot: AttemptOutboxSnapshot;
+}
+
+function mergeExactEntries(
+  destination: AttemptOutboxSnapshot,
+  sourceEntries: readonly AttemptOutboxEntry[],
+): AttemptOutboxSnapshot {
+  const destinationByEventId = new Map(
+    destination.entries.map(
+      (entry) => [entry.submission.eventId, entry] as const,
+    ),
+  );
+  const additions: AttemptOutboxEntry[] = [];
+
+  for (const sourceEntry of sourceEntries) {
+    const existing = destinationByEventId.get(sourceEntry.submission.eventId);
+    if (existing === undefined) {
+      additions.push(sourceEntry);
+      destinationByEventId.set(sourceEntry.submission.eventId, sourceEntry);
+      continue;
+    }
+    if (
+      !submissionsAreExactlyEqual(existing.submission, sourceEntry.submission)
+    ) {
+      throw new Error("Un eventId existe déjà avec un autre payload.");
+    }
+    if (!entriesAreExactlyEqual(existing, sourceEntry)) {
+      throw new Error("Un payload identique existe avec un autre état.");
+    }
+  }
+
+  return attemptOutboxSnapshotSchema.parse({
+    ...destination,
+    entries: [...destination.entries, ...additions].sort(compareAttemptEntries),
+  });
+}
+
+function recoverMisroutedLegacyDemoEntries(input: {
+  readonly demoSnapshot: AttemptOutboxSnapshot;
+  readonly learningSnapshot: AttemptOutboxSnapshot;
+}): IsolatedLegacyFixtureSnapshots {
+  const misplacedEntries = input.demoSnapshot.entries.filter(
+    ({ submission }) => !isProvenLegacyFixtureSubmission(submission),
+  );
+  if (misplacedEntries.length === 0) return input;
+
+  const misplacedEventIds = new Set(
+    misplacedEntries.map(({ submission }) => submission.eventId),
+  );
+  if (
+    input.demoSnapshot.inFlight?.eventIds.some((eventId) =>
+      misplacedEventIds.has(eventId),
+    )
+  ) {
+    throw new Error(
+      "Une tentative mal rangée appartient à un lot démo en vol.",
+    );
+  }
+
+  return {
+    learningSnapshot: mergeExactEntries(
+      input.learningSnapshot,
+      misplacedEntries,
+    ),
+    demoSnapshot: attemptOutboxSnapshotSchema.parse({
+      ...input.demoSnapshot,
+      entries: input.demoSnapshot.entries.filter(({ submission }) =>
+        isProvenLegacyFixtureSubmission(submission),
+      ),
+    }),
+  };
+}
+
+function assertFusionMarkerContainsNoLegacyFixture(
+  marker: AnonymousProgressFusionMarker | null,
+): void {
+  if (
+    marker?.status === "awaiting_server_ack" &&
+    marker.submissions.some(isProvenLegacyFixtureSubmission)
+  ) {
+    throw new Error(
+      "Une tentative de fixture participe déjà à une fusion active.",
+    );
+  }
+}
+
+function isolateLegacyFixtureSnapshots(input: {
+  readonly demoSnapshot: AttemptOutboxSnapshot;
+  readonly learningSnapshot: AttemptOutboxSnapshot;
+  readonly fusionMarker: AnonymousProgressFusionMarker | null;
+}): IsolatedLegacyFixtureSnapshots {
+  const fixtureEntries = input.learningSnapshot.entries.filter(
+    ({ submission }) => isProvenLegacyFixtureSubmission(submission),
+  );
+  const fixtureEventIds = new Set(
+    fixtureEntries.map(({ submission }) => submission.eventId),
+  );
+
+  assertFusionMarkerContainsNoLegacyFixture(input.fusionMarker);
+  if (
+    fixtureEntries.length > 0 &&
+    input.learningSnapshot.inFlight?.eventIds.some((eventId) =>
+      fixtureEventIds.has(eventId),
+    )
+  ) {
+    throw new Error(
+      "Une tentative de fixture appartient à un lot synchronisable en vol.",
+    );
+  }
+  if (fixtureEntries.length === 0) {
+    return {
+      demoSnapshot: input.demoSnapshot,
+      learningSnapshot: input.learningSnapshot,
+    };
+  }
+
+  return {
+    demoSnapshot: mergeExactEntries(input.demoSnapshot, fixtureEntries),
+    learningSnapshot: attemptOutboxSnapshotSchema.parse({
+      ...input.learningSnapshot,
+      entries: input.learningSnapshot.entries.filter(
+        ({ submission }) => !fixtureEventIds.has(submission.eventId),
+      ),
+    }),
+  };
+}
+
 /** Adaptateur SQLite transactionnel du snapshot partagé `@thainaute/sync`. */
 export class MobileAttemptOutboxStore {
   readonly #database: SQLiteDatabase;
@@ -195,14 +397,16 @@ export class MobileAttemptOutboxStore {
   readonly #outboxKey: string;
   readonly #deviceKey: string;
   readonly #legacyMigrationKey: string;
+  readonly #namespace: MobileAttemptOutboxNamespace;
 
   public constructor(
     database: SQLiteDatabase,
     ownerInput: AttemptOutboxOwner = ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
-    namespace: "learning" | "demo" = "learning",
+    namespace: MobileAttemptOutboxNamespace = "learning",
   ) {
     this.#database = database;
     this.#owner = attemptOutboxOwnerSchema.parse(ownerInput);
+    this.#namespace = namespace;
     const scope = attemptOutboxOwnerStorageKey(this.#owner);
     const prefix = namespace === "learning" ? "" : "demo:";
     this.#outboxKey =
@@ -221,9 +425,17 @@ export class MobileAttemptOutboxStore {
 
   public async read(): Promise<AttemptOutboxSnapshot> {
     try {
-      return await serializeDatabaseOperation(this.#database, () =>
-        readSnapshot(this.#database, this.#outboxKey, this.#owner),
-      );
+      return await serializeDatabaseOperation(this.#database, async () => {
+        assertFusionMarkerContainsNoLegacyFixture(
+          parseStoredFusionMarker(
+            await this.#database.getFirstAsync<MetadataRow>(
+              "SELECT value FROM local_metadata WHERE key = ?",
+              FUSION_MARKER_KEY,
+            ),
+          ),
+        );
+        return readSnapshot(this.#database, this.#outboxKey, this.#owner);
+      });
     } catch (error) {
       throw new MobileAttemptOutboxStorageError(
         "Le journal local est illisible et n'a pas été écrasé.",
@@ -282,6 +494,109 @@ export class MobileAttemptOutboxStore {
     } catch (error) {
       throw new MobileAttemptOutboxStorageError(
         "L'ancien journal local n'a pas pu être migré.",
+        { cause: error },
+      );
+    }
+  }
+
+  /**
+   * Isole les tentatives de la fixture écrites par les premières versions dans
+   * l'outbox anonyme synchronisable. Les deux snapshots sont remplacés dans la
+   * même transaction SQLite; une collision, une corruption ou un lot en vol ne
+   * provoque donc jamais d'effacement partiel.
+   */
+  public async migrateLegacyFixtureAttemptsToDemo(): Promise<AttemptOutboxSnapshot> {
+    if (this.#owner.kind !== "anonymous" || this.#namespace !== "demo") {
+      throw new MobileAttemptOutboxStorageError(
+        "La migration de fixture exige l'espace démo anonyme.",
+      );
+    }
+
+    try {
+      // Le journal brut historique n'avait aucun namespace. Il doit d'abord
+      // rejoindre l'outbox synchronisable; seule la signature de fixture
+      // prouvée peut ensuite être déplacée vers demo.
+      await new MobileAttemptOutboxStore(this.#database).migrateLegacyJournal();
+      return await serializeDatabaseOperation(this.#database, async () => {
+        let demoSnapshot: AttemptOutboxSnapshot | undefined;
+        await this.#database.withExclusiveTransactionAsync(
+          async (transaction) => {
+            const repairMarker = await transaction.getFirstAsync<MetadataRow>(
+              "SELECT value FROM local_metadata WHERE key = ?",
+              LEGACY_DEMO_NAMESPACE_REPAIR_KEY,
+            );
+            if (repairMarker !== null && repairMarker.value !== "done") {
+              throw new Error("Marqueur de réparation démo invalide.");
+            }
+            let sourceSnapshots = {
+              demoSnapshot: await readSnapshot(
+                transaction,
+                DEMO_OUTBOX_KEY,
+                ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+              ),
+              learningSnapshot: await readSnapshot(
+                transaction,
+                OUTBOX_KEY,
+                ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+              ),
+            };
+            if (repairMarker === null) {
+              const legacyDemoMigrationMarker =
+                await transaction.getFirstAsync<MetadataRow>(
+                  "SELECT value FROM local_metadata WHERE key = ?",
+                  this.#legacyMigrationKey,
+                );
+              if (
+                legacyDemoMigrationMarker !== null &&
+                legacyDemoMigrationMarker.value !== "done"
+              ) {
+                throw new Error("Marqueur de migration démo invalide.");
+              }
+              if (legacyDemoMigrationMarker?.value === "done") {
+                sourceSnapshots =
+                  recoverMisroutedLegacyDemoEntries(sourceSnapshots);
+              }
+            }
+            const isolated = isolateLegacyFixtureSnapshots({
+              ...sourceSnapshots,
+              fusionMarker: parseStoredFusionMarker(
+                await transaction.getFirstAsync<MetadataRow>(
+                  "SELECT value FROM local_metadata WHERE key = ?",
+                  FUSION_MARKER_KEY,
+                ),
+              ),
+            });
+            await writeSnapshot(
+              transaction,
+              OUTBOX_KEY,
+              isolated.learningSnapshot,
+            );
+            await writeSnapshot(
+              transaction,
+              DEMO_OUTBOX_KEY,
+              isolated.demoSnapshot,
+            );
+            if (repairMarker === null) {
+              await transaction.runAsync(
+                "INSERT INTO local_metadata (key, value) VALUES (?, ?)",
+                LEGACY_DEMO_NAMESPACE_REPAIR_KEY,
+                "done",
+              );
+            }
+            demoSnapshot = isolated.demoSnapshot;
+          },
+        );
+        if (demoSnapshot === undefined) {
+          throw new Error(
+            "La migration de fixture n'a renvoyé aucun résultat.",
+          );
+        }
+        return demoSnapshot;
+      });
+    } catch (error) {
+      if (error instanceof MobileAttemptOutboxStorageError) throw error;
+      throw new MobileAttemptOutboxStorageError(
+        "Les anciennes tentatives de fixture n'ont pas pu être isolées.",
         { cause: error },
       );
     }
@@ -367,14 +682,16 @@ export class MobileAttemptOutboxStore {
 
   public async readFusionMarker(): Promise<AnonymousProgressFusionMarker | null> {
     try {
-      return await serializeDatabaseOperation(this.#database, async () =>
-        parseStoredFusionMarker(
+      return await serializeDatabaseOperation(this.#database, async () => {
+        const marker = parseStoredFusionMarker(
           await this.#database.getFirstAsync<MetadataRow>(
             "SELECT value FROM local_metadata WHERE key = ?",
             FUSION_MARKER_KEY,
           ),
-        ),
-      );
+        );
+        assertFusionMarkerContainsNoLegacyFixture(marker);
+        return marker;
+      });
     } catch (error) {
       throw new MobileAttemptOutboxStorageError(
         "Le marqueur de fusion locale est illisible et n’a pas été écrasé.",
@@ -388,15 +705,17 @@ export class MobileAttemptOutboxStore {
     readonly accountDeviceId: string;
     readonly consentedAt: string;
   }): Promise<PendingAnonymousProgressFusionState> {
-    return this.#mutateFusion((marker, anonymousSnapshot, accountSnapshot) =>
-      startFusion({
-        existingMarker: marker,
-        fusionId: input.fusionId,
-        consent: { accepted: true, consentedAt: input.consentedAt },
-        anonymousSnapshot,
-        accountSnapshot,
-        accountDeviceId: input.accountDeviceId,
-      }),
+    return this.#mutateFusion(
+      (marker, anonymousSnapshot, accountSnapshot) =>
+        startFusion({
+          existingMarker: marker,
+          fusionId: input.fusionId,
+          consent: { accepted: true, consentedAt: input.consentedAt },
+          anonymousSnapshot,
+          accountSnapshot,
+          accountDeviceId: input.accountDeviceId,
+        }),
+      true,
     );
   }
 
@@ -627,6 +946,7 @@ export class MobileAttemptOutboxStore {
       anonymousSnapshot: AttemptOutboxSnapshot,
       accountSnapshot: AttemptOutboxSnapshot,
     ) => T,
+    isolateLegacyFixture = false,
   ): Promise<T> {
     if (this.#owner.kind !== "account") {
       throw new MobileAttemptOutboxStorageError(
@@ -645,13 +965,37 @@ export class MobileAttemptOutboxStore {
                 FUSION_MARKER_KEY,
               ),
             );
+            assertFusionMarkerContainsNoLegacyFixture(marker);
+            let anonymousSnapshot = await readSnapshot(
+              transaction,
+              OUTBOX_KEY,
+              ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+            );
+            if (
+              isolateLegacyFixture &&
+              anonymousSnapshot.entries.some(({ submission }) =>
+                isProvenLegacyFixtureSubmission(submission),
+              )
+            ) {
+              const isolated = isolateLegacyFixtureSnapshots({
+                demoSnapshot: await readSnapshot(
+                  transaction,
+                  DEMO_OUTBOX_KEY,
+                  ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
+                ),
+                learningSnapshot: anonymousSnapshot,
+                fusionMarker: marker,
+              });
+              anonymousSnapshot = isolated.learningSnapshot;
+              await writeSnapshot(
+                transaction,
+                DEMO_OUTBOX_KEY,
+                isolated.demoSnapshot,
+              );
+            }
             const result = update(
               marker,
-              await readSnapshot(
-                transaction,
-                OUTBOX_KEY,
-                ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
-              ),
+              anonymousSnapshot,
               await readSnapshot(transaction, this.#outboxKey, this.#owner),
             );
             if (result === null) {
@@ -707,6 +1051,7 @@ export class MobileAttemptOutboxStore {
                 FUSION_MARKER_KEY,
               ),
             );
+            assertFusionMarkerContainsNoLegacyFixture(marker);
             if (
               this.#owner.kind !== "account" ||
               marker === null ||
@@ -787,6 +1132,14 @@ export class MobileAttemptOutboxStore {
         let returned: T | undefined;
         await this.#database.withExclusiveTransactionAsync(
           async (transaction) => {
+            assertFusionMarkerContainsNoLegacyFixture(
+              parseStoredFusionMarker(
+                await transaction.getFirstAsync<MetadataRow>(
+                  "SELECT value FROM local_metadata WHERE key = ?",
+                  FUSION_MARKER_KEY,
+                ),
+              ),
+            );
             const { snapshot, result } = update(
               await readSnapshot(transaction, this.#outboxKey, this.#owner),
             );

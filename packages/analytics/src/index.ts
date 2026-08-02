@@ -1,5 +1,13 @@
 export type AnalyticsEvent =
   | {
+      name: "onboarding_started";
+      platform: "web" | "ios" | "android";
+    }
+  | {
+      name: "onboarding_completed";
+      platform: "web" | "ios" | "android";
+    }
+  | {
       name: "lesson_started";
       lessonVersionId: string;
       platform: "web" | "ios" | "android";
@@ -19,6 +27,11 @@ export type AnalyticsEvent =
     }
   | {
       name: "review_due";
+      lessonVersionId: string;
+      platform: "web" | "ios" | "android";
+    }
+  | {
+      name: "review_completed";
       lessonVersionId: string;
       platform: "web" | "ios" | "android";
     }

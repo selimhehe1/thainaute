@@ -9,6 +9,7 @@ Dernière vérification : 2 août 2026. Les versions sont exactes dans chaque
 | Expo SDK 57 / React Native 0.86 | Applications iOS et Android                                     | MIT ; EAS optionnel et payant selon usage | Développement natif séparé, trop coûteux pour une personne                                |
 | Expo Audio / FileSystem 57      | Capture A/B locale, validation et suppression du cache privé    | MIT ; gratuits                            | Deux modules natifs maison augmenteraient fortement le risque de cycle de vie et de fuite |
 | Expo Sharing 57                 | Remise explicite de l’export JSON via le panneau natif          | MIT ; gratuit                             | `Share` React Native vise surtout le texte ; un envoi cloud ajouterait une rétention      |
+| Noto Sans Thai                  | Rendu thaï déterministe, embarqué sur web, iOS et Android       | OFL-1.1 / MIT ; gratuit                   | Polices système variables selon l’appareil, rendu des signes combinatoires non maîtrisé   |
 | Supabase JS / CLI               | Auth, Data API, Storage et environnement Postgres local         | MIT/Apache-2.0 ; cloud optionnel          | Postgres + services séparés, davantage d'exploitation                                     |
 | Expo SecureStore                | Chiffrer la session Supabase fragmentée dans le trousseau natif | MIT ; gratuit                             | AsyncStorage/SQLite exposeraient les jetons en clair                                      |
 | React Native URL polyfill       | Contrat URL requis par Supabase JS sur React Native             | MIT ; gratuit                             | Polyfill local incomplet et plus difficile à maintenir                                    |
@@ -43,6 +44,13 @@ fichier JSON temporaire placé sur un chemin applicatif dédié du cache privé.
 fichier est supprimé après fermeture du panneau, lors d’une frontière de
 session et avant chaque nouvel export. Le module n’ajoute ici ni service cloud,
 ni permission, ni configuration native de réception de fichiers.
+
+Noto Sans Thai est embarquée sans requête distante : `@fontsource` 5.3.0 livre
+les sous-ensembles thaïs 400/600 au build Next et
+`@expo-google-fonts/noto-sans-thai` 0.4.2 livre les fontes statiques 400/600 au
+bundle Expo via `expo-font` 57.0.1. La licence OFL-1.1 et la provenance sont
+conservées dans `docs/licenses/`. Les fontes statiques évitent la prise en
+charge inégale des fontes variables entre plateformes documentée par Expo.
 
 Expo distribue certains modules sous forme d’artefacts natifs précompilés. La
 configuration d’autolinking mobile force donc uniquement `expo-audio` à être

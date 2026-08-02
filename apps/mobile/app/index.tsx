@@ -1,21 +1,14 @@
 import { fixtureLesson } from "@thainaute/content/fixture";
-import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
 import {
-  attemptSubmissionSchema,
-  createAttemptOutboxSnapshot,
   ingestAttemptBatch,
-  MAX_ATTEMPT_DURATION_MS,
   type AttemptOutboxSnapshot,
 } from "@thainaute/sync";
-import { useAudioPlayer } from "expo-audio";
-import { randomUUID } from "expo-crypto";
-import { Link } from "expo-router";
+import { Link, useFocusEffect, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useSQLiteContext } from "expo-sqlite";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  AccessibilityInfo,
-  findNodeHandle,
+  ActivityIndicator,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -24,845 +17,367 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import {
-  MobileAttemptOutboxStorageError,
-  MobileAttemptOutboxStore,
-} from "../lib/attempt-outbox-store";
-import { useMobileAuthSession } from "../lib/auth-session";
-import { useLocalVoicePractice } from "../lib/use-local-voice-practice";
+import { MobileAttemptOutboxStore } from "../lib/attempt-outbox-store";
+import { MobileLocalExperienceStore } from "../lib/mobile-local-experience-store";
 
 const lesson = fixtureLesson;
-
 function requiredFixtureValue<T>(value: T | undefined, label: string): T {
-  if (value === undefined)
-    throw new Error(`Fixture invalide : ${label} absent.`);
+  if (value === undefined) {
+    throw new Error(`La fixture mobile doit contenir ${label}.`);
+  }
   return value;
 }
+const exercise = requiredFixtureValue(lesson.exercises[0], "un exercice");
+const item = requiredFixtureValue(lesson.items[0], "un item");
 
-const exercise = requiredFixtureValue(lesson.exercises[0], "exercice");
-const item = requiredFixtureValue(lesson.items[0], "item");
+type ScreenStatus = "loading" | "ready" | "error";
 
-type Stage = "intro" | "question" | "result";
-type StorageStatus = "loading" | "ready" | "error";
-type ExerciseRating = 0 | 1 | null;
-type VoicePractice = ReturnType<typeof useLocalVoicePractice>;
-type PlaybackTarget = "model" | "recording";
-
-interface PlaybackCopy {
-  idleAccessibilityLabel: string;
-  idleText: string;
-  pauseAccessibilityLabel: string;
-  pauseText: string;
-  resumeAccessibilityLabel: string;
-  resumeText: string;
+function dueAtFromOutbox(outbox: AttemptOutboxSnapshot): string | null {
+  const projection = ingestAttemptBatch({
+    existingEvents: [],
+    submissions: outbox.entries
+      .filter(({ status }) => status !== "rejected")
+      .map(({ submission }) => submission),
+    answerKeys: [
+      {
+        exerciseId: exercise.id,
+        itemId: item.id,
+        correctOptionId: exercise.correctOptionId,
+        skill: "listening",
+        contentVersionId: lesson.versionId,
+      },
+    ],
+    authenticatedUserId: null,
+  }).projections.find(({ state }) => state.itemId === item.id)?.state;
+  return projection?.dueAt ?? null;
 }
 
-const playbackCopy: Record<PlaybackTarget, PlaybackCopy> = {
-  model: {
-    idleAccessibilityLabel: "A, écouter le modèle",
-    idleText: "A · Écouter le modèle",
-    pauseAccessibilityLabel: "Mettre le modèle en pause",
-    pauseText: "Pause modèle",
-    resumeAccessibilityLabel: "Reprendre le modèle",
-    resumeText: "Reprendre le modèle",
-  },
-  recording: {
-    idleAccessibilityLabel: "B, écouter ma voix",
-    idleText: "B · Écouter ma voix",
-    pauseAccessibilityLabel: "Mettre ma voix en pause",
-    pauseText: "Pause ma voix",
-    resumeAccessibilityLabel: "Reprendre ma voix",
-    resumeText: "Reprendre ma voix",
-  },
-};
-
-function getStorageSummary(
-  storageStatus: StorageStatus,
-  pendingAttempts: number,
-): string {
-  if (storageStatus === "loading") return "Préparation du journal local…";
-  if (storageStatus === "error") return "Journal local indisponible";
-
-  const plural = pendingAttempts > 1 ? "s" : "";
-  return `${pendingAttempts} tentative${plural} conservée${plural} localement`;
-}
-
-function getQuestionMessage(
-  message: string,
-  stage: Stage,
-  voiceError: string,
-): string {
-  if (message !== "") return message;
-  if (stage === "question") return voiceError;
-  return "";
-}
-
-function getPlaybackButtonCopy(
-  target: PlaybackTarget,
-  active: boolean,
-  paused: boolean,
-): { accessibilityLabel: string; text: string } {
-  const copy = playbackCopy[target];
-  if (!active) {
-    return {
-      accessibilityLabel: copy.idleAccessibilityLabel,
-      text: copy.idleText,
-    };
-  }
-  if (paused) {
-    return {
-      accessibilityLabel: copy.resumeAccessibilityLabel,
-      text: copy.resumeText,
-    };
-  }
-  return {
-    accessibilityLabel: copy.pauseAccessibilityLabel,
-    text: copy.pauseText,
-  };
-}
-
-function getRecordButtonText(voicePractice: VoicePractice): string {
-  if (voicePractice.isRecording) {
-    return `Arrêter · ${voicePractice.remainingSeconds} s max.`;
-  }
-  if (voicePractice.isBusy) return "Préparation…";
-  if (voicePractice.hasRecording) return "Refaire mon essai";
-  return "M’enregistrer";
-}
-
-function getRecordButtonAccessibilityLabel(
-  voicePractice: VoicePractice,
-): string {
-  if (voicePractice.isRecording) {
-    return `Arrêter mon enregistrement, ${voicePractice.remainingSeconds} secondes restantes au maximum`;
-  }
-  return "M’enregistrer sur cet appareil";
-}
-
-function getDueAtText(dueAt: string | null | undefined): string {
-  if (dueAt === null || dueAt === undefined) return "À calculer";
+function formatDueAt(dueAt: string): string {
   return new Intl.DateTimeFormat("fr-FR", {
     dateStyle: "medium",
     timeStyle: "short",
   }).format(new Date(dueAt));
 }
 
-function getFeedbackText(rating: ExerciseRating): string {
-  if (rating === 1) return exercise.feedback.correctFr;
-  return exercise.feedback.incorrectFr;
+function provisionalGoalLabel(optionId: string): string {
+  if (optionId === "prototype_goal_short") return "5 minutes";
+  if (optionId === "prototype_goal_regular") return "10 minutes";
+  return "rythme provisoire";
 }
 
-function DemoHeader() {
-  return (
-    <View style={styles.header}>
-      <View
-        accessible={false}
-        importantForAccessibility="no-hide-descendants"
-        style={styles.logo}
-      >
-        <Text style={styles.logoThai}>ท</Text>
-      </View>
-      <Text style={styles.brand}>Thaïnaute</Text>
-      <Text style={styles.step}>1 exercice</Text>
-    </View>
-  );
-}
-
-function FixtureBanner({
-  pendingAttempts,
-  storageStatus,
-}: {
-  readonly pendingAttempts: number;
-  readonly storageStatus: StorageStatus;
-}) {
-  return (
-    <View style={styles.fixtureBanner} accessibilityRole="summary">
-      <Text style={styles.fixtureTitle}>Donnée fictive — non publiable</Text>
-      <Text style={styles.fixtureText}>Chaîne technique uniquement</Text>
-      <Text style={styles.fixtureText} accessibilityLiveRegion="polite">
-        {getStorageSummary(storageStatus, pendingAttempts)}
-      </Text>
-    </View>
-  );
-}
-
-interface IntroStageProps {
-  readonly error: string;
-  readonly onPlaySignal: () => void;
-  readonly onRetryStorage: () => void;
-  readonly onStart: () => void;
-  readonly storageStatus: StorageStatus;
-}
-
-function IntroStage({
-  error,
-  onPlaySignal,
-  onRetryStorage,
-  onStart,
-  storageStatus,
-}: IntroStageProps) {
-  const storageIsLoading = storageStatus === "loading";
-  const primaryButtonText =
-    storageStatus === "error" ? "Réessayer le stockage" : "Commencer";
-
-  function handlePrimaryPress(): void {
-    if (storageStatus === "error") {
-      onRetryStorage();
-      return;
-    }
-    onStart();
-  }
-
-  return (
-    <View style={styles.screen}>
-      <Text style={styles.eyebrow}>TRANCHE VERTICALE LOCALE</Text>
-      <Text style={styles.title}>{lesson.titleFr}</Text>
-      <Text style={styles.body}>{lesson.objectiveFr}</Text>
-      <Text style={styles.glyph} accessibilityLanguage="th-TH">
-        {item.thaiRaw}
-      </Text>
-      <Pressable
-        accessibilityRole="button"
-        accessibilityState={{ disabled: storageIsLoading }}
-        disabled={storageIsLoading}
-        style={({ pressed }) => [
-          styles.primaryButton,
-          pressed && styles.pressed,
-          storageIsLoading && styles.disabled,
-        ]}
-        onPress={handlePrimaryPress}
-      >
-        <Text style={styles.primaryButtonText}>{primaryButtonText}</Text>
-      </Pressable>
-      <Pressable
-        accessibilityRole="button"
-        style={styles.secondaryButton}
-        onPress={onPlaySignal}
-      >
-        <Text style={styles.secondaryButtonText}>Écouter le signal</Text>
-      </Pressable>
-      {error !== "" && (
-        <Text accessibilityRole="alert" style={styles.error}>
-          {error}
-        </Text>
-      )}
-    </View>
-  );
-}
-
-interface QuestionStageProps {
-  readonly isSaving: boolean;
-  readonly message: string;
-  readonly onPlaySignal: () => void;
-  readonly onSelectOption: (optionId: string) => void;
-  readonly onSubmit: () => void;
-  readonly selectedOptionId: string | null;
-}
-
-function QuestionStage({
-  isSaving,
-  message,
-  onPlaySignal,
-  onSelectOption,
-  onSubmit,
-  selectedOptionId,
-}: QuestionStageProps) {
-  return (
-    <View style={styles.screen}>
-      <Text style={styles.eyebrow}>ÉCOUTE · DONNÉE TECHNIQUE</Text>
-      <Text style={styles.title}>{exercise.promptFr}</Text>
-      <Pressable
-        accessibilityLabel="Réécouter le signal"
-        accessibilityRole="button"
-        style={styles.audioButton}
-        onPress={onPlaySignal}
-      >
-        <Text accessible={false} style={styles.audioButtonText}>
-          ▶ Réécouter le signal
-        </Text>
-      </Pressable>
-      <View accessibilityRole="radiogroup" style={styles.answers}>
-        {exercise.options.map((option) => {
-          const selected = option.id === selectedOptionId;
-          return (
-            <Pressable
-              accessibilityRole="radio"
-              accessibilityState={{ checked: selected }}
-              key={option.id}
-              style={[styles.answer, selected && styles.answerSelected]}
-              onPress={() => {
-                onSelectOption(option.id);
-              }}
-            >
-              <View style={[styles.radio, selected && styles.radioSelected]} />
-              <Text style={styles.answerText}>{option.labelFr}</Text>
-            </Pressable>
-          );
-        })}
-      </View>
-      {message !== "" && (
-        <Text accessibilityRole="alert" style={styles.error}>
-          {message}
-        </Text>
-      )}
-      <Pressable
-        accessibilityRole="button"
-        accessibilityState={{ disabled: isSaving, busy: isSaving }}
-        disabled={isSaving}
-        style={({ pressed }) => [
-          styles.primaryButton,
-          pressed && styles.pressed,
-          isSaving && styles.disabled,
-        ]}
-        onPress={onSubmit}
-      >
-        <Text style={styles.primaryButtonText}>
-          {isSaving ? "Enregistrement…" : "Valider"}
-        </Text>
-      </Pressable>
-    </View>
-  );
-}
-
-interface PlaybackButtonProps {
-  readonly active: boolean;
-  readonly disabled: boolean;
-  readonly onPause: () => void;
-  readonly onPlay: () => void | Promise<void>;
-  readonly paused: boolean;
-  readonly target: PlaybackTarget;
-}
-
-function PlaybackButton({
-  active,
-  disabled,
-  onPause,
-  onPlay,
-  paused,
-  target,
-}: PlaybackButtonProps) {
-  const copy = getPlaybackButtonCopy(target, active, paused);
-  const playing = active && !paused;
-
-  function handlePress(): void {
-    if (playing) {
-      onPause();
-      return;
-    }
-    void onPlay();
-  }
-
-  return (
-    <Pressable
-      accessibilityLabel={copy.accessibilityLabel}
-      accessibilityRole="button"
-      accessibilityState={{ disabled }}
-      disabled={disabled}
-      style={({ pressed }) => [
-        styles.voiceButton,
-        active && styles.voiceButtonActive,
-        pressed && styles.pressed,
-        disabled && styles.disabled,
-      ]}
-      onPress={handlePress}
-    >
-      <Text style={styles.voiceButtonText}>{copy.text}</Text>
-    </Pressable>
-  );
-}
-
-function RecordButton({
-  voicePractice,
-}: {
-  readonly voicePractice: VoicePractice;
-}) {
-  function handlePress(): void {
-    if (voicePractice.isRecording) {
-      void voicePractice.stopRecording();
-      return;
-    }
-    void voicePractice.startRecording();
-  }
-
-  return (
-    <Pressable
-      accessibilityLabel={getRecordButtonAccessibilityLabel(voicePractice)}
-      accessibilityRole="button"
-      accessibilityState={{
-        busy: voicePractice.isBusy,
-        disabled: voicePractice.isBusy,
-      }}
-      disabled={voicePractice.isBusy}
-      style={({ pressed }) => [
-        styles.recordButton,
-        voicePractice.isRecording && styles.recordButtonActive,
-        pressed && styles.pressed,
-        voicePractice.isBusy && styles.disabled,
-      ]}
-      onPress={handlePress}
-    >
-      <Text style={styles.recordButtonText}>
-        {getRecordButtonText(voicePractice)}
-      </Text>
-    </Pressable>
-  );
-}
-
-function VoicePracticeCard({
-  voicePractice,
-}: {
-  readonly voicePractice: VoicePractice;
-}) {
-  const modelPlayback = voicePractice.playback?.target === "model";
-  const recordingPlayback = voicePractice.playback?.target === "recording";
-  const playbackPaused = voicePractice.playback?.paused === true;
-  const modelDisabled = voicePractice.isRecording || voicePractice.isBusy;
-  const recordingDisabled =
-    !voicePractice.canPlayRecording ||
-    voicePractice.isRecording ||
-    voicePractice.isBusy;
-
-  return (
-    <View style={styles.voiceCard}>
-      <Text style={styles.voiceEyebrow}>PRATIQUE VOCALE OPTIONNELLE</Text>
-      <Text style={styles.voiceTitle}>Comparez A et B</Text>
-      <Text style={styles.voiceBody}>
-        Écoutez le modèle, puis enregistrez jusqu’à 20 secondes pour comparer
-        sur cet appareil.
-      </Text>
-
-      <View style={styles.voiceActions}>
-        <PlaybackButton
-          active={modelPlayback}
-          disabled={modelDisabled}
-          onPause={voicePractice.pausePlayback}
-          onPlay={voicePractice.playModel}
-          paused={playbackPaused}
-          target="model"
-        />
-        <PlaybackButton
-          active={recordingPlayback}
-          disabled={recordingDisabled}
-          onPause={voicePractice.pausePlayback}
-          onPlay={voicePractice.playRecording}
-          paused={playbackPaused}
-          target="recording"
-        />
-      </View>
-
-      <RecordButton voicePractice={voicePractice} />
-
-      {voicePractice.hasRecording && (
-        <Pressable
-          accessibilityLabel="Supprimer cette prise locale"
-          accessibilityRole="button"
-          accessibilityState={{ disabled: voicePractice.isBusy }}
-          disabled={voicePractice.isBusy}
-          style={({ pressed }) => [
-            styles.deleteVoiceButton,
-            pressed && styles.pressed,
-            voicePractice.isBusy && styles.disabled,
-          ]}
-          onPress={() => {
-            void voicePractice.deleteRecording();
-          }}
-        >
-          <Text style={styles.deleteVoiceButtonText}>
-            Supprimer cette prise locale
-          </Text>
-        </Pressable>
-      )}
-
-      {voicePractice.notice !== "" && (
-        <Text accessibilityLiveRegion="polite" style={styles.voiceStatus}>
-          {voicePractice.notice}
-        </Text>
-      )}
-      {voicePractice.error !== "" && (
-        <Text accessibilityRole="alert" style={styles.error}>
-          {voicePractice.error}
-        </Text>
-      )}
-      <Text style={styles.voicePrivacy}>
-        Cache local temporaire uniquement. Votre voix n’est ni synchronisée, ni
-        envoyée, ni analysée. Elle est supprimable à tout moment et à la
-        fermeture normale de cet écran.
-      </Text>
-    </View>
-  );
-}
-
-interface ResultStageProps {
-  readonly dueAt: string | null | undefined;
-  readonly latestRating: ExerciseRating;
-  readonly masteryScore: number;
-  readonly onFinish: () => void;
-  readonly voicePractice: VoicePractice;
-}
-
-function ResultStage({
-  dueAt,
-  latestRating,
-  masteryScore,
-  onFinish,
-  voicePractice,
-}: ResultStageProps) {
-  const resultHeading = useRef<Text>(null);
-  const finishDisabled = voicePractice.isBusy || voicePractice.isRecording;
-  const accountDisabled =
-    voicePractice.hasRecording ||
-    voicePractice.isRecording ||
-    voicePractice.isBusy;
-  const finishButtonText = voicePractice.isRecording
-    ? "Arrêtez d’abord l’enregistrement"
-    : "Terminer";
-  const accountButtonText =
-    voicePractice.hasRecording || voicePractice.isRecording
-      ? "Supprimez l’essai avant de quitter"
-      : "Découvrir le compte";
-
-  useEffect(() => {
-    const node = findNodeHandle(resultHeading.current);
-    if (node !== null) AccessibilityInfo.setAccessibilityFocus(node);
-  }, []);
-
-  return (
-    <View style={styles.screen}>
-      <Text style={styles.eyebrow}>TENTATIVE CONSERVÉE HORS LIGNE</Text>
-      <Text ref={resultHeading} style={styles.title} accessibilityRole="header">
-        {getFeedbackText(latestRating)}
-      </Text>
-      <View style={styles.metric}>
-        <Text style={styles.metricLabel}>MAÎTRISE ESTIMÉE</Text>
-        <Text style={styles.metricValue}>{masteryScore} ‰</Text>
-      </View>
-      <View style={styles.metric}>
-        <Text style={styles.metricLabel}>PROCHAINE RÉVISION</Text>
-        <Text style={styles.metricDate}>{getDueAtText(dueAt)}</Text>
-      </View>
-      <VoicePracticeCard voicePractice={voicePractice} />
-      <Text style={styles.privacy}>
-        Cette démonstration technique reste isolée sur cet appareil et ne sera
-        jamais synchronisée comme contenu pédagogique.
-      </Text>
-      <Pressable
-        accessibilityRole="button"
-        accessibilityState={{
-          busy: voicePractice.isBusy,
-          disabled: finishDisabled,
-        }}
-        disabled={finishDisabled}
-        style={[styles.primaryButton, finishDisabled && styles.disabled]}
-        onPress={onFinish}
-      >
-        <Text style={styles.primaryButtonText}>{finishButtonText}</Text>
-      </Pressable>
-      <Link href="/account" asChild>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityState={{ disabled: accountDisabled }}
-          disabled={accountDisabled}
-          style={[styles.secondaryButton, accountDisabled && styles.disabled]}
-          onPress={voicePractice.pausePlayback}
-        >
-          <Text style={styles.secondaryButtonText}>{accountButtonText}</Text>
-        </Pressable>
-      </Link>
-    </View>
-  );
-}
-
-interface StageContentProps {
-  readonly dueAt: string | null | undefined;
-  readonly isSaving: boolean;
-  readonly latestRating: ExerciseRating;
-  readonly masteryScore: number;
-  readonly onFinish: () => void;
-  readonly onPlaySignal: () => void;
-  readonly onRetryStorage: () => void;
-  readonly onSelectOption: (optionId: string) => void;
-  readonly onStart: () => void;
-  readonly onSubmit: () => void;
-  readonly questionMessage: string;
-  readonly selectedOptionId: string | null;
-  readonly stage: Stage;
-  readonly storageStatus: StorageStatus;
-  readonly voicePractice: VoicePractice;
-}
-
-function StageContent(props: StageContentProps) {
-  if (props.stage === "intro") {
-    return (
-      <IntroStage
-        error={props.voicePractice.error}
-        onPlaySignal={props.onPlaySignal}
-        onRetryStorage={props.onRetryStorage}
-        onStart={props.onStart}
-        storageStatus={props.storageStatus}
-      />
-    );
-  }
-  if (props.stage === "question") {
-    return (
-      <QuestionStage
-        isSaving={props.isSaving}
-        message={props.questionMessage}
-        onPlaySignal={props.onPlaySignal}
-        onSelectOption={props.onSelectOption}
-        onSubmit={props.onSubmit}
-        selectedOptionId={props.selectedOptionId}
-      />
-    );
-  }
-  return (
-    <ResultStage
-      dueAt={props.dueAt}
-      latestRating={props.latestRating}
-      masteryScore={props.masteryScore}
-      onFinish={props.onFinish}
-      voicePractice={props.voicePractice}
-    />
-  );
-}
-
-export default function DemoScreen() {
+export default function TodayScreen() {
   const database = useSQLiteContext();
-  const auth = useMobileAuthSession();
+  const router = useRouter();
+  const experienceStore = useMemo(
+    () => new MobileLocalExperienceStore(database),
+    [database],
+  );
   const outboxStore = useMemo(
     () => new MobileAttemptOutboxStore(database, undefined, "demo"),
     [database],
   );
-  const player = useAudioPlayer(require("../assets/audio/fixture-tone.wav"));
-  const voicePractice = useLocalVoicePractice(
-    player,
-    auth.sessionBoundaryRevision,
-  );
-  const [stage, setStage] = useState<Stage>("intro");
-  const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
-  const [outbox, setOutbox] = useState<AttemptOutboxSnapshot>(() =>
-    createAttemptOutboxSnapshot(),
-  );
-  const [storageStatus, setStorageStatus] = useState<StorageStatus>("loading");
-  const [storageRetryToken, setStorageRetryToken] = useState(0);
-  const [startedAt, setStartedAt] = useState(0);
+  const [status, setStatus] = useState<ScreenStatus>("loading");
+  const [retryRevision, setRetryRevision] = useState(0);
+  const [snapshot, setSnapshot] = useState<Awaited<
+    ReturnType<MobileLocalExperienceStore["read"]>
+  > | null>(null);
+  const [outbox, setOutbox] = useState<AttemptOutboxSnapshot | null>(null);
   const [message, setMessage] = useState("");
-  const [isSaving, setIsSaving] = useState(false);
-  const [latestRating, setLatestRating] = useState<ExerciseRating>(null);
-  const submissionInFlight = useRef(false);
-  const finishInFlight = useRef(false);
+  const [busy, setBusy] = useState(false);
+  const [replacementConfirmation, setReplacementConfirmation] = useState(false);
+  const requestedRevisionRef = useRef(0);
+
+  useFocusEffect(
+    useCallback(() => {
+      let active = true;
+      const handledRevision = retryRevision;
+      setStatus("loading");
+      void Promise.all([
+        experienceStore.read(),
+        outboxStore.migrateLegacyFixtureAttemptsToDemo(),
+      ])
+        .then(async ([experience, currentOutbox]) => {
+          let recoveredExperience = experience;
+          let recoveredOutbox = currentOutbox;
+          if (experience.lesson?.phase === "submitting") {
+            recoveredOutbox = await outboxStore.enqueue(
+              experience.lesson.submission,
+            );
+            recoveredExperience = await experienceStore.confirmLessonResult(
+              recoveredOutbox,
+              new Date().toISOString(),
+            );
+          }
+          if (!active || requestedRevisionRef.current !== handledRevision) {
+            return;
+          }
+          setSnapshot(recoveredExperience);
+          setOutbox(recoveredOutbox);
+          setReplacementConfirmation(false);
+          setStatus("ready");
+        })
+        .catch(() => {
+          if (!active || requestedRevisionRef.current !== handledRevision) {
+            return;
+          }
+          setStatus("error");
+        });
+      return () => {
+        active = false;
+      };
+    }, [experienceStore, outboxStore, retryRevision]),
+  );
 
   useEffect(() => {
-    let active = true;
+    if (status !== "ready" || snapshot === null) return;
+    if (snapshot.onboarding.status !== "completed") {
+      router.replace("/onboarding");
+    }
+  }, [router, snapshot, status]);
 
-    void outboxStore
-      .migrateLegacyJournal()
-      .then((snapshot) => {
-        if (!active) return;
-        setOutbox(snapshot);
-        setStorageStatus("ready");
-      })
-      .catch(() => {
-        if (!active) return;
-        setStorageStatus("error");
-      });
-
-    return () => {
-      active = false;
-    };
-  }, [outboxStore, storageRetryToken]);
-
-  const localIngestion = useMemo(
-    () =>
-      ingestAttemptBatch({
-        existingEvents: [],
-        submissions: outbox.entries
-          .filter(({ status }) => status !== "rejected")
-          .map(({ submission }) => submission),
-        answerKeys: [
-          {
-            exerciseId: exercise.id,
-            itemId: item.id,
-            correctOptionId: exercise.correctOptionId,
-            skill: "listening",
-            contentVersionId: lesson.versionId,
-          },
-        ],
-        authenticatedUserId: null,
-      }),
-    [outbox],
-  );
-  const projection = localIngestion.projections.find(
-    ({ state }) => state.itemId === item.id,
-  )?.state;
-
-  function playSignal() {
+  async function openLesson(): Promise<void> {
+    if (snapshot === null || busy) return;
+    setBusy(true);
     setMessage("");
-    void voicePractice.playModel();
-  }
-
-  async function submitAnswer(): Promise<void> {
-    if (selectedOptionId === null) {
-      setMessage("Choisissez une option avant de valider.");
-      return;
-    }
-
-    if (storageStatus !== "ready") {
-      setMessage("Le journal local n’est pas encore disponible.");
-      return;
-    }
-
-    let deviceId: string;
     try {
-      deviceId = await outboxStore.getOrCreateDeviceId(randomUUID);
-    } catch (error) {
-      setMessage(
-        error instanceof MobileAttemptOutboxStorageError
-          ? error.message
-          : "Le journal local est indisponible.",
-      );
-      return;
-    }
-
-    const submission = attemptSubmissionSchema.parse({
-      eventId: randomUUID(),
-      deviceId,
-      exerciseId: exercise.id,
-      selectedOptionId,
-      answeredAt: new Date().toISOString(),
-      durationMs: Math.min(
-        MAX_ATTEMPT_DURATION_MS,
-        Math.max(0, Date.now() - startedAt),
-      ),
-      contentVersionId: lesson.versionId,
-      algorithmVersion: SRS_ALGORITHM_VERSION,
-    });
-    const result = ingestAttemptBatch({
-      existingEvents: localIngestion.events,
-      submissions: [submission],
-      answerKeys: [
-        {
+      const currentLesson = snapshot.lesson;
+      if (currentLesson === null) {
+        const next = await experienceStore.startLesson({
+          lessonVersionId: lesson.versionId,
           exerciseId: exercise.id,
-          itemId: item.id,
-          correctOptionId: exercise.correctOptionId,
-          skill: "listening",
-          contentVersionId: lesson.versionId,
-        },
-      ],
-      authenticatedUserId: null,
-    });
-
-    const acceptedId = result.acceptedEventIds[0];
-    const accepted = result.events.find(
-      ({ eventId }) => eventId === acceptedId,
-    );
-    if (accepted === undefined) {
-      setMessage("La tentative locale n’a pas pu être évaluée.");
-      return;
-    }
-
-    try {
-      setOutbox(await outboxStore.enqueue(submission));
-    } catch (error) {
+          startedAt: new Date().toISOString(),
+        });
+        setSnapshot(next);
+      } else if (
+        currentLesson.lessonVersionId !== lesson.versionId ||
+        currentLesson.exerciseId !== exercise.id
+      ) {
+        setReplacementConfirmation(true);
+        return;
+      }
+      router.push("/lesson");
+    } catch {
       setMessage(
-        error instanceof MobileAttemptOutboxStorageError
-          ? error.message
-          : "La tentative n’a pas pu être conservée hors ligne.",
+        "La séance n’a pas pu être préparée. Vos données existantes sont conservées.",
       );
-      return;
+    } finally {
+      setBusy(false);
     }
-    setLatestRating(accepted.rating);
-    setStage("result");
-    AccessibilityInfo.announceForAccessibility(
-      accepted.rating === 1
-        ? exercise.feedback.correctFr
-        : exercise.feedback.incorrectFr,
-    );
   }
 
-  function handleSubmitAnswer(): void {
-    if (submissionInFlight.current) return;
-    submissionInFlight.current = true;
-    setIsSaving(true);
-    void submitAnswer().finally(() => {
-      submissionInFlight.current = false;
-      setIsSaving(false);
-    });
-  }
-
-  function handleFinish(): void {
+  async function replaceOldLessonVersion(): Promise<void> {
+    const expectedCheckpoint = snapshot?.lesson;
     if (
-      finishInFlight.current ||
-      voicePractice.isBusy ||
-      voicePractice.isRecording
+      expectedCheckpoint === undefined ||
+      expectedCheckpoint === null ||
+      outbox === null ||
+      busy
     ) {
       return;
     }
+    if (
+      expectedCheckpoint.lessonVersionId === lesson.versionId &&
+      expectedCheckpoint.exerciseId === exercise.id
+    ) {
+      setReplacementConfirmation(false);
+      setMessage(
+        "La séance locale a changé. Relisez son état avant de continuer.",
+      );
+      return;
+    }
 
-    finishInFlight.current = true;
-    voicePractice.pausePlayback();
-    void voicePractice
-      .deleteRecording()
-      .then((deleted) => {
-        if (!deleted) return;
-        setStage("intro");
-        setSelectedOptionId(null);
-        setLatestRating(null);
-      })
-      .finally(() => {
-        finishInFlight.current = false;
-      });
-  }
-
-  const pendingAttempts = outbox.entries.filter(
-    ({ status }) => status === "pending",
-  ).length;
-  const questionMessage = getQuestionMessage(
-    message,
-    stage,
-    voicePractice.error,
-  );
-
-  function handleRetryStorage(): void {
-    setStorageStatus("loading");
-    setStorageRetryToken((current) => current + 1);
-  }
-
-  function handleStart(): void {
-    setStartedAt(Date.now());
-    setStage("question");
-  }
-
-  function handleSelectOption(optionId: string): void {
-    setSelectedOptionId(optionId);
+    setBusy(true);
     setMessage("");
+    try {
+      const next = await experienceStore.replaceLessonVersion(
+        expectedCheckpoint,
+        {
+          lessonVersionId: lesson.versionId,
+          exerciseId: exercise.id,
+          startedAt: new Date().toISOString(),
+        },
+        outbox,
+      );
+      setSnapshot(next);
+      setReplacementConfirmation(false);
+      router.push("/lesson");
+    } catch {
+      setMessage(
+        "L’ancienne session n’a pas été abandonnée. Vos données existantes sont conservées.",
+      );
+    } finally {
+      setBusy(false);
+    }
   }
+
+  if (status === "error") {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.centered} accessibilityLiveRegion="assertive">
+          <Text style={styles.title}>Parcours local indisponible</Text>
+          <Text style={styles.body}>
+            Rien n’a été effacé. Réessayez pour relire le stockage de cet
+            appareil.
+          </Text>
+          <Pressable
+            accessibilityRole="button"
+            style={styles.primaryButton}
+            onPress={() => {
+              setStatus("loading");
+              setMessage("");
+              setRetryRevision((revision) => {
+                const nextRevision = revision + 1;
+                requestedRevisionRef.current = nextRevision;
+                return nextRevision;
+              });
+            }}
+          >
+            <Text style={styles.primaryText}>Réessayer</Text>
+          </Pressable>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  if (status === "loading" || snapshot === null || outbox === null) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.centered} accessibilityLiveRegion="polite">
+          <ActivityIndicator color="#283450" size="large" />
+          <Text style={styles.loadingText}>Préparation d’Aujourd’hui…</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  if (snapshot.onboarding.status !== "completed") {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.centered} accessibilityLiveRegion="polite">
+          <ActivityIndicator color="#283450" />
+          <Text style={styles.loadingText}>Ouverture de l’onboarding…</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  const lessonPhase = snapshot.lesson?.phase ?? null;
+  const hasOlderVersion =
+    snapshot.lesson !== null &&
+    (snapshot.lesson.lessonVersionId !== lesson.versionId ||
+      snapshot.lesson.exerciseId !== exercise.id);
+  const actionLabel = hasOlderVersion
+    ? "Abandonner cette ancienne session"
+    : lessonPhase === "question"
+      ? "Reprendre l’exercice"
+      : lessonPhase === "result"
+        ? "Voir mon résultat"
+        : lessonPhase === "submitting"
+          ? "Finaliser ma tentative"
+          : lessonPhase === "intro"
+            ? "Commencer la séance"
+            : lessonPhase === "completed"
+              ? "Revoir la démo locale"
+              : "Commencer la démo locale";
+  const pendingAttempts = outbox.entries.filter(
+    ({ status: entryStatus }) => entryStatus === "pending",
+  ).length;
+  const dueAt = dueAtFromOutbox(outbox);
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar style="dark" />
-      <DemoHeader />
-      <FixtureBanner
-        pendingAttempts={pendingAttempts}
-        storageStatus={storageStatus}
-      />
+      <View style={styles.header}>
+        <Text style={styles.brand}>Thaïnaute</Text>
+        <Link href="/account" asChild>
+          <Pressable accessibilityRole="button" style={styles.accountButton}>
+            <Text style={styles.accountText}>Compte</Text>
+          </Pressable>
+        </Link>
+      </View>
       <ScrollView contentContainerStyle={styles.content}>
-        <StageContent
-          dueAt={projection?.dueAt}
-          isSaving={isSaving}
-          latestRating={latestRating}
-          masteryScore={projection?.masteryScore ?? 0}
-          onFinish={handleFinish}
-          onPlaySignal={playSignal}
-          onRetryStorage={handleRetryStorage}
-          onSelectOption={handleSelectOption}
-          onStart={handleStart}
-          onSubmit={handleSubmitAnswer}
-          questionMessage={questionMessage}
-          selectedOptionId={selectedOptionId}
-          stage={stage}
-          storageStatus={storageStatus}
-          voicePractice={voicePractice}
-        />
+        <Text style={styles.eyebrow}>AUJOURD’HUI</Text>
+        <Text accessibilityRole="header" style={styles.title}>
+          Une petite écoute, à votre rythme.
+        </Text>
+        <Text style={styles.body}>
+          Objectif choisi :{" "}
+          {provisionalGoalLabel(snapshot.onboarding.goalOptionId)}
+        </Text>
+
+        <View style={styles.offlineCard} accessibilityRole="summary">
+          <Text style={styles.offlineTitle}>Disponible hors connexion</Text>
+          <Text style={styles.offlineBody}>
+            Cette fixture et son signal audio sont déjà sur cet appareil. Aucun
+            réseau n’est nécessaire pour cette démonstration.
+          </Text>
+        </View>
+
+        <View style={styles.lessonCard}>
+          <Text style={styles.fixtureLabel}>
+            DONNÉE FICTIVE · NON PUBLIABLE
+          </Text>
+          <Text style={styles.lessonTitle}>{lesson.titleFr}</Text>
+          <Text style={styles.body}>{lesson.objectiveFr}</Text>
+          <Text style={styles.localStatus} accessibilityLiveRegion="polite">
+            {pendingAttempts} tentative{pendingAttempts > 1 ? "s" : ""} dans le
+            journal technique local
+          </Text>
+          {dueAt !== null && (
+            <Text style={styles.localStatus}>
+              Prochaine révision calculée : {formatDueAt(dueAt)}
+            </Text>
+          )}
+          {hasOlderVersion && replacementConfirmation ? (
+            <View style={styles.replacementConfirmation}>
+              <Text accessibilityRole="alert" style={styles.warningText}>
+                Deuxième confirmation : abandonner ce point de reprise et
+                démarrer la version actuellement chargée ? Une tentative déjà
+                soumise reste dans le journal durable.
+              </Text>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ busy, disabled: busy }}
+                disabled={busy}
+                style={[styles.primaryButton, busy && styles.disabled]}
+                onPress={() => void replaceOldLessonVersion()}
+              >
+                <Text style={styles.primaryText}>
+                  {busy ? "Remplacement…" : "Confirmer l’abandon et démarrer"}
+                </Text>
+              </Pressable>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ disabled: busy }}
+                disabled={busy}
+                style={[styles.secondaryButton, busy && styles.disabled]}
+                onPress={() => setReplacementConfirmation(false)}
+              >
+                <Text style={styles.secondaryText}>
+                  Conserver l’ancienne session
+                </Text>
+              </Pressable>
+            </View>
+          ) : (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityState={{ busy, disabled: busy }}
+              disabled={busy}
+              style={[styles.primaryButton, busy && styles.disabled]}
+              onPress={() => void openLesson()}
+            >
+              <Text style={styles.primaryText}>
+                {busy ? "Préparation…" : actionLabel}
+              </Text>
+            </Pressable>
+          )}
+        </View>
+
+        {message !== "" && (
+          <Text accessibilityRole="alert" style={styles.error}>
+            {message}
+          </Text>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -874,220 +389,107 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 24,
+    padding: 28,
+    gap: 16,
   },
+  loadingText: { color: "#283450", fontSize: 16, fontWeight: "700" },
   header: {
-    minHeight: 72,
+    minHeight: 68,
     paddingHorizontal: 20,
     flexDirection: "row",
     alignItems: "center",
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: "#cbd0d8",
   },
-  logo: {
-    width: 40,
-    height: 40,
+  brand: { color: "#283450", fontSize: 18, fontWeight: "800" },
+  accountButton: {
+    minWidth: 72,
+    minHeight: 44,
+    marginLeft: "auto",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 12,
-    backgroundColor: "#283450",
   },
-  logoThai: { color: "white", fontSize: 23, lineHeight: 34 },
-  brand: { marginLeft: 10, color: "#283450", fontSize: 18, fontWeight: "800" },
-  step: { marginLeft: "auto", color: "#6b7486", fontSize: 12 },
-  fixtureBanner: {
-    paddingHorizontal: 20,
-    paddingVertical: 13,
-    backgroundColor: "#fff3cf",
-  },
-  fixtureTitle: { color: "#684c0d", fontSize: 13, fontWeight: "800" },
-  fixtureText: { marginTop: 2, color: "#7f6528", fontSize: 12 },
-  content: { flexGrow: 1 },
-  screen: {
-    flex: 1,
-    minHeight: 620,
-    paddingHorizontal: 24,
-    paddingVertical: 42,
-    alignItems: "stretch",
+  accountText: { color: "#283450", fontWeight: "700" },
+  content: {
+    width: "100%",
+    maxWidth: 720,
+    alignSelf: "center",
+    padding: 24,
+    paddingBottom: 56,
   },
   eyebrow: {
-    marginBottom: 16,
-    color: "#43a283",
-    fontSize: 11,
+    color: "#236b58",
+    fontSize: 12,
     fontWeight: "800",
-    letterSpacing: 1.5,
+    letterSpacing: 1.4,
   },
   title: {
+    marginTop: 12,
     color: "#283450",
-    fontSize: 38,
+    fontSize: 36,
     lineHeight: 43,
     fontWeight: "800",
-    letterSpacing: -1.5,
   },
-  body: { marginTop: 18, color: "#5e6980", fontSize: 17, lineHeight: 27 },
-  glyph: {
-    marginVertical: 36,
-    color: "#283450",
-    fontSize: 92,
-    lineHeight: 126,
-    textAlign: "center",
-  },
-  primaryButton: {
-    minHeight: 52,
+  body: { marginTop: 12, color: "#5e6980", fontSize: 16, lineHeight: 24 },
+  offlineCard: {
     marginTop: 24,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 999,
-    backgroundColor: "#283450",
-  },
-  primaryButtonText: { color: "white", fontSize: 16, fontWeight: "800" },
-  secondaryButton: {
-    minHeight: 48,
-    marginTop: 12,
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 1,
-    borderColor: "#cbd0d8",
-    borderRadius: 999,
-  },
-  secondaryButtonText: { color: "#283450", fontWeight: "700" },
-  pressed: { opacity: 0.82 },
-  disabled: { opacity: 0.5 },
-  audioButton: {
-    minHeight: 48,
-    marginVertical: 26,
-    paddingHorizontal: 18,
-    alignSelf: "flex-start",
-    justifyContent: "center",
-    borderRadius: 14,
-    backgroundColor: "#eef1f4",
-  },
-  audioButtonText: { color: "#283450", fontWeight: "700" },
-  answers: { gap: 12 },
-  answer: {
-    minHeight: 68,
-    paddingHorizontal: 18,
-    flexDirection: "row",
-    alignItems: "center",
-    borderWidth: 2,
-    borderColor: "#eef1f4",
+    padding: 18,
     borderRadius: 18,
-    backgroundColor: "white",
+    backgroundColor: "#eff9f5",
   },
-  answerSelected: { borderColor: "#43a283", backgroundColor: "#eff9f5" },
-  radio: {
-    width: 20,
-    height: 20,
-    marginRight: 14,
-    borderWidth: 2,
-    borderColor: "#8b94a4",
-    borderRadius: 10,
-  },
-  radioSelected: { borderWidth: 6, borderColor: "#43a283" },
-  answerText: { color: "#283450", fontSize: 16, fontWeight: "700" },
-  error: { marginTop: 16, color: "#a23d38", fontWeight: "600" },
-  metric: {
-    minHeight: 106,
-    marginTop: 14,
-    padding: 20,
-    justifyContent: "space-between",
-    borderRadius: 18,
-    backgroundColor: "#eef1f4",
-  },
-  metricLabel: {
-    color: "#687287",
-    fontSize: 11,
-    fontWeight: "800",
-    letterSpacing: 1,
-  },
-  metricValue: { color: "#43a283", fontSize: 28, fontWeight: "800" },
-  metricDate: { color: "#283450", fontSize: 19, fontWeight: "700" },
-  voiceCard: {
-    marginTop: 24,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: "#cfe7df",
-    borderRadius: 22,
-    backgroundColor: "#f2faf7",
-  },
-  voiceEyebrow: {
-    color: "#2d7c66",
-    fontSize: 11,
-    fontWeight: "800",
-    letterSpacing: 1,
-  },
-  voiceTitle: {
-    marginTop: 8,
-    color: "#283450",
-    fontSize: 24,
-    fontWeight: "800",
-  },
-  voiceBody: {
-    marginTop: 8,
-    color: "#5e6980",
-    fontSize: 15,
-    lineHeight: 22,
-  },
-  voiceActions: {
-    marginTop: 18,
-    flexDirection: "row",
-    gap: 10,
-  },
-  voiceButton: {
-    minHeight: 52,
-    paddingHorizontal: 12,
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 1,
-    borderColor: "#aeb8c7",
-    borderRadius: 14,
-    backgroundColor: "white",
-  },
-  voiceButtonActive: {
-    borderColor: "#43a283",
-    backgroundColor: "#e3f5ef",
-  },
-  voiceButtonText: {
-    color: "#283450",
-    fontSize: 13,
-    fontWeight: "800",
-    textAlign: "center",
-  },
-  recordButton: {
-    minHeight: 52,
-    marginTop: 12,
-    paddingHorizontal: 18,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 999,
-    backgroundColor: "#283450",
-  },
-  recordButtonActive: { backgroundColor: "#a23d38" },
-  recordButtonText: { color: "white", fontSize: 15, fontWeight: "800" },
-  deleteVoiceButton: {
-    minHeight: 48,
-    marginTop: 8,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  deleteVoiceButtonText: {
-    color: "#8f3834",
+  offlineTitle: { color: "#325f54", fontSize: 16, fontWeight: "800" },
+  offlineBody: {
+    marginTop: 6,
+    color: "#496b62",
     fontSize: 14,
-    fontWeight: "700",
-    textDecorationLine: "underline",
+    lineHeight: 21,
   },
-  voiceStatus: {
-    marginTop: 12,
-    color: "#325f54",
+  lessonCard: {
+    marginTop: 20,
+    padding: 22,
+    borderRadius: 24,
+    backgroundColor: "white",
+  },
+  fixtureLabel: {
+    color: "#9b514d",
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 1,
+  },
+  lessonTitle: {
+    marginTop: 10,
+    color: "#283450",
+    fontSize: 25,
+    lineHeight: 31,
+    fontWeight: "800",
+  },
+  localStatus: {
+    marginTop: 14,
+    color: "#697389",
     fontSize: 13,
     lineHeight: 19,
   },
-  voicePrivacy: {
-    marginTop: 14,
-    color: "#687287",
-    fontSize: 12,
-    lineHeight: 18,
+  primaryButton: {
+    minHeight: 52,
+    marginTop: 22,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 999,
+    backgroundColor: "#283450",
   },
-  privacy: { marginTop: 20, color: "#697389", fontSize: 13, lineHeight: 20 },
+  primaryText: { color: "white", fontSize: 16, fontWeight: "800" },
+  replacementConfirmation: { marginTop: 18 },
+  warningText: { color: "#7b2f2b", fontSize: 15, lineHeight: 22 },
+  secondaryButton: {
+    minHeight: 48,
+    marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "#aab2c0",
+    borderRadius: 999,
+  },
+  secondaryText: { color: "#283450", fontWeight: "700" },
+  disabled: { opacity: 0.5 },
+  error: { marginTop: 18, color: "#9b3732", fontSize: 14, lineHeight: 21 },
 });

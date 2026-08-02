@@ -13,8 +13,8 @@ export default function HomePage() {
         <nav aria-label="Navigation principale">
           <Link href="#methode">Méthode</Link>
           <Link href="/account">Compte</Link>
-          <Link className="button buttonSmall buttonGhost" href="/learn/demo">
-            Tester la boucle
+          <Link className="button buttonSmall buttonGhost" href="/today">
+            Aujourd’hui
           </Link>
         </nav>
       </header>
@@ -32,8 +32,8 @@ export default function HomePage() {
             maîtrise — sans transformer l’apprentissage en punition.
           </p>
           <div className="heroActions">
-            <Link className="button buttonPrimary" href="/learn/demo">
-              Ouvrir la leçon fictive
+            <Link className="button buttonPrimary" href="/today">
+              Commencer sans compte
             </Link>
             <span className="quiet">
               Aucun compte. Aucun contenu pédagogique publié.
