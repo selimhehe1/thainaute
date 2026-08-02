@@ -76,42 +76,89 @@
   margin-top: 26px;
 }
 
+.form {
+  counter-reset: entry;
+}
+
 .form fieldset {
   border: none;
   margin: 0;
-  padding: 0;
+  padding: 26px 0 0 44px;
+  position: relative;
+  border-top: 1px solid var(--color-line);
+}
+
+.form fieldset::before {
+  counter-increment: entry;
+  content: counter(entry);
+  position: absolute;
+  left: 4px;
+  top: 20px;
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--color-coral);
+  opacity: 0.75;
 }
 
 .form legend {
-  font-weight: var(--weight-bold);
-  font-size: 15.5px;
-  letter-spacing: -0.01em;
+  float: left;
+  width: 100%;
+  font-weight: var(--weight-display);
+  font-size: 17.5px;
+  letter-spacing: -0.02em;
   padding: 0;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.form fieldset::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .choices {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  gap: 9px;
+  clear: both;
 }
 
 .choices label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 9px;
-  background: var(--color-jasmine);
+  gap: 13px;
+  background: var(--color-paper);
   border: 1.5px solid var(--color-line);
   border-radius: var(--radius-md);
-  padding: 12px 16px;
+  padding: 13px 16px;
   min-height: var(--touch-target);
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: var(--weight-medium);
   cursor: pointer;
-  transition: border-color var(--motion-base) var(--ease-standard);
+  transition:
+    border-color var(--motion-base) var(--ease-standard),
+    background-color var(--motion-base) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
+}
+
+.choices label::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid var(--color-line);
+  background: var(--color-jasmine);
+  transition: inherit;
 }
 
 .choices label:hover {
+  border-color: var(--color-ink-soft);
+  transform: translateX(2px);
+}
+
+.choices label:hover::before {
   border-color: var(--color-ink-soft);
 }
 
@@ -121,10 +168,45 @@
   font-weight: var(--weight-bold);
 }
 
+.choices label:has(input:checked)::before {
+  border-color: var(--color-jade-ink);
+  background: var(--color-jade-ink)
+    no-repeat center / 13px
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5 L6 12 L13.5 4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+.choices label:has(input:focus-visible) {
+  outline: 3px solid var(--color-coral);
+  outline-offset: 2px;
+}
+
 .choices input {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--color-jade-ink);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .choices label,
+  .choices label::before {
+    transition: none;
+  }
+
+  .choices label:hover {
+    transform: none;
+  }
+}
+
+@media (min-width: 560px) {
+  .choices {
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  }
 }
 
 .inlineError {
@@ -139,6 +221,26 @@
 .primaryAction {
   justify-self: start;
   margin-top: 4px;
+}
+
+@media (max-width: 559px) {
+  .panel {
+    padding: 24px 20px 28px;
+  }
+
+  .form fieldset {
+    padding-left: 34px;
+  }
+
+  .form fieldset::before {
+    left: 0;
+    font-size: 26px;
+  }
+
+  .primaryAction {
+    justify-self: stretch;
+    width: 100%;
+  }
 }
 
 .session {
