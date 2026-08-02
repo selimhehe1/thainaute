@@ -2,8 +2,10 @@ name: CI
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, labeled]
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -71,6 +73,10 @@ jobs:
       - run: pnpm test:e2e:web
 
   native-android:
+    # Les compilations natives ne tournent pas sur chaque poussée de PR :
+    # elles restent garanties sur main, à la demande via le label « native »
+    # ou par déclenchement manuel, afin de préserver le quota Actions.
+    if: github.event_name != 'pull_request' || contains(github.event.pull_request.labels.*.name, 'native')
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -102,6 +108,9 @@ jobs:
         working-directory: apps/mobile/android
 
   native-ios:
+    # Runner macOS facturé à un multiplicateur x10 sur dépôt privé : même
+    # politique que native-android pour préserver le quota Actions.
+    if: github.event_name != 'pull_request' || contains(github.event.pull_request.labels.*.name, 'native')
     runs-on: macos-26
     timeout-minutes: 45
     steps:
