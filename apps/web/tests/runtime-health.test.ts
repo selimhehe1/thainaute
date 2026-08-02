@@ -11,8 +11,39 @@ describe("configuration et sondes de santé", () => {
       publicOrigin: "http://localhost:3000",
       publicIndexing: false,
       release: "development",
+      studioMode: "disabled",
       syncMode: "disabled",
     });
+  });
+
+  it("exige Auth lorsque le studio fixture est activé", () => {
+    const missing = diagnoseRuntime({
+      THAINAUTE_STUDIO_MODE: "fixture",
+    });
+    expect(missing.ready).toBe(false);
+    expect(missing.issues).toContain("studio_config_missing");
+
+    const configured = diagnoseRuntime({
+      THAINAUTE_STUDIO_MODE: "fixture",
+      NEXT_PUBLIC_SUPABASE_URL: "https://project.supabase.co",
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY:
+        "sb_publishable_example_public_value",
+    });
+    expect(configured).toMatchObject({
+      ready: true,
+      studioMode: "fixture",
+      syncMode: "disabled",
+    });
+  });
+
+  it("refuse un mode studio inconnu", () => {
+    const diagnostic = diagnoseRuntime({
+      THAINAUTE_STUDIO_MODE: "public",
+    });
+
+    expect(diagnostic.ready).toBe(false);
+    expect(diagnostic.studioMode).toBeNull();
+    expect(diagnostic.issues).toContain("studio_mode_invalid");
   });
 
   it("refuse d'activer l'indexation sur une origine non HTTPS", () => {

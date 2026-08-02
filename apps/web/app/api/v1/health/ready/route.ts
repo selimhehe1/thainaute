@@ -30,6 +30,14 @@ export async function GET() {
             : "ok",
           mode: diagnostic.syncMode,
         },
+        studio: {
+          status: diagnostic.issues.some((issue) =>
+            ["studio_mode_invalid", "studio_config_missing"].includes(issue),
+          )
+            ? "error"
+            : "ok",
+          mode: diagnostic.studioMode,
+        },
         auth: {
           status: assessment.dependencies.auth,
         },

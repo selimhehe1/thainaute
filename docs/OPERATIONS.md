@@ -95,6 +95,7 @@ l'environnement et l'indexation reste désactivée sur toute URL temporaire.
 | `THAINAUTE_PUBLIC_INDEXING`            | serveur                   | non     | `disabled` ou `enabled`               |
 | `THAINAUTE_RELEASE`                    | serveur                   | non     | identifiant court de release          |
 | `THAINAUTE_SYNC_MODE`                  | serveur                   | non     | `disabled` ou `supabase`              |
+| `THAINAUTE_STUDIO_MODE`                | serveur                   | non     | `disabled` ou `fixture`               |
 | `NEXT_PUBLIC_SUPABASE_URL`             | web et serveur            | non     | URL publique du projet Supabase       |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | web et serveur            | non     | clé publique soumise à RLS            |
 | `EXPO_PUBLIC_SUPABASE_URL`             | mobile                    | non     | URL publique du même environnement    |
@@ -141,6 +142,12 @@ web/serveur et le pepper de suppression. Une configuration incomplète doit
 faire échouer la readiness et laisser les API synchronisées indisponibles,
 jamais basculer vers une écriture non protégée.
 
+Le studio reste désactivé par défaut. `THAINAUTE_STUDIO_MODE=fixture` ouvre
+uniquement le préflight de la fixture technique et exige Auth ainsi que le rôle
+`content_editor` dans `app_metadata`, relu en direct. Le dépôt n'attribue ce
+rôle à aucun compte. Ce mode ne permet ni import, ni édition, ni écriture en
+base, ni publication et la page reste non indexable. Voir l'ADR-0017.
+
 ## Sondes de santé
 
 ### `GET /api/v1/health/live`
@@ -152,14 +159,15 @@ jamais basculer vers une écriture non protégée.
 
 ### `GET /api/v1/health/ready`
 
-- vérifie l'origine publique, l'indexation, le mode de synchronisation, les
-  variables Supabase et le pepper de suppression requis ;
+- vérifie l'origine publique, l'indexation, les modes de synchronisation et de
+  studio, les variables Supabase et le pepper de suppression requis ;
 - en mode `supabase`, sonde en parallèle Auth (`/auth/v1/health`) et la Data API
   avec une lecture `HEAD` sans rapatrier de ligne ; chaque dépendance est bornée
   à 2,5 secondes ;
 - renvoie `200` uniquement si la configuration, Auth et la Data API sont prêts,
   sinon `503` avec des statuts et codes de diagnostic fermés ;
-- en mode `disabled`, n'appelle aucune dépendance externe ;
+- lorsque synchronisation et studio sont désactivés, n'appelle aucune
+  dépendance externe ; le studio fixture seul sonde uniquement Auth ;
 - ne révèle aucune valeur de secret.
 
 La sonde Data API traverse PostgREST et Postgres sans créer de donnée. Elle ne
@@ -277,6 +285,11 @@ les contrôles locaux.
   serveur, mais aucun catalogue, téléchargement audio opaque ou contenu réel
   autorisé n'est encore branché. La relation exercice/item est désormais
   dérivée côté serveur ; elle ne constitue plus une porte ouverte.
+- Le Studio de prépublication est masqué par défaut. En mode `fixture`, il
+  relit le rôle `content_editor` dans `app_metadata` puis affiche uniquement un
+  rapport borné de la fixture technique. Il ne persiste aucun brouillon, ne
+  modifie aucune release et ne résout pas `OPEN-CONTENT-001`. Un workflow
+  éditorial immuable et transactionnel reste nécessaire avant tout corpus réel.
 - Le transport, la fusion anonyme→compte, le snapshot multi-appareil et la purge
   au logout sont implémentés. Leur parcours Auth/OTP, fusion, rejeu idempotent,
   hydratation multi-appareil et lecture RLS est exécuté contre Supabase local en

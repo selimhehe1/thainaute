@@ -16,6 +16,7 @@ export default defineConfig({
   },
   webServer: {
     command: "pnpm dev",
+    env: { THAINAUTE_STUDIO_MODE: "disabled" },
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
   },

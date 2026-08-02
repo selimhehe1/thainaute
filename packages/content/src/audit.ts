@@ -1,9 +1,17 @@
+import { z } from "zod";
+
 import type { ContentBundle } from "./schemas";
 
-export interface PublicationBlocker {
-  code: string;
-  detail: string;
-}
+export const publicationBlockerSchema = z.strictObject({
+  code: z
+    .string()
+    .min(1)
+    .max(80)
+    .regex(/^[A-Z0-9_]+$/u),
+  detail: z.string().min(1).max(240),
+});
+
+export type PublicationBlocker = z.infer<typeof publicationBlockerSchema>;
 
 export function getPublicationBlockers(
   bundle: ContentBundle,
@@ -11,16 +19,41 @@ export function getPublicationBlockers(
   const blockers: PublicationBlocker[] = [];
   const { lesson, audioManifest, sources } = bundle;
 
+  if (lesson.visibility !== "public") {
+    blockers.push({
+      code: "VISIBILITY_NOT_PUBLIC",
+      detail: "La version doit avoir une visibilité publique.",
+    });
+  }
   if (lesson.visibility === "fixture") {
     blockers.push({
       code: "FIXTURE_NOT_PUBLISHABLE",
       detail: "La visibilité fixture interdit la publication.",
     });
   }
+  if (lesson.workflowStatus === "conflict") {
+    blockers.push({
+      code: "WORKFLOW_CONFLICT",
+      detail: "Le workflow signale un conflit éditorial non résolu.",
+    });
+  }
   if (lesson.workflowStatus !== "published") {
     blockers.push({
       code: "WORKFLOW_NOT_PUBLISHED",
       detail: "La version n'est pas au statut published.",
+    });
+  }
+  if (lesson.workflowStatus === "published" && lesson.publishedAt === null) {
+    blockers.push({
+      code: "PUBLISHED_AT_MISSING",
+      detail: "Une version published doit avoir une date de publication.",
+    });
+  }
+  if (lesson.workflowStatus !== "published" && lesson.publishedAt !== null) {
+    blockers.push({
+      code: "PUBLISHED_AT_INCONSISTENT",
+      detail:
+        "Une date de publication ne peut être définie avant le statut published.",
     });
   }
   if (lesson.provenance.audits.some(({ status }) => status !== "passed")) {

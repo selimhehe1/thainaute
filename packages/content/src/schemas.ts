@@ -1,5 +1,20 @@
 import { z } from "zod";
 
+export const CONTENT_SCHEMA_LIMITS = {
+  thaiRawLength: 512,
+  unicodeCodePointsPerItem: 512,
+  syllablesPerItem: 64,
+  sourceIdsPerItem: 32,
+  itemsPerLesson: 100,
+  exercisesPerLesson: 200,
+  provenanceSourcesPerLesson: 100,
+  generationActorsPerLesson: 32,
+  findingsPerLesson: 100,
+  distributionPathsPerAudio: 8,
+  audioEntriesPerManifest: 200,
+  sourcesPerBundle: 100,
+} as const;
+
 const identifier = z
   .string()
   .min(1)
@@ -16,6 +31,27 @@ export const auditDimensionSchema = z.enum([
   "vowel_length",
   "register",
   "naturalness",
+]);
+
+export const auditStatusSchema = z.enum([
+  "pending",
+  "passed",
+  "failed",
+  "conflict",
+]);
+
+export const workflowStatusSchema = z.enum([
+  "draft",
+  "review",
+  "approved",
+  "conflict",
+  "published",
+]);
+
+export const contentVisibilitySchema = z.enum([
+  "fixture",
+  "internal",
+  "public",
 ]);
 
 export const sourceSchema = z
@@ -41,7 +77,7 @@ export const sourceSchema = z
 
 const syllableSchema = z
   .object({
-    thaiRaw: z.string().min(1),
+    thaiRaw: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
     ipa: nullableText,
     tone: nullableText,
     vowelLength: z.enum(["short", "long"]).nullable(),
@@ -53,8 +89,11 @@ const syllableSchema = z
 const itemSchema = z
   .object({
     id: identifier,
-    thaiRaw: z.string().min(1),
-    unicodeCodePoints: z.array(z.string().regex(/^U\+[0-9A-F]{4,6}$/u)).min(1),
+    thaiRaw: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+    unicodeCodePoints: z
+      .array(z.string().regex(/^U\+[0-9A-F]{4,6}$/u))
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.unicodeCodePointsPerItem),
     translationFr: nullableText,
     transcription: z
       .object({
@@ -62,9 +101,15 @@ const itemSchema = z
         value: nullableText,
       })
       .strict(),
-    syllables: z.array(syllableSchema).min(1),
+    syllables: z
+      .array(syllableSchema)
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.syllablesPerItem),
     register: nullableText,
-    sourceIds: z.array(identifier).min(1),
+    sourceIds: z
+      .array(identifier)
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.sourceIdsPerItem),
   })
   .strict();
 
@@ -115,7 +160,7 @@ const auditActorSchema = z
 const auditSchema = z
   .object({
     dimension: auditDimensionSchema,
-    status: z.enum(["pending", "passed", "failed", "conflict"]),
+    status: auditStatusSchema,
     auditor: auditActorSchema,
   })
   .strict();
@@ -135,22 +180,33 @@ export const lessonSchema = z
     lessonId: identifier,
     versionId: identifier,
     revision: z.number().int().positive(),
-    workflowStatus: z.enum(["draft", "review", "approved", "published"]),
-    visibility: z.enum(["fixture", "internal", "public"]),
+    workflowStatus: workflowStatusSchema,
+    visibility: contentVisibilitySchema,
     publishedAt: utcDateTime.nullable(),
     locale: z.literal("fr-FR"),
     titleFr: z.string().min(1).max(160),
     objectiveFr: z.string().min(1).max(400),
     requiredEntitlement: z.literal("premium").nullable(),
     audioManifestId: identifier,
-    items: z.array(itemSchema).min(1),
-    exercises: z.array(exerciseSchema).min(1),
+    items: z.array(itemSchema).min(1).max(CONTENT_SCHEMA_LIMITS.itemsPerLesson),
+    exercises: z
+      .array(exerciseSchema)
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.exercisesPerLesson),
     provenance: z
       .object({
-        sourceIds: z.array(identifier).min(1),
-        generationActors: z.array(generationActorSchema).min(1),
+        sourceIds: z
+          .array(identifier)
+          .min(1)
+          .max(CONTENT_SCHEMA_LIMITS.provenanceSourcesPerLesson),
+        generationActors: z
+          .array(generationActorSchema)
+          .min(1)
+          .max(CONTENT_SCHEMA_LIMITS.generationActorsPerLesson),
         audits: z.array(auditSchema).length(7),
-        findings: z.array(findingSchema),
+        findings: z
+          .array(findingSchema)
+          .max(CONTENT_SCHEMA_LIMITS.findingsPerLesson),
       })
       .strict(),
   })
@@ -186,7 +242,9 @@ const audioEntrySchema = z
     itemId: identifier,
     variant: z.enum(["fixture", "natural", "pedagogical"]),
     canonicalPath: z.string().min(1).max(500),
-    distributionPaths: z.array(z.string().min(1).max(500)),
+    distributionPaths: z
+      .array(z.string().min(1).max(500))
+      .max(CONTENT_SCHEMA_LIMITS.distributionPathsPerAudio),
     mimeType: z.enum(["audio/wav", "audio/mpeg"]),
     sha256: z.string().regex(/^[0-9a-f]{64}$/u),
     byteLength: z.number().int().positive(),
@@ -201,7 +259,10 @@ export const audioManifestSchema = z
     schemaVersion: z.literal(1),
     manifestId: identifier,
     lessonVersionId: identifier,
-    entries: z.array(audioEntrySchema).min(1),
+    entries: z
+      .array(audioEntrySchema)
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.audioEntriesPerManifest),
   })
   .strict();
 
@@ -209,7 +270,10 @@ export const contentBundleSchema = z
   .object({
     lesson: lessonSchema,
     audioManifest: audioManifestSchema,
-    sources: z.array(sourceSchema).min(1),
+    sources: z
+      .array(sourceSchema)
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.sourcesPerBundle),
   })
   .strict();
 

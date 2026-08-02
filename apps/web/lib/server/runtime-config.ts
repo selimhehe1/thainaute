@@ -1,5 +1,6 @@
 import { readSupabaseAttemptSyncConfiguration } from "./attempt-sync/runtime";
 import { readAccountDeletionConfiguration } from "./account-deletion/runtime";
+import { readContentStudioConfiguration } from "./content-studio/runtime";
 
 const LOCAL_PUBLIC_URL = "http://localhost:3000/";
 const RELEASE_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/u;
@@ -7,12 +8,15 @@ const RELEASE_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/u;
 type Environment = Readonly<Record<string, string | undefined>>;
 
 export type SyncMode = "disabled" | "supabase";
+export type StudioMode = "disabled" | "fixture";
 
 export type RuntimeIssue =
   | "account_deletion_config_missing"
   | "public_indexing_invalid"
   | "public_url_invalid"
   | "release_invalid"
+  | "studio_config_missing"
+  | "studio_mode_invalid"
   | "supabase_config_missing"
   | "sync_mode_invalid";
 
@@ -22,6 +26,7 @@ export interface RuntimeDiagnostic {
   readonly publicOrigin: string | null;
   readonly publicIndexing: boolean;
   readonly syncMode: SyncMode | null;
+  readonly studioMode: StudioMode | null;
   readonly issues: readonly RuntimeIssue[];
 }
 
@@ -49,6 +54,13 @@ function resolveSyncMode(value: string | undefined): SyncMode | null {
     return "disabled";
   }
   return value === "supabase" ? "supabase" : null;
+}
+
+function resolveStudioMode(value: string | undefined): StudioMode | null {
+  if (value === undefined || value === "" || value === "disabled") {
+    return "disabled";
+  }
+  return value === "fixture" ? "fixture" : null;
 }
 
 function hasSupabaseConfiguration(environment: Environment): boolean {
@@ -97,12 +109,23 @@ export function diagnoseRuntime(
     issues.push("account_deletion_config_missing");
   }
 
+  const studioMode = resolveStudioMode(environment.THAINAUTE_STUDIO_MODE);
+  if (studioMode === null) {
+    issues.push("studio_mode_invalid");
+  } else if (
+    studioMode === "fixture" &&
+    readContentStudioConfiguration(environment) === null
+  ) {
+    issues.push("studio_config_missing");
+  }
+
   return {
     ready: issues.length === 0,
     release,
     publicOrigin: publicUrl?.origin ?? null,
     publicIndexing,
     syncMode,
+    studioMode,
     issues,
   };
 }

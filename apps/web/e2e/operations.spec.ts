@@ -59,6 +59,32 @@ test("expose des sondes sûres et garde la sync fermée sans configuration", asy
   });
   expect(device.headers()["cache-control"]).toContain("no-store");
 
+  const studio = await request.get("/api/v1/studio/content/review");
+  expect(studio.status()).toBe(404);
+  expect(await studio.json()).toMatchObject({
+    error: { code: "not_found" },
+  });
+  expect(studio.headers()["cache-control"]).toContain("no-store");
+
+  const hiddenStudioMethods = [
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+    "HEAD",
+  ] as const;
+  const hiddenStudioResponses: APIResponse[] = [];
+  for (const method of hiddenStudioMethods) {
+    const response = await request.fetch("/api/v1/studio/content/review", {
+      method,
+    });
+    expect(response.status()).toBe(404);
+    expect(response.headers()["cache-control"]).toContain("no-store");
+    expect(response.headers()["allow"]).toBeUndefined();
+    hiddenStudioResponses.push(response);
+  }
+
   const missing = await request.get("/api/v1/route-inexistante");
   expect(missing.status()).toBe(404);
 
@@ -71,11 +97,21 @@ test("expose des sondes sûres et garde la sync fermée sans configuration", asy
     sync,
     content,
     device,
+    studio,
+    ...hiddenStudioResponses,
     missing,
     unsupportedMethod,
   ]) {
     expectApiSecurityHeaders(response);
   }
+});
+
+test("masque entièrement le studio tant que son mode reste fermé", async ({
+  page,
+}) => {
+  const response = await page.goto("/studio");
+  expect(response?.status()).toBe(404);
+  await expect(page.getByText("Publication refusée")).toHaveCount(0);
 });
 
 test("reste non indexable tant que la porte publique est fermée", async ({
