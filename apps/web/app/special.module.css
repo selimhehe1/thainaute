@@ -1,0 +1,73 @@
+/* États exceptionnels du carnet : erreur, page introuvable, chargement. */
+
+.shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.panel {
+  width: min(560px, 100%);
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: 34px 32px 36px;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.curve {
+  color: var(--color-line);
+  margin-bottom: 6px;
+}
+
+.curveLoader {
+  color: var(--color-coral);
+  margin-bottom: 6px;
+}
+
+.curveLoader path {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation: trace 1.4s ease-in-out infinite;
+}
+
+@keyframes trace {
+  60% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -160;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curveLoader path {
+    animation: none;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+.panel h1 {
+  font-size: clamp(24px, 4.5vw, 30px);
+  font-weight: var(--weight-display);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+
+.panel p {
+  color: var(--color-ink-soft);
+  margin: 0 0 20px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
