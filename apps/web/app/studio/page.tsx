@@ -3,7 +3,11 @@ import { notFound } from "next/navigation";
 
 import { readContentStudioConfiguration } from "@/lib/server/content-studio/runtime";
 
+import { SiteHeader } from "@/components/layout/site-header";
+import { buttonClass } from "@/components/ui/button";
+
 import { ContentReviewStudio } from "./content-review-studio";
+import styles from "./studio.module.css";
 
 export const dynamic = "force-dynamic";
 export const metadata = {
@@ -15,18 +19,12 @@ export default function StudioPage() {
   if (readContentStudioConfiguration() === null) notFound();
 
   return (
-    <main className="lessonShell studioShell">
-      <header className="lessonHeader">
-        <Link className="brand" href="/" aria-label="Thaïnaute, accueil">
-          <span aria-hidden="true" className="brandMark">
-            ท
-          </span>
-          <span>Thaïnaute</span>
-        </Link>
-        <Link className="button buttonSmall buttonGhost" href="/account">
+    <main className={styles.shell}>
+      <SiteHeader navLabel="Navigation du studio">
+        <Link className={buttonClass("ghost")} href="/account">
           Revenir au compte
         </Link>
-      </header>
+      </SiteHeader>
       <ContentReviewStudio />
     </main>
   );

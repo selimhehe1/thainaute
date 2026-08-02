@@ -1,6 +1,9 @@
 "use client";
 
 import { noOpAnalytics, type AnalyticsSink } from "@thainaute/analytics";
+import { buttonClass } from "@/components/ui/button";
+import panel from "@/components/ui/panel.module.css";
+import styles from "./account.module.css";
 import {
   SyncHttpApiError,
   SyncHttpProtocolError,
@@ -401,27 +404,24 @@ export function AccountDeletionSection({
     <section
       aria-busy={busy}
       aria-labelledby="account-deletion-title"
-      className="accountDeletion"
+      className={styles.subPanel}
     >
-      <p className="eyebrow">Zone sensible</p>
+      <p className={panel.eyebrow}>Zone sensible</p>
       <h2 id="account-deletion-title">
         Supprimer d&eacute;finitivement mon compte
       </h2>
 
       {showInitialConfirmation && (
-        <form className="accountDeletionForm" onSubmit={requestCode}>
+        <form className={styles.form} onSubmit={requestCode}>
           <p>
             Cette action est irr&eacute;versible.{" "}
-            <a
-              className="accountDeletionExportLink"
-              href="#account-export-title"
-            >
+            <a className={styles.exportLink} href="#account-export-title">
               T&eacute;l&eacute;chargez votre export JSON
             </a>{" "}
             avant de continuer si vous souhaitez conserver une copie de vos
             donn&eacute;es synchronis&eacute;es.
           </p>
-          <ul className="accountDeletionWarnings">
+          <ul className={styles.warnings}>
             <li>
               Les tentatives locales li&eacute;es &agrave; ce compte seront
               effac&eacute;es, m&ecirc;me si elles n&apos;ont pas encore
@@ -443,7 +443,7 @@ export function AccountDeletionSection({
               installation sont conserv&eacute;es.
             </li>
           </ul>
-          <label className="accountDeletionCheck">
+          <label className={styles.check}>
             <input
               checked={understandsIrreversible}
               disabled={busy}
@@ -468,7 +468,7 @@ export function AccountDeletionSection({
             onChange={(event) => setConfirmation(event.target.value)}
           />
           <button
-            className="button accountDanger"
+            className={buttonClass("danger")}
             disabled={
               busy || !understandsIrreversible || confirmation !== "SUPPRIMER"
             }
@@ -480,7 +480,7 @@ export function AccountDeletionSection({
       )}
 
       {showCodeForm && (
-        <form className="accountDeletionForm" onSubmit={verifyAndDelete}>
+        <form className={styles.form} onSubmit={verifyAndDelete}>
           <label htmlFor="account-deletion-code">
             Code &agrave; six chiffres re&ccedil;u par email
           </label>
@@ -497,7 +497,7 @@ export function AccountDeletionSection({
             onChange={(event) => setCode(event.target.value)}
           />
           <button
-            className="button accountDanger"
+            className={buttonClass("danger")}
             disabled={busy || !/^\d{6}$/u.test(code)}
             type="submit"
           >
@@ -508,7 +508,7 @@ export function AccountDeletionSection({
 
       {showReauthentication && canReauthenticate && (
         <button
-          className="button accountDanger"
+          className={buttonClass("danger")}
           disabled={busy}
           onClick={(event) => void requestCode(event)}
           type="button"
@@ -520,7 +520,7 @@ export function AccountDeletionSection({
       {view.phase === "retry" &&
         (operation !== null ? (
           <button
-            className="button buttonGhost"
+            className={buttonClass("ghost")}
             disabled={busy}
             onClick={() => void runOperation(operation)}
             type="button"
@@ -529,7 +529,7 @@ export function AccountDeletionSection({
           </button>
         ) : (
           <button
-            className="button buttonGhost"
+            className={buttonClass("ghost")}
             disabled={busy}
             onClick={reloadPendingOperation}
             type="button"

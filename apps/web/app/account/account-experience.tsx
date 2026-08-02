@@ -1,6 +1,9 @@
 "use client";
 
 import type { AnalyticsSink } from "@thainaute/analytics";
+import { buttonClass } from "@/components/ui/button";
+import panel from "@/components/ui/panel.module.css";
+import styles from "./account.module.css";
 import Link from "next/link";
 import {
   type FormEvent,
@@ -51,19 +54,19 @@ function SignedOutAccountPanel({
   onVerifyCode,
 }: SignedOutAccountPanelProps) {
   return (
-    <div className="accountPanel">
-      <p className="eyebrow">Après une première réussite</p>
+    <div className={styles.panel}>
+      <p className={panel.eyebrow}>Après une première réussite</p>
       <h1>Retrouver sa progression partout.</h1>
-      <p className="lede accountLede">
+      <p className={panel.lede}>
         Un code à six chiffres suffit. La progression locale ne sera jamais
         fusionnée sans votre accord explicite.
       </p>
-      <p className="accountMessage">
+      <p className={styles.message}>
         Après une expiration distante, toute progression non synchronisée reste
         verrouillée jusqu’à la reconnexion au même compte.
       </p>
       {!codeRequested ? (
-        <form className="accountForm" onSubmit={onRequestCode}>
+        <form className={styles.form} onSubmit={onRequestCode}>
           <label htmlFor="account-email">Adresse email</label>
           <input
             autoComplete="email"
@@ -75,7 +78,7 @@ function SignedOutAccountPanel({
             onChange={(event) => onEmailChange(event.target.value)}
           />
           <button
-            className="button buttonPrimary"
+            className={buttonClass("primary")}
             disabled={busy}
             type="submit"
           >
@@ -83,7 +86,7 @@ function SignedOutAccountPanel({
           </button>
         </form>
       ) : (
-        <form className="accountForm" onSubmit={onVerifyCode}>
+        <form className={styles.form} onSubmit={onVerifyCode}>
           <label htmlFor="account-code">Code reçu par email</label>
           <input
             autoComplete="one-time-code"
@@ -96,14 +99,14 @@ function SignedOutAccountPanel({
             onChange={(event) => onCodeChange(event.target.value)}
           />
           <button
-            className="button buttonPrimary"
+            className={buttonClass("primary")}
             disabled={busy}
             type="submit"
           >
             {busy ? "Vérification…" : "Me connecter"}
           </button>
           <button
-            className="button buttonGhost"
+            className={buttonClass("ghost")}
             type="button"
             onClick={onResetCodeRequest}
           >
@@ -112,7 +115,7 @@ function SignedOutAccountPanel({
         </form>
       )}
       {message !== "" && (
-        <p className="inlineError">
+        <p className={panel.inlineError}>
           <output>{message}</output>
         </p>
       )}
@@ -173,7 +176,7 @@ function AccountMetrics({
   "accountPending" | "anonymousCount" | "contentReportPending" | "stateCount"
 >) {
   return (
-    <div className="accountMetrics" aria-live="polite">
+    <div className={styles.metrics} aria-live="polite">
       <div data-testid="account-metric-synced-states">
         <strong>{stateCount}</strong>
         <span>états maîtrisés synchronisés</span>
@@ -197,7 +200,7 @@ function AccountMetrics({
 function ForeignFusionNotice({ active }: Readonly<{ active: boolean }>) {
   if (!active) return null;
   return (
-    <section className="accountChoice" aria-labelledby="foreign-fusion-title">
+    <section className={styles.choice} aria-labelledby="foreign-fusion-title">
       <h2 id="foreign-fusion-title">Fusion locale déjà engagée</h2>
       <p>
         Reconnectez le compte qui l’a commencée pour la terminer. Ce compte peut
@@ -211,7 +214,7 @@ function RejectedAnonymousAttempts({ count }: Readonly<{ count: number }>) {
   if (count === 0) return null;
   const plural = count > 1;
   return (
-    <p className="accountMessage">
+    <p className={styles.message}>
       {count} tentative{plural ? "s" : ""} non importable{plural ? "s" : ""}{" "}
       reste{plural ? "nt" : ""} locale{plural ? "s" : ""} jusqu’à suppression.
     </p>
@@ -252,16 +255,16 @@ function AnonymousProgressChoice({
   }
 
   return (
-    <section className="accountChoice" aria-labelledby="fusion-title">
+    <section className={styles.choice} aria-labelledby="fusion-title">
       <h2 id="fusion-title">Que faire de la progression locale ?</h2>
       <p>
         La fusion conserve les heures et identifiants des tentatives, puis
         laisse le serveur recalculer la maîtrise.
       </p>
-      <div className="lessonActions">
+      <div className={panel.actions}>
         {anonymousImportableCount > 0 && (
           <button
-            className="button buttonPrimary"
+            className={buttonClass("primary")}
             disabled={busy}
             onClick={onSynchronize}
             type="button"
@@ -270,7 +273,7 @@ function AnonymousProgressChoice({
           </button>
         )}
         <button
-          className="button buttonGhost"
+          className={buttonClass("ghost")}
           disabled={busy}
           onClick={onKeep}
           type="button"
@@ -278,7 +281,7 @@ function AnonymousProgressChoice({
           Garder pour plus tard
         </button>
         <button
-          className="button accountDanger"
+          className={buttonClass("danger")}
           disabled={busy}
           onClick={onDiscard}
           type="button"
@@ -313,9 +316,9 @@ function SignedInAccountActions({
   onSynchronize,
 }: SignedInAccountActionsProps) {
   return (
-    <div className="lessonActions accountActions">
+    <div className={panel.actions}>
       <button
-        className="button buttonPrimary"
+        className={buttonClass("primary")}
         disabled={busy}
         onClick={onSynchronize}
         type="button"
@@ -324,7 +327,7 @@ function SignedInAccountActions({
       </button>
       <Link
         aria-disabled={busy}
-        className="button buttonGhost"
+        className={buttonClass("ghost")}
         href="/learn/connected"
         onClick={(event) => {
           if (busy) event.preventDefault();
@@ -389,8 +392,8 @@ function SignedInAccountPanel({
   const logoutConfirmationPending = logoutConfirmationUserId === userId;
 
   return (
-    <div className="accountPanel">
-      <p className="eyebrow">Compte connecté</p>
+    <div className={styles.panel}>
+      <p className={panel.eyebrow}>Compte connecté</p>
       <h1>Votre progression, sous votre contrôle.</h1>
       <AccountMetrics {...summary} />
       <ForeignFusionNotice active={summary.activeFusionForAnotherAccount} />
@@ -428,7 +431,7 @@ function SignedInAccountPanel({
         onSynchronize={() => onSynchronize(false)}
       />
       {message !== "" && (
-        <p className="accountMessage">
+        <p className={styles.message}>
           <output>{message}</output>
         </p>
       )}
@@ -684,13 +687,13 @@ export function AccountExperience() {
   if (auth.status === "unconfigured") {
     return (
       <>
-        <div className="accountNotice" role="status">
+        <div className={styles.notice} role="status">
           <h1>Compte non configuré ici</h1>
           <p>
             Cette copie locale ne possède aucune clé publique Supabase. La leçon
             hors ligne reste utilisable sans compte.
           </p>
-          <Link className="button buttonPrimary" href="/learn/demo">
+          <Link className={buttonClass("primary")} href="/learn/demo">
             Continuer hors ligne
           </Link>
         </div>

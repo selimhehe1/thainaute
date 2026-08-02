@@ -130,8 +130,8 @@ describe("studio web de prépublication", () => {
     expect(screen.getByText("U+0E01 U+0E48")).toBeVisible();
     expect(screen.getAllByText("Orthographe")[0]).toBeVisible();
     expect(screen.getAllByText("À contrôler")).toHaveLength(7);
-    expect(screen.getAllByText("À contrôler")[0]).toHaveClass(
-      "studioAuditStatus-pending",
+    expect(screen.getAllByText("À contrôler")[0]?.className).toMatch(
+      /auditPending/u,
     );
     expect(screen.getByText(/aucune écriture, aucune release/u)).toBeVisible();
     expect(mocks.request).toHaveBeenCalledWith({

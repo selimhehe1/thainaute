@@ -1,6 +1,9 @@
 "use client";
 
 import { noOpAnalytics, type AnalyticsSink } from "@thainaute/analytics";
+import { buttonClass } from "@/components/ui/button";
+import panel from "@/components/ui/panel.module.css";
+import styles from "./account.module.css";
 import {
   SyncHttpApiError,
   SyncHttpAuthenticationError,
@@ -169,7 +172,7 @@ export function AccountExportSection({
     <section
       aria-busy={isLoading}
       aria-labelledby="account-export-title"
-      className="accountExport"
+      className={styles.subPanel}
     >
       <h2 id="account-export-title">Exporter les données de mon compte</h2>
       <p>
@@ -182,13 +185,13 @@ export function AccountExportSection({
         vos prises de voix ne sont pas inclus. Les voix restent uniquement sur
         cet appareil.
       </p>
-      <p className="accountExportPrivacy" id="account-export-personal-warning">
+      <p className={styles.message} id="account-export-personal-warning">
         Ce fichier peut contenir des données personnelles. Conservez-le dans un
         emplacement sûr.
       </p>
 
       {hasLocalWarnings && (
-        <ul className="accountExportWarnings">
+        <ul className={styles.warnings}>
           {pendingAttemptCount > 0 && (
             <li>
               {pendingAttemptCount} tentative
@@ -216,7 +219,7 @@ export function AccountExportSection({
       <button
         aria-busy={isLoading}
         aria-describedby="account-export-personal-warning"
-        className="button buttonGhost"
+        className={buttonClass("ghost")}
         disabled={isLoading}
         onClick={() => void exportAccount()}
         type="button"

@@ -377,25 +377,27 @@ export function LocalVoiceComparison({
 
   return (
     <section
-      className="voiceComparison"
+      className={lessonStyles.voiceComparison}
       aria-labelledby="voice-comparison-title"
     >
-      <div className="voiceComparisonHeader">
+      <div className={lessonStyles.voiceComparisonHeader}>
         <div>
-          <p className="eyebrow">Comparaison facultative</p>
+          <p className={lessonStyles.eyebrow}>Comparaison facultative</p>
           <h2 id="voice-comparison-title">Écouter A, puis votre prise B.</h2>
         </div>
-        <span className="localOnlyBadge">Local uniquement</span>
+        <span className={lessonStyles.localOnlyBadge}>Local uniquement</span>
       </div>
-      <p className="voicePrivacy">
+      <p className={lessonStyles.voicePrivacy}>
         Le navigateur demandera le microphone seulement après votre clic. Votre
         voix reste en mémoire dans cet onglet : elle n’est ni enregistrée dans
         votre compte, ni envoyée, ni analysée.
       </p>
 
-      <div className="voiceTracks">
+      <div className={lessonStyles.voiceTracks}>
         <article>
-          <span className="voiceTrackLabel">A · signal modèle fictif</span>
+          <span className={lessonStyles.voiceTrackLabel}>
+            A · signal modèle fictif
+          </span>
           <span className="srOnly" id="model-audio-description">
             Signal sonore fictif : une note pure de 440 hertz pendant 0,32
             seconde, sans parole.
@@ -432,7 +434,9 @@ export function LocalVoiceComparison({
           </audio>
         </article>
         <article>
-          <span className="voiceTrackLabel">B · votre prise locale</span>
+          <span className={lessonStyles.voiceTrackLabel}>
+            B · votre prise locale
+          </span>
           <span className="srOnly" id="local-voice-audio-description">
             Votre propre prise vocale, conservée localement sans transcription
             automatique.
@@ -465,13 +469,13 @@ export function LocalVoiceComparison({
               />
             </audio>
           ) : (
-            <p className="voiceEmpty">Aucune prise conservée.</p>
+            <p className={lessonStyles.voiceEmpty}>Aucune prise conservée.</p>
           )}
         </article>
       </div>
 
       {isRecording && (
-        <div className="recordingProgress">
+        <div className={lessonStyles.recordingProgress}>
           <progress
             aria-label="Temps restant pour la prise"
             aria-valuetext={`${remainingSeconds} seconde${remainingSeconds > 1 ? "s" : ""} restante${remainingSeconds > 1 ? "s" : ""}`}
@@ -482,7 +486,7 @@ export function LocalVoiceComparison({
         </div>
       )}
 
-      <div className="voiceActions">
+      <div className={lessonStyles.voiceActions}>
         {captureAction}
         {capture !== null && !isRecording && (
           <button
