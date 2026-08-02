@@ -160,7 +160,7 @@ describe("leçon web fictive", () => {
     renderDemo({ capture });
 
     expect(
-      screen.getByText("Donnée fictive — non publiable"),
+      screen.getByText("Donnée fictive · non publiable"),
     ).toBeInTheDocument();
     const startButton = screen.getByRole("button", { name: "Commencer" });
     await waitFor(() => expect(startButton).toBeEnabled());
