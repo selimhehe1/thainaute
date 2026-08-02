@@ -4,26 +4,6 @@
   padding-bottom: 72px;
 }
 
-.header {
-  min-height: 82px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
-}
-
-.brand {
-  min-height: var(--touch-target);
-  display: inline-flex;
-  align-items: center;
-}
-
-.step {
-  font-size: 13px;
-  font-weight: var(--weight-semibold);
-  color: var(--color-ink-soft);
-}
-
 .card {
   position: relative;
   background: var(--color-paper);

@@ -1,6 +1,8 @@
 "use client";
 
 import type { PublicAudioAsset } from "@thainaute/content/public";
+import { buttonClass } from "@/components/ui/button";
+import styles from "./connected.module.css";
 import type {
   AttemptOutboxEntry,
   LessonExerciseProgress,
@@ -425,8 +427,8 @@ export function ConnectedExperience() {
 
   if (phase === "loading" || auth.status === "loading") {
     return (
-      <section className="connectedPanel" aria-busy="true" aria-live="polite">
-        <p className="eyebrow">Contenu vérifié</p>
+      <section className={styles.panel} aria-busy="true" aria-live="polite">
+        <p className={styles.eyebrow}>Contenu vérifié</p>
         <h1>Chargement de la boucle connectée…</h1>
       </section>
     );
@@ -434,12 +436,12 @@ export function ConnectedExperience() {
 
   if (connected === null) {
     return (
-      <section className="connectedPanel" role="alert">
-        <p className="eyebrow">Preview fermée par défaut</p>
+      <section className={styles.panel} role="alert">
+        <p className={styles.eyebrow}>Preview fermée par défaut</p>
         <h1>La boucle connectée n’est pas disponible ici.</h1>
-        <p className="lede">{message}</p>
+        <p className={styles.lede}>{message}</p>
         <button
-          className="button buttonGhost"
+          className={buttonClass("ghost")}
           type="button"
           onClick={() => setRetryToken((current) => current + 1)}
         >
@@ -455,20 +457,17 @@ export function ConnectedExperience() {
   const result = attempt?.status === "synced" ? attempt : null;
 
   return (
-    <article className="connectedPanel">
-      <div className="connectedBanner" role="note">
+    <article className={styles.panel}>
+      <div className={styles.banner} role="note">
         Fixture technique locale · aucune valeur pédagogique · non publiable
       </div>
-      <p className="eyebrow">
+      <p className={styles.eyebrow}>
         Release {lesson.releaseVersion} · contenu gratuit
       </p>
       <h1>{lesson.titleFr}</h1>
-      <p className="lede connectedLede">{lesson.objectiveFr}</p>
+      <p className={styles.lede}>{lesson.objectiveFr}</p>
 
-      <section
-        className="connectedAudio"
-        aria-labelledby="connected-audio-title"
-      >
+      <section className={styles.audio} aria-labelledby="connected-audio-title">
         <div>
           <h2 id="connected-audio-title">1. Vérifier le signal</h2>
           <p>
@@ -477,7 +476,7 @@ export function ConnectedExperience() {
         </div>
         {verifiedAudio === null ? (
           <button
-            className="button buttonGhost"
+            className={buttonClass("ghost")}
             type="button"
             aria-busy={audioBusy}
             disabled={audioBusy}
@@ -493,7 +492,7 @@ export function ConnectedExperience() {
         {audioMessage !== "" && <p role="status">{audioMessage}</p>}
       </section>
 
-      <form className="connectedQuestion" onSubmit={submit}>
+      <form className={styles.question} onSubmit={submit}>
         <fieldset
           disabled={
             verifiedAudio === null ||
@@ -502,7 +501,7 @@ export function ConnectedExperience() {
           }
         >
           <legend>2. {exercise.promptFr}</legend>
-          <div className="connectedOptions">
+          <div className={styles.options}>
             {exercise.options.map((option) => (
               <label key={option.id}>
                 <input
@@ -519,21 +518,21 @@ export function ConnectedExperience() {
         </fieldset>
 
         {userId === null ? (
-          <div className="connectedAccountGate">
+          <div className={styles.accountGate}>
             <p>
               Cette preview utilise une correction serveur et exige un compte
               permanent. La démo gratuite sans compte reste disponible.
             </p>
-            <Link className="button buttonPrimary" href="/account">
+            <Link className={buttonClass("primary")} href="/account">
               Me connecter
             </Link>
-            <Link className="button buttonGhost" href="/learn/demo">
+            <Link className={buttonClass("ghost")} href="/learn/demo">
               Ouvrir la démo locale
             </Link>
           </div>
         ) : (
           <button
-            className="button buttonPrimary connectedSubmit"
+            className={buttonClass("primary") + " " + styles.submit}
             type="submit"
             aria-busy={phase === "submitting"}
             disabled={
@@ -554,12 +553,18 @@ export function ConnectedExperience() {
 
       {message !== "" && (
         <section
-          className={`connectedStatus connectedStatus-${phase}`}
+          className={
+            phase === "result"
+              ? styles.status + " " + styles.statusResult
+              : phase === "pending"
+                ? styles.status + " " + styles.statusPending
+                : styles.status
+          }
           aria-live={phase === "result" ? "polite" : "assertive"}
         >
           {phase === "result" ? (
             <>
-              <p className="eyebrow">
+              <p className={styles.eyebrow}>
                 {result?.rating === 1 ? "Réponse validée" : "À retravailler"}
               </p>
               <h2 ref={resultHeading} tabIndex={-1}>
@@ -570,7 +575,7 @@ export function ConnectedExperience() {
           <p>{message}</p>
           {phase === "pending" && online && (
             <button
-              className="button buttonGhost"
+              className={buttonClass("ghost")}
               type="button"
               onClick={retrySynchronization}
             >
@@ -581,9 +586,9 @@ export function ConnectedExperience() {
       )}
 
       {progress !== null && (
-        <section className="connectedProgress" aria-labelledby="progress-title">
+        <section className={styles.progress} aria-labelledby="progress-title">
           <div>
-            <p className="eyebrow">Projection serveur provisoire</p>
+            <p className={styles.eyebrow}>Projection serveur provisoire</p>
             <h2 id="progress-title">Maîtrise et prochaine révision</h2>
           </div>
           <dl>
