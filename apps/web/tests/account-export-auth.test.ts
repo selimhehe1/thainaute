@@ -167,7 +167,7 @@ describe("orchestration Auth vérifiée de l'export", () => {
   function createAuth(input?: {
     readonly claimsData?: { readonly claims: unknown } | null;
     readonly claimsError?: { readonly status?: number } | null;
-    readonly userData?: { readonly user: unknown };
+    readonly userData?: { readonly user: unknown } | null;
     readonly userError?: { readonly status?: number } | null;
   }) {
     return {
@@ -226,6 +226,18 @@ describe("orchestration Auth vérifiée de l'export", () => {
       });
     },
   );
+
+  it("refuse l'ancien JWT d'un utilisateur supprimé malgré ses claims valides", async () => {
+    await expect(
+      verifySupabaseAccountExportIdentity({
+        auth: createAuth({ userData: { user: null } }),
+        accessToken: "deleted-user-token",
+      }),
+    ).rejects.toMatchObject({
+      code: "unauthorized",
+      status: 401,
+    });
+  });
 
   it("ferme les données claims nulles et les exceptions transport", async () => {
     await expect(

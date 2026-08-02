@@ -101,4 +101,5 @@ export * from "./http-client";
 export * from "./hydration";
 export * from "./coordinator";
 export * from "./account-export-contracts";
+export * from "./account-deletion-contracts";
 export * from "./local-experience";

@@ -25,6 +25,16 @@ import {
   type AccountExportDocument,
   type AccountExportErrorCode,
 } from "./account-export-contracts";
+import {
+  ACCOUNT_DELETION_CONFIRMATION,
+  ACCOUNT_DELETION_CONTINUATION_HEADER,
+  accountDeletionErrorResponseSchema,
+  accountDeletionHeadersSchema,
+  accountDeletionReceiptSchema,
+  type AccountDeletionErrorCode,
+  type AccountDeletionHeaders,
+  type AccountDeletionReceipt,
+} from "./account-deletion-contracts";
 import type { PreparedAttemptOutboxBatch } from "./outbox";
 
 const ACCESS_TOKEN_MAX_LENGTH = 16 * 1_024;
@@ -46,6 +56,7 @@ const preparedAttemptBatchSchema = z.strictObject({
 });
 
 const ENDPOINT_PATHS = {
+  account_deletion: "/api/v1/account",
   account_export: "/api/v1/account/export",
   device_registration: "/api/v1/devices/register",
   attempt_batch: "/api/v1/attempts/batch",
@@ -54,7 +65,10 @@ const ENDPOINT_PATHS = {
 
 export type SyncHttpEndpoint = keyof typeof ENDPOINT_PATHS;
 export type SyncHttpApiErrorCode =
-  ApiErrorCode | DeviceRegistrationErrorCode | AccountExportErrorCode;
+  | ApiErrorCode
+  | DeviceRegistrationErrorCode
+  | AccountExportErrorCode
+  | AccountDeletionErrorCode;
 
 export interface AuthenticatedSyncSession {
   readonly accessToken: string;
@@ -171,7 +185,8 @@ export class SyncHttpApiError extends Error {
       input.status === 408 ||
       input.status === 429 ||
       input.status >= 500 ||
-      input.code === "concurrent_update";
+      input.code === "concurrent_update" ||
+      input.code === "deletion_in_progress";
   }
 }
 
@@ -184,6 +199,10 @@ export interface SyncHttpClient {
   ): Promise<AttemptBatchResponse>;
   getProgressSnapshot(): Promise<ProgressSnapshotResponse>;
   getAccountExport(signal?: AbortSignal): Promise<AccountExportDocument>;
+  deleteAccount(
+    headers: AccountDeletionHeaders,
+    signal?: AbortSignal,
+  ): Promise<AccountDeletionReceipt>;
 }
 
 function normalizeBaseUrl(input: string, allowInsecureHttp: boolean): string {
@@ -325,28 +344,50 @@ export function createSyncHttpClient(
     return result.data.accessToken;
   }
 
+  async function accountDeletionAccessToken(): Promise<string | undefined> {
+    let candidate: unknown;
+    try {
+      candidate = await options.getSession();
+    } catch {
+      return undefined;
+    }
+
+    const result = authenticatedSyncSessionSchema.safeParse(candidate);
+    if (!result.success || result.data.userId !== expectedUserId) {
+      return undefined;
+    }
+    return result.data.accessToken;
+  }
+
   async function request(input: {
     readonly endpoint: SyncHttpEndpoint;
-    readonly method: "GET" | "POST";
+    readonly method: "DELETE" | "GET" | "POST";
     readonly body?: unknown;
     readonly idempotencyKey?: string;
+    readonly continuationSecret?: string;
     readonly signal?: AbortSignal;
   }): Promise<unknown> {
     const externalSignalIsAborted = () => input.signal?.aborted === true;
     if (externalSignalIsAborted()) {
       throw new SyncHttpTransportError(input.endpoint);
     }
-    const token = await accessToken(input.endpoint);
+    const token =
+      input.endpoint === "account_deletion"
+        ? await accountDeletionAccessToken()
+        : await accessToken(input.endpoint);
     if (externalSignalIsAborted()) {
       throw new SyncHttpTransportError(input.endpoint);
     }
     const headers: Record<string, string> = {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     };
+    if (token !== undefined) headers.Authorization = `Bearer ${token}`;
     if (input.body !== undefined) headers["Content-Type"] = "application/json";
     if (input.idempotencyKey !== undefined) {
       headers["Idempotency-Key"] = input.idempotencyKey;
+    }
+    if (input.continuationSecret !== undefined) {
+      headers[ACCOUNT_DELETION_CONTINUATION_HEADER] = input.continuationSecret;
     }
 
     let response: Response;
@@ -387,6 +428,9 @@ export function createSyncHttpClient(
     if (response.ok) return payload;
 
     const errorResult = (() => {
+      if (input.endpoint === "account_deletion") {
+        return accountDeletionErrorResponseSchema.safeParse(payload);
+      }
       if (input.endpoint === "account_export") {
         return accountExportErrorResponseSchema.safeParse(payload);
       }
@@ -495,6 +539,30 @@ export function createSyncHttpClient(
       await accessToken("account_export");
       if (signal?.aborted === true) {
         throw new SyncHttpTransportError("account_export");
+      }
+      return response.data;
+    },
+
+    async deleteAccount(headersInput, signal) {
+      const deletionHeaders = parseRequest(
+        accountDeletionHeadersSchema,
+        headersInput,
+        "account_deletion",
+      );
+      const payload = await request({
+        endpoint: "account_deletion",
+        method: "DELETE",
+        body: { confirmation: ACCOUNT_DELETION_CONFIRMATION },
+        idempotencyKey: deletionHeaders.idempotencyKey,
+        continuationSecret: deletionHeaders.continuationSecret,
+        ...(signal === undefined ? {} : { signal }),
+      });
+      const response = accountDeletionReceiptSchema.safeParse(payload);
+      if (!response.success) {
+        throw new SyncHttpProtocolError(
+          "account_deletion",
+          "invalid_success_response",
+        );
       }
       return response.data;
     },

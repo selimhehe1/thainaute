@@ -87,7 +87,24 @@ vi.mock("../lib/attempt-outbox-store", () => ({
     }
 
     async purgeOwnerData() {
-      testState.calls.push("purge-anonymous");
+      testState.calls.push(
+        this.owner.kind === "account"
+          ? `purge-account:${this.owner.userId}`
+          : "purge-anonymous",
+      );
+    }
+
+    async tombstoneAndPurgeAccountData() {
+      testState.calls.push(
+        this.owner.kind === "account"
+          ? `tombstone-account:${this.owner.userId}`
+          : "tombstone-anonymous",
+      );
+    }
+
+    async isAccountTombstoned() {
+      testState.calls.push("read-tombstone");
+      return true;
     }
 
     async purgeAccountDataIfSettled() {
@@ -99,6 +116,8 @@ vi.mock("../lib/attempt-outbox-store", () => ({
 // eslint-disable-next-line import/first
 import {
   discardMobileAnonymousProgress,
+  forcePurgeDeletedMobileAccountData,
+  isDeletedMobileAccountTombstoned,
   readMobileAccountLocalState,
   synchronizeMobileAccount,
 } from "../lib/account-sync";
@@ -143,6 +162,7 @@ describe("orchestration de la synchronisation mobile", () => {
       database: {} as never,
       userId: ids.user,
       startAnonymousFusion: true,
+      assertAccountWritable: async () => undefined,
     });
 
     expect(testState.calls).toEqual([
@@ -151,6 +171,25 @@ describe("orchestration de la synchronisation mobile", () => {
       "start-fusion",
       "synchronize",
     ]);
+  });
+
+  it("ferme la synchronisation avant toute mutation si une suppression existe", async () => {
+    const deletionGuard = vi.fn(async () => {
+      throw new Error("account deletion in progress");
+    });
+
+    await expect(
+      synchronizeMobileAccount({
+        database: {} as never,
+        userId: ids.user,
+        startAnonymousFusion: false,
+        assertAccountWritable: deletionGuard,
+      }),
+    ).rejects.toThrow("account deletion in progress");
+
+    expect(deletionGuard).toHaveBeenCalledOnce();
+    expect(testState.calls).toEqual([]);
+    expect(testState.getSession).not.toHaveBeenCalled();
   });
 
   it("migre aussi avant la lecture ou l'abandon explicite du progrès anonyme", async () => {
@@ -165,5 +204,19 @@ describe("orchestration de la synchronisation mobile", () => {
     testState.calls.splice(0);
     await discardMobileAnonymousProgress({} as never);
     expect(testState.calls).toEqual(["migrate:demo", "purge-anonymous"]);
+  });
+
+  it("force uniquement la purge du namespace du compte supprimé", async () => {
+    await forcePurgeDeletedMobileAccountData({} as never, ids.user);
+
+    expect(testState.calls).toEqual([`tombstone-account:${ids.user}`]);
+    expect(testState.calls).not.toContain("purge-anonymous");
+  });
+
+  it("relit le tombstone du sujet supprimé", async () => {
+    await expect(
+      isDeletedMobileAccountTombstoned({} as never, ids.user),
+    ).resolves.toBe(true);
+    expect(testState.calls).toEqual(["read-tombstone"]);
   });
 });

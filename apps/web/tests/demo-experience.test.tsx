@@ -205,7 +205,7 @@ describe("leçon web fictive", () => {
     const startButton = screen.getByRole("button", { name: "Commencer" });
     await waitFor(() => expect(startButton).toBeEnabled());
     await user.click(startButton);
-    await user.click(screen.getByRole("radio", { name: "Option B" }));
+    await user.click(await screen.findByRole("radio", { name: "Option B" }));
 
     await waitFor(async () => {
       const inspector = new WebLocalExperienceStore();
@@ -329,7 +329,7 @@ describe("leçon web fictive", () => {
     const startButton = screen.getByRole("button", { name: "Commencer" });
     await waitFor(() => expect(startButton).toBeEnabled());
     await user.click(startButton);
-    await user.click(screen.getByRole("radio", { name: "Option A" }));
+    await user.click(await screen.findByRole("radio", { name: "Option A" }));
     await user.click(screen.getByRole("button", { name: "Valider" }));
     await screen.findByRole("heading", {
       name: "La boucle technique fonctionne.",
@@ -532,7 +532,7 @@ describe("leçon web fictive", () => {
     const startButton = screen.getByRole("button", { name: "Commencer" });
     await waitFor(() => expect(startButton).toBeEnabled());
     await user.click(startButton);
-    await user.click(screen.getByRole("radio", { name: "Option A" }));
+    await user.click(await screen.findByRole("radio", { name: "Option A" }));
 
     const submit = screen.getByRole("button", { name: "Valider" });
     fireEvent.click(submit);

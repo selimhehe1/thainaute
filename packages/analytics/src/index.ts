@@ -38,6 +38,10 @@ export type AnalyticsEvent =
   | {
       name: "account_export_requested";
       platform: "web" | "ios" | "android";
+    }
+  | {
+      name: "account_deletion_requested";
+      platform: "web" | "ios" | "android";
     };
 
 export interface AnalyticsSink {

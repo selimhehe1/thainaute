@@ -9,6 +9,22 @@ const sha256HexSchema = z
 export type Sha256Hex = (value: string) => Promise<string>;
 
 /**
+ * Empreinte locale, séparée par domaine, d'un sujet définitivement supprimé.
+ * Le UUID canonique n'a jamais besoin d'être conservé dans le tombstone.
+ */
+export async function deriveDeletedAccountSubjectFingerprint(input: {
+  readonly userId: string;
+  readonly sha256Hex: Sha256Hex;
+}): Promise<string> {
+  const userId = canonicalUuidSchema.parse(input.userId);
+  return sha256HexSchema.parse(
+    await input.sha256Hex(
+      `thainaute/deleted-account-subject/v1\u0000${userId}`,
+    ),
+  );
+}
+
+/**
  * Dérive un UUIDv8 opaque et stable pour un couple installation/compte.
  * L'identifiant d'installation reste local et n'expose aucun lien inter-compte
  * au serveur. Le préfixe versionné évite toute réutilisation dans un autre but.

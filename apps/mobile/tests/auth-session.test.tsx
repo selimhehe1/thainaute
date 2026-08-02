@@ -30,10 +30,12 @@ const mocks = vi.hoisted(() => {
       },
     ),
     purgeSettledAccount: vi.fn(() => Promise.resolve(false)),
+    signInWithOtp: vi.fn(() => Promise.resolve({ error: null })),
     signOut: vi.fn(() => Promise.resolve({ error: null })),
     startAutoRefresh: vi.fn(),
     state,
     stopAutoRefresh: vi.fn(),
+    verifyOtp: vi.fn(),
   };
 });
 
@@ -57,14 +59,19 @@ vi.mock("../lib/supabase-auth", () => ({
     auth: {
       getSession: mocks.getSession,
       onAuthStateChange: mocks.onAuthStateChange,
+      signInWithOtp: mocks.signInWithOtp,
       signOut: mocks.signOut,
       startAutoRefresh: mocks.startAutoRefresh,
       stopAutoRefresh: mocks.stopAutoRefresh,
+      verifyOtp: mocks.verifyOtp,
     },
   }),
 }));
 
-function session(userId: string): Session {
+function session(
+  userId: string,
+  email: string = "Selim.Exact+test@example.invalid",
+): Session {
   return {
     access_token: "unit-test-access",
     expires_in: 3_600,
@@ -74,6 +81,7 @@ function session(userId: string): Session {
       app_metadata: {},
       aud: "authenticated",
       created_at: "2026-08-01T10:00:00.000Z",
+      email,
       id: userId,
       is_anonymous: false,
       user_metadata: {},
@@ -99,10 +107,12 @@ describe("session Auth mobile", () => {
     mocks.getSession.mockReset();
     mocks.onAuthStateChange.mockClear();
     mocks.purgeSettledAccount.mockClear();
+    mocks.signInWithOtp.mockReset().mockResolvedValue({ error: null });
     mocks.signOut.mockClear();
     mocks.startAutoRefresh.mockClear();
     mocks.state.authStateChange = null;
     mocks.stopAutoRefresh.mockClear();
+    mocks.verifyOtp.mockReset();
   });
 
   afterEach(() => {
@@ -199,6 +209,98 @@ describe("session Auth mobile", () => {
     await waitFor(() => expect(result.current.status).toBe("signed_in"));
     await expect(result.current.signOutLocal(ids.userA)).rejects.toThrow(
       "La session a changé avant la déconnexion.",
+    );
+    expect(mocks.signOut).not.toHaveBeenCalled();
+  });
+
+  it("envoie la réauthentification à l'email exact sans créer de compte", async () => {
+    const exactEmail = "Selim.Exact+security@example.invalid";
+    mocks.getSession.mockResolvedValue({
+      data: { session: session(ids.userA, exactEmail) },
+      error: null,
+    });
+    const { result } = renderHook(() => useMobileAuthSession(), { wrapper });
+    await waitFor(() => expect(result.current.status).toBe("signed_in"));
+
+    await result.current.requestAccountDeletionReauthenticationCode(ids.userA);
+
+    expect(mocks.signInWithOtp).toHaveBeenCalledWith({
+      email: exactEmail,
+      options: { shouldCreateUser: false },
+    });
+  });
+
+  it("valide le code uniquement pour le même utilisateur durable", async () => {
+    const exactEmail = "Selim.Exact+security@example.invalid";
+    mocks.getSession.mockResolvedValue({
+      data: { session: session(ids.userA, exactEmail) },
+      error: null,
+    });
+    mocks.verifyOtp.mockResolvedValue({
+      data: { session: session(ids.userA, exactEmail) },
+      error: null,
+    });
+    const { result } = renderHook(() => useMobileAuthSession(), { wrapper });
+    await waitFor(() => expect(result.current.status).toBe("signed_in"));
+    await result.current.requestAccountDeletionReauthenticationCode(ids.userA);
+
+    await result.current.verifyAccountDeletionReauthenticationCode(
+      ids.userA,
+      "123456",
+    );
+
+    expect(mocks.verifyOtp).toHaveBeenCalledWith({
+      email: exactEmail,
+      token: "123456",
+      type: "email",
+    });
+
+    await result.current.requestAccountDeletionReauthenticationCode(ids.userA);
+    mocks.verifyOtp.mockResolvedValue({
+      data: { session: session(ids.userB) },
+      error: null,
+    });
+    await expect(
+      result.current.verifyAccountDeletionReauthenticationCode(
+        ids.userA,
+        "654321",
+      ),
+    ).rejects.toThrow("invalide ou a expiré");
+  });
+
+  it("efface seulement la session locale du sujet supprimé et tolère son absence", async () => {
+    mocks.getSession.mockResolvedValue({
+      data: { session: session(ids.userA) },
+      error: null,
+    });
+    const { result } = renderHook(() => useMobileAuthSession(), { wrapper });
+    await waitFor(() => expect(result.current.status).toBe("signed_in"));
+
+    mocks.getSession.mockResolvedValue({
+      data: { session: session(ids.userB) },
+      error: null,
+    });
+    await result.current.clearDeletedSession(ids.userA);
+    expect(mocks.signOut).not.toHaveBeenCalled();
+
+    mocks.getSession.mockResolvedValue({
+      data: { session: null },
+      error: null,
+    });
+    await result.current.clearDeletedSession(ids.userA);
+    expect(mocks.signOut).not.toHaveBeenCalled();
+
+    mocks.getSession.mockResolvedValue({
+      data: { session: session(ids.userA) },
+      error: null,
+    });
+    await result.current.clearDeletedSession(ids.userA);
+    expect(mocks.signOut).toHaveBeenCalledWith({ scope: "local" });
+
+    mocks.signOut.mockClear();
+    mocks.getSession.mockRejectedValue(new Error("secure store unavailable"));
+    await expect(result.current.clearDeletedSession(ids.userA)).rejects.toThrow(
+      "ne peut pas être vérifiée localement",
     );
     expect(mocks.signOut).not.toHaveBeenCalled();
   });

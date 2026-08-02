@@ -16,7 +16,7 @@ Une décision `OPEN` bloque seulement la fonctionnalité ou la phase indiquée.
 | OPEN-TONE-001    | algorithme tonal et jeu d'évaluation natif                             | avant analyse tonale P1           | ouverte |
 | OPEN-API-001     | seuils et stratégie de limitation par compte et IP pour `/api/v1`      | avant bêta distante               | ouverte |
 | OPEN-SRS-001     | versions SRS rétrocompatibles, durée de support et migration/dispatch  | avant toute nouvelle version SRS  | ouverte |
-| OPEN-SYNC-002    | rétention et purge du registre serveur d'idempotence                   | avant bêta distante               | ouverte |
+| OPEN-SYNC-002    | rétention/purge des registres d'idempotence et reçus de suppression    | avant bêta distante               | ouverte |
 | OPEN-OFFLINE-001 | correction différée ou matériel de notation local considéré non secret | avant vraie expérience hors ligne | ouverte |
 
 ## Décisions résolues

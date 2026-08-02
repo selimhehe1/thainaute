@@ -82,6 +82,7 @@ function client(
   sendAttemptBatch: SyncHttpClient["sendAttemptBatch"],
 ): SyncHttpClient {
   return {
+    deleteAccount: () => Promise.reject(new Error("Non utilisé ici.")),
     getAccountExport: () => Promise.reject(new Error("Non utilisé ici.")),
     registerDevice: () =>
       Promise.resolve({

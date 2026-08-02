@@ -15,7 +15,8 @@ change jamais de propriétaire.
 `POST /api/v1/devices/register` est l'unique chemin de création d'un profil et
 d'un appareil après vérification du jeton Supabase. Le corps strict contient
 seulement `deviceId`, `platform` et `appVersion`. L'identité du compte provient
-du claim `sub` vérifié côté serveur.
+du claim `sub` vérifié côté serveur, confirmé par une relecture `getUser` du
+même Bearer et comparé à `user.id`. Un compte anonyme ou supprimé est refusé.
 
 La route appelle `register_device_v1` avec la clé Supabase secrète. Cette RPC
 est `SECURITY INVOKER`, exécutable uniquement par `service_role`, et crée le

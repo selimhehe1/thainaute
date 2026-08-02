@@ -34,9 +34,11 @@ La commande publique est `POST /api/v1/attempts/batch` :
   acceptés depuis le client.
 
 Le serveur vérifie le jeton avec Supabase Auth et tire l'identité du claim
-`sub`. Il utilise `getClaims(accessToken)`, qui vérifie le JWT contre le JWKS
-du projet quand la clé de signature est asymétrique et retombe sur le serveur
-Auth pour une clé symétrique.
+`sub`. La frontière commune appelle `getClaims(accessToken)`, qui vérifie le
+JWT contre le JWKS du projet quand la clé de signature est asymétrique, puis
+`getUser(accessToken)`, qui relit l'utilisateur courant auprès d'Auth. Le même
+Bearer doit produire deux UUID concordants et un compte permanent. Ainsi, un
+ancien JWT encore signé mais rattaché à un utilisateur supprimé est refusé.
 
 Une réponse `200` contient :
 
@@ -160,5 +162,6 @@ Voir aussi le [guide d'exploitation](../OPERATIONS.md) et le
 ## Références officielles
 
 - [Supabase — vérification des claims JWT](https://supabase.com/docs/reference/javascript/auth-getclaims)
+- [Supabase — relecture Auth de l'utilisateur](https://supabase.com/docs/reference/javascript/auth-getuser)
 - [Supabase — fonctions, `security invoker` et privilèges d'exécution](https://supabase.com/docs/guides/database/functions)
 - [Supabase — sécuriser la Data API](https://supabase.com/docs/guides/api/securing-your-api)

@@ -26,6 +26,19 @@ describe("analytics soumis au consentement", () => {
     });
   });
 
+  it("décrit une demande de suppression avec la seule plateforme", () => {
+    const capture = vi.fn();
+    createConsentAwareAnalytics(true, { capture }).capture({
+      name: "account_deletion_requested",
+      platform: "android",
+    });
+
+    expect(capture).toHaveBeenCalledWith({
+      name: "account_deletion_requested",
+      platform: "android",
+    });
+  });
+
   it("garde les réponses d’onboarding hors du catalogue analytics", () => {
     const capture = vi.fn();
     const analytics = createConsentAwareAnalytics(true, { capture });
