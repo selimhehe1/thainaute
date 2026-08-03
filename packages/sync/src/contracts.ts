@@ -44,17 +44,97 @@ const canonicalUuidSchema = z.uuid().transform((uuid) => uuid.toLowerCase());
 /** Valeur attendue dans l'en-tête HTTP `Idempotency-Key`. */
 export const idempotencyKeySchema = canonicalUuidSchema;
 
-/** Contrat public v1 d'une tentative enregistrée localement. */
-export const attemptSubmissionSchema = z.strictObject({
-  eventId: canonicalUuidSchema,
-  deviceId: canonicalUuidSchema,
-  exerciseId: canonicalUuidSchema,
-  selectedOptionId: canonicalUuidSchema,
-  answeredAt: utcIsoTimestampSchema,
-  durationMs: z.number().int().min(0).max(MAX_ATTEMPT_DURATION_MS),
-  contentVersionId: canonicalUuidSchema,
-  algorithmVersion: attemptAlgorithmVersionSchema,
-});
+export const MAX_ASSOCIATION_PAIRS_PER_ANSWER = 6;
+export const MAX_WORD_ORDER_TOKENS_PER_ANSWER = 12;
+export const MAX_RECALL_ANSWER_LENGTH = 512;
+
+/**
+ * Réponse typée des mécaniques qui ne tiennent pas dans une option unique
+ * (ADR-0024). L'écoute et la lecture continuent d'employer
+ * `selectedOptionId` : leurs tentatives déjà persistées restent valides.
+ */
+export const attemptAnswerSchema = z.discriminatedUnion("kind", [
+  z.strictObject({
+    kind: z.literal("association"),
+    pairs: z
+      .array(
+        z.strictObject({
+          promptPairId: canonicalUuidSchema,
+          chosenPairId: canonicalUuidSchema,
+        }),
+      )
+      .min(1)
+      .max(MAX_ASSOCIATION_PAIRS_PER_ANSWER),
+  }),
+  z.strictObject({
+    kind: z.literal("word_order"),
+    tokenIds: z
+      .array(canonicalUuidSchema)
+      .min(1)
+      .max(MAX_WORD_ORDER_TOKENS_PER_ANSWER),
+  }),
+  z.strictObject({
+    kind: z.literal("recall"),
+    /** Saisie brute : la normalisation Unicode appartient au serveur. */
+    value: z.string().min(1).max(MAX_RECALL_ANSWER_LENGTH),
+  }),
+]);
+
+function assertUniqueAssociationPairs(
+  answer: z.infer<typeof attemptAnswerSchema>,
+  context: z.RefinementCtx,
+  path: readonly (string | number)[],
+): void {
+  if (answer.kind !== "association") return;
+  const prompts = answer.pairs.map(({ promptPairId }) => promptPairId);
+  const chosen = answer.pairs.map(({ chosenPairId }) => chosenPairId);
+  if (new Set(prompts).size !== prompts.length) {
+    context.addIssue({
+      code: "custom",
+      message: "Chaque paire proposée ne peut être appariée qu'une fois.",
+      path: [...path, "pairs"],
+    });
+  }
+  if (new Set(chosen).size !== chosen.length) {
+    context.addIssue({
+      code: "custom",
+      message: "Chaque étiquette ne peut être choisie qu'une fois.",
+      path: [...path, "pairs"],
+    });
+  }
+}
+
+/** Contrat public d'une tentative enregistrée localement. */
+export const attemptSubmissionSchema = z
+  .strictObject({
+    eventId: canonicalUuidSchema,
+    deviceId: canonicalUuidSchema,
+    exerciseId: canonicalUuidSchema,
+    /** Mécaniques à option unique. Exclusif avec `answer`. */
+    selectedOptionId: canonicalUuidSchema.optional(),
+    /** Mécaniques à réponse composée. Exclusif avec `selectedOptionId`. */
+    answer: attemptAnswerSchema.optional(),
+    answeredAt: utcIsoTimestampSchema,
+    durationMs: z.number().int().min(0).max(MAX_ATTEMPT_DURATION_MS),
+    contentVersionId: canonicalUuidSchema,
+    algorithmVersion: attemptAlgorithmVersionSchema,
+  })
+  .superRefine((submission, context) => {
+    const hasOption = submission.selectedOptionId !== undefined;
+    const hasAnswer = submission.answer !== undefined;
+    if (hasOption === hasAnswer) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "Une tentative porte soit une option choisie, soit une réponse typée.",
+        path: ["answer"],
+      });
+      return;
+    }
+    if (submission.answer !== undefined) {
+      assertUniqueAssociationPairs(submission.answer, context, ["answer"]);
+    }
+  });
 
 /** Corps de `POST /api/v1/attempts/batch`. */
 export const attemptBatchSchema = z
@@ -183,6 +263,81 @@ export type LearnerItemState = z.infer<typeof learnerItemStateSchema>;
 export type AttemptBatchResponse = z.infer<typeof attemptBatchResponseSchema>;
 export type ApiErrorCode = z.infer<typeof apiErrorCodeSchema>;
 export type ApiErrorResponse = z.infer<typeof apiErrorResponseSchema>;
+export type AttemptAnswer = z.infer<typeof attemptAnswerSchema>;
+
+/** Forme partagée par une réponse soumise et par un brouillon local. */
+export type ComparableAttemptAnswer =
+  | {
+      readonly kind: "association";
+      readonly pairs: readonly {
+        readonly promptPairId: string;
+        readonly chosenPairId: string;
+      }[];
+    }
+  | { readonly kind: "word_order"; readonly tokenIds: readonly string[] }
+  | { readonly kind: "recall"; readonly value: string };
+
+/** Comparateur unique : trois copies divergentes laissaient passer deux
+ * réponses différentes pour un même identifiant d'événement. */
+export function attemptAnswersAreEqual(
+  left: ComparableAttemptAnswer | null | undefined,
+  right: ComparableAttemptAnswer | null | undefined,
+): boolean {
+  if (left == null || right == null) return (left ?? null) === (right ?? null);
+  if (left.kind !== right.kind) return false;
+  if (left.kind === "recall") {
+    return right.kind === "recall" && left.value === right.value;
+  }
+  if (left.kind === "word_order") {
+    return (
+      right.kind === "word_order" &&
+      left.tokenIds.length === right.tokenIds.length &&
+      left.tokenIds.every((tokenId, index) => tokenId === right.tokenIds[index])
+    );
+  }
+  return (
+    right.kind === "association" &&
+    left.pairs.length === right.pairs.length &&
+    left.pairs.every(
+      (pair, index) =>
+        pair.promptPairId === right.pairs[index]?.promptPairId &&
+        pair.chosenPairId === right.pairs[index]?.chosenPairId,
+    )
+  );
+}
+
+export type OptionAttemptSubmission = ValidatedAttemptSubmission & {
+  readonly selectedOptionId: string;
+};
+
+/**
+ * Garde de frontière : la notation actuelle ne sait corriger qu'une option
+ * unique. Les réponses typées sont conservées mais restent sans note
+ * autoritaire tant que le serveur ne les corrige pas (ADR-0024, phase C).
+ */
+export function isOptionAttempt(
+  submission: ValidatedAttemptSubmission,
+): submission is OptionAttemptSubmission {
+  return submission.selectedOptionId !== undefined;
+}
+
+/** Égalité stricte de deux tentatives, réponse typée comprise. */
+export function attemptSubmissionsAreEqual(
+  left: ValidatedAttemptSubmission,
+  right: ValidatedAttemptSubmission,
+): boolean {
+  return (
+    left.eventId === right.eventId &&
+    left.deviceId === right.deviceId &&
+    left.exerciseId === right.exerciseId &&
+    left.selectedOptionId === right.selectedOptionId &&
+    attemptAnswersAreEqual(left.answer, right.answer) &&
+    left.answeredAt === right.answeredAt &&
+    left.durationMs === right.durationMs &&
+    left.contentVersionId === right.contentVersionId &&
+    left.algorithmVersion === right.algorithmVersion
+  );
+}
 export type ValidatedAttemptSubmission = z.infer<
   typeof attemptSubmissionSchema
 >;

@@ -9,6 +9,7 @@ import {
   attemptFeedbackSchema,
   attemptRejectionCodeSchema,
   attemptSubmissionSchema,
+  attemptSubmissionsAreEqual,
   idempotencyKeySchema,
   learnerItemStateSchema,
   type AttemptBatch,
@@ -317,21 +318,7 @@ export class AttemptOutboxCapacityError extends Error {
   }
 }
 
-function submissionsAreEqual(
-  left: ValidatedAttemptSubmission,
-  right: ValidatedAttemptSubmission,
-): boolean {
-  return (
-    left.eventId === right.eventId &&
-    left.deviceId === right.deviceId &&
-    left.exerciseId === right.exerciseId &&
-    left.selectedOptionId === right.selectedOptionId &&
-    left.answeredAt === right.answeredAt &&
-    left.durationMs === right.durationMs &&
-    left.contentVersionId === right.contentVersionId &&
-    left.algorithmVersion === right.algorithmVersion
-  );
-}
+const submissionsAreEqual = attemptSubmissionsAreEqual;
 
 function mergeAuthoritativeStates(
   current: readonly LearnerItemState[],

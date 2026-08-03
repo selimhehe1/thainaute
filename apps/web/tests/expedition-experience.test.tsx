@@ -308,7 +308,7 @@ describe("reprise durable du lecteur", () => {
       next = openLocalLessonQuestion(next, "2026-08-03T08:59:40.000Z");
       next = selectLocalLessonOption(
         next,
-        submission.selectedOptionId,
+        submission.selectedOptionId ?? "",
         "2026-08-03T08:59:50.000Z",
       );
       next = prepareLocalLessonSubmission(
@@ -403,4 +403,70 @@ describe("mesure et rythme du lecteur", () => {
       }),
     ).toBeInTheDocument();
   }, 20_000);
+});
+
+describe("intégrité de la note après rechargement", () => {
+  it("garde l'erreur d'association : un rechargement ne blanchit pas la faute", async () => {
+    const user = userEvent.setup();
+    const first = renderExpedition();
+    await user.click(
+      await screen.findByRole("button", { name: "Commencer l’expédition" }),
+    );
+    await passListeningCard(user);
+
+    // Une première erreur, puis l'onglet meurt avant la fin de la carte.
+    await screen.findByText(/Association · exercice 2 sur 5/u);
+    await user.click(screen.getByRole("button", { name: "ก่" }));
+    await user.click(
+      screen.getByRole("button", { name: "Signal technique B" }),
+    );
+    await screen.findByText(
+      "Cette étiquette appartient à un autre caractère. Réessayez.",
+    );
+    first.unmount();
+
+    // Après reprise, l'apparié parfait ne doit pas effacer la faute.
+    renderExpedition();
+    await screen.findByText(/Association · exercice 2 sur 5/u);
+    await user.click(await screen.findByRole("button", { name: "ก่" }));
+    await user.click(
+      screen.getByRole("button", { name: "Signal technique A" }),
+    );
+    await user.click(screen.getByRole("button", { name: "ก้" }));
+    await user.click(
+      screen.getByRole("button", { name: "Signal technique B" }),
+    );
+
+    await screen.findByText("À revoir");
+    const store = new WebLocalExperienceStore();
+    const snapshot = await store.read();
+    store.close();
+    const association = lesson.exercises[1];
+    expect(
+      snapshot.expedition?.results.find(
+        ({ exerciseId }) => exerciseId === association?.id,
+      )?.rating,
+    ).toBe(0);
+  }, 30_000);
+
+  it("restitue les jetons déjà posés après un rechargement", async () => {
+    const user = userEvent.setup();
+    const first = renderExpedition();
+    await user.click(
+      await screen.findByRole("button", { name: "Commencer l’expédition" }),
+    );
+    await passListeningCard(user);
+    await passAssociationCard(user);
+
+    await screen.findByText(/Ordre des mots · exercice 3 sur 5/u);
+    await user.click(
+      screen.getByRole("button", { name: "Déplacer ก่ dans la réponse" }),
+    );
+    await screen.findByRole("button", { name: "Retirer ก่ de la réponse" });
+    first.unmount();
+
+    renderExpedition();
+    await screen.findByText(/Ordre des mots · exercice 3 sur 5/u);
+    await screen.findByRole("button", { name: "Retirer ก่ de la réponse" });
+  }, 30_000);
 });

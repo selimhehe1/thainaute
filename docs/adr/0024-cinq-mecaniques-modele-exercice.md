@@ -94,16 +94,26 @@ même cubique. La géométrie vit dans `packages/design-tokens` en données
 pures, réutilisable par le mobile, et un test verrouille l'égalité entre
 la route et `toneCurves.rising` : si l'une change, l'autre doit suivre.
 
-## Limite connue de la phase B : durabilité des quatre nouvelles mécaniques
+## Phase C, premier palier : la réponse devient durable et typée
 
-Seule l'écoute passe par la colonne vertébrale durable (checkpoint de
-sous-session, outbox, rejeu après crash). Association, ordre des mots,
-rappel et lecture sont corrigés localement : un rechargement en cours de
-carte perd la réponse en cours ET l'éventuelle erreur déjà commise, ce qui
-peut transformer une note 0 en note 1. C'est acceptable pour une fixture
-technique, jamais pour du contenu réel. La phase C rend ces quatre
-mécaniques durables au même titre que l'écoute, avant toute publication de
-leçon utilisant ces formats.
+La limite de la phase B (une note falsifiable par simple rechargement) est
+levée. Le checkpoint de question porte désormais un `draftAnswer` et un
+`missedOnce` : la réponse en construction et l'erreur déjà commise sont
+écrites au fil des gestes, et l'erreur est un cliquet qui ne se retire
+jamais. La note des quatre mécaniques est lue depuis ce champ durable, plus
+depuis un état de composant. Les deux champs ont un défaut, donc tous les
+instantanés déjà stockés restent lisibles sans migration.
+
+Le contrat de tentative accepte une réponse typée (`answer`) exclusive de
+`selectedOptionId`, et un comparateur unique remplace trois copies
+divergentes qui ignoraient ce champ (deux réponses différentes pouvaient
+passer pour identiques sous le même identifiant d'événement).
+
+Le serveur, lui, **refuse explicitement** toute tentative portant une
+réponse typée tant que sa correction autoritaire n'existe pas : mieux vaut
+un rejet net qu'une note inventée. Les paliers restants de la phase C sont
+la colonne `answer jsonb`, la notation serveur par mécanique, le DTO public
+v2 et la parité mobile.
 
 ## Conséquences
 

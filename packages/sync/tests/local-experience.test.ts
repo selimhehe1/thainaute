@@ -17,12 +17,15 @@ import {
   selectLocalLessonOption,
   serializeLocalExperienceSnapshot,
   startLocalLesson,
+  saveLocalLessonDraft,
+  discardLocalLessonQuestion,
   startLocalExpedition,
   recordLocalExpeditionResult,
   clearCompletedLocalExpedition,
   abandonLocalExpeditionForVersionChange,
   updateLocalOnboarding,
   type LocalExperienceSnapshot,
+  type LocalDraftAnswer,
   type ValidatedAttemptSubmission,
 } from "../src";
 
@@ -702,5 +705,105 @@ describe("expédition locale multi-exercices", () => {
         startedAt: STARTED_AT,
       }),
     ).toThrow(LocalExperienceTransitionError);
+  });
+});
+
+describe("brouillon de réponse durable", () => {
+  function questionForDraft(): LocalExperienceSnapshot {
+    return openLocalLessonQuestion(
+      startLocalLesson(onboarded(), {
+        lessonVersionId: LESSON_ID,
+        exerciseId: EXERCISE_ID,
+        startedAt: STARTED_AT,
+      }),
+      "2026-08-02T08:00:10.000Z",
+    );
+  }
+
+  const wordOrderDraft: LocalDraftAnswer = {
+    kind: "word_order",
+    tokenIds: [OPTION_ID, OTHER_OPTION_ID],
+  };
+
+  it("conserve la réponse en construction et la restitue telle quelle", () => {
+    const saved = saveLocalLessonDraft(
+      questionForDraft(),
+      { answer: wordOrderDraft },
+      "2026-08-02T08:00:20.000Z",
+    );
+    const revived = deserializeLocalExperienceSnapshot(
+      serializeLocalExperienceSnapshot(saved),
+    );
+    expect(revived.lesson?.phase).toBe("question");
+    if (revived.lesson?.phase !== "question") throw new Error("phase perdue.");
+    expect(revived.lesson.draftAnswer).toEqual(wordOrderDraft);
+  });
+
+  it("retient l'erreur comme un cliquet : elle ne se retire jamais", () => {
+    let snapshot = saveLocalLessonDraft(
+      questionForDraft(),
+      { answer: null, missedOnce: true },
+      "2026-08-02T08:00:20.000Z",
+    );
+    // Une sauvegarde ultérieure sans erreur ne doit pas blanchir la faute.
+    snapshot = saveLocalLessonDraft(
+      snapshot,
+      { answer: wordOrderDraft, missedOnce: false },
+      "2026-08-02T08:00:30.000Z",
+    );
+    if (snapshot.lesson?.phase !== "question") throw new Error("phase perdue.");
+    expect(snapshot.lesson.missedOnce).toBe(true);
+  });
+
+  it("relit un instantané v1 dont la question n'a ni brouillon ni erreur", () => {
+    const legacy = JSON.parse(
+      serializeLocalExperienceSnapshot(questionForDraft()),
+    ) as { lesson: Record<string, unknown> };
+    delete legacy.lesson.draftAnswer;
+    delete legacy.lesson.missedOnce;
+    const revived = deserializeLocalExperienceSnapshot(JSON.stringify(legacy));
+    if (revived.lesson?.phase !== "question") throw new Error("phase perdue.");
+    expect(revived.lesson.draftAnswer).toBeNull();
+    expect(revived.lesson.missedOnce).toBe(false);
+  });
+
+  it("refuse d'envoyer une réponse qui ne correspond pas au brouillon", () => {
+    const saved = saveLocalLessonDraft(
+      questionForDraft(),
+      { answer: wordOrderDraft },
+      "2026-08-02T08:00:20.000Z",
+    );
+    const divergent = submission({
+      selectedOptionId: undefined,
+      answer: { kind: "word_order", tokenIds: [OTHER_OPTION_ID, OPTION_ID] },
+    });
+    expect(() =>
+      prepareLocalLessonSubmission(saved, divergent, ANSWERED_AT),
+    ).toThrow(LocalExperienceAttemptIntegrityError);
+
+    const faithful = submission({
+      selectedOptionId: undefined,
+      answer: { ...wordOrderDraft },
+    });
+    expect(
+      prepareLocalLessonSubmission(saved, faithful, ANSWERED_AT).lesson?.phase,
+    ).toBe("submitting");
+  });
+
+  it("referme une carte sans tentative, jamais une tentative durable", () => {
+    expect(discardLocalLessonQuestion(questionForDraft()).lesson).toBeNull();
+
+    const submitting = prepareLocalLessonSubmission(
+      selectLocalLessonOption(
+        questionForDraft(),
+        OPTION_ID,
+        "2026-08-02T08:00:20.000Z",
+      ),
+      submission(),
+      ANSWERED_AT,
+    );
+    expect(() => discardLocalLessonQuestion(submitting)).toThrow(
+      LocalExperienceTransitionError,
+    );
   });
 });

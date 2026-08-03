@@ -70,6 +70,8 @@ function checkpointFor(
         phase,
         ...base,
         selectedOptionId: null,
+        draftAnswer: null,
+        missedOnce: false,
         updatedAt: "2026-08-02T08:00:30.000Z",
       };
     case "submitting":

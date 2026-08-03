@@ -237,6 +237,7 @@ function isLegacyDemoFixtureSubmission(
   return (
     submission.exerciseId === LEGACY_DEMO_FIXTURE_EXERCISE_ID &&
     submission.contentVersionId === LEGACY_DEMO_FIXTURE_CONTENT_VERSION_ID &&
+    submission.selectedOptionId !== undefined &&
     LEGACY_DEMO_FIXTURE_OPTION_IDS.has(submission.selectedOptionId) &&
     submission.algorithmVersion === LEGACY_DEMO_FIXTURE_ALGORITHM_VERSION
   );

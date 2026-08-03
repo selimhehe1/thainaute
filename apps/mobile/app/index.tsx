@@ -1,6 +1,7 @@
 import { fixtureLesson } from "@thainaute/content/fixture";
 import {
   ingestAttemptBatch,
+  isOptionAttempt,
   type AttemptOutboxSnapshot,
 } from "@thainaute/sync";
 import { Link, useFocusEffect, useRouter } from "expo-router";
@@ -41,7 +42,8 @@ function dueAtFromOutbox(outbox: AttemptOutboxSnapshot): string | null {
     existingEvents: [],
     submissions: outbox.entries
       .filter(({ status }) => status !== "rejected")
-      .map(({ submission }) => submission),
+      .map(({ submission }) => submission)
+      .filter(isOptionAttempt),
     answerKeys: [
       {
         exerciseId: exercise.id,

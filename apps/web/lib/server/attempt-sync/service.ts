@@ -2,6 +2,7 @@ import type { AttemptEvent, LearnerItemState } from "@thainaute/domain";
 import {
   attemptBatchResponseSchema,
   ingestAttemptBatch,
+  isOptionAttempt,
   type AttemptBatchResponse,
   type AttemptBatchResult,
   type AttemptRejectionCode,
@@ -77,6 +78,13 @@ function preflightRejections(
       }
     }
 
+    // Une réponse typée n'a pas encore de correction autoritaire : le
+    // serveur la refuse plutôt que de la noter à tort (ADR-0024, phase C).
+    if (!isOptionAttempt(attempt)) {
+      rejected.set(attempt.eventId, "invalid_submission");
+      continue;
+    }
+
     const answerKey = answerKeys.get(answerKeyIdentity(attempt));
     if (
       answerKey !== undefined &&
@@ -150,9 +158,11 @@ function buildCandidate(
 } {
   const preflight = preflightRejections(snapshot, attempts, serverNowMs);
   const answerKeys = indexServerAnswerKeys(snapshot.answerKeys);
-  const eligibleAttempts = attempts.filter(
-    (attempt) => !preflight.has(attempt.eventId),
-  );
+  // Le préflight a déjà écarté les réponses typées : seules des tentatives
+  // à option atteignent le moteur de notation.
+  const eligibleAttempts = attempts
+    .filter((attempt) => !preflight.has(attempt.eventId))
+    .filter(isOptionAttempt);
   const ingestion = ingestAttemptBatch({
     authenticatedUserId: userId,
     existingEvents: snapshot.existingEvents,
