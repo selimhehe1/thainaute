@@ -8,7 +8,7 @@
   "publishedAt": null,
   "locale": "fr-FR",
   "titleFr": "Boucle technique des cinq mécaniques",
-  "objectiveFr": "Vérifier le rendu et la correction des cinq mécaniques d'exercice sans enseigner de contenu.",
+  "objectiveFr": "Vérifier le rendu et la correction des cinq mécaniques d’exercice sans enseigner de contenu.",
   "requiredEntitlement": null,
   "audioManifestId": "40000000-0000-4000-8000-000000000003",
   "items": [
@@ -77,8 +77,8 @@
       ],
       "correctOptionId": "41000000-0000-4000-8000-000000000001",
       "feedback": {
-        "correctFr": "La mécanique d'écoute fonctionne.",
-        "incorrectFr": "Réécoutez le signal et choisissez l'étiquette A."
+        "correctFr": "La mécanique d’écoute fonctionne.",
+        "incorrectFr": "Réécoutez le signal et choisissez l’étiquette A."
       }
     },
     {
@@ -99,7 +99,7 @@
         }
       ],
       "feedback": {
-        "correctFr": "La mécanique d'association fonctionne.",
+        "correctFr": "La mécanique d’association fonctionne.",
         "incorrectFr": "Reprenez les paires en vous appuyant sur les marques."
       }
     },
@@ -109,7 +109,7 @@
       "itemId": "40000000-0000-4000-8000-000000000004",
       "skill": "production",
       "audioAssetId": null,
-      "promptFr": "Placez les deux signes techniques dans l'ordre A puis B et retirez l'intrus.",
+      "promptFr": "Placez les deux signes techniques dans l'ordre A puis B et retirez l’intrus.",
       "tokens": [
         {
           "id": "41000000-0000-4000-8000-000000000021",
@@ -132,8 +132,8 @@
         "41000000-0000-4000-8000-000000000022"
       ],
       "feedback": {
-        "correctFr": "La mécanique d'ordre fonctionne.",
-        "incorrectFr": "L'ordre attendu est A puis B, sans l'intrus."
+        "correctFr": "La mécanique d’ordre fonctionne.",
+        "incorrectFr": "L’ordre attendu est A puis B, sans l’intrus."
       }
     },
     {
@@ -177,7 +177,7 @@
       "correctOptionId": "41000000-0000-4000-8000-000000000031",
       "feedback": {
         "correctFr": "La mécanique de lecture fonctionne.",
-        "incorrectFr": "Le signe affiché correspond à l'étiquette A."
+        "incorrectFr": "Le signe affiché correspond à l’étiquette A."
       }
     }
   ],

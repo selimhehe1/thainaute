@@ -77,29 +77,35 @@ test("annonce la limite du mode hors ligne sans promettre de démarrage à froid
   }
 });
 
-test("reprend exactement la question puis retrouve le résultat depuis Aujourd’hui", async ({
+test("reprend exactement la question puis retrouve l’expédition depuis Aujourd’hui", async ({
   page,
 }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await completeLocalOnboarding(page);
   await page.getByRole("link", { name: "Commencer la session" }).click();
-  await page.getByRole("button", { name: "Commencer" }).click();
-  await page.getByRole("radio", { name: "Option B" }).check();
+  await page.getByRole("button", { name: "Commencer l’expédition" }).click();
+  await page.getByRole("radio", { name: "Signal technique B" }).check();
   await expect
     .poll(() => readLocalLessonCheckpoint(page))
     .toMatchObject({
       phase: "question",
-      selectedOptionId: "20000000-0000-4000-8000-000000000002",
+      selectedOptionId: "41000000-0000-4000-8000-000000000002",
     });
 
   await page.reload();
-  await expect(page.getByRole("radio", { name: "Option B" })).toBeChecked();
-  await page.getByRole("radio", { name: "Option A" }).check();
+  await expect(
+    page.getByRole("radio", { name: "Signal technique B" }),
+  ).toBeChecked();
+  await page.getByRole("radio", { name: "Signal technique A" }).check();
   await page.getByRole("button", { name: "Valider" }).click();
   await expect(
-    page.getByRole("heading", { name: "La boucle technique fonctionne." }),
-  ).toBeFocused();
-  await page.getByRole("link", { name: "Retour à Aujourd’hui" }).click();
+    page.getByRole("heading", {
+      name: "La mécanique d’écoute fonctionne.",
+    }),
+  ).toBeVisible();
+  await page.goto("/today");
+  await expect(page.getByText("Expédition en cours · 1 sur 5")).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Revoir mon résultat" }),
+    page.getByRole("link", { name: "Reprendre l’expédition" }),
   ).toBeVisible();
 });

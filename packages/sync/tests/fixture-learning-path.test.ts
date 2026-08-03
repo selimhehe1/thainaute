@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  startLocalExpedition,
+  recordLocalExpeditionResult,
   completeLocalOnboarding,
   confirmLocalLessonResult,
   createAttemptOutboxSnapshot,
@@ -216,5 +218,80 @@ describe("projection du parcours technique local", () => {
 
     expect(JSON.stringify(snapshot)).toBe(snapshotBefore);
     expect(JSON.stringify(mutableTarget)).toBe(targetBefore);
+  });
+});
+
+describe("projection du parcours avec expédition", () => {
+  const PLAN = [
+    "40000000-0000-4000-8000-000000000010",
+    "40000000-0000-4000-8000-000000000011",
+    "40000000-0000-4000-8000-000000000012",
+  ] as const;
+  const EXPEDITION_LESSON_ID = "40000000-0000-4000-8000-000000000002";
+  const OTHER_LESSON_ID = "50000000-0000-4000-8000-000000000002";
+
+  function expeditionSnapshot() {
+    return startLocalExpedition(
+      completeLocalOnboarding(
+        createLocalExperienceSnapshot(),
+        {
+          goalOptionId: "prototype_goal_short",
+          motivationOptionId: "prototype_motivation_a",
+          experienceOptionId: "prototype_experience_new",
+        },
+        "2026-08-02T08:00:00.000Z",
+      ),
+      {
+        lessonVersionId: EXPEDITION_LESSON_ID,
+        exerciseIds: PLAN,
+        startedAt: "2026-08-02T08:00:00.000Z",
+      },
+    );
+  }
+
+  it("projette la progression de l'expédition sur sa cible", () => {
+    const withResult = recordLocalExpeditionResult(expeditionSnapshot(), {
+      exerciseId: PLAN[0],
+      rating: 1,
+      answeredAt: "2026-08-02T08:01:00.000Z",
+    });
+
+    expect(
+      projectFixtureLearningPath(withResult, {
+        lessonVersionId: EXPEDITION_LESSON_ID,
+        exerciseId: PLAN[0],
+      }),
+    ).toEqual({
+      status: "expedition_in_progress",
+      lessonPhase: null,
+      completedSteps: 1,
+      totalSteps: 3,
+      progressPercent: 33,
+    });
+  });
+
+  it("signale l'expédition terminée puis le conflit de version", () => {
+    let snapshot = expeditionSnapshot();
+    for (const [index, exerciseId] of PLAN.entries()) {
+      snapshot = recordLocalExpeditionResult(snapshot, {
+        exerciseId,
+        rating: 1,
+        answeredAt: `2026-08-02T08:0${index + 1}:00.000Z`,
+      });
+    }
+
+    expect(
+      projectFixtureLearningPath(snapshot, {
+        lessonVersionId: EXPEDITION_LESSON_ID,
+        exerciseId: PLAN[0],
+      }).status,
+    ).toBe("expedition_completed");
+
+    expect(
+      projectFixtureLearningPath(snapshot, {
+        lessonVersionId: OTHER_LESSON_ID,
+        exerciseId: PLAN[0],
+      }).status,
+    ).toBe("version_conflict");
   });
 });

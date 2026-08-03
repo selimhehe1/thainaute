@@ -1,21 +1,9 @@
 import { expect, test } from "@playwright/test";
 
-async function completeFixtureLesson(
-  page: import("@playwright/test").Page,
-): Promise<void> {
-  await page.goto("/today");
-  await page.getByRole("radio", { name: "5 minutes" }).check();
-  await page.getByRole("radio", { name: "Préparer un séjour" }).check();
-  await page.getByRole("radio", { name: "Je débute" }).check();
-  await page.getByRole("button", { name: "Préparer ma session" }).click();
-  await page.getByRole("link", { name: "Commencer la session" }).click();
-  await page.getByRole("button", { name: "Commencer" }).click();
-  await page.getByRole("radio", { name: "Option A" }).check();
-  await page.getByRole("button", { name: "Valider" }).click();
-  await expect(
-    page.getByRole("heading", { name: "La boucle technique fonctionne." }),
-  ).toBeFocused();
-}
+import {
+  completeExpedition,
+  openExpeditionAfterOnboarding,
+} from "./expedition-helpers";
 
 test("ouvre le parcours local depuis l’accueil sans inventer de contenu", async ({
   page,
@@ -64,16 +52,17 @@ test("ouvre le parcours local depuis l’accueil sans inventer de contenu", asyn
 });
 
 test("reflète la clôture durable de la fixture", async ({ page }) => {
-  await completeFixtureLesson(page);
+  await openExpeditionAfterOnboarding(page);
+  await completeExpedition(page);
   await page.goto("/path");
 
-  await expect(page.getByText("Étape technique terminée")).toBeVisible();
+  await expect(page.getByText("Expédition terminée")).toBeVisible();
   await expect(
     page.getByRole("progressbar", {
       name: "Progression de l’unité technique",
     }),
   ).toHaveJSProperty("value", 100);
   await expect(
-    page.getByRole("link", { name: "Revoir la démonstration" }),
+    page.getByRole("link", { name: "Revoir le récapitulatif" }),
   ).toHaveAttribute("href", "/learn/demo");
 });

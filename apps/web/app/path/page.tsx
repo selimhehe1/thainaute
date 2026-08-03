@@ -1,4 +1,4 @@
-import { readFixtureBundle } from "@thainaute/content";
+import { readFiveMechanicsFixtureBundle } from "@thainaute/content";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/layout/site-header";
@@ -14,7 +14,7 @@ export const metadata = {
 };
 
 export default function PathPage() {
-  const { lesson } = readFixtureBundle();
+  const { lesson } = readFiveMechanicsFixtureBundle();
   const exercise = lesson.exercises[0];
 
   return (
