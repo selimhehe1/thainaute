@@ -5,6 +5,7 @@ import {
   contentBundleSchema,
   getPublicationBlockers,
   lessonSchema,
+  readFiveMechanicsFixtureBundle,
   readFixtureBundle,
   validateBundle,
 } from "../src";
@@ -98,11 +99,102 @@ describe("fixture de contenu", () => {
     expect(codes).toContain("HUMAN_AUDITOR_MISSING");
   });
 
+  it("valide la fixture des cinq mécaniques de bout en bout", async () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    await expect(validateBundle(bundle)).resolves.toBeUndefined();
+    const types = bundle.lesson.exercises.map(({ type }) => type);
+    expect(types).toEqual([
+      "audio_choice",
+      "association",
+      "word_order",
+      "recall",
+      "reading",
+    ]);
+    const codes = getPublicationBlockers(bundle).map(({ code }) => code);
+    expect(codes).toContain("FIXTURE_NOT_PUBLISHABLE");
+  });
+
+  it("refuse une association dont deux paires visent le même item", async () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const association = bundle.lesson.exercises.find(
+      (exercise) => exercise.type === "association",
+    );
+    if (association?.type !== "association") {
+      throw new Error("Fixture association incomplète.");
+    }
+    const secondPair = association.pairs[1];
+    const firstPair = association.pairs[0];
+    if (secondPair === undefined || firstPair === undefined) {
+      throw new Error("Fixture association incomplète.");
+    }
+    secondPair.itemId = firstPair.itemId;
+
+    await expect(validateBundle(bundle)).rejects.toThrow(
+      /items des paires .*identifiant dupliqué/u,
+    );
+  });
+
+  it("refuse un ordre correct citant un jeton inconnu", async () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const wordOrder = bundle.lesson.exercises.find(
+      (exercise) => exercise.type === "word_order",
+    );
+    if (wordOrder?.type !== "word_order") {
+      throw new Error("Fixture word_order incomplète.");
+    }
+    wordOrder.correctOrder = [
+      wordOrder.correctOrder[0] ?? "",
+      "41000000-0000-4000-8000-000000000099",
+    ];
+
+    await expect(validateBundle(bundle)).rejects.toThrow(
+      /Jeton inconnu dans l'ordre correct/u,
+    );
+  });
+
+  it("refuse une réponse de rappel non normalisée NFC", async () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const recall = bundle.lesson.exercises.find(
+      (exercise) => exercise.type === "recall",
+    );
+    if (recall?.type !== "recall") {
+      throw new Error("Fixture recall incomplète.");
+    }
+    // « à » décomposé (a + accent grave combinant), que NFC recomposerait.
+    recall.acceptedAnswers = [{ value: "kà", kind: "transcription" }];
+
+    await expect(validateBundle(bundle)).rejects.toThrow(/non normalisée NFC/u);
+  });
+
+  it("refuse une bonne réponse de lecture hors des options", async () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const reading = bundle.lesson.exercises.find(
+      (exercise) => exercise.type === "reading",
+    );
+    if (reading?.type !== "reading") {
+      throw new Error("Fixture reading incomplète.");
+    }
+    reading.correctOptionId = "41000000-0000-4000-8000-000000000099";
+
+    await expect(validateBundle(bundle)).rejects.toThrow(
+      /Bonne réponse inconnue/u,
+    );
+  });
+
+  it("refuse un exercice d'un type inconnu", () => {
+    const lesson = structuredClone(readFiveMechanicsFixtureBundle().lesson);
+    const exercise = lesson.exercises[0];
+    if (exercise === undefined) throw new Error("Fixture incomplète.");
+    (exercise as { type: string }).type = "dictation";
+
+    expect(lessonSchema.safeParse(lesson).success).toBe(false);
+  });
+
   it("refuse un exercice rattache a l'audio d'un autre item", async () => {
     const bundle = readFixtureBundle();
     const firstItem = bundle.lesson.items[0];
     const exercise = bundle.lesson.exercises[0];
-    if (firstItem === undefined || exercise === undefined) {
+    if (firstItem === undefined || exercise?.type !== "audio_choice") {
       throw new Error("Fixture incomplete.");
     }
     const secondItem = structuredClone(firstItem);

@@ -24,7 +24,7 @@ function publishedFixture() {
   const bundle = makePublishableBundle();
   const verified = verifyPublishedBundleRow(makePublishedLessonRow(bundle));
   const exercise = bundle.lesson.exercises[0];
-  if (verified === null || exercise === undefined) {
+  if (verified === null || exercise?.type !== "audio_choice") {
     throw new Error("Fixture publiée incomplète.");
   }
   return { verified, exercise };

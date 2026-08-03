@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "lessonId": "40000000-0000-4000-8000-000000000001",
+  "versionId": "40000000-0000-4000-8000-000000000002",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "fixture",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Boucle technique des cinq mécaniques",
+  "objectiveFr": "Vérifier le rendu et la correction des cinq mécaniques d'exercice sans enseigner de contenu.",
+  "requiredEntitlement": null,
+  "audioManifestId": "40000000-0000-4000-8000-000000000003",
+  "items": [
+    {
+      "id": "40000000-0000-4000-8000-000000000004",
+      "thaiRaw": "ก่",
+      "unicodeCodePoints": ["U+0E01", "U+0E48"],
+      "translationFr": "Signal technique A",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v0-draft",
+        "value": null
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ก่",
+          "ipa": null,
+          "tone": null,
+          "vowelLength": null,
+          "initial": null,
+          "final": null
+        }
+      ],
+      "register": null,
+      "sourceIds": ["TEST_ONLY"]
+    },
+    {
+      "id": "40000000-0000-4000-8000-000000000005",
+      "thaiRaw": "ก้",
+      "unicodeCodePoints": ["U+0E01", "U+0E49"],
+      "translationFr": "Signal technique B",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v0-draft",
+        "value": null
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ก้",
+          "ipa": null,
+          "tone": null,
+          "vowelLength": null,
+          "initial": null,
+          "final": null
+        }
+      ],
+      "register": null,
+      "sourceIds": ["TEST_ONLY"]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "40000000-0000-4000-8000-000000000010",
+      "type": "audio_choice",
+      "itemId": "40000000-0000-4000-8000-000000000004",
+      "skill": "listening",
+      "audioAssetId": "40000000-0000-4000-8000-000000000006",
+      "promptFr": "Écoutez le signal technique puis choisissez son étiquette.",
+      "options": [
+        {
+          "id": "41000000-0000-4000-8000-000000000001",
+          "labelFr": "Signal technique A"
+        },
+        {
+          "id": "41000000-0000-4000-8000-000000000002",
+          "labelFr": "Signal technique B"
+        }
+      ],
+      "correctOptionId": "41000000-0000-4000-8000-000000000001",
+      "feedback": {
+        "correctFr": "La mécanique d'écoute fonctionne.",
+        "incorrectFr": "Réécoutez le signal et choisissez l'étiquette A."
+      }
+    },
+    {
+      "id": "40000000-0000-4000-8000-000000000011",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Associez chaque signe technique à son étiquette.",
+      "pairs": [
+        {
+          "id": "41000000-0000-4000-8000-000000000011",
+          "itemId": "40000000-0000-4000-8000-000000000004",
+          "labelFr": "Signal technique A"
+        },
+        {
+          "id": "41000000-0000-4000-8000-000000000012",
+          "itemId": "40000000-0000-4000-8000-000000000005",
+          "labelFr": "Signal technique B"
+        }
+      ],
+      "feedback": {
+        "correctFr": "La mécanique d'association fonctionne.",
+        "incorrectFr": "Reprenez les paires en vous appuyant sur les marques."
+      }
+    },
+    {
+      "id": "40000000-0000-4000-8000-000000000012",
+      "type": "word_order",
+      "itemId": "40000000-0000-4000-8000-000000000004",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Placez les deux signes techniques dans l'ordre A puis B et retirez l'intrus.",
+      "tokens": [
+        {
+          "id": "41000000-0000-4000-8000-000000000021",
+          "thaiRaw": "ก่",
+          "transcription": null
+        },
+        {
+          "id": "41000000-0000-4000-8000-000000000022",
+          "thaiRaw": "ก้",
+          "transcription": null
+        },
+        {
+          "id": "41000000-0000-4000-8000-000000000023",
+          "thaiRaw": "กา",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "41000000-0000-4000-8000-000000000021",
+        "41000000-0000-4000-8000-000000000022"
+      ],
+      "feedback": {
+        "correctFr": "La mécanique d'ordre fonctionne.",
+        "incorrectFr": "L'ordre attendu est A puis B, sans l'intrus."
+      }
+    },
+    {
+      "id": "40000000-0000-4000-8000-000000000013",
+      "type": "recall",
+      "itemId": "40000000-0000-4000-8000-000000000004",
+      "skill": "recall",
+      "promptFr": "Saisissez le signe technique correspondant au signal A.",
+      "acceptedAnswers": [
+        {
+          "value": "ก่",
+          "kind": "thai"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": true
+      },
+      "feedback": {
+        "correctFr": "La mécanique de rappel fonctionne.",
+        "incorrectFr": "Le signe attendu porte la marque grave technique."
+      }
+    },
+    {
+      "id": "40000000-0000-4000-8000-000000000014",
+      "type": "reading",
+      "itemId": "40000000-0000-4000-8000-000000000004",
+      "skill": "reading",
+      "promptFr": "Lisez le signe technique affiché puis choisissez son étiquette.",
+      "options": [
+        {
+          "id": "41000000-0000-4000-8000-000000000031",
+          "labelFr": "Signal technique A"
+        },
+        {
+          "id": "41000000-0000-4000-8000-000000000032",
+          "labelFr": "Signal technique B"
+        }
+      ],
+      "correctOptionId": "41000000-0000-4000-8000-000000000031",
+      "feedback": {
+        "correctFr": "La mécanique de lecture fonctionne.",
+        "incorrectFr": "Le signe affiché correspond à l'étiquette A."
+      }
+    }
+  ],
+  "provenance": {
+    "sourceIds": ["TEST_ONLY"],
+    "generationActors": [
+      { "actorId": "TEST_AUTHOR", "kind": "human", "role": "author" }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "pending",
+        "auditor": {
+          "actorId": "TEST_AUDITOR",
+          "kind": "human",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": [
+      {
+        "code": "FIXTURE_ONLY",
+        "status": "open",
+        "blocking": true,
+        "note": "Donnée de test sans valeur pédagogique ni validation linguistique."
+      }
+    ]
+  }
+}

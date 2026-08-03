@@ -15,7 +15,7 @@ export default function DemoLessonPage() {
   const exercise = lesson.exercises[0];
   const item = lesson.items[0];
 
-  if (exercise === undefined || item === undefined) {
+  if (exercise?.type !== "audio_choice" || item === undefined) {
     return (
       <main className={styles.shell}>
         <section className={panel.panel}>

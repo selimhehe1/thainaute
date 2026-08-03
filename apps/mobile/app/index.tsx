@@ -27,7 +27,11 @@ function requiredFixtureValue<T>(value: T | undefined, label: string): T {
   }
   return value;
 }
-const exercise = requiredFixtureValue(lesson.exercises[0], "un exercice");
+const firstExercise = requiredFixtureValue(lesson.exercises[0], "un exercice");
+if (firstExercise.type !== "audio_choice") {
+  throw new Error("La fixture locale doit commencer par un exercice d'écoute.");
+}
+const exercise = firstExercise;
 const item = requiredFixtureValue(lesson.items[0], "un item");
 
 type ScreenStatus = "loading" | "ready" | "error";
