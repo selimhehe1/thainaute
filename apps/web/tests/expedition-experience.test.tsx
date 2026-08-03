@@ -1,7 +1,12 @@
 import type { AnalyticsSink } from "@thainaute/analytics";
 import { readFiveMechanicsFixtureBundle } from "@thainaute/content";
 import {
+  attemptSubmissionSchema,
   completeLocalOnboarding,
+  confirmLocalLessonResult,
+  openLocalLessonQuestion,
+  prepareLocalLessonSubmission,
+  selectLocalLessonOption,
   recordLocalExpeditionResult,
   startLocalExpedition,
   startLocalLesson,
@@ -262,4 +267,140 @@ describe("lecteur Expédition", () => {
     );
     await screen.findByRole("button", { name: "Commencer l’expédition" });
   });
+});
+
+describe("reprise durable du lecteur", () => {
+  async function seedInterruptedListeningAttempt(): Promise<void> {
+    const listening = lesson.exercises[0];
+    if (listening?.type !== "audio_choice") {
+      throw new Error("Fixture d'écoute manquante.");
+    }
+    const outboxStore = new WebAttemptOutboxStore("thainaute-demo-v1");
+    const deviceId = await outboxStore.getOrCreateDeviceId(
+      () => "40000000-0000-4000-8000-0000000000aa",
+    );
+    const submission = attemptSubmissionSchema.parse({
+      eventId: "40000000-0000-4000-8000-0000000000bb",
+      deviceId,
+      exerciseId: listening.id,
+      // Réponse fausse : la reprise doit consigner un échec, pas un succès.
+      selectedOptionId: listening.options[1]?.id,
+      answeredAt: "2026-08-03T09:00:00.000Z",
+      durationMs: 1_500,
+      contentVersionId: lesson.versionId,
+      algorithmVersion: "srs-v0",
+    });
+    const outbox = await outboxStore.enqueue(submission);
+    outboxStore.close();
+
+    const experienceStore = new WebLocalExperienceStore();
+    await experienceStore.update((snapshot) => {
+      let next = startLocalExpedition(snapshot, {
+        lessonVersionId: lesson.versionId,
+        exerciseIds: lesson.exercises.map(({ id }) => id),
+        startedAt: "2026-08-03T08:59:00.000Z",
+      });
+      next = startLocalLesson(next, {
+        lessonVersionId: lesson.versionId,
+        exerciseId: listening.id,
+        startedAt: "2026-08-03T08:59:30.000Z",
+      });
+      next = openLocalLessonQuestion(next, "2026-08-03T08:59:40.000Z");
+      next = selectLocalLessonOption(
+        next,
+        submission.selectedOptionId,
+        "2026-08-03T08:59:50.000Z",
+      );
+      next = prepareLocalLessonSubmission(
+        next,
+        submission,
+        "2026-08-03T09:00:00.000Z",
+      );
+      // Le processus meurt ici : la tentative est durable, jamais consignée.
+      return confirmLocalLessonResult(next, outbox, "2026-08-03T09:00:01.000Z");
+    });
+    experienceStore.close();
+  }
+
+  it("rejoue la correction jamais montrée puis reprend le plan", async () => {
+    const user = userEvent.setup();
+    await seedInterruptedListeningAttempt();
+    renderExpedition();
+
+    // La correction perdue par le crash est présentée, pas sautée.
+    await screen.findByRole("heading", {
+      name: "Réécoutez le signal et choisissez l’étiquette A.",
+    });
+    expect(screen.getByText("À revoir")).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Continuer" }));
+    await screen.findByText(/Association · exercice 2 sur 5/u);
+  });
+
+  it("ne consigne le résultat rejoué qu'une seule fois", async () => {
+    await seedInterruptedListeningAttempt();
+    const first = renderExpedition();
+    await screen.findByRole("heading", {
+      name: "Réécoutez le signal et choisissez l’étiquette A.",
+    });
+    first.unmount();
+
+    // Au remontage l'exercice est déjà consigné : le lecteur enchaîne au
+    // lieu de rejouer la correction, et surtout il ne note pas deux fois.
+    renderExpedition();
+    await screen.findByText(/Association · exercice 2 sur 5/u);
+
+    const store = new WebLocalExperienceStore();
+    const snapshot = await store.read();
+    store.close();
+    expect(snapshot.expedition?.results).toHaveLength(1);
+    expect(snapshot.expedition?.results[0]?.rating).toBe(0);
+  });
+});
+
+describe("mesure et rythme du lecteur", () => {
+  it("émet les événements de séance sans texte libre", async () => {
+    const user = userEvent.setup();
+    const captured: { name: string }[] = [];
+    renderExpedition({
+      capture: (event) => {
+        captured.push(event as { name: string });
+      },
+    });
+
+    await user.click(
+      await screen.findByRole("button", { name: "Commencer l’expédition" }),
+    );
+    await passListeningCard(user);
+
+    expect(captured.map(({ name }) => name)).toEqual([
+      "lesson_started",
+      "exercise_answered",
+    ]);
+    expect(captured[1]).toMatchObject({
+      exerciseType: "audio_choice",
+      correct: true,
+      platform: "web",
+    });
+  }, 20_000);
+
+  it("laisse toujours la main pour continuer, sans dépendre de l'auto-avance", async () => {
+    const user = userEvent.setup();
+    renderExpedition();
+    await user.click(
+      await screen.findByRole("button", { name: "Commencer l’expédition" }),
+    );
+    await screen.findByText(/Écoute · exercice 1 sur 5/u);
+    await user.click(screen.getByRole("radio", { name: "Signal technique A" }));
+    await user.click(screen.getByRole("button", { name: "Valider" }));
+
+    // Mouvement réduit : aucune avance automatique, mais une sortie explicite.
+    await screen.findByRole("button", { name: "Continuer" });
+    await new Promise((resolve) => setTimeout(resolve, 1_200));
+    expect(
+      screen.getByRole("heading", {
+        name: "La mécanique d’écoute fonctionne.",
+      }),
+    ).toBeInTheDocument();
+  }, 20_000);
 });

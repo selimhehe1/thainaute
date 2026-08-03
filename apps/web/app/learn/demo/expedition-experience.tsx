@@ -33,7 +33,8 @@ import {
   useSyncExternalStore,
 } from "react";
 
-import { BrandCurve } from "@/components/brand/tone-curve";
+import { ExpeditionTrail } from "@/components/brand/expedition-trail";
+import { BrandCurve, ToneCurve } from "@/components/brand/tone-curve";
 import { buttonClass } from "@/components/ui/button";
 import {
   AttemptOutboxStorageError,
@@ -54,6 +55,12 @@ import styles from "./lesson.module.css";
 interface ExpeditionProps {
   readonly lesson: Lesson;
   readonly analytics?: AnalyticsSink | undefined;
+}
+
+interface Celebration {
+  readonly exerciseId: string;
+  readonly correct: boolean;
+  readonly feedback: string;
 }
 
 const MECHANIC_LABELS: Record<LessonExercise["type"], string> = {
@@ -133,11 +140,7 @@ export function ExpeditionExperience({
   const [errorMessage, setErrorMessage] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [abandonConfirmation, setAbandonConfirmation] = useState(false);
-  const [celebration, setCelebration] = useState<{
-    exerciseId: string;
-    correct: boolean;
-    feedback: string;
-  } | null>(null);
+  const [celebration, setCelebration] = useState<Celebration | null>(null);
   const [cardStartedAt, setCardStartedAt] = useState(0);
 
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
@@ -148,6 +151,9 @@ export function ExpeditionExperience({
   const [hint, setHint] = useState("");
   const missed = useRef(false);
   const submissionInFlight = useRef(false);
+  const finishInFlight = useRef(false);
+  const tokenButtons = useRef(new Map<string, HTMLButtonElement>());
+  const pendingTokenFocus = useRef<string | null>(null);
   const cardHeading = useRef<HTMLHeadingElement>(null);
   const lessonAudio = useRef<HTMLAudioElement | null>(null);
   const [audioError, setAudioError] = useState(false);
@@ -252,6 +258,7 @@ export function ExpeditionExperience({
       await migrateLegacyDemoFixtureAttempts();
       let nextOutbox = await activeOutboxStore.read();
       let nextExperience = await activeExperienceStore.read();
+      let replayedCelebration: Celebration | null = null;
 
       // Une tentative réservée avant un crash est re-poussée vers le journal.
       if (nextExperience.lesson?.phase === "submitting") {
@@ -313,10 +320,22 @@ export function ExpeditionExperience({
             nextExperience = await activeExperienceStore.update((current) =>
               recordLocalExpeditionResult(current, {
                 exerciseId: answered.id,
+                // La tentative durable fait foi : son horodatage est repris
+                // tel quel, pour qu'un rejeu reste idempotent.
                 rating: evaluated.rating,
-                answeredAt: new Date().toISOString(),
+                answeredAt: interrupted.submission.answeredAt,
               }),
             );
+            // L'exercice a été noté sans que sa correction ait été montrée :
+            // on la présente à la reprise plutôt que de la sauter.
+            replayedCelebration = {
+              exerciseId: answered.id,
+              correct: evaluated.rating === 1,
+              feedback:
+                evaluated.rating === 1
+                  ? answered.feedback.correctFr
+                  : answered.feedback.incorrectFr,
+            };
           }
         }
       }
@@ -324,12 +343,24 @@ export function ExpeditionExperience({
       if (!active) return;
       setOutbox(nextOutbox);
       setSnapshot(nextExperience);
+      // Toute reprise repart d'une carte vierge : un appariement ou une
+      // saisie hérités d'avant l'incident laisseraient la carte injouable.
       setSelectedOptionId(
         nextExperience.lesson?.phase === "question" &&
           nextExperience.lesson.lessonVersionId === lesson.versionId
           ? nextExperience.lesson.selectedOptionId
           : null,
       );
+      setSelectedPairId(null);
+      setMatchedPairIds([]);
+      setOrderedTokenIds([]);
+      setRecallValue("");
+      setHint("");
+      setAudioError(false);
+      // Une correction rejouée s'impose ; sinon on laisse à l'écran celle que
+      // l'apprenant est peut-être en train de lire.
+      if (replayedCelebration !== null) setCelebration(replayedCelebration);
+      missed.current = false;
       setCardStartedAt(Date.now());
       setErrorMessage("");
       setAbandonConfirmation(false);
@@ -370,6 +401,10 @@ export function ExpeditionExperience({
     expeditionMatchesLesson &&
     results.length === plan.length &&
     celebration === null;
+  // Le repère d'étape suit l'exercice affiché, pas le nombre de résultats :
+  // pendant la correction, le résultat est déjà consigné.
+  const currentIndex = plan.indexOf(currentExercise?.id ?? "");
+  const currentStep = currentIndex < 0 ? plan.length : currentIndex + 1;
 
   const stage: "loading" | "error" | "stale" | "intro" | "card" | "recap" =
     storageStatus === "loading" || snapshot === null
@@ -384,10 +419,31 @@ export function ExpeditionExperience({
               ? "recap"
               : "card";
 
+  const registerToken =
+    (tokenId: string) =>
+    (element: HTMLButtonElement | null): void => {
+      if (element === null) tokenButtons.current.delete(tokenId);
+      else tokenButtons.current.set(tokenId, element);
+    };
+
+  // Un jeton déplacé est démonté puis remonté dans l'autre zone : on rend le
+  // focus à sa nouvelle instance juste après le rendu.
+  useEffect(() => {
+    const tokenId = pendingTokenFocus.current;
+    if (tokenId === null) return;
+    pendingTokenFocus.current = null;
+    tokenButtons.current.get(tokenId)?.focus();
+  }, [orderedTokenIds]);
+
+  // Le titre reprend le focus à chaque changement de carte ET au passage en
+  // correction : sans cela le bouton validé disparaît et le focus retombe
+  // sur le document, ce qui renvoie l'utilisateur clavier tout en haut.
   useEffect(() => {
     stopSignal();
-    if (stage === "card" || stage === "recap") cardHeading.current?.focus();
-  }, [stage, currentExercise?.id, stopSignal]);
+    if (stage === "card" || stage === "recap") {
+      queueMicrotask(() => cardHeading.current?.focus());
+    }
+  }, [stage, currentExercise?.id, celebration?.exerciseId, stopSignal]);
 
   function resetCardState(): void {
     setSelectedOptionId(null);
@@ -759,15 +815,22 @@ export function ExpeditionExperience({
   }
 
   function finishExpedition(): void {
-    if (experienceStore === null || isSaving) return;
+    // La navigation n'est pas instantanée : sans verrou, un second clic
+    // tenterait de libérer une expédition déjà libérée et basculerait en
+    // erreur juste avant de quitter la page.
+    if (experienceStore === null || finishInFlight.current) return;
+    finishInFlight.current = true;
     setIsSaving(true);
     void experienceStore
       .update((current) => clearCompletedLocalExpedition(current))
       .then(() => {
         router.push("/today");
       })
-      .catch(failStorage)
-      .finally(() => setIsSaving(false));
+      .catch((error: unknown) => {
+        finishInFlight.current = false;
+        setIsSaving(false);
+        failStorage(error);
+      });
   }
 
   const listeningProjection =
@@ -796,8 +859,6 @@ export function ExpeditionExperience({
     ({ status }) => status === "pending",
   ).length;
   const onboardingCompleted = snapshot?.onboarding.status === "completed";
-  const currentStep = Math.min(results.length + 1, plan.length);
-  const progressRatio = plan.length === 0 ? 0 : results.length / plan.length;
 
   const sortedAssociationLabels = (
     exercise: Extract<LessonExercise, { type: "association" }>,
@@ -809,6 +870,16 @@ export function ExpeditionExperience({
 
   return (
     <section className={styles.card} aria-labelledby="lesson-title">
+      {/* Région d'annonce présente en permanence : une région ajoutée en
+          même temps que son contenu n'est pas lue par les lecteurs d'écran. */}
+      <p className="srOnly" role="status">
+        {celebration === null
+          ? ""
+          : `${celebration.correct ? "Juste." : "À revoir."} ${celebration.feedback}`}
+      </p>
+      <div className={styles.pageSpecimen} aria-hidden="true">
+        {lesson.items[0]?.thaiRaw}
+      </div>
       <div className={styles.fixtureBanner} role="note">
         <strong>Donnée fictive · non publiable</strong>
         <span>
@@ -922,6 +993,7 @@ export function ExpeditionExperience({
           <div
             className={styles.glyph}
             lang="th"
+            role="img"
             aria-label="Graphème thaï fictif de test"
           >
             {lesson.items[0]?.thaiRaw}
@@ -966,64 +1038,62 @@ export function ExpeditionExperience({
       {stage === "card" && currentExercise !== undefined && (
         <div className={styles.body}>
           <div className={styles.expeditionProgress}>
-            <p className={styles.eyebrow}>
+            <p className={styles.stepMark} aria-hidden="true">
+              {currentStep}
+              <small>{plan.length}</small>
+            </p>
+            <p className={styles.mechanicName}>
               {MECHANIC_LABELS[currentExercise.type]} · exercice {currentStep}{" "}
               sur {plan.length}
             </p>
             <div
-              className={styles.progressTrack}
               role="progressbar"
               aria-label="Progression de l’expédition"
               aria-valuemin={0}
               aria-valuemax={plan.length}
               aria-valuenow={results.length}
+              aria-valuetext={`${results.length} exercice${results.length > 1 ? "s" : ""} sur ${plan.length}`}
             >
-              <BrandCurve
-                curve="hero"
-                width={220}
-                height={40}
-                strokeWidth={8}
-                className={styles.progressCurveBase}
-              />
-              <div
-                className={styles.progressCurveDrawn}
-                style={{ width: `${Math.round(progressRatio * 100)}%` }}
-              >
-                <BrandCurve
-                  curve="hero"
-                  width={220}
-                  height={40}
-                  strokeWidth={8}
-                />
-              </div>
+              <ExpeditionTrail total={plan.length} completed={results.length} />
             </div>
           </div>
 
           {celebration !== null ? (
-            <div aria-live="polite">
-              <div
-                className={
-                  celebration.correct
-                    ? styles.stamp + " " + styles.stampCorrect
-                    : styles.stamp
-                }
-              >
-                {celebration.correct ? "Juste" : "À revoir"}
+            <div>
+              <div className={styles.stampRow}>
+                <div
+                  className={
+                    celebration.correct
+                      ? styles.stamp + " " + styles.stampCorrect
+                      : styles.stamp
+                  }
+                >
+                  {celebration.correct ? "Juste" : "À revoir"}
+                </div>
+                {celebration.correct && (
+                  <ToneCurve
+                    tone="rising"
+                    width={72}
+                    height={38}
+                    strokeWidth={7}
+                    className={styles.stampCurve}
+                  />
+                )}
               </div>
               <h1 id="lesson-title" ref={cardHeading} tabIndex={-1}>
                 {celebration.feedback}
               </h1>
-              {(reducedMotion || !celebration.correct) && (
-                <div className={styles.actions}>
-                  <button
-                    className={buttonClass("primary")}
-                    type="button"
-                    onClick={advance}
-                  >
-                    Continuer
-                  </button>
-                </div>
-              )}
+              {/* Toujours offert : l'auto-avance ne doit jamais être la
+                  seule façon de continuer, ni précipiter la lecture. */}
+              <div className={styles.actions}>
+                <button
+                  className={buttonClass("primary")}
+                  type="button"
+                  onClick={advance}
+                >
+                  Continuer
+                </button>
+              </div>
             </div>
           ) : (
             <>
@@ -1061,6 +1131,7 @@ export function ExpeditionExperience({
                           name="answer"
                           value={option.id}
                           checked={selectedOptionId === option.id}
+                          disabled={isSaving}
                           onChange={() =>
                             persistListeningSelection(
                               currentExercise,
@@ -1069,6 +1140,13 @@ export function ExpeditionExperience({
                           }
                         />
                         <span>{option.labelFr}</span>
+                        <BrandCurve
+                          curve="underline"
+                          width={200}
+                          height={7}
+                          strokeWidth={3.5}
+                          className={styles.answerUnderline}
+                        />
                       </label>
                     ))}
                   </fieldset>
@@ -1091,50 +1169,65 @@ export function ExpeditionExperience({
                     role="group"
                     aria-label="Caractères thaïs"
                   >
-                    {currentExercise.pairs.map((pair) => (
-                      <button
-                        key={pair.id}
-                        type="button"
-                        lang="th"
-                        className={
-                          matchedPairIds.includes(pair.id)
-                            ? styles.matchTile + " " + styles.matchTileDone
-                            : selectedPairId === pair.id
-                              ? styles.matchTile +
-                                " " +
-                                styles.matchTileSelected
-                              : styles.matchTile
-                        }
-                        disabled={matchedPairIds.includes(pair.id)}
-                        onClick={() => {
-                          setSelectedPairId(pair.id);
-                          setHint("");
-                        }}
-                      >
-                        {itemsById.get(pair.itemId)?.thaiRaw}
-                      </button>
-                    ))}
+                    {currentExercise.pairs.map((pair) => {
+                      const matched = matchedPairIds.includes(pair.id);
+                      return (
+                        <button
+                          key={pair.id}
+                          type="button"
+                          className={
+                            matched
+                              ? styles.matchTile + " " + styles.matchTileDone
+                              : selectedPairId === pair.id
+                                ? styles.matchTile +
+                                  " " +
+                                  styles.matchTileSelected
+                                : styles.matchTile
+                          }
+                          // aria-disabled et non disabled : une tuile
+                          // appariée reste atteignable au clavier, sinon le
+                          // focus est éjecté à chaque paire trouvée.
+                          aria-disabled={matched}
+                          aria-pressed={!matched && selectedPairId === pair.id}
+                          onClick={() => {
+                            if (matched) return;
+                            setSelectedPairId(pair.id);
+                            setHint("");
+                          }}
+                        >
+                          <span lang="th">
+                            {itemsById.get(pair.itemId)?.thaiRaw}
+                          </span>
+                        </button>
+                      );
+                    })}
                   </div>
                   <div
                     className={styles.matchColumn}
                     role="group"
                     aria-label="Étiquettes françaises"
                   >
-                    {sortedAssociationLabels(currentExercise).map((pair) => (
-                      <button
-                        key={pair.id}
-                        type="button"
-                        className={
-                          matchedPairIds.includes(pair.id)
-                            ? styles.matchTile + " " + styles.matchTileDone
-                            : styles.matchTile
-                        }
-                        disabled={matchedPairIds.includes(pair.id)}
-                        onClick={() => chooseMatch(currentExercise, pair.id)}
-                      >
-                        {pair.labelFr}
-                      </button>
-                    ))}
+                    {sortedAssociationLabels(currentExercise).map((pair) => {
+                      const matched = matchedPairIds.includes(pair.id);
+                      return (
+                        <button
+                          key={pair.id}
+                          type="button"
+                          className={
+                            matched
+                              ? styles.matchTile + " " + styles.matchTileDone
+                              : styles.matchTile
+                          }
+                          aria-disabled={matched}
+                          onClick={() => {
+                            if (matched) return;
+                            chooseMatch(currentExercise, pair.id);
+                          }}
+                        >
+                          {pair.labelFr}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -1158,8 +1251,8 @@ export function ExpeditionExperience({
                         return (
                           <button
                             key={tokenId}
+                            ref={registerToken(tokenId)}
                             type="button"
-                            lang="th"
                             className={styles.token}
                             aria-label={`Retirer ${token?.thaiRaw ?? ""} de la réponse`}
                             onClick={() => {
@@ -1167,9 +1260,12 @@ export function ExpeditionExperience({
                                 current.filter((id) => id !== tokenId),
                               );
                               setHint("");
+                              // Le jeton change de zone : le focus le suit,
+                              // sinon il retombe sur le document.
+                              pendingTokenFocus.current = tokenId;
                             }}
                           >
-                            {token?.thaiRaw}
+                            <span lang="th">{token?.thaiRaw}</span>
                           </button>
                         );
                       })
@@ -1185,8 +1281,8 @@ export function ExpeditionExperience({
                       .map((token) => (
                         <button
                           key={token.id}
+                          ref={registerToken(token.id)}
                           type="button"
-                          lang="th"
                           className={styles.token}
                           aria-label={`Déplacer ${token.thaiRaw} dans la réponse`}
                           onClick={() => {
@@ -1195,9 +1291,10 @@ export function ExpeditionExperience({
                               token.id,
                             ]);
                             setHint("");
+                            pendingTokenFocus.current = token.id;
                           }}
                         >
-                          {token.thaiRaw}
+                          <span lang="th">{token.thaiRaw}</span>
                         </button>
                       ))}
                   </div>
@@ -1243,13 +1340,11 @@ export function ExpeditionExperience({
 
               {currentExercise.type === "reading" && (
                 <>
-                  <div
-                    className={styles.glyph}
-                    lang="th"
-                    aria-label="Texte thaï à lire"
-                  >
+                  {/* Exercice de lecture : le thaï doit être exposé tel
+                      quel, pas remplacé par une étiquette française. */}
+                  <p className={styles.glyph} lang="th">
                     {itemsById.get(currentExercise.itemId)?.thaiRaw}
-                  </div>
+                  </p>
                   <fieldset className={styles.answerList}>
                     <legend className="srOnly">Options de réponse</legend>
                     {currentExercise.options.map((option) => (
@@ -1266,12 +1361,20 @@ export function ExpeditionExperience({
                           name="answer"
                           value={option.id}
                           checked={selectedOptionId === option.id}
+                          disabled={isSaving}
                           onChange={() => {
                             setSelectedOptionId(option.id);
                             setHint("");
                           }}
                         />
                         <span>{option.labelFr}</span>
+                        <BrandCurve
+                          curve="underline"
+                          width={200}
+                          height={7}
+                          strokeWidth={3.5}
+                          className={styles.answerUnderline}
+                        />
                       </label>
                     ))}
                   </fieldset>
@@ -1302,19 +1405,31 @@ export function ExpeditionExperience({
         </div>
       )}
 
+      {/* Pas de région live sur le récapitulatif : il prend le focus, et une
+          région live imbriquée relirait toute la page. */}
       {stage === "recap" && (
-        <div className={styles.body} aria-live="polite">
+        <div className={styles.body}>
           <p className={styles.eyebrow}>Expédition terminée</p>
           <h1 id="lesson-title" ref={cardHeading} tabIndex={-1}>
             La courbe de la séance est complète.
           </h1>
+          <div className={styles.recapTrail}>
+            <ExpeditionTrail total={plan.length} completed={plan.length} />
+          </div>
           <ul className={styles.recapList}>
             {lesson.exercises.map((exercise) => {
               const result = results.find(
                 ({ exerciseId }) => exerciseId === exercise.id,
               );
               return (
-                <li key={exercise.id} className={styles.recapRow}>
+                <li
+                  key={exercise.id}
+                  className={
+                    result?.rating === 1
+                      ? styles.recapRow + " " + styles.recapRowCorrect
+                      : styles.recapRow
+                  }
+                >
                   <span>{MECHANIC_LABELS[exercise.type]}</span>
                   <strong>{result?.rating === 1 ? "Juste" : "À revoir"}</strong>
                 </li>
