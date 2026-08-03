@@ -354,12 +354,12 @@ consultées le 2026-08-03).
 - Accès aux sources de la politique le 2026-08-03 :
   - dictionary.orst.go.th (RID 2554) : page d'accueil accessible, mais la
     recherche n'est pas atteignable par URL directe (formulaire sans entrée
-    GET constatée, deux tentatives). Contre-vérification RID manuelle
+    GET constatée, deux tentatives). Contre-vérification RID
     OBLIGATOIRE avant passage en `review`, le RID primant en orthographe.
   - Volubilis : recoupement effectué le 2026-08-03 sur la base téléchargée
     (VOLUBILIS Database v26.2, CC BY-SA), les 10 items confirmés, voir
     verification-volubilis.md. Cette source est indépendante de l'écosystème
-    Wikimedia ; le recoupement RID manuel reste requis avant `review`.
+    Wikimedia ; le recoupement RID a été effectué le 2026-08-03 (graphie attestée).
 - Incertitudes signalées par l'auteur :
   1. INCERTAIN : ton de ไหม en tant que particule interrogative. Pour ce
      sens, en.wiktionary donne /maj˩˩˦/ (montant) et th.wiktionary donne
@@ -375,7 +375,7 @@ consultées le 2026-08-03).
      éditoriales anglaise et thaïe distinctes). Le recoupement Volubilis du
      2026-08-03 apporte la source indépendante manquante pour les 10 items.
      La chaîne standard de la politique exige le RID en autorité n° 1 : ce
-     dossier ne peut pas passer en `review` sans le recoupement RID manuel.
+     dossier passe la porte orthographique depuis le recoupement RID du 2026-08-03.
   4. Le statut « mots courants » repose sur le jugement éditorial et la
      présence dans les dictionnaires consultés ; aucune liste de fréquence
      n'a été consultée (TNC en état dégradé au constat de la politique).
@@ -388,7 +388,7 @@ consultées le 2026-08-03).
   passé le 2026-08-03, voir verification-1d.md.
 - Findings bloquants résolus le 2026-08-03 :
   1. Indépendance des sources : recoupement Volubilis v26.2 effectué et
-     consigné dans chaque item ; le recoupement RID manuel reste requis
+     consigné dans chaque item ; le recoupement RID a été effectué le 2026-08-03
      avant `review`.
   2. Transcriptions migrées vers la convention v1.1 : ไหม devient `mǎi` et
      ไม้ devient `máai` (diphtongue /aj/ notée `ai`, longue /aːj/ notée

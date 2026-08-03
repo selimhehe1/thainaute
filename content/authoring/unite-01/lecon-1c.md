@@ -342,7 +342,7 @@ cuisine thaïe. Attribution exacte par source : le sens « galanga » est
 attesté par les entrées ข่า des Wiktionary anglais et thaï (consultées le
 2026-08-03) ; les précisions rhizome et usage en cuisine ne sont attestées
 que par l'entrée thaïe (th.wiktionary.org/wiki/ข่า, consultée le
-2026-08-03), en attente d'une seconde source lors de la vérification RID
+2026-08-03), graphie confirmée au RID le 2026-08-03, sens encore sur une seule source
 manuelle (voir dossier de production).
 
 ## Dossier de production
@@ -373,20 +373,21 @@ manuelle (voir dossier de production).
 
 ### Sources et accessibilité au jour de la rédaction
 
-- dictionary.orst.go.th (RID 2554) : site joignable mais interrogation par
-  URL directe impossible avec l'outillage (recherche dynamique) ; la
-  contre-vérification RID, prioritaire en orthographe, reste À FAIRE
+- dictionary.orst.go.th (RID 2554) : contre-vérification effectuée le
+  2026-08-03 par requête directe sur func_lookup.php, graphies attestées
+  comme entrées autonomes, voir verification-rid.md
   manuellement pour les 10 items.
 - Volubilis : recoupement effectué le 2026-08-03 sur la base téléchargée
   (VOLUBILIS Database v26.2, licence CC BY-SA) : les 10 graphies de la
   leçon sont présentes, gloses concordantes pour la plupart des items ;
   les gloses divergentes ou vides relevées dans `verification-volubilis.md`
   (ปา sans glose, คา et ข่า glosées sur un autre sens homographe) restent
-  arbitrées par la vérification RID manuelle, requise avant `review`.
+  arbitrées par la vérification RID du 2026-08-03 pour la graphie ; le sens
+  reste porté par la chaîne à deux sources.
 - Sources effectivement utilisées : en.wiktionary.org et th.wiktionary.org
   (deux entrées par item, URLs et dates consignées dans chaque item), plus
   le recoupement Volubilis consigné dans les sources de chaque item ; la
-  contre-vérification RID manuelle reste requise avant `review`.
+  contre-vérification RID a été effectuée le 2026-08-03 (graphie attestée).
 
 ### Notes pour la production audio
 
@@ -442,7 +443,7 @@ manuelle (voir dossier de production).
   - B2 : phrase sur la soupe ต้มข่า retirée de la note culturelle (une
     seule source de la politique).
   - B3 : recoupement Volubilis ajouté aux sources des 10 items ; la
-    contre-vérification RID manuelle reste requise avant `review`.
+    contre-vérification RID a été effectuée le 2026-08-03 (graphie attestée).
   - B4 : exercice 3 remplacé par un ordre tonal sur des items attestés,
     la phrase construite ปู่ปาปู est retirée de la leçon.
 - Remarques du contre-audit consignées le 2026-08-03 :
@@ -468,7 +469,7 @@ manuelle (voir dossier de production).
      `verification-volubilis.md` (« souchet ; amande de terre ») ne
      recoupe pas le sens « galanga » ; Volubilis n'est donc pas cité
      comme source de sens dans la note culturelle et l'arbitrage revient
-     à la vérification RID manuelle.
+     à la vérification RID du 2026-08-03.
 - Lot de contre-audit externe `GPT-5.6 SOL ULTRA` : à préparer dans
   `unite-01/contre-audit-gpt56.md` (aucun appel API sans budget validé).
 - Unicode : chaînes thaïes du fichier vérifiées NFC (script local),

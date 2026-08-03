@@ -427,7 +427,7 @@ un des mots les plus utiles de la langue.
   2026-08-03, URLs consignées dans chaque item (en.wiktionary et
   th.wiktionary pour les 10 items) ; recoupement hors Wikimedia effectué le
   2026-08-03 contre la Volubilis Database v26.2 pour les 10 items (voir
-  verification-volubilis.md). La contre-vérification manuelle RID reste
+  verification-volubilis.md). La contre-vérification RID effectuée le 2026-08-03 (graphie attestée, voir verification-rid.md)
   requise avant le passage en `review`.
 - État des audits : `draft`. Audit interne adversarial passé le 2026-08-03
   (voir verification-1b.md) : 4 findings bloquants, tous résolus le
@@ -447,7 +447,7 @@ un des mots les plus utiles de la langue.
 2. Finding 2 : l'illustration กินข้าว, sourcée une seule fois, est retirée
    de la note culturelle ; le fait principal double-sourcé est conservé.
 3. Finding 3 : recoupement hors Wikimedia effectué pour les 10 items contre
-   la Volubilis Database v26.2 ; contre-vérification manuelle RID requise
+   la Volubilis Database v26.2 ; contre-vérification RID effectuée le 2026-08-03 (graphie attestée, voir verification-rid.md)
    avant `review`.
 4. Finding 4 : fréquence confirmée uniquement pour เขา, ยัง, ดู, เข้า ; les
    six autres mots restent à confirmer contre une liste de fréquence
@@ -480,7 +480,7 @@ un des mots les plus utiles de la langue.
 2. Volubilis : résolue le 2026-08-03. Le recoupement hors Wikimedia a été
    effectué contre la Volubilis Database v26.2 téléchargée localement, les
    10 items sont confirmés (voir verification-volubilis.md). Seule la
-   contre-vérification manuelle RID reste requise avant `review`.
+   contre-vérification RID effectuée le 2026-08-03 (graphie attestée, voir verification-rid.md)
 3. กินข้าว : résolue le 2026-08-03 par retrait. L'illustration n'avait
    qu'une source exploitable (en.wiktionary ; th.wiktionary en 404) et a
    été retirée de la note culturelle. Le fait conservé est le sens

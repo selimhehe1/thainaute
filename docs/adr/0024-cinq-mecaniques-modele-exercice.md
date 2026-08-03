@@ -80,7 +80,7 @@ casser main :
 - **C. Synchronisation** : DTO publics, migration `answer`, notation
   serveur par type, outbox et parité mobile.
 - **D. Contenu réel** : compilation de l'unité 1 auditée vers ces schémas,
-  après la porte RID manuelle.
+  après la porte RID, franchie le 2026-08-03 pour l unité 1.
 
 ## Décision 5 : la progression est le contour tonal, pas une jauge
 

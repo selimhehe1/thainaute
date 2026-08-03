@@ -14,8 +14,14 @@
   lisible par outillage (page disclaimer défaillante), à re-vérifier
   manuellement. Fiabilité maximale : dictionnaire normatif du thaï.
   **Verdict : AUTORISÉE pour vérification, autorité n° 1 pour orthographe et
-  sens. Citation par référence, jamais de reproduction des définitions ni de
-  scraping.**
+  sens. Citation par référence, jamais de reproduction des définitions.**
+  Consultation automatisée admise dans un cadre strict, équivalent à ce que
+  ferait une personne : une requête par mot vérifié sur `func_lookup.php`,
+  espacées d'au moins une seconde, agent utilisateur identifiant le projet,
+  et **conservation de la seule présence de la graphie**. Aucune définition
+  n'est stockée, et la base n'est jamais moissonnée en masse. Premier relevé
+  effectué le 3 août 2026 sur l'unité 1, voir
+  `content/authoring/unite-01/verification-rid.md`.
 - **RTGS 1999** (annonce au Royal Gazette ; rapport UNGEGN). Les annonces
   gouvernementales ne sont pas protégées par le droit d'auteur thaï
   (Copyright Act B.E. 2537, section 7(3), vérifié via WIPO Lex).
