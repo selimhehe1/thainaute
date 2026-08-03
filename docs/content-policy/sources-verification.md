@@ -100,7 +100,13 @@ sont proscrits dans cette catégorie.
   CC BY-SA 4.0 constatée sur le blog de l'auteur, version 26.2 de juillet
   2026, projet SourceForge actif). **Verdict : AUTORISÉE ; meilleure
   ressource FR-TH libre identifiée, pivot français idéal, avec
-  contre-vérification RID systématique.** Le classeur n'est pas versionné
+  contre-vérification RID systématique.** Le classeur n'est pas versionné :
+  la citation se rend reproductible par
+  `scripts/verification/volubilis-lookup.mjs`, qui affiche l'empreinte du
+  fichier et le numéro de ligne à citer. Piège constaté le 3 août 2026 :
+  faire transiter le XML du classeur par la sortie standard de PowerShell
+  détruit silencieusement tous les caractères thaïs, et une recherche
+  renvoie alors zéro résultat sans la moindre erreur apparente. Le classeur n'est pas versionné
   (une dizaine de mégaoctets) : la citation se rend reproductible par
   , qui affiche l'empreinte du
   fichier et le numéro de ligne à citer. Piège à connaître, découvert le
