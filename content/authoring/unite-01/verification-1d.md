@@ -212,7 +212,7 @@ fichier (grep `[—–]` : aucun résultat).
   item appartiennent au même projet Wiktionary : l'exigence « deux sources
   indépendantes minimum par fait, RID prioritaire » de la politique n'est
   pas encore satisfaite. Le rédacteur l'a lui-même consigné (incertitude 3)
-  et a conditionné le passage en `review` au recoupement RID manuel ; cela
+  et a conditionné le passage en `review` au recoupement RID ; cela
   reste bloquant tant que ce recoupement n'est pas fait.
 
 ## Exercices
@@ -262,7 +262,7 @@ fichier (grep `[—–]` : aucun résultat).
    les items reposent sur deux entrées du même projet Wiktionary ; le RID,
    autorité n° 1 de la politique, est inaccessible par outillage (formulaire
    sans GET, 404 sur URL directe, constaté le 2026-08-03). Blocage du
-   passage en `review` tant que le recoupement RID manuel (et Volubilis sur
+   passage en `review` tant que le recoupement RID (et Volubilis sur
    base téléchargée) n'est pas consigné item par item.
 2. **Transcriptions `mǎy` (item 9) et `máay` (item 10) non conformes aux
    conventions.** La v1 ne définit pas /aj/ et la v1.1 impose `ai`.

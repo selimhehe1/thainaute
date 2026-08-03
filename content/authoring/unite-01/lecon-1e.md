@@ -335,7 +335,9 @@ conversation quotidienne. Pour se quitter tous les jours, préférez
     indépendante de l'écosystème Wikimedia (voir verification-volubilis.md).
   - RID 2554 (dictionary.orst.go.th) : site joignable, mais la recherche ne
     renvoie aucun résultat via outillage (page de recherche vide, y compris
-    avec paramètre d'URL). Recoupement RID manuel requis avant passage en
+    avec paramètre d'URL). Recoupement RID effectué le 2026-08-03 par requête
+    directe sur func_lookup.php ; la locution แล้วเจอกัน n'a pas d'entrée
+    propre, ses trois composants sont attestés, voir verification-rid.md. Reste avant passage en
     `review` ; le RID prime en orthographe.
 - Audit interne : contre-audit adversarial passé le 2026-08-03
   (verification-1e.md : 44 faits confirmés, 5 findings bloquants). Les 5
@@ -349,7 +351,7 @@ conversation quotidienne. Pour se quitter tous les jours, préférez
      INCERTAIN conservé, résolution RID ou grammaire papier requise.
   4. B4 (champ `litteral` de ลาก่อน) : champ supprimé, source unique.
   5. B5 (indépendance des sources) : recoupement Volubilis effectué pour
-     chaque item ; recoupement RID manuel requis avant `review`.
+     chaque item ; recoupement contre-vérification RID effectuée le 2026-08-03 (graphie attestée, voir verification-rid.md)
 - Remarques non bloquantes du contre-audit, consignées :
   1. Note « employé seulement par celui qui part » (ลาก่อน) : toujours à
      source unique en.wiktionary, non enseignée, à surveiller.
@@ -381,4 +383,4 @@ conversation quotidienne. Pour se quitter tous les jours, préférez
   appel API sans budget validé). Audio : aucun fichier produit, à générer
   par la chaîne TTS déclarée puis à tracer ici.
 - Statut : `draft`. Revue native : en attente. Passage en `review`
-  conditionné au recoupement RID manuel.
+  conditionné au recoupement RID.

@@ -551,7 +551,7 @@ suffisent.
   confirmés, 4 findings bloquants (B1 à B4) résolus le 2026-08-03 (liste
   ci-dessous), 8 remarques non bloquantes (R1 à R8) traitées ou consignées
   (liste ci-dessous). Recoupement Volubilis effectué le 2026-08-03 ;
-  contre-vérification manuelle RID (autorité orthographique) requise avant
+  contre-vérification RID effectuée le 2026-08-03 (graphie attestée, voir verification-rid.md)
   review. Lot de contre-audit externe `unite-01/contre-audit-gpt56.md` à
   préparer. Revue native : en attente.
 - Audio : aucune piste produite ; les exercices 1 à 3 et les pages
@@ -577,7 +577,7 @@ suffisent.
    revendication d'universalité.
 4. B4 : recoupement hors Wikimedia ajouté aux sources des 14 items via la
    Volubilis Database v26.2 (CC BY-SA), entrées confirmées le 2026-08-03
-   (voir `verification-volubilis.md`) ; contre-vérification manuelle RID
+   (voir `verification-volubilis.md`) ; contre-vérification RID effectuée le 2026-08-03 (graphie attestée, voir verification-rid.md)
    (autorité orthographique) requise avant review.
 
 ### Remarques non bloquantes de l'audit interne du 2026-08-03
@@ -622,7 +622,7 @@ suffisent.
    par fait sont en.wiktionary et th.wiktionary, deux communautés
    éditoriales distinctes mais toutes deux Wikimedia ; la politique demande
    de ne pas laisser Wiktionary en source unique. Recoupement Volubilis
-   effectué le 2026-08-03 ; contre-vérification manuelle RID (autorité
+   effectué le 2026-08-03 ; contre-vérification RID effectuée le 2026-08-03 (graphie attestée, voir verification-rid.md)
    orthographique) requise avant review.
 3. Convention thainaute-fr-v1, collision d'accents : é et è notent une
    qualité de voyelle (/e/, /ɛ/) mais à, â, á, ǎ notent le ton. Pour เด็ก
