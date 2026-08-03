@@ -100,7 +100,19 @@ sont proscrits dans cette catégorie.
   CC BY-SA 4.0 constatée sur le blog de l'auteur, version 26.2 de juillet
   2026, projet SourceForge actif). **Verdict : AUTORISÉE ; meilleure
   ressource FR-TH libre identifiée, pivot français idéal, avec
-  contre-vérification RID systématique.**
+  contre-vérification RID systématique.** Le classeur n'est pas versionné :
+  la citation se rend reproductible par
+  `scripts/verification/volubilis-lookup.mjs`, qui affiche l'empreinte du
+  fichier et le numéro de ligne à citer. Piège constaté le 3 août 2026 :
+  faire transiter le XML du classeur par la sortie standard de PowerShell
+  détruit silencieusement tous les caractères thaïs, et une recherche
+  renvoie alors zéro résultat sans la moindre erreur apparente. Le classeur n'est pas versionné
+  (une dizaine de mégaoctets) : la citation se rend reproductible par
+  , qui affiche l'empreinte du
+  fichier et le numéro de ligne à citer. Piège à connaître, découvert le
+  2026-08-03 : faire transiter le XML par la sortie standard de PowerShell
+  détruit silencieusement le thaï, et une recherche renvoie alors zéro
+  résultat sans erreur apparente.
 - **thai-language.com** : tous droits réservés, certificat TLS auto-signé,
   lui-même partiellement en fair use. **Verdict : ZONE GRISE ; recoupement
   informel uniquement, jamais cité dans un dossier de preuve.**
