@@ -140,7 +140,7 @@ export function ConnectedExperience() {
     ) => {
       if (subjectKeyRef.current !== expectedSubjectKey) return;
       setAttempt(entry);
-      setSelectedOptionId(entry.submission.selectedOptionId);
+      setSelectedOptionId(entry.submission.selectedOptionId ?? null);
       if (entry.status === "pending") {
         setPhase("pending");
         setMessage(

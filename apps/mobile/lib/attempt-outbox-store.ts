@@ -289,6 +289,7 @@ function isProvenLegacyFixtureSubmission(
   return (
     submission.exerciseId === LEGACY_FIXTURE_EXERCISE_ID &&
     submission.contentVersionId === LEGACY_FIXTURE_CONTENT_VERSION_ID &&
+    submission.selectedOptionId !== undefined &&
     LEGACY_FIXTURE_OPTION_IDS.has(submission.selectedOptionId) &&
     submission.algorithmVersion === LEGACY_FIXTURE_ALGORITHM_VERSION
   );

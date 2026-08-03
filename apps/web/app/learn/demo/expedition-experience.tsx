@@ -12,14 +12,18 @@ import {
   createAttemptOutboxSnapshot,
   finishLocalLesson,
   ingestAttemptBatch,
+  isOptionAttempt,
   MAX_ATTEMPT_DURATION_MS,
   openLocalLessonQuestion,
   prepareLocalLessonSubmission,
+  discardLocalLessonQuestion,
   recordLocalExpeditionResult,
+  saveLocalLessonDraft,
   selectLocalLessonOption,
   startLocalExpedition,
   startLocalLesson,
   type AttemptOutboxSnapshot,
+  type LocalDraftAnswer,
   type LocalExperienceSnapshot,
 } from "@thainaute/sync";
 import Link from "next/link";
@@ -302,7 +306,8 @@ export function ExpeditionExperience({
             existingEvents: [],
             submissions: durableOutbox.entries
               .filter(({ status }) => status !== "rejected")
-              .map((entry) => entry.submission),
+              .map((entry) => entry.submission)
+              .filter(isOptionAttempt),
             answerKeys: [
               {
                 exerciseId: answered.id,
@@ -351,16 +356,28 @@ export function ExpeditionExperience({
           ? nextExperience.lesson.selectedOptionId
           : null,
       );
+      // La réponse en construction et l'erreur déjà commise reviennent du
+      // stockage : un rechargement ne doit jamais blanchir une faute.
+      const resumed =
+        nextExperience.lesson?.phase === "question" &&
+        nextExperience.lesson.lessonVersionId === lesson.versionId
+          ? nextExperience.lesson
+          : null;
+      const draft = resumed?.draftAnswer ?? null;
       setSelectedPairId(null);
-      setMatchedPairIds([]);
-      setOrderedTokenIds([]);
-      setRecallValue("");
+      setMatchedPairIds(
+        draft?.kind === "association"
+          ? draft.pairs.map(({ chosenPairId }) => chosenPairId)
+          : [],
+      );
+      setOrderedTokenIds(draft?.kind === "word_order" ? draft.tokenIds : []);
+      setRecallValue(draft?.kind === "recall" ? draft.value : "");
       setHint("");
       setAudioError(false);
       // Une correction rejouée s'impose ; sinon on laisse à l'écran celle que
       // l'apprenant est peut-être en train de lire.
       if (replayedCelebration !== null) setCelebration(replayedCelebration);
-      missed.current = false;
+      missed.current = resumed?.missedOnce ?? false;
       setCardStartedAt(Date.now());
       setErrorMessage("");
       setAbandonConfirmation(false);
@@ -493,6 +510,45 @@ export function ExpeditionExperience({
       .finally(() => setIsSaving(false));
   }
 
+  /**
+   * Conserve la réponse en construction, en ouvrant la sous-session au
+   * premier geste. Sans cela, un rechargement effacerait l'erreur déjà
+   * commise et transformerait une note 0 en 1.
+   */
+  function persistDraft(
+    exercise: LessonExercise,
+    answer: LocalDraftAnswer | null,
+    options: { readonly missed?: boolean } = {},
+  ): void {
+    if (experienceStore === null || storageStatus !== "ready") return;
+    const at = new Date().toISOString();
+    void experienceStore
+      .update((current) => {
+        let session = current;
+        if (session.lesson === null) {
+          session = openLocalLessonQuestion(
+            startLocalLesson(session, {
+              lessonVersionId: lesson.versionId,
+              exerciseId: exercise.id,
+              startedAt: at,
+            }),
+            at,
+          );
+        }
+        return saveLocalLessonDraft(
+          session,
+          { answer, missedOnce: options.missed ?? false },
+          at,
+        );
+      })
+      .then(setSnapshot)
+      .catch(() => {
+        setErrorMessage(
+          "La réponse reste affichée, mais n’a pas pu être conservée.",
+        );
+      });
+  }
+
   const recordResult = useCallback(
     async (exercise: LessonExercise, rating: 0 | 1): Promise<void> => {
       if (experienceStore === null) return;
@@ -559,11 +615,59 @@ export function ExpeditionExperience({
     return () => window.clearTimeout(timer);
   }, [advance, celebration, reducedMotion]);
 
+  /**
+   * Clôt une mécanique corrigée localement. La note vient de l'erreur
+   * DURABLE, jamais d'un état de composant qu'un rechargement effacerait.
+   */
   function settleLocalExercise(exercise: LessonExercise): void {
-    const rating: 0 | 1 = missed.current ? 0 : 1;
+    if (experienceStore === null) return;
     setIsSaving(true);
-    void recordResult(exercise, rating)
-      .then(() => celebrate(exercise, rating))
+    const answeredAt = new Date().toISOString();
+    void experienceStore
+      .update((current) => {
+        const durablyMissed =
+          current.lesson?.phase === "question" &&
+          current.lesson.exerciseId === exercise.id
+            ? current.lesson.missedOnce
+            : missed.current;
+        const cleared =
+          current.lesson === null
+            ? current
+            : discardLocalLessonQuestion(current);
+        return recordLocalExpeditionResult(cleared, {
+          exerciseId: exercise.id,
+          rating: durablyMissed ? 0 : 1,
+          answeredAt,
+        });
+      })
+      .then((next) => {
+        setSnapshot(next);
+        const rating =
+          next.expedition?.results.find(
+            ({ exerciseId }) => exerciseId === exercise.id,
+          )?.rating ?? 1;
+        captureSafely(analytics, {
+          name: "exercise_answered",
+          lessonVersionId: lesson.versionId,
+          exerciseType: exercise.type,
+          correct: rating === 1,
+          durationBucket: durationBucket(
+            Math.min(
+              MAX_ATTEMPT_DURATION_MS,
+              Math.max(0, Date.now() - cardStartedAt),
+            ),
+          ),
+          platform: "web",
+        });
+        if (next.expedition?.results.length === plan.length) {
+          captureSafely(analytics, {
+            name: "lesson_completed",
+            lessonVersionId: lesson.versionId,
+            platform: "web",
+          });
+        }
+        celebrate(exercise, rating);
+      })
       .catch(failStorage)
       .finally(() => setIsSaving(false));
   }
@@ -627,7 +731,8 @@ export function ExpeditionExperience({
       existingEvents: [],
       submissions: nextOutbox.entries
         .filter(({ status }) => status !== "rejected")
-        .map((entry) => entry.submission),
+        .map((entry) => entry.submission)
+        .filter(isOptionAttempt),
       answerKeys: [
         {
           exerciseId: exercise.id,
@@ -709,6 +814,13 @@ export function ExpeditionExperience({
       setMatchedPairIds(nextMatched);
       setSelectedPairId(null);
       setHint("");
+      persistDraft(exercise, {
+        kind: "association",
+        pairs: nextMatched.map((pairId) => ({
+          promptPairId: pairId,
+          chosenPairId: pairId,
+        })),
+      });
       if (nextMatched.length === exercise.pairs.length) {
         settleLocalExercise(exercise);
       }
@@ -717,6 +829,17 @@ export function ExpeditionExperience({
     missed.current = true;
     setSelectedPairId(null);
     setHint("Cette étiquette appartient à un autre caractère. Réessayez.");
+    persistDraft(
+      exercise,
+      {
+        kind: "association",
+        pairs: matchedPairIds.map((pairId) => ({
+          promptPairId: pairId,
+          chosenPairId: pairId,
+        })),
+      },
+      { missed: true },
+    );
   }
 
   function submitWordOrder(
@@ -733,6 +856,11 @@ export function ExpeditionExperience({
     if (!isCorrect) {
       missed.current = true;
       setHint(exercise.feedback.incorrectFr);
+      persistDraft(
+        exercise,
+        { kind: "word_order", tokenIds: [...orderedTokenIds] },
+        { missed: true },
+      );
       return;
     }
     setHint("");
@@ -753,6 +881,11 @@ export function ExpeditionExperience({
     if (!isCorrect) {
       missed.current = true;
       setHint(exercise.feedback.incorrectFr);
+      persistDraft(
+        exercise,
+        { kind: "recall", value: recallValue },
+        { missed: true },
+      );
       return;
     }
     setHint("");
@@ -770,6 +903,9 @@ export function ExpeditionExperience({
       missed.current = true;
       setSelectedOptionId(null);
       setHint(exercise.feedback.incorrectFr);
+      // La lecture choisit une option : seule l'erreur a besoin d'être
+      // durable, la sélection fautive est effacée de l'écran.
+      persistDraft(exercise, null, { missed: true });
       return;
     }
     setHint("");
@@ -839,7 +975,8 @@ export function ExpeditionExperience({
           existingEvents: [],
           submissions: outbox.entries
             .filter(({ status }) => status !== "rejected")
-            .map((entry) => entry.submission),
+            .map((entry) => entry.submission)
+            .filter(isOptionAttempt),
           answerKeys: [
             {
               exerciseId: listeningExercise.id,
@@ -1256,10 +1393,15 @@ export function ExpeditionExperience({
                             className={styles.token}
                             aria-label={`Retirer ${token?.thaiRaw ?? ""} de la réponse`}
                             onClick={() => {
-                              setOrderedTokenIds((current) =>
-                                current.filter((id) => id !== tokenId),
+                              const next = orderedTokenIds.filter(
+                                (id) => id !== tokenId,
                               );
+                              setOrderedTokenIds(next);
                               setHint("");
+                              persistDraft(currentExercise, {
+                                kind: "word_order",
+                                tokenIds: next,
+                              });
                               // Le jeton change de zone : le focus le suit,
                               // sinon il retombe sur le document.
                               pendingTokenFocus.current = tokenId;
@@ -1286,11 +1428,13 @@ export function ExpeditionExperience({
                           className={styles.token}
                           aria-label={`Déplacer ${token.thaiRaw} dans la réponse`}
                           onClick={() => {
-                            setOrderedTokenIds((current) => [
-                              ...current,
-                              token.id,
-                            ]);
+                            const next = [...orderedTokenIds, token.id];
+                            setOrderedTokenIds(next);
                             setHint("");
+                            persistDraft(currentExercise, {
+                              kind: "word_order",
+                              tokenIds: next,
+                            });
                             pendingTokenFocus.current = token.id;
                           }}
                         >
@@ -1323,6 +1467,12 @@ export function ExpeditionExperience({
                       onChange={(event) => {
                         setRecallValue(event.target.value);
                         setHint("");
+                      }}
+                      onBlur={() => {
+                        persistDraft(currentExercise, {
+                          kind: "recall",
+                          value: recallValue,
+                        });
                       }}
                     />
                   </label>

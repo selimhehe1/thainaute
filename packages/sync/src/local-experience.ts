@@ -1,7 +1,12 @@
 import { z } from "zod";
 
 import {
+  attemptAnswersAreEqual,
   attemptSubmissionSchema,
+  attemptSubmissionsAreEqual,
+  MAX_ASSOCIATION_PAIRS_PER_ANSWER,
+  MAX_RECALL_ANSWER_LENGTH,
+  MAX_WORD_ORDER_TOKENS_PER_ANSWER,
   type ValidatedAttemptSubmission,
 } from "./contracts";
 import {
@@ -50,6 +55,36 @@ export const localOnboardingStateSchema = z.discriminatedUnion("status", [
   }),
 ]);
 
+/**
+ * Réponse en cours de construction. Plus permissive que la réponse soumise
+ * (un appariement partiel, une piste vide ou une saisie effacée sont des
+ * états légitimes), mais durable : une erreur déjà commise ne doit pas être
+ * effacée par un rechargement, sans quoi une note 0 redeviendrait un 1.
+ */
+export const localDraftAnswerSchema = z.discriminatedUnion("kind", [
+  z.strictObject({
+    kind: z.literal("association"),
+    pairs: z
+      .array(
+        z.strictObject({
+          promptPairId: canonicalUuidSchema,
+          chosenPairId: canonicalUuidSchema,
+        }),
+      )
+      .max(MAX_ASSOCIATION_PAIRS_PER_ANSWER),
+  }),
+  z.strictObject({
+    kind: z.literal("word_order"),
+    tokenIds: z
+      .array(canonicalUuidSchema)
+      .max(MAX_WORD_ORDER_TOKENS_PER_ANSWER),
+  }),
+  z.strictObject({
+    kind: z.literal("recall"),
+    value: z.string().max(MAX_RECALL_ANSWER_LENGTH),
+  }),
+]);
+
 const localLessonCheckpointBaseShape = {
   lessonVersionId: canonicalUuidSchema,
   exerciseId: canonicalUuidSchema,
@@ -67,6 +102,9 @@ export const localLessonCheckpointSchema = z
       phase: z.literal("question"),
       ...localLessonCheckpointBaseShape,
       selectedOptionId: canonicalUuidSchema.nullable(),
+      // Champs additifs à défaut : les instantanés v1 restent lisibles.
+      draftAnswer: localDraftAnswerSchema.nullable().default(null),
+      missedOnce: z.boolean().default(false),
     }),
     z.strictObject({
       phase: z.literal("submitting"),
@@ -290,6 +328,7 @@ export type LocalOnboardingSelection = z.infer<
   typeof localOnboardingSelectionSchema
 >;
 export type LocalOnboardingState = z.infer<typeof localOnboardingStateSchema>;
+export type LocalDraftAnswer = z.infer<typeof localDraftAnswerSchema>;
 export type LocalLessonCheckpoint = z.infer<typeof localLessonCheckpointSchema>;
 export type LocalExpeditionCheckpoint = z.infer<
   typeof localExpeditionCheckpointSchema
@@ -352,21 +391,9 @@ function requiredLesson(
   return snapshot.lesson;
 }
 
-function submissionsAreEqual(
-  left: ValidatedAttemptSubmission,
-  right: ValidatedAttemptSubmission,
-): boolean {
-  return (
-    left.eventId === right.eventId &&
-    left.deviceId === right.deviceId &&
-    left.exerciseId === right.exerciseId &&
-    left.selectedOptionId === right.selectedOptionId &&
-    left.answeredAt === right.answeredAt &&
-    left.durationMs === right.durationMs &&
-    left.contentVersionId === right.contentVersionId &&
-    left.algorithmVersion === right.algorithmVersion
-  );
-}
+const submissionsAreEqual = attemptSubmissionsAreEqual;
+
+export const draftAnswersAreEqual = attemptAnswersAreEqual;
 
 function lessonCheckpointsAreEqual(
   left: LocalLessonCheckpoint,
@@ -386,7 +413,9 @@ function lessonCheckpointsAreEqual(
   if (left.phase === "question") {
     return (
       right.phase === "question" &&
-      left.selectedOptionId === right.selectedOptionId
+      left.selectedOptionId === right.selectedOptionId &&
+      left.missedOnce === right.missedOnce &&
+      draftAnswersAreEqual(left.draftAnswer, right.draftAnswer)
     );
   }
   if (left.phase === "completed") {
@@ -629,6 +658,8 @@ export function openLocalLessonQuestion(
       exerciseId: lesson.exerciseId,
       sessionStartedAt: lesson.sessionStartedAt,
       selectedOptionId: null,
+      draftAnswer: null,
+      missedOnce: false,
       updatedAt,
     },
   });
@@ -658,6 +689,66 @@ export function selectLocalLessonOption(
   });
 }
 
+/**
+ * Conserve la réponse en construction et la trace d'une erreur déjà commise.
+ * Sans cette persistance, un rechargement transformerait une note 0 en 1.
+ */
+export function saveLocalLessonDraft(
+  snapshotInput: LocalExperienceSnapshot,
+  draft: {
+    readonly answer: LocalDraftAnswer | null;
+    readonly missedOnce?: boolean;
+  },
+  updatedAtInput: string,
+): LocalExperienceSnapshot {
+  const snapshot = localExperienceSnapshotSchema.parse(snapshotInput);
+  const lesson = requiredLesson(snapshot);
+  if (lesson.phase !== "question") {
+    throw new LocalExperienceTransitionError(
+      "Une réponse ne peut être construite qu'à l'étape question.",
+    );
+  }
+  const answer =
+    draft.answer === null ? null : localDraftAnswerSchema.parse(draft.answer);
+  // L'erreur est un cliquet : une fois commise, elle ne se retire plus.
+  const missedOnce = lesson.missedOnce || (draft.missedOnce ?? false);
+  if (
+    draftAnswersAreEqual(lesson.draftAnswer, answer) &&
+    missedOnce === lesson.missedOnce
+  ) {
+    return snapshot;
+  }
+  const updatedAt = canonicalTimestamp(updatedAtInput);
+  assertTimestampCanFollow(updatedAt, lesson.updatedAt, "La réponse");
+  return localExperienceSnapshotSchema.parse({
+    ...snapshot,
+    lesson: {
+      ...lesson,
+      draftAnswer: answer,
+      missedOnce,
+      updatedAt,
+    },
+  });
+}
+
+/**
+ * Referme une sous-session qui n'a réservé aucune tentative durable, pour que
+ * son résultat puisse être consigné dans l'expédition. Ne peut jamais
+ * détruire une tentative déjà écrite dans le journal.
+ */
+export function discardLocalLessonQuestion(
+  snapshotInput: LocalExperienceSnapshot,
+): LocalExperienceSnapshot {
+  const snapshot = localExperienceSnapshotSchema.parse(snapshotInput);
+  const lesson = requiredLesson(snapshot);
+  if (lesson.phase !== "intro" && lesson.phase !== "question") {
+    throw new LocalExperienceTransitionError(
+      "Une tentative durable ne peut pas être abandonnée silencieusement.",
+    );
+  }
+  return localExperienceSnapshotSchema.parse({ ...snapshot, lesson: null });
+}
+
 /** Réserve l'eventId et le payload exact avant toute écriture dans l'outbox. */
 export function prepareLocalLessonSubmission(
   snapshotInput: LocalExperienceSnapshot,
@@ -671,15 +762,35 @@ export function prepareLocalLessonSubmission(
     if (submissionsAreEqual(lesson.submission, submission)) return snapshot;
     throw new LocalExperienceAttemptIntegrityError();
   }
-  if (lesson.phase !== "question" || lesson.selectedOptionId === null) {
+  if (lesson.phase !== "question") {
+    throw new LocalExperienceTransitionError(
+      "La question doit avoir une réponse avant l’envoi.",
+    );
+  }
+  const answersOption = submission.selectedOptionId !== undefined;
+  if (
+    answersOption
+      ? lesson.selectedOptionId === null
+      : lesson.draftAnswer === null
+  ) {
     throw new LocalExperienceTransitionError(
       "La question doit avoir une réponse avant l’envoi.",
     );
   }
   if (
     submission.contentVersionId !== lesson.lessonVersionId ||
-    submission.exerciseId !== lesson.exerciseId ||
-    submission.selectedOptionId !== lesson.selectedOptionId
+    submission.exerciseId !== lesson.exerciseId
+  ) {
+    throw new LocalExperienceAttemptIntegrityError();
+  }
+  // La tentative envoyée doit être exactement celle qui a été construite.
+  if (answersOption) {
+    if (submission.selectedOptionId !== lesson.selectedOptionId) {
+      throw new LocalExperienceAttemptIntegrityError();
+    }
+  } else if (
+    submission.answer === undefined ||
+    !draftAnswersAreEqual(lesson.draftAnswer, submission.answer)
   ) {
     throw new LocalExperienceAttemptIntegrityError();
   }

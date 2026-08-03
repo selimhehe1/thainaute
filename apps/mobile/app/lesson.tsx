@@ -5,6 +5,7 @@ import {
   attemptSubmissionSchema,
   createAttemptOutboxSnapshot,
   ingestAttemptBatch,
+  isOptionAttempt,
   MAX_ATTEMPT_DURATION_MS,
   type AttemptOutboxSnapshot,
   type LocalExperienceSnapshot,
@@ -59,7 +60,8 @@ function ingestDemoOutbox(outbox: AttemptOutboxSnapshot) {
     existingEvents: [],
     submissions: outbox.entries
       .filter(({ status }) => status !== "rejected")
-      .map(({ submission }) => submission),
+      .map(({ submission }) => submission)
+      .filter(isOptionAttempt),
     answerKeys: [
       {
         exerciseId: exercise.id,
@@ -829,7 +831,7 @@ export function LessonExperience({
             ? recoveredCheckpoint.selectedOptionId
             : recoveredCheckpoint.phase === "result" ||
                 recoveredCheckpoint.phase === "completed"
-              ? recoveredCheckpoint.submission.selectedOptionId
+              ? (recoveredCheckpoint.submission.selectedOptionId ?? null)
               : null,
         );
         setLatestRating(recoveredRating);
