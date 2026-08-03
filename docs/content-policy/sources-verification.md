@@ -18,10 +18,27 @@
   Consultation automatisée admise dans un cadre strict, équivalent à ce que
   ferait une personne : une requête par mot vérifié sur `func_lookup.php`,
   espacées d'au moins une seconde, agent utilisateur identifiant le projet,
-  et **conservation de la seule présence de la graphie**. Aucune définition
-  n'est stockée, et la base n'est jamais moissonnée en masse. Premier relevé
-  effectué le 3 août 2026 sur l'unité 1, voir
-  `content/authoring/unite-01/verification-rid.md`.
+  et **conservation de la seule présence de la graphie** pour les relevés
+  automatisés de masse. Aucune définition n'est stockée, ni reproduite, ni
+  redistribuée. La base n'est jamais moissonnée intégralement.
+
+  Une consultation ponctuelle, mot par mot, peut en revanche servir à
+  trancher un fait précis (concordance de sens, nom ou position d'un signe),
+  à condition de **citer par référence sans reproduire la définition**.
+  C'est la même liberté qu'une personne consultant le dictionnaire. Relevés
+  effectués le 3 août 2026 sur les unités 1 et 2, voir
+  `content/authoring/unite-0X/verification-rid.md`.
+
+- **The Unicode Standard** (chapitre « Southeast Asia » et fichiers de la
+  base de caractères : `IndicPositionalCategory.txt`, `Scripts.txt`,
+  `UnicodeData.txt`), publiés par le Consortium Unicode et librement
+  consultables. Autorité de fait pour tout ce qui touche à la séquence de
+  code, à la catégorie positionnelle d'un signe et à l'ordre visuel contre
+  l'ordre logique. **Verdict : AUTORISÉE, autorité n° 1 pour les faits
+  d'encodage et de position des signes.** Citation par référence, avec la
+  version du standard. Ajoutée le 3 août 2026 sur signalement d'un
+  consolidateur de l'unité 2, qui l'employait déjà sans qu'elle figure ici.
+
 - **RTGS 1999** (annonce au Royal Gazette ; rapport UNGEGN). Les annonces
   gouvernementales ne sont pas protégées par le droit d'auteur thaï
   (Copyright Act B.E. 2537, section 7(3), vérifié via WIPO Lex).
