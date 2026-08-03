@@ -17,6 +17,10 @@ import {
   selectLocalLessonOption,
   serializeLocalExperienceSnapshot,
   startLocalLesson,
+  startLocalExpedition,
+  recordLocalExpeditionResult,
+  clearCompletedLocalExpedition,
+  abandonLocalExpeditionForVersionChange,
   updateLocalOnboarding,
   type LocalExperienceSnapshot,
   type ValidatedAttemptSubmission,
@@ -520,5 +524,183 @@ describe("parcours local versionné", () => {
         exerciseId: NEXT_EXERCISE_ID,
       }).lesson,
     ).toBeNull();
+  });
+});
+
+describe("expédition locale multi-exercices", () => {
+  const PLAN = [
+    EXERCISE_ID,
+    "10000000-0000-4000-8000-000000000011",
+    "10000000-0000-4000-8000-000000000012",
+  ] as const;
+
+  function expedition(): LocalExperienceSnapshot {
+    return startLocalExpedition(onboarded(), {
+      lessonVersionId: LESSON_ID,
+      exerciseIds: PLAN,
+      startedAt: STARTED_AT,
+    });
+  }
+
+  it("démarre, consigne les résultats dans l'ordre libre du plan et se libère", () => {
+    let snapshot = expedition();
+    snapshot = recordLocalExpeditionResult(snapshot, {
+      exerciseId: PLAN[1],
+      rating: 1,
+      answeredAt: "2026-08-02T08:02:00.000Z",
+    });
+    snapshot = recordLocalExpeditionResult(snapshot, {
+      exerciseId: PLAN[0],
+      rating: 0,
+      answeredAt: "2026-08-02T08:03:00.000Z",
+    });
+    snapshot = recordLocalExpeditionResult(snapshot, {
+      exerciseId: PLAN[2],
+      rating: 1,
+      answeredAt: "2026-08-02T08:04:00.000Z",
+    });
+    expect(snapshot.expedition?.results).toHaveLength(3);
+
+    const cleared = clearCompletedLocalExpedition(snapshot);
+    expect(cleared.expedition).toBeNull();
+  });
+
+  it("rejoue un résultat identique de façon idempotente et refuse un résultat divergent", () => {
+    const first = recordLocalExpeditionResult(expedition(), {
+      exerciseId: PLAN[0],
+      rating: 1,
+      answeredAt: "2026-08-02T08:02:00.000Z",
+    });
+    const replay = recordLocalExpeditionResult(first, {
+      exerciseId: PLAN[0],
+      rating: 1,
+      answeredAt: "2026-08-02T08:02:00.000Z",
+    });
+    expect(replay.expedition?.results).toHaveLength(1);
+    expect(() =>
+      recordLocalExpeditionResult(first, {
+        exerciseId: PLAN[0],
+        rating: 0,
+        answeredAt: "2026-08-02T08:05:00.000Z",
+      }),
+    ).toThrow(LocalExperienceTransitionError);
+  });
+
+  it("refuse un résultat hors du plan et une libération incomplète", () => {
+    expect(() =>
+      recordLocalExpeditionResult(expedition(), {
+        exerciseId: NEXT_EXERCISE_ID,
+        rating: 1,
+        answeredAt: "2026-08-02T08:02:00.000Z",
+      }),
+    ).toThrow(LocalExperienceTransitionError);
+    expect(() => clearCompletedLocalExpedition(expedition())).toThrow(
+      LocalExperienceTransitionError,
+    );
+  });
+
+  it("archive la sous-session close en consignant son résultat", () => {
+    let snapshot = startLocalLesson(expedition(), {
+      lessonVersionId: LESSON_ID,
+      exerciseId: EXERCISE_ID,
+      startedAt: "2026-08-02T08:00:05.000Z",
+    });
+    snapshot = selectLocalLessonOption(
+      openLocalLessonQuestion(snapshot, "2026-08-02T08:00:10.000Z"),
+      OPTION_ID,
+      "2026-08-02T08:00:20.000Z",
+    );
+    let outbox = createAttemptOutboxSnapshot();
+    snapshot = prepareLocalLessonSubmission(
+      snapshot,
+      submission(),
+      ANSWERED_AT,
+    );
+    outbox = enqueueAttempt(outbox, submission());
+    snapshot = confirmLocalLessonResult(
+      snapshot,
+      outbox,
+      "2026-08-02T08:01:10.000Z",
+    );
+    snapshot = finishLocalLesson(snapshot, outbox, "2026-08-02T08:01:20.000Z");
+    expect(snapshot.lesson?.phase).toBe("completed");
+
+    const recorded = recordLocalExpeditionResult(snapshot, {
+      exerciseId: EXERCISE_ID,
+      rating: 1,
+      answeredAt: "2026-08-02T08:01:30.000Z",
+    });
+    expect(recorded.lesson).toBeNull();
+    expect(recorded.expedition?.results[0]?.exerciseId).toBe(EXERCISE_ID);
+  });
+
+  it("refuse de consigner pendant une sous-session encore ouverte", () => {
+    const snapshot = openLocalLessonQuestion(
+      startLocalLesson(expedition(), {
+        lessonVersionId: LESSON_ID,
+        exerciseId: EXERCISE_ID,
+        startedAt: "2026-08-02T08:00:05.000Z",
+      }),
+      "2026-08-02T08:00:10.000Z",
+    );
+    expect(() =>
+      recordLocalExpeditionResult(snapshot, {
+        exerciseId: EXERCISE_ID,
+        rating: 1,
+        answeredAt: "2026-08-02T08:02:00.000Z",
+      }),
+    ).toThrow(LocalExperienceTransitionError);
+  });
+
+  it("abandonne seulement sur état attendu identique et autre version", () => {
+    const snapshot = expedition();
+    const checkpoint = snapshot.expedition;
+    if (checkpoint === null) throw new Error("Expédition manquante.");
+
+    expect(() =>
+      abandonLocalExpeditionForVersionChange(snapshot, checkpoint, LESSON_ID),
+    ).toThrow(LocalExperienceTransitionError);
+
+    const moved = recordLocalExpeditionResult(snapshot, {
+      exerciseId: PLAN[0],
+      rating: 1,
+      answeredAt: "2026-08-02T08:02:00.000Z",
+    });
+    expect(() =>
+      abandonLocalExpeditionForVersionChange(moved, checkpoint, NEXT_LESSON_ID),
+    ).toThrow(LocalExperienceTransitionError);
+
+    const abandoned = abandonLocalExpeditionForVersionChange(
+      snapshot,
+      checkpoint,
+      NEXT_LESSON_ID,
+    );
+    expect(abandoned.expedition).toBeNull();
+  });
+
+  it("relit un instantané v1 sans champ expedition", () => {
+    const legacy = JSON.parse(
+      serializeLocalExperienceSnapshot(onboarded()),
+    ) as Record<string, unknown>;
+    delete legacy.expedition;
+    const revived = deserializeLocalExperienceSnapshot(JSON.stringify(legacy));
+    expect(revived.expedition).toBeNull();
+  });
+
+  it("refuse une expédition sans onboarding ou en double", () => {
+    expect(() =>
+      startLocalExpedition(createLocalExperienceSnapshot(), {
+        lessonVersionId: LESSON_ID,
+        exerciseIds: PLAN,
+        startedAt: STARTED_AT,
+      }),
+    ).toThrow(LocalExperienceTransitionError);
+    expect(() =>
+      startLocalExpedition(expedition(), {
+        lessonVersionId: LESSON_ID,
+        exerciseIds: PLAN,
+        startedAt: STARTED_AT,
+      }),
+    ).toThrow(LocalExperienceTransitionError);
   });
 });

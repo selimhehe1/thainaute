@@ -78,6 +78,7 @@ describe("stockage du parcours local mobile", () => {
       owner: { kind: "anonymous" },
       onboarding: { status: "not_started" },
       lesson: null,
+      expedition: null,
     });
     expect(database.writeCount).toBe(0);
   });

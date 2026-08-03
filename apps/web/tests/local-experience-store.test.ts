@@ -40,6 +40,7 @@ describe("stockage du parcours local web", () => {
       owner: { kind: "anonymous" },
       onboarding: { status: "not_started" },
       lesson: null,
+      expedition: null,
     });
   });
 
