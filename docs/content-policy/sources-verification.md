@@ -45,6 +45,33 @@
   **Verdict : AUTORISÉE sans restriction. La transcription pédagogique
   Thaïnaute documente ses écarts par rapport au RTGS.**
 
+## 1 bis. Phonétique du français (ajouté le 3 août 2026)
+
+Trois consolidations successives ont buté sur le même mur : Thaïnaute
+enseigne le thaï **à des francophones**, donc ses leçons doivent dire ce
+que fait une bouche française. Or aucune source n'était autorisée pour ce
+type de fait, ce qui poussait à supprimer des explications justes ou à les
+affirmer sans appui. Les deux issues étaient mauvaises.
+
+Un fait de phonétique française est désormais recevable de deux façons, et
+d'aucune autre :
+
+1. **Sourcé** comme n'importe quel autre fait, par deux sources
+   indépendantes parmi : l'_Illustration of the IPA_ du français (Fougeron
+   et Smith, _Journal of the IPA_), les articles de phonologie française de
+   Wikipédia et Wiktionary (recoupement uniquement, jamais seuls, mêmes
+   règles que pour le thaï), et toute publication universitaire en accès
+   libre. Aucune dépense n'est engagée pour cette catégorie.
+2. **Reformulé en observation vérifiable par l'apprenant**, quand la source
+   manque : « posez la main devant votre bouche et comparez » plutôt que
+   « un francophone ne produit jamais ce souffle ». L'apprenant est
+   locuteur natif du français : il tranche mieux qu'une affirmation non
+   sourcée, et la formulation reste honnête.
+
+Reste interdit : affirmer un absolu sur le français sans source ni
+vérification possible. Les superlatifs et les « toujours » ou « jamais »
+sont proscrits dans cette catégorie.
+
 ## 2. Ressources universitaires
 
 - **Thai National Corpus** (Chulalongkorn, ~33 M mots). Interface web en
