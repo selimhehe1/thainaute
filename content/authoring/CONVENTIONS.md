@@ -90,6 +90,43 @@ Décisions :
 La migration des cinq leçons de l'unité 1 vers v1.1 se fait à la
 consolidation, après le contre-audit.
 
+## Amendement v1.2 (3 août 2026) : ce qu'est une référence recevable
+
+Un auditeur de l'unité 3 a montré que le contrat d'item était
+insatisfaisable tel qu'écrit : il exigeait « l'URL exacte de l'entrée
+consultée » pour chaque source, alors que les deux sources les plus fiables
+n'en ont pas. Le RID s'interroge en POST sur un endpoint unique, et
+Volubilis est un classeur, pas un site. Exiger une URL par entrée
+poussait donc soit à citer une URL qui ne mène nulle part, soit à écarter
+les meilleures sources.
+
+Ce qui est réellement exigé n'est pas une URL : c'est qu'un tiers puisse
+**refaire la consultation à l'identique**. Chaque source porte donc une
+référence reproductible, dans la forme que sa nature impose :
+
+- **site avec entrée adressable** : l'URL exacte de l'entrée (Wiktionary) ;
+- **service interrogeable** : l'endpoint et la requête exacte, par exemple
+  `POST dictionary.orst.go.th/func_lookup.php` avec
+  `word=<graphie>&funcName=lookupWord&status=lookup` ;
+- **fichier** : nom, version, origine de téléchargement, feuille et numéro
+  de ligne (Volubilis `VOLUBILIS.ods` v26.2, feuille `Volubilis`, ligne N) ;
+- **standard** : nom, version et fichier ou section (Unicode 17.0,
+  `IndicPositionalCategory.txt`).
+
+La date de consultation reste obligatoire dans tous les cas, et
+l'exigence de **deux sources indépendantes par fait** ne change pas.
+
+## Arbitrage v1.2 : la marque de ton sur les digrammes
+
+`tè` (เตะ) et `tàe` (แตะ) portent le même ton bas, mais la marque tombe
+sur des lettres d'aspect différent, parce que la règle v1.1 la place sur la
+première lettre du noyau vocalique. La règle est conservée : elle est
+prévisible et sans exception, et la changer imposerait de retranscrire
+trois unités. En contrepartie, toute leçon qui présente ensemble deux
+voyelles dont l'une s'écrit en digramme doit **montrer la paire côte à
+côte** et nommer le noyau, plutôt que laisser l'apprenant deviner pourquoi
+l'accent se déplace.
+
 ## Règles d'écriture produit
 
 - Jamais de tiret cadratin ni demi-cadratin dans les textes destinés à
