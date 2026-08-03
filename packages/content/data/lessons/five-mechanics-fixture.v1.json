@@ -109,7 +109,7 @@
       "itemId": "40000000-0000-4000-8000-000000000004",
       "skill": "production",
       "audioAssetId": null,
-      "promptFr": "Placez les deux signes techniques dans l'ordre A puis B et retirez l’intrus.",
+      "promptFr": "Placez les deux signes techniques dans l’ordre A puis B et retirez l’intrus.",
       "tokens": [
         {
           "id": "41000000-0000-4000-8000-000000000021",
