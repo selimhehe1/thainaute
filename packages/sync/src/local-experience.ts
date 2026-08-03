@@ -141,12 +141,76 @@ export const localLessonReplacementTargetSchema = z.strictObject({
   exerciseId: canonicalUuidSchema,
 });
 
+export const LOCAL_EXPEDITION_MAX_EXERCISES = 20;
+
+const localExpeditionResultSchema = z.strictObject({
+  exerciseId: canonicalUuidSchema,
+  rating: z.union([z.literal(0), z.literal(1)]),
+  answeredAt: utcIsoTimestampSchema,
+});
+
+/**
+ * Progression durable d'une séance multi-exercices (ADR-0024, phase B).
+ * La sous-session d'un exercice en cours reste portée par `lesson` ;
+ * cette couche conserve le plan ordonné et les résultats déjà acquis.
+ */
+export const localExpeditionCheckpointSchema = z
+  .strictObject({
+    lessonVersionId: canonicalUuidSchema,
+    exerciseIds: z
+      .array(canonicalUuidSchema)
+      .min(1)
+      .max(LOCAL_EXPEDITION_MAX_EXERCISES),
+    results: z
+      .array(localExpeditionResultSchema)
+      .max(LOCAL_EXPEDITION_MAX_EXERCISES),
+    startedAt: utcIsoTimestampSchema,
+    updatedAt: utcIsoTimestampSchema,
+  })
+  .superRefine((expedition, context) => {
+    if (
+      new Set(expedition.exerciseIds).size !== expedition.exerciseIds.length
+    ) {
+      context.addIssue({
+        code: "custom",
+        message: "Le plan d'expédition ne peut pas répéter un exercice.",
+        path: ["exerciseIds"],
+      });
+    }
+    const resultIds = expedition.results.map(({ exerciseId }) => exerciseId);
+    if (new Set(resultIds).size !== resultIds.length) {
+      context.addIssue({
+        code: "custom",
+        message: "Chaque exercice a au plus un résultat d'expédition.",
+        path: ["results"],
+      });
+    }
+    for (const [index, resultId] of resultIds.entries()) {
+      if (!expedition.exerciseIds.includes(resultId)) {
+        context.addIssue({
+          code: "custom",
+          message: "Un résultat d'expédition doit appartenir au plan.",
+          path: ["results", index],
+        });
+      }
+    }
+    if (Date.parse(expedition.updatedAt) < Date.parse(expedition.startedAt)) {
+      context.addIssue({
+        code: "custom",
+        message: "updatedAt ne peut pas précéder le début de l'expédition.",
+        path: ["updatedAt"],
+      });
+    }
+  });
+
 export const localExperienceSnapshotSchema = z
   .strictObject({
     schemaVersion: z.literal(LOCAL_EXPERIENCE_SCHEMA_VERSION),
     owner: attemptOutboxOwnerSchema,
     onboarding: localOnboardingStateSchema,
     lesson: localLessonCheckpointSchema.nullable(),
+    // Champ additif avec défaut : les instantanés v1 restent lisibles.
+    expedition: localExpeditionCheckpointSchema.nullable().default(null),
   })
   .superRefine((snapshot, context) => {
     if (
@@ -158,6 +222,45 @@ export const localExperienceSnapshotSchema = z
         message: "Une seance locale exige un onboarding termine.",
         path: ["lesson"],
       });
+    }
+    if (
+      snapshot.expedition !== null &&
+      snapshot.onboarding.status !== "completed"
+    ) {
+      context.addIssue({
+        code: "custom",
+        message: "Une expédition locale exige un onboarding terminé.",
+        path: ["expedition"],
+      });
+    }
+    if (snapshot.expedition !== null && snapshot.lesson !== null) {
+      const { expedition, lesson } = snapshot;
+      if (lesson.lessonVersionId !== expedition.lessonVersionId) {
+        context.addIssue({
+          code: "custom",
+          message: "La sous-session doit appartenir à l'expédition active.",
+          path: ["lesson", "lessonVersionId"],
+        });
+      }
+      if (!expedition.exerciseIds.includes(lesson.exerciseId)) {
+        context.addIssue({
+          code: "custom",
+          message: "L'exercice en cours doit appartenir au plan d'expédition.",
+          path: ["lesson", "exerciseId"],
+        });
+      }
+      if (
+        lesson.phase !== "completed" &&
+        expedition.results.some(
+          ({ exerciseId }) => exerciseId === lesson.exerciseId,
+        )
+      ) {
+        context.addIssue({
+          code: "custom",
+          message: "Un exercice déjà résolu ne peut pas être rejoué en place.",
+          path: ["lesson", "exerciseId"],
+        });
+      }
     }
     if (
       snapshot.onboarding.status === "in_progress" &&
@@ -188,6 +291,10 @@ export type LocalOnboardingSelection = z.infer<
 >;
 export type LocalOnboardingState = z.infer<typeof localOnboardingStateSchema>;
 export type LocalLessonCheckpoint = z.infer<typeof localLessonCheckpointSchema>;
+export type LocalExpeditionCheckpoint = z.infer<
+  typeof localExpeditionCheckpointSchema
+>;
+export type LocalExpeditionResult = z.infer<typeof localExpeditionResultSchema>;
 export type LocalLessonReplacementTarget = z.infer<
   typeof localLessonReplacementTargetSchema
 >;
@@ -665,6 +772,194 @@ export function finishLocalLesson(
       completedAt,
       updatedAt: completedAt,
     },
+  });
+}
+
+function expeditionCheckpointsAreEqual(
+  left: LocalExpeditionCheckpoint,
+  right: LocalExpeditionCheckpoint,
+): boolean {
+  return (
+    left.lessonVersionId === right.lessonVersionId &&
+    left.startedAt === right.startedAt &&
+    left.updatedAt === right.updatedAt &&
+    left.exerciseIds.length === right.exerciseIds.length &&
+    left.exerciseIds.every((id, index) => id === right.exerciseIds[index]) &&
+    left.results.length === right.results.length &&
+    left.results.every(
+      (result, index) =>
+        result.exerciseId === right.results[index]?.exerciseId &&
+        result.rating === right.results[index]?.rating &&
+        result.answeredAt === right.results[index]?.answeredAt,
+    )
+  );
+}
+
+export function startLocalExpedition(
+  snapshotInput: LocalExperienceSnapshot,
+  input: {
+    readonly lessonVersionId: string;
+    readonly exerciseIds: readonly string[];
+    readonly startedAt: string;
+  },
+): LocalExperienceSnapshot {
+  const snapshot = localExperienceSnapshotSchema.parse(snapshotInput);
+  if (snapshot.onboarding.status !== "completed") {
+    throw new LocalExperienceTransitionError(
+      "L'onboarding doit être terminé avant l'expédition.",
+    );
+  }
+  if (snapshot.expedition !== null) {
+    throw new LocalExperienceTransitionError(
+      "Une expédition locale est déjà conservée et doit être reprise, terminée ou abandonnée explicitement.",
+    );
+  }
+  if (snapshot.lesson !== null) {
+    throw new LocalExperienceTransitionError(
+      "Une séance locale isolée doit être terminée avant l'expédition.",
+    );
+  }
+  const startedAt = canonicalTimestamp(input.startedAt);
+  return localExperienceSnapshotSchema.parse({
+    ...snapshot,
+    expedition: {
+      lessonVersionId: input.lessonVersionId,
+      exerciseIds: [...input.exerciseIds],
+      results: [],
+      startedAt,
+      updatedAt: startedAt,
+    },
+  });
+}
+
+function requiredExpedition(
+  snapshot: LocalExperienceSnapshot,
+): LocalExpeditionCheckpoint {
+  if (snapshot.expedition === null) {
+    throw new LocalExperienceTransitionError(
+      "Aucune expédition locale n'est active.",
+    );
+  }
+  return snapshot.expedition;
+}
+
+/**
+ * Consigne le résultat d'un exercice du plan. Si la sous-session durable de
+ * cet exercice est encore présente, elle doit être close et elle est
+ * archivée dans la même transition (l'expédition devient la mémoire de la
+ * progression).
+ */
+export function recordLocalExpeditionResult(
+  snapshotInput: LocalExperienceSnapshot,
+  resultInput: {
+    readonly exerciseId: string;
+    readonly rating: 0 | 1;
+    readonly answeredAt: string;
+  },
+): LocalExperienceSnapshot {
+  const snapshot = localExperienceSnapshotSchema.parse(snapshotInput);
+  const expedition = requiredExpedition(snapshot);
+  const result = localExpeditionResultSchema.parse(resultInput);
+  const existing = expedition.results.find(
+    ({ exerciseId }) => exerciseId === result.exerciseId,
+  );
+  if (existing !== undefined) {
+    if (
+      existing.rating === result.rating &&
+      existing.answeredAt === result.answeredAt
+    ) {
+      return snapshot;
+    }
+    throw new LocalExperienceTransitionError(
+      "Cet exercice a déjà un résultat d'expédition différent.",
+    );
+  }
+  if (!expedition.exerciseIds.includes(result.exerciseId)) {
+    throw new LocalExperienceTransitionError(
+      "Le résultat doit appartenir au plan d'expédition.",
+    );
+  }
+  if (snapshot.lesson !== null) {
+    if (snapshot.lesson.exerciseId !== result.exerciseId) {
+      throw new LocalExperienceTransitionError(
+        "Une autre sous-session est encore en cours.",
+      );
+    }
+    if (snapshot.lesson.phase !== "completed") {
+      throw new LocalExperienceTransitionError(
+        "La sous-session doit être close avant de consigner son résultat.",
+      );
+    }
+  }
+  assertTimestampCanFollow(
+    result.answeredAt,
+    expedition.updatedAt,
+    "Le résultat d'expédition",
+  );
+  return localExperienceSnapshotSchema.parse({
+    ...snapshot,
+    lesson: null,
+    expedition: {
+      ...expedition,
+      results: [...expedition.results, result],
+      updatedAt: result.answeredAt,
+    },
+  });
+}
+
+/** Libère une expédition dont tous les exercices du plan sont résolus. */
+export function clearCompletedLocalExpedition(
+  snapshotInput: LocalExperienceSnapshot,
+): LocalExperienceSnapshot {
+  const snapshot = localExperienceSnapshotSchema.parse(snapshotInput);
+  const expedition = requiredExpedition(snapshot);
+  if (expedition.results.length !== expedition.exerciseIds.length) {
+    throw new LocalExperienceTransitionError(
+      "L'expédition ne peut être libérée qu'une fois le plan résolu.",
+    );
+  }
+  return localExperienceSnapshotSchema.parse({
+    ...snapshot,
+    expedition: null,
+  });
+}
+
+/**
+ * Abandonne une expédition pour changement de version, avec la même
+ * protection d'état attendu que l'abandon de séance. Toute sous-session
+ * doit avoir été abandonnée au préalable.
+ */
+export function abandonLocalExpeditionForVersionChange(
+  snapshotInput: LocalExperienceSnapshot,
+  expectedExpeditionInput: LocalExpeditionCheckpoint,
+  replacementLessonVersionIdInput: string,
+): LocalExperienceSnapshot {
+  const snapshot = localExperienceSnapshotSchema.parse(snapshotInput);
+  const expedition = requiredExpedition(snapshot);
+  const expectedExpedition = localExpeditionCheckpointSchema.parse(
+    expectedExpeditionInput,
+  );
+  const replacementLessonVersionId = canonicalUuidSchema.parse(
+    replacementLessonVersionIdInput,
+  );
+  if (!expeditionCheckpointsAreEqual(expedition, expectedExpedition)) {
+    throw new LocalExperienceTransitionError(
+      "L'expédition locale a changé depuis la confirmation d'abandon.",
+    );
+  }
+  if (replacementLessonVersionId === expedition.lessonVersionId) {
+    throw new LocalExperienceTransitionError(
+      "L'abandon exige une autre version de leçon.",
+    );
+  }
+  if (snapshot.lesson !== null) {
+    throw new LocalExperienceTransitionError(
+      "La sous-session doit être abandonnée avant l'expédition.",
+    );
+  }
+  return localExperienceSnapshotSchema.parse({
+    ...snapshot,
+    expedition: null,
   });
 }
 
