@@ -446,3 +446,186 @@
     transform: none;
   }
 }
+
+/* Expédition : progression, tampon et mécaniques (ADR-0023/0024) */
+
+.expeditionProgress {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.progressTrack {
+  position: relative;
+  width: 220px;
+  height: 40px;
+  color: var(--color-mist);
+}
+
+.progressCurveDrawn {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: var(--color-coral);
+  transition: width var(--motion-base) var(--ease-standard);
+}
+
+.stamp {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 3px solid var(--color-ink);
+  border-radius: 10px;
+  transform: rotate(-3deg);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: 12px;
+}
+
+.stampCorrect {
+  border-color: var(--color-jade-ink);
+  color: var(--color-jade-ink);
+  animation: stampIn var(--motion-base) var(--ease-standard);
+}
+
+@keyframes stampIn {
+  0% {
+    transform: rotate(-3deg) scale(1.25);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-3deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.matchBoard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.matchColumn {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.matchTile {
+  min-height: 56px;
+  padding: 10px 14px;
+  border: 2px solid var(--color-line);
+  border-radius: 12px;
+  background: var(--color-paper);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.matchTile[lang="th"] {
+  font-family: var(--font-thai);
+  font-size: 1.6rem;
+}
+
+.matchTileSelected {
+  border-color: var(--color-coral);
+  box-shadow: 0 0 0 2px var(--color-coral);
+}
+
+.matchTileDone {
+  border-color: var(--color-jade);
+  color: var(--color-jade-ink);
+  cursor: default;
+}
+
+.orderAnswer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 68px;
+  padding: 12px;
+  border: 2px dashed var(--color-line);
+  border-radius: 12px;
+  margin: 16px 0 10px;
+}
+
+.orderPlaceholder {
+  margin: 0;
+  color: var(--color-ink-soft);
+}
+
+.tokenBank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.token {
+  min-width: 56px;
+  min-height: 52px;
+  padding: 8px 16px;
+  border: 2px solid var(--color-ink);
+  border-radius: 12px;
+  background: var(--color-paper);
+  font-family: var(--font-thai);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.token:hover {
+  border-color: var(--color-coral);
+}
+
+.recallField {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 10px;
+}
+
+.recallField input {
+  min-height: 52px;
+  padding: 10px 14px;
+  border: 2px solid var(--color-line);
+  border-radius: 12px;
+  font-family: var(--font-thai);
+  font-size: 1.4rem;
+}
+
+.recallField input:focus-visible {
+  outline: 3px solid var(--color-coral);
+  outline-offset: 2px;
+}
+
+.recapList {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.recapRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressCurveDrawn {
+    transition: none;
+  }
+  .stampCorrect {
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .matchBoard {
+    grid-template-columns: 1fr;
+  }
+}

@@ -10,7 +10,8 @@ export interface AnalyticsConsentSnapshot {
 }
 
 export type AnalyticsPlatform = "web" | "ios" | "android";
-export type AnalyticsExerciseType = "audio_choice";
+export type AnalyticsExerciseType =
+  "audio_choice" | "association" | "word_order" | "recall" | "reading";
 
 type PlatformOnlyAnalyticsEvent = {
   readonly platform: AnalyticsPlatform;
@@ -241,8 +242,16 @@ function isAnalyticsIdentifier(value: unknown): value is string {
   return typeof value === "string" && ANALYTICS_IDENTIFIER.test(value);
 }
 
+const ANALYTICS_EXERCISE_TYPES: readonly AnalyticsExerciseType[] = [
+  "audio_choice",
+  "association",
+  "word_order",
+  "recall",
+  "reading",
+];
+
 function isExerciseType(value: unknown): value is AnalyticsExerciseType {
-  return value === "audio_choice";
+  return ANALYTICS_EXERCISE_TYPES.includes(value as AnalyticsExerciseType);
 }
 
 function parseAnalyticsEvent(value: unknown): AnalyticsEvent | null {

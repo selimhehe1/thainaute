@@ -38,10 +38,26 @@ type CompletedFixtureLearningPathProjection = Readonly<{
 
 type ConflictingFixtureLearningPathProjection = Readonly<{
   status: "version_conflict";
-  lessonPhase: LocalLessonCheckpoint["phase"];
+  lessonPhase: LocalLessonCheckpoint["phase"] | null;
   completedSteps: 0;
   totalSteps: 1;
   progressPercent: 0;
+}>;
+
+type ExpeditionInProgressFixtureLearningPathProjection = Readonly<{
+  status: "expedition_in_progress";
+  lessonPhase: LocalLessonCheckpoint["phase"] | null;
+  completedSteps: number;
+  totalSteps: number;
+  progressPercent: number;
+}>;
+
+type ExpeditionCompletedFixtureLearningPathProjection = Readonly<{
+  status: "expedition_completed";
+  lessonPhase: null;
+  completedSteps: number;
+  totalSteps: number;
+  progressPercent: 100;
 }>;
 
 export type FixtureLearningPathProjection =
@@ -49,7 +65,9 @@ export type FixtureLearningPathProjection =
   | ActiveFixtureLearningPathProjection
   | ResultReadyFixtureLearningPathProjection
   | CompletedFixtureLearningPathProjection
-  | ConflictingFixtureLearningPathProjection;
+  | ConflictingFixtureLearningPathProjection
+  | ExpeditionInProgressFixtureLearningPathProjection
+  | ExpeditionCompletedFixtureLearningPathProjection;
 
 export type FixtureLearningPathStatus = FixtureLearningPathProjection["status"];
 
@@ -75,6 +93,35 @@ export function projectFixtureLearningPath(
       status: "onboarding_required",
       lessonPhase: null,
       ...pendingProgress,
+    };
+  }
+
+  const expedition = snapshot.expedition;
+  if (expedition !== null) {
+    if (expedition.lessonVersionId !== target.lessonVersionId) {
+      return {
+        status: "version_conflict",
+        lessonPhase: snapshot.lesson?.phase ?? null,
+        ...pendingProgress,
+      };
+    }
+    const completedSteps = expedition.results.length;
+    const totalSteps = expedition.exerciseIds.length;
+    if (completedSteps === totalSteps) {
+      return {
+        status: "expedition_completed",
+        lessonPhase: null,
+        completedSteps,
+        totalSteps,
+        progressPercent: 100,
+      };
+    }
+    return {
+      status: "expedition_in_progress",
+      lessonPhase: snapshot.lesson?.phase ?? null,
+      completedSteps,
+      totalSteps,
+      progressPercent: Math.round((completedSteps / totalSteps) * 100),
     };
   }
 

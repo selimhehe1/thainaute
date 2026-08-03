@@ -102,6 +102,22 @@ function presentationFor(projection: PathProjection): PathPresentation {
         actionLabel: "Traiter la version précédente",
         actionHref: "/learn/demo",
       };
+    case "expedition_in_progress":
+      return {
+        statusLabel: `Expédition en cours · ${projection.completedSteps} sur ${projection.totalSteps}`,
+        statusDescription:
+          "La progression de l’expédition est conservée localement, exercice par exercice.",
+        actionLabel: "Reprendre l’expédition",
+        actionHref: "/learn/demo",
+      };
+    case "expedition_completed":
+      return {
+        statusLabel: "Expédition terminée",
+        statusDescription:
+          "Tous les exercices de la séance sont résolus. Le récapitulatif reste consultable.",
+        actionLabel: "Revoir le récapitulatif",
+        actionHref: "/learn/demo",
+      };
   }
 }
 

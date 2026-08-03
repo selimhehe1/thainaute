@@ -70,6 +70,20 @@ const stateCopy = {
     label: "Version à vérifier",
     route: "/" as const,
   },
+  // L'expédition multi-exercices arrive sur mobile avec sa propre tranche ;
+  // ces états ne peuvent pas encore se produire ici (ADR-0024).
+  expedition_in_progress: {
+    action: "Reprendre la leçon",
+    detail: "Votre point de reprise local est conservé sur cet appareil.",
+    label: "En cours",
+    route: "/lesson" as const,
+  },
+  expedition_completed: {
+    action: "Revoir la leçon",
+    detail: "L’unité technique est terminée sur cet appareil.",
+    label: "Terminée",
+    route: "/lesson" as const,
+  },
 } satisfies Record<
   LearningPathProjection["status"],
   {

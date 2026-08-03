@@ -1,22 +1,16 @@
 import { expect, test } from "@playwright/test";
 
-async function openDemoAfterOnboarding(
-  page: import("@playwright/test").Page,
-): Promise<void> {
-  await page.goto("/today");
-  await page.getByRole("radio", { name: "5 minutes" }).check();
-  await page.getByRole("radio", { name: "Préparer un séjour" }).check();
-  await page.getByRole("radio", { name: "Je débute" }).check();
-  await page.getByRole("button", { name: "Préparer ma session" }).click();
-  await page.getByRole("link", { name: "Commencer la session" }).click();
-}
+import {
+  completeExpedition,
+  openExpeditionAfterOnboarding,
+} from "./expedition-helpers";
 
-test("termine la leçon fictive", async ({ page }) => {
+test("termine l'expédition des cinq mécaniques", async ({ page }) => {
   const fontRequests: string[] = [];
   page.on("request", (request) => {
     if (request.resourceType() === "font") fontRequests.push(request.url());
   });
-  await openDemoAfterOnboarding(page);
+  await openExpeditionAfterOnboarding(page);
   await expect(page.getByText("Donnée fictive · non publiable")).toBeVisible();
   const thaiGlyph = page.getByLabel("Graphème thaï fictif de test");
   const loadedThaiFaces = await page.evaluate(
@@ -36,20 +30,15 @@ test("termine la leçon fictive", async ({ page }) => {
       url.includes("/_next/static/media/noto-sans-thai"),
     ),
   ).toBe(true);
-  await page.getByRole("button", { name: "Commencer" }).click();
-  await page.getByRole("radio", { name: "Option A" }).check();
-  await page.getByRole("button", { name: "Valider" }).click();
-  await expect(
-    page.getByRole("heading", { name: "La boucle technique fonctionne." }),
-  ).toBeFocused();
+
+  await completeExpedition(page);
+  await expect(page.getByText("Juste")).toHaveCount(5);
   await expect(page.getByText("250 ‰")).toBeVisible();
 });
 
 test("enregistre, compare puis supprime une prise locale", async ({ page }) => {
-  await openDemoAfterOnboarding(page);
-  await page.getByRole("button", { name: "Commencer" }).click();
-  await page.getByRole("radio", { name: "Option A" }).check();
-  await page.getByRole("button", { name: "Valider" }).click();
+  await openExpeditionAfterOnboarding(page);
+  await completeExpedition(page);
   await page.getByRole("button", { name: "M’enregistrer" }).click();
   const stop = page.getByRole("button", { name: "Arrêter l’enregistrement" });
   await expect(stop).toBeVisible();

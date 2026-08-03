@@ -381,29 +381,45 @@ export function TodayExperience({
   const completedOnboarding = snapshot.onboarding;
   const storedCheckpoint = snapshot.lesson;
   const checkpoint =
-    storedCheckpoint?.lessonVersionId === lesson.versionId &&
-    storedCheckpoint.exerciseId === lesson.exerciseId
+    storedCheckpoint?.lessonVersionId === lesson.versionId
       ? storedCheckpoint
       : null;
-  const hasOlderVersion = storedCheckpoint !== null && checkpoint === null;
+  const expedition =
+    snapshot.expedition?.lessonVersionId === lesson.versionId
+      ? snapshot.expedition
+      : null;
+  const hasOlderVersion =
+    (storedCheckpoint !== null && checkpoint === null) ||
+    (snapshot.expedition !== null && expedition === null);
+  const expeditionDone =
+    expedition !== null &&
+    expedition.results.length === expedition.exerciseIds.length;
   const actionLabel = hasOlderVersion
     ? "Traiter l’ancienne session"
-    : checkpoint === null || checkpoint.phase === "intro"
-      ? "Commencer la session"
-      : checkpoint.phase === "question" || checkpoint.phase === "submitting"
-        ? "Reprendre la session"
-        : "Revoir mon résultat";
+    : expedition !== null
+      ? expeditionDone
+        ? "Revoir le récapitulatif"
+        : "Reprendre l’expédition"
+      : checkpoint === null || checkpoint.phase === "intro"
+        ? "Commencer la session"
+        : checkpoint.phase === "question" || checkpoint.phase === "submitting"
+          ? "Reprendre la session"
+          : "Revoir mon résultat";
   const sessionStatus = hasOlderVersion
     ? "Ancienne version à confirmer"
-    : checkpoint === null || checkpoint.phase === "intro"
-      ? "Prête à commencer"
-      : checkpoint.phase === "question"
-        ? "Session en cours"
-        : checkpoint.phase === "submitting"
-          ? "Tentative locale à finaliser"
-          : checkpoint.phase === "result"
-            ? "Résultat à consulter"
-            : "Session terminée";
+    : expedition !== null
+      ? expeditionDone
+        ? "Expédition terminée"
+        : `Expédition en cours · ${expedition.results.length} sur ${expedition.exerciseIds.length}`
+      : checkpoint === null || checkpoint.phase === "intro"
+        ? "Prête à commencer"
+        : checkpoint.phase === "question"
+          ? "Session en cours"
+          : checkpoint.phase === "submitting"
+            ? "Tentative locale à finaliser"
+            : checkpoint.phase === "result"
+              ? "Résultat à consulter"
+              : "Session terminée";
   const goalLabel =
     GOAL_OPTIONS.find(({ id }) => id === completedOnboarding.goalOptionId)
       ?.label ?? "session courte";
