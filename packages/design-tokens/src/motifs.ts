@@ -23,3 +23,90 @@ export const brandCurves = {
   underline: { viewBox: "0 0 100 8", d: "M2,6 C30,7 55,5 98,2" },
   divider: { viewBox: "0 0 180 14", d: "M4,10 C 50,13 90,9 176,3" },
 } as const;
+
+// L'itinéraire d'une séance n'est pas une jauge : c'est le contour du ton
+// montant, celui que l'apprenant travaille, dont chaque exercice est un point
+// de passage. La portion parcourue s'encre le long de la même courbe.
+
+export const EXPEDITION_TRAIL_VIEW_BOX = TONE_CURVE_VIEW_BOX;
+
+export interface ExpeditionWaypoint {
+  readonly x: number;
+  readonly y: number;
+}
+
+type CubicPoints = readonly [
+  ExpeditionWaypoint,
+  ExpeditionWaypoint,
+  ExpeditionWaypoint,
+  ExpeditionWaypoint,
+];
+
+// Points de contrôle de `toneCurves.rising`, tenus en phase par un test.
+const TRAIL_CUBIC: CubicPoints = [
+  { x: 10, y: 44 },
+  { x: 35, y: 56 },
+  { x: 60, y: 52 },
+  { x: 110, y: 12 },
+];
+
+const round = (value: number): number => Math.round(value * 100) / 100;
+
+function lerp(
+  from: ExpeditionWaypoint,
+  to: ExpeditionWaypoint,
+  ratio: number,
+): ExpeditionWaypoint {
+  return {
+    x: from.x + (to.x - from.x) * ratio,
+    y: from.y + (to.y - from.y) * ratio,
+  };
+}
+
+function cubicPath(points: CubicPoints): string {
+  const [start, control1, control2, end] = points;
+  return `M${round(start.x)},${round(start.y)} C${round(control1.x)},${round(control1.y)} ${round(control2.x)},${round(control2.y)} ${round(end.x)},${round(end.y)}`;
+}
+
+/** Subdivision de De Casteljau : la portion de courbe de 0 à `ratio`. */
+function splitCubic(points: CubicPoints, ratio: number): CubicPoints {
+  const [p0, p1, p2, p3] = points;
+  const a = lerp(p0, p1, ratio);
+  const b = lerp(p1, p2, ratio);
+  const c = lerp(p2, p3, ratio);
+  const d = lerp(a, b, ratio);
+  const e = lerp(b, c, ratio);
+  return [p0, a, d, lerp(d, e, ratio)];
+}
+
+/** Étapes réparties le long du contour tonal, jamais sur une ligne droite. */
+export function expeditionWaypoints(count: number): ExpeditionWaypoint[] {
+  const total = Math.max(1, Math.trunc(count));
+  if (total === 1) {
+    const [, , , end] = splitCubic(TRAIL_CUBIC, 0.5);
+    return [{ x: round(end.x), y: round(end.y) }];
+  }
+  return Array.from({ length: total }, (_unused, index) => {
+    const [, , , point] = splitCubic(TRAIL_CUBIC, index / (total - 1));
+    return { x: round(point.x), y: round(point.y) };
+  });
+}
+
+/** Le contour tonal complet : la route de la séance. */
+export function expeditionTrailPath(): string {
+  return cubicPath(TRAIL_CUBIC);
+}
+
+/**
+ * La portion déjà encrée, de la première étape à `completed`. Chaîne vide
+ * tant qu'aucune étape n'est franchie.
+ */
+export function expeditionInkedPath(completed: number, total: number): string {
+  const steps = Math.max(1, Math.trunc(total));
+  const done = Math.min(Math.max(completed, 0), steps);
+  if (done <= 0 || steps < 2) return "";
+  const ratio = Math.min(done / (steps - 1), 1);
+  return ratio >= 1
+    ? cubicPath(TRAIL_CUBIC)
+    : cubicPath(splitCubic(TRAIL_CUBIC, ratio));
+}

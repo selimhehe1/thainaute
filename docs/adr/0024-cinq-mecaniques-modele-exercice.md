@@ -82,6 +82,29 @@ casser main :
 - **D. Contenu réel** : compilation de l'unité 1 auditée vers ces schémas,
   après la porte RID manuelle.
 
+## Décision 5 : la progression est le contour tonal, pas une jauge
+
+Une revue adversariale du lecteur a établi que le motif signature ne
+signifiait rien : l'écran affichait une courbe décorative interchangeable
+avec une ligne droite, alors que les cinq contours tonals sont le sujet
+même du produit. La progression d'une séance emprunte donc désormais le
+contour du **ton montant** : chaque exercice est un point de passage placé
+sur la courbe, et la portion franchie s'encre par subdivision exacte de la
+même cubique. La géométrie vit dans `packages/design-tokens` en données
+pures, réutilisable par le mobile, et un test verrouille l'égalité entre
+la route et `toneCurves.rising` : si l'une change, l'autre doit suivre.
+
+## Limite connue de la phase B : durabilité des quatre nouvelles mécaniques
+
+Seule l'écoute passe par la colonne vertébrale durable (checkpoint de
+sous-session, outbox, rejeu après crash). Association, ordre des mots,
+rappel et lecture sont corrigés localement : un rechargement en cours de
+carte perd la réponse en cours ET l'éventuelle erreur déjà commise, ce qui
+peut transformer une note 0 en note 1. C'est acceptable pour une fixture
+technique, jamais pour du contenu réel. La phase C rend ces quatre
+mécaniques durables au même titre que l'écoute, avant toute publication de
+leçon utilisant ces formats.
+
 ## Conséquences
 
 - Les leçons stockées et la fixture partagée restent valides sans

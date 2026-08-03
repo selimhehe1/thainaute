@@ -69,6 +69,11 @@ export const shadows = {
 export {
   toneCurves,
   brandCurves,
+  expeditionInkedPath,
+  expeditionTrailPath,
+  expeditionWaypoints,
+  EXPEDITION_TRAIL_VIEW_BOX,
   TONE_CURVE_VIEW_BOX,
+  type ExpeditionWaypoint,
   type ToneCurveName,
 } from "./motifs";

@@ -2,7 +2,6 @@
 
 import { noOpAnalytics, type AnalyticsSink } from "@thainaute/analytics";
 import { buttonClass } from "@/components/ui/button";
-import panel from "@/components/ui/panel.module.css";
 import styles from "./account.module.css";
 import {
   SyncHttpApiError,
