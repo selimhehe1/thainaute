@@ -70,6 +70,8 @@ sais exactement ce que tu cherches.
 - `sources` :
   - https://en.wiktionary.org/wiki/ปา (consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ปา (consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md
 
 ### Item 2
 
@@ -87,6 +89,8 @@ sais exactement ce que tu cherches.
 - `sources` :
   - https://en.wiktionary.org/wiki/ป่า (consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ป่า (consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md
 
 ### Item 3
 
@@ -96,13 +100,15 @@ sais exactement ce que tu cherches.
 - `ton` : moyen
 - `longueur` : longue
 - `fr` : crabe
-- `transcription` : poû
+- `transcription` : pouu
 - `registre` : neutre
 - `note_fr` : le ou est long, comme dans « roue » étirée ; garder la voix
   sur la ligne d'horizon.
 - `sources` :
   - https://en.wiktionary.org/wiki/ปู (consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ปู (consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md
 
 ### Item 4
 
@@ -112,7 +118,7 @@ sais exactement ce que tu cherches.
 - `ton` : bas
 - `longueur` : longue
 - `fr` : grand-père paternel (le père du père)
-- `transcription` : pòû
+- `transcription` : pòuu
 - `registre` : neutre
 - `note_fr` : en thaï, le mot pour papy change selon le côté de la famille ;
   ปู่ désigne uniquement le père du père. Un crabe et un grand-père ne se
@@ -120,6 +126,8 @@ sais exactement ce que tu cherches.
 - `sources` :
   - https://en.wiktionary.org/wiki/ปู่ (consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ปู่ (consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md
 
 ### Item 5
 
@@ -136,6 +144,8 @@ sais exactement ce que tu cherches.
 - `sources` :
   - https://en.wiktionary.org/wiki/ปี (consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ปี (consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md
 
 ### Item 6
 
@@ -152,6 +162,8 @@ sais exactement ce que tu cherches.
 - `sources` :
   - https://en.wiktionary.org/wiki/ปี่ (consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ปี่ (consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md
 
 ### Item 7
 
@@ -169,6 +181,8 @@ sais exactement ce que tu cherches.
 - `sources` :
   - https://en.wiktionary.org/wiki/คา (consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/คา (consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md
 
 ### Item 8
 
@@ -186,6 +200,8 @@ sais exactement ce que tu cherches.
 - `sources` :
   - https://en.wiktionary.org/wiki/ข่า (consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ข่า (consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md
 
 ### Item 9
 
@@ -202,6 +218,8 @@ sais exactement ce que tu cherches.
 - `sources` :
   - https://en.wiktionary.org/wiki/ยา (consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ยา (consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md
 
 ### Item 10
 
@@ -220,6 +238,8 @@ sais exactement ce que tu cherches.
 - `sources` :
   - https://en.wiktionary.org/wiki/หย่า (consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/หย่า (consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md
 
 ## Exercices
 
@@ -236,7 +256,7 @@ sais exactement ce que tu cherches.
 | --- | ---------- | -------- | ---------------- |
 | 1   | ป่า (pàa)  | exagérée | Ton bas          |
 | 2   | ปี (pii)   | exagérée | Ton moyen        |
-| 3   | ปู่ (pòû)  | exagérée | Ton bas          |
+| 3   | ปู่ (pòuu) | exagérée | Ton bas          |
 | 4   | ยา (yaa)   | normale  | Ton moyen        |
 | 5   | หย่า (yàa) | normale  | Ton bas          |
 | 6   | คา (khaa)  | normale  | Ton moyen        |
@@ -261,8 +281,8 @@ sais exactement ce que tu cherches.
 | Thaï (avec audio, variante normale) | Français            |
 | ----------------------------------- | ------------------- |
 | ป่า (pàa)                           | forêt               |
-| ปู (poû)                            | crabe               |
-| ปู่ (pòû)                           | grand-père paternel |
+| ปู (pouu)                           | crabe               |
+| ปู่ (pòuu)                          | grand-père paternel |
 | ยา (yaa)                            | médicament          |
 
 - Réponse correcte : les 4 paires ci-dessus.
@@ -278,21 +298,29 @@ sais exactement ce que tu cherches.
 ### Exercice 3
 
 - Mécanique : `word_order`
-- Consigne : « Écoute la phrase, puis assemble-la dans l'ordre avec les
-  boutons Déplacer et Retirer. Un mot de la liste est un intrus. »
-- Audio cible : ปู่ปาปู (pòû paa poû), variante normale, une seule voix.
-- Français affiché : « Papy lance un crabe. »
-- Jetons proposés : ปู่ (pòû) ; ปา (paa) ; ปู (poû) ; ป่า (pàa, intrus)
-- Réponse correcte : ปู่ ปา ปู
-- Feedback correct : « Exact : qui fait quoi, dans le même ordre qu'en
-  français. Papy (ปู่), lance (ปา), un crabe (ปู). »
-- Feedback incorrect : « Réécoute la phrase : le premier mot est en bas de
-  la voix (ปู่, papy), le deuxième est plat (ปา, lancer). L'intrus ป่า, la
-  forêt, n'apparaît pas dans l'audio. »
-- Pièges connus : trois mots sur quatre commencent par le même p et l'intrus
-  ป่า ne se distingue de ปา que par le ton ; c'est le cœur de l'exercice.
-  Les deux items คา et ข่า, connus depuis 1A, restent volontairement hors de
-  cette phrase pour ne pas mélanger deux consonnes initiales.
+- Consigne : « Écoute les deux syllabes, puis range les jetons du ton le
+  plus bas au ton le plus haut avec le bouton Déplacer. Un jeton de la
+  liste n'a pas été entendu : écarte-le avec le bouton Retirer. »
+- Audio cible : ปา (paa) puis ป่า (pàa), variante normale, une seule voix,
+  avec une courte pause entre les deux syllabes (réutilisation des audios
+  d'items, aucune phrase enregistrée).
+- Jetons proposés : ป่า (pàa) ; ปา (paa) ; ปู่ (pòuu, intrus non entendu)
+- Réponse correcte : ป่า ปา (le ton bas d'abord, en dessous de la ligne
+  d'horizon, puis le ton moyen, sur la ligne)
+- Feedback correct : « Exact. ป่า s'installe sous ta ligne d'horizon, ปา
+  reste dessus : tu viens de ranger les deux étages de la voix. »
+- Feedback incorrect : « Réécoute : une syllabe est en dessous de la ligne
+  d'horizon (ป่า, ton bas), l'autre est sur la ligne (ปา, ton moyen).
+  L'intrus ปู่ porte aussi un ton bas, mais sa voyelle ou n'a pas été
+  entendue. »
+- Pièges connus : l'ordre d'écoute (moyen puis bas) diffère volontairement
+  de l'ordre demandé, reproduire l'audio n'est pas la consigne ; l'intrus
+  ปู่ partage le ton bas de ป่า et piège l'apprenant qui trie au ton seul
+  sans écouter la syllabe entière, le feedback l'invite à vérifier la
+  voyelle. Aucune phrase n'est construite : la leçon travaille des
+  syllabes isolées et n'engage aucune grammaire. Les items คา et ข่า,
+  connus depuis 1A, restent volontairement hors de cet exercice pour ne
+  pas mélanger deux consonnes initiales.
 
 ## SRS
 
@@ -309,13 +337,13 @@ sais exactement ce que tu cherches.
 
 ## Note culturelle
 
-Le ข่า (khàa, ton bas), le galanga, est un rhizome aromatique de la famille
-du gingembre, utilisé en Thaïlande à la fois en cuisine et dans la
-pharmacopée traditionnelle (fait vérifié : entrées ข่า de Wiktionary
-anglais et thaï, consultées le 2026-08-03). Il donne son nom à la soupe
-ต้มข่า, où il parfume un bouillon au lait de coco (fait vérifié sur une
-seule source, voir dossier de production). Retenir le ton bas de ข่า, c'est
-donc aussi préparer sa première commande au restaurant.
+Le ข่า (khàa, ton bas), c'est le galanga, un rhizome aromatique de la
+cuisine thaïe. Attribution exacte par source : le sens « galanga » est
+attesté par les entrées ข่า des Wiktionary anglais et thaï (consultées le
+2026-08-03) ; les précisions rhizome et usage en cuisine ne sont attestées
+que par l'entrée thaïe (th.wiktionary.org/wiki/ข่า, consultée le
+2026-08-03), en attente d'une seconde source lors de la vérification RID
+manuelle (voir dossier de production).
 
 ## Dossier de production
 
@@ -349,13 +377,16 @@ donc aussi préparer sa première commande au restaurant.
   URL directe impossible avec l'outillage (recherche dynamique) ; la
   contre-vérification RID, prioritaire en orthographe, reste À FAIRE
   manuellement pour les 10 items.
-- Volubilis : base téléchargeable, pas d'interrogation en ligne par entrée ;
-  non utilisée ici, à intégrer comme pivot français lors du contre-audit.
-- Sources effectivement utilisées : en.wiktionary.org et th.wiktionary.org,
-  deux entrées indépendantes par item, URLs et dates consignées dans chaque
-  item, conformément à la politique (Wiktionary jamais en source unique :
-  les deux éditions ont des communautés éditoriales distinctes, mais le
-  recoupement RID/Volubilis reste requis avant `review`).
+- Volubilis : recoupement effectué le 2026-08-03 sur la base téléchargée
+  (VOLUBILIS Database v26.2, licence CC BY-SA) : les 10 graphies de la
+  leçon sont présentes, gloses concordantes pour la plupart des items ;
+  les gloses divergentes ou vides relevées dans `verification-volubilis.md`
+  (ปา sans glose, คา et ข่า glosées sur un autre sens homographe) restent
+  arbitrées par la vérification RID manuelle, requise avant `review`.
+- Sources effectivement utilisées : en.wiktionary.org et th.wiktionary.org
+  (deux entrées par item, URLs et dates consignées dans chaque item), plus
+  le recoupement Volubilis consigné dans les sources de chaque item ; la
+  contre-vérification RID manuelle reste requise avant `review`.
 
 ### Notes pour la production audio
 
@@ -363,8 +394,9 @@ donc aussi préparer sa première commande au restaurant.
 - Deux variantes par item : `exag` (contraste moyen/bas volontairement
   élargi) puis `norm` (contraste naturel) ; l'exercice 1 bascule d'une
   variante à l'autre à l'écoute 4.
-- Nommage proposé : `u01l1c_item{01..10}_{exag|norm}_v1` plus
-  `u01l1c_phrase01_norm_v1` pour ปู่ปาปู.
+- Nommage proposé : `u01l1c_item{01..10}_{exag|norm}_v1` ; l'exercice 3
+  réutilise les audios d'items en variante normale, aucune phrase à
+  enregistrer.
 - Voix synthétique thaïe déclarée comme telle dans l'application ;
   fournisseur, modèle, version et paramètres à consigner ici au moment de
   la génération. Contrôle : correspondance exacte audio/texte, ton et
@@ -374,35 +406,73 @@ donc aussi préparer sa première commande au restaurant.
 
 1. Contre-vérification RID 2554 non effectuée (outillage) pour les 10
    items ; obligatoire avant passage en `review`, le RID primant en
-   orthographe.
-2. Transcription de ปู / ปู่ : la règle v1 donne `poû` / `pòû`, mais le
-   circonflexe de longueur de `oû` peut être confondu avec le futur
-   diacritique du ton descendant (`â`). Décision de convention demandée
-   (proposition : clarifier le cas /uː/ dans une v1.1 avant publication).
-3. La phrase ปู่ปาปู (ordre sujet, verbe, objet) est construite, pas citée
-   d'une source ; l'ordre SVO du thaï et la naturalité de la phrase sont à
-   confirmer sur grammaire de référence papier (non encore acquise) et lors
-   du contre-audit. Marquée INCERTAIN tant que non confirmée.
-4. Note culturelle : le lien entre ข่า et la soupe ต้มข่า n'est vérifié que
-   par une seule source de la politique (en.wiktionary.org/wiki/ต้มข่า,
-   consulté le 2026-08-03 ; l'entrée th.wiktionary correspondante n'existe
-   pas, erreur 404 constatée le même jour). Fait marqué INCERTAIN : trouver
-   une seconde source ou retirer la phrase avant publication.
+   orthographe. TOUJOURS OUVERTE au 2026-08-03.
+2. Transcription de ปู / ปู่ : collision du circonflexe de longueur (`oû`)
+   avec le futur diacritique du ton descendant. RÉSOLUE le 2026-08-03 :
+   l'amendement v1.1 des conventions réserve les diacritiques aux tons et
+   note la longueur par doublement, transcriptions migrées en `pouu` /
+   `pòuu` dans toute la leçon.
+3. Phrase construite ปู่ปาปู : grammaire et naturalité non confirmables
+   par une source accessible. RÉSOLUE PAR RETRAIT le 2026-08-03 (finding
+   B4) : la phrase ne figure plus dans la leçon, l'exercice 3 n'utilise
+   que des items attestés.
+4. Note culturelle : le lien entre ข่า et la soupe ต้มข่า n'était vérifié
+   que par une seule source de la politique. RÉSOLUE PAR RETRAIT le
+   2026-08-03 (finding B2) : la phrase a été supprimée de la note
+   culturelle.
 5. Les items polysémiques (ปู aussi « poser à plat », ยา aussi « tabac »,
    คา aussi « herbe à toit », ป่า aussi « sauvage ») ne présentent ici
    qu'un seul sens français, choisi pour la clarté de 1C ; les autres sens
    sont documentés dans les sources et devront être arbitrés lors des
    leçons qui réutiliseront ces mots.
-6. Prérequis 1A et 1B référencés d'après le curriculum : les fichiers
-   d'autorat `lecon-1a.md` et `lecon-1b.md` n'existent pas encore ; aligner
-   les renvois (série de 1A, items คา et ข่า) quand ils seront rédigés.
+6. Prérequis 1A et 1B référencés d'après le curriculum. PÉRIMÉE au
+   2026-08-03 : `lecon-1a.md` et `lecon-1b.md` existent désormais et le
+   contre-audit a confirmé la cohérence des renvois de 1C (série de 1A,
+   items คา et ข่า, leçon 1B « Longues et courtes »).
 
 ### État des audits
 
 - Contre-audit interne par dimension (orthographe, sens, prononciation,
-  ton, longueur, registre, naturalité, Unicode, licence) : À LANCER.
+  ton, longueur, registre, naturalité, Unicode, licence) : PASSÉ le
+  2026-08-03, consigné dans `verification-1c.md` (91 contrôles CONFIRMÉS,
+  4 findings bloquants, 7 remarques non bloquantes).
+- Findings bloquants résolus le 2026-08-03 :
+  - B1 : attribution de la note culturelle corrigée source par source,
+    précisions non recoupées retirées.
+  - B2 : phrase sur la soupe ต้มข่า retirée de la note culturelle (une
+    seule source de la politique).
+  - B3 : recoupement Volubilis ajouté aux sources des 10 items ; la
+    contre-vérification RID manuelle reste requise avant `review`.
+  - B4 : exercice 3 remplacé par un ordre tonal sur des items attestés,
+    la phrase construite ปู่ปาปู est retirée de la leçon.
+- Remarques du contre-audit consignées le 2026-08-03 :
+  1. Ton bas décrit comme « plat et stable » : simplification pédagogique
+     assumée (l'opposition au ton descendant arrive plus tard) ; l'audio
+     devra suivre la réalisation native ˨˩, pas la description
+     simplifiée.
+  2. ปี่ (rang TNC 5835) et ข่า (rang 5607) : acceptés comme paires
+     minimales tonales, à ne pas réutiliser ailleurs comme vocabulaire
+     courant.
+  3. ปู่ sert aussi d'appellatif respectueux envers des hommes âgés : à
+     arbitrer quand le mot reviendra dans l'unité famille.
+  4. Contrôle de fréquence `tnc_freq` (PyThaiNLP) : usage interne
+     seulement, chaîne de droits non documentée, jamais cité en preuve
+     produit.
+  5. Nuance de glose pour ปา (« to throw at », viser une cible) : à
+     arbitrer quand le verbe sera réutilisé en phrase.
+  6. Collision `poû` / `pòû` : résolue par la migration v1.1 effectuée le
+     2026-08-03 (`pouu` / `pòuu`).
+  7. Incertitude 6 (fichiers 1A et 1B) : périmée, corrigée dans les
+     incertitudes ci-dessus.
+  8. Remarque de consolidation : la glose Volubilis relevée pour ข่า dans
+     `verification-volubilis.md` (« souchet ; amande de terre ») ne
+     recoupe pas le sens « galanga » ; Volubilis n'est donc pas cité
+     comme source de sens dans la note culturelle et l'arbitrage revient
+     à la vérification RID manuelle.
 - Lot de contre-audit externe `GPT-5.6 SOL ULTRA` : à préparer dans
   `unite-01/contre-audit-gpt56.md` (aucun appel API sans budget validé).
-- Unicode : les 12 chaînes thaïes du fichier vérifiées NFC le 2026-08-03
-  (script local), codepoints consignés par item.
+- Unicode : chaînes thaïes du fichier vérifiées NFC (script local),
+  codepoints consignés par item ; NFC reconfirmé par le contre-audit
+  (`verification-1c.md`, section 1) puis après la consolidation du
+  2026-08-03.
 - Revue native : en attente.

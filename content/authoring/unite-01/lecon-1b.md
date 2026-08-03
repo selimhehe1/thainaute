@@ -30,8 +30,8 @@ Spécimen : เข้า ≠ ข้าว
 ### Page 2 : comment Thaïnaute vous montre la durée
 
 Dans la transcription Thaïnaute, une voyelle courte s'écrit simple (a, ou)
-et une voyelle longue s'écrit doublée (aa) ou coiffée d'un circonflexe pour
-« ou » long (oû). Sous chaque mot, une barre de durée le confirme : un point
+et une voyelle longue s'écrit avec sa dernière lettre doublée (aa, ouu).
+Sous chaque mot, une barre de durée le confirme : un point
 pour une voyelle courte, un trait pour une longue. La couleur n'est jamais
 le seul signal : la graphie et la barre disent la même chose.
 
@@ -40,11 +40,11 @@ Spécimen : หัด (hàt) et หาด (hàat)
 ### Page 3 : la paire star, entrer ou riz
 
 เข้า « entrer » et ข้าว « riz » portent exactement le même ton descendant.
-Seule la durée du « a » les sépare : khâw bref, khâaw posé. Écoutez-les
+Seule la durée du « a » les sépare : khâo bref, khâao posé. Écoutez-les
 plusieurs fois : le premier tombe vite, le second prend le temps de
 s'installer.
 
-Spécimen : เข้า (khâw) / ข้าว (khâaw)
+Spécimen : เข้า (khâo) / ข้าว (khâao)
 
 ### Page 4 : l'astuce d'écoute
 
@@ -53,13 +53,13 @@ comme une porte qui claque. Une voyelle longue se pose et s'étire, comme une
 porte qu'on retient. Au début, aidez-vous d'un geste : pincez deux doigts
 pour une courte, écartez-les pour une longue.
 
-Spécimen : ดุ (dòu) / ดู (doû)
+Spécimen : ดุ (dòu) / ดู (douu)
 
 ### Page 5 : dans l'écriture thaïe aussi
 
 Vous n'avez pas encore appris à lire, mais remarquez déjà que la durée se
 voit dans l'écriture thaïe : ั note un « a » court, า un « aa » long,
-ุ un « ou » court sous la consonne, ู un « oû » long. Les voyelles
+ุ un « ou » court sous la consonne, ู un « ouu » long. Les voyelles
 s'accrochent autour de la consonne : avant, après, dessus ou dessous.
 L'unité 1 du fil lecture y reviendra pas à pas.
 
@@ -77,7 +77,7 @@ Spécimen : ยัง / ยาง
 - ton : descendant
 - longueur : courte
 - fr : entrer
-- transcription : khâw
+- transcription : khâo
 - registre : neutre
 - note_fr : le « a » est bref et la syllabe retombe vite ; ne pas l'étirer,
   sinon on glisse vers ข้าว « riz ».
@@ -88,6 +88,8 @@ Spécimen : ยัง / ยาง
   - https://th.wiktionary.org/wiki/เข้า (consulté le 2026-08-03) :
     orthographe, sens (se déplacer vers l'intérieur), IPA /kʰaw˥˩/
     confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md.
 
 #### Item 2 : ข้าว
 
@@ -97,18 +99,19 @@ Spécimen : ยัง / ยาง
 - ton : descendant
 - longueur : longue
 - fr : riz
-- transcription : khâaw
+- transcription : khâao
 - registre : neutre
 - note_fr : même ton descendant que เข้า « entrer » ; seule la longueur du
-  « a » distingue les deux mots. En parole rapide familière, la voyelle est
-  parfois raccourcie ; l'audio de référence garde la forme longue standard.
+  « a » distingue les deux mots.
 - sources :
   - https://en.wiktionary.org/wiki/ข้าว (consulté le 2026-08-03) :
-    orthographe, sens « riz » (et « nourriture » familier), IPA /kʰaːw˥˩/,
-    variante familière courte signalée, confirmés.
+    orthographe, sens « riz » (et « nourriture » familier), IPA /kʰaːw˥˩/
+    confirmés.
   - https://th.wiktionary.org/wiki/ข้าว (consulté le 2026-08-03) :
     orthographe, sens (céréale Oryza sativa ; familier « nourriture »),
     IPA /kʰaːw˥˩/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md.
 
 ### Paire 2 : il, elle / blanc (ton montant tenu constant)
 
@@ -121,7 +124,7 @@ Spécimen : ยัง / ยาง
 - longueur : courte
 - fr : il, elle
 - litteral : aussi « montagne » et « corne » selon le contexte
-- transcription : khǎw
+- transcription : khǎo
 - registre : neutre
 - note_fr : même graphie de départ que เข้า mais sans marque de ton ; ici le
   contour monte. La durée reste brève.
@@ -132,6 +135,8 @@ Spécimen : ยัง / ยาง
   - https://th.wiktionary.org/wiki/เขา (consulté le 2026-08-03) :
     orthographe, sens (pronom de 3e personne ; montagne ; corne),
     IPA /kʰaw˩˩˦/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md.
 
 #### Item 4 : ขาว
 
@@ -141,7 +146,7 @@ Spécimen : ยัง / ยาง
 - ton : montant
 - longueur : longue
 - fr : blanc
-- transcription : khǎaw
+- transcription : khǎao
 - registre : neutre
 - note_fr : même ton montant que เขา « il, elle » ; l'étirement du « a »
   suffit à passer de la personne à la couleur.
@@ -151,6 +156,8 @@ Spécimen : ยัง / ยาง
   - https://th.wiktionary.org/wiki/ขาว (consulté le 2026-08-03) :
     orthographe, sens (couleur blanche ; propre, pur au figuré),
     IPA /kʰaːw˩˩˦/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md.
 
 ### Paire 3 : s'entraîner / plage (ton bas tenu constant)
 
@@ -174,6 +181,8 @@ Spécimen : ยัง / ยาง
   - https://th.wiktionary.org/wiki/หัด (consulté le 2026-08-03) :
     orthographe, sens (s'exercer, rendre habile ; rougeole),
     IPA /hat̚˨˩/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md.
 
 #### Item 6 : หาด
 
@@ -194,6 +203,8 @@ Spécimen : ยัง / ยาง
   - https://th.wiktionary.org/wiki/หาด (consulté le 2026-08-03) :
     orthographe, sens (rivage en pente, plage de sable, de graviers ou de
     rochers), IPA /haːt̚˨˩/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md.
 
 ### Paire 4 : encore / caoutchouc (ton moyen tenu constant)
 
@@ -216,6 +227,8 @@ Spécimen : ยัง / ยาง
   - https://th.wiktionary.org/wiki/ยัง (consulté le 2026-08-03) :
     orthographe, sens (marqueur d'action inachevée « encore », emplois
     grammaticaux), IPA /jaŋ˧/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md.
 
 #### Item 8 : ยาง
 
@@ -236,6 +249,8 @@ Spécimen : ยัง / ยาง
   - https://th.wiktionary.org/wiki/ยาง (consulté le 2026-08-03) :
     orthographe, sens (hévéa et arbres à latex ; sève ; objets en
     caoutchouc comme ยางรถ « pneu »), IPA /jaːŋ˧/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md.
 
 ### Paire 5 : sévère / regarder (attention : les tons diffèrent)
 
@@ -262,6 +277,8 @@ sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le sign
   - https://th.wiktionary.org/wiki/ดุ (consulté le 2026-08-03) :
     orthographe, sens (réprimander avec colère ; redoutable, féroce),
     IPA /duʔ˨˩/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md.
 
 #### Item 10 : ดู
 
@@ -271,10 +288,11 @@ sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le sign
 - ton : moyen
 - longueur : longue
 - fr : regarder
-- transcription : doû
+- transcription : douu
 - registre : neutre
-- note_fr : verbe du quotidien ; le « oû » long se pose franchement. Le
-  circonflexe sur « oû » marque ici la longueur, pas un ton.
+- note_fr : verbe du quotidien ; le « ouu » long se pose franchement. La
+  lettre doublée marque la longueur ; le ton moyen, lui, ne prend aucun
+  signe.
 - sources :
   - https://en.wiktionary.org/wiki/ดู (consulté le 2026-08-03) :
     orthographe, sens « regarder, observer, veiller sur », IPA /duː˧/,
@@ -282,6 +300,8 @@ sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le sign
   - https://th.wiktionary.org/wiki/ดู (consulté le 2026-08-03) :
     orthographe, sens (voir avec les yeux ; surveiller ; examiner),
     IPA /duː˧/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
+    voir verification-volubilis.md.
 
 ## Exercices
 
@@ -304,9 +324,7 @@ sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le sign
   Une courte tombe net, une longue se pose. Comparez avec {mot jumeau} de
   la même paire. » Aucune pénalité, proposition de réécoute au ralenti.
 - Pièges connus : la voyelle courte finale de ดุ se termine par un coup de
-  glotte que l'on peut prendre pour une consonne ; en parole familière
-  ข้าว s'entend parfois raccourci, l'audio de référence garde la forme
-  longue standard.
+  glotte que l'on peut prendre pour une consonne.
 
 ### Exercice 2 : laquelle des deux ? (listening)
 
@@ -315,9 +333,9 @@ sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le sign
 - Options : les deux membres de la paire, affichés en thaï + transcription
   - sens français.
 - Tirages et réponses :
-  1. Audio ข้าว, options เข้า (khâw, entrer) / ข้าว (khâaw, riz) :
+  1. Audio ข้าว, options เข้า (khâo, entrer) / ข้าว (khâao, riz) :
      réponse ข้าว.
-  2. Audio เขา, options เขา (khǎw, il ou elle) / ขาว (khǎaw, blanc) :
+  2. Audio เขา, options เขา (khǎo, il ou elle) / ขาว (khǎao, blanc) :
      réponse เขา.
   3. Audio หัด, options หัด (hàt, s'entraîner) / หาด (hàat, plage) :
      réponse หัด.
@@ -337,10 +355,10 @@ sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le sign
   obligatoire)
 - Consigne : « Associez chaque mot entendu à sa fiche durée + sens. »
 - Paires à associer :
-  1. Audio เขา ↔ carte « courte · khǎw · il, elle »
-  2. Audio ขาว ↔ carte « longue · khǎaw · blanc »
+  1. Audio เขา ↔ carte « courte · khǎo · il, elle »
+  2. Audio ขาว ↔ carte « longue · khǎao · blanc »
   3. Audio ดุ ↔ carte « courte · dòu · sévère »
-  4. Audio ดู ↔ carte « longue · doû · regarder »
+  4. Audio ดู ↔ carte « longue · douu · regarder »
 - Feedback correct : « Bonne association : la graphie doublée ou simple
   correspond à ce que vous avez entendu. »
 - Feedback incorrect : « Ces deux cartes ne vont pas ensemble. Réécoutez le
@@ -358,8 +376,8 @@ sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le sign
   thaïe en 1B), casse ignorée, signes de ton facultatifs à ce stade (ils
   seront entraînés en 1C et 1D), doublement de voyelle obligatoire.
 - Tirages et réponses :
-  1. « riz » (ข้าว affiché) : réponse khâaw ; variantes acceptées khaaw.
-  2. « entrer » (เข้า affiché) : réponse khâw ; variantes acceptées khaw.
+  1. « riz » (ข้าว affiché) : réponse khâao ; variantes acceptées khaao.
+  2. « entrer » (เข้า affiché) : réponse khâo ; variantes acceptées khao.
   3. « plage » (หาด affiché) : réponse hàat ; variantes acceptées haat.
   4. « s'entraîner » (หัด affiché) : réponse hàt ; variantes acceptées hat.
   5. « caoutchouc » (ยาง affiché) : réponse yaang.
@@ -393,11 +411,8 @@ sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le sign
 
 En thaï, ข้าว « riz » désigne aussi, familièrement, la nourriture ou le
 repas : le riz est si central qu'il en devient le mot du quotidien pour
-« manger ». Vous entendrez par exemple กินข้าว, littéralement « manger du
-riz », pour dire « passer à table » (illustration en cours de
-contre-vérification, voir dossier de production). Retenir ข้าว avec sa
-longue voyelle, c'est donc déjà retenir un des mots les plus utiles de la
-langue.
+« manger ». Retenir ข้าว avec sa longue voyelle, c'est donc déjà retenir
+un des mots les plus utiles de la langue.
 
 - Sources du fait « ข้าว signifie aussi nourriture, repas (familier) » :
   - https://en.wiktionary.org/wiki/ข้าว (consulté le 2026-08-03)
@@ -410,14 +425,49 @@ langue.
 - Méthode de vérification : chaque item vérifié pendant la rédaction
   (orthographe, sens, ton, longueur, IPA) contre deux entrées consultées le
   2026-08-03, URLs consignées dans chaque item (en.wiktionary et
-  th.wiktionary pour les 10 items).
-- État des audits : `draft`. Contre-audit interne (orthographe, sens,
-  prononciation, ton, longueur, registre, naturalité, Unicode, licence) non
-  lancé. Lot de contre-audit externe `unite-01/contre-audit-gpt56.md` à
-  préparer. Revue native : en attente.
+  th.wiktionary pour les 10 items) ; recoupement hors Wikimedia effectué le
+  2026-08-03 contre la Volubilis Database v26.2 pour les 10 items (voir
+  verification-volubilis.md). La contre-vérification manuelle RID reste
+  requise avant le passage en `review`.
+- État des audits : `draft`. Audit interne adversarial passé le 2026-08-03
+  (voir verification-1b.md) : 4 findings bloquants, tous résolus le
+  2026-08-03, résolutions listées ci-dessous ; remarques non bloquantes
+  traitées ou consignées ci-dessous. Lot de contre-audit externe
+  `unite-01/contre-audit-gpt56.md` à préparer. Contre-vérification manuelle
+  RID requise avant `review`. Revue native : en attente.
 - Audio : aucune piste produite ; les exercices 1 à 3 dépendent de la
   production audio tracée (fournisseur, modèle, version, paramètres à
   consigner avant enregistrement).
+
+### Résolution des findings bloquants (audit interne du 2026-08-03)
+
+1. Finding 1 : la variante courte de ข้าว est étiquetée « archaic, now
+   dialectal » par en.wiktionary, pas familière ; mention retirée de la
+   note_fr, des sources et du piège d'exercice, sans perte pour un débutant.
+2. Finding 2 : l'illustration กินข้าว, sourcée une seule fois, est retirée
+   de la note culturelle ; le fait principal double-sourcé est conservé.
+3. Finding 3 : recoupement hors Wikimedia effectué pour les 10 items contre
+   la Volubilis Database v26.2 ; contre-vérification manuelle RID requise
+   avant `review`.
+4. Finding 4 : fréquence confirmée uniquement pour เขา, ยัง, ดู, เข้า ; les
+   six autres mots restent à confirmer contre une liste de fréquence
+   exploitable et les écrans n'affirment rien de plus.
+
+### Remarques non bloquantes de l'audit interne
+
+1. Traitée : migration v1.1 appliquée à toutes les transcriptions (khâo,
+   khâao, khǎo, khǎao, douu) ; la page 2 et la note de l'item 10 sont
+   réécrites sans circonflexe de longueur.
+2. Consignée : เขา se prononce souvent avec un ton haut familier /kʰaw˦˥/
+   (graphie เค้า) ; à prendre en compte au choix de l'audio, la leçon garde
+   la forme standard montante.
+3. Consignée : le champ litteral des items 3 et 5 contient des homographes,
+   pas des traductions littérales ; décision de schéma (champ homographes)
+   à prendre à la consolidation de l'unité.
+4. Consignée : la page 1 pourra préciser « en français standard » (durées
+   vocaliques du français belge et suisse) ; à trancher à l'audit pédagogie.
+5. Consignée : l'audit sens tranchera entre « sévère » et « féroce ;
+   gronder » pour ดุ ; la glose actuelle reste défendable.
 
 ### Incertitudes signalées par l'auteur
 
@@ -427,25 +477,22 @@ langue.
    pu être consultée ; re-vérification manuelle des 10 orthographes à faire
    au contre-audit (risque faible, mots très courants, mais la politique
    fait primer le RID).
-2. Volubilis : non consultable entrée par entrée via l'outillage
-   (distribution en fichiers téléchargeables). Les deux sources utilisées
-   par item sont en.wiktionary et th.wiktionary, deux communautés
-   éditoriales distinctes mais toutes deux Wikimedia ; la politique demande
-   de ne pas laisser Wiktionary en source unique. Un recoupement hors
-   Wikimedia (RID manuel ou Volubilis local) est requis avant `review`.
-3. INCERTAIN : กินข้าว « manger, prendre un repas ». Vérifié uniquement sur
-   https://en.wiktionary.org/wiki/กินข้าว (consulté le 2026-08-03) ;
-   l'entrée th.wiktionary n'existe pas (404 le 2026-08-03). Le fait
-   double-sourcé de la note culturelle est le sens familier « nourriture,
-   repas » de ข้าว ; l'illustration กินข้าว reste à confirmer par une
-   deuxième source avant `review`.
+2. Volubilis : résolue le 2026-08-03. Le recoupement hors Wikimedia a été
+   effectué contre la Volubilis Database v26.2 téléchargée localement, les
+   10 items sont confirmés (voir verification-volubilis.md). Seule la
+   contre-vérification manuelle RID reste requise avant `review`.
+3. กินข้าว : résolue le 2026-08-03 par retrait. L'illustration n'avait
+   qu'une source exploitable (en.wiktionary ; th.wiktionary en 404) et a
+   été retirée de la note culturelle. Le fait conservé est le sens
+   familier « nourriture, repas » de ข้าว, double-sourcé.
 4. ดุ : l'IPA source /duʔ˨˩/ inclut un coup de glotte final. La formulation
    pédagogique « se termine par un petit arrêt du souffle » est à valider
    par l'audit prononciation.
-5. ข้าว : en.wiktionary signale une variante familière raccourcie
-   /kʰaw˥˩/. La leçon enseigne la forme longue standard et la note ;
-   l'audit naturalité devra confirmer que l'audio de référence évite la
-   variante raccourcie.
+5. ข้าว : résolue le 2026-08-03. La forme courte /kʰaw˥˩/ est étiquetée
+   par en.wiktionary « archaic, now dialectal », pas familière ; la
+   mention, inutile à un débutant, a été retirée de la leçon. L'audit
+   naturalité confirmera que l'audio de référence garde la forme longue
+   standard.
 6. Paire 5 (ดุ / ดู) : durée et ton varient ensemble (bas contre moyen).
    Choix assumé pour montrer la durée sur une autre voyelle que « a »,
    signalé à l'écran et exclu de la production notée ; l'audit pédagogie

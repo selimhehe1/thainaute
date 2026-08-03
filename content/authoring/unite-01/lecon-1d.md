@@ -67,13 +67,17 @@ leçon 1A.
 - `longueur` : longue
 - `fr` : chien
 - `transcription` : mǎa
-- `registre` : neutre
+- `registre` : courant, familier
 - `note_fr` : le mot part d'en bas et grimpe, comme la fin d'une question
-  française ; c'est le jumeau piège de ม้า (cheval).
+  française ; c'est le jumeau piège de ม้า (cheval). Mot normal à l'oral ;
+  สุนัข est la forme polie et formelle ; appliqué à une personne, หมา est
+  insultant.
 - `sources` :
   - https://en.wiktionary.org/wiki/หมา (IPA /maː˩˩˦/, consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/หมา (IPA /maː˩˩˦/, ton จัตวา, consulté le
     2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ### Item 2
 
@@ -90,6 +94,8 @@ leçon 1A.
 - `sources` :
   - https://en.wiktionary.org/wiki/ม้า (IPA /maː˦˥/, consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ม้า (IPA /maː˦˥/, consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ### Item 3
 
@@ -106,6 +112,8 @@ leçon 1A.
 - `sources` :
   - https://en.wiktionary.org/wiki/ขา (IPA /kʰaː˩˩˦/, consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ขา (IPA /kʰaː˩˩˦/, consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ### Item 4
 
@@ -124,6 +132,8 @@ leçon 1A.
   - https://en.wiktionary.org/wiki/ค้า (IPA /kʰaː˦˥/, consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ค้า (IPA /kʰaː˦˥/, forme nominale การค้า,
     consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ### Item 5
 
@@ -140,6 +150,8 @@ leçon 1A.
 - `sources` :
   - https://en.wiktionary.org/wiki/หนา (IPA /naː˩˩˦/, consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/หนา (IPA /naː˩˩˦/, consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ### Item 6
 
@@ -156,6 +168,8 @@ leçon 1A.
 - `sources` :
   - https://en.wiktionary.org/wiki/น้า (IPA /naː˦˥/, consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/น้า (IPA /naː˦˥/, consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ### Item 7
 
@@ -172,6 +186,8 @@ leçon 1A.
 - `sources` :
   - https://en.wiktionary.org/wiki/หนี (IPA /niː˩˩˦/, consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/หนี (IPA /niː˩˩˦/, consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ### Item 8
 
@@ -188,6 +204,8 @@ leçon 1A.
 - `sources` :
   - https://en.wiktionary.org/wiki/นี้ (IPA /niː˦˥/, consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/นี้ (IPA /niː˦˥/, consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ### Item 9
 
@@ -197,9 +215,9 @@ leçon 1A.
 - `ton` : montant
 - `longueur` : courte
 - `fr` : la soie
-- `transcription` : mǎy
+- `transcription` : mǎi
 - `registre` : neutre
-- `note_fr` : la finale y se lit comme dans « aïe » ; la voyelle est courte,
+- `note_fr` : la finale ai se lit comme dans « aïe » ; la voyelle est courte,
   contrairement à ไม้ (bois). Le même mot écrit sert aussi de particule de
   question, enseignée plus tard : son ton en parole courante varie selon les
   sources (voir dossier de production).
@@ -208,6 +226,8 @@ leçon 1A.
     consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ไหม (IPA /maj˩˩˦/ pour l'étymologie 1
     « soie, ver à soie », consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ### Item 10
 
@@ -217,7 +237,7 @@ leçon 1A.
 - `ton` : haut
 - `longueur` : longue
 - `fr` : le bois, l'arbre, la plante
-- `transcription` : máay
+- `transcription` : máai
 - `registre` : neutre
 - `note_fr` : malgré la graphie qui ressemble à une voyelle courte, la
   prononciation est longue ; cette paire avec ไหม contraste donc le ton ET la
@@ -226,6 +246,8 @@ leçon 1A.
   - https://en.wiktionary.org/wiki/ไม้ (IPA /maːj˦˥/, consulté le 2026-08-03)
   - https://th.wiktionary.org/wiki/ไม้ (IPA /maːj˦˥/, voyelle longue malgré la
     graphie, consulté le 2026-08-03)
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ## Exercices
 
@@ -264,7 +286,7 @@ leçon 1A.
   2. ม้า (máa) ↔ cheval
   3. น้า (náa) ↔ oncle ou tante côté maman
   4. หนี (nǐi) ↔ fuir
-  5. ไม้ (máay) ↔ bois
+  5. ไม้ (máai) ↔ bois
 - Réponse correcte : les cinq paires ci-dessus.
 - Feedback correct : « Bien joué. Remarquez le motif : dans cette leçon, les
   mots écrits avec un ห muet portent le ton montant, ceux avec la marque ้
@@ -334,8 +356,10 @@ consultées le 2026-08-03).
     recherche n'est pas atteignable par URL directe (formulaire sans entrée
     GET constatée, deux tentatives). Contre-vérification RID manuelle
     OBLIGATOIRE avant passage en `review`, le RID primant en orthographe.
-  - Volubilis : pas d'interface en ligne par entrée constatée ; recoupement à
-    effectuer sur la base téléchargée avant `review`.
+  - Volubilis : recoupement effectué le 2026-08-03 sur la base téléchargée
+    (VOLUBILIS Database v26.2, CC BY-SA), les 10 items confirmés, voir
+    verification-volubilis.md. Cette source est indépendante de l'écosystème
+    Wikimedia ; le recoupement RID manuel reste requis avant `review`.
 - Incertitudes signalées par l'auteur :
   1. INCERTAIN : ton de ไหม en tant que particule interrogative. Pour ce
      sens, en.wiktionary donne /maj˩˩˦/ (montant) et th.wiktionary donne
@@ -347,10 +371,11 @@ consultées le 2026-08-03).
   2. La paire ไหม/ไม้ n'est pas un contraste strictement minimal : la
      longueur diffère (courte contre longue) en plus du ton. Assumé
      pédagogiquement et signalé dans l'item 10 et l'exercice 2.
-  3. Les deux sources de recoupement appartiennent au même projet Wiktionary
-     (communautés éditoriales anglaise et thaïe distinctes). La chaîne
-     standard de la politique exige le RID en autorité n° 1 : ce dossier ne
-     peut pas passer en `review` sans le recoupement RID manuel.
+  3. Les deux sources Wiktionary appartiennent au même projet (communautés
+     éditoriales anglaise et thaïe distinctes). Le recoupement Volubilis du
+     2026-08-03 apporte la source indépendante manquante pour les 10 items.
+     La chaîne standard de la politique exige le RID en autorité n° 1 : ce
+     dossier ne peut pas passer en `review` sans le recoupement RID manuel.
   4. Le statut « mots courants » repose sur le jugement éditorial et la
      présence dans les dictionnaires consultés ; aucune liste de fréquence
      n'a été consultée (TNC en état dégradé au constat de la politique).
@@ -359,7 +384,33 @@ consultées le 2026-08-03).
      règle générale ; la règle complète arrive avec les classes de consonnes
      (unité 4).
 - État des audits : `draft`. Contre-audit interne (orthographe, sens,
-  prononciation, ton, longueur, registre, naturalité, Unicode, licence) non
-  lancé. Lot de contre-audit externe pour `GPT-5.6 SOL ULTRA` à préparer dans
+  prononciation, ton, longueur, registre, naturalité, Unicode, licence)
+  passé le 2026-08-03, voir verification-1d.md.
+- Findings bloquants résolus le 2026-08-03 :
+  1. Indépendance des sources : recoupement Volubilis v26.2 effectué et
+     consigné dans chaque item ; le recoupement RID manuel reste requis
+     avant `review`.
+  2. Transcriptions migrées vers la convention v1.1 : ไหม devient `mǎi` et
+     ไม้ devient `máai` (diphtongue /aj/ notée `ai`, longue /aːj/ notée
+     `aai`).
+  3. Registre de หมา corrigé en « courant, familier », note_fr complétée
+     (สุนัข forme polie et formelle ; หมา insultant appliqué à une
+     personne).
+- Remarques non bloquantes consignées (verification-1d.md) :
+  1. Particule interrogative ไหม : th.wiktionary (étymologie 3) donne les
+     DEUX prononciations /maj˩˩˦/ et /maj˦˥/ ; l'incertitude 1 ci-dessus
+     reste ouverte et devra citer cet état exact avant la leçon qui
+     enseignera la particule. Aucun écran de cette leçon n'affirme le ton de
+     la particule.
+  2. Fréquence (FrequencyWords th_50k, consulté le 2026-08-03) : ค้า rang
+     ~24216, ไม้ rang ~13728, หนา absent du top 50 000, ไหม rang ~966 mais
+     surtout comme particule ; nuance le statut « mots courants »
+     (incertitude 4), la segmentation sous-estimant les composés.
+  3. Item 4 : le champ `registre` mêle registre et note d'usage sur les
+     composés ; à séparer lors d'une prochaine passe éditoriale.
+  4. Note culturelle : préciser « une personne visiblement plus jeune que
+     votre mère, d'une génération proche de la sienne » lors d'une prochaine
+     passe éditoriale.
+- Lot de contre-audit externe pour `GPT-5.6 SOL ULTRA` à préparer dans
   `unite-01/contre-audit-gpt56.md`. Audio non produit. Revue native : en
   attente.

@@ -14,6 +14,9 @@
   à faible enjeu, sans aucune notation. La longueur vocalique est seulement
   entendue ici, elle devient la cible de la leçon 1B.
 - Durée visée : 8 à 10 minutes.
+- Transcription : convention `thainaute-fr` v1.1 (amendement du 3 août 2026 ;
+  diacritiques réservés aux tons, qualités vocaliques en digrammes sans
+  accent, diphtongue longue /aːj/ notée « aai »).
 - Statut : `draft`. Revue native : en attente.
 
 ## Enseignement
@@ -52,9 +55,9 @@ Spécimen : khaa · khàa · khâa · kháa · khǎa
 Sous chaque mot thaï, Thaïnaute affiche une transcription pensée pour un œil
 français. Les accents y notent le ton, jamais autre chose : rien pour le
 moyen (khaa), accent grave pour le bas (khàa), circonflexe pour le
-descendant (khâa), aigu pour le haut (kháa), et le petit chapeau rond pour
-le montant (khǎa). Vous verrez aussi « aw » : il se lit comme le o ouvert de
-« sort ».
+descendant (khâa), aigu pour le haut (kháa), et un petit v pointé vers le
+bas, le caron, pour le montant (khǎa). Vous verrez aussi « aw » : il se lit
+comme le o ouvert de « sort ».
 
 Spécimen : khâa (ค่า)
 
@@ -100,6 +103,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
   - https://th.wiktionary.org/wiki/คา (consulté le 2026-08-03) :
     orthographe, sens (rester pris sur place ; herbe à chaume), IPA /kʰaː˧/
     confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 2 : ข่า
 
@@ -120,6 +125,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
   - https://th.wiktionary.org/wiki/ข่า (consulté le 2026-08-03) :
     orthographe, sens (plante Alpinia galanga, rhizome utilisé en cuisine et
     en médecine), IPA /kʰaː˨˩/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 3 : ค่า
 
@@ -140,6 +147,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
   - https://th.wiktionary.org/wiki/ค่า (consulté le 2026-08-03) :
     orthographe, sens (valeur ou prix d'une chose ; somme à payer ; valeur
     mathématique), IPA /kʰaː˥˩/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 4 : ค้า
 
@@ -161,6 +170,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
   - https://th.wiktionary.org/wiki/ค้า (consulté le 2026-08-03) :
     orthographe, sens (acheter et vendre des biens ou des services),
     IPA /kʰaː˦˥/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 5 : ขา
 
@@ -183,6 +194,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
   - https://th.wiktionary.org/wiki/ขา (consulté le 2026-08-03) :
     orthographe, sens (membre allant de l'aine à la cheville),
     IPA /kʰaː˩˩˦/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ### Les 9 consonnes moyennes (items 6 à 14, reconnaissance uniquement)
 
@@ -206,6 +219,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
     moyenne (อักษรกลาง), nom /kɔː˧.kaj˨˩/, valeur /k/ confirmés.
   - https://en.wiktionary.org/wiki/ไก่ (consulté le 2026-08-03) : mot-image
     « poule, volaille », IPA /kaj˨˩/ (ton bas) confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 7 : จ
 
@@ -228,6 +243,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
     moyenne, IPA /t͡ɕɔː˧/ confirmés.
   - https://en.wiktionary.org/wiki/จาน (consulté le 2026-08-03) : mot-image
     « assiette, plat », IPA /t͡ɕaːn˧/ (ton moyen) confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 8 : ฎ
 
@@ -253,6 +270,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
   - https://en.wiktionary.org/wiki/ชฎา (consulté le 2026-08-03) : mot-image
     « coiffe pointue traditionnelle des divinités, de la royauté et des
     danseurs », IPA /t͡ɕʰa˦˥.daː˧/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 9 : ฏ
 
@@ -275,6 +294,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
     U+0E0F confirmés.
   - https://en.wiktionary.org/wiki/ปฏัก (consulté le 2026-08-03) : mot-image
     « aiguillon » (forme de ประตัก), IPA /pa˨˩.tak̚˨˩/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 10 : ด
 
@@ -297,6 +318,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
     moyenne, IPA /dɔː˧/ et nom /dɔː˧.dek̚˨˩/ confirmés.
   - https://en.wiktionary.org/wiki/เด็ก (consulté le 2026-08-03) :
     mot-image « enfant », IPA /dek̚˨˩/ (ton bas, voyelle courte) confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 11 : ต
 
@@ -318,6 +341,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
     moyenne, valeur /t/, nom ต เต่า confirmés.
   - https://en.wiktionary.org/wiki/เต่า (consulté le 2026-08-03) :
     mot-image « tortue », IPA /taw˨˩/ (ton bas) confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 12 : บ
 
@@ -339,6 +364,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
     moyenne (อักษรกลาง), initiale /b/, Unicode U+0E1A confirmés.
   - https://en.wiktionary.org/wiki/ใบไม้ (consulté le 2026-08-03) :
     mot-image « feuille d'arbre », IPA /baj˧.maːj˦˥/ confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 13 : ป
 
@@ -360,6 +387,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
     moyenne, lettre seule /pɔː˧/, Unicode U+0E1B confirmés.
   - https://en.wiktionary.org/wiki/ปลา (consulté le 2026-08-03) : mot-image
     « poisson », IPA /plaː˧/ (ton moyen) confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 #### Item 14 : อ
 
@@ -383,6 +412,8 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
     moyenne, IPA /ʔɔː˧/, rôle de support des voyelles (อือ, เออ) confirmés.
   - https://en.wiktionary.org/wiki/อ่าง (consulté le 2026-08-03) :
     mot-image « bassine, cuvette, bac », IPA /ʔaːŋ˨˩/ (ton bas) confirmés.
+  - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
+    verification-volubilis.md
 
 ## Exercices
 
@@ -487,10 +518,11 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
 
 Chaque consonne thaïe se récite avec un mot-image : ก ไก่ « le k de la
 poule », ด เด็ก « le d de l'enfant », comme notre « B de Bateau » au
-téléphone. Cette récitation, que tous les écoliers thaïlandais apprennent,
-sert surtout à distinguer les lettres qui se prononcent pareil : ฎ et ด
-partagent le même son, leurs mots-images les séparent. Vous n'avez pas à la
-mémoriser entière : les mots-images de cette leçon suffisent.
+téléphone. Cette récitation, une comptine traditionnelle d'apprentissage
+des lettres, sert surtout à distinguer les lettres qui se prononcent
+pareil : ฎ et ด partagent le même son, leurs mots-images les séparent. Vous
+n'avez pas à la mémoriser entière : les mots-images de cette leçon
+suffisent.
 
 - Sources du fait « chaque consonne porte un nom traditionnel avec
   mot-image, qui distingue les homophones » :
@@ -513,14 +545,68 @@ mémoriser entière : les mots-images de cette leçon suffisent.
   en.wiktionary, page d'accueil du RID).
 - Codepoints : séquences NFC relevées à la rédaction et contrôlées par
   script Node le 2026-08-03 (23 chaînes, toutes NFC).
-- État des audits : `draft`. Contre-audit interne (orthographe, sens,
-  prononciation, ton, longueur, registre, naturalité, Unicode, licence) non
-  lancé. Lot de contre-audit externe `unite-01/contre-audit-gpt56.md` à
+- État des audits : `draft`. Audit interne adversarial (orthographe, sens,
+  prononciation, ton, longueur, registre, naturalité, Unicode, licence)
+  passé le 2026-08-03, rapport `unite-01/verification-1a.md` : 107 faits
+  confirmés, 4 findings bloquants (B1 à B4) résolus le 2026-08-03 (liste
+  ci-dessous), 8 remarques non bloquantes (R1 à R8) traitées ou consignées
+  (liste ci-dessous). Recoupement Volubilis effectué le 2026-08-03 ;
+  contre-vérification manuelle RID (autorité orthographique) requise avant
+  review. Lot de contre-audit externe `unite-01/contre-audit-gpt56.md` à
   préparer. Revue native : en attente.
 - Audio : aucune piste produite ; les exercices 1 à 3 et les pages
   d'enseignement dépendent de la production audio tracée (fournisseur,
   modèle, version, paramètres à consigner avant enregistrement ; voix
   synthétique déclarée au lancement).
+
+### Findings bloquants de l'audit interne du 2026-08-03, résolus
+
+1. B1 : la page 4 décrivait le signe du ton montant comme un « chapeau
+   rond » ; corrigé, c'est un petit v pointé vers le bas (caron ǎ, U+01CE),
+   la page 4 est reformulée en conséquence.
+2. B2 : transcriptions migrées vers la convention `thainaute-fr` v1.1
+   (diacritiques réservés aux tons ; qualités en digrammes sans accent ;
+   longueur par doublement de la dernière lettre ; « ai » pour /aj/, « ao »
+   pour /aw/ diphtongue) ; « dèk », « kài », « tào » et « bai·máai » sont
+   conformes v1.1, et la diphtongue longue /aːj/ s'écrit « aai » (règle
+   v1.1 : « ai » avec premier élément long = « aai »), donc « máai » est
+   conforme v1.1.
+3. B3 : l'affirmation invérifiable « récitation que tous les écoliers
+   thaïlandais apprennent » est retirée de la note culturelle, remplacée
+   par « une comptine traditionnelle d'apprentissage des lettres », sans
+   revendication d'universalité.
+4. B4 : recoupement hors Wikimedia ajouté aux sources des 14 items via la
+   Volubilis Database v26.2 (CC BY-SA), entrées confirmées le 2026-08-03
+   (voir `verification-volubilis.md`) ; contre-vérification manuelle RID
+   (autorité orthographique) requise avant review.
+
+### Remarques non bloquantes de l'audit interne du 2026-08-03
+
+- R1 (traitée par consignation) : divergence interne d'en.wiktionary sur la
+  longueur de ไม้ dans le nom de บ (page lettre : maj bref ; entrées
+  dédiées ใบไม้ et ไม้ : /maːj˦˥/ long) ; les entrées dédiées font foi.
+- R2 (traitée par consignation) : le ton bas est décrit « stable, sans
+  chute » alors que ˨˩ note une légère descente en registre bas ;
+  simplification pédagogique assumée, le discriminant enseigné (se poser en
+  bas contre tomber depuis le haut) reste correct.
+- R3 (consignée) : exercice 3 étiqueté `reading` alors que les tirages 1
+  à 6 relèvent de l'écoute et choix ; reclassement ou scission à trancher à
+  la compilation.
+- R4 (consignée) : point médian utilisé comme séparateur visuel (spécimen
+  page 3, cartes de l'exercice 2) alors que la convention le réserve aux
+  syllabes ; séparateur visuel à trancher avec la revue des assets.
+- R5 (traitée par consignation) : les étiquettes de ton en langage naturel
+  du résumeur d'outillage ne sont pas fiables ; tout audit s'appuie sur les
+  lettres tonales IPA (rejoint l'incertitude 6).
+- R6 (consignée) : page 2, « vendre » pour ค้า ; « commercer » serait plus
+  précis (ขาย est le verbe usuel de « vendre ») ; reformulation éventuelle
+  à la passe rédactionnelle, texte inchangé à ce stade.
+- R7 (consignée) : repères visuels (« dent » de ต, « tige » de ป, « socle
+  brisé » de ฎ/ฏ) non sourcés ; à valider sur les assets définitifs
+  (rejoint l'incertitude 5).
+- R8 (consignée) : feedback « haut » de l'exercice 1 (« reste perché du
+  début à la fin ») à harmoniser avec la page 3 et l'item 4 (tension
+  montante finale de ˦˥) à la passe rédactionnelle.
 
 ### Incertitudes signalées par l'auteur
 
@@ -528,23 +614,29 @@ mémoriser entière : les mots-images de cette leçon suffisent.
    2026-08-03 mais la consultation d'une entrée exige un formulaire non
    interrogeable par l'outillage. L'autorité n° 1 en orthographe n'a donc
    pas pu être consultée entrée par entrée ; re-vérification manuelle des
-   14 orthographes à faire au contre-audit (risque faible, mots et lettres
-   très courants, mais la politique fait primer le RID).
+   14 orthographes requise avant review (risque faible, mots et lettres
+   très courants, mais la politique fait primer le RID). L'audit interne du
+   2026-08-03 a rencontré le même blocage (formulaire POST).
 2. Volubilis : non consultable entrée par entrée via l'outillage
    (distribution en fichiers téléchargeables). Les deux sources utilisées
    par fait sont en.wiktionary et th.wiktionary, deux communautés
    éditoriales distinctes mais toutes deux Wikimedia ; la politique demande
-   de ne pas laisser Wiktionary en source unique. Un recoupement hors
-   Wikimedia (RID manuel ou Volubilis local) est requis avant `review`.
+   de ne pas laisser Wiktionary en source unique. Recoupement Volubilis
+   effectué le 2026-08-03 ; contre-vérification manuelle RID (autorité
+   orthographique) requise avant review.
 3. Convention thainaute-fr-v1, collision d'accents : é et è notent une
    qualité de voyelle (/e/, /ɛ/) mais à, â, á, ǎ notent le ton. Pour เด็ก
    (voyelle /e/ courte, ton bas), la graphie retenue « dèk » note le ton et
-   rend la qualité ambiguë (è = /ɛ/ ailleurs). Finding à trancher pour une
-   v1.1 des conventions ; en attendant, la note_fr de l'item 10 précise la
-   qualité réelle de la voyelle.
+   rend la qualité ambiguë (è = /ɛ/ ailleurs). Résolu le 2026-08-03 :
+   l'amendement v1.1 réserve les diacritiques aux tons (« e » note /e/,
+   « ae » note /ɛ/), la graphie « dèk » est conforme ; la note_fr de
+   l'item 10 continue de préciser la qualité réelle de la voyelle.
 4. Convention v1 sans règle pour les diphtongues /aj/ et /aw/ : extensions
    employées ici « ai » (kài, bai·máai) et « ao » (tào), avec un risque de
-   confusion entre « ao » (diphtongue) et « aw » (/ɔ/). À trancher en v1.1.
+   confusion entre « ao » (diphtongue) et « aw » (/ɔ/). Résolu le
+   2026-08-03 : v1.1 fixe « ai » pour /aj/, « ao » pour /aw/ diphtongue et
+   « aai » pour /aːj/ (premier élément long), avec la règle de lecture
+   enseignée « aw = o ouvert, ao = a puis o ».
 5. Descriptions visuelles des lettres (« dent » de ต, « tige » de ป,
    « socle brisé » de ฎ et ฏ) : aides pédagogiques de l'auteur, non
    sourcées ; à valider par l'audit et par la revue visuelle des assets.
@@ -560,8 +652,9 @@ mémoriser entière : les mots-images de cette leçon suffisent.
 8. Nom complet des lettres rares : l'IPA du nom entier est vérifiée pour ฎ
    (/dɔː˧.t͡ɕʰa˦˥.daː˧/) ; pour ฏ, le ton du mot-image est vérifié via
    l'entrée ปฏัก et la romanisation de l'entrée lettre, sans IPA du nom
-   entier sur une seule ligne. Cohérent mais à revalider à l'audit
-   prononciation.
+   entier sur une seule ligne. Levée par l'audit interne du 2026-08-03 :
+   IPA du nom entier /tɔː˧.pa˨˩.tak̚˨˩/ relevée sur l'entrée lettre
+   en.wiktionary (voir `verification-1a.md`).
 9. Prononciation isolée des noms de lettres en « aww » (/ɔː/ long, ton
    moyen) : confirmée par les IPA des entrées lettres ; la lisibilité de la
    graphie « aww » pour un débutant reste à valider en test utilisateur.
