@@ -44,20 +44,20 @@ un contenu authentique désormais compréhensible).
 
 ## Les 12 unités
 
-| # | Unité | Cible phonétique (contraste dur FR) | Bloc d'écriture |
-|---|---|---|---|
-| 1 | L'oreille française rencontre le thaï | les 5 tons en perception, longueurs vocaliques | les 9 consonnes moyennes |
-| 2 | Saluer, remercier, se présenter | aspiration /p pʰ/, particules ครับ/ค่ะ | voyelles longues simples |
-| 3 | Compter, payer, demander le prix | /t tʰ/, chiffres et classificateurs de base | voyelles courtes, chiffres thaïs |
-| 4 | Commander à manger et à boire | /k kʰ/, ton montant vs haut | consonnes hautes et règle du ton |
-| 5 | Se déplacer en ville | /h/ initial, finales non relâchées -p -t -k | consonnes basses (1re moitié) |
-| 6 | La famille et les personnes | /ɯ/ et /ɤ/, pronoms situés | consonnes basses (2e moitié) |
-| 7 | La maison et le quotidien | ton mi vs bas (sur-entraînement) | marques de ton ่ ้ |
-| 8 | Acheter et résoudre un problème simple | /ŋ/ initial, diphtongues /ia ɯa ua/ | marques de ton ๊ ๋, groupes consonantiques |
-| 9 | La santé et les besoins urgents | récapitulatif des contrastes durs | finales écrites et cas particuliers |
-| 10 | Lire la ville (enseignes, menus, prix) | tons en parole continue | lecture appliquée, mots réels |
-| 11 | Conversations en situation réelle | débits naturels, plusieurs voix | lecture de mini-dialogues |
-| 12 | Bilan de maîtrise et rampe de sortie | consolidation adaptative | lecture libre guidée |
+| #   | Unité                                  | Cible phonétique (contraste dur FR)            | Bloc d'écriture                            |
+| --- | -------------------------------------- | ---------------------------------------------- | ------------------------------------------ |
+| 1   | L'oreille française rencontre le thaï  | les 5 tons en perception, longueurs vocaliques | les 9 consonnes moyennes                   |
+| 2   | Saluer, remercier, se présenter        | aspiration /p pʰ/, particules ครับ/ค่ะ         | voyelles longues simples                   |
+| 3   | Compter, payer, demander le prix       | /t tʰ/, chiffres et classificateurs de base    | voyelles courtes, chiffres thaïs           |
+| 4   | Commander à manger et à boire          | /k kʰ/, ton montant vs haut                    | consonnes hautes et règle du ton           |
+| 5   | Se déplacer en ville                   | /h/ initial, finales non relâchées -p -t -k    | consonnes basses (1re moitié)              |
+| 6   | La famille et les personnes            | /ɯ/ et /ɤ/, pronoms situés                     | consonnes basses (2e moitié)               |
+| 7   | La maison et le quotidien              | ton mi vs bas (sur-entraînement)               | marques de ton ่ ้                         |
+| 8   | Acheter et résoudre un problème simple | /ŋ/ initial, diphtongues /ia ɯa ua/            | marques de ton ๊ ๋, groupes consonantiques |
+| 9   | La santé et les besoins urgents        | récapitulatif des contrastes durs              | finales écrites et cas particuliers        |
+| 10  | Lire la ville (enseignes, menus, prix) | tons en parole continue                        | lecture appliquée, mots réels              |
+| 11  | Conversations en situation réelle      | débits naturels, plusieurs voix                | lecture de mini-dialogues                  |
+| 12  | Bilan de maîtrise et rampe de sortie   | consolidation adaptative                       | lecture libre guidée                       |
 
 Les thèmes 1 à 12 du brief sont tous couverts ; la « lecture progressive »
 n'est pas une unité isolée mais le fil A de chaque unité, l'unité 10 en
