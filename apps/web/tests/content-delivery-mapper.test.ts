@@ -93,7 +93,9 @@ describe("DTO public de lecon", () => {
 
     const secondBundle = makePublishableBundle();
     const exercise = secondBundle.lesson.exercises[0];
-    if (exercise === undefined) throw new Error("Exercice manquant.");
+    if (exercise?.type !== "audio_choice") {
+      throw new Error("Exercice manquant.");
+    }
     exercise.options.reverse();
     const secondVerified = verifyPublishedBundleRow(
       makePublishedLessonRow(secondBundle),

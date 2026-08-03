@@ -163,6 +163,10 @@ export function derivePublishedAnswerKeys(
 
     const itemIds = new Set(lesson.items.map((item) => item.id));
     for (const exercise of lesson.exercises) {
+      if (exercise.type !== "audio_choice") {
+        // Les autres mécaniques seront notées à la phase C (ADR-0024).
+        continue;
+      }
       const validOptionIds = exercise.options.map((option) => option.id);
       if (
         !itemIds.has(exercise.itemId) ||

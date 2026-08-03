@@ -7,6 +7,9 @@ export const CONTENT_SCHEMA_LIMITS = {
   sourceIdsPerItem: 32,
   itemsPerLesson: 100,
   exercisesPerLesson: 200,
+  pairsPerAssociation: 6,
+  tokensPerWordOrder: 12,
+  acceptedAnswersPerRecall: 8,
   provenanceSourcesPerLesson: 100,
   generationActorsPerLesson: 32,
   findingsPerLesson: 100,
@@ -120,24 +123,128 @@ const optionSchema = z
   })
   .strict();
 
-const exerciseSchema = z
+const promptFrSchema = z.string().min(1).max(280);
+
+const feedbackSchema = z
+  .object({
+    correctFr: z.string().min(1).max(280),
+    incorrectFr: z.string().min(1).max(280),
+  })
+  .strict();
+
+const audioChoiceExerciseSchema = z
   .object({
     id: identifier,
     type: z.literal("audio_choice"),
     itemId: identifier,
     skill: z.literal("listening"),
     audioAssetId: identifier,
-    promptFr: z.string().min(1).max(280),
+    promptFr: promptFrSchema,
     options: z.array(optionSchema).min(2).max(6),
     correctOptionId: identifier,
-    feedback: z
-      .object({
-        correctFr: z.string().min(1).max(280),
-        incorrectFr: z.string().min(1).max(280),
-      })
-      .strict(),
+    feedback: feedbackSchema,
   })
   .strict();
+
+const associationPairSchema = z
+  .object({
+    id: identifier,
+    itemId: identifier,
+    labelFr: z.string().min(1).max(120),
+  })
+  .strict();
+
+const associationExerciseSchema = z
+  .object({
+    id: identifier,
+    type: z.literal("association"),
+    skill: z.literal("reading"),
+    promptFr: promptFrSchema,
+    pairs: z
+      .array(associationPairSchema)
+      .min(2)
+      .max(CONTENT_SCHEMA_LIMITS.pairsPerAssociation),
+    feedback: feedbackSchema,
+  })
+  .strict();
+
+const wordOrderTokenSchema = z
+  .object({
+    id: identifier,
+    thaiRaw: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+    transcription: nullableText,
+  })
+  .strict();
+
+const wordOrderExerciseSchema = z
+  .object({
+    id: identifier,
+    type: z.literal("word_order"),
+    itemId: identifier,
+    skill: z.literal("production"),
+    audioAssetId: identifier.nullable(),
+    promptFr: promptFrSchema,
+    tokens: z
+      .array(wordOrderTokenSchema)
+      .min(2)
+      .max(CONTENT_SCHEMA_LIMITS.tokensPerWordOrder),
+    correctOrder: z
+      .array(identifier)
+      .min(2)
+      .max(CONTENT_SCHEMA_LIMITS.tokensPerWordOrder),
+    feedback: feedbackSchema,
+  })
+  .strict();
+
+const recallAcceptedAnswerSchema = z
+  .object({
+    value: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+    kind: z.enum(["thai", "transcription"]),
+  })
+  .strict();
+
+const recallExerciseSchema = z
+  .object({
+    id: identifier,
+    type: z.literal("recall"),
+    itemId: identifier,
+    skill: z.literal("recall"),
+    promptFr: promptFrSchema,
+    acceptedAnswers: z
+      .array(recallAcceptedAnswerSchema)
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.acceptedAnswersPerRecall),
+    answerPolicy: z
+      .object({
+        normalization: z.literal("nfc"),
+        trimWhitespace: z.boolean(),
+        collapseInnerWhitespace: z.boolean(),
+      })
+      .strict(),
+    feedback: feedbackSchema,
+  })
+  .strict();
+
+const readingExerciseSchema = z
+  .object({
+    id: identifier,
+    type: z.literal("reading"),
+    itemId: identifier,
+    skill: z.literal("reading"),
+    promptFr: promptFrSchema,
+    options: z.array(optionSchema).min(2).max(6),
+    correctOptionId: identifier,
+    feedback: feedbackSchema,
+  })
+  .strict();
+
+const exerciseSchema = z.discriminatedUnion("type", [
+  audioChoiceExerciseSchema,
+  associationExerciseSchema,
+  wordOrderExerciseSchema,
+  recallExerciseSchema,
+  readingExerciseSchema,
+]);
 
 const provenanceActorKindSchema = z.enum(["human", "ai"]);
 
@@ -280,5 +387,16 @@ export const contentBundleSchema = z
 export type ContentSource = z.infer<typeof sourceSchema>;
 export type Lesson = z.infer<typeof lessonSchema>;
 export type AudioManifest = z.infer<typeof audioManifestSchema>;
-export type AudioChoiceExercise = Lesson["exercises"][number];
+export type LessonExercise = Lesson["exercises"][number];
+export type AudioChoiceExercise = Extract<
+  LessonExercise,
+  { type: "audio_choice" }
+>;
+export type AssociationExercise = Extract<
+  LessonExercise,
+  { type: "association" }
+>;
+export type WordOrderExercise = Extract<LessonExercise, { type: "word_order" }>;
+export type RecallExercise = Extract<LessonExercise, { type: "recall" }>;
+export type ReadingExercise = Extract<LessonExercise, { type: "reading" }>;
 export type ContentBundle = z.infer<typeof contentBundleSchema>;

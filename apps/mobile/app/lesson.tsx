@@ -47,7 +47,11 @@ function requiredFixtureValue<T>(value: T | undefined, label: string): T {
   return value;
 }
 
-const exercise = requiredFixtureValue(lesson.exercises[0], "exercice");
+const firstExercise = requiredFixtureValue(lesson.exercises[0], "exercice");
+if (firstExercise.type !== "audio_choice") {
+  throw new Error("La fixture locale doit commencer par un exercice d'écoute.");
+}
+const exercise = firstExercise;
 const item = requiredFixtureValue(lesson.items[0], "item");
 
 function ingestDemoOutbox(outbox: AttemptOutboxSnapshot) {

@@ -28,7 +28,12 @@ export function buildLessonProgress(input: {
     lessonVersionId: input.verified.bundle.lesson.versionId,
     syncRevision: input.snapshot.syncRevision,
     exercises: input.verified.bundle.lesson.exercises.map((exercise) => {
-      const state = states.get(stateKey(exercise));
+      // L'association mesure plusieurs items ; son agrégation de progression
+      // est définie à la phase C (ADR-0024). D'ici là elle reste « new ».
+      const state =
+        exercise.type === "association"
+          ? undefined
+          : states.get(stateKey(exercise));
       if (state === undefined) {
         return {
           exerciseId: exercise.id,

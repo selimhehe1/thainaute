@@ -15,20 +15,22 @@ import {
 describe("porte serveur des clés de correction publiées", () => {
   it("accepte seulement un bundle complet, cohérent et hashé", () => {
     const bundle = makePublishableBundle();
+    const exercise = bundle.lesson.exercises[0];
+    if (exercise?.type !== "audio_choice") {
+      throw new Error("Fixture exercice manquante.");
+    }
 
     expect(
       derivePublishedAnswerKeys([makePublishedLessonRow(bundle)], RELEASE_ID),
     ).toEqual([
       {
-        exerciseId: bundle.lesson.exercises[0]?.id,
-        itemId: bundle.lesson.exercises[0]?.itemId,
-        correctOptionId: bundle.lesson.exercises[0]?.correctOptionId,
+        exerciseId: exercise.id,
+        itemId: exercise.itemId,
+        correctOptionId: exercise.correctOptionId,
         skill: "listening",
         contentVersionId: bundle.lesson.versionId,
-        validOptionIds: bundle.lesson.exercises[0]?.options.map(
-          (option) => option.id,
-        ),
-        feedback: bundle.lesson.exercises[0]?.feedback,
+        validOptionIds: exercise.options.map((option) => option.id),
+        feedback: exercise.feedback,
       },
     ]);
   });
@@ -103,7 +105,9 @@ describe("porte serveur des clés de correction publiées", () => {
       RELEASE_ID,
     );
     const exercise = bundle.lesson.exercises[0];
-    if (exercise === undefined) throw new Error("Fixture exercice manquante.");
+    if (exercise?.type !== "audio_choice") {
+      throw new Error("Fixture exercice manquante.");
+    }
     const attempt = attemptBatchSchema.parse({
       attempts: [
         {

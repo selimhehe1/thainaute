@@ -4,6 +4,8 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import audioJson from "../data/audio/fixture-audio.v1.json";
+import fiveMechanicsAudioJson from "../data/audio/five-mechanics-audio.v1.json";
+import fiveMechanicsLessonJson from "../data/lessons/five-mechanics-fixture.v1.json";
 import lessonJson from "../data/lessons/unicode-audio-fixture.v1.json";
 import sourceJson from "../data/sources/test-only.json";
 
@@ -22,6 +24,15 @@ export function readFixtureBundle(): ContentBundle {
   return {
     lesson: lessonSchema.parse(lessonJson),
     audioManifest: audioManifestSchema.parse(audioJson),
+    sources: [sourceSchema.parse(sourceJson)],
+  };
+}
+
+/** Fixture technique couvrant les cinq mécaniques d'exercice (ADR-0024). */
+export function readFiveMechanicsFixtureBundle(): ContentBundle {
+  return {
+    lesson: lessonSchema.parse(fiveMechanicsLessonJson),
+    audioManifest: audioManifestSchema.parse(fiveMechanicsAudioJson),
     sources: [sourceSchema.parse(sourceJson)],
   };
 }

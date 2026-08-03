@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "manifestId": "40000000-0000-4000-8000-000000000003",
+  "lessonVersionId": "40000000-0000-4000-8000-000000000002",
+  "entries": [
+    {
+      "assetId": "40000000-0000-4000-8000-000000000006",
+      "itemId": "40000000-0000-4000-8000-000000000004",
+      "variant": "fixture",
+      "canonicalPath": "packages/content/assets/fixture-tone.wav",
+      "distributionPaths": [
+        "apps/web/public/audio/fixture-tone.wav",
+        "apps/mobile/assets/audio/fixture-tone.wav"
+      ],
+      "mimeType": "audio/wav",
+      "sha256": "801031380b85885ed9edd1bfe0050a4e93a61208fae8b8c5f01bbd3d553c118a",
+      "byteLength": 5164,
+      "durationMs": 320,
+      "voiceKind": "synthetic_test_tone",
+      "consentReference": null
+    }
+  ]
+}

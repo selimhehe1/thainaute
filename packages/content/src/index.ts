@@ -3,7 +3,11 @@ export {
   getPublicationBlockers,
   publicationBlockerSchema,
 } from "./audit";
-export { readFixtureBundle, validateBundle } from "./repository";
+export {
+  readFiveMechanicsFixtureBundle,
+  readFixtureBundle,
+  validateBundle,
+} from "./repository";
 export {
   auditDimensionSchema,
   auditStatusSchema,
@@ -24,11 +28,16 @@ export {
 export { validateBundleMetadata } from "./validation";
 export type { PublicationBlocker } from "./audit";
 export type {
+  AssociationExercise,
   AudioChoiceExercise,
   AudioManifest,
   ContentBundle,
   ContentSource,
   Lesson,
+  LessonExercise,
+  ReadingExercise,
+  RecallExercise,
+  WordOrderExercise,
 } from "./schemas";
 export type {
   ContentReviewIssue,

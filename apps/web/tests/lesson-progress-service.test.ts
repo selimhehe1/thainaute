@@ -12,7 +12,9 @@ function verifiedFixture() {
   const verified = verifyPublishedBundleRow(makePublishedLessonRow(bundle));
   if (verified === null) throw new Error("Fixture publiée invalide.");
   const exercise = bundle.lesson.exercises[0];
-  if (exercise === undefined) throw new Error("Exercice fixture manquant.");
+  if (exercise?.type !== "audio_choice") {
+    throw new Error("Exercice fixture manquant.");
+  }
   return { verified, exercise };
 }
 

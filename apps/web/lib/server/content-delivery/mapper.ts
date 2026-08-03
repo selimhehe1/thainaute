@@ -53,14 +53,18 @@ export function toPublicLessonResponse(
     objectiveFr: lesson.objectiveFr,
     publishedAt: new Date(lesson.publishedAt).toISOString(),
     access: "free",
-    exercises: lesson.exercises.map((exercise) => ({
-      id: exercise.id,
-      type: exercise.type,
-      skill: exercise.skill,
-      audioAssetId: exercise.audioAssetId,
-      promptFr: exercise.promptFr,
-      options: publicOptions(lesson.versionId, exercise.id, exercise.options),
-    })),
+    exercises: lesson.exercises
+      // Le DTO public v1 ne distribue que l'écoute ; les autres mécaniques
+      // arrivent avec le DTO v2 de la phase C (ADR-0024).
+      .filter((exercise) => exercise.type === "audio_choice")
+      .map((exercise) => ({
+        id: exercise.id,
+        type: exercise.type,
+        skill: exercise.skill,
+        audioAssetId: exercise.audioAssetId,
+        promptFr: exercise.promptFr,
+        options: publicOptions(lesson.versionId, exercise.id, exercise.options),
+      })),
     audioAssets: audioManifest.entries.map((entry) => ({
       assetId: entry.assetId,
       variant: entry.variant,
