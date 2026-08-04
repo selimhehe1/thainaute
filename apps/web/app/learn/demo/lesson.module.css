@@ -364,9 +364,9 @@
    dessin est la reponse, le texte l'explique. */
 .matchTile:has(> .matchCurve) {
   flex-direction: column;
-  gap: 6px;
-  min-height: 92px;
-  padding: 12px 14px;
+  gap: 4px;
+  min-height: 124px;
+  padding: 10px 14px 12px;
 }
 
 .matchCurve {
