@@ -1047,12 +1047,28 @@ export function ExpeditionExperience({
       <div className={styles.pageSpecimen} aria-hidden="true">
         {lesson.items[0]?.thaiRaw}
       </div>
-      <div className={styles.fixtureBanner} role="note">
-        <strong>Donnée fictive · non publiable</strong>
-        <span>
-          Ces signes et ce signal valident uniquement la chaîne technique.
-        </span>
-      </div>
+      {/* Le bandeau dit l'etat REEL du contenu affiche. Il etait ecrit en
+          dur quand la page ne servait qu'une fixture ; il mentirait
+          maintenant qu'elle sert une lecon reelle. */}
+      {lesson.visibility === "fixture" ? (
+        <div className={styles.fixtureBanner} role="note">
+          <strong>Donnée fictive · non publiable</strong>
+          <span>
+            Ces signes et ce signal valident uniquement la chaîne technique.
+          </span>
+        </div>
+      ) : (
+        lesson.workflowStatus !== "published" && (
+          <div className={styles.fixtureBanner} role="note">
+            <strong>Brouillon · Revue native : en attente</strong>
+            <span>
+              Ce cours est écrit, sourcé et audité, mais aucun locuteur thaï
+              natif ne l’a encore relu. La voix est synthétique et déclarée
+              comme telle.
+            </span>
+          </div>
+        )
+      )}
 
       <div className={styles.networkStatus} aria-live="polite">
         <span
