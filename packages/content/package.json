@@ -16,7 +16,10 @@
     "test": "vitest run",
     "content:validate": "tsx src/cli.ts validate",
     "content:audit": "tsx src/cli.ts audit",
-    "content:compile": "tsx scripts/compile-items.ts"
+    "content:compile": "tsx scripts/compile-items.ts",
+    "content:compile-lesson": "tsx scripts/compile-lesson.ts",
+    "content:audio": "tsx scripts/generate-audio.ts",
+    "content:verify": "tsx scripts/verify-bundle.ts"
   },
   "dependencies": {
     "zod": "4.4.3"
