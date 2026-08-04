@@ -127,6 +127,39 @@ voyelles dont l'une s'écrit en digramme doit **montrer la paire côte à
 côte** et nommer le noyau, plutôt que laisser l'apprenant deviner pourquoi
 l'accent se déplace.
 
+## Amendement v1.3 (4 août 2026) : l'artefact Volubilis de référence
+
+Volubilis se télécharge en deux formats dont **les numéros de ligne ne
+coïncident pas**. Les unités 4 à 7 citent le `.ods`, alors que l'outil
+versionné du dépôt lit le `.xlsx` : une citation de ces unités n'est donc
+pas recomputable telle quelle, ce que l'amendement v1.2 exige pourtant.
+
+Décision : **`VOLUBILIS_Database.xlsx` est l'artefact de référence**, celui
+que lit `scripts/verification/volubilis-lookup.mjs`. Toute citation neuve
+donne son numéro de ligne dans ce fichier.
+
+Dette assumée et datée : les citations Volubilis des unités 4 à 7 restent
+ancrées sur le `.ods`. Elles sont exactes, mais leur vérification demande
+de télécharger l'autre format. Elles seront réancrées avant le passage de
+ces unités en `review`, jamais après.
+
+## Fil des tons sur l'ensemble du parcours
+
+Trois leçons ont divergé sur le moment où le contraste **ton montant contre
+ton haut** est censé être acquis, l'une le déclarant nouveau, l'autre le
+supposant su. Le fil est fixé ici, une fois :
+
+- **Unité 1** : les cinq tons en **perception** seulement. 1C traite mi
+  contre bas, 1D montant contre haut. On reconnaît, on ne produit pas.
+- **Unité 4** : montant contre haut en **production guidée**, dans du
+  vocabulaire réel. C'est un sur-entraînement, pas une découverte.
+- **Unité 7** : mi contre bas en sur-entraînement, avec les marques de ton.
+- **Unités 8 et suivantes** : les deux contrastes sont **entretenus** par
+  le SRS, jamais présentés comme acquis. Une leçon qui en a besoin le
+  rappelle et le fait pratiquer ; aucune ne peut le supposer su.
+
+Une leçon qui s'écarte de ce fil signale l'écart au lieu de le trancher.
+
 ## Règles d'écriture produit
 
 - Jamais de tiret cadratin ni demi-cadratin dans les textes destinés à
