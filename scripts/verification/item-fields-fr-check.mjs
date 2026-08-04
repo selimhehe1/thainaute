@@ -55,14 +55,22 @@ for (const it of items(cible)) {
   for (const ref of new Set(refs)) {
     const m = ref.match(/^u(\d\d)-l(\d)([a-e])$/);
     const f = join(AUTHORING, "unite-" + m[1], "lecon-" + m[2] + m[3] + ".md");
-    if (!existsSync(f)) { console.log(`?? ${ref} introuvable`); continue; }
+    if (!existsSync(f)) {
+      console.log(`?? ${ref} introuvable`);
+      continue;
+    }
     const src = new Map(items(f).map((x) => [x.thai, x]));
     const o = src.get(it.thai);
-    if (o === undefined) { console.log(`?? ${it.thai} absent de ${ref}`); continue; }
+    if (o === undefined) {
+      console.log(`?? ${it.thai} absent de ${ref}`);
+      continue;
+    }
     for (const c of CHAMPS) {
       if ((it[c] || "") === (o[c] || "")) continue;
       ecarts += 1;
-      console.log(`~~ ${it.titre}\n   champ \`${c}\`\n   ici    : ${it[c] || "(absent)"}\n   ${ref} : ${o[c] || "(absent)"}`);
+      console.log(
+        `~~ ${it.titre}\n   champ \`${c}\`\n   ici    : ${it[c] || "(absent)"}\n   ${ref} : ${o[c] || "(absent)"}`,
+      );
     }
   }
 }

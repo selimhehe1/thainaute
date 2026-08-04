@@ -26,17 +26,32 @@
 import { readFileSync } from "node:fs";
 
 const TOP_MARKS = new Set([
-  "ั","ิ","ี","ึ","ื","็","่","้","๊","๋","์","ํ","๎",
+  "ั",
+  "ิ",
+  "ี",
+  "ึ",
+  "ื",
+  "็",
+  "่",
+  "้",
+  "๊",
+  "๋",
+  "์",
+  "ํ",
+  "๎",
 ]);
 
 const text = readFileSync(process.argv[2], "utf8");
 const runs = text.match(/[฀-๿]+/g) ?? [];
 
 function maxStack(g) {
-  let best = 0, run = 0;
+  let best = 0,
+    run = 0;
   for (const ch of g) {
-    if (TOP_MARKS.has(ch)) { run += 1; if (run > best) best = run; }
-    else run = 0;
+    if (TOP_MARKS.has(ch)) {
+      run += 1;
+      if (run > best) best = run;
+    } else run = 0;
   }
   return best;
 }
@@ -51,7 +66,10 @@ const depths = [...byDepth.keys()].sort((a, b) => a - b);
 console.log("sous-chaînes thaïes distinctes : " + new Set(runs).size);
 console.log("profondeur maximale : " + Math.max(...depths));
 for (const d of depths) {
-  if (d < 2) { console.log(`profondeur ${d} : ${byDepth.get(d).size} graphies`); continue; }
+  if (d < 2) {
+    console.log(`profondeur ${d} : ${byDepth.get(d).size} graphies`);
+    continue;
+  }
   const list = [...byDepth.get(d)].sort();
   console.log(`\nprofondeur ${d} : ${list.length} graphies`);
   for (const g of list) console.log("  " + g);

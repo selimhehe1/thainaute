@@ -49,7 +49,10 @@ try {
   );
 
   const shared = [];
-  const sharedXml = readFileSync(join(workDir, "xl", "sharedStrings.xml"), "utf8");
+  const sharedXml = readFileSync(
+    join(workDir, "xl", "sharedStrings.xml"),
+    "utf8",
+  );
   for (const item of sharedXml.matchAll(/<si>([\s\S]*?)<\/si>/g)) {
     const text = [...(item[1] ?? "").matchAll(/<t[^>]*>([\s\S]*?)<\/t>/g)]
       .map((match) => match[1] ?? "")
@@ -61,14 +64,19 @@ try {
   }
   console.log(`chaines partagees : ${shared.length}`);
 
-  const sheetXml = readFileSync(join(workDir, "xl", "worksheets", "sheet1.xml"), "utf8");
+  const sheetXml = readFileSync(
+    join(workDir, "xl", "worksheets", "sheet1.xml"),
+    "utf8",
+  );
   const cells = new Map();
   for (const cell of sheetXml.matchAll(
     /<c r="([A-Z]+)(\d+)"([^>]*)>(?:<v>([\s\S]*?)<\/v>)?/g,
   )) {
     const [, column, row, attributes, raw] = cell;
     if (raw === undefined) continue;
-    const value = /t="s"/.test(attributes ?? "") ? (shared[Number(raw)] ?? "") : raw;
+    const value = /t="s"/.test(attributes ?? "")
+      ? (shared[Number(raw)] ?? "")
+      : raw;
     if (value.trim() === "") continue;
     const key = Number(row);
     if (!cells.has(key)) cells.set(key, []);
@@ -82,7 +90,8 @@ try {
     for (const [row, values] of cells) {
       if (
         values.some(
-          (value) => value.slice(value.indexOf("=") + 1).normalize("NFC") === target,
+          (value) =>
+            value.slice(value.indexOf("=") + 1).normalize("NFC") === target,
         )
       ) {
         hits.push({ row, values });
