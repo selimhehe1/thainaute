@@ -72,6 +72,32 @@ Reste interdit : affirmer un absolu sur le français sans source ni
 vérification possible. Les superlatifs et les « toujours » ou « jamais »
 sont proscrits dans cette catégorie.
 
+## 1 ter. Les termes que le dictionnaire normatif définit lui-même
+
+Un consolidateur de l'unité 10 a établi que la distinction entre syllabe
+vivante et syllabe morte (คำเป็น, คำตาย), qui fonde tout le système des
+tons enseigné aux unités 4 à 8, ne tient que sur le RID : la page thaïe de
+Wiktionary en reproduit la chaîne au caractère près, donc ne constitue pas
+une source indépendante, et les recherches en accès libre n'ont rien donné.
+Les seules autres définitions trouvées viennent de sources hors politique.
+
+La règle des deux sources vise à rattraper une erreur ou une lecture
+fautive. Elle n'a pas de sens pour un terme **métalinguistique dont le
+dictionnaire normatif est lui-même la définition** : nommer ce qu'est une
+syllabe morte en thaï, c'est ce que fait le RID, et toute autre source ne
+peut que le paraphraser.
+
+Règle : pour les termes de métalangue du thaï définis par le RID (noms des
+classes de consonnes, types de syllabes, noms de lettres et de signes),
+**le RID seul fait autorité définitionnelle**. La seconde jambe reste
+exigée, mais sous une autre forme : au moins une source indépendante doit
+en montrer un **usage concordant**, et la leçon dit explicitement que la
+définition vient du dictionnaire normatif.
+
+Cette règle ne s'étend à rien d'autre. Le sens d'un mot ordinaire, son ton,
+sa longueur, son registre et sa naturalité restent soumis aux deux sources
+indépendantes, sans exception.
+
 ## 2. Ressources universitaires
 
 - **Thai National Corpus** (Chulalongkorn, ~33 M mots). Interface web en
