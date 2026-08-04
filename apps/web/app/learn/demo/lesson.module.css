@@ -352,11 +352,42 @@
     background-color var(--motion-base) var(--ease-standard);
 }
 
-.matchTile[lang="th"] {
-  font-family: var(--font-thai);
-  font-size: 40px;
-  line-height: 1.5;
+/* PIEGE CORRIGE : ce selecteur visait le BOUTON, alors que l'attribut
+   `lang` est porte par le span interieur. Il ne s'appliquait donc jamais,
+   et le thai s'affichait a 16 px, la taille du texte francais. Dans une
+   application qui enseigne le thai, il doit dominer. */
+.matchTile:has(> [lang="th"]) {
   background: var(--color-jasmine);
+  min-height: 92px;
+}
+
+.matchTile [lang="th"] {
+  font-family: var(--font-thai);
+  font-size: 46px;
+  /* Les signes combinatoires thais montent et descendent : sans cet
+     interlignage ils seraient rognes par la bordure de la tuile. */
+  line-height: 1.6;
+}
+
+/* La carte francaise porte la courbe AU-DESSUS de sa description : le
+   dessin est la reponse, le texte l'explique. */
+.matchTile:has(> .matchCurve) {
+  flex-direction: column;
+  gap: 6px;
+  min-height: 92px;
+  padding: 12px 14px;
+}
+
+.matchCurve {
+  color: var(--color-coral);
+  flex: none;
+}
+
+.matchLabel {
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--color-text-muted, var(--color-ink));
+  text-align: center;
 }
 
 .matchTile:hover:not(:disabled) {

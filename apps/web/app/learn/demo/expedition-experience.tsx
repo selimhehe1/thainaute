@@ -56,6 +56,29 @@ import { ContentReportPanel } from "./content-report-panel";
 import { LocalVoiceComparison } from "./local-voice-comparison";
 import styles from "./lesson.module.css";
 
+/** Les cinq contours que `ToneCurve` sait dessiner. */
+const TONS_DESSINABLES = ["mid", "low", "falling", "high", "rising"] as const;
+type TonDessinable = (typeof TONS_DESSINABLES)[number];
+
+/**
+ * Ton d'un item, quand il en porte un ET que ce ton est dessinable.
+ *
+ * Renvoie `null` sinon : une association qui ne porte pas sur les tons
+ * garde ses cartes de texte, sans qu'on lui invente une courbe.
+ */
+function toneOfPair(
+  itemsById: ReadonlyMap<
+    string,
+    { syllables: readonly { tone: string | null }[] }
+  >,
+  itemId: string,
+): TonDessinable | null {
+  const tone = itemsById.get(itemId)?.syllables[0]?.tone ?? null;
+  return TONS_DESSINABLES.includes(tone as TonDessinable)
+    ? (tone as TonDessinable)
+    : null;
+}
+
 interface ExpeditionProps {
   readonly lesson: Lesson;
   /**
@@ -1084,18 +1107,25 @@ export function ExpeditionExperience({
           }
           aria-hidden="true"
         />
+        {/* Ce que l'apprenant a besoin de savoir : ses reponses sont-elles
+            gardees, et peut-il continuer. Pas le nom de la couche technique
+            qui s'en charge. */}
         {stage === "loading"
-          ? "Préparation du journal local…"
+          ? "Préparation…"
           : stage === "error"
-            ? "Journal local indisponible"
+            ? "Vos réponses ne peuvent pas être enregistrées"
             : online
-              ? `Journal local prêt · ${pendingAttempts} conservée${pendingAttempts > 1 ? "s" : ""}`
-              : "Hors ligne · l’expédition continue avec les ressources déjà chargées"}
+              ? pendingAttempts > 0
+                ? `En ligne · ${pendingAttempts} réponse${pendingAttempts > 1 ? "s" : ""} à envoyer`
+                : "En ligne"
+              : "Hors ligne · vous pouvez continuer, tout sera gardé"}
       </div>
 
       {stage === "error" && (
         <div className={styles.body}>
-          <h1 id="lesson-title">Le journal local est indisponible.</h1>
+          <h1 id="lesson-title">
+            Vos réponses ne peuvent pas être enregistrées.
+          </h1>
           {errorMessage && (
             <p className={styles.inlineError} role="alert">
               {errorMessage}
@@ -1401,6 +1431,11 @@ export function ExpeditionExperience({
                   >
                     {sortedAssociationLabels(currentExercise).map((pair) => {
                       const matched = matchedPairIds.includes(pair.id);
+                      // La consigne demande de relier a la COURBE. La
+                      // dessiner quand l'item en porte une : afficher sa
+                      // seule description reviendrait a demander d'associer
+                      // a un dessin absent.
+                      const tone = toneOfPair(itemsById, pair.itemId);
                       return (
                         <button
                           key={pair.id}
@@ -1416,7 +1451,18 @@ export function ExpeditionExperience({
                             chooseMatch(currentExercise, pair.id);
                           }}
                         >
-                          {pair.labelFr}
+                          {tone !== null && (
+                            <ToneCurve
+                              tone={tone}
+                              width={96}
+                              height={44}
+                              strokeWidth={6}
+                              className={styles.matchCurve}
+                            />
+                          )}
+                          <span className={styles.matchLabel}>
+                            {pair.labelFr}
+                          </span>
                         </button>
                       );
                     })}
