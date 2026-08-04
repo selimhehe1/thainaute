@@ -1,0 +1,533 @@
+{
+  "schemaVersion": 1,
+  "lessonId": "43842084-5e72-58d2-a82b-22ad84977861",
+  "versionId": "54c5440b-8414-5a78-a84b-bfae11b64082",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Longues et courtes",
+  "objectiveFr": "après la leçon, l'apprenant distingue à l'oreille une voyelle courte d'une voyelle longue dans des mots thaïs courants (au moins 80 % de réussite en discrimination), et restitue le marquage de durée dans la transcription Thaïnaute (voyelle simple ou doublée).",
+  "requiredEntitlement": null,
+  "audioManifestId": "bd58a2cf-bc33-5967-8da7-bf158ccb9b9b",
+  "items": [
+    {
+      "id": "80ccdef1-34de-55c6-a028-a01186497f78",
+      "thaiRaw": "เข้า",
+      "unicodeCodePoints": ["U+0E40", "U+0E02", "U+0E49", "U+0E32"],
+      "translationFr": "entrer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâo"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เข้า",
+          "ipa": "kʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "93940210-b361-5471-be6e-bdbf1a482c55",
+      "thaiRaw": "ข้าว",
+      "unicodeCodePoints": ["U+0E02", "U+0E49", "U+0E32", "U+0E27"],
+      "translationFr": "riz",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข้าว",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "dfd18061-30af-5400-a5da-565768783f05",
+      "thaiRaw": "เขา",
+      "unicodeCodePoints": ["U+0E40", "U+0E02", "U+0E32"],
+      "translationFr": "il, elle",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎo"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เขา",
+          "ipa": "kʰaw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "09df4821-87e5-5c4f-8902-5bc807aceeb7",
+      "thaiRaw": "ขาว",
+      "unicodeCodePoints": ["U+0E02", "U+0E32", "U+0E27"],
+      "translationFr": "blanc",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขาว",
+          "ipa": "kʰaːw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "3be9755c-9041-5dc9-85dd-db66c1beefce",
+      "thaiRaw": "หัด",
+      "unicodeCodePoints": ["U+0E2B", "U+0E31", "U+0E14"],
+      "translationFr": "s'entraîner, s'exercer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hàt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หัด",
+          "ipa": "hat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "89522fd2-a6da-59a1-90b2-bd747ce60fdb",
+      "thaiRaw": "หาด",
+      "unicodeCodePoints": ["U+0E2B", "U+0E32", "U+0E14"],
+      "translationFr": "plage",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hàat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หาด",
+          "ipa": "haːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "3f1fe645-c716-5dcc-9f29-96547e3cb7e8",
+      "thaiRaw": "ยัง",
+      "unicodeCodePoints": ["U+0E22", "U+0E31", "U+0E07"],
+      "translationFr": "encore, toujours (pas encore dans une négation)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yang"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ยัง",
+          "ipa": "jaŋ˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "j",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "ac9ae9ed-ab46-546b-8939-834adcb43455",
+      "thaiRaw": "ยาง",
+      "unicodeCodePoints": ["U+0E22", "U+0E32", "U+0E07"],
+      "translationFr": "caoutchouc (aussi pneu, sève, résine)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yaang"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ยาง",
+          "ipa": "jaːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "d2ef00b0-4f2a-5cd1-8d81-7870a0772838",
+      "thaiRaw": "ดุ",
+      "unicodeCodePoints": ["U+0E14", "U+0E38"],
+      "translationFr": "sévère ; gronder",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dòu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดุ",
+          "ipa": "duʔ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "7ed2c206-3261-55fc-8c8b-2a776cf032c4",
+      "thaiRaw": "ดู",
+      "unicodeCodePoints": ["U+0E14", "U+0E39"],
+      "translationFr": "regarder",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "douu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดู",
+          "ipa": "duː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u01-l1b-p3",
+      "drawIndex": 1,
+      "id": "df474b21-63ff-5b81-a795-6b4f539c0e0b",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Associez chaque mot entendu à sa fiche durée + sens.",
+      "pairs": [
+        {
+          "id": "9fe62fbf-00ae-5ef5-bbd9-398c83022c2e",
+          "itemId": "dfd18061-30af-5400-a5da-565768783f05",
+          "labelFr": "courte · khǎo · il, elle"
+        },
+        {
+          "id": "5d7ac914-919e-5a6c-8865-364aec1c5dfb",
+          "itemId": "09df4821-87e5-5c4f-8902-5bc807aceeb7",
+          "labelFr": "longue · khǎao · blanc"
+        },
+        {
+          "id": "6a8fd44f-7285-5868-b47a-a5fd3cfaeea0",
+          "itemId": "d2ef00b0-4f2a-5cd1-8d81-7870a0772838",
+          "labelFr": "courte · dòu · sévère"
+        },
+        {
+          "id": "7ad75559-95cd-548e-a309-f786833c3e22",
+          "itemId": "7ed2c206-3261-55fc-8c8b-2a776cf032c4",
+          "labelFr": "longue · douu · regarder"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Bonne association : la graphie doublée ou simple correspond à ce que vous avez entendu.",
+        "incorrectFr": "Ces deux cartes ne vont pas ensemble. Réécoutez le mot : sa voyelle se pose-t-elle, ou tombe-t-elle net ?",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p4",
+      "drawIndex": 1,
+      "id": "38a9fc5a-57e7-5e0a-a08a-578c30d91c1a",
+      "type": "recall",
+      "itemId": "93940210-b361-5471-be6e-bdbf1a482c55",
+      "skill": "recall",
+      "promptFr": "Écrivez le mot en transcription Thaïnaute. Le point noté : voyelle simple ou doublée.",
+      "acceptedAnswers": [
+        {
+          "value": "khâao",
+          "kind": "transcription"
+        },
+        {
+          "value": "khaao",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": false,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C'est ça. La voyelle {doublée/simple} dit la durée sans avoir besoin d'entendre le mot.",
+        "incorrectFr": "Regardez la durée : ce mot a une voyelle {courte/ longue}, donc {une lettre simple/une lettre doublée}. Indice : son jumeau court/long est {transcription du jumeau}.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p4",
+      "drawIndex": 2,
+      "id": "de8305fa-1cd4-599c-b986-646f64b1d3e5",
+      "type": "recall",
+      "itemId": "80ccdef1-34de-55c6-a028-a01186497f78",
+      "skill": "recall",
+      "promptFr": "Écrivez le mot en transcription Thaïnaute. Le point noté : voyelle simple ou doublée.",
+      "acceptedAnswers": [
+        {
+          "value": "khâo",
+          "kind": "transcription"
+        },
+        {
+          "value": "khao",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": false,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C'est ça. La voyelle {doublée/simple} dit la durée sans avoir besoin d'entendre le mot.",
+        "incorrectFr": "Regardez la durée : ce mot a une voyelle {courte/ longue}, donc {une lettre simple/une lettre doublée}. Indice : son jumeau court/long est {transcription du jumeau}.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p4",
+      "drawIndex": 3,
+      "id": "e8daa0b4-29f9-5c0f-845c-fec2ee004329",
+      "type": "recall",
+      "itemId": "89522fd2-a6da-59a1-90b2-bd747ce60fdb",
+      "skill": "recall",
+      "promptFr": "Écrivez le mot en transcription Thaïnaute. Le point noté : voyelle simple ou doublée.",
+      "acceptedAnswers": [
+        {
+          "value": "hàat",
+          "kind": "transcription"
+        },
+        {
+          "value": "haat",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": false,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C'est ça. La voyelle {doublée/simple} dit la durée sans avoir besoin d'entendre le mot.",
+        "incorrectFr": "Regardez la durée : ce mot a une voyelle {courte/ longue}, donc {une lettre simple/une lettre doublée}. Indice : son jumeau court/long est {transcription du jumeau}.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p4",
+      "drawIndex": 4,
+      "id": "168247bd-8c11-54be-b166-655a8ef78fa6",
+      "type": "recall",
+      "itemId": "3be9755c-9041-5dc9-85dd-db66c1beefce",
+      "skill": "recall",
+      "promptFr": "Écrivez le mot en transcription Thaïnaute. Le point noté : voyelle simple ou doublée.",
+      "acceptedAnswers": [
+        {
+          "value": "hàt",
+          "kind": "transcription"
+        },
+        {
+          "value": "hat",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": false,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C'est ça. La voyelle {doublée/simple} dit la durée sans avoir besoin d'entendre le mot.",
+        "incorrectFr": "Regardez la durée : ce mot a une voyelle {courte/ longue}, donc {une lettre simple/une lettre doublée}. Indice : son jumeau court/long est {transcription du jumeau}.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p4",
+      "drawIndex": 5,
+      "id": "0585a3be-9fef-587b-9067-b63c0091c14b",
+      "type": "recall",
+      "itemId": "ac9ae9ed-ab46-546b-8939-834adcb43455",
+      "skill": "recall",
+      "promptFr": "Écrivez le mot en transcription Thaïnaute. Le point noté : voyelle simple ou doublée.",
+      "acceptedAnswers": [
+        {
+          "value": "yaang",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": false,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C'est ça. La voyelle {doublée/simple} dit la durée sans avoir besoin d'entendre le mot.",
+        "incorrectFr": "Regardez la durée : ce mot a une voyelle {courte/ longue}, donc {une lettre simple/une lettre doublée}. Indice : son jumeau court/long est {transcription du jumeau}.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p4",
+      "drawIndex": 6,
+      "id": "bd762e04-8005-5784-ad5d-2a64c080ef26",
+      "type": "recall",
+      "itemId": "3f1fe645-c716-5dcc-9f29-96547e3cb7e8",
+      "skill": "recall",
+      "promptFr": "Écrivez le mot en transcription Thaïnaute. Le point noté : voyelle simple ou doublée.",
+      "acceptedAnswers": [
+        {
+          "value": "yang",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": false,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C'est ça. La voyelle {doublée/simple} dit la durée sans avoir besoin d'entendre le mot.",
+        "incorrectFr": "Regardez la durée : ce mot a une voyelle {courte/ longue}, donc {une lettre simple/une lettre doublée}. Indice : son jumeau court/long est {transcription du jumeau}.",
+        "variants": []
+      }
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u01-l1b-p3",
+      "promptFr": "Associez chaque mot entendu à sa fiche durée + sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u01-l1b-p4",
+      "promptFr": "Écrivez le mot en transcription Thaïnaute. Le point noté : voyelle simple ou doublée.",
+      "mechanic": "recall",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"],
+    "generationActors": [
+      {
+        "actorId": "83d336a9-c225-5db3-8398-5f17f60fc04e",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6e83c8bb-68ed-585a-8d3b-761d4c9a239e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f878f039-e993-5d1a-9a19-8de82ff3f068",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2a52f44d-bce5-5cb7-9972-9ceb2adf7993",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e7ff33a8-5330-58c1-aaa0-3228bf84d390",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "97c8b6c8-6a76-544d-bdfb-9a551ab147bb",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "4b266986-ab4c-56a4-ac2d-64a316f080a7",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b005dda6-50c2-54eb-baf4-bcc2a40b2b27",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

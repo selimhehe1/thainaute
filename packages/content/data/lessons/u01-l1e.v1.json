@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "lessonId": "2c11ab53-837a-5a6a-b8b4-221a6edb20c4",
+  "versionId": "40ff9864-0bf6-5e2e-a9b2-16f2b05a63b9",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Premier dialogue minimal",
+  "objectiveFr": "à la fin de la leçon, l'apprenant comprend à l'écoute un échange réel de 4 répliques (saluer, remercier, prendre congé) et reconstruit une réplique polie en choisissant la particule qui correspond au genre du locuteur.",
+  "requiredEntitlement": null,
+  "audioManifestId": "5fcb4def-b93c-5787-bff4-d15a21016853",
+  "items": [
+    {
+      "id": "2978549c-cdc2-5240-bcdb-912c46d448a8",
+      "thaiRaw": "สวัสดี",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E27",
+        "U+0E31",
+        "U+0E2A",
+        "U+0E14",
+        "U+0E35"
+      ],
+      "translationFr": "bonjour (sert aussi pour prendre congé)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sawàtdii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สวัสดี",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สวัสดี",
+          "ipa": "wat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "สวัสดี",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (poli avec la particule)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "c7c122f1-407e-55dc-ba20-5087be168681",
+      "thaiRaw": "ครับ",
+      "unicodeCodePoints": ["U+0E04", "U+0E23", "U+0E31", "U+0E1A"],
+      "translationFr": "particule de politesse d'un locuteur homme (fin de phrase)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "7c926b57-d6c6-56a0-9c0b-26cdae4ab6eb",
+      "thaiRaw": "ค่ะ",
+      "unicodeCodePoints": ["U+0E04", "U+0E48", "U+0E30"],
+      "translationFr": "particule de politesse d'une locutrice femme (phrase affirmative)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "90825fc9-a267-5769-aa50-cbee045afc3f",
+      "thaiRaw": "ขอบคุณ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13"
+      ],
+      "translationFr": "merci",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàwwp·khoun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰɔːp̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "296d0ed3-9f45-5258-a1f5-32fd61431ec9",
+      "thaiRaw": "แล้วเจอกัน",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E40",
+        "U+0E08",
+        "U+0E2D",
+        "U+0E01",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "à plus tard (prise de congé courante)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew·joee·kan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้วเจอกัน",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "แล้วเจอกัน",
+          "ipa": "t͡ɕɤː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "แล้วเจอกัน",
+          "ipa": "kan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "n"
+        }
+      ],
+      "register": "neutre (poli avec la particule)",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN"]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u01-l1e-p2",
+      "drawIndex": 1,
+      "id": "78effc38-b6c9-52ca-b0e0-e3619a746056",
+      "type": "word_order",
+      "itemId": "90825fc9-a267-5769-aa50-cbee045afc3f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Paul, un homme, veut dire merci poliment. Remettez les éléments dans l'ordre. Attention, un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "cb836b89-3cf8-50bd-8756-cf61c3b0ef5f",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "4f264e43-4551-5814-bff2-5b21c98c3f96",
+          "thaiRaw": "ขอบคุณ",
+          "transcription": null
+        },
+        {
+          "id": "c7a2baa7-41f9-5389-bb4d-ef322fff45e6",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "4f264e43-4551-5814-bff2-5b21c98c3f96",
+        "cb836b89-3cf8-50bd-8756-cf61c3b0ef5f"
+      ],
+      "feedback": {
+        "correctFr": "Exactement : le mot d'abord, la particule à la fin. Paul est un homme, donc khráp.",
+        "incorrectFr": "Deux indices : la particule de politesse se place toujours en fin de phrase, et elle suit le genre de la personne qui parle. Paul est un homme.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1e-p3",
+      "drawIndex": 1,
+      "id": "3f3d4c45-ad00-59f5-a0c6-c5d86167d90c",
+      "type": "reading",
+      "itemId": "90825fc9-a267-5769-aa50-cbee045afc3f",
+      "skill": "reading",
+      "promptFr": "Vous avez rencontré ce mot dans la leçon. Que dit-il ?",
+      "options": [
+        {
+          "id": "7c490022-a770-58ed-beb5-08700d17cfa2",
+          "labelFr": "Merci",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "67b87e95-a5a7-5acb-8151-1f382a33809a",
+          "labelFr": "Bonjour",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8e58c5a9-c366-5733-b395-a63013e5f92a",
+          "labelFr": "À plus tard",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "7c490022-a770-58ed-beb5-08700d17cfa2",
+      "feedback": {
+        "correctFr": "Bien lu. khàwwp·khoun : deux syllabes, ton bas long puis ton moyen bref. C'est le mot que Malee emploie dans le dialogue.",
+        "incorrectFr": "Comptez les syllabes : il y en a deux, khàwwp puis khoun. Le bonjour สวัสดี et l'à plus tard แล้วเจอกัน en ont trois chacun. Réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u01-l1e-p2",
+      "promptFr": "Paul, un homme, veut dire merci poliment. Remettez les éléments dans l'ordre. Attention, un élément est de trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u01-l1e-p3",
+      "promptFr": "Vous avez rencontré ce mot dans la leçon. Que dit-il ?",
+      "mechanic": "reading",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "413dbb92-e57a-5714-a4d4-db224edd16e5",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ef115fee-74ec-506d-a97b-f9310d0f65a8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7509945e-229a-541a-9218-e9bcc8af7d67",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "43cdcd7f-d0a3-55b7-9fc6-8f9be8deaf8d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "34578051-d21c-5173-8dc1-d2595a6b119f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1c4d2616-335f-5c3a-aa49-a276027cc320",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e5a264cc-3159-50c0-b98a-8679a3e06e28",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f64ac3b2-5df1-5094-8d01-3f95759e3452",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

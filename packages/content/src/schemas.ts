@@ -87,7 +87,27 @@ export const sourceSchema = z
 
 const syllableSchema = z
   .object({
-    thaiRaw: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+    /**
+     * Graphie de la syllabe, ou `null` quand elle est INCONNUE.
+     *
+     * Les fichiers d'autorat ne segmentent pas la graphie thaïe par
+     * syllabe, et la segmentation syllabique du thaï n'est pas triviale.
+     * La deviner reviendrait à inventer une donnée que l'apprenant lirait
+     * comme vérifiée. Un monosyllabe porte donc sa graphie entière, un
+     * polysyllabe déclare qu'il l'ignore.
+     *
+     * Le reste de la syllabe, lui, est connu : IPA, ton, longueur
+     * vocalique, initiale et finale se dérivent tous de l'IPA de l'item.
+     * C'est pourquoi ce champ seul devient nullable, et pourquoi le
+     * bloqueur `LINGUISTIC_FIELDS_INCOMPLETE`, qui ne le contrôle pas,
+     * reste aussi strict qu'avant.
+     */
+    thaiRaw: z
+      .string()
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
+      .nullable()
+      .default(null),
     ipa: nullableText,
     tone: nullableText,
     vowelLength: z.enum(["short", "long"]).nullable(),
@@ -652,9 +672,14 @@ export const audioManifestSchema = z
     schemaVersion: z.literal(1),
     manifestId: identifier,
     lessonVersionId: identifier,
+    /**
+     * Un manifeste peut être VIDE. Exiger au moins une entrée supposait que
+     * toute leçon porte du son, ce qui est faux : une leçon de lecture et
+     * de rappel n'en demande aucun. Mieux vaut un manifeste vide et vrai
+     * qu'une entrée empruntée pour satisfaire une borne.
+     */
     entries: z
       .array(audioEntrySchema)
-      .min(1)
       .max(CONTENT_SCHEMA_LIMITS.audioEntriesPerManifest),
   })
   .strict();

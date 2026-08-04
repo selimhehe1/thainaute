@@ -13,6 +13,9 @@
 // derrière, pour le jour où un chemin assisté couvrira les irréguliers.
 
 import { champ } from "./parse-authoring.mjs";
+import { extraireReading } from "./extraire-reading.mjs";
+import { extraireRecall } from "./extraire-recall.mjs";
+import { extraireWordOrder } from "./extraire-word-order.mjs";
 
 /** Ligne numérotée d'un bloc, « 1. ... ». */
 const LIGNE_TIRAGE = /^\s*(\d+)\.\s+(.+?)\s*$/u;
@@ -104,9 +107,32 @@ function extraireAssociation(bloc, resoudreItem) {
  * Écoute : « N. Audio <thaï> : réponse « <libellé> » », avec des options
  * fixes déclarées une fois pour le bloc.
  */
+/**
+ * Options ecrites DANS la ligne de tirage, forme rencontree en 1D et
+ * ailleurs : « Audio หมา (mǎa). Options : Montant / Haut. Réponse : Montant. »
+ *
+ * Le corpus alterne entre options declarees une fois pour le bloc et
+ * options repetees a chaque tirage. Les deux sont legitimes : la premiere
+ * quand les cartes ne bougent pas, la seconde quand elles dependent du mot.
+ */
+function optionsDuTirage(texte) {
+  const brut = texte.match(/Options\s*:\s*([^.]+?)\s*\.\s*R[ée]ponse/u)?.[1];
+  if (brut === undefined) return null;
+  const libelles = brut
+    .split(/\s*\/\s*/u)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  return libelles.length >= 2 ? libelles : null;
+}
+
 function extraireEcoute(bloc, resoudreItem) {
-  const libelles = optionsDeclarees(bloc.corps);
-  if (libelles === null) return { erreur: "options du bloc non déclarées" };
+  const libellesBloc = optionsDeclarees(bloc.corps);
+
+  // Sans options de bloc, on tente les options par tirage avant de refuser.
+  if (libellesBloc === null) {
+    return extraireEcouteParTirage(bloc, resoudreItem);
+  }
+  const libelles = libellesBloc;
 
   const tirages = [];
   for (const { rang, texte } of lignesTirage(bloc.corps)) {
@@ -140,6 +166,52 @@ function extraireEcoute(bloc, resoudreItem) {
   return { libelles, tirages };
 }
 
+/** Variante ou chaque tirage porte ses propres options et sa reponse. */
+function extraireEcouteParTirage(bloc, resoudreItem) {
+  const lignes = lignesTirage(bloc.corps);
+  if (lignes.length === 0) {
+    return { erreur: "options du bloc non déclarées, et aucun tirage lisible" };
+  }
+
+  let reference = null;
+  const tirages = [];
+  for (const { rang, texte } of lignes) {
+    const libelles = optionsDuTirage(texte);
+    if (libelles === null) {
+      return { erreur: `tirage ${rang} : options du tirage non lisibles` };
+    }
+    // Le schema porte les options par exercice ; on exige donc qu'elles
+    // soient les memes d'un tirage a l'autre, plutot que d'en perdre en
+    // silence.
+    if (reference === null) reference = libelles;
+    else if (reference.join("|") !== libelles.join("|")) {
+      return { erreur: `tirage ${rang} : options différentes des précédentes` };
+    }
+
+    const reponse = texte.match(/R[ée]ponse\s*:\s*([^.;]+)/u)?.[1]?.trim();
+    if (reponse === undefined) {
+      return { erreur: `tirage ${rang} : réponse illisible` };
+    }
+    const indice = libelles.findIndex((libelle) => libelle === reponse);
+    if (indice < 0) {
+      return { erreur: `tirage ${rang} : réponse « ${reponse} » hors options` };
+    }
+
+    const graphies = [...texte.matchAll(THAI)].map((trouve) => trouve[0]);
+    if (graphies.length !== 1) {
+      return { erreur: `tirage ${rang} : ${graphies.length} graphies` };
+    }
+    const itemId = resoudreItem(graphies[0]);
+    if (itemId === null) {
+      return {
+        erreur: `tirage ${rang} : item introuvable pour ${graphies[0]}`,
+      };
+    }
+    tirages.push({ rang, itemId, indiceCorrect: indice });
+  }
+  return { libelles: reference, tirages };
+}
+
 /**
  * Analyse un bloc et rend soit une description structurée, soit le motif
  * précis du refus. Jamais une approximation.
@@ -166,5 +238,24 @@ export function extraireBloc(bloc, resoudreItem) {
     }
     return { ok: true, type: "audio_choice", consigne, feedback, ...resultat };
   }
+
+  // Les trois mécaniques suivantes vivent dans leurs propres modules : le
+  // corpus les écrit de façons trop differentes pour tenir dans une seule
+  // grammaire lisible.
+  const delegues = {
+    reading: [extraireReading, "reading"],
+    recall: [extraireRecall, "recall"],
+    word_order: [extraireWordOrder, "word_order"],
+  };
+  const delegue = delegues[bloc.mecanique];
+  if (delegue !== undefined) {
+    const [extraire, type] = delegue;
+    const resultat = extraire(bloc, resoudreItem);
+    if (resultat.erreur !== undefined) {
+      return { ok: false, motif: resultat.erreur };
+    }
+    return { ok: true, type, consigne, feedback, ...resultat };
+  }
+
   return { ok: false, motif: `mécanique « ${bloc.mecanique} » non traitée` };
 }

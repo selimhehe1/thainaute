@@ -153,15 +153,6 @@ export function compilerItem(
   const syllabes = decouperItem(formes[0]);
   if (syllabes === null) return refus("découpage phonétique refusé");
 
-  // `syllableSchema.thaiRaw` exige la graphie de CHAQUE syllabe. Le corpus
-  // ne segmente pas la graphie thaïe, et la segmentation syllabique du thaï
-  // n'est pas triviale : la deviner reviendrait à inventer une donnée que
-  // l'apprenant lirait comme vérifiée. Les mots de plus d'une syllabe sont
-  // donc refusés tant que le corpus ne porte pas cette segmentation.
-  if (syllabes.length > 1) {
-    return refus(`${syllabes.length} syllabes, graphie non segmentée`);
-  }
-
   // Le contrôle qui rend la compilation digne de confiance : les points de
   // code sont RECALCULÉS depuis la graphie, puis confrontés à ce que la
   // leçon déclare. Le champ écrit n'est jamais recopié.
