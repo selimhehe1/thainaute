@@ -66,6 +66,25 @@ const MOTIFS_SOURCE: readonly (readonly [RegExp, string])[] = [
   [/unicode/iu, "UNICODE-17"],
 ];
 
+/**
+ * Ordre total, déterministe et INDÉPENDANT DE LA LOCALE.
+ *
+ * `Array.prototype.sort()` sans comparateur est ambigu à la relecture, et
+ * les outils d'analyse le signalent à juste titre. Leur conseil habituel
+ * est pourtant `String.localeCompare`, qui serait ici un mauvais choix :
+ * il dépend de la locale et des données ICU de la machine, si bien que
+ * deux compilations sur deux postes pourraient ordonner différemment.
+ *
+ * Or la reproductibilité octet pour octet est justement la propriété que
+ * ce compilateur garantit. On compare donc par point de code, ce qui est
+ * stable partout et suffisant pour des identifiants ASCII.
+ */
+function ordreStable(gauche: string, droite: string): number {
+  if (gauche < droite) return -1;
+  if (gauche > droite) return 1;
+  return 0;
+}
+
 function sourcesDeLItem(champSources: string | undefined): string[] {
   const trouvees = new Set<string>();
   for (const [motif, sourceId] of MOTIFS_SOURCE) {
@@ -76,7 +95,7 @@ function sourcesDeLItem(champSources: string | undefined): string[] {
       throw new Error(`Source ${sourceId} absente du registre.`);
     }
   }
-  return [...trouvees].sort();
+  return [...trouvees].sort(ordreStable);
 }
 
 // La convention de transcription est définie une fois pour tout le projet
