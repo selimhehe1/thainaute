@@ -58,6 +58,12 @@ import styles from "./lesson.module.css";
 
 interface ExpeditionProps {
   readonly lesson: Lesson;
+  /**
+   * Adresse publique de chaque asset audio, par identifiant. Fournie par la
+   * page, qui la derive du manifeste cote serveur : le lecteur ne devine
+   * aucun chemin et ne code aucune URL en dur.
+   */
+  readonly audioSources?: Readonly<Record<string, string>> | undefined;
   readonly analytics?: AnalyticsSink | undefined;
 }
 
@@ -121,6 +127,7 @@ function subscribeToReducedMotion(callback: () => void): () => void {
 /** Lecteur Expédition : une carte par exercice, cinq mécaniques (ADR-0023). */
 export function ExpeditionExperience({
   lesson,
+  audioSources,
   analytics: analyticsOverride,
 }: ExpeditionProps) {
   const router = useRouter();
@@ -161,6 +168,15 @@ export function ExpeditionExperience({
   const cardHeading = useRef<HTMLHeadingElement>(null);
   const lessonAudio = useRef<HTMLAudioElement | null>(null);
   const [audioError, setAudioError] = useState(false);
+
+  // Le bouton d'accueil fait entendre le premier mot de la lecon, celui de
+  // son premier exercice d'ecoute.
+  const premierAudioAssetId = useMemo(
+    () =>
+      lesson.exercises.find((exercice) => exercice.type === "audio_choice")
+        ?.audioAssetId ?? null,
+    [lesson.exercises],
+  );
 
   const online = useSyncExternalStore(
     subscribeToNetworkStatus,
@@ -204,25 +220,39 @@ export function ExpeditionExperience({
     }
   }, []);
 
-  const playSignal = useCallback((): void => {
-    stopSignal();
-    setAudioError(false);
-    const audio = new Audio("/audio/fixture-tone.wav");
-    lessonAudio.current = audio;
-    audio.onended = () => {
-      if (lessonAudio.current === audio) lessonAudio.current = null;
-    };
-    audio.onerror = () => {
-      if (lessonAudio.current !== audio) return;
+  /**
+   * Joue l'audio de l'exercice demande. Sans adresse connue pour cet asset,
+   * on ne joue RIEN et on le signale : faire entendre un autre son que le
+   * mot attendu serait pire que le silence, puisque l'apprenant croirait
+   * avoir entendu ce mot-la.
+   */
+  const playSignal = useCallback(
+    (assetId: string | null): void => {
       stopSignal();
-      setAudioError(true);
-    };
-    void audio.play().catch(() => {
-      if (lessonAudio.current !== audio) return;
-      stopSignal();
-      setAudioError(true);
-    });
-  }, [stopSignal]);
+      setAudioError(false);
+      const src = assetId === null ? undefined : audioSources?.[assetId];
+      if (src === undefined) {
+        setAudioError(true);
+        return;
+      }
+      const audio = new Audio(src);
+      lessonAudio.current = audio;
+      audio.onended = () => {
+        if (lessonAudio.current === audio) lessonAudio.current = null;
+      };
+      audio.onerror = () => {
+        if (lessonAudio.current !== audio) return;
+        stopSignal();
+        setAudioError(true);
+      };
+      void audio.play().catch(() => {
+        if (lessonAudio.current !== audio) return;
+        stopSignal();
+        setAudioError(true);
+      });
+    },
+    [audioSources, stopSignal],
+  );
 
   useEffect(() => {
     let active = true;
@@ -1154,9 +1184,11 @@ export function ExpeditionExperience({
             <button
               className={buttonClass("ghost")}
               type="button"
-              onClick={playSignal}
+              onClick={() => {
+                playSignal(premierAudioAssetId);
+              }}
             >
-              Écouter le signal
+              Écouter le mot
             </button>
           </div>
           {audioError && (
@@ -1243,9 +1275,11 @@ export function ExpeditionExperience({
                   <button
                     className={styles.audioControl}
                     type="button"
-                    onClick={playSignal}
+                    onClick={() => {
+                      playSignal(currentExercise.audioAssetId);
+                    }}
                   >
-                    <span aria-hidden="true">▶</span> Réécouter le signal
+                    <span aria-hidden="true">▶</span> Réécouter le mot
                   </button>
                   {audioError && (
                     <p className={styles.inlineError} role="alert">

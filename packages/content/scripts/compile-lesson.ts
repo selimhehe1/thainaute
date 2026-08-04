@@ -44,8 +44,39 @@ const REGISTRE = JSON.parse(
 type ItemCompile = {
   id: string;
   thaiRaw: string;
+  transcription: { value: string | null };
   sourceIds: string[];
 };
+
+/**
+ * Remplit les marqueurs de gabarit d'un retour pedagogique.
+ *
+ * Le curriculum ecrit ses retours comme des patrons :
+ * « Oui. {mot} ({transcription}) : {description du contour}. » Compiles
+ * tels quels, ces marqueurs s'afficheraient litteralement a l'apprenant,
+ * ce qui est exactement le « texte technique » que le brief interdit.
+ *
+ * Les trois sont derivables de l'exercice lui-meme. Tout marqueur qui
+ * resterait non resolu fait ECHOUER la compilation : mieux vaut une lecon
+ * incomplete qu'une lecon qui affiche ses accolades.
+ */
+function remplirGabarit(
+  texte: string,
+  valeurs: Readonly<Record<string, string | null>>,
+  ou: string,
+): string {
+  const rempli = texte.replace(/\{([^}]+)\}/gu, (entier, cle: string) => {
+    const valeur = valeurs[cle.trim()];
+    return valeur === null || valeur === undefined ? entier : valeur;
+  });
+  const restants = rempli.match(/\{[^}]+\}/gu);
+  if (restants !== null) {
+    throw new Error(
+      `Marqueur de gabarit non resolu dans ${ou} : ${restants.join(", ")}`,
+    );
+  }
+  return rempli;
+}
 
 /**
  * Les sept dimensions d'audit, attribuées aux dossiers de vérification
@@ -149,6 +180,19 @@ export function compilerLeconComplete(chemin: string) {
       sampleSize: extrait.tirages.length,
     });
     for (const tirage of extrait.tirages) {
+      const item = items.find((candidat) => candidat.id === tirage.itemId);
+      const libelleCorrect = extrait.libelles[tirage.indiceCorrect] ?? "";
+      const valeurs = {
+        mot: item?.thaiRaw ?? null,
+        transcription: item?.transcription?.value ?? null,
+        "description du contour": libelleCorrect,
+      };
+      const ou = `${poolId} tirage ${tirage.rang}`;
+      const feedback = {
+        correctFr: remplirGabarit(extrait.feedback.correctFr, valeurs, ou),
+        incorrectFr: remplirGabarit(extrait.feedback.incorrectFr, valeurs, ou),
+        variants: [],
+      };
       exercises.push({
         poolId,
         drawIndex: tirage.rang,
@@ -165,7 +209,7 @@ export function compilerLeconComplete(chemin: string) {
           transcription: null,
         })),
         correctOptionId: optionIds[tirage.indiceCorrect],
-        feedback: extrait.feedback,
+        feedback,
       });
     }
   }
