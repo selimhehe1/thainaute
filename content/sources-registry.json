@@ -31,13 +31,25 @@
       "consultedAt": "2026-08-03T00:00:00.000Z",
       "$note": [
         "Autorite n° 1 pour l'orthographe et le sens, et fiabilite maximale :",
-        "la confiance est donc `high`. Mais la politique constate que le texte",
-        "exact des conditions n'est pas lisible et reste « a re-verifier",
-        "manuellement ». Les trois booleens sont donc `false`.",
+        "la confiance est donc `high`.",
         "",
-        "C'est LA question juridique qui separe aujourd'hui le curriculum de",
-        "la publication. Elle demande une verification humaine, pas une",
-        "deduction."
+        "STATUT LEGAL DOCUMENTE le 2026-08-04, voir l'amendement de",
+        "docs/content-policy/sources-verification.md. La page de conditions du",
+        "site reste muette, son contenu etant en images, mais l'annonce du",
+        "cabinet du Premier ministre publiee au Journal officiel thai",
+        "(Ratchakitchanubeksa, vol. 130, partie speciale 71 ง, 13 juin 2013)",
+        "rend les graphies du RID 2554 obligatoires pour les documents",
+        "officiels et l'enseignement.",
+        "",
+        "Le Copyright Act B.E. 2537 exclut de la protection les notifications",
+        "gouvernementales (section 7(3)) et les faits de simple information",
+        "(section 7(1)). L'usage de Thainaute porte sur de tels faits :",
+        "l'existence d'une graphie et son statut normatif, jamais une",
+        "definition.",
+        "",
+        "Les trois booleens restent `false` A DESSEIN. Les basculer est une",
+        "validation juridique, que CLAUDE.md reserve au fondateur. Les faits",
+        "la soutiennent, la decision ne m'appartient pas."
       ]
     },
     {

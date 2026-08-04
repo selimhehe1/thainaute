@@ -29,6 +29,55 @@
   effectués le 3 août 2026 sur les unités 1 et 2, voir
   `content/authoring/unite-0X/verification-rid.md`.
 
+  **Amendement du 4 août 2026 : le statut légal du RID est documenté.**
+  La page `disclaimer.php` reste effectivement muette, son contenu étant
+  en images. Mais deux documents officiels du site, jusqu'ici non lus,
+  répondent à la question mieux qu'une page de conditions.
+
+  1. `notification.php`, image `notification_royin/image2/3.jpg` :
+     **ประกาศสำนักนายกรัฐมนตรี เรื่อง ระเบียบการใช้ตัวสะกด**, annonce du
+     cabinet du Premier ministre publiée au _Ratchakitchanubeksa_ (Journal
+     officiel), เล่ม ๑๓๐ ตอนพิเศษ ๗๑ ง, du 13 juin 2556 (2013), signée le
+     27 mai 2556. Elle abroge l'annonce du 11 juillet 2545 et dispose que
+     **tous les documents officiels et l'enseignement emploient désormais
+     les graphies du RID 2554**. Un ministère qui souhaiterait changer
+     l'orthographe d'un mot doit en exposer les motifs à l'Académie, qui
+     amende le dictionnaire le cas échéant.
+  2. Image `notification_royin/image2/6.jpg` : la préface signée du même
+     Premier ministre, qui déclare le dictionnaire publié « pour servir de
+     norme d'écriture du thaï en un système unique ».
+
+  Deux dispositions du **Copyright Act B.E. 2537** s'appliquent alors, la
+  même loi que celle déjà invoquée plus bas pour le RTGS :
+
+  - **Section 7(3)** exclut de la protection « les règlements, arrêtés,
+    **notifications**, ordres, explications et correspondance officielle
+    des ministères, départements ou toute autre unité gouvernementale ».
+    L'annonce ci-dessus est une notification à ce titre.
+  - **Section 7(1)** exclut « les faits ayant le caractère de simple
+    information, n'étant pas des œuvres littéraires, scientifiques ou
+    artistiques ». L'existence d'une graphie et son statut normatif sont
+    de tels faits.
+
+  **Ce que cela ne dit pas.** Un dictionnaire reste une compilation, et
+  ses définitions, leur rédaction et leur agencement peuvent être protégés
+  indépendamment. Le présent amendement ne les couvre pas et ne change
+  rien à l'interdiction de les reproduire.
+
+  **Ce que cela dit.** L'usage que Thaïnaute fait du RID, à savoir
+  vérifier qu'une graphie existe et qu'elle est la forme normative, porte
+  sur des faits que la loi thaïe exclut de la protection, et sur une norme
+  que le gouvernement a rendue publique et obligatoire. C'est précisément
+  la limite déjà posée plus haut : conservation de la seule présence de la
+  graphie, citation par référence, aucune définition reproduite.
+
+  **Décision qui reste à Selim.** `content/sources-registry.json` porte
+  aujourd'hui `commercialUse`, `redistribution` et `publicationAuthorized`
+  à `false` pour `RID-2554`, ce qui ferme la porte de publication. Les
+  faits ci-dessus soutiennent leur passage à `true` dans le périmètre
+  décrit. Le basculement est une validation juridique, réservée au
+  fondateur par `CLAUDE.md`, et n'est pas fait ici.
+
 - **The Unicode Standard** (chapitre « Southeast Asia » et fichiers de la
   base de caractères : `IndicPositionalCategory.txt`, `Scripts.txt`,
   `UnicodeData.txt`), publiés par le Consortium Unicode et librement
