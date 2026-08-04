@@ -12,9 +12,9 @@
         "apps/web/public/audio/u01-l1a/9ae0a4f7-d9cb-551d-b247-7d258e606b29.wav"
       ],
       "mimeType": "audio/wav",
-      "sha256": "b761efa206983c52a71c373b638feaa4d8724b55982d398c9fb293b81e75d1c4",
-      "byteLength": 43244,
-      "durationMs": 900,
+      "sha256": "932983c627055e483312813b6ec8f8a8b399c1ee89256b25f561332669e285c1",
+      "byteLength": 48044,
+      "durationMs": 1000,
       "voiceKind": "synthetic_tts",
       "consentReference": null,
       "synthesis": {
@@ -26,18 +26,18 @@
           "format": "wav",
           "modalities": "text+audio"
         },
-        "generatedAt": "2026-08-04T15:52:16.079Z"
+        "generatedAt": "2026-08-04T19:22:17.936Z"
       },
       "roundTrip": null,
       "toneCheck": {
         "method": "f0_contour",
         "tool": "scripts/verification/f0-contour.mjs",
         "expectedTone": "mid",
-        "observedShape": "falling",
-        "semitoneSlope": -2.26,
-        "semitoneRange": 3.16,
-        "consistent": false,
-        "checkedAt": "2026-08-04T15:52:16.079Z"
+        "observedShape": "level",
+        "semitoneSlope": -1.02,
+        "semitoneRange": 1.89,
+        "consistent": true,
+        "checkedAt": "2026-08-04T19:22:17.937Z"
       }
     },
     {
@@ -49,9 +49,9 @@
         "apps/web/public/audio/u01-l1a/d07bc9d9-f989-5a6b-9249-572a58ace81f.wav"
       ],
       "mimeType": "audio/wav",
-      "sha256": "bec1bd46e9ac5e42bf9dd6f048c18c3504a97bb6fd14f034a744449bb53ca93a",
-      "byteLength": 55244,
-      "durationMs": 1150,
+      "sha256": "453ccb9ce9d42f1c653244b9e5b684a80bf4d278cbfd9e47d80409b7cbff5ce7",
+      "byteLength": 50444,
+      "durationMs": 1050,
       "voiceKind": "synthetic_tts",
       "consentReference": null,
       "synthesis": {
@@ -63,7 +63,7 @@
           "format": "wav",
           "modalities": "text+audio"
         },
-        "generatedAt": "2026-08-04T15:52:17.426Z"
+        "generatedAt": "2026-08-04T19:22:18.978Z"
       },
       "roundTrip": null,
       "toneCheck": {
@@ -71,10 +71,10 @@
         "tool": "scripts/verification/f0-contour.mjs",
         "expectedTone": "low",
         "observedShape": "falling",
-        "semitoneSlope": -4.88,
-        "semitoneRange": 7.15,
+        "semitoneSlope": -4.8,
+        "semitoneRange": 6.34,
         "consistent": true,
-        "checkedAt": "2026-08-04T15:52:17.426Z"
+        "checkedAt": "2026-08-04T19:22:18.978Z"
       }
     },
     {
@@ -86,9 +86,9 @@
         "apps/web/public/audio/u01-l1a/34626c45-7ae4-5c93-9b97-63f0d3b75fbe.wav"
       ],
       "mimeType": "audio/wav",
-      "sha256": "8d06fe512b82d65875f55808d98bac648dcf20bb07590defb01559a4583bc62e",
-      "byteLength": 79244,
-      "durationMs": 1650,
+      "sha256": "65a80cf3b623db989df83de09ea3c76f43b2811b91dd84520c86d20852dcc9e3",
+      "byteLength": 52844,
+      "durationMs": 1100,
       "voiceKind": "synthetic_tts",
       "consentReference": null,
       "synthesis": {
@@ -100,7 +100,7 @@
           "format": "wav",
           "modalities": "text+audio"
         },
-        "generatedAt": "2026-08-04T15:52:18.941Z"
+        "generatedAt": "2026-08-04T19:22:20.389Z"
       },
       "roundTrip": null,
       "toneCheck": {
@@ -108,10 +108,10 @@
         "tool": "scripts/verification/f0-contour.mjs",
         "expectedTone": "falling",
         "observedShape": "falling",
-        "semitoneSlope": -3.85,
-        "semitoneRange": 7.44,
+        "semitoneSlope": -4.87,
+        "semitoneRange": 8.58,
         "consistent": true,
-        "checkedAt": "2026-08-04T15:52:18.941Z"
+        "checkedAt": "2026-08-04T19:22:20.389Z"
       }
     },
     {
@@ -123,9 +123,9 @@
         "apps/web/public/audio/u01-l1a/56515ba0-a225-5046-bfca-0e4b60e3ea92.wav"
       ],
       "mimeType": "audio/wav",
-      "sha256": "dd5964c48c21db09153ce0e74ecef68f34405eecda0eaa47cf8bc08121b3da5d",
-      "byteLength": 48044,
-      "durationMs": 1000,
+      "sha256": "f8c9472a10569f868354e921940a930240f3dcc21f139753c6c3e93fcd407cc5",
+      "byteLength": 64844,
+      "durationMs": 1350,
       "voiceKind": "synthetic_tts",
       "consentReference": null,
       "synthesis": {
@@ -137,7 +137,7 @@
           "format": "wav",
           "modalities": "text+audio"
         },
-        "generatedAt": "2026-08-04T15:52:21.428Z"
+        "generatedAt": "2026-08-04T19:22:25.084Z"
       },
       "roundTrip": null,
       "toneCheck": {
@@ -145,10 +145,10 @@
         "tool": "scripts/verification/f0-contour.mjs",
         "expectedTone": "high",
         "observedShape": "rising",
-        "semitoneSlope": 1.87,
-        "semitoneRange": 10.25,
+        "semitoneSlope": 1.99,
+        "semitoneRange": 9.39,
         "consistent": true,
-        "checkedAt": "2026-08-04T15:52:21.428Z"
+        "checkedAt": "2026-08-04T19:22:25.084Z"
       }
     },
     {
@@ -160,7 +160,7 @@
         "apps/web/public/audio/u01-l1a/9251e9ef-cd4d-5274-8054-97488c3605d4.wav"
       ],
       "mimeType": "audio/wav",
-      "sha256": "95708a3334c2e069b846b88ec11f50d8691dbabf1644b360b830b3ce375e8c3e",
+      "sha256": "07c3490358c83a98a62869e42b32e1762c31cfd0be3c83efe256b78962ddcf69",
       "byteLength": 50444,
       "durationMs": 1050,
       "voiceKind": "synthetic_tts",
@@ -174,7 +174,7 @@
           "format": "wav",
           "modalities": "text+audio"
         },
-        "generatedAt": "2026-08-04T15:52:23.699Z"
+        "generatedAt": "2026-08-04T19:22:26.599Z"
       },
       "roundTrip": null,
       "toneCheck": {
@@ -182,10 +182,10 @@
         "tool": "scripts/verification/f0-contour.mjs",
         "expectedTone": "rising",
         "observedShape": "dipping",
-        "semitoneSlope": -1.13,
-        "semitoneRange": 7.87,
+        "semitoneSlope": -0.4,
+        "semitoneRange": 4.05,
         "consistent": true,
-        "checkedAt": "2026-08-04T15:52:23.699Z"
+        "checkedAt": "2026-08-04T19:22:26.599Z"
       }
     }
   ]

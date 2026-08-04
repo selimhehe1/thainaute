@@ -45,6 +45,7 @@ type ItemCompile = {
   id: string;
   thaiRaw: string;
   transcription: { value: string | null };
+  syllables: { vowelLength: "short" | "long" | null }[];
   sourceIds: string[];
 };
 
@@ -106,6 +107,243 @@ function provenanceDe(identifiant: string, sourceIds: string[]) {
   };
 }
 
+type BlocOk = Extract<ReturnType<typeof extraireBloc>, { ok: true }>;
+
+/** Item du premier jeton de la reponse, ou `null` s'il est introuvable. */
+function ancreDesJetons(
+  tirage: {
+    jetons?: readonly { thai: string }[];
+    ordreCorrect?: readonly number[];
+  },
+  items: ItemCompile[],
+): string | null {
+  const premier = tirage.ordreCorrect?.[0];
+  if (premier === undefined) return null;
+  const graphie = tirage.jetons?.[premier]?.thai.normalize("NFC");
+  if (graphie === undefined) return null;
+  return items.find((item) => item.thaiRaw === graphie)?.id ?? null;
+}
+
+/**
+ * Monte un bloc extrait en exercices et en vivier.
+ *
+ * Leve plutot que de rendre une erreur : l'appelant rembobine et consigne
+ * le motif. Une formulation inattendue coute donc un bloc, jamais la lecon.
+ */
+function monterBloc(
+  extrait: BlocOk,
+  poolId: string,
+  items: ItemCompile[],
+  identifiant: string,
+  exercises: unknown[],
+  pools: unknown[],
+): void {
+  if (extrait.type === "association") {
+    // Une association porte toutes ses paires dans UN exercice : le
+    // vivier n'a donc qu'un tirage, et le seuil vaut ce tirage.
+    pools.push({
+      poolId,
+      promptFr: extrait.consigne,
+      mechanic: "association",
+      drawCount: 1,
+      passRequired: 1,
+      sampleSize: 1,
+    });
+    exercises.push({
+      poolId,
+      drawIndex: 1,
+      id: uuidStable("exo", identifiant, poolId, "1"),
+      type: "association",
+      skill: "reading",
+      promptFr: extrait.consigne,
+      pairs: extrait.paires.map(
+        (paire: { rang: number; itemId: string; labelFr: string }) => ({
+          id: uuidStable("paire", identifiant, poolId, String(paire.rang)),
+          itemId: paire.itemId,
+          labelFr: paire.labelFr,
+        }),
+      ),
+      feedback: extrait.feedback,
+    });
+    return;
+  }
+
+  if (
+    extrait.type === "reading" ||
+    extrait.type === "recall" ||
+    extrait.type === "word_order"
+  ) {
+    const tirages = extrait.tirages as {
+      rang: number;
+      itemId: string;
+      libelles?: string[];
+      indiceCorrect?: number;
+      invite?: string;
+      reponses?: { valeur: string; genre: string }[];
+      jetons?: { thai: string; transcription: string | null }[];
+      ordreCorrect?: number[];
+    }[];
+    pools.push({
+      poolId,
+      promptFr: extrait.consigne,
+      mechanic: extrait.type,
+      drawCount: tirages.length,
+      passRequired: tirages.length,
+      sampleSize: tirages.length,
+    });
+
+    for (const tirage of tirages) {
+      // Un exercice d'ordre des mots assemble PLUSIEURS items, alors que le
+      // schema et `attempt_events.item_id` en exigent exactement un, la cle
+      // de projection SRS etant (itemId, skill).
+      //
+      // A defaut de trancher cette question de modele, on ancre sur le
+      // premier jeton de la reponse : c'est un item reel de la lecon, et le
+      // choix est arbitraire mais explicite. A revoir avec la notation
+      // serveur des quatre nouvelles mecaniques.
+      const ancre =
+        typeof tirage.itemId === "string"
+          ? tirage.itemId
+          : ancreDesJetons(tirage, items);
+      if (ancre === null) {
+        throw new Error(`tirage ${tirage.rang} sans item resoluble`);
+      }
+      const commun = {
+        poolId,
+        drawIndex: tirage.rang,
+        id: uuidStable("exo", identifiant, poolId, String(tirage.rang)),
+        itemId: ancre,
+        promptFr: extrait.consigne,
+        feedback: extrait.feedback,
+      };
+
+      if (extrait.type === "reading") {
+        const libelles = tirage.libelles ?? extrait.libelles ?? [];
+        const optionIds = libelles.map((_: string, index: number) =>
+          uuidStable(
+            "option",
+            identifiant,
+            poolId,
+            String(tirage.rang),
+            String(index),
+          ),
+        );
+        exercises.push({
+          ...commun,
+          type: "reading",
+          skill: "reading",
+          options: libelles.map((libelle: string, index: number) => ({
+            id: optionIds[index],
+            labelFr: libelle.slice(0, 120),
+            thaiRaw: null,
+            transcription: null,
+          })),
+          correctOptionId: optionIds[tirage.indiceCorrect ?? 0],
+        });
+        continue;
+      }
+
+      if (extrait.type === "recall") {
+        exercises.push({
+          ...commun,
+          type: "recall",
+          skill: "recall",
+          acceptedAnswers: (tirage.reponses ?? []).map((reponse) => ({
+            value: reponse.valeur.normalize("NFC"),
+            kind: reponse.genre === "thai" ? "thai" : "transcription",
+          })),
+          answerPolicy: {
+            normalization: "nfc",
+            trimWhitespace: extrait.politique?.rognerEspaces ?? true,
+            collapseInnerWhitespace: extrait.politique?.reduireEspaces ?? true,
+          },
+        });
+        continue;
+      }
+
+      const jetons = tirage.jetons ?? [];
+      const tokenIds = jetons.map((_, index) =>
+        uuidStable(
+          "jeton",
+          identifiant,
+          poolId,
+          String(tirage.rang),
+          String(index),
+        ),
+      );
+      exercises.push({
+        ...commun,
+        type: "word_order",
+        skill: "production",
+        audioAssetId: null,
+        tokens: jetons.map((jeton, index) => ({
+          id: tokenIds[index],
+          thaiRaw: jeton.thai.normalize("NFC"),
+          transcription: jeton.transcription ?? null,
+        })),
+        correctOrder: (tirage.ordreCorrect ?? []).map(
+          (index) => tokenIds[index],
+        ),
+      });
+    }
+    return;
+  }
+
+  // Écoute : un tirage par exercice, tous rattachés au même vivier.
+  const optionIds = extrait.libelles.map((_: string, index: number) =>
+    uuidStable("option", identifiant, poolId, String(index)),
+  );
+  pools.push({
+    poolId,
+    promptFr: extrait.consigne,
+    mechanic: "audio_choice",
+    drawCount: extrait.tirages.length,
+    passRequired: extrait.tirages.length,
+    sampleSize: extrait.tirages.length,
+  });
+  for (const tirage of extrait.tirages) {
+    const item = items.find((candidat) => candidat.id === tirage.itemId);
+    const libelleCorrect = extrait.libelles[tirage.indiceCorrect] ?? "";
+    // Marqueurs derivables de l'exercice. Ceux qui ne le sont pas restent
+    // non resolus et font ecarter le bloc, plutot que d'afficher des
+    // accolades a l'apprenant.
+    const longue = item?.syllables?.[0]?.vowelLength === "long";
+    const valeurs = {
+      mot: item?.thaiRaw ?? null,
+      transcription: item?.transcription?.value ?? null,
+      "description du contour": libelleCorrect,
+      "simple/doublée": longue ? "doublée" : "simple",
+      "une lettre simple/une lettre doublée": longue
+        ? "une lettre doublée"
+        : "une lettre simple",
+    };
+    const ou = `${poolId} tirage ${tirage.rang}`;
+    const feedback = {
+      correctFr: remplirGabarit(extrait.feedback.correctFr, valeurs, ou),
+      incorrectFr: remplirGabarit(extrait.feedback.incorrectFr, valeurs, ou),
+      variants: [],
+    };
+    exercises.push({
+      poolId,
+      drawIndex: tirage.rang,
+      id: uuidStable("exo", identifiant, poolId, String(tirage.rang)),
+      type: "audio_choice",
+      itemId: tirage.itemId,
+      skill: "listening",
+      audioAssetId: uuidStable("audio", identifiant, tirage.itemId),
+      promptFr: extrait.consigne,
+      options: extrait.libelles.map((libelle: string, index: number) => ({
+        id: optionIds[index],
+        labelFr: libelle.slice(0, 120),
+        thaiRaw: null,
+        transcription: null,
+      })),
+      correctOptionId: optionIds[tirage.indiceCorrect],
+      feedback,
+    });
+  }
+}
+
 export function compilerLeconComplete(chemin: string) {
   const source = readFileSync(chemin, "utf8");
   const lecon = analyserLecon(chemin);
@@ -136,86 +374,34 @@ export function compilerLeconComplete(chemin: string) {
       continue;
     }
     const poolId = `${identifiant}-p${bloc.ordre}`;
-
-    if (extrait.type === "association") {
-      // Une association porte toutes ses paires dans UN exercice : le
-      // vivier n'a donc qu'un tirage, et le seuil vaut ce tirage.
-      pools.push({
-        poolId,
-        promptFr: extrait.consigne,
-        mechanic: "association",
-        drawCount: 1,
-        passRequired: 1,
-        sampleSize: 1,
-      });
-      exercises.push({
-        poolId,
-        drawIndex: 1,
-        id: uuidStable("exo", identifiant, poolId, "1"),
-        type: "association",
-        skill: "reading",
-        promptFr: extrait.consigne,
-        pairs: extrait.paires.map(
-          (paire: { rang: number; itemId: string; labelFr: string }) => ({
-            id: uuidStable("paire", identifiant, poolId, String(paire.rang)),
-            itemId: paire.itemId,
-            labelFr: paire.labelFr,
-          }),
-        ),
-        feedback: extrait.feedback,
-      });
-      continue;
-    }
-
-    // Écoute : un tirage par exercice, tous rattachés au même vivier.
-    const optionIds = extrait.libelles.map((_: string, index: number) =>
-      uuidStable("option", identifiant, poolId, String(index)),
-    );
-    pools.push({
-      poolId,
-      promptFr: extrait.consigne,
-      mechanic: "audio_choice",
-      drawCount: extrait.tirages.length,
-      passRequired: extrait.tirages.length,
-      sampleSize: extrait.tirages.length,
-    });
-    for (const tirage of extrait.tirages) {
-      const item = items.find((candidat) => candidat.id === tirage.itemId);
-      const libelleCorrect = extrait.libelles[tirage.indiceCorrect] ?? "";
-      const valeurs = {
-        mot: item?.thaiRaw ?? null,
-        transcription: item?.transcription?.value ?? null,
-        "description du contour": libelleCorrect,
-      };
-      const ou = `${poolId} tirage ${tirage.rang}`;
-      const feedback = {
-        correctFr: remplirGabarit(extrait.feedback.correctFr, valeurs, ou),
-        incorrectFr: remplirGabarit(extrait.feedback.incorrectFr, valeurs, ou),
-        variants: [],
-      };
-      exercises.push({
-        poolId,
-        drawIndex: tirage.rang,
-        id: uuidStable("exo", identifiant, poolId, String(tirage.rang)),
-        type: "audio_choice",
-        itemId: tirage.itemId,
-        skill: "listening",
-        audioAssetId: uuidStable("audio", identifiant, tirage.itemId),
-        promptFr: extrait.consigne,
-        options: extrait.libelles.map((libelle: string, index: number) => ({
-          id: optionIds[index],
-          labelFr: libelle.slice(0, 120),
-          thaiRaw: null,
-          transcription: null,
-        })),
-        correctOptionId: optionIds[tirage.indiceCorrect],
-        feedback,
+    // Un bloc qui se casse au montage est ECARTE, pas fatal : une seule
+    // formulation inattendue ne doit pas emporter les autres exercices
+    // d'une lecon. On rembobine ce que le bloc avait deja pousse.
+    const avantExercices = exercises.length;
+    const avantViviers = pools.length;
+    try {
+      monterBloc(extrait, poolId, items, identifiant, exercises, pools);
+    } catch (erreur) {
+      exercises.length = avantExercices;
+      pools.length = avantViviers;
+      blocsRefuses.push({
+        titre: bloc.titre,
+        motif: String(erreur)
+          .replace(/^Error:\s*/u, "")
+          .slice(0, 200),
       });
     }
   }
 
   if (exercises.length === 0) {
-    throw new Error(`Aucun exercice extractible dans ${identifiant}.`);
+    // Le message porte les motifs : sans eux, l'erreur dit qu'il n'y a
+    // rien sans jamais dire pourquoi, et il faut instrumenter pour savoir.
+    const details = blocsRefuses
+      .map(({ titre, motif }) => `${titre.slice(0, 30)} : ${motif}`)
+      .join(" | ");
+    throw new Error(
+      `Aucun exercice extractible dans ${identifiant}. ${details}`,
+    );
   }
 
   const versionId = uuidStable("version", identifiant, "1");

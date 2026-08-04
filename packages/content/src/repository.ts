@@ -6,8 +6,16 @@ import { fileURLToPath } from "node:url";
 import audioJson from "../data/audio/fixture-audio.v1.json";
 import fiveMechanicsAudioJson from "../data/audio/five-mechanics-audio.v1.json";
 import u01l1aAudioJson from "../data/audio/u01-l1a.v1.json";
+import u01l1bAudioJson from "../data/audio/u01-l1b.v1.json";
+import u01l1cAudioJson from "../data/audio/u01-l1c.v1.json";
+import u01l1dAudioJson from "../data/audio/u01-l1d.v1.json";
+import u01l1eAudioJson from "../data/audio/u01-l1e.v1.json";
 import fiveMechanicsLessonJson from "../data/lessons/five-mechanics-fixture.v1.json";
 import u01l1aLessonJson from "../data/lessons/u01-l1a.v1.json";
+import u01l1bLessonJson from "../data/lessons/u01-l1b.v1.json";
+import u01l1cLessonJson from "../data/lessons/u01-l1c.v1.json";
+import u01l1dLessonJson from "../data/lessons/u01-l1d.v1.json";
+import u01l1eLessonJson from "../data/lessons/u01-l1e.v1.json";
 import lessonJson from "../data/lessons/unicode-audio-fixture.v1.json";
 import registreJson from "../../../content/sources-registry.json";
 import sourceJson from "../data/sources/test-only.json";
@@ -69,6 +77,19 @@ const LECONS_COMPILEES: Readonly<
   Record<string, { lesson: unknown; audio: unknown }>
 > = {
   "u01-l1a": { lesson: u01l1aLessonJson, audio: u01l1aAudioJson },
+  "u01-l1b": {
+    lesson: u01l1bLessonJson,
+    audio: u01l1bAudioJson,
+  },
+  "u01-l1c": {
+    lesson: u01l1cLessonJson,
+    audio: u01l1cAudioJson,
+  },
+  "u01-l1d": { lesson: u01l1dLessonJson, audio: u01l1dAudioJson },
+  "u01-l1e": {
+    lesson: u01l1eLessonJson,
+    audio: u01l1eAudioJson,
+  },
 };
 
 /** Identifiants des leçons réelles disponibles, dans l'ordre du parcours. */

@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "lessonId": "74aa634a-5859-5c62-b565-7737fb8188f0",
+  "versionId": "9faf3b58-2bff-5c57-9b3a-1035c793f1f2",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Mi contre bas",
+  "objectiveFr": "à la fin de la leçon, l'apprenant écoute une syllabe thaïe isolée et indique si elle porte un ton moyen ou un ton bas, avec au moins 8 réussites sur 10 sur des audios à contraste normal (non exagéré).",
+  "requiredEntitlement": null,
+  "audioManifestId": "2b183229-604a-5ef7-abcd-38a1660a4654",
+  "items": [
+    {
+      "id": "7ad8052e-2dd5-5670-82de-588eb5fba6e6",
+      "thaiRaw": "ปา",
+      "unicodeCodePoints": ["U+0E1B", "U+0E32"],
+      "translationFr": "lancer (jeter avec le bras)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "paa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปา",
+          "ipa": "paː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "046bbbf0-1b80-5a65-b623-1332429d1ccf",
+      "thaiRaw": "ป่า",
+      "unicodeCodePoints": ["U+0E1B", "U+0E48", "U+0E32"],
+      "translationFr": "forêt",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pàa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ป่า",
+          "ipa": "paː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "1179dd6d-b95e-563b-b9b7-c7dec73a560a",
+      "thaiRaw": "ปู",
+      "unicodeCodePoints": ["U+0E1B", "U+0E39"],
+      "translationFr": "crabe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pouu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปู",
+          "ipa": "puː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "a2474571-b0d7-56eb-bb59-41dfbe43fe54",
+      "thaiRaw": "ปู่",
+      "unicodeCodePoints": ["U+0E1B", "U+0E39", "U+0E48"],
+      "translationFr": "grand-père paternel (le père du père)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pòuu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปู่",
+          "ipa": "puː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "19114c85-4647-51bf-a7f2-c6e1bf23d933",
+      "thaiRaw": "ปี",
+      "unicodeCodePoints": ["U+0E1B", "U+0E35"],
+      "translationFr": "année, an",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปี",
+          "ipa": "piː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "c9c631c5-9001-510a-b966-1bec734df84d",
+      "thaiRaw": "ปี่",
+      "unicodeCodePoints": ["U+0E1B", "U+0E35", "U+0E48"],
+      "translationFr": "hautbois thaï (instrument à vent à anche)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pìi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปี่",
+          "ipa": "piː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "0b7488db-b1fa-54ab-a460-0bf49b726229",
+      "thaiRaw": "คา",
+      "unicodeCodePoints": ["U+0E04", "U+0E32"],
+      "translationFr": "être coincé, rester pris (quelque part)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คา",
+          "ipa": "kʰaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "f3a2c399-1f63-5668-89c9-bb6653d0b640",
+      "thaiRaw": "ข่า",
+      "unicodeCodePoints": ["U+0E02", "U+0E48", "U+0E32"],
+      "translationFr": "galanga (rhizome aromatique de la cuisine thaïe)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข่า",
+          "ipa": "kʰaː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "261cefe8-6580-5eea-a850-3cf780403186",
+      "thaiRaw": "ยา",
+      "unicodeCodePoints": ["U+0E22", "U+0E32"],
+      "translationFr": "médicament",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ยา",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "dca1ac0d-dc5a-5a85-9f0a-57bbdd89687b",
+      "thaiRaw": "หย่า",
+      "unicodeCodePoints": ["U+0E2B", "U+0E22", "U+0E48", "U+0E32"],
+      "translationFr": "divorcer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yàa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หย่า",
+          "ipa": "jaː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u01-l1c-p3",
+      "drawIndex": 1,
+      "id": "6d7e8b35-aaef-570c-a705-17fbb5d6bf6e",
+      "type": "word_order",
+      "itemId": "046bbbf0-1b80-5a65-b623-1332429d1ccf",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Écoute les deux syllabes, puis range les jetons du ton le plus bas au ton le plus haut avec le bouton Déplacer. Un jeton de la liste n'a pas été entendu : écarte-le avec le bouton Retirer.",
+      "tokens": [
+        {
+          "id": "b0126bc1-6075-57a1-8549-1b537deb9146",
+          "thaiRaw": "ป่า",
+          "transcription": "pàa"
+        },
+        {
+          "id": "2164f9b0-168a-5891-8987-28d4e70bdcc4",
+          "thaiRaw": "ปา",
+          "transcription": "paa"
+        },
+        {
+          "id": "daec22f9-bee5-57c9-aaf6-eadaf8fb6dcf",
+          "thaiRaw": "ปู่",
+          "transcription": "pòuu"
+        }
+      ],
+      "correctOrder": [
+        "b0126bc1-6075-57a1-8549-1b537deb9146",
+        "2164f9b0-168a-5891-8987-28d4e70bdcc4"
+      ],
+      "feedback": {
+        "correctFr": "Exact. ป่า s'installe sous ta ligne d'horizon, ปา reste dessus : tu viens de ranger les deux étages de la voix.",
+        "incorrectFr": "Réécoute : une syllabe est en dessous de la ligne d'horizon (ป่า, ton bas), l'autre est sur la ligne (ปา, ton moyen). L'intrus ปู่ porte aussi un ton bas, mais sa voyelle ou n'a pas été entendue.",
+        "variants": []
+      }
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u01-l1c-p3",
+      "promptFr": "Écoute les deux syllabes, puis range les jetons du ton le plus bas au ton le plus haut avec le bouton Déplacer. Un jeton de la liste n'a pas été entendu : écarte-le avec le bouton Retirer.",
+      "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"],
+    "generationActors": [
+      {
+        "actorId": "b386e32d-5081-5076-bfed-1a7d58791a11",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "948b4f8b-a79e-5bff-a80f-254c04620022",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8c543239-b364-5d81-b073-91a447d20f3f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c619649f-4a86-5029-989b-ea4c53b5caa8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "88cc0d44-6119-5de2-8834-ffea600a638e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "37588ab0-94ff-567e-bb5f-fbdeffbe8032",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8ffc3353-f2f4-5275-a30c-49267d14aaf2",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f9cde7b1-b8f7-5454-894b-e3a8d5da50ab",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}
