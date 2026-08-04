@@ -1,0 +1,745 @@
+{
+  "schemaVersion": 1,
+  "lessonId": "f80ef999-f755-5d28-8dd9-096af65058c0",
+  "versionId": "588f4a02-d985-5d29-99dc-9d4a58ce9c77",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Écouter le thaï pour la première fois",
+  "objectiveFr": "après la leçon, l'apprenant identifie à l'écoute le ton d'un mot de la série คา ข่า ค่า ค้า ขา au moins 4 fois sur 5, associe chaque contour dessiné au mot entendu, et reconnaît les 9 consonnes moyennes en retrouvant la lettre à partir de son nom traditionnel.",
+  "requiredEntitlement": null,
+  "audioManifestId": "c27603aa-ca4b-5650-bdb7-46fabead845c",
+  "items": [
+    {
+      "id": "dc3e3565-fa17-5173-9e45-85219d0a8608",
+      "thaiRaw": "คา",
+      "unicodeCodePoints": ["U+0E04", "U+0E32"],
+      "translationFr": "rester coincé, être pris (aussi : herbe à toits de chaume)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คา",
+          "ipa": "kʰaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "f6d47faa-3143-51be-99b0-3a1ac9e2ebd2",
+      "thaiRaw": "ข่า",
+      "unicodeCodePoints": ["U+0E02", "U+0E48", "U+0E32"],
+      "translationFr": "galanga (rhizome parfumé de la cuisine thaïe)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข่า",
+          "ipa": "kʰaː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
+      "thaiRaw": "ค่า",
+      "unicodeCodePoints": ["U+0E04", "U+0E48", "U+0E32"],
+      "translationFr": "valeur, prix",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค่า",
+          "ipa": "kʰaː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "e0c580b2-d255-5600-9148-11a48d633edc",
+      "thaiRaw": "ค้า",
+      "unicodeCodePoints": ["U+0E04", "U+0E49", "U+0E32"],
+      "translationFr": "faire commerce, vendre",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kháa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค้า",
+          "ipa": "kʰaː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "993d6ffe-7775-5980-8548-7671ec1150fa",
+      "thaiRaw": "ขา",
+      "unicodeCodePoints": ["U+0E02", "U+0E32"],
+      "translationFr": "jambe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขา",
+          "ipa": "kʰaː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    },
+    {
+      "id": "58f548c5-df8e-5e1e-a1a9-afdf2788c358",
+      "thaiRaw": "ก",
+      "unicodeCodePoints": ["U+0E01"],
+      "translationFr": "lettre « k » ; nom traditionnel ก ไก่, le k de la poule",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kaww kài"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ก",
+          "ipa": "kɔː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "0e777840-a7e1-5ca4-befe-c058a98b9470",
+      "thaiRaw": "จ",
+      "unicodeCodePoints": ["U+0E08"],
+      "translationFr": "lettre « j » de Thaïnaute ; nom traditionnel จ จาน, le j de l'assiette",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "jaww jaan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "จ",
+          "ipa": "t͡ɕɔː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "5839515f-513e-589b-86f5-08727c2171d9",
+      "thaiRaw": "ฎ",
+      "unicodeCodePoints": ["U+0E0E"],
+      "translationFr": "lettre « d » rare ; nom traditionnel ฎ ชฎา, le d de la coiffe de danse",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "daww chá·daa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ฎ",
+          "ipa": "dɔː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "0e05740b-8a89-55ea-9b3a-b1850875a22b",
+      "thaiRaw": "ฏ",
+      "unicodeCodePoints": ["U+0E0F"],
+      "translationFr": "lettre « t » rare ; nom traditionnel ฏ ปฏัก, le t de l'aiguillon",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "taww pà·tàk"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ฏ",
+          "ipa": "tɔː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "fd12720d-a0f2-5cf4-9516-a4d65327bf08",
+      "thaiRaw": "ด",
+      "unicodeCodePoints": ["U+0E14"],
+      "translationFr": "lettre « d » ; nom traditionnel ด เด็ก, le d de l'enfant",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "daww dèk"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ด",
+          "ipa": "dɔː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b0843524-a422-5d1b-9f76-ef9fce3f5e96",
+      "thaiRaw": "ต",
+      "unicodeCodePoints": ["U+0E15"],
+      "translationFr": "lettre « t » ; nom traditionnel ต เต่า, le t de la tortue",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "taww tào"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ต",
+          "ipa": "tɔː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "270125a4-e3e9-5801-9e84-12826d7d43b5",
+      "thaiRaw": "บ",
+      "unicodeCodePoints": ["U+0E1A"],
+      "translationFr": "lettre « b » ; nom traditionnel บ ใบไม้, le b de la feuille",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "baww bai·máai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "บ",
+          "ipa": "bɔː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d4865b6e-e13c-51fd-bc8c-c3f28d36b2e6",
+      "thaiRaw": "ป",
+      "unicodeCodePoints": ["U+0E1B"],
+      "translationFr": "lettre « p » ; nom traditionnel ป ปลา, le p du poisson",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "paww plaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ป",
+          "ipa": "pɔː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "34e8ac1d-f1cd-5a67-afd2-aa6cfff209d1",
+      "thaiRaw": "อ",
+      "unicodeCodePoints": ["U+0E2D"],
+      "translationFr": "lettre muette de départ ; nom traditionnel อ อ่าง, le o de la bassine",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "aww àang"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อ",
+          "ipa": "ʔɔː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "ʔ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u01-l1a-p1",
+      "drawIndex": 1,
+      "id": "56661afb-1a24-5e0f-83c2-0b744f983903",
+      "type": "audio_choice",
+      "itemId": "dc3e3565-fa17-5173-9e45-85219d0a8608",
+      "skill": "listening",
+      "audioAssetId": "9ae0a4f7-d9cb-551d-b247-7d258e606b29",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "options": [
+        {
+          "id": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
+          "labelFr": "à plat au milieu (moyen)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b78d3b37-8017-5166-a2d5-58d53b271868",
+          "labelFr": "posé en bas (bas)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
+          "labelFr": "qui tombe (descendant)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
+          "labelFr": "perché et tendu (haut)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "cbac7d67-b52b-50df-ade6-4235b707324e",
+          "labelFr": "qui grimpe (montant)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
+      "feedback": {
+        "correctFr": "Oui. {mot} ({transcription}) : {description du contour}. Votre oreille vient de faire le travail.",
+        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1a-p1",
+      "drawIndex": 2,
+      "id": "1d363218-5a2b-5303-99fa-d55361893bc3",
+      "type": "audio_choice",
+      "itemId": "f6d47faa-3143-51be-99b0-3a1ac9e2ebd2",
+      "skill": "listening",
+      "audioAssetId": "d07bc9d9-f989-5a6b-9249-572a58ace81f",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "options": [
+        {
+          "id": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
+          "labelFr": "à plat au milieu (moyen)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b78d3b37-8017-5166-a2d5-58d53b271868",
+          "labelFr": "posé en bas (bas)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
+          "labelFr": "qui tombe (descendant)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
+          "labelFr": "perché et tendu (haut)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "cbac7d67-b52b-50df-ade6-4235b707324e",
+          "labelFr": "qui grimpe (montant)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "b78d3b37-8017-5166-a2d5-58d53b271868",
+      "feedback": {
+        "correctFr": "Oui. {mot} ({transcription}) : {description du contour}. Votre oreille vient de faire le travail.",
+        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1a-p1",
+      "drawIndex": 3,
+      "id": "430fed36-b06f-55d6-83f9-f65fe52fbf6f",
+      "type": "audio_choice",
+      "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
+      "skill": "listening",
+      "audioAssetId": "34626c45-7ae4-5c93-9b97-63f0d3b75fbe",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "options": [
+        {
+          "id": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
+          "labelFr": "à plat au milieu (moyen)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b78d3b37-8017-5166-a2d5-58d53b271868",
+          "labelFr": "posé en bas (bas)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
+          "labelFr": "qui tombe (descendant)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
+          "labelFr": "perché et tendu (haut)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "cbac7d67-b52b-50df-ade6-4235b707324e",
+          "labelFr": "qui grimpe (montant)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
+      "feedback": {
+        "correctFr": "Oui. {mot} ({transcription}) : {description du contour}. Votre oreille vient de faire le travail.",
+        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1a-p1",
+      "drawIndex": 4,
+      "id": "dd33c1a3-dead-5efa-9dd0-e6efbceec9e7",
+      "type": "audio_choice",
+      "itemId": "e0c580b2-d255-5600-9148-11a48d633edc",
+      "skill": "listening",
+      "audioAssetId": "56515ba0-a225-5046-bfca-0e4b60e3ea92",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "options": [
+        {
+          "id": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
+          "labelFr": "à plat au milieu (moyen)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b78d3b37-8017-5166-a2d5-58d53b271868",
+          "labelFr": "posé en bas (bas)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
+          "labelFr": "qui tombe (descendant)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
+          "labelFr": "perché et tendu (haut)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "cbac7d67-b52b-50df-ade6-4235b707324e",
+          "labelFr": "qui grimpe (montant)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
+      "feedback": {
+        "correctFr": "Oui. {mot} ({transcription}) : {description du contour}. Votre oreille vient de faire le travail.",
+        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1a-p1",
+      "drawIndex": 5,
+      "id": "8bde3aad-445b-5b19-b7e4-3dbe048d6bfb",
+      "type": "audio_choice",
+      "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
+      "skill": "listening",
+      "audioAssetId": "9251e9ef-cd4d-5274-8054-97488c3605d4",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "options": [
+        {
+          "id": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
+          "labelFr": "à plat au milieu (moyen)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b78d3b37-8017-5166-a2d5-58d53b271868",
+          "labelFr": "posé en bas (bas)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
+          "labelFr": "qui tombe (descendant)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
+          "labelFr": "perché et tendu (haut)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "cbac7d67-b52b-50df-ade6-4235b707324e",
+          "labelFr": "qui grimpe (montant)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "cbac7d67-b52b-50df-ade6-4235b707324e",
+      "feedback": {
+        "correctFr": "Oui. {mot} ({transcription}) : {description du contour}. Votre oreille vient de faire le travail.",
+        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1a-p2",
+      "drawIndex": 1,
+      "id": "19e89c37-c5c9-5408-a607-4f2ea0043757",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque mot entendu à la courbe qui le dessine.",
+      "pairs": [
+        {
+          "id": "b8efab7f-db00-5752-a5a0-56f7987750eb",
+          "itemId": "dc3e3565-fa17-5173-9e45-85219d0a8608",
+          "labelFr": "courbe plate au milieu · khaa"
+        },
+        {
+          "id": "795a25a1-911d-53e7-b519-0eae56e1b4cd",
+          "itemId": "f6d47faa-3143-51be-99b0-3a1ac9e2ebd2",
+          "labelFr": "courbe plate en bas · khàa"
+        },
+        {
+          "id": "71a82c5b-e6f5-55a5-88ae-d25b3d61429c",
+          "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
+          "labelFr": "courbe qui tombe · khâa"
+        },
+        {
+          "id": "740f6be8-c68b-5afa-973b-a59a19d2847d",
+          "itemId": "e0c580b2-d255-5600-9148-11a48d633edc",
+          "labelFr": "courbe perchée qui se tend vers le haut · kháa"
+        },
+        {
+          "id": "41d77795-7217-53be-9bd9-9b98a156ced6",
+          "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
+          "labelFr": "courbe qui grimpe du bas vers le haut · khǎa"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Bonne association : la courbe dessine exactement ce que votre oreille a entendu.",
+        "incorrectFr": "Ces deux cartes ne vont pas ensemble. Réécoutez : la voix reste-t-elle stable, tombe-t-elle, ou grimpe-t-elle ?",
+        "variants": []
+      }
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u01-l1a-p1",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "mechanic": "audio_choice",
+      "drawCount": 5,
+      "passRequired": 5,
+      "sampleSize": 5
+    },
+    {
+      "poolId": "u01-l1a-p2",
+      "promptFr": "Reliez chaque mot entendu à la courbe qui le dessine.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "4420830a-5acb-5620-81fe-19b8e64d7d3f",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "cf91c555-b52d-5fad-bacd-5f05a25d88ba",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9c44cef3-57fe-5aef-a974-3feb05196373",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0e1d74f7-5214-5b2d-b4b3-943b19eacef8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "86bdd362-4f09-52c5-97d6-f9461225c260",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "422228f8-e7c9-5c4e-a558-547aede43d3c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "393730a6-ef6c-571e-9ba6-c74ec60d1e53",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "977bd377-a05c-56e5-bb0a-553c40369e21",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}
