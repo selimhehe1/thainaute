@@ -92,6 +92,28 @@
   z-index: 1;
 }
 
+/* Liste des lecons d'une unite : le titre est le lien, le detail sous lui
+   dit ce qu'on y trouve sans promettre plus. */
+.leconLien {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: var(--weight-bold);
+  color: var(--color-ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-coral);
+}
+
+.leconLien:hover,
+.leconLien:focus-visible {
+  color: var(--color-coral);
+}
+
+.leconDetail {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+
 .stopDone::before {
   border-color: var(--color-jade-ink);
   background: var(--color-jade-ink);
