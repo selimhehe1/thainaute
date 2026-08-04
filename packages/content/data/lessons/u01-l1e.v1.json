@@ -266,6 +266,38 @@
       }
     }
   ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "votre premier vrai mot",
+      "bodyFr": "Vous avez entraîné votre oreille pendant quatre leçons. Elle est prête pour un vrai mot, le plus utile de tous.\n\n> สวัสดี > sawàtdii\n\nC'est la salutation universelle du thaï. Écoutez les trois syllabes : deux tons bas, puis un ton moyen qui s'étire sur la longue finale `dii`.",
+      "specimen": null
+    },
+    {
+      "ordre": 2,
+      "titleFr": "la particule qui dit qui parle",
+      "bodyFr": "En thaï poli, on termine sa phrase par une petite particule. Elle dépend de vous, la personne qui parle, jamais de la personne en face.\n\n> สวัสดีครับ / สวัสดีค่ะ > sawàtdii khráp / sawàtdii khâ\n\nUn homme dit khráp (ton haut, bref). Une femme dit khâ (ton descendant). Apprenez la salutation directement comme un bloc : mot + votre particule.",
+      "specimen": null
+    },
+    {
+      "ordre": 3,
+      "titleFr": "dire merci",
+      "bodyFr": "Deuxième bloc indispensable, sur le même modèle.\n\n> ขอบคุณครับ / ขอบคุณค่ะ > khàwwp·khoun khráp / khàwwp·khoun khâ\n\nPremière syllabe : ton bas, voyelle longue et ouverte, comme un « o » très détendu. Deuxième syllabe : ton moyen, brève. Puis votre particule.",
+      "specimen": null
+    },
+    {
+      "ordre": 4,
+      "titleFr": "prendre congé",
+      "bodyFr": "Pour se quitter au quotidien, le thaï dit simplement « à plus tard ».\n\n> แล้วเจอกัน > láeew·joee·kan\n\nTon haut tenu sur la longue láeew, puis deux tons moyens, joee longue et kan brève ; ajoutez votre particule, แล้วเจอกันครับ ou แล้วเจอกันค่ะ. Lisez `aee` comme le è de « père » et `oee` comme le eu de « heure ». Et retenez ce joli détail : สวัสดีครับ/ค่ะ sert aussi bien à ouvrir qu'à fermer poliment l'échange, la même politesse ouvre et referme la rencontre.",
+      "specimen": null
+    },
+    {
+      "ordre": 5,
+      "titleFr": "à vous, puis bilan",
+      "bodyFr": "Vous allez maintenant écouter le dialogue complet, reconstruire une réplique et lire un mot appris. Tout est déjà dans votre oreille.\n\nAprès les exercices, enregistrez-vous en disant สวัสดีครับ ou สวัสดีค่ะ, puis comparez en A/B avec la voix de référence. L'enregistrement reste privé, sur votre appareil. Écoutez surtout vos deux premières syllabes : sont-elles vraiment basses ?",
+      "specimen": null
+    }
+  ],
   "pools": [
     {
       "poolId": "u01-l1e-p2",

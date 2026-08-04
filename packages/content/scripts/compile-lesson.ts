@@ -30,6 +30,7 @@ import { validateBundleMetadata } from "../src/validation";
 import { getPublicationBlockers } from "../src/audit";
 
 import { analyserLecon } from "../../../scripts/content/lib/parse-authoring.mjs";
+import { analyserEnseignement } from "../../../scripts/content/lib/extraire-enseignement.mjs";
 import { extraireBloc } from "../../../scripts/content/lib/extraire-exercices.mjs";
 import { uuidStable } from "../../../scripts/content/lib/identite.mjs";
 
@@ -426,6 +427,10 @@ export function compilerLeconComplete(chemin: string) {
     items,
     exercises,
     pools,
+    // Le cours AVANT l'evaluation. Son absence rendait la premiere lecon
+    // infaisable : cinq contours tonaux a distinguer sans avoir montre ce
+    // qu'est un ton.
+    teaching: analyserEnseignement(source),
     provenance: provenanceDe(identifiant, sourceIds),
   });
 

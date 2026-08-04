@@ -271,6 +271,32 @@
       }
     }
   ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "Ta voix plate, c'est déjà du thaï",
+      "bodyFr": "Spécimen affiché : ปา\n\nLe ton moyen, c'est ta voix quand tu lis une liste de courses : posée, plate, sans montée ni descente. En thaï, cette platitude n'est pas neutre, c'est un ton à part entière qui distingue des mots. ปา (paa) se dit exactement comme ça : plat, tranquille, du début à la fin.",
+      "specimen": null
+    },
+    {
+      "ordre": 2,
+      "titleFr": "Le ton bas : la même platitude, un cran plus bas",
+      "bodyFr": "Spécimen affiché : ป่า\n\nLe ton bas est aussi plat que le ton moyen, mais installé plus bas dans ta voix, comme si tu parlais en retenant un bâillement. Attention au réflexe français : nous baissons la voix pour finir une phrase, pas pour changer de mot. En thaï, ป่า (pàa) reste bas et stable pendant toute la syllabe, et ce simple étage plus bas suffit à créer un autre mot.",
+      "specimen": null
+    },
+    {
+      "ordre": 3,
+      "titleFr": "Deux mots, une seule différence",
+      "bodyFr": "Spécimens affichés : ปา et ป่า\n\nMême consonne, même voyelle, même longueur : seule la hauteur change. ปา (paa, ton moyen) veut dire lancer ; ป่า (pàa, ton bas) veut dire forêt. Ton oreille française voudra entendre la même chose deux fois, c'est normal au début. L'audio va d'abord exagérer l'écart entre les deux, puis revenir à un contraste naturel.",
+      "specimen": null
+    },
+    {
+      "ordre": 4,
+      "titleFr": "Ta stratégie d'écoute : pose une ancre",
+      "bodyFr": "Spécimen affiché : ปู et ปู่\n\nCommence par ancrer le ton moyen : c'est ta référence, ta ligne d'horizon. Ensuite, demande-toi seulement si la syllabe entendue est sur la ligne ou en dessous. Tu retrouveras คา et ข่า, déjà croisés en 1A : cette fois, tu sais exactement ce que tu cherches.",
+      "specimen": null
+    }
+  ],
   "pools": [
     {
       "poolId": "u01-l1c-p3",

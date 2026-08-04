@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+import { lireLeCours } from "./expedition-helpers";
+
 async function completeLocalOnboarding(page: import("@playwright/test").Page) {
   await page.goto("/today");
   await expect(
@@ -83,6 +85,7 @@ test("reprend exactement la question puis retrouve l’expédition depuis Aujour
   await page.emulateMedia({ reducedMotion: "reduce" });
   await completeLocalOnboarding(page);
   await page.getByRole("link", { name: "Commencer la session" }).click();
+  await lireLeCours(page);
   await page.getByRole("button", { name: "Commencer l’expédition" }).click();
   await page.getByRole("radio", { name: "posé en bas (bas)" }).check();
   await expect

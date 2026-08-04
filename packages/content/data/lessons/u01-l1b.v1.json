@@ -436,6 +436,38 @@
       }
     }
   ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "une durée qui change le sens",
+      "bodyFr": "En français, étirer une voyelle ne change jamais le mot : « biiien » reste « bien », en plus insistant. En thaï, la durée fait partie du mot : une voyelle courte et la même voyelle longue donnent deux mots différents. Votre oreille ne surveille pas encore cette durée, c'est normal ; cette leçon lui apprend à le faire.",
+      "specimen": "เข้า ≠ ข้าว"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "comment Thaïnaute vous montre la durée",
+      "bodyFr": "Dans la transcription Thaïnaute, une voyelle courte s'écrit simple (a, ou) et une voyelle longue s'écrit avec sa dernière lettre doublée (aa, ouu). Sous chaque mot, une barre de durée le confirme : un point pour une voyelle courte, un trait pour une longue. La couleur n'est jamais le seul signal : la graphie et la barre disent la même chose.",
+      "specimen": "หัด (hàt) et หาด (hàat)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "la paire star, entrer ou riz",
+      "bodyFr": "เข้า « entrer » et ข้าว « riz » portent exactement le même ton descendant. Seule la durée du « a » les sépare : khâo bref, khâao posé. Écoutez-les plusieurs fois : le premier tombe vite, le second prend le temps de s'installer.",
+      "specimen": "เข้า (khâo) / ข้าว (khâao)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "l'astuce d'écoute",
+      "bodyFr": "Une voyelle courte se termine net, souvent avec un petit arrêt du souffle, comme une porte qui claque. Une voyelle longue se pose et s'étire, comme une porte qu'on retient. Au début, aidez-vous d'un geste : pincez deux doigts pour une courte, écartez-les pour une longue.",
+      "specimen": "ดุ (dòu) / ดู (douu)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "dans l'écriture thaïe aussi",
+      "bodyFr": "Vous n'avez pas encore appris à lire, mais remarquez déjà que la durée se voit dans l'écriture thaïe : ั note un « a » court, า un « aa » long, ุ un « ou » court sous la consonne, ู un « ouu » long. Les voyelles s'accrochent autour de la consonne : avant, après, dessus ou dessous. L'unité 1 du fil lecture y reviendra pas à pas.",
+      "specimen": "ยัง / ยาง"
+    }
+  ],
   "pools": [
     {
       "poolId": "u01-l1b-p3",

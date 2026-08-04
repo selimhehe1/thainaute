@@ -415,6 +415,32 @@
       }
     }
   ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "Deux tons qui finissent haut",
+      "bodyFr": "Deuxième duel de tons, et celui-ci est piégeux : le montant et le haut finissent tous les deux en haut. Toute la différence est au départ. Le montant part d'en bas et grimpe ; le haut est déjà perché et monte encore d'un petit cran.",
+      "specimen": "หมา (mǎa) puis ม้า (máa)."
+    },
+    {
+      "ordre": 2,
+      "titleFr": "Le geste au doigt",
+      "bodyFr": "Levez l'index et dessinez le ton dans l'air pendant que vous écoutez. Pour le montant, partez du menton et montez jusqu'au front sur la durée de la syllabe. Pour le haut, placez l'index directement au front et faites-le flotter d'un petit cran vers le haut, sans jamais descendre. Ce geste va servir dans tous les exercices.",
+      "specimen": "หนา (nǎa, le doigt grimpe) puis น้า (náa, le doigt reste perché)."
+    },
+    {
+      "ordre": 3,
+      "titleFr": "L'astuce pour une oreille française",
+      "bodyFr": "Le montant, vous le faites déjà : c'est la mélodie d'une vraie question française, comme la fin de « tu viens ? ». Le haut, c'est une voix tendue, un peu perchée, qui reste là-haut du début à la fin. Si le mot commence bas, c'est un montant ; s'il commence déjà haut, c'est un haut.\n\ntrop haut.",
+      "specimen": "หมา (mǎa, le chien) devient ม้า (máa, le cheval) si la voix part"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "D'abord exagéré, puis normal",
+      "bodyFr": "Comme pour le duel mi contre bas, vous entendrez chaque paire deux fois : d'abord avec un contraste exagéré, puis à voix normale. Gardez le doigt levé et dessinez ce que vous entendez avant de répondre. Écoutez le mouvement de la voix, pas sa hauteur absolue : chaque personne parle à sa propre hauteur.\n\nleçon 1A.",
+      "specimen": "ขา (khǎa) contre ค้า (kháa), déjà croisés dans la série de la"
+    }
+  ],
   "pools": [
     {
       "poolId": "u01-l1d-p1",

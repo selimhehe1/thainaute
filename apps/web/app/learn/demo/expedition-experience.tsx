@@ -191,6 +191,22 @@ export function ExpeditionExperience({
   const cardHeading = useRef<HTMLHeadingElement>(null);
   const lessonAudio = useRef<HTMLAudioElement | null>(null);
   const [audioError, setAudioError] = useState(false);
+  /** Page de cours en lecture, avant les exercices. */
+  const [pageCours, setPageCours] = useState(0);
+
+  /**
+   * Le cours, dans l'ordre voulu par la lecon.
+   *
+   * Il manquait entierement : la premiere question du parcours demandait a
+   * un francophone n'ayant jamais entendu de thai de distinguer cinq
+   * contours tonaux, sans lui avoir montre ce qu'est un ton.
+   */
+  const cours = useMemo(
+    () => [...lesson.teaching].sort((a, b) => a.ordre - b.ordre),
+    [lesson.teaching],
+  );
+  const pageActive = cours[pageCours];
+  const derniereePage = pageCours >= cours.length - 1;
 
   /**
    * Avertissement affiche au-dessus du lecteur. Il dit l'etat REEL du
@@ -1210,29 +1226,84 @@ export function ExpeditionExperience({
           <p className={styles.eyebrow}>Expédition · {plan.length} exercices</p>
           <h1 id="lesson-title">{lesson.titleFr}</h1>
           <p className={styles.objective}>{lesson.objectiveFr}</p>
-          <div
-            className={styles.glyph}
-            lang="th"
-            role="img"
-            aria-label="Graphème thaï fictif de test"
-          >
-            {lesson.items[0]?.thaiRaw}
-          </div>
+
+          {pageActive === undefined ? (
+            <div
+              className={styles.glyph}
+              lang="th"
+              role="img"
+              aria-label={
+                lesson.visibility === "fixture"
+                  ? "Graphème thaï fictif de test"
+                  : "Premier mot de la leçon"
+              }
+            >
+              {lesson.items[0]?.thaiRaw}
+            </div>
+          ) : (
+            <section className={styles.cours} aria-live="polite">
+              <p className={styles.coursRang}>
+                {pageCours + 1} sur {cours.length}
+              </p>
+              <h2 className={styles.coursTitre}>{pageActive.titleFr}</h2>
+              {pageActive.bodyFr.split("\n\n").map((paragraphe) => (
+                <p key={paragraphe.slice(0, 40)} className={styles.coursTexte}>
+                  {paragraphe}
+                </p>
+              ))}
+              {pageActive.specimen !== null && (
+                <p className={styles.coursSpecimen} lang="th">
+                  {pageActive.specimen}
+                </p>
+              )}
+              <div className={styles.coursNav}>
+                <button
+                  className={buttonClass("ghost")}
+                  type="button"
+                  disabled={pageCours === 0}
+                  onClick={() => {
+                    setPageCours((rang) => Math.max(0, rang - 1));
+                  }}
+                >
+                  Page précédente
+                </button>
+                {!derniereePage && (
+                  <button
+                    className={buttonClass("primary")}
+                    type="button"
+                    onClick={() => {
+                      setPageCours((rang) =>
+                        Math.min(cours.length - 1, rang + 1),
+                      );
+                    }}
+                  >
+                    Page suivante
+                  </button>
+                )}
+              </div>
+            </section>
+          )}
+
           <div className={styles.actions}>
             {!onboardingCompleted ? (
               <Link className={buttonClass("primary")} href="/today">
                 Préparer mon parcours
               </Link>
             ) : (
-              <button
-                className={buttonClass("primary")}
-                type="button"
-                aria-busy={isSaving}
-                disabled={isSaving}
-                onClick={beginExpedition}
-              >
-                {isSaving ? "Ouverture…" : "Commencer l’expédition"}
-              </button>
+              // Le depart n'est offert qu'une fois le cours lu : c'est la
+              // « sequence courte d'enseignement PUIS pratique » du brief,
+              // et sans elle la premiere question est infaisable.
+              derniereePage && (
+                <button
+                  className={buttonClass("primary")}
+                  type="button"
+                  aria-busy={isSaving}
+                  disabled={isSaving}
+                  onClick={beginExpedition}
+                >
+                  {isSaving ? "Ouverture…" : "Commencer l’expédition"}
+                </button>
+              )
             )}
             <button
               className={buttonClass("ghost")}

@@ -20,6 +20,7 @@ export const CONTENT_SCHEMA_LIMITS = {
   // total ») et son seuil (« Seuil de réussite : 9 sur 12 »). Le corpus
   // monte à 12 ; la marge tient les futurs blocs sans être un blanc-seing.
   drawsPerPool: 24,
+  teachingPages: 40,
   poolsPerLesson: 12,
   // Un retour par distracteur, plus quelques cas non liés à une option.
   feedbackVariantsPerExercise: 8,
@@ -215,6 +216,30 @@ const feedbackSchema = z
       .array(feedbackVariantSchema)
       .max(CONTENT_SCHEMA_LIMITS.feedbackVariantsPerExercise)
       .default([]),
+  })
+  .strict();
+
+/**
+ * Une page d'enseignement, avant les exercices.
+ *
+ * Elle manquait, et son absence rendait la premiere lecon INFAISABLE : on
+ * demandait a un francophone n'ayant jamais entendu de thai de distinguer
+ * cinq contours tonaux, sans lui avoir montre ce qu'est un ton. Le contrat
+ * de lecon du brief exige pourtant « une sequence courte d'enseignement
+ * PUIS pratique » ; seule la pratique etait compilee.
+ */
+const teachingPageSchema = z
+  .object({
+    ordre: z.number().int().min(1).max(CONTENT_SCHEMA_LIMITS.teachingPages),
+    titleFr: z.string().min(1).max(160),
+    bodyFr: z.string().min(1).max(2400),
+    /** Ce que la page donne a voir : une graphie, une serie, un exemple. */
+    specimen: z
+      .string()
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
+      .nullable()
+      .default(null),
   })
   .strict();
 
@@ -464,6 +489,14 @@ export const lessonSchema = z
       .array(exerciseSchema)
       .min(1)
       .max(CONTENT_SCHEMA_LIMITS.exercisesPerLesson),
+    /**
+     * Pages d'enseignement, jouees AVANT les exercices. Vide par defaut,
+     * pour que les fixtures restent valides sans migration.
+     */
+    teaching: z
+      .array(teachingPageSchema)
+      .max(CONTENT_SCHEMA_LIMITS.teachingPages)
+      .default([]),
     /**
      * Viviers de tirages. Vide par défaut : une leçon dont chaque exercice
      * est unique n'en a pas besoin, et les leçons déjà écrites restent
