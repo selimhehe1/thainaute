@@ -65,7 +65,11 @@ function main() {
 
   const texte = readFileSync(chemin, "utf8");
   const items = analyserItems(texte);
-  let sortie = texte;
+  // On travaille LIGNE PAR LIGNE, jamais sur le document entier.
+  // `String.replace` avec une chaine ne remplace que la premiere
+  // occurrence : deux items portant la meme IPA verraient le second
+  // reecrire la ligne du premier, en silence.
+  const lignes = texte.split("\n");
   let corriges = 0;
   let erreurs = 0;
 
@@ -79,14 +83,25 @@ function main() {
     }
     if (!resultat.change) continue;
 
-    // Remplacement littéral et unique de la valeur écrite.
-    const avant = sortie;
-    sortie = sortie.replace(item.ipa, resultat.valeur);
-    if (sortie === avant) {
+    // La ligne visée est celle qui déclare CE champ `ipa` avec CETTE
+    // valeur. On exige qu'il n'y en ait qu'une : deux candidates
+    // signifieraient que le fichier est ambigu, et corriger au hasard
+    // serait pire que refuser.
+    const candidates = lignes
+      .map((ligne, index) => ({ ligne, index }))
+      .filter(
+        ({ ligne }) =>
+          /^\s*[-*] ?`?ipa`? ?:/u.test(ligne) && ligne.includes(item.ipa),
+      );
+    if (candidates.length !== 1) {
       erreurs += 1;
-      console.log(`REFUS ${item.titre} : valeur introuvable telle quelle`);
+      console.log(
+        `REFUS ${item.titre} : ${candidates.length} lignes candidates`,
+      );
       continue;
     }
+    const cible = candidates[0];
+    lignes[cible.index] = cible.ligne.replace(item.ipa, resultat.valeur);
     corriges += 1;
     console.log(
       `  ${item.titre.padEnd(10)} ${item.ipa}  ->  ${resultat.valeur}`,
@@ -100,7 +115,7 @@ function main() {
     return;
   }
   if (args.includes("--ecrire") && corriges > 0) {
-    writeFileSync(chemin, sortie, "utf8");
+    writeFileSync(chemin, lignes.join("\n"), "utf8");
     console.log(`Écrit : ${chemin}`);
   } else if (corriges > 0) {
     console.log("Essai à blanc. Relancer avec --ecrire pour appliquer.");
