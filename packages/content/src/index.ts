@@ -4,7 +4,9 @@ export {
   publicationBlockerSchema,
 } from "./audit";
 export {
+  compiledLessonIds,
   publicAudioSources,
+  readCompiledLessonBundle,
   readFiveMechanicsFixtureBundle,
   readFixtureBundle,
   readUnite01Lecon1aBundle,

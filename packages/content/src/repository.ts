@@ -54,24 +54,52 @@ function sansNotes(brut: unknown): unknown {
 }
 
 /**
- * Première leçon réelle du curriculum, compilée depuis son fichier
- * d'autorat par `content:compile-lesson` (unité 1, leçon 1A : écouter les
- * cinq tons).
+ * Registre des leçons réelles compilées depuis `content/authoring` par
+ * `content:compile-lesson`.
  *
- * Elle reste en statut `draft`, visibilité `internal`, et sa porte de
- * publication est fermée : elle est affichable, pas publiable. « Revue
- * native : en attente » demeure vrai.
+ * Les imports sont statiques et explicites : le paquet est consommé par un
+ * bundler, qui ne sait pas lire un dossier à l'exécution. Ajouter une leçon
+ * tient donc en deux lignes, et une leçon absente du registre est
+ * simplement introuvable, jamais silencieusement remplacée.
+ *
+ * Toutes restent en statut `draft` et visibilité `internal` : affichables,
+ * pas publiables. « Revue native : en attente » demeure vrai.
  */
-export function readUnite01Lecon1aBundle(): ContentBundle {
-  const lesson = lessonSchema.parse(u01l1aLessonJson);
+const LECONS_COMPILEES: Readonly<
+  Record<string, { lesson: unknown; audio: unknown }>
+> = {
+  "u01-l1a": { lesson: u01l1aLessonJson, audio: u01l1aAudioJson },
+};
+
+/** Identifiants des leçons réelles disponibles, dans l'ordre du parcours. */
+export function compiledLessonIds(): string[] {
+  return Object.keys(LECONS_COMPILEES).sort((a, b) =>
+    a < b ? -1 : a > b ? 1 : 0,
+  );
+}
+
+/** `null` quand l'identifiant ne désigne aucune leçon compilée. */
+export function readCompiledLessonBundle(
+  identifiant: string,
+): ContentBundle | null {
+  const brut = LECONS_COMPILEES[identifiant];
+  if (brut === undefined) return null;
+  const lesson = lessonSchema.parse(brut.lesson);
   const utilisees = new Set(lesson.provenance.sourceIds);
   return {
     lesson,
-    audioManifest: audioManifestSchema.parse(u01l1aAudioJson),
+    audioManifest: audioManifestSchema.parse(brut.audio),
     sources: (registreJson as { sources: unknown[] }).sources
-      .map((brut) => sourceSchema.parse(sansNotes(brut)))
+      .map((source) => sourceSchema.parse(sansNotes(source)))
       .filter((source) => utilisees.has(source.sourceId)),
   };
+}
+
+/** Première leçon du parcours, celle qu'ouvre la session du jour. */
+export function readUnite01Lecon1aBundle(): ContentBundle {
+  const bundle = readCompiledLessonBundle("u01-l1a");
+  if (bundle === null) throw new Error("Leçon u01-l1a absente du registre.");
+  return bundle;
 }
 
 /**
