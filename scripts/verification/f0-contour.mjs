@@ -61,6 +61,18 @@ function lireWav(tampon) {
       `Attendu PCM 16 bits, recu codec ${format.codec} / ${format.bits} bits.`,
     );
   }
+  // Ce script lira aussi des enregistrements d'apprenants, dont on ne
+  // controle pas la provenance. Un en-tete absurde doit lever une erreur
+  // explicite, pas produire un Float32Array de taille Infinity (canaux a
+  // zero) ni un pas d'analyse nul, qui bloquerait la boucle indefiniment.
+  if (format.canaux < 1 || format.canaux > 8) {
+    throw new Error(`Nombre de canaux invalide : ${format.canaux}.`);
+  }
+  if (format.frequence < 8000 || format.frequence > 192_000) {
+    throw new Error(
+      `Frequence d'echantillonnage hors plage : ${format.frequence} Hz.`,
+    );
+  }
 
   // Melange en mono et normalisation dans [-1, 1].
   const nEchantillons = Math.floor(donnees.length / 2 / format.canaux);
@@ -94,7 +106,10 @@ function hauteurTrame(trame, frequence) {
   const rms = Math.sqrt(energie / n);
   if (rms < 0.005) return { f0: null, force: 0, rms };
 
-  const lagMin = Math.floor(frequence / F0_MAX);
+  // Un lag de zero donnerait une autocorrelation de 1 par construction et
+  // une hauteur infinie : le decalage minimal est donc toujours d'au moins
+  // un echantillon.
+  const lagMin = Math.max(1, Math.floor(frequence / F0_MAX));
   const lagMax = Math.min(Math.floor(frequence / F0_MIN), n - 1);
 
   let meilleurLag = -1;
