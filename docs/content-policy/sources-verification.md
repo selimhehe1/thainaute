@@ -98,6 +98,32 @@ Cette règle ne s'étend à rien d'autre. Le sens d'un mot ordinaire, son ton,
 sa longueur, son registre et sa naturalité restent soumis aux deux sources
 indépendantes, sans exception.
 
+## 1 quater. Registre familier et formes régionales
+
+Constat du 4 août 2026 : le dictionnaire normatif **porte lui-même les
+étiquettes de registre et de région**. Il écrit que `กู` est « aujourd'hui
+généralement tenu pour impoli », et étiquette `เว้า` en `(ถิ่น-อีสาน)`,
+dialecte du nord-est. Les formes courantes et régionales sont donc
+attestables par la chaîne habituelle, sans assouplir aucune règle.
+
+Le biais du parcours fondamental vers le thaï poli ne venait pas des
+sources : il venait des briefs de production, qui ne demandaient que des
+blocs polis.
+
+**Règle propre à ces affirmations** : la présence de la graphie ne suffit
+jamais pour affirmer un registre ou une région. Le **corps de l'entrée doit
+être lu** avec `scripts/verification/rid-entry.mjs` et l'étiquette citée.
+
+Ce piège a été trouvé en établissant la règle : `จ้า` renvoie bien une
+entrée, mais c'est l'adjectif « intense, vif » (สีจ้า, แสงจ้า), pas la
+particule finale que l'on voulait enseigner. Un contrôle de présence
+l'aurait déclarée attestée à tort.
+
+Étiquettes attendues : `(ปาก)` langue parlée, `(ถิ่น-อีสาน)` nord-est,
+`(ถิ่น-พายัพ)` nord, `(ถิ่น-ปักษ์ใต้)` sud. Les marques `(inf.)` de
+Volubilis et « colloquial » ou « informal » de Wiktionary servent de
+seconde jambe, jamais de première.
+
 ## 2. Ressources universitaires
 
 - **Thai National Corpus** (Chulalongkorn, ~33 M mots). Interface web en
