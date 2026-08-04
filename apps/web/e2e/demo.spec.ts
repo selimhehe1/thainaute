@@ -11,7 +11,7 @@ test("termine l'expédition des cinq mécaniques", async ({ page }) => {
     if (request.resourceType() === "font") fontRequests.push(request.url());
   });
   await openMecaniquesFixture(page);
-  await expect(page.getByText("Donnée fictive · non publiable")).toBeVisible();
+  await expect(page.getByText("Donnée fictive, non publiable")).toBeVisible();
   const thaiGlyph = page.getByLabel("Graphème thaï fictif de test");
   const loadedThaiFaces = await page.evaluate(
     async () =>
