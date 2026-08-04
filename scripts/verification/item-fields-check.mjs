@@ -47,47 +47,24 @@ import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
+// Analyse partagée avec le compilateur de contenu. Deux analyses séparées
+// divergeraient, et l'une des deux finirait par mentir : c'est exactement ce
+// qui s'est produit avec l'unité 1.
+import {
+  analyserItems,
+  sequencePointsDeCode,
+} from "../content/lib/parse-authoring.mjs";
+
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const AUTHORING = join(ROOT, "content", "authoring");
 
 const CHAMPS = ["ipa", "ton", "longueur", "transcription", "codepoints"];
 const SEPARATEURS = /\s+\/\s+|\s+·\s+/;
 
-function sequence(graphie) {
-  return [...graphie.normalize("NFC")]
-    .map(
-      (c) =>
-        "U+" + c.codePointAt(0).toString(16).toUpperCase().padStart(4, "0"),
-    )
-    .join(" ");
-}
-
-// Un champ court jusqu'au prochain champ, au prochain titre, à la première
-// ligne vide, ou à la fin du bloc. PIÈGE ÉVITÉ : ne pas employer le drapeau `m`
-// ici, sans quoi le `$` de la fin d'alternative signifierait « fin de LIGNE »
-// et tronquerait silencieusement tout champ écrit sur deux lignes, ce qui est
-// le cas de presque tous les champs `codepoints`.
-function champ(bloc, nom) {
-  const re = new RegExp(
-    "(?:^|\\n)- `" + nom + "` ?: ?([\\s\\S]*?)(?=\\n- `|\\n#|\\n\\n|$)",
-  );
-  const m = bloc.match(re);
-  return m ? m[1].replace(/\s+/g, " ").trim() : undefined;
-}
+const sequence = sequencePointsDeCode;
 
 function items(chemin) {
-  const texte = readFileSync(chemin, "utf8");
-  const blocs = texte.split(/^#{3,4} /m).slice(1);
-  const liste = [];
-  for (const b of blocs) {
-    const titre = b.split("\n")[0].trim();
-    const thai = champ(b, "thai");
-    if (thai === undefined) continue;
-    const item = { titre, thai };
-    for (const c of CHAMPS) item[c] = champ(b, c);
-    liste.push(item);
-  }
-  return liste;
+  return analyserItems(readFileSync(chemin, "utf8"));
 }
 
 function parGraphie(chemin) {
@@ -107,7 +84,15 @@ function controle(chemin) {
   let malCodepoints = 0;
   let ecartsReemploi = 0;
 
-  for (const it of items(chemin)) {
+  const lus = items(chemin);
+  // Un contrôle qui ne trouve rien doit le DIRE. Jusqu'au 2026-08-04, cet
+  // outil exigeait des backticks autour du nom de champ et ne voyait donc
+  // aucun item de l'unité 1, écrite avant cette convention : il annonçait
+  // « 0 faute » sur un ensemble vide. Le compte par fichier rend cet échec
+  // silencieux impossible à répéter.
+  console.log(`.. ${court} :: ${lus.length} items lus`);
+
+  for (const it of lus) {
     // 1. codepoints contre thai
     const graphies = it.thai
       .split(SEPARATEURS)
