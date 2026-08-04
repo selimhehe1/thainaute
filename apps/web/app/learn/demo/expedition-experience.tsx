@@ -169,6 +169,27 @@ export function ExpeditionExperience({
   const lessonAudio = useRef<HTMLAudioElement | null>(null);
   const [audioError, setAudioError] = useState(false);
 
+  /**
+   * Avertissement affiche au-dessus du lecteur. Il dit l'etat REEL du
+   * contenu : il etait ecrit en dur quand la page ne servait qu'une
+   * fixture, et mentirait maintenant qu'elle sert une lecon reelle.
+   */
+  const avertissement = useMemo(() => {
+    if (lesson.visibility === "fixture") {
+      return {
+        titre: "Donnée fictive · non publiable",
+        detail:
+          "Ces signes et ce signal valident uniquement la chaîne technique.",
+      };
+    }
+    if (lesson.workflowStatus === "published") return null;
+    return {
+      titre: "Brouillon · Revue native : en attente",
+      detail:
+        "Ce cours est écrit, sourcé et audité, mais aucun locuteur thaï natif ne l’a encore relu. La voix est synthétique et déclarée comme telle.",
+    };
+  }, [lesson.visibility, lesson.workflowStatus]);
+
   // Le bouton d'accueil fait entendre le premier mot de la lecon, celui de
   // son premier exercice d'ecoute.
   const premierAudioAssetId = useMemo(
@@ -1047,12 +1068,12 @@ export function ExpeditionExperience({
       <div className={styles.pageSpecimen} aria-hidden="true">
         {lesson.items[0]?.thaiRaw}
       </div>
-      <div className={styles.fixtureBanner} role="note">
-        <strong>Donnée fictive · non publiable</strong>
-        <span>
-          Ces signes et ce signal valident uniquement la chaîne technique.
-        </span>
-      </div>
+      {avertissement !== null && (
+        <div className={styles.fixtureBanner} role="note">
+          <strong>{avertissement.titre}</strong>
+          <span>{avertissement.detail}</span>
+        </div>
+      )}
 
       <div className={styles.networkStatus} aria-live="polite">
         <span
