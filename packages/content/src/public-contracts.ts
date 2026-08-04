@@ -20,10 +20,33 @@ const publicLessonExerciseSchema = z.strictObject({
   promptFr: z.string().min(1).max(280),
   options: z
     .array(
-      z.strictObject({
-        id: publicContentUuidSchema,
-        labelFr: z.string().min(1).max(120),
-      }),
+      // Une option d'ecoute oppose souvent des graphies thaies entre elles.
+      // Le DTO les distribue telles quelles plutot que de les ranger dans
+      // un champ francais : c'est du thai, il doit etre nomme comme tel.
+      //
+      // La transcription de l'option n'est deliberement PAS distribuee. Sur
+      // un exercice de discrimination tonale opposant ขา et ข่า, joindre
+      // khaa et khaa avec leurs accents reviendrait a ecrire la reponse a
+      // cote de la question. Le contenu la porte, le reseau non.
+      z
+        .strictObject({
+          id: publicContentUuidSchema,
+          labelFr: z.string().min(1).max(120).nullable().default(null),
+          // Valeur par defaut assumee : c'est un contrat reseau. Un client
+          // a jour doit savoir lire une charge produite par un serveur qui
+          // ne connait pas encore ce champ, sinon un deploiement progressif
+          // casse les clients deja deployes.
+          thaiRaw: z
+            .string()
+            .min(1)
+            .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
+            .nullable()
+            .default(null),
+        })
+        .refine(
+          (option) => option.labelFr !== null || option.thaiRaw !== null,
+          { message: "Une option doit porter un libelle francais ou thai." },
+        ),
     )
     .min(2)
     .max(6),

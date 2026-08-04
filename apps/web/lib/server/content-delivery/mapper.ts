@@ -16,21 +16,32 @@ import type {
 function publicOptions(
   versionId: string,
   exerciseId: string,
-  options: readonly { readonly id: string; readonly labelFr: string }[],
+  options: readonly {
+    readonly id: string;
+    readonly labelFr: string | null;
+    readonly thaiRaw: string | null;
+    readonly transcription: string | null;
+  }[],
 ) {
-  return [...options].sort((left, right) => {
-    const leftOrder = hashCanonical("thainaute.public-option-order/v1", {
-      versionId,
-      exerciseId,
-      optionId: left.id,
+  // Projection explicite plutot que recopie : un DTO se construit par liste
+  // blanche. Ajouter un champ au contenu ne doit jamais le publier par
+  // inadvertance, et `transcription` est justement un champ qui donnerait la
+  // reponse sur un exercice de discrimination tonale.
+  return [...options]
+    .map(({ id, labelFr, thaiRaw }) => ({ id, labelFr, thaiRaw }))
+    .sort((left, right) => {
+      const leftOrder = hashCanonical("thainaute.public-option-order/v1", {
+        versionId,
+        exerciseId,
+        optionId: left.id,
+      });
+      const rightOrder = hashCanonical("thainaute.public-option-order/v1", {
+        versionId,
+        exerciseId,
+        optionId: right.id,
+      });
+      return leftOrder.localeCompare(rightOrder);
     });
-    const rightOrder = hashCanonical("thainaute.public-option-order/v1", {
-      versionId,
-      exerciseId,
-      optionId: right.id,
-    });
-    return leftOrder.localeCompare(rightOrder);
-  });
 }
 
 /** Construit uniquement le DTO gratuit et expurge destine aux clients. */
