@@ -1452,9 +1452,10 @@ export function ExpeditionExperience({
                           {tone !== null && (
                             <ToneCurve
                               tone={tone}
-                              width={96}
-                              height={44}
-                              strokeWidth={6}
+                              withScale
+                              width={132}
+                              height={70}
+                              strokeWidth={7}
                               className={styles.matchCurve}
                             />
                           )}
