@@ -1,4 +1,4 @@
-# Vérification adversariale de la leçon 1D (u01-1d)
+# Vérification adversariale de la leçon 1D (u01-l1d)
 
 - Auditeur : agent de contre-audit indépendant (Claude Fable 5,
   `claude-fable-5`), consignes adversariales.

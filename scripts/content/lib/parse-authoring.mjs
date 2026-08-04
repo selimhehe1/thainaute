@@ -82,6 +82,27 @@ export function sequencePointsDeCode(graphie) {
  */
 export const SEPARATEURS_GRAPHIE = /\s+\/\s+|\s+·\s+/u;
 
+/** Bloc thaï de l'Unicode, sans espace ni ponctuation. */
+const THAI_SEUL = /^[฀-๿]+$/u;
+/** ๆ, mai yamok : marque de répétition, écrite détachée du mot. */
+const MAI_YAMOK = "ๆ";
+
+/**
+ * Une graphie propre ne contient que du thaï. Les espaces sont refusés,
+ * SAUF quand la graphie emploie ๆ : พูดช้า ๆ est du thaï correct, et non
+ * une décoration à arbitrer.
+ *
+ * Écrit en découpage plutôt qu'en expression régulière imbriquée : la
+ * version précédente emboîtait un quantificateur dans un autre, ce qui est
+ * difficile à relire et facile à faire dégénérer.
+ */
+function estGraphiePropre(valeur) {
+  const morceaux = valeur.split(" ");
+  if (!morceaux.every((morceau) => THAI_SEUL.test(morceau))) return false;
+  if (morceaux.length === 1) return true;
+  return morceaux.includes(MAI_YAMOK);
+}
+
 export function graphies(champThai) {
   const morceaux = champThai
     .split(SEPARATEURS_GRAPHIE)
@@ -94,11 +115,7 @@ export function graphies(champThai) {
       valeur,
       sansGlose,
       gloseFr,
-      // Une graphie propre ne contient que du thaï. Les espaces sont
-      // refusés SAUF autour de ๆ (mai yamok, U+0E46), la marque de
-      // répétition, qui s'écrit normalement détachée : พูดช้า ๆ est du
-      // thaï correct, pas une décoration à arbitrer.
-      propre: /^[฀-๿]+(?: ๆ(?: [฀-๿]+)?)*$/u.test(sansGlose),
+      propre: estGraphiePropre(sansGlose),
     };
   });
 }

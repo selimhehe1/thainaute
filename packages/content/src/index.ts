@@ -13,7 +13,11 @@ export {
   auditStatusSchema,
   contentBundleSchema,
   contentVisibilitySchema,
+  // Exporté pour le compilateur d'autorat, qui valide item par item avant
+  // qu'une leçon complète existe.
+  itemSchema,
   lessonSchema,
+  sourceSchema,
   workflowStatusSchema,
 } from "./schemas";
 export {

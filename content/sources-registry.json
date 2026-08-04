@@ -1,0 +1,120 @@
+{
+  "$commentaire": [
+    "Registre des sources citées par le curriculum, sous la forme exigée par",
+    "`sourceSchema` de packages/content. Il est la SEULE traduction autorisée",
+    "des citations en prose des fichiers d'autorat vers les paquets compilés :",
+    "un compilateur qui déduirait une licence d'une URL inventerait un fait",
+    "juridique.",
+    "",
+    "Sémantique des trois booléens, fixée ici une fois pour toutes : ils",
+    "répondent à « notre usage prévu de cette source est-il autorisé SANS",
+    "réserve documentée ? ». Notre usage prévu est de vérifier des faits et",
+    "d'écrire une prose originale, jamais de reproduire une formulation.",
+    "",
+    "Ils sont conservateurs par construction : `true` seulement là où",
+    "docs/content-policy/sources-verification.md l'affirme explicitement.",
+    "Un `false` ferme la porte de publication, ce qui est le comportement",
+    "voulu tant que la question n'est pas tranchée."
+  ],
+  "sources": [
+    {
+      "schemaVersion": 1,
+      "sourceId": "RID-2554",
+      "label": "Royal Institute Dictionary 2554, Office of the Royal Society",
+      "kind": "official",
+      "versionSource": "RID 2554, dictionary.orst.go.th",
+      "confidence": "high",
+      "license": "Conditions non verifiees, page disclaimer defaillante",
+      "commercialUse": false,
+      "redistribution": false,
+      "publicationAuthorized": false,
+      "consultedAt": "2026-08-03T00:00:00.000Z",
+      "$note": [
+        "Autorite n° 1 pour l'orthographe et le sens, et fiabilite maximale :",
+        "la confiance est donc `high`. Mais la politique constate que le texte",
+        "exact des conditions n'est pas lisible et reste « a re-verifier",
+        "manuellement ». Les trois booleens sont donc `false`.",
+        "",
+        "C'est LA question juridique qui separe aujourd'hui le curriculum de",
+        "la publication. Elle demande une verification humaine, pas une",
+        "deduction."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "sourceId": "UNICODE-17",
+      "label": "The Unicode Standard 17.0, Unicode Consortium",
+      "kind": "official",
+      "versionSource": "Unicode 17.0",
+      "confidence": "high",
+      "license": "Consultation libre, citation par reference",
+      "commercialUse": true,
+      "redistribution": true,
+      "publicationAuthorized": true,
+      "consultedAt": "2026-08-03T00:00:00.000Z",
+      "$note": [
+        "Autorite de fait pour la sequence de code, la categorie positionnelle",
+        "d'un signe et l'ordre visuel contre l'ordre logique. Les faits",
+        "d'encodage sont cites par reference, avec la version du standard."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "sourceId": "WIKTIONARY-EN",
+      "label": "Wiktionary anglophone, entrees thaies",
+      "kind": "licensed_corpus",
+      "versionSource": "en.wiktionary.org, revisions consultees le 2026-08-03",
+      "confidence": "medium",
+      "license": "CC BY-SA 4.0 et GFDL",
+      "commercialUse": true,
+      "redistribution": true,
+      "publicationAuthorized": true,
+      "consultedAt": "2026-08-03T00:00:00.000Z",
+      "$note": [
+        "Verdict de la politique : autorisee pour recoupement, jamais de copie",
+        "de formulation, JAMAIS EN SOURCE UNIQUE. La confiance est `medium`",
+        "parce que la source est communautaire ; c'est le recoupement qui",
+        "porte la fiabilite, pas l'entree seule."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "sourceId": "WIKTIONARY-TH",
+      "label": "Wiktionary thaiphone, entrees thaies",
+      "kind": "licensed_corpus",
+      "versionSource": "th.wiktionary.org, revisions consultees le 2026-08-03",
+      "confidence": "medium",
+      "license": "CC BY-SA 4.0 et GFDL",
+      "commercialUse": true,
+      "redistribution": true,
+      "publicationAuthorized": true,
+      "consultedAt": "2026-08-03T00:00:00.000Z",
+      "$note": [
+        "Meme regime que la version anglophone. Reproduit souvent le RID, ce",
+        "qui en fait un recoupement utile mais NON independant de celui-ci."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "sourceId": "VOLUBILIS-26-2",
+      "label": "Volubilis Database, base multilingue francais-thai",
+      "kind": "licensed_corpus",
+      "versionSource": "VOLUBILIS_Database.xlsx v26.2, juillet 2026",
+      "confidence": "medium",
+      "license": "CC BY-SA 4.0",
+      "commercialUse": true,
+      "redistribution": true,
+      "publicationAuthorized": true,
+      "consultedAt": "2026-08-03T00:00:00.000Z",
+      "$note": [
+        "Meilleure ressource francais-thai libre identifiee, et pivot francais",
+        "ideal. La politique impose une contre-verification RID systematique :",
+        "la confiance reste donc `medium` prise isolement.",
+        "",
+        "Le classeur n'etant pas versionne, la citation se rend reproductible",
+        "par scripts/verification/volubilis-lookup.mjs, qui affiche l'empreinte",
+        "du fichier et le numero de ligne."
+      ]
+    }
+  ]
+}
