@@ -343,6 +343,33 @@ export const lessonSchema = z
     }
   });
 
+/**
+ * Ce qui a produit un son synthétique. Le brief exige que le fournisseur,
+ * le modèle, la version et les paramètres soient conservés : sans eux, un
+ * audio n'est pas reproductible et son défaut n'est pas explicable.
+ */
+const synthesisSchema = z
+  .object({
+    provider: z.string().min(1).max(80),
+    model: z.string().min(1).max(120),
+    voice: z.string().min(1).max(80),
+    /** Texte exactement envoyé au fournisseur, souvent différent de l'item. */
+    sourceText: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+    parameters: z.record(z.string(), z.string()).default({}),
+    generatedAt: utcDateTime,
+  })
+  .strict();
+
+const roundTripSchema = z
+  .object({
+    transcriber: z.string().min(1).max(120),
+    /** Ce que la reconnaissance vocale a relu dans l'audio produit. */
+    transcript: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+    matchesSource: z.boolean(),
+    checkedAt: utcDateTime,
+  })
+  .strict();
+
 const audioEntrySchema = z
   .object({
     assetId: identifier,
@@ -356,10 +383,42 @@ const audioEntrySchema = z
     sha256: z.string().regex(/^[0-9a-f]{64}$/u),
     byteLength: z.number().int().positive(),
     durationMs: z.number().int().positive().max(3_600_000),
-    voiceKind: z.enum(["synthetic_test_tone", "native_human"]),
+    voiceKind: z.enum(["synthetic_test_tone", "synthetic_tts", "native_human"]),
     consentReference: nullableText,
+    /** Traçabilité exigée par le brief : qui a produit ce son, et comment. */
+    synthesis: synthesisSchema.nullable().default(null),
+    /**
+     * Contrôle aller-retour : l'audio produit est retranscrit, et la
+     * transcription comparée à la graphie demandée. Sur une paire minimale
+     * de tons, c'est un test de ton, pas seulement d'intelligibilité.
+     */
+    roundTrip: roundTripSchema.nullable().default(null),
   })
-  .strict();
+  .strict()
+  .superRefine((entry, context) => {
+    if (entry.voiceKind === "synthetic_tts" && entry.synthesis === null) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "Une voix synthétique doit conserver son fournisseur, son modèle et ses paramètres.",
+        path: ["synthesis"],
+      });
+    }
+    if (entry.voiceKind === "native_human" && entry.consentReference === null) {
+      context.addIssue({
+        code: "custom",
+        message: "Une voix humaine exige une référence de consentement.",
+        path: ["consentReference"],
+      });
+    }
+    if (entry.voiceKind !== "synthetic_tts" && entry.synthesis !== null) {
+      context.addIssue({
+        code: "custom",
+        message: "Seule une voix synthétique porte des paramètres de synthèse.",
+        path: ["synthesis"],
+      });
+    }
+  });
 
 export const audioManifestSchema = z
   .object({

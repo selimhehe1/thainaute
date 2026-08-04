@@ -78,7 +78,7 @@ const audioReviewEntrySchema = z.strictObject({
   assetId: z.string().min(1).max(120),
   itemId: z.string().min(1).max(120),
   variant: z.enum(["fixture", "natural", "pedagogical"]),
-  voiceKind: z.enum(["synthetic_test_tone", "native_human"]),
+  voiceKind: z.enum(["synthetic_test_tone", "synthetic_tts", "native_human"]),
   consentStatus: z.enum(["not_applicable", "present", "missing"]),
 });
 

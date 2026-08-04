@@ -136,6 +136,32 @@ export function getPublicationBlockers(
       detail: "Une voix humaine ne possède pas de référence de consentement.",
     });
   }
+  // Une voix synthétique publiable doit avoir passé le contrôle
+  // aller-retour : l'audio produit est retranscrit, et la transcription
+  // doit rendre la graphie demandée. En thaï, un ton faux n'est pas un
+  // accent approximatif, c'est un autre mot.
+  if (
+    audioManifest.entries.some(
+      ({ voiceKind, roundTrip }) =>
+        voiceKind === "synthetic_tts" && roundTrip === null,
+    )
+  ) {
+    blockers.push({
+      code: "SYNTHETIC_AUDIO_UNVERIFIED",
+      detail: "Une voix synthétique n'a pas passé le contrôle aller-retour.",
+    });
+  }
+  if (
+    audioManifest.entries.some(
+      ({ voiceKind, roundTrip }) =>
+        voiceKind === "synthetic_tts" && roundTrip?.matchesSource === false,
+    )
+  ) {
+    blockers.push({
+      code: "SYNTHETIC_AUDIO_MISREAD",
+      detail: "Un audio synthétique est relu autrement que la graphie voulue.",
+    });
+  }
   if (
     lesson.items.some(
       ({ register, transcription, translationFr, syllables }) =>

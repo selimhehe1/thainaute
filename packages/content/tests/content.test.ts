@@ -207,3 +207,92 @@ describe("fixture de contenu", () => {
     );
   });
 });
+
+describe("traçabilité de la voix synthétique", () => {
+  function withVoice(
+    voiceKind: "synthetic_tts" | "native_human",
+    overrides: Record<string, unknown> = {},
+  ) {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const entry = bundle.audioManifest.entries[0];
+    if (entry === undefined) throw new Error("Fixture audio manquante.");
+    return {
+      ...bundle,
+      audioManifest: {
+        ...bundle.audioManifest,
+        entries: [{ ...entry, voiceKind, variant: "natural", ...overrides }],
+      },
+    };
+  }
+
+  const synthesis = {
+    provider: "openai",
+    model: "tts-1",
+    voice: "alloy",
+    sourceText: "ก่",
+    parameters: { format: "wav", speed: "1.0" },
+    generatedAt: "2026-08-04T12:00:00.000Z",
+  };
+
+  it("refuse une voix synthétique sans traçabilité de synthèse", () => {
+    expect(
+      contentBundleSchema.safeParse(withVoice("synthetic_tts")).success,
+    ).toBe(false);
+  });
+
+  it("refuse des paramètres de synthèse sur une voix humaine", () => {
+    expect(
+      contentBundleSchema.safeParse(
+        withVoice("native_human", {
+          consentReference: "consent-2026-001",
+          synthesis,
+        }),
+      ).success,
+    ).toBe(false);
+  });
+
+  it("bloque la publication d'un audio synthétique non contrôlé", () => {
+    const bundle = contentBundleSchema.parse(
+      withVoice("synthetic_tts", { synthesis }),
+    );
+    expect(getPublicationBlockers(bundle).map(({ code }) => code)).toContain(
+      "SYNTHETIC_AUDIO_UNVERIFIED",
+    );
+  });
+
+  it("bloque la publication d'un audio relu autrement que demandé", () => {
+    // La reconnaissance a relu ขา là où la leçon voulait ข่า : le ton est
+    // écrasé, donc c'est un autre mot, donc la publication s'arrête.
+    const bundle = contentBundleSchema.parse(
+      withVoice("synthetic_tts", {
+        synthesis: { ...synthesis, sourceText: "ข่า" },
+        roundTrip: {
+          transcriber: "whisper-1",
+          transcript: "ขา",
+          matchesSource: false,
+          checkedAt: "2026-08-04T12:01:00.000Z",
+        },
+      }),
+    );
+    expect(getPublicationBlockers(bundle).map(({ code }) => code)).toContain(
+      "SYNTHETIC_AUDIO_MISREAD",
+    );
+  });
+
+  it("laisse passer un audio synthétique relu conforme", () => {
+    const bundle = contentBundleSchema.parse(
+      withVoice("synthetic_tts", {
+        synthesis: { ...synthesis, sourceText: "ข่า" },
+        roundTrip: {
+          transcriber: "whisper-1",
+          transcript: "ข่า",
+          matchesSource: true,
+          checkedAt: "2026-08-04T12:01:00.000Z",
+        },
+      }),
+    );
+    const codes = getPublicationBlockers(bundle).map(({ code }) => code);
+    expect(codes).not.toContain("SYNTHETIC_AUDIO_UNVERIFIED");
+    expect(codes).not.toContain("SYNTHETIC_AUDIO_MISREAD");
+  });
+});
