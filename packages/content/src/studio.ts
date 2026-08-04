@@ -80,6 +80,18 @@ const audioReviewEntrySchema = z.strictObject({
   variant: z.enum(["fixture", "natural", "pedagogical"]),
   voiceKind: z.enum(["synthetic_test_tone", "synthetic_tts", "native_human"]),
   consentStatus: z.enum(["not_applicable", "present", "missing"]),
+  /**
+   * État du contrôle de restitution du ton, pour qu'un relecteur ne puisse
+   * pas approuver une voix synthétique sans avoir vu si son contour a été
+   * mesuré. `unverified` est un état visible, pas un silence.
+   */
+  toneStatus: z.enum([
+    "not_applicable",
+    "verified_acoustic",
+    "verified_transcript_only",
+    "mismatch",
+    "unverified",
+  ]),
 });
 
 export const contentReviewSummarySchema = z.strictObject({
@@ -129,6 +141,8 @@ export const contentReviewSummarySchema = z.strictObject({
     total: z.number().int().nonnegative(),
     nativeHuman: z.number().int().nonnegative(),
     missingConsent: z.number().int().nonnegative(),
+    /** Voix synthétiques dont le contour n'a pas été mesuré. */
+    toneUnverified: z.number().int().nonnegative(),
     truncated: z.boolean(),
     entries: z
       .array(audioReviewEntrySchema)
@@ -442,9 +456,21 @@ function buildSummary(bundle: ContentBundle): ContentReviewSummary {
         (entry) =>
           entry.voiceKind === "native_human" && entry.consentReference === null,
       ).length,
+      toneUnverified: audioManifest.entries.filter(
+        (entry) =>
+          entry.voiceKind === "synthetic_tts" && entry.toneCheck === null,
+      ).length,
       truncated: audioManifest.entries.length > audioEntries.length,
       entries: audioEntries.map(
-        ({ assetId, itemId, variant, voiceKind, consentReference }) => ({
+        ({
+          assetId,
+          itemId,
+          variant,
+          voiceKind,
+          consentReference,
+          roundTrip,
+          toneCheck,
+        }) => ({
           assetId,
           itemId,
           variant,
@@ -455,10 +481,35 @@ function buildSummary(bundle: ContentBundle): ContentReviewSummary {
               : consentReference === null
                 ? ("missing" as const)
                 : ("present" as const),
+          toneStatus: statutDuTon(voiceKind, roundTrip, toneCheck),
         }),
       ),
     },
   };
+}
+
+/**
+ * Traduit l'état des contrôles en un statut lisible par un relecteur.
+ *
+ * L'ordre des tests encode une hiérarchie de preuve délibérée : la mesure
+ * acoustique prime sur la transcription, parce qu'elle ne fait intervenir
+ * aucun modèle de langue susceptible de corriger vers le mot attendu. Une
+ * transcription seule reste donc signalée comme telle, jamais comme une
+ * validation du ton.
+ */
+function statutDuTon(
+  voiceKind: ContentBundle["audioManifest"]["entries"][number]["voiceKind"],
+  roundTrip: ContentBundle["audioManifest"]["entries"][number]["roundTrip"],
+  toneCheck: ContentBundle["audioManifest"]["entries"][number]["toneCheck"],
+): z.infer<typeof audioReviewEntrySchema>["toneStatus"] {
+  if (voiceKind !== "synthetic_tts") return "not_applicable";
+  if (toneCheck !== null) {
+    return toneCheck.consistent ? "verified_acoustic" : "mismatch";
+  }
+  if (roundTrip !== null) {
+    return roundTrip.matchesSource ? "verified_transcript_only" : "mismatch";
+  }
+  return "unverified";
 }
 
 function invalidBundleBlocker(): PublicationBlocker {

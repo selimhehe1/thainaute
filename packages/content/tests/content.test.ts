@@ -279,6 +279,66 @@ describe("traçabilité de la voix synthétique", () => {
     );
   });
 
+  const toneCheck = {
+    method: "f0_contour" as const,
+    tool: "scripts/verification/f0-contour.mjs",
+    expectedTone: "rising" as const,
+    observedShape: "dipping" as const,
+    semitoneSlope: 0.77,
+    semitoneRange: 3.4,
+    consistent: true,
+    checkedAt: "2026-08-04T12:02:00.000Z",
+  };
+
+  it("accepte le contrôle acoustique seul, sans reconnaissance vocale", () => {
+    // La mesure de hauteur n'a aucun modèle de langue dans la boucle : elle
+    // suffit là où une transcription ne prouverait rien.
+    const bundle = contentBundleSchema.parse(
+      withVoice("synthetic_tts", {
+        synthesis: { ...synthesis, sourceText: "ขา" },
+        toneCheck,
+      }),
+    );
+    expect(
+      getPublicationBlockers(bundle).map(({ code }) => code),
+    ).not.toContain("SYNTHETIC_AUDIO_UNVERIFIED");
+  });
+
+  it("bloque la publication d'un contour incompatible avec le ton", () => {
+    const bundle = contentBundleSchema.parse(
+      withVoice("synthetic_tts", {
+        synthesis: { ...synthesis, sourceText: "ขา" },
+        toneCheck: {
+          ...toneCheck,
+          observedShape: "falling" as const,
+          semitoneSlope: -3.44,
+          consistent: false,
+        },
+      }),
+    );
+    expect(getPublicationBlockers(bundle).map(({ code }) => code)).toContain(
+      "SYNTHETIC_AUDIO_TONE_MISMATCH",
+    );
+  });
+
+  it("refuse d'attester conforme un ton montant réalisé descendant", () => {
+    // Le cas mesuré le 2026-08-04 sur tts-1-hd : ขา (jambe) sort avec le
+    // contour de ค่า (valeur). Déclarer cela conforme serait une
+    // attestation complaisante, donc le schéma lui-même la refuse.
+    expect(
+      contentBundleSchema.safeParse(
+        withVoice("synthetic_tts", {
+          synthesis: { ...synthesis, sourceText: "ขา" },
+          toneCheck: {
+            ...toneCheck,
+            observedShape: "falling" as const,
+            consistent: true,
+          },
+        }),
+      ).success,
+    ).toBe(false);
+  });
+
   it("laisse passer un audio synthétique relu conforme", () => {
     const bundle = contentBundleSchema.parse(
       withVoice("synthetic_tts", {
