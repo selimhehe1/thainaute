@@ -343,6 +343,86 @@ export const lessonSchema = z
     }
   });
 
+/**
+ * Ce qui a produit un son synthétique. Le brief exige que le fournisseur,
+ * le modèle, la version et les paramètres soient conservés : sans eux, un
+ * audio n'est pas reproductible et son défaut n'est pas explicable.
+ */
+const synthesisSchema = z
+  .object({
+    provider: z.string().min(1).max(80),
+    model: z.string().min(1).max(120),
+    voice: z.string().min(1).max(80),
+    /** Texte exactement envoyé au fournisseur, souvent différent de l'item. */
+    sourceText: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+    parameters: z.record(z.string(), z.string()).default({}),
+    generatedAt: utcDateTime,
+  })
+  .strict();
+
+const roundTripSchema = z
+  .object({
+    transcriber: z.string().min(1).max(120),
+    /** Ce que la reconnaissance vocale a relu dans l'audio produit. */
+    transcript: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+    matchesSource: z.boolean(),
+    checkedAt: utcDateTime,
+  })
+  .strict();
+
+/**
+ * Formes de contour acceptables pour chaque ton, en forme de citation.
+ *
+ * Volontairement tolérant : un même ton admet plusieurs réalisations selon
+ * la voix et le débit. Le but n'est pas de noter finement, c'est de refuser
+ * l'inverse exact, par exemple un ton montant réalisé descendant, qui ne
+ * produit pas un accent approximatif mais un autre mot. Les contours de
+ * référence sont ceux décrits en leçon 1A avec leurs sources.
+ */
+const TONS = ["mid", "low", "falling", "high", "rising"] as const;
+const FORMES = ["level", "rising", "falling", "peaking", "dipping"] as const;
+
+const SHAPES_ATTENDUES: Record<
+  (typeof TONS)[number],
+  readonly (typeof FORMES)[number][]
+> = {
+  mid: ["level"],
+  low: ["level", "falling"],
+  falling: ["falling", "peaking"],
+  high: ["rising", "peaking"],
+  rising: ["rising", "dipping"],
+};
+
+/**
+ * Contrôle acoustique du ton, mesuré sur le signal lui-même.
+ *
+ * Pourquoi ce contrôle existe en plus de l'aller-retour : une reconnaissance
+ * vocale possède son propre modèle de langue et corrige vers le mot le plus
+ * probable, ce qui masque exactement l'erreur cherchée. Mesuré le
+ * 2026-08-04, `gpt-4o-transcribe` ne rend même pas d'écriture thaïe sur une
+ * syllabe isolée, et `whisper-1` hallucine. La hauteur, elle, est une
+ * grandeur physique : aucun modèle ne s'interpose.
+ *
+ * Voir `scripts/verification/f0-contour.mjs`.
+ */
+const toneCheckSchema = z
+  .object({
+    method: z.literal("f0_contour"),
+    /** Outil et version, pour que la mesure reste reproductible. */
+    tool: z.string().min(1).max(160),
+    expectedTone: z.enum(TONS),
+    /** Forme observée du contour, indépendamment du ton attendu. */
+    observedShape: z.enum(FORMES),
+    /** Pente début vers fin, en demi-tons. Négative si la voix descend. */
+    semitoneSlope: z.number().min(-48).max(48),
+    /** Étendue entre le point le plus bas et le plus haut, en demi-tons. */
+    semitoneRange: z.number().min(0).max(48),
+    /** La forme mesurée est-elle compatible avec le ton attendu. */
+    consistent: z.boolean(),
+    checkedAt: utcDateTime,
+  })
+  .strict();
+
 const audioEntrySchema = z
   .object({
     assetId: identifier,
@@ -356,10 +436,63 @@ const audioEntrySchema = z
     sha256: z.string().regex(/^[0-9a-f]{64}$/u),
     byteLength: z.number().int().positive(),
     durationMs: z.number().int().positive().max(3_600_000),
-    voiceKind: z.enum(["synthetic_test_tone", "native_human"]),
+    voiceKind: z.enum(["synthetic_test_tone", "synthetic_tts", "native_human"]),
     consentReference: nullableText,
+    /** Traçabilité exigée par le brief : qui a produit ce son, et comment. */
+    synthesis: synthesisSchema.nullable().default(null),
+    /**
+     * Contrôle aller-retour : l'audio produit est retranscrit, et la
+     * transcription comparée à la graphie demandée. Sur une paire minimale
+     * de tons, c'est un test de ton, pas seulement d'intelligibilité.
+     */
+    roundTrip: roundTripSchema.nullable().default(null),
+    /**
+     * Contrôle acoustique du contour de hauteur. Preuve indépendante de
+     * l'aller-retour, et la seule des deux dont le juge ne soit pas un
+     * modèle de langue.
+     */
+    toneCheck: toneCheckSchema.nullable().default(null),
   })
-  .strict();
+  .strict()
+  .superRefine((entry, context) => {
+    if (entry.voiceKind === "synthetic_tts" && entry.synthesis === null) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "Une voix synthétique doit conserver son fournisseur, son modèle et ses paramètres.",
+        path: ["synthesis"],
+      });
+    }
+    if (entry.voiceKind === "native_human" && entry.consentReference === null) {
+      context.addIssue({
+        code: "custom",
+        message: "Une voix humaine exige une référence de consentement.",
+        path: ["consentReference"],
+      });
+    }
+    if (entry.voiceKind !== "synthetic_tts" && entry.synthesis !== null) {
+      context.addIssue({
+        code: "custom",
+        message: "Seule une voix synthétique porte des paramètres de synthèse.",
+        path: ["synthesis"],
+      });
+    }
+    // Un contour mesuré et déclaré compatible alors que la forme observée
+    // contredit le ton attendu serait une attestation complaisante. On
+    // vérifie donc la cohérence interne de la déclaration elle-même.
+    if (entry.toneCheck !== null && entry.toneCheck.consistent) {
+      const attendu = SHAPES_ATTENDUES[entry.toneCheck.expectedTone];
+      if (!attendu.includes(entry.toneCheck.observedShape)) {
+        context.addIssue({
+          code: "custom",
+          message:
+            `Un ton « ${entry.toneCheck.expectedTone} » ne peut pas être déclaré ` +
+            `conforme avec un contour « ${entry.toneCheck.observedShape} ».`,
+          path: ["toneCheck", "consistent"],
+        });
+      }
+    }
+  });
 
 export const audioManifestSchema = z
   .object({

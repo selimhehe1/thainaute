@@ -136,6 +136,53 @@ export function getPublicationBlockers(
       detail: "Une voix humaine ne possède pas de référence de consentement.",
     });
   }
+  // Une voix synthétique publiable doit avoir passé au moins un contrôle.
+  // En thaï, un ton faux n'est pas un accent approximatif, c'est un autre
+  // mot. Deux contrôles sont reconnus, et ils ne se valent pas :
+  //
+  //  - `toneCheck` mesure le contour de hauteur sur le signal. Aucun modèle
+  //    de langue n'intervient, donc rien ne peut corriger vers le mot
+  //    attendu. C'est la preuve forte.
+  //  - `roundTrip` fait relire l'audio par une reconnaissance vocale. Elle
+  //    reste utile pour l'intelligibilité, mais mesuré le 2026-08-04 sur la
+  //    série คา ข่า ค่า ค้า ขา, `gpt-4o-transcribe` ne rend pas d'écriture
+  //    thaïe sur syllabe isolée et `whisper-1` hallucine. C'est la preuve
+  //    faible, et elle ne suffit jamais seule à attester un ton.
+  if (
+    audioManifest.entries.some(
+      ({ voiceKind, roundTrip, toneCheck }) =>
+        voiceKind === "synthetic_tts" &&
+        roundTrip === null &&
+        toneCheck === null,
+    )
+  ) {
+    blockers.push({
+      code: "SYNTHETIC_AUDIO_UNVERIFIED",
+      detail: "Une voix synthétique n'a passé aucun contrôle de restitution.",
+    });
+  }
+  if (
+    audioManifest.entries.some(
+      ({ voiceKind, roundTrip }) =>
+        voiceKind === "synthetic_tts" && roundTrip?.matchesSource === false,
+    )
+  ) {
+    blockers.push({
+      code: "SYNTHETIC_AUDIO_MISREAD",
+      detail: "Un audio synthétique est relu autrement que la graphie voulue.",
+    });
+  }
+  if (
+    audioManifest.entries.some(
+      ({ voiceKind, toneCheck }) =>
+        voiceKind === "synthetic_tts" && toneCheck?.consistent === false,
+    )
+  ) {
+    blockers.push({
+      code: "SYNTHETIC_AUDIO_TONE_MISMATCH",
+      detail: "Le contour mesuré ne correspond pas au ton attendu de l'item.",
+    });
+  }
   if (
     lesson.items.some(
       ({ register, transcription, translationFr, syllables }) =>
