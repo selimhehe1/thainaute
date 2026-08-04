@@ -16,6 +16,13 @@ export const CONTENT_SCHEMA_LIMITS = {
   distributionPathsPerAudio: 8,
   audioEntriesPerManifest: 200,
   sourcesPerBundle: 100,
+  // Un bloc d'exercice rédigé annonce ses tirages (« Tirages : 12 au
+  // total ») et son seuil (« Seuil de réussite : 9 sur 12 »). Le corpus
+  // monte à 12 ; la marge tient les futurs blocs sans être un blanc-seing.
+  drawsPerPool: 24,
+  poolsPerLesson: 12,
+  // Un retour par distracteur, plus quelques cas non liés à une option.
+  feedbackVariantsPerExercise: 8,
 } as const;
 
 const identifier = z
@@ -116,24 +123,157 @@ const itemSchema = z
   })
   .strict();
 
+/**
+ * Une option d'exercice n'est pas toujours du français.
+ *
+ * Dans le curriculum rédigé, un exercice d'écoute oppose couramment des
+ * graphies thaïes entre elles : สบายดีไหมครับ contre สบายดีครับ. Les
+ * enfermer dans un `labelFr` reviendrait à ranger du thaï dans un champ
+ * français, donc sans contrôle NFC ni relevé de points de code, sur des
+ * chaînes qui en ont précisément besoin.
+ *
+ * `labelFr` et `thaiRaw` sont donc tous deux facultatifs, mais une option
+ * vide des deux côtés n'affiche rien : elle est refusée.
+ */
 const optionSchema = z
   .object({
     id: identifier,
-    labelFr: z.string().min(1).max(120),
+    labelFr: z.string().min(1).max(120).nullable().default(null),
+    thaiRaw: z
+      .string()
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
+      .nullable()
+      .default(null),
+    transcription: nullableText.default(null),
   })
-  .strict();
+  .strict()
+  .superRefine((option, context) => {
+    if (option.labelFr === null && option.thaiRaw === null) {
+      context.addIssue({
+        code: "custom",
+        message: "Une option doit porter au moins un libellé français ou thaï.",
+        path: ["labelFr"],
+      });
+    }
+    if (option.thaiRaw === null && option.transcription !== null) {
+      context.addIssue({
+        code: "custom",
+        message: "Une transcription sans graphie thaïe n'a rien à transcrire.",
+        path: ["transcription"],
+      });
+    }
+  });
 
 const promptFrSchema = z.string().min(1).max(280);
+
+/**
+ * Retour conditionnel au distracteur choisi.
+ *
+ * Le curriculum n'écrit pas un seul message d'erreur mais des messages
+ * ciblés : « confusion ค่ะ contre คะ : réécoutez la dernière syllabe ».
+ * C'est là qu'est l'enseignement, pas dans le fait de dire « raté ».
+ *
+ * `selectedOptionId` à `null` couvre les conditions qui ne dépendent pas
+ * d'une option, par exemple un groupe de tirages.
+ */
+const feedbackVariantSchema = z
+  .object({
+    selectedOptionId: identifier.nullable(),
+    /** Condition lisible, reprise du markdown source. */
+    labelFr: z.string().min(1).max(120),
+    textFr: z.string().min(1).max(280),
+  })
+  .strict();
 
 const feedbackSchema = z
   .object({
     correctFr: z.string().min(1).max(280),
     incorrectFr: z.string().min(1).max(280),
+    /** Repli sur `incorrectFr` quand aucune variante ne correspond. */
+    variants: z
+      .array(feedbackVariantSchema)
+      .max(CONTENT_SCHEMA_LIMITS.feedbackVariantsPerExercise)
+      .default([]),
   })
   .strict();
 
+export const exerciseMechanicSchema = z.enum([
+  "audio_choice",
+  "association",
+  "word_order",
+  "recall",
+  "reading",
+]);
+
+/**
+ * Rattachement d'un exercice au vivier dont il est un tirage.
+ *
+ * Le curriculum rédigé ne décrit pas des exercices isolés mais des blocs
+ * (« Tirages : 12 au total, ordre aléatoire »). Un bloc vaut donc douze
+ * exercices, et une séance n'en joue que quelques-uns. Sans ce
+ * rattachement, la séance ne saurait pas que ces douze mesurent la même
+ * chose et les enchaînerait tous.
+ *
+ * Nullable par défaut : les exercices déjà écrits restent valides sans
+ * migration, et un exercice unique n'a pas besoin d'un vivier.
+ */
+const poolMembership = {
+  poolId: identifier.nullable().default(null),
+  drawIndex: z
+    .number()
+    .int()
+    .min(1)
+    .max(CONTENT_SCHEMA_LIMITS.drawsPerPool)
+    .nullable()
+    .default(null),
+};
+
+const lessonPoolSchema = z
+  .object({
+    poolId: identifier,
+    promptFr: promptFrSchema,
+    mechanic: exerciseMechanicSchema,
+    /** Nombre de tirages écrits pour ce vivier. */
+    drawCount: z.number().int().min(1).max(CONTENT_SCHEMA_LIMITS.drawsPerPool),
+    /** Tirages à réussir pour valider le vivier, « 9 sur 12 ». */
+    passRequired: z
+      .number()
+      .int()
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.drawsPerPool),
+    /** Tirages effectivement joués dans une séance. */
+    sampleSize: z.number().int().min(1).max(CONTENT_SCHEMA_LIMITS.drawsPerPool),
+  })
+  .strict()
+  .superRefine((pool, context) => {
+    if (pool.passRequired > pool.drawCount) {
+      context.addIssue({
+        code: "custom",
+        message: "Le seuil de réussite dépasse le nombre de tirages écrits.",
+        path: ["passRequired"],
+      });
+    }
+    if (pool.sampleSize > pool.drawCount) {
+      context.addIssue({
+        code: "custom",
+        message: "On ne peut pas jouer plus de tirages qu'il n'en existe.",
+        path: ["sampleSize"],
+      });
+    }
+    if (pool.passRequired > pool.sampleSize) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "Un seuil supérieur au nombre de tirages joués rend le vivier impossible à valider.",
+        path: ["passRequired"],
+      });
+    }
+  });
+
 const audioChoiceExerciseSchema = z
   .object({
+    ...poolMembership,
     id: identifier,
     type: z.literal("audio_choice"),
     itemId: identifier,
@@ -156,6 +296,7 @@ const associationPairSchema = z
 
 const associationExerciseSchema = z
   .object({
+    ...poolMembership,
     id: identifier,
     type: z.literal("association"),
     skill: z.literal("reading"),
@@ -178,6 +319,7 @@ const wordOrderTokenSchema = z
 
 const wordOrderExerciseSchema = z
   .object({
+    ...poolMembership,
     id: identifier,
     type: z.literal("word_order"),
     itemId: identifier,
@@ -205,6 +347,7 @@ const recallAcceptedAnswerSchema = z
 
 const recallExerciseSchema = z
   .object({
+    ...poolMembership,
     id: identifier,
     type: z.literal("recall"),
     itemId: identifier,
@@ -227,6 +370,7 @@ const recallExerciseSchema = z
 
 const readingExerciseSchema = z
   .object({
+    ...poolMembership,
     id: identifier,
     type: z.literal("reading"),
     itemId: identifier,
@@ -300,6 +444,15 @@ export const lessonSchema = z
       .array(exerciseSchema)
       .min(1)
       .max(CONTENT_SCHEMA_LIMITS.exercisesPerLesson),
+    /**
+     * Viviers de tirages. Vide par défaut : une leçon dont chaque exercice
+     * est unique n'en a pas besoin, et les leçons déjà écrites restent
+     * valides sans migration.
+     */
+    pools: z
+      .array(lessonPoolSchema)
+      .max(CONTENT_SCHEMA_LIMITS.poolsPerLesson)
+      .default([]),
     provenance: z
       .object({
         sourceIds: z

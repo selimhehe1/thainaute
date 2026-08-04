@@ -208,6 +208,176 @@ describe("fixture de contenu", () => {
   });
 });
 
+describe("pédagogie rédigée : options thaïes, retours ciblés, viviers", () => {
+  function audioChoiceOf(
+    bundle: ReturnType<typeof readFiveMechanicsFixtureBundle>,
+  ) {
+    const exercise = bundle.lesson.exercises.find(
+      (candidate) => candidate.type === "audio_choice",
+    );
+    if (exercise?.type !== "audio_choice") {
+      throw new Error("Fixture audio_choice incomplète.");
+    }
+    return exercise;
+  }
+
+  it("accepte une option portant du thaï sans libellé français", async () => {
+    // Un exercice d'écoute oppose couramment des graphies entre elles.
+    const bundle = readFiveMechanicsFixtureBundle();
+    const exercise = audioChoiceOf(bundle);
+    const option = exercise.options[0];
+    if (option === undefined) throw new Error("Fixture option incomplète.");
+    option.labelFr = null;
+    option.thaiRaw = "ขา";
+    option.transcription = "khǎa";
+
+    await expect(validateBundle(bundle)).resolves.toBeUndefined();
+  });
+
+  it("refuse une option muette des deux côtés", () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const exercise = audioChoiceOf(bundle);
+    const option = exercise.options[0];
+    if (option === undefined) throw new Error("Fixture option incomplète.");
+    option.labelFr = null;
+    option.thaiRaw = null;
+
+    expect(contentBundleSchema.safeParse(bundle).success).toBe(false);
+  });
+
+  it("refuse une transcription qui ne transcrit rien", () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const exercise = audioChoiceOf(bundle);
+    const option = exercise.options[0];
+    if (option === undefined) throw new Error("Fixture option incomplète.");
+    option.transcription = "khǎa";
+
+    expect(contentBundleSchema.safeParse(bundle).success).toBe(false);
+  });
+
+  it("refuse une option thaïe non normalisée NFC", async () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const exercise = audioChoiceOf(bundle);
+    const option = exercise.options[0];
+    if (option === undefined) throw new Error("Fixture option incomplète.");
+    // Marque de ton (mai ek, classe combinatoire 107) saisie AVANT une
+    // voyelle souscrite (sara u, classe 103) : NFC les réordonne. C'est la
+    // saisie fautive la plus courante en thaï, et deux chaînes visuellement
+    // identiques ne se compareraient plus.
+    const malOrdonne = "กุ่";
+    // On affirme la prémisse : sans elle, ce test passerait pour de
+    // mauvaises raisons le jour où la chaîne choisie deviendrait stable.
+    expect(malOrdonne).not.toEqual(malOrdonne.normalize("NFC"));
+    option.thaiRaw = malOrdonne;
+
+    await expect(validateBundle(bundle)).rejects.toThrow(
+      /Option non normalisée NFC/u,
+    );
+  });
+
+  it("refuse un retour ciblé sur une option qui n'existe pas", async () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const exercise = audioChoiceOf(bundle);
+    exercise.feedback.variants = [
+      {
+        selectedOptionId: "41000000-0000-4000-8000-000000000099",
+        labelFr: "confusion bas contre descendant",
+        textFr: "Réécoutez : la voix se pose, elle ne tombe pas.",
+      },
+    ];
+
+    await expect(validateBundle(bundle)).rejects.toThrow(
+      /Retour ciblé sur une option inconnue/u,
+    );
+  });
+
+  it("accepte un retour ciblé sur un distracteur réel", async () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const exercise = audioChoiceOf(bundle);
+    const distracteur = exercise.options.find(
+      ({ id }) => id !== exercise.correctOptionId,
+    );
+    if (distracteur === undefined) {
+      throw new Error("Fixture distracteur incomplète.");
+    }
+    exercise.feedback.variants = [
+      {
+        selectedOptionId: distracteur.id,
+        labelFr: "confusion bas contre descendant",
+        textFr: "Réécoutez : la voix se pose, elle ne tombe pas.",
+      },
+    ];
+
+    await expect(validateBundle(bundle)).resolves.toBeUndefined();
+  });
+
+  it("refuse un vivier qui annonce plus de tirages qu'il n'en porte", async () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const exercise = audioChoiceOf(bundle);
+    exercise.poolId = "u01-l1a-p1";
+    exercise.drawIndex = 1;
+    bundle.lesson.pools = [
+      {
+        poolId: "u01-l1a-p1",
+        promptFr: "Quel ton entendez-vous ?",
+        mechanic: "audio_choice",
+        drawCount: 5,
+        passRequired: 4,
+        sampleSize: 5,
+      },
+    ];
+
+    await expect(validateBundle(bundle)).rejects.toThrow(
+      /annonce 5 tirages mais en porte 1/u,
+    );
+  });
+
+  it("refuse un vivier dont la mécanique contredit son tirage", async () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    const exercise = audioChoiceOf(bundle);
+    exercise.poolId = "u01-l1a-p1";
+    exercise.drawIndex = 1;
+    bundle.lesson.pools = [
+      {
+        poolId: "u01-l1a-p1",
+        promptFr: "Reliez chaque mot à sa courbe.",
+        mechanic: "association",
+        drawCount: 1,
+        passRequired: 1,
+        sampleSize: 1,
+      },
+    ];
+
+    await expect(validateBundle(bundle)).rejects.toThrow(
+      /annonce association mais .* est audio_choice/u,
+    );
+  });
+
+  it("refuse un seuil de réussite impossible à atteindre", () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    bundle.lesson.pools = [
+      {
+        poolId: "u01-l1a-p1",
+        promptFr: "Quel ton entendez-vous ?",
+        mechanic: "audio_choice",
+        drawCount: 12,
+        // On ne joue que 5 tirages : en exiger 9 rend le vivier invalidable.
+        passRequired: 9,
+        sampleSize: 5,
+      },
+    ];
+
+    expect(contentBundleSchema.safeParse(bundle).success).toBe(false);
+  });
+
+  it("refuse un tirage numéroté sans vivier", async () => {
+    const bundle = readFiveMechanicsFixtureBundle();
+    audioChoiceOf(bundle).drawIndex = 3;
+
+    await expect(validateBundle(bundle)).rejects.toThrow(/Tirage sans vivier/u);
+  });
+});
+
 describe("traçabilité de la voix synthétique", () => {
   function withVoice(
     voiceKind: "synthetic_tts" | "native_human",

@@ -124,6 +124,42 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
     }
   };
 
+  // Une option peut désormais porter du thaï. Elle passe donc la même porte
+  // NFC que les items : deux graphies visuellement identiques mais encodées
+  // différemment rendraient une comparaison de réponse imprévisible.
+  const assertOptionThai = (
+    options: readonly { id: string; thaiRaw: string | null }[],
+    exerciseId: string,
+  ): void => {
+    for (const option of options) {
+      if (option.thaiRaw === null) continue;
+      if (option.thaiRaw !== option.thaiRaw.normalize("NFC")) {
+        throw new Error(
+          `Option non normalisée NFC pour ${exerciseId} (${option.id}).`,
+        );
+      }
+    }
+  };
+
+  // Un retour ciblé qui désigne une option inexistante ne s'afficherait
+  // jamais : le contenu serait écrit, payé en relecture, et muet.
+  const assertFeedbackVariants = (
+    feedback: {
+      readonly variants: readonly { selectedOptionId: string | null }[];
+    },
+    optionIds: readonly string[],
+    exerciseId: string,
+  ): void => {
+    for (const variant of feedback.variants) {
+      if (variant.selectedOptionId === null) continue;
+      if (!optionIds.includes(variant.selectedOptionId)) {
+        throw new Error(
+          `Retour ciblé sur une option inconnue pour ${exerciseId}.`,
+        );
+      }
+    }
+  };
+
   for (const exercise of lesson.exercises) {
     assertCanonicalUuid(exercise.id, `exercice ${exercise.id}`);
     switch (exercise.type) {
@@ -133,6 +169,12 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
         assertChoiceOptions(
           exercise.options,
           exercise.correctOptionId,
+          exercise.id,
+        );
+        assertOptionThai(exercise.options, exercise.id);
+        assertFeedbackVariants(
+          exercise.feedback,
+          exercise.options.map(({ id }) => id),
           exercise.id,
         );
         break;
@@ -149,6 +191,8 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
         }
         // Deux paires sur le même item rendraient l'appariement ambigu.
         assertUnique(pairItemIds, `items des paires de ${exercise.id}`);
+        // Sans options, aucun retour ne peut cibler une option.
+        assertFeedbackVariants(exercise.feedback, [], exercise.id);
         break;
       }
       case "word_order": {
@@ -169,6 +213,7 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
             );
           }
         }
+        assertFeedbackVariants(exercise.feedback, [], exercise.id);
         break;
       }
       case "recall": {
@@ -184,6 +229,7 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
             );
           }
         }
+        assertFeedbackVariants(exercise.feedback, [], exercise.id);
         break;
       }
       case "reading": {
@@ -193,8 +239,60 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
           exercise.correctOptionId,
           exercise.id,
         );
+        assertOptionThai(exercise.options, exercise.id);
+        assertFeedbackVariants(
+          exercise.feedback,
+          exercise.options.map(({ id }) => id),
+          exercise.id,
+        );
         break;
       }
+    }
+  }
+
+  // Cohérence des viviers. Un vivier qui annonce douze tirages et n'en
+  // porte que huit ferait mentir son propre seuil de réussite, et une
+  // séance en tirerait moins que prévu sans que personne le voie.
+  const declaredPools = new Map(
+    lesson.pools.map((pool) => [pool.poolId, pool]),
+  );
+  assertUnique(
+    lesson.pools.map(({ poolId }) => poolId),
+    "viviers de la leçon",
+  );
+
+  const drawsByPool = new Map<string, string[]>();
+  for (const exercise of lesson.exercises) {
+    if (exercise.poolId === null) {
+      if (exercise.drawIndex !== null) {
+        throw new Error(`Tirage sans vivier pour ${exercise.id}.`);
+      }
+      continue;
+    }
+    const pool = declaredPools.get(exercise.poolId);
+    if (pool === undefined) {
+      throw new Error(`Vivier inconnu ${exercise.poolId} pour ${exercise.id}.`);
+    }
+    if (pool.mechanic !== exercise.type) {
+      throw new Error(
+        `Le vivier ${exercise.poolId} annonce ${pool.mechanic} mais ${exercise.id} est ${exercise.type}.`,
+      );
+    }
+    if (exercise.drawIndex === null) {
+      throw new Error(`Tirage non numéroté pour ${exercise.id}.`);
+    }
+    const draws = drawsByPool.get(exercise.poolId) ?? [];
+    draws.push(String(exercise.drawIndex));
+    drawsByPool.set(exercise.poolId, draws);
+  }
+
+  for (const pool of lesson.pools) {
+    const draws = drawsByPool.get(pool.poolId) ?? [];
+    assertUnique(draws, `tirages du vivier ${pool.poolId}`);
+    if (draws.length !== pool.drawCount) {
+      throw new Error(
+        `Le vivier ${pool.poolId} annonce ${pool.drawCount} tirages mais en porte ${draws.length}.`,
+      );
     }
   }
 
