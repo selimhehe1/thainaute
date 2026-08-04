@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 import {
   completeExpedition,
-  openExpeditionAfterOnboarding,
+  openMecaniquesFixture,
 } from "./expedition-helpers";
 
 test("termine l'expédition des cinq mécaniques", async ({ page }) => {
@@ -10,7 +10,7 @@ test("termine l'expédition des cinq mécaniques", async ({ page }) => {
   page.on("request", (request) => {
     if (request.resourceType() === "font") fontRequests.push(request.url());
   });
-  await openExpeditionAfterOnboarding(page);
+  await openMecaniquesFixture(page);
   await expect(page.getByText("Donnée fictive · non publiable")).toBeVisible();
   const thaiGlyph = page.getByLabel("Graphème thaï fictif de test");
   const loadedThaiFaces = await page.evaluate(
@@ -37,7 +37,7 @@ test("termine l'expédition des cinq mécaniques", async ({ page }) => {
 });
 
 test("enregistre, compare puis supprime une prise locale", async ({ page }) => {
-  await openExpeditionAfterOnboarding(page);
+  await openMecaniquesFixture(page);
   await completeExpedition(page);
   await page.getByRole("button", { name: "M’enregistrer" }).click();
   const stop = page.getByRole("button", { name: "Arrêter l’enregistrement" });

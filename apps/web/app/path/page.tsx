@@ -1,4 +1,4 @@
-import { readFiveMechanicsFixtureBundle } from "@thainaute/content";
+import { readUnite01Lecon1aBundle } from "@thainaute/content";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/layout/site-header";
@@ -14,7 +14,7 @@ export const metadata = {
 };
 
 export default function PathPage() {
-  const { lesson } = readFiveMechanicsFixtureBundle();
+  const { lesson } = readUnite01Lecon1aBundle();
   const exercise = lesson.exercises[0];
 
   return (

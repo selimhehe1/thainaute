@@ -405,7 +405,7 @@
       ],
       "correctOptionId": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
       "feedback": {
-        "correctFr": "Oui. {mot} ({transcription}) : {description du contour}. Votre oreille vient de faire le travail.",
+        "correctFr": "Oui. คา (khaa) : à plat au milieu (moyen). Votre oreille vient de faire le travail.",
         "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
         "variants": []
       }
@@ -453,7 +453,7 @@
       ],
       "correctOptionId": "b78d3b37-8017-5166-a2d5-58d53b271868",
       "feedback": {
-        "correctFr": "Oui. {mot} ({transcription}) : {description du contour}. Votre oreille vient de faire le travail.",
+        "correctFr": "Oui. ข่า (khàa) : posé en bas (bas). Votre oreille vient de faire le travail.",
         "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
         "variants": []
       }
@@ -501,7 +501,7 @@
       ],
       "correctOptionId": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
       "feedback": {
-        "correctFr": "Oui. {mot} ({transcription}) : {description du contour}. Votre oreille vient de faire le travail.",
+        "correctFr": "Oui. ค่า (khâa) : qui tombe (descendant). Votre oreille vient de faire le travail.",
         "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
         "variants": []
       }
@@ -549,7 +549,7 @@
       ],
       "correctOptionId": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
       "feedback": {
-        "correctFr": "Oui. {mot} ({transcription}) : {description du contour}. Votre oreille vient de faire le travail.",
+        "correctFr": "Oui. ค้า (kháa) : perché et tendu (haut). Votre oreille vient de faire le travail.",
         "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
         "variants": []
       }
@@ -597,7 +597,7 @@
       ],
       "correctOptionId": "cbac7d67-b52b-50df-ade6-4235b707324e",
       "feedback": {
-        "correctFr": "Oui. {mot} ({transcription}) : {description du contour}. Votre oreille vient de faire le travail.",
+        "correctFr": "Oui. ขา (khǎa) : qui grimpe (montant). Votre oreille vient de faire le travail.",
         "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
         "variants": []
       }

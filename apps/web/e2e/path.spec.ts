@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import {
-  completeExpedition,
+  completeLecon1a,
   openExpeditionAfterOnboarding,
 } from "./expedition-helpers";
 
@@ -51,9 +51,9 @@ test("ouvre le parcours local depuis l’accueil sans inventer de contenu", asyn
   ).toBeLessThanOrEqual(await page.evaluate(() => window.innerWidth));
 });
 
-test("reflète la clôture durable de la fixture", async ({ page }) => {
+test("reflète la clôture durable de la leçon 1A", async ({ page }) => {
   await openExpeditionAfterOnboarding(page);
-  await completeExpedition(page);
+  await completeLecon1a(page);
   await page.goto("/path");
 
   await expect(page.getByText("Expédition terminée")).toBeVisible();

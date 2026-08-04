@@ -4,8 +4,10 @@ export {
   publicationBlockerSchema,
 } from "./audit";
 export {
+  publicAudioSources,
   readFiveMechanicsFixtureBundle,
   readFixtureBundle,
+  readUnite01Lecon1aBundle,
   validateBundle,
 } from "./repository";
 export {
