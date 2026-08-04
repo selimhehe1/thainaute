@@ -137,28 +137,19 @@
   gap: 10px;
 }
 
-/* Le numéro d'étape vit dans la marge, comme un folio manuscrit. */
-.stepMark {
-  position: absolute;
-  left: -44px;
-  top: -2px;
-  width: 32px;
-  text-align: center;
-  font-family: var(--font-serif-accent);
-  font-style: italic;
-  font-size: 27px;
-  line-height: 1;
-  color: var(--color-coral);
-  font-variant-numeric: tabular-nums;
-}
+/* Le folio « 6/6 » a ete retire : marque aria-hidden, il ne portait rien
+   pour l'assistance, et repetait mot pour mot la ligne « exercice 6 sur 6 »
+   situee trente pixels plus bas. Une redondance decorative. */
 
-.stepMark small {
-  display: block;
+/* Mise en garde de brouillon : une ligne, pas un encadre. Repetee a chaque
+   ecran, une boite a message devient du papier peint que plus personne ne
+   lit, et elle repousse le cours vers le bas. */
+.draftNote {
+  margin: 0 0 4px;
   font-size: 12.5px;
+  line-height: 1.4;
   color: var(--color-ink-soft);
-  border-top: 1px solid var(--color-line);
-  padding-top: 3px;
-  margin-top: 3px;
+  letter-spacing: 0.01em;
 }
 
 .mechanicName {

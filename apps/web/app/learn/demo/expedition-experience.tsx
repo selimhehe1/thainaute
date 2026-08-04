@@ -198,19 +198,13 @@ export function ExpeditionExperience({
    * fixture, et mentirait maintenant qu'elle sert une lecon reelle.
    */
   const avertissement = useMemo(() => {
-    if (lesson.visibility === "fixture") {
-      return {
-        titre: "Donnée fictive · non publiable",
-        detail:
-          "Ces signes et ce signal valident uniquement la chaîne technique.",
-      };
-    }
+    if (lesson.visibility === "fixture") return "Donnée fictive, non publiable";
     if (lesson.workflowStatus === "published") return null;
-    return {
-      titre: "Brouillon · Revue native : en attente",
-      detail:
-        "Ce cours est écrit, sourcé et audité, mais aucun locuteur thaï natif ne l’a encore relu. La voix est synthétique et déclarée comme telle.",
-    };
+    // Le brief exige que « Revue native : en attente » soit affiche
+    // honnetement. Il n'exige pas un encadre de quatre lignes repete a
+    // chaque ecran : repetee, une mise en garde devient du papier peint que
+    // plus personne ne lit. Une ligne, discrete, qui dit les trois faits.
+    return "Brouillon · Revue native : en attente · voix synthétique";
   }, [lesson.visibility, lesson.workflowStatus]);
 
   // Le bouton d'accueil fait entendre le premier mot de la lecon, celui de
@@ -1071,6 +1065,24 @@ export function ExpeditionExperience({
   ).length;
   const onboardingCompleted = snapshot?.onboarding.status === "completed";
 
+  /**
+   * Ce que le statut a reellement a dire, ou la chaine vide.
+   *
+   * Quand tout va bien, il ne dit RIEN : une pastille verte permanente
+   * annoncant que la connexion fonctionne est du mobilier, pas de
+   * l'information.
+   */
+  const statutVisible = useMemo(() => {
+    if (stage === "loading") return "Préparation…";
+    if (stage === "error")
+      return "Vos réponses ne peuvent pas être enregistrées";
+    if (!online) return "Hors ligne · vous pouvez continuer, tout sera gardé";
+    if (pendingAttempts > 0) {
+      return `${pendingAttempts} réponse${pendingAttempts > 1 ? "s" : ""} à envoyer`;
+    }
+    return "";
+  }, [online, pendingAttempts, stage]);
+
   const sortedAssociationLabels = (
     exercise: Extract<LessonExercise, { type: "association" }>,
   ) => [...exercise.pairs].sort((a, b) => a.labelFr.localeCompare(b.labelFr));
@@ -1092,33 +1104,23 @@ export function ExpeditionExperience({
         {lesson.items[0]?.thaiRaw}
       </div>
       {avertissement !== null && (
-        <div className={styles.fixtureBanner} role="note">
-          <strong>{avertissement.titre}</strong>
-          <span>{avertissement.detail}</span>
-        </div>
+        <p className={styles.draftNote} role="note">
+          {avertissement}
+        </p>
       )}
 
+      {/* Un statut permanent est du mobilier de tableau de bord : il occupe
+          une ligne a chaque ecran pour dire que tout va bien. On ne parle
+          que lorsqu'il y a quelque chose a dire, et la pastille disparait
+          avec le texte. La region reste dans le DOM, vide, pour que
+          l'assistance annonce les changements. */}
       <div className={styles.networkStatus} aria-live="polite">
-        <span
-          className={
-            online
-              ? styles.statusDot + " " + styles.statusDotOnline
-              : styles.statusDot
-          }
-          aria-hidden="true"
-        />
-        {/* Ce que l'apprenant a besoin de savoir : ses reponses sont-elles
-            gardees, et peut-il continuer. Pas le nom de la couche technique
-            qui s'en charge. */}
-        {stage === "loading"
-          ? "Préparation…"
-          : stage === "error"
-            ? "Vos réponses ne peuvent pas être enregistrées"
-            : online
-              ? pendingAttempts > 0
-                ? `En ligne · ${pendingAttempts} réponse${pendingAttempts > 1 ? "s" : ""} à envoyer`
-                : "En ligne"
-              : "Hors ligne · vous pouvez continuer, tout sera gardé"}
+        {statutVisible !== "" && (
+          <>
+            <span className={styles.statusDot} aria-hidden="true" />
+            {statutVisible}
+          </>
+        )}
       </div>
 
       {stage === "error" && (
@@ -1258,10 +1260,6 @@ export function ExpeditionExperience({
       {stage === "card" && currentExercise !== undefined && (
         <div className={styles.body}>
           <div className={styles.expeditionProgress}>
-            <p className={styles.stepMark} aria-hidden="true">
-              {currentStep}
-              <small>{plan.length}</small>
-            </p>
             <p className={styles.mechanicName}>
               {MECHANIC_LABELS[currentExercise.type]} · exercice {currentStep}{" "}
               sur {plan.length}
