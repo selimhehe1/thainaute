@@ -28,6 +28,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { graphiesFabriquees } from "../src/anti-fabrication";
 import { itemSchema } from "../src/schemas";
 
 // Modules JavaScript partagés avec scripts/verification, typés par les
@@ -221,6 +222,7 @@ export function compilerItem(
 
 export function compilerLecon(chemin: string) {
   const lecon = analyserLecon(chemin);
+  const source = readFileSync(chemin, "utf8");
   const identifiant: string =
     lecon.meta.identifiant ?? relative(RACINE, chemin);
   const version: string = TRANSCRIPTION_VERSION;
@@ -229,8 +231,25 @@ export function compilerLecon(chemin: string) {
   const refuses: Refus[] = [];
   for (const item of lecon.items) {
     const resultat = compilerItem(item, identifiant, version);
-    if (resultat.ok) compiles.push(resultat.item);
-    else refuses.push(resultat);
+    if (!resultat.ok) {
+      refuses.push(resultat);
+      continue;
+    }
+    // Defense en profondeur. Cette compilation-ci derive deja chaque champ
+    // d'un champ ecrit, donc la porte ne devrait rien trouver. C'est
+    // precisement pour cela qu'on la passe : le jour ou un chemin
+    // d'assistance sera ajoute, la garantie sera deja en place et non a
+    // ajouter dans l'urgence.
+    const fabriquees = graphiesFabriquees(resultat.item, source);
+    if (fabriquees.length > 0) {
+      refuses.push({
+        ok: false,
+        titre: item.titre,
+        motif: `graphie absente de la source : ${fabriquees[0]?.valeur}`,
+      });
+      continue;
+    }
+    compiles.push(resultat.item);
   }
   return { identifiant, version, compiles, refuses };
 }

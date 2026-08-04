@@ -9,6 +9,11 @@ export {
   validateBundle,
 } from "./repository";
 export {
+  assertAucuneFabrication,
+  graphiesFabriquees,
+  type GraphieFabriquee,
+} from "./anti-fabrication";
+export {
   auditDimensionSchema,
   auditStatusSchema,
   contentBundleSchema,
