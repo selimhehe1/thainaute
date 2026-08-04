@@ -96,7 +96,7 @@ const syllableSchema = z
   })
   .strict();
 
-const itemSchema = z
+export const itemSchema = z
   .object({
     id: identifier,
     thaiRaw: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),

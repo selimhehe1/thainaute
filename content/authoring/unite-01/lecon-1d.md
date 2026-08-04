@@ -2,7 +2,7 @@
 
 ## Méta
 
-- Identifiant : `u01-1d`
+- Identifiant : `u01-l1d`
 - Titre français : Montant contre haut
 - Objectif observable : à l'écoute d'un mot isolé parmi les dix mots de la
   leçon, dit à voix normale, l'apprenant identifie le ton montant ou le ton
@@ -62,7 +62,7 @@ leçon 1A.
 
 - `thai` : หมา
 - `codepoints` : U+0E2B U+0E21 U+0E32
-- `ipa` : /mǎː/
+- `ipa` : /maː˩˩˦/
 - `ton` : montant
 - `longueur` : longue
 - `fr` : chien
@@ -83,7 +83,7 @@ leçon 1A.
 
 - `thai` : ม้า
 - `codepoints` : U+0E21 U+0E49 U+0E32
-- `ipa` : /máː/
+- `ipa` : /maː˦˥/
 - `ton` : haut
 - `longueur` : longue
 - `fr` : cheval
@@ -101,7 +101,7 @@ leçon 1A.
 
 - `thai` : ขา
 - `codepoints` : U+0E02 U+0E32
-- `ipa` : /kʰǎː/
+- `ipa` : /kʰaː˩˩˦/
 - `ton` : montant
 - `longueur` : longue
 - `fr` : jambe
@@ -119,7 +119,7 @@ leçon 1A.
 
 - `thai` : ค้า
 - `codepoints` : U+0E04 U+0E49 U+0E32
-- `ipa` : /kʰáː/
+- `ipa` : /kʰaː˦˥/
 - `ton` : haut
 - `longueur` : longue
 - `fr` : faire commerce, vendre
@@ -139,7 +139,7 @@ leçon 1A.
 
 - `thai` : หนา
 - `codepoints` : U+0E2B U+0E19 U+0E32
-- `ipa` : /nǎː/
+- `ipa` : /naː˩˩˦/
 - `ton` : montant
 - `longueur` : longue
 - `fr` : épais, épaisse
@@ -157,7 +157,7 @@ leçon 1A.
 
 - `thai` : น้า
 - `codepoints` : U+0E19 U+0E49 U+0E32
-- `ipa` : /náː/
+- `ipa` : /naː˦˥/
 - `ton` : haut
 - `longueur` : longue
 - `fr` : oncle ou tante plus jeune que votre mère (côté maternel)
@@ -175,7 +175,7 @@ leçon 1A.
 
 - `thai` : หนี
 - `codepoints` : U+0E2B U+0E19 U+0E35
-- `ipa` : /nǐː/
+- `ipa` : /niː˩˩˦/
 - `ton` : montant
 - `longueur` : longue
 - `fr` : fuir, s'échapper
@@ -193,7 +193,7 @@ leçon 1A.
 
 - `thai` : นี้
 - `codepoints` : U+0E19 U+0E35 U+0E49
-- `ipa` : /níː/
+- `ipa` : /niː˦˥/
 - `ton` : haut
 - `longueur` : longue
 - `fr` : ce, cette (démonstratif)
@@ -211,7 +211,7 @@ leçon 1A.
 
 - `thai` : ไหม
 - `codepoints` : U+0E44 U+0E2B U+0E21
-- `ipa` : /mǎj/
+- `ipa` : /maj˩˩˦/
 - `ton` : montant
 - `longueur` : courte
 - `fr` : la soie
@@ -233,7 +233,7 @@ leçon 1A.
 
 - `thai` : ไม้
 - `codepoints` : U+0E44 U+0E21 U+0E49
-- `ipa` : /máːj/
+- `ipa` : /maːj˦˥/
 - `ton` : haut
 - `longueur` : longue
 - `fr` : le bois, l'arbre, la plante

@@ -15,7 +15,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "content:validate": "tsx src/cli.ts validate",
-    "content:audit": "tsx src/cli.ts audit"
+    "content:audit": "tsx src/cli.ts audit",
+    "content:compile": "tsx scripts/compile-items.ts"
   },
   "dependencies": {
     "zod": "4.4.3"
