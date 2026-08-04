@@ -30,6 +30,29 @@ export async function openMecaniquesFixture(page: Page): Promise<void> {
   await page.goto("/learn/mecaniques");
 }
 
+/**
+ * Lit le cours jusqu'a sa derniere page.
+ *
+ * Le bouton de depart n'apparait qu'une fois le cours lu : c'est la
+ * sequence « enseignement PUIS pratique » du brief. Sans elle, la premiere
+ * question demandait de distinguer cinq contours tonaux a quelqu'un qui
+ * n'avait jamais entendu de thai.
+ */
+export async function lireLeCours(page: Page): Promise<void> {
+  const suivant = page.getByRole("button", { name: "Page suivante" });
+  const depart = page.getByRole("button", { name: "Commencer l’expédition" });
+  // On attend que l'ecran d'accueil soit rendu : sans cela, on constate
+  // qu'il n'y a pas de bouton « Page suivante » avant meme qu'il existe, et
+  // on sort du cours sans l'avoir lu.
+  await expect(suivant.or(depart).first()).toBeVisible();
+  // Borne haute : le schema plafonne une lecon a 40 pages.
+  for (let garde = 0; garde < 40; garde += 1) {
+    if ((await suivant.count()) === 0) return;
+    await suivant.click();
+  }
+  throw new Error("Le cours ne se termine jamais.");
+}
+
 /** Les cinq tirages d'ecoute de la lecon 1A, dans l'ordre du vivier. */
 const TIRAGES_1A = [
   { mot: "คา", transcription: "khaa", reponse: "à plat au milieu (moyen)" },
@@ -41,6 +64,7 @@ const TIRAGES_1A = [
 
 /** Termine la lecon reelle de l'unite 1 : cinq ecoutes puis une association. */
 export async function completeLecon1a(page: Page): Promise<void> {
+  await lireLeCours(page);
   await page.getByRole("button", { name: "Commencer l’expédition" }).click();
 
   for (const [index, tirage] of TIRAGES_1A.entries()) {

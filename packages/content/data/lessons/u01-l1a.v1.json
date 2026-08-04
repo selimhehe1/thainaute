@@ -643,6 +643,44 @@
       }
     }
   ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "la hauteur fait le mot",
+      "bodyFr": "En français, la mélodie de la voix exprime une attitude : la surprise, le doute, la question. Le mot, lui, ne change pas. En thaï, la mélodie fait partie du mot : la même syllabe, dite plus haut, plus bas ou en mouvement, devient un autre mot. Aujourd'hui, vous n'apprenez rien par cœur : vous écoutez.",
+      "specimen": "ค่า ≠ ค้า"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "cinq mots dans une seule syllabe",
+      "bodyFr": "Voici la série la plus célèbre du thaï : cinq vrais mots, tous construits sur la même syllabe « khaa ». Seul le ton change, et avec lui le sens : rester coincé, le galanga, la valeur, vendre, la jambe. Inutile de retenir ces sens aujourd'hui ; la série sert uniquement d'échelle pour votre oreille.",
+      "specimen": "คา ข่า ค่า ค้า ขา"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "les cinq contours, avec des images",
+      "bodyFr": "Le ton moyen reste à plat, au milieu de la voix. Le ton bas se pose en bas et n'en bouge plus. Le ton descendant tombe franchement, comme un « voilà » définitif. Le ton haut reste perché et se tend encore vers le haut, tandis que le ton montant part du bas et grimpe, comme notre « ah oui ? ».",
+      "specimen": "khaa · khàa · khâa · kháa · khǎa"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "lire nos transcriptions",
+      "bodyFr": "Sous chaque mot thaï, Thaïnaute affiche une transcription pensée pour un œil français. Les accents y notent le ton, jamais autre chose : rien pour le moyen (khaa), accent grave pour le bas (khàa), circonflexe pour le descendant (khâa), aigu pour le haut (kháa), et un petit v pointé vers le bas, le caron, pour le montant (khǎa). Vous verrez aussi « aw » : il se lit comme le o ouvert de « sort ».",
+      "specimen": "khâa (ค่า)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "imiter sans pression",
+      "bodyFr": "Maintenant, fredonnez chaque contour après l'audio, bouche fermée si vous préférez, en dessinant la courbe avec le doigt. Personne n'écoute, rien n'est noté, aucun micro ne s'allume : c'est un échauffement, pas un examen. Votre oreille progresse même quand votre imitation est approximative.",
+      "specimen": "ขา (khǎa)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "neuf lettres à reconnaître",
+      "bodyFr": "L'écriture thaïe arrive dès aujourd'hui, car c'est elle qui, bientôt, vous dira le ton d'un mot. Voici les 9 consonnes dites moyennes, chacune récitée avec son mot-image traditionnel, comme notre « B de Bateau ». Votre seule mission : les reconnaître à vue et à l'oreille, sans les écrire.",
+      "specimen": "ก จ ฎ ฏ ด ต บ ป อ"
+    }
+  ],
   "pools": [
     {
       "poolId": "u01-l1a-p1",

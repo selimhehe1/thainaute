@@ -152,6 +152,56 @@
   letter-spacing: 0.01em;
 }
 
+/* Le cours, avant les exercices. Il occupe la place d'une page de carnet :
+   une idee par ecran, le specimen en grand, et rien d'autre. */
+.cours {
+  margin: 18px 0 4px;
+  padding: 20px 22px 18px;
+  border-left: 3px solid var(--color-coral);
+  background: var(--color-jasmine);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.coursRang {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.coursTitre {
+  margin: 0 0 10px;
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.coursTexte {
+  margin: 0 0 10px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  max-width: 58ch;
+}
+
+/* Le specimen est ce que la page donne a VOIR : il domine le texte qui
+   l'explique, et respire assez pour que les signes combinatoires thais ne
+   soient jamais rognes. */
+.coursSpecimen {
+  margin: 14px 0 4px;
+  font-family: var(--font-thai);
+  font-size: 34px;
+  line-height: 1.7;
+  color: var(--color-ink);
+}
+
+.coursNav {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
 .mechanicName {
   font-family: var(--font-serif-accent);
   font-style: italic;
