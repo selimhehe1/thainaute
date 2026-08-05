@@ -291,7 +291,12 @@ function monterBloc(
   }
 
   // Écoute : un tirage par exercice, tous rattachés au même vivier.
-  const optionIds = extrait.libelles.map((_: string, index: number) =>
+  //
+  // Les options sont tantôt fixes pour tout le bloc, tantôt propres à chaque
+  // tirage : une leçon de paires minimales change de paire à chaque écoute.
+  // Les identifiants du cas partagé sont conservés tels quels, pour que la
+  // compilation des leçons déjà écrites reste octet pour octet identique.
+  const optionIdsPartages = extrait.libelles.map((_: string, index: number) =>
     uuidStable("option", identifiant, poolId, String(index)),
   );
   pools.push({
@@ -304,7 +309,21 @@ function monterBloc(
   });
   for (const tirage of extrait.tirages) {
     const item = items.find((candidat) => candidat.id === tirage.itemId);
-    const libelleCorrect = extrait.libelles[tirage.indiceCorrect] ?? "";
+    const libellesTirage = (tirage as { libelles?: string[] }).libelles;
+    const libelles = libellesTirage ?? extrait.libelles;
+    const optionIds =
+      libellesTirage === undefined
+        ? optionIdsPartages
+        : libellesTirage.map((_: string, index: number) =>
+            uuidStable(
+              "option",
+              identifiant,
+              poolId,
+              `t${tirage.rang}`,
+              String(index),
+            ),
+          );
+    const libelleCorrect = libelles[tirage.indiceCorrect] ?? "";
     // Marqueurs derivables de l'exercice. Ceux qui ne le sont pas restent
     // non resolus et font ecarter le bloc, plutot que d'afficher des
     // accolades a l'apprenant.
@@ -322,7 +341,9 @@ function monterBloc(
     const feedback = {
       correctFr: remplirGabarit(extrait.feedback.correctFr, valeurs, ou),
       incorrectFr: remplirGabarit(extrait.feedback.incorrectFr, valeurs, ou),
-      variants: [],
+      // Les retours qualifiés écrits par la leçon (« Feedback incorrect,
+      // accent absent ») étaient jetés ici, alors que le schéma les porte.
+      variants: extrait.feedback.variants ?? [],
     };
     exercises.push({
       poolId,
@@ -333,7 +354,7 @@ function monterBloc(
       skill: "listening",
       audioAssetId: uuidStable("audio", identifiant, tirage.itemId),
       promptFr: extrait.consigne,
-      options: extrait.libelles.map((libelle: string, index: number) => ({
+      options: libelles.map((libelle: string, index: number) => ({
         id: optionIds[index],
         labelFr: libelle.slice(0, 120),
         thaiRaw: null,

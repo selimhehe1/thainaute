@@ -15,10 +15,7 @@
     {
       "id": "dc3e3565-fa17-5173-9e45-85219d0a8608",
       "thaiRaw": "คา",
-      "unicodeCodePoints": [
-        "U+0E04",
-        "U+0E32"
-      ],
+      "unicodeCodePoints": ["U+0E04", "U+0E32"],
       "translationFr": "rester coincé, être pris (aussi : herbe à toits de chaume)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -35,20 +32,12 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": [
-        "VOLUBILIS-26-2",
-        "WIKTIONARY-EN",
-        "WIKTIONARY-TH"
-      ]
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
     },
     {
       "id": "f6d47faa-3143-51be-99b0-3a1ac9e2ebd2",
       "thaiRaw": "ข่า",
-      "unicodeCodePoints": [
-        "U+0E02",
-        "U+0E48",
-        "U+0E32"
-      ],
+      "unicodeCodePoints": ["U+0E02", "U+0E48", "U+0E32"],
       "translationFr": "galanga (rhizome parfumé de la cuisine thaïe)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -65,20 +54,12 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": [
-        "VOLUBILIS-26-2",
-        "WIKTIONARY-EN",
-        "WIKTIONARY-TH"
-      ]
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
     },
     {
       "id": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
       "thaiRaw": "ค่า",
-      "unicodeCodePoints": [
-        "U+0E04",
-        "U+0E48",
-        "U+0E32"
-      ],
+      "unicodeCodePoints": ["U+0E04", "U+0E48", "U+0E32"],
       "translationFr": "valeur, prix",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -95,20 +76,12 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": [
-        "VOLUBILIS-26-2",
-        "WIKTIONARY-EN",
-        "WIKTIONARY-TH"
-      ]
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
     },
     {
       "id": "e0c580b2-d255-5600-9148-11a48d633edc",
       "thaiRaw": "ค้า",
-      "unicodeCodePoints": [
-        "U+0E04",
-        "U+0E49",
-        "U+0E32"
-      ],
+      "unicodeCodePoints": ["U+0E04", "U+0E49", "U+0E32"],
       "translationFr": "faire commerce, vendre",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -125,19 +98,12 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": [
-        "VOLUBILIS-26-2",
-        "WIKTIONARY-EN",
-        "WIKTIONARY-TH"
-      ]
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
     },
     {
       "id": "993d6ffe-7775-5980-8548-7671ec1150fa",
       "thaiRaw": "ขา",
-      "unicodeCodePoints": [
-        "U+0E02",
-        "U+0E32"
-      ],
+      "unicodeCodePoints": ["U+0E02", "U+0E32"],
       "translationFr": "jambe",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -154,18 +120,12 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": [
-        "VOLUBILIS-26-2",
-        "WIKTIONARY-EN",
-        "WIKTIONARY-TH"
-      ]
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
     },
     {
       "id": "58f548c5-df8e-5e1e-a1a9-afdf2788c358",
       "thaiRaw": "ก",
-      "unicodeCodePoints": [
-        "U+0E01"
-      ],
+      "unicodeCodePoints": ["U+0E01"],
       "translationFr": "lettre « k » ; nom traditionnel ก ไก่, le k de la poule",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -192,9 +152,7 @@
     {
       "id": "0e777840-a7e1-5ca4-befe-c058a98b9470",
       "thaiRaw": "จ",
-      "unicodeCodePoints": [
-        "U+0E08"
-      ],
+      "unicodeCodePoints": ["U+0E08"],
       "translationFr": "lettre « j » de Thaïnaute ; nom traditionnel จ จาน, le j de l'assiette",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -221,9 +179,7 @@
     {
       "id": "5839515f-513e-589b-86f5-08727c2171d9",
       "thaiRaw": "ฎ",
-      "unicodeCodePoints": [
-        "U+0E0E"
-      ],
+      "unicodeCodePoints": ["U+0E0E"],
       "translationFr": "lettre « d » rare ; nom traditionnel ฎ ชฎา, le d de la coiffe de danse",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -250,9 +206,7 @@
     {
       "id": "0e05740b-8a89-55ea-9b3a-b1850875a22b",
       "thaiRaw": "ฏ",
-      "unicodeCodePoints": [
-        "U+0E0F"
-      ],
+      "unicodeCodePoints": ["U+0E0F"],
       "translationFr": "lettre « t » rare ; nom traditionnel ฏ ปฏัก, le t de l'aiguillon",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -279,9 +233,7 @@
     {
       "id": "fd12720d-a0f2-5cf4-9516-a4d65327bf08",
       "thaiRaw": "ด",
-      "unicodeCodePoints": [
-        "U+0E14"
-      ],
+      "unicodeCodePoints": ["U+0E14"],
       "translationFr": "lettre « d » ; nom traditionnel ด เด็ก, le d de l'enfant",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -308,9 +260,7 @@
     {
       "id": "b0843524-a422-5d1b-9f76-ef9fce3f5e96",
       "thaiRaw": "ต",
-      "unicodeCodePoints": [
-        "U+0E15"
-      ],
+      "unicodeCodePoints": ["U+0E15"],
       "translationFr": "lettre « t » ; nom traditionnel ต เต่า, le t de la tortue",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -337,9 +287,7 @@
     {
       "id": "270125a4-e3e9-5801-9e84-12826d7d43b5",
       "thaiRaw": "บ",
-      "unicodeCodePoints": [
-        "U+0E1A"
-      ],
+      "unicodeCodePoints": ["U+0E1A"],
       "translationFr": "lettre « b » ; nom traditionnel บ ใบไม้, le b de la feuille",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -366,9 +314,7 @@
     {
       "id": "d4865b6e-e13c-51fd-bc8c-c3f28d36b2e6",
       "thaiRaw": "ป",
-      "unicodeCodePoints": [
-        "U+0E1B"
-      ],
+      "unicodeCodePoints": ["U+0E1B"],
       "translationFr": "lettre « p » ; nom traditionnel ป ปลา, le p du poisson",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -395,9 +341,7 @@
     {
       "id": "34e8ac1d-f1cd-5a67-afd2-aa6cfff209d1",
       "thaiRaw": "อ",
-      "unicodeCodePoints": [
-        "U+0E2D"
-      ],
+      "unicodeCodePoints": ["U+0E2D"],
       "translationFr": "lettre muette de départ ; nom traditionnel อ อ่าง, le o de la bassine",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -414,11 +358,7 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": [
-        "VOLUBILIS-26-2",
-        "WIKTIONARY-EN",
-        "WIKTIONARY-TH"
-      ]
+      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
     }
   ],
   "exercises": [

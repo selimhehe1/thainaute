@@ -55,6 +55,47 @@ export function champ(bloc, nom) {
   return trouve ? trouve[1].replace(/\s+/gu, " ").trim() : undefined;
 }
 
+/**
+ * Tous les champs dont l'étiquette COMMENCE par `prefixe`, avec ce qui
+ * suit le préfixe conservé comme qualificatif.
+ *
+ * PIÈGE MESURÉ : `champ()` ne lit qu'une étiquette exacte. Or le corpus
+ * qualifie massivement ses étiquettes par une virgule :
+ *
+ *     - Feedback incorrect, accent absent : « … »
+ *     - Feedback correct, tirages 1 et 2 : « … »
+ *     - Consigne générale : « … »
+ *
+ * Sur les 297 blocs d'exercices du corpus, 283 déclarent une mécanique mais
+ * seulement 124 portent un « Feedback incorrect » nu. Les autres écrivent
+ * un ou plusieurs retours qualifiés, que l'extraction ne voyait pas : 153
+ * blocs étaient refusés pour « feedback absent » alors que la leçon en
+ * contenait plusieurs, et 35 pour « consigne absente ».
+ *
+ * Rend un tableau dans l'ordre d'écriture, vide si rien ne correspond. Le
+ * qualificatif est rendu brut, appel à l'appelant de le nettoyer.
+ */
+export function champsPrefixes(bloc, prefixe) {
+  const re = new RegExp(
+    "(?:^|\\n)[-*] ?`?" +
+      prefixe +
+      "([^`:\\n]*)" +
+      QUALIFICATIF +
+      " ?([\\s\\S]*?)(?=" +
+      PROCHAIN_CHAMP +
+      "|\\n#|\\n\\n|$)",
+    "gu",
+  );
+  const trouves = [];
+  for (const m of String(bloc).matchAll(re)) {
+    trouves.push({
+      qualificatif: m[1].replace(/\s+/gu, " ").trim(),
+      valeur: m[2].replace(/\s+/gu, " ").trim(),
+    });
+  }
+  return trouves;
+}
+
 /** Séquence de points de code d'une graphie, en NFC. */
 export function sequencePointsDeCode(graphie) {
   return [...graphie.normalize("NFC")]

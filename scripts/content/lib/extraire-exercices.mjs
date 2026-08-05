@@ -12,7 +12,7 @@
 // plutôt que de l'approcher. La porte anti-fabrication reste branchée
 // derrière, pour le jour où un chemin assisté couvrira les irréguliers.
 
-import { champ } from "./parse-authoring.mjs";
+import { champ, champsPrefixes } from "./parse-authoring.mjs";
 import { extraireReading } from "./extraire-reading.mjs";
 import { extraireRecall } from "./extraire-recall.mjs";
 import { extraireWordOrder } from "./extraire-word-order.mjs";
@@ -23,14 +23,43 @@ const LIGNE_TIRAGE = /^\s*(\d+)\.\s+(.+?)\s*$/u;
 const ENTRE_GUILLEMETS = /«\s*([^»]+?)\s*»/gu;
 /** Suite thaïe. */
 const THAI = /[฀-๿]+/gu;
+/** Idem, sans le drapeau global : pour un `match` ponctuel. */
+const THAI_UNE = /[฀-๿]+/u;
+/** Plafond du schéma : `CONTENT_SCHEMA_LIMITS.feedbackVariantsPerExercise`. */
+const LIMITE_VARIANTES = 8;
 
+/**
+ * Les tirages numérotés d'un bloc, lignes repliées recollées.
+ *
+ * PIÈGE MESURÉ : le corpus est enveloppé à 72 colonnes, et un tirage tient
+ * très souvent sur deux ou trois lignes physiques :
+ *
+ *     1. Audio ข้าว, options เข้า (khâo, entrer) / ข้าว (khâao, riz) :
+ *        réponse ข้าว.
+ *
+ * En ne lisant que la première ligne, l'extraction perdait la réponse, puis
+ * refusait le bloc pour « réponse illisible » ou « options non lisibles ».
+ * La faute n'était pas dans les motifs mais en amont, dans le découpage.
+ *
+ * Une continuation est une ligne indentée qui n'ouvre pas un nouveau
+ * tirage. Une puce non indentée referme le tirage : c'est le champ suivant.
+ */
 function lignesTirage(corps) {
   const sortie = [];
+  let courant = null;
   for (const ligne of corps.split("\n")) {
     const trouve = ligne.match(LIGNE_TIRAGE);
     if (trouve !== null) {
-      sortie.push({ rang: Number(trouve[1]), texte: trouve[2] });
+      courant = { rang: Number(trouve[1]), texte: trouve[2] };
+      sortie.push(courant);
+      continue;
     }
+    if (courant === null) continue;
+    if (ligne.trim() === "" || !/^\s/u.test(ligne)) {
+      courant = null;
+      continue;
+    }
+    courant.texte = `${courant.texte} ${ligne.trim()}`;
   }
   return sortie;
 }
@@ -46,25 +75,92 @@ function optionsDeclarees(corps) {
   return libelles.length >= 2 ? libelles : null;
 }
 
-function feedbackDuBloc(corps) {
-  const lire = (nom) => {
-    const brut = champ(corps, nom);
-    if (brut === undefined) return null;
-    // Le texte utile est entre guillemets quand il y en a ; sinon la ligne.
-    const cite = brut.match(/«\s*([^»]+?)\s*»/u);
-    return (cite?.[1] ?? brut).trim().slice(0, 280);
-  };
-  const correctFr = lire("Feedback correct");
-  const incorrectFr = lire("Feedback incorrect");
-  if (correctFr === null || incorrectFr === null) return null;
-  return { correctFr, incorrectFr, variants: [] };
-}
-
-function consigneDuBloc(corps) {
-  const brut = champ(corps, "Consigne");
-  if (brut === undefined) return null;
+/** Le texte utile est entre guillemets quand il y en a ; sinon la ligne. */
+function texteUtile(brut) {
   const cite = brut.match(/«\s*([^»]+?)\s*»/u);
   return (cite?.[1] ?? brut).trim().slice(0, 280);
+}
+
+/** Un qualificatif d'étiquette, débarrassé de sa virgule d'attache. */
+function qualificatifLisible(brut) {
+  return brut.replace(/^[,\s]+/u, "").trim();
+}
+
+/**
+ * Retours pédagogiques d'un bloc, retours qualifiés compris.
+ *
+ * PIÈGE MESURÉ : le corpus écrit couramment plusieurs retours par bloc,
+ * indexés par tirage (« Feedback correct, tirage 4 ») ou par type d'erreur
+ * (« Feedback incorrect, accent absent »). L'ancien détecteur n'acceptait
+ * que l'étiquette nue, et refusait donc 153 blocs pour « feedback absent »
+ * alors que la leçon en contenait plusieurs.
+ *
+ * Le retour principal est celui qui ne porte pas de qualificatif ; à défaut,
+ * le premier écrit. Les autres partent en variantes, que
+ * `feedbackVariantSchema` sait porter depuis ADR-0026 : son champ `labelFr`
+ * y est décrit comme « condition lisible, reprise du markdown source », et
+ * `selectedOptionId` y est nullable.
+ *
+ * Un bloc reste refusé s'il n'a AUCUN retour correct ou AUCUN retour
+ * incorrect : le contrat de leçon du brief exige une correction
+ * explicative, et l'inventer serait pire que refuser le bloc.
+ */
+function feedbackDuBloc(corps) {
+  const collecte = (prefixe) =>
+    champsPrefixes(corps, prefixe)
+      .map((c) => ({
+        qualificatif: qualificatifLisible(c.qualificatif),
+        texte: texteUtile(c.valeur),
+      }))
+      .filter((c) => c.texte !== "");
+
+  const corrects = collecte("Feedback correct");
+  const incorrects = collecte("Feedback incorrect");
+  if (corrects.length === 0 || incorrects.length === 0) return null;
+
+  const principal = (liste) =>
+    liste.find((c) => c.qualificatif === "") ?? liste[0];
+  const cPrincipal = principal(corrects);
+  const iPrincipal = principal(incorrects);
+
+  // L'étiquette de la variante dit de quel côté elle tombe : sans ça, un
+  // « tirage 4 » ne permettrait pas de savoir s'il récompense ou corrige.
+  const variantes = [];
+  for (const [cote, liste, retenu] of [
+    ["correct", corrects, cPrincipal],
+    ["incorrect", incorrects, iPrincipal],
+  ]) {
+    for (const candidat of liste) {
+      if (candidat === retenu || candidat.qualificatif === "") continue;
+      variantes.push({
+        selectedOptionId: null,
+        labelFr: `${cote}, ${candidat.qualificatif}`.slice(0, 120),
+        textFr: candidat.texte,
+      });
+    }
+  }
+
+  return {
+    correctFr: cPrincipal.texte,
+    incorrectFr: iPrincipal.texte,
+    variants: variantes.slice(0, LIMITE_VARIANTES),
+  };
+}
+
+/**
+ * Consigne d'un bloc, qualificatif toléré.
+ *
+ * Le corpus écrit tantôt « Consigne », tantôt « Consigne générale », tantôt
+ * « Consigne (tirages 1 à 6) ». Les trois disent la même chose à
+ * l'apprenant, et seule la première était lue.
+ */
+function consigneDuBloc(corps) {
+  const trouves = champsPrefixes(corps, "Consigne").filter(
+    (c) => c.valeur.trim() !== "",
+  );
+  if (trouves.length === 0) return null;
+  const retenu = trouves.find((c) => c.qualificatif === "") ?? trouves[0];
+  return texteUtile(retenu.valeur);
 }
 
 /**
@@ -167,6 +263,51 @@ function extraireEcoute(bloc, resoudreItem) {
 }
 
 /** Variante ou chaque tirage porte ses propres options et sa reponse. */
+/**
+ * Tirage écrit sous forme de PAIRE MINIMALE, la plus répandue du corpus :
+ *
+ *   « 1. Audio ข้าว, options เข้า (khâo, entrer) / ข้าว (khâao, riz) :
+ *      réponse ข้าว. »
+ *   « 1. Audio พา ; options ปา (paa, lancer) / พา (phaa, emmener) :
+ *      réponse พา. »
+ *
+ * Elle échappait à l'ancien chemin pour deux raisons cumulées : son mot
+ * « options » est en minuscules et n'est pas suivi d'un point avant
+ * « réponse », et surtout la ligne porte QUATRE graphies thaïes là où le
+ * chemin d'origine en exigeait exactement une.
+ *
+ * Ici, chaque tirage porte ses propres options : dans une leçon de paires
+ * minimales, la paire change à chaque écoute. La bonne réponse est
+ * désignée par sa graphie, qu'on retrouve dans l'un des deux libellés.
+ */
+function tirageEnPaireMinimale(texte) {
+  const audio = texte.match(/Audio\s+([฀-๿]+)/u)?.[1];
+  if (audio === undefined) return null;
+
+  const segment = texte.match(
+    /\boptions?\s*:?\s*(.+?)\s*:\s*r[ée]ponse\s*:?\s*(.+?)\s*\.?\s*$/iu,
+  );
+  if (segment === null) return null;
+
+  const libelles = segment[1]
+    .split(/\s*\/\s*/u)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  if (libelles.length < 2) return null;
+
+  // La réponse est citée par sa graphie ; on la relie au libellé qui la
+  // porte, plutôt que par une comparaison de chaînes entières qui échouerait
+  // sur la glose entre parenthèses.
+  const graphieReponse = segment[2].match(THAI_UNE)?.[0];
+  if (graphieReponse === undefined) return null;
+  const indiceCorrect = libelles.findIndex(
+    (libelle) => libelle.match(THAI_UNE)?.[0] === graphieReponse,
+  );
+  if (indiceCorrect < 0) return null;
+
+  return { graphieAudio: audio, libelles, indiceCorrect };
+}
+
 function extraireEcouteParTirage(bloc, resoudreItem) {
   const lignes = lignesTirage(bloc.corps);
   if (lignes.length === 0) {
@@ -174,40 +315,56 @@ function extraireEcouteParTirage(bloc, resoudreItem) {
   }
 
   let reference = null;
+  let optionsVarient = false;
   const tirages = [];
   for (const { rang, texte } of lignes) {
-    const libelles = optionsDuTirage(texte);
-    if (libelles === null) {
-      return { erreur: `tirage ${rang} : options du tirage non lisibles` };
+    const paire = tirageEnPaireMinimale(texte);
+
+    let libelles;
+    let indice;
+    let graphieAudio;
+
+    if (paire !== null) {
+      ({ libelles, indiceCorrect: indice, graphieAudio } = paire);
+    } else {
+      libelles = optionsDuTirage(texte);
+      if (libelles === null) {
+        return { erreur: `tirage ${rang} : options du tirage non lisibles` };
+      }
+      const reponse = texte.match(/R[ée]ponse\s*:\s*([^.;]+)/u)?.[1]?.trim();
+      if (reponse === undefined) {
+        return { erreur: `tirage ${rang} : réponse illisible` };
+      }
+      indice = libelles.findIndex((libelle) => libelle === reponse);
+      if (indice < 0) {
+        return {
+          erreur: `tirage ${rang} : réponse « ${reponse} » hors options`,
+        };
+      }
+      const graphies = [...texte.matchAll(THAI)].map((trouve) => trouve[0]);
+      if (graphies.length !== 1) {
+        return { erreur: `tirage ${rang} : ${graphies.length} graphies` };
+      }
+      graphieAudio = graphies[0];
     }
-    // Le schema porte les options par exercice ; on exige donc qu'elles
-    // soient les memes d'un tirage a l'autre, plutot que d'en perdre en
-    // silence.
+
     if (reference === null) reference = libelles;
-    else if (reference.join("|") !== libelles.join("|")) {
-      return { erreur: `tirage ${rang} : options différentes des précédentes` };
-    }
+    else if (reference.join("|") !== libelles.join("|")) optionsVarient = true;
 
-    const reponse = texte.match(/R[ée]ponse\s*:\s*([^.;]+)/u)?.[1]?.trim();
-    if (reponse === undefined) {
-      return { erreur: `tirage ${rang} : réponse illisible` };
-    }
-    const indice = libelles.findIndex((libelle) => libelle === reponse);
-    if (indice < 0) {
-      return { erreur: `tirage ${rang} : réponse « ${reponse} » hors options` };
-    }
-
-    const graphies = [...texte.matchAll(THAI)].map((trouve) => trouve[0]);
-    if (graphies.length !== 1) {
-      return { erreur: `tirage ${rang} : ${graphies.length} graphies` };
-    }
-    const itemId = resoudreItem(graphies[0]);
+    const itemId = resoudreItem(graphieAudio);
     if (itemId === null) {
       return {
-        erreur: `tirage ${rang} : item introuvable pour ${graphies[0]}`,
+        erreur: `tirage ${rang} : item introuvable pour ${graphieAudio}`,
       };
     }
-    tirages.push({ rang, itemId, indiceCorrect: indice });
+    tirages.push({ rang, itemId, indiceCorrect: indice, libelles });
+  }
+
+  // Quand les options ne bougent pas, on ne les répète pas par tirage : la
+  // compilation conserve alors ses identifiants d'option historiques, et la
+  // sortie des leçons déjà écrites reste octet pour octet identique.
+  if (!optionsVarient) {
+    for (const tirage of tirages) delete tirage.libelles;
   }
   return { libelles: reference, tirages };
 }

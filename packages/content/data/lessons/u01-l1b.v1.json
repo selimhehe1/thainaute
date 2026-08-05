@@ -235,6 +235,126 @@
   ],
   "exercises": [
     {
+      "poolId": "u01-l1b-p2",
+      "drawIndex": 1,
+      "id": "8d1b1712-1194-55f4-bac4-949f0eb71d7a",
+      "type": "audio_choice",
+      "itemId": "93940210-b361-5471-be6e-bdbf1a482c55",
+      "skill": "listening",
+      "audioAssetId": "4e0040ad-bb5a-53c4-a6a9-a9378b2d0088",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu.",
+      "options": [
+        {
+          "id": "22ee0497-c834-55a9-bef8-849828dac925",
+          "labelFr": "เข้า (khâo, entrer)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "4caf3a87-c7b8-5e37-8770-237bb5753cd1",
+          "labelFr": "ข้าว (khâao, riz)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "4caf3a87-c7b8-5e37-8770-237bb5753cd1",
+      "feedback": {
+        "correctFr": "Exact. Le ton était le même dans les deux mots : c'est bien la durée qui vous a guidé.",
+        "incorrectFr": "Presque. Les deux mots portent le même ton ; seule la durée les sépare. Réécoutez les deux côte à côte, courte puis longue.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p2",
+      "drawIndex": 2,
+      "id": "a6af2ead-d7ff-54ee-b47e-ccf6f8904947",
+      "type": "audio_choice",
+      "itemId": "dfd18061-30af-5400-a5da-565768783f05",
+      "skill": "listening",
+      "audioAssetId": "d3f24fd9-1f99-5304-bc7c-eec85e3c10d1",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu.",
+      "options": [
+        {
+          "id": "47aa06f9-d7d0-5df9-8718-265481d585a8",
+          "labelFr": "เขา (khǎo, il ou elle)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a82d2a09-5833-5fab-83a8-dc97d20369cb",
+          "labelFr": "ขาว (khǎao, blanc)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "47aa06f9-d7d0-5df9-8718-265481d585a8",
+      "feedback": {
+        "correctFr": "Exact. Le ton était le même dans les deux mots : c'est bien la durée qui vous a guidé.",
+        "incorrectFr": "Presque. Les deux mots portent le même ton ; seule la durée les sépare. Réécoutez les deux côte à côte, courte puis longue.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p2",
+      "drawIndex": 3,
+      "id": "160b9445-eb1c-5195-94a2-e111cb8a4e14",
+      "type": "audio_choice",
+      "itemId": "3be9755c-9041-5dc9-85dd-db66c1beefce",
+      "skill": "listening",
+      "audioAssetId": "402cfd23-810d-5771-9cc8-373dcb6ff2cf",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu.",
+      "options": [
+        {
+          "id": "ed079d95-d40e-542f-b45a-2b2e172d1276",
+          "labelFr": "หัด (hàt, s'entraîner)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "566af44c-c981-50e5-be36-8e17cb15aed0",
+          "labelFr": "หาด (hàat, plage)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "ed079d95-d40e-542f-b45a-2b2e172d1276",
+      "feedback": {
+        "correctFr": "Exact. Le ton était le même dans les deux mots : c'est bien la durée qui vous a guidé.",
+        "incorrectFr": "Presque. Les deux mots portent le même ton ; seule la durée les sépare. Réécoutez les deux côte à côte, courte puis longue.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p2",
+      "drawIndex": 4,
+      "id": "e04f40ed-94cd-53e6-823c-444c86577661",
+      "type": "audio_choice",
+      "itemId": "ac9ae9ed-ab46-546b-8939-834adcb43455",
+      "skill": "listening",
+      "audioAssetId": "81300b42-913d-5f40-b652-ae640a0ba287",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu.",
+      "options": [
+        {
+          "id": "20fedccf-8880-5b15-911f-f291c8318049",
+          "labelFr": "ยัง (yang, encore)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "daab183f-3529-52bb-a600-d7c7caf3316c",
+          "labelFr": "ยาง (yaang, caoutchouc)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "daab183f-3529-52bb-a600-d7c7caf3316c",
+      "feedback": {
+        "correctFr": "Exact. Le ton était le même dans les deux mots : c'est bien la durée qui vous a guidé.",
+        "incorrectFr": "Presque. Les deux mots portent le même ton ; seule la durée les sépare. Réécoutez les deux côte à côte, courte puis longue.",
+        "variants": []
+      }
+    },
+    {
       "poolId": "u01-l1b-p3",
       "drawIndex": 1,
       "id": "df474b21-63ff-5b81-a795-6b4f539c0e0b",
@@ -469,6 +589,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u01-l1b-p2",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu.",
+      "mechanic": "audio_choice",
+      "drawCount": 4,
+      "passRequired": 4,
+      "sampleSize": 4
+    },
     {
       "poolId": "u01-l1b-p3",
       "promptFr": "Associez chaque mot entendu à sa fiche durée + sens.",

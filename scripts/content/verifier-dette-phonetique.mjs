@@ -64,7 +64,9 @@ const DIFFICULTES = [
 /** Les leçons du corpus, dans l'ordre du parcours écrit. */
 function lireCorpus() {
   const lecons = [];
-  for (const unite of readdirSync(AUTHORING).filter((x) => /^unite-\d\d$/u.test(x))) {
+  for (const unite of readdirSync(AUTHORING).filter((x) =>
+    /^unite-\d\d$/u.test(x),
+  )) {
     for (const fichier of readdirSync(join(AUTHORING, unite))
       .filter((x) => /^lecon-.*\.md$/u.test(x))
       .sort()) {
