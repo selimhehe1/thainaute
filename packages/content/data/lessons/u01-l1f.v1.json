@@ -1,0 +1,615 @@
+{
+  "schemaVersion": 1,
+  "lessonId": "420db43b-ad52-56be-939c-6d1a4134c40e",
+  "versionId": "67f3eb64-d366-5113-b251-704807d9521c",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Les cinq d'un coup",
+  "objectiveFr": "à l'écoute d'un mot isolé de la série คา ข่า ค่า ค้า ขา, dit à voix normale, l'apprenant nomme le ton parmi les cinq, au moins 4 fois sur 5.",
+  "requiredEntitlement": null,
+  "audioManifestId": "2f85f9fa-3eab-5f10-b6c7-12c7ca40dd85",
+  "items": [
+    {
+      "id": "1fae8385-9468-5ffe-8b72-970cc05ec894",
+      "thaiRaw": "คา",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E32"
+      ],
+      "translationFr": "rester coincé, être pris (aussi : herbe à toits de chaume)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คา",
+          "ipa": "kʰaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ba2ab305-28e5-5a91-9e34-d0befc3d9277",
+      "thaiRaw": "ข่า",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E48",
+        "U+0E32"
+      ],
+      "translationFr": "galanga (rhizome parfumé de la cuisine thaïe)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข่า",
+          "ipa": "kʰaː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "842dac6d-8110-5c6f-a020-34202f892414",
+      "thaiRaw": "ค่า",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E48",
+        "U+0E32"
+      ],
+      "translationFr": "valeur, prix",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค่า",
+          "ipa": "kʰaː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d8e5749c-72ce-5b76-a217-b8e12bd1abea",
+      "thaiRaw": "ค้า",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "faire commerce, vendre",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kháa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค้า",
+          "ipa": "kʰaː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ae7a141a-3d10-5474-9053-bacd9fe3784f",
+      "thaiRaw": "ขา",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E32"
+      ],
+      "translationFr": "jambe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขา",
+          "ipa": "kʰaː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u01-l1f-p1",
+      "drawIndex": 1,
+      "id": "1779444a-ffad-581d-b4bc-10cede7ddb04",
+      "type": "audio_choice",
+      "itemId": "842dac6d-8110-5c6f-a020-34202f892414",
+      "skill": "listening",
+      "audioAssetId": "ebfb41d6-5424-578c-9af0-09ee2a549d2d",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix. Deux questions : est-ce que la voix bouge, et dans quel sens ?",
+      "options": [
+        {
+          "id": "2f3814b6-acc4-5219-8dbe-59f96b9b4dd5",
+          "labelFr": "à plat au milieu (moyen)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bafc4581-dea7-54f7-888b-e7c34a9e4735",
+          "labelFr": "posé en bas (bas)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "410a57f2-be2c-5ef9-9957-6a6b41adc36b",
+          "labelFr": "qui tombe (descendant)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "11d4230e-6f55-5733-97c8-bb54ab1ec7d9",
+          "labelFr": "perché et tendu (haut)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a5c8c35b-5e15-5655-914d-1645ce1fbd40",
+          "labelFr": "qui grimpe (montant)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "410a57f2-be2c-5ef9-9957-6a6b41adc36b",
+      "feedback": {
+        "correctFr": "Oui. ค่า (khâa) : qui tombe (descendant). Votre oreille vient de faire le travail.",
+        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1f-p1",
+      "drawIndex": 2,
+      "id": "784c8043-cb77-5b2f-bb60-2d61f00a6313",
+      "type": "audio_choice",
+      "itemId": "ae7a141a-3d10-5474-9053-bacd9fe3784f",
+      "skill": "listening",
+      "audioAssetId": "608bb3eb-901b-5b99-a29b-902dd8210067",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix. Deux questions : est-ce que la voix bouge, et dans quel sens ?",
+      "options": [
+        {
+          "id": "2f3814b6-acc4-5219-8dbe-59f96b9b4dd5",
+          "labelFr": "à plat au milieu (moyen)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bafc4581-dea7-54f7-888b-e7c34a9e4735",
+          "labelFr": "posé en bas (bas)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "410a57f2-be2c-5ef9-9957-6a6b41adc36b",
+          "labelFr": "qui tombe (descendant)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "11d4230e-6f55-5733-97c8-bb54ab1ec7d9",
+          "labelFr": "perché et tendu (haut)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a5c8c35b-5e15-5655-914d-1645ce1fbd40",
+          "labelFr": "qui grimpe (montant)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "a5c8c35b-5e15-5655-914d-1645ce1fbd40",
+      "feedback": {
+        "correctFr": "Oui. ขา (khǎa) : qui grimpe (montant). Votre oreille vient de faire le travail.",
+        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1f-p1",
+      "drawIndex": 3,
+      "id": "604a2c63-02f1-5aee-af59-90e4512e5772",
+      "type": "audio_choice",
+      "itemId": "1fae8385-9468-5ffe-8b72-970cc05ec894",
+      "skill": "listening",
+      "audioAssetId": "3b429062-aa5f-5cd5-9795-bed448d269b4",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix. Deux questions : est-ce que la voix bouge, et dans quel sens ?",
+      "options": [
+        {
+          "id": "2f3814b6-acc4-5219-8dbe-59f96b9b4dd5",
+          "labelFr": "à plat au milieu (moyen)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bafc4581-dea7-54f7-888b-e7c34a9e4735",
+          "labelFr": "posé en bas (bas)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "410a57f2-be2c-5ef9-9957-6a6b41adc36b",
+          "labelFr": "qui tombe (descendant)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "11d4230e-6f55-5733-97c8-bb54ab1ec7d9",
+          "labelFr": "perché et tendu (haut)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a5c8c35b-5e15-5655-914d-1645ce1fbd40",
+          "labelFr": "qui grimpe (montant)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "2f3814b6-acc4-5219-8dbe-59f96b9b4dd5",
+      "feedback": {
+        "correctFr": "Oui. คา (khaa) : à plat au milieu (moyen). Votre oreille vient de faire le travail.",
+        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1f-p1",
+      "drawIndex": 4,
+      "id": "55e6ff97-552c-516d-82e7-4693804742fb",
+      "type": "audio_choice",
+      "itemId": "d8e5749c-72ce-5b76-a217-b8e12bd1abea",
+      "skill": "listening",
+      "audioAssetId": "d9ec76a1-56cf-5b13-81fa-ab85d9e50744",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix. Deux questions : est-ce que la voix bouge, et dans quel sens ?",
+      "options": [
+        {
+          "id": "2f3814b6-acc4-5219-8dbe-59f96b9b4dd5",
+          "labelFr": "à plat au milieu (moyen)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bafc4581-dea7-54f7-888b-e7c34a9e4735",
+          "labelFr": "posé en bas (bas)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "410a57f2-be2c-5ef9-9957-6a6b41adc36b",
+          "labelFr": "qui tombe (descendant)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "11d4230e-6f55-5733-97c8-bb54ab1ec7d9",
+          "labelFr": "perché et tendu (haut)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a5c8c35b-5e15-5655-914d-1645ce1fbd40",
+          "labelFr": "qui grimpe (montant)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "11d4230e-6f55-5733-97c8-bb54ab1ec7d9",
+      "feedback": {
+        "correctFr": "Oui. ค้า (kháa) : perché et tendu (haut). Votre oreille vient de faire le travail.",
+        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1f-p1",
+      "drawIndex": 5,
+      "id": "6a45c459-f681-5540-8de5-27e6611d07a5",
+      "type": "audio_choice",
+      "itemId": "ba2ab305-28e5-5a91-9e34-d0befc3d9277",
+      "skill": "listening",
+      "audioAssetId": "8a851e1d-0d22-5e8b-aab6-28417c7a7e14",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix. Deux questions : est-ce que la voix bouge, et dans quel sens ?",
+      "options": [
+        {
+          "id": "2f3814b6-acc4-5219-8dbe-59f96b9b4dd5",
+          "labelFr": "à plat au milieu (moyen)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bafc4581-dea7-54f7-888b-e7c34a9e4735",
+          "labelFr": "posé en bas (bas)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "410a57f2-be2c-5ef9-9957-6a6b41adc36b",
+          "labelFr": "qui tombe (descendant)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "11d4230e-6f55-5733-97c8-bb54ab1ec7d9",
+          "labelFr": "perché et tendu (haut)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a5c8c35b-5e15-5655-914d-1645ce1fbd40",
+          "labelFr": "qui grimpe (montant)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "bafc4581-dea7-54f7-888b-e7c34a9e4735",
+      "feedback": {
+        "correctFr": "Oui. ข่า (khàa) : posé en bas (bas). Votre oreille vient de faire le travail.",
+        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1f-p2",
+      "drawIndex": 1,
+      "id": "be42b7fb-0c6b-50d0-8034-5be13ebf1cfc",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Associe chaque mot entendu et affiché à son sens. Touche un mot, puis touche son sens : aucun glisser-déposer n'est nécessaire.",
+      "pairs": [
+        {
+          "id": "6882d915-136e-5788-a190-9f1cabc2276f",
+          "itemId": "842dac6d-8110-5c6f-a020-34202f892414",
+          "labelFr": "valeur, prix"
+        },
+        {
+          "id": "2640c501-79df-536d-b492-c9dc190b1439",
+          "itemId": "d8e5749c-72ce-5b76-a217-b8e12bd1abea",
+          "labelFr": "faire commerce, vendre"
+        },
+        {
+          "id": "b2e783f3-fc4e-5b26-bd1f-b10030eac0a8",
+          "itemId": "ae7a141a-3d10-5474-9053-bacd9fe3784f",
+          "labelFr": "jambe"
+        },
+        {
+          "id": "e1ee8e60-c154-58c6-ae89-bdc8a9478b4c",
+          "itemId": "ba2ab305-28e5-5a91-9e34-d0befc3d9277",
+          "labelFr": "galanga"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Bien vu. Ces mots ne se distinguent que par le ton : vous venez de lire un sens dans une hauteur de voix.",
+        "incorrectFr": "Réécoutez le mot, puis appliquez les deux questions : la voix bouge-t-elle, et dans quel sens ? Le sens suivra.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1f-p3",
+      "drawIndex": 1,
+      "id": "bb07f3d6-efcb-5a45-b58d-5e7eaf4fc295",
+      "type": "word_order",
+      "itemId": "ae7a141a-3d10-5474-9053-bacd9fe3784f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Écoute les trois mots, puis range les jetons dans l'ordre entendu avec le bouton Déplacer. Un jeton de la liste n'a pas été entendu : écarte-le avec le bouton Retirer.",
+      "tokens": [
+        {
+          "id": "d4f6c7e9-2a40-50aa-80dd-1c9c13dc1822",
+          "thaiRaw": "คา",
+          "transcription": "khaa"
+        },
+        {
+          "id": "903eef4d-701b-552e-98d5-343799fe3336",
+          "thaiRaw": "ค่า",
+          "transcription": "khâa"
+        },
+        {
+          "id": "5bb34e1f-d552-5c55-981a-bc66cfd1bfd5",
+          "thaiRaw": "ขา",
+          "transcription": null
+        },
+        {
+          "id": "31318a75-9fb9-5ebd-8f8b-0535118a44a7",
+          "thaiRaw": "ค้า",
+          "transcription": "kháa"
+        }
+      ],
+      "correctOrder": [
+        "5bb34e1f-d552-5c55-981a-bc66cfd1bfd5",
+        "d4f6c7e9-2a40-50aa-80dd-1c9c13dc1822",
+        "903eef4d-701b-552e-98d5-343799fe3336"
+      ],
+      "feedback": {
+        "correctFr": "Exact. Vous avez identifié trois tons différents à la suite, sans support écrit.",
+        "incorrectFr": "Réécoutez mot par mot. Le premier grimpe, le deuxième ne bouge pas, le troisième tombe. L'intrus ค้า reste perché du début à la fin, et il n'a pas été entendu.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "Ce que votre oreille sait déjà faire",
+      "bodyFr": "Vous avez travaillé trois contrastes, un par un. Vous savez distinguer une voix qui tombe d'une voix qui grimpe, une voix posée au milieu d'une voix posée en bas, et une voix qui grimpe d'une voix qui reste perchée. Ces trois compétences suffisent à couvrir les cinq tons. Cette leçon ne vous apprend rien de neuf, elle assemble.",
+      "specimen": "คา ข่า ค่า ค้า ขา"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "Deux questions, jamais cinq",
+      "bodyFr": "Devant un mot inconnu, ne cherchez pas à reconnaître un ton parmi cinq d'un seul coup : personne ne fait ça, pas même un locuteur natif, qui ne choisit rien du tout. Posez-vous deux questions dans l'ordre. D'abord, la voix bouge-t-elle ? Si elle ne bouge pas, il ne reste que moyen ou bas, et vous savez trancher depuis 1C. Si elle bouge, seconde question : dans quel sens ? Elle tombe, c'est le descendant. Elle monte, il reste montant ou haut, et vous savez trancher depuis 1D.",
+      "specimen": "ค่า ≠ ค้า"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "L'arbre, en un coup d'œil",
+      "bodyFr": "La voix ne bouge pas, elle est au milieu : moyen (คา). La voix ne bouge pas, elle est en dessous : bas (ข่า). La voix tombe de haut : descendant (ค่า). La voix part déjà haut et se tend : haut (ค้า). La voix part du bas et grimpe : montant (ขา). Deux questions, cinq réponses, aucune mémorisation.",
+      "specimen": "ข่า ≠ ขา"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "Se tromper ici est normal",
+      "bodyFr": "Passer de deux choix à cinq fait chuter la réussite de tout le monde, y compris des apprenants confirmés. Ce n'est pas un retour en arrière, c'est un exercice plus difficile. Si vous hésitez, réécoutez et appliquez les deux questions au lieu de deviner. Et rappelez-vous ce que dit la leçon 1D : écoutez le mouvement de la voix, pas sa hauteur absolue.",
+      "specimen": "คา ข่า ค่า ค้า ขา"
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u01-l1f-p1",
+      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix. Deux questions : est-ce que la voix bouge, et dans quel sens ?",
+      "mechanic": "audio_choice",
+      "drawCount": 5,
+      "passRequired": 5,
+      "sampleSize": 5
+    },
+    {
+      "poolId": "u01-l1f-p2",
+      "promptFr": "Associe chaque mot entendu et affiché à son sens. Touche un mot, puis touche son sens : aucun glisser-déposer n'est nécessaire.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u01-l1f-p3",
+      "promptFr": "Écoute les trois mots, puis range les jetons dans l'ordre entendu avec le bouton Déplacer. Un jeton de la liste n'a pas été entendu : écarte-le avec le bouton Retirer.",
+      "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "206352a3-58ba-549c-ad08-57c3958f513c",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f141bec7-53f2-5bf3-842c-2c214d93d1ac",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e6468fdf-22ba-557c-bb4e-48131181423c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "860563fa-f5ba-549f-9b8c-ddc11acb9eec",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b1169072-bf25-516a-80e4-5b3de85c2c5d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1734b03e-3cdd-5896-a73e-6400eee6f0e3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2a2e917a-191b-507e-8202-54fb927b24e3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "4dac3e77-0726-53cb-823c-58c8c16c1724",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

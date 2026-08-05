@@ -10,12 +10,14 @@ import u01l1bAudioJson from "../data/audio/u01-l1b.v1.json";
 import u01l1cAudioJson from "../data/audio/u01-l1c.v1.json";
 import u01l1dAudioJson from "../data/audio/u01-l1d.v1.json";
 import u01l1eAudioJson from "../data/audio/u01-l1e.v1.json";
+import u01l1fAudioJson from "../data/audio/u01-l1f.v1.json";
 import fiveMechanicsLessonJson from "../data/lessons/five-mechanics-fixture.v1.json";
 import u01l1aLessonJson from "../data/lessons/u01-l1a.v1.json";
 import u01l1bLessonJson from "../data/lessons/u01-l1b.v1.json";
 import u01l1cLessonJson from "../data/lessons/u01-l1c.v1.json";
 import u01l1dLessonJson from "../data/lessons/u01-l1d.v1.json";
 import u01l1eLessonJson from "../data/lessons/u01-l1e.v1.json";
+import u01l1fLessonJson from "../data/lessons/u01-l1f.v1.json";
 import lessonJson from "../data/lessons/unicode-audio-fixture.v1.json";
 import registreJson from "../../../content/sources-registry.json";
 import sourceJson from "../data/sources/test-only.json";
@@ -90,13 +92,49 @@ const LECONS_COMPILEES: Readonly<
     lesson: u01l1eLessonJson,
     audio: u01l1eAudioJson,
   },
+  "u01-l1f": { lesson: u01l1fLessonJson, audio: u01l1fAudioJson },
 };
+
+/**
+ * Ordre du parcours, décidé, et non déduit d'un tri.
+ *
+ * Cet ordre était auparavant `Object.keys(...).sort()` : la séquence
+ * pédagogique, qui est la décision produit la plus lourde d'un cours de
+ * langue, était une conséquence accidentelle de l'ordre alphabétique des
+ * identifiants. Elle n'avait donc jamais été écrite, ni discutée.
+ *
+ * La séquence ci-dessous suit une échelle de difficulté de tâche, et non
+ * l'ordre de rédaction des leçons : 2 choix sur le contraste le plus large
+ * (1A), 2 choix sur les deux paires réputées les plus confusables (1C puis
+ * 1D), 5 choix en synthèse (1F), puis la longueur vocalique (1B) et le
+ * premier dialogue (1E).
+ *
+ * Les identifiants ne sont volontairement pas renommés : ils sont cités par
+ * des dizaines de leçons du corpus et par les dossiers de vérification. Un
+ * renommage casserait ces renvois sans rien apporter.
+ *
+ * Motif détaillé : `docs/curriculum/ordre-par-difficulte.md`.
+ */
+const ORDRE_PARCOURS: readonly string[] = [
+  "u01-l1a",
+  "u01-l1c",
+  "u01-l1d",
+  "u01-l1f",
+  "u01-l1b",
+  "u01-l1e",
+];
 
 /** Identifiants des leçons réelles disponibles, dans l'ordre du parcours. */
 export function compiledLessonIds(): string[] {
-  return Object.keys(LECONS_COMPILEES).sort((a, b) =>
-    a < b ? -1 : a > b ? 1 : 0,
-  );
+  const connus = new Set(Object.keys(LECONS_COMPILEES));
+  const ordonnes = ORDRE_PARCOURS.filter((id) => connus.has(id));
+  // Une leçon compilée mais absente de l'ordre resterait invisible dans le
+  // parcours sans que rien ne le signale. On la place à la fin plutôt que
+  // de la perdre en silence.
+  const oubliees = [...connus]
+    .filter((id) => !ORDRE_PARCOURS.includes(id))
+    .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+  return [...ordonnes, ...oubliees];
 }
 
 /** `null` quand l'identifiant ne désigne aucune leçon compilée. */
