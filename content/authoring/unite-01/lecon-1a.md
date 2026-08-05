@@ -4,15 +4,22 @@
 
 - Identifiant : `u01-l1a`
 - Titre français : Écouter le thaï pour la première fois
-- Objectif observable : après la leçon, l'apprenant identifie à l'écoute le
-  ton d'un mot de la série คา ข่า ค่า ค้า ขา au moins 4 fois sur 5, associe
-  chaque contour dessiné au mot entendu, et reconnaît les 9 consonnes
-  moyennes en retrouvant la lettre à partir de son nom traditionnel.
+- Objectif observable : après la leçon, l'apprenant distingue à l'écoute une
+  voix qui tombe d'une voix qui grimpe (ค่า contre ขา) au moins 5 fois sur 6,
+  relie au mot entendu trois contours nettement distincts (qui tombe, qui
+  grimpe, à plat), et reconnaît les 9 consonnes moyennes en retrouvant la
+  lettre à partir de son nom traditionnel.
 - Prérequis : aucun (première leçon du parcours).
-- Cible phonétique : perception des cinq tons du thaï standard (moyen, bas,
-  descendant, haut, montant) sur une même syllabe longue ; imitation guidée
-  à faible enjeu, sans aucune notation. La longueur vocalique est seulement
-  entendue ici, elle devient la cible de la leçon 1B.
+- Cible phonétique : exposition aux cinq tons du thaï standard (moyen, bas,
+  descendant, haut, montant) sur une même syllabe longue, puis discrimination
+  du seul contraste à écart maximal, descendant contre montant, qui oppose
+  deux mouvements de sens inverse. Les cinq contours sont montrés et
+  entendus ici ; ils ne sont pas évalués à cinq choix, ce que fait la leçon
+  1F au terme de l'arc tonal. La longueur vocalique est seulement entendue
+  ici, elle devient la cible de la leçon 1B.
+- Progression de la tâche : cette leçon est le premier barreau d'une échelle
+  explicite, 2 choix ici, 2 choix sur paire difficile en 1C puis 1D, 5 choix
+  en 1F. Voir `docs/curriculum/ordre-par-difficulte.md`.
 - Durée visée : 8 à 10 minutes.
 - Transcription : convention `thainaute-fr` v1.1 (amendement du 3 août 2026 ;
   diacritiques réservés aux tons, qualités vocaliques en digrammes sans
@@ -417,55 +424,61 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
 
 ## Exercices
 
-### Exercice 1 : quel ton entendez-vous ? (listening)
+### Exercice 1 : elle tombe, ou elle grimpe ? (listening)
 
 - Mécanique : `listening`
-- Consigne : « Écoutez le mot, puis choisissez la carte qui décrit ce que
-  fait la voix. »
-- Options : cinq cartes fixes, chacune avec la courbe dessinée, l'étiquette
-  du ton et un mot-repère : « à plat au milieu (moyen) », « posé en bas
-  (bas) », « qui tombe (descendant) », « perché et tendu (haut) », « qui
-  grimpe (montant) ». La couleur n'est jamais le seul signal : courbe et
-  étiquette disent la même chose.
+- Consigne : « Vous n'entendrez que deux mots, plusieurs fois chacun. C'est
+  voulu : le but n'est pas de les retenir, mais d'entendre que la voix part
+  dans deux directions opposées. Elle tombe, ou elle grimpe ? »
+- Options (identiques à chaque écoute) : deux cartes fixes, chacune avec sa
+  courbe dessinée et son étiquette : « la voix tombe » / « la voix grimpe ».
+  La couleur n'est jamais le seul signal, la courbe et l'étiquette disent la
+  même chose.
 - Tirages et réponses :
-  1. Audio คา : réponse « moyen ».
-  2. Audio ข่า : réponse « bas ».
-  3. Audio ค่า : réponse « descendant ».
-  4. Audio ค้า : réponse « haut ».
-  5. Audio ขา : réponse « montant ».
+  1. Audio ค่า : réponse « la voix tombe ».
+  2. Audio ขา : réponse « la voix grimpe ».
+  3. Audio ขา : réponse « la voix grimpe ».
+  4. Audio ค่า : réponse « la voix tombe ».
+  5. Audio ค่า : réponse « la voix tombe ».
+  6. Audio ขา : réponse « la voix grimpe ».
 - Feedback correct : « Oui. {mot} ({transcription}) : {description du
   contour}. Votre oreille vient de faire le travail. »
-- Feedback incorrect : indice ciblé selon la confusion, puis réécoute
-  proposée, au ralenti si besoin, jamais de pénalité. Bas contre
-  descendant : « La voix a-t-elle bougé ? Si elle se pose en bas sans
-  tomber, c'est le ton bas. » Haut contre montant : « Le montant part du bas
-  et grimpe ; le haut reste perché du début à la fin. » Moyen : « Rien ne
-  bouge et la voix reste au milieu : c'est le ton moyen, pas une absence de
-  ton. »
-- Pièges connus : bas et descendant sont les plus confondus au début ;
-  l'oreille française entend le montant comme une question, image utile mais
-  à détacher du sens interrogatif ; le moyen est parfois perçu comme « sans
-  ton ».
+- Feedback incorrect : « Réécoutez, et ne vous occupez que d'une chose : le
+  début et la fin. Si la voix finit plus bas qu'elle n'a commencé, elle
+  tombe. Si elle finit plus haut, elle grimpe. » Réécoute proposée, au
+  ralenti si besoin, jamais de pénalité.
+- Pièges connus : le montant est spontanément entendu comme une question par
+  une oreille française, image utile au début mais à détacher du sens
+  interrogatif, car ขา reste « jambe » qu'il termine une question ou non.
+  Le descendant peut être entendu comme une fin de phrase plutôt que comme
+  un mot, même piège que celui traité en 1C. Ces deux tons sont choisis
+  parce qu'ils bougent en sens inverse et forment le contraste le plus
+  large des cinq, le seul raisonnablement identifiable sans entraînement
+  préalable.
 
 ### Exercice 2 : chaque courbe a son mot (association)
 
 - Mécanique : `association` (sélection successive de deux cartes, sans
   glisser-déposer obligatoire)
-- Consigne : « Reliez chaque mot entendu à la courbe qui le dessine. »
+- Consigne : « Reliez chaque mot entendu à la courbe qui le dessine. Un
+  troisième mouvement s'ajoute aux deux précédents : la voix qui ne bouge
+  pas du tout. »
 - Paires à associer :
   1. Audio คา ↔ carte « courbe plate au milieu · khaa »
-  2. Audio ข่า ↔ carte « courbe plate en bas · khàa »
-  3. Audio ค่า ↔ carte « courbe qui tombe · khâa »
-  4. Audio ค้า ↔ carte « courbe perchée qui se tend vers le haut · kháa »
-  5. Audio ขา ↔ carte « courbe qui grimpe du bas vers le haut · khǎa »
+  2. Audio ค่า ↔ carte « courbe qui tombe · khâa »
+  3. Audio ขา ↔ carte « courbe qui grimpe du bas vers le haut · khǎa »
 - Feedback correct : « Bonne association : la courbe dessine exactement ce
   que votre oreille a entendu. »
 - Feedback incorrect : « Ces deux cartes ne vont pas ensemble. Réécoutez :
   la voix reste-t-elle stable, tombe-t-elle, ou grimpe-t-elle ? » Les cartes
   restent en place pour un nouvel essai.
-- Pièges connus : les courbes du bas et du descendant se ressemblent si l'on
-  ne regarde que la fin du tracé ; celles du haut et du montant se
-  distinguent par le point de départ, pas par le point d'arrivée.
+- Pièges connus : le ton moyen est souvent perçu comme « pas de ton », alors
+  qu'il est un ton à part entière ; le feedback doit dire « elle ne bouge
+  pas » plutôt que « il n'y a rien ». Les deux tons restants, bas et haut,
+  sont entendus et montrés dans les pages d'enseignement mais ne sont pas
+  évalués ici : ils se distinguent de leurs voisins par la hauteur de
+  départ et non par le mouvement, ce qui demande une ancre que l'apprenant
+  n'a pas encore. C'est le travail de 1C, 1D puis 1F.
 
 ### Exercice 3 : retrouvez la lettre (reading)
 

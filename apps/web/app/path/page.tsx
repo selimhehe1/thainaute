@@ -30,7 +30,22 @@ function leconsDuParcours() {
         identifiant,
         titre: bundle.lesson.titleFr,
         exercices: bundle.lesson.exercises.length,
-        avecSon: bundle.audioManifest.entries.length > 0,
+        // Compter les entrées du manifeste ne dit RIEN de ce que l'apprenant
+        // entendra : la leçon 1F a annoncé « avec son » avec cinq entrées
+        // orphelines, qu'aucun de ses exercices ne savait résoudre. La seule
+        // question honnête est : un exercice de cette leçon peut-il jouer un
+        // son présent au manifeste ?
+        avecSon: (() => {
+          const disponibles = new Set(
+            bundle.audioManifest.entries.map((entree) => entree.assetId),
+          );
+          return bundle.lesson.exercises.some(
+            (exercice) =>
+              "audioAssetId" in exercice &&
+              typeof exercice.audioAssetId === "string" &&
+              disponibles.has(exercice.audioAssetId),
+          );
+        })(),
       },
     ];
   });

@@ -47,6 +47,7 @@ import {
 } from "@/lib/client/attempt-outbox-store";
 import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
 import { useWebAuthSession } from "@/lib/client/auth-session";
+import { browserSha256Hex } from "@/lib/client/sha256";
 import {
   LocalExperienceStorageError,
   WebLocalExperienceStore,
@@ -88,6 +89,22 @@ interface ExpeditionProps {
    */
   readonly audioSources?: Readonly<Record<string, string>> | undefined;
   readonly analytics?: AnalyticsSink | undefined;
+  /**
+   * Où sont journalisées les tentatives de l'apprenant.
+   *
+   * RUPTURE CORRIGÉE : ce composant sert à la fois la démonstration
+   * technique et les vraies leçons du curriculum, et il ouvrait dans les
+   * deux cas la base `thainaute-demo-v1`. Or la synchronisation de compte
+   * ne lit que `thainaute-learning-v1`, et la base de démonstration est
+   * délibérément mise en quarantaine à la fusion. Toute la progression du
+   * cours réel était donc écrite dans un endroit dont personne ne la
+   * relèverait jamais.
+   *
+   * Le choix appartient à l'appelant, parce que lui seul sait s'il rend une
+   * leçon réelle ou une démonstration. Le défaut reste `demo` pour que la
+   * page de démonstration ne se mette pas à polluer la progression réelle.
+   */
+  readonly attemptStorage?: "demo" | "learning" | undefined;
 }
 
 interface Celebration {
@@ -152,11 +169,19 @@ export function ExpeditionExperience({
   lesson,
   audioSources,
   analytics: analyticsOverride,
+  attemptStorage = "demo",
 }: ExpeditionProps) {
   const router = useRouter();
   const { analytics: consentAwareAnalytics } = useWebAnalyticsConsent();
   const analytics = analyticsOverride ?? consentAwareAnalytics;
-  const { sessionBoundaryRevision } = useWebAuthSession();
+  const auth = useWebAuthSession();
+  const { sessionBoundaryRevision } = auth;
+  // Propriétaire du journal des tentatives. Voir `attemptStorage` : sur une
+  // leçon réelle, un apprenant connecté doit écrire dans le magasin de SON
+  // compte, sinon sa progression reste anonyme et n'est remontée que par le
+  // bouton « Fusionner et synchroniser », jamais par la synchro ordinaire.
+  const userId =
+    auth.status === "signed_in" ? (auth.session?.user.id ?? null) : null;
 
   const [store, setStore] = useState<WebAttemptOutboxStore | null>(null);
   const [experienceStore, setExperienceStore] =
@@ -310,7 +335,19 @@ export function ExpeditionExperience({
 
   useEffect(() => {
     let active = true;
-    const outboxInstance = new WebAttemptOutboxStore("thainaute-demo-v1");
+    // Le magasin de démonstration reste toujours anonyme : ses tentatives
+    // portent sur une fixture et n'ont rien à faire dans un compte.
+    const proprietaire =
+      attemptStorage === "learning" && userId !== null
+        ? ({ kind: "account", userId } as const)
+        : undefined;
+    const outboxInstance = new WebAttemptOutboxStore(
+      attemptStorage === "learning"
+        ? "thainaute-learning-v1"
+        : "thainaute-demo-v1",
+      proprietaire,
+      proprietaire === undefined ? undefined : browserSha256Hex,
+    );
     const experienceInstance = new WebLocalExperienceStore();
     queueMicrotask(() => {
       if (!active) return;
@@ -325,7 +362,11 @@ export function ExpeditionExperience({
       outboxInstance.close();
       experienceInstance.close();
     };
-  }, []);
+    // `attemptStorage` et `userId` sont dans les dépendances : un changement
+    // de base OU de compte doit rouvrir le magasin, pas continuer d'écrire
+    // dans l'ancien. `sessionBoundaryRevision` couvre la reconnexion sur le
+    // même identifiant après une bascule.
+  }, [attemptStorage, userId, sessionBoundaryRevision]);
 
   useEffect(() => {
     const stopOnPageExit = () => stopSignal();

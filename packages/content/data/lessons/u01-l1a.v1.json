@@ -8,7 +8,7 @@
   "publishedAt": null,
   "locale": "fr-FR",
   "titleFr": "Écouter le thaï pour la première fois",
-  "objectiveFr": "après la leçon, l'apprenant identifie à l'écoute le ton d'un mot de la série คา ข่า ค่า ค้า ขา au moins 4 fois sur 5, associe chaque contour dessiné au mot entendu, et reconnaît les 9 consonnes moyennes en retrouvant la lettre à partir de son nom traditionnel.",
+  "objectiveFr": "après la leçon, l'apprenant distingue à l'écoute une voix qui tombe d'une voix qui grimpe (ค่า contre ขา) au moins 5 fois sur 6, relie au mot entendu trois contours nettement distincts (qui tombe, qui grimpe, à plat), et reconnaît les 9 consonnes moyennes en retrouvant la lettre à partir de son nom traditionnel.",
   "requiredEntitlement": null,
   "audioManifestId": "c27603aa-ca4b-5650-bdb7-46fabead845c",
   "items": [
@@ -367,46 +367,28 @@
       "drawIndex": 1,
       "id": "56661afb-1a24-5e0f-83c2-0b744f983903",
       "type": "audio_choice",
-      "itemId": "dc3e3565-fa17-5173-9e45-85219d0a8608",
+      "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
       "skill": "listening",
-      "audioAssetId": "9ae0a4f7-d9cb-551d-b247-7d258e606b29",
-      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "audioAssetId": "34626c45-7ae4-5c93-9b97-63f0d3b75fbe",
+      "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "options": [
         {
           "id": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
-          "labelFr": "à plat au milieu (moyen)",
+          "labelFr": "la voix tombe",
           "thaiRaw": null,
           "transcription": null
         },
         {
           "id": "b78d3b37-8017-5166-a2d5-58d53b271868",
-          "labelFr": "posé en bas (bas)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
-          "labelFr": "qui tombe (descendant)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
-          "labelFr": "perché et tendu (haut)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "cbac7d67-b52b-50df-ade6-4235b707324e",
-          "labelFr": "qui grimpe (montant)",
+          "labelFr": "la voix grimpe",
           "thaiRaw": null,
           "transcription": null
         }
       ],
       "correctOptionId": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
       "feedback": {
-        "correctFr": "Oui. คา (khaa) : à plat au milieu (moyen). Votre oreille vient de faire le travail.",
-        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "correctFr": "Oui. ค่า (khâa) : la voix tombe. Votre oreille vient de faire le travail.",
+        "incorrectFr": "Réécoutez, et ne vous occupez que d'une chose : le début et la fin. Si la voix finit plus bas qu'elle n'a commencé, elle tombe. Si elle finit plus haut, elle grimpe.",
         "variants": []
       }
     },
@@ -415,46 +397,28 @@
       "drawIndex": 2,
       "id": "1d363218-5a2b-5303-99fa-d55361893bc3",
       "type": "audio_choice",
-      "itemId": "f6d47faa-3143-51be-99b0-3a1ac9e2ebd2",
+      "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
       "skill": "listening",
-      "audioAssetId": "d07bc9d9-f989-5a6b-9249-572a58ace81f",
-      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "audioAssetId": "9251e9ef-cd4d-5274-8054-97488c3605d4",
+      "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "options": [
         {
           "id": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
-          "labelFr": "à plat au milieu (moyen)",
+          "labelFr": "la voix tombe",
           "thaiRaw": null,
           "transcription": null
         },
         {
           "id": "b78d3b37-8017-5166-a2d5-58d53b271868",
-          "labelFr": "posé en bas (bas)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
-          "labelFr": "qui tombe (descendant)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
-          "labelFr": "perché et tendu (haut)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "cbac7d67-b52b-50df-ade6-4235b707324e",
-          "labelFr": "qui grimpe (montant)",
+          "labelFr": "la voix grimpe",
           "thaiRaw": null,
           "transcription": null
         }
       ],
       "correctOptionId": "b78d3b37-8017-5166-a2d5-58d53b271868",
       "feedback": {
-        "correctFr": "Oui. ข่า (khàa) : posé en bas (bas). Votre oreille vient de faire le travail.",
-        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "correctFr": "Oui. ขา (khǎa) : la voix grimpe. Votre oreille vient de faire le travail.",
+        "incorrectFr": "Réécoutez, et ne vous occupez que d'une chose : le début et la fin. Si la voix finit plus bas qu'elle n'a commencé, elle tombe. Si elle finit plus haut, elle grimpe.",
         "variants": []
       }
     },
@@ -463,46 +427,28 @@
       "drawIndex": 3,
       "id": "430fed36-b06f-55d6-83f9-f65fe52fbf6f",
       "type": "audio_choice",
-      "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
+      "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
       "skill": "listening",
-      "audioAssetId": "34626c45-7ae4-5c93-9b97-63f0d3b75fbe",
-      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "audioAssetId": "9251e9ef-cd4d-5274-8054-97488c3605d4",
+      "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "options": [
         {
           "id": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
-          "labelFr": "à plat au milieu (moyen)",
+          "labelFr": "la voix tombe",
           "thaiRaw": null,
           "transcription": null
         },
         {
           "id": "b78d3b37-8017-5166-a2d5-58d53b271868",
-          "labelFr": "posé en bas (bas)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
-          "labelFr": "qui tombe (descendant)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
-          "labelFr": "perché et tendu (haut)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "cbac7d67-b52b-50df-ade6-4235b707324e",
-          "labelFr": "qui grimpe (montant)",
+          "labelFr": "la voix grimpe",
           "thaiRaw": null,
           "transcription": null
         }
       ],
-      "correctOptionId": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
+      "correctOptionId": "b78d3b37-8017-5166-a2d5-58d53b271868",
       "feedback": {
-        "correctFr": "Oui. ค่า (khâa) : qui tombe (descendant). Votre oreille vient de faire le travail.",
-        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "correctFr": "Oui. ขา (khǎa) : la voix grimpe. Votre oreille vient de faire le travail.",
+        "incorrectFr": "Réécoutez, et ne vous occupez que d'une chose : le début et la fin. Si la voix finit plus bas qu'elle n'a commencé, elle tombe. Si elle finit plus haut, elle grimpe.",
         "variants": []
       }
     },
@@ -511,46 +457,28 @@
       "drawIndex": 4,
       "id": "dd33c1a3-dead-5efa-9dd0-e6efbceec9e7",
       "type": "audio_choice",
-      "itemId": "e0c580b2-d255-5600-9148-11a48d633edc",
+      "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
       "skill": "listening",
-      "audioAssetId": "56515ba0-a225-5046-bfca-0e4b60e3ea92",
-      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "audioAssetId": "34626c45-7ae4-5c93-9b97-63f0d3b75fbe",
+      "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "options": [
         {
           "id": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
-          "labelFr": "à plat au milieu (moyen)",
+          "labelFr": "la voix tombe",
           "thaiRaw": null,
           "transcription": null
         },
         {
           "id": "b78d3b37-8017-5166-a2d5-58d53b271868",
-          "labelFr": "posé en bas (bas)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
-          "labelFr": "qui tombe (descendant)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
-          "labelFr": "perché et tendu (haut)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "cbac7d67-b52b-50df-ade6-4235b707324e",
-          "labelFr": "qui grimpe (montant)",
+          "labelFr": "la voix grimpe",
           "thaiRaw": null,
           "transcription": null
         }
       ],
-      "correctOptionId": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
+      "correctOptionId": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
       "feedback": {
-        "correctFr": "Oui. ค้า (kháa) : perché et tendu (haut). Votre oreille vient de faire le travail.",
-        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "correctFr": "Oui. ค่า (khâa) : la voix tombe. Votre oreille vient de faire le travail.",
+        "incorrectFr": "Réécoutez, et ne vous occupez que d'une chose : le début et la fin. Si la voix finit plus bas qu'elle n'a commencé, elle tombe. Si elle finit plus haut, elle grimpe.",
         "variants": []
       }
     },
@@ -559,46 +487,58 @@
       "drawIndex": 5,
       "id": "8bde3aad-445b-5b19-b7e4-3dbe048d6bfb",
       "type": "audio_choice",
-      "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
+      "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
       "skill": "listening",
-      "audioAssetId": "9251e9ef-cd4d-5274-8054-97488c3605d4",
-      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "audioAssetId": "34626c45-7ae4-5c93-9b97-63f0d3b75fbe",
+      "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "options": [
         {
           "id": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
-          "labelFr": "à plat au milieu (moyen)",
+          "labelFr": "la voix tombe",
           "thaiRaw": null,
           "transcription": null
         },
         {
           "id": "b78d3b37-8017-5166-a2d5-58d53b271868",
-          "labelFr": "posé en bas (bas)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "bdf21ba2-0d3b-55f6-bf7a-31b8c1fff657",
-          "labelFr": "qui tombe (descendant)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "122dabb6-b8d9-5e19-9d37-b6d957261aed",
-          "labelFr": "perché et tendu (haut)",
-          "thaiRaw": null,
-          "transcription": null
-        },
-        {
-          "id": "cbac7d67-b52b-50df-ade6-4235b707324e",
-          "labelFr": "qui grimpe (montant)",
+          "labelFr": "la voix grimpe",
           "thaiRaw": null,
           "transcription": null
         }
       ],
-      "correctOptionId": "cbac7d67-b52b-50df-ade6-4235b707324e",
+      "correctOptionId": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
       "feedback": {
-        "correctFr": "Oui. ขา (khǎa) : qui grimpe (montant). Votre oreille vient de faire le travail.",
-        "incorrectFr": "La voix a-t-elle bougé ? Si elle se pose en bas sans tomber, c'est le ton bas.",
+        "correctFr": "Oui. ค่า (khâa) : la voix tombe. Votre oreille vient de faire le travail.",
+        "incorrectFr": "Réécoutez, et ne vous occupez que d'une chose : le début et la fin. Si la voix finit plus bas qu'elle n'a commencé, elle tombe. Si elle finit plus haut, elle grimpe.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1a-p1",
+      "drawIndex": 6,
+      "id": "d4874954-cacd-54fe-be8a-a8cd3c7f9840",
+      "type": "audio_choice",
+      "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
+      "skill": "listening",
+      "audioAssetId": "9251e9ef-cd4d-5274-8054-97488c3605d4",
+      "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
+      "options": [
+        {
+          "id": "d00ce2d7-fb11-537a-9b2f-251e3c17e2c9",
+          "labelFr": "la voix tombe",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b78d3b37-8017-5166-a2d5-58d53b271868",
+          "labelFr": "la voix grimpe",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "b78d3b37-8017-5166-a2d5-58d53b271868",
+      "feedback": {
+        "correctFr": "Oui. ขา (khǎa) : la voix grimpe. Votre oreille vient de faire le travail.",
+        "incorrectFr": "Réécoutez, et ne vous occupez que d'une chose : le début et la fin. Si la voix finit plus bas qu'elle n'a commencé, elle tombe. Si elle finit plus haut, elle grimpe.",
         "variants": []
       }
     },
@@ -608,7 +548,7 @@
       "id": "19e89c37-c5c9-5408-a607-4f2ea0043757",
       "type": "association",
       "skill": "reading",
-      "promptFr": "Reliez chaque mot entendu à la courbe qui le dessine.",
+      "promptFr": "Reliez chaque mot entendu à la courbe qui le dessine. Un troisième mouvement s'ajoute aux deux précédents : la voix qui ne bouge pas du tout.",
       "pairs": [
         {
           "id": "b8efab7f-db00-5752-a5a0-56f7987750eb",
@@ -617,21 +557,11 @@
         },
         {
           "id": "795a25a1-911d-53e7-b519-0eae56e1b4cd",
-          "itemId": "f6d47faa-3143-51be-99b0-3a1ac9e2ebd2",
-          "labelFr": "courbe plate en bas · khàa"
-        },
-        {
-          "id": "71a82c5b-e6f5-55a5-88ae-d25b3d61429c",
           "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
           "labelFr": "courbe qui tombe · khâa"
         },
         {
-          "id": "740f6be8-c68b-5afa-973b-a59a19d2847d",
-          "itemId": "e0c580b2-d255-5600-9148-11a48d633edc",
-          "labelFr": "courbe perchée qui se tend vers le haut · kháa"
-        },
-        {
-          "id": "41d77795-7217-53be-9bd9-9b98a156ced6",
+          "id": "71a82c5b-e6f5-55a5-88ae-d25b3d61429c",
           "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
           "labelFr": "courbe qui grimpe du bas vers le haut · khǎa"
         }
@@ -684,15 +614,15 @@
   "pools": [
     {
       "poolId": "u01-l1a-p1",
-      "promptFr": "Écoutez le mot, puis choisissez la carte qui décrit ce que fait la voix.",
+      "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "mechanic": "audio_choice",
-      "drawCount": 5,
-      "passRequired": 5,
-      "sampleSize": 5
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
     },
     {
       "poolId": "u01-l1a-p2",
-      "promptFr": "Reliez chaque mot entendu à la courbe qui le dessine.",
+      "promptFr": "Reliez chaque mot entendu à la courbe qui le dessine. Un troisième mouvement s'ajoute aux deux précédents : la voix qui ne bouge pas du tout.",
       "mechanic": "association",
       "drawCount": 1,
       "passRequired": 1,

@@ -51,6 +51,12 @@ export default async function LeconPage({
       <ExpeditionExperience
         lesson={lesson}
         audioSources={publicAudioSources(bundle)}
+        // Ceci est une leçon RÉELLE du curriculum : ses tentatives vont dans
+        // la base d'apprentissage, la seule que la synchronisation de compte
+        // relève. Elles partaient auparavant dans la base de démonstration,
+        // qui est mise en quarantaine à la fusion : toute la progression du
+        // cours réel était donc perdue.
+        attemptStorage="learning"
       />
     </main>
   );

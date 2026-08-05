@@ -8,6 +8,7 @@ import "@thainaute/design-tokens/tokens.css";
 
 import { WebAuthSessionProvider } from "@/lib/client/auth-session";
 import { WebAccountDeletionBootstrap } from "@/lib/client/account-deletion-bootstrap";
+import { WebAttemptSyncBootstrap } from "@/lib/client/attempt-sync-bootstrap";
 import { WebAnalyticsConsentProvider } from "@/lib/client/analytics-consent";
 import { createSiteMetadata } from "@/lib/server/site-metadata";
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <WebAnalyticsConsentProvider>
           <WebAuthSessionProvider>
             <WebAccountDeletionBootstrap />
+            <WebAttemptSyncBootstrap />
             {children}
           </WebAuthSessionProvider>
         </WebAnalyticsConsentProvider>
