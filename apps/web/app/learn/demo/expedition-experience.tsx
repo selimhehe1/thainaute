@@ -88,6 +88,22 @@ interface ExpeditionProps {
    */
   readonly audioSources?: Readonly<Record<string, string>> | undefined;
   readonly analytics?: AnalyticsSink | undefined;
+  /**
+   * Où sont journalisées les tentatives de l'apprenant.
+   *
+   * RUPTURE CORRIGÉE : ce composant sert à la fois la démonstration
+   * technique et les vraies leçons du curriculum, et il ouvrait dans les
+   * deux cas la base `thainaute-demo-v1`. Or la synchronisation de compte
+   * ne lit que `thainaute-learning-v1`, et la base de démonstration est
+   * délibérément mise en quarantaine à la fusion. Toute la progression du
+   * cours réel était donc écrite dans un endroit dont personne ne la
+   * relèverait jamais.
+   *
+   * Le choix appartient à l'appelant, parce que lui seul sait s'il rend une
+   * leçon réelle ou une démonstration. Le défaut reste `demo` pour que la
+   * page de démonstration ne se mette pas à polluer la progression réelle.
+   */
+  readonly attemptStorage?: "demo" | "learning" | undefined;
 }
 
 interface Celebration {
@@ -152,6 +168,7 @@ export function ExpeditionExperience({
   lesson,
   audioSources,
   analytics: analyticsOverride,
+  attemptStorage = "demo",
 }: ExpeditionProps) {
   const router = useRouter();
   const { analytics: consentAwareAnalytics } = useWebAnalyticsConsent();
@@ -310,7 +327,11 @@ export function ExpeditionExperience({
 
   useEffect(() => {
     let active = true;
-    const outboxInstance = new WebAttemptOutboxStore("thainaute-demo-v1");
+    const outboxInstance = new WebAttemptOutboxStore(
+      attemptStorage === "learning"
+        ? "thainaute-learning-v1"
+        : "thainaute-demo-v1",
+    );
     const experienceInstance = new WebLocalExperienceStore();
     queueMicrotask(() => {
       if (!active) return;
@@ -325,7 +346,9 @@ export function ExpeditionExperience({
       outboxInstance.close();
       experienceInstance.close();
     };
-  }, []);
+    // `attemptStorage` est dans les dépendances : un changement de base doit
+    // rouvrir le magasin, pas continuer d'écrire dans l'ancien.
+  }, [attemptStorage]);
 
   useEffect(() => {
     const stopOnPageExit = () => stopSignal();
