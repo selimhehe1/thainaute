@@ -47,6 +47,7 @@ import {
 } from "@/lib/client/attempt-outbox-store";
 import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
 import { useWebAuthSession } from "@/lib/client/auth-session";
+import { browserSha256Hex } from "@/lib/client/sha256";
 import {
   LocalExperienceStorageError,
   WebLocalExperienceStore,
@@ -173,7 +174,14 @@ export function ExpeditionExperience({
   const router = useRouter();
   const { analytics: consentAwareAnalytics } = useWebAnalyticsConsent();
   const analytics = analyticsOverride ?? consentAwareAnalytics;
-  const { sessionBoundaryRevision } = useWebAuthSession();
+  const auth = useWebAuthSession();
+  const { sessionBoundaryRevision } = auth;
+  // Propriétaire du journal des tentatives. Voir `attemptStorage` : sur une
+  // leçon réelle, un apprenant connecté doit écrire dans le magasin de SON
+  // compte, sinon sa progression reste anonyme et n'est remontée que par le
+  // bouton « Fusionner et synchroniser », jamais par la synchro ordinaire.
+  const userId =
+    auth.status === "signed_in" ? (auth.session?.user.id ?? null) : null;
 
   const [store, setStore] = useState<WebAttemptOutboxStore | null>(null);
   const [experienceStore, setExperienceStore] =
@@ -327,10 +335,18 @@ export function ExpeditionExperience({
 
   useEffect(() => {
     let active = true;
+    // Le magasin de démonstration reste toujours anonyme : ses tentatives
+    // portent sur une fixture et n'ont rien à faire dans un compte.
+    const proprietaire =
+      attemptStorage === "learning" && userId !== null
+        ? ({ kind: "account", userId } as const)
+        : undefined;
     const outboxInstance = new WebAttemptOutboxStore(
       attemptStorage === "learning"
         ? "thainaute-learning-v1"
         : "thainaute-demo-v1",
+      proprietaire,
+      proprietaire === undefined ? undefined : browserSha256Hex,
     );
     const experienceInstance = new WebLocalExperienceStore();
     queueMicrotask(() => {
@@ -346,9 +362,11 @@ export function ExpeditionExperience({
       outboxInstance.close();
       experienceInstance.close();
     };
-    // `attemptStorage` est dans les dépendances : un changement de base doit
-    // rouvrir le magasin, pas continuer d'écrire dans l'ancien.
-  }, [attemptStorage]);
+    // `attemptStorage` et `userId` sont dans les dépendances : un changement
+    // de base OU de compte doit rouvrir le magasin, pas continuer d'écrire
+    // dans l'ancien. `sessionBoundaryRevision` couvre la reconnexion sur le
+    // même identifiant après une bascule.
+  }, [attemptStorage, userId, sessionBoundaryRevision]);
 
   useEffect(() => {
     const stopOnPageExit = () => stopSignal();
