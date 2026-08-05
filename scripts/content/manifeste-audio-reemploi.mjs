@@ -13,15 +13,20 @@
 // identifiant), donc un manifeste ne se recopie pas tel quel : il faut
 // réassocier chaque entrée à l'item de la leçon d'accueil, par la graphie.
 //
-// L'assetId et les chemins, eux, sont conservés : c'est le même fichier, le
-// même enregistrement, la même vérification de contour F0. Le manifeste dit
-// donc la vérité plutôt que de simuler une production nouvelle.
+// Les CHEMINS, eux, sont conservés : c'est le même fichier, le même
+// enregistrement, la même vérification de contour F0. Le manifeste dit donc
+// la vérité plutôt que de simuler une production nouvelle.
+//
+// L'assetId, en revanche, doit être redérivé pour la leçon d'accueil. Voir
+// le piège documenté plus bas : le conserver rend l'audio inaudible.
 //
 // Usage :
 //   node scripts/content/manifeste-audio-reemploi.mjs <source> <cible>
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+
+import { uuidStable } from "./lib/identite.mjs";
 
 const RACINE = join(import.meta.dirname, "..", "..");
 const [source, cible] = process.argv.slice(2);
@@ -61,7 +66,20 @@ for (const entree of manifesteSource.entries) {
     ignorees.push(graphie ?? entree.itemId);
     continue;
   }
-  entrees.push({ ...entree, itemId: idCible });
+  // PIÈGE MESURÉ : recopier l'assetId de la leçon source rend l'audio
+  // INAUDIBLE. Le compilateur dérive la référence attendue par l'exercice de
+  // l'identifiant de la leçon d'ACCUEIL, `uuidStable("audio", cible,
+  // itemId)`. Un manifeste qui garde l'identifiant d'origine sert bien les
+  // fichiers à la page, mais aucun exercice ne les résout, et le lecteur
+  // reste muet au lieu de jouer un son faux.
+  //
+  // L'assetId est le nom que la leçon donne à l'enregistrement ; le chemin
+  // est l'endroit où l'enregistrement se trouve. Seul le premier change.
+  entrees.push({
+    ...entree,
+    itemId: idCible,
+    assetId: uuidStable("audio", cible, idCible),
+  });
 }
 
 if (entrees.length === 0) {
