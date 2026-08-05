@@ -18,7 +18,11 @@
 
 import { describe, expect, it } from "vitest";
 
-import { compiledLessonIds, readCompiledLessonBundle } from "../src/repository";
+import {
+  compiledLessonIds,
+  readCompiledLessonBundle,
+  validateBundle,
+} from "../src/repository";
 
 /**
  * Leçons dont l'audio n'a pas encore été produit, et pourquoi.
@@ -84,6 +88,38 @@ describe("audio des leçons compilées", () => {
         introuvables,
         `${identifiant} : ${introuvables.length} audio demandés par un exercice sont absents du manifeste`,
       ).toEqual([]);
+    },
+  );
+
+  it.each(identifiants)(
+    "%s : le paquet livré passe la validation croisée complète",
+    async (identifiant) => {
+      // LA PORTE QUI MANQUAIT. Le compilateur valide volontairement contre un
+      // manifeste VIDE et tolère « en attente de N fichiers audio », parce
+      // que l'audio se produit après la compilation. Personne ne revalidait
+      // ensuite, une fois le manifeste réellement écrit.
+      //
+      // C'est ce trou qui a laissé u01-l1f être livrée avec cinq exercices
+      // muets : son paquet échouait `validateBundle`, et rien ne le lisait.
+      //
+      // `validateBundle` est ASYNCHRONE : il relit les fichiers audio sur
+      // disque pour recontrôler leur sha256. Une première version de ce test
+      // l'appelait sans attendre, et passait donc à vide, ce qui reproduisait
+      // exactement le défaut qu'il devait fermer. Le `await` n'est pas
+      // cosmétique, il est toute la valeur du test.
+      const executer = () =>
+        validateBundle(readCompiledLessonBundle(identifiant)!);
+
+      if (AUDIO_EN_ATTENTE[identifiant] !== undefined) {
+        // Dette assumée : on exige tout de même un échec, et que son SEUL
+        // motif soit l'audio manquant. Toute autre invalidité reste
+        // bloquante, et une leçon qui guérirait ferait échouer ce test pour
+        // qu'on la retire de la liste.
+        await expect(executer()).rejects.toThrow(/Audio inconnu/u);
+        return;
+      }
+
+      await expect(executer()).resolves.not.toThrow();
     },
   );
 
