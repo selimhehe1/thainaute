@@ -6,6 +6,7 @@ import {
   type PublicLessonResponse,
   type PublicReleaseResponse,
 } from "@thainaute/content/public";
+import { targetTextOf } from "@thainaute/content";
 
 import { hashCanonical } from "../attempt-sync/canonical-json";
 import type {
@@ -19,6 +20,7 @@ function publicOptions(
   options: readonly {
     readonly id: string;
     readonly labelFr: string | null;
+    readonly targetText?: string | null | undefined;
     readonly thaiRaw: string | null;
     readonly transcription: string | null;
   }[],
@@ -28,7 +30,12 @@ function publicOptions(
   // inadvertance, et `transcription` est justement un champ qui donnerait la
   // reponse sur un exercice de discrimination tonale.
   return [...options]
-    .map(({ id, labelFr, thaiRaw }) => ({ id, labelFr, thaiRaw }))
+    .map(({ id, labelFr, targetText, thaiRaw }) => ({
+      id,
+      labelFr,
+      targetText: targetTextOf({ targetText, thaiRaw }),
+      thaiRaw,
+    }))
     .sort((left, right) => {
       const leftOrder = hashCanonical("thainaute.public-option-order/v1", {
         versionId,
@@ -44,6 +51,92 @@ function publicOptions(
     });
 }
 
+function publicItemReference(
+  lesson: VerifiedPublishedBundle["bundle"]["lesson"],
+  itemId: string,
+) {
+  const item = lesson.items.find(({ id }) => id === itemId);
+  if (item === undefined) return null;
+  return {
+    targetText: targetTextOf(item),
+    thaiRaw: item.thaiRaw,
+  };
+}
+
+function publicExercise(
+  lesson: VerifiedPublishedBundle["bundle"]["lesson"],
+  exercise: VerifiedPublishedBundle["bundle"]["lesson"]["exercises"][number],
+) {
+  if (exercise.type === "audio_choice") {
+    return {
+      id: exercise.id,
+      type: exercise.type,
+      skill: exercise.skill,
+      audioAssetId: exercise.audioAssetId,
+      promptFr: exercise.promptFr,
+      options: publicOptions(lesson.versionId, exercise.id, exercise.options),
+    };
+  }
+
+  if (exercise.type === "association") {
+    const pairs = exercise.pairs.map((pair) => {
+      const item = publicItemReference(lesson, pair.itemId);
+      return item === null
+        ? null
+        : { id: pair.id, ...item, labelFr: pair.labelFr };
+    });
+    return pairs.some((pair) => pair === null)
+      ? null
+      : {
+          id: exercise.id,
+          type: exercise.type,
+          skill: exercise.skill,
+          promptFr: exercise.promptFr,
+          pairs,
+        };
+  }
+
+  const item = publicItemReference(lesson, exercise.itemId);
+  if (item === null) return null;
+
+  if (exercise.type === "word_order") {
+    return {
+      id: exercise.id,
+      type: exercise.type,
+      skill: exercise.skill,
+      promptFr: exercise.promptFr,
+      ...item,
+      audioAssetId: exercise.audioAssetId,
+      tokens: exercise.tokens.map((token) => ({
+        id: token.id,
+        targetText: targetTextOf(token),
+        thaiRaw: token.thaiRaw,
+        transcription: token.transcription,
+      })),
+    };
+  }
+
+  if (exercise.type === "recall") {
+    return {
+      id: exercise.id,
+      type: exercise.type,
+      skill: exercise.skill,
+      promptFr: exercise.promptFr,
+      ...item,
+      answerPolicy: exercise.answerPolicy,
+    };
+  }
+
+  return {
+    id: exercise.id,
+    type: exercise.type,
+    skill: exercise.skill,
+    promptFr: exercise.promptFr,
+    ...item,
+    options: publicOptions(lesson.versionId, exercise.id, exercise.options),
+  };
+}
+
 /** Construit uniquement le DTO gratuit et expurge destine aux clients. */
 export function toPublicLessonResponse(
   verified: VerifiedPublishedBundle,
@@ -56,6 +149,8 @@ export function toPublicLessonResponse(
   const publicLessonResult = publicLessonSchema.safeParse({
     releaseId: verified.release.id,
     releaseVersion: verified.release.version,
+    languagePackId: lesson.languagePackId,
+    targetLocale: lesson.targetLocale,
     lessonId: lesson.lessonId,
     versionId: lesson.versionId,
     revision: lesson.revision,
@@ -64,18 +159,10 @@ export function toPublicLessonResponse(
     objectiveFr: lesson.objectiveFr,
     publishedAt: new Date(lesson.publishedAt).toISOString(),
     access: "free",
-    exercises: lesson.exercises
-      // Le DTO public v1 ne distribue que l'écoute ; les autres mécaniques
-      // arrivent avec le DTO v2 de la phase C (ADR-0024).
-      .filter((exercise) => exercise.type === "audio_choice")
-      .map((exercise) => ({
-        id: exercise.id,
-        type: exercise.type,
-        skill: exercise.skill,
-        audioAssetId: exercise.audioAssetId,
-        promptFr: exercise.promptFr,
-        options: publicOptions(lesson.versionId, exercise.id, exercise.options),
-      })),
+    exercises: lesson.exercises.flatMap((exercise) => {
+      const mapped = publicExercise(lesson, exercise);
+      return mapped === null ? [] : [mapped];
+    }),
     audioAssets: audioManifest.entries.map((entry) => ({
       assetId: entry.assetId,
       variant: entry.variant,
@@ -118,6 +205,8 @@ export function toPublicReleaseResponse(
   const releaseResult = publicReleaseSchema.safeParse({
     releaseId: verified.release.id,
     releaseVersion: verified.release.version,
+    languagePackId: verified.release.languagePackId,
+    targetLocale: verified.release.targetLocale,
     publishedAt: verified.release.publishedAt,
     lessons: lessons.map((response) => {
       if (response === null) throw new Error("Leçon publique absente.");

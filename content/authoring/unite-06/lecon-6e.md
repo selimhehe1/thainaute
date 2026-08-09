@@ -1055,6 +1055,16 @@ n’emploie par ailleurs que deux des quatre termes, พี่ชาย et น�
   deux par hasard ; croire que น้องสาว serait « la sœur » tout court et พี่ชาย
   « le frère » tout court, alors que les deux disent d’abord un rang d’âge.
 
+### Exercice de consolidation textuelle : la famille (`association`)
+
+- Mécanique : `association`
+- Consigne : « Reliez chaque expression à son sens. »
+- Tirages :
+  1. พี่ชาย ↔ « frère aîné »
+  2. น้องสาว ↔ « sœur cadette »
+- Feedback correct : « Exact. »
+- Feedback incorrect : « Relisez l’expression et son sens, puis réessayez. »
+
 ## Dialogue
 
 Scène : en fin d’après-midi, autour d’une table. Une femme thaïe et un homme

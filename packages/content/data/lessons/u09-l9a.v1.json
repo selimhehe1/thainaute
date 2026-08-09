@@ -1,0 +1,800 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "e214b747-66bc-58a8-bedb-1c515dd37558",
+  "versionId": "c7820965-acd6-5f63-b452-fbd37e332cac",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Ce que la fin du mot ne dit pas",
+  "objectiveFr": "à la fin de la leçon, devant un mot écrit et sans l’entendre, l’apprenant annonce le SON qui ferme la syllabe, parmi `k`, `t`, `p`, `n`, `ng` et « aucune consonne ne la ferme », sur 10 mots sur 12 ; il apparie six mots écrits à la fin qu’ils prononcent, 6 sur 6 ; devant un mot portant le signe ◌์, il touche la ou les lettres qui ne se prononcent pas, ou répond « aucune », sur 7 mots sur 8 ; il nom",
+  "requiredEntitlement": null,
+  "audioManifestId": "60d4fa26-1667-5768-aa42-4c2f85ea1c66",
+  "items": [
+    {
+      "id": "1e58e238-eb8d-51d6-9fc9-d5d0cce7be93",
+      "thaiRaw": "เจ็บ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E08",
+        "U+0E47",
+        "U+0E1A"
+      ],
+      "translationFr": "avoir mal ; être souffrant",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "jèp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เจ็บ",
+          "ipa": "t͡ɕep̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "c8798501-2467-538f-8cd3-4b153afb9a61",
+      "thaiRaw": "ปวด",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E27",
+        "U+0E14"
+      ],
+      "translationFr": "avoir mal ; ressentir une douleur",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pòuat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปวด",
+          "ipa": "pua̯t̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "e3d5467f-416a-57c1-b32c-240ebad2bebe",
+      "thaiRaw": "หมอ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E21",
+        "U+0E2D"
+      ],
+      "translationFr": "le médecin",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mǎww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หมอ",
+          "ipa": "mɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "10c0854d-acf8-5451-b258-80b605121b44",
+      "thaiRaw": "แพทย์",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E1E",
+        "U+0E17",
+        "U+0E22",
+        "U+0E4C"
+      ],
+      "translationFr": "le médecin (terme de la langue écrite et professionnelle)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phâeet"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แพทย์",
+          "ipa": "pʰɛːt̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "NON ÉTABLI. en.wiktionary étiquette la vedette « (formal) », et le RID définit แพทย์ EN EMPLOYANT หมอ, ce qui indique lequel des deux mots est le terme de base ; mais le RID ne pose aucune étiquette de registre sur แพทย์, et aucune autre source consultée n’en pose. Un fait qui ne tient pas sur deux sources concordantes est retiré : la leçon n’enseigne donc AUCUNE règle d’emploi entre หมอ et แพทย์, et se contente d’afficher les deux traductions. Voir l’incertitude 1.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "c78a5ad1-2159-52f5-9a3f-2ce3e61e7fe7",
+      "thaiRaw": "โรค",
+      "unicodeCodePoints": [
+        "U+0E42",
+        "U+0E23",
+        "U+0E04"
+      ],
+      "translationFr": "la maladie",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "rôok"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "โรค",
+          "ipa": "roːk̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "725c6b6f-900f-53f4-a51a-094b248e2abe",
+      "thaiRaw": "อาการ",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E32",
+        "U+0E01",
+        "U+0E32",
+        "U+0E23"
+      ],
+      "translationFr": "l’état, les symptômes (ce que le corps manifeste)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "aa·kaan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อาการ",
+          "ipa": "ʔaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "ʔ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อาการ",
+          "ipa": "kaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "841427a5-6699-5d15-ac6d-7d6375c3336f",
+      "thaiRaw": "โรงพยาบาล",
+      "unicodeCodePoints": [
+        "U+0E42",
+        "U+0E23",
+        "U+0E07",
+        "U+0E1E",
+        "U+0E22",
+        "U+0E32",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E25"
+      ],
+      "translationFr": "l’hôpital",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "roong·phá·yaa·baan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "โรงพยาบาล",
+          "ipa": "roːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "โรงพยาบาล",
+          "ipa": "pʰa˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "โรงพยาบาล",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "โรงพยาบาล",
+          "ipa": "baːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "8bc28522-3e7b-51d9-9e80-ca343e8a359d",
+      "thaiRaw": "โทรศัพท์",
+      "unicodeCodePoints": [
+        "U+0E42",
+        "U+0E17",
+        "U+0E23",
+        "U+0E28",
+        "U+0E31",
+        "U+0E1E",
+        "U+0E17",
+        "U+0E4C"
+      ],
+      "translationFr": "le téléphone",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thoo·rá·sàp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "โทรศัพท์",
+          "ipa": "tʰoː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "โทรศัพท์",
+          "ipa": "ra˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "โทรศัพท์",
+          "ipa": "sap̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre pour le sens nominal enseigné",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u09-l9a-p5",
+      "drawIndex": 1,
+      "id": "c70983b5-8e14-560b-965b-3a3e6a0e5931",
+      "type": "recall",
+      "itemId": "1e58e238-eb8d-51d6-9fc9-d5d0cce7be93",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "jèp",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu la fin sans l’entendre.",
+        "incorrectFr": "Regardez la dernière lettre qui se prononce et cherchez sa famille. ค donne `k`, ถ et ท donnent `t`, ป donne `p`, ร et ล donnent `n`.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòuat`, `mǎww`, `phâeet`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9a-p5",
+      "drawIndex": 2,
+      "id": "5ef1fa29-bd94-5bc4-943e-dc759933cfdb",
+      "type": "recall",
+      "itemId": "c8798501-2467-538f-8cd3-4b153afb9a61",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "pòuat",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu la fin sans l’entendre.",
+        "incorrectFr": "Regardez la dernière lettre qui se prononce et cherchez sa famille. ค donne `k`, ถ et ท donnent `t`, ป donne `p`, ร et ล donnent `n`.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòuat`, `mǎww`, `phâeet`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9a-p5",
+      "drawIndex": 3,
+      "id": "5ba6124c-6177-5111-829a-7bc45825ffb3",
+      "type": "recall",
+      "itemId": "e3d5467f-416a-57c1-b32c-240ebad2bebe",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "mǎww",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu la fin sans l’entendre.",
+        "incorrectFr": "Regardez la dernière lettre qui se prononce et cherchez sa famille. ค donne `k`, ถ et ท donnent `t`, ป donne `p`, ร et ล donnent `n`.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòuat`, `mǎww`, `phâeet`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9a-p5",
+      "drawIndex": 4,
+      "id": "94ba8349-4aea-5004-9f0a-1fcf41f2c398",
+      "type": "recall",
+      "itemId": "10c0854d-acf8-5451-b258-80b605121b44",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "phâeet",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu la fin sans l’entendre.",
+        "incorrectFr": "Regardez la dernière lettre qui se prononce et cherchez sa famille. ค donne `k`, ถ et ท donnent `t`, ป donne `p`, ร et ล donnent `n`.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòuat`, `mǎww`, `phâeet`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9a-p5",
+      "drawIndex": 5,
+      "id": "a6e672cd-479c-5047-83c1-11cafe572db3",
+      "type": "recall",
+      "itemId": "c78a5ad1-2159-52f5-9a3f-2ce3e61e7fe7",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "rôok",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu la fin sans l’entendre.",
+        "incorrectFr": "Regardez la dernière lettre qui se prononce et cherchez sa famille. ค donne `k`, ถ et ท donnent `t`, ป donne `p`, ร et ล donnent `n`.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòuat`, `mǎww`, `phâeet`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9a-p5",
+      "drawIndex": 6,
+      "id": "8d39a009-4e4e-5f02-9048-de59f89180f5",
+      "type": "recall",
+      "itemId": "725c6b6f-900f-53f4-a51a-094b248e2abe",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "aa·kaan",
+          "kind": "transcription"
+        },
+        {
+          "value": "aakaan",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu la fin sans l’entendre.",
+        "incorrectFr": "Regardez la dernière lettre qui se prononce et cherchez sa famille. ค donne `k`, ถ et ท donnent `t`, ป donne `p`, ร et ล donnent `n`.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòuat`, `mǎww`, `phâeet`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9a-p5",
+      "drawIndex": 7,
+      "id": "093ab078-0347-5c5f-8e1d-14a2e169496c",
+      "type": "recall",
+      "itemId": "841427a5-6699-5d15-ac6d-7d6375c3336f",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "roong·phá·yaa·baan",
+          "kind": "transcription"
+        },
+        {
+          "value": "roongpháyaabaan",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu la fin sans l’entendre.",
+        "incorrectFr": "Regardez la dernière lettre qui se prononce et cherchez sa famille. ค donne `k`, ถ et ท donnent `t`, ป donne `p`, ร et ล donnent `n`.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòuat`, `mǎww`, `phâeet`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9a-p5",
+      "drawIndex": 8,
+      "id": "f286b494-d919-5b09-8885-b1db1daf8b65",
+      "type": "recall",
+      "itemId": "8bc28522-3e7b-51d9-9e80-ca343e8a359d",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "thoo·rá·sàp",
+          "kind": "transcription"
+        },
+        {
+          "value": "thoorásàp",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu la fin sans l’entendre.",
+        "incorrectFr": "Regardez la dernière lettre qui se prononce et cherchez sa famille. ค donne `k`, ถ et ท donnent `t`, ป donne `p`, ร et ล donnent `n`.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòuat`, `mǎww`, `phâeet`."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous le faites déjà, depuis la première unité",
+      "bodyFr": "Depuis des semaines, vous prononcez correctement des mots dont une lettre, à la fin d’une syllabe, ne sort pas avec le son qu’elle a au début. Dans ขอบคุณ, le บ de ขอบ sort en `p`. ขอโทษ finit sur ษ et ฝรั่งเศส sur ส : les deux sortent en `t`, comme le ท de บาท et le ถ de รถ. Et ต้องการ finit sur ร alors que vous dites un `n`. Ce ne sont pas six exceptions : il y en a beaucoup d’autres dans ce que vous avez déjà appris, et vous en lirez aujourd’hui. Personne ne vous l’avait signalé, et c’était le bon choix : vous les avez appris par l’oreille. Aujourd’hui on ouvre le capot.",
+      "specimen": "บาท (bàat) · รถ (rót)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "le principe, en une phrase",
+      "bodyFr": "À la fin d’une syllabe, une lettre thaïe ne garde pas forcément le son qu’elle a au début. Le thaï range les lettres finales en familles, et toutes les lettres d’une même famille ferment sur le même son. Le dictionnaire appelle ces familles มาตรา, et il en donne huit.",
+      "specimen": "ท dans ทาน (thaan) · ท dans บาท (bàat)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "trois familles qui s’arrêtent",
+      "bodyFr": "Vous les connaissez déjà par le son, depuis la leçon 5A : la bouche se ferme, et plus rien ne sort. Voici les lettres qui les écrivent.\n\n> famille du `k` : ก ข ค ฆ > famille du `t` : ด ต ถ ท ธ ฎ ฏ จ ช ซ ศ ษ ส > famille du `p` : บ ป พ ฟ ภ",
+      "specimen": "มาก (mâak) · บาท (bàat) · ครับ (khráp)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "la famille du t est la plus grande, et c’est là que ça se joue",
+      "bodyFr": "Treize lettres pour un seul son de fin, et le dictionnaire en range encore cinq autres dans cette famille, si rares en fin de mot que nous les laissons de côté pour l’instant. Retenez d’abord les cinq qui reviennent le plus, et un exemple pour chacune.\n\n> ด comme dans ปวด · ต comme dans จิต · ถ comme dans รถ > ท comme dans บาท · ส comme dans รส\n\nLa preuve la plus directe est là, sous vos yeux : รถ, le véhicule appris en 5D, et รส, le goût, s’écrivent avec deux lettres finales différentes et se prononcent exactement pareil.",
+      "specimen": "รถ (rót) contre รส (rót)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "trois familles qui continuent, et deux que nous mettons de côté",
+      "bodyFr": "Les autres finales ne bloquent pas l’air, elles le laissent sortir par le nez ou par la bouche.\n\n> famille du `n` : น ณ ร ล ฬ ญ > famille du `ng` : ง, toute seule > famille du `m` : ม, toute seule\n\nVous en avez maintenant six, et le dictionnaire en compte huit. Les deux qui manquent sont celle de ย et celle de ว. Elles ferment une syllabe elles aussi, tout comme les six autres, et vous les entendez depuis longtemps dans ข้าว, หิว et อร่อย. Nous ne vous demanderons pas de les nommer aujourd’hui, pour une raison qui tient à nous et non au thaï : notre transcription écrit ces deux fins collées à la voyelle, comme la page 8 de 6A vous l’a montré. C’est une convention d’écriture de notre part, pas une propriété de la langue.",
+      "specimen": "จาน (jaan) · โรง (roong) · ดื่ม (dùeem)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "ร et ล à la fin, et un test que vous pouvez faire",
+      "bodyFr": "Faites l’expérience plutôt que de me croire. Lisez อาการ lettre à lettre : la dernière est ร. Écoutez maintenant le mot : ce qui sort à la fin est un `n`. Même chose pour โรงพยาบาล, qui se termine à l’écrit par ล. Et vous le faites déjà sans le savoir dans ต้องการ, appris en 8B.",
+      "specimen": "อาการ (aa·kaan) · โรงพยาบาล (roong·phá·yaa·baan)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "attention, tout ce qui est à la fin n’est pas une finale",
+      "bodyFr": "Un rappel de 8A, parce qu’il devient décisif aujourd’hui. Dans เสีย et dans ตัว, le ย et le ว ne sont pas des consonnes finales : ils font partie du graphème vocalique เ◌ีย et ◌ัว. Ces deux mots ne portent AUCUNE consonne finale.\n\nIl n’y a que trois figures à reconnaître, et chacune se voit à l’œil.\n\n> เ◌ีย : le ย suit un ◌ี, comme dans เสีย. Il appartient à la voyelle. > ◌ัว : le ว suit un ◌ั, comme dans ตัว. Il appartient à la voyelle. > ◌ว◌ : le ว est coincé entre l’initiale et une autre lettre, comme dans ปวด et > ขวด. Il appartient à la voyelle, et c’est la lettre d’après qui ferme.\n\nPartout ailleurs, un ย ou un ว placé à la fin ferme bel et bien la syllabe. Avant de nommer une fin, demandez-vous donc d’abord si la dernière lettre appartient à l’une de ces trois figures.",
+      "specimen": "ปวด (pòuat, un `t` ferme) contre ตัว (toua, rien ne ferme)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "deux façons de dire que ça fait mal",
+      "bodyFr": "เจ็บ et ปวด veulent dire tous les deux « avoir mal ». Ce qui les sépare finement n’est pas l’objet du jour, et nous ne vous le ferons pas deviner : la leçon B de l’unité le traite. Ce qui est votre affaire aujourd’hui, c’est leur fin écrite, et elle est différente. เจ็บ finit sur บ et se ferme donc sur un `p`. ปวด finit sur ด et se ferme sur un `t`. Deux mots voisins, deux têtes de famille, deux sons de fin : voilà ce que vous devez pouvoir lire sans les entendre.",
+      "specimen": "เจ็บ (jèp, `p`) · ปวด (pòuat, `t`)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "le petit signe qui éteint une lettre",
+      "bodyFr": "Regardez แพทย์. Le ์ posé sur le ย l’éteint : le ย ne se prononce pas, et c’est le ท qui ferme la syllabe, sur un `t`. Le thaï nomme ce signe ทัณฑฆาต et nomme การันต์ la lettre éteinte. Attention, et c’est le vrai piège du jour : ce signe se pose exactement au même endroit que les quatre marques de ton de 7A et 8A, et **ce n’en est pas une**. Il ne change aucun ton. Il supprime un son.",
+      "specimen": "แพทย์ (phâeet) · ◌์"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "il peut en éteindre plus d’une",
+      "bodyFr": "Ne comptez pas les lettres, cherchez la dernière qui se prononce. Dans จันทร์, le ์ est posé sur le ร, et ท comme ร se taisent tous les deux : c’est le น qui ferme, sur un `n`. Dans ศาสตร์, ต et ร se taisent, et c’est le ส qui ferme, sur un `t`.",
+      "specimen": "จันทร์ (jan) · ศาสตร์ (sàat)"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "très fréquent dans les mots venus d’ailleurs",
+      "bodyFr": "Vous avez déjà rencontré ce signe une fois, dans รถเมล์ appris en 5D, où il éteint le ล hérité de l’anglais. Les deux mots du jour qui le portent, แพทย์ et โทรศัพท์, viennent eux aussi d’ailleurs : le dictionnaire rattache แพทย์ au sanskrit et note โทรศัพท์ comme la contrepartie de l’anglais telephone.",
+      "specimen": "รถเมล์ (rót·mee) · โทรศัพท์ (thoo·rá·sàp)"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "la fin change le ton, et ce n’est pas encore votre affaire",
+      "bodyFr": "Comparez โรค et โรง. Même première lettre, même voyelle, une seule différence à l’écran : l’un se ferme sur un `k`, l’autre sur un `ng`. Et leurs tons ne sont pas les mêmes, descendant contre moyen. Le tableau de 7A et 8A ne couvre pas encore les syllabes qui se ferment sur `k`, `t` ou `p` : pour aujourd’hui, retenez seulement que la lettre finale n’est pas décorative. Les tons des mots du jour vous sont donnés, pas à calculer.",
+      "specimen": "โรค (rôok) contre โรง (roong)"
+    },
+    {
+      "ordre": 13,
+      "titleFr": "les deux contrastes, on les entretient",
+      "bodyFr": "Rien n’est acquis une fois pour toutes, et surtout pas ces deux-là. Reprenez vos deux repères avant les exercices.\n\n> ปา (paa) contre ป่า (pàa) : la voix reste plate, puis elle descend et reste > basse > หมา (mǎa) contre ม้า (máa) : la voix creuse puis remonte, contre la voix qui > reste perchée\n\nLes mots du jour vous en donnent quatre de plus : โรง est moyen, ปวด et เจ็บ sont bas ; หมอ monte, รถ et รส restent hauts.",
+      "specimen": "ปา / ป่า puis หมา / ม้า"
+    },
+    {
+      "ordre": 14,
+      "titleFr": "à vous",
+      "bodyFr": "Le geste de lecture tient en trois temps. Un, trouvez la consonne initiale, en vous souvenant que เ, แ et โ s’écrivent avant elle. Deux, regardez la dernière lettre : si elle porte un ◌์, remontez jusqu’à la première qui se prononce. Trois, nommez la famille de cette lettre, et vous avez le son de fin.\n\nAprès les exercices, enregistrez-vous en disant รถ puis รส, et หมอ puis ม้า, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.\n\nUn mot pour finir, et il est important. Cette leçon vous donne du vocabulaire, elle ne vous donne aucune consigne. Thaïnaute enseigne une langue ; ce n’est pas un service de santé.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u09-l9a-p5",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "mechanic": "recall",
+      "drawCount": 8,
+      "passRequired": 8,
+      "sampleSize": 8
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN"
+    ],
+    "generationActors": [
+      {
+        "actorId": "82a76e97-e56b-50bd-b2cd-0ecde4f44e93",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1404089e-30b8-519b-9909-2adc49ddfe1c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "10f43276-7ff6-5404-8461-086dae00807e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2f5ea2d2-9360-53b3-9628-f2223264c82c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f181196f-85e8-59a8-8abf-5751c1d6f860",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "74695223-ecf1-5b51-89a6-f635754aa49c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "47034a64-eb2e-5a15-a5c5-b4de14c08867",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "cc4df3c8-43b9-5f4f-b3cf-e6082736d0aa",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

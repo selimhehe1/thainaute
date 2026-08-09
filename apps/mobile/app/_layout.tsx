@@ -1,7 +1,14 @@
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Navigator, Slot } from "expo-router";
 import { SQLiteProvider } from "expo-sqlite";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { colors } from "@thainaute/design-tokens";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -10,12 +17,16 @@ import {
   View,
 } from "react-native";
 
-import { initializeDatabase } from "../lib/initialize-database";
 import { MobileAccountDeletionBootstrap } from "../lib/account-deletion-bootstrap";
 import { MobileAnalyticsBootstrap } from "../lib/analytics-provider";
 import { MobileAuthSessionProvider } from "../lib/auth-session";
 import { embeddedThaiFonts } from "../lib/embedded-thai-fonts";
+import { initializeDatabase } from "../lib/initialize-database";
 import { purgeMobileAccountExportCache } from "../lib/mobile-account-export";
+import {
+  getActiveMobileLanguagePack,
+  getMobileDatabaseName,
+} from "../lib/mobile-language-pack";
 
 function DatabaseReady({ onReady }: { readonly onReady: () => void }) {
   useEffect(onReady, [onReady]);
@@ -24,21 +35,52 @@ function DatabaseReady({ onReady }: { readonly onReady: () => void }) {
 
 type DatabaseStatus = "loading" | "ready" | "error";
 
-export default function RootLayout() {
-  const [thaiFontsLoaded, thaiFontError] = useFonts(embeddedThaiFonts);
+function MobileDatabaseContent({ children }: { readonly children: ReactNode }) {
+  const languagePack = getActiveMobileLanguagePack();
+  const targetFonts =
+    languagePack.typography.targetFontFamily === "thai"
+      ? embeddedThaiFonts
+      : {};
+  const [thaiFontsLoaded, thaiFontError] = useFonts(targetFonts);
+
+  if (thaiFontError !== null) {
+    return (
+      <View style={styles.fallback} accessibilityLiveRegion="assertive">
+        <Text style={styles.fallbackTitle}>Ressources locales incomplètes</Text>
+        <Text style={styles.fallbackBody}>
+          La police thaï embarquée n&apos;a pas pu être chargée. Mettez
+          l&apos;application à jour avant de commencer une leçon.
+        </Text>
+      </View>
+    );
+  }
+
+  if (!thaiFontsLoaded) {
+    return (
+      <View style={styles.loading} accessibilityLiveRegion="polite">
+        <ActivityIndicator color={colors.coral} size="large" />
+        <Text style={styles.loadingText}>
+          Préparation des ressources locales…
+        </Text>
+      </View>
+    );
+  }
+
+  return (
+    <MobileAnalyticsBootstrap>
+      <MobileAuthSessionProvider>
+        <MobileAccountDeletionBootstrap />
+        {children}
+      </MobileAuthSessionProvider>
+    </MobileAnalyticsBootstrap>
+  );
+}
+
+function MobileRouteProviders({ children }: { readonly children: ReactNode }) {
   const [providerKey, setProviderKey] = useState(0);
   const [databaseStatus, setDatabaseStatus] =
     useState<DatabaseStatus>("loading");
   const errorQueued = useRef(false);
-
-  useEffect(() => {
-    try {
-      purgeMobileAccountExportCache();
-    } catch {
-      // Le prochain export retente la même purge ciblée et reste bloqué tant
-      // que le système refuse l’effacement du fichier temporaire au nom fixe.
-    }
-  }, []);
 
   const handleReady = useCallback(() => {
     errorQueued.current = false;
@@ -51,25 +93,13 @@ export default function RootLayout() {
     setTimeout(() => setDatabaseStatus("error"), 0);
   }, []);
 
-  if (thaiFontError !== null) {
-    return (
-      <View style={styles.fallback} accessibilityLiveRegion="assertive">
-        <Text style={styles.fallbackTitle}>Ressources locales incomplètes</Text>
-        <Text style={styles.fallbackBody}>
-          La police thaïe embarquée n’a pas pu être chargée. Mettez
-          l’application à jour avant de commencer une leçon.
-        </Text>
-      </View>
-    );
-  }
-
   if (databaseStatus === "error") {
     return (
       <View style={styles.fallback} accessibilityLiveRegion="assertive">
         <Text style={styles.fallbackTitle}>Stockage local indisponible</Text>
         <Text style={styles.fallbackBody}>
-          Vos données existantes n’ont pas été effacées. Réessayez ou mettez
-          l’application à jour si le problème persiste.
+          Vos données existantes n&apos;ont pas été effacées. Réessayez ou
+          mettez l&apos;application à jour si le problème persiste.
         </Text>
         <Pressable
           accessibilityRole="button"
@@ -90,23 +120,16 @@ export default function RootLayout() {
     <View style={styles.root}>
       <SQLiteProvider
         key={providerKey}
-        databaseName="thainaute-local.db"
+        databaseName={getMobileDatabaseName()}
         onError={handleError}
         onInit={initializeDatabase}
       >
         <DatabaseReady onReady={handleReady} />
-        {databaseStatus === "ready" && thaiFontsLoaded ? (
-          <MobileAnalyticsBootstrap>
-            <MobileAuthSessionProvider>
-              <MobileAccountDeletionBootstrap />
-              <Stack screenOptions={{ headerShown: false }} />
-            </MobileAuthSessionProvider>
-          </MobileAnalyticsBootstrap>
-        ) : null}
+        <MobileDatabaseContent>{children}</MobileDatabaseContent>
       </SQLiteProvider>
-      {(databaseStatus === "loading" || !thaiFontsLoaded) && (
+      {databaseStatus === "loading" && (
         <View style={styles.loading} accessibilityLiveRegion="polite">
-          <ActivityIndicator color="#283450" size="large" />
+          <ActivityIndicator color={colors.coral} size="large" />
           <Text style={styles.loadingText}>
             Préparation des ressources locales…
           </Text>
@@ -116,28 +139,63 @@ export default function RootLayout() {
   );
 }
 
+export default function RootLayout() {
+  useEffect(() => {
+    try {
+      purgeMobileAccountExportCache();
+    } catch {
+      // La purge ciblee sera retentee au prochain export.
+    }
+  }, []);
+
+  return (
+    <Navigator screenOptions={{ headerShown: false }}>
+      <Navigator.Screen name="account" />
+      <Navigator.Screen name="audio-expedition" />
+      <Navigator.Screen name="connected-lesson" />
+      <Navigator.Screen name="index" />
+      <Navigator.Screen name="lesson" />
+      <Navigator.Screen name="mechanics-expedition" />
+      <Navigator.Screen name="mobile-lesson-expedition" />
+      <Navigator.Screen name="onboarding" />
+      <Navigator.Screen name="path" />
+      <Navigator.Screen name="practice" />
+      <Navigator.Screen name="pilot-lesson" />
+      <Navigator.Screen name="privacy" />
+      <Navigator.Screen name="progress" />
+      <Navigator.Screen name="unit-01" />
+      <MobileRouteProviders>
+        <Slot />
+      </MobileRouteProviders>
+    </Navigator>
+  );
+}
+
 const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: "#fbfaf7" },
+  root: { flex: 1, backgroundColor: colors.jasmine },
   loading: {
     position: "absolute",
-    inset: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
     alignItems: "center",
     justifyContent: "center",
     gap: 16,
-    backgroundColor: "#fbfaf7",
+    backgroundColor: colors.jasmine,
   },
-  loadingText: { color: "#283450", fontSize: 16, fontWeight: "700" },
+  loadingText: { color: colors.ink, fontSize: 16, fontWeight: "700" },
   fallback: {
     flex: 1,
     alignItems: "stretch",
     justifyContent: "center",
     padding: 28,
-    backgroundColor: "#fbfaf7",
+    backgroundColor: colors.jasmine,
   },
-  fallbackTitle: { color: "#283450", fontSize: 28, fontWeight: "800" },
+  fallbackTitle: { color: colors.ink, fontSize: 28, fontWeight: "800" },
   fallbackBody: {
     marginTop: 14,
-    color: "#5e6980",
+    color: colors.inkSoft,
     fontSize: 16,
     lineHeight: 24,
   },
@@ -147,7 +205,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 999,
-    backgroundColor: "#283450",
+    backgroundColor: colors.coral,
   },
   retryText: { color: "white", fontSize: 16, fontWeight: "800" },
 });

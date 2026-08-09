@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "501f0522-19c5-5d62-a7ed-dec83580b7b7",
+  "versionId": "475ca606-ac91-5785-b08c-ba25dc82d0c5",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Les deux marques qui changent tout",
+  "objectiveFr": "à la fin de la leçon, devant un mot écrit en syllabe vivante qui porte ไม้เอก ou ไม้โท, l’apprenant annonce le ton en croisant la marque et la classe de la consonne initiale, sur 8 cas sur 10 ; il retrouve les six cases du tableau en associant chacun des mots du jour à sa case, marque et classe, sur 5 paires sur 6 ; il distingue à l’écoute le ton moyen du ton bas sur les paires ทาน / ถ่าน, อาน / อ",
+  "requiredEntitlement": null,
+  "audioManifestId": "aa7ec594-cbf7-50c2-ae82-f0732709d26f",
+  "items": [
+    {
+      "id": "91b109b3-ea8f-5292-92bf-b190b0967e43",
+      "thaiRaw": "บ้าน",
+      "unicodeCodePoints": [
+        "U+0E1A",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "la maison",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "bâan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "บ้าน",
+          "ipa": "baːn˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "7b52bd91-7374-5487-b38b-c0b9f0744ea9",
+      "thaiRaw": "ห้อง",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "la pièce, la chambre",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้อง",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "3493ad55-809c-5436-9640-33761b24cfdf",
+      "thaiRaw": "นอน",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E2D",
+        "U+0E19"
+      ],
+      "translationFr": "dormir, se coucher",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nawwn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นอน",
+          "ipa": "nɔːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "81acd463-fc54-5f21-a891-1b42182a4f58",
+      "thaiRaw": "นั่ง",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E31",
+        "U+0E48",
+        "U+0E07"
+      ],
+      "translationFr": "s’asseoir, être assis",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nâng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นั่ง",
+          "ipa": "naŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "628aaa94-32e0-56f1-8c39-d05106e455f9",
+      "thaiRaw": "ช้อน",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E19"
+      ],
+      "translationFr": "la cuillère",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "cháwwn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ช้อน",
+          "ipa": "t͡ɕʰɔːn˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "c72b0bdf-430d-5b2f-a631-ebaef5fa4556",
+      "thaiRaw": "อ่าน",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E48",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "lire",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "àan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อ่าน",
+          "ipa": "ʔaːn˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "ʔ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "206fdd40-9fd7-5950-b929-41309a538e6e",
+      "thaiRaw": "ถ่าน",
+      "unicodeCodePoints": [
+        "U+0E16",
+        "U+0E48",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "le charbon de bois",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thàan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ถ่าน",
+          "ipa": "tʰaːn˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b02e7121-a64b-58df-9511-1550f5d5bdd1",
+      "thaiRaw": "ตื่น",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E37",
+        "U+0E48",
+        "U+0E19"
+      ],
+      "translationFr": "se réveiller",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tùeen"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตื่น",
+          "ipa": "tɯːn˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "t",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u07-l7a-p3",
+      "drawIndex": 1,
+      "id": "11d37dcb-9e37-56d2-9050-dcfa739c3891",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Chaque mot de gauche tombe dans une case du tableau. Associez-le à sa case.",
+      "pairs": [
+        {
+          "id": "1d5fe45e-e35a-5d00-8474-c97ba236772d",
+          "itemId": "c72b0bdf-430d-5b2f-a631-ebaef5fa4556",
+          "labelFr": "ไม้เอก"
+        },
+        {
+          "id": "44059d3e-a37b-5ddc-a890-607c4c3eec91",
+          "itemId": "206fdd40-9fd7-5950-b929-41309a538e6e",
+          "labelFr": "ไม้เอก"
+        },
+        {
+          "id": "6ab0f29b-4d39-566c-ad68-9bc2087f3ce3",
+          "itemId": "81acd463-fc54-5f21-a891-1b42182a4f58",
+          "labelFr": "ไม้เอก"
+        },
+        {
+          "id": "c67ea6a5-6dda-52f0-ab94-fb06b31f3b53",
+          "itemId": "91b109b3-ea8f-5292-92bf-b190b0967e43",
+          "labelFr": "ไม้โท"
+        },
+        {
+          "id": "d9c57d77-6214-5b93-8d61-61881cf31cbc",
+          "itemId": "7b52bd91-7374-5487-b38b-c0b9f0744ea9",
+          "labelFr": "ไม้โท"
+        },
+        {
+          "id": "73f96f37-eee7-55e1-8a69-a866c01a0901",
+          "itemId": "628aaa94-32e0-56f1-8c39-d05106e455f9",
+          "labelFr": "ไม้โท"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Deux questions, dans cet ordre. La marque a-t-elle une boucle en haut à gauche, comme ◌้ de ไม้โท, ou est-elle un simple trait oblique, comme ◌่ de ไม้เอก ? Et la consonne qui la porte, à quelle classe appartient-elle ?",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "une promesse de la leçon 1C",
+      "bodyFr": "En 1C, devant ป่า, la leçon disait ceci : le petit signe au-dessus du ป sera expliqué dans les unités d’écriture, inutile de le retenir pour l’instant. Depuis, vous avez lu ce signe des dizaines de fois, dans สี่, dans พ่อ, dans แม่, sans jamais savoir ce qu’il faisait. C’est aujourd’hui.",
+      "specimen": "ป่า"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "deux signes, deux noms, une seule place",
+      "bodyFr": "Le thaï a quatre marques de ton. Vous en travaillez deux aujourd’hui, et ce sont les deux seules que le parcours vous ait fait lire jusqu’ici : ◌่ s’appelle ไม้เอก, la marque un, et ◌้ s’appelle ไม้โท, la marque deux. Elles s’écrivent toujours AU-DESSUS d’une lettre, jamais avant ni après. Dans tous les mots du jour, cette lettre est la consonne initiale : c’est là qu’il faut regarder.",
+      "specimen": "◌่ ไม้เอก · ◌้ ไม้โท"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "la même marque ne donne pas le même ton",
+      "bodyFr": "Voici le point qui surprend, et il vient de la toute première leçon du parcours. ข่า et ค่า portent la même marque ไม้เอก, la même voyelle longue, et le même son kh soufflé. Pourtant ข่า se dit au ton BAS et ค่า au ton DESCENDANT. La marque à elle seule ne décide donc de rien : c’est la classe de la consonne initiale qui décide avec elle. ข est haute, ค est basse.",
+      "specimen": "ข่า (khàa) contre ค่า (khâa)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "la ligne de ไม้เอก",
+      "bodyFr": "Prenez une syllabe vivante, celle de 4A : voyelle longue sans consonne finale, ou finale en ง, น, ม, ย ou ว. Posez-y un ไม้เอก. Alors deux classes sur trois donnent le même résultat, et c’est la basse qui se détache.\n\n> consonne MOYENNE + ไม้เอก → ton BAS, comme อ่าน > consonne HAUTE + ไม้เอก → ton BAS, comme ถ่าน > consonne BASSE + ไม้เอก → ton DESCENDANT, comme นั่ง",
+      "specimen": "อ่าน · ถ่าน · นั่ง"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "la ligne de ไม้โท",
+      "bodyFr": "Même exercice avec l’autre marque. Le partage est le même : moyenne et haute d’un côté, basse toute seule de l’autre.\n\n> consonne MOYENNE + ไม้โท → ton DESCENDANT, comme บ้าน > consonne HAUTE + ไม้โท → ton DESCENDANT, comme ห้อง > consonne BASSE + ไม้โท → ton HAUT, comme ช้อน",
+      "specimen": "บ้าน · ห้อง · ช้อน"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "le tableau entier, neuf cases",
+      "bodyFr": "Voici tout ce que vous savez lire à partir d’aujourd’hui, sur une syllabe vivante. La première colonne, vous la connaissez depuis 4A et 6A.\n\n> MOYENNE : rien → moyen · ไม้เอก → bas · ไม้โท → descendant > HAUTE : rien → montant · ไม้เอก → bas · ไม้โท → descendant > BASSE : rien → moyen · ไม้เอก → descendant · ไม้โท → haut\n\nUne seule chose à retenir en plus des lignes : la classe basse est toujours d’un cran plus haut que les deux autres quand une marque est posée. Là où moyenne et haute donnent bas, elle donne descendant ; là où elles donnent descendant, elle donne haut.",
+      "specimen": "อ่าน (àan) contre นั่ง (nâng)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "la série de 1A n’était pas un hasard",
+      "bodyFr": "Retournez à la toute première leçon. คา ข่า ค่า ค้า ขา, cinq mots, cinq tons, que vous écoutiez alors sans rien comprendre à l’écriture. Regardez-les maintenant. คา, basse sans marque, ton moyen. ข่า, haute plus ไม้เอก, ton bas. ค่า, basse plus ไม้เอก, ton descendant. ค้า, basse plus ไม้โท, ton haut. ขา, haute sans marque, ton montant. Cinq tons du thaï obtenus avec deux lettres et deux marques : cette série est le tableau du jour, en entier.",
+      "specimen": "คา · ข่า · ค่า · ค้า · ขา"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "où regarder, dans quel ordre",
+      "bodyFr": "Trois réflexes, toujours dans cet ordre. Un, trouvez la consonne initiale, et souvenez-vous de 4A : เ, แ, โ, ใ et ไ s’écrivent avant elle. Dans แม่, la consonne initiale est ม. Deux, regardez ce qui est posé au-dessus de cette consonne. Trois, croisez. Attention à un détail de rendu : dans นั่ง, la marque ไม้เอก se pose par-dessus le ◌ั de la leçon 3A, ce qui fait deux signes empilés au-dessus du même น. Les deux se lisent, l’un est une voyelle, l’autre un ton.",
+      "specimen": "แม่ (mâee) · นั่ง (nâng)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "vous le faisiez déjà, vingt-trois fois",
+      "bodyFr": "Comme en 4A et en 6A, la règle du jour n’ajoute presque rien à votre mémoire : elle explique ce que vous dites déjà. Vingt-trois mots publiés dans les unités 1 à 6 entrent exactement dans le tableau, et les vingt-trois se prononcent comme il l’annonce.\n\n> moyenne + ไม้เอก, ton bas : ป่า, ปู่, ปี่, ดื่ม > haute + ไม้เอก, ton bas : ข่า, ผ่า, สี่ > basse + ไม้เอก, ton descendant : ค่า, ชื่อ, พ่อ, แม่, พี่ > moyenne + ไม้โท, ton descendant : ก้าว, แก้ว, ต้น > haute + ไม้โท, ton descendant : ข้าว, ห้า > basse + ไม้โท, ton haut : ค้า, ม้า, น้า, นี้, น้อง, เลี้ยว",
+      "specimen": "พ่อ (phâww) contre น้อง (náwwng)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "ce que la règle ne couvre pas",
+      "bodyFr": "Quatre familles restent dehors, et il vaut mieux les connaître que les découvrir par une erreur. D’abord les syllabes mortes : ค่ะ et ล่ะ portent un ไม้เอก mais se ferment court, et leur ton ne se lit pas avec ce tableau. Ensuite les formes que 4A avait déjà écartées, ไ, ใ, เ◌า et ◌ำ : ไก่, ไข่, ไม่, ไม้, เก้า, เข้า et น้ำ en font partie. Ensuite les mots à consonne de tête, หน่อย, ไหว้, อยู่ et อร่อย, où un ห ou un อ muet change la donne : regardez-les bien, la marque n’y est pas posée sur la première consonne, et c’est le signe que vous êtes hors du tableau. Enfin les deux marques que vous n’avez pas vues aujourd’hui, ไม้ตรี et ไม้จัตวา.",
+      "specimen": "ค่ะ (khâ) contre ค่า (khâa)"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "moyen contre bas, deuxième passage",
+      "bodyFr": "Le tableau met deux fois le ton bas dans votre lecture, et ce parcours a choisi d’y revenir une seconde fois : écoutez les deux mots d’une paire et jugez vous-même si vous les séparez du premier coup. Repassons dessus. Le moyen est plat, posé au milieu. Le bas est tout aussi plat, installé un étage plus bas, sans jamais tomber. Quatre paires aujourd’hui, dont deux ne diffèrent QUE par la marque : อาน (aan), la selle, contre อ่าน (àan), lire ; ปา (paa), lancer, contre ป่า (pàa), la forêt. Deux autres opposent deux écritures pour un même son : ทาน (thaan), manger, contre ถ่าน (thàan), le charbon de bois ; ปี (pii), l’année, contre ปี่ (pìi), le hautbois thaï.",
+      "specimen": "อาน / อ่าน puis ทาน / ถ่าน"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "à vous",
+      "bodyFr": "Deux gestes à emporter. À l’œil : consonne initiale, puis marque, puis croisement, dans cet ordre et jamais autrement. À l’oreille : posez d’abord le ton moyen comme ligne d’horizon, puis demandez-vous seulement si la syllabe entendue est sur la ligne ou en dessous, exactement la stratégie de 1C.\n\nAprès les exercices, enregistrez-vous en disant ทาน puis ถ่าน, et อาน puis อ่าน, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u07-l7a-p3",
+      "promptFr": "Chaque mot de gauche tombe dans une case du tableau. Associez-le à sa case.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "ed8cd161-8a7b-58b6-a30a-5b9b3bbf45d5",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3844a416-98ca-5816-9bfa-d6359216d6cc",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "da0b9b56-b91d-5dd3-8769-3d5adb6348ca",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "200a65c8-615a-5e21-91db-cd5163cf6dff",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d870a601-9d1a-50dc-b2fb-51f2d53f779a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ea62b249-b16a-51ad-8293-29ea0f7b92f6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "74e5197f-0ef3-5ce2-9bef-9da5b42ce32b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8ad6ac2a-88ad-5d4f-8522-053ac1a0606a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

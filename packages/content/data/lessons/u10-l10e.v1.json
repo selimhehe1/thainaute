@@ -1,0 +1,1057 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "7ab455e3-99d1-57f1-9a67-e4b6c8088f60",
+  "versionId": "3a9dc2a6-8cad-5f04-9bc0-62669008c74f",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Une rue thaïe",
+  "objectiveFr": "à la fin de la leçon, devant huit supports construits affichés en thaï seul, sans transcription et sans audio préalable, l’apprenant annonce ce que porte chacun, sur 7 cibles sur 8 ; il apparie six chiffres thaïs à leur valeur, 6 sur 6 ; il désigne à l’écoute la carte qui porte le mot entendu, sur 7 sur 8 ; il écrit en transcription six des mots lus, accent de ton compris, sur 5 sur 6, sans les av",
+  "requiredEntitlement": null,
+  "audioManifestId": "de8afd1a-cb44-59c7-82f2-a469d00ec11d",
+  "items": [
+    {
+      "id": "4bdf51fc-e2ab-54ec-9864-04e6fb4d5da8",
+      "thaiRaw": "เปิด",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1B",
+        "U+0E34",
+        "U+0E14"
+      ],
+      "translationFr": "ouvrir ; ouvert",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pòeet"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เปิด",
+          "ipa": "pɤːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "141122ca-ab97-566c-999f-a672a9fe2c8a",
+      "thaiRaw": "ปิด",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E34",
+        "U+0E14"
+      ],
+      "translationFr": "fermer ; fermé",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pìt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปิด",
+          "ipa": "pit̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "447dc926-7127-522f-8144-a796ac6eec11",
+      "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14",
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E08",
+        "U+0E32",
+        "U+0E19",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "deux riz sautés, s’il vous plaît",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww khâao·phàt sǎwwng jaan nàwi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "t͡ɕaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli. Version féminine : ขอข้าวผัดสองจานหน่อยค่ะ, khǎww khâao·phàt sǎwwng jaan nàwi khâ.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "thaiRaw": "ห้องน้ำ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E19",
+        "U+0E49",
+        "U+0E33"
+      ],
+      "translationFr": "les toilettes ; la salle de bains",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng·náam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้องน้ำ",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ห้องน้ำ",
+          "ipa": "naːm˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1f377f34-daa6-5217-bb02-4bbab98c553b",
+      "thaiRaw": "รถเมล์",
+      "unicodeCodePoints": [
+        "U+0E23",
+        "U+0E16",
+        "U+0E40",
+        "U+0E21",
+        "U+0E25",
+        "U+0E4C"
+      ],
+      "translationFr": "bus, autobus",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "rót·mee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "รถเมล์",
+          "ipa": "rot̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "รถเมล์",
+          "ipa": "meː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "957b1e11-508d-5a2a-8cde-8d3082c7b6b4",
+      "thaiRaw": "ตลาด",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14"
+      ],
+      "translationFr": "le marché",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tà·làat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตลาด",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาด",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "thaiRaw": "ผมไปตลาดครับ",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21",
+        "U+0E44",
+        "U+0E1B",
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Je vais au marché.",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm pai tà·làat khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "laːt̚˨˩ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "eac869dc-8300-5449-9c49-6482b4671657",
+      "thaiRaw": "ตัวนี้เท่าไรครับ",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E31",
+        "U+0E27",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49",
+        "U+0E40",
+        "U+0E17",
+        "U+0E48",
+        "U+0E32",
+        "U+0E44",
+        "U+0E23",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Celui-ci, c’est combien ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "toua·níi thâo·rai khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตัวนี้เท่าไรครับ",
+          "ipa": "tua̯˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตัวนี้เท่าไรครับ",
+          "ipa": "niː˦˥ tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ตัวนี้เท่าไรครับ",
+          "ipa": "raj˧ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli (particule masculine)",
+      "sourceIds": [
+        "RID-2554"
+      ]
+    },
+    {
+      "id": "a03cfa67-e528-518e-ac9e-4a4f9ed47970",
+      "thaiRaw": "ร้านขายยา",
+      "unicodeCodePoints": [
+        "U+0E23",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19",
+        "U+0E02",
+        "U+0E32",
+        "U+0E22",
+        "U+0E22",
+        "U+0E32"
+      ],
+      "translationFr": "la pharmacie",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ráan·khǎai·yaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ร้านขายยา",
+          "ipa": "raːn˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ร้านขายยา",
+          "ipa": "kʰaːj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ร้านขายยา",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u10-l10e-p4",
+      "drawIndex": 1,
+      "id": "46aa7496-4c0d-550b-9097-23451bec4fd9",
+      "type": "recall",
+      "itemId": "4bdf51fc-e2ab-54ec-9864-04e6fb4d5da8",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "pòeet",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez écrit ce que vous avez lu, sans l’entendre.",
+        "incorrectFr": "Regardez les deux mots côte à côte. L’un porte un เ devant sa consonne, l’autre non, et c’est toute la différence : `oee` long contre `i` bref.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòeet`, `hâwng`, `khǎai`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10e-p4",
+      "drawIndex": 2,
+      "id": "33fb020f-6321-5111-9673-bfb4a9cdc93b",
+      "type": "recall",
+      "itemId": "141122ca-ab97-566c-999f-a672a9fe2c8a",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "pìt",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez écrit ce que vous avez lu, sans l’entendre.",
+        "incorrectFr": "Regardez les deux mots côte à côte. L’un porte un เ devant sa consonne, l’autre non, et c’est toute la différence : `oee` long contre `i` bref.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòeet`, `hâwng`, `khǎai`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10e-p4",
+      "drawIndex": 3,
+      "id": "5dd8c7cb-9dd8-509a-a464-a6e3116427a2",
+      "type": "recall",
+      "itemId": "957b1e11-508d-5a2a-8cde-8d3082c7b6b4",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "tà·làat",
+          "kind": "transcription"
+        },
+        {
+          "value": "tàlàat",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez écrit ce que vous avez lu, sans l’entendre.",
+        "incorrectFr": "Regardez les deux mots côte à côte. L’un porte un เ devant sa consonne, l’autre non, et c’est toute la différence : `oee` long contre `i` bref.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòeet`, `hâwng`, `khǎai`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10e-p4",
+      "drawIndex": 4,
+      "id": "8bf3f73c-c657-576a-a235-f84825343fbe",
+      "type": "recall",
+      "itemId": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "hâwng·náam",
+          "kind": "transcription"
+        },
+        {
+          "value": "hâwngnáam",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez écrit ce que vous avez lu, sans l’entendre.",
+        "incorrectFr": "Regardez les deux mots côte à côte. L’un porte un เ devant sa consonne, l’autre non, et c’est toute la différence : `oee` long contre `i` bref.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòeet`, `hâwng`, `khǎai`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10e-p4",
+      "drawIndex": 5,
+      "id": "ec2e958a-3c26-52df-a283-dfdaf4ba7f65",
+      "type": "recall",
+      "itemId": "1f377f34-daa6-5217-bb02-4bbab98c553b",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "rót·mee",
+          "kind": "transcription"
+        },
+        {
+          "value": "rótmee",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez écrit ce que vous avez lu, sans l’entendre.",
+        "incorrectFr": "Regardez les deux mots côte à côte. L’un porte un เ devant sa consonne, l’autre non, et c’est toute la différence : `oee` long contre `i` bref.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòeet`, `hâwng`, `khǎai`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10e-p4",
+      "drawIndex": 6,
+      "id": "cfeb0a47-7534-5d9a-8953-d50053df60bc",
+      "type": "recall",
+      "itemId": "a03cfa67-e528-518e-ac9e-4a4f9ed47970",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "ráan·khǎai·yaa",
+          "kind": "transcription"
+        },
+        {
+          "value": "ráankhǎaiyaa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez écrit ce que vous avez lu, sans l’entendre.",
+        "incorrectFr": "Regardez les deux mots côte à côte. L’un porte un เ devant sa consonne, l’autre non, et c’est toute la différence : `oee` long contre `i` bref.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent absent",
+            "textFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `pòeet`, `hâwng`, `khǎai`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10e-p5",
+      "drawIndex": 1,
+      "id": "2cc9eb17-6a71-57f9-8571-dc2838596036",
+      "type": "word_order",
+      "itemId": "a03cfa67-e528-518e-ac9e-4a4f9ed47970",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Vous venez de lire ce support. Remettez les étiquettes dans l’ordre pour poser la question.",
+      "tokens": [
+        {
+          "id": "019a03f3-5512-5fe8-bff1-311254cb3317",
+          "thaiRaw": "ร้านขายยา",
+          "transcription": null
+        },
+        {
+          "id": "227cea04-531c-53a9-aa5e-157df4497cca",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        },
+        {
+          "id": "8d0b3ba4-d25d-5d8d-bcef-1065c55f1813",
+          "thaiRaw": "ที่ไหน",
+          "transcription": null
+        },
+        {
+          "id": "7b5116f2-eb13-5b49-9078-97a5f1b41580",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "019a03f3-5512-5fe8-bff1-311254cb3317",
+        "227cea04-531c-53a9-aa5e-157df4497cca",
+        "8d0b3ba4-d25d-5d8d-bcef-1065c55f1813",
+        "7b5116f2-eb13-5b49-9078-97a5f1b41580"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Vous avez lu le support, et maintenant vous savez quoi en dire.",
+        "incorrectFr": "Repartez de ce que vous voulez obtenir. Un lieu ? Une chose ? Un prix ? La particule de politesse se pose à la fin, le reste dépend de la question.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u10-l10e-p5",
+      "drawIndex": 2,
+      "id": "6cb10e90-7249-5120-b236-624680de2760",
+      "type": "word_order",
+      "itemId": "447dc926-7127-522f-8144-a796ac6eec11",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Vous venez de lire ce support. Remettez les étiquettes dans l’ordre pour poser la question.",
+      "tokens": [
+        {
+          "id": "4faf7bac-1f38-5e6c-b849-bb3148e83037",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "4b2210d5-af7b-54f9-941a-e2274bfe8f8c",
+          "thaiRaw": "ข้าวผัด",
+          "transcription": null
+        },
+        {
+          "id": "6d090e1b-3e04-5901-9485-00366694e258",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "d1dce21f-e7c2-5d88-9b99-eaa9d8983d7f",
+          "thaiRaw": "จาน",
+          "transcription": null
+        },
+        {
+          "id": "2c0821f6-c5d5-5407-b4a3-eb6531e2b968",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "16535def-9416-5633-b1da-de38cc36f71e",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "4faf7bac-1f38-5e6c-b849-bb3148e83037",
+        "4b2210d5-af7b-54f9-941a-e2274bfe8f8c",
+        "6d090e1b-3e04-5901-9485-00366694e258",
+        "d1dce21f-e7c2-5d88-9b99-eaa9d8983d7f",
+        "2c0821f6-c5d5-5407-b4a3-eb6531e2b968",
+        "16535def-9416-5633-b1da-de38cc36f71e"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Vous avez lu le support, et maintenant vous savez quoi en dire.",
+        "incorrectFr": "Repartez de ce que vous voulez obtenir. Un lieu ? Une chose ? Un prix ? La particule de politesse se pose à la fin, le reste dépend de la question.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u10-l10e-p5",
+      "drawIndex": 3,
+      "id": "5fac9ee3-4756-5524-827c-d74f183d2f4f",
+      "type": "word_order",
+      "itemId": "eac869dc-8300-5449-9c49-6482b4671657",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Vous venez de lire ce support. Remettez les étiquettes dans l’ordre pour poser la question.",
+      "tokens": [
+        {
+          "id": "6c265161-5082-51f1-9abd-f059b181815b",
+          "thaiRaw": "ตัวนี้",
+          "transcription": null
+        },
+        {
+          "id": "6cb58b53-d3eb-518f-bc2d-a1194085b3d0",
+          "thaiRaw": "เท่าไร",
+          "transcription": null
+        },
+        {
+          "id": "be66831e-1cf3-56da-b5e9-b62b455f68f2",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "6c265161-5082-51f1-9abd-f059b181815b",
+        "6cb58b53-d3eb-518f-bc2d-a1194085b3d0",
+        "be66831e-1cf3-56da-b5e9-b62b455f68f2"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Vous avez lu le support, et maintenant vous savez quoi en dire.",
+        "incorrectFr": "Repartez de ce que vous voulez obtenir. Un lieu ? Une chose ? Un prix ? La particule de politesse se pose à la fin, le reste dépend de la question.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u10-l10e-p5",
+      "drawIndex": 4,
+      "id": "ad2031e8-9250-5c7d-a988-39b5a9b9d195",
+      "type": "word_order",
+      "itemId": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Vous venez de lire ce support. Remettez les étiquettes dans l’ordre pour poser la question.",
+      "tokens": [
+        {
+          "id": "f41b5d9f-b74a-511b-887d-d4c172f271d5",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "94dad028-2229-5336-89b6-13f6a5b84c79",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "89333a31-9b65-5762-b058-f06b2230d8ab",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "2355bb6c-79b4-5491-8d64-1ba8c92bf399",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "f41b5d9f-b74a-511b-887d-d4c172f271d5",
+        "94dad028-2229-5336-89b6-13f6a5b84c79",
+        "89333a31-9b65-5762-b058-f06b2230d8ab",
+        "2355bb6c-79b4-5491-8d64-1ba8c92bf399"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Vous avez lu le support, et maintenant vous savez quoi en dire.",
+        "incorrectFr": "Repartez de ce que vous voulez obtenir. Un lieu ? Une chose ? Un prix ? La particule de politesse se pose à la fin, le reste dépend de la question.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "huit supports, et pas un mot de transcription",
+      "bodyFr": "Vous savez lire. Depuis 9A, vous avez tout : les lettres, les tons, les marques, les familles de fin et le petit signe qui éteint. Ce qui vous manque n’est plus une règle, c’est l’habitude. Aujourd’hui vous traversez une rue faite de huit supports, et chacun s’affiche en thaï seul. Vous décodez d’abord, vous vérifiez ensuite.\n\nUne chose à savoir avant de commencer, et nous préférons la dire que la taire : **ces huit supports sont fabriqués pour cette leçon.** Ils ne reproduisent aucune devanture, aucune rue, aucun tarif. Nous les avons construits avec des mots que nous pouvons vérifier, plutôt que de recopier un support réel que nous ne pourrions pas contrôler. Ce que vous exercez ici est votre lecture.",
+      "specimen": "ตลาด"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "le geste de lecture, en quatre temps",
+      "bodyFr": "C’est celui de la page 14 de 9A, élargi. Là-bas, trois temps suffisaient à trouver le son de fin d’un mot. Ici vous lisez le mot entier, alors vous ajoutez la voyelle et le ton. Vous refaites les quatre temps pour chaque syllabe, dans cet ordre.\n\n> Un. Trouvez la CONSONNE INITIALE de la syllabe. Ce n’est pas forcément la > première lettre écrite. > Deux. Trouvez sa voyelle, et regardez si elle est courte ou longue. > Trois. Regardez ce qui ferme la syllabe, et cherchez la famille de cette > lettre. > Quatre. Le ton se lit sur la consonne initiale, sa classe, la marque posée et > la façon dont la syllabe se ferme.\n\nRetenez surtout le premier temps, parce que c’est là que tout se joue. Le ton d’une syllabe se décide sur sa consonne INITIALE, jamais sur la première lettre qu’on voit à gauche.",
+      "specimen": "ปิด"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "la première lettre écrite n’est pas toujours la consonne initiale",
+      "bodyFr": "Deux cas vous attendent aujourd’hui, et vous les connaissez tous les deux. Premier cas, une voyelle s’écrit avant sa consonne. La page 6 de 4A vous a prévenu pour เ, แ, โ, ใ et ไ. Dans เปิด, la première lettre est เ, et la consonne initiale est ป. Sur les douze graphies que vous allez lire, quatre commencent ainsi : เปิด, โรงพยาบาล, ไข่ et เสื้อ. Une cinquième, รถเมล์, ne commence pas ainsi mais contient le cas dans sa seconde syllabe.\n\nSecond cas, plus rare et plus déroutant : une voyelle n’est pas écrite du tout. ตลาด s’écrit avec quatre lettres et se dit en deux syllabes. Le dictionnaire le réécrit lui-même ตะหฺลาด pour donner sa lecture, et cette réécriture ajoute **trois signes** que le mot n’écrit pas : un ะ, un ห et un point souscrit ◌ฺ. Comptez-les vous-même, quatre signes d’un côté et sept de l’autre. Ce que font ces trois signes relève d’un mécanisme que le parcours n’a pas ouvert : pour aujourd’hui, la lecture vous est donnée, et vous n’avez rien à en déduire.",
+      "specimen": "เปิด contre ปิด · ตลาด"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "premier panneau",
+      "bodyFr": "Une flèche, un mot, quatre lettres. Prenez le temps de faire les quatre temps de la page 2 avant d’ouvrir le rideau. Attention au piège : ce mot compte deux syllabes, pas une.\n\n> À décoder : ตลาด > Rideau : tà·làat, le marché. Deux tons bas de suite, et la voix ne remonte pas > sur la seconde.\n\nSpécimen construit : panneau fléché portant ตลาด",
+      "specimen": null
+    },
+    {
+      "ordre": 5,
+      "titleFr": "deuxième panneau",
+      "bodyFr": "Sept signes en tout, deux mots collés : cinq lettres, et deux marques de ton posées au-dessus. Vous lisez ce panneau depuis la leçon 5C sans l’avoir jamais vu écrit en grand.\n\n> À décoder : ห้องน้ำ > Rideau : hâwng·náam, les toilettes. La première syllabe descend, la seconde > reste perchée.\n\nSpécimen construit : panneau fléché portant ห้องน้ำ",
+      "specimen": null
+    },
+    {
+      "ordre": 6,
+      "titleFr": "une porte, deux faces",
+      "bodyFr": "Vous avez appris ces deux mots en 10B. Ici, vous les relisez sur une porte, et ils sont faits pour être comparés : même consonne initiale ป, même lettre finale ด, même ton bas. Une seule chose les sépare, et c’est la voyelle. **Attention : ce ne sont pas deux longueurs de la même voyelle, ce sont deux voyelles différentes.** Dans เปิด, le เ posé devant la consonne et le ◌ิ posé au-dessus forment ensemble le `oee` de เกินไป, appris en 8C, et il est long ; dans ปิด, sans le เ, il ne reste que le ◌ิ, qui est le `i` bref de สิบ.\n\n> เ + ป + ◌ิ + ด → เปิด, un `oee` long > ป + ◌ิ + ด → ปิด, un `i` bref\n\n> À décoder : เปิด · ปิด > Rideau : pòeet, ouvert. pìt, fermé.\n\nUn mot d’honnêteté sur le ton. Ces deux syllabes se ferment sur un ด, donc sur un `t` retenu, et le tableau des tons de 7A et 8A ne couvre pas encore ce cas. Leurs tons vous sont donnés, tous les deux bas, et vous n’avez rien à calculer.\n\nSpécimen construit : porte à deux faces, l’une portant เปิด, l’autre ปิด",
+      "specimen": null
+    },
+    {
+      "ordre": 7,
+      "titleFr": "troisième panneau, et son piège d’écriture",
+      "bodyFr": "Neuf signes, trois syllabes : huit lettres, une marque de ton, et deux ย côte à côte au milieu. Le premier ferme la syllabe qui précède, le second ouvre celle qui suit. Ne cherchez pas une lettre double : cherchez la frontière entre deux syllabes.\n\n> À décoder : ร้านขายยา > Rideau : ráan·khǎai·yaa, la pharmacie. Trois syllabes, trois tons : haut, > montant, moyen.\n\nSpécimen construit : panneau de service portant ร้านขายยา",
+      "specimen": null
+    },
+    {
+      "ordre": 8,
+      "titleFr": "quatrième panneau, le plus long",
+      "bodyFr": "Neuf lettres, aucune marque de ton, une voyelle écrite avant sa consonne et une finale ล qui se lit `n`. Vous l’avez appris en 9A et vous le relisez ici en situation.\n\n> À décoder : โรงพยาบาล > Rideau : roong·phá·yaa·baan, l’hôpital.\n\nSpécimen construit : panneau de lieu portant โรงพยาบาล",
+      "specimen": null
+    },
+    {
+      "ordre": 9,
+      "titleFr": "cinquième panneau, et le petit signe",
+      "bodyFr": "Six signes : cinq lettres et le ◌์, et l’une des cinq lettres ne se prononce pas. Repérez le ◌์ et remontez jusqu’à la dernière lettre qui se prononce : c’est elle qui ferme. Le reste, vous l’avez fait vingt fois en 9A.\n\n> À décoder : รถเมล์ > Rideau : rót·mee, le bus. Le ล est éteint par le ◌์, et rien ne ferme la > seconde syllabe.\n\nSpécimen construit : panneau de quai portant รถเมล์",
+      "specimen": null
+    },
+    {
+      "ordre": 10,
+      "titleFr": "un tableau de prix",
+      "bodyFr": "Trois lignes, et des chiffres que vous lisez depuis la leçon 3B. Lisez d’abord le mot, puis le nombre, puis บาท. Les montants sont choisis pour se lire ; ce ne sont pas des prix relevés quelque part.\n\n> À décoder : > ข้าวผัด ๔๐ บาท > ไข่ ๑๕ บาท > น้ำ ๑๐ บาท > Rideau : khâao·phàt sìi·sìp bàat · khài sìp·hâa bàat · náam sìp bàat.\n\nSpécimen construit : tableau de prix à trois lignes",
+      "specimen": null
+    },
+    {
+      "ordre": 11,
+      "titleFr": "une étiquette",
+      "bodyFr": "Un mot, un nombre, une unité. Le mot empile deux signes sur la même lettre, un ◌ื et un ◌้ : regardez-les l’un après l’autre plutôt que comme un bloc.\n\n> À décoder : เสื้อ ๙๐ บาท > Rideau : sûea kâao·sìp bàat, une chemise, quatre-vingt-dix bahts.\n\nSpécimen construit : étiquette de prix",
+      "specimen": null
+    },
+    {
+      "ordre": 12,
+      "titleFr": "les deux contrastes, on les entretient",
+      "bodyFr": "Rien n’est acquis une fois pour toutes, et surtout pas ces deux-là. Reprenez vos deux repères avant les exercices, puis retrouvez-les dans ce que vous venez de lire.\n\n> ปา (paa) contre ป่า (pàa) : la voix reste plate, puis elle descend et reste > basse > หมา (mǎa) contre ม้า (máa) : la voix creuse puis remonte, contre la voix qui > reste perchée\n\nLes supports du jour vous en donnent quatre de plus. ยา, la dernière syllabe de ร้านขายยา, est au ton moyen ; บาท et ไข่ sont au ton bas. Et ร้านขายยา porte les deux autres dans le même souffle : ráan est haut, khǎai est montant.",
+      "specimen": "ปา / ป่า puis หมา / ม้า"
+    },
+    {
+      "ordre": 13,
+      "titleFr": "ce que cette leçon ne vous dit pas",
+      "bodyFr": "Trois choses, et elles sont dites plutôt que passées sous silence. Un, vos huit supports sont fabriqués : ils vous entraînent à lire, ils ne vous montrent pas à quoi ressemble telle rue. Deux, les tons de เปิด et de ปิด vous sont donnés, parce que le cas des syllabes fermées par un `t` n’est toujours pas au programme. Trois, ตลาด se lit d’une façon que vous ne pouvez pas encore calculer, et nous vous donnons sa lecture sans vous demander de la déduire.",
+      "specimen": "ตลาด · เปิด · ปิด"
+    },
+    {
+      "ordre": 14,
+      "titleFr": "à vous",
+      "bodyFr": "Refaites la rue une fois, dans l’ordre, sans ouvrir les rideaux. Vous n’avez pas besoin d’aller vite : vous avez besoin de faire les quatre temps dans l’ordre, et surtout de commencer par la consonne initiale de chaque syllabe.\n\nAprès les exercices, enregistrez-vous en disant เปิด puis ปิด, et comparez en A/B avec la voix de référence. La différence porte sur la voyelle, un `oee` long d’un côté et un `i` bref de l’autre, pas sur le ton, qui est le même. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u10-l10e-p4",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "mechanic": "recall",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    },
+    {
+      "poolId": "u10-l10e-p5",
+      "promptFr": "Vous venez de lire ce support. Remettez les étiquettes dans l’ordre pour poser la question.",
+      "mechanic": "word_order",
+      "drawCount": 4,
+      "passRequired": 4,
+      "sampleSize": 4
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "8babc900-6c10-5719-9125-7cef414d82d3",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7bfd2c0f-1194-57fe-97c4-c257da385a57",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "347c7480-5154-5d4d-9a85-a4c61d3d5798",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e4a3d751-332f-5a21-bbc2-de56de1e38ac",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "568386e1-88ff-555b-be19-c12ae00fb6da",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "243dc486-069f-52df-a9bd-4ed6b253e6b4",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3ca1f9ac-edb2-53c9-91a8-37883fe60934",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "70b43e42-0f16-5c3c-8ea0-195bb2bd7cf1",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

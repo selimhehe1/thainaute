@@ -4,15 +4,16 @@
 
 - Identifiant : `u01-l1d`
 - Titre français : Montant contre haut
-- Objectif observable : à l'écoute d'un mot isolé parmi les dix mots de la
-  leçon, dit à voix normale, l'apprenant identifie le ton montant ou le ton
-  haut avec au moins 5 réussites sur 6, et associe les cinq paires de mots à
+- Objectif observable : à l'écoute d'un mot isolé parmi les huit mots actifs de
+  la leçon, dit à voix normale, l'apprenant identifie le ton montant ou le ton
+  haut avec au moins 5 réussites sur 6, et associe les quatre paires de mots à
   leur sens sans erreur.
-- Prérequis : `u01-1a` (les cinq contours sur la série คา ข่า ค่า ค้า ขา),
-  `u01-1b` (voyelles longues et courtes), `u01-1c` (mi contre bas).
+- Prérequis : `u01-l1a` (les cinq contours sur la série คา ข่า ค่า ค้า ขา),
+  `u01-l1b` (voyelles longues et courtes), `u01-l1c` (mi contre bas).
 - Cible phonétique : ton montant /˩˩˦/ contre ton haut /˦˥/ sur des paires de
-  mots réels, principalement en syllabe ouverte longue ; une paire à longueur
-  différente est explicitement signalée.
+  mots réels, toutes en syllabe ouverte longue dans le parcours actif. La paire
+  ไหม/ไม้, qui mélange ton et longueur, est conservée en réserve pour une
+  révision mixte ultérieure.
 - Durée visée : 8 minutes.
 
 ## Enseignement
@@ -38,7 +39,7 @@ Spécimen : หนา (nǎa, le doigt grimpe) puis น้า (náa, le doigt res
 
 ### Page 3. L'astuce pour une oreille française
 
-Le montant, vous le faites déjà : c'est la mélodie d'une vraie question
+Le montant, vous le faites déjà : c'est l'intonation d'une vraie question
 française, comme la fin de « tu viens ? ». Le haut, c'est une voix tendue,
 un peu perchée, qui reste là-haut du début à la fin. Si le mot commence bas,
 c'est un montant ; s'il commence déjà haut, c'est un haut.
@@ -55,6 +56,23 @@ la voix, pas sa hauteur absolue : chaque personne parle à sa propre hauteur.
 
 Spécimen : ขา (khǎa) contre ค้า (kháa), déjà croisés dans la série de la
 leçon 1A.
+
+### Page 5. Le transfert : d'abord le départ, ensuite la trajectoire
+
+Pour un mot nouveau, ne cherchez pas à savoir si la voix « sonne haut » dans
+l'absolu. Écoutez d'abord son départ : bas puis en mouvement, ou déjà perché ?
+Vérifiez ensuite la trajectoire. Deux voix peuvent finir haut tout en ayant
+des départs différents ; c'est ce premier instant qui protège votre oreille
+française de l'intonation de question.
+
+### Page 6. Choisir le mot avant de le dire
+
+Prenez une image de chien puis une image de cheval, ou dites simplement leur
+nom français à voix basse. Pour « chien », partez bas puis montez avec หมา
+(mǎa) ; pour « cheval », partez déjà haut avec ม้า (máa). Ne corrigez pas la
+hauteur en cours de route comme une intonation française : préparez le départ
+avant la première syllabe, puis laissez le mouvement suivre. Cette étape
+relie le ton au mot voulu avant le dialogue de 1E.
 
 ## Items
 
@@ -207,6 +225,12 @@ leçon 1A.
   - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
     verification-volubilis.md
 
+### Réserve de contraste mixte (items 9 et 10, hors parcours actif)
+
+Les deux items suivants restent documentés, mais ne sont pas présentés comme
+une paire minimale dans la séance : leur ton et leur longueur varient en même
+temps. Ils ne doivent pas entrer dans le score de maîtrise de 1D.
+
 ### Item 9
 
 - `thai` : ไหม
@@ -276,61 +300,60 @@ leçon 1A.
   mouvement et non la note ; en version exagérée le contraste paraît facile,
   la version normale est la vraie mesure.
 
-### Exercice 2. Cinq mots, cinq sens
+### Exercice 2. Quatre mots, quatre sens
 
 - Mécanique : `association`
 - Consigne : « Associez chaque mot thaï à son sens. Touchez un mot, puis son
   sens : aucun glisser-déposer n'est nécessaire. »
 - Paires :
-  1. หมา (mǎa) ↔ chien
-  2. ม้า (máa) ↔ cheval
-  3. น้า (náa) ↔ oncle ou tante côté maman
-  4. หนี (nǐi) ↔ fuir
-  5. ไม้ (máai) ↔ bois
-- Réponse correcte : les cinq paires ci-dessus.
+  1. หมา (mǎa) ↔ carte « chien »
+  2. ม้า (máa) ↔ carte « cheval »
+  3. น้า (náa) ↔ carte « oncle ou tante côté maman »
+  4. หนี (nǐi) ↔ carte « fuir »
+- Réponse correcte : les quatre paires ci-dessus.
 - Feedback correct : « Bien joué. Remarquez le motif : dans cette leçon, les
   mots écrits avec un ห muet portent le ton montant, ceux avec la marque ้
   portent le ton haut. »
 - Feedback incorrect : « Regardez la transcription sous chaque mot : le
   chapeau qui creuse (ǎ) grimpe, l'accent aigu (á) reste perché. Réessayez
   avec une paire dont vous êtes sûr. »
-- Pièges connus : หมา et ม้า se ressemblent visuellement ; ไม้ se prononce
-  avec une voyelle longue malgré sa graphie ; l'observation sur ห muet et ้
-  vaut pour les mots de cette leçon, pas comme règle générale à ce stade.
+- Pièges connus : หมา et ม้า se ressemblent visuellement ; l'observation sur
+  ห muet et ้ vaut pour les mots de cette leçon, pas comme règle générale à ce
+  stade.
 
 ### Exercice 3. De mémoire
 
 - Mécanique : `recall`
-- Consigne : « Répondez de mémoire, sans réécouter. Composez la réponse en
-  touchant la bonne tuile. »
+- Consigne : « Répondez de mémoire, sans réécouter. Écrivez la réponse en
+  thaï ou en transcription Thaïnaute. »
 - Questions :
-  1. « Comment dit-on cheval ? » Tuiles : หมา / ม้า / หนา / น้า.
-     Réponse : ม้า.
-  2. « Comment dit-on chien ? » Tuiles : ม้า / หมา / ไม้ / ไหม.
-     Réponse : หมา.
-  3. « Quel ton porte นี้ (ce, cette) ? » Tuiles : moyen / bas / descendant /
-     haut / montant. Réponse : haut.
-- Politique Unicode : les tuiles thaïes sont comparées en NFC strict, avec
-  les codepoints exacts consignés dans les items ; aucune variante
-  orthographique n'est acceptée dans cette leçon.
+  1. « Comment dit-on cheval ? » (ม้า affiché) : réponse `ม้า`.
+  2. « Comment dit-on chien ? » (หมา affiché) : réponse `หมา`.
+  3. « Comment dit-on “cette chose” ? » (นี้ affiché) : réponse `níi`.
+- Politique Unicode : les réponses thaïes sont comparées en NFC strict, avec
+  les codepoints exacts consignés dans les items ; les réponses en transcription
+  suivent la convention de la leçon.
 - Feedback correct : « C'est ancré. Le ton fait partie du mot, pas de la
   décoration. »
 - Feedback incorrect : « Indice : le cheval se dit avec la voix perchée
   (máa), le chien avec la voix qui grimpe (mǎa). Rejouez les deux dans votre
   tête avec le geste du doigt. »
 - Pièges connus : หมา et ม้า partagent la même consonne entendue et la même
-  voyelle, seuls le ton et la graphie changent ; ไหม est un distracteur
-  volontaire de ไม้.
+  voyelle, seuls le ton et la graphie changent ; l'exercice demande un rappel
+  libre, pas une reconnaissance parmi des distracteurs.
 
 ## SRS
 
-- Items en révision : les 10 items de la leçon (หมา, ม้า, ขา, ค้า, หนา, น้า,
-  หนี, นี้, ไหม, ไม้).
+- Items en révision : les 8 items actifs (หมา, ม้า, ขา, ค้า, หนา, น้า, หนี,
+  นี้). ไหม/ไม้ restent une réserve documentée, hors score.
 - Critère de maîtrise par item : identification correcte du ton à voix
   normale deux fois de suite, sur deux sessions distinctes, et association
   du sens sans erreur.
 - Critère de maîtrise de la leçon : au moins 5 identifications sur 6
   réussies en mélange aléatoire montant/haut, versions normales uniquement.
+- Transfert : sur deux paires choisies, l'apprenant rappelle le sens français,
+  prépare le départ de la voix, puis répète le mot sans regarder le caron ou
+  l'accent. Cette production reste sans note et sert de pont vers 1E.
 
 ## Note culturelle
 
@@ -369,8 +392,8 @@ consultées le 2026-08-03).
      qu'en note et son traitement devra être tranché avant la leçon qui
      l'enseigne.
   2. La paire ไหม/ไม้ n'est pas un contraste strictement minimal : la
-     longueur diffère (courte contre longue) en plus du ton. Assumé
-     pédagogiquement et signalé dans l'item 10 et l'exercice 2.
+     longueur diffère (courte contre longue) en plus du ton. Elle est
+     désormais explicitement hors parcours actif et hors score de 1D.
   3. Les deux sources Wiktionary appartiennent au même projet (communautés
      éditoriales anglaise et thaïe distinctes). Le recoupement Volubilis du
      2026-08-03 apporte la source indépendante manquante pour les 10 items.

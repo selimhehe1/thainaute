@@ -75,9 +75,10 @@ francophone, et c'est ce qui rend le coût phonétique supportable.
 
 ### Le constat
 
-La toute première question du parcours demandait d'identifier un ton **parmi
-cinq**, à quelqu'un qui n'avait jamais entendu de thaï. Les deux leçons
-suivantes, 1C et 1D, proposaient ensuite des choix **binaires**.
+Avant la correction, la toute première question du parcours demandait
+d'identifier un ton **parmi cinq**, à quelqu'un qui n'avait jamais entendu de
+thaï. Dans cette ancienne séquence, les leçons 1C et 1D proposaient ensuite
+des choix **binaires**.
 
 La tâche la plus difficile arrivait donc en premier, et l'échafaudage qui la
 rend possible arrivait après.
@@ -99,30 +100,37 @@ n'est pas le contenu, il est le placement.
 
 Une échelle de tâche explicite, indépendante de l'ordre de rédaction :
 
-| Rang | Leçon    | Tâche                                        | Choix |
-| ---- | -------- | -------------------------------------------- | ----- |
-| 1    | `u01-l1a`| descendant contre montant (écart maximal)    | 2     |
-| 2    | `u01-l1c`| moyen contre bas (paire confusable)          | 2     |
-| 3    | `u01-l1d`| montant contre haut (paire confusable)       | 2     |
-| 4    | `u01-l1f`| les cinq tons, synthèse                      | 5     |
-| 5    | `u01-l1b`| longueur vocalique                           | 2     |
-| 6    | `u01-l1e`| premier dialogue                             | aucun |
+| Rang | Leçon     | Tâche                                     | Choix |
+| ---- | --------- | ----------------------------------------- | ----- |
+| 1    | `u01-l1a` | descendant contre montant (écart maximal) | 2     |
+| 2    | `u01-l1b` | longueur vocalique, fondation             | 2     |
+| 3    | `u01-l1c` | moyen contre bas (paire confusable)       | 2     |
+| 4    | `u01-l1d` | montant contre haut (paire confusable)    | 2     |
+| 5    | `u01-l1f` | les cinq tons, synthèse                   | 5     |
+| 6    | `u01-l1e` | premier dialogue                          | aucun |
 
 Le premier barreau oppose les deux seuls tons qui **bougent en sens
 inverse** : c'est le seul contraste des cinq raisonnablement identifiable
 sans entraînement préalable, parce qu'il ne demande aucune référence de
-hauteur, seulement une direction.
+hauteur, seulement une direction. La longueur vocalique vient immédiatement
+après cette exposition : elle est indépendante du duel tonal, mais elle doit
+être installée avant les deux contrastes qui la déclarent comme prérequis.
 
 L'exercice à cinq choix n'a pas été supprimé. Il a été déplacé dans une
 leçon de synthèse nouvelle, `u01-l1f`, au terme de l'arc tonal.
 
 Les identifiants n'ont **pas** été renommés : `u01-l1c` est cité par 30
 leçons du corpus et `u01-l1d` par 35. L'ordre est porté par une constante
-explicite dans `packages/content/src/repository.ts`.
+explicite dans `packages/content/src/repository.ts`. La longueur est placée
+avant les deux duels tonals pour que l'ordre d'exécution et les prérequis
+déclarés racontent la même histoire.
 
-La leçon 1F ne contient **aucun matériel neuf** : ses cinq items et leurs
-sources sont repris verbatim de 1A, et ses cinq audios sont les fichiers de
-1A réutilisés par chemin. Aucun appel à un fournisseur, aucune dépense.
+La leçon 1F ne contient **aucun matériel lexical neuf** : ses cinq items et
+leurs sources sont repris verbatim de 1A. Ses cinq audios doivent toutefois
+être produits dans le périmètre de 1F, avec un manifeste et des chemins propres
+à cette leçon. Le manifeste est actuellement vide : aucun appel à un
+fournisseur ni aucune dépense n'a été lancé tant que la dette audio n'est pas
+financée et auditée.
 
 ## Second problème mesuré : un son exigé avant d'être enseigné
 
@@ -132,12 +140,12 @@ sources sont repris verbatim de 1A, et ses cinq audios sont les fichiers de
 difficulté connue, la première leçon qui **exige** le son et la leçon qui
 l'**enseigne**.
 
-| Son     | Première exigence         | Enseigné  | Écart     |
-| ------- | ------------------------- | --------- | --------- |
-| /ɤ/     | `u01-l1e` (แล้วเจอกัน)      | `u06-l6a` | 22 leçons |
-| /ɯ/     | `u02-l2d` (ชื่อ, « nom »)   | `u06-l6a` | 17 leçons |
-| /kʰ/    | `u01-l1a` (คา)             | `u04-l4a` | 16 leçons |
-| /tʰ/    | `u02-l2c` (ขอโทษ)          | `u03-l3a` | 3 leçons  |
+| Son  | Première exigence         | Enseigné  | Écart     |
+| ---- | ------------------------- | --------- | --------- |
+| /ɤ/  | `u01-l1e` (แล้วเจอกัน)    | `u06-l6a` | 22 leçons |
+| /ɯ/  | `u02-l2d` (ชื่อ, « nom ») | `u06-l6a` | 17 leçons |
+| /kʰ/ | `u01-l1a` (คา)            | `u04-l4a` | 16 leçons |
+| /tʰ/ | `u02-l2c` (ขอโทษ)         | `u03-l3a` | 3 leçons  |
 
 Chiffres produits par l'outil, pas recopiés à la main. Le cas de /kʰ/ mérite
 une nuance que l'outil ne peut pas porter : sa première apparition est คา en
@@ -192,8 +200,11 @@ des tâches**, pas sur les thèmes.
    seront compilées.
 2. Le seuil « 4 fois sur 5 » des objectifs, repris de la rédaction initiale
    et jamais mesuré sur des apprenants réels.
-3. Le mot « mélodie », employé 117 fois dans 33 leçons pour désigner la
-   hauteur de la voix. Question posée par le fondateur, non tranchée.
+3. La normalisation du vocabulaire de hauteur : `ton` désigne le contraste
+   lexical thaï, tandis que `contour tonal` ou `courbe de hauteur` désigne sa
+   réalisation acoustique. Les 117 occurrences historiques de « mélodie » dans
+   33 leçons doivent encore être relues avant publication ; elles ne sont pas
+   remplacées mécaniquement.
 4. Les blocs d'exercices refusés à la compilation, dont la cause est
    maintenant connue : le corpus écrit les associations tantôt en tableau
    markdown, tantôt en liste numérotée, et l'extracteur ne lit que la

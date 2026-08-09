@@ -2,9 +2,16 @@ import { describe, expect, it } from "vitest";
 
 import {
   assertPublishable,
+  authoringCompiledLessonIds,
+  authoringCatalog,
+  authoringDrafts,
+  catalogByUnit,
+  compiledLessonIds,
   contentBundleSchema,
   getPublicationBlockers,
   lessonSchema,
+  readCompiledLessonBundle,
+  readAuthoringCompiledLessonBundle,
   readFiveMechanicsFixtureBundle,
   readFixtureBundle,
   validateBundle,
@@ -30,6 +37,114 @@ describe("fixture de contenu", () => {
     expect(codes).toContain("SOURCE_NOT_REDISTRIBUTABLE");
     expect(codes).toContain("SYNTHETIC_SOURCE_NOT_PUBLISHABLE");
     expect(() => assertPublishable(bundle)).toThrow(/FIXTURE_NOT_PUBLISHABLE/u);
+  });
+
+  it.each(
+    compiledLessonIds().filter((identifiant) => identifiant.startsWith("u01-")),
+  )(
+    "%s : les textes visibles de l'unité active emploient le vocabulaire tonal canonique",
+    (identifiant) => {
+      const bundle = readCompiledLessonBundle(identifiant);
+      if (bundle === null) throw new Error(`Leçon absente : ${identifiant}.`);
+
+      const textesVisibles = [
+        bundle.lesson.titleFr,
+        bundle.lesson.objectiveFr,
+        ...bundle.lesson.teaching.flatMap(({ titleFr, bodyFr }) => [
+          titleFr,
+          bodyFr,
+        ]),
+        ...bundle.lesson.pools.map(({ promptFr }) => promptFr),
+        ...bundle.lesson.exercises.flatMap((exercise) => [
+          exercise.promptFr,
+          exercise.feedback.correctFr,
+          exercise.feedback.incorrectFr,
+          ...exercise.feedback.variants.flatMap(({ labelFr, textFr }) => [
+            labelFr,
+            textFr,
+          ]),
+        ]),
+      ];
+
+      expect(textesVisibles.join("\n")).not.toMatch(/mélodie|tonalité/iu);
+    },
+  );
+
+  it("décrit les 66 leçons d'autorat sans doublon et les 13 unités", () => {
+    expect(authoringCatalog).toHaveLength(66);
+    expect(new Set(authoringCatalog.map(({ lessonId }) => lessonId)).size).toBe(
+      authoringCatalog.length,
+    );
+    expect([...catalogByUnit().keys()]).toEqual(
+      Array.from(
+        { length: 13 },
+        (_, index) => `u${String(index + 1).padStart(2, "0")}`,
+      ),
+    );
+    expect(authoringCatalog.filter(({ compiled }) => compiled)).toHaveLength(
+      66,
+    );
+    expect(
+      compiledLessonIds().every((lessonId) =>
+        authoringCatalog.some(
+          (entry) => entry.lessonId === lessonId && entry.compiled,
+        ),
+      ),
+    ).toBe(true);
+    expect(
+      authoringCatalog.every(
+        ({ titleFr, objectiveFr }) =>
+          titleFr.length > 0 && objectiveFr.length > 0,
+      ),
+    ).toBe(true);
+    expect(
+      authoringCatalog.every(
+        ({ titleFr }) =>
+          titleFr.length <= 160 &&
+          !/(?:\*\*|__|`|titre de travail|note éditoriale|arbitrage)/iu.test(
+            titleFr,
+          ),
+      ),
+    ).toBe(true);
+  });
+
+  it("embarque les 66 paquets compilés pour la relecture interne", () => {
+    const ids = authoringCompiledLessonIds();
+    expect(ids).toHaveLength(66);
+    expect(new Set(ids).size).toBe(ids.length);
+
+    for (const lessonId of ids) {
+      const bundle = readAuthoringCompiledLessonBundle(lessonId);
+      expect(bundle).not.toBeNull();
+      expect(bundle?.lesson.workflowStatus).toBe("draft");
+      expect(bundle?.lesson.visibility).toBe("internal");
+      expect(bundle?.lesson.items.length).toBeGreaterThan(0);
+      expect(bundle?.lesson.exercises.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("conserve une preview textuelle interne pour chaque leçon non compilée", () => {
+    expect(authoringDrafts).toHaveLength(
+      authoringCatalog.filter(({ compiled }) => !compiled).length,
+    );
+    expect(
+      authoringDrafts.every(
+        ({ teaching, blockers, visibility, workflowStatus }) =>
+          teaching.length > 0 &&
+          blockers.length > 0 &&
+          visibility === "internal" &&
+          workflowStatus === "draft",
+      ),
+    ).toBe(true);
+    expect(
+      authoringDrafts.every(
+        ({ lessonId }) =>
+          !compiledLessonIds().includes(lessonId) &&
+          authoringCatalog.some(
+            (entry) => entry.lessonId === lessonId && !entry.compiled,
+          ),
+      ),
+    ).toBe(true);
   });
 
   it("exige les sept dimensions d'audit distinctes", () => {

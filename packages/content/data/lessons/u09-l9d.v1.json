@@ -1,0 +1,381 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "1403f4db-f033-573e-9d10-0023bea1d52e",
+  "versionId": "2644f353-5418-5a83-8ac2-15632a54517b",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Chez le pharmacien",
+  "objectiveFr": "à la fin de la leçon, l’apprenant nomme le ton d’un mot entendu parmi les cinq, sur 8 tirages sur 10, le tirage comportant deux mots par ton et opposant explicitement les deux contrastes que le parcours entretient, montant contre haut et moyen contre bas ; il reconnaît à l’écoute laquelle des trois demandes du jour a été prononcée, ขอยาหน่อย, มียาไหม ou กี่วันแล้ว, 8 fois sur 10, alors que les tro",
+  "requiredEntitlement": null,
+  "audioManifestId": "0dae9e91-73bb-54f1-9ab7-4bd2938d8975",
+  "items": [
+    {
+      "id": "3a805e99-162d-5c57-8fcb-b7166441b625",
+      "thaiRaw": "ยา",
+      "unicodeCodePoints": [
+        "U+0E22",
+        "U+0E32"
+      ],
+      "translationFr": "le médicament",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ยา",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "a03cfa67-e528-518e-ac9e-4a4f9ed47970",
+      "thaiRaw": "ร้านขายยา",
+      "unicodeCodePoints": [
+        "U+0E23",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19",
+        "U+0E02",
+        "U+0E32",
+        "U+0E22",
+        "U+0E22",
+        "U+0E32"
+      ],
+      "translationFr": "la pharmacie",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ráan·khǎai·yaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ร้านขายยา",
+          "ipa": "raːn˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ร้านขายยา",
+          "ipa": "kʰaːj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ร้านขายยา",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "thaiRaw": "แล้ว",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27"
+      ],
+      "translationFr": "en fin de phrase, marque que c’est accompli ou que l’état est désormais en place ; se rend en français par « déjà », « maintenant », ou par le seul temps du verbe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้ว",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "3bede919-36fc-54c9-be94-1a8b0394bc5e",
+      "thaiRaw": "สองวันแล้ว",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E27",
+        "U+0E31",
+        "U+0E19",
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27"
+      ],
+      "translationFr": "ça fait deux jours",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎwwng wan láeew"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สองวันแล้ว",
+          "ipa": "sɔːŋ˩˩˦ wan˧ lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "w"
+        }
+      ],
+      "register": "neutre, poli avec la particule : สองวันแล้วครับ / สองวันแล้วค่ะ",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "55ed059c-c220-5537-96ed-f50be8be81ec",
+      "thaiRaw": "สามวันแล้ว",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E32",
+        "U+0E21",
+        "U+0E27",
+        "U+0E31",
+        "U+0E19",
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27"
+      ],
+      "translationFr": "ça fait trois jours",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎam wan láeew"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สามวันแล้ว",
+          "ipa": "saːm˩˩˦ wan˧ lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "w"
+        }
+      ],
+      "register": "neutre, poli avec la particule : สองวันแล้วครับ / สองวันแล้วค่ะ",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u09-l9d-p6",
+      "drawIndex": 1,
+      "id": "3f24f8f2-5794-5651-8d20-c863bbe2c123",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "pairs": [
+        {
+          "id": "8f9b22b9-68cf-531a-80f2-a2cc4a88649a",
+          "itemId": "3bede919-36fc-54c9-be94-1a8b0394bc5e",
+          "labelFr": "ça fait deux jours"
+        },
+        {
+          "id": "6e084e32-b0ea-59f4-b459-fb063e979ea2",
+          "itemId": "55ed059c-c220-5537-96ed-f50be8be81ec",
+          "labelFr": "ça fait trois jours"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Exact.",
+        "incorrectFr": "Relisez l’expression et son sens, puis réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "quatre phrases et un mot que vous avez déjà",
+      "bodyFr": "Vous connaissez ยา (yaa) depuis l’unité 1 : le médicament. Aujourd’hui vous lui ajoutez le nom de l’endroit où l’on en vend, deux façons d’en demander, et une question de durée que vous apprendrez d’abord à reconnaître. Rien de tout cela n’est neuf dans sa construction : vous remplissez des patrons que vous employez déjà, avec un vocabulaire nouveau.",
+      "specimen": "ยา (yaa) · ร้านขายยา (ráan·khǎai·yaa)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ce que ces phrases font, et ce qu’elles ne font pas",
+      "bodyFr": "Disons-le franchement avant d’aller plus loin. Ces phrases ouvrent la conversation, elles ne la remplacent pas. Thaïnaute vous donne des mots, pas des consignes de santé : aucun nom de produit, aucune quantité, aucune durée, aucune conduite à tenir. Tout ce qui touche au soin lui-même sort du périmètre de cette leçon, et nous ne prétendons pas non plus vous décrire comment se passe une visite : nous n’avons pas de source qui nous le permette. Votre travail à vous, aujourd’hui, est d’arriver à ouvrir la porte en thaï et de reconnaître une question de durée si vous l’entendez.",
+      "specimen": "ขอยาหน่อยครับ (khǎww yaa nàwi khráp)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ร้านขายยา, une enseigne qui se lit morceau par morceau",
+      "bodyFr": "Le thaï nomme la pharmacie par ce qu’on y fait. ร้าน (ráan), c’est la boutique, le lieu où l’on vend. ขาย (khǎai), c’est vendre. ยา (yaa), c’est le médicament. Collés dans cet ordre, ils donnent ร้านขายยา, la boutique qui vend les médicaments. Trois blocs, trois sens, aucune surprise.\n\n> ร้าน (ráan) + ขาย (khǎai) + ยา (yaa) = ร้านขายยา (ráan·khǎai·yaa)",
+      "specimen": "ร้านขายยา (ráan·khǎai·yaa)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "trois syllabes, trois tons différents",
+      "bodyFr": "Regardez ce mot une seconde fois, cette fois avec l’oreille. Il enchaîne trois tons différents et il les enchaîne dans l’ordre le plus utile pour vous : ráan part en haut et y reste, khǎai descend puis remonte, yaa reste plat. Vous avez travaillé ce duel montant contre haut en unité 4 ; le voici dans un vrai mot, deux syllabes de suite, sans rien pour vous aider entre les deux.\n\n> ráan, ton HAUT · khǎai, ton MONTANT · yaa, ton MOYEN\n\nUn repère qui marche bien : le ton haut se pose et tient, le ton montant creuse d’abord. Écoutez les deux syllabes isolées, puis le mot entier, puis à vous.",
+      "specimen": "ร้าน (ráan) contre ขาย (khǎai) · ร้านขายยา (ráan·khǎai·yaa)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "où est la pharmacie ?",
+      "bodyFr": "Vous connaissez le patron depuis 5C, et 5E vous en a donné une instance complète, ตลาดอยู่ที่ไหน. Le lieu d’abord, อยู่ ensuite, la question à la fin. Changez le lieu et vous avez la phrase du jour.\n\n> ตลาดอยู่ที่ไหนครับ (tà·làat yòuu thîi·nǎi khráp) > ร้านขายยาอยู่ที่ไหนครับ (ráan·khǎai·yaa yòuu thîi·nǎi khráp)\n\nUne femme dit ร้านขายยาอยู่ที่ไหนคะ, avec คะ, la particule d’une question, apprise en 2E. La particule vient toujours en dernier et ne fait pas partie de la question.",
+      "specimen": "ร้านขายยาอยู่ที่ไหนครับ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "deux façons de demander, et elles ne disent pas la même chose",
+      "bodyFr": "ขอ … หน่อย, le patron de 2C, contenait de l’eau en 2C et un plat en 4C. Mettez-y ยา et vous obtenez ขอยาหน่อย : je voudrais un médicament, s’il vous plaît. C’est une demande.\n\nมี, appris en 6B et en 6D, dit qu’il y a. ไหม, la particule de question de 2B, ferme la phrase et la transforme en question fermée. Glissez ยา entre les deux et vous obtenez มียาไหม : est-ce que vous en avez ? C’est une question, pas une demande.\n\n> ขอยาหน่อยครับ (khǎww yaa nàwi khráp) : je demande > มียาไหมครับ (mii yaa mǎi khráp) : je m’informe\n\nLes deux font trois syllabes et les deux portent ยา au milieu. C’est exactement ce que l’exercice 2 vous fera trancher à l’oreille.",
+      "specimen": "ขอยาหน่อยครับ contre มียาไหมครับ"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "แล้ว, une graphie connue, un emploi nouveau",
+      "bodyFr": "Vous lisez แล้ว depuis la leçon 1E, dans แล้วเจอกัน, et vous l’avez relu en 6E dans แล้วคุณล่ะ. Dans ces deux blocs, il ouvre : et ensuite, et alors. Le dictionnaire lui donne aussi un autre emploi, et c’est celui du jour : posé à la FIN, แล้ว dit que quelque chose est accompli, ou qu’un état est désormais en place. Même mot, même prononciation `láeew`, même ton haut, autre place, autre travail.\n\nUn rappel d’écriture, parce qu’il vaut la peine : dans แล้ว, la première lettre écrite est แ, mais la consonne initiale est ล. C’est sur ELLE que se lit le ton, jamais sur la première lettre. ล est basse, le ไม้โท au-dessus donne le ton haut, et la syllabe est vivante parce qu’elle se ferme sur ว.",
+      "specimen": "แล้วเจอกัน (láeew·joee·kan) contre สองวันแล้ว (sǎwwng wan láeew)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "depuis combien de jours ?",
+      "bodyFr": "Voici une question de durée, et elle est faite de trois briques que vous avez déjà. กี่, de 3C et 3D, se place devant ce qu’on compte, comme dans กี่บาท et กี่คน. วัน, de 7C, c’est le jour. แล้ว ferme.\n\n> กี่วันแล้วครับ (kìi wan láeew khráp) > กี่วันแล้วคะ (kìi wan láeew khá)\n\nEt pour répondre, vous remplacez กี่ par un nombre. Rien d’autre ne bouge.\n\n> สองวันแล้วครับ (sǎwwng wan láeew khráp) > สามวันแล้วค่ะ (sǎam wan láeew khâ)\n\nNotez la place du nombre : il vient DEVANT วัน. C’est l’inverse de ce que fait ปลาสองตัว en 3D, où le nombre suit la chose comptée. Ici, วัน compte les jours tout seul, sans classificateur derrière lui.",
+      "specimen": "กี่วันแล้วครับ · สองวันแล้วครับ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "le second duel du jour, moyen contre bas",
+      "bodyFr": "Écoutez กี่วัน sans le reste. Deux syllabes plates, mais pas à la même hauteur : กี่ est BAS, il pose la voix en bas et l’y laisse, sur une voyelle longue ; วัน est MOYEN, à hauteur de parole ordinaire, et sa voyelle est brève. C’est le duel que l’unité 7 a sur-entraîné, et il revient ici sans prévenir, dans une question courte que rien ne vous aide à découper.\n\nUne comparaison utile, avec du matériel que vous connaissez : กี่บาท, appris en 3C, aligne DEUX syllabes basses de suite, un vrai plateau ; กี่วัน part du même bas puis remonte d’un cran et s’y tient. Écoutez les deux à la suite, et guettez uniquement la seconde syllabe.",
+      "specimen": "กี่บาท (kìi bàat) contre กี่วัน (kìi wan)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "à vous, et un dernier mot sur les limites",
+      "bodyFr": "Trois gestes à emporter. Pour ร้านขายยา : haut, puis creusé, puis plat. Pour กี่วัน : bas, puis à hauteur normale. Pour แล้ว : à la fin, et il dit que c’est en place depuis un moment.\n\nEt le cadre, une dernière fois, parce qu’il compte plus que le reste : ces phrases servent à parler, pas à se soigner. Elles vous permettent de demander où est la pharmacie, d’ouvrir la conversation et de reconnaître une question de durée. Tout ce qui touche au soin lui-même sort du périmètre de cette leçon, et Thaïnaute n’écrira jamais à sa place. Pour dire ce qui ne va pas, c’est le vocabulaire des leçons 9A et 9B qu’il vous faut, pas celui-ci.\n\nAprès les exercices, enregistrez-vous en disant ร้านขายยา puis กี่วันแล้ว, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u09-l9d-p6",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN"
+    ],
+    "generationActors": [
+      {
+        "actorId": "c4ac928f-25c7-5150-88ec-48c2b8689885",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7ff53996-3c08-579f-a716-8dbc8c8f8a79",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d0f88950-2dd7-53f9-bf3c-1c0c08b05263",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "434b4dfb-463f-5470-97fa-a3cf7a301631",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3e4cb3b7-2f90-5e17-a5e6-4a6112024f1d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0e1d6e68-fe20-5196-8910-ff7e0ed13ae1",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b7c38f7f-c58e-5a94-963f-47bf8fa036d1",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "80ac2f9c-a1ea-55bb-8bb7-7e50ee88c839",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

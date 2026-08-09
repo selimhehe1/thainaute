@@ -1,0 +1,756 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "8be82c3d-e325-5b27-87fb-f33c49421ea8",
+  "versionId": "64c1814a-aa6e-5f7d-8ae2-0f5718575c93",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Le ng du début et les voyelles qui glissent",
+  "objectiveFr": "à la fin de la leçon, devant un mot entendu, l’apprenant dit si le son `ng` tombe au début du mot, à la fin, ou aux deux, sur 8 mots sur 10 ; il reconnaît à l’écoute laquelle des trois voyelles glissées `ia`, `uea` et `oua` a été prononcée, sur 7 tirages sur 9 ; devant un mot écrit en syllabe vivante, il annonce le ton en croisant la marque, y compris les deux marques nouvelles, et la classe de la",
+  "requiredEntitlement": null,
+  "audioManifestId": "a1d6bf4a-307e-532f-918a-8f4258f41b40",
+  "items": [
+    {
+      "id": "d4d7014f-cc12-52f6-88cd-c910cc095315",
+      "thaiRaw": "เงิน",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E07",
+        "U+0E34",
+        "U+0E19"
+      ],
+      "translationFr": "l’argent (la monnaie)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ngoen"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เงิน",
+          "ipa": "ŋɤn˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ŋ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "8c5e0469-3802-59bd-b2af-b4c5a397097b",
+      "thaiRaw": "ง่าย",
+      "unicodeCodePoints": [
+        "U+0E07",
+        "U+0E48",
+        "U+0E32",
+        "U+0E22"
+      ],
+      "translationFr": "facile, simple",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ngâai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ง่าย",
+          "ipa": "ŋaːj˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "ŋ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "942987e5-bd79-5d53-aa4e-92af2bd28559",
+      "thaiRaw": "เสีย",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E2A",
+        "U+0E35",
+        "U+0E22"
+      ],
+      "translationFr": "être en panne, ne plus marcher ; s’abîmer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǐa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เสีย",
+          "ipa": "sia̯˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "f0d6482b-9b28-55e4-ab1f-22b774a0ebcf",
+      "thaiRaw": "เสื้อ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E2A",
+        "U+0E37",
+        "U+0E49",
+        "U+0E2D"
+      ],
+      "translationFr": "le haut, la chemise (le vêtement du buste)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sûea"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เสื้อ",
+          "ipa": "sɯa̯˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "03cb0872-9467-547a-877c-e1564f0c971f",
+      "thaiRaw": "ตั๋ว",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E31",
+        "U+0E4B",
+        "U+0E27"
+      ],
+      "translationFr": "le billet, le ticket",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tǒua"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตั๋ว",
+          "ipa": "tua̯˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "fe1fdf37-4d1c-56bd-87ea-9dd5578c6720",
+      "thaiRaw": "เก๊",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E01",
+        "U+0E4A"
+      ],
+      "translationFr": "faux, contrefait",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kée"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เก๊",
+          "ipa": "keː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "afa0f3b5-77bf-5622-8cb2-72ce075c9441",
+      "thaiRaw": "เปลี่ยน",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1B",
+        "U+0E25",
+        "U+0E35",
+        "U+0E48",
+        "U+0E22",
+        "U+0E19"
+      ],
+      "translationFr": "changer, échanger",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "plìan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เปลี่ยน",
+          "ipa": "plia̯n˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pl",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "47ff390c-3d12-5a4d-a368-9fbd5cd1dacc",
+      "thaiRaw": "กระเป๋า",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E23",
+        "U+0E30",
+        "U+0E40",
+        "U+0E1B",
+        "U+0E4B",
+        "U+0E32"
+      ],
+      "translationFr": "le sac",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "krà·pǎo"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "กระเป๋า",
+          "ipa": "kra˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "kr",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "กระเป๋า",
+          "ipa": "paw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u08-l8a-p5",
+      "drawIndex": 1,
+      "id": "32c54f46-9497-50a7-bebc-1d5682e3daf3",
+      "type": "recall",
+      "itemId": "d4d7014f-cc12-52f6-88cd-c910cc095315",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "ngoen",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le ton sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `sǐa`, `sûea`, `tǒua`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème de glissade erroné",
+            "textFr": "Regardez le graphème thaï en grand. เ◌ีย donne `ia`, เ◌ือ donne `uea`, ◌ัว donne `oua`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8a-p5",
+      "drawIndex": 2,
+      "id": "d70888b2-f9a9-591a-bda1-4bca66b2b057",
+      "type": "recall",
+      "itemId": "8c5e0469-3802-59bd-b2af-b4c5a397097b",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "ngâai",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le ton sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `sǐa`, `sûea`, `tǒua`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème de glissade erroné",
+            "textFr": "Regardez le graphème thaï en grand. เ◌ีย donne `ia`, เ◌ือ donne `uea`, ◌ัว donne `oua`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8a-p5",
+      "drawIndex": 3,
+      "id": "8e606aca-0380-5b77-9bc4-f8e6255adbf5",
+      "type": "recall",
+      "itemId": "942987e5-bd79-5d53-aa4e-92af2bd28559",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "sǐa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le ton sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `sǐa`, `sûea`, `tǒua`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème de glissade erroné",
+            "textFr": "Regardez le graphème thaï en grand. เ◌ีย donne `ia`, เ◌ือ donne `uea`, ◌ัว donne `oua`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8a-p5",
+      "drawIndex": 4,
+      "id": "2f47ef09-f310-565b-8acf-dcef66140f55",
+      "type": "recall",
+      "itemId": "f0d6482b-9b28-55e4-ab1f-22b774a0ebcf",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "sûea",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le ton sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `sǐa`, `sûea`, `tǒua`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème de glissade erroné",
+            "textFr": "Regardez le graphème thaï en grand. เ◌ีย donne `ia`, เ◌ือ donne `uea`, ◌ัว donne `oua`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8a-p5",
+      "drawIndex": 5,
+      "id": "70183892-9084-5077-8d76-ef612e7cd4be",
+      "type": "recall",
+      "itemId": "03cb0872-9467-547a-877c-e1564f0c971f",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "tǒua",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le ton sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `sǐa`, `sûea`, `tǒua`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème de glissade erroné",
+            "textFr": "Regardez le graphème thaï en grand. เ◌ีย donne `ia`, เ◌ือ donne `uea`, ◌ัว donne `oua`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8a-p5",
+      "drawIndex": 6,
+      "id": "998cb726-ecf1-56e7-9028-2a21a561fe0e",
+      "type": "recall",
+      "itemId": "fe1fdf37-4d1c-56bd-87ea-9dd5578c6720",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "kée",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le ton sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `sǐa`, `sûea`, `tǒua`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème de glissade erroné",
+            "textFr": "Regardez le graphème thaï en grand. เ◌ีย donne `ia`, เ◌ือ donne `uea`, ◌ัว donne `oua`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8a-p5",
+      "drawIndex": 7,
+      "id": "16f4ce92-8cd5-559c-ad0d-f41589c97756",
+      "type": "recall",
+      "itemId": "afa0f3b5-77bf-5622-8cb2-72ce075c9441",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "plìan",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le ton sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `sǐa`, `sûea`, `tǒua`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème de glissade erroné",
+            "textFr": "Regardez le graphème thaï en grand. เ◌ีย donne `ia`, เ◌ือ donne `uea`, ◌ัว donne `oua`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8a-p5",
+      "drawIndex": 8,
+      "id": "a9144df2-47dc-53f0-ac79-cc423c333200",
+      "type": "recall",
+      "itemId": "47ff390c-3d12-5a4d-a368-9fbd5cd1dacc",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "krà·pǎo",
+          "kind": "transcription"
+        },
+        {
+          "value": "kràpǎo",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le ton sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `sǐa`, `sûea`, `tǒua`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème de glissade erroné",
+            "textFr": "Regardez le graphème thaï en grand. เ◌ีย donne `ia`, เ◌ือ donne `uea`, ◌ัว donne `oua`."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "un son que vous connaissez, mais d’un seul côté",
+      "bodyFr": "Le thaï a une lettre pour le son que le français écrit `ng` dans « parking ». Elle s’appelle ง, et vous la lisez depuis l’unité 2 : elle ferme แพง, ห้อง, ตรง et เพลง. Dans « parking », ce son FERME lui aussi la syllabe. Aujourd’hui, il change de place et passe au DÉBUT du mot : même lettre, même son, position nouvelle. Essayez tout de suite, puis comparez avec l’audio.",
+      "specimen": "แพง (phaeeng) puis เงิน (ngoen)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "le geste, en trois temps",
+      "bodyFr": "Dites « parking » à voix haute. Redites-le en vous arrêtant juste avant le `k`, et tenez le son : parkinnn. Ne bougez plus rien. Votre langue est plaquée en arrière, contre le voile du palais, et l’air sort par le nez. C’est exactement la position de ง. Troisième temps : sans décoller la langue, ouvrez la bouche sur un `a`. Vous venez de produire une initiale thaïe.\n\nVérifiez vous-même que vous n’ajoutez rien après : posez deux doigts sur votre gorge et faites durer le son. S’il vibre en continu, c’est bon. Si vous entendez un petit `g` apparaître, c’est que la langue s’est décollée trop tôt.",
+      "specimen": "ngaaa · เงิน (ngoen)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "vous l’avez déjà dit une fois",
+      "bodyFr": "La semaine dernière, en 7D, vous avez appris ทำงาน, travailler. Sa seconde syllabe commence par ง. Personne ne vous l’a signalé, et c’est volontaire : vous l’avez prononcée en imitant l’audio, ce qui est la bonne façon d’entrer dans un son. Aujourd’hui vous le faites en le sachant, et sur une PREMIÈRE syllabe, ce qui est plus difficile parce qu’il n’y a rien devant pour prendre appui.",
+      "specimen": "ทำงาน (tham·ngaan) puis งาน (ngaan)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "deux mots pour l’unité",
+      "bodyFr": "เงิน, c’est l’argent. Le dictionnaire lui donne d’abord le métal, puis, au sens deux, ce qui sert à mesurer le prix quand on achète, vend et échange. ง่าย, avec sa marque ไม้เอก, c’est facile, commode. Les deux commencent par ง, et les deux vous serviront toute l’unité 8.",
+      "specimen": "เงิน (ngoen) · ง่าย (ngâai)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "trois voyelles qui glissent",
+      "bodyFr": "Passons à la bouche. Le thaï a trois voyelles qui ne restent pas en place : elles partent d’une position et glissent vers `a`, sans jamais s’arrêter au milieu, et tout cela tient dans UNE syllabe, sous UN seul ton.\n\n> เ◌ีย se lit `ia` : on part de `i` et on ouvre jusqu’à `a` > เ◌ือ se lit `uea` : on part du `ue` de ชื่อ et on ouvre jusqu’à `a` > ◌ัว se lit `oua` : on part de `ou` et on ouvre jusqu’à `a`",
+      "specimen": "เสีย (sǐa) · เสื้อ (sûea) · ตัว (toua)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "une seule syllabe, et vous pouvez le vérifier",
+      "bodyFr": "Dites « il y a » : vous entendez trois temps, et vous pouvez les compter sur les doigts. Dites maintenant เสีย en suivant l’audio : il n’y a qu’un temps, et la mélodie monte une seule fois sur toute la glissade. C’est là que la glissade se casse le plus facilement en deux temps. Faites le test avec la main : un geste continu, pas deux tapes ; si votre main tape deux fois, l’oreille l’entendra.",
+      "specimen": "เสีย (sǐa) · เปลี่ยน (plìan)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "la paire à regarder de près",
+      "bodyFr": "เสีย et เสื้อ commencent par la même lettre, ส, et se terminent tous deux sur une glissade vers `a`. Ce qui change, c’est le point de départ : `i` pour l’un, `ue` pour l’autre. Et comme ils ne portent pas la même chose au-dessus, ils n’ont pas le même ton. เสีย ne porte aucune marque, donc la règle de 4A s’applique et donne le ton montant. เสื้อ porte un ไม้โท sur une consonne haute, donc le tableau de 7A donne le ton descendant.",
+      "specimen": "เสีย (sǐa) contre เสื้อ (sûea)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "le tableau de 7A n’était pas fini",
+      "bodyFr": "En 7A, vous avez appris deux marques sur quatre, et la leçon vous a dit lesquelles manquaient. Les voici. ◌๊ s’appelle ไม้ตรี, la marque trois, et ◌๋ s’appelle ไม้จัตวา, la marque quatre. Comme les deux premières, elles se posent AU-DESSUS d’une lettre, jamais avant ni après. Attention, cette lettre n’est pas toujours la consonne initiale : vous le verrez page 13 avec เปลี่ยน.",
+      "specimen": "◌๊ ไม้ตรี · ◌๋ ไม้จัตวา"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "elles ne se posent pas sur n’importe quoi",
+      "bodyFr": "Voici le point qu’il faut retenir avant tout le reste. En syllabe vivante, ces deux marques ne se rencontrent que sur une consonne MOYENNE, l’une des neuf de la leçon 1A. Le dictionnaire décline la classe moyenne sur quatre formes de marque et cinq tons ; il décline les classes haute et basse sur DEUX formes seulement, celles que vous connaissez déjà. Si vous voyez un ◌๊ ou un ◌๋ sur un mot vivant, vous savez donc déjà que l’initiale est moyenne.",
+      "specimen": "เก๊ (kée) · ตั๋ว (tǒua)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "et sur une consonne moyenne, elles disent leur nom",
+      "bodyFr": "Le dictionnaire donne pour la classe moyenne une série de cinq mots d’exercice, กา ก่า ก้า ก๊า ก๋า, et il note que la forme de la marque et le nom du ton y coïncident. Traduit dans les mots que vous employez : la marque trois donne le ton HAUT, la marque quatre donne le ton MONTANT. C’est la seule ligne du tableau qui se lise sans effort, et c’est la vôtre aujourd’hui.\n\n> consonne MOYENNE + ไม้ตรี → ton HAUT, comme เก๊ > consonne MOYENNE + ไม้จัตวา → ton MONTANT, comme ตั๋ว",
+      "specimen": "เก๊ (kée) · ตั๋ว (tǒua)"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "le tableau entier, onze cases",
+      "bodyFr": "Voici tout ce que vous savez lire à partir d’aujourd’hui, sur une syllabe vivante. Les deux dernières colonnes sont neuves, et elles ne concernent qu’une seule ligne.\n\n> MOYENNE : rien → moyen · ◌่ → bas · ◌้ → descendant · ◌๊ → haut · ◌๋ → montant > HAUTE : rien → montant · ◌่ → bas · ◌้ → descendant · ◌๊ et ◌๋ ne s’y posent pas > BASSE : rien → moyen · ◌่ → descendant · ◌้ → haut · ◌๊ et ◌๋ ne s’y posent pas\n\nUne paire à garder en tête, parce qu’elle tient tout le bloc : ตัว, sans marque, se dit au ton moyen ; ตั๋ว, avec un ไม้จัตวา sur le même ต, se dit au ton montant. Deux mots, deux sens, une seule différence à l’écran.",
+      "specimen": "ตัว (toua) contre ตั๋ว (tǒua)"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "deux consonnes collées, un seul souffle",
+      "bodyFr": "Deuxième moitié du bloc d’écriture. Depuis l’unité 1, vous lisez des mots qui commencent par deux consonnes de suite : ครับ dès la leçon 1E, puis เพลง, ปลา, ตรง, ไกล, ครัว, et เปล่า dans น้ำเปล่า. Vous les prononcez correctement par imitation. La règle est simple : les deux lettres se lisent ensemble, d’un seul souffle, sans aucune voyelle entre elles, et l’ensemble compte pour UNE consonne initiale.",
+      "specimen": "ปลา (plaa) · ตรง (trong) · ครัว (khroua)"
+    },
+    {
+      "ordre": 13,
+      "titleFr": "laquelle des deux commande le ton ?",
+      "bodyFr": "C’est la vraie question, et un mot que vous connaissez y répond tout seul. En 4C, vous avez appris น้ำเปล่า, et sa seconde syllabe est publiée au ton BAS. Or ป est moyenne et ล est basse. Un ไม้เอก sur une moyenne donne le ton bas ; sur une basse, il donnerait le ton descendant. Le ton entendu est bas : c’est donc ป qui a commandé. Le mot du jour เปลี่ยน rejoue exactement la même démonstration.\n\n> Dans un groupe, le ton se lit sur la PREMIÈRE des deux lettres.",
+      "specimen": "เปล่า (plào) · เปลี่ยน (plìan)"
+    },
+    {
+      "ordre": 14,
+      "titleFr": "attention, toutes les paires ne sont pas des groupes",
+      "bodyFr": "Voici le piège, et il est déjà dans votre vocabulaire. ตลาด, le marché, commence lui aussi par deux consonnes, et pourtant vous le prononcez tà·làat, en deux temps, avec une voyelle glissée entre le ต et le ล. Même chose pour สถานี et สบายดี. À ce stade du parcours, ne cherchez pas à deviner à l’œil : c’est le mot qui décide, et c’est pour cela que l’audio et la transcription restent affichés. En cas de doute, fiez-vous à ce que vous entendez.",
+      "specimen": "ปลา (plaa, un temps) contre ตลาด (tà·làat, deux temps)"
+    },
+    {
+      "ordre": 15,
+      "titleFr": "à vous",
+      "bodyFr": "Trois gestes à emporter. Pour le ng : partez de « parking », tenez le son, puis ouvrez sans décoller la langue. Pour les glissades : un seul geste de la main, jamais deux. Pour l’écriture : trouvez la consonne initiale, en vous souvenant que เ s’écrit avant elle et qu’un groupe compte pour une seule initiale, puis regardez ce qui est posé au-dessus, puis croisez.\n\nAprès les exercices, enregistrez-vous en disant เงิน puis แพง, et เสีย puis เสื้อ, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u08-l8a-p5",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "mechanic": "recall",
+      "drawCount": 8,
+      "passRequired": 8,
+      "sampleSize": 8
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN"
+    ],
+    "generationActors": [
+      {
+        "actorId": "bdad0da3-f30f-5229-a547-edd37fed49cf",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ac10de7b-419c-57d2-ae5d-0d9d21e45825",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "adb6f224-96b9-5e77-89f1-c822086f2d5f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "427d81c2-60fb-5a54-b5e2-af8c7d98c378",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6c9735c8-02b2-5d72-92b1-828da90b623e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "79efef61-30b2-558d-a786-2f6a6b2b45d1",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "5bd65acb-fa4a-5f2e-81a4-1a501f1602b7",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2f9d4f25-46c0-52ef-8c36-39c15c1c28e6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

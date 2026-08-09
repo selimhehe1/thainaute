@@ -1,0 +1,697 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "9732cf1c-cc20-547c-9e22-1b599502ef67",
+  "versionId": "fccaf080-d616-5670-af4c-ff8bbbefbd51",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "La maison et ses pièces",
+  "objectiveFr": "à la fin de la leçon, l’apprenant associe les cinq noms de lieu du jour, บ้าน, ห้อง, ห้องนอน, ห้องครัว et ห้องน้ำ, à leur sens français et l’inverse, 5 fois sur 5 ; il identifie à l’écoute lequel des trois noms de pièce a été prononcé, 5 fois sur 6, alors que la première syllabe est identique dans les trois ; il choisit la bonne traduction française de sept phrases thaïes écrites dont chacune n’op",
+  "requiredEntitlement": null,
+  "audioManifestId": "73b28a68-86d0-55a1-af8e-d2eb5959e910",
+  "items": [
+    {
+      "id": "19633361-83de-5a64-8097-12930d578322",
+      "thaiRaw": "บ้าน",
+      "unicodeCodePoints": [
+        "U+0E1A",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "la maison ; le foyer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "bâan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "บ้าน",
+          "ipa": "baːn˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "c516d6f4-4757-5b8d-a794-08efce099294",
+      "thaiRaw": "ห้อง",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "la pièce ; la salle",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้อง",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "756e629b-0a38-551c-ad8b-c1fc42ceb30f",
+      "thaiRaw": "ห้องนอน",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E19",
+        "U+0E2D",
+        "U+0E19"
+      ],
+      "translationFr": "la chambre à coucher",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng·nawwn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้องนอน",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ห้องนอน",
+          "ipa": "nɔːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1c4b28d9-0863-570f-af19-ae93650cb412",
+      "thaiRaw": "ห้องครัว",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E27"
+      ],
+      "translationFr": "la cuisine (la pièce)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng·khroua"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้องครัว",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ห้องครัว",
+          "ipa": "kʰrua̯˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "d829d310-ce8a-5348-820a-2d1afaf5d3c1",
+      "thaiRaw": "ห้องน้ำ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E19",
+        "U+0E49",
+        "U+0E33"
+      ],
+      "translationFr": "les toilettes ; la salle de bains",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng·náam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้องน้ำ",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ห้องน้ำ",
+          "ipa": "naːm˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "45d58bd1-091d-51ec-b403-255038bf9cf3",
+      "thaiRaw": "อยู่บ้าน",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E1A",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "être à la maison ; rester à la maison",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yòuu bâan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อยู่บ้าน",
+          "ipa": "juː˨˩ baːn˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "72316766-88af-5fe2-b119-5f66203c00a5",
+      "thaiRaw": "ไปห้องน้ำ",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E1B",
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E19",
+        "U+0E49",
+        "U+0E33"
+      ],
+      "translationFr": "aller aux toilettes",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pai hâwng·náam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไปห้องน้ำ",
+          "ipa": "paj˧ hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ไปห้องน้ำ",
+          "ipa": "naːm˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "thaiRaw": "ดิฉัน",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "je, moi (locutrice femme, échange poli)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u07-l7b-p4",
+      "drawIndex": 1,
+      "id": "4f21235c-65b6-507a-9481-0cae87106f2f",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase.",
+      "tokens": [
+        {
+          "id": "cff81ffc-469c-5796-89d6-524a22665776",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "f58846b4-81ec-5058-a021-84adf1a688cf",
+          "thaiRaw": "บ้าน",
+          "transcription": null
+        },
+        {
+          "id": "fcfc9c54-875a-5279-b9ae-0dc7b6fd4c72",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "8f9e08fd-1517-5815-818e-90e69f547cf7",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "fcfc9c54-875a-5279-b9ae-0dc7b6fd4c72",
+        "8f9e08fd-1517-5815-818e-90e69f547cf7",
+        "f58846b4-81ec-5058-a021-84adf1a688cf",
+        "cff81ffc-469c-5796-89d6-524a22665776"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Qui, ce qu’on fait, où, puis la particule.",
+        "incorrectFr": "Repartez du début. Qui parle ? Puis le verbe : ไป ou อยู่. Puis le lieu. La particule vient toujours en dernier.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4 uniquement",
+            "textFr": "Et remarquez que la question de 5C fonctionne telle quelle avec une pièce de la maison."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7b-p4",
+      "drawIndex": 2,
+      "id": "944c4966-3d1c-51c9-88fd-8e7b392d5057",
+      "type": "word_order",
+      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase.",
+      "tokens": [
+        {
+          "id": "40f103f0-7b89-56fa-adff-7cd8222b3f1f",
+          "thaiRaw": "บ้าน",
+          "transcription": null
+        },
+        {
+          "id": "3c47ddbe-d1e1-5247-85dd-3a782adb6756",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "8be983a4-0b6a-5328-8346-62d99ddea3e2",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        },
+        {
+          "id": "1840c843-d1a0-5a0a-91fc-ad6cdcc01998",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "1840c843-d1a0-5a0a-91fc-ad6cdcc01998",
+        "8be983a4-0b6a-5328-8346-62d99ddea3e2",
+        "40f103f0-7b89-56fa-adff-7cd8222b3f1f",
+        "3c47ddbe-d1e1-5247-85dd-3a782adb6756"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Qui, ce qu’on fait, où, puis la particule.",
+        "incorrectFr": "Repartez du début. Qui parle ? Puis le verbe : ไป ou อยู่. Puis le lieu. La particule vient toujours en dernier.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4 uniquement",
+            "textFr": "Et remarquez que la question de 5C fonctionne telle quelle avec une pièce de la maison."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7b-p4",
+      "drawIndex": 3,
+      "id": "28dafd3f-12b5-5403-a7c3-a283a7217a67",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase.",
+      "tokens": [
+        {
+          "id": "21a684a8-895f-5c17-8c03-390ff05285fa",
+          "thaiRaw": "ห้องน้ำ",
+          "transcription": null
+        },
+        {
+          "id": "5c46756f-9719-5b95-be83-3ab2fee10809",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "8d5c7f43-64b7-55f9-a107-3bd5bfd02256",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "95964c37-def0-5473-be0e-d64a1e637ed5",
+          "thaiRaw": "ไป",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "5c46756f-9719-5b95-be83-3ab2fee10809",
+        "95964c37-def0-5473-be0e-d64a1e637ed5",
+        "21a684a8-895f-5c17-8c03-390ff05285fa",
+        "8d5c7f43-64b7-55f9-a107-3bd5bfd02256"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Qui, ce qu’on fait, où, puis la particule.",
+        "incorrectFr": "Repartez du début. Qui parle ? Puis le verbe : ไป ou อยู่. Puis le lieu. La particule vient toujours en dernier.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4 uniquement",
+            "textFr": "Et remarquez que la question de 5C fonctionne telle quelle avec une pièce de la maison."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7b-p4",
+      "drawIndex": 4,
+      "id": "e142d4d3-e2cd-5e88-b6f3-8923e3461eb1",
+      "type": "word_order",
+      "itemId": "1c4b28d9-0863-570f-af19-ae93650cb412",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase.",
+      "tokens": [
+        {
+          "id": "d44b288a-53e7-591c-963d-007631c09fc9",
+          "thaiRaw": "คะ",
+          "transcription": null
+        },
+        {
+          "id": "4c869100-1f95-5201-b1a5-d83eb70ff356",
+          "thaiRaw": "อยู่ที่ไหน",
+          "transcription": null
+        },
+        {
+          "id": "7520acef-5d2f-596b-a520-35f45b8253fa",
+          "thaiRaw": "ห้องครัว",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "7520acef-5d2f-596b-a520-35f45b8253fa",
+        "4c869100-1f95-5201-b1a5-d83eb70ff356",
+        "d44b288a-53e7-591c-963d-007631c09fc9"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Qui, ce qu’on fait, où, puis la particule.",
+        "incorrectFr": "Repartez du début. Qui parle ? Puis le verbe : ไป ou อยู่. Puis le lieu. La particule vient toujours en dernier.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4 uniquement",
+            "textFr": "Et remarquez que la question de 5C fonctionne telle quelle avec une pièce de la maison."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "le mot que vous verrez partout",
+      "bodyFr": "บ้าน (bâan), c’est la maison, et c’est aussi le foyer, l’endroit d’où l’on vient. Le mot commence par une consonne que vous savez déjà lire, บ, celle de ใบ apprise en 3D, et se termine par le น de คน. Entre les deux, la voyelle longue de มา et de ปลา.",
+      "specimen": "บ้าน (bâan)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ห้อง, la pièce, et la clé d’un mot que vous connaissez déjà",
+      "bodyFr": "ห้อง (hâwng) veut dire une pièce, une salle. Prenez maintenant ห้องน้ำ, appris en 5C comme un seul bloc : c’est ห้อง, la pièce, suivi de น้ำ, l’eau, apprise en 2C. La pièce d’eau. Vous saviez dire ce mot depuis l’unité 5 sans savoir qu’il en contenait deux.",
+      "specimen": "ห้อง (hâwng) · ห้องน้ำ (hâwng·náam)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "deux pièces bâties exactement de la même façon",
+      "bodyFr": "Le procédé se répète, et c’est ce qui rend la maison facile à apprendre. ห้องนอน (hâwng·nawwn) : la pièce plus นอน, dormir. La chambre à coucher. ห้องครัว (hâwng·khroua) : la pièce plus ครัว, qui nomme déjà le lieu où l’on prépare les repas. La cuisine.",
+      "specimen": "ห้องนอน (hâwng·nawwn) · ห้องครัว (hâwng·khroua)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "ห้อง est plus court qu’il n’en a l’air",
+      "bodyFr": "Regardez la graphie de ห้อง : elle emploie อ, la même voyelle longue que dans สอง et dans ขอบคุณ. Pourtant les sources consultées donnent une voyelle BRÈVE, et c’est pour cela que la transcription écrit `aw` et non `aww`. Dites `hâwng·náam` sec, pas `hâwwng·náam` étiré. C’est le seul piège de prononciation de la leçon, et vous l’aviez déjà croisé en 5C.",
+      "specimen": "`hâwng` contre `sǎwwng`"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "le petit signe au-dessus ne dit pas le ton à lui seul",
+      "bodyFr": "Trois mots du jour portent le même petit signe posé au-dessus de leur consonne : บ้าน, ห้อง et น้ำ. Comparez leurs mélodies. บ้าน et ห้อง descendent, น้ำ monte vers le haut et y reste. Même signe, deux résultats. Retenez donc les tons de ces mots par l’oreille : la règle qui explique cet écart n’est pas encore la vôtre, et une leçon d’écriture s’en chargera.",
+      "specimen": "บ้าน (bâan) · ห้อง (hâwng) · น้ำ (náam)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "อยู่บ้าน, être à la maison",
+      "bodyFr": "En 5C, อยู่ (yòuu) vous servait à demander où se trouve quelque chose. Le même verbe, suivi d’un lieu, dit où l’on est : อยู่บ้าน (yòuu bâan), être à la maison, y rester. Rien à ajouter entre les deux mots.",
+      "specimen": "อยู่บ้าน (yòuu bâan)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "ไป pour se déplacer, อยู่ pour rester",
+      "bodyFr": "ไป, appris en 5B, dit le mouvement qui s’éloigne, et en 5D vous l’avez employé avec un lieu : ผมไปตลาดครับ. Le même patron marche avec une pièce : ไปห้องน้ำ (pai hâwng·náam), aller aux toilettes. Deux verbes, deux idées opposées : on part avec ไป, on reste avec อยู่.\n\nUn avertissement utile pour la maison, à lire avant de fabriquer la phrase vous-même. ไป suivi de บ้าน ne veut pas dire « je rentre chez moi » : les sources le donnent au sens d’aller chez quelqu’un, dans sa maison à lui. Pour « rentrer à la maison », le thaï emploie un autre verbe, กลับ, et dit กลับบ้าน. Ce verbe n’est pas exercé aujourd’hui ; il est nommé pour que vous ne construisiez pas la phrase fausse.",
+      "specimen": "ไปห้องน้ำ (pai hâwng·náam) contre อยู่บ้าน (yòuu bâan)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "la phrase entière, avec le pronom et la particule",
+      "bodyFr": "Vous avez tout pour une phrase complète et polie, exactement dans l’ordre de ผมไปตลาดครับ appris en 5D : qui, puis le verbe, puis le lieu, puis la particule.\n\n> ผมอยู่บ้านครับ (phǒm yòuu bâan khráp) > ดิฉันอยู่บ้านค่ะ (dì·chǎn yòuu bâan khâ)\n\nUn homme prend ผม et ครับ, une femme ดิฉัน et ค่ะ, comme depuis l’unité 2.",
+      "specimen": "ผมอยู่บ้านครับ · ดิฉันอยู่บ้านค่ะ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "à vous",
+      "bodyFr": "Deux choses à emporter. La première est une clé : dès que vous voyez ห้อง au début d’un mot, vous êtes devant une pièce, et le morceau suivant vous dit laquelle. La seconde est un couple de verbes : ไป pour aller quelque part, อยู่ pour y être.\n\nAprès les exercices, enregistrez-vous en disant ห้องน้ำ puis ห้องนอน, et comparez en A/B avec la voix de référence. Écoutez surtout la première syllabe : elle doit rester courte dans les deux. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u07-l7b-p4",
+      "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase.",
+      "mechanic": "word_order",
+      "drawCount": 4,
+      "passRequired": 4,
+      "sampleSize": 4
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "3218fea8-2d4c-540a-ac1f-82bb86ba5cca",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f14c3a1e-fa25-538d-9bea-af1bc392c1f7",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1c8c0a0a-cd32-5ab0-8e27-8e3a1c85d63c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1e6aad06-0973-5e5e-85d6-f14484d3eb25",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3ad500e5-76d6-5493-b931-1f712b133aa9",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d0077131-8d4b-5bd7-b680-5ed9082b42fb",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c6cd12d0-df51-52ee-a8a3-0c113eba48fd",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b85024ec-e879-5eb1-8f39-af62abcf41e4",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

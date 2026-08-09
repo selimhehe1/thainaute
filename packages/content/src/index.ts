@@ -11,7 +11,24 @@ export {
   readFixtureBundle,
   readUnite01Lecon1aBundle,
   validateBundle,
+  validateBundleAudioFiles,
 } from "./repository";
+export {
+  authoringCatalog,
+  authoringCatalogSchema,
+  catalogByUnit,
+} from "./catalog";
+export {
+  authoringDraftIds,
+  authoringDraftSchema,
+  authoringDrafts,
+  authoringDraftIndexSchema,
+  readAuthoringDraft,
+} from "./authoring-drafts";
+export {
+  authoringCompiledLessonIds,
+  readAuthoringCompiledLessonBundle,
+} from "./authoring-compiled";
 export {
   assertAucuneFabrication,
   graphiesFabriquees,
@@ -38,8 +55,31 @@ export {
   contentReviewSummarySchema,
   reviewContentBundle,
 } from "./studio";
-export { validateBundleMetadata } from "./validation";
+export {
+  validateBundleAudioReferences,
+  validateBundleMetadata,
+  validateBundleStructureMetadata,
+} from "./validation";
+export { targetTextOf } from "./target-text";
+export type { TargetTextCarrier } from "./target-text";
+export {
+  DEFAULT_LANGUAGE_PACK_ID,
+  LANGUAGE_PACK_ENV,
+  LANGUAGE_PACK_IDS,
+  getLanguagePack,
+  getLanguagePackFromEnvironment,
+  requireLanguagePack,
+  thaiFrLanguagePack,
+} from "./language-packs";
+export type {
+  LanguagePack,
+  LanguagePackId,
+  TargetFontFamily,
+  TargetScript,
+} from "./language-packs";
 export type { PublicationBlocker } from "./audit";
+export type { AuthoringCatalogEntry } from "./catalog";
+export type { AuthoringDraft } from "./authoring-drafts";
 export type {
   AssociationExercise,
   AudioChoiceExercise,

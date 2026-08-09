@@ -66,4 +66,7 @@ Une fixture technique peut contenir un exemple non audité uniquement si elle :
 - n'est jamais incluse dans une release de contenu.
 
 `pnpm content:validate` vérifie la forme. `pnpm content:audit` vérifie que les
-portes de publication et les licences ne sont pas contournées.
+portes de publication et les licences ne sont pas contournées. Sans cible, ces
+deux commandes contrôlent la fixture technique ; pour contrôler un paquet
+compilé avec ses fichiers audio, passer son identifiant, par exemple
+`pnpm content:validate -- u01-l1a` puis `pnpm content:audit -- u01-l1a`.

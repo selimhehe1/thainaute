@@ -1,0 +1,1062 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "fb8bdd45-5ae4-5ebb-bb7f-90f8480ee024",
+  "versionId": "eb946029-bda3-59f3-b5cb-07da91d72cd6",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Ce que le manuel ne dit pas",
+  "objectiveFr": "à la fin de la leçon, devant une phrase thaïe entendue à débit naturel, l’apprenant reconnaît laquelle des trois écritures proposées il a entendue, sur 9 tirages sur 12 ; il apparie six phrases écrites à la description exacte de leur fin, 6 sur 6 ; il remet dans l’ordre les blocs de six phrases complètes, sur 5 tirages sur 6 ; il produit en transcription les huit réponses du jour à partir du franç",
+  "requiredEntitlement": null,
+  "audioManifestId": "0ced35ae-8dbc-53e4-9716-10180553b4ad",
+  "items": [
+    {
+      "id": "8a880f7c-14c7-5880-9954-ceb23b2e8218",
+      "thaiRaw": "ครับ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "particule de politesse d’un locuteur homme (fin de phrase)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli. **Étiquette LUE, et une divergence est signalée plutôt que lissée.** L’entrée du RID, relevée le 2026-08-04, ne porte aucune des quatre étiquettes attendues du parcours avancé : ni `(ปาก)`, ni `(ถิ่น-อีสาน)`, ni `(ถิ่น-พายัพ)`, ni `(ถิ่น-ปักษ์ใต้)`. Elle qualifie en revanche l’emploi de poli et l’attribue à un locuteur homme. en.wiktionary, de son côté, étiquette la vedette « formal, humble, men’s speech », ce qui est un cran au dessus de « poli ». **13A garde « poli », comme `u01-l1e`, et déclare la divergence** : changer l’étiquette d’un item publié depuis l’unité 1 est un arbitrage de parcours, pas une décision de leçon. Voir l’arbitrage 3.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "9d79d1f6-412b-5381-beb3-e2daee33cb58",
+      "thaiRaw": "ค่ะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "particule de politesse d’une locutrice (phrase affirmative)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli. **Étiquette LUE le 2026-08-04** : l’entrée du RID ne porte aucune des quatre étiquettes attendues du parcours avancé. en.wiktionary porte une note d’usage historique, « formerly used by noblemen, now often employed by women », qui est un fait d’usage et non une étiquette de registre ; 13A la consigne sans l’enseigner, faute de seconde jambe.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "2286caa2-0f40-5233-8146-5a5c63043b0f",
+      "thaiRaw": "คะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "particule finale d’une locutrice, en fin de question ou d’information donnée poliment",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli. **Étiquette LUE le 2026-08-04** : aucune des quatre étiquettes du parcours avancé sur l’entrée du RID.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "c974f188-923d-592d-b9c4-cedd6c3e1629",
+      "thaiRaw": "ไหม",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21"
+      ],
+      "translationFr": "particule qui fait de l’énoncé une question fermée",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไหม",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre. **Étiquette LUE le 2026-08-04** : aucune étiquette de registre sur l’entrée « ไหม ๒ » du RID, aucune sur la ligne 51647 de VOLUBILIS, aucune sur l’étymologie 1 d’en.wiktionary.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "fbda15ce-6b47-52ed-8149-b2667680e2e4",
+      "thaiRaw": "แล้วคุณล่ะ",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E25",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "et vous ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew khoun lâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (poli avec la particule : แล้วคุณล่ะครับ / แล้วคุณล่ะคะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "b67231cc-60a6-5a0f-be22-5f1cac35dd0c",
+      "thaiRaw": "สบายดีไหมครับ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E14",
+        "U+0E35",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "vous allez bien ? (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·baai·dii·mǎi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สบายดีไหมครับ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีไหมครับ",
+          "ipa": "baːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีไหมครับ",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีไหมครับ",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีไหมครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "bd6023ed-d364-5d53-9bf4-441a5c07bbad",
+      "thaiRaw": "สบายดีค่ะ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E14",
+        "U+0E35",
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "je vais bien (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·baai·dii khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สบายดีค่ะ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีค่ะ",
+          "ipa": "baːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีค่ะ",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "thaiRaw": "ไป",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "aller, partir, se rendre à ; s’éloigner de celui qui parle",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre comme verbe. **Une lecture d’interjection existe** pour ไป employé seul, au sens de « va-t’en » : cet EMPLOI est attesté par deux sources, mais aucune des deux ne porte de marque de registre, et le RID ne l’enregistre pas du tout. La leçon n’affirme donc aucun registre pour cette lecture, et se borne à signaler qu’elle existe. Voir l’incertitude 13.",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E19",
+        "U+0E49",
+        "U+0E33",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Où sont les toilettes ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng·náam yòuu thîi·nǎi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naːm˦˥ juː˨˩ tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naj˩˩˦ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "4adafc69-1048-5617-9c16-2c66bd6ab2ef",
+      "thaiRaw": "ตลาดอยู่ที่ไหน",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19"
+      ],
+      "translationFr": "où est le marché ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tà·làat yòuu thîi·nǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "laːt̚˨˩ juː˨˩ tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ตลาดอยู่ที่ไหนคะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "thaiRaw": "มี",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35"
+      ],
+      "translationFr": "avoir ; posséder",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มี",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2a9fea40-17eb-5b3d-a4e3-fabe48d0c0f6",
+      "thaiRaw": "ปวดหัว",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E27",
+        "U+0E14",
+        "U+0E2B",
+        "U+0E31",
+        "U+0E27"
+      ],
+      "translationFr": "avoir mal à la tête",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pòuat·hǒua"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปวดหัว",
+          "ipa": "pua̯t̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ปวดหัว",
+          "ipa": "hua̯˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "thaiRaw": "แล้ว",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27"
+      ],
+      "translationFr": "en fin de phrase, marque que c’est accompli ou que l’état est désormais en place ; se rend en français par « déjà », « maintenant », ou par le seul temps du verbe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้ว",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u13-l13a-p2",
+      "drawIndex": 1,
+      "id": "5fde1a43-6b51-51ab-af4a-849246396954",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Chaque phrase de gauche se termine d’une certaine façon. Associez chaque phrase à la description exacte de sa fin. Touchez une phrase, puis une description : aucun glisser-déposer n’est nécessaire.",
+      "pairs": [
+        {
+          "id": "6a2d0b63-d852-5f3b-9a81-80b44f4b5910",
+          "itemId": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+          "labelFr": "une seule particule, celle d’un homme"
+        },
+        {
+          "id": "0bbff80e-d36d-5d12-ad1d-9dafa300f711",
+          "itemId": "bd6023ed-d364-5d53-9bf4-441a5c07bbad",
+          "labelFr": "une seule particule, celle d’une femme"
+        },
+        {
+          "id": "9d5483a9-32d8-5b1d-b20e-68c2276645cd",
+          "itemId": "4adafc69-1048-5617-9c16-2c66bd6ab2ef",
+          "labelFr": "aucune particule"
+        },
+        {
+          "id": "ef76075c-9548-5fe3-8c82-c05fbb7a279e",
+          "itemId": "fbda15ce-6b47-52ed-8149-b2667680e2e4",
+          "labelFr": "une seule particule, et ce n’est pas une politesse"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui. Vous ne lisez plus seulement la phrase, vous lisez sa fin.",
+        "incorrectFr": "Reprenez le test : retirez la dernière syllabe, puis regardez ce qui reste. Si ce qui reste est encore quelque chose que vous connaissez, recommencez.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paires 2, 4 et 6",
+            "textFr": "Exactement. ล่ะ est une particule, au même titre que ครับ, et vous l’employez depuis l’unité 6."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13a-p3",
+      "drawIndex": 1,
+      "id": "820328df-a3b8-54e3-ba04-d329d441b91b",
+      "type": "word_order",
+      "itemId": "b67231cc-60a6-5a0f-be22-5f1cac35dd0c",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "c7b3ddc7-dd0d-5868-b41e-f2a2c8ba559a",
+          "thaiRaw": "สบายดี",
+          "transcription": null
+        },
+        {
+          "id": "2f25c66b-d632-514d-831d-f8e2bb288446",
+          "thaiRaw": "ไหม",
+          "transcription": null
+        },
+        {
+          "id": "609a6fc3-d2fb-590f-b825-2c0dc9b28433",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "c7b3ddc7-dd0d-5868-b41e-f2a2c8ba559a",
+        "2f25c66b-d632-514d-831d-f8e2bb288446",
+        "609a6fc3-d2fb-590f-b825-2c0dc9b28433"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La phrase, puis ce qui la transforme, puis la politesse.",
+        "incorrectFr": "La politesse ferme la phrase, elle passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 2",
+            "textFr": "Deux particules à la file, et dans le bon ordre. ล่ะ d’abord, la politesse ensuite."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไหม ou ล่ะ mal placés",
+            "textFr": "Ces morceaux-là se posent après la phrase et AVANT la politesse. Retirez mentalement la politesse et regardez où ils tombent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13a-p3",
+      "drawIndex": 2,
+      "id": "bfac0e5a-61aa-55a3-a111-bad6aee94659",
+      "type": "word_order",
+      "itemId": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "2a918287-34dc-57f8-a2fb-dc6ed49aa604",
+          "thaiRaw": "แล้ว",
+          "transcription": null
+        },
+        {
+          "id": "c31a4c34-94d1-5186-a3dc-0cb4d7c19830",
+          "thaiRaw": "คุณ",
+          "transcription": null
+        },
+        {
+          "id": "58a6d3e8-fad2-52c3-a9c2-6bd59901bf3f",
+          "thaiRaw": "ล่ะ",
+          "transcription": null
+        },
+        {
+          "id": "9fb246b9-9b6c-51d6-8be6-7f1bf23cf3d5",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "2a918287-34dc-57f8-a2fb-dc6ed49aa604",
+        "c31a4c34-94d1-5186-a3dc-0cb4d7c19830",
+        "58a6d3e8-fad2-52c3-a9c2-6bd59901bf3f",
+        "9fb246b9-9b6c-51d6-8be6-7f1bf23cf3d5"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La phrase, puis ce qui la transforme, puis la politesse.",
+        "incorrectFr": "La politesse ferme la phrase, elle passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 2",
+            "textFr": "Deux particules à la file, et dans le bon ordre. ล่ะ d’abord, la politesse ensuite."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไหม ou ล่ะ mal placés",
+            "textFr": "Ces morceaux-là se posent après la phrase et AVANT la politesse. Retirez mentalement la politesse et regardez où ils tombent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13a-p3",
+      "drawIndex": 3,
+      "id": "a8979042-e86a-5996-9237-5aaf7d0dfce0",
+      "type": "word_order",
+      "itemId": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "4c3d68bd-2cce-5175-87aa-d96bd60675e5",
+          "thaiRaw": "มี",
+          "transcription": null
+        },
+        {
+          "id": "31cc8df7-0016-59e9-bbce-824c5a5900c6",
+          "thaiRaw": "ยา",
+          "transcription": null
+        },
+        {
+          "id": "6944829e-52e6-575f-9008-2c9a805e8dfd",
+          "thaiRaw": "ไหม",
+          "transcription": null
+        },
+        {
+          "id": "faa6c0e0-056d-5a98-925d-06f83faa5c02",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "4c3d68bd-2cce-5175-87aa-d96bd60675e5",
+        "31cc8df7-0016-59e9-bbce-824c5a5900c6",
+        "6944829e-52e6-575f-9008-2c9a805e8dfd",
+        "faa6c0e0-056d-5a98-925d-06f83faa5c02"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La phrase, puis ce qui la transforme, puis la politesse.",
+        "incorrectFr": "La politesse ferme la phrase, elle passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 2",
+            "textFr": "Deux particules à la file, et dans le bon ordre. ล่ะ d’abord, la politesse ensuite."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไหม ou ล่ะ mal placés",
+            "textFr": "Ces morceaux-là se posent après la phrase et AVANT la politesse. Retirez mentalement la politesse et regardez où ils tombent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13a-p3",
+      "drawIndex": 4,
+      "id": "e4125939-d640-5410-bb6d-8ae97276b0d0",
+      "type": "word_order",
+      "itemId": "2a9fea40-17eb-5b3d-a4e3-fabe48d0c0f6",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "f17326ca-ccec-5034-8b25-abb0ad6188e9",
+          "thaiRaw": "ปวดหัว",
+          "transcription": null
+        },
+        {
+          "id": "53181a7e-50d2-5ea7-81b3-3a9a66a981ea",
+          "thaiRaw": "ไหม",
+          "transcription": null
+        },
+        {
+          "id": "f98d29b3-bdc6-5514-b4e1-5909daf127c6",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "f17326ca-ccec-5034-8b25-abb0ad6188e9",
+        "53181a7e-50d2-5ea7-81b3-3a9a66a981ea",
+        "f98d29b3-bdc6-5514-b4e1-5909daf127c6"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La phrase, puis ce qui la transforme, puis la politesse.",
+        "incorrectFr": "La politesse ferme la phrase, elle passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 2",
+            "textFr": "Deux particules à la file, et dans le bon ordre. ล่ะ d’abord, la politesse ensuite."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไหม ou ล่ะ mal placés",
+            "textFr": "Ces morceaux-là se posent après la phrase et AVANT la politesse. Retirez mentalement la politesse et regardez où ils tombent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13a-p3",
+      "drawIndex": 5,
+      "id": "3e433f33-3846-5087-87bb-4c33c2f7c34b",
+      "type": "word_order",
+      "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "1fce7d56-39c1-5804-bda8-4b511d1f5600",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "9b0ed3e6-be6b-51d1-bb5f-1f1ca0461abd",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "1fce7d56-39c1-5804-bda8-4b511d1f5600",
+        "9b0ed3e6-be6b-51d1-bb5f-1f1ca0461abd"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La phrase, puis ce qui la transforme, puis la politesse.",
+        "incorrectFr": "La politesse ferme la phrase, elle passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 2",
+            "textFr": "Deux particules à la file, et dans le bon ordre. ล่ะ d’abord, la politesse ensuite."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไหม ou ล่ะ mal placés",
+            "textFr": "Ces morceaux-là se posent après la phrase et AVANT la politesse. Retirez mentalement la politesse et regardez où ils tombent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13a-p3",
+      "drawIndex": 6,
+      "id": "cda1d162-3c28-5790-89c2-2b9826151664",
+      "type": "word_order",
+      "itemId": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "cadb6524-512b-5f6d-b793-be01728fa544",
+          "thaiRaw": "ห้องน้ำ",
+          "transcription": null
+        },
+        {
+          "id": "7f7ba1b7-3e93-566a-9d22-c9b41ba2ecc8",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        },
+        {
+          "id": "f7b3419d-6f6a-5ada-a5c1-cb80173ce63a",
+          "thaiRaw": "ที่ไหน",
+          "transcription": null
+        },
+        {
+          "id": "35d67b07-9b6d-5b0c-ad13-73865c83dcd1",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "cadb6524-512b-5f6d-b793-be01728fa544",
+        "7f7ba1b7-3e93-566a-9d22-c9b41ba2ecc8",
+        "f7b3419d-6f6a-5ada-a5c1-cb80173ce63a",
+        "35d67b07-9b6d-5b0c-ad13-73865c83dcd1"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La phrase, puis ce qui la transforme, puis la politesse.",
+        "incorrectFr": "La politesse ferme la phrase, elle passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 2",
+            "textFr": "Deux particules à la file, et dans le bon ordre. ล่ะ d’abord, la politesse ensuite."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไหม ou ล่ะ mal placés",
+            "textFr": "Ces morceaux-là se posent après la phrase et AVANT la politesse. Retirez mentalement la politesse et regardez où ils tombent."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous dites déjà quelque chose que personne ne vous a expliqué",
+      "bodyFr": "Depuis la toute première leçon, vous terminez vos phrases par ครับ ou par ค่ะ. Ce cours vous a dit à quoi cela servait, et il ne vous a jamais dit ce que c’était. Aujourd’hui, il vous le dit, parce que la suite en dépend : ce petit morceau de fin n’est pas une politesse isolée, c’est un membre d’une famille, et cette famille est partout dans le thaï que vous allez entendre.",
+      "specimen": "สวัสดีครับ (sà·wàt·dii khráp) · สวัสดีค่ะ (sà·wàt·dii khâ)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "une particule finale, c’est quoi au juste",
+      "bodyFr": "Voici la définition que ce cours emploie, et elle tient en trois traits.\n\n> Une **particule finale** se pose APRÈS la phrase. > Elle ne change pas ce dont la phrase parle. > Elle dit quelque chose sur la façon dont la phrase est dite.\n\nCe n’est pas une invention de ce cours. Le dictionnaire normatif décrit ครับ comme un mot de réponse, ou de fin d’énoncé, employé poliment par un homme ; il décrit ค่ะ et คะ de la même façon, du côté d’une locutrice. Les trois sont donc rangés ensemble par l’autorité qui fixe la langue, et pas seulement par nous.",
+      "specimen": "ครับ (khráp) · ค่ะ (khâ) · คะ (khá)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ce travail-là, vous le faites déjà en français",
+      "bodyFr": "Ce cours ne va rien vous affirmer sur le français : c’est votre langue, vous en jugez mieux que lui. Faites plutôt l’essai à voix haute.\n\n> « Tu viens. » > « Tu viens ? » > « Tu viens, hein. »\n\nLe premier informe, le deuxième demande, le troisième insiste. Écoutez ce qui change. Entre les deux premiers, aucun mot n’a bougé : c’est la courbe de votre voix. Au troisième, un petit mot s’est ajouté à la fin, et c’est lui qui fait le travail.\n\nVous venez donc de faire la chose deux fois, de deux façons. Retenez seulement ceci, qui est ce que la leçon enseigne : **le thaï le fait avec un morceau qui s’écrit et qui s’entend**, à la fin. C’est une bonne nouvelle : un morceau se repère, une intonation se devine.\n\n**Ce cours ne décrit pas le français et ne s’en donne pas le droit** : il n’a pas de source pour cela, et il ne vous demande donc rien d’autre que de constater.",
+      "specimen": "สบายดีครับ (sà·baai·dii khráp)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "vous en avez déjà quatre dans la poche",
+      "bodyFr": "Regardez-les côte à côte. Vous les employez depuis longtemps sans les avoir jamais vues comme une famille.\n\n> **ครับ** · khráp · un homme, poliment > **ค่ะ** · khâ · une femme, sur une phrase qui affirme > **คะ** · khá · une femme, sur une phrase qui demande > **ไหม** · mǎi · fait de l’énoncé une question\n\nLes trois premières disent qui parle et sur quel ton de politesse. La quatrième ne dit rien de qui parle : elle transforme la phrase. Retirez-en une, et la phrase change de nature sans qu’aucun de ses autres mots ait bougé. C’est exactement cela, une particule finale.",
+      "specimen": "ครับ · ค่ะ · คะ · ไหม"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "la place est fixe, et vous en avez déjà vu deux à la file",
+      "bodyFr": "Depuis l’unité 2, vous dites une phrase qui porte DEUX particules l’une derrière l’autre. Vous ne l’aviez sans doute pas remarqué.\n\n> **สบายดีไหมครับ** · sà·baai·dii·mǎi khráp · Vous allez bien ?\n\nสบายดี est la phrase. ไหม en fait une question. ครับ ferme poliment. L’ordre ne se réarrange pas : **la politesse passe toujours en dernier**, et c’est la règle que 1E vous a donnée le premier jour sans lui donner de nom.\n\nÉcoutez la fin de près, parce que les deux tons que le parcours vous fait entretenir y sont collés l’un à l’autre : mǎi est MONTANT, il creuse puis remonte ; khráp est HAUT, il reste perché. Aucune syllabe ne les sépare, et c’est le passage le plus serré que ce cours vous ait montré.",
+      "specimen": "สบายดี · สบายดีไหม · สบายดีไหมครับ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "le test du retrait",
+      "bodyFr": "Voici l’outil de la leçon. Il tient en trois gestes, et vous l’emploierez sur tout ce que vous entendrez ensuite.\n\n> **1.** Repérez la dernière syllabe. > **2.** Retirez-la. Ce qui reste, l’avez-vous déjà appris ou déjà entendu seul ? > **3.** Si oui, recommencez sur ce qui reste.\n\nSur la phrase de la page 5, le test descend proprement.\n\n> สบายดีไหมคะ · on retire คะ > สบายดีไหม · appris en 2E, on retire ไหม > สบายดี · appris en 2E, et là on s’arrête\n\n**Ce que ce test vous dit, et ce qu’il ne vous dit pas.** Il vous dit où sont les coutures. Il ne vous dit PAS ce que le morceau retiré ajoutait : pour cela il faut une source, et c’est le travail des leçons qui suivent. Un outil qui repère n’est pas un outil qui explique, et confondre les deux est la façon la plus rapide de se tromper.",
+      "specimen": "สบายดีไหมคะ · สบายดีไหม · สบายดี"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "vous en aviez une cinquième, et personne ne vous l’avait dit",
+      "bodyFr": "Depuis l’unité 6, vous relancez la conversation avec un bloc que vous avez appris d’un seul tenant.\n\n> **แล้วคุณล่ะ** · láeew khoun lâ · Et vous ?\n\nAppliquez le test. Retirez ล่ะ. Il reste แล้ว et คุณ, deux mots que vous avez appris séparément, mais **แล้วคุณ n’est pas quelque chose que ce cours vous ait jamais donné seul**. Le test s’arrête donc ici, et c’est ce qu’il doit faire : il vous dit d’aller voir une source plutôt que de deviner.\n\nLa source, la voici. Le dictionnaire normatif range ล่ะ comme un mot qui accompagne ce qui le précède pour l’appuyer, et il le donne avec deux exemples dont un interrogatif. C’est bien un morceau de fin, à la place où vous venez de le trouver. Vous aviez donc une particule dans la bouche depuis l’unité 6.\n\nEt elle se comporte comme les autres : ajoutez la politesse APRÈS elle.\n\n> แล้วคุณล่ะครับ · láeew khoun lâ khráp > แล้วคุณล่ะคะ · láeew khoun lâ khá\n\n**Ce que ce cours ne vous dit pas ici** : ce que ล่ะ ajoute exactement au sens. La valeur d’appui vient du dictionnaire normatif ; la valeur de relance, « et à propos de … ? », n’est portée que par une seule source, et `u06-l6e` l’a retirée pour cette raison. Ce que vous savez dire reste le bloc entier, dont le sens, lui, est attesté.",
+      "specimen": "แล้วคุณล่ะ · แล้วคุณล่ะครับ · แล้วคุณล่ะคะ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ces morceaux ne sont pas des ornements",
+      "bodyFr": "Un chiffre, et il est donné pour ce qu’il vaut. Dans un relevé de fréquence construit sur des sous-titres de films en thaï, indicatif et pas représentatif de toute la langue, ครับ arrive au **dixième rang** sur cinquante mille mots et ค่ะ au **vingt et unième**. ไหม est au neuf cent soixante-sixième, et ล่ะ au cinq cent quatre-vingt-sixième.\n\nCe que ce relevé mesure, c’est de la parole écrite pour être dite. Autrement dit, la zone que vous venez d’apprendre à repérer est l’une des plus fréquentées de tout le thaï parlé. C’est pour cela que cette leçon ouvre le parcours avancé, et non pour faire joli.\n\n**Ce que ce cours ne conclut pas** : que ces rangs valent pour la langue écrite, pour la conversation réelle ou pour une région donnée. Un corpus de sous-titres n’est pas une population.",
+      "specimen": "ครับ · ค่ะ · ไหม · ล่ะ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "ce que ce cours refuse de vous dire, et comment il le vérifie",
+      "bodyFr": "Les leçons qui viennent vont vous montrer des formes que les manuels ne donnent pas. Avant de commencer, vous méritez de savoir sur quoi elles reposent.\n\nLe dictionnaire normatif ne se contente pas de définir : il **étiquette**. Il marque certaines entrées comme relevant de la langue parlée, et d’autres comme appartenant à une région. Ce cours ne dira jamais qu’une forme est familière ou régionale sans avoir ouvert l’entrée et lu cette étiquette. La graphie seule ne suffit pas.\n\nUn exemple, et il est réel : il vient de la préparation de cette unité. Nous voulions vous montrer une petite particule de fin qui s’écrit จ้า. La graphie existe bel et bien au dictionnaire. Mais l’entrée trouvée est celle d’un mot qui qualifie une couleur, une lumière ou un son intenses, pas celle d’une particule. La graphie était là, le mot cherché n’y était pas.\n\n> จ้า a été cherché, trouvé, lu, puis écarté. Il n’est pas dans cette leçon.\n\nC’est ce que ce cours entend par vérifier. Vous n’aurez pas à nous croire : le dossier de chaque leçon dit ce qui a été lu, où, et quand.",
+      "specimen": "จ้า (montré comme contre-exemple, non enseigné)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "à vous",
+      "bodyFr": "Dans les exercices, on ne vous demandera aucun mot nouveau. On vous demandera de lire et d’entendre la FIN des phrases que vous connaissez déjà : combien de morceaux s’y trouvent, lesquels se retirent, et ce qui reste quand on les enlève. C’est un exercice de regard, pas de mémoire.\n\nAprès les exercices, enregistrez-vous en disant สบายดีไหมครับ, puis comparez en A/B avec la voix de référence. Écoutez les deux dernières syllabes, celles qui sont collées : mǎi remonte, khráp reste en haut. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u13-l13a-p2",
+      "promptFr": "Chaque phrase de gauche se termine d’une certaine façon. Associez chaque phrase à la description exacte de sa fin. Touchez une phrase, puis une description : aucun glisser-déposer n’est nécessaire.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u13-l13a-p3",
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "5a4a6f17-2d2a-524b-9021-78be4ac4d8d4",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "05fab1ea-dc73-5ef6-9e17-1ddbc1387262",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d5b4e122-0069-51b9-b48c-740f5cea4971",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8dbb5f79-f515-5df5-94c9-6f9be51b8762",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "decbab66-e256-5aff-959a-65727b71cd08",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2b3cd5d4-afae-5032-8c11-4d72fc98f12e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2a9072b2-8ca3-57ef-bc71-7a0ab9610f70",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "374509b0-e72f-5a3b-be08-68cca3f433e3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

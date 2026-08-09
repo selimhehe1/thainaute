@@ -1134,6 +1134,16 @@ fil.
   `láeew khoun lâ` en compte trois séparés par des espaces ; écrire `mǎi` au
   tirage 5 sans son accent, la particule de question étant au ton montant.
 
+### Exercice de consolidation textuelle : les moments de la journée (`association`)
+
+- Mécanique : `association`
+- Consigne : « Reliez chaque expression à son sens. »
+- Tirages :
+  1. วันนี้ ↔ « aujourd’hui »
+  2. ทุกวัน ↔ « tous les jours »
+- Feedback correct : « Exact. »
+- Feedback incorrect : « Relisez l’expression et son sens, puis réessayez. »
+
 ## Dialogue
 
 **C’est le cœur de la leçon, et non un supplément.** Douze répliques, deux

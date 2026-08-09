@@ -1,0 +1,820 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "aaafcf54-3c84-5269-8bd5-48951e39dbfc",
+  "versionId": "659b1182-227a-58e7-b6b4-388f8700db1d",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Parler de quelqu’un",
+  "objectiveFr": "à la fin de la leçon, l’apprenant identifie à l’écoute ce qui vient d’être dit d’une personne, parmi trois propositions françaises, sur 5 tirages sur 6 ; il remet dans l’ordre 4 blocs sur 5 du type personne puis qualité puis intensificateur ; il désigne la consonne initiale d’une graphie où elle n’est pas la première lettre écrite, et dit si la règle de ton s’y applique et lequel elle donne, sur 5",
+  "requiredEntitlement": null,
+  "audioManifestId": "c0dd25f8-eb72-5ac6-b325-aedd36aeb3f4",
+  "items": [
+    {
+      "id": "cf3a730c-fd74-5a29-bd90-1b98c072068d",
+      "thaiRaw": "เขา",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E32"
+      ],
+      "translationFr": "il, elle (la personne dont on parle)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎo"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เขา",
+          "ipa": "kʰaw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre. Aucune de nos sources ne pose de marque de politesse ni de familiarité sur le SENS de troisième personne enseigné ici, alors qu’elles en posent sur ท่าน (respect) et sur มัน (absence de déférence). La formulation est restreinte à ce sens à dessein : la même entrée Wiktionary étiquette `childish` un second sens de PREMIÈRE personne, non enseigné, et `informal` la variante เค้า. Voir l’incertitude 3 : le degré de respect que porte réellement เขา n’est pas mesuré par nos sources et part en revue native.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "f48545e5-453d-55d7-8e21-ea61e9fed933",
+      "thaiRaw": "คนนี้",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E19",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
+      "translationFr": "cette personne, celui-ci, celle-ci",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khon níi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คนนี้",
+          "ipa": "kʰon˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "คนนี้",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "90f48d62-80d8-53b4-beea-9d74079170c8",
+      "thaiRaw": "ใจดี",
+      "unicodeCodePoints": [
+        "U+0E43",
+        "U+0E08",
+        "U+0E14",
+        "U+0E35"
+      ],
+      "translationFr": "gentil, gentille ; bienveillant, bienveillante",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "jai·dii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ใจดี",
+          "ipa": "t͡ɕaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ใจดี",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d65534a4-1b01-5ba7-9110-c137788af87e",
+      "thaiRaw": "สูง",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E39",
+        "U+0E07"
+      ],
+      "translationFr": "grand, grande (de taille) ; haut, haute",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǒuung"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สูง",
+          "ipa": "suːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "66acd268-c8e3-5bdf-9afd-7745e4d1a0e6",
+      "thaiRaw": "เขาใจดี",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E32",
+        "U+0E43",
+        "U+0E08",
+        "U+0E14",
+        "U+0E35"
+      ],
+      "translationFr": "il est gentil, elle est gentille",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎo jai·dii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เขาใจดี",
+          "ipa": "kʰaw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เขาใจดี",
+          "ipa": "t͡ɕaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "เขาใจดี",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (poli avec la particule finale : เขาใจดีครับ, เขาใจดีค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "9790525e-66af-54f6-898a-7ca2031913c9",
+      "thaiRaw": "เขาสูงไหม",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E32",
+        "U+0E2A",
+        "U+0E39",
+        "U+0E07",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21"
+      ],
+      "translationFr": "il est grand ? elle est grande ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎo sǒuung mǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เขาสูงไหม",
+          "ipa": "kʰaw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เขาสูงไหม",
+          "ipa": "suːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "เขาสูงไหม",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : เขาสูงไหมครับ, เขาสูงไหมคะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "16cedffc-9ee9-560f-9e9a-0d3392da3a7f",
+      "thaiRaw": "คุณใจดีมาก",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E43",
+        "U+0E08",
+        "U+0E14",
+        "U+0E35",
+        "U+0E21",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "vous êtes très gentil, vous êtes très gentille ; et, en parlant de quelqu’un, il est très gentil, elle est très gentille",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khoun jai·dii mâak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คุณใจดีมาก",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "คุณใจดีมาก",
+          "ipa": "t͡ɕaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "คุณใจดีมาก",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "คุณใจดีมาก",
+          "ipa": "maːk̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "k̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "998f1e6e-95b7-5253-b270-2d85f0b55f13",
+      "thaiRaw": "เขาชื่ออะไร",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E32",
+        "U+0E0A",
+        "U+0E37",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E2D",
+        "U+0E30",
+        "U+0E44",
+        "U+0E23"
+      ],
+      "translationFr": "comment s’appelle-t-il ? comment s’appelle-t-elle ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎo chûee à·rai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เขาชื่ออะไร",
+          "ipa": "kʰaw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เขาชื่ออะไร",
+          "ipa": "t͡ɕʰɯː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "เขาชื่ออะไร",
+          "ipa": "ʔa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "เขาชื่ออะไร",
+          "ipa": "raj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : เขาชื่ออะไรครับ, เขาชื่ออะไรคะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "87aec6f2-7331-5a0a-bcf4-0da154fe37b6",
+      "thaiRaw": "น้า",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "oncle ou tante plus jeune que votre mère (côté maternel)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "náa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "น้า",
+          "ipa": "naː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre, familial",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u06-l6c-p2",
+      "drawIndex": 1,
+      "id": "f2e6329d-bc22-5735-8ac1-8554f9267142",
+      "type": "word_order",
+      "itemId": "66acd268-c8e3-5bdf-9afd-7745e4d1a0e6",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les mots dans l’ordre. Certains tirages contiennent un mot en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "d028810a-37be-5bc2-a8b2-5510bc45ca31",
+          "thaiRaw": "ใจดี",
+          "transcription": null
+        },
+        {
+          "id": "b02fda78-8f7d-5b7f-ab2f-713f238d4cc4",
+          "thaiRaw": "เขา",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "b02fda78-8f7d-5b7f-ab2f-713f238d4cc4",
+        "d028810a-37be-5bc2-a8b2-5510bc45ca31"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. La personne d’abord, ce qu’on en dit ensuite, et rien entre les deux.",
+        "incorrectFr": "Reprenez le bloc par le début. Première question : qui ? Deuxième question : qu’est-ce qu’on en dit ? Les mots outils, มาก et ไหม, se placent après, jamais avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 2",
+            "textFr": "Oui. มาก renforce ce qui le précède, il ne peut donc pas passer devant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5",
+            "textFr": "Bien vu. น้า occupe déjà la place de la personne ; ajouter เขา reviendrait à la nommer deux fois."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u06-l6c-p2",
+      "drawIndex": 2,
+      "id": "4b450a2c-b281-5080-a13f-2bd9a2028211",
+      "type": "word_order",
+      "itemId": "16cedffc-9ee9-560f-9e9a-0d3392da3a7f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les mots dans l’ordre. Certains tirages contiennent un mot en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "d33e695c-18fe-59c5-996d-a29e72b9658a",
+          "thaiRaw": "มาก",
+          "transcription": null
+        },
+        {
+          "id": "e3ac7710-b2c5-5a6f-9fe1-12e6d0726f23",
+          "thaiRaw": "คุณ",
+          "transcription": null
+        },
+        {
+          "id": "f096c7fe-cba2-5d16-a2df-04487e3ba7e4",
+          "thaiRaw": "ใจดี",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "e3ac7710-b2c5-5a6f-9fe1-12e6d0726f23",
+        "f096c7fe-cba2-5d16-a2df-04487e3ba7e4",
+        "d33e695c-18fe-59c5-996d-a29e72b9658a"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. La personne d’abord, ce qu’on en dit ensuite, et rien entre les deux.",
+        "incorrectFr": "Reprenez le bloc par le début. Première question : qui ? Deuxième question : qu’est-ce qu’on en dit ? Les mots outils, มาก et ไหม, se placent après, jamais avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 2",
+            "textFr": "Oui. มาก renforce ce qui le précède, il ne peut donc pas passer devant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5",
+            "textFr": "Bien vu. น้า occupe déjà la place de la personne ; ajouter เขา reviendrait à la nommer deux fois."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u06-l6c-p2",
+      "drawIndex": 3,
+      "id": "35b892bc-8c9c-5e85-b380-f4aa3984e717",
+      "type": "word_order",
+      "itemId": "9790525e-66af-54f6-898a-7ca2031913c9",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les mots dans l’ordre. Certains tirages contiennent un mot en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "fdd63022-1e3d-551f-9fed-88645714ab9d",
+          "thaiRaw": "ไหม",
+          "transcription": null
+        },
+        {
+          "id": "366fe057-45f8-5662-a78b-570623222f8e",
+          "thaiRaw": "สูง",
+          "transcription": null
+        },
+        {
+          "id": "2e383dfc-b8b7-5e87-b798-cdf65b44f6b6",
+          "thaiRaw": "เขา",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "2e383dfc-b8b7-5e87-b798-cdf65b44f6b6",
+        "366fe057-45f8-5662-a78b-570623222f8e",
+        "fdd63022-1e3d-551f-9fed-88645714ab9d"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. La personne d’abord, ce qu’on en dit ensuite, et rien entre les deux.",
+        "incorrectFr": "Reprenez le bloc par le début. Première question : qui ? Deuxième question : qu’est-ce qu’on en dit ? Les mots outils, มาก et ไหม, se placent après, jamais avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 2",
+            "textFr": "Oui. มาก renforce ce qui le précède, il ne peut donc pas passer devant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5",
+            "textFr": "Bien vu. น้า occupe déjà la place de la personne ; ajouter เขา reviendrait à la nommer deux fois."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u06-l6c-p2",
+      "drawIndex": 4,
+      "id": "0c2fd581-a8ec-5cf0-bf86-a4e9f859fa3b",
+      "type": "word_order",
+      "itemId": "998f1e6e-95b7-5253-b270-2d85f0b55f13",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les mots dans l’ordre. Certains tirages contiennent un mot en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "d2ecc439-833f-5201-a519-70c31651f355",
+          "thaiRaw": "อะไร",
+          "transcription": null
+        },
+        {
+          "id": "15e40aa0-a2be-5a48-81e1-22ff3ef62a6b",
+          "thaiRaw": "เขา",
+          "transcription": null
+        },
+        {
+          "id": "8c803c6e-68af-5ece-9bff-5a2a1ebcf036",
+          "thaiRaw": "ชื่อ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "15e40aa0-a2be-5a48-81e1-22ff3ef62a6b",
+        "8c803c6e-68af-5ece-9bff-5a2a1ebcf036",
+        "d2ecc439-833f-5201-a519-70c31651f355"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. La personne d’abord, ce qu’on en dit ensuite, et rien entre les deux.",
+        "incorrectFr": "Reprenez le bloc par le début. Première question : qui ? Deuxième question : qu’est-ce qu’on en dit ? Les mots outils, มาก et ไหม, se placent après, jamais avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 2",
+            "textFr": "Oui. มาก renforce ce qui le précède, il ne peut donc pas passer devant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5",
+            "textFr": "Bien vu. น้า occupe déjà la place de la personne ; ajouter เขา reviendrait à la nommer deux fois."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u06-l6c-p2",
+      "drawIndex": 5,
+      "id": "7d5b6d12-a620-58cf-bfd0-bf1bf11da367",
+      "type": "word_order",
+      "itemId": "87aec6f2-7331-5a0a-bcf4-0da154fe37b6",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les mots dans l’ordre. Certains tirages contiennent un mot en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "42412bd5-deba-5e42-b6d4-d3c87e20b10c",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "3f92452f-075a-537f-882b-045aee6b7b66",
+          "thaiRaw": "ใจดี",
+          "transcription": null
+        },
+        {
+          "id": "c7d2bdce-aaf7-5f5c-bc4f-a5d4b09ae818",
+          "thaiRaw": "น้า",
+          "transcription": null
+        },
+        {
+          "id": "4b31ef4d-ea4d-5ba6-a355-7ea8e551935b",
+          "thaiRaw": "มาก",
+          "transcription": null
+        },
+        {
+          "id": "fa1e7343-427d-5915-8c18-6735a3089f53",
+          "thaiRaw": "เขา",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "c7d2bdce-aaf7-5f5c-bc4f-a5d4b09ae818",
+        "3f92452f-075a-537f-882b-045aee6b7b66",
+        "4b31ef4d-ea4d-5ba6-a355-7ea8e551935b",
+        "42412bd5-deba-5e42-b6d4-d3c87e20b10c"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. La personne d’abord, ce qu’on en dit ensuite, et rien entre les deux.",
+        "incorrectFr": "Reprenez le bloc par le début. Première question : qui ? Deuxième question : qu’est-ce qu’on en dit ? Les mots outils, มาก et ไหม, se placent après, jamais avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 2",
+            "textFr": "Oui. มาก renforce ce qui le précède, il ne peut donc pas passer devant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5",
+            "textFr": "Bien vu. น้า occupe déjà la place de la personne ; ajouter เขา reviendrait à la nommer deux fois."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "un seul mot pour « il » et pour « elle »",
+      "bodyFr": "Essayez de parler de quelqu’un en français sans dire ni « il » ni « elle » : la langue vous force à trancher. Le thaï a un mot qui ne tranche pas : เขา. Nos deux sources lui donnent les deux valeurs sur la même graphie, sans rien changer à l’écriture ni au son. Vous n’avez donc aucune décision à prendre sur le genre de la personne dont vous parlez.",
+      "specimen": "เขา"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "la consonne initiale n’est pas la première lettre",
+      "bodyFr": "เขา s’écrit avec trois signes, et le premier que votre œil rencontre, เ, n’est pas la consonne. La consonne initiale est ข, celle de ไข่ et de ขา : เ s’écrit avant elle, alors qu’on la prononce après. Tout ce qui se lit sur la consonne initiale se lit donc ici sur ข, jamais sur เ. C’est le même mécanisme que dans ไหม et ไก่, déjà signalé en 4A.",
+      "specimen": "เขา, c’est-à-dire เ + ข + า"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ce que vous entendrez peut-être",
+      "bodyFr": "Le mot se dit khǎo, la voix qui remonte. Deux de nos sources notent aussi une forme familière, la voix perchée, kháo, l’une en l’écrivant เค้า ; elles disent qu’elle est familière et rien de plus, ni qui l’emploie, ni quand. Le dictionnaire normatif, lui, ne l’enregistre pas. Apprenez à la reconnaître à l’écoute, et dites khǎo.",
+      "specimen": "เขา (khǎo) et sa forme familière เค้า (kháo)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "décrire quelqu’un sans dire « être »",
+      "bodyFr": "Pour dire « il est gentil », le thaï pose la personne, puis la qualité, et rien entre les deux : เขาใจดี. La qualité elle-même est faite de deux morceaux, ใจ le cœur et ดี bon. Nos sources donnent la même construction sur un autre sujet, คนไทยใจดี, mot à mot « personnes thaïes cœur bon ». Attention à l’ordre : ดีใจ, les deux mêmes syllabes retournées, veut dire « content », ce qui n’est pas du tout la même chose.",
+      "specimen": "เขาใจดี, et le piège ใจดี contre ดีใจ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "สูง, et un ton que vous pouvez prévoir",
+      "bodyFr": "สูง veut dire haut. Le dictionnaire l’illustre par un arbre et par une montagne ; une deuxième source le glose « grand » pour la mesure du corps, et une troisième, quand elle décrit une personne, écrit ตัวสูง, mot à mot « corps haut ». Reprenez la règle : ส est de classe haute, la voyelle est longue, la syllabe se ferme sur ง donc elle est vivante, et aucune marque de ton n’est posée. Le ton est donc montant, sǒuung, et vous n’aviez pas besoin de l’entendre pour le savoir.",
+      "specimen": "สูง"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "มาก se place après la qualité",
+      "bodyFr": "มาก, vu en 4D, intensifie ce qui vient juste avant lui. Il se met donc derrière la qualité, et non devant : ใจดีมาก. Le bloc complet, personne puis qualité puis มาก, est attesté tel quel dans nos sources sous la forme คุณใจดีมาก.",
+      "specimen": "คุณใจดีมาก"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "คุณ ne sert pas qu’à dire « vous »",
+      "bodyFr": "Depuis l’unité 2, คุณ est votre « vous ». Le dictionnaire normatif lui donne aussi, dans la langue parlée, la valeur de troisième personne : le même mot sert à parler DE quelqu’un, avec la même politesse. Une seconde source le classe de la même façon, deuxième et troisième personne. คุณใจดีมาก peut donc remercier la personne en face de vous, ou décrire quelqu’un d’absent.",
+      "specimen": "คุณใจดีมาก"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "le pronom n’est pas la seule façon de désigner la personne",
+      "bodyFr": "Le dictionnaire thaï définit le pronom comme le mot qui remplace un nom DÉJÀ dit, pour ne pas le répéter. Et la place du sujet accepte très bien un nom de personne : nos sources donnent คนไทยใจดี, un groupe nominal suivi de la qualité, et le dictionnaire illustre un AUTRE pronom de troisième personne par une phrase qui commence, elle, par un nom de parent. Mettre น้า ou un prénom là où le français mettrait « il » forme donc une phrase entière. Dites à voix haute « Ma tante est gentille », puis enchaînez une deuxième phrase sur elle : écoutez le mot par lequel vous commencez, et gardez-le en tête pour le dialogue.",
+      "specimen": "เขาใจดี · น้าใจดี"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "ce que cette leçon ne vous dit pas",
+      "bodyFr": "Vous vous demandez sans doute lequel des deux est le plus courant, le pronom ou le terme de parenté. Cette leçon ne répond pas : aucune de nos sources ne mesure cela, et les listes de fréquence ne savent pas séparer le พี่ « grand frère » du พี่ qui sert de pronom. Nous vous donnons les deux formes et vous laissons observer autour de vous.",
+      "specimen": null
+    },
+    {
+      "ordre": 10,
+      "titleFr": "montrer quelqu’un",
+      "bodyFr": "Quand la personne est là, devant vous ou sur une photo, คนนี้ la désigne : คน, la personne, et นี้, celui-ci. C’est la construction que le dictionnaire illustre par โต๊ะตัวนี้, « cette table » : le mot de comptage, puis นี้. Et คน, vu en 3D, est justement le mot de comptage des personnes.",
+      "specimen": "คนนี้"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "à vous",
+      "bodyFr": "Trois blocs à emporter : เขาชื่ออะไร pour demander le nom, เขาใจดี pour décrire le caractère, เขาสูงไหม pour demander l’allure. Remplacez เขา par คนนี้, par น้า ou par un prénom : le reste du bloc ne bouge pas d’un signe.\n\nAprès les exercices, enregistrez-vous en disant เขา puis สูง, deux tons montants d’affilée, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u06-l6c-p2",
+      "promptFr": "Remettez les mots dans l’ordre. Certains tirages contiennent un mot en trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 5,
+      "passRequired": 5,
+      "sampleSize": 5
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "9f9bb41b-c7cf-5bfa-be1f-354be330c34c",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f60fe4b1-8b15-5de8-b81e-078857aabe3a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3dd8e9f5-1d94-55da-b475-548295c5ff41",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "bec201cc-97c9-54ce-99ca-a3210732908a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "4d229131-3c22-5c02-be9c-5b993fd0b43c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d243ef49-8acb-5c18-9aea-77384ff31e36",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1ec43605-1e13-5e1c-b0d4-08ed19bb3ae9",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d4308907-6d2d-5daa-8e70-352e1a8d22c3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

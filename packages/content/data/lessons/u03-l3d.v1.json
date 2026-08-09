@@ -1,0 +1,728 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "b9aa54a5-2559-5682-8aaa-3ef0b4647888",
+  "versionId": "af10a45d-a058-50c8-9402-277a85605d11",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Un, deux, combien de quoi",
+  "objectiveFr": "à la fin de la leçon, l’apprenant remet dans l’ordre nom, nombre, classificateur au moins 5 assemblages sur 6 ; il choisit le classificateur qui convient parmi คน, ตัว, ใบ et อัน sur au moins 4 cas sur 5, อัน étant attendu devant un petit objet ; et il complète la question กี่ + classificateur pour demander un nombre de personnes.",
+  "requiredEntitlement": null,
+  "audioManifestId": "567c2e9d-e4b0-5180-a940-5ffe96ae0cd2",
+  "items": [
+    {
+      "id": "44f0b4b1-e979-5339-80f9-b43d5bd7c32e",
+      "thaiRaw": "คน",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E19"
+      ],
+      "translationFr": "personne (le nom) ; classificateur des personnes",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khon"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คน",
+          "ipa": "kʰon˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a49016b5-4663-549d-b60b-da1885b2f75d",
+      "thaiRaw": "ตัว",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E31",
+        "U+0E27"
+      ],
+      "translationFr": "classificateur des animaux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "toua"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตัว",
+          "ipa": "tua̯˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "7e118ad0-c786-5aff-8cd0-0e9ff6f5083f",
+      "thaiRaw": "ใบ",
+      "unicodeCodePoints": [
+        "U+0E43",
+        "U+0E1A"
+      ],
+      "translationFr": "classificateur des contenants, des objets creux ou plats, des fruits et des petits documents",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "bai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ใบ",
+          "ipa": "baj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "b",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d1879ce0-12c9-57d9-90dc-ded67226ef65",
+      "thaiRaw": "อัน",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "classificateur des petits objets, et plus largement des petites choses inanimées",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "an"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อัน",
+          "ipa": "ʔan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "9b8716f3-a288-5bcd-9018-86567d23052e",
+      "thaiRaw": "ปลา",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E25",
+        "U+0E32"
+      ],
+      "translationFr": "poisson",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "plaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปลา",
+          "ipa": "plaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pl",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "e4088e26-643a-579a-9398-7abf95bb39e6",
+      "thaiRaw": "ปลาสองตัว",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E25",
+        "U+0E32",
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E15",
+        "U+0E31",
+        "U+0E27"
+      ],
+      "translationFr": "deux poissons",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "plaa sǎwwng toua"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปลาสองตัว",
+          "ipa": "plaː˧ sɔːŋ˩˩˦ tua̯˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pl",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1a9b082c-f8ef-514b-9b1d-a2fa1abeb923",
+      "thaiRaw": "ถุงสองใบ",
+      "unicodeCodePoints": [
+        "U+0E16",
+        "U+0E38",
+        "U+0E07",
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E43",
+        "U+0E1A"
+      ],
+      "translationFr": "deux sacs",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thǒung sǎwwng bai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ถุงสองใบ",
+          "ipa": "tʰuŋ˩˩˦ sɔːŋ˩˩˦ baj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "d4537506-836f-5a1a-b5b4-6e4fb6244056",
+      "thaiRaw": "กี่คน",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E35",
+        "U+0E48",
+        "U+0E04",
+        "U+0E19"
+      ],
+      "translationFr": "combien de personnes ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kìi khon"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "กี่คน",
+          "ipa": "kiː˨˩ kʰon˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "230b21e0-ce35-5914-8acf-062efa9f89eb",
+      "thaiRaw": "ถุง",
+      "unicodeCodePoints": [
+        "U+0E16",
+        "U+0E38",
+        "U+0E07"
+      ],
+      "translationFr": "sac, sachet",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thǒung"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ถุง",
+          "ipa": "tʰuŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u03-l3d-p1",
+      "drawIndex": 1,
+      "id": "ccab3ca1-7965-50f0-8363-deb25a88f391",
+      "type": "word_order",
+      "itemId": "e4088e26-643a-579a-9398-7abf95bb39e6",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
+      "tokens": [
+        {
+          "id": "4c92a5d8-8df0-5b6c-b3b1-12204e781bf1",
+          "thaiRaw": "ตัว",
+          "transcription": null
+        },
+        {
+          "id": "03b1436d-925e-55c4-a80d-25f87b61916b",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "7f27382c-d64c-59c1-9619-76fb6e213704",
+          "thaiRaw": "ปลา",
+          "transcription": null
+        },
+        {
+          "id": "ee7f2eb3-7ded-5597-8f45-a15c684ea4a6",
+          "thaiRaw": "ใบ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "7f27382c-d64c-59c1-9619-76fb6e213704",
+        "03b1436d-925e-55c4-a80d-25f87b61916b",
+        "4c92a5d8-8df0-5b6c-b3b1-12204e781bf1"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La chose d’abord, le nombre ensuite, le mot de comptage en dernier. C’est l’inverse du français, et c’est l’ordre de tous les groupes comptés à partir de deux.",
+        "incorrectFr": "L’ordre n’y est pas encore. Reprenez par la chose que vous comptez, puis le nombre, puis le mot de comptage.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvais classificateur conservé",
+            "textFr": "Le mot de comptage ne correspond pas. {ตัว} va avec les animaux, {ใบ} avec ce qui est creux ou plat, {คน} avec les personnes."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3d-p1",
+      "drawIndex": 2,
+      "id": "7e0d7936-c1e8-573a-916d-6a83995b228e",
+      "type": "word_order",
+      "itemId": "1a9b082c-f8ef-514b-9b1d-a2fa1abeb923",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
+      "tokens": [
+        {
+          "id": "b61e0d7c-1650-59cc-aa6b-162428dfd7e2",
+          "thaiRaw": "ใบ",
+          "transcription": null
+        },
+        {
+          "id": "f19e5c10-6f48-537f-927c-56b528be7d10",
+          "thaiRaw": "ถุง",
+          "transcription": null
+        },
+        {
+          "id": "391cb124-92b7-5187-a692-fb50727465b0",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "5ef2c3d2-ddd0-5a6d-a360-ed6aeb63d644",
+          "thaiRaw": "ตัว",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "f19e5c10-6f48-537f-927c-56b528be7d10",
+        "391cb124-92b7-5187-a692-fb50727465b0",
+        "b61e0d7c-1650-59cc-aa6b-162428dfd7e2"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La chose d’abord, le nombre ensuite, le mot de comptage en dernier. C’est l’inverse du français, et c’est l’ordre de tous les groupes comptés à partir de deux.",
+        "incorrectFr": "L’ordre n’y est pas encore. Reprenez par la chose que vous comptez, puis le nombre, puis le mot de comptage.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvais classificateur conservé",
+            "textFr": "Le mot de comptage ne correspond pas. {ตัว} va avec les animaux, {ใบ} avec ce qui est creux ou plat, {คน} avec les personnes."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3d-p1",
+      "drawIndex": 3,
+      "id": "bd8b9e78-9222-53b9-a296-c3f38259a136",
+      "type": "word_order",
+      "itemId": "9b8716f3-a288-5bcd-9018-86567d23052e",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
+      "tokens": [
+        {
+          "id": "ed11de4e-b420-53bb-be89-20a9845dd664",
+          "thaiRaw": "สาม",
+          "transcription": null
+        },
+        {
+          "id": "e86453f2-fd10-5310-be03-2ccf84277cac",
+          "thaiRaw": "ตัว",
+          "transcription": null
+        },
+        {
+          "id": "da32669c-c71a-5244-9aa2-b9b951cd466a",
+          "thaiRaw": "ปลา",
+          "transcription": null
+        },
+        {
+          "id": "1ad9df56-8a6f-51fc-b58d-8137c158fe2e",
+          "thaiRaw": "คน",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "da32669c-c71a-5244-9aa2-b9b951cd466a",
+        "ed11de4e-b420-53bb-be89-20a9845dd664",
+        "e86453f2-fd10-5310-be03-2ccf84277cac"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La chose d’abord, le nombre ensuite, le mot de comptage en dernier. C’est l’inverse du français, et c’est l’ordre de tous les groupes comptés à partir de deux.",
+        "incorrectFr": "L’ordre n’y est pas encore. Reprenez par la chose que vous comptez, puis le nombre, puis le mot de comptage.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvais classificateur conservé",
+            "textFr": "Le mot de comptage ne correspond pas. {ตัว} va avec les animaux, {ใบ} avec ce qui est creux ou plat, {คน} avec les personnes."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3d-p1",
+      "drawIndex": 4,
+      "id": "34d6ac9d-f24f-52e0-bb96-b78feefabe4e",
+      "type": "word_order",
+      "itemId": "230b21e0-ce35-5914-8acf-062efa9f89eb",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
+      "tokens": [
+        {
+          "id": "e04e0935-ba8b-5098-8efb-4c2fad691e90",
+          "thaiRaw": "ถุง",
+          "transcription": null
+        },
+        {
+          "id": "e2a0d746-4143-508a-8c5e-edc6dc9a97d8",
+          "thaiRaw": "ใบ",
+          "transcription": null
+        },
+        {
+          "id": "ad215830-b98e-5caf-a7a0-40f0620924e5",
+          "thaiRaw": "สาม",
+          "transcription": null
+        },
+        {
+          "id": "4efebfa9-6acc-5e2c-bc36-a575a19c7f71",
+          "thaiRaw": "อัน",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "e04e0935-ba8b-5098-8efb-4c2fad691e90",
+        "ad215830-b98e-5caf-a7a0-40f0620924e5",
+        "e2a0d746-4143-508a-8c5e-edc6dc9a97d8"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La chose d’abord, le nombre ensuite, le mot de comptage en dernier. C’est l’inverse du français, et c’est l’ordre de tous les groupes comptés à partir de deux.",
+        "incorrectFr": "L’ordre n’y est pas encore. Reprenez par la chose que vous comptez, puis le nombre, puis le mot de comptage.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvais classificateur conservé",
+            "textFr": "Le mot de comptage ne correspond pas. {ตัว} va avec les animaux, {ใบ} avec ce qui est creux ou plat, {คน} avec les personnes."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3d-p1",
+      "drawIndex": 5,
+      "id": "5db7a055-3ca9-56e7-97b2-aca09fb913d8",
+      "type": "word_order",
+      "itemId": "e4088e26-643a-579a-9398-7abf95bb39e6",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
+      "tokens": [
+        {
+          "id": "de45b9f3-b7cd-5648-b9e3-ced6ea76cb17",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "d2022165-5be7-52c8-a868-1226b6b206a1",
+          "thaiRaw": "ปลา",
+          "transcription": null
+        },
+        {
+          "id": "7e18f7d8-8715-558a-ae98-f5016a4c9763",
+          "thaiRaw": "ตัว",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "d2022165-5be7-52c8-a868-1226b6b206a1",
+        "de45b9f3-b7cd-5648-b9e3-ced6ea76cb17",
+        "7e18f7d8-8715-558a-ae98-f5016a4c9763"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La chose d’abord, le nombre ensuite, le mot de comptage en dernier. C’est l’inverse du français, et c’est l’ordre de tous les groupes comptés à partir de deux.",
+        "incorrectFr": "L’ordre n’y est pas encore. Reprenez par la chose que vous comptez, puis le nombre, puis le mot de comptage.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvais classificateur conservé",
+            "textFr": "Le mot de comptage ne correspond pas. {ตัว} va avec les animaux, {ใบ} avec ce qui est creux ou plat, {คน} avec les personnes."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3d-p1",
+      "drawIndex": 6,
+      "id": "89279560-0c22-5895-94b1-85b2ef148e5a",
+      "type": "word_order",
+      "itemId": "1a9b082c-f8ef-514b-9b1d-a2fa1abeb923",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
+      "tokens": [
+        {
+          "id": "da20d4ff-7aba-516c-95f2-18cdf22404bb",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "8c0162c4-fb52-5b44-bb69-3e888673f8b1",
+          "thaiRaw": "ถุง",
+          "transcription": null
+        },
+        {
+          "id": "d24ed9cf-371a-59cf-ac5b-2ac700e536c3",
+          "thaiRaw": "ใบ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "8c0162c4-fb52-5b44-bb69-3e888673f8b1",
+        "da20d4ff-7aba-516c-95f2-18cdf22404bb",
+        "d24ed9cf-371a-59cf-ac5b-2ac700e536c3"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La chose d’abord, le nombre ensuite, le mot de comptage en dernier. C’est l’inverse du français, et c’est l’ordre de tous les groupes comptés à partir de deux.",
+        "incorrectFr": "L’ordre n’y est pas encore. Reprenez par la chose que vous comptez, puis le nombre, puis le mot de comptage.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvais classificateur conservé",
+            "textFr": "Le mot de comptage ne correspond pas. {ตัว} va avec les animaux, {ใบ} avec ce qui est creux ou plat, {คน} avec les personnes."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous savez déjà faire ça, en français",
+      "bodyFr": "Dites à voix haute « deux pains », puis « deux tranches de pain ». Les deux se disent, mais la seconde a un mot en plus, qui indique sous quelle forme vous comptez. Le français fait ça avec certaines choses seulement : une tranche de pain, une feuille de papier, un morceau de sucre. Le thaï le fait beaucoup plus largement, et ce mot en plus s’appelle un classificateur.",
+      "specimen": "ปลา สอง ตัว"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "l’ordre, dès qu’on compte à partir de deux",
+      "bodyFr": "Voici le seul point de structure de la leçon. On dit d’abord la chose, ensuite le nombre, ensuite le classificateur : « deux poissons » se dit donc, mot à mot, « poisson deux ตัว ». L’ordre français est exactement inverse, alors installez celui-ci comme un geste : chose, nombre, mot de comptage. Une réserve honnête, parce qu’elle vous évitera une surprise : avec le nombre « un », les dictionnaires donnent aussi l’ordre inverse, chose puis mot de comptage puis « un ». Aujourd’hui vous comptez à partir de deux, et là tous les exemples consultés placent le nombre au milieu.",
+      "specimen": "ปลาสองตัว (plaa sǎwwng toua)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "คน, pour les personnes",
+      "bodyFr": "Le mot คน (khon) veut dire « personne ». Il sert aussi de classificateur pour les gens, et c’est le plus courant des quatre que vous voyez aujourd’hui. Attention à la lecture de la transcription : `khon` se lit kh, puis o, puis n bien détaché, jamais le « on » nasal du français.",
+      "specimen": "คน (khon)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "ตัว, pour les animaux",
+      "bodyFr": "ตัว (toua) compte les animaux, du poisson au chat. Le graphème `oua` est nouveau : partez de ou et laissez la voyelle glisser vers a dans la même syllabe, sans coupure. Le poids reste sur le ou, le a n’est qu’une sortie, et c’est justement l’inverse de « tatoua », où c’est le a qui porte la fin du mot. Pour une personne, revenez toujours à คน : dans son emploi de mot de comptage, ตัว reçoit les animaux et certains objets, pas les gens.",
+      "specimen": "ปลาสองตัว (plaa sǎwwng toua)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "ใบ, pour ce qui est creux ou plat",
+      "bodyFr": "ใบ (bai) compte les contenants et les choses creuses ou plates : sacs, tasses, verres, fruits, papiers. Vous connaissez déjà ถุง (thǒung), le sac de 3A : deux sacs se disent ถุงสองใบ. Le mot ใบ veut dire « feuille » par ailleurs, ce qui donne une bonne image pour le retenir.",
+      "specimen": "ถุงสองใบ (thǒung sǎwwng bai)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "อัน, pour les petits objets",
+      "bodyFr": "Vous avez déjà croisé อัน dans อันนี้ (an·níi), « celui-ci », en 3C. Seul, อัน est le mot de comptage des petits objets : une brosse à dents, un morceau de bois, un bonbon. Les dictionnaires consultés ne tracent pas la même frontière, le normatif réservant อัน à ce qui est plat, long ou en morceaux, deux autres lui donnant la portée la plus large pour les petites choses. Retenez-le pour les petits objets : c’est le terrain sur lequel ils s’accordent tous.",
+      "specimen": "อัน (an)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "กี่, pour demander combien",
+      "bodyFr": "En 3C, vous avez demandé un prix avec กี่บาท (kìi bàat), « combien de bahts ». Le même กี่ marche avec n’importe quel classificateur : กี่คน (kìi khon) demande combien de personnes. Retenez la mécanique plutôt que la liste : กี่ se place devant l’unité qu’on compte et ne s’emploie jamais seul.",
+      "specimen": "กี่คน (kìi khon)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ce que personne ne peut vous promettre",
+      "bodyFr": "Il n’existe pas de règle simple qui donne le classificateur d’un nom. Les dictionnaires consultés en donnent souvent plusieurs pour un même mot, et pas toujours les mêmes : l’œuf, par exemple, en accepte trois selon le dictionnaire normatif. Alors ne cherchez pas de système : retenez ces quatre-là, qui couvrent énormément de situations, et récoltez les autres un par un, au fil des rencontres. Un classificateur imparfait ne casse pas une phrase ; un classificateur absent, si.",
+      "specimen": "คน · ตัว · ใบ · อัน"
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u03-l3d-p1",
+      "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "3745191f-b907-5370-88c5-33c641545d61",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8814e819-62bc-57e5-ba6a-239f30abbd5a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "347cfbab-f0ca-569a-a2fd-d2668f4ccd7e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a7d79ea4-191f-5e4e-8dfd-8052f56b67d6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "88a38e6c-519e-5280-a1d3-f06b515f46ac",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "967e07be-c798-5234-8e68-f1649215a44e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "bc5ea774-e8a3-5567-a2f1-14dbef4151c4",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "56414923-28d7-5c92-a340-f6e2b65918c0",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

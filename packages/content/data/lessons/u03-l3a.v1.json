@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "29e4cbf8-9911-5bc3-b6a8-3456e34a33f5",
+  "versionId": "3630eebe-c273-5b5d-bd35-177b6bb1da24",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Le t qui souffle et les voyelles brèves",
+  "objectiveFr": "à la fin de la leçon, l’apprenant identifie à l’écoute le mot entendu dans les paires minimales ตา / ทา et ตัด / ถัด au moins 5 fois sur 6 ; il note correctement la présence ou l’absence du souffle en transcription (th contre t) sur 4 mots sur 5 ; devant un mot écrit, il dit si la voyelle est brève ou longue sur 5 cas sur 6 ; et il associe les dix chiffres thaïs à leur valeur sans erreur.",
+  "requiredEntitlement": null,
+  "audioManifestId": "18a1f74c-eefe-53bb-a79a-baa5625febd2",
+  "items": [
+    {
+      "id": "cdb06d12-3370-512e-944a-f955f6d45b9e",
+      "thaiRaw": "ตา",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E32"
+      ],
+      "translationFr": "œil",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "taa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตา",
+          "ipa": "taː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "9b05a13d-9113-5965-9806-ca2162a3df72",
+      "thaiRaw": "ทา",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E32"
+      ],
+      "translationFr": "étaler, appliquer (une matière sur une surface)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ทา",
+          "ipa": "tʰaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "3f0d64e3-7356-5a62-b858-dc96cec7e7fb",
+      "thaiRaw": "ตัด",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E31",
+        "U+0E14"
+      ],
+      "translationFr": "couper (avec un instrument tranchant)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tàt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตัด",
+          "ipa": "tat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "40abfab1-d746-5a7d-a3a4-e6505b3ddfd1",
+      "thaiRaw": "ถัด",
+      "unicodeCodePoints": [
+        "U+0E16",
+        "U+0E31",
+        "U+0E14"
+      ],
+      "translationFr": "suivant, à la suite de",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thàt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ถัด",
+          "ipa": "tʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "5e1ba9f4-16e1-5291-b906-549b3b4c4f45",
+      "thaiRaw": "เตะ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E15",
+        "U+0E30"
+      ],
+      "translationFr": "donner un coup de pied",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tè"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เตะ",
+          "ipa": "teʔ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "3821c0c4-d1fa-5e83-a5f4-41920ed58826",
+      "thaiRaw": "แตะ",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E15",
+        "U+0E30"
+      ],
+      "translationFr": "toucher légèrement, effleurer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tàe"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แตะ",
+          "ipa": "tɛʔ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "45576477-21aa-5b8f-a274-c1b2d299d50b",
+      "thaiRaw": "ติด",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E34",
+        "U+0E14"
+      ],
+      "translationFr": "être collé à, être coincé",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tìt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ติด",
+          "ipa": "tit̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "230b21e0-ce35-5914-8acf-062efa9f89eb",
+      "thaiRaw": "ถุง",
+      "unicodeCodePoints": [
+        "U+0E16",
+        "U+0E38",
+        "U+0E07"
+      ],
+      "translationFr": "sac, sachet",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thǒung"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ถุง",
+          "ipa": "tʰuŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u03-l3a-p2",
+      "drawIndex": 1,
+      "id": "1ab211cf-c321-5be5-a3d2-d0f3b40c4634",
+      "type": "recall",
+      "itemId": "9b05a13d-9113-5965-9806-ca2162a3df72",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Deux choses sont mesurées : le h du souffle, et le doublement de la voyelle longue.",
+      "acceptedAnswers": [
+        {
+          "value": "thaa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h note la bouffée d’air, et la voyelle simple note la brièveté.",
+        "incorrectFr": "Un détail manque. Posez-vous deux questions dans l’ordre : y a-t-il un souffle entre la consonne et la voyelle ? La voyelle est-elle tenue, ou coupée court ?",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3a-p2",
+      "drawIndex": 2,
+      "id": "410b8581-488f-5cfa-95e6-68bd6ac17976",
+      "type": "recall",
+      "itemId": "cdb06d12-3370-512e-944a-f955f6d45b9e",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Deux choses sont mesurées : le h du souffle, et le doublement de la voyelle longue.",
+      "acceptedAnswers": [
+        {
+          "value": "taa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h note la bouffée d’air, et la voyelle simple note la brièveté.",
+        "incorrectFr": "Un détail manque. Posez-vous deux questions dans l’ordre : y a-t-il un souffle entre la consonne et la voyelle ? La voyelle est-elle tenue, ou coupée court ?",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3a-p2",
+      "drawIndex": 3,
+      "id": "bd73f21e-37ed-5884-8f54-e8fd016f7459",
+      "type": "recall",
+      "itemId": "3f0d64e3-7356-5a62-b858-dc96cec7e7fb",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Deux choses sont mesurées : le h du souffle, et le doublement de la voyelle longue.",
+      "acceptedAnswers": [
+        {
+          "value": "tàt",
+          "kind": "transcription"
+        },
+        {
+          "value": "tat",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h note la bouffée d’air, et la voyelle simple note la brièveté.",
+        "incorrectFr": "Un détail manque. Posez-vous deux questions dans l’ordre : y a-t-il un souffle entre la consonne et la voyelle ? La voyelle est-elle tenue, ou coupée court ?",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3a-p2",
+      "drawIndex": 4,
+      "id": "b52c719c-78a7-556f-a3af-85a5e1c7d014",
+      "type": "recall",
+      "itemId": "40abfab1-d746-5a7d-a3a4-e6505b3ddfd1",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Deux choses sont mesurées : le h du souffle, et le doublement de la voyelle longue.",
+      "acceptedAnswers": [
+        {
+          "value": "thàt",
+          "kind": "transcription"
+        },
+        {
+          "value": "that",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h note la bouffée d’air, et la voyelle simple note la brièveté.",
+        "incorrectFr": "Un détail manque. Posez-vous deux questions dans l’ordre : y a-t-il un souffle entre la consonne et la voyelle ? La voyelle est-elle tenue, ou coupée court ?",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3a-p2",
+      "drawIndex": 5,
+      "id": "ef21ddba-05e9-5900-bd9b-4eeec5af8703",
+      "type": "recall",
+      "itemId": "230b21e0-ce35-5914-8acf-062efa9f89eb",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Deux choses sont mesurées : le h du souffle, et le doublement de la voyelle longue.",
+      "acceptedAnswers": [
+        {
+          "value": "thǒung",
+          "kind": "transcription"
+        },
+        {
+          "value": "thoung",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h note la bouffée d’air, et la voyelle simple note la brièveté.",
+        "incorrectFr": "Un détail manque. Posez-vous deux questions dans l’ordre : y a-t-il un souffle entre la consonne et la voyelle ? La voyelle est-elle tenue, ou coupée court ?",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "le souffle change de famille",
+      "bodyFr": "Reprenez la feuille de papier de la leçon 2A et tenez-la devant votre bouche. Vous savez déjà que ป et พ se distinguent uniquement par la bouffée d’air. Le thaï applique exactement le même partage à une autre famille de consonnes, celle du t. Une seule chose à vérifier aujourd’hui : la feuille bouge, ou elle ne bouge pas.",
+      "specimen": "ตา ≠ ทา"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "trois lettres, deux sons",
+      "bodyFr": "Trois lettres nous occupent. ต note le t sans souffle. ถ et ท notent toutes deux le t soufflé, et rien ne les sépare de ce côté-là. Elles se distinguent par leur classe, ต en classe moyenne, ถ en classe haute, ท en classe basse, ce qui servira plus tard à calculer le ton. Aujourd’hui, retenez seulement qu’une lettre sur trois se prononce sans souffle.",
+      "specimen": "ต · ถ · ท"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "deux paires, un seul écart",
+      "bodyFr": "Première paire, ตา (taa), l’œil, et ทา (thaa), étaler, appliquer une matière sur une surface. Même voyelle longue, même ton moyen : seul le souffle change. Deuxième paire, ตัด (tàt), couper, et ถัด (thàt), suivant, à la suite. Même voyelle brève, même ton bas. Ne cherchez donc rien dans la mélodie, elle est identique à l’intérieur de chaque paire.",
+      "specimen": "ตา / ทา puis ตัด / ถัด"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "les voyelles brèves, cinq oppositions à voir",
+      "bodyFr": "Passons à l’écriture. En 2A, vous avez appris six signes de voyelles longues. Cinq d’entre eux reçoivent aujourd’hui leur jumeau bref ; le sixième, อ, reste de côté pour cette fois. À gauche le signe bref, à droite le signe long que vous connaissez déjà.\n\n> ◌ะ et ◌ั contre ◌า > ◌ิ contre ◌ี > ◌ุ contre ◌ู > เ◌ะ contre เ◌ > แ◌ะ contre แ◌\n\nDeux dessins reviennent. Tantôt un petit ะ vient se poster à la fin de la syllabe et la referme, comme dans เ◌ะ et แ◌ะ. Tantôt le bref et le long occupent le même étage et ne diffèrent que par leur tracé, comme ◌ิ et ◌ี. La première ligne, elle, porte deux graphies pour une seule voyelle brève, et la page suivante dit laquelle employer quand.",
+      "specimen": "ตา (taa) puis ตัด (tàt)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "le chapeau de ตัด",
+      "bodyFr": "Le signe ะ se place après la consonne, à la fin de la syllabe. Alors que faire quand une consonne finale vient occuper cette place ? Le thaï déplace le signe : ะ quitte la ligne et monte au-dessus de la consonne, sous la forme ั. Son nom est ไม้หันอากาศ. Il note le même a bref que ะ, et il annonce qu’une consonne finale suit.\n\nVous avez déjà les deux cas sous les yeux depuis l’unité 1, sans le savoir : ค่ะ garde son ะ visible, parce que rien ne suit ; ครับ porte le chapeau ั, parce que le บ final occupe la fin de la syllabe.",
+      "specimen": "ค่ะ (khâ) puis ครับ (khráp) puis ตัด (tàt)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "เตะ et แตะ, même consonne, deux signes",
+      "bodyFr": "Deux mots pour finir le bloc d’écriture. เตะ (tè) veut dire donner un coup de pied, แตะ (tàe) veut dire toucher légèrement. La consonne est la même, le ton est le même, la brièveté est la même. Seul le signe placé à gauche change, เ ou แ. Et vous savez depuis 2A que ce signe s’écrit devant la consonne mais s’entend après elle : ici, le ะ final ferme la syllabe et la garde brève.",
+      "specimen": "เตะ (tè) · แตะ (tàe)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "les dix chiffres thaïs",
+      "bodyFr": "Le thaï a ses propres signes pour les chiffres. Ils sont dix, et chacun vaut exactement le chiffre que vous connaissez, de 0 à 9.\n\n> ๐ 0 · ๑ 1 · ๒ 2 · ๓ 3 · ๔ 4 · ๕ 5 · ๖ 6 · ๗ 7 · ๘ 8 · ๙ 9\n\nAujourd’hui, vous apprenez seulement à les reconnaître ; les noms des nombres viendront dans la suite de l’unité. Prenez le temps de regarder chaque signe en entier avant de lui donner sa valeur.",
+      "specimen": "๐ ๑ ๒ ๓ ๔ ๕ ๖ ๗ ๘ ๙"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "à vous",
+      "bodyFr": "Deux réflexes aujourd’hui. À l’oreille : la feuille bouge ou ne bouge pas. À l’œil : cherchez le signe de voyelle, un ะ, un chapeau ั, un petit ิ ou un petit ุ annoncent une brève, les signes longs appris en 2A annoncent une longue.\n\nAprès les exercices, enregistrez-vous en disant ตา puis ทา, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil. Comme en 2A, regardez la feuille autant que vous vous écoutez.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u03-l3a-p2",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Deux choses sont mesurées : le h du souffle, et le doublement de la voyelle longue.",
+      "mechanic": "recall",
+      "drawCount": 5,
+      "passRequired": 5,
+      "sampleSize": 5
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "4f46d970-1f39-50c5-8694-41097a7f3411",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "838df02e-55b0-5af4-acdd-baa311ffc0e0",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c5187e04-104d-5d1a-b940-e259f209ecdb",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "5191cfef-2c42-5b31-9f90-4bb215c1374a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a1aae08b-50e3-52bc-abf1-3ec04ec557c8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8c6e60b4-9715-52c0-9f5b-b98b923d5fbc",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8e6b3ec9-8e29-56ab-8f14-08cc03b2bfa7",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1f2fc48f-344a-54f1-bbee-11dfedea8311",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

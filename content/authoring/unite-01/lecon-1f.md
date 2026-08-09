@@ -59,6 +59,27 @@ questions au lieu de deviner. Et rappelez-vous ce que dit la leçon 1D :
 
 Spécimen : คา ข่า ค่า ค้า ขา
 
+### Page 5. Le réflexe en situation
+
+Sur un mot inconnu, gardez le même ordre à chaque fois :
+
+1. La voix bouge-t-elle ? Si non, moyen ou bas.
+2. Si elle bouge, tombe-t-elle ou grimpe-t-elle ?
+3. Si elle ne bouge pas, est-elle au milieu ou en dessous ?
+
+Ne cherchez la transcription qu'après cette observation. La réponse finale
+vient de l'écoute et du geste, pas de la forme thaïe ni d'une intuition sur le
+sens du mot.
+
+### Page 6. Le rappel qui fixe le mot
+
+Après deux tirages, choisissez un mot de la série et faites le mini-cycle
+complet : écoutez, nommez le ton, rappelez le sens français, puis répétez le
+mot avec le geste. Si vous ne vous souvenez pas du sens, ce n'est pas un
+échec de ton ; si le ton est flou, rejouez l'audio avant de regarder la
+transcription. Cette séparation évite de confondre mémoire du mot et
+reconnaissance de sa graphie.
+
 ## Items
 
 ### Item 1
@@ -261,6 +282,9 @@ Spécimen : คา ข่า ค่า ค้า ขา
 - Les items de cette leçon étant ceux de 1A, leur planification SRS est
   partagée : une réussite ici compte pour la même carte, avec le niveau de
   difficulté propre au choix parmi cinq consigné séparément.
+- Rappel complet : une révision sur deux demande aussi le sens français d'un
+  mot déjà maîtrisé, puis une imitation courte du contour. L'imitation est
+  privée, facultative et sans analyse automatique du ton à ce stade.
 
 ## Note culturelle
 

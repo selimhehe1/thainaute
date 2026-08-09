@@ -1,0 +1,740 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "512b3e02-d2bd-590d-9918-b4648d9360e0",
+  "versionId": "674a6226-c0c8-5684-9577-32d055f43890",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Souffler ou ne pas souffler",
+  "objectiveFr": "à la fin de la leçon, l’apprenant identifie à l’écoute le mot entendu dans les paires minimales ปา / พา et ป่า / ผ่า au moins 5 fois sur 6 ; il note correctement la présence ou l’absence du souffle en transcription (ph contre p) sur 4 mots sur 5 ; et, devant un mot écrit avec เ- ou แ-, il désigne la consonne, et non le signe de voyelle, comme première lettre prononcée.",
+  "requiredEntitlement": null,
+  "audioManifestId": "182efe4b-cdb1-55e7-b11f-a907534255cf",
+  "items": [
+    {
+      "id": "54c3fe2f-41b6-541e-a617-aac81dc0ec4f",
+      "thaiRaw": "ปา",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E32"
+      ],
+      "translationFr": "lancer (jeter à la main, bras levé)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "paa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปา",
+          "ipa": "paː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d8ee8135-fc17-51c6-9bab-1e9dc54e3b62",
+      "thaiRaw": "พา",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E32"
+      ],
+      "translationFr": "emmener, conduire (une personne ou un animal quelque part)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พา",
+          "ipa": "pʰaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "fe27fb79-2f42-57c6-8e80-d41853b2903d",
+      "thaiRaw": "ป่า",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E48",
+        "U+0E32"
+      ],
+      "translationFr": "forêt, bois",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pàa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ป่า",
+          "ipa": "paː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "90b32bc6-38f8-5884-a640-94cd8ae93e7f",
+      "thaiRaw": "ผ่า",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E48",
+        "U+0E32"
+      ],
+      "translationFr": "fendre, ouvrir en deux (au couteau ou à la hache)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phàa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผ่า",
+          "ipa": "pʰaː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a683428c-f3ff-560f-aade-4e8a6e9904d3",
+      "thaiRaw": "พูด",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E39",
+        "U+0E14"
+      ],
+      "translationFr": "parler",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phôuut"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พูด",
+          "ipa": "pʰuːt̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a12ebbfa-b208-5472-98f2-9a976298cdc6",
+      "thaiRaw": "พอ",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E2D"
+      ],
+      "translationFr": "assez, suffisant",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phaww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พอ",
+          "ipa": "pʰɔː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2ed3b3fe-146b-5754-be59-56c3b22081c2",
+      "thaiRaw": "แพง",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E1E",
+        "U+0E07"
+      ],
+      "translationFr": "cher (d’un prix élevé)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phaeeng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แพง",
+          "ipa": "pʰɛːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "9d188981-6e79-56a9-a973-ffc9ebe8e93d",
+      "thaiRaw": "เพลง",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1E",
+        "U+0E25",
+        "U+0E07"
+      ],
+      "translationFr": "chanson (aussi : morceau de musique)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phleeng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เพลง",
+          "ipa": "pʰleːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰl",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u02-l2a-p2",
+      "drawIndex": 1,
+      "id": "9aed26ae-042a-52a2-9b35-bc4df8327a9f",
+      "type": "recall",
+      "itemId": "d8ee8135-fc17-51c6-9bab-1e9dc54e3b62",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Ce qui est mesuré ici, c’est le h du souffle.",
+      "acceptedAnswers": [
+        {
+          "value": "phaa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h que vous avez écrit note exactement la bouffée d’air que vous avez entendue.",
+        "incorrectFr": "Un détail manque. Réécoutez et posez la question autrement : entre vos lèvres et la voyelle, y a-t-il un souffle ? Si oui, écrivez ph ; sinon, p.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u02-l2a-p2",
+      "drawIndex": 2,
+      "id": "620b1bb0-a388-5e87-9864-224b882ea7e5",
+      "type": "recall",
+      "itemId": "54c3fe2f-41b6-541e-a617-aac81dc0ec4f",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Ce qui est mesuré ici, c’est le h du souffle.",
+      "acceptedAnswers": [
+        {
+          "value": "paa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h que vous avez écrit note exactement la bouffée d’air que vous avez entendue.",
+        "incorrectFr": "Un détail manque. Réécoutez et posez la question autrement : entre vos lèvres et la voyelle, y a-t-il un souffle ? Si oui, écrivez ph ; sinon, p.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u02-l2a-p2",
+      "drawIndex": 3,
+      "id": "46488290-5af7-5e16-b130-b13e217034f4",
+      "type": "recall",
+      "itemId": "90b32bc6-38f8-5884-a640-94cd8ae93e7f",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Ce qui est mesuré ici, c’est le h du souffle.",
+      "acceptedAnswers": [
+        {
+          "value": "phàa",
+          "kind": "transcription"
+        },
+        {
+          "value": "phaa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h que vous avez écrit note exactement la bouffée d’air que vous avez entendue.",
+        "incorrectFr": "Un détail manque. Réécoutez et posez la question autrement : entre vos lèvres et la voyelle, y a-t-il un souffle ? Si oui, écrivez ph ; sinon, p.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u02-l2a-p2",
+      "drawIndex": 4,
+      "id": "0567d261-1908-575a-a061-76c62e9bd23d",
+      "type": "recall",
+      "itemId": "fe27fb79-2f42-57c6-8e80-d41853b2903d",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Ce qui est mesuré ici, c’est le h du souffle.",
+      "acceptedAnswers": [
+        {
+          "value": "pàa",
+          "kind": "transcription"
+        },
+        {
+          "value": "paa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h que vous avez écrit note exactement la bouffée d’air que vous avez entendue.",
+        "incorrectFr": "Un détail manque. Réécoutez et posez la question autrement : entre vos lèvres et la voyelle, y a-t-il un souffle ? Si oui, écrivez ph ; sinon, p.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u02-l2a-p2",
+      "drawIndex": 5,
+      "id": "507bc2ef-860c-540c-af70-013d88cacc2c",
+      "type": "recall",
+      "itemId": "a12ebbfa-b208-5472-98f2-9a976298cdc6",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Ce qui est mesuré ici, c’est le h du souffle.",
+      "acceptedAnswers": [
+        {
+          "value": "phaww",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h que vous avez écrit note exactement la bouffée d’air que vous avez entendue.",
+        "incorrectFr": "Un détail manque. Réécoutez et posez la question autrement : entre vos lèvres et la voyelle, y a-t-il un souffle ? Si oui, écrivez ph ; sinon, p.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u02-l2a-p3",
+      "drawIndex": 1,
+      "id": "4d9bcc5f-f36d-5cac-b8eb-48e22c029964",
+      "type": "reading",
+      "itemId": "2ed3b3fe-146b-5754-be59-56c3b22081c2",
+      "skill": "reading",
+      "promptFr": "Regardez le mot. Quelle est la première lettre que l’on prononce ?",
+      "options": [
+        {
+          "id": "39993434-c51a-5ef2-8631-d32e3d5a5f50",
+          "labelFr": "แ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "2fd7fd36-26fe-5392-95d9-8ceeb385f728",
+          "labelFr": "พ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "95cfbf88-86d5-5029-a040-86f30cac0c42",
+          "labelFr": "ง",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "2fd7fd36-26fe-5392-95d9-8ceeb385f728",
+      "feedback": {
+        "correctFr": "Exactement. แ et เ s’écrivent devant la consonne mais s’entendent après elle ; dans เพลง, après le groupe พล. L’œil part à gauche, la voix part de la consonne.",
+        "incorrectFr": "เ et แ sont des voyelles qui se posent devant leur consonne. Repérez d’abord la consonne, commencez par elle, puis ajoutez la voyelle.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 à 5",
+            "textFr": "Oui. Ici la voyelle est à droite, au-dessus ou en dessous : l’ordre de lecture suit l’ordre d’écriture."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u02-l2a-p3",
+      "drawIndex": 2,
+      "id": "020307f8-aefa-5841-b6ef-68a34a0c2094",
+      "type": "reading",
+      "itemId": "9d188981-6e79-56a9-a973-ffc9ebe8e93d",
+      "skill": "reading",
+      "promptFr": "Regardez le mot. Quelle est la première lettre que l’on prononce ?",
+      "options": [
+        {
+          "id": "43a0e5a8-8be0-5e4d-8061-342bf972b121",
+          "labelFr": "เ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "1e3983dc-ebbb-59a4-a3b5-e97a8d804d9c",
+          "labelFr": "พ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "38fc4af3-d881-5aab-bf6e-5455fc3862c6",
+          "labelFr": "ง",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "1e3983dc-ebbb-59a4-a3b5-e97a8d804d9c",
+      "feedback": {
+        "correctFr": "Exactement. แ et เ s’écrivent devant la consonne mais s’entendent après elle ; dans เพลง, après le groupe พล. L’œil part à gauche, la voix part de la consonne.",
+        "incorrectFr": "เ et แ sont des voyelles qui se posent devant leur consonne. Repérez d’abord la consonne, commencez par elle, puis ajoutez la voyelle.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 à 5",
+            "textFr": "Oui. Ici la voyelle est à droite, au-dessus ou en dessous : l’ordre de lecture suit l’ordre d’écriture."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u02-l2a-p3",
+      "drawIndex": 3,
+      "id": "09d2ec55-cd98-5a31-bbdb-438b50f72f8f",
+      "type": "reading",
+      "itemId": "a683428c-f3ff-560f-aade-4e8a6e9904d3",
+      "skill": "reading",
+      "promptFr": "Regardez le mot. Quelle est la première lettre que l’on prononce ?",
+      "options": [
+        {
+          "id": "5cfcb4cb-27bf-5d0f-b559-2aba15f1f3aa",
+          "labelFr": "พ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "5af3a94b-c43c-5530-9f4e-3d5eeba26c92",
+          "labelFr": "ู",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "fbbefca5-0801-5294-b71f-961d0a1bb6a0",
+          "labelFr": "ด",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "5cfcb4cb-27bf-5d0f-b559-2aba15f1f3aa",
+      "feedback": {
+        "correctFr": "Exactement. แ et เ s’écrivent devant la consonne mais s’entendent après elle ; dans เพลง, après le groupe พล. L’œil part à gauche, la voix part de la consonne.",
+        "incorrectFr": "เ et แ sont des voyelles qui se posent devant leur consonne. Repérez d’abord la consonne, commencez par elle, puis ajoutez la voyelle.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 à 5",
+            "textFr": "Oui. Ici la voyelle est à droite, au-dessus ou en dessous : l’ordre de lecture suit l’ordre d’écriture."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u02-l2a-p3",
+      "drawIndex": 4,
+      "id": "4fa4e61e-c081-5b34-9e74-91681725b919",
+      "type": "reading",
+      "itemId": "a12ebbfa-b208-5472-98f2-9a976298cdc6",
+      "skill": "reading",
+      "promptFr": "Regardez le mot. Quelle est la première lettre que l’on prononce ?",
+      "options": [
+        {
+          "id": "5ef88c92-e637-575f-9663-f7756bd36ab4",
+          "labelFr": "พ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "837e98d5-ad48-585d-9ab9-9580a803f133",
+          "labelFr": "อ",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "5ef88c92-e637-575f-9663-f7756bd36ab4",
+      "feedback": {
+        "correctFr": "Exactement. แ et เ s’écrivent devant la consonne mais s’entendent après elle ; dans เพลง, après le groupe พล. L’œil part à gauche, la voix part de la consonne.",
+        "incorrectFr": "เ et แ sont des voyelles qui se posent devant leur consonne. Repérez d’abord la consonne, commencez par elle, puis ajoutez la voyelle.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 à 5",
+            "textFr": "Oui. Ici la voyelle est à droite, au-dessus ou en dessous : l’ordre de lecture suit l’ordre d’écriture."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u02-l2a-p3",
+      "drawIndex": 5,
+      "id": "33dee72e-b9e3-5d14-b323-f8b92d9d651e",
+      "type": "reading",
+      "itemId": "54c3fe2f-41b6-541e-a617-aac81dc0ec4f",
+      "skill": "reading",
+      "promptFr": "Regardez le mot. Quelle est la première lettre que l’on prononce ?",
+      "options": [
+        {
+          "id": "7fa26e13-8f82-5dda-8bc0-f12177ade38d",
+          "labelFr": "ป",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9cc6923a-ad96-56a2-9e41-4d865f6bb6c7",
+          "labelFr": "า",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "7fa26e13-8f82-5dda-8bc0-f12177ade38d",
+      "feedback": {
+        "correctFr": "Exactement. แ et เ s’écrivent devant la consonne mais s’entendent après elle ; dans เพลง, après le groupe พล. L’œil part à gauche, la voix part de la consonne.",
+        "incorrectFr": "เ et แ sont des voyelles qui se posent devant leur consonne. Repérez d’abord la consonne, commencez par elle, puis ajoutez la voyelle.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 à 5",
+            "textFr": "Oui. Ici la voyelle est à droite, au-dessus ou en dessous : l’ordre de lecture suit l’ordre d’écriture."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "une expérience à faire tout de suite",
+      "bodyFr": "Prenez une feuille de papier légère et tenez-la à quelques centimètres devant votre bouche. Dites « papa » deux fois : une fois normalement, une fois en poussant franchement de l’air sur le p. Écoutez-vous : cela vous fait-il deux mots différents ? C’est votre langue, vous êtes le juge. En thaï, la réponse est oui : la même syllabe, dite avec ou sans souffle, donne deux mots distincts.",
+      "specimen": "ปา ≠ พา"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "le test de la feuille de papier",
+      "bodyFr": "Gardez la feuille. Pour ปา (paa), elle reste immobile : la voyelle démarre tout de suite après les lèvres. Pour พา (phaa), elle doit nettement bouger : une bouffée d’air s’échappe avant la voyelle. C’est un contrôle visuel, pas une note : gardez la feuille pendant toute la leçon.",
+      "specimen": "ปา (paa) puis พา (phaa)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "trois lettres, deux sons",
+      "bodyFr": "Vous connaissez déjà ป (paww), la lettre du poisson vue en 1A : elle note le p sec, sans souffle. Deux autres lettres notent le p soufflé, ผ (phǎww phûeng, la lettre de l’abeille) et พ (phaww phaan, la lettre du plateau à pied). Elles notent exactement le même son soufflé, et se distinguent par leur classe, ผ en classe haute, พ en classe basse. Cette histoire de classes servira plus tard à calculer le ton ; aujourd’hui, retenez seulement que le souffle, lui, est identique.",
+      "specimen": "ป · ผ · พ"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "deux paires, un seul écart",
+      "bodyFr": "Voici les deux paires de la leçon. ปา (paa, lancer) et พา (phaa, emmener) portent le même ton moyen et la même voyelle longue : seul le souffle les sépare. ป่า (pàa, la forêt, croisée en 1C) et ผ่า (phàa, fendre) portent le même ton bas : là encore, seul le souffle change. Ne cherchez donc rien dans la mélodie, elle est identique à l’intérieur de chaque paire.",
+      "specimen": "ปา / พา puis ป่า / ผ่า"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "où se cache la voyelle",
+      "bodyFr": "Passons à l’écriture. Une voyelle thaïe ne se met pas sagement après sa consonne : elle s’installe autour d’elle. Regardez les spécimens : า se pose à droite de la consonne (พา, phaa), ี se pose au-dessus (ปี, pii, l’année vue en 1C), ู se glisse en dessous (พูด, phôuut, parler). Et อ, la lettre d’appui de 1A, sert aussi de voyelle : placée après une consonne, elle note le son aww, comme dans พอ (phaww), « assez ».",
+      "specimen": "พา · ปี · พูด · พอ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "les deux voyelles qui trichent",
+      "bodyFr": "Restent เ- et แ-, et elles vont contrarier votre œil de lecteur français. Toutes deux s’écrivent DEVANT la consonne, mais se prononcent APRÈS elle. แพง s’écrit แ, puis พ, puis ง, et se lit phaeeng, « cher », jamais « aeph ». Même chose pour เพลง, qui se lit phleeng, « chanson » : เ ouvre la suite écrite, mais la voix ne l’atteint qu’après le groupe พล.",
+      "specimen": "แพง (phaeeng) · เพลง (phleeng)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "à vous",
+      "bodyFr": "Repérez d’abord la consonne, commencez la lecture par elle, puis ramassez la voyelle où qu’elle se trouve. C’est le seul réflexe à installer aujourd’hui.\n\nAprès les exercices, reprenez la feuille de papier et enregistrez-vous en disant ปา puis พา, puis comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil. Regardez la feuille autant que vous écoutez : elle vous dira si le souffle est passé.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u02-l2a-p2",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Ce qui est mesuré ici, c’est le h du souffle.",
+      "mechanic": "recall",
+      "drawCount": 5,
+      "passRequired": 5,
+      "sampleSize": 5
+    },
+    {
+      "poolId": "u02-l2a-p3",
+      "promptFr": "Regardez le mot. Quelle est la première lettre que l’on prononce ?",
+      "mechanic": "reading",
+      "drawCount": 5,
+      "passRequired": 5,
+      "sampleSize": 5
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "b56f6567-db1b-598c-9785-daa2f8401d79",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "5de9ba79-0a62-512b-884e-adca283ba2cb",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "348c223e-f379-5565-8cbb-5260b0be0e41",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "413a3c9a-d423-530b-81e8-1bc47f206e4c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e1af8f24-7412-5279-bb34-cf31c83dfd5a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "4e9e63d6-0891-5831-8deb-41dbbe29885d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b0c857ad-3ae9-587e-b416-d51057d961f8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "fcc433ca-0d64-5d81-b64a-fc1d2b3d776f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

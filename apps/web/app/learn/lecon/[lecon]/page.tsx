@@ -1,36 +1,52 @@
 import {
-  compiledLessonIds,
+  readAuthoringCompiledLessonBundle,
+  readAuthoringDraft,
   publicAudioSources,
   readCompiledLessonBundle,
 } from "@thainaute/content";
 import { notFound } from "next/navigation";
+
+import { readContentStudioConfiguration } from "@/lib/server/content-studio/runtime";
 
 import { LessonHeader } from "@/components/layout/lesson-header";
 
 import { ExpeditionExperience } from "../../demo/expedition-experience";
 import styles from "../../demo/lesson.module.css";
 
-/**
- * Une leçon réelle du curriculum, par identifiant.
- *
- * Les identifiants sont connus à la compilation : on les pré-rend tous
- * plutôt que d'ouvrir la route à n'importe quelle chaîne, et un
- * identifiant inconnu rend une 404 au lieu d'un écran vide.
- */
-export function generateStaticParams(): { lecon: string }[] {
-  return compiledLessonIds().map((lecon) => ({ lecon }));
+import { EditorLessonPreview } from "./editor-lesson-preview";
+
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
+
+function readCourseBundle(lecon: string) {
+  return (
+    readCompiledLessonBundle(lecon) ?? readAuthoringCompiledLessonBundle(lecon)
+  );
 }
 
-export const dynamicParams = false;
+function readPublishedCourseBundle(lecon: string) {
+  const bundle = readCourseBundle(lecon);
+  return bundle?.lesson.workflowStatus === "published" &&
+    bundle.lesson.visibility === "public"
+    ? bundle
+    : null;
+}
 
+/**
+ * Les brouillons ne sont jamais pré-rendus ni placés dans les métadonnées.
+ * Une future version réellement publiée pourra conserver son titre public.
+ */
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ lecon: string }>;
 }) {
   const { lecon } = await params;
-  const bundle = readCompiledLessonBundle(lecon);
-  return { title: bundle?.lesson.titleFr ?? "Leçon introuvable" };
+  const bundle = readPublishedCourseBundle(lecon);
+  return {
+    title: bundle?.lesson.titleFr ?? "Leçon introuvable",
+    robots: { index: false, follow: false },
+  };
 }
 
 export default async function LeconPage({
@@ -39,25 +55,32 @@ export default async function LeconPage({
   params: Promise<{ lecon: string }>;
 }) {
   const { lecon } = await params;
-  const bundle = readCompiledLessonBundle(lecon);
-  if (bundle === null) notFound();
+  const published = readPublishedCourseBundle(lecon);
+  if (published !== null) {
+    return (
+      <main className={styles.shell}>
+        <LessonHeader
+          step={`Expédition · ${published.lesson.exercises.length} exercices`}
+        />
+        <ExpeditionExperience
+          lesson={published.lesson}
+          audioSources={publicAudioSources(published)}
+          attemptStorage="learning"
+        />
+      </main>
+    );
+  }
 
-  const { lesson } = bundle;
-  return (
-    <main className={styles.shell}>
-      <LessonHeader
-        step={`Expédition · ${lesson.exercises.length} exercices`}
-      />
-      <ExpeditionExperience
-        lesson={lesson}
-        audioSources={publicAudioSources(bundle)}
-        // Ceci est une leçon RÉELLE du curriculum : ses tentatives vont dans
-        // la base d'apprentissage, la seule que la synchronisation de compte
-        // relève. Elles partaient auparavant dans la base de démonstration,
-        // qui est mise en quarantaine à la fusion : toute la progression du
-        // cours réel était donc perdue.
-        attemptStorage="learning"
-      />
-    </main>
-  );
+  // Le mode Studio est un interrupteur serveur explicite. En son absence,
+  // un brouillon est strictement indistinguable d'une route inconnue.
+  if (readContentStudioConfiguration() === null) notFound();
+
+  const internalBundle = readCourseBundle(lecon);
+  const internalDraft =
+    internalBundle === null ? readAuthoringDraft(lecon) : null;
+  if (internalBundle === null && internalDraft === null) notFound();
+
+  // Aucun contenu interne n'est sérialisé ici. Le client ne reçoit que
+  // l'identifiant puis passe la porte content_editor du endpoint preview.
+  return <EditorLessonPreview lessonId={lecon} />;
 }

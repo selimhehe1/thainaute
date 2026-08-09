@@ -1,11 +1,15 @@
-import { readFixtureBundle, type ContentBundle } from "@thainaute/content";
+import {
+  readFiveMechanicsFixtureBundle,
+  readFixtureBundle,
+  type ContentBundle,
+} from "@thainaute/content";
 
 import { hashCanonical } from "../lib/server/attempt-sync/canonical-json";
 
 export const RELEASE_ID = "30000000-0000-4000-8000-000000000001";
 
-export function makePublishableBundle(): ContentBundle {
-  const bundle = structuredClone(readFixtureBundle());
+function makePublishableFrom(bundleInput: ContentBundle): ContentBundle {
+  const bundle = structuredClone(bundleInput);
   bundle.lesson.workflowStatus = "published";
   bundle.lesson.visibility = "public";
   bundle.lesson.publishedAt = "2026-08-01T10:00:00.000Z";
@@ -47,6 +51,14 @@ export function makePublishableBundle(): ContentBundle {
   return bundle;
 }
 
+export function makePublishableBundle(): ContentBundle {
+  return makePublishableFrom(readFixtureBundle());
+}
+
+export function makePublishableMechanicsBundle(): ContentBundle {
+  return makePublishableFrom(readFiveMechanicsFixtureBundle());
+}
+
 export function makePublishedLessonRow(bundle: ContentBundle) {
   const publishedAt = bundle.lesson.publishedAt;
   if (publishedAt === null) throw new Error("Date de publication manquante.");
@@ -57,6 +69,8 @@ export function makePublishedLessonRow(bundle: ContentBundle) {
     version: bundle.lesson.revision,
     release_id: RELEASE_ID,
     status: "published",
+    language_pack_id: bundle.lesson.languagePackId,
+    target_locale: bundle.lesson.targetLocale,
     title_fr: bundle.lesson.titleFr,
     payload: bundle,
     payload_sha256: hashCanonical("thainaute.content-bundle/v1", bundle),
@@ -65,6 +79,8 @@ export function makePublishedLessonRow(bundle: ContentBundle) {
       id: RELEASE_ID,
       version: 1,
       status: "published",
+      language_pack_id: bundle.lesson.languagePackId,
+      target_locale: bundle.lesson.targetLocale,
       published_at: publishedAt,
     },
   };

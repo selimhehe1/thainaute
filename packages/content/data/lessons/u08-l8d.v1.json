@@ -1,0 +1,696 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "885b53fa-4664-52ee-b2ed-f347aa38a3f4",
+  "versionId": "b14fd739-3547-5d9c-b99c-fd2ce5c8afe1",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Quand ça ne va pas",
+  "objectiveFr": "à la fin de la leçon, l’apprenant identifie à l’écoute laquelle des trois formules du jour a été prononcée, มีปัญหา, อันนี้ไม่ใช่ ou ขอเปลี่ยนหน่อย, 6 fois sur 8, alors que la particule finale est présente dans les huit énoncés et ne distingue aucune option ; il associe six situations françaises à la formule thaïe qui convient, 5 paires sur 6 ; il assemble dans l’ordre les cinq demandes de l’exerc",
+  "requiredEntitlement": null,
+  "audioManifestId": "64a67651-61c2-5264-b1da-7af3a7a929aa",
+  "items": [
+    {
+      "id": "78f481ee-6e21-518a-a8d8-9bf4a64b2d99",
+      "thaiRaw": "ไม่ใช่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E43",
+        "U+0E0A",
+        "U+0E48"
+      ],
+      "translationFr": "ce n’est pas ça ; non",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi·châi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่ใช่",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่ใช่",
+          "ipa": "t͡ɕʰaj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "fcfed46c-8433-5cb3-a235-62c3c585e2e8",
+      "thaiRaw": "ปัญหา",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E31",
+        "U+0E0D",
+        "U+0E2B",
+        "U+0E32"
+      ],
+      "translationFr": "le problème",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pan·hǎa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปัญหา",
+          "ipa": "pan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ปัญหา",
+          "ipa": "haː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d2871e70-b67d-50e3-a83b-cf6570cb9764",
+      "thaiRaw": "เปลี่ยน",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1B",
+        "U+0E25",
+        "U+0E35",
+        "U+0E48",
+        "U+0E22",
+        "U+0E19"
+      ],
+      "translationFr": "changer, remplacer une chose par une autre",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "plìan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เปลี่ยน",
+          "ipa": "plia̯n˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pl",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d4a7c661-af80-5233-8e9b-f8bec5dc07e6",
+      "thaiRaw": "เสีย",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E2A",
+        "U+0E35",
+        "U+0E22"
+      ],
+      "translationFr": "être hors d’usage, en panne, abîmé ; avoir tourné, pour un aliment",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǐa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เสีย",
+          "ipa": "sia̯˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "thaiRaw": "ขอ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D"
+      ],
+      "translationFr": "demander ; solliciter (et, en tête de phrase, « je voudrais », « puis-je »)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (la politesse vient de หน่อย et de la particule finale)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "thaiRaw": "อันนี้",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E31",
+        "U+0E19",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
+      "translationFr": "ceci, celui-ci",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "an·níi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อันนี้",
+          "ipa": "ʔan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "อันนี้",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "thaiRaw": "มี",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35"
+      ],
+      "translationFr": "avoir ; posséder",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มี",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u08-l8d-p3",
+      "drawIndex": 1,
+      "id": "47ce2486-af36-5c62-bde7-fc03701ec6f4",
+      "type": "word_order",
+      "itemId": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase. Les deux particules de politesse sont proposées à chaque fois : une seule convient au locuteur annoncé, retirez l’autre.",
+      "tokens": [
+        {
+          "id": "6bce3075-a46e-5888-87aa-67f871abf665",
+          "thaiRaw": "ปัญหา",
+          "transcription": null
+        },
+        {
+          "id": "c65e4fa5-4698-5b1f-999e-df8dda7866c4",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "283278f0-c91b-5d08-a575-4c7c805a9be6",
+          "thaiRaw": "มี",
+          "transcription": null
+        },
+        {
+          "id": "8c36bced-7d0c-5932-84a4-d5dc57da1bf5",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "283278f0-c91b-5d08-a575-4c7c805a9be6",
+        "6bce3075-a46e-5888-87aa-67f871abf665",
+        "c65e4fa5-4698-5b1f-999e-df8dda7866c4"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Ce que vous demandez, puis หน่อย, puis la particule, toujours en dernier.",
+        "incorrectFr": "Repartez du début. Qu’est-ce que vous demandez ? Posez ça d’abord. หน่อย vient juste après, jamais avant. La particule ferme la phrase, et elle dépend de qui parle : ครับ pour un homme, ค่ะ pour une femme.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4 uniquement",
+            "textFr": "Et remarquez ce que vous venez de faire : le patron de 2C, qui contenait de l’eau, contient aujourd’hui un verbe."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule du mauvais genre laissée en place",
+            "textFr": "Relisez qui parle. Un homme signe avec ครับ, une femme avec ค่ะ. L’autre tuile est là exprès : retirez-la."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8d-p3",
+      "drawIndex": 2,
+      "id": "e797c1a1-936b-5c2b-bdb6-8e03e52bdc7c",
+      "type": "word_order",
+      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase. Les deux particules de politesse sont proposées à chaque fois : une seule convient au locuteur annoncé, retirez l’autre.",
+      "tokens": [
+        {
+          "id": "f79f153c-e929-5a94-bbab-61616d3b9be7",
+          "thaiRaw": "ไม่ใช่",
+          "transcription": null
+        },
+        {
+          "id": "101cc875-32a5-51ca-98cf-aab5c79587dc",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "c71b83b3-d48f-5bb3-b9c3-264e404a9e54",
+          "thaiRaw": "อันนี้",
+          "transcription": null
+        },
+        {
+          "id": "4c6c2dfe-568e-512c-bf14-c5336930606c",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "c71b83b3-d48f-5bb3-b9c3-264e404a9e54",
+        "f79f153c-e929-5a94-bbab-61616d3b9be7",
+        "101cc875-32a5-51ca-98cf-aab5c79587dc"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Ce que vous demandez, puis หน่อย, puis la particule, toujours en dernier.",
+        "incorrectFr": "Repartez du début. Qu’est-ce que vous demandez ? Posez ça d’abord. หน่อย vient juste après, jamais avant. La particule ferme la phrase, et elle dépend de qui parle : ครับ pour un homme, ค่ะ pour une femme.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4 uniquement",
+            "textFr": "Et remarquez ce que vous venez de faire : le patron de 2C, qui contenait de l’eau, contient aujourd’hui un verbe."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule du mauvais genre laissée en place",
+            "textFr": "Relisez qui parle. Un homme signe avec ครับ, une femme avec ค่ะ. L’autre tuile est là exprès : retirez-la."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8d-p3",
+      "drawIndex": 3,
+      "id": "111e9ead-10f0-5604-b55e-81239c2f8cb6",
+      "type": "word_order",
+      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase. Les deux particules de politesse sont proposées à chaque fois : une seule convient au locuteur annoncé, retirez l’autre.",
+      "tokens": [
+        {
+          "id": "b276056c-ad46-50d9-a9d8-01982ce28db1",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "0b56cd2f-2289-5b0a-ae72-7263ea930753",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "ad725e8d-3898-5d95-b4c6-0490b6314d91",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "8463d974-814f-547b-9a38-7dbad0806fad",
+          "thaiRaw": "เปลี่ยน",
+          "transcription": null
+        },
+        {
+          "id": "6621cbff-3741-5eea-9a35-193453cf4552",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "0b56cd2f-2289-5b0a-ae72-7263ea930753",
+        "8463d974-814f-547b-9a38-7dbad0806fad",
+        "b276056c-ad46-50d9-a9d8-01982ce28db1",
+        "ad725e8d-3898-5d95-b4c6-0490b6314d91"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Ce que vous demandez, puis หน่อย, puis la particule, toujours en dernier.",
+        "incorrectFr": "Repartez du début. Qu’est-ce que vous demandez ? Posez ça d’abord. หน่อย vient juste après, jamais avant. La particule ferme la phrase, et elle dépend de qui parle : ครับ pour un homme, ค่ะ pour une femme.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4 uniquement",
+            "textFr": "Et remarquez ce que vous venez de faire : le patron de 2C, qui contenait de l’eau, contient aujourd’hui un verbe."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule du mauvais genre laissée en place",
+            "textFr": "Relisez qui parle. Un homme signe avec ครับ, une femme avec ค่ะ. L’autre tuile est là exprès : retirez-la."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8d-p3",
+      "drawIndex": 4,
+      "id": "25dec6ec-ac5e-57f4-b922-38f66730a6b8",
+      "type": "word_order",
+      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase. Les deux particules de politesse sont proposées à chaque fois : une seule convient au locuteur annoncé, retirez l’autre.",
+      "tokens": [
+        {
+          "id": "2ec07b61-b245-5c48-9776-29c6e9b87ae5",
+          "thaiRaw": "เปลี่ยน",
+          "transcription": null
+        },
+        {
+          "id": "21ba5478-c84e-58fc-a18a-41852485cb0f",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "0e2d6e9f-ddd8-506c-9ea4-830a96187972",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "1c53ca7f-8c12-5a0d-83ec-97785c3f8388",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "0be8294c-0032-5c9f-b922-59455be5aba9",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "1c53ca7f-8c12-5a0d-83ec-97785c3f8388",
+        "2ec07b61-b245-5c48-9776-29c6e9b87ae5",
+        "0e2d6e9f-ddd8-506c-9ea4-830a96187972",
+        "21ba5478-c84e-58fc-a18a-41852485cb0f"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Ce que vous demandez, puis หน่อย, puis la particule, toujours en dernier.",
+        "incorrectFr": "Repartez du début. Qu’est-ce que vous demandez ? Posez ça d’abord. หน่อย vient juste après, jamais avant. La particule ferme la phrase, et elle dépend de qui parle : ครับ pour un homme, ค่ะ pour une femme.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4 uniquement",
+            "textFr": "Et remarquez ce que vous venez de faire : le patron de 2C, qui contenait de l’eau, contient aujourd’hui un verbe."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule du mauvais genre laissée en place",
+            "textFr": "Relisez qui parle. Un homme signe avec ครับ, une femme avec ค่ะ. L’autre tuile est là exprès : retirez-la."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8d-p3",
+      "drawIndex": 5,
+      "id": "dd9f72ab-34f3-552c-bd11-9721324c6a16",
+      "type": "word_order",
+      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase. Les deux particules de politesse sont proposées à chaque fois : une seule convient au locuteur annoncé, retirez l’autre.",
+      "tokens": [
+        {
+          "id": "35db5879-2085-5f48-b76a-35bc191f1a3f",
+          "thaiRaw": "เสีย",
+          "transcription": null
+        },
+        {
+          "id": "f4ecd64c-4d82-518c-a650-0d64dcfefafd",
+          "thaiRaw": "อันนี้",
+          "transcription": null
+        },
+        {
+          "id": "94ed050e-1a28-5e3b-ac85-5a7152519cdc",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "68dfa4c1-abc3-5723-9143-beb542cdc9a1",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "f4ecd64c-4d82-518c-a650-0d64dcfefafd",
+        "35db5879-2085-5f48-b76a-35bc191f1a3f",
+        "94ed050e-1a28-5e3b-ac85-5a7152519cdc"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Ce que vous demandez, puis หน่อย, puis la particule, toujours en dernier.",
+        "incorrectFr": "Repartez du début. Qu’est-ce que vous demandez ? Posez ça d’abord. หน่อย vient juste après, jamais avant. La particule ferme la phrase, et elle dépend de qui parle : ครับ pour un homme, ค่ะ pour une femme.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4 uniquement",
+            "textFr": "Et remarquez ce que vous venez de faire : le patron de 2C, qui contenait de l’eau, contient aujourd’hui un verbe."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule du mauvais genre laissée en place",
+            "textFr": "Relisez qui parle. Un homme signe avec ครับ, une femme avec ค่ะ. L’autre tuile est là exprès : retirez-la."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "trois phrases pour trois moments",
+      "bodyFr": "Vous allez apprendre trois phrases, et elles suffisent à couvrir presque tous les petits ennuis d’un achat ou d’un repas. La première ouvre : il y a un problème. La deuxième dit quoi : ce n’est pas ça. La troisième demande la suite : je voudrais échanger. Ce qui rend ces phrases confortables à dire, ce sont des MOTS que vous pourrez montrer du doigt, et la page 8 vous dira lesquels et où ils sont rangés, sans rien vous promettre de plus.",
+      "specimen": "มีปัญหาครับ · อันนี้ไม่ใช่ครับ · ขอเปลี่ยนหน่อยครับ"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ไม่ใช่, ce n’est pas ça",
+      "bodyFr": "ไม่, la négation de 4D, et ใช่, qui affirme que c’est bien cela. Collés, ils donnent ไม่ใช่ (mâi·châi) : ce n’est pas ça, non. Les deux syllabes tombent, la voix part en haut et descend, deux fois de suite. Les sources en font une unité à part entière, avec sa propre entrée, et non un simple ไม่ posé devant un verbe : c’est pourquoi la transcription les relie par un point médian, comme dans ไม่เป็นไร de 2C.\n\nUn détail d’écriture que vous savez déjà lire : le ใ de ใช่ s’écrit AVANT le ช, mais se prononce après lui. C’est l’une des cinq voyelles que 4A vous a nommées, เ, แ, โ, ใ et ไ, et c’est exactement ce que fait le ไ de ไม่ juste à côté.",
+      "specimen": "ไม่ใช่ (mâi·châi)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "อันนี้ไม่ใช่, la phrase entière",
+      "bodyFr": "Vous n’avez pas besoin de savoir comment s’appelle l’objet. อันนี้ (an·níi), appris en 3C pour demander un prix, veut dire celui-ci, ceci, et il tient lieu de nom. Posez ไม่ใช่ derrière, ajoutez votre particule, et la phrase est complète.\n\n> อันนี้ไม่ใช่ครับ (an·níi mâi·châi khráp) > อันนี้ไม่ใช่ค่ะ (an·níi mâi·châi khâ)\n\nMontrez l’objet en le disant. Un homme prend ครับ, une femme ค่ะ, comme depuis l’unité 1.",
+      "specimen": "อันนี้ไม่ใช่ครับ"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "ปัญหา, et le verbe que vous avez déjà",
+      "bodyFr": "ปัญหา (pan·hǎa), c’est le problème. Deux syllabes : la première plate et brève, la seconde longue et montante. Devant, mettez มี, le verbe de 6B et 6D, celui qui dit aussi bien « avoir » que « il y a ». มีปัญหา (mii pan·hǎa) porte les deux lectures, et la base de référence les donne dans cet ordre : avoir un problème, puis il y a un problème. Comptez les mots de la phrase thaïe : il n’y en a que deux, et aucun ne nomme qui que ce soit. C’est le français qui vous oblige à choisir entre « j’ai » et « il y a », pas le thaï. Rien de nouveau dans la construction, seulement un mot nouveau dans une case que vous remplissez depuis l’unité 6.\n\n> มีปัญหาครับ (mii pan·hǎa khráp) > มีปัญหาค่ะ (mii pan·hǎa khâ)",
+      "specimen": "ปัญหา (pan·hǎa) · มีปัญหาครับ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "เปลี่ยน, que vous savez déjà lire",
+      "bodyFr": "เปลี่ยน (plìan) veut dire changer, remplacer une chose par une autre. Vous l’avez rencontré en 8A, avec son groupe ปล lu d’un seul souffle et son ton bas calculé sur la première lettre du groupe. Rien à réapprendre ici : aujourd’hui, ce mot sert seulement à remplir une case.\n\nUn rappel de bouche quand même, et vous pouvez le vérifier tout de suite. Prononcez le mot français « pli » et arrêtez-vous juste avant la voyelle : ce qui vous reste dans la bouche est l’attaque de เปลี่ยน. Enchaînez sur le noyau `ia`, celui de เลี้ยว, et gardez la voix posée en bas du début à la fin. Enregistrez-vous, comparez en A/B avec la voix de référence, et jugez vous-même si les deux attaques se ressemblent.",
+      "specimen": "เปลี่ยน (plìan)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "le patron de 2C accueille maintenant un verbe",
+      "bodyFr": "Depuis 2C vous dites ขอน้ำหน่อย, et depuis 4C ขอข้าวผัดสองจานหน่อยครับ. À chaque fois, la case après ขอ contenait une CHOSE. Elle accepte aussi un VERBE, et c’est tout ce que la leçon ajoute à votre grammaire aujourd’hui.\n\n> ขอเปลี่ยนหน่อยครับ (khǎww plìan nàwi khráp) > ขอเปลี่ยนหน่อยค่ะ (khǎww plìan nàwi khâ)\n\nAttention au sens exact, parce qu’il n’est pas celui qu’un francophone attendrait. Cette phrase ne dit pas « changez-le » : elle dit « je voudrais changer », « laissez-moi changer ». Vous demandez pour vous, vous ne donnez pas d’ordre. C’est ce que disent les sources, et c’est ce que dit la place du sujet quand il est écrit : dans les exemples relevés, c’est celui qui parle.",
+      "specimen": "ขอเปลี่ยนหน่อยครับ"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "เสีย, quand l’objet ne marche plus",
+      "bodyFr": "เสีย (sǐa), publié par 8A, dit qu’une chose est hors d’usage, en panne, abîmée, ou qu’un aliment a tourné. Ce que 8D ajoute n’est pas le mot, c’est sa PLACE dans la phrase : il se pose après ce dont vous parlez, sans rien entre les deux, อันนี้เสียครับ (an·níi sǐa khráp), celui-ci est en panne. C’est la raison la plus fréquente de demander un échange, donc le compagnon naturel de la page 6.\n\nDeux précautions. เสีย a beaucoup d’autres sens, et vous n’en apprenez qu’un seul aujourd’hui. Surtout, ne l’employez pas à propos d’une personne : ce mot y sert aussi à dire qu’elle est morte, une des sources marque cet emploi comme humble et familier, les deux autres ne lui mettent aucune étiquette, et le parcours reste dehors tant qu’une revue native ne l’a pas tranché.",
+      "specimen": "เสีย (sǐa) · อันนี้เสียครับ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "où la politesse est rangée, exactement",
+      "bodyFr": "Trois pièces peuvent porter la politesse dans les phrases du jour, et chacune est un mot, pas une intonation. Aucune phrase ne les porte toutes les trois par hasard : chacune prend celles qui ont une place chez elle.\n\n> ครับ et ค่ะ, la particule finale, apprise en 1E : les sources la décrivent > comme la marque polie de fin de phrase. > ขอ, de 2C : il transforme une demande en requête, « je demande », et non en > ordre. > หน่อย, de 2C : les sources en font une particule dont la fonction est > d’ADOUCIR la demande. C’est son travail, littéralement.\n\nComptez maintenant, phrase par phrase, ce que cela fait. ขอเปลี่ยนหน่อยครับ porte les trois pièces. มีปัญหาครับ et อันนี้ไม่ใช่ครับ n’en portent qu’une, la particule finale, et ce n’est pas un oubli : ce sont des phrases qui CONSTATENT, elles ne demandent rien, donc ni ขอ ni หน่อย n’ont de place où se mettre.\n\nEt voici ce que les sources ne disent PAS, pour que vous ne l’entendiez pas de travers : aucune des sources consultées n’attache d’étiquette de registre à ไม่ใช่, ni à ปัญหา, ni à เปลี่ยน. Nous ne pouvons donc vous dire ni qu’ils sont polis, ni qu’ils sont brusques : les dictionnaires se taisent là-dessus, et nous préférons vous le dire plutôt que de combler le silence. Ce parcours choisit de ne jamais vous les faire dire sans particule finale, parce qu’il vous apprend à parler en situation. C’est une décision de la leçon, pas une règle du thaï.",
+      "specimen": "ขอเปลี่ยนหน่อยครับ · ขอเปลี่ยนหน่อย"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "à vous",
+      "bodyFr": "Deux choses à emporter. La première est un ordre, toujours le même : ขอ, puis ce que vous voulez faire ou obtenir, puis หน่อย, puis la particule. La seconde est un réflexe : commencez par ขอโทษครับ ou ขอโทษค่ะ, appris en 2C, et vous ouvrez la conversation avant de signaler quoi que ce soit.\n\nAprès les exercices, enregistrez-vous en disant เปลี่ยน puis เสีย, et comparez en A/B avec la voix de référence. Les deux mots ont le même noyau `ia`, celui que 8A vous a fait travailler, et ils diffèrent aussi par leur attaque et par leur fin : ce n’est donc pas une paire minimale, et ce que vous écoutez ici est la seule mélodie, posée en bas pour le premier, remontante pour le second. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u08-l8d-p3",
+      "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase. Les deux particules de politesse sont proposées à chaque fois : une seule convient au locuteur annoncé, retirez l’autre.",
+      "mechanic": "word_order",
+      "drawCount": 5,
+      "passRequired": 5,
+      "sampleSize": 5
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "d36b2b86-7930-5336-a600-4c9dd80fee45",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "75a2ec51-d330-544c-9e3b-55b273f069ab",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2498cc5f-40fd-58f8-809b-f386e671c6ed",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9d0e016d-1152-5813-9dd0-ec310ff723f9",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "94660186-88e4-5d0b-92fe-38a7555da780",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d347f613-8bb0-5049-80a8-75e8e3414ce0",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "740378b0-baea-50e6-9d17-fcf7077a313e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a0028948-5b2c-5e50-a546-790119e44e6d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

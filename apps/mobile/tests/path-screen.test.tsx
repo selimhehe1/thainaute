@@ -319,8 +319,8 @@ describe("écran Parcours mobile", () => {
       ).toBeTruthy();
       expect(screen.getByText(fixtureLesson.titleFr)).toBeTruthy();
       expect(screen.getByText(label)).toBeTruthy();
-      expect(screen.getByText("UNITÉS FUTURES · BLOQUÉES")).toBeTruthy();
-      expect(screen.getByText(/contenus linguistiques audités/u)).toBeTruthy();
+      expect(screen.getByText("COURS LINGUISTIQUES")).toBeTruthy();
+      expect(screen.getByText(/Aucun cours réel n’est embarqué/u)).toBeTruthy();
       const progressbar = screen.getByRole("progressbar");
       expect(attributeValue(progressbar, "aria-valuenow")).toBe(progress);
       expect(attributeValue(progressbar, "aria-valuemax")).toBe("1");
@@ -336,6 +336,16 @@ describe("écran Parcours mobile", () => {
       expect(testState.push).toHaveBeenCalledWith(expectedRoute);
     },
   );
+
+  it("n’annonce ni ne route vers un catalogue linguistique non publié", async () => {
+    render(<LearningPathScreen />);
+
+    await screen.findByText("Publication encore verrouillée.");
+    expect(
+      screen.queryByRole("button", { name: "Ouvrir l'unité 1" }),
+    ).toBeNull();
+    expect(testState.push).not.toHaveBeenCalledWith("/unit-01");
+  });
 
   it("garde le checkpoint intact après une erreur puis permet de relire", async () => {
     testState.read

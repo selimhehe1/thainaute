@@ -1,4 +1,4 @@
-import type { PublicAudioAsset } from "@thainaute/content/public";
+import type { PublicAudioAsset, PublicLesson } from "@thainaute/content/public";
 import type {
   AttemptOutboxEntry,
   LessonExerciseProgress,
@@ -47,11 +47,22 @@ type Phase =
   | "rejected"
   | "error";
 
+type PublicAudioChoiceExercise = Extract<
+  PublicLesson["exercises"][number],
+  { type: "audio_choice" }
+>;
+
+function isAudioChoiceExercise(
+  exercise: PublicLesson["exercises"][number] | undefined,
+): exercise is PublicAudioChoiceExercise {
+  return exercise?.type === "audio_choice";
+}
+
 function matchingAudio(
   connected: MobileConnectedPublicLesson,
 ): PublicAudioAsset | null {
   const exercise = connected.lesson.response.lesson.exercises[0];
-  if (exercise === undefined) return null;
+  if (!isAudioChoiceExercise(exercise)) return null;
   return (
     connected.lesson.response.lesson.audioAssets.find(
       ({ assetId }) => assetId === exercise.audioAssetId,
@@ -411,6 +422,26 @@ export default function ConnectedLessonScreen() {
   const lesson = connected.lesson.response.lesson;
   const exercise = lesson.exercises[0];
   if (exercise === undefined) return null;
+  if (!isAudioChoiceExercise(exercise)) {
+    return (
+      <SafeAreaView style={styles.safe}>
+        <View style={styles.center} accessibilityLiveRegion="polite">
+          <Text style={styles.eyebrow}>CONTENU TYPÉ</Text>
+          <Text accessibilityRole="header" style={styles.title}>
+            Cette leçon attend son lecteur dédié.
+          </Text>
+          <Text style={styles.body}>
+            La boucle connectée conserve encore uniquement les exercices audio à
+            choix. Les exercices typés sont disponibles dans le parcours local
+            adapté à leur mécanique.
+          </Text>
+          <Link href="/lesson" style={styles.linkButton}>
+            Ouvrir le parcours local
+          </Link>
+        </View>
+      </SafeAreaView>
+    );
+  }
   const optionDisabled =
     !audioReady || phase === "submitting" || phase === "pending";
   const result = attempt?.status === "synced" ? attempt : null;

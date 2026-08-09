@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "102a01f0-588a-5e7a-b27e-712e37605e92",
+  "versionId": "7d1d33f6-d9ba-586e-9fb7-54eb08015178",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Avoir, ne pas avoir, combien",
+  "objectiveFr": "à la fin de la leçon, l’apprenant écoute une réponse courte et dit à la fois si elle est positive ou négative et combien de personnes elle annonce, 5 fois sur 6 ; il assemble dans le bon ordre มี + [nom] + nombre + คน ainsi que sa négation ไม่ + มี + [nom], sur 5 assemblages sur 6 ; et, devant une situation décrite en français, il écrit en transcription Thaïnaute le bloc à dire, 5 fois sur 6.",
+  "requiredEntitlement": null,
+  "audioManifestId": "1a7c1d2d-2f16-536f-8014-de8b618adb29",
+  "items": [
+    {
+      "id": "a6f999bf-e8ce-5c99-a4a6-714e73a91476",
+      "thaiRaw": "มี",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35"
+      ],
+      "translationFr": "avoir ; il y a",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มี",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "5f45ee39-ccad-5580-affa-5ed5498f82e5",
+      "thaiRaw": "ไม่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "ne … pas",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a1871874-1a39-510c-b511-0df8b875336c",
+      "thaiRaw": "ไม่มี",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E21",
+        "U+0E35"
+      ],
+      "translationFr": "ne pas avoir ; il n’y a pas",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi mii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่มี",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่มี",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "be2dd9f6-3f7d-51d8-a6cb-e61ac0af2bc1",
+      "thaiRaw": "คน",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E19"
+      ],
+      "translationFr": "personne (le nom) ; classificateur des personnes",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khon"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คน",
+          "ipa": "kʰon˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "6c8e12f9-f3d8-535a-bd59-ad1fb09b3a11",
+      "thaiRaw": "มีกี่คน",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35",
+        "U+0E01",
+        "U+0E35",
+        "U+0E48",
+        "U+0E04",
+        "U+0E19"
+      ],
+      "translationFr": "combien de personnes y a-t-il ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii kìi khon"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มีกี่คน",
+          "ipa": "miː˧ kiː˨˩ kʰon˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "5f624c4c-b58f-5b1c-bdec-b50457b85e92",
+      "thaiRaw": "พี่น้อง",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E35",
+        "U+0E48",
+        "U+0E19",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "les frères et sœurs",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phîi·náwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พี่น้อง",
+          "ipa": "pʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "พี่น้อง",
+          "ipa": "nɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "328c9d02-6c6e-53b2-8f77-7e98f8da7eeb",
+      "thaiRaw": "ครอบครัว",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E23",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E27"
+      ],
+      "translationFr": "la famille",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khrâwwp·khroua"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ครอบครัว",
+          "ipa": "kʰrɔːp̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰr",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ครอบครัว",
+          "ipa": "kʰrua̯˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8ae5fc7e-7292-503a-a936-d9813080fdf2",
+      "thaiRaw": "มีพี่น้องสองคน",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35",
+        "U+0E1E",
+        "U+0E35",
+        "U+0E48",
+        "U+0E19",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E04",
+        "U+0E19"
+      ],
+      "translationFr": "j’ai deux frères et sœurs",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii phîi·náwwng sǎwwng khon"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มีพี่น้องสองคน",
+          "ipa": "miː˧ pʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "มีพี่น้องสองคน",
+          "ipa": "nɔːŋ˦˥ sɔːŋ˩˩˦ kʰon˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u06-l6d-p4",
+      "drawIndex": 1,
+      "id": "9475f250-6d76-56b1-ad55-3e28535e341f",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque forme à son sens.",
+      "pairs": [
+        {
+          "id": "f8e857e5-e389-515b-8457-94bb3f3386db",
+          "itemId": "a6f999bf-e8ce-5c99-a4a6-714e73a91476",
+          "labelFr": "avoir ; il y a"
+        },
+        {
+          "id": "669315f2-d771-5ebc-b0e6-1db80a0f3c79",
+          "itemId": "5f45ee39-ccad-5580-affa-5ed5498f82e5",
+          "labelFr": "ne … pas"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Exact.",
+        "incorrectFr": "Relisez la forme et son sens, puis réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "un mot minuscule qui ouvre beaucoup de phrases",
+      "bodyFr": "Il vous manque un verbe. Vous savez commander, demander un prix, demander une direction, mais vous ne savez pas encore dire ce que vous avez. Le mot du jour est มี (mii), et il rend deux services d’un coup : il dit « avoir » et il dit « il y a ». Le dictionnaire normatif range les deux sous la même entrée, et les deux vous serviront aujourd’hui.",
+      "specimen": "มี"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "tenez la voyelle, ne la faites pas bouger",
+      "bodyFr": "Deux consignes, pas une de plus. La voyelle est longue : dites le i de « midi » et gardez-le un peu plus longtemps que vous ne le feriez spontanément. Et la hauteur ne bouge pas : elle ne monte pas, elle ne tombe pas, elle reste posée. C’est le ton moyen, celui que vous avez entendu dès la première unité.",
+      "specimen": "มี (mii)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ไม่ devant, exactement comme en 4D",
+      "bodyFr": "Vous connaissez déjà la manœuvre. ไม่ (mâi) nie le mot qui le suit, donc il se place devant lui : ไม่เผ็ด, pas épicé, en 4D. Le même geste sur le mot d’aujourd’hui donne ไม่มี (mâi mii), ne pas avoir, ou il n’y a pas. Écoutez la forme d’ensemble : la première syllabe tombe, la seconde reste plate et dure un peu.",
+      "specimen": "ไม่ · มี · ไม่มี"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "ce que vous savez déjà faire avec คน",
+      "bodyFr": "Retour en 3D une seconde. Vous y avez appris à compter en plaçant la chose, puis le nombre, puis le mot de comptage : ปลาสองตัว, deux poissons. Vous y avez appris que le mot de comptage des personnes est คน, et que ce même คน veut aussi dire « personne ». Rien de tout cela ne change aujourd’hui. Un mot vient simplement se poser devant le groupe.",
+      "specimen": "สองคน (sǎwwng khon) · สี่คน (sìi khon)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "มี pose le groupe compté derrière lui",
+      "bodyFr": "Voilà toute la structure de la leçon, et elle tient en une ligne : มี, puis ce qu’on a, puis le nombre, puis le mot de comptage. Deux frères et sœurs se dit donc มีพี่น้องสองคน (mii phîi·náwwng sǎwwng khon), mot à mot « avoir frères-et-sœurs deux personnes ». Le groupe compté ne bouge pas d’un cheveu par rapport à 3D : vous ajoutez seulement มี devant.",
+      "specimen": "มีพี่น้องสองคน (mii phîi·náwwng sǎwwng khon)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "la même phrase, en question",
+      "bodyFr": "Vous savez déjà demander un nombre : กี่ se place devant l’unité qu’on compte, et กี่คน demande combien de personnes. Mettez มี devant, vous obtenez มีกี่คน (mii kìi khon), combien de personnes y a-t-il. Remarquez ce que le bloc ne dit pas : il ne nomme pas ce qu’on compte. Il demande un nombre de personnes, et c’est la situation qui fournit le reste.",
+      "specimen": "มีกี่คน (mii kìi khon)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "พี่น้อง, un seul mot pour les frères et les sœurs",
+      "bodyFr": "พี่น้อง (phîi·náwwng) désigne les frères et sœurs sans dire lesquels : ni leur sexe, ni leur nombre. C’est pratique, et c’est aussi une petite leçon sur le thaï, qui range souvent les proches par leur âge relatif plutôt que par leur sexe. Une honnêteté utile : les dictionnaires consultés donnent au mot une portée plus large que la nôtre, jusqu’aux cousins et à la parenté en général. Nous l’employons ici au sens restreint, et nous vous le disons.",
+      "specimen": "พี่น้อง (phîi·náwwng)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ครอบครัว, le mot du jour à ranger de côté",
+      "bodyFr": "ครอบครัว (khrâwwp·khroua) veut dire famille. Deux syllabes, deux départs soufflés, et un r qui se glisse après le kh dans les deux : posez le mot lentement avant de l’accélérer. Vous n’aurez pas à le produire pour réussir les exercices d’aujourd’hui, seulement à le reconnaître. Sa place viendra.",
+      "specimen": "ครอบครัว (khrâwwp·khroua)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "pourquoi rien n’est à déchiffrer aujourd’hui",
+      "bodyFr": "Vous lisez maintenant beaucoup de lettres, et vous allez reconnaître ม dans มี, ค et น dans คน, พ et น dans พี่น้อง : ce sont vos consonnes basses de 5A, dont 6A vient de vous donner le ton. Pourtant, les blocs du jour ne sont pas encore lisibles, et il vaut mieux le savoir que le deviner. Trois raisons, toutes temporaires. La première tient à ce qui se pose au-dessus des lettres : dans พี่, deux signes sont empilés, le ี que vous lisez depuis 2A, qui est une VOYELLE, et au-dessus de lui un second signe, plus fin, qui règle le ton. C’est ce second signe seulement, celui qu’on retrouve sur ไม่ et sur น้อง, qui arrive à l’unité 7 ; le ี, lui, est déjà à vous, et c’est exactement le même que dans มี. Ensuite คน s’écrit sans aucun signe de voyelle, alors qu’on y entend un o. Enfin le คร de ครอบครัว colle deux consonnes que vous n’avez pas encore appris à lire ensemble.\n\nUn rappel qui vous servira quand ce moment viendra : dans ไม่, la lettre écrite en premier est ไ, mais la consonne initiale est ม. Le ไ s’écrit avant la consonne qu’on prononce après lui, comme dans ไก่ et ไข่ vus en 4A. Tout ce qui se calcule à partir de la consonne initiale se calcule donc à partir de ม, pas à partir de ไ.\n\nSpécimen : ไม่ (ไ écrit d’abord, ม prononcé d’abord)",
+      "specimen": "มี (le ี seul) contre พี่ (le ี, puis le signe de ton au-dessus)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "à vous",
+      "bodyFr": "Un seul réflexe à installer. Décidez d’abord si c’est oui ou non, donc si ไม่ est là ou pas, puis dites ce que vous avez, puis le nombre, puis คน. Dans cet ordre, sans chercher de phrase autour.\n\nAprès les exercices, enregistrez-vous en disant มีพี่น้องสองคน puis ไม่มีพี่น้อง, et comparez en A/B avec la voix de référence. Écoutez le tout début : dans le second, la voix doit tomber sur ไม่ avant de se poser sur มี. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u06-l6d-p4",
+      "promptFr": "Reliez chaque forme à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "47114546-86db-5eb5-90ca-25acc7b251e3",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e9881226-44be-582e-a4a7-a698827cb47c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "09cf92e6-5cd8-53ec-936c-6a4c20197401",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "96b99fe7-37f4-51c2-ab0e-3e8a21df1730",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "52f52770-be8c-5cf9-a5f7-25836b3f9ec3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0e94473d-e80b-5446-8690-b8a3f2a02afa",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e912d14c-6f2b-5351-928c-cb28b3476dd8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b8585334-2642-57f4-948d-93be4b5ae654",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

@@ -109,11 +109,14 @@ Le contrat de tentative accepte une réponse typée (`answer`) exclusive de
 divergentes qui ignoraient ce champ (deux réponses différentes pouvaient
 passer pour identiques sous le même identifiant d'événement).
 
-Le serveur, lui, **refuse explicitement** toute tentative portant une
-réponse typée tant que sa correction autoritaire n'existe pas : mieux vaut
-un rejet net qu'une note inventée. Les paliers restants de la phase C sont
-la colonne `answer jsonb`, la notation serveur par mécanique, le DTO public
-v2 et la parité mobile.
+La colonne `answer jsonb` et la notation serveur par mécanique sont maintenant
+ajoutées par la migration `typed_attempt_answers`. Le serveur compare les
+réponses d'association, d'ordre de mots et de rappel à la clé de la release,
+normalise le rappel selon sa politique déclarée et conserve `missedOnce` dans
+la réponse notée. Les réponses incohérentes restent rejetées ; aucune clé ne
+vient du client. La parité mobile locale de 1C/1E est livrée pour le pilote.
+Le DTO public typé est livré sans `itemId`, `translationFr` ni clé de
+correction ; la vérification Supabase locale reste une porte avant publication.
 
 ## Conséquences
 

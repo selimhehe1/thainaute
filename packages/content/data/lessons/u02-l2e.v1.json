@@ -1,0 +1,614 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "c2215b5d-4e57-55a8-9443-d15848df91f5",
+  "versionId": "f78089f8-574b-57f9-87f9-6a3cdb6c1158",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Première rencontre",
+  "objectiveFr": "à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre deux inconnus, restitue dans l’ordre ce que chaque personne dit, attribue chaque réplique à un homme ou à une femme d’après sa particule finale, et produit lui-même la réplique manquante lorsqu’on lui laisse une place vide du dialogue.",
+  "requiredEntitlement": null,
+  "audioManifestId": "5621b446-7b4d-5a4e-b941-9b30befb1e72",
+  "items": [
+    {
+      "id": "ad1fb7f0-827b-5aca-ad5e-fbeaf88a2393",
+      "thaiRaw": "คะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "particule finale d’une locutrice, en fin de question ou d’information donnée poliment",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "48974c29-2ec7-5959-a0e2-ec123c2a32c9",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli (en.wiktionary marque « slightly formal »)",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1edb7b8f-25e5-5ddb-9301-2a6a4dd89f89",
+      "thaiRaw": "ดิฉัน",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "je, moi (locutrice femme, registre soutenu)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "formel selon en.wiktionary, poli (สุภาพ) selon th.wiktionary ; divergence consignée, voir incertitude 1 du dossier de production",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "cccfde52-c6aa-531d-9af7-5c90227485aa",
+      "thaiRaw": "ชื่อ",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E37",
+        "U+0E48",
+        "U+0E2D"
+      ],
+      "translationFr": "nom, prénom",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "chûee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ชื่อ",
+          "ipa": "t͡ɕʰɯː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "e8ce51f1-e50f-52ff-9c69-d1078306b6f3",
+      "thaiRaw": "คุณ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E38",
+        "U+0E13"
+      ],
+      "translationFr": "vous (une personne) ; également titre de respect devant un nom",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khoun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คุณ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b50ff918-d880-57ee-a7f0-162b4f892792",
+      "thaiRaw": "อะไร",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E30",
+        "U+0E44",
+        "U+0E23"
+      ],
+      "translationFr": "quoi, que",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "à·rai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อะไร",
+          "ipa": "ʔa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อะไร",
+          "ipa": "raj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1e5ee148-59f7-552d-a13e-723b5390bed5",
+      "thaiRaw": "ชื่ออะไร",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E37",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E2D",
+        "U+0E30",
+        "U+0E44",
+        "U+0E23"
+      ],
+      "translationFr": "comment vous appelez-vous",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "chûee à·rai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ชื่ออะไร",
+          "ipa": "t͡ɕʰɯː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ชื่ออะไร",
+          "ipa": "ʔa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ชื่ออะไร",
+          "ipa": "raj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec คุณ et la particule)",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "c313bed7-32d5-5e73-a8ef-ccd8cbaa21e9",
+      "thaiRaw": "มาจาก",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E32",
+        "U+0E08",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "venir de, être originaire de",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "maa·jàak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มาจาก",
+          "ipa": "maː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "มาจาก",
+          "ipa": "t͡ɕaːk̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "978150bb-e2bc-5fdc-99a5-404ebd1b3016",
+      "thaiRaw": "ฝรั่งเศส",
+      "unicodeCodePoints": [
+        "U+0E1D",
+        "U+0E23",
+        "U+0E31",
+        "U+0E48",
+        "U+0E07",
+        "U+0E40",
+        "U+0E28",
+        "U+0E2A"
+      ],
+      "translationFr": "la France ; le français (langue) ; un Français, une Française",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "fà·ràng·sèet"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ฝรั่งเศส",
+          "ipa": "fa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "f",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ฝรั่งเศส",
+          "ipa": "raŋ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ฝรั่งเศส",
+          "ipa": "seːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "cdfb4760-5d35-5cbc-a6b8-be7dc61d8a08",
+      "thaiRaw": "ไหม",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21"
+      ],
+      "translationFr": "est-ce que (particule de question fermée)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไหม",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "9a801e23-fc2a-59a4-9ef3-5caf384bf4c0",
+      "thaiRaw": "ต้น",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E49",
+        "U+0E19"
+      ],
+      "translationFr": "Ton (nom du personnage masculin du dialogue)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tôn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ต้น",
+          "ipa": "ton˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ceddf566-90f7-5ade-bd03-7d54a6c62c36",
+      "thaiRaw": "นก",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E01"
+      ],
+      "translationFr": "Nok (nom du personnage féminin du dialogue)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nók"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นก",
+          "ipa": "nok̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u02-l2e-p3",
+      "drawIndex": 1,
+      "id": "29695330-89eb-53ae-b817-a161a021663d",
+      "type": "word_order",
+      "itemId": "48974c29-2ec7-5959-a0e2-ec123c2a32c9",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Ton, un homme, se présente. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "a567ac23-050e-5ba4-8f61-0b034a2e7e9e",
+          "thaiRaw": "ต้น",
+          "transcription": null
+        },
+        {
+          "id": "cba129bf-fa41-59db-926a-ddf7eef339a9",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "a1680586-473f-55c3-98ce-7844859cc2c8",
+          "thaiRaw": "ชื่อ",
+          "transcription": null
+        },
+        {
+          "id": "72de4c15-39c5-5099-9582-ad50e9afdf4e",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "293048ec-16bb-5542-bfe0-a43edd8676f4",
+          "thaiRaw": "ผม",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "293048ec-16bb-5542-bfe0-a43edd8676f4",
+        "a1680586-473f-55c3-98ce-7844859cc2c8",
+        "a567ac23-050e-5ba4-8f61-0b034a2e7e9e",
+        "cba129bf-fa41-59db-926a-ddf7eef339a9"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Qui parle, ชื่อ, le nom, la particule : cet ordre ne change jamais, et il n’y a rien à insérer entre les briques.",
+        "incorrectFr": "Trois repères : le pronom ouvre la phrase, ชื่อ vient juste après, et la particule ferme toujours. Ton est un homme, donc ครับ.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "rien de neuf aujourd’hui",
+      "bodyFr": "Vous n’apprenez aucun mot nouveau dans cette leçon. Vous allez assembler ce que l’unité vous a donné et écouter deux personnes qui se rencontrent pour la première fois, du bonjour au départ.\n\nC’est le premier échange complet que vous suivrez sans texte. Comptez sur votre oreille avant vos yeux.",
+      "specimen": null
+    },
+    {
+      "ordre": 2,
+      "titleFr": "les quatre blocs d’une présentation",
+      "bodyFr": "Vous avez appris ce bloc en 2D. Le voici tel qu’il sort dans une vraie conversation.\n\n> ผมชื่อต้นครับ > phǒm chûee tôn khráp\n\nQuatre briques, toujours dans cet ordre : qui parle, ชื่อ, le nom, la particule. Rien à conjuguer, rien à accorder.",
+      "specimen": null
+    },
+    {
+      "ordre": 3,
+      "titleFr": "la particule dit qui parle, et sur quel ton",
+      "bodyFr": "ครับ ferme la réplique d’un homme, question ou pas. Une femme, elle, choisit entre deux formes de la même syllabe : ค่ะ (khâ) tombe, คะ (khá) reste perché.\n\n> ค่ะ / คะ > khâ / khá\n\nAttention à une simplification courante : คะ ne fabrique pas la question. Ici c’est อะไร qui la porte, et คะ ne fait que l’accompagner poliment. Nos deux dictionnaires donnent d’ailleurs à คะ un emploi plus large, qui couvre aussi l’information donnée poliment.",
+      "specimen": null
+    },
+    {
+      "ordre": 4,
+      "titleFr": "demander l’origine",
+      "bodyFr": "Vous connaissez มาจาก depuis la leçon 2D et ไหม depuis la 2B. Assemblés, ils donnent une question fermée sur l’origine.\n\n> คุณมาจากฝรั่งเศสไหมคะ > khoun maa·jàak fà·ràng·sèet mǎi khá\n\nไหม se place avant la particule de politesse, jamais après : c’est l’ordre que montre l’exemple มีอะไรให้ฉันช่วยไหมคะ de nos sources. Dans le dialogue, Ton répond en reprenant simplement la phrase, sans ไหม.",
+      "specimen": null
+    },
+    {
+      "ordre": 5,
+      "titleFr": "écouter la scène entière",
+      "bodyFr": "Nok accueille les participants d’un atelier de cuisine à Chiang Mai. Elle tient le cahier des inscriptions à l’entrée et rejoindra la salle une fois tout le monde arrivé. Ton se présente, ils ne se connaissent pas.\n\nÉcoutez d’abord sans lire, puis avec le texte. Vous comprenez chaque mot : c’est le but de cette leçon, mesurer le chemin parcouru depuis l’unité 1.",
+      "specimen": null
+    },
+    {
+      "ordre": 6,
+      "titleFr": "à vous",
+      "bodyFr": "Après les exercices, enregistrez-vous en prenant la place de Ton : remplacez ต้น par votre prénom, choisissez ผม ou ดิฉัน, puis la particule qui va avec. Comparez en A/B avec la voix de référence.\n\nL’enregistrement reste privé, sur votre appareil. Écoutez deux choses : le souffle du p de phǒm, absent du p de ปา travaillé en 2A, et la particule finale, brève et nette.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u02-l2e-p3",
+      "promptFr": "Ton, un homme, se présente. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "8d5bca1e-2486-5f48-9667-8a8f395240c1",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "10d649c2-7842-54dd-9773-77a3e2e0bf9f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b5844018-507a-537a-b953-210ead0e16aa",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9d2418e1-9051-5e61-87cb-fb0a02a88c58",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "022eccff-73a4-5f6f-a241-5fb9e4a2c0cf",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "db80fe94-c3bc-5b5c-af43-eadf5200d127",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6dace47a-a0c9-5e95-94a1-a35a50adc845",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "273b1eb4-4a1d-5d68-ad6e-a6554ce7ffe3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

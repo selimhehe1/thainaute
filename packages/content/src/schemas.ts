@@ -1,5 +1,11 @@
 import { z } from "zod";
 
+import {
+  DEFAULT_LANGUAGE_PACK_ID,
+  LANGUAGE_PACK_IDS,
+  thaiFrLanguagePack,
+} from "./language-packs";
+
 export const CONTENT_SCHEMA_LIMITS = {
   thaiRawLength: 512,
   unicodeCodePointsPerItem: 512,
@@ -109,6 +115,13 @@ const syllableSchema = z
       .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
       .nullable()
       .default(null),
+    /** Alias générique; `thaiRaw` reste la compatibilité du pack actuel. */
+    targetText: z
+      .string()
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
+      .nullable()
+      .optional(),
     ipa: nullableText,
     tone: nullableText,
     vowelLength: z.enum(["short", "long"]).nullable(),
@@ -121,6 +134,13 @@ export const itemSchema = z
   .object({
     id: identifier,
     thaiRaw: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+    /** Alias générique pour une langue cible future. */
+    targetText: z
+      .string()
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
+      .nullable()
+      .optional(),
     unicodeCodePoints: z
       .array(z.string().regex(/^U\+[0-9A-F]{4,6}$/u))
       .min(1)
@@ -166,18 +186,32 @@ const optionSchema = z
       .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
       .nullable()
       .default(null),
+    targetText: z
+      .string()
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
+      .nullable()
+      .optional(),
     transcription: nullableText.default(null),
   })
   .strict()
   .superRefine((option, context) => {
-    if (option.labelFr === null && option.thaiRaw === null) {
+    if (
+      option.labelFr === null &&
+      option.thaiRaw === null &&
+      (option.targetText === undefined || option.targetText === null)
+    ) {
       context.addIssue({
         code: "custom",
         message: "Une option doit porter au moins un libellé français ou thaï.",
         path: ["labelFr"],
       });
     }
-    if (option.thaiRaw === null && option.transcription !== null) {
+    if (
+      option.thaiRaw === null &&
+      (option.targetText === undefined || option.targetText === null) &&
+      option.transcription !== null
+    ) {
       context.addIssue({
         code: "custom",
         message: "Une transcription sans graphie thaïe n'a rien à transcrire.",
@@ -358,6 +392,12 @@ const wordOrderTokenSchema = z
   .object({
     id: identifier,
     thaiRaw: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+    targetText: z
+      .string()
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
+      .nullable()
+      .optional(),
     transcription: nullableText,
   })
   .strict();
@@ -473,6 +513,12 @@ const findingSchema = z
 export const lessonSchema = z
   .object({
     schemaVersion: z.literal(1),
+    /** Identité de la langue cible, ajoutée avec une valeur de compatibilité. */
+    languagePackId: z.enum(LANGUAGE_PACK_IDS).default(DEFAULT_LANGUAGE_PACK_ID),
+    targetLocale: z
+      .string()
+      .regex(/^[a-z]{2,3}(?:-[A-Z]{2})?$/u)
+      .default(thaiFrLanguagePack.targetLocale),
     lessonId: identifier,
     versionId: identifier,
     revision: z.number().int().positive(),
@@ -525,6 +571,17 @@ export const lessonSchema = z
   })
   .strict()
   .superRefine((lesson, context) => {
+    if (
+      lesson.languagePackId === DEFAULT_LANGUAGE_PACK_ID &&
+      lesson.targetLocale !== thaiFrLanguagePack.targetLocale
+    ) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "La locale cible du pack thai-fr doit rester th-TH tant qu'aucun autre pack n'est publie.",
+        path: ["targetLocale"],
+      });
+    }
     const dimensions = lesson.provenance.audits.map(
       ({ dimension }) => dimension,
     );

@@ -1,0 +1,1080 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "d49e3ea7-7b03-53e3-8f48-7b34e2157ab1",
+  "versionId": "5f08c1c3-ab2d-5f9d-ab22-43701cb68ef1",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "สิ et ล่ะ, insister et relancer",
+  "objectiveFr": "à la fin de la leçon, devant douze blocs entendus à débit naturel, l’apprenant reconnaît laquelle des trois écritures proposées il a entendue, sur 9 tirages sur 12 ; il apparie six éléments à ce qu’ils font, 6 sur 6 ; il remet dans l’ordre les blocs de huit énoncés, sur 7 tirages sur 8 ; il écrit en transcription les huit formes du jour, sept à partir du français seul et la huitième à partir de la",
+  "requiredEntitlement": null,
+  "audioManifestId": "2b48e21d-980b-518b-bbaa-eabda09ea63a",
+  "items": [
+    {
+      "id": "abcdfdbc-855d-5beb-b407-54c5108fe5c6",
+      "thaiRaw": "สิ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E34"
+      ],
+      "translationFr": "particule finale ; appuie ce qui précède, pousse à agir après un verbe, ou confirme une réponse",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sì"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สิ",
+          "ipa": "siʔ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        }
+      ],
+      "register": "**aucune étiquette de registre sur l’entrée du dictionnaire normatif, corps de l’entrée lu le 2026-08-04.** L’entrée ne porte pas non plus d’étiquette grammaticale. Ce champ ne dit donc rien de plus, et surtout pas « familier » : voir la partie 2 du dossier, qui montre par trois contrôles que le script ressort bien les marques quand elles existent.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "36527df3-fa6f-58c6-918c-a8b5ada8c6c2",
+      "thaiRaw": "ซิ",
+      "unicodeCodePoints": [
+        "U+0E0B",
+        "U+0E34"
+      ],
+      "translationFr": "même particule que สิ, autre écriture et autre hauteur",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sí"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ซิ",
+          "ipa": "siʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        }
+      ],
+      "register": "**aucune étiquette de registre sur l’entrée groupée du dictionnaire normatif ni sur en.wiktionary, les deux corps lus le 2026-08-04.** Enseignée en RECONNAISSANCE seule, décision inscrite à la page 8.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "3334b03d-5769-5c01-ae3e-1804c0a5f872",
+      "thaiRaw": "ล่ะ",
+      "unicodeCodePoints": [
+        "U+0E25",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "particule finale ; appuie ce qui vient d’être dit, lui donne plus de poids",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "lâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ล่ะ",
+          "ipa": "laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "l",
+          "final": "aucune"
+        }
+      ],
+      "register": "**aucune étiquette de registre sur l’entrée du dictionnaire normatif, corps de l’entrée lu le 2026-08-04.** L’entrée porte `ว.` et rien d’autre. **Écart déclaré avec `u06-l6e`**, qui écrit « neutre, courant à l’oral » : la seconde moitié de cette valeur n’est portée par aucune étiquette lue, et la note « moins formel que เล่า » d’en.wiktionary ne peut servir que de seconde jambe. 13C ne modifie pas le fichier de l’unité 6 ; voir l’arbitrage 1.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "43ac1650-465b-5166-a0e2-32c92c7ac92d",
+      "thaiRaw": "ลองดูสิ",
+      "unicodeCodePoints": [
+        "U+0E25",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E14",
+        "U+0E39",
+        "U+0E2A",
+        "U+0E34"
+      ],
+      "translationFr": "essayez donc, pour voir",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "lawwng douu sì"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ลองดูสิ",
+          "ipa": "lɔːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ลองดูสิ",
+          "ipa": "duː˧ siʔ˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "aucune étiquette sur les entrées consultées. **Enseigné en RECONNAISSANCE seule**, décision inscrite à la page 8 et motivée par la valeur d’ordre que le dictionnaire donne à สิ après un verbe.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "239195ee-f5aa-56be-92b6-7bfe2ad06834",
+      "thaiRaw": "เอาสิ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E2D",
+        "U+0E32",
+        "U+0E2A",
+        "U+0E34"
+      ],
+      "translationFr": "d’accord ; c’est entendu ; j’en prends",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ao sì"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เอาสิ",
+          "ipa": "ʔaw˧ siʔ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "aucune"
+        }
+      ],
+      "register": "aucune étiquette sur les sources consultées. Production ADMISE avec la particule de politesse, au titre du parti pris déclaré à la page 8, et non au titre d’un fait de registre.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "85e4acb4-35d1-52cf-9233-c7124d0734af",
+      "thaiRaw": "ไม่รู้สิ",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E23",
+        "U+0E39",
+        "U+0E49",
+        "U+0E2A",
+        "U+0E34"
+      ],
+      "translationFr": "je n’en sais rien",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi róuu sì"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่รู้สิ",
+          "ipa": "maj˥˩ ruː˦˥ siʔ˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "aucune étiquette sur les sources consultées. Production ADMISE avec la particule de politesse, même parti pris déclaré qu’à l’item 5.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "678c83e5-67eb-54ce-8ca4-1d033f152280",
+      "thaiRaw": "เข้าใจล่ะ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E43",
+        "U+0E08",
+        "U+0E25",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "ah, j’ai compris",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâo·jai lâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เข้าใจล่ะ",
+          "ipa": "kʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เข้าใจล่ะ",
+          "ipa": "t͡ɕaj˧ laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "aucune"
+        }
+      ],
+      "register": "aucune étiquette sur les sources consultées.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "000b5071-41d4-5b5e-b6f0-b61d1565b52c",
+      "thaiRaw": "แล้วคุณล่ะ",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E25",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "et vous ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew khoun lâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "aucune"
+        }
+      ],
+      "register": "**aucune étiquette de registre lue.** Le bloc n’est pas une vedette du dictionnaire normatif, contrôle du 2026-08-04, et l’entrée de sa dernière syllabe, ล่ะ, porte `ว.` et rien d’autre, corps relevé le même jour. **Écart déclaré avec `u06-l6e`**, dont l’item 2 écrit « neutre (poli avec la particule : แล้วคุณล่ะครับ / แล้วคุณล่ะคะ) » : « neutre » est une affirmation de registre qu’aucune étiquette lue ne porte. Ce que 13C retient de cette valeur est le fait de FORME qu’elle contenait, et il est écrit ici comme tel : le bloc se ferme par ครับ ou par คะ selon qui parle, ce que `u06-l6e` publie et fait produire. 13C ne modifie pas le fichier de l’unité 6 ; voir l’arbitrage 1.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "7ed2c206-3261-55fc-8c8b-2a776cf032c4",
+      "thaiRaw": "ดู",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E39"
+      ],
+      "translationFr": "regarder",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "douu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดู",
+          "ipa": "duː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "thaiRaw": "ไม่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "ne … pas ; non",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "thaiRaw": "ไป",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "aller, partir, se rendre à ; s’éloigner de celui qui parle",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre comme verbe. **Une lecture d’interjection existe** pour ไป employé seul, au sens de « va-t’en » : cet EMPLOI est attesté par deux sources, mais aucune des deux ne porte de marque de registre, et le RID ne l’enregistre pas du tout. La leçon n’affirme donc aucun registre pour cette lecture, et se borne à signaler qu’elle existe. Voir l’incertitude 13.",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "21ff4621-edac-5249-91ba-ef2bdce5358e",
+      "thaiRaw": "ลองดู",
+      "unicodeCodePoints": [
+        "U+0E25",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E14",
+        "U+0E39"
+      ],
+      "translationFr": "essayer, pour voir",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "lawwng douu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ลองดู",
+          "ipa": "lɔːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ลองดู",
+          "ipa": "duː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "35a360c4-b3e1-5cf6-bb44-c4889b366931",
+      "thaiRaw": "เอา",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E2D",
+        "U+0E32"
+      ],
+      "translationFr": "prendre ; vouloir",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เอา",
+          "ipa": "ʔaw˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "thaiRaw": "แล้ว",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27"
+      ],
+      "translationFr": "en fin de phrase, marque que c’est accompli ou que l’état est désormais en place ; se rend en français par « déjà », « maintenant », ou par le seul temps du verbe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้ว",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "2b038b96-36d3-5241-ad09-264337463e3d",
+      "thaiRaw": "เข้าใจ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E43",
+        "U+0E08"
+      ],
+      "translationFr": "comprendre, saisir",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâo·jai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เข้าใจ",
+          "ipa": "kʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เข้าใจ",
+          "ipa": "t͡ɕaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre. Aucune étiquette de registre sur la vedette du RID, aucune colonne d’usage chez VOLUBILIS pour la ligne retenue, aucune chez en.wiktionary, vérifié le 2026-08-04.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u13-l13c-p3",
+      "drawIndex": 1,
+      "id": "f7af3863-9385-53cc-ad1b-ea8eb923a050",
+      "type": "word_order",
+      "itemId": "21ff4621-edac-5249-91ba-ef2bdce5358e",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "881932a2-8020-5d60-b501-03decc4a3b9c",
+          "thaiRaw": "ลองดู",
+          "transcription": null
+        },
+        {
+          "id": "4dccd536-42a4-511c-a09a-285899cc243c",
+          "thaiRaw": "สิ",
+          "transcription": null
+        },
+        {
+          "id": "e77668b2-05c3-5c10-b35e-56718434598a",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "881932a2-8020-5d60-b501-03decc4a3b9c",
+        "4dccd536-42a4-511c-a09a-285899cc243c",
+        "e77668b2-05c3-5c10-b35e-56718434598a"
+      ],
+      "feedback": {
+        "correctFr": "Oui. L’énoncé, puis l’attitude, puis la politesse.",
+        "incorrectFr": "ครับ et ค่ะ ferment la phrase, comme depuis 1E. La particule d’attitude passe donc avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "C’est le bloc que vous dites depuis l’unité 6, et il obéissait déjà à cette règle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule d’attitude en tête",
+            "textFr": "สิ et ล่ะ ne commencent jamais une phrase. Elles s’ajoutent à la fin de ce qui est déjà dit."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13c-p3",
+      "drawIndex": 2,
+      "id": "7aff002e-3bb6-570f-9ed0-bdb046968a15",
+      "type": "word_order",
+      "itemId": "85e4acb4-35d1-52cf-9233-c7124d0734af",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "b00388a5-0606-595b-8bf4-6d84e0461c85",
+          "thaiRaw": "ไม่",
+          "transcription": null
+        },
+        {
+          "id": "1a7821b5-aec5-5bec-a061-e04f19ac898f",
+          "thaiRaw": "รู้",
+          "transcription": null
+        },
+        {
+          "id": "4434615a-f857-5973-85ba-f56d3f74bdfc",
+          "thaiRaw": "สิ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "b00388a5-0606-595b-8bf4-6d84e0461c85",
+        "1a7821b5-aec5-5bec-a061-e04f19ac898f",
+        "4434615a-f857-5973-85ba-f56d3f74bdfc"
+      ],
+      "feedback": {
+        "correctFr": "Oui. L’énoncé, puis l’attitude, puis la politesse.",
+        "incorrectFr": "ครับ et ค่ะ ferment la phrase, comme depuis 1E. La particule d’attitude passe donc avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "C’est le bloc que vous dites depuis l’unité 6, et il obéissait déjà à cette règle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule d’attitude en tête",
+            "textFr": "สิ et ล่ะ ne commencent jamais une phrase. Elles s’ajoutent à la fin de ce qui est déjà dit."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13c-p3",
+      "drawIndex": 3,
+      "id": "1712df64-e14d-5799-87b9-3e8bb4ffdd25",
+      "type": "word_order",
+      "itemId": "2b038b96-36d3-5241-ad09-264337463e3d",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "72ccc8c9-a1c8-5d51-b32f-91d4adac0540",
+          "thaiRaw": "เข้าใจ",
+          "transcription": null
+        },
+        {
+          "id": "82b11584-7237-5baf-9168-cb4be6b94cac",
+          "thaiRaw": "ล่ะ",
+          "transcription": null
+        },
+        {
+          "id": "415783f5-ff5d-5548-924c-9e683940262e",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "72ccc8c9-a1c8-5d51-b32f-91d4adac0540",
+        "82b11584-7237-5baf-9168-cb4be6b94cac",
+        "415783f5-ff5d-5548-924c-9e683940262e"
+      ],
+      "feedback": {
+        "correctFr": "Oui. L’énoncé, puis l’attitude, puis la politesse.",
+        "incorrectFr": "ครับ et ค่ะ ferment la phrase, comme depuis 1E. La particule d’attitude passe donc avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "C’est le bloc que vous dites depuis l’unité 6, et il obéissait déjà à cette règle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule d’attitude en tête",
+            "textFr": "สิ et ล่ะ ne commencent jamais une phrase. Elles s’ajoutent à la fin de ce qui est déjà dit."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13c-p3",
+      "drawIndex": 4,
+      "id": "2d98ebcb-3a71-55c5-ade7-517065e3ff80",
+      "type": "word_order",
+      "itemId": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "8d3555ad-ff7b-5be4-a233-3f35cee05e75",
+          "thaiRaw": "แล้ว",
+          "transcription": null
+        },
+        {
+          "id": "77591844-92b3-5798-8be9-c1a8a6f80377",
+          "thaiRaw": "คุณ",
+          "transcription": null
+        },
+        {
+          "id": "33464bac-64b8-5309-a080-50dc4c954c73",
+          "thaiRaw": "ล่ะ",
+          "transcription": null
+        },
+        {
+          "id": "1e14d3d1-3bbd-5af4-933b-58d8c5e19a42",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "8d3555ad-ff7b-5be4-a233-3f35cee05e75",
+        "77591844-92b3-5798-8be9-c1a8a6f80377",
+        "33464bac-64b8-5309-a080-50dc4c954c73",
+        "1e14d3d1-3bbd-5af4-933b-58d8c5e19a42"
+      ],
+      "feedback": {
+        "correctFr": "Oui. L’énoncé, puis l’attitude, puis la politesse.",
+        "incorrectFr": "ครับ et ค่ะ ferment la phrase, comme depuis 1E. La particule d’attitude passe donc avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "C’est le bloc que vous dites depuis l’unité 6, et il obéissait déjà à cette règle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule d’attitude en tête",
+            "textFr": "สิ et ล่ะ ne commencent jamais une phrase. Elles s’ajoutent à la fin de ce qui est déjà dit."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13c-p3",
+      "drawIndex": 5,
+      "id": "d0ba469a-397a-50ab-adba-babc3aedac1b",
+      "type": "word_order",
+      "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "bc62891f-96a6-5e0c-ac86-72ad5c5f759e",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "c323aafe-27b5-518b-b4ad-96b3e1bdf676",
+          "thaiRaw": "สิ",
+          "transcription": null
+        },
+        {
+          "id": "2a32e245-d65f-5b06-a282-442c56eaefb7",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "bc62891f-96a6-5e0c-ac86-72ad5c5f759e",
+        "c323aafe-27b5-518b-b4ad-96b3e1bdf676",
+        "2a32e245-d65f-5b06-a282-442c56eaefb7"
+      ],
+      "feedback": {
+        "correctFr": "Oui. L’énoncé, puis l’attitude, puis la politesse.",
+        "incorrectFr": "ครับ et ค่ะ ferment la phrase, comme depuis 1E. La particule d’attitude passe donc avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "C’est le bloc que vous dites depuis l’unité 6, et il obéissait déjà à cette règle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule d’attitude en tête",
+            "textFr": "สิ et ล่ะ ne commencent jamais une phrase. Elles s’ajoutent à la fin de ce qui est déjà dit."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13c-p3",
+      "drawIndex": 6,
+      "id": "ba8579b5-a964-5b5c-b5ca-28bec97530cc",
+      "type": "word_order",
+      "itemId": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "b74076d7-4738-5899-b59b-60ae134ceb86",
+          "thaiRaw": "ไม่",
+          "transcription": null
+        },
+        {
+          "id": "97b8e5e5-c670-5903-b0e7-a5547c0f35a8",
+          "thaiRaw": "เข้าใจ",
+          "transcription": null
+        },
+        {
+          "id": "0067e07f-b2ea-52cc-a9d3-aa21f1549e53",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "b74076d7-4738-5899-b59b-60ae134ceb86",
+        "97b8e5e5-c670-5903-b0e7-a5547c0f35a8",
+        "0067e07f-b2ea-52cc-a9d3-aa21f1549e53"
+      ],
+      "feedback": {
+        "correctFr": "Oui. L’énoncé, puis l’attitude, puis la politesse.",
+        "incorrectFr": "ครับ et ค่ะ ferment la phrase, comme depuis 1E. La particule d’attitude passe donc avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "C’est le bloc que vous dites depuis l’unité 6, et il obéissait déjà à cette règle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule d’attitude en tête",
+            "textFr": "สิ et ล่ะ ne commencent jamais une phrase. Elles s’ajoutent à la fin de ce qui est déjà dit."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13c-p3",
+      "drawIndex": 7,
+      "id": "efad11fe-5bbd-5c62-bed5-d1d216565a2e",
+      "type": "word_order",
+      "itemId": "35a360c4-b3e1-5cf6-bb44-c4889b366931",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "ba9331c0-7071-5bfb-810b-ffa9d06234f3",
+          "thaiRaw": "เอา",
+          "transcription": null
+        },
+        {
+          "id": "6e98173c-c768-5692-a01e-4e9c2456a670",
+          "thaiRaw": "สิ",
+          "transcription": null
+        },
+        {
+          "id": "54a2cd93-cb68-54a8-bedc-f0a3c51fb865",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "ba9331c0-7071-5bfb-810b-ffa9d06234f3",
+        "6e98173c-c768-5692-a01e-4e9c2456a670",
+        "54a2cd93-cb68-54a8-bedc-f0a3c51fb865"
+      ],
+      "feedback": {
+        "correctFr": "Oui. L’énoncé, puis l’attitude, puis la politesse.",
+        "incorrectFr": "ครับ et ค่ะ ferment la phrase, comme depuis 1E. La particule d’attitude passe donc avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "C’est le bloc que vous dites depuis l’unité 6, et il obéissait déjà à cette règle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule d’attitude en tête",
+            "textFr": "สิ et ล่ะ ne commencent jamais une phrase. Elles s’ajoutent à la fin de ce qui est déjà dit."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13c-p3",
+      "drawIndex": 8,
+      "id": "4ecfaf90-b674-5995-a5b3-7a452a60e31f",
+      "type": "word_order",
+      "itemId": "7ed2c206-3261-55fc-8c8b-2a776cf032c4",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "c62910dd-9057-597b-8297-2522182f2367",
+          "thaiRaw": "ดู",
+          "transcription": null
+        },
+        {
+          "id": "7678ba75-1adf-56b7-a07d-6dc047b6d3a1",
+          "thaiRaw": "สิ",
+          "transcription": null
+        },
+        {
+          "id": "f8a2685f-7903-54bf-bd1c-6ea59b71ab4b",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "c62910dd-9057-597b-8297-2522182f2367",
+        "7678ba75-1adf-56b7-a07d-6dc047b6d3a1",
+        "f8a2685f-7903-54bf-bd1c-6ea59b71ab4b"
+      ],
+      "feedback": {
+        "correctFr": "Oui. L’énoncé, puis l’attitude, puis la politesse.",
+        "incorrectFr": "ครับ et ค่ะ ferment la phrase, comme depuis 1E. La particule d’attitude passe donc avant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "C’est le bloc que vous dites depuis l’unité 6, et il obéissait déjà à cette règle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule d’attitude en tête",
+            "textFr": "สิ et ล่ะ ne commencent jamais une phrase. Elles s’ajoutent à la fin de ce qui est déjà dit."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "deux mots qui ne traduisent rien",
+      "bodyFr": "La plupart des mots que le parcours vous a donnés se remplacent par un mot français : ดู (douu) par regarder, ไป (pai) par aller. Les deux du jour ne se remplacent par rien. Ils ne disent pas une chose : ils disent comment la phrase est dite.\n\nVous en connaissez déjà de cette espèce, et depuis longtemps : ครับ et ค่ะ ne se traduisent pas davantage, et le parcours les décrit comme des particules, pas comme des mots. Ce qui change aujourd’hui est ce que la particule fait. ครับ et ค่ะ disent comment vous vous adressez à quelqu’un ; สิ et ล่ะ disent comment la phrase elle-même est posée.",
+      "specimen": "ลองดูสิ (lawwng douu sì) · แล้วคุณล่ะ (láeew khoun lâ)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "สิ, ce que le dictionnaire en dit",
+      "bodyFr": "Commençons par ce qui est écrit noir sur blanc dans le dictionnaire normatif, et qui a été lu pour cette leçon plutôt que supposé. สิ se pose **à la fin de la phrase** et sert à **appuyer ce qui vient d’être dit, à le rendre net**. Le même article ajoute une précision qui vaut tout le reste de la page : le mot s’emploie **surtout avec un verbe**, et dans trois valeurs, l’ordre, l’invitation et l’acquiescement.\n\nLe second ouvrage consulté dit la même chose avec d’autres mots : une particule placée en fin de phrase pour marquer la demande, la confirmation ou l’insistance. Les deux se recoupent point par point, et c’est ce recoupement qui autorise cette page.\n\n> สิ · sì · ton BAS, voyelle brève",
+      "specimen": "สิ (sì)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "les deux choses que สิ fait",
+      "bodyFr": "Retenez deux emplois, et pas trois. Ils sortent des deux mêmes ouvrages.\n\n> **Après un verbe, สิ pousse à agir.** > ลองดูสิ · lawwng douu sì · essayez donc, pour voir > ไปสิ · pai sì · vas-y donc > > **Après une réponse, สิ appuie la réponse.** > เอาสิ · ao sì · d’accord, c’est entendu > ไม่รู้สิ · mâi róuu sì · je n’en sais rien\n\nRegardez ce qui change : dans les deux premières, la phrase parle de ce que l’AUTRE doit faire ; dans les deux dernières, elle parle de vous. Cette différence n’est pas décorative, et la page 8 en tire la seule consigne pratique de la leçon.\n\nไม่รู้สิ contient un mot que le parcours ne vous avait pas donné : รู้ (róuu), savoir. Le dictionnaire le glose par trois synonymes dont เข้าใจ, que vous avez appris en 11A. Vous n’avez pas à le produire aujourd’hui, vous avez à le reconnaître dans ce bloc.",
+      "specimen": "ลองดูสิ · เอาสิ · ไม่รู้สิ"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "สิ ou ซิ, le même mot dit à deux hauteurs",
+      "bodyFr": "Voici le genre de fait que le fondamental ne pouvait pas vous donner, et qui rend la langue entendue déroutante. Le dictionnaire range **สิ, ซิ, ซิ่ et ซี sous une seule et même définition**, et renvoie explicitement de l’une à l’autre. Ce sont des écritures du même mot.\n\nSauf qu’elles ne se disent pas pareil.\n\n> สิ · sì · ton BAS > ซิ · sí · ton HAUT\n\n**Et ici ce cours vous donne un fait, pas un calcul, parce qu’il vous doit la vérité sur ce qu’il vous a appris.** Vous savez classer les deux initiales : ส est l’une des neuf consonnes hautes de 4A, ซ l’une des consonnes basses de 5A. Vous savez aussi reconnaître que ces deux syllabes sont MORTES, c’est ce que 10A vous a fait travailler. Mais 10A s’est arrêtée là, et elle l’a écrit : **le ton d’une syllabe morte n’est pas au programme du parcours**, aucune de ses cartes ne vous le demande. Vous ne pouvez donc pas encore calculer ces deux hauteurs, et ce cours ne fera pas semblant du contraire.\n\nLes deux ouvrages consultés donnent les deux hauteurs, l’un par sa transcription phonétique, l’autre par sa notation de ton. Retenez-les comme telles, et retenez surtout que c’est le même mot.\n\n**Ce que ce cours ne peut pas vous dire, et il préfère l’écrire.** Aucune des sources consultées ne dit dans quelle situation on emploie l’une plutôt que l’autre, ni laquelle est la plus fréquente. La seule chose à retenir est de ne pas les prendre pour deux mots différents.",
+      "specimen": "สิ (sì) · ซิ (sí)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "ล่ะ, vous la dites déjà depuis l’unité 6",
+      "bodyFr": "Vous produisez แล้วคุณล่ะ depuis `u06-l6e`. Cette leçon-là vous avait donné le bloc entier et rien de plus, et elle avait écrit pourquoi : le sens de renvoi, « et à propos de vous ? », ne venait que d’un seul ouvrage, ce qui interdisait de l’attribuer à la dernière syllabe. L’article du dictionnaire normatif, lui, avait bien été lu dès ce moment-là, et ce qu’il dit n’a pas changé depuis. Ce qui change aujourd’hui, c’est que ce cours vous le donne comme valeur du mot, et non plus seulement comme valeur du bloc.\n\n> ล่ะ accompagne ce qui vient d’être dit **pour l’appuyer, pour lui donner plus > de poids**.\n\nC’est tout, et c’est déjà beaucoup : ล่ะ n’ajoute aucune information à la phrase, elle en augmente le poids. Le dictionnaire donne pour exemples une exclamation et une question, ce qui montre qu’elle se pose sur les deux.\n\nLe second ouvrage consulté la décrit comme une particule finale de question, d’ordre ou de prière. Les deux se rejoignent sur un point et un seul : **ล่ะ se pose à la fin, et elle appuie**. C’est ce point commun que cette leçon enseigne.",
+      "specimen": "ล่ะ (lâ)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "ล่ะ ailleurs que dans la relance",
+      "bodyFr": "Jusqu’ici vous n’aviez vu ล่ะ que dans แล้วคุณล่ะ, et vous pouviez croire qu’elle voulait dire « et vous ? ». Elle ne veut pas dire cela. C’est le BLOC entier qui vaut « et vous ? », comme `u06-l6e` l’avait déjà écrit, et ล่ะ s’emploie ailleurs.\n\n> เข้าใจล่ะ · khâo·jai lâ · ah, j’ai compris > แล้วคุณล่ะ · láeew khoun lâ · et vous ?\n\nDans la première, personne ne relance personne : ล่ะ pose simplement le poids sur « j’ai compris ». Dans la seconde, c’est l’assemblage แล้ว + คุณ + ล่ะ qui renvoie la question.",
+      "specimen": "เข้าใจล่ะ · แล้วคุณล่ะ"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "où la particule se place, et ce qui vient après",
+      "bodyFr": "Une seule règle de position aujourd’hui.\n\n> La particule d’attitude se pose à la fin de l’énoncé. > La particule de politesse se pose **encore après**.\n\n> เข้าใจ + ล่ะ + ครับ → เข้าใจล่ะครับ > ลองดู + สิ + ค่ะ → ลองดูสิค่ะ\n\nVous connaissiez déjà la moitié de la règle : `u06-l6e` vous fait dire แล้วคุณล่ะครับ et แล้วคุณล่ะคะ, donc la politesse après ล่ะ. Deux ouvrages indépendants donnent l’autre moitié, mais sur d’AUTRES particules d’attitude que celles du jour. Ce cours étend donc l’ordre à สิ et à ล่ะ, et il vous le dit plutôt que de le masquer : aucun des ouvrages consultés ne montre สิ ni ล่ะ suivies d’une particule de politesse.\n\nRien d’autre ne bouge : ไม่ reste devant le mot nié comme en 4D. Pour la particule d’une locutrice, ce cours s’en tient à ce que le parcours a déjà publié : ค่ะ sur une phrase affirmative en 1E, คะ sur une question ou sur une information donnée poliment en 2E. 2E prévient elle-même que ce partage est une simplification, et le dialogue du jour tombe exactement sur son bord, puisqu’une invitation n’est ni l’un ni l’autre.",
+      "specimen": "เข้าใจล่ะครับ · ลองดูสิค่ะ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ce que vous pouvez dire, et ce que vous vous contenterez de reconnaître",
+      "bodyFr": "C’est la page utile de la leçon, et chacune de ses trois lignes s’appuie sur ce qui a été lu, pas sur une impression.\n\n> **À dire sans hésiter : แล้วคุณล่ะครับ / แล้วคุณล่ะคะ.** Vous le faites depuis > l’unité 6, rien ne change, et rien de ce qui a été lu aujourd’hui ne le remet > en cause. > > **À dire si vous voulez, avec la particule de politesse : เอาสิครับ, > ไม่รู้สิครับ.** Ces deux-là parlent de vous. Elles n’ordonnent rien à personne. > C’est un parti pris pédagogique de ce cours, et il est déclaré comme tel : les > sources ne décrivent pas l’effet produit sur la personne en face, ce cours ne > l’invente pas, et il vous propose simplement de commencer par les phrases qui > ne poussent personne. > > **À reconnaître seulement : ลองดูสิ, ไปสิ, ดูสิ, et toutes les formes en ซิ.** > Le motif est écrit dans le dictionnaire : สิ après un verbe s’emploie > **surtout dans une valeur d’ordre**. Dire à quelqu’un ce qu’il doit faire > demande de savoir à qui l’on parle, et ce savoir-là, une leçon ne vous le donne > pas.\n\n« À reconnaître seulement » a un sens précis, et le voici en entier : vous allez les entendre, les lire, les remettre dans l’ordre, et l’exercice 4 vous en fera même écrire la transcription. Ce que ce cours ne vous demande nulle part, c’est de les dire à quelqu’un.\n\nCe cours ne vous dit pas que ces phrases seraient impolies. Il vous dit qu’il n’a rien lu qui permette de l’affirmer, ni de l’exclure, et que c’est exactement la raison de les laisser du côté de l’oreille pour l’instant.\n\nreconnaître)",
+      "specimen": "แล้วคุณล่ะครับ (à dire) · ไม่รู้สิครับ (si vous voulez) · ลองดูสิ (à"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "deux choses que ce cours ne peut pas vous dire",
+      "bodyFr": "Elles sont écrites ici parce que les taire donnerait une fausse impression de maîtrise.\n\n1. **Aucune de ces deux particules ne porte d’étiquette de registre au dictionnaire normatif.** Ce cours ne dira donc pas qu’elles sont familières. Il ne dira pas non plus qu’elles ne le sont pas. Un autre ouvrage consulté note ล่ะ comme « moins formel » qu’une variante, mais la règle de ce cours interdit de fonder un registre sur cette source seule. 2. **Il existe d’autres particules d’attitude**, dont เถอะ, que cette leçon-ci ne traite pas. Aucune consigne d’emploi ne vous est donnée à leur sujet, et vous n’avez rien à en faire aujourd’hui.",
+      "specimen": "สิ (sì) · ล่ะ (lâ)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "deux tons à entretenir, et une paire qui n’est pas au programme",
+      "bodyFr": "Le parcours vous fait entretenir deux couples, et ils sont dans les exercices du jour comme dans toutes les leçons depuis l’unité 9.\n\n> ไหม (mǎi) contre ไม้ (máai) : la voix creuse puis remonte, contre la voix qui > reste perchée. Ces deux-là diffèrent aussi par la longueur, et 1D vous l’avait > dit. > ปา (paa) contre ป่า (pàa) : la voix reste plate, puis elle descend et reste > basse.\n\nLa paire du jour, สิ contre ซิ, en oppose deux autres : bas contre haut. Ce n’est pas un couple que le parcours vous a fait travailler, et ce cours ne prétend pas vous le faire acquérir aujourd’hui. Vous aurez à l’entendre, pas à le produire.\n\n> สิ (sì), en bas · ซิ (sí), en haut",
+      "specimen": "ไหม / ไม้ · ปา / ป่า · สิ / ซิ"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "à vous",
+      "bodyFr": "Dans l’exercice 1, la voix ne ralentira pas, et deux tirages vous demanderont de séparer สิ de ซิ sur la seule hauteur. Dans le dialogue, Paul entend les deux, et ne produit que ce que la page 8 lui autorise.\n\nAprès les exercices, enregistrez-vous en disant แล้วคุณล่ะครับ, puis comparez en A/B avec la voix de référence. Écoutez la dernière syllabe : lâ tombe et s’arrête net, exactement comme le ค่ะ que vous dites depuis 1E. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u13-l13c-p3",
+      "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "mechanic": "word_order",
+      "drawCount": 8,
+      "passRequired": 8,
+      "sampleSize": 8
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "ad248b06-854a-5be8-bee2-df8e8b28a8fc",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1506a711-ab87-58f0-bf24-6ca13378084a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "478480ce-ecbc-5510-9ddb-360398b8d7ed",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6371cf72-a254-5a89-89ff-8e45810f900c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "feb05133-65be-5d41-8785-b358ebb7c25e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "64de8d4d-948c-5790-a420-abee50866fed",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "5d48be68-788d-58d5-9f60-cd99e3ffd2fb",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a1662dd7-ce06-53d1-8369-66663bd04a97",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

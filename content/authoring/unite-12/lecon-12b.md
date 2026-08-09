@@ -737,6 +737,16 @@ partie 2. Rien n’y est décrit autrement que ne le fait la leçon qui l’a pu
   finale ; écrire `hâa` pour « chercher », qui est le nombre cinq ; ajouter un
   point médian par habitude des mots polysyllabiques du parcours.
 
+### Exercice de consolidation textuelle : deux formes attestées (`association`)
+
+- Mécanique : `association`
+- Consigne : « Reliez chaque forme à son sens. »
+- Tirages :
+  1. ปา ↔ « lancer, à la main »
+  2. พา ↔ « emmener »
+- Feedback correct : « Exact. Ces deux formes sont attestées dans cette leçon. »
+- Feedback incorrect : « Relisez la forme et son sens dans cette leçon, puis réessayez. »
+
 ## Dialogue
 
 **Aucun dialogue, et c’est une décision.**

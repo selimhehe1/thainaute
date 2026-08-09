@@ -1,0 +1,563 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "169bc01d-55b4-5de2-bbf6-1e6593f46c83",
+  "versionId": "82d7c9b8-e19d-5bf1-88dd-4e59fe4a8212",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Dire qui on est",
+  "objectiveFr": "à la fin de la leçon, l’apprenant choisit le pronom de première personne qui correspond au locuteur indiqué (ผม pour un homme, ดิฉัน pour une femme dans un échange poli), remet dans l’ordre le bloc construit autour de ชื่อ (pronom, ชื่อ, complément, particule finale), reconnaît à l’écoute la question คุณชื่ออะไรคะ et identifie l’emploi de คุณ devant le nom d’une personne.",
+  "requiredEntitlement": null,
+  "audioManifestId": "1fe475fa-956d-5127-9719-f0b192ee256f",
+  "items": [
+    {
+      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "thaiRaw": "ดิฉัน",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "je, moi (locutrice femme, échange poli)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ec31bb5a-e823-5845-abcf-b97b5875178c",
+      "thaiRaw": "คุณ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E38",
+        "U+0E13"
+      ],
+      "translationFr": "vous (marque de respect) ; devant le nom d’une personne : Monsieur, Madame",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khoun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คุณ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "acb8c73c-3f44-5f8f-a216-4f4a6666d377",
+      "thaiRaw": "ชื่อ",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E37",
+        "U+0E48",
+        "U+0E2D"
+      ],
+      "translationFr": "nom, prénom",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "chûee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ชื่อ",
+          "ipa": "t͡ɕʰɯː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "732389ad-5e92-5e6a-b1d8-3ab3643a6a1c",
+      "thaiRaw": "อะไร",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E30",
+        "U+0E44",
+        "U+0E23"
+      ],
+      "translationFr": "quoi, que, quel (interrogatif) ; également : quelque chose, n’importe quoi",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "à·rai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อะไร",
+          "ipa": "ʔa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อะไร",
+          "ipa": "raj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "fd8dc7fa-f511-562b-a006-4074f91b6bef",
+      "thaiRaw": "มาจาก",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E32",
+        "U+0E08",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "venir de, être originaire de",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "maa·jàak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มาจาก",
+          "ipa": "maː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "มาจาก",
+          "ipa": "t͡ɕaːk̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "e3935789-56d2-5fc9-b0eb-1519af871cd4",
+      "thaiRaw": "ฝรั่งเศส",
+      "unicodeCodePoints": [
+        "U+0E1D",
+        "U+0E23",
+        "U+0E31",
+        "U+0E48",
+        "U+0E07",
+        "U+0E40",
+        "U+0E28",
+        "U+0E2A"
+      ],
+      "translationFr": "la France ; français",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "fà·ràng·sèet"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ฝรั่งเศส",
+          "ipa": "fa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "f",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ฝรั่งเศส",
+          "ipa": "raŋ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ฝรั่งเศส",
+          "ipa": "seːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u02-l2d-p3",
+      "drawIndex": 1,
+      "id": "ad8adc2f-2f9d-55e7-be29-2e519a5cbc99",
+      "type": "word_order",
+      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Claire, une femme, dit d’où elle vient. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "47dfdcf2-e7e2-54ca-ac2e-f53f091c8697",
+          "thaiRaw": "ฝรั่งเศส",
+          "transcription": null
+        },
+        {
+          "id": "ea468cd6-e4f3-5fa7-b7a2-14f39bc939b8",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "bee08223-fa4c-5ebd-9819-c14a2b1d1049",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "666ba36f-218b-57c9-922d-5c0908fb38de",
+          "thaiRaw": "มาจาก",
+          "transcription": null
+        },
+        {
+          "id": "acfa5003-ec4c-5399-a19a-ad7f9a2fdd6e",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "acfa5003-ec4c-5399-a19a-ad7f9a2fdd6e",
+        "666ba36f-218b-57c9-922d-5c0908fb38de",
+        "47dfdcf2-e7e2-54ca-ac2e-f53f091c8697",
+        "ea468cd6-e4f3-5fa7-b7a2-14f39bc939b8"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le pronom ouvre, la particule ferme, et entre les deux vous mettez simplement venir de puis le pays.",
+        "incorrectFr": "Deux repères. Claire est une femme qui se présente poliment : son je est dì·chǎn, pas phǒm. Et la particule de politesse va toujours en dernier.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u02-l2d-p4",
+      "drawIndex": 1,
+      "id": "994d3daa-4ab3-5538-9c0a-440f571cb65e",
+      "type": "reading",
+      "itemId": "ec31bb5a-e823-5845-abcf-b97b5875178c",
+      "skill": "reading",
+      "promptFr": "Vous voyez ce mot juste avant le nom d’une personne. Que signifie-t-il ici ?",
+      "options": [
+        {
+          "id": "cdf341de-70d8-5e5d-97b5-79e85ca80842",
+          "labelFr": "Une marque de respect devant le nom, comme Monsieur ou Madame",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8f50f5b3-292e-506b-8fe6-01e8b772ddc2",
+          "labelFr": "Merci",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "036f5ce4-9b43-54ed-8174-014d564ec50e",
+          "labelFr": "Je",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "cdf341de-70d8-5e5d-97b5-79e85ca80842",
+      "feedback": {
+        "correctFr": "Oui. khoun se place devant le nom d’une personne comme marque d’égard. C’est pour cela qu’il ne se traduit pas simplement par vous.",
+        "incorrectFr": "Comparez avec ขอบคุณ, merci : ce mot-là contient bien khoun, mais commence par ขอบ. Ici khoun est seul, devant un nom : c’est une marque de respect.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u02-l2d-p5",
+      "drawIndex": 1,
+      "id": "e138ec73-c19f-5abd-97ac-59e0e4e9301c",
+      "type": "word_order",
+      "itemId": "ec31bb5a-e823-5845-abcf-b97b5875178c",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Malee, une femme, demande son nom à un client. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "5f43375d-e87c-52ef-ae08-336d579a32a4",
+          "thaiRaw": "อะไร",
+          "transcription": null
+        },
+        {
+          "id": "172d52cd-f25f-5b35-9ec0-4319b173d6cc",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "7f478a68-b9a9-5a03-b551-f37237a7cd62",
+          "thaiRaw": "คุณ",
+          "transcription": null
+        },
+        {
+          "id": "e0119703-aa4a-532c-aef1-bc12ac04514b",
+          "thaiRaw": "คะ",
+          "transcription": null
+        },
+        {
+          "id": "63400603-cdbc-5562-8c62-c5e12ab900e0",
+          "thaiRaw": "ชื่อ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "7f478a68-b9a9-5a03-b551-f37237a7cd62",
+        "63400603-cdbc-5562-8c62-c5e12ab900e0",
+        "5f43375d-e87c-52ef-ae08-336d579a32a4",
+        "e0119703-aa4a-532c-aef1-bc12ac04514b"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le mot quoi se pose là où la réponse ira, juste après ชื่อ. Et c’est la particule finale qui rend la question polie : คะ, parce que c’est une femme qui parle.",
+        "incorrectFr": "Deux repères. อะไร ne se met jamais en tête comme notre quel : il prend la place de la réponse, donc juste après ชื่อ. Et la particule d’une locutrice est คะ, pas ครับ.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "en thaï, « je » dépend de qui parle",
+      "bodyFr": "Le français a un seul « je », valable pour tout le monde. Le thaï, non : le mot que vous employez pour parler de vous dépend de qui vous êtes et du ton de l’échange. Ce n’est pas une difficulté de plus, c’est la même logique que les particules ครับ et ค่ะ que vous connaissez déjà.",
+      "specimen": "ผม / ดิฉัน"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ผม, le « je » d’un homme",
+      "bodyFr": "Un homme qui parle poliment dit ผม. Une seule syllabe, voyelle brève, ton montant : la voix part du bas et remonte, comme dans notre « ah oui ? ».\n\n> ผม > phǒm\n\nDétail qui aide à retenir : le même mot ผม désigne aussi les cheveux. Les deux sens figurent dans les trois sources consultées, ce n’est pas une astuce inventée pour la mémoire.",
+      "specimen": null
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ดิฉัน, le « je » poli d’une femme",
+      "bodyFr": "Une femme qui se présente poliment dit ดิฉัน. Deux syllabes brèves : un ton bas, puis le même ton montant que dans ผม.\n\n> ดิฉัน > dì·chǎn\n\nRegardez la fin du mot : ดิฉัน se termine par ฉัน (chǎn), qui existe seul et qui est aussi un « je ». Ce n’est pas le même mot ni le même usage : ฉัน n’est pas celui d’une première rencontre polie. Thaïnaute vous le fait donc reconnaître, pour que vous ne le preniez pas pour ดิฉัน, mais ne vous le fait pas produire. Qui l’emploie exactement, et dans quelles situations, est une question que nous laissons ouverte tant qu’une grammaire de référence et la revue native ne l’ont pas tranchée.",
+      "specimen": null
+    },
+    {
+      "ordre": 4,
+      "titleFr": "คุณ n’est pas notre « vous »",
+      "bodyFr": "Pour parler à la personne en face, le mot poli est คุณ. Une syllabe brève, ton moyen, tout à plat.\n\n> คุณ > khoun\n\nUn écart avec le « vous » français, confirmé par nos sources indépendantes : คุณ se place devant le nom d’une personne comme une marque d’égard, un peu comme « Monsieur » ou « Madame ». Notre « vous » ne fait jamais cela. Retenez-le comme un mot de respect, pas seulement comme la traduction d’un pronom français. Attention aussi à l’œil : ขอบคุณ (merci) contient คุณ.",
+      "specimen": null
+    },
+    {
+      "ordre": 5,
+      "titleFr": "dire son nom, demander celui de l’autre",
+      "bodyFr": "Le mot « nom » est ชื่อ, voyelle longue et ton descendant. Il s’assemble en un bloc régulier : votre pronom, ชื่อ, votre prénom, votre particule.\n\n> ผมชื่อ … ครับ / ดิฉันชื่อ … ค่ะ > phǒm chûee … khráp / dì·chǎn chûee … khâ\n\nPour poser la question, le thaï ne retourne rien et n’ajoute aucun « est-ce que ». Le mot อะไร (à·rai, « quoi ») vient simplement prendre la place du mot qui manque, là où la réponse se trouverait.\n\n> คุณชื่ออะไรคะ > khoun chûee à·rai khá\n\nMot à mot : « vous, nom, quoi », puis la particule. Une femme ferme sur คะ (khá, ton haut), un homme sur ครับ (khráp). Ne confondez pas ce คะ montant en fin de question avec le ค่ะ descendant de l’affirmation, vu en leçon 1E : la question et la réponse ne portent pas la même particule.",
+      "specimen": null
+    },
+    {
+      "ordre": 6,
+      "titleFr": "dire d’où vous venez, et lâcher le pronom",
+      "bodyFr": "Pour l’origine, vous ajoutez มาจาก, littéralement « venir de ».\n\n> ผมมาจากฝรั่งเศสครับ > phǒm maa·jàak fà·ràng·sèet khráp\n\nTrois tons bas d’affilée dans fà·ràng·sèet : ne remontez sur aucun. Le ฝ se lit comme notre f. Dernière chose, et elle soulage : le pronom n’est pas obligatoire. Une fois que votre interlocuteur sait à qui il parle, une phrase thaïe reste complète et polie sans lui. Nos sources le montrent de deux manières indépendantes : l’une donne des phrases entières sans aucun pronom sujet, l’autre enregistre la même question avec et sans le pronom, avec la même traduction française.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u02-l2d-p3",
+      "promptFr": "Claire, une femme, dit d’où elle vient. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u02-l2d-p4",
+      "promptFr": "Vous voyez ce mot juste avant le nom d’une personne. Que signifie-t-il ici ?",
+      "mechanic": "reading",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u02-l2d-p5",
+      "promptFr": "Malee, une femme, demande son nom à un client. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "d7ce095f-2d4b-53e5-b1c7-51978bf133b4",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "965fc163-22da-56fb-a652-d7282a3f4743",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "5182a817-f9df-5a02-8df1-ba0cb3ca5ce6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c4249744-c79a-545d-b929-ad4c973180f9",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a48c1377-73f4-5a08-a15b-81009cb052ce",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8483f857-8610-5fc4-ae32-c17b9e40d411",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ac4bf8e6-5943-5825-8075-bf0a2338266b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d62eaf77-87d2-5339-a0c5-19728613f79c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

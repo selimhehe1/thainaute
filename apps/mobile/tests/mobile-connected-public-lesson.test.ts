@@ -14,6 +14,10 @@ import {
   type MobileConnectedPublicLessonStore,
 } from "../lib/mobile-connected-public-lesson";
 
+vi.mock("expo-constants", () => ({
+  default: { expoConfig: undefined },
+}));
+
 vi.mock("../lib/sha256", () => ({
   mobileSha256Hex: vi.fn(async () => "a".repeat(64)),
 }));

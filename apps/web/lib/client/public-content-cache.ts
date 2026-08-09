@@ -11,6 +11,7 @@ import {
 } from "@thainaute/sync";
 import Dexie, { type EntityTable } from "dexie";
 
+import { getWebPublicContentCacheDatabaseName } from "../language-pack";
 import { browserSha256Hex } from "./sha256";
 
 export const WEB_PUBLIC_CONTENT_CACHE_DATABASE_NAME =
@@ -161,7 +162,7 @@ export class WebPublicContentCache {
   readonly #sha256Hex: PublicContentSha256Hex;
 
   public constructor(
-    databaseName: string = WEB_PUBLIC_CONTENT_CACHE_DATABASE_NAME,
+    databaseName: string = getWebPublicContentCacheDatabaseName(),
     sha256Hex: PublicContentSha256Hex = browserSha256Hex,
   ) {
     this.#database = openDatabase(databaseName);

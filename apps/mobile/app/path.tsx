@@ -278,14 +278,14 @@ export default function LearningPathScreen() {
         </View>
 
         <View style={styles.futureCard}>
-          <Text style={styles.futureEyebrow}>UNITÉS FUTURES · BLOQUÉES</Text>
+          <Text style={styles.futureEyebrow}>COURS LINGUISTIQUES</Text>
           <Text style={styles.futureTitle}>
-            Le parcours ne prétend pas être complet.
+            Publication encore verrouillée.
           </Text>
           <Text style={styles.body}>
-            Les prochaines unités resteront indisponibles jusqu’à ce que les
-            décisions produit soient tranchées et les contenus linguistiques
-            audités.
+            Aucun cours réel n’est embarqué dans cette version. La prochaine
+            unité apparaîtra seulement après validation de toutes ses sources,
+            de ses audits et de ses médias.
           </Text>
         </View>
       </ScrollView>
@@ -461,4 +461,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#283450",
   },
   primaryText: { color: "white", fontSize: 16, fontWeight: "800" },
+  pilotButton: {
+    minHeight: 48,
+    marginTop: 18,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 999,
+    backgroundColor: "#236b58",
+  },
+  pilotText: { color: "white", fontSize: 15, fontWeight: "800" },
 });

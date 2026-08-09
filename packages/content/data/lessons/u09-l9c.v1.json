@@ -1,0 +1,947 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "eaab6244-1f49-527e-8391-de40a4621ee0",
+  "versionId": "bea1841a-e6b3-5a38-9f72-1ba302b58e18",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Demander de l’aide",
+  "objectiveFr": "à la fin de la leçon, devant quatre blocs joués à l’écoute, l’apprenant nomme celui qu’il entend sur 7 tirages sur 8 ; devant une situation décrite en français, il choisit le bloc juste sur 5 paires sur 6 ; il construit la demande complète en plaçant les jetons dans l’ordre et en écartant le jeton de trop sur 5 tirages sur 6 ; devant un bloc écrit en thaï, sans audio, il dit ce que ce bloc demande",
+  "requiredEntitlement": null,
+  "audioManifestId": "9177c391-fbd4-5cea-8067-43192c4c5f80",
+  "items": [
+    {
+      "id": "280e24b9-a49d-5305-afa3-7bc2bd70588f",
+      "thaiRaw": "ช่วย",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E48",
+        "U+0E27",
+        "U+0E22"
+      ],
+      "translationFr": "aider ; secourir",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "chôuai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ช่วย",
+          "ipa": "t͡ɕʰua̯j˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre pour les sens enseignés. Aucune étiquette de registre sur la vedette du RID, aucune chez VOLUBILIS **pour la ligne retenue `C086`**, aucune chez en.wiktionary, vérifié le 2026-08-04. La réserve est nécessaire : la même graphie porte chez VOLUBILIS l’entrée `C3166`, colonne USAGE `(obsol.)`, qui correspond au sens (๑) que le RID étiquette (โบ) et que la leçon n’enseigne pas. Correction du contre-audit du 2026-08-04, l’item écrivait auparavant « aucune chez VOLUBILIS » sans réserve.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "8edd02a7-0de9-5821-8cff-5552a7f43842",
+      "thaiRaw": "ด้วย",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E49",
+        "U+0E27",
+        "U+0E22"
+      ],
+      "translationFr": "posé à la fin d’un mot ou d’un énoncé, marque la demande ou la prière",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dôuai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ด้วย",
+          "ipa": "dua̯j˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "j"
+        }
+      ],
+      "register": "neutre. Aucune étiquette de registre sur la vedette du RID ni chez VOLUBILIS pour la ligne retenue, vérifié le 2026-08-04.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "d2a24ef6-15b0-53c0-b942-277729c1dae5",
+      "thaiRaw": "ช่วยด้วย",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E48",
+        "U+0E27",
+        "U+0E22",
+        "U+0E14",
+        "U+0E49",
+        "U+0E27",
+        "U+0E22"
+      ],
+      "translationFr": "au secours ; à l’aide",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "chôuai dôuai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ช่วยด้วย",
+          "ipa": "t͡ɕʰua̯j˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ช่วยด้วย",
+          "ipa": "dua̯j˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "j"
+        }
+      ],
+      "register": "aucun registre n’est attaché à ce bloc par les sources consultées. Ni le RID, qui le cite comme exemple sans étiquette, ni VOLUBILIS, ni en.wiktionary ne lui donnent de marque de familiarité ou de vulgarité, vérifié le 2026-08-04. La leçon ne le qualifie donc PAS de familier, et pas davantage de poli ou d’impoli : la page 3 dit seulement qu’il ne porte ni หน่อย ni particule finale, ce qui est un fait de FORME, vérifiable à l’écran, et non un jugement de registre. Correction du contre-audit du 2026-08-04 : la page 3 écrivait « pas une phrase polie », négation de registre qu’aucune source ne porte.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "138151d6-94cd-5d9c-ac28-08316a896849",
+      "thaiRaw": "เรียก",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E23",
+        "U+0E35",
+        "U+0E22",
+        "U+0E01"
+      ],
+      "translationFr": "appeler ; faire venir",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "rîak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เรียก",
+          "ipa": "ria̯k̚˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre, aucune étiquette sur la vedette du RID ni chez VOLUBILIS, vérifié le 2026-08-04.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "6ff8fcb4-f3cc-56ff-9ac7-eacecb422a94",
+      "thaiRaw": "หมอ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E21",
+        "U+0E2D"
+      ],
+      "translationFr": "le médecin",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mǎww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หมอ",
+          "ipa": "mɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre au sens enseigné. Le RID ne met aucune étiquette aux deux sens de la vedette « หมอ ๑ ». Il ouvre en revanche une vedette SÉPARÉE, « หมอ ๒ », étiquetée (ปาก), pour un emploi pronominal visant une personne, et en.wiktionary étiquette le même emploi « slang, often derogatory ». Les deux sources concordent, la leçon peut donc énoncer cette réserve : elle n’enseigne pas cet emploi et le signale à la note culturelle.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "25048330-50ce-5122-8b84-cbc1d05b6f48",
+      "thaiRaw": "เรียกหมอ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E23",
+        "U+0E35",
+        "U+0E22",
+        "U+0E01",
+        "U+0E2B",
+        "U+0E21",
+        "U+0E2D"
+      ],
+      "translationFr": "appeler un médecin",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "rîak mǎww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เรียกหมอ",
+          "ipa": "ria̯k̚˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "เรียกหมอ",
+          "ipa": "mɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "thaiRaw": "ขอ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D"
+      ],
+      "translationFr": "demander ; solliciter (et, en tête de phrase, « je voudrais », « puis-je »)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (la politesse vient de หน่อย et de la particule finale)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "447dc926-7127-522f-8144-a796ac6eec11",
+      "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14",
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E08",
+        "U+0E32",
+        "U+0E19",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "deux riz sautés, s’il vous plaît",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww khâao·phàt sǎwwng jaan nàwi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "t͡ɕaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli. Version féminine : ขอข้าวผัดสองจานหน่อยค่ะ, khǎww khâao·phàt sǎwwng jaan nàwi khâ.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "7aad064c-a851-5359-80c0-438e55ed90f3",
+      "thaiRaw": "ขอบคุณครับ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Merci. (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàwwp·khoun khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰɔːp̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰun˧ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u09-l9c-p3",
+      "drawIndex": 1,
+      "id": "7cabc26b-eabb-51d1-ac35-d7a8ccc76cea",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque bloc à la situation où on l’emploie.",
+      "pairs": [
+        {
+          "id": "80f0f67c-3b2a-55c4-9a2f-b076fea2d137",
+          "itemId": "d2a24ef6-15b0-53c0-b942-277729c1dae5",
+          "labelFr": "Vous avez besoin d’aide tout de suite et vous n’avez pas le\n     temps de faire une phrase."
+        },
+        {
+          "id": "fddcb19d-7311-5847-bddf-c7d909a1ad3c",
+          "itemId": "7aad064c-a851-5359-80c0-438e55ed90f3",
+          "labelFr": "La personne vient de vous aider."
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le bloc juste, au bon moment.",
+        "incorrectFr": "Les deux sont polis et se terminent pareil. Regardez le DÉBUT : ขอ demande une chose qu’on vous donne, ช่วย demande une action qu’on fait pour vous.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion 1 et 2",
+            "textFr": "ช่วยด้วย ne dit pas ce qu’il faut faire, il appelle à l’aide. ช่วยเรียกหมอครับ dit exactement quoi faire. Choisissez selon le temps que vous avez."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9c-p4",
+      "drawIndex": 1,
+      "id": "f4b60e76-2e9d-5e1c-b848-27ab9dbc26e8",
+      "type": "word_order",
+      "itemId": "280e24b9-a49d-5305-afa3-7bc2bd70588f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
+      "tokens": [
+        {
+          "id": "fe571030-d69f-500c-bcd9-441a5b04ceca",
+          "thaiRaw": "ช่วย",
+          "transcription": null
+        },
+        {
+          "id": "7ffb40f7-ceb0-5f36-8ce0-71e9bdea9cde",
+          "thaiRaw": "เรียกหมอ",
+          "transcription": null
+        },
+        {
+          "id": "b82c1c37-c172-564c-97b9-555b2976f06c",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "61d1f205-53c6-5752-8f1c-be61d1024f9a",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "fe571030-d69f-500c-bcd9-441a5b04ceca",
+        "7ffb40f7-ceb0-5f36-8ce0-71e9bdea9cde",
+        "b82c1c37-c172-564c-97b9-555b2976f06c"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le bon patron, et le jeton de trop laissé de côté.",
+        "incorrectFr": "Vous avez employé le patron de 2C, celui qui réclame une CHOSE. Ici vous demandez à quelqu’un de FAIRE quelque chose : c’est ช่วย qui ouvre, et ขอ reste de côté.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5 uniquement",
+            "textFr": "Bien vu. ช่วย n’attend pas une chose, il attend une action. น้ำ n’avait rien à faire ici."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ordre fautif",
+            "textFr": "Reprenez l’ossature dans l’ordre : ce qui ouvre la demande, puis ce que vous demandez, puis หน่อย, puis votre particule."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9c-p4",
+      "drawIndex": 2,
+      "id": "8e83b664-c6bc-5a1d-a809-ce6911ba2856",
+      "type": "word_order",
+      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
+      "tokens": [
+        {
+          "id": "e7252bed-2868-59e0-9535-6d5d632143f6",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "87862b12-8106-54cb-868d-4bfcdefcc755",
+          "thaiRaw": "น้ำ",
+          "transcription": null
+        },
+        {
+          "id": "ba50ccb0-1209-5015-9c8c-6f8a228b3f7e",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "99fea2fd-80d9-5e1b-a914-9993bbb11add",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "eb321fe0-78f6-5aca-b78b-a93564d7fb17",
+          "thaiRaw": "ช่วย",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "e7252bed-2868-59e0-9535-6d5d632143f6",
+        "87862b12-8106-54cb-868d-4bfcdefcc755",
+        "ba50ccb0-1209-5015-9c8c-6f8a228b3f7e",
+        "99fea2fd-80d9-5e1b-a914-9993bbb11add"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le bon patron, et le jeton de trop laissé de côté.",
+        "incorrectFr": "Vous avez employé le patron de 2C, celui qui réclame une CHOSE. Ici vous demandez à quelqu’un de FAIRE quelque chose : c’est ช่วย qui ouvre, et ขอ reste de côté.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5 uniquement",
+            "textFr": "Bien vu. ช่วย n’attend pas une chose, il attend une action. น้ำ n’avait rien à faire ici."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ordre fautif",
+            "textFr": "Reprenez l’ossature dans l’ordre : ce qui ouvre la demande, puis ce que vous demandez, puis หน่อย, puis votre particule."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9c-p4",
+      "drawIndex": 3,
+      "id": "4f1dc7fa-48c5-5553-9ac2-4bd85ae5b43a",
+      "type": "word_order",
+      "itemId": "280e24b9-a49d-5305-afa3-7bc2bd70588f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
+      "tokens": [
+        {
+          "id": "b2b6b740-1038-5c77-b9cc-64d2d8eca3d4",
+          "thaiRaw": "ช่วย",
+          "transcription": null
+        },
+        {
+          "id": "b076e136-2ef0-5d88-a6b3-20733fa37400",
+          "thaiRaw": "เรียกหมอ",
+          "transcription": null
+        },
+        {
+          "id": "3cd3dd68-1986-5a46-ade2-fee58e8d3353",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "0a1ce759-7bb9-58fd-93a7-0cf3e56fb287",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "b2b6b740-1038-5c77-b9cc-64d2d8eca3d4",
+        "b076e136-2ef0-5d88-a6b3-20733fa37400",
+        "3cd3dd68-1986-5a46-ade2-fee58e8d3353"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le bon patron, et le jeton de trop laissé de côté.",
+        "incorrectFr": "Vous avez employé le patron de 2C, celui qui réclame une CHOSE. Ici vous demandez à quelqu’un de FAIRE quelque chose : c’est ช่วย qui ouvre, et ขอ reste de côté.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5 uniquement",
+            "textFr": "Bien vu. ช่วย n’attend pas une chose, il attend une action. น้ำ n’avait rien à faire ici."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ordre fautif",
+            "textFr": "Reprenez l’ossature dans l’ordre : ce qui ouvre la demande, puis ce que vous demandez, puis หน่อย, puis votre particule."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9c-p4",
+      "drawIndex": 4,
+      "id": "9f9c0dd8-37f1-58b4-954d-d0f1d48df0d1",
+      "type": "word_order",
+      "itemId": "447dc926-7127-522f-8144-a796ac6eec11",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
+      "tokens": [
+        {
+          "id": "548b6198-3498-5a4c-ad0f-04cc3c695eb9",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "215b3532-291e-53c0-8c11-046940f26ffb",
+          "thaiRaw": "ข้าวผัด",
+          "transcription": null
+        },
+        {
+          "id": "c8abadac-a137-5ea0-8276-83c62a2455a8",
+          "thaiRaw": "สองจาน",
+          "transcription": null
+        },
+        {
+          "id": "bf0b072d-5d11-5593-a0eb-a321c53c44bc",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "b136be5c-ef60-5d60-9432-1071986aee4f",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "5bd07c1c-5844-5fa2-b11c-da3ae764c5a9",
+          "thaiRaw": "ช่วย",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "548b6198-3498-5a4c-ad0f-04cc3c695eb9",
+        "215b3532-291e-53c0-8c11-046940f26ffb",
+        "c8abadac-a137-5ea0-8276-83c62a2455a8",
+        "bf0b072d-5d11-5593-a0eb-a321c53c44bc",
+        "b136be5c-ef60-5d60-9432-1071986aee4f"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le bon patron, et le jeton de trop laissé de côté.",
+        "incorrectFr": "Vous avez employé le patron de 2C, celui qui réclame une CHOSE. Ici vous demandez à quelqu’un de FAIRE quelque chose : c’est ช่วย qui ouvre, et ขอ reste de côté.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5 uniquement",
+            "textFr": "Bien vu. ช่วย n’attend pas une chose, il attend une action. น้ำ n’avait rien à faire ici."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ordre fautif",
+            "textFr": "Reprenez l’ossature dans l’ordre : ce qui ouvre la demande, puis ce que vous demandez, puis หน่อย, puis votre particule."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9c-p4",
+      "drawIndex": 5,
+      "id": "022decf0-9287-5509-a572-24c3b7e6a89d",
+      "type": "word_order",
+      "itemId": "280e24b9-a49d-5305-afa3-7bc2bd70588f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
+      "tokens": [
+        {
+          "id": "92331672-7def-557a-b419-faf926d7a797",
+          "thaiRaw": "ช่วย",
+          "transcription": null
+        },
+        {
+          "id": "7d86b89d-c7b6-553e-8889-2e8c35224023",
+          "thaiRaw": "เรียกหมอ",
+          "transcription": null
+        },
+        {
+          "id": "1eff305b-6072-54f5-8629-087d37469b8c",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "fae64b24-3f70-5bbf-96c9-9f2c7ed6caa7",
+          "thaiRaw": "น้ำ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "92331672-7def-557a-b419-faf926d7a797",
+        "7d86b89d-c7b6-553e-8889-2e8c35224023",
+        "1eff305b-6072-54f5-8629-087d37469b8c"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le bon patron, et le jeton de trop laissé de côté.",
+        "incorrectFr": "Vous avez employé le patron de 2C, celui qui réclame une CHOSE. Ici vous demandez à quelqu’un de FAIRE quelque chose : c’est ช่วย qui ouvre, et ขอ reste de côté.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5 uniquement",
+            "textFr": "Bien vu. ช่วย n’attend pas une chose, il attend une action. น้ำ n’avait rien à faire ici."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ordre fautif",
+            "textFr": "Reprenez l’ossature dans l’ordre : ce qui ouvre la demande, puis ce que vous demandez, puis หน่อย, puis votre particule."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9c-p4",
+      "drawIndex": 6,
+      "id": "6beddc43-5a1e-5098-bd95-ed73f615cfca",
+      "type": "word_order",
+      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
+      "tokens": [
+        {
+          "id": "b5aadce5-704a-5c06-86b6-72f35f30e51a",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "5d7ae1b5-f838-522b-a06f-8f67dd34b407",
+          "thaiRaw": "น้ำ",
+          "transcription": null
+        },
+        {
+          "id": "8b96a17d-f8ae-573e-bf70-632421b08c06",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "57cd6fe8-d0d6-5e4d-ba91-f4b3e2e50cad",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "8c9a83dd-721d-5337-8275-b8acce07ec0e",
+          "thaiRaw": "เรียกหมอ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "b5aadce5-704a-5c06-86b6-72f35f30e51a",
+        "5d7ae1b5-f838-522b-a06f-8f67dd34b407",
+        "8b96a17d-f8ae-573e-bf70-632421b08c06",
+        "57cd6fe8-d0d6-5e4d-ba91-f4b3e2e50cad"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le bon patron, et le jeton de trop laissé de côté.",
+        "incorrectFr": "Vous avez employé le patron de 2C, celui qui réclame une CHOSE. Ici vous demandez à quelqu’un de FAIRE quelque chose : c’est ช่วย qui ouvre, et ขอ reste de côté.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5 uniquement",
+            "textFr": "Bien vu. ช่วย n’attend pas une chose, il attend une action. น้ำ n’avait rien à faire ici."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ordre fautif",
+            "textFr": "Reprenez l’ossature dans l’ordre : ce qui ouvre la demande, puis ce que vous demandez, puis หน่อย, puis votre particule."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "ce que cette leçon fait, et ce qu’elle ne fait pas",
+      "bodyFr": "Aujourd’hui vous apprenez à demander de l’aide et à dire que ça ne va pas, avec des blocs courts que l’on peut sortir sans construire une phrase. C’est une leçon de langue : elle vous donne des mots pour vous faire comprendre. Elle ne contient aucun numéro, aucune consigne de secours et aucun conseil de santé, et elle ne remplace jamais un professionnel.",
+      "specimen": "ช่วยด้วย (chôuai dôuai)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ช่วย, aider",
+      "bodyFr": "ช่วย, c’est aider. Le dictionnaire lui donne cinq sens numérotés. Quatre tournent autour de la même idée, et ce sont ceux que vous apprenez : faire aboutir, soutenir, alléger la charge, tirer quelqu’un du danger. Le cinquième, que le dictionnaire place en premier, est marqué comme vieilli et veut dire tout autre chose ; la leçon ne l’enseigne pas. Retenez d’abord le mot seul, avec son ton qui tombe.",
+      "specimen": "ช่วย (chôuai)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ช่วยด้วย, quand il n’y a pas le temps de faire une phrase",
+      "bodyFr": "Collez ด้วย derrière ช่วย et vous obtenez le bloc qui appelle à l’aide : ช่วยด้วย. C’est un cri, pas une phrase construite : deux syllabes et rien derrière, ni หน่อย ni particule finale. C’est exactement pour ça qu’il est court. Les deux syllabes tombent, l’une après l’autre.",
+      "specimen": "ช่วยด้วย (chôuai dôuai)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "ด้วย, la petite syllabe qui demande",
+      "bodyFr": "ด้วย a plusieurs métiers en thaï, et un seul vous intéresse aujourd’hui : posé à la fin, il transforme un mot en demande. Le dictionnaire le dit avec deux exemples, dont ช่วยด้วย lui-même. Vous n’apprenez donc pas un bloc opaque : vous voyez d’où il vient.",
+      "specimen": "ด้วย (dôuai) puis ช่วยด้วย (chôuai dôuai)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "deux façons de demander, et elles ne se mélangent pas",
+      "bodyFr": "Vous connaissez déjà ขอ … หน่อย depuis 2C, avec ขอน้ำหน่อย. Ce patron demande une CHOSE. ช่วย, lui, ouvre une demande d’ACTION : vous ne réclamez pas un objet, vous demandez à quelqu’un de faire quelque chose. La case qui suit n’est donc pas remplie par la même sorte de mot.\n\n> ขอ + une chose + หน่อย : ขอน้ำหน่อย, de l’eau, s’il vous plaît > ช่วย + une action : ช่วยเรียกหมอ, appelez un médecin",
+      "specimen": "ขอน้ำหน่อย (khǎww náam nàwi) contre ช่วยเรียกหมอ (chôuai rîak mǎww)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "เรียก, faire venir quelqu’un",
+      "bodyFr": "เรียก, c’est appeler au sens de faire venir : on donne de la voix pour que quelqu’un vienne. Le dictionnaire range sous ce sens aussi bien appeler un chien, appeler quelqu’un par son nom, que convoquer une réunion. Vous l’emploierez suivi de la personne que vous voulez faire venir.",
+      "specimen": "เรียก (rîak)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "appeler quelqu’un, ce n’est pas aborder quelqu’un",
+      "bodyFr": "Attention à ne pas confondre deux gestes. เรียก sert à faire VENIR une personne qui n’est pas là. Pour aborder une personne qui est devant vous, vous avez déjà ce qu’il faut depuis 2C : ขอโทษครับ, ขอโทษค่ะ. La leçon d’aujourd’hui n’ajoute rien à ce point, elle vous évite seulement de le mélanger.",
+      "specimen": "ขอโทษครับ (khǎww·thôot khráp) puis เรียกหมอ (rîak mǎww)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "หมอ, le mot qui couvre plus large qu’on ne croit",
+      "bodyFr": "หมอ, c’est le médecin. Le dictionnaire lui donne d’abord un sens plus large, celui de la personne qui sait et qui est experte, puis celui de la personne qui examine et soigne. Les deux sens vivent dans la même graphie, et c’est le contexte qui tranche. Employez-le pour parler DU médecin, comme dans เรียกหมอ.",
+      "specimen": "หมอ (mǎww) · เรียกหมอ (rîak mǎww)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "le bloc complet, et sa mélodie",
+      "bodyFr": "Voici la demande entière, celle qu’il faut savoir sortir d’un trait.\n\n> ช่วยเรียกหมอครับ > chôuai rîak mǎww khráp\n\nÉcoutez la ligne mélodique : ça tombe, ça tombe encore, ça MONTE sur หมอ, puis ça finit HAUT sur ครับ. Le montant de หมอ et le haut de ครับ se suivent immédiatement. Ces deux tons se confondent facilement au début, et ils ne sont pas considérés comme acquis : l’exercice 2 vous dira où vous en êtes.\n\nVous connaissez déjà ce duel depuis 1D, avec หมา le chien contre ม้า le cheval. หมา et หมอ ne se prononcent PAS pareil, la voyelle change : `mǎa` d’un côté, `mǎww` de l’autre. En revanche ils s’écrivent de la même façon, à cette voyelle près, et c’est pour cela qu’ils portent le même ton, montant.\n\nCe qui sépare les deux tons, c’est le DÉPART. Écoutez les deux modèles l’un après l’autre plutôt que de vous fier à une description :\n\n> หมอ (mǎww) part d’en bas > ครับ (khráp) part déjà en haut",
+      "specimen": "ช่วยเรียกหมอครับ · หมอ contre ครับ"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "trois de ces mots se lisent avec ce que vous savez, un non",
+      "bodyFr": "Petit contrôle, parce qu’il est plus honnête que de tout donner sans dire d’où ça vient. ช่วย commence par ช, une basse de 5A, sa syllabe se ferme sur ย donc elle est vivante, et le ไม้เอก sur une basse donne le ton descendant, règle de 7A. ด้วย commence par ด, une moyenne de 1A, et le ไม้โท sur une moyenne donne lui aussi le descendant. หมอ commence par un ห de tête, celui de 3C et de 5A : il ne se prononce pas et fait passer la syllabe sous les règles de la classe HAUTE. Haute, vivante, sans marque : montant, règle de 4A.\n\nEt vous avez déjà le mot témoin pour le vérifier vous-même. หมา, le chien, appris en 1D, s’écrit avec le même ห de tête devant le même ม, une voyelle longue elle aussi, la même syllabe vivante et aucune marque. Il est montant. หมอ n’en diffère que par la voyelle, `aa` devient `aww` : tout ce qui décide du ton est identique, donc le ton l’est aussi. Attention, cela ne veut pas dire que les deux mots se disent pareil : หมา est le chien, หมอ est le médecin, et c’est la voyelle qui fait toute la différence.\n\nเรียก, lui, ne se lit avec aucune règle que vous ayez : sa syllabe se ferme sur ก, donc elle est morte, et le parcours n’a jamais ouvert le ton des syllabes mortes. Son ton descendant vous est donné par les sources et par l’audio.",
+      "specimen": "ช่วย · ด้วย · หมอ · เรียก"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "`ouai`, le noyau du jour",
+      "bodyFr": "ช่วย et ด้วย portent le même noyau, et c’est un noyau neuf pour vous. C’est le `oua` de ตัว, appris en 3D, refermé par un i rapide. Regardez la famille côte à côte, et repérez bien que l’accent de ton tombe toujours sur la PREMIÈRE lettre du noyau, ici le `o`.\n\n> `oua` : ตัว (toua), le noyau seul > `ouai` : ช่วย (chôuai), le même noyau refermé par un i > `awi` : หน่อย (nàwi), un autre noyau refermé par le même i > `aww` : หมอ (mǎww), un noyau long qui ne se referme pas\n\nNe coupez pas `ouai` en deux temps : c’est une seule syllabe, sous un seul ton, comme la glissade de 8A.",
+      "specimen": "ตัว (toua) · ช่วย (chôuai) · หน่อย (nàwi) · หมอ (mǎww)"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "à vous",
+      "bodyFr": "Trois choses à emporter. Le cri court : ช่วยด้วย. La demande posée : ช่วย, puis l’action, puis votre particule. Et la distinction à ne pas perdre : ขอ réclame une chose, ช่วย demande une action.\n\nAprès les exercices, enregistrez-vous en disant ช่วยด้วย puis ช่วยเรียกหมอครับ, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil. Et souvenez-vous de ce que dit la page 1 : ces mots servent à vous faire comprendre, pas à vous soigner.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u09-l9c-p3",
+      "promptFr": "Reliez chaque bloc à la situation où on l’emploie.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u09-l9c-p4",
+      "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "351f57ee-8283-5394-b09d-f8bb7ec9799c",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a609c907-d5e1-505e-87e2-79e8408ebcb0",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ab5abaf9-9e1a-59c7-bf42-1f322a3b03a5",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6f39fac8-205f-509d-b287-40154ff40193",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d0d29ea3-3cd9-5b50-ab1f-c77b81474e39",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f2f93c69-7572-5457-9d14-d1621c5ceba4",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f1750212-462c-56d8-9986-3c7d6819fbae",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "687e32bc-34e0-58b3-b8c4-1c8245beeec9",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

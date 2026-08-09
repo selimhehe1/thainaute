@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "6f3910cf-0841-5e89-b539-aa9dbe0fabbd",
+  "versionId": "7904da52-8a10-5950-aa07-ca341ed1a966",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Reconnaître sans produire",
+  "objectiveFr": "à la fin de la leçon, devant une forme thaïe entendue isolément, l’apprenant désigne parmi trois écritures celle qu’il a entendue, sur 10 tirages sur 12 ; il apparie les huit formes du jour à ce que le dictionnaire normatif dit qu’elles signalent, 8 sur 8 ; devant une forme écrite en thaï, sans transcription et sans l’entendre, il dit ce qu’elle fait dans la phrase, sur 10 tirages sur 11 ; et deva",
+  "requiredEntitlement": null,
+  "audioManifestId": "82653a9a-2001-53eb-9024-99f88c29a4ee",
+  "items": [
+    {
+      "id": "02409488-cf0d-5a27-a47a-c84cef979c89",
+      "thaiRaw": "กู",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E39"
+      ],
+      "translationFr": "je, moi",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kouu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "กู",
+          "ipa": "kuː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "aucune"
+        }
+      ],
+      "register": "**familier, et marqué au-delà.** Reconnaissance seule. Le dictionnaire normatif écrit dans le corps de l’entrée qu’il est aujourd’hui généralement tenu pour impoli ; VOLUBILIS porte `(inf., vulg.)` ; en.wiktionary porte « now considered vulgar and offensive ». Les trois étiquettes ont été lues le 2026-08-04 et sont citées à la ligne `sources`. **Deux jambes indépendantes, pas trois** : la ligne VOLUBILIS porte `RID` en colonne de domaine et redit donc la première source. Finding `DOM-RID-SIX`.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "bad6e567-bb4e-5098-a735-72812045d9f3",
+      "thaiRaw": "มึง",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E36",
+        "U+0E07"
+      ],
+      "translationFr": "tu, toi",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mueng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มึง",
+          "ipa": "mɯŋ˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "ŋ"
+        }
+      ],
+      "register": "**familier, et marqué au-delà.** Reconnaissance seule. Le dictionnaire normatif écrit dans le corps de l’entrée qu’il est généralement tenu pour impoli **ou grossier** ; VOLUBILIS porte `(inf., vulg.)` ; en.wiktionary porte « vulgar, derogatory, offensive ». Étiquettes lues le 2026-08-04, citées à la ligne `sources`. **Deux jambes indépendantes, pas trois**, pour le même motif qu’à l’item 1. Finding `DOM-RID-SIX`.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "8316e77d-6ff4-572c-91b4-4ff25c1e07a8",
+      "thaiRaw": "แก",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E01"
+      ],
+      "translationFr": "tu, toi, adressé à quelqu’un de proche, plus jeune ou de rang inférieur",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kaee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แก",
+          "ipa": "kɛː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "aucune"
+        }
+      ],
+      "register": "**non étiqueté par le dictionnaire normatif.** Reconnaissance seule. **Le sens enseigné ne porte AUCUNE étiquette de registre** : « แก ๒ » sens (๑) donne une clause de relation, **« ซึ่งเป็นผู้ที่สนิทสนม หรือผู้น้อย »**, un interlocuteur avec qui l’on est proche ou un ผู้น้อย, et rien d’autre. L’étiquette **`(ปาก)`**, langue parlée, est posée **sur le sens (๒) seulement**, celui de troisième personne, que cette leçon n’enseigne pas et écarte explicitement. Restent deux marques, et **aucune des deux ne peut servir de première jambe** : VOLUBILIS porte `(inf.)` sur la ligne « tu ; toi », mais cette ligne se déclare elle-même dérivée du dictionnaire normatif (`K=GRAMMA ; RID`, ligne 20934) ; et en.wiktionary étiquette ses trois sens pronominaux « colloquial », dont un « colloquial, derogatory ». Or la section 1 quater de `docs/content-policy/sources-verification.md` réserve `(inf.)` et « colloquial » à la **seconde jambe, jamais à la première**. **Cette fiche ne publie donc aucune affirmation de registre sur แก** : elle publie la clause de relation, lue et citée. Retiré au contre-audit interne du 2026-08-04, finding `REG-KAEE-PORTEE`.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "f9b8d807-5211-50fe-a855-c9dfe355aa6e",
+      "thaiRaw": "มัน",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "il, elle, en parlant d’une personne, sans égard pour elle",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "man"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มัน",
+          "ipa": "man˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "n"
+        }
+      ],
+      "register": "**familier, et marqué au-delà quand il vise une personne.** Reconnaissance seule. Le dictionnaire normatif décrit sous cette vedette un emploi **« สำหรับเรียกผู้อื่นอย่างไม่ยกย่อง »**, pour appeler autrui sans le considérer ; VOLUBILIS porte `(pej., vulg.)` sur la ligne concernée ; en.wiktionary porte « colloquial, derogatory, offensive ». Étiquettes lues le 2026-08-04.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "fd3a5c25-748c-5777-a9d4-9ae2b17bb582",
+      "thaiRaw": "วะ",
+      "unicodeCodePoints": [
+        "U+0E27",
+        "U+0E30"
+      ],
+      "translationFr": "particule de fin de phrase qui marque la familiarité, ou l’impolitesse",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "wá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "วะ",
+          "ipa": "waʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "aucune"
+        }
+      ],
+      "register": "**familier, et marqué au-delà.** Reconnaissance seule. Le dictionnaire normatif écrit qu’en fin de phrase elle marque **« ความคุ้นเคยเป็นกันเองหรือแสดงความไม่สุภาพ »**, la familiarité ou l’impolitesse ; VOLUBILIS la décrit comme particule informelle et impolie de fin de phrase ; en.wiktionary la marque « vulgar, offensive » **sans mentionner la familiarité**. **La divergence de force entre les trois est signalée à la page 7 plutôt que lissée.**",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "676434c9-9143-5d76-be63-413c0781b391",
+      "thaiRaw": "ไอ้",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E2D",
+        "U+0E49"
+      ],
+      "translationFr": "mot qui se place devant le prénom ou le nom d’un homme",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "âi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไอ้",
+          "ipa": "ʔaj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "j"
+        }
+      ],
+      "register": "**familier à double face, et le dictionnaire dit les deux faces.** Reconnaissance seule. Le dictionnaire normatif décrit à la fois un emploi devant le prénom d’un ami marquant **« ความสนิทสนมมาก »**, une très grande proximité, et un emploi **« แสดงความดูหมิ่นเหยียดหยาม »**, marquant le mépris ; en.wiktionary donne la même dualité, avec « (vulgar, derogatory, offensive) » d’un côté et « (slang, vulgar, sometimes considered offensive) used as a familiar or affectionate term of address » de l’autre.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "c9760cd0-ad35-5551-abc6-2781db61756a",
+      "thaiRaw": "อี",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E35"
+      ],
+      "translationFr": "mot qui se place devant le prénom ou le nom d’une femme",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อี",
+          "ipa": "ʔiː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "ʔ",
+          "final": "aucune"
+        }
+      ],
+      "register": "**familier à double face, comme ไอ้, et plus lourdement marqué.** Reconnaissance seule. Le dictionnaire normatif donne à la fois un emploi devant le prénom d’une femme **« แสดงความดูหมิ่นเหยียดหยาม »**, marquant le mépris, et un emploi d’un adulte vers une enfant **« ด้วยความเอ็นดูหรือสนิทสนมเป็นกันเอง »**, avec tendresse ou familiarité ; VOLUBILIS porte `(vulg.)` sur la ligne de préfixe ; en.wiktionary porte « (vulgar, derogatory, offensive) » et, sur un autre sens, « (slang, vulgar, sometimes considered offensive) … familiar or affectionate ».",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "b7f6fcc7-9b67-5724-9a15-34a932b0dfe4",
+      "thaiRaw": "เออ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E2D",
+        "U+0E2D"
+      ],
+      "translationFr": "oui, d’accord",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "oee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เออ",
+          "ipa": "ʔɤː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "ʔ",
+          "final": "aucune"
+        }
+      ],
+      "register": "**non établi, et c’est l’item le plus faiblement étayé du lot.** Reconnaissance seule. **Le dictionnaire normatif ne pose aucune étiquette de registre sur เออ** : son entrée donne une fonction, un mot lancé pour marquer l’accord ou la permission, puis une clause de relation, **« มักเป็นคำที่ผู้ใหญ่ใช้กับผู้น้อย หรือระหว่างเพื่อนที่สนิทสนมกัน »**. Deux conséquences, tirées au contre-audit du 2026-08-04 et appliquées ici : - **aucune affirmation de registre n’est publiée.** en.wiktionary porte bien **« (mostly vulgar) »**, mais la section 1 quater exige que le corps de l’entrée du dictionnaire normatif soit lu et **l’étiquette citée** pour affirmer un registre ; il a été lu, et il n’y a pas d’étiquette. VOLUBILIS n’étiquette pas non plus, sa ligne 64568 ayant une colonne d’usage vide. L’étiquette de en.wiktionary reste donc **seule et sans première jambe**. Finding `PAGE10-CRITERE-EOE`. - **la clause de relation n’est pas publiée non plus**, parce qu’elle est MONO-SOURCÉE : ni en.wiktionary, dont l’entrée entière a été refetchée le 2026-08-04 et ne porte aucune note d’usage, ni VOLUBILIS ne la corroborent. Écart trouvé par le contre-audit interne au-delà du finding, et traité par la même règle que เว้ย et โว้ย à la partie 4.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u13-l13d-p2-m1",
+      "drawIndex": 1,
+      "id": "cd895cdb-309e-5b0d-8dea-db9b9174796c",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Chaque forme de gauche dit quelque chose du rapport entre les personnes. Associez-la à ce qu’elle dit. Touchez une forme, puis l’autre : aucun glisser-déposer n’est nécessaire.",
+      "pairs": [
+        {
+          "id": "4746a7b8-e827-5d4e-aee6-0704f20d73ad",
+          "itemId": "02409488-cf0d-5a27-a47a-c84cef979c89",
+          "labelFr": "je, moi, dans une forme que le dictionnaire donne pour impolie aujourd’hui"
+        },
+        {
+          "id": "ef8b10d9-b398-5f3d-b199-1079ef2731a9",
+          "itemId": "bad6e567-bb4e-5098-a735-72812045d9f3",
+          "labelFr": "tu, toi, dans une forme que le dictionnaire donne pour impolie ou grossière"
+        },
+        {
+          "id": "5cdd993a-3544-5161-b63b-955370301be1",
+          "itemId": "8316e77d-6ff4-572c-91b4-4ff25c1e07a8",
+          "labelFr": "tu, toi, adressé à quelqu’un de proche, plus jeune ou de rang inférieur"
+        },
+        {
+          "id": "2fb05fd9-3b8c-5fc4-86c2-d4fdb66a7506",
+          "itemId": "f9b8d807-5211-50fe-a855-c9dfe355aa6e",
+          "labelFr": "il, elle, en parlant de quelqu’un sans égard pour lui"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui. Vous savez ce que la forme dit du rapport entre les gens, et c’est ce qui compte.",
+        "incorrectFr": "Reprenez la fiche de la forme et relisez ce que ses sources en disent. La réponse y est en toutes lettres, y compris quand ce qu’il y a à retenir est qu’elles ne disent pas la même chose.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paires 6 et 7",
+            "textFr": "Exactement, et retenez la double face : la même forme peut dire une très grande proximité ou du mépris. C’est le lien entre les personnes qui décide, pas le mot."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paire 8",
+            "textFr": "Oui, et c’est la seule des huit dont ce cours ne peut pas vous dire la force. Le dictionnaire normatif ne la marque pas, un autre ouvrage la donne pour vulgaire. On la reconnaît, on ne l’emploie pas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p2-m2",
+      "drawIndex": 1,
+      "id": "b6521c59-bb79-5b30-8e15-dd562583c926",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Chaque forme de gauche dit quelque chose du rapport entre les personnes. Associez-la à ce qu’elle dit. Touchez une forme, puis l’autre : aucun glisser-déposer n’est nécessaire.",
+      "pairs": [
+        {
+          "id": "061ced49-2766-57a9-9e4b-5f9353190c39",
+          "itemId": "fd3a5c25-748c-5777-a9d4-9ae2b17bb582",
+          "labelFr": "à la fin d’une phrase : entre soi, ou impoli"
+        },
+        {
+          "id": "44f0e471-0a5f-5a17-9911-936f3909ab58",
+          "itemId": "676434c9-9143-5d76-be63-413c0781b391",
+          "labelFr": "devant le prénom d’un homme, très proche ou méprisant"
+        },
+        {
+          "id": "34186f88-329f-5fde-a660-80288e75c963",
+          "itemId": "c9760cd0-ad35-5551-abc6-2781db61756a",
+          "labelFr": "devant le prénom d’une femme, très proche ou méprisant"
+        },
+        {
+          "id": "aa4b7a7e-944d-55e4-aaff-641ef8895e18",
+          "itemId": "b7f6fcc7-9b67-5724-9a15-34a932b0dfe4",
+          "labelFr": "oui, d’accord ; les sources ne s’accordent pas sur ce qu’il signale d’autre"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui. Vous savez ce que la forme dit du rapport entre les gens, et c’est ce qui compte.",
+        "incorrectFr": "Reprenez la fiche de la forme et relisez ce que ses sources en disent. La réponse y est en toutes lettres, y compris quand ce qu’il y a à retenir est qu’elles ne disent pas la même chose.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paires 6 et 7",
+            "textFr": "Exactement, et retenez la double face : la même forme peut dire une très grande proximité ou du mépris. C’est le lien entre les personnes qui décide, pas le mot."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paire 8",
+            "textFr": "Oui, et c’est la seule des huit dont ce cours ne peut pas vous dire la force. Le dictionnaire normatif ne la marque pas, un autre ouvrage la donne pour vulgaire. On la reconnaît, on ne l’emploie pas."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous savez parler poliment, vous ne savez pas encore écouter",
+      "bodyFr": "Depuis douze unités, chaque phrase que ce cours vous a apprise était polie, et c’était volontaire : c’est le registre qui vous permet d’entrer dans une conversation sans rien risquer. Les gens autour de vous, eux, ne parlent pas seulement comme ça. Aujourd’hui vous apprenez huit formes que vous entendrez, que vous devez comprendre, et que vous n’emploierez pas.\n\nCe n’est pas de la prudence excessive, c’est une asymétrie réelle : comprendre ne coûte rien, employer engage. Vous allez donc apprendre à reconnaître, et rien de plus.",
+      "specimen": "กู · มึง · แก · มัน"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "les huit formes, d’un coup d’œil",
+      "bodyFr": "Voici tout ce que la leçon vous demande de reconnaître. Quatre pronoms, deux mots qui se posent devant un prénom, un mot qui ferme une phrase, un mot qui répond.\n\n> **กู** · kouu · je, moi > **มึง** · mueng · tu, toi > **แก** · kaee · tu, toi > **มัน** · man · il, elle, en parlant de quelqu’un > **ไอ้ …** · âi · devant le prénom d’un homme > **อี …** · ii · devant le prénom d’une femme > **… วะ** · wá · à la toute fin d’une phrase > **เออ** · oee · une façon de dire oui\n\nRegardez la colonne du milieu une seconde de plus. Six de ces huit formes sont au ton moyen, la voix parfaitement plate. **Rien dans le son ne vous dira qu’elles sont marquées.** C’est exactement pour cela qu’il faut les apprendre.",
+      "specimen": "กู · มึง · แก · มัน · ไอ้ · อี · วะ · เออ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "d’où vient le jugement, et ce n’est pas nous",
+      "bodyFr": "Un cours n’a pas à décider tout seul qu’un mot est impoli. Celui-ci ne le décide pas : il lit. Le dictionnaire normatif du thaï, celui qui sert d’autorité d’orthographe à toutes vos leçons depuis l’unité 1, **porte lui-même ces étiquettes dans le corps de ses entrées**. Il écrit de กู qu’on le tient aujourd’hui pour impoli. Il écrit de มึง qu’on le tient pour impoli, ou grossier. Il écrit de มัน qu’il sert à parler de quelqu’un sans égard.\n\nChacune des huit fiches du jour vous montre, à sa ligne `sources`, la phrase exacte que le dictionnaire écrit, avec la date à laquelle elle a été relevée. Vous pouvez refaire la consultation vous-même.\n\n**Ce que cela ne vous donne pas.** Une étiquette de dictionnaire dit comment un mot est classé, pas ce qui se passe si vous l’employez. Aucune source de ce cours ne décrit cet effet, et le cours ne l’invente pas.",
+      "specimen": "กู · มึง · มัน"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "กู et มึง, la paire que vous entendrez le plus",
+      "bodyFr": "Ces deux-là vont ensemble : l’un dit « je », l’autre dit « tu », et ils s’emploient l’un avec l’autre. **Une seule** des sources consultées les signale l’un par l’autre, le dictionnaire ouvert, dont la note d’usage de chaque entrée renvoie à l’autre mot ; le dictionnaire normatif, lui, ne les met pas en paire.\n\n> กู · kouu · le « je » de cette paire > มึง · mueng · le « tu » de cette paire\n\nLe dictionnaire normatif dit de กู qu’il est aujourd’hui généralement tenu pour impoli, et de มึง qu’il est tenu pour impoli **ou grossier**. Le dictionnaire ouvert consulté écrit de กู « aujourd’hui tenu pour vulgaire et offensant », et de มึง « vulgaire, dépréciatif, offensant ». La base franco-thaïe marque bien les deux `(inf., vulg.)`, mais ses deux lignes se déclarent tirées du dictionnaire normatif : elle redit la première source au lieu de s’y ajouter. **Ce sont donc deux sources indépendantes qui concordent, pas trois**, et c’est déjà beaucoup pour un jugement de ce genre.\n\nÀ l’oreille : kouu est simplement k, ou tenu, voix plate ; mueng a la voyelle lèvres étirées de นึ่ง dans หนึ่ง, appris en 3B, avec la même rime exactement, et un ton moyen au lieu du ton bas.\n\n**Ce que vous en faites : rien.** Vous entendez กู, vous savez que la personne parle d’elle-même. Vous, vous continuez à dire ผม ou ดิฉัน.",
+      "specimen": "กู · มึง · หนึ่ง (repère de rime)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "แก, la plus trompeuse des quatre",
+      "bodyFr": "แก est un « tu », et c’est le mot qu’un apprenant risque le plus d’attraper au vol, parce qu’il est court, très fréquent, et qu’il n’a l’air de rien.\n\nLe dictionnaire normatif en dit deux choses, et il faut les distinguer. Sous sa première valeur, c’est un « tu » adressé à quelqu’un **avec qui l’on est proche**, ou à quelqu’un de plus jeune ou de rang inférieur. Sous une seconde valeur, étiquetée `(ปาก)`, langue parlée, c’est un « il, elle ». **L’étiquette `(ปาก)` porte sur la seconde valeur, pas sur la première** ; le cours le signale plutôt que de laisser croire que tout l’article est marqué de la même façon.\n\n**Et voici ce que cela veut dire, écrit plutôt que masqué : sur la valeur que vous apprenez ici, le dictionnaire normatif ne pose aucune étiquette de registre.** Il décrit un rapport entre deux personnes, et il s’arrête là. Le dictionnaire ouvert consulté, lui, donne trois sens tous étiquetés « colloquial », dont l’un ajoute « dépréciatif », et la base franco-thaïe marque « informel ». **Ce cours ne transforme donc pas แก en mot impoli** : il vous dit qui l’emploie vers qui, ce qui est tout ce que sa source principale écrit, et il vous laisse la même prudence que pour les sept autres.\n\n> แก · kaee · toi, vers quelqu’un de proche, plus jeune ou de rang inférieur > แก้ว · kâeew · un verre, appris en 4C\n\nPiège de lecture, et il est réel : แก et แก้ว commencent par les deux mêmes lettres. Ce qui les sépare tient dans les deux signes de fin de แก้ว, la marque de ton ไม้โท posée sur le ก et le ว qui ferme la syllabe. Si vous lisez trop vite, vous lirez « verre » là où il y a un pronom.",
+      "specimen": "แก · แก้ว"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "มัน, quand on parle de quelqu’un",
+      "bodyFr": "Vous avez appris เขา en 6C pour dire « il, elle ». มัน dit la même chose, et pas du tout de la même façon.\n\n> เขา · khǎo · il, elle > มัน · man · il, elle, sans égard\n\nLe dictionnaire normatif range sous มัน un pronom de troisième personne employé d’un supérieur vers un plus jeune, employé **pour parler d’autrui sans le considérer**, et employé pour les animaux et les choses en général. La base franco-thaïe marque cette ligne-là `(pej., vulg.)`. Le dictionnaire ouvert distingue quatre valeurs, dont deux portent « dépréciatif, offensant ».\n\nÀ l’oreille, man n’a rien de particulier : m, a bref, n prononcé, voix plate. C’est exactement le piège de คน vu en 3D, dont l’item dit déjà qu’on ne nasalise pas la finale à la française.\n\n**Ce que vous en faites : rien.** Vous continuez à dire เขา.",
+      "specimen": "เขา · มัน · คน"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "วะ, la marque qui tient en une syllabe",
+      "bodyFr": "Celle-ci se pose à la toute fin, exactement à la place où vous posez ครับ ou ค่ะ depuis 1E. Elle n’ajoute aucune information : elle dit le rapport entre les deux personnes.\n\n> … ครับ · … khráp · la politesse que ce cours vous a apprise > … วะ · … wá · entre soi, ou franchement impoli\n\nLe dictionnaire normatif écrit que วะ, en fin de phrase, marque **la familiarité ou l’impolitesse**, les deux à la fois dans la même ligne. La base franco-thaïe la décrit comme une particule informelle et impolie placée en fin de phrase, souvent une question. Le dictionnaire ouvert consulté la marque, lui, « vulgaire, offensant », sans mentionner la familiarité. **Les trois ne disent donc pas la même force, et le cours ne choisit pas à leur place** : il vous dit que les trois la marquent, et que la plus sévère des trois la donne pour offensante.\n\nÀ l’oreille, c’est la syllabe de คะ, enseignée en 2B et reprise en 2E, à l’attaque près : même voyelle très brève, même ton haut. wá et khá se répondent exactement.",
+      "specimen": "… วะ · … คะ · … ครับ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ไอ้ et อี, devant un prénom",
+      "bodyFr": "Ces deux-là ne sont pas des pronoms. Ils se collent **devant un prénom**, l’un pour un homme, l’autre pour une femme.\n\n> ไอ้ … · âi … · devant le prénom d’un homme > อี … · ii … · devant le prénom d’une femme\n\nEt voici ce qui les rend difficiles, dit par le dictionnaire normatif lui-même : la même forme sert à marquer **une très grande proximité** entre amis, et à marquer **le mépris**. Le même mot, deux directions opposées, et c’est le lien entre les personnes qui décide, pas le mot. Le dictionnaire ouvert consulté dit exactement la même dualité : il donne un sens « vulgaire, dépréciatif, offensant » et un sens d’adresse « familière ou affectueuse ».\n\nC’est la raison pour laquelle ces deux formes-là sont, de tout le lot, celles qu’un étranger débutant a le moins de chances d’employer correctement : il faudrait non seulement connaître le mot, mais connaître exactement la relation. Vous, vous avez déjà คุณ, que 2D vous donne pour se placer devant le nom d’une personne.\n\nPiège de lecture : อี et อีก commencent pareil. อีก, appris dans อีกที en 11A, se ferme par un ก qui se retient. อี s’arrête avant.",
+      "specimen": "ไอ้ … · อี … · คุณ …"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "เออ, le « oui » que ce cours ne peut pas remplacer",
+      "bodyFr": "Celle-ci est la plus fréquente des huit dans les relevés de sous-titres, et de loin. Vous l’entendrez énormément.\n\n> เออ · oee · oui, d’accord\n\nLes trois sources s’accordent sur une seule chose : c’est un mot qu’on lance pour marquer l’accord. **Sur tout le reste, elles divergent, et c’est l’item du jour dont ce cours est le moins sûr.** Le dictionnaire normatif ne pose sur เออ aucune étiquette de registre, alors qu’il en pose sur d’autres mots de cette leçon ; le dictionnaire ouvert consulté le marque « surtout vulgaire » ; la base franco-thaïe ne le marque pas du tout.\n\n**Ce que le cours en fait, et il préfère vous le dire.** Il ne vous annonce pas que เออ est impoli, parce que sa source principale ne l’écrit pas. Il ne vous annonce pas non plus qu’il ne l’est pas, parce qu’une autre source dit le contraire. Vous apprenez donc à le reconnaître, et vous le laissez à ceux qui l’emploient : c’est la seule position que les sources permettent de tenir.\n\n**Et voici ce que ce cours ne peut pas vous donner, et il préfère l’écrire.** Il n’a jamais publié de mot pour « oui ». `u11-l11a` le note déjà dans son dialogue : Paul ne dit « oui » à aucun moment, il répond en reprenant la phrase. Il n’existe donc, dans tout ce que vous avez appris, **aucun équivalent poli de เออ**, et le cours n’en invente pas un pour la symétrie. Répondez comme le parcours vous l’a appris : en reprenant, ou avec votre particule.\n\nLa voyelle est celle de เธอ et de เจอ, apprise en 6A : `oee`, longue, la bouche ni tout à fait sur un « e » ni tout à fait sur un « eu ».",
+      "specimen": "เออ · เธอ · เจอ"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "deux formes que vous connaissez déjà, et qui ne sont pas dans ce lot",
+      "bodyFr": "Vous avez déjà rencontré deux pronoms que vos leçons appelaient « familiers » : ฉัน en 2D et เธอ en 6A. Ils ne sont pas dans le lot du jour, et la différence mérite d’être dite exactement, parce qu’elle est plus fine qu’elle n’en a l’air.\n\n> ฉัน · chǎn · je, moi, publié en reconnaissance dès 2D > เธอ · thoee · toi, entre proches, publié en 6A\n\n**Aucune des sources consultées ne pose sur ฉัน ni sur เธอ une étiquette d’impolitesse.** Elles disent que ces mots s’emploient entre égaux ou vers quelqu’un de plus jeune ou de rang inférieur, ce qui est une information de relation, pas un jugement.\n\n**Six des huit formes du jour, elles, reçoivent bien un jugement, et c’est le dictionnaire normatif qui l’écrit** dans le corps de l’entrée : กู et มึง y sont donnés pour impolis, มึง aussi pour grossier, มัน pour employé sans égard, วะ pour impoli, ไอ้ et อี pour méprisants. Voilà la vraie frontière.\n\n**Les deux qui restent, แก et เออ, ne reçoivent aucun jugement de ce dictionnaire-là**, et ce cours ne va pas faire semblant du contraire. Elles sont dans la leçon parce que vous les entendrez sans arrêt, et parce qu’au moins un des deux autres ouvrages consultés les marque, pas parce que la source principale les condamne.\n\nSur แก, vous savez au moins qui l’emploie vers qui : deux sources le disent, et vous êtes exactement au même point que sur ฉัน et เธอ. **Sur เออ, vous ne savez même pas cela** : une seule source le marque, une seule décrit le rapport entre les personnes, et aucune des deux n’est confirmée par l’autre. C’est la forme du jour dont ce cours est le moins sûr, et la page 9 vous l’a dit.\n\nCe que vos leçons vous en disaient déjà tient encore : 2D écrit que ฉัน est « présenté en reconnaissance seulement », et 6A consacre une page entière au fait que เธอ ne remplace pas คุณ devant un inconnu. La leçon d’aujourd’hui n’annule rien de tout cela : elle l’étend.",
+      "specimen": "ฉัน · เธอ · คุณ"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "ce que vous dites, vous",
+      "bodyFr": "Rien ne change de votre côté. Voici les correspondances, et toutes les formes de droite ont déjà leur fiche dans le parcours.\n\n> กู → ผม (un homme) · ดิฉัน (une femme), 2D > มึง → คุณ, 2D > แก → คุณ, 2D > มัน → เขา, 6C > … วะ → … ครับ (un homme) · … คะ (une femme, en question), 1E et 2B > ไอ้ … · อี … → คุณ … , 2D, qui se place devant le nom d’une personne > เออ → **rien.** Ce cours n’a pas de mot pour « oui », il ne vous en donne pas.\n\nC’est la seule chose que l’exercice 4 vous fera écrire aujourd’hui : la forme de DROITE. Aucun exercice ne vous fera écrire une forme de gauche.",
+      "specimen": "ผม · ดิฉัน · คุณ · เขา · ครับ · คะ"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "ce que ce cours ne vous dit pas, et à vous",
+      "bodyFr": "Trois choses, écrites plutôt que comblées.\n\n**Il ne vous dit pas qui parle ainsi.** Une étiquette de dictionnaire classe un mot ; elle ne décrit ni un groupe de gens, ni un âge, ni une région. Ce cours n’a aucune source pour cela et n’en fabrique pas.\n\n**Il ne vous dit pas ce qui arriverait si vous les employiez.** Personne ne lui a donné de source là-dessus non plus.\n\n**Il ne vous promet pas de vous faire parler comme un natif.** Ce que la leçon vous donne est plus modeste et plus utile : vous ne serez plus perdu quand une conversation quittera le registre du manuel, et vous saurez que vous avez le choix de ne pas la suivre.\n\nDans les exercices, vous entendrez et vous lirez les huit formes, toujours isolées, jamais dans une phrase que le cours aurait fabriquée. Vous ne les direz pas : l’enregistrement et la comparaison A/B sont désactivés aujourd’hui, et c’est volontaire.",
+      "specimen": "กู · มึง · แก · มัน · ไอ้ · อี · วะ · เออ"
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u13-l13d-p2-m1",
+      "promptFr": "Chaque forme de gauche dit quelque chose du rapport entre les personnes. Associez-la à ce qu’elle dit. Touchez une forme, puis l’autre : aucun glisser-déposer n’est nécessaire.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u13-l13d-p2-m2",
+      "promptFr": "Chaque forme de gauche dit quelque chose du rapport entre les personnes. Associez-la à ce qu’elle dit. Touchez une forme, puis l’autre : aucun glisser-déposer n’est nécessaire.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN"
+    ],
+    "generationActors": [
+      {
+        "actorId": "2b595921-d9fe-52d0-8e75-6ac64251017f",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "dc5e42d2-aa53-5d69-aade-423a99cba94c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a59c561e-e6fd-5ed9-b9f0-4aa9fcdc011f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f8546da9-5045-5dd0-a819-e00b949c6da4",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e5fd787a-6c08-5648-9bdc-8d6a57933f00",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3ad911db-ca1f-5148-88d8-a6a7226eb663",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "513437c7-4a18-5d30-aa0c-3c3f8d2c088e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "103f9694-f6e4-522c-92c4-23be918afbcf",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

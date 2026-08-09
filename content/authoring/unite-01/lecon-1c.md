@@ -53,6 +53,25 @@ Ensuite, demande-toi seulement si la syllabe entendue est sur la ligne ou
 en dessous. Tu retrouveras คา et ข่า, déjà croisés en 1A : cette fois, tu
 sais exactement ce que tu cherches.
 
+### Page 5. Le transfert : mesurer l'écart, pas la note
+
+Avant chaque réponse, imaginez une ligne horizontale à votre hauteur habituelle
+et écoutez le début de la syllabe. Ne poussez pas la voix vers le bas pour
+imiter le ton bas : gardez le même volume et comparez seulement sa place à la
+ligne. Ensuite, reformulez votre observation en deux mots : « ligne » ou « en
+dessous ». Cette petite phrase vous oblige à écouter le contraste plutôt qu'à
+deviner le sens français.
+
+### Page 6. Le sens doit voyager avec la hauteur
+
+Rejouez ensuite la paire ปา (paa, « lancer ») / ป่า (pàa, « forêt ») sans
+regarder la transcription. Pour chaque mot, rappelez d'abord le sens en
+français, placez votre voix sur la ligne ou en dessous, puis dites le mot une
+fois. Le but n'est pas encore de construire une phrase : c'est d'empêcher
+que le ton appris reste attaché à une syllabe vide. Quand la paire revient en
+SRS, le sens et la hauteur doivent se rappeler ensemble, même si la question
+posée ne demande qu'une seule des deux informations.
+
 ## Items
 
 ### Item 1
@@ -250,7 +269,6 @@ sais exactement ce que tu cherches.
   (ton moyen) ou en dessous (ton bas) ? »
 - Options (identiques à chaque écoute) : « Ton moyen » / « Ton bas »
 - Séquence (6 écoutes ; les 3 premières utilisent la version audio à
-  contraste exagéré, les 3 dernières la version normale) :
 
 | #   | Audio      | Variante | Réponse correcte |
 | --- | ---------- | -------- | ---------------- |

@@ -1,0 +1,655 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "dea12c41-bf6f-5666-ac6c-c6d3652b8387",
+  "versionId": "96d2797e-c3a9-5821-8f9b-d1f07e0a31fd",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Saluer selon le moment et la personne",
+  "objectiveFr": "à la fin de la leçon, l’apprenant choisit le bloc de salutation complet (mot plus particule) qui convient à trois situations distinctes, saluer, demander comment va la personne, répondre que tout va bien, et il distingue à l’écoute la particule de question คะ de la particule d’affirmation ค่ะ chez une locutrice.",
+  "requiredEntitlement": null,
+  "audioManifestId": "24d3d94f-27c6-5695-9f58-1747b672753e",
+  "items": [
+    {
+      "id": "7324f3fd-7232-52c2-b3e1-7f99acd8f0a7",
+      "thaiRaw": "ไหว้",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E2B",
+        "U+0E27",
+        "U+0E49"
+      ],
+      "translationFr": "le wai, geste de salut et de respect mains jointes ; saluer par ce geste",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "wâai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไหว้",
+          "ipa": "waːj˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "w",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "f556b70a-d01b-5013-9b6a-7357c7edcc2e",
+      "thaiRaw": "สวัสดีครับ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E27",
+        "U+0E31",
+        "U+0E2A",
+        "U+0E14",
+        "U+0E35",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "bonjour (locuteur homme) ; sert aussi à prendre congé",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·wàt·dii khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สวัสดีครับ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สวัสดีครับ",
+          "ipa": "wat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "สวัสดีครับ",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สวัสดีครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8b32a212-1410-5b5e-9a05-caccd46ee262",
+      "thaiRaw": "สวัสดีค่ะ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E27",
+        "U+0E31",
+        "U+0E2A",
+        "U+0E14",
+        "U+0E35",
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "bonjour (locutrice femme) ; sert aussi à prendre congé",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·wàt·dii khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สวัสดีค่ะ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สวัสดีค่ะ",
+          "ipa": "wat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "สวัสดีค่ะ",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สวัสดีค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b67231cc-60a6-5a0f-be22-5f1cac35dd0c",
+      "thaiRaw": "สบายดีไหมครับ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E14",
+        "U+0E35",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "vous allez bien ? (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·baai·dii·mǎi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สบายดีไหมครับ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีไหมครับ",
+          "ipa": "baːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีไหมครับ",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีไหมครับ",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีไหมครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "85686c30-f54d-5605-bd3f-4a1dde086d5a",
+      "thaiRaw": "สบายดีไหมคะ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E14",
+        "U+0E35",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21",
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "vous allez bien ? (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·baai·dii·mǎi khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สบายดีไหมคะ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีไหมคะ",
+          "ipa": "baːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีไหมคะ",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีไหมคะ",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีไหมคะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1bd5e25a-f055-57f2-b744-922fd86360d0",
+      "thaiRaw": "สบายดีครับ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E14",
+        "U+0E35",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "je vais bien (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·baai·dii khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สบายดีครับ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีครับ",
+          "ipa": "baːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีครับ",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "bd6023ed-d364-5d53-9bf4-441a5c07bbad",
+      "thaiRaw": "สบายดีค่ะ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E14",
+        "U+0E35",
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "je vais bien (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·baai·dii khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สบายดีค่ะ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีค่ะ",
+          "ipa": "baːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีค่ะ",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "d699b650-7e3f-5cb4-bb5b-2068624b2adf",
+      "thaiRaw": "หวัดดี",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E27",
+        "U+0E31",
+        "U+0E14",
+        "U+0E14",
+        "U+0E35"
+      ],
+      "translationFr": "salut (forme familière de สวัสดี)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "wàt·dii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หวัดดี",
+          "ipa": "wat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "หวัดดี",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "familier",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u02-l2b-p2",
+      "drawIndex": 1,
+      "id": "0b38d681-0705-51c9-abc5-8938ed628cb4",
+      "type": "word_order",
+      "itemId": "85686c30-f54d-5605-bd3f-4a1dde086d5a",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Nok, une femme, demande à sa voisine comment elle va. Remettez les blocs dans l’ordre. Attention, un bloc est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "9507991b-672b-554c-a442-8b7c34855435",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "27f5fcf3-94f9-5d8f-b662-35ea1dec3751",
+          "thaiRaw": "ไหม",
+          "transcription": null
+        },
+        {
+          "id": "1dc6072d-0ad2-516f-ba98-ab0af59d3bf6",
+          "thaiRaw": "สบายดี",
+          "transcription": null
+        },
+        {
+          "id": "9a65e8e2-8e32-5537-b25a-77af5cfdfc3e",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "1dc6072d-0ad2-516f-ba98-ab0af59d3bf6",
+        "27f5fcf3-94f9-5d8f-b662-35ea1dec3751",
+        "9a65e8e2-8e32-5537-b25a-77af5cfdfc3e"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le sens d’abord, puis ไหม qui en fait une question, puis คะ parce que Nok est une femme et qu’elle interroge.",
+        "incorrectFr": "Trois repères : สบายดี porte le sens, ไหม transforme la phrase en question, et la particule de politesse ferme toujours le bloc. Il reste à choisir entre ค่ะ et คะ : Nok pose une question.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "un geste avant les mots",
+      "bodyFr": "En Thaïlande, la salutation passe souvent par un geste appelé ไหว้ (wâai) : les deux paumes se joignent. Les dictionnaires le décrivent comme une marque de respect, et ils précisent que la tête s’incline en plus quand une personne plus jeune salue une personne plus âgée ou de rang supérieur. Retenez d’abord ces deux éléments, les mains jointes et le respect exprimé ; le reste de l’étiquette viendra plus tard, quand nous pourrons l’appuyer sérieusement.",
+      "specimen": null
+    },
+    {
+      "ordre": 2,
+      "titleFr": "le bloc entier, particule comprise",
+      "bodyFr": "Vous avez appris สวัสดี avec votre particule dès l’unité 1. On le remet une seconde sous les yeux, parce que cette leçon va lui opposer un second bloc qui lui ressemble beaucoup.\n\n> สวัสดีครับ (un homme parle) > sà·wàt·dii khráp\n\n> สวัสดีค่ะ (une femme parle) > sà·wàt·dii khâ\n\nLes dictionnaires donnent ce bloc pour l’arrivée comme pour le départ : la même politesse ouvre et referme la rencontre.",
+      "specimen": null
+    },
+    {
+      "ordre": 3,
+      "titleFr": "demander comment va la personne",
+      "bodyFr": "Le bloc suivant n’est pas un second bonjour, et sa composition le montre : il est bâti sur สบายดี, « aller bien », auquel s’ajoute ไหม, la petite particule qui transforme une phrase en question fermée.\n\n> สบายดีไหมครับ (un homme parle) > sà·baai·dii·mǎi khráp\n\nÉcoutez la fin : mǎi monte, puis khráp arrive plus haut et se coupe net. Deux mouvements vers le haut qui ne se ressemblent pas.",
+      "specimen": null
+    },
+    {
+      "ordre": 4,
+      "titleFr": "au féminin, la question change de particule",
+      "bodyFr": "Voici le point le plus rentable de la leçon. Une femme qui affirme dit ค่ะ (khâ, ton descendant), mais une femme qui pose une question dit คะ (khá, ton haut).\n\n> สบายดีไหมคะ (une femme parle) > sà·baai·dii·mǎi khá\n\nMême syllabe, même brièveté, direction opposée. Côté masculin, les deux blocs de cette leçon portent la même particule : สบายดีไหมครับ pour la question, สบายดีครับ pour la réponse.",
+      "specimen": null
+    },
+    {
+      "ordre": 5,
+      "titleFr": "répondre que ça va",
+      "bodyFr": "La réponse réemploie exactement le même bloc, débarrassé de sa particule de question.\n\n> สบายดีครับ / สบายดีค่ะ > sà·baai·dii khráp / sà·baai·dii khâ\n\nUne précaution utile : ไม่สบาย (mâi·sà·baai) ne veut pas dire « bof » ni « moyen », les dictionnaires le donnent pour « être malade ». Si vous allez simplement moyennement bien, mieux vaut répondre สบายดี pour l’instant.",
+      "specimen": null
+    },
+    {
+      "ordre": 6,
+      "titleFr": "entre proches",
+      "bodyFr": "Vous croiserez aussi une forme raccourcie de สวัสดี, née de la chute de sa première syllabe.\n\n> หวัดดี > wàt·dii\n\nNos deux sources la marquent familière. Sachez la reconnaître ; à ce stade, ne la produisez pas. La forme polie สวัสดีครับ ou สวัสดีค่ะ est celle qui ne vous mettra jamais en difficulté devant un inconnu, un commerçant ou une personne plus âgée.",
+      "specimen": null
+    },
+    {
+      "ordre": 7,
+      "titleFr": "à vous",
+      "bodyFr": "Vous allez écouter deux particules, reconstruire une question, associer trois blocs à leur emploi et lire un mot. Ensuite, enregistrez-vous en disant สบายดีครับ ou สบายดีค่ะ, puis comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil. Écoutez votre première syllabe : sà est basse, elle ne doit pas démarrer sur la même hauteur que baai.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u02-l2b-p2",
+      "promptFr": "Nok, une femme, demande à sa voisine comment elle va. Remettez les blocs dans l’ordre. Attention, un bloc est de trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "953af253-fe92-55aa-8351-97fa0974354e",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "68d92bc5-61b5-5506-8bb5-f42a64d8722f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "30687ee6-a2a0-5eef-b85a-747d0dd4c751",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d53daa38-7514-56bd-a4c2-68bf2400f0b5",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0a886f23-1b89-53e8-8839-cf7281cf720c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ffb66836-f52d-5e49-89df-7766bef6443d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3500c999-64c9-5c12-8080-cf1cfbc5369e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c8d17d2a-4956-5d2f-9c50-7d68eb342268",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

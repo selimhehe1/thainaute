@@ -1,0 +1,1165 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "d1accd50-f54f-51b2-a4d1-ade44a7cfae7",
+  "versionId": "0301bf94-14eb-5fed-8d9e-47085ddac080",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Trois voix, une situation",
+  "objectiveFr": "à la fin de la leçon, devant un échange à TROIS voix, l’apprenant dit pour chaque réplique entendue si celui qui parle est un homme, une femme qui affirme ou une femme qui demande, sur 8 tirages sur 9 ; il apparie six répliques françaises, chacune accompagnée du sexe de qui la dit, à leurs six formes thaïes, 6 sur 6 ; il reconstruit six répliques en écartant les deux particules qui ne sont pas cel",
+  "requiredEntitlement": null,
+  "audioManifestId": "cbae41de-3314-5c1a-8c64-e708320ec73c",
+  "items": [
+    {
+      "id": "c1c9a43f-1c75-5ae0-8b4d-8ab9fc492e32",
+      "thaiRaw": "ครับ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "particule de politesse d'un locuteur homme (fin de phrase)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "1e6994d8-2703-5e8c-9cf6-37873ea558ad",
+      "thaiRaw": "ค่ะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "particule de politesse d'une locutrice femme (phrase affirmative)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "3dce1df3-17f8-5e1b-900e-c510bc4cd637",
+      "thaiRaw": "คะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "particule finale d’une locutrice, en fin de question ou d’information donnée poliment",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "3a81e66f-c2f1-5bd3-8e3f-47508bfa8372",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "b3c9613b-70b7-5392-aa1d-6db186d60142",
+      "thaiRaw": "ดิฉัน",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "je, moi (locutrice femme, échange poli)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "e512a26f-7097-5744-a729-74f48e83c8c9",
+      "thaiRaw": "คุณ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E38",
+        "U+0E13"
+      ],
+      "translationFr": "vous (marque de respect) ; devant le nom d’une personne : Monsieur, Madame",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khoun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คุณ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "c1565376-98c1-5208-a2f1-ac4d859b215c",
+      "thaiRaw": "ชื่อ",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E37",
+        "U+0E48",
+        "U+0E2D"
+      ],
+      "translationFr": "nom, prénom",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "chûee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ชื่อ",
+          "ipa": "t͡ɕʰɯː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "3b345aca-7899-5a97-ae39-e8f1eabae4bf",
+      "thaiRaw": "แล้วคุณล่ะ",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E25",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "et vous ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew khoun lâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (poli avec la particule : แล้วคุณล่ะครับ / แล้วคุณล่ะคะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "b535260d-c829-564e-a764-607609dc820b",
+      "thaiRaw": "ตลาดอยู่ที่ไหน",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19"
+      ],
+      "translationFr": "où est le marché ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tà·làat yòuu thîi·nǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "laːt̚˨˩ juː˨˩ tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ตลาดอยู่ที่ไหนคะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "d25bb9f6-0f3c-5504-a9b6-785e011cce79",
+      "thaiRaw": "ต้น",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E49",
+        "U+0E19"
+      ],
+      "translationFr": "Ton (nom du personnage masculin du dialogue)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tôn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ต้น",
+          "ipa": "ton˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "41a42750-b9f4-5250-8cda-548ceb2aa8f4",
+      "thaiRaw": "นก",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E01"
+      ],
+      "translationFr": "Nok (nom du personnage féminin du dialogue)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nók"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นก",
+          "ipa": "nok̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "8b32a212-1410-5b5e-9a05-caccd46ee262",
+      "thaiRaw": "สวัสดีค่ะ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E27",
+        "U+0E31",
+        "U+0E2A",
+        "U+0E14",
+        "U+0E35",
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "bonjour (locutrice femme) ; sert aussi à prendre congé",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·wàt·dii khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สวัสดีค่ะ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สวัสดีค่ะ",
+          "ipa": "wat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "สวัสดีค่ะ",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สวัสดีค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "85686c30-f54d-5605-bd3f-4a1dde086d5a",
+      "thaiRaw": "สบายดีไหมคะ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E14",
+        "U+0E35",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21",
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "vous allez bien ? (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·baai·dii·mǎi khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สบายดีไหมคะ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีไหมคะ",
+          "ipa": "baːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีไหมคะ",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีไหมคะ",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีไหมคะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1bd5e25a-f055-57f2-b744-922fd86360d0",
+      "thaiRaw": "สบายดีครับ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E14",
+        "U+0E35",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "je vais bien (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·baai·dii khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สบายดีครับ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีครับ",
+          "ipa": "baːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดีครับ",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดีครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "957b1e11-508d-5a2a-8cde-8d3082c7b6b4",
+      "thaiRaw": "ตลาด",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14"
+      ],
+      "translationFr": "le marché",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tà·làat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตลาด",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาด",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "thaiRaw": "แล้ว",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27"
+      ],
+      "translationFr": "en fin de phrase, marque que c’est accompli ou que l’état est désormais en place ; se rend en français par « déjà », « maintenant », ou par le seul temps du verbe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้ว",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u11-l11e-p3",
+      "drawIndex": 1,
+      "id": "0604a7d7-41d4-55b9-8050-837f01b3001b",
+      "type": "word_order",
+      "itemId": "1bd5e25a-f055-57f2-b744-922fd86360d0",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
+      "tokens": [
+        {
+          "id": "1febac8a-73ac-5799-8672-813368ea44e2",
+          "thaiRaw": "สบายดี",
+          "transcription": null
+        },
+        {
+          "id": "a4a62c23-d42b-56f9-b8aa-4a78780d0f75",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "865e245f-d467-58b6-acd0-fcf11a858801",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "0596a1a2-6ded-526f-a4a3-8ca2bca6ba55",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "1febac8a-73ac-5799-8672-813368ea44e2",
+        "a4a62c23-d42b-56f9-b8aa-4a78780d0f75"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La fin correspond à la personne que vous jouez.",
+        "incorrectFr": "Relisez la ligne du haut : vous jouez [nom de la personne annoncée]. La fin suit le sexe de celui qui parle. Reprenez la page 2.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 6",
+            "textFr": "Deux décisions d’un coup, une femme et une question. C’est le seul cas où คะ est juste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ posé sur une question",
+            "textFr": "Bonne personne, mauvaise sorte de phrase. Une femme qui demande dit คะ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11e-p3",
+      "drawIndex": 2,
+      "id": "77866e98-1269-5623-826a-de6b66f6c8e7",
+      "type": "word_order",
+      "itemId": "8b32a212-1410-5b5e-9a05-caccd46ee262",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
+      "tokens": [
+        {
+          "id": "7d58c616-31b6-501b-b379-3f367de8f186",
+          "thaiRaw": "สวัสดี",
+          "transcription": null
+        },
+        {
+          "id": "db939de1-d4f9-5e84-9fea-00331b4ab610",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "e1e952d3-799c-589e-adf1-4096c562f2ac",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "4f7df18c-f150-512c-bd6f-fc6c600550d7",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "7d58c616-31b6-501b-b379-3f367de8f186",
+        "e1e952d3-799c-589e-adf1-4096c562f2ac"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La fin correspond à la personne que vous jouez.",
+        "incorrectFr": "Relisez la ligne du haut : vous jouez [nom de la personne annoncée]. La fin suit le sexe de celui qui parle. Reprenez la page 2.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 6",
+            "textFr": "Deux décisions d’un coup, une femme et une question. C’est le seul cas où คะ est juste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ posé sur une question",
+            "textFr": "Bonne personne, mauvaise sorte de phrase. Une femme qui demande dit คะ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11e-p3",
+      "drawIndex": 3,
+      "id": "31628202-465d-5237-a7b1-a1f29a754f72",
+      "type": "word_order",
+      "itemId": "85686c30-f54d-5605-bd3f-4a1dde086d5a",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
+      "tokens": [
+        {
+          "id": "a7144212-c100-58ef-815f-321ef03b085d",
+          "thaiRaw": "สบายดี",
+          "transcription": null
+        },
+        {
+          "id": "f04b9ac8-16ab-5b6e-9705-5c43b7b63719",
+          "thaiRaw": "ไหม",
+          "transcription": null
+        },
+        {
+          "id": "10e0277a-018e-5ce7-975c-b27f390c7fb1",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "9bd4f034-8b47-5323-8cb6-e86df047e5b8",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "c0f0fdff-cc63-560e-b78e-e91c5223fa01",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "a7144212-c100-58ef-815f-321ef03b085d",
+        "f04b9ac8-16ab-5b6e-9705-5c43b7b63719",
+        "c0f0fdff-cc63-560e-b78e-e91c5223fa01"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La fin correspond à la personne que vous jouez.",
+        "incorrectFr": "Relisez la ligne du haut : vous jouez [nom de la personne annoncée]. La fin suit le sexe de celui qui parle. Reprenez la page 2.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 6",
+            "textFr": "Deux décisions d’un coup, une femme et une question. C’est le seul cas où คะ est juste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ posé sur une question",
+            "textFr": "Bonne personne, mauvaise sorte de phrase. Une femme qui demande dit คะ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11e-p3",
+      "drawIndex": 4,
+      "id": "a9a17183-ab72-5d39-8ed8-7fbd4b6fc1fb",
+      "type": "word_order",
+      "itemId": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
+      "tokens": [
+        {
+          "id": "ba937c1f-58c1-5a23-9541-d5cf24edb7ef",
+          "thaiRaw": "แล้ว",
+          "transcription": null
+        },
+        {
+          "id": "e641561a-9872-5acf-af63-29978f7047e5",
+          "thaiRaw": "คุณ",
+          "transcription": null
+        },
+        {
+          "id": "7681135a-fda1-57b2-947e-081641f1a313",
+          "thaiRaw": "ล่ะ",
+          "transcription": null
+        },
+        {
+          "id": "08bc3d0f-2aa2-5e5f-9b8d-f9f1ec789b23",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "667dc756-f7a4-5054-850d-c326f3bcc2ff",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "a37383b1-7f2d-5e46-82f1-99f57ea80a32",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "ba937c1f-58c1-5a23-9541-d5cf24edb7ef",
+        "e641561a-9872-5acf-af63-29978f7047e5",
+        "7681135a-fda1-57b2-947e-081641f1a313",
+        "08bc3d0f-2aa2-5e5f-9b8d-f9f1ec789b23"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La fin correspond à la personne que vous jouez.",
+        "incorrectFr": "Relisez la ligne du haut : vous jouez [nom de la personne annoncée]. La fin suit le sexe de celui qui parle. Reprenez la page 2.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 6",
+            "textFr": "Deux décisions d’un coup, une femme et une question. C’est le seul cas où คะ est juste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ posé sur une question",
+            "textFr": "Bonne personne, mauvaise sorte de phrase. Une femme qui demande dit คะ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11e-p3",
+      "drawIndex": 5,
+      "id": "f4e4cbbf-56ca-56f2-9e0f-567b78c0d563",
+      "type": "word_order",
+      "itemId": "b3c9613b-70b7-5392-aa1d-6db186d60142",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
+      "tokens": [
+        {
+          "id": "bd3f9e3b-ced4-562f-b439-c6fa1a25f92c",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        },
+        {
+          "id": "fc3b2fdd-f866-5b51-a50d-f9de40315961",
+          "thaiRaw": "ชื่อ",
+          "transcription": null
+        },
+        {
+          "id": "43f0e48a-645c-54f5-943b-45709292d893",
+          "thaiRaw": "นก",
+          "transcription": null
+        },
+        {
+          "id": "f02dcd66-22eb-5bb3-9d01-8deedf6a5bc0",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "ab1bfc0b-c4ef-559a-ba8c-024ac7beceea",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "91708692-08b2-5d8b-81dd-2a8215e139d5",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "bd3f9e3b-ced4-562f-b439-c6fa1a25f92c",
+        "fc3b2fdd-f866-5b51-a50d-f9de40315961",
+        "43f0e48a-645c-54f5-943b-45709292d893",
+        "ab1bfc0b-c4ef-559a-ba8c-024ac7beceea"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La fin correspond à la personne que vous jouez.",
+        "incorrectFr": "Relisez la ligne du haut : vous jouez [nom de la personne annoncée]. La fin suit le sexe de celui qui parle. Reprenez la page 2.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 6",
+            "textFr": "Deux décisions d’un coup, une femme et une question. C’est le seul cas où คะ est juste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ posé sur une question",
+            "textFr": "Bonne personne, mauvaise sorte de phrase. Une femme qui demande dit คะ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11e-p3",
+      "drawIndex": 6,
+      "id": "d13e6825-5edf-51d2-9531-3a78e7551e06",
+      "type": "word_order",
+      "itemId": "957b1e11-508d-5a2a-8cde-8d3082c7b6b4",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
+      "tokens": [
+        {
+          "id": "30a8a159-f26e-5b3d-bcd6-a418aa8e2ad9",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "65bef8a6-dbbc-5672-83cc-1376eeb393ad",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        },
+        {
+          "id": "97090486-28bf-5f22-98dd-041e54cc697f",
+          "thaiRaw": "ที่ไหน",
+          "transcription": null
+        },
+        {
+          "id": "e0bfb979-a31a-531f-b448-35e60caa0761",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "e8b64849-e3da-5b01-979b-e0f1636416cb",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "8a166fa5-e612-574a-94a4-23a22afc1f14",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "30a8a159-f26e-5b3d-bcd6-a418aa8e2ad9",
+        "65bef8a6-dbbc-5672-83cc-1376eeb393ad",
+        "97090486-28bf-5f22-98dd-041e54cc697f",
+        "8a166fa5-e612-574a-94a4-23a22afc1f14"
+      ],
+      "feedback": {
+        "correctFr": "Oui. La fin correspond à la personne que vous jouez.",
+        "incorrectFr": "Relisez la ligne du haut : vous jouez [nom de la personne annoncée]. La fin suit le sexe de celui qui parle. Reprenez la page 2.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 6",
+            "textFr": "Deux décisions d’un coup, une femme et une question. C’est le seul cas où คะ est juste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ posé sur une question",
+            "textFr": "Bonne personne, mauvaise sorte de phrase. Une femme qui demande dit คะ."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "trois personnes, et vous savez déjà tout",
+      "bodyFr": "Vous avez tenu des conversations à deux depuis l’unité 1. Aujourd’hui vous en tenez une à trois, et il n’y a pas un mot nouveau : tout ce que vous allez lire, vous l’avez appris entre la première unité et la neuvième. Ce qui change, c’est qu’il faut suivre qui parle.",
+      "specimen": "สบายดีครับ · สบายดีค่ะ"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "la dernière syllabe dit de quelle bouche vient la phrase",
+      "bodyFr": "Depuis l’unité 1 vous fermez vos phrases par ครับ ou par ค่ะ. Les deux dictionnaires que ce cours consulte décrivent ces mots par la personne qui les EMPLOIE : ครับ du côté des hommes, ค่ะ et คะ du côté des femmes. Retenez la formule dans ce sens-là, elle va servir toute la leçon.\n\n> ครับ, khráp : celui qui parle est un homme. > ค่ะ, khâ : celle qui parle est une femme, et elle affirme. > คะ, khá : celle qui parle est une femme, et elle demande.",
+      "specimen": "ครับ · ค่ะ · คะ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "elle donne un sexe, pas une personne",
+      "bodyFr": "C’est le point de la leçon, et c’est aussi le plus facile à rater. La fin de phrase vous donne le sexe de la bouche dont elle sort. Elle ne vous donne pas laquelle des personnes présentes vient de parler.\n\n> ค่ะ à la fin : une femme a parlé. > Deux femmes dans la scène : vous ne savez pas laquelle.\n\nPendant neuf unités, vos dialogues comptaient une voix d’homme et une voix de femme. Tant qu’il n’y a qu’une personne de chaque sexe, connaître le sexe revient à connaître la personne, et la différence ne se voit pas. Aujourd’hui elle se voit.",
+      "specimen": "ครับ · ค่ะ"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "deux femmes, une seule particule",
+      "bodyFr": "Voilà la conséquence, et elle est déroutante la première fois. Dans la scène du jour, deux des trois personnes sont des femmes. Quand vous entendez ค่ะ, vous savez que c’est une femme qui parle, et vous ne savez PAS laquelle.\n\n> ตรงไปค่ะ, c’est la voisine. > ขอบคุณค่ะ, c’est Nok. > Même particule, deux personnes différentes.\n\nPour trancher, il faut le contenu de la phrase, pas la particule. C’est la voisine qui connaît le chemin ; c’est Nok qui remercie.",
+      "specimen": "ตรงไปค่ะ · ขอบคุณค่ะ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "sans particule, la phrase ne dit rien",
+      "bodyFr": "Vous connaissez plusieurs blocs dans leur forme nue, sans rien à la fin : สบายดี, แล้วคุณล่ะ, ตลาดอยู่ที่ไหน. Regardez-les bien : il n’y a rien qui dise qui parle. Ce n’est pas un manque à combler par une supposition, c’est une information que le texte ne porte pas.\n\n> สบายดี : on ne sait pas qui parle. > สบายดีครับ : un homme. > สบายดีค่ะ : une femme.\n\nDans l’exercice 5, « le texte ne le dit pas » est une bonne réponse, et trois tirages sur douze l’appellent. Répondre au hasard sur ces trois-là est une erreur ; dire qu’on ne peut pas savoir est juste.",
+      "specimen": "สบายดี · สบายดีครับ · สบายดีค่ะ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "la même phrase, deux bouches",
+      "bodyFr": "Prenez une phrase française et faites-la dire par les deux. Le sens ne bouge pas, la fin change. C’est exactement ce que mesure l’exercice 2.\n\n> « Je vais bien. » par un homme : สบายดีครับ, sà·baai·dii khráp. > « Je vais bien. » par une femme : สบายดีค่ะ, sà·baai·dii khâ. > « Et vous ? » par un homme : แล้วคุณล่ะครับ, láeew khoun lâ khráp. > « Et vous ? » par une femme : แล้วคุณล่ะคะ, láeew khoun lâ khá.\n\nNotez la quatrième ligne : la femme pose une question, donc คะ et non ค่ะ. Le choix se fait en deux temps, d’abord qui parle, ensuite affirmation ou question.",
+      "specimen": "สบายดีครับ / สบายดีค่ะ · แล้วคุณล่ะครับ / แล้วคุณล่ะคะ"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "se nommer, demander le nom",
+      "bodyFr": "Vous avez ces trois blocs depuis l’unité 2 et vous allez les employer tels quels. Le pronom change avec le locuteur, comme la particule, et pour la même raison.\n\n> ผมชื่อต้นครับ, phǒm chûee tôn khráp, un homme se nomme. > ดิฉันชื่อนกค่ะ, dì·chǎn chûee nók khâ, une femme se nomme. > คุณชื่ออะไรคะ, khoun chûee à·rai khá, une femme demande le nom.\n\nDeux marques disent donc la même chose au même moment, le pronom au début et la particule à la fin. Quand les deux sont là, elles ne se contredisent jamais.",
+      "specimen": "ผมชื่อต้นครับ · ดิฉันชื่อนกค่ะ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "rendre la question",
+      "bodyFr": "แล้วคุณล่ะ, appris en 6E, renvoie la question sans la répéter. C’est le bloc le plus utile d’une conversation à plusieurs, parce qu’il passe la parole. Il prend la particule de celui qui le dit, comme tout le reste.\n\n> Un homme : แล้วคุณล่ะครับ. > Une femme : แล้วคุณล่ะคะ.",
+      "specimen": "แล้วคุณล่ะครับ · แล้วคุณล่ะคะ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "suivre le fil quand trois personnes parlent",
+      "bodyFr": "Voici la seule méthode dont vous avez besoin, et elle tient en deux questions posées dans cet ordre.\n\n> **Un.** La dernière syllabe : homme, ou femme ? > **Deux.** Si c’est une femme : affirmation, ou question ?\n\nPuis, et seulement si vous avez plusieurs personnes du même sexe devant vous : regardez ce que la phrase dit. Qui peut savoir cela ? Qui vient d’être interrogé ? C’est le contenu qui départage, jamais la particule.",
+      "specimen": "ครับ · ค่ะ · คะ"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "deux contrastes à entretenir, aujourd’hui encore",
+      "bodyFr": "Rien n’est acquis une fois pour toutes, et surtout pas ces deux-là. Reprenez vos repères avant les exercices.\n\n> หมา (mǎa) contre ม้า (máa) : la voix creuse puis remonte, contre la voix qui > reste perchée. Vous le retrouvez dans สบายดีไหมคะ, où mǎi remonte et khá reste > perché, l’un juste après l’autre. > ปา (paa) contre ป่า (pàa) : la voix reste plate, puis elle descend et reste > basse. Vous le retrouvez dans สบายดี, où sà est bas et baai puis dii sont > plats.\n\nEt le contraste du jour, que vous pratiquez depuis l’unité 2 : khâ tombe, khá reste haut et se coupe net. Même syllabe, deux hauteurs.",
+      "specimen": "สบายดีไหมคะ · สบายดี · ค่ะ / คะ"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "à vous",
+      "bodyFr": "Deux questions, toujours dans l’ordre. Homme ou femme. Affirmation ou question. Et si deux personnes de la scène ont le même sexe, écoutez ce que la phrase dit, pas comment elle se termine.\n\nAprès les exercices, enregistrez-vous en disant สบายดีครับ puis สบายดีค่ะ, et สบายดีไหมคะ, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u11-l11e-p3",
+      "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "6949e4eb-6f15-5834-9d13-357c773d291d",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f58958fd-250a-5fa6-b7aa-9f45d37859e0",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "639629b0-52aa-5d3a-8fae-43c89b95e730",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "01f871a6-52c7-5a6c-a7ed-a4652b686be3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "bdf0849d-5b0a-565e-a1f2-bd34d52fe9b3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "639742c0-d7a5-53fa-90d2-5c31b95ccf8b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "805bd6e7-a1e2-5317-83f7-4c03ac48058f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2a35b743-4c33-55c1-946b-4e6cf9197b28",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

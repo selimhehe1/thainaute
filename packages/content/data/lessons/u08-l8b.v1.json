@@ -1,0 +1,1157 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "092dfebb-3759-5497-8382-fc1e209e897c",
+  "versionId": "15c50920-1040-564b-8055-554a95b9f419",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Chercher, essayer, choisir",
+  "objectiveFr": "à la fin de la leçon, devant une situation décrite en français, l’apprenant relie le bon verbe parmi หา, อยาก, อยากได้, ต้องการ, ลองดู et เอา, sur 5 appariements justes du premier coup sur 6, les deux verbes qui prennent une CHOSE y étant acceptés indifféremment l’un pour l’autre ; il construit sans erreur d’ordre et sans bloc en trop les quatre phrases de l’exercice 3, dont deux opposent directem",
+  "requiredEntitlement": null,
+  "audioManifestId": "80fc1446-59d5-51dc-9ee0-0299e214432d",
+  "items": [
+    {
+      "id": "fc6c822a-e5c2-5278-bbc0-0d7c59f95b6e",
+      "thaiRaw": "หา",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E32"
+      ],
+      "translationFr": "chercher",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hǎa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หา",
+          "ipa": "haː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "3eeab8ce-406b-50b6-89df-b6fa4aab8709",
+      "thaiRaw": "อยาก",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E22",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "avoir envie de, vouloir (suivi d’un verbe)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yàak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อยาก",
+          "ipa": "jaːk̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2ddcb0bb-ec60-53a4-863e-6df7bc609959",
+      "thaiRaw": "อยากได้",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E22",
+        "U+0E32",
+        "U+0E01",
+        "U+0E44",
+        "U+0E14",
+        "U+0E49"
+      ],
+      "translationFr": "vouloir, aimerais avoir (suivi d’une chose)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yàak·dâai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อยากได้",
+          "ipa": "jaːk̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "อยากได้",
+          "ipa": "daːj˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "91c7aa28-70c4-54f7-b094-844d74752928",
+      "thaiRaw": "ต้องการ",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E01",
+        "U+0E32",
+        "U+0E23"
+      ],
+      "translationFr": "vouloir, avoir besoin de",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tâwng·kaan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ต้องการ",
+          "ipa": "tɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ต้องการ",
+          "ipa": "kaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "c2309b8f-4586-5a77-ab59-bcdc6fa3faea",
+      "thaiRaw": "ลอง",
+      "unicodeCodePoints": [
+        "U+0E25",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "essayer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "lawwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ลอง",
+          "ipa": "lɔːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "21ff4621-edac-5249-91ba-ef2bdce5358e",
+      "thaiRaw": "ลองดู",
+      "unicodeCodePoints": [
+        "U+0E25",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E14",
+        "U+0E39"
+      ],
+      "translationFr": "essayer, pour voir",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "lawwng douu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ลองดู",
+          "ipa": "lɔːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ลองดู",
+          "ipa": "duː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "35a360c4-b3e1-5cf6-bb44-c4889b366931",
+      "thaiRaw": "เอา",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E2D",
+        "U+0E32"
+      ],
+      "translationFr": "prendre ; vouloir",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เอา",
+          "ipa": "ʔaw˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "4b967037-4ec5-5992-8670-4c123c5a8a91",
+      "thaiRaw": "เอาอันนี้",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E2D",
+        "U+0E32",
+        "U+0E2D",
+        "U+0E31",
+        "U+0E19",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
+      "translationFr": "je prends celui-ci",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ao an·níi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เอาอันนี้",
+          "ipa": "ʔaw˧ ʔan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "เอาอันนี้",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "thaiRaw": "ดิฉัน",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "je, moi (locutrice femme, échange poli)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "556c6690-9bf4-5ad4-a463-1e4082b5fbae",
+      "thaiRaw": "ห้า",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "cinq (le nombre 5)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้า",
+          "ipa": "haː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u08-l8b-p3",
+      "drawIndex": 1,
+      "id": "0bfd9111-9575-59ad-8fed-2de1bda5eaa3",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "tokens": [
+        {
+          "id": "7fec5456-c51f-52c3-84ad-8ea98963f819",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "5000a2f1-386c-5c4b-bc7e-d1bb944bddc0",
+          "thaiRaw": "อยาก",
+          "transcription": null
+        },
+        {
+          "id": "11f7572f-8e1c-5773-aec9-df5e09e13c4c",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "a7b97b12-dabd-5a68-b469-47955fb76e4f",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "659c9db2-2d4a-5411-bc84-a8c995333496",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "0f0c2d56-68e0-5ead-998a-a20b8c986294",
+          "thaiRaw": "อยากได้",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "7fec5456-c51f-52c3-84ad-8ea98963f819",
+        "5000a2f1-386c-5c4b-bc7e-d1bb944bddc0",
+        "11f7572f-8e1c-5773-aec9-df5e09e13c4c",
+        "a7b97b12-dabd-5a68-b469-47955fb76e4f",
+        "659c9db2-2d4a-5411-bc84-a8c995333496"
+      ],
+      "feedback": {
+        "correctFr": "C’est le bon ordre. Le verbe vient juste après celui qui parle, et ce qui le suit vient ensuite, sans rien entre les deux.",
+        "incorrectFr": "อยากได้ demande une chose derrière lui, et ici ce qui suit est le verbe ไป. C’est อยาก qu’il faut.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 2 avec อยาก conservé",
+            "textFr": "อยาก demande un verbe derrière lui, et ici ce qui suit est une chose, ถุง. C’est อยากได้ qu’il faut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4 avec ห้า conservé",
+            "textFr": "ห้า veut dire cinq, et il porte un petit signe que หา n’a pas. Regardez au-dessus de la consonne, comme en 7A."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, erreur de particule",
+            "textFr": "La particule dépend de vous, pas de la personne en face. Un homme dit khráp, une femme dit khâ, comme depuis la leçon 1E."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p3",
+      "drawIndex": 2,
+      "id": "ad992137-2466-5c2f-961d-8eff5456344d",
+      "type": "word_order",
+      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "tokens": [
+        {
+          "id": "6131ffdc-d24c-52b5-8e0b-4cfcff5395e1",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        },
+        {
+          "id": "1c4363b2-1d17-5f42-b637-1c3e1561ea0c",
+          "thaiRaw": "อยากได้",
+          "transcription": null
+        },
+        {
+          "id": "eb8a3f9c-496f-5ed6-ab35-69977b351267",
+          "thaiRaw": "ถุง",
+          "transcription": null
+        },
+        {
+          "id": "7a744d95-55fc-5206-82e3-a506a85bcbdf",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "cc9ac18a-907c-593a-9175-c5b35390c95b",
+          "thaiRaw": "อยาก",
+          "transcription": null
+        },
+        {
+          "id": "76bac1bb-0445-5312-a8e7-25f9f4cdb05c",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "6131ffdc-d24c-52b5-8e0b-4cfcff5395e1",
+        "1c4363b2-1d17-5f42-b637-1c3e1561ea0c",
+        "eb8a3f9c-496f-5ed6-ab35-69977b351267",
+        "7a744d95-55fc-5206-82e3-a506a85bcbdf"
+      ],
+      "feedback": {
+        "correctFr": "C’est le bon ordre. Le verbe vient juste après celui qui parle, et ce qui le suit vient ensuite, sans rien entre les deux.",
+        "incorrectFr": "อยากได้ demande une chose derrière lui, et ici ce qui suit est le verbe ไป. C’est อยาก qu’il faut.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 2 avec อยาก conservé",
+            "textFr": "อยาก demande un verbe derrière lui, et ici ce qui suit est une chose, ถุง. C’est อยากได้ qu’il faut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4 avec ห้า conservé",
+            "textFr": "ห้า veut dire cinq, et il porte un petit signe que หา n’a pas. Regardez au-dessus de la consonne, comme en 7A."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, erreur de particule",
+            "textFr": "La particule dépend de vous, pas de la personne en face. Un homme dit khráp, une femme dit khâ, comme depuis la leçon 1E."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p3",
+      "drawIndex": 3,
+      "id": "9bc5c32f-d1ea-5217-afbf-9a2ca9378338",
+      "type": "word_order",
+      "itemId": "35a360c4-b3e1-5cf6-bb44-c4889b366931",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "tokens": [
+        {
+          "id": "2fc3ac42-534d-592b-ac3c-0c14e6fd2ca3",
+          "thaiRaw": "เอา",
+          "transcription": null
+        },
+        {
+          "id": "02dc0006-4bea-54f9-bac8-52f210564619",
+          "thaiRaw": "อันนี้",
+          "transcription": null
+        },
+        {
+          "id": "33b7453e-6f1c-5f13-8d8d-884f58d6917d",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "ff5d7eb5-bdac-5b43-832e-3fb2120b3139",
+          "thaiRaw": "อยาก",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "2fc3ac42-534d-592b-ac3c-0c14e6fd2ca3",
+        "02dc0006-4bea-54f9-bac8-52f210564619",
+        "33b7453e-6f1c-5f13-8d8d-884f58d6917d"
+      ],
+      "feedback": {
+        "correctFr": "C’est le bon ordre. Le verbe vient juste après celui qui parle, et ce qui le suit vient ensuite, sans rien entre les deux.",
+        "incorrectFr": "อยากได้ demande une chose derrière lui, et ici ce qui suit est le verbe ไป. C’est อยาก qu’il faut.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 2 avec อยาก conservé",
+            "textFr": "อยาก demande un verbe derrière lui, et ici ce qui suit est une chose, ถุง. C’est อยากได้ qu’il faut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4 avec ห้า conservé",
+            "textFr": "ห้า veut dire cinq, et il porte un petit signe que หา n’a pas. Regardez au-dessus de la consonne, comme en 7A."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, erreur de particule",
+            "textFr": "La particule dépend de vous, pas de la personne en face. Un homme dit khráp, une femme dit khâ, comme depuis la leçon 1E."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p3",
+      "drawIndex": 4,
+      "id": "adc07cdb-8961-5aaa-9813-118ebcc467f9",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "tokens": [
+        {
+          "id": "72ac3812-8844-5c9a-8261-510309187162",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "6511d249-1037-5c75-b0ee-e06fd052e074",
+          "thaiRaw": "หา",
+          "transcription": null
+        },
+        {
+          "id": "5d804b1b-c4ca-57b2-9384-a5cb40276340",
+          "thaiRaw": "ถุง",
+          "transcription": null
+        },
+        {
+          "id": "90150687-2a9a-51c1-b74b-18d29284f53e",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "9f827fcb-01ff-5572-bad0-b0f58056e5b4",
+          "thaiRaw": "ห้า",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "72ac3812-8844-5c9a-8261-510309187162",
+        "6511d249-1037-5c75-b0ee-e06fd052e074",
+        "5d804b1b-c4ca-57b2-9384-a5cb40276340",
+        "90150687-2a9a-51c1-b74b-18d29284f53e"
+      ],
+      "feedback": {
+        "correctFr": "C’est le bon ordre. Le verbe vient juste après celui qui parle, et ce qui le suit vient ensuite, sans rien entre les deux.",
+        "incorrectFr": "อยากได้ demande une chose derrière lui, et ici ce qui suit est le verbe ไป. C’est อยาก qu’il faut.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 2 avec อยาก conservé",
+            "textFr": "อยาก demande un verbe derrière lui, et ici ce qui suit est une chose, ถุง. C’est อยากได้ qu’il faut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4 avec ห้า conservé",
+            "textFr": "ห้า veut dire cinq, et il porte un petit signe que หา n’a pas. Regardez au-dessus de la consonne, comme en 7A."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, erreur de particule",
+            "textFr": "La particule dépend de vous, pas de la personne en face. Un homme dit khráp, une femme dit khâ, comme depuis la leçon 1E."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p5",
+      "drawIndex": 1,
+      "id": "ede17fd2-929f-540d-a4b7-8a80d9568af4",
+      "type": "reading",
+      "itemId": "fc6c822a-e5c2-5278-bbc0-0d7c59f95b6e",
+      "skill": "reading",
+      "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
+      "options": [
+        {
+          "id": "19d1a453-08bf-55a3-9d13-ba614045df0e",
+          "labelFr": "chercher",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "39296fcc-1318-5114-a2fa-94c97efe5ff6",
+          "labelFr": "cinq",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "ebdf6b7e-214b-530a-ad97-f3e9acf58844",
+          "labelFr": "vouloir, avoir besoin de",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "1383a438-9cb3-5155-8380-99cc1dea8f92",
+          "labelFr": "essayer, pour voir",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "19d1a453-08bf-55a3-9d13-ba614045df0e",
+      "feedback": {
+        "correctFr": "Oui. Vous avez lu le ton, vous ne l’avez pas deviné.",
+        "incorrectFr": "Regardez au-dessus de la consonne. ห้า porte un ไม้โท, หา n’en a pas. Sur une consonne HAUTE, le ไม้โท donne le descendant et l’absence de marque donne le montant : c’est la deuxième ligne du tableau de 7A.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 3",
+            "textFr": "ต้อง est une consonne MOYENNE sous ไม้โท, donc ton descendant ; การ est une moyenne sans marque en syllabe vivante, donc ton moyen. Première ligne du tableau de 7A."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 5",
+            "textFr": "ลอง est une consonne BASSE sans marque en syllabe vivante, donc ton moyen ; ดู est une moyenne sans marque, donc ton moyen aussi. Deux tons moyens de suite, un plateau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p5",
+      "drawIndex": 2,
+      "id": "5cdc941c-e13c-5784-8b31-08e726d6d96a",
+      "type": "reading",
+      "itemId": "556c6690-9bf4-5ad4-a463-1e4082b5fbae",
+      "skill": "reading",
+      "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
+      "options": [
+        {
+          "id": "da63f790-16b0-5093-ab4c-c5b085cd8cff",
+          "labelFr": "chercher",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "69322002-61e8-5e9b-bf85-8091229e784e",
+          "labelFr": "cinq",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "4d13935d-29c2-5430-a8ef-43d33cea96b2",
+          "labelFr": "vouloir, avoir besoin de",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8971de4a-4601-5bcc-a5bb-10b7607244e1",
+          "labelFr": "essayer, pour voir",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "69322002-61e8-5e9b-bf85-8091229e784e",
+      "feedback": {
+        "correctFr": "Oui. Vous avez lu le ton, vous ne l’avez pas deviné.",
+        "incorrectFr": "Regardez au-dessus de la consonne. ห้า porte un ไม้โท, หา n’en a pas. Sur une consonne HAUTE, le ไม้โท donne le descendant et l’absence de marque donne le montant : c’est la deuxième ligne du tableau de 7A.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 3",
+            "textFr": "ต้อง est une consonne MOYENNE sous ไม้โท, donc ton descendant ; การ est une moyenne sans marque en syllabe vivante, donc ton moyen. Première ligne du tableau de 7A."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 5",
+            "textFr": "ลอง est une consonne BASSE sans marque en syllabe vivante, donc ton moyen ; ดู est une moyenne sans marque, donc ton moyen aussi. Deux tons moyens de suite, un plateau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p5",
+      "drawIndex": 3,
+      "id": "ce6bcdf5-b983-5100-b384-888150b42cd1",
+      "type": "reading",
+      "itemId": "91c7aa28-70c4-54f7-b094-844d74752928",
+      "skill": "reading",
+      "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
+      "options": [
+        {
+          "id": "6a6cff44-bbfb-5008-ace3-c2330234b699",
+          "labelFr": "chercher",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "d1e2fa7b-eb1b-5203-83ef-f60cbe96ff47",
+          "labelFr": "cinq",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "0627d561-2b20-56dc-aeac-629051ff706a",
+          "labelFr": "vouloir, avoir besoin de",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "dc6d14d3-efd1-5420-92c8-17896eb53d61",
+          "labelFr": "essayer, pour voir",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "0627d561-2b20-56dc-aeac-629051ff706a",
+      "feedback": {
+        "correctFr": "Oui. Vous avez lu le ton, vous ne l’avez pas deviné.",
+        "incorrectFr": "Regardez au-dessus de la consonne. ห้า porte un ไม้โท, หา n’en a pas. Sur une consonne HAUTE, le ไม้โท donne le descendant et l’absence de marque donne le montant : c’est la deuxième ligne du tableau de 7A.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 3",
+            "textFr": "ต้อง est une consonne MOYENNE sous ไม้โท, donc ton descendant ; การ est une moyenne sans marque en syllabe vivante, donc ton moyen. Première ligne du tableau de 7A."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 5",
+            "textFr": "ลอง est une consonne BASSE sans marque en syllabe vivante, donc ton moyen ; ดู est une moyenne sans marque, donc ton moyen aussi. Deux tons moyens de suite, un plateau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p5",
+      "drawIndex": 4,
+      "id": "ef420b0f-83d3-5458-8e90-70dd78f308d5",
+      "type": "reading",
+      "itemId": "556c6690-9bf4-5ad4-a463-1e4082b5fbae",
+      "skill": "reading",
+      "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
+      "options": [
+        {
+          "id": "1a4f95f0-e92a-5e33-953e-979092292552",
+          "labelFr": "chercher",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a446444e-21fd-58fc-983c-8e02e412ef71",
+          "labelFr": "cinq",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "70e04a30-66f9-514c-96e3-01b620ae53ec",
+          "labelFr": "vouloir, avoir besoin de",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "887f60f3-a659-52be-b69c-b5a7df60230e",
+          "labelFr": "essayer, pour voir",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "a446444e-21fd-58fc-983c-8e02e412ef71",
+      "feedback": {
+        "correctFr": "Oui. Vous avez lu le ton, vous ne l’avez pas deviné.",
+        "incorrectFr": "Regardez au-dessus de la consonne. ห้า porte un ไม้โท, หา n’en a pas. Sur une consonne HAUTE, le ไม้โท donne le descendant et l’absence de marque donne le montant : c’est la deuxième ligne du tableau de 7A.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 3",
+            "textFr": "ต้อง est une consonne MOYENNE sous ไม้โท, donc ton descendant ; การ est une moyenne sans marque en syllabe vivante, donc ton moyen. Première ligne du tableau de 7A."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 5",
+            "textFr": "ลอง est une consonne BASSE sans marque en syllabe vivante, donc ton moyen ; ดู est une moyenne sans marque, donc ton moyen aussi. Deux tons moyens de suite, un plateau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p5",
+      "drawIndex": 5,
+      "id": "60eb8091-7cc4-556a-a704-c6d57571403f",
+      "type": "reading",
+      "itemId": "21ff4621-edac-5249-91ba-ef2bdce5358e",
+      "skill": "reading",
+      "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
+      "options": [
+        {
+          "id": "34500a29-d96a-5b26-a5e6-cf65f0edf062",
+          "labelFr": "chercher",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8da17fc7-3ed0-52b8-9ea2-6cd5d0c4ac22",
+          "labelFr": "cinq",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "23a9b490-6d8f-50ce-8536-130784a76d6e",
+          "labelFr": "vouloir, avoir besoin de",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "d06d7e1e-a830-573b-b0b1-cf9d24afdcb6",
+          "labelFr": "essayer, pour voir",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "d06d7e1e-a830-573b-b0b1-cf9d24afdcb6",
+      "feedback": {
+        "correctFr": "Oui. Vous avez lu le ton, vous ne l’avez pas deviné.",
+        "incorrectFr": "Regardez au-dessus de la consonne. ห้า porte un ไม้โท, หา n’en a pas. Sur une consonne HAUTE, le ไม้โท donne le descendant et l’absence de marque donne le montant : c’est la deuxième ligne du tableau de 7A.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 3",
+            "textFr": "ต้อง est une consonne MOYENNE sous ไม้โท, donc ton descendant ; การ est une moyenne sans marque en syllabe vivante, donc ton moyen. Première ligne du tableau de 7A."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 5",
+            "textFr": "ลอง est une consonne BASSE sans marque en syllabe vivante, donc ton moyen ; ดู est une moyenne sans marque, donc ton moyen aussi. Deux tons moyens de suite, un plateau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p5",
+      "drawIndex": 6,
+      "id": "ef7b7318-b0d8-558e-9d8e-6c34f3ce8b71",
+      "type": "reading",
+      "itemId": "fc6c822a-e5c2-5278-bbc0-0d7c59f95b6e",
+      "skill": "reading",
+      "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
+      "options": [
+        {
+          "id": "dfcf5ef1-ba19-5822-b190-0e5e1b2ca76c",
+          "labelFr": "chercher",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "07454094-a376-5025-81ff-acb5a6309b21",
+          "labelFr": "cinq",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "78e0cf48-1a35-5192-947c-5e37d4d0ad1a",
+          "labelFr": "vouloir, avoir besoin de",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "5ff0b185-94aa-5bc7-904c-3d3ca090f9eb",
+          "labelFr": "essayer, pour voir",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "dfcf5ef1-ba19-5822-b190-0e5e1b2ca76c",
+      "feedback": {
+        "correctFr": "Oui. Vous avez lu le ton, vous ne l’avez pas deviné.",
+        "incorrectFr": "Regardez au-dessus de la consonne. ห้า porte un ไม้โท, หา n’en a pas. Sur une consonne HAUTE, le ไม้โท donne le descendant et l’absence de marque donne le montant : c’est la deuxième ligne du tableau de 7A.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 3",
+            "textFr": "ต้อง est une consonne MOYENNE sous ไม้โท, donc ton descendant ; การ est une moyenne sans marque en syllabe vivante, donc ton moyen. Première ligne du tableau de 7A."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 5",
+            "textFr": "ลอง est une consonne BASSE sans marque en syllabe vivante, donc ton moyen ; ดู est une moyenne sans marque, donc ton moyen aussi. Deux tons moyens de suite, un plateau."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous savez commander, vous ne savez pas encore choisir",
+      "bodyFr": "En 4C, vous avez appris à demander qu’on vous apporte une chose que vous aviez déjà choisie. Une boutique demande autre chose : il faut d’abord chercher, dire ce qu’on veut, parfois essayer, puis désigner. Quatre gestes, six mots, et vous tenez la scène entière.",
+      "specimen": "หา · อยากได้ · ลองดู · เอาอันนี้"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "หา, chercher",
+      "bodyFr": "หา (hǎa) se dit d’un ton montant, la voix part en bas et remonte. C’est le premier mot de toute visite en boutique, et c’est aussi la première chose que le vendeur vous dira, sous la forme หาอะไรครับ, « vous cherchez quoi ». Le mot a un second emploi que le dictionnaire donne en tête : หา suivi d’une personne veut dire aller la voir, comme dans ไปหาหมอ, aller chez le médecin.",
+      "specimen": "หา · หาอะไรครับ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "หา et ห้า, la même lettre et deux tons",
+      "bodyFr": "Vous connaissez ห้า, cinq, depuis 3B. Regardez les deux mots côte à côte : même consonne ห, même voyelle longue, même absence de finale. Ce qui les sépare est le petit ไม้โท de ห้า, et 7A vous a dit ce qu’il fait sur une consonne haute : il donne le ton descendant, là où l’absence de marque donne le ton montant. Reprenez le geste de l’index de 1D, celui que 4D vous a déjà fait refaire sur ไหม contre ไม่ : pour หา, partez du menton et montez ; pour ห้า, partez du front et laissez tomber la main d’un coup.\n\n> หา, haute sans marque, ton MONTANT, la voix part en bas et remonte > ห้า, haute plus ไม้โท, ton DESCENDANT, la voix part haut et tombe",
+      "specimen": "หา (hǎa) contre ห้า (hâa)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "อยาก, avoir envie de FAIRE",
+      "bodyFr": "อยาก (yàak) se pose devant un VERBE et dit ce que vous voulez faire. อยากไป, avoir envie d’y aller. อยากกิน, avoir envie de manger. La forme entière avec le pronom et la particule ne change pas d’un pouce par rapport à ce que vous faisiez déjà : ผมอยากไปตลาดครับ, je veux aller au marché.",
+      "specimen": "อยากไป · ผมอยากไปตลาดครับ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "อยากได้, avoir envie d’AVOIR",
+      "bodyFr": "Pour une CHOSE, อยาก tout seul ne suffit pas : le dictionnaire ne lui donne un complément direct que pour la faim et la soif. Le mot qui sert en boutique est อยากได้ (yàak·dâai), littéralement avoir envie d’obtenir. ดิฉันอยากได้ถุงค่ะ, je voudrais un sac.\n\n> une chose que vous voulez FAIRE, อยาก suivi du verbe > une chose que vous voulez AVOIR, อยากได้ suivi de la chose",
+      "specimen": "อยากได้ถุง · ดิฉันอยากได้ถุงค่ะ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "ต้องการ, la troisième porte",
+      "bodyFr": "ต้องการ (tâwng·kaan) veut dire vouloir et avoir besoin de, et il se pose devant la chose voulue, comme อยากได้. Sa première syllabe est plus courte que son écriture ne le laisse croire, exactement comme ห้อง en 7A. Une chose que cette leçon ne vous dira pas : laquelle des trois façons de vouloir est plus polie ou plus familière que les autres. Les dictionnaires consultés ne l’écrivent nulle part, et le parcours n’invente pas ce qu’il n’a pas vérifié.",
+      "specimen": "ต้องการ · ต้องการถุง"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "ลอง, essayer, et ลองดู, essayer pour voir",
+      "bodyFr": "ลอง (lawwng) veut dire essayer, au sens de faire quelque chose pour savoir ce que ça donne, et aussi au sens de tester si une chose vous convient. Collé à ดู, regarder, appris en 7D, il forme ลองดู (lawwng douu), le bloc que le vendeur emploiera pour vous proposer d’essayer : ลองดูไหมครับ.",
+      "specimen": "ลอง · ลองดู · ลองดูไหมครับ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "เอา, prendre et vouloir d’un seul mot",
+      "bodyFr": "เอา (ao) est court, plat, et il fait deux choses à la fois. Le dictionnaire lui donne le sens de prendre et de porter, et un peu plus loin le sens de vouloir. C’est ce double emploi qui en fait le mot de la décision : quand vous dites เอา devant une chose, vous dites en même temps que vous la voulez et que vous l’emportez.",
+      "specimen": "เอา"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "เอาอันนี้, la phrase qui conclut",
+      "bodyFr": "Reprenez อันนี้ de 3C, celui-ci, le mot qui vous dispense de savoir nommer ce que vous montrez. Posez เอา devant, la particule derrière, et l’achat est conclu : เอาอันนี้ครับ. Et si vous en voulez deux, vous savez déjà le dire depuis 3D, avec le mot de comptage : ถุงสองใบ.",
+      "specimen": "เอาอันนี้ครับ · ถุงสองใบ"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "ce que vous pouvez lire, et ce qui reste dehors",
+      "bodyFr": "Quatre mots du jour se lisent entièrement avec le tableau de 7A, sans rien de plus : หา, haute sans marque en syllabe vivante, donc montant, exactement ce que vous venez de faire page 3 ; ต้องการ, moyenne sous ไม้โท puis moyenne sans marque, donc descendant puis moyen ; ลอง, basse sans marque, donc moyen ; et ลองดู, qui ajoute une moyenne sans marque, donc moyen encore. Trois formes restent dehors, et il vaut mieux le savoir que le découvrir par une erreur : เอา est une forme en เ◌า, ได้ une forme en ไ, et อยาก commence par un อ qui ne se prononce pas, comme อยู่ en 5C. L’exercice 5 vous fait lire les quatre premières, et seulement celles-là.",
+      "specimen": "หา (hǎa) · ต้องการ (tâwng·kaan) · ลองดู (lawwng douu)"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "à vous",
+      "bodyFr": "Trois réflexes à emporter. Un, avant de dire « je veux », demandez-vous si ce qui suit est un verbe ou une chose : อยาก pour un verbe, อยากได้ ou ต้องการ pour une chose. Deux, หา monte, ห้า tombe. Trois, quand c’est décidé, เอาอันนี้ suffit.\n\nAprès les exercices, enregistrez-vous en disant หา puis ห้า, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u08-l8b-p3",
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "mechanic": "word_order",
+      "drawCount": 4,
+      "passRequired": 4,
+      "sampleSize": 4
+    },
+    {
+      "poolId": "u08-l8b-p5",
+      "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
+      "mechanic": "reading",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "e89e343f-6459-5f40-b73e-ec71bede775b",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b74643be-33c3-5303-9947-06b8458b8d07",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "49b53355-264b-51af-870f-f797b50f0d9c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "daec662e-4170-5529-b837-2ce217b1d264",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9747623a-f143-5cd8-8783-1c85caca99b7",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7ab75c5d-aa3a-5165-8d9a-e47bbdd11f81",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "429f94d3-e362-59ab-b6dd-677746b8efd6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "4ea4064a-6110-5540-8358-5ef801da3d2a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

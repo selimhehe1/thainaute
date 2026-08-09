@@ -13,12 +13,16 @@ import {
   type PublicRelease,
 } from "@thainaute/content/public";
 import type { SQLiteDatabase } from "expo-sqlite";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import {
   MobilePublicContentCacheError,
   MobilePublicContentStore,
 } from "../lib/mobile-public-content-store";
+
+vi.mock("expo-constants", () => ({
+  default: { expoConfig: undefined },
+}));
 
 const RELEASE_ID = "30000000-0000-4000-8000-000000000001";
 const LESSON_ID = "10000000-0000-4000-8000-000000000001";

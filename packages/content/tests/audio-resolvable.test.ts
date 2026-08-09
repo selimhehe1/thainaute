@@ -2,11 +2,12 @@
 //
 // Pourquoi ce test existe
 // -----------------------
-// La leçon u01-l1f a été livrée, atteignable, avec ses cinq fichiers audio
+// La leçon u01-l1f avait été livrée, atteignable, avec cinq fichiers audio
 // servis en HTTP 200 par la page. Et pourtant aucun de ses exercices ne
-// pouvait les jouer : le manifeste avait gardé les `assetId` de la leçon
-// source, alors que le compilateur dérive la référence attendue de
-// l'identifiant de la leçon d'ACCUEIL.
+// pouvait les jouer : le manifeste avait gardé des chemins de la leçon source,
+// alors que le compilateur dérive la référence attendue de l'identifiant de la
+// leçon d'accueil. Le manifeste a été vidé puis régénéré avec des audios
+// propres à 1F.
 //
 // Le défaut était invisible aux deux vérifications faites à l'époque : les
 // fichiers existaient bien, et la page les listait bien. Seul le maillon
@@ -25,24 +26,19 @@ import {
 } from "../src/repository";
 
 /**
- * Leçons dont l'audio n'a pas encore été produit, et pourquoi.
+ * Dette audio explicite, le cas échéant, et pourquoi.
  *
  * Ce n'est PAS une tolérance de complaisance : ces leçons ont des exercices
  * d'écoute muets, ce qui est un vrai défaut visible par l'apprenant. Elles
  * sont listées ici pour que le fait soit écrit et compté, plutôt que caché
  * par une assertion relâchée.
  *
- * La production de ces enregistrements engage une dépense chez un
- * fournisseur de synthèse vocale, qui exige l'accord explicite du fondateur
- * au moment de l'appel. Tant que cet accord n'est pas donné, la leçon reste
- * en dette, et cette liste doit RÉTRÉCIR, jamais grandir.
+ * La liste est actuellement vide : l'autorisation de générer les audios de
+ * 1B et 1F a été donnée et leurs manifestes résolvent maintenant les
+ * exercices. Si une future dette est ajoutée, elle doit être accompagnée
+ * d'une raison et faire échouer la validation audio de la leçon concernée.
  */
-const AUDIO_EN_ATTENTE: Readonly<Record<string, string>> = {
-  "u01-l1b":
-    "aucun enregistrement produit : seules 1A et 1D ont un audio réel, " +
-    "les 4 exercices d'écoute de 1B sont donc muets. Attend l'accord de " +
-    "dépense pour la synthèse vocale.",
-};
+const AUDIO_EN_ATTENTE: Readonly<Record<string, string>> = {};
 
 describe("audio des leçons compilées", () => {
   const identifiants = compiledLessonIds();

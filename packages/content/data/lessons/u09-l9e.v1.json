@@ -1,0 +1,584 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "eef47820-9585-5443-96a9-9ba0dff808aa",
+  "versionId": "480978db-a26f-54c5-8ca2-ababff56a18c",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Je ne me sens pas bien",
+  "objectiveFr": "u09-l9e",
+  "requiredEntitlement": null,
+  "audioManifestId": "cb871984-6050-5e08-bdb0-4360a489e9d2",
+  "items": [
+    {
+      "id": "7477d57a-d137-5628-83c7-d5ae7bb3201c",
+      "thaiRaw": "ไม่สบาย",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E2A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E22"
+      ],
+      "translationFr": "ne pas se sentir bien ; être malade",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi sà·baai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่สบาย",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่สบาย",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ไม่สบาย",
+          "ipa": "baːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "05a15368-fe1e-5db2-9f46-3c9b2790593f",
+      "thaiRaw": "ไปหาหมอ",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E1B",
+        "U+0E2B",
+        "U+0E32",
+        "U+0E2B",
+        "U+0E21",
+        "U+0E2D"
+      ],
+      "translationFr": "aller voir le médecin ; consulter un médecin",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pai hǎa mǎww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไปหาหมอ",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไปหาหมอ",
+          "ipa": "haː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ไปหาหมอ",
+          "ipa": "mɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "fe4c052b-809f-51ea-b81f-1e024efb6a82",
+      "thaiRaw": "ปวดหัว",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E27",
+        "U+0E14",
+        "U+0E2B",
+        "U+0E31",
+        "U+0E27"
+      ],
+      "translationFr": "avoir mal à la tête",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pòuat·hǒua"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปวดหัว",
+          "ipa": "pua̯t̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ปวดหัว",
+          "ipa": "hua̯˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "16d3ac17-aef7-5a18-a906-3ad54d4046e0",
+      "thaiRaw": "หมอ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E21",
+        "U+0E2D"
+      ],
+      "translationFr": "le médecin",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mǎww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หมอ",
+          "ipa": "mɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre au sens enseigné",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "a2997d58-56ff-5236-947d-98654c9ae9bc",
+      "thaiRaw": "สองวันแล้ว",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E27",
+        "U+0E31",
+        "U+0E19",
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27"
+      ],
+      "translationFr": "ça fait deux jours",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎwwng wan láeew"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สองวันแล้ว",
+          "ipa": "sɔːŋ˩˩˦ wan˧ lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "w"
+        }
+      ],
+      "register": "neutre, poli avec la particule : สองวันแล้วครับ / สองวันแล้วค่ะ",
+      "sourceIds": [
+        "RID-2554"
+      ]
+    },
+    {
+      "id": "8909972d-a91b-52ac-83c6-571d90be6c0b",
+      "thaiRaw": "มาก",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "beaucoup ; très",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มาก",
+          "ipa": "maːk̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "d2e46e73-cf4f-5ae1-81f0-f0eedad5a882",
+      "thaiRaw": "สวัสดีครับ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E27",
+        "U+0E31",
+        "U+0E2A",
+        "U+0E14",
+        "U+0E35",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Bonjour. (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·wàt·dii khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สวัสดีครับ",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สวัสดีครับ",
+          "ipa": "wat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "สวัสดีครับ",
+          "ipa": "diː˧ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554"
+      ]
+    },
+    {
+      "id": "7aad064c-a851-5359-80c0-438e55ed90f3",
+      "thaiRaw": "ขอบคุณครับ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Merci. (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàwwp·khoun khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰɔːp̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰun˧ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "1b9d33c3-f1d7-51bd-974e-2bde46c9e328",
+      "thaiRaw": "ไม่เป็นไร",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E40",
+        "U+0E1B",
+        "U+0E47",
+        "U+0E19",
+        "U+0E44",
+        "U+0E23"
+      ],
+      "translationFr": "De rien.",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi·pen·rai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่เป็นไร",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่เป็นไร",
+          "ipa": "pen˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ไม่เป็นไร",
+          "ipa": "raj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u09-l9e-p5",
+      "drawIndex": 1,
+      "id": "cd425a78-326d-555c-8370-038efed6699b",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "pairs": [
+        {
+          "id": "96002b44-282b-5b61-b885-dd6663fdd94b",
+          "itemId": "7477d57a-d137-5628-83c7-d5ae7bb3201c",
+          "labelFr": "ne pas se sentir bien"
+        },
+        {
+          "id": "23a8d4a8-e0a2-5757-8061-249bf2e1c8d8",
+          "itemId": "05a15368-fe1e-5db2-9f46-3c9b2790593f",
+          "labelFr": "aller voir le médecin"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Exact.",
+        "incorrectFr": "Relisez l’expression et son sens, puis réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "ce que cette leçon fait, et ce qu’elle ne fait pas",
+      "bodyFr": "Aujourd’hui, tout ce que l’unité vous a donné tient dans un seul échange de huit répliques. Vous savez dire où vous avez mal depuis 9B, appeler de l’aide depuis 9C, dire depuis combien de jours cela dure depuis 9D. Il vous manque une seule phrase, la plus simple de toutes : celle qui dit que ça ne va pas. Un mot nouveau suffit. Et une chose à savoir avant de commencer : Thaïnaute vous donne des mots, pas des consignes de santé.",
+      "specimen": "ไม่สบาย (mâi sà·baai)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "สบาย, vous l’employez depuis l’unité 2",
+      "bodyFr": "Souvenez-vous de la question que vous avez apprise en 2B : สบายดีไหม, est-ce que vous allez bien. Le mot qui porte le sens là-dedans est สบาย. Le dictionnaire lui donne plusieurs valeurs, dont celle qui nous intéresse aujourd’hui : aller bien, ne pas être malade. Vous n’apprenez donc pas un mot, vous en retrouvez un.",
+      "specimen": "สบายดี (sà·baai·dii) puis สบาย (sà·baai)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ไม่ devant ce qu’il nie",
+      "bodyFr": "ไม่ nie le mot qui le suit, verbe ou mot d’état, et le parcours vous l’a montré six fois : ไม่เผ็ด, pas épicé, et ไม่ชอบ, ne pas aimer, en 4D ; ไม่ไกล, pas loin, en 5E ; ไม่มี, il n’y a pas, en 6D ; ไม่ใช่, ce n’est pas ça, en 8D ; et ไม่ปวด, je n’ai pas mal, la semaine dernière en 9B. Posez ไม่ devant สบาย et vous obtenez ไม่สบาย, ne pas se sentir bien, être malade. Le mot du jour, vous venez de le fabriquer vous-même.",
+      "specimen": "ไม่ + สบาย = ไม่สบาย (mâi sà·baai)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "ไม่สบาย dit que ça ne va pas, ปวดหัว dit où",
+      "bodyFr": "Deux phrases, deux niveaux de précision, et il faut les deux. ไม่สบาย annonce que ça ne va pas, sans dire où. ปวดหัว, appris en 9B, dit exactement où. Dans le dialogue, le client emploie les deux, dans cet ordre : il ouvre par le général, puis répond par le précis quand on le lui demande. C’est l’ordre naturel d’une conversation, en thaï comme en français.",
+      "specimen": "ผมไม่สบายครับ puis ปวดหัวมากครับ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "ไปหาหมอ, trois mots que vous avez déjà",
+      "bodyFr": "En 5B vous avez appris ไป, aller. En 8B vous avez appris หา, chercher. En 9C vous avez appris หมอ, le médecin. Mis devant une personne, หา ne veut plus dire chercher mais aller voir, rendre visite, consulter : le dictionnaire donne lui-même ไปหาหมอ comme exemple de cet emploi. Trois mots que vous aviez déjà, un geste que vous ne saviez pas encore dire.",
+      "specimen": "ไปหาหมอ (pai hǎa mǎww)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "เรียกหมอ ou ไปหาหมอ ?",
+      "bodyFr": "Vous avez maintenant deux blocs avec หมอ dedans, et ils ne disent pas la même chose. เรียกหมอ, de 9C, c’est faire venir le médecin. ไปหาหมอ, d’aujourd’hui, c’est se déplacer jusqu’à lui. Le premier fait bouger le médecin, le second vous fait bouger, vous. Cette leçon ne vous dit pas lequel choisir dans la vie : elle vous donne les deux formulations, et c’est la situation qui décide.",
+      "specimen": "เรียกหมอ (rîak mǎww) contre ไปหาหมอ (pai hǎa mǎww)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "trois questions, trois คะ",
+      "bodyFr": "Écoutez la pharmacienne. Elle pose trois questions, ปวดหัวไหมคะ, กี่วันแล้วคะ et ไปหาหมอไหมคะ, et les trois finissent par คะ. Elle fait une seule affirmation, ไม่เป็นไรค่ะ, et celle-là finit par ค่ะ. C’est la règle de 2B, appliquée quatre fois de suite par une seule personne, sans qu’aucun autre indice n’intervienne. Le client, lui, dit ครับ six fois, quoi qu’il arrive.",
+      "specimen": "กี่วันแล้วคะ contre ไม่เป็นไรค่ะ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "répondre oui, en reprenant le verbe",
+      "bodyFr": "À ไปหาหมอไหมคะ, la réponse du dialogue est ไปครับ : le verbe de la question, aller, suivi de la particule d’un homme. Ce n’est pas une invention de la leçon, c’est l’exemple même du dictionnaire normatif, qui imprime ไปค่ะ à son entrée ค่ะ. Une femme dirait donc ไปค่ะ. Retenez cette réponse telle quelle : la leçon ne vous dit pas comment se répond toute question fermée en thaï, elle vous donne celle-ci.",
+      "specimen": "ไปครับ (pai khráp) · ไปค่ะ (pai khâ)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "le ton se lit aussi sans l’entendre",
+      "bodyFr": "Vos trois dernières leçons vous ont fait nommer des tons à l’oreille. Aujourd’hui vous allez les lire. La méthode n’a pas changé depuis 7A : trouvez la consonne initiale, regardez sa classe, regardez ce qui est posé au-dessus, croisez. Prenez กี่ : ก est moyenne, la syllabe est vivante, un ไม้เอก dessus, donc ton bas. Prenez แล้ว : la consonne initiale est ล, pas แ, elle est basse, un ไม้โท dessus, donc ton haut. Et prenez ผม, où rien n’est posé : ผ est haute, la syllabe est vivante, donc ton montant.",
+      "specimen": "กี่ (kìi, bas) · แล้ว (láeew, haut) · ผม (phǒm, montant)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "ce que cette leçon ne fait pas",
+      "bodyFr": "Trois honnêtetés avant l’écoute, et la première est la plus importante. Thaïnaute est un cours de langue : il vous donne des mots, il ne donne pas de conseils de santé et il ne remplace aucun professionnel. Cette leçon vous apprend à DIRE que vous ne vous sentez pas bien et à COMPRENDRE qu’on vous propose d’aller voir un médecin, rien de plus, et elle ne nomme aucun médicament. Deuxième honnêteté : le ton de หมอ ne se calcule pas avec le tableau de 7A, parce que son ห de tête fait partie des cas que 7A a nommément mis de côté ; ce ton vous est donné, comme celui de กระเป๋า l’avait été en 8A. หัว, lui, se calcule, et vous l’avez fait vous-même en 9B. Troisième honnêteté : plusieurs mots du dialogue restent hors de ce tableau, ไม่, ไหม, ไป et ไร parce qu’ils s’écrivent avec ไ, et ค่ะ, คะ, ครับ, มาก, ปวด et ขอบ parce que leurs syllabes se ferment court. L’exercice 2 ne vous en demandera aucun.",
+      "specimen": "หมอ (mǎww, ton donné) contre หัว (hǒua, ton lu)"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "à vous",
+      "bodyFr": "Écoutez le dialogue en entier une première fois sans lire. Reprenez avec le texte, puis enregistrez la réplique 1 et la réplique 6 et comparez-les en A/B avec la voix de référence. Écoutez deux choses seulement : que le `sà` de sà·baai reste bas et court sans traîner, et que les trois montants de la réplique 6 creusent avant de remonter, sans se transformer en tons hauts. Votre enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u09-l9e-p5",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN"
+    ],
+    "generationActors": [
+      {
+        "actorId": "b8360726-b2c7-5375-be5e-1c1cdf8dfe37",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f65a9352-f7d7-5dc4-b95e-c5ae166a8c41",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f4dce0a9-7c85-5da9-bf19-1b25e4f39512",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "61f6d33d-a50e-5386-8132-2d70622b8fca",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d68aaaef-f685-5ab5-9783-c6008779d40b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7abb1178-96f2-5d79-aba4-28f690d154d6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "732d11b3-70c3-5d96-992b-f34952a1b856",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "76b91f8c-62fb-53e6-8b6a-88a5a58ce228",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

@@ -1,0 +1,671 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "7edd5ada-7503-5c44-856a-7b70b3cfe466",
+  "versionId": "f80bc367-8754-5702-9492-c6adb0f4dae5",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Demander son chemin",
+  "objectiveFr": "à la fin de la leçon, l’apprenant reconstruit le bloc [lieu] + อยู่ที่ไหน + particule dans l’ordre, avec la particule qui correspond au locuteur indiqué, sur les 2 assemblages de question proposés ; il identifie à l’écoute le lieu sur lequel porte la question sur 5 tirages sur 6 ; il reconnaît อยู่ที่ไหน et อยู่ไหน comme la même question et désigne celle qui contient ที่ comme la forme complète, s",
+  "requiredEntitlement": null,
+  "audioManifestId": "4565d7b0-29bd-542f-9b8c-c6b295e4d4ce",
+  "items": [
+    {
+      "id": "c6af485a-2542-545f-bd04-cee1c1f7816c",
+      "thaiRaw": "อยู่",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48"
+      ],
+      "translationFr": "se trouver, être quelque part ; habiter, rester",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yòuu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อยู่",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "36cc07a9-e691-5ffb-839c-2058e61e289c",
+      "thaiRaw": "ที่ไหน",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19"
+      ],
+      "translationFr": "où, quel endroit",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thîi·nǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ที่ไหน",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ที่ไหน",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "c0777f30-2d86-563b-a957-27fef2d81eac",
+      "thaiRaw": "อยู่ที่ไหน",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19"
+      ],
+      "translationFr": "où est ... ? où se trouve ... ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yòuu thîi·nǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อยู่ที่ไหน",
+          "ipa": "juː˨˩ tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อยู่ที่ไหน",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "d7c51ca1-c81f-5bfb-aea1-e684dacffd4e",
+      "thaiRaw": "อยู่ไหน",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19"
+      ],
+      "translationFr": "où est ... ? (forme sans ที่)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yòuu nǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อยู่ไหน",
+          "ipa": "juː˨˩ naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "j"
+        }
+      ],
+      "register": "non étiqueté par les sources consultées. Aucune des trois ne la marque comme familière, et la leçon ne le dit donc pas non plus.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "thaiRaw": "ห้องน้ำ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E19",
+        "U+0E49",
+        "U+0E33"
+      ],
+      "translationFr": "les toilettes ; la salle de bains",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng·náam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้องน้ำ",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ห้องน้ำ",
+          "ipa": "naːm˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b2c309e4-fbc6-5591-8997-2387d866a842",
+      "thaiRaw": "สถานี",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E16",
+        "U+0E32",
+        "U+0E19",
+        "U+0E35"
+      ],
+      "translationFr": "la station",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·thǎa·nii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สถานี",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สถานี",
+          "ipa": "tʰaː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สถานี",
+          "ipa": "niː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E19",
+        "U+0E49",
+        "U+0E33",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Où sont les toilettes ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng·náam yòuu thîi·nǎi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naːm˦˥ juː˨˩ tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naj˩˩˦ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u05-l5c-p2",
+      "drawIndex": 1,
+      "id": "4564d317-4657-5f9c-a2fc-f8f1943a42e7",
+      "type": "word_order",
+      "itemId": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Claire, une femme, cherche les toilettes. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "3b89aab4-5aa4-5d70-b672-034e75056fb2",
+          "thaiRaw": "อยู่ที่ไหน",
+          "transcription": null
+        },
+        {
+          "id": "d2a389d6-8e93-5a5b-b8d1-943b7d1d19a5",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "18f62b4f-750e-5b07-9185-6b5dfe72f848",
+          "thaiRaw": "ห้องน้ำ",
+          "transcription": null
+        },
+        {
+          "id": "a5ecec2b-1b26-5f12-a32f-80f5c985cb82",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "18f62b4f-750e-5b07-9185-6b5dfe72f848",
+        "3b89aab4-5aa4-5d70-b672-034e75056fb2",
+        "a5ecec2b-1b26-5f12-a32f-80f5c985cb82"
+      ],
+      "feedback": {
+        "correctFr": "Parfait. On nomme le lieu, on pose la question, on signe avec sa particule. Et la particule suit la personne qui parle, jamais celle d’en face.",
+        "incorrectFr": "Suivez l’ordre du bloc : le lieu d’abord, la question ensuite, la particule tout à la fin. Puis regardez qui parle, et si la personne pose une question ou y répond.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Exactement. La réponse est la question dont on a remplacé ที่ไหน par un endroit : ที่นี่ pour tout près, ที่นั่น pour plus loin. Et une passante qui RÉPOND dit ค่ะ, pas คะ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5c-p2",
+      "drawIndex": 2,
+      "id": "e89f6cd3-d612-589b-b5c6-cba58c7f64d7",
+      "type": "word_order",
+      "itemId": "b2c309e4-fbc6-5591-8997-2387d866a842",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Claire, une femme, cherche les toilettes. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "9a043e52-9b2f-5a16-ad61-24e5c0fc61cc",
+          "thaiRaw": "คะ",
+          "transcription": null
+        },
+        {
+          "id": "364676ed-6cc1-5e46-8477-4678134075a5",
+          "thaiRaw": "อยู่ที่ไหน",
+          "transcription": null
+        },
+        {
+          "id": "dd5a3e22-6ef6-5766-afb4-836e245e1d06",
+          "thaiRaw": "สถานี",
+          "transcription": null
+        },
+        {
+          "id": "e9fccb93-1e9a-5956-814b-78473d7b225e",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "dd5a3e22-6ef6-5766-afb4-836e245e1d06",
+        "364676ed-6cc1-5e46-8477-4678134075a5",
+        "e9fccb93-1e9a-5956-814b-78473d7b225e"
+      ],
+      "feedback": {
+        "correctFr": "Parfait. On nomme le lieu, on pose la question, on signe avec sa particule. Et la particule suit la personne qui parle, jamais celle d’en face.",
+        "incorrectFr": "Suivez l’ordre du bloc : le lieu d’abord, la question ensuite, la particule tout à la fin. Puis regardez qui parle, et si la personne pose une question ou y répond.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Exactement. La réponse est la question dont on a remplacé ที่ไหน par un endroit : ที่นี่ pour tout près, ที่นั่น pour plus loin. Et une passante qui RÉPOND dit ค่ะ, pas คะ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5c-p2",
+      "drawIndex": 3,
+      "id": "0cdff683-d72b-501b-a4fe-d2c9be73fc9b",
+      "type": "word_order",
+      "itemId": "c6af485a-2542-545f-bd04-cee1c1f7816c",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Claire, une femme, cherche les toilettes. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "5ec909f7-66db-53b8-81b8-0368b5981cdc",
+          "thaiRaw": "ที่นี่",
+          "transcription": null
+        },
+        {
+          "id": "27563cd4-c75e-5409-b67c-9e8d0ad2587c",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "c739a399-6de8-5d83-b47c-5d8ec8170a04",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        },
+        {
+          "id": "628602f1-0a3e-5d33-ba30-6c8575c69cbd",
+          "thaiRaw": "ที่ไหน",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "c739a399-6de8-5d83-b47c-5d8ec8170a04",
+        "5ec909f7-66db-53b8-81b8-0368b5981cdc",
+        "27563cd4-c75e-5409-b67c-9e8d0ad2587c"
+      ],
+      "feedback": {
+        "correctFr": "Parfait. On nomme le lieu, on pose la question, on signe avec sa particule. Et la particule suit la personne qui parle, jamais celle d’en face.",
+        "incorrectFr": "Suivez l’ordre du bloc : le lieu d’abord, la question ensuite, la particule tout à la fin. Puis regardez qui parle, et si la personne pose une question ou y répond.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Exactement. La réponse est la question dont on a remplacé ที่ไหน par un endroit : ที่นี่ pour tout près, ที่นั่น pour plus loin. Et une passante qui RÉPOND dit ค่ะ, pas คะ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5c-p2",
+      "drawIndex": 4,
+      "id": "4b5eaed9-e322-5d30-ba0f-1e08f7723705",
+      "type": "word_order",
+      "itemId": "c6af485a-2542-545f-bd04-cee1c1f7816c",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Claire, une femme, cherche les toilettes. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "44441f39-2e3f-5a73-b7dc-5509ba09f8d8",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "31400c48-751e-5ccb-9e36-dce45bb433df",
+          "thaiRaw": "ที่นั่น",
+          "transcription": null
+        },
+        {
+          "id": "a15bf76a-4848-5e7b-9fbd-3c8ba0a83328",
+          "thaiRaw": "ที่นี่",
+          "transcription": null
+        },
+        {
+          "id": "2285d565-5933-5b23-80c9-c6296e2d3ef5",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "2285d565-5933-5b23-80c9-c6296e2d3ef5",
+        "31400c48-751e-5ccb-9e36-dce45bb433df",
+        "44441f39-2e3f-5a73-b7dc-5509ba09f8d8"
+      ],
+      "feedback": {
+        "correctFr": "Parfait. On nomme le lieu, on pose la question, on signe avec sa particule. Et la particule suit la personne qui parle, jamais celle d’en face.",
+        "incorrectFr": "Suivez l’ordre du bloc : le lieu d’abord, la question ensuite, la particule tout à la fin. Puis regardez qui parle, et si la personne pose une question ou y répond.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Exactement. La réponse est la question dont on a remplacé ที่ไหน par un endroit : ที่นี่ pour tout près, ที่นั่น pour plus loin. Et une passante qui RÉPOND dit ค่ะ, pas คะ."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "le lieu d’abord, la question ensuite",
+      "bodyFr": "Vous savez déjà demander un prix en désignant l’objet, puis en posant la question. Demander un endroit se construit exactement pareil : on nomme le lieu, on pose la question, on signe avec sa particule. Rien à traduire mot à mot depuis le français.\n\nne s’écrivent pas ; la phrase telle qu’elle s’écrit arrive à la page 4)",
+      "specimen": "ห้องน้ำ + อยู่ที่ไหน + ครับ (les signes + montrent les trois blocs et"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "อยู่, le mot qui veut dire « se trouver »",
+      "bodyFr": "อยู่ (yòuu) sert à dire qu’une personne ou une chose est quelque part. C’est aussi le mot d’habiter et de rester, et le dictionnaire normatif ouvre même son entrée sur ces valeurs-là ; c’est la valeur de lieu qui vous servira aujourd’hui. Un détail d’écriture à connaître tout de suite : le อ de tête ne se prononce pas, et le dictionnaire note lui-même la lecture หฺยู่. Retenez le mot tel quel, la règle qui explique ce อ viendra plus tard.",
+      "specimen": "อยู่ (yòuu)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ที่ไหน, « quel endroit »",
+      "bodyFr": "ที่ไหน (thîi·nǎi) est le mot de la question. Il se décompose : ที่ veut dire l’endroit, ไหน pose la question. Le dictionnaire donne d’ailleurs ที่ไหน comme l’un de ses propres exemples de ไหน, à côté de คนไหน, quelle personne, et de อันไหน, quelle chose. Et comme dans เท่าไหร่ vu en 3C, le ห de ไหน ne se prononce pas.",
+      "specimen": "ที่ไหน (thîi·nǎi)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "le bloc complet, celui qu’on dit vraiment",
+      "bodyFr": "Assemblez, et n’y touchez plus. Le lieu, อยู่ที่ไหน, la particule. La seule case qui bouge est la première.\n\n> ห้องน้ำอยู่ที่ไหนครับ > hâwng·náam yòuu thîi·nǎi khráp\n\nUne femme dirait ห้องน้ำอยู่ที่ไหนคะ (hâwng·náam yòuu thîi·nǎi khá). Comme en 2B et en 3C, la particule dépend de la personne qui parle, et en fin de question une femme dit khá, ton haut, et non khâ.",
+      "specimen": "ห้องน้ำอยู่ที่ไหนครับ / ห้องน้ำอยู่ที่ไหนคะ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "la même question, sans ที่",
+      "bodyFr": "Vous entendrez très souvent la question sans ที่ : อยู่ไหน. C’est la même question, avec un mot de moins. Ne cherchez pas ici le partage de 3C, où เท่าไร était la graphie du dictionnaire normatif et เท่าไหร่ la forme familière : le dictionnaire normatif n’enregistre aucune des deux suites d’aujourd’hui, parce qu’aucune n’est un mot, ce sont des assemblages. Et aucune des sources consultées ne présente la forme courte comme familière ou comme fautive. Retenez donc les deux, et ne corrigez personne.\n\n> ห้องน้ำอยู่ที่ไหนครับ / ห้องน้ำอยู่ไหนครับ > hâwng·náam yòuu thîi·nǎi khráp / hâwng·náam yòuu nǎi khráp",
+      "specimen": "อยู่ที่ไหน / อยู่ไหน"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "répondre, c’est remplacer une case",
+      "bodyFr": "La réponse reprend la question et change un seul élément : là où il y avait ที่ไหน, on met l’endroit.\n\n> อยู่ที่นี่ / อยู่ที่นั่น > yòuu thîi·nîi / yòuu thîi·nân\n\nที่นี่ (thîi·nîi), c’est ici, près de celui qui parle. ที่นั่น (thîi·nân), c’est là-bas, plus loin. Et le ที่ tombe des deux côtés de la même façon : à อยู่ไหน répond อยู่นี่, exactement comme à อยู่ที่ไหน répond อยู่ที่นี่.",
+      "specimen": "ที่ไหน → ที่นี่ · ที่นั่น"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "deux lieux à emporter",
+      "bodyFr": "Deux mots suffisent à rendre la question utile dès aujourd’hui.\n\n> ห้องน้ำ (hâwng·náam) · สถานี (sà·thǎa·nii)\n\nห้องน้ำ, ce sont les toilettes, et vous en connaissez déjà la moitié : น้ำ, l’eau, vient de 2C. สถานี, c’est la station, au sens large. Le mot ne dit pas à lui seul de quelle station il s’agit : le dictionnaire l’emploie dans สถานีรถไฟ pour le train et dans สถานีตำรวจ pour la police, deux assemblages qui ne sont pas au programme d’aujourd’hui.",
+      "specimen": null
+    },
+    {
+      "ordre": 8,
+      "titleFr": "la mélodie est déjà dans les mots",
+      "bodyFr": "Ici, la mélodie appartient aux mots eux-mêmes : nǎi monte parce que son ton est montant, et khráp est perché parce que son ton est haut. Ces deux tons sont donnés mot par mot par les dictionnaires, au même titre que les lettres qui les écrivent, et ils font partie du mot autant que ses consonnes. Votre travail tient donc en une ligne : tenir chacun de ces tons jusqu’au bout de la phrase, sans en laisser filer un seul.",
+      "specimen": "ห้องน้ำอยู่ที่ไหนครับ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "ce que la règle du ton ne dit pas ici",
+      "bodyFr": "Depuis 4A, vous savez calculer un ton sur une syllabe vivante sans marque, à partir de la classe de sa consonne initiale. Presque aucun mot du jour n’entre dans ce domaine, et chaque fois le motif se voit à l’écran : ที่, อยู่ et ห้องน้ำ portent une marque de ton ; ไหน s’écrit avec ไ, que la page 8 de 4A nommait déjà parmi les cas non couverts ; et นี, la dernière syllabe de สถานี, commence par น, l’une des neuf consonnes basses vues en 5A, qui disait déjà que la règle de 4A ne se lit pas sur cette classe. Une seule syllabe du jour tombe dans le domaine de la règle, la deuxième de สถานี : ถ est de classe haute, la syllabe est vivante, rien ne la surplombe, et elle se dit bien sur un ton montant, thǎa. Pour tout le reste, apprenez les blocs tels quels.",
+      "specimen": "ที่ · อยู่ · ห้องน้ำ · ไหน"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "à vous",
+      "bodyFr": "Vous allez écouter des questions et repérer le lieu demandé, remonter le bloc dans l’ordre, lire les deux formes de la question et relier chaque énoncé à sa situation.\n\nAprès les exercices, enregistrez-vous en disant ห้องน้ำอยู่ที่ไหนครับ ou ห้องน้ำอยู่ที่ไหนคะ, puis comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil. Écoutez les deux derniers blocs : nǎi monte-t-il vraiment, et khráp reste-t-il perché en haut jusqu’à la fin ?",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u05-l5c-p2",
+      "promptFr": "Claire, une femme, cherche les toilettes. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 4,
+      "passRequired": 4,
+      "sampleSize": 4
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "b768604a-4719-5d11-b019-d1f64519af76",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "147420f8-5f7d-5c90-99e7-32b1bfdd22cd",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ba0238c0-a210-5667-98d1-29d49c16c703",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "37cf6f3f-8005-5d9f-ac26-2d237c383981",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c138b8f8-a0a2-581f-9933-4b63924a7015",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "4fc732c6-a34b-520d-9ce5-d35373a3474c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7352f50c-e27b-5af8-bf66-0859c5b4294d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9a7fc092-ef4e-5c41-bf79-00e556ae73a4",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

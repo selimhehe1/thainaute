@@ -16,8 +16,8 @@
 //   pnpm --filter @thainaute/content content:compile-lesson -- <lecon.md>
 //   ... -- <lecon.md> --ecrire
 
-import { readFileSync, writeFileSync } from "node:fs";
-import { dirname, join, relative } from "node:path";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { graphiesFabriquees } from "../src/anti-fabrication";
@@ -26,6 +26,10 @@ import {
   lessonSchema,
   sourceSchema,
 } from "../src/schemas";
+import {
+  DEFAULT_LANGUAGE_PACK_ID,
+  thaiFrLanguagePack,
+} from "../src/language-packs";
 import { validateBundleMetadata } from "../src/validation";
 import { getPublicationBlockers } from "../src/audit";
 
@@ -45,10 +49,51 @@ const REGISTRE = JSON.parse(
 type ItemCompile = {
   id: string;
   thaiRaw: string;
+  translationFr: string | null;
   transcription: { value: string | null };
   syllables: { vowelLength: "short" | "long" | null }[];
   sourceIds: string[];
 };
+
+/**
+ * Les leçons de synthèse réemploient parfois une carte publiée par une
+ * leçon antérieure. La graphie reste écrite dans la source de la leçon, mais
+ * elle ne doit pas être recompilée avec un nouvel identifiant : l'identité
+ * SRS est celle de la carte d'origine.
+ *
+ * L'index est construit uniquement depuis l'autorat versionné. Il ne lit ni
+ * les paquets générés ni un service distant, et ne choisit jamais une valeur
+ * absente d'une source. Une leçon locale reste prioritaire en cas de doublon.
+ */
+const AUTHORING = join(RACINE, "content", "authoring");
+
+function fichiersAutorat(dossier: string): string[] {
+  return readdirSync(dossier, { withFileTypes: true })
+    .flatMap((entree) => {
+      const chemin = join(dossier, entree.name);
+      if (entree.isDirectory()) return fichiersAutorat(chemin);
+      return /^lecon-.*\.md$/u.test(entree.name) ? [chemin] : [];
+    })
+    .sort((gauche, droite) => (gauche < droite ? -1 : gauche > droite ? 1 : 0));
+}
+
+let indexItemsAutorat: Map<string, ItemCompile> | null = null;
+
+function indexGlobalDesItems(): Map<string, ItemCompile> {
+  if (indexItemsAutorat !== null) return indexItemsAutorat;
+
+  const index = new Map<string, ItemCompile>();
+  for (const fichier of fichiersAutorat(AUTHORING)) {
+    const resultat = compilerItems(fichier);
+    for (const item of resultat.compiles as ItemCompile[]) {
+      if (!index.has(item.thaiRaw.normalize("NFC"))) {
+        index.set(item.thaiRaw.normalize("NFC"), item);
+      }
+    }
+  }
+  indexItemsAutorat = index;
+  return index;
+}
 
 /**
  * Remplit les marqueurs de gabarit d'un retour pedagogique.
@@ -140,32 +185,53 @@ function monterBloc(
   pools: unknown[],
 ): void {
   if (extrait.type === "association") {
-    // Une association porte toutes ses paires dans UN exercice : le
-    // vivier n'a donc qu'un tirage, et le seuil vaut ce tirage.
-    pools.push({
-      poolId,
-      promptFr: extrait.consigne,
-      mechanic: "association",
-      drawCount: 1,
-      passRequired: 1,
-      sampleSize: 1,
-    });
-    exercises.push({
-      poolId,
-      drawIndex: 1,
-      id: uuidStable("exo", identifiant, poolId, "1"),
-      type: "association",
-      skill: "reading",
-      promptFr: extrait.consigne,
-      pairs: extrait.paires.map(
-        (paire: { rang: number; itemId: string; labelFr: string }) => ({
-          id: uuidStable("paire", identifiant, poolId, String(paire.rang)),
+    // Le contrat d'une manche accepte au plus six paires. Quand l'autorat
+    // décrit plusieurs manches dans un même bloc, on les garde toutes mais
+    // on les matérialise en exercices distincts, par tranches déterministes.
+    const paires = extrait.paires as {
+      rang: number;
+      itemId: string;
+      labelFr: string;
+    }[];
+    if (paires.length < 2) {
+      throw new Error("association avec moins de deux paires");
+    }
+    const nombreManches = Math.ceil(paires.length / 6);
+    const tailleManche = Math.ceil(paires.length / nombreManches);
+    let numeroManche = 1;
+    for (let index = 0; index < paires.length; index += tailleManche) {
+      const manche = paires.slice(index, index + tailleManche);
+      const manchePoolId =
+        paires.length > 6 ? `${poolId}-m${numeroManche}` : poolId;
+      numeroManche += 1;
+      pools.push({
+        poolId: manchePoolId,
+        promptFr: extrait.consigne,
+        mechanic: "association",
+        drawCount: 1,
+        passRequired: 1,
+        sampleSize: 1,
+      });
+      exercises.push({
+        poolId: manchePoolId,
+        drawIndex: 1,
+        id: uuidStable("exo", identifiant, manchePoolId, "1"),
+        type: "association",
+        skill: "reading",
+        promptFr: extrait.consigne,
+        pairs: manche.map((paire) => ({
+          id: uuidStable(
+            "paire",
+            identifiant,
+            manchePoolId,
+            String(paire.rang),
+          ),
           itemId: paire.itemId,
           labelFr: paire.labelFr,
-        }),
-      ),
-      feedback: extrait.feedback,
-    });
+        })),
+        feedback: extrait.feedback,
+      });
+    }
     return;
   }
 
@@ -220,6 +286,11 @@ function monterBloc(
 
       if (extrait.type === "reading") {
         const libelles = tirage.libelles ?? extrait.libelles ?? [];
+        if (libelles.length > 6) {
+          throw new Error(
+            `tirage ${tirage.rang} : ${libelles.length} options, maximum 6`,
+          );
+        }
         const optionIds = libelles.map((_: string, index: number) =>
           uuidStable(
             "option",
@@ -296,6 +367,12 @@ function monterBloc(
   // tirage : une leçon de paires minimales change de paire à chaque écoute.
   // Les identifiants du cas partagé sont conservés tels quels, pour que la
   // compilation des leçons déjà écrites reste octet pour octet identique.
+  if (
+    extrait.libelles.length > 6 ||
+    extrait.tirages.some((tirage) => (tirage.libelles?.length ?? 0) > 6)
+  ) {
+    throw new Error("jeu d'écoute supérieur à 6 options");
+  }
   const optionIdsPartages = extrait.libelles.map((_: string, index: number) =>
     uuidStable("option", identifiant, poolId, String(index)),
   );
@@ -309,7 +386,7 @@ function monterBloc(
   });
   for (const tirage of extrait.tirages) {
     const item = items.find((candidat) => candidat.id === tirage.itemId);
-    const libellesTirage = (tirage as { libelles?: string[] }).libelles;
+    const libellesTirage = tirage.libelles;
     const libelles = libellesTirage ?? extrait.libelles;
     const optionIds =
       libellesTirage === undefined
@@ -372,16 +449,31 @@ export function compilerLeconComplete(chemin: string) {
   const identifiant = lecon.meta.identifiant ?? relative(RACINE, chemin);
 
   const { compiles, refuses } = compilerItems(chemin);
-  const items = compiles as ItemCompile[];
-  if (items.length === 0) {
+  const itemsLocaux = compiles as ItemCompile[];
+  const itemsAutorat = indexGlobalDesItems();
+  const itemsPourResolution = new Map<string, ItemCompile>();
+  for (const item of itemsLocaux) {
+    itemsPourResolution.set(item.thaiRaw.normalize("NFC"), item);
+  }
+  for (const [graphie, item] of itemsAutorat) {
+    // La porte anti-fabrication doit aussi s'appliquer aux cartes réutilisées.
+    // Une référence d'exercice mal recopiée ne doit pas faire entrer dans le
+    // paquet une graphie que cette source ne porte nulle part.
+    if (
+      !itemsPourResolution.has(graphie) &&
+      source.normalize("NFC").includes(graphie)
+    ) {
+      itemsPourResolution.set(graphie, item);
+    }
+  }
+  if (itemsPourResolution.size === 0) {
     throw new Error(`Aucun item compilable dans ${identifiant}.`);
   }
 
   // Index graphie -> identifiant d'item, pour que les exercices désignent
   // des items réels et non des chaînes recopiées.
   const parGraphie = new Map<string, string>();
-  for (const item of items)
-    parGraphie.set(item.thaiRaw.normalize("NFC"), item.id);
+  for (const item of itemsPourResolution) parGraphie.set(item[0], item[1].id);
   const resoudre = (g: string): string | null =>
     parGraphie.get(g.normalize("NFC")) ?? null;
 
@@ -402,7 +494,14 @@ export function compilerLeconComplete(chemin: string) {
     const avantExercices = exercises.length;
     const avantViviers = pools.length;
     try {
-      monterBloc(extrait, poolId, items, identifiant, exercises, pools);
+      monterBloc(
+        extrait,
+        poolId,
+        [...itemsPourResolution.values()],
+        identifiant,
+        exercises,
+        pools,
+      );
     } catch (erreur) {
       exercises.length = avantExercices;
       pools.length = avantViviers;
@@ -428,12 +527,42 @@ export function compilerLeconComplete(chemin: string) {
 
   const versionId = uuidStable("version", identifiant, "1");
   const manifestId = uuidStable("manifeste", identifiant, "1");
+  const itemIdsUtilises = new Set<string>();
+  const releverItemIds = (valeur: unknown): void => {
+    if (Array.isArray(valeur)) {
+      for (const enfant of valeur) releverItemIds(enfant);
+      return;
+    }
+    if (valeur === null || typeof valeur !== "object") return;
+    for (const [cle, enfant] of Object.entries(valeur)) {
+      if (cle === "itemId" && typeof enfant === "string") {
+        itemIdsUtilises.add(enfant);
+      } else if (cle === "pairs" || cle === "itemId") {
+        releverItemIds(enfant);
+      }
+    }
+  };
+  releverItemIds(exercises);
+  const items = [
+    ...itemsLocaux,
+    ...[...itemsPourResolution.values()].filter(
+      (item) =>
+        itemIdsUtilises.has(item.id) &&
+        !itemsLocaux.some((local) => local.id === item.id),
+    ),
+  ];
+  if (items.length === 0) {
+    throw new Error(`Aucun item utilisable dans ${identifiant}.`);
+  }
+
   const sourceIds = [...new Set(items.flatMap((item) => item.sourceIds))].sort(
     (a, b) => (a < b ? -1 : a > b ? 1 : 0),
   );
 
   const lesson = lessonSchema.parse({
     schemaVersion: 1,
+    languagePackId: DEFAULT_LANGUAGE_PACK_ID,
+    targetLocale: thaiFrLanguagePack.targetLocale,
     lessonId: uuidStable("lecon", identifiant),
     versionId,
     revision: 1,
@@ -441,8 +570,8 @@ export function compilerLeconComplete(chemin: string) {
     visibility: "internal",
     publishedAt: null,
     locale: "fr-FR",
-    titleFr: lecon.meta.titreFr ?? identifiant,
-    objectiveFr: (lecon.meta.objectifFr ?? identifiant).slice(0, 400),
+    titleFr: (lecon.meta.titreFr ?? identifiant).slice(0, 160).trim(),
+    objectiveFr: (lecon.meta.objectifFr ?? identifiant).slice(0, 400).trim(),
     requiredEntitlement: null,
     audioManifestId: manifestId,
     items,
@@ -470,7 +599,15 @@ export function compilerLeconComplete(chemin: string) {
     .filter((s) => sourceIds.includes(s.sourceId));
 
   // Porte anti-fabrication sur TOUT le paquet, exercices compris.
-  const fabriquees = graphiesFabriquees(lesson, source);
+  // Les cartes réutilisées portent leur propre provenance et ont déjà passé
+  // la porte anti-fabrication dans leur fichier d'origine. La porte de cette
+  // source vérifie les items locaux et tous les exercices (dont les graphies
+  // doivent apparaître ici), mais ne traite pas le bloc de métadonnées d'une
+  // carte importée comme s'il avait été réécrit dans la leçon courante.
+  const fabriquees = graphiesFabriquees(
+    { ...lesson, items: itemsLocaux },
+    source,
+  );
   if (fabriquees.length > 0) {
     throw new Error(
       `Graphie absente de la source : ${fabriquees[0]?.chemin} ${fabriquees[0]?.valeur}`,
@@ -557,4 +694,9 @@ function main(): void {
   }
 }
 
-main();
+if (
+  process.argv[1] !== undefined &&
+  resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  main();
+}

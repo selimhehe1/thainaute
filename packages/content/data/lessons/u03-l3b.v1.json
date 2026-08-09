@@ -1,0 +1,1599 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "7139ac5d-129e-5a01-96a3-4875b79e517b",
+  "versionId": "6fa10700-8abe-5166-837f-a4f78cca082b",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Compter de un à cent",
+  "objectiveFr": "à la fin de la leçon, l’apprenant reconnaît à l’écoute les dix nombres de un à dix au moins 9 fois sur 10 ; il fabrique une dizaine ronde de trente à quatre-vingt-dix en plaçant le chiffre devant สิบ ; il choisit เอ็ด et non หนึ่ง pour l’unité « un » derrière une dizaine sur 4 items sur 5 ; et, devant le nombre 20, il produit ยี่สิบ et écarte สองสิบ.",
+  "requiredEntitlement": null,
+  "audioManifestId": "897ae1e8-1871-583d-ba09-8463a18bcfb6",
+  "items": [
+    {
+      "id": "c2781f38-1fec-52c3-b37a-351d511e4f96",
+      "thaiRaw": "หนึ่ง",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E19",
+        "U+0E36",
+        "U+0E48",
+        "U+0E07"
+      ],
+      "translationFr": "un (le nombre 1)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nùeng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หนึ่ง",
+          "ipa": "nɯŋ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "61578d22-24a9-5b77-b506-a5e388e59f14",
+      "thaiRaw": "สอง",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "deux (le nombre 2)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สอง",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "73049c2e-6939-52e8-b0c1-aa10d15b67b1",
+      "thaiRaw": "สาม",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E32",
+        "U+0E21"
+      ],
+      "translationFr": "trois (le nombre 3)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สาม",
+          "ipa": "saːm˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "7f5a3254-11f3-5b59-9d5a-5079b4541944",
+      "thaiRaw": "สี่",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E35",
+        "U+0E48"
+      ],
+      "translationFr": "quatre (le nombre 4)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sìi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สี่",
+          "ipa": "siː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "556c6690-9bf4-5ad4-a463-1e4082b5fbae",
+      "thaiRaw": "ห้า",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "cinq (le nombre 5)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้า",
+          "ipa": "haː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "4ab2001d-20ad-5910-8293-6ba80cd9ae68",
+      "thaiRaw": "หก",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E01"
+      ],
+      "translationFr": "six (le nombre 6)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hòk"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หก",
+          "ipa": "hok̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b8a7671e-605a-53db-ad53-bb908f3197ec",
+      "thaiRaw": "เจ็ด",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E08",
+        "U+0E47",
+        "U+0E14"
+      ],
+      "translationFr": "sept (le nombre 7)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "jèt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เจ็ด",
+          "ipa": "t͡ɕet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "e1596de7-d431-5631-82b5-669357f57014",
+      "thaiRaw": "แปด",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E1B",
+        "U+0E14"
+      ],
+      "translationFr": "huit (le nombre 8)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pàeet"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แปด",
+          "ipa": "pɛːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2f41932d-4ab4-56a1-9787-35c9f470f691",
+      "thaiRaw": "เก้า",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E01",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "neuf (le nombre 9)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kâao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เก้า",
+          "ipa": "kaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "e89147da-3e37-5261-8774-6e8c3c6c8bc3",
+      "thaiRaw": "สิบ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A"
+      ],
+      "translationFr": "dix (le nombre 10)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sìp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สิบ",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "88d3dc02-32af-514b-8840-bf069d2345db",
+      "thaiRaw": "ยี่สิบ",
+      "unicodeCodePoints": [
+        "U+0E22",
+        "U+0E35",
+        "U+0E48",
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A"
+      ],
+      "translationFr": "vingt (le nombre 20)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yîi·sìp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ยี่สิบ",
+          "ipa": "jiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ยี่สิบ",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "e9318eb5-a206-5b69-adbe-1116ebf36df7",
+      "thaiRaw": "เอ็ด",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E2D",
+        "U+0E47",
+        "U+0E14"
+      ],
+      "translationFr": "un, dans la position des unités d’un nombre composé",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "èt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เอ็ด",
+          "ipa": "ʔet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8b98aa1e-06e5-574b-aba8-2817a08d2e7e",
+      "thaiRaw": "สิบเอ็ด",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A",
+        "U+0E40",
+        "U+0E2D",
+        "U+0E47",
+        "U+0E14"
+      ],
+      "translationFr": "onze",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sìp·èt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สิบเอ็ด",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "สิบเอ็ด",
+          "ipa": "ʔet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "dc14e22a-65b9-51dd-99aa-1801425d77c4",
+      "thaiRaw": "ยี่สิบเอ็ด",
+      "unicodeCodePoints": [
+        "U+0E22",
+        "U+0E35",
+        "U+0E48",
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A",
+        "U+0E40",
+        "U+0E2D",
+        "U+0E47",
+        "U+0E14"
+      ],
+      "translationFr": "vingt et un",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yîi·sìp·èt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ยี่สิบเอ็ด",
+          "ipa": "jiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ยี่สิบเอ็ด",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ยี่สิบเอ็ด",
+          "ipa": "ʔet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2e184359-c052-505d-9ea3-1e1ee40c4c1c",
+      "thaiRaw": "๐",
+      "unicodeCodePoints": [
+        "U+0E50"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǒuun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๐",
+          "ipa": "suːn˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "55ebd1d3-0617-5067-99fa-62d3795b2cc0",
+      "thaiRaw": "๑",
+      "unicodeCodePoints": [
+        "U+0E51"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nùeng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๑",
+          "ipa": "nɯŋ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "c9044688-0f69-50bb-9ff7-a5498ddd19ea",
+      "thaiRaw": "๒",
+      "unicodeCodePoints": [
+        "U+0E52"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๒",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "fe56de8e-bd1f-597c-ae66-a2aac971b926",
+      "thaiRaw": "๓",
+      "unicodeCodePoints": [
+        "U+0E53"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๓",
+          "ipa": "saːm˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "fa56de41-6861-5e84-badd-dda972be6a26",
+      "thaiRaw": "๔",
+      "unicodeCodePoints": [
+        "U+0E54"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sìi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๔",
+          "ipa": "siː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "aa4f4c66-5f4c-54a9-9a13-a645cfdf3e67",
+      "thaiRaw": "๕",
+      "unicodeCodePoints": [
+        "U+0E55"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๕",
+          "ipa": "haː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "fc78d6fc-f51a-5b26-9318-bf7c1b6e187a",
+      "thaiRaw": "๖",
+      "unicodeCodePoints": [
+        "U+0E56"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hòk"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๖",
+          "ipa": "hok̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "febddbfa-b78d-5b2e-b94f-759fb08e3e00",
+      "thaiRaw": "๗",
+      "unicodeCodePoints": [
+        "U+0E57"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "jèt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๗",
+          "ipa": "t͡ɕet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "cc7e3767-f9e0-5dd4-999a-c949069eabae",
+      "thaiRaw": "๘",
+      "unicodeCodePoints": [
+        "U+0E58"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pàeet"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๘",
+          "ipa": "pɛːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "526e48bb-8616-535c-9e4a-1bcd4b7cf6da",
+      "thaiRaw": "๙",
+      "unicodeCodePoints": [
+        "U+0E59"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kâao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๙",
+          "ipa": "kaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a3ec79e3-ec13-5468-8639-a92a6808afd8",
+      "thaiRaw": "สามสิบ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E32",
+        "U+0E21",
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A"
+      ],
+      "translationFr": "trente",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎam·sìp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สามสิบ",
+          "ipa": "saːm˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "สามสิบ",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u03-l3b-p1",
+      "drawIndex": 1,
+      "id": "7eeb7401-b1b7-503c-a6e2-cf3d60faa991",
+      "type": "audio_choice",
+      "itemId": "4ab2001d-20ad-5910-8293-6ba80cd9ae68",
+      "skill": "listening",
+      "audioAssetId": "4ff66f67-65c9-5271-b5aa-2f4de0be3b98",
+      "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
+      "options": [
+        {
+          "id": "34c86fd5-1d0f-53c1-8da9-4bbc31aad81d",
+          "labelFr": "4",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "63befdd9-57ce-56a0-8288-d57404a3314e",
+          "labelFr": "6",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a504bd4e-1a67-54f0-b9e9-2f69230f0491",
+          "labelFr": "7",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "f5ae956b-0615-5d9b-8dec-1c3bff85590c",
+          "labelFr": "10",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "63befdd9-57ce-56a0-8288-d57404a3314e",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Réécoutez les deux nombres l’un après l’autre, celui que vous avez choisi et celui qui était dit.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3b-p1",
+      "drawIndex": 2,
+      "id": "1c7f92f7-2c73-5880-800a-be3ceb499847",
+      "type": "audio_choice",
+      "itemId": "b8a7671e-605a-53db-ad53-bb908f3197ec",
+      "skill": "listening",
+      "audioAssetId": "35617c35-5aba-5da0-a2ce-f82b72e28373",
+      "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
+      "options": [
+        {
+          "id": "76ba2e34-5b98-5590-b47a-52ded27626fa",
+          "labelFr": "6",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "ce138202-0009-522b-bc4f-1b226512effd",
+          "labelFr": "7",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "527e2195-7a7a-5723-8f20-301193df0ad6",
+          "labelFr": "8",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9400e9b6-2c6a-541d-9e5f-e1cfe33d9654",
+          "labelFr": "1",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "ce138202-0009-522b-bc4f-1b226512effd",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Réécoutez les deux nombres l’un après l’autre, celui que vous avez choisi et celui qui était dit.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3b-p1",
+      "drawIndex": 3,
+      "id": "f8df232f-e390-566a-82f0-22041f558235",
+      "type": "audio_choice",
+      "itemId": "61578d22-24a9-5b77-b506-a5e388e59f14",
+      "skill": "listening",
+      "audioAssetId": "4e39d2fb-1f66-59f9-826e-b17b8ede2302",
+      "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
+      "options": [
+        {
+          "id": "ee2b7bea-2f07-5118-95ce-6b293aa50574",
+          "labelFr": "2",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "5a09ef43-81b8-5df9-a28e-13f549b193f2",
+          "labelFr": "3",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9d997f4b-8722-5eba-9fd0-8b2f8b857336",
+          "labelFr": "5",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a99b79a6-66d6-5860-a3ea-a2afc056d4b8",
+          "labelFr": "9",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "ee2b7bea-2f07-5118-95ce-6b293aa50574",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Réécoutez les deux nombres l’un après l’autre, celui que vous avez choisi et celui qui était dit.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3b-p1",
+      "drawIndex": 4,
+      "id": "e5cc312a-46a7-576c-bc2a-eaf524a57dea",
+      "type": "audio_choice",
+      "itemId": "73049c2e-6939-52e8-b0c1-aa10d15b67b1",
+      "skill": "listening",
+      "audioAssetId": "eeaca5b4-f835-559d-a468-c154f3781cda",
+      "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
+      "options": [
+        {
+          "id": "f9de6075-d892-55ed-89d5-db5378ba74cf",
+          "labelFr": "2",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "0a43b5e0-3c1b-5f53-bf4f-80319c5bd7bf",
+          "labelFr": "3",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8d6d542b-6fed-5210-ad81-e511a985ec1c",
+          "labelFr": "4",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "cb336609-36e3-5b69-b8fb-bb33718f5d70",
+          "labelFr": "10",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "0a43b5e0-3c1b-5f53-bf4f-80319c5bd7bf",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Réécoutez les deux nombres l’un après l’autre, celui que vous avez choisi et celui qui était dit.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3b-p1",
+      "drawIndex": 5,
+      "id": "b481368c-4093-5c49-a27a-f388d63bd2c0",
+      "type": "audio_choice",
+      "itemId": "2f41932d-4ab4-56a1-9787-35c9f470f691",
+      "skill": "listening",
+      "audioAssetId": "de50bdbf-3f44-5063-b4e3-f72b0b85d2c7",
+      "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
+      "options": [
+        {
+          "id": "873f6cc0-5a66-5a54-a3ef-c5e7e5b66424",
+          "labelFr": "5",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "d813b528-f9dc-5973-8a5f-e127ee672697",
+          "labelFr": "8",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b50c31be-8e07-59aa-aa5b-012d50d02be9",
+          "labelFr": "9",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bb0bef82-dcbc-56a9-97de-890d50b14445",
+          "labelFr": "20",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "b50c31be-8e07-59aa-aa5b-012d50d02be9",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Réécoutez les deux nombres l’un après l’autre, celui que vous avez choisi et celui qui était dit.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3b-p1",
+      "drawIndex": 6,
+      "id": "a77e458b-fc33-50f3-80a0-823800d2bbef",
+      "type": "audio_choice",
+      "itemId": "88d3dc02-32af-514b-8840-bf069d2345db",
+      "skill": "listening",
+      "audioAssetId": "63f1b7b7-b9b8-564c-a0fe-b93fddb7d962",
+      "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
+      "options": [
+        {
+          "id": "644d5221-79e9-5bb0-973c-2a8d2c87c728",
+          "labelFr": "2",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "7fd5a6dc-cadf-5c40-94d8-e6003ec3aecd",
+          "labelFr": "10",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "0ee30c75-c1ee-5f07-8321-8f9b2fa553a6",
+          "labelFr": "12",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "02877b11-3e9a-51e3-9389-8ed9b2e2b3b8",
+          "labelFr": "20",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "02877b11-3e9a-51e3-9389-8ed9b2e2b3b8",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Réécoutez les deux nombres l’un après l’autre, celui que vous avez choisi et celui qui était dit.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3b-p1",
+      "drawIndex": 7,
+      "id": "15149578-9b9b-57b4-8a4a-4283cef7be75",
+      "type": "audio_choice",
+      "itemId": "8b98aa1e-06e5-574b-aba8-2817a08d2e7e",
+      "skill": "listening",
+      "audioAssetId": "16f808a6-950f-5109-b862-7045b3cca1bb",
+      "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
+      "options": [
+        {
+          "id": "7c77b941-be39-5db9-8762-664821e26d17",
+          "labelFr": "1",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "f1509e6d-dfe8-538f-91a9-4d439ed4808a",
+          "labelFr": "10",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "603cf32a-90e3-54fe-afa2-cec8694841f7",
+          "labelFr": "11",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b79d770c-a85f-5da9-b87a-760994578632",
+          "labelFr": "21",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "603cf32a-90e3-54fe-afa2-cec8694841f7",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Réécoutez les deux nombres l’un après l’autre, celui que vous avez choisi et celui qui était dit.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3b-p1",
+      "drawIndex": 8,
+      "id": "a8ed723a-f751-57ae-95d9-2dfedde97405",
+      "type": "audio_choice",
+      "itemId": "dc14e22a-65b9-51dd-99aa-1801425d77c4",
+      "skill": "listening",
+      "audioAssetId": "925df7a5-a7cc-5f36-a769-c3fa982af2a8",
+      "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
+      "options": [
+        {
+          "id": "5564767a-a18d-5fda-9c72-05c34af408c0",
+          "labelFr": "11",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "ef7f4f50-a87f-552e-a604-ad128a66c226",
+          "labelFr": "20",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e89fe69c-5737-5c1e-bdbc-985b96214862",
+          "labelFr": "21",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "01229148-4b48-5ad0-a7ea-800b74aa8247",
+          "labelFr": "25",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "e89fe69c-5737-5c1e-bdbc-985b96214862",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Réécoutez les deux nombres l’un après l’autre, celui que vous avez choisi et celui qui était dit.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3b-p2",
+      "drawIndex": 1,
+      "id": "b477045e-a8a2-5e5f-95c7-6cab1c52b679",
+      "type": "word_order",
+      "itemId": "a3ec79e3-ec13-5468-8639-a92a6808afd8",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Composez le nombre demandé. Certaines étiquettes ne servent pas.",
+      "tokens": [
+        {
+          "id": "ab6c1ac6-3a79-5287-8570-2ca2440ff694",
+          "thaiRaw": "สาม",
+          "transcription": null
+        },
+        {
+          "id": "c7727e6a-96e3-5269-b65e-fcc76f230403",
+          "thaiRaw": "สิบ",
+          "transcription": null
+        },
+        {
+          "id": "a1019ab9-2de4-5477-b6bf-734a33cb715e",
+          "thaiRaw": "หนึ่ง",
+          "transcription": null
+        },
+        {
+          "id": "8f33da11-889d-56a4-89ce-569dfc2a2b7a",
+          "thaiRaw": "ยี่",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "ab6c1ac6-3a79-5287-8570-2ca2440ff694",
+        "c7727e6a-96e3-5269-b65e-fcc76f230403"
+      ],
+      "feedback": {
+        "correctFr": "C’est l’ordre attendu.",
+        "incorrectFr": "สอง est bien le mot pour deux, mais pas devant สิบ. Vingt emploie ยี่.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 3 et 4",
+            "textFr": "หนึ่ง dit un tout seul. Derrière une dizaine, le un se dit เอ็ด."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres cas",
+            "textFr": "Le chiffre se place avant สิบ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3b-p2",
+      "drawIndex": 2,
+      "id": "b093c29c-9ac3-5606-bea3-f30370fbbb5e",
+      "type": "word_order",
+      "itemId": "88d3dc02-32af-514b-8840-bf069d2345db",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Composez le nombre demandé. Certaines étiquettes ne servent pas.",
+      "tokens": [
+        {
+          "id": "3a2367ef-66da-5a4d-a7a0-63200d0619d5",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "a60dd7db-85da-5db4-b75d-17227ab02b18",
+          "thaiRaw": "สิบ",
+          "transcription": null
+        },
+        {
+          "id": "5da0cdb1-9603-5c22-b264-26fdef723009",
+          "thaiRaw": "ยี่",
+          "transcription": null
+        },
+        {
+          "id": "972f75a6-d10e-5785-8b0a-551ee29889c6",
+          "thaiRaw": "เอ็ด",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "5da0cdb1-9603-5c22-b264-26fdef723009",
+        "a60dd7db-85da-5db4-b75d-17227ab02b18"
+      ],
+      "feedback": {
+        "correctFr": "C’est l’ordre attendu.",
+        "incorrectFr": "สอง est bien le mot pour deux, mais pas devant สิบ. Vingt emploie ยี่.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 3 et 4",
+            "textFr": "หนึ่ง dit un tout seul. Derrière une dizaine, le un se dit เอ็ด."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres cas",
+            "textFr": "Le chiffre se place avant สิบ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3b-p2",
+      "drawIndex": 3,
+      "id": "d2932d89-c6a2-5342-8d74-7ba91dcb8a0f",
+      "type": "word_order",
+      "itemId": "8b98aa1e-06e5-574b-aba8-2817a08d2e7e",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Composez le nombre demandé. Certaines étiquettes ne servent pas.",
+      "tokens": [
+        {
+          "id": "9c913a87-a5f7-56da-bafb-4cce2ece0692",
+          "thaiRaw": "สิบ",
+          "transcription": null
+        },
+        {
+          "id": "55db67e1-b4d9-5bee-8409-a7d04e4d8e75",
+          "thaiRaw": "หนึ่ง",
+          "transcription": null
+        },
+        {
+          "id": "f27fb0c3-0aa9-5b6b-ab19-47bb35b841c1",
+          "thaiRaw": "เอ็ด",
+          "transcription": null
+        },
+        {
+          "id": "30df5f9f-7bd4-5381-b5af-cb8d9b07f15a",
+          "thaiRaw": "ยี่",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "9c913a87-a5f7-56da-bafb-4cce2ece0692",
+        "f27fb0c3-0aa9-5b6b-ab19-47bb35b841c1"
+      ],
+      "feedback": {
+        "correctFr": "C’est l’ordre attendu.",
+        "incorrectFr": "สอง est bien le mot pour deux, mais pas devant สิบ. Vingt emploie ยี่.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 3 et 4",
+            "textFr": "หนึ่ง dit un tout seul. Derrière une dizaine, le un se dit เอ็ด."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres cas",
+            "textFr": "Le chiffre se place avant สิบ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3b-p2",
+      "drawIndex": 4,
+      "id": "e09ed0d9-4357-5976-ba16-308094919969",
+      "type": "word_order",
+      "itemId": "dc14e22a-65b9-51dd-99aa-1801425d77c4",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Composez le nombre demandé. Certaines étiquettes ne servent pas.",
+      "tokens": [
+        {
+          "id": "27da3d0e-2420-5a94-b893-abb8ad52e111",
+          "thaiRaw": "ยี่",
+          "transcription": null
+        },
+        {
+          "id": "23670234-a771-5e0e-a3aa-700bea6e4be6",
+          "thaiRaw": "สิบ",
+          "transcription": null
+        },
+        {
+          "id": "ad704339-bf23-582c-b357-a8b78fa3629d",
+          "thaiRaw": "เอ็ด",
+          "transcription": null
+        },
+        {
+          "id": "e19df48d-9117-5f20-8b89-428ea74c99ab",
+          "thaiRaw": "หนึ่ง",
+          "transcription": null
+        },
+        {
+          "id": "431478f8-5762-5dc2-8aae-2967d05c61b4",
+          "thaiRaw": "สอง",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "27da3d0e-2420-5a94-b893-abb8ad52e111",
+        "23670234-a771-5e0e-a3aa-700bea6e4be6",
+        "ad704339-bf23-582c-b357-a8b78fa3629d"
+      ],
+      "feedback": {
+        "correctFr": "C’est l’ordre attendu.",
+        "incorrectFr": "สอง est bien le mot pour deux, mais pas devant สิบ. Vingt emploie ยี่.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 3 et 4",
+            "textFr": "หนึ่ง dit un tout seul. Derrière une dizaine, le un se dit เอ็ด."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres cas",
+            "textFr": "Le chiffre se place avant สิบ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3b-p2",
+      "drawIndex": 5,
+      "id": "c2eb5774-e124-5006-859a-405a9feb198b",
+      "type": "word_order",
+      "itemId": "2f41932d-4ab4-56a1-9787-35c9f470f691",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Composez le nombre demandé. Certaines étiquettes ne servent pas.",
+      "tokens": [
+        {
+          "id": "cd548f3b-6cc5-574d-a524-f744ef1a288f",
+          "thaiRaw": "เก้า",
+          "transcription": null
+        },
+        {
+          "id": "cf4c8c8a-876b-5e1b-bb30-46cff6b218e4",
+          "thaiRaw": "สิบ",
+          "transcription": null
+        },
+        {
+          "id": "5b796899-131a-5ec4-8cd6-ab6d446d4cf0",
+          "thaiRaw": "เอ็ด",
+          "transcription": null
+        },
+        {
+          "id": "e884b7ba-0bb5-5169-a4d9-ae4e1a145f50",
+          "thaiRaw": "ร้อย",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "cd548f3b-6cc5-574d-a524-f744ef1a288f",
+        "cf4c8c8a-876b-5e1b-bb30-46cff6b218e4"
+      ],
+      "feedback": {
+        "correctFr": "C’est l’ordre attendu.",
+        "incorrectFr": "สอง est bien le mot pour deux, mais pas devant สิบ. Vingt emploie ยี่.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 3 et 4",
+            "textFr": "หนึ่ง dit un tout seul. Derrière une dizaine, le un se dit เอ็ด."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres cas",
+            "textFr": "Le chiffre se place avant สิบ."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "dix mots, puis une mécanique",
+      "bodyFr": "Le thaï compte avec dix mots et une règle d’assemblage. Une fois les dix mots installés, vous fabriquez les dizaines, les nombres composés et cent sans rien apprendre de neuf. Deux endroits seulement échappent à la règle, et cette leçon les met en pleine lumière au lieu de les laisser vous surprendre plus tard.",
+      "specimen": "๑ ๒ ๓ ๔ ๕ ๖ ๗ ๘ ๙ ๑๐"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "la série des dix",
+      "bodyFr": "Voici les dix. หนึ่ง (nùeng), สอง (sǎwwng), สาม (sǎam), สี่ (sìi), ห้า (hâa), หก (hòk), เจ็ด (jèt), แปด (pàeet), เก้า (kâao), สิบ (sìp). Regardez les tons de la série : six de ces dix mots portent le ton bas travaillé en 1C, deux portent un ton montant (สอง, สาม) et deux un ton descendant (ห้า, เก้า).",
+      "specimen": "หนึ่ง สอง สาม สี่ ห้า หก เจ็ด แปด เก้า สิบ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "quatre brefs, six longs",
+      "bodyFr": "La longueur de 1B revient ici et elle s’entend. หนึ่ง, หก, เจ็ด et สิบ sont brefs ; les six autres tiennent leur voyelle. Dans หก, เจ็ด et สิบ, la syllabe s’arrête net sur sa consonne finale, sans relâchement, exactement comme le ด de พูด vu en 2A.",
+      "specimen": "หก (hòk) · เจ็ด (jèt) · สิบ (sìp)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "fabriquer une dizaine",
+      "bodyFr": "Pour une dizaine ronde, posez le chiffre devant สิบ. สาม puis สิบ donne สามสิบ (sǎam·sìp), trente. สี่สิบ, ห้าสิบ, หกสิบ, เจ็ดสิบ, แปดสิบ et เก้าสิบ se fabriquent exactement de la même façon. Dix, lui, se dit สิบ tout seul, sans rien devant.",
+      "specimen": "สามสิบ · สี่สิบ · ห้าสิบ · เก้าสิบ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "le vingt qui n’obéit pas",
+      "bodyFr": "Appliquez la règle à deux et vous obtenez สองสิบ. Or ni le dictionnaire normatif thaï ni la base bilingue française consultée ne connaissent cette forme. Vingt se dit ยี่สิบ (yîi·sìp), avec un mot particulier pour « deux », ยี่ (yîi), qui en usage courant ne sert que là et dans le nom du deuxième mois lunaire.",
+      "specimen": "ยี่สิบ (yîi·sìp), et non สองสิบ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "le un qui change de nom",
+      "bodyFr": "Deuxième exception, et vous la croiserez souvent. Dès qu’un « un » arrive en position d’unité derrière une dizaine, il ne se dit plus หนึ่ง mais เอ็ด (èt). Onze se dit donc สิบเอ็ด (sìp·èt). Si vous formez สิบหนึ่ง par analogie avec สิบสอง (sìp·sǎwwng), douze, vous obtenez une forme que les dictionnaires consultés ne connaissent pas.",
+      "specimen": "สิบเอ็ด (sìp·èt) · สิบสอง (sìp·sǎwwng)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "les deux pièges dans le même nombre",
+      "bodyFr": "Vingt et un cumule les deux exceptions : ยี่สิบเอ็ด (yîi·sìp·èt). Le deux est devenu ยี่, le un est devenu เอ็ด, et สิบ n’a pas bougé. Prenez ce nombre comme un bloc entier plutôt que de le recalculer à chaque fois. Pour toutes les autres unités, rien ne change : vingt-cinq se dit ยี่สิบห้า (yîi·sìp·hâa).",
+      "specimen": "ยี่สิบเอ็ด (yîi·sìp·èt) · ยี่สิบห้า (yîi·sìp·hâa)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "cent, et les chiffres écrits",
+      "bodyFr": "Cent se dit ร้อย (ráwwi), ou หนึ่งร้อย (nùeng·ráwwi) lorsqu’on veut être explicite. Dernier bloc : le thaï possède ses propres chiffres, ๐ ๑ ๒ ๓ ๔ ๕ ๖ ๗ ๘ ๙, qui valent zéro à neuf comme les nôtres et se combinent de la même façon, ๒๐ pour vingt, ๑๐๐ pour cent. Aujourd’hui, apprenez seulement à les lire.",
+      "specimen": "ร้อย (ráwwi) · ๑๐๐ · ๒๐ · ๒๑"
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u03-l3b-p1",
+      "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
+      "mechanic": "audio_choice",
+      "drawCount": 8,
+      "passRequired": 8,
+      "sampleSize": 8
+    },
+    {
+      "poolId": "u03-l3b-p2",
+      "promptFr": "Composez le nombre demandé. Certaines étiquettes ne servent pas.",
+      "mechanic": "word_order",
+      "drawCount": 5,
+      "passRequired": 5,
+      "sampleSize": 5
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "f611c67d-313b-55c3-802d-e8022255928b",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "130eca6d-0307-5d24-948b-4a67ec53ecfc",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e053c902-16af-5a85-9752-f6d4e48348a5",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "cd200d62-fd5e-5262-9e9e-bd760984ae0b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2a655854-0a20-547c-a09b-c60ff0b5d922",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3e4bc119-7523-5bd4-b178-75f5e7a811ee",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a16176bb-28fb-56b9-8dd0-a2e6184d93da",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "43b6ced4-8aed-581a-a0c3-fde3319b8f9b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

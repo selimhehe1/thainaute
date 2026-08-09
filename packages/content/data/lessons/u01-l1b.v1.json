@@ -15,7 +15,12 @@
     {
       "id": "80ccdef1-34de-55c6-a028-a01186497f78",
       "thaiRaw": "เข้า",
-      "unicodeCodePoints": ["U+0E40", "U+0E02", "U+0E49", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32"
+      ],
       "translationFr": "entrer",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -32,12 +37,21 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "93940210-b361-5471-be6e-bdbf1a482c55",
       "thaiRaw": "ข้าว",
-      "unicodeCodePoints": ["U+0E02", "U+0E49", "U+0E32", "U+0E27"],
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27"
+      ],
       "translationFr": "riz",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -54,12 +68,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "dfd18061-30af-5400-a5da-565768783f05",
       "thaiRaw": "เขา",
-      "unicodeCodePoints": ["U+0E40", "U+0E02", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E32"
+      ],
       "translationFr": "il, elle",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -76,12 +98,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "09df4821-87e5-5c4f-8902-5bc807aceeb7",
       "thaiRaw": "ขาว",
-      "unicodeCodePoints": ["U+0E02", "U+0E32", "U+0E27"],
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E32",
+        "U+0E27"
+      ],
       "translationFr": "blanc",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -98,12 +128,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "3be9755c-9041-5dc9-85dd-db66c1beefce",
       "thaiRaw": "หัด",
-      "unicodeCodePoints": ["U+0E2B", "U+0E31", "U+0E14"],
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E31",
+        "U+0E14"
+      ],
       "translationFr": "s'entraîner, s'exercer",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -120,12 +158,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "89522fd2-a6da-59a1-90b2-bd747ce60fdb",
       "thaiRaw": "หาด",
-      "unicodeCodePoints": ["U+0E2B", "U+0E32", "U+0E14"],
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E32",
+        "U+0E14"
+      ],
       "translationFr": "plage",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -142,12 +188,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "3f1fe645-c716-5dcc-9f29-96547e3cb7e8",
       "thaiRaw": "ยัง",
-      "unicodeCodePoints": ["U+0E22", "U+0E31", "U+0E07"],
+      "unicodeCodePoints": [
+        "U+0E22",
+        "U+0E31",
+        "U+0E07"
+      ],
       "translationFr": "encore, toujours (pas encore dans une négation)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -164,12 +218,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "ac9ae9ed-ab46-546b-8939-834adcb43455",
       "thaiRaw": "ยาง",
-      "unicodeCodePoints": ["U+0E22", "U+0E32", "U+0E07"],
+      "unicodeCodePoints": [
+        "U+0E22",
+        "U+0E32",
+        "U+0E07"
+      ],
       "translationFr": "caoutchouc (aussi pneu, sève, résine)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -186,12 +248,19 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "d2ef00b0-4f2a-5cd1-8d81-7870a0772838",
       "thaiRaw": "ดุ",
-      "unicodeCodePoints": ["U+0E14", "U+0E38"],
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E38"
+      ],
       "translationFr": "sévère ; gronder",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -208,12 +277,19 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "7ed2c206-3261-55fc-8c8b-2a776cf032c4",
       "thaiRaw": "ดู",
-      "unicodeCodePoints": ["U+0E14", "U+0E39"],
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E39"
+      ],
       "translationFr": "regarder",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -230,10 +306,194 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u01-l1b-p1",
+      "drawIndex": 1,
+      "id": "727716f2-7458-5df4-b85f-22a1d5547588",
+      "type": "audio_choice",
+      "itemId": "89522fd2-a6da-59a1-90b2-bd747ce60fdb",
+      "skill": "listening",
+      "audioAssetId": "eb3d8d6a-820f-5b11-b3eb-11c5a0ddd8b2",
+      "promptFr": "Écoutez le mot. La voyelle est-elle courte ou longue ?",
+      "options": [
+        {
+          "id": "927c9762-dd71-5c77-84ab-5215021817dc",
+          "labelFr": "Courte",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8eb46ddc-5a8e-5d22-a664-f4c39b2c90e6",
+          "labelFr": "Longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "8eb46ddc-5a8e-5d22-a664-f4c39b2c90e6",
+      "feedback": {
+        "correctFr": "Oui. หาด (hàat) : la voyelle doublée le confirme dans la transcription.",
+        "incorrectFr": "Pas cette fois. Réécoutez : hàat. Une courte tombe net, une longue se pose. Comparez avec son mot jumeau de la même paire.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p1",
+      "drawIndex": 2,
+      "id": "43e5d049-10c3-5eac-a172-673b3e5c9a3a",
+      "type": "audio_choice",
+      "itemId": "3be9755c-9041-5dc9-85dd-db66c1beefce",
+      "skill": "listening",
+      "audioAssetId": "402cfd23-810d-5771-9cc8-373dcb6ff2cf",
+      "promptFr": "Écoutez le mot. La voyelle est-elle courte ou longue ?",
+      "options": [
+        {
+          "id": "927c9762-dd71-5c77-84ab-5215021817dc",
+          "labelFr": "Courte",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8eb46ddc-5a8e-5d22-a664-f4c39b2c90e6",
+          "labelFr": "Longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "927c9762-dd71-5c77-84ab-5215021817dc",
+      "feedback": {
+        "correctFr": "Oui. หัด (hàt) : la voyelle simple le confirme dans la transcription.",
+        "incorrectFr": "Pas cette fois. Réécoutez : hàt. Une courte tombe net, une longue se pose. Comparez avec son mot jumeau de la même paire.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p1",
+      "drawIndex": 3,
+      "id": "c3554947-384e-5708-9d19-52a4ef48601d",
+      "type": "audio_choice",
+      "itemId": "93940210-b361-5471-be6e-bdbf1a482c55",
+      "skill": "listening",
+      "audioAssetId": "4e0040ad-bb5a-53c4-a6a9-a9378b2d0088",
+      "promptFr": "Écoutez le mot. La voyelle est-elle courte ou longue ?",
+      "options": [
+        {
+          "id": "927c9762-dd71-5c77-84ab-5215021817dc",
+          "labelFr": "Courte",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8eb46ddc-5a8e-5d22-a664-f4c39b2c90e6",
+          "labelFr": "Longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "8eb46ddc-5a8e-5d22-a664-f4c39b2c90e6",
+      "feedback": {
+        "correctFr": "Oui. ข้าว (khâao) : la voyelle doublée le confirme dans la transcription.",
+        "incorrectFr": "Pas cette fois. Réécoutez : khâao. Une courte tombe net, une longue se pose. Comparez avec son mot jumeau de la même paire.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p1",
+      "drawIndex": 4,
+      "id": "e993f0ce-ce15-56a7-a5e3-18ea7b779cbf",
+      "type": "audio_choice",
+      "itemId": "3f1fe645-c716-5dcc-9f29-96547e3cb7e8",
+      "skill": "listening",
+      "audioAssetId": "c799f3d9-1765-5d31-9607-ab53fd1fa34a",
+      "promptFr": "Écoutez le mot. La voyelle est-elle courte ou longue ?",
+      "options": [
+        {
+          "id": "927c9762-dd71-5c77-84ab-5215021817dc",
+          "labelFr": "Courte",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8eb46ddc-5a8e-5d22-a664-f4c39b2c90e6",
+          "labelFr": "Longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "927c9762-dd71-5c77-84ab-5215021817dc",
+      "feedback": {
+        "correctFr": "Oui. ยัง (yang) : la voyelle simple le confirme dans la transcription.",
+        "incorrectFr": "Pas cette fois. Réécoutez : yang. Une courte tombe net, une longue se pose. Comparez avec son mot jumeau de la même paire.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p1",
+      "drawIndex": 5,
+      "id": "b6cec3ec-822f-55df-af19-491f944d9809",
+      "type": "audio_choice",
+      "itemId": "09df4821-87e5-5c4f-8902-5bc807aceeb7",
+      "skill": "listening",
+      "audioAssetId": "a80861fa-87ce-5755-95af-6e04dd60f149",
+      "promptFr": "Écoutez le mot. La voyelle est-elle courte ou longue ?",
+      "options": [
+        {
+          "id": "927c9762-dd71-5c77-84ab-5215021817dc",
+          "labelFr": "Courte",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8eb46ddc-5a8e-5d22-a664-f4c39b2c90e6",
+          "labelFr": "Longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "8eb46ddc-5a8e-5d22-a664-f4c39b2c90e6",
+      "feedback": {
+        "correctFr": "Oui. ขาว (khǎao) : la voyelle doublée le confirme dans la transcription.",
+        "incorrectFr": "Pas cette fois. Réécoutez : khǎao. Une courte tombe net, une longue se pose. Comparez avec son mot jumeau de la même paire.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p1",
+      "drawIndex": 6,
+      "id": "9b464bc0-37c2-5034-96c6-9e0b442f40e5",
+      "type": "audio_choice",
+      "itemId": "dfd18061-30af-5400-a5da-565768783f05",
+      "skill": "listening",
+      "audioAssetId": "d3f24fd9-1f99-5304-bc7c-eec85e3c10d1",
+      "promptFr": "Écoutez le mot. La voyelle est-elle courte ou longue ?",
+      "options": [
+        {
+          "id": "927c9762-dd71-5c77-84ab-5215021817dc",
+          "labelFr": "Courte",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8eb46ddc-5a8e-5d22-a664-f4c39b2c90e6",
+          "labelFr": "Longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "927c9762-dd71-5c77-84ab-5215021817dc",
+      "feedback": {
+        "correctFr": "Oui. เขา (khǎo) : la voyelle simple le confirme dans la transcription.",
+        "incorrectFr": "Pas cette fois. Réécoutez : khǎo. Une courte tombe net, une longue se pose. Comparez avec son mot jumeau de la même paire.",
+        "variants": []
+      }
+    },
     {
       "poolId": "u01-l1b-p2",
       "drawIndex": 1,
@@ -364,23 +624,23 @@
       "pairs": [
         {
           "id": "9fe62fbf-00ae-5ef5-bbd9-398c83022c2e",
-          "itemId": "dfd18061-30af-5400-a5da-565768783f05",
-          "labelFr": "courte · khǎo · il, elle"
+          "itemId": "80ccdef1-34de-55c6-a028-a01186497f78",
+          "labelFr": "courte · khâo · entrer"
         },
         {
           "id": "5d7ac914-919e-5a6c-8865-364aec1c5dfb",
-          "itemId": "09df4821-87e5-5c4f-8902-5bc807aceeb7",
-          "labelFr": "longue · khǎao · blanc"
+          "itemId": "93940210-b361-5471-be6e-bdbf1a482c55",
+          "labelFr": "longue · khâao · riz"
         },
         {
           "id": "6a8fd44f-7285-5868-b47a-a5fd3cfaeea0",
-          "itemId": "d2ef00b0-4f2a-5cd1-8d81-7870a0772838",
-          "labelFr": "courte · dòu · sévère"
+          "itemId": "3f1fe645-c716-5dcc-9f29-96547e3cb7e8",
+          "labelFr": "courte · yang · encore"
         },
         {
           "id": "7ad75559-95cd-548e-a309-f786833c3e22",
-          "itemId": "7ed2c206-3261-55fc-8c8b-2a776cf032c4",
-          "labelFr": "longue · douu · regarder"
+          "itemId": "ac9ae9ed-ab46-546b-8939-834adcb43455",
+          "labelFr": "longue · yaang · caoutchouc"
         }
       ],
       "feedback": {
@@ -554,6 +814,122 @@
         "incorrectFr": "Regardez la durée : ce mot a une voyelle {courte/ longue}, donc {une lettre simple/une lettre doublée}. Indice : son jumeau court/long est {transcription du jumeau}.",
         "variants": []
       }
+    },
+    {
+      "poolId": "u01-l1b-p5",
+      "drawIndex": 1,
+      "id": "6c3f8f24-3b60-5915-8f78-2d9d1f4ac1af",
+      "type": "reading",
+      "itemId": "3be9755c-9041-5dc9-85dd-db66c1beefce",
+      "skill": "reading",
+      "promptFr": "Regardez seulement le signe de voyelle. La voyelle est-elle brève ou longue ?",
+      "options": [
+        {
+          "id": "d71ef00f-e663-5939-9c72-9139b32ca229",
+          "labelFr": "Brève",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "64cfe9ad-640d-5d02-8de7-2fd0237a7e39",
+          "labelFr": "Longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "d71ef00f-e663-5939-9c72-9139b32ca229",
+      "feedback": {
+        "correctFr": "Oui. Le signe `ั` est bref ; le signe `า` est long. Vous avez utilisé l'écriture comme un repère, pas comme une devinette.",
+        "incorrectFr": "Regardez la voyelle, pas la consonne : `ั` se coupe court et `า` se tient. Comparez avec le mot jumeau de la même paire.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p5",
+      "drawIndex": 2,
+      "id": "25d57b85-462e-5b74-9162-e51f5728f64b",
+      "type": "reading",
+      "itemId": "89522fd2-a6da-59a1-90b2-bd747ce60fdb",
+      "skill": "reading",
+      "promptFr": "Regardez seulement le signe de voyelle. La voyelle est-elle brève ou longue ?",
+      "options": [
+        {
+          "id": "543243d2-4c8e-5f44-8f96-578756717360",
+          "labelFr": "Brève",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "11280ac0-4077-59b5-8e8e-b2fca1b9ec88",
+          "labelFr": "Longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "11280ac0-4077-59b5-8e8e-b2fca1b9ec88",
+      "feedback": {
+        "correctFr": "Oui. Le signe `ั` est bref ; le signe `า` est long. Vous avez utilisé l'écriture comme un repère, pas comme une devinette.",
+        "incorrectFr": "Regardez la voyelle, pas la consonne : `ั` se coupe court et `า` se tient. Comparez avec le mot jumeau de la même paire.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p5",
+      "drawIndex": 3,
+      "id": "6e156d98-2606-5115-b988-66df098c30cd",
+      "type": "reading",
+      "itemId": "3f1fe645-c716-5dcc-9f29-96547e3cb7e8",
+      "skill": "reading",
+      "promptFr": "Regardez seulement le signe de voyelle. La voyelle est-elle brève ou longue ?",
+      "options": [
+        {
+          "id": "0b503521-ab04-52de-a9f5-20beda8ff936",
+          "labelFr": "Brève",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "91000d3e-ff2b-59e8-b81e-d25bf6dcbf60",
+          "labelFr": "Longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "0b503521-ab04-52de-a9f5-20beda8ff936",
+      "feedback": {
+        "correctFr": "Oui. Le signe `ั` est bref ; le signe `า` est long. Vous avez utilisé l'écriture comme un repère, pas comme une devinette.",
+        "incorrectFr": "Regardez la voyelle, pas la consonne : `ั` se coupe court et `า` se tient. Comparez avec le mot jumeau de la même paire.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1b-p5",
+      "drawIndex": 4,
+      "id": "0e1d77be-7e29-5036-a74e-4aed0cef65d4",
+      "type": "reading",
+      "itemId": "ac9ae9ed-ab46-546b-8939-834adcb43455",
+      "skill": "reading",
+      "promptFr": "Regardez seulement le signe de voyelle. La voyelle est-elle brève ou longue ?",
+      "options": [
+        {
+          "id": "682b51a9-cd4e-5a21-99d7-0acb28f48727",
+          "labelFr": "Brève",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bb5a22fb-09b7-5789-9590-5ebc024cbb05",
+          "labelFr": "Longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "bb5a22fb-09b7-5789-9590-5ebc024cbb05",
+      "feedback": {
+        "correctFr": "Oui. Le signe `ั` est bref ; le signe `า` est long. Vous avez utilisé l'écriture comme un repère, pas comme une devinette.",
+        "incorrectFr": "Regardez la voyelle, pas la consonne : `ั` se coupe court et `า` se tient. Comparez avec le mot jumeau de la même paire.",
+        "variants": []
+      }
     }
   ],
   "teaching": [
@@ -578,7 +954,7 @@
     {
       "ordre": 4,
       "titleFr": "l'astuce d'écoute",
-      "bodyFr": "Une voyelle courte se termine net, souvent avec un petit arrêt du souffle, comme une porte qui claque. Une voyelle longue se pose et s'étire, comme une porte qu'on retient. Au début, aidez-vous d'un geste : pincez deux doigts pour une courte, écartez-les pour une longue.",
+      "bodyFr": "Une voyelle courte se termine net, souvent avec un petit arrêt du souffle, comme une porte qui claque. Une voyelle longue se pose et s'étire, comme une porte qu'on retient. Au début, aidez-vous d'un geste : pincez deux doigts pour une courte, écartez-les pour une longue.\n\nAvant de répondre, gardez le volume et la hauteur de votre voix de référence stables. Posez-vous une seule question : « est-ce que le son dure ? » Une voyelle longue n'est ni plus forte ni plus aiguë. Si vous doutez, marquez deux pulsations régulières avec le doigt et comparez la durée, pas l'accent.",
       "specimen": "ดุ (dòu) / ดู (douu)"
     },
     {
@@ -586,9 +962,29 @@
       "titleFr": "dans l'écriture thaïe aussi",
       "bodyFr": "Vous n'avez pas encore appris à lire, mais remarquez déjà que la durée se voit dans l'écriture thaïe : ั note un « a » court, า un « aa » long, ุ un « ou » court sous la consonne, ู un « ouu » long. Les voyelles s'accrochent autour de la consonne : avant, après, dessus ou dessous. L'unité 1 du fil lecture y reviendra pas à pas.",
       "specimen": "ยัง / ยาง"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "le transfert sans accent français",
+      "bodyFr": "Refaites le geste avec deux paires déjà vues : เข้า / ข้าว, puis หัด / หาด. Dites les deux membres à volume égal, puis laissez seulement la voyelle longue occuper davantage de temps. Le doublement dans `khâao` ou `hàat` ne se prononce pas deux fois : il vous rappelle de tenir la même voyelle.\n\nCette répétition est un entraînement, pas un test. Si vous entendez surtout la hauteur ou le volume, revenez à la question « court ou long ? » avant de regarder la transcription.",
+      "specimen": null
+    },
+    {
+      "ordre": 7,
+      "titleFr": "le premier pont vers l'écriture",
+      "bodyFr": "Vous pouvez maintenant repérer la durée sans savoir lire toute la syllabe. Cachez la transcription et cherchez seulement le signe vocalique : `ั` dans หัด et ยัง indique une voyelle courte ; `า` dans หาด et ยาง indique une voyelle longue. Dites ensuite « brève » ou « longue », puis vérifiez la transcription. Cette lecture partielle est volontaire : vous apprenez à utiliser l'écriture thaïe comme un indice fiable, sans devoir mémoriser les consonnes avant le moment prévu.",
+      "specimen": null
     }
   ],
   "pools": [
+    {
+      "poolId": "u01-l1b-p1",
+      "promptFr": "Écoutez le mot. La voyelle est-elle courte ou longue ?",
+      "mechanic": "audio_choice",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    },
     {
       "poolId": "u01-l1b-p2",
       "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu.",
@@ -612,10 +1008,22 @@
       "drawCount": 6,
       "passRequired": 6,
       "sampleSize": 6
+    },
+    {
+      "poolId": "u01-l1b-p5",
+      "promptFr": "Regardez seulement le signe de voyelle. La voyelle est-elle brève ou longue ?",
+      "mechanic": "reading",
+      "drawCount": 4,
+      "passRequired": 4,
+      "sampleSize": 4
     }
   ],
   "provenance": {
-    "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"],
+    "sourceIds": [
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
     "generationActors": [
       {
         "actorId": "83d336a9-c225-5db3-8398-5f17f60fc04e",

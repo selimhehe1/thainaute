@@ -669,6 +669,16 @@ láeew·joee·kan khráp`.
   บาท ne peuvent aller qu’avec un achat, alors que le tirage 4 dit ce qu’on
   possède.
 
+### Exercice de consolidation textuelle : affirmation et négation (`association`)
+
+- Mécanique : `association`
+- Consigne : « Reliez chaque forme à son sens. »
+- Tirages :
+  1. มี ↔ « avoir ; il y a »
+  2. ไม่ ↔ « ne … pas »
+- Feedback correct : « Exact. »
+- Feedback incorrect : « Relisez la forme et son sens dans cette leçon, puis réessayez. »
+
 ## Dialogue
 
 Scène : une rue de quartier, en fin d’après-midi. Deux personnes qui se

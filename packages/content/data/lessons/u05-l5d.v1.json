@@ -1,0 +1,649 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "96881c12-4538-5bd5-b72c-450f45eb1384",
+  "versionId": "42116365-cbcb-5e07-a7d9-17751add0efd",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Prendre un taxi, un bus, un bateau",
+  "objectiveFr": "à la fin de la leçon, l’apprenant identifie à l’écoute lequel des quatre mots de la famille des transports a été dit, c’est-à-dire les trois moyens de transport et le mot général รถ, sur au moins 5 tirages sur 6 ; il reconstruit le bloc [qui] + ไป + [où] + [particule] dans l’ordre sur 3 assemblages sur 3, sans erreur d’ordre et sans erreur de particule ; il écrit en transcription ce bloc et les de",
+  "requiredEntitlement": null,
+  "audioManifestId": "9d3f0e70-75bd-5876-a3e6-f15e40728da0",
+  "items": [
+    {
+      "id": "6559812e-cdf9-5431-a51b-e8d4fb2b8ff6",
+      "thaiRaw": "ไป",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "aller, se rendre à",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "bfc483fe-e106-5dc6-99ac-4e252a656f2c",
+      "thaiRaw": "รถ",
+      "unicodeCodePoints": [
+        "U+0E23",
+        "U+0E16"
+      ],
+      "translationFr": "véhicule à roues, voiture",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "rót"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "รถ",
+          "ipa": "rot̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "74650bcf-592f-5158-88f1-7d18be7a121c",
+      "thaiRaw": "แท็กซี่",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E17",
+        "U+0E47",
+        "U+0E01",
+        "U+0E0B",
+        "U+0E35",
+        "U+0E48"
+      ],
+      "translationFr": "taxi",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tháek·sîi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แท็กซี่",
+          "ipa": "tʰɛk̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "แท็กซี่",
+          "ipa": "siː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1f377f34-daa6-5217-bb02-4bbab98c553b",
+      "thaiRaw": "รถเมล์",
+      "unicodeCodePoints": [
+        "U+0E23",
+        "U+0E16",
+        "U+0E40",
+        "U+0E21",
+        "U+0E25",
+        "U+0E4C"
+      ],
+      "translationFr": "bus, autobus",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "rót·mee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "รถเมล์",
+          "ipa": "rot̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "รถเมล์",
+          "ipa": "meː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "e76b358c-e5ad-513d-88f7-eecd7b93a38c",
+      "thaiRaw": "เรือ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E23",
+        "U+0E37",
+        "U+0E2D"
+      ],
+      "translationFr": "bateau, embarcation",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ruea"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เรือ",
+          "ipa": "rɯa̯˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "957b1e11-508d-5a2a-8cde-8d3082c7b6b4",
+      "thaiRaw": "ตลาด",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14"
+      ],
+      "translationFr": "le marché",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tà·làat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตลาด",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาด",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "thaiRaw": "ผมไปตลาดครับ",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21",
+        "U+0E44",
+        "U+0E1B",
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Je vais au marché.",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm pai tà·làat khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "laːt̚˨˩ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "thaiRaw": "ดิฉัน",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "je, moi (locutrice femme, échange poli)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u05-l5d-p2",
+      "drawIndex": 1,
+      "id": "137e5813-b0bd-5abb-b98d-9911165b0d1b",
+      "type": "word_order",
+      "itemId": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "tokens": [
+        {
+          "id": "a23bd300-2de1-5d8f-8478-028d3bab3f47",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "bcb12393-0d34-5dc2-bf4c-a2786c13593a",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "46ce2c81-93c1-57c8-8995-533be8b3e526",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "8b284547-ba02-5c90-a489-ae6b3731b509",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "34f2bda3-d838-5c1e-9464-eb07e14e114f",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "a23bd300-2de1-5d8f-8478-028d3bab3f47",
+        "bcb12393-0d34-5dc2-bf4c-a2786c13593a",
+        "46ce2c81-93c1-57c8-8995-533be8b3e526",
+        "8b284547-ba02-5c90-a489-ae6b3731b509"
+      ],
+      "feedback": {
+        "correctFr": "C’est le bon ordre. Qui, puis va, puis où. C’est le même geste qu’en 2D avec ผมชื่อ … ครับ, avec un autre verbe.",
+        "incorrectFr": "Vous avez mis le lieu devant le verbe. Le thaï dit d’abord ce qu’on fait, ensuite où : ไป, puis ตลาด.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, erreur de particule",
+            "textFr": "La particule dépend de vous, pas de la personne en face. Un homme dit khráp, une femme dit khâ, comme depuis la leçon 1E. Et elle s’accorde avec le pronom que vous venez de placer."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc n’a rien à faire là. Relisez la traduction affichée et cherchez ce qu’elle ne dit pas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5d-p2",
+      "drawIndex": 2,
+      "id": "6d53e7f9-1cbf-5693-b468-62ba3cef8791",
+      "type": "word_order",
+      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "tokens": [
+        {
+          "id": "36f4f0ba-0175-563b-82fd-05c5187e455b",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        },
+        {
+          "id": "632d5fe1-8245-5320-aa95-ee742b342eb6",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "75fb2d7a-8de8-514d-bcf2-540a8246727b",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "023e41de-78dd-5efa-9b82-963bff018122",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "f1e09283-f366-5ba5-8b5c-4d4de907112d",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "3c0430ab-05d6-51e8-a538-c397fe28df74",
+          "thaiRaw": "รถ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "36f4f0ba-0175-563b-82fd-05c5187e455b",
+        "632d5fe1-8245-5320-aa95-ee742b342eb6",
+        "75fb2d7a-8de8-514d-bcf2-540a8246727b",
+        "023e41de-78dd-5efa-9b82-963bff018122"
+      ],
+      "feedback": {
+        "correctFr": "C’est le bon ordre. Qui, puis va, puis où. C’est le même geste qu’en 2D avec ผมชื่อ … ครับ, avec un autre verbe.",
+        "incorrectFr": "Vous avez mis le lieu devant le verbe. Le thaï dit d’abord ce qu’on fait, ensuite où : ไป, puis ตลาด.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, erreur de particule",
+            "textFr": "La particule dépend de vous, pas de la personne en face. Un homme dit khráp, une femme dit khâ, comme depuis la leçon 1E. Et elle s’accorde avec le pronom que vous venez de placer."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc n’a rien à faire là. Relisez la traduction affichée et cherchez ce qu’elle ne dit pas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5d-p2",
+      "drawIndex": 3,
+      "id": "a051051f-3b18-51f2-97d2-a73b7145515e",
+      "type": "word_order",
+      "itemId": "6559812e-cdf9-5431-a51b-e8d4fb2b8ff6",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "tokens": [
+        {
+          "id": "ee8a4e97-d0c6-59b3-b1e8-1e07cdd38a43",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "e808eccc-7399-590b-a5dc-a7be8f7e6e38",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "080e8d87-bd42-5bd5-9347-88e453b0df8c",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "aec29838-733a-549f-a88d-e526917e9610",
+          "thaiRaw": "แท็กซี่",
+          "transcription": null
+        },
+        {
+          "id": "8cb74d76-e104-5793-bcf7-5ec222db6893",
+          "thaiRaw": "เรือ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "ee8a4e97-d0c6-59b3-b1e8-1e07cdd38a43",
+        "e808eccc-7399-590b-a5dc-a7be8f7e6e38",
+        "080e8d87-bd42-5bd5-9347-88e453b0df8c"
+      ],
+      "feedback": {
+        "correctFr": "C’est le bon ordre. Qui, puis va, puis où. C’est le même geste qu’en 2D avec ผมชื่อ … ครับ, avec un autre verbe.",
+        "incorrectFr": "Vous avez mis le lieu devant le verbe. Le thaï dit d’abord ce qu’on fait, ensuite où : ไป, puis ตลาด.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, erreur de particule",
+            "textFr": "La particule dépend de vous, pas de la personne en face. Un homme dit khráp, une femme dit khâ, comme depuis la leçon 1E. Et elle s’accorde avec le pronom que vous venez de placer."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc n’a rien à faire là. Relisez la traduction affichée et cherchez ce qu’elle ne dit pas."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "une seule phrase à savoir dire",
+      "bodyFr": "Vous montez dans un véhicule, et il faut dire où vous allez. Aujourd’hui vous apprenez à nommer trois façons de vous déplacer, le mot général qui les coiffe, puis à dire votre destination en un bloc que vous n’aurez plus qu’à remplir.",
+      "specimen": "ไป"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "trois façons de bouger",
+      "bodyFr": "แท็กซี่ (tháek·sîi), c’est le taxi, et vous entendez d’où le mot vient. รถเมล์ (rót·mee), c’est le bus, celui qui fait un trajet régulier. เรือ (ruea), c’est le bateau. Sa voyelle commence sur le son noté `ue`, celui que vous avez installé en 2D avec ชื่อ, puis glisse vers un a sans coupure : reprenez la position de 2D et appuyez-vous sur l’audio, c’est une voyelle qui s’imite mieux qu’elle ne se décrit.",
+      "specimen": "แท็กซี่ · รถเมล์ · เรือ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "รถ, le mot qui ouvre la famille",
+      "bodyFr": "รถ (rót) veut dire véhicule à roues. C’est un mot plein, qui s’emploie seul, et c’est aussi la tête d’une famille entière : le dictionnaire normatif range plus de cinquante mots composés sous cette entrée. รถเมล์ en fait partie, c’est รถ suivi de เมล์, le mot qui nomme un véhicule de ligne partant à horaire fixe. Retenez รถ pour lui-même, il vous fera reconnaître à l’écrit des mots que vous n’avez jamais appris.",
+      "specimen": "รถ · รถเมล์"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "un endroit où aller",
+      "bodyFr": "ตลาด (tà·làat), c’est le marché. Vous y avez déjà acheté dix œufs en 3E ; aujourd’hui il devient une destination. Deux syllabes, deux tons bas : la voix reste basse du début à la fin, et la seconde dure plus que la première.\n\nUne précision sur nos transcriptions, avec deux mots du jour côte à côte. Le noyau de la syllabe est `aa` dans làat et `ae` dans tháek ; l’accent de ton se pose toujours sur la PREMIÈRE lettre du noyau, donc sur le premier a de làat et sur le a de tháek, jamais sur le e.\n\n> tà·làat (noyau `aa`) · tháek·sîi (noyau `ae`)",
+      "specimen": "ตลาด"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "le bloc du jour",
+      "bodyFr": "Mettez tout bout à bout, dans l’ordre que vous connaissez depuis 2D : d’abord qui parle, puis ce qu’il fait, puis où. La particule ferme, comme toujours.\n\n> ผม ไป ตลาด ครับ > phǒm pai tà·làat khráp\n\nMot à mot : moi, aller, marché, particule. Une femme dira ดิฉันไปตลาดค่ะ (dì·chǎn pai tà·làat khâ). Un seul bloc bouge vraiment, celui du lieu : c’est lui que vous remplacerez toute votre vie.",
+      "specimen": null
+    },
+    {
+      "ordre": 6,
+      "titleFr": "la version courte",
+      "bodyFr": "Le pronom peut tomber. Il reste alors ไป, le lieu, la particule.\n\n> ไป ตลาด ค่ะ > pai tà·làat khâ\n\nCette forme sans sujet exprimé n’est pas une invention de la leçon : le dictionnaire normatif illustre lui-même ค่ะ par ไปค่ะ, c’est-à-dire le verbe seul suivi de la particule. Une réserve honnête : les sources consultées attestent que la forme courte existe, elles ne disent ni quand un locuteur la choisit, ni laquelle des deux est préférable. Apprenez la longue, reconnaissez la courte.",
+      "specimen": null
+    },
+    {
+      "ordre": 7,
+      "titleFr": "pourquoi vous ne pouvez pas encore lire ces tons",
+      "bodyFr": "Vous avez appris en 4A à prévoir le ton d’une syllabe vivante sans marque à partir de la classe de sa consonne initiale. Regardez les six graphies du jour : aucune n’entre dans le domaine de cette règle, et c’est normal. รถ, รถเมล์ et เรือ commencent par des consonnes de la classe basse, celle dont 4A a dit qu’elle ne disait rien. แท็กซี่ porte des marques et une syllabe fermée par un k. ตลาด est un cas d’écriture que vous verrez plus tard. Quant à ไป, sa consonne ป est bien de la classe moyenne, mais la syllabe s’écrit avec ไ, l’une des formes que 4A a explicitement laissées de côté. Attention d’ailleurs, la règle se lit sur la consonne initiale, jamais sur la première lettre écrite : dans เรือ et dans แท็กซี่, la voyelle s’écrit AVANT la consonne qu’on prononce. Aujourd’hui, les tons vous sont donnés. C’est assumé.",
+      "specimen": "ไป · รถ · เรือ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "à vous",
+      "bodyFr": "Un seul réflexe aujourd’hui, et il est d’ordre : qui, puis va, puis où. Si vous hésitez sur le pronom, la forme courte de la page 6 vous suffit : ไป, le lieu, la particule.\n\nAprès les exercices, enregistrez-vous en disant ผมไปตลาดครับ ou ดิฉันไปตลาดค่ะ, puis comparez en A/B avec la voix de référence. Écoutez surtout la fin : tà·làat porte deux tons bas, et la voix ne doit pas remonter sur la dernière syllabe. Votre enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u05-l5d-p2",
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "mechanic": "word_order",
+      "drawCount": 3,
+      "passRequired": 3,
+      "sampleSize": 3
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "4a6735a7-c94e-5d23-8510-2c28fd6b0482",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "bf8a5e86-d2e5-54f7-b604-075b8ecf73bd",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "4aa117f3-386f-5e8c-8a94-bd39e49e49c7",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b9fed3a4-6860-5bb3-b3dc-3c020067f333",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "860d928c-5f86-558a-a1a1-f5af8791fcfe",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e36c92cc-84bf-53dd-b61b-92278b985195",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1b99685c-4f4a-5d7f-a99c-4015d554bb86",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "19990681-d9c1-5be2-87d3-544b669ab1da",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

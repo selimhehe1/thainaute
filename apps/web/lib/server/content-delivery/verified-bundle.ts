@@ -4,6 +4,10 @@ import {
   validateBundleMetadata,
   type ContentBundle,
 } from "@thainaute/content";
+import {
+  DEFAULT_LANGUAGE_PACK_ID,
+  thaiFrLanguagePack,
+} from "@thainaute/content/language-packs";
 import { z } from "zod";
 
 import { hashCanonical } from "../attempt-sync/canonical-json";
@@ -12,6 +16,14 @@ const publishedReleaseSchema = z.strictObject({
   id: z.uuid(),
   version: z.number().int().positive(),
   status: z.literal("published"),
+  language_pack_id: z
+    .string()
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+){1,3}$/u)
+    .default(DEFAULT_LANGUAGE_PACK_ID),
+  target_locale: z
+    .string()
+    .regex(/^[a-z]{2,3}(?:-[A-Z]{2})?$/u)
+    .default(thaiFrLanguagePack.targetLocale),
   published_at: z.string().datetime({ offset: true }),
 });
 
@@ -26,6 +38,14 @@ const publishedLessonRowSchema = z.strictObject({
   version: z.number().int().positive(),
   release_id: z.uuid(),
   status: z.literal("published"),
+  language_pack_id: z
+    .string()
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+){1,3}$/u)
+    .default(DEFAULT_LANGUAGE_PACK_ID),
+  target_locale: z
+    .string()
+    .regex(/^[a-z]{2,3}(?:-[A-Z]{2})?$/u)
+    .default(thaiFrLanguagePack.targetLocale),
   title_fr: z.string().min(1).max(160),
   payload: z.unknown(),
   payload_sha256: z.string().regex(/^[0-9a-f]{64}$/u),
@@ -38,6 +58,8 @@ export interface VerifiedPublishedBundle {
   readonly release: {
     readonly id: string;
     readonly version: number;
+    readonly languagePackId: string;
+    readonly targetLocale: string;
     readonly publishedAt: string;
   };
 }
@@ -88,6 +110,10 @@ export function verifyPublishedBundleRow(
     lesson.versionId !== row.id ||
     lesson.lessonId !== row.lesson_id ||
     lesson.revision !== row.version ||
+    lesson.languagePackId !== row.language_pack_id ||
+    lesson.targetLocale !== row.target_locale ||
+    row.language_pack_id !== release.language_pack_id ||
+    row.target_locale !== release.target_locale ||
     lesson.titleFr !== row.title_fr ||
     lesson.workflowStatus !== "published" ||
     lesson.visibility !== "public" ||
@@ -104,6 +130,8 @@ export function verifyPublishedBundleRow(
     release: {
       id: release.id.toLowerCase(),
       version: release.version,
+      languagePackId: release.language_pack_id,
+      targetLocale: release.target_locale,
       publishedAt: normalizeTimestamp(release.published_at),
     },
   };
@@ -147,6 +175,8 @@ export function verifyPublishedReleaseRows(
       (lesson) =>
         lesson.release.id !== release.id ||
         lesson.release.version !== release.version ||
+        lesson.release.languagePackId !== release.languagePackId ||
+        lesson.release.targetLocale !== release.targetLocale ||
         lesson.release.publishedAt !== release.publishedAt,
     )
   ) {

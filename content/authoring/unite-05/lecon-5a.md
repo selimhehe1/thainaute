@@ -607,6 +607,16 @@ savoir si votre h passe. L’enregistrement reste privé, sur votre appareil.
   et ม, qui n’ont pas de jumelle et ne figurent volontairement pas dans cet
   exercice.
 
+### Exercice de consolidation textuelle : deux fermetures attestées (`association`)
+
+- Mécanique : `association`
+- Consigne : « Reliez chaque mot à son sens. »
+- Tirages :
+  1. ผัด ↔ « faire sauter à la poêle »
+  2. ผัก ↔ « légume »
+- Feedback correct : « Exact. Ces deux mots sont bien ceux de la leçon. »
+- Feedback incorrect : « Relisez le mot et son sens dans cette leçon, puis réessayez. »
+
 ## SRS
 
 - `srs-u05-l5a-01` : le `/h/` initial à l’écoute, sur les paires ห้า / อ้า et

@@ -1,0 +1,902 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "e6578a8a-74c0-5552-869a-67ea734a21e4",
+  "versionId": "07d09f47-dbf1-50da-823e-24f8b77ae60f",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Relire tout l’alphabet",
+  "objectiveFr": "devant un mot thaï déjà connu, affiché **sans transcription et sans être entendu**, l’apprenant nomme la classe de la consonne initiale sur 10 tirages sur 12 ; il dit si la syllabe est vivante, morte, ou hors du domaine de la méthode, sur 12 tirages sur 14 ; il donne le ton, ou déclare qu’il s’arrête, sur 11 tirages sur 14 ; il apparie six mots à leur case du tableau, 6 sur 6 ; et il écrit en tran",
+  "requiredEntitlement": null,
+  "audioManifestId": "3881ab76-2737-5fa3-aa16-2a540930d91f",
+  "items": [
+    {
+      "id": "86ff46b9-7424-5f24-8092-54b4380beedb",
+      "thaiRaw": "มา",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E32"
+      ],
+      "translationFr": "venir, arriver ; se déplacer vers celui qui parle",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "maa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มา",
+          "ipa": "maː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "22ea0932-ad60-593d-9ee3-104611623a5c",
+      "thaiRaw": "ขา",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E32"
+      ],
+      "translationFr": "jambe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขา",
+          "ipa": "kʰaː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "44526c1f-efd6-5716-b94d-e661a6802a2e",
+      "thaiRaw": "ป่า",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E48",
+        "U+0E32"
+      ],
+      "translationFr": "forêt",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pàa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ป่า",
+          "ipa": "paː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "a1184b41-ad7c-5a0e-9d93-10d40355f7ff",
+      "thaiRaw": "พ่อ",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E48",
+        "U+0E2D"
+      ],
+      "translationFr": "père ; papa",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phâww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พ่อ",
+          "ipa": "pʰɔː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "47dc0440-59fd-5672-b281-1b466b56a10a",
+      "thaiRaw": "สี่",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E35",
+        "U+0E48"
+      ],
+      "translationFr": "quatre (le nombre 4)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sìi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สี่",
+          "ipa": "siː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "12b3a002-93c2-550d-ba1d-134d3c106869",
+      "thaiRaw": "ห้า",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "cinq (le nombre 5)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้า",
+          "ipa": "haː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "2f19d9f8-7be0-516c-97fc-0702d1f00cdc",
+      "thaiRaw": "กิน",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E34",
+        "U+0E19"
+      ],
+      "translationFr": "manger, boire, consommer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kin"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "กิน",
+          "ipa": "kin˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "17edbeb9-7681-5c0c-92c5-54abd752b66d",
+      "thaiRaw": "สอง",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "deux (le nombre 2)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สอง",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "bcd102b6-994c-5a7b-9c19-b02b70a81ddd",
+      "thaiRaw": "บ้าน",
+      "unicodeCodePoints": [
+        "U+0E1A",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "la maison",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "bâan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "บ้าน",
+          "ipa": "baːn˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "00d06e0e-4718-519f-b7e5-afebe4c7235d",
+      "thaiRaw": "น้อง",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "cadet, cadette ; frère ou sœur né après vous",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "náwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "น้อง",
+          "ipa": "nɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "96435cb5-5d26-5295-8f6a-625a3399530e",
+      "thaiRaw": "แล้ว",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27"
+      ],
+      "translationFr": "en fin de phrase, marque que c’est accompli ou que l’état est désormais en place ; se rend en français par « déjà », « maintenant », ou par le seul temps du verbe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้ว",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "c17aeef7-4d69-5782-b44d-e5a29a80b9f2",
+      "thaiRaw": "เพลง",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1E",
+        "U+0E25",
+        "U+0E07"
+      ],
+      "translationFr": "chanson (aussi : morceau de musique)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phleeng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เพลง",
+          "ipa": "pʰleːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰl",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "f9d4aa26-856e-5c82-80f2-4334bf3b4ec0",
+      "thaiRaw": "เปลี่ยน",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1B",
+        "U+0E25",
+        "U+0E35",
+        "U+0E48",
+        "U+0E22",
+        "U+0E19"
+      ],
+      "translationFr": "changer, échanger",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "plìan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เปลี่ยน",
+          "ipa": "plia̯n˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pl",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u12-l12c-p4",
+      "drawIndex": 1,
+      "id": "e49cd21d-d415-5c00-ad30-73f227845779",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Rangez chaque mot dans sa case. Touchez un mot, puis sa case : aucun glisser-déposer n’est nécessaire.",
+      "pairs": [
+        {
+          "id": "e778e55e-8236-5e4b-ad17-ec0878fa1315",
+          "itemId": "86ff46b9-7424-5f24-8092-54b4380beedb",
+          "labelFr": "classe basse, aucune marque"
+        },
+        {
+          "id": "4449b554-3d8b-52d8-9a76-e0108ebb7f97",
+          "itemId": "22ea0932-ad60-593d-9ee3-104611623a5c",
+          "labelFr": "classe haute, aucune marque"
+        },
+        {
+          "id": "8e6461ff-11fe-5742-afb1-a1489911ee5e",
+          "itemId": "44526c1f-efd6-5716-b94d-e661a6802a2e",
+          "labelFr": "classe moyenne, ไม้เอก"
+        },
+        {
+          "id": "5408ec2f-b9d1-5e60-aff8-91c005f9a806",
+          "itemId": "a1184b41-ad7c-5a0e-9d93-10d40355f7ff",
+          "labelFr": "classe basse, ไม้เอก"
+        },
+        {
+          "id": "83ef00ad-6fdc-559f-978b-da6b568bad1b",
+          "itemId": "bcd102b6-994c-5a7b-9c19-b02b70a81ddd",
+          "labelFr": "classe moyenne, ไม้โท"
+        },
+        {
+          "id": "69cb4dce-f3f6-5096-923b-90af95804d55",
+          "itemId": "00d06e0e-4718-519f-b7e5-afebe4c7235d",
+          "labelFr": "classe basse, ไม้โท"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui. Deux informations, tenues ensemble.",
+        "incorrectFr": "Prenez les mots deux par deux. ป่า et พ่อ portent le même signe ; ce qui les sépare est la lettre du dessous.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paires 3 et 4",
+            "textFr": "Exactement. Le même ไม้เอก, deux cases différentes, parce que la classe n’est pas la même."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12c-p5",
+      "drawIndex": 1,
+      "id": "5b6fb13b-b579-5b9d-88ae-e4c4aee9fce9",
+      "type": "recall",
+      "itemId": "86ff46b9-7424-5f24-8092-54b4380beedb",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "maa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le mot, le ton et la voyelle.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, noyau mal transcrit",
+            "textFr": "Le ◌อ de พ่อ et de น้อง se transcrit `aww`, et l’accent se pose sur son premier `a`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12c-p5",
+      "drawIndex": 2,
+      "id": "30818c97-9ef9-5213-aa96-d2ee1de8ee31",
+      "type": "recall",
+      "itemId": "22ea0932-ad60-593d-9ee3-104611623a5c",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "khǎa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le mot, le ton et la voyelle.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, noyau mal transcrit",
+            "textFr": "Le ◌อ de พ่อ et de น้อง se transcrit `aww`, et l’accent se pose sur son premier `a`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12c-p5",
+      "drawIndex": 3,
+      "id": "5e9ae02f-a9ed-5de7-8246-2cc0a4859928",
+      "type": "recall",
+      "itemId": "44526c1f-efd6-5716-b94d-e661a6802a2e",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "pàa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le mot, le ton et la voyelle.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, noyau mal transcrit",
+            "textFr": "Le ◌อ de พ่อ et de น้อง se transcrit `aww`, et l’accent se pose sur son premier `a`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12c-p5",
+      "drawIndex": 4,
+      "id": "7295786c-e5b7-50b4-9e6b-def1b140af35",
+      "type": "recall",
+      "itemId": "a1184b41-ad7c-5a0e-9d93-10d40355f7ff",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "phâww",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le mot, le ton et la voyelle.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, noyau mal transcrit",
+            "textFr": "Le ◌อ de พ่อ et de น้อง se transcrit `aww`, et l’accent se pose sur son premier `a`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12c-p5",
+      "drawIndex": 5,
+      "id": "2c5c83bd-99a7-59c0-b9d6-05f78609fab0",
+      "type": "recall",
+      "itemId": "47dc0440-59fd-5672-b281-1b466b56a10a",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "sìi",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le mot, le ton et la voyelle.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, noyau mal transcrit",
+            "textFr": "Le ◌อ de พ่อ et de น้อง se transcrit `aww`, et l’accent se pose sur son premier `a`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12c-p5",
+      "drawIndex": 6,
+      "id": "4d2abed7-fdd7-5f92-864b-7bc8a0565130",
+      "type": "recall",
+      "itemId": "12b3a002-93c2-550d-ba1d-134d3c106869",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "hâa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le mot, le ton et la voyelle.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, noyau mal transcrit",
+            "textFr": "Le ◌อ de พ่อ et de น้อง se transcrit `aww`, et l’accent se pose sur son premier `a`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12c-p5",
+      "drawIndex": 7,
+      "id": "e753833c-517c-52b8-9dfb-37a9bfdf0d44",
+      "type": "recall",
+      "itemId": "00d06e0e-4718-519f-b7e5-afebe4c7235d",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "náwwng",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le mot, le ton et la voyelle.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, noyau mal transcrit",
+            "textFr": "Le ◌อ de พ่อ et de น้อง se transcrit `aww`, et l’accent se pose sur son premier `a`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12c-p5",
+      "drawIndex": 8,
+      "id": "c9c0e079-55cd-5c6c-a65a-f7efd8bf8823",
+      "type": "recall",
+      "itemId": "96435cb5-5d26-5295-8f6a-625a3399530e",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "láeew",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous avez lu le mot, le ton et la voyelle.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, noyau mal transcrit",
+            "textFr": "Le ◌อ de พ่อ et de น้อง se transcrit `aww`, et l’accent se pose sur son premier `a`."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "ce que cette leçon fait, et ce qu’elle ne fait pas",
+      "bodyFr": "Vous n’apprendrez aucun mot aujourd’hui. Tous les mots de cette leçon, vous les avez déjà vus, certains depuis la première unité. Ce qui est neuf, c’est l’exercice : les prendre un par un, sans transcription et sans les entendre, et retrouver leur ton par le seul chemin de l’écriture.\n\nCette leçon ne vous dira pas à quel niveau vous êtes, et aucune page ne vous comparera à qui que ce soit. Elle ne vous dira pas non plus combien de mots vous savez lire : elle n’a aucun moyen de le savoir. Ce qu’elle sait dire est plus petit et plus solide : sur les mots que ce cours a publiés, **combien la méthode permet d’en lire entièrement, et où exactement elle s’arrête**. De vous, seuls les cinq exercices de la fin diront quelque chose, et seulement sur les mots qu’ils tirent.",
+      "specimen": "จาน · ป่า · เปลี่ยน"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "les quatre questions, dans l’ordre",
+      "bodyFr": "`u10-l10a` vous a donné trois questions. En voici quatre, parce que la troisième en contenait deux : ce que vous REGARDEZ à la fin du mot, et ce que vous en CONCLUEZ. Posez-les toujours dans cet ordre.\n\n> **Un.** Quelle est la consonne INITIALE, et de quelle CLASSE est-elle ? > **Deux.** Y a-t-il une MARQUE de ton au-dessus ? > **Trois.** Par quoi la syllabe se FERME-t-elle, ou ne se ferme-t-elle pas ? > **Quatre.** La syllabe est-elle VIVANTE ou MORTE ?\n\nLa quatrième ne se devine pas : elle se déduit de la troisième, et de la longueur de la voyelle quand rien ne ferme. Si la réponse est MORTE, vous vous arrêtez, et c’est la bonne réponse. Si elle est VIVANTE, vous croisez la classe et la marque, et vous avez le ton.",
+      "specimen": "กิน · รถ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "question un, la consonne initiale et sa classe",
+      "bodyFr": "C’est la question qui décide de tout, et elle se rate toujours de la même façon : en prenant la première LETTRE au lieu de la première CONSONNE. Trois cas, et vous les connaissez tous les trois.\n\n> เ, แ, โ, ใ et ไ s’écrivent AVANT leur consonne. Dans แล้ว, l’initiale est ล. > Deux consonnes collées comptent pour une seule initiale, et c’est la PREMIÈRE > qui commande. Dans เปลี่ยน, l’initiale est ป. > La marque n’est pas toujours posée sur l’initiale. Dans เปลี่ยน toujours, elle > est empilée au-dessus du ล, par-dessus le ◌ี. C’est quand même ป qui commande.\n\nUne fois la lettre trouvée, il faut sa classe. Les classes sont trois, et le dictionnaire normatif les énumère lettre par lettre : neuf moyennes, onze hautes, vingt-quatre basses.\n\n> **MOYENNES**, neuf : ก จ ฎ ฏ ด ต บ ป อ > **HAUTES**, onze : ข ฃ ฉ ฐ ถ ผ ฝ ศ ษ ส ห > **BASSES**, vingt-quatre : ค ฅ ฆ ง ช ซ ฌ ญ ฑ ฒ ณ ท ธ น พ ฟ ภ ม ย ร ล ว ฬ ฮ\n\n**Cette liste est celle du dictionnaire, et pas celle de ce cours.** Sur ces quarante-quatre lettres, ce cours vous en a enseigné trente-quatre comme initiales : les neuf moyennes en 1A, neuf hautes en 4A, neuf basses en 5A et sept de plus en 6A. **Dix ne vous ont jamais été enseignées à cette place**, et les voici pour que vous sachiez qu’elles existent et qu’elles vous manquent : ฃ, ฐ, ฅ, ฆ, ฌ, ญ, ฑ, ฒ, ณ et ฬ. Quatre d’entre elles, ฆ, ญ, ณ et ฬ, vous les avez croisées en 9A, mais à la FIN d’une syllabe, où la question de la classe ne se pose pas. Aucun exercice du jour ne porte sur ces dix lettres, et cette leçon ne mesure rien à leur sujet.",
+      "specimen": "แล้ว (ล) · เปลี่ยน (ป) · เพลง (พ)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "question deux, la marque",
+      "bodyFr": "Rien, ou l’une des quatre. Vous les lisez toutes depuis 8A, et leurs noms sont des numéros.\n\n> ◌่ ไม้เอก · ◌้ ไม้โท · ◌๊ ไม้ตรี · ◌๋ ไม้จัตวา\n\nDeux signes se posent au même endroit et n’en sont pas. Le ◌็ de เจ็บ raccourcit la voyelle. Le ◌์ de แพทย์, appris en 9A, éteint la lettre qui le porte. Ni l’un ni l’autre ne change un ton.\n\nUne remarque qui vous évitera une confusion durable : **le numéro de la marque n’est pas le nom du ton qu’elle produit.** ไม้เอก, la marque un, ne donne pas toujours le même ton, et le ton qu’elle donne ne s’appelle pas « un ». Ce qui décide, c’est le croisement avec la classe, et la page 7 vous le remet en entier.",
+      "specimen": "ป่า (◌่) · ห้า (◌้) · เจ็บ (◌็, pas un ton) · แพทย์ (◌์, pas un ton)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "question trois, la finale",
+      "bodyFr": "Regardez la fin du mot et rangez-la dans l’une des trois cases suivantes. Ce sont les familles de fin de 9A, réduites à ce que la lecture du ton demande.\n\n> **Rien ne ferme.** Le mot s’arrête sur sa voyelle : มา, ขา, ป่า, พ่อ. > **Une sonante ferme**, c’est-à-dire ง, น, ม, ย ou ว : กิน, สอง, บ้าน, แล้ว. > **Un son `k`, `t` ou `p` ferme** : รถ, มาก, ชอบ.\n\nUn piège de lecture à ne pas laisser passer, parce qu’il touche deux mots du jour. Dans สอง et dans พ่อ, le อ n’est PAS une consonne finale : c’est la voyelle, le `aww` long. Le อ ne ferme jamais une syllabe thaïe. En revanche, un อ écrit AVANT une autre consonne peut être une consonne de tête, comme dans อยู่, et là vous sortez du domaine.",
+      "specimen": "สอง (le อ est une voyelle) · อยู่ (le อ est une tête)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "question quatre, vivante ou morte",
+      "bodyFr": "C’est la question qui dit si le tableau vous concerne. Elle se répond à partir de la troisième, plus la longueur de la voyelle lorsque rien ne ferme.\n\n> **VIVANTE** : la syllabe se ferme sur ง, น, ม, ย ou ว ; **ou** rien ne la ferme > et sa voyelle est LONGUE. > **MORTE** : la syllabe se ferme sur un son `k`, `t` ou `p` ; **ou** rien ne la > ferme et sa voyelle est BRÈVE.\n\nCette seconde branche des mortes est celle que `u10-l10a` n’avait pas donnée, et elle compte. คะ, และ et เตะ, que vous dites depuis les unités 2, 3 et 11, sont des syllabes ouvertes à voyelle brève : elles sont MORTES, et si vous leur appliquez le tableau vous vous trompez à chaque fois. Le dictionnaire normatif les range explicitement du côté des mortes, et l’autre ouvrage consulté nomme lui aussi le critère de la voyelle brève sans finale.\n\nUn cas qui surprend, et il vaut mieux le voir maintenant : ถุง a une voyelle BRÈVE et il est pourtant VIVANT, parce qu’il se ferme sur ง. **C’est la fermeture qui décide en premier ; la longueur ne décide que si rien ne ferme.**",
+      "specimen": "ถุง (brève, mais VIVANTE) · คะ (brève, ouverte, MORTE)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "le tableau entier, et un mot du jour dans chaque case",
+      "bodyFr": "Voici les neuf cases, avec un mot que vous allez décoder tout à l’heure. Le tableau ne vaut QUE pour les syllabes vivantes.\n\n> **MOYENNE** : rien → moyen (กิน) · ◌่ → bas (ป่า) · ◌้ → descendant (บ้าน) > **HAUTE** : rien → montant (ขา) · ◌่ → bas (สี่) · ◌้ → descendant (ห้า) > **BASSE** : rien → moyen (มา) · ◌่ → descendant (พ่อ) · ◌้ → haut (น้อง)\n\nRegardez les colonnes plutôt que les lignes, et une seule chose reste à retenir : **moyenne et haute vont ensemble, la classe basse se détache et se place d’un cran plus haut.** ป่า et สี่ portent le même ◌่ sur deux classes différentes et donnent le même ton bas ; พ่อ porte le même ◌่ sur une basse et donne un descendant. Même signe, deux réponses.\n\nDeux cases manquent à ce tableau et vous les avez apprises en 8A : la classe moyenne avec ◌๊ donne le ton haut (เก๊), et avec ◌๋ le ton montant (ตั๋ว). Aucun exercice du jour ne les demande, et le motif est un décompte : ce sont les deux seuls mots d’UNE SEULE SYLLABE que le parcours publie dans ces deux cases. Une troisième graphie porte bien un ◌๋ sur une consonne moyenne, กระเป๋า, mais elle compte deux syllabes et la syllabe marquée est une forme en เ◌า, que 4A a mise hors du domaine. Deux mots, et un troisième qu’on ne peut pas compter : cela ne suffit pas à mesurer quoi que ce soit.",
+      "specimen": "ป่า · สี่ · พ่อ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "palier 1, quatre mots nus",
+      "bodyFr": "On monte l’escalier. À chaque marche, une complication de plus, et rien d’autre. Ici, la forme la plus simple qui existe : une consonne, une voyelle longue, rien après. Décodez à voix haute avant de toucher pour voir.\n\n**มา.** Un : l’initiale est ม, basse. Deux : rien au-dessus. Trois : rien ne ferme. Quatre : voyelle longue, donc VIVANTE. Basse sans marque donne le ton MOYEN. maa.\n\n**ขา.** Un : ข, haute. Deux : rien. Trois : rien ne ferme. Quatre : longue, donc vivante. Haute sans marque donne le ton MONTANT. khǎa.\n\n**ป่า.** Un : ป, moyenne. Deux : un ไม้เอก. Trois : rien ne ferme. Quatre : vivante. Moyenne plus ไม้เอก donne le ton BAS. pàa.\n\n**พ่อ.** Un : พ, basse. Deux : le MÊME ไม้เอก. Trois : rien ne ferme, le อ est la voyelle. Quatre : longue, donc vivante. Basse plus ไม้เอก donne le ton DESCENDANT. phâww.\n\nLes deux derniers portent le même signe et n’ont pas le même ton. La marque seule ne décide de rien.",
+      "specimen": "มา · ขา · ป่า · พ่อ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "palier 2, les deux marques sur une classe haute",
+      "bodyFr": "Deux mots, deux cases, et le point de la page 7 vérifié sur pièces.\n\n**สี่.** Un : ส, haute. Deux : un ไม้เอก, empilé au-dessus du ◌ี. Trois : rien ne ferme. Quatre : voyelle longue, donc vivante. Haute plus ไม้เอก donne le ton BAS, exactement comme ป่า, qui est une moyenne. sìi.\n\n**ห้า.** Un : ห, haute. Deux : un ไม้โท. Trois : rien ne ferme. Quatre : vivante. Haute plus ไม้โท donne le ton DESCENDANT. hâa.\n\nUne vigilance sur ห้า, et c’est le seul piège de la page. Vous savez depuis 5A qu’un ห peut être muet et servir de tête. Le repère est le CONTACT : le ห se tait quand ง, น, ม, ย, ว ou ร est collé juste derrière lui, sans le moindre signe posé sur le ห. Dans ห้า, le ห porte un ไม้โท et la lettre suivante est une voyelle : il est bien l’initiale, et c’est lui qu’on lit. Dans หมา, le ม est collé derrière un ห nu : là vous sortez du domaine.",
+      "specimen": "ห้า (le ห est l’initiale) contre หมา (le ห est une tête)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "palier 3, la syllabe se ferme",
+      "bodyFr": "Une consonne de plus à la fin, et la troisième question devient utile.\n\n**กิน.** Un : ก, moyenne. Deux : rien, le ◌ิ est une voyelle. Trois : ferme sur น. Quatre : sonante, donc VIVANTE. Moyenne sans marque donne le ton MOYEN. kin.\n\n**สอง.** Un : ส, haute. Deux : rien. Trois : ferme sur ง ; le อ est la voyelle et ne ferme rien. Quatre : vivante. Haute sans marque donne le ton MONTANT. sǎwwng.\n\n**บ้าน.** Un : บ, moyenne. Deux : un ไม้โท. Trois : ferme sur น. Quatre : vivante. Moyenne plus ไม้โท donne le ton DESCENDANT. bâan.\n\n**น้อง.** Un : น, basse. Deux : le MÊME ไม้โท. Trois : ferme sur ง. Quatre : vivante. Basse plus ไม้โท donne le ton HAUT. náwwng.\n\nEncore une fois, deux mots, un seul signe, deux tons. Et encore une fois c’est la classe qui a tranché.",
+      "specimen": "กิน · สอง · บ้าน · น้อง"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "palier 4, la voyelle s’écrit avant sa consonne",
+      "bodyFr": "Une marche de plus, et elle ne change rien à la méthode : elle change seulement l’endroit où vous regardez.\n\n**แล้ว.** Un : la première lettre écrite est แ, une voyelle ; l’initiale est ล, en deuxième position, et elle est basse. Deux : un ไม้โท, posé sur le ล. Trois : ferme sur ว. Quatre : sonante, donc vivante. Basse plus ไม้โท donne le ton HAUT. láeew.\n\nC’est exactement le décodage que `u09-l9d` avait écrit dans sa note d’item quand elle a publié ce mot. Vous le refaites seul aujourd’hui.",
+      "specimen": "แล้ว"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "palier 5, deux consonnes collées, puis tout à la fois",
+      "bodyFr": "La dernière marche, et elle empile toutes les autres.\n\n**เพลง.** Un : เ est une voyelle ; viennent ensuite พ et ล, collées, qui comptent pour une seule initiale, et c’est พ qui commande, basse. Deux : rien. Trois : ferme sur ง. Quatre : vivante. Basse sans marque donne le ton MOYEN. phleeng.\n\n**เปลี่ยน.** Un : เ est une voyelle ; ป et ล sont collées et comptent pour une initiale ; c’est ป qui commande, moyenne. Deux : un ไม้เอก, et il n’est PAS sur le ป : il est empilé au-dessus du ล, par-dessus le ◌ี. Trois : ferme sur น. Quatre : vivante. Moyenne plus ไม้เอก donne le ton BAS. plìan.\n\nSi vous aviez lu ล comme initiale, une basse, vous auriez obtenu un descendant. Le mot se dit plìan : c’est bien ป, la première du groupe, qui a commandé. C’est le mot qui empile le plus de complications de cette leçon : une voyelle écrite avant sa consonne, deux lettres qui comptent pour une initiale, une marque posée sur la deuxième et non sur celle qui commande, et une finale.\n\n**Une honnêteté sur les groupes, et elle n’a pas changé depuis 10A.** Deux consonnes collées ne forment pas toujours un groupe. Dans ตลาด, que vous dites tà·làat en deux temps, ต et ล ne se lisent pas d’un seul élan. À l’œil, rien ne distingue ตลาด de ปลา. En cas de doute, fiez-vous à ce que vous entendez.",
+      "specimen": "เพลง · เปลี่ยน · ตลาด (deux temps) contre ปลา (un temps)"
+    },
+    {
+      "ordre": 13,
+      "titleFr": "où vous vous arrêtez, et c’est compté",
+      "bodyFr": "Quatre familles restent hors de la méthode. Les voici avec leur nombre, mesuré sur les 353 entrées de vocabulaire que ce cours publie, et non estimé.\n\n> **Les syllabes mortes.** 38 entrées. Si vous leur appliquez quand même le > tableau, il donne le mauvais ton 36 fois sur 38. Les deux exceptions portent > une marque écrite. > **Les formes en ไ, ใ, เ◌า et ◌ำ.** 16 entrées, dont ไม่, ไป, น้ำ et เข้า. > **Les mots à consonne de tête**, un ห ou un อ muet devant la vraie initiale. > 11 entrées, dont หมา, หนึ่ง, อยู่ et หมอ. > **Une lettre éteinte par ◌์.** 1 entrée, แพทย์.\n\nEt une cinquième famille, qui n’est pas hors du domaine mais hors de portée pour une autre raison : **191 entrées comptent plusieurs syllabes**. La méthode se lit une syllabe à la fois, et ce cours ne vous a jamais appris à couper un mot thaï en syllabes.\n\nRestent deux entrées que ces cinq familles ne rangent nulle part, et il vaut mieux les nommer que de laisser le compte tomber faux : une entrée de 3B qui tient sept nombres sur une seule ligne, et ก็, dont la graphie est trop irrégulière pour être décomposée. **38 plus 16 plus 11 plus 1 plus 191 plus 2 font 259.**\n\nReste ce que la méthode lit entièrement : **94 entrées d’une seule syllabe, et sur ces 94, le tableau donne le ton publié 94 fois sur 94.** Ce n’est pas une promesse, c’est un décompte, et il porte sur le COURS, pas sur vous. Ce que vous en avez gardé, seuls les exercices qui suivent le mesureront, et seulement sur ce qu’ils tirent.",
+      "specimen": "๙๔ · 94"
+    },
+    {
+      "ordre": 14,
+      "titleFr": "ce que la méthode ne dit pas, et ce qui vient ensuite",
+      "bodyFr": "Ce cours ne vous a pas donné la règle des syllabes mortes. Elle existe, elle est écrite dans le dictionnaire, elle a quatre branches, et ce cours a choisi de ne pas l’enseigner plutôt que de l’enseigner à moitié. Vous vous arrêtez donc devant รถ et devant มาก, et c’est la bonne réponse aujourd’hui.\n\nIl ne vous a pas donné non plus ce que fabrique une consonne de tête, ni comment se coupent les mots de plusieurs syllabes, ni ce que valent les formes en ไ. Ce sont quatre chantiers, ils sont nommés, et aucun n’est commencé.\n\n**Ce cours ne vous dit ni à quel niveau vous êtes, ni combien de temps il vous faudrait pour ces quatre chantiers.** Il n’a fait passer aucun test étalonné et n’a comparé vos réponses à celles de personne. Ce qu’il sait de vous tient dans les cinq exercices qui suivent.\n\nAprès les exercices, enregistrez-vous en disant ป่า puis พ่อ, et บ้าน puis น้อง, et comparez en A/B avec la voix de référence. Vous entendrez ce que la classe de l’initiale fabrique, sur le même signe. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": "ป่า / พ่อ puis บ้าน / น้อง"
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u12-l12c-p4",
+      "promptFr": "Rangez chaque mot dans sa case. Touchez un mot, puis sa case : aucun glisser-déposer n’est nécessaire.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u12-l12c-p5",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
+      "mechanic": "recall",
+      "drawCount": 8,
+      "passRequired": 8,
+      "sampleSize": 8
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN"
+    ],
+    "generationActors": [
+      {
+        "actorId": "6657f41a-e356-5084-ad08-4e0cb3e08502",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "beaa213c-47f1-59ef-9a00-ba27cb208513",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "395f2cc3-d70a-5407-8ece-bc59f65f0e78",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3a20f142-70a8-5558-8fc3-106268c1b14a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8e84e312-0d66-586c-a393-2397d8573b7d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d9691f00-8e1b-5c8e-80d3-d719d77d80ff",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e3843fb3-0638-5284-a8a8-fd111cc6f408",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e83b558b-c542-5a84-9c18-f961b32f1f69",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}
