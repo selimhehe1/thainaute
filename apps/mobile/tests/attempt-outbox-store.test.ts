@@ -135,17 +135,14 @@ class FakeSQLiteDatabase {
   #transactionOpen = false;
 
   async getFirstAsync<T>(query: string, key: string): Promise<T | null> {
-    this.#assertMainConnectionAvailable();
     return this.#getFirst<T>(query, key);
   }
 
   async getAllAsync<T>(query: string): Promise<T[]> {
-    this.#assertMainConnectionAvailable();
     return this.#getAll<T>(query);
   }
 
   async runAsync(query: string, ...parameters: string[]): Promise<void> {
-    this.#assertMainConnectionAvailable();
     this.#run(query, ...parameters);
   }
 

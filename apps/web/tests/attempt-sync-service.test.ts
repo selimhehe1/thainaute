@@ -118,7 +118,7 @@ class MemoryAttemptRepository implements AttemptRepository {
   }
 }
 
-function batch(...attempts: ReturnType<typeof attempt>[]) {
+function batch(...attempts: Readonly<Record<string, unknown>>[]) {
   return attemptBatchSchema.parse({ attempts });
 }
 
@@ -623,5 +623,61 @@ describe("synchronisation autoritaire des tentatives", () => {
     expect(repository.loadCalls).toBe(2);
     expect(repository.commitCalls).toBe(2);
     expect(clockCalls).toBe(1);
+  });
+
+  it("corrige et persiste une réponse typed word_order", async () => {
+    const repository = new MemoryAttemptRepository();
+    const typedExerciseId = "43000000-0000-4000-8000-000000000001";
+    const typedItemId = "43000000-0000-4000-8000-000000000002";
+    const firstTokenId = "43000000-0000-4000-8000-000000000003";
+    const secondTokenId = "43000000-0000-4000-8000-000000000004";
+    repository.answerKeys = [
+      {
+        kind: "word_order",
+        exerciseId: typedExerciseId,
+        itemId: typedItemId,
+        skill: "production",
+        contentVersionId: VERSION_ID,
+        validTokenIds: [firstTokenId, secondTokenId],
+        correctOrder: [firstTokenId, secondTokenId],
+        validOptionIds: [],
+        feedback: {
+          correctFr: "Ordre correct.",
+          incorrectFr: "Reprenez l'ordre.",
+        },
+      },
+    ];
+    const synchronize = synchronizer(repository);
+    const typedBatch = batch({
+      eventId: SECOND_EVENT_ID,
+      deviceId: DEVICE_ID,
+      exerciseId: typedExerciseId,
+      answer: {
+        kind: "word_order",
+        tokenIds: [firstTokenId, secondTokenId],
+      },
+      answeredAt: "2026-08-01T10:00:00.000Z",
+      durationMs: 1_200,
+      contentVersionId: VERSION_ID,
+      algorithmVersion: "srs-v0",
+    });
+
+    const response = await synchronize({
+      userId: USER_ID,
+      idempotencyKey: SECOND_IDEMPOTENCY_KEY,
+      batch: typedBatch,
+    });
+
+    expect(response.results[0]).toEqual({
+      eventId: SECOND_EVENT_ID,
+      status: "accepted",
+      rating: 1,
+      feedbackFr: "Ordre correct.",
+    });
+    expect(repository.events[0]?.answer).toEqual({
+      kind: "word_order",
+      tokenIds: [firstTokenId, secondTokenId],
+    });
+    expect(repository.events[0]?.selectedOptionId).toBeUndefined();
   });
 });

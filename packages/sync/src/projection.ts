@@ -3,9 +3,9 @@ import {
   compareAttemptOrder,
   evaluateAttempt,
   projectLearnerItemState,
+  type AnyExerciseAnswerKey,
   type AttemptEvent,
   type AttemptSubmission,
-  type ExerciseAnswerKey,
   type LearnerItemState,
 } from "@thainaute/domain";
 
@@ -30,7 +30,7 @@ export interface RejectedAttempt {
 export interface AttemptIngestionInput {
   readonly existingEvents: readonly AttemptEvent[];
   readonly submissions: readonly AttemptSubmission[];
-  readonly answerKeys: readonly ExerciseAnswerKey[];
+  readonly answerKeys: readonly AnyExerciseAnswerKey[];
   /** Identité issue de la session serveur, jamais du corps client. */
   readonly authenticatedUserId: string | null;
 }
@@ -75,12 +75,46 @@ function eventsAreEqual(left: AttemptEvent, right: AttemptEvent): boolean {
     left.exerciseId === right.exerciseId &&
     left.itemId === right.itemId &&
     left.selectedOptionId === right.selectedOptionId &&
+    answersAreEqual(left.answer, right.answer) &&
     left.skill === right.skill &&
     left.answeredAt === right.answeredAt &&
     left.durationMs === right.durationMs &&
     left.contentVersionId === right.contentVersionId &&
     left.algorithmVersion === right.algorithmVersion &&
     left.rating === right.rating
+  );
+}
+
+function answersAreEqual(
+  left: AttemptEvent["answer"],
+  right: AttemptEvent["answer"],
+): boolean {
+  if (left === undefined || right === undefined) return left === right;
+  if (left.kind !== right.kind) return false;
+  if (left.kind === "recall") {
+    return (
+      right.kind === "recall" &&
+      left.value === right.value &&
+      left.missedOnce === right.missedOnce
+    );
+  }
+  if (left.kind === "word_order") {
+    return (
+      right.kind === "word_order" &&
+      left.tokenIds.length === right.tokenIds.length &&
+      left.missedOnce === right.missedOnce &&
+      left.tokenIds.every((tokenId, index) => tokenId === right.tokenIds[index])
+    );
+  }
+  return (
+    right.kind === "association" &&
+    left.pairs.length === right.pairs.length &&
+    left.pairs.every(
+      (pair, index) =>
+        pair.promptPairId === right.pairs[index]?.promptPairId &&
+        pair.chosenPairId === right.pairs[index]?.chosenPairId,
+    ) &&
+    left.missedOnce === right.missedOnce
   );
 }
 
@@ -161,9 +195,9 @@ export function projectAttemptEvents(
 }
 
 function answerKeyIndex(
-  answerKeys: readonly ExerciseAnswerKey[],
-): ReadonlyMap<string, ExerciseAnswerKey> {
-  const index = new Map<string, ExerciseAnswerKey>();
+  answerKeys: readonly AnyExerciseAnswerKey[],
+): ReadonlyMap<string, AnyExerciseAnswerKey> {
+  const index = new Map<string, AnyExerciseAnswerKey>();
 
   for (const answerKey of answerKeys) {
     const key = `${answerKey.exerciseId}\u0000${answerKey.contentVersionId}`;
@@ -171,9 +205,7 @@ function answerKeyIndex(
 
     if (
       existing !== undefined &&
-      (existing.itemId !== answerKey.itemId ||
-        existing.correctOptionId !== answerKey.correctOptionId ||
-        existing.skill !== answerKey.skill)
+      JSON.stringify(existing) !== JSON.stringify(answerKey)
     ) {
       throw new AnswerKeyIdentityCollisionError(
         answerKey.exerciseId,
@@ -188,9 +220,9 @@ function answerKeyIndex(
 }
 
 function findAnswerKey(
-  index: ReadonlyMap<string, ExerciseAnswerKey>,
+  index: ReadonlyMap<string, AnyExerciseAnswerKey>,
   submission: AttemptSubmission,
-): ExerciseAnswerKey | undefined {
+): AnyExerciseAnswerKey | undefined {
   return index.get(
     `${submission.exerciseId}\u0000${submission.contentVersionId}`,
   );

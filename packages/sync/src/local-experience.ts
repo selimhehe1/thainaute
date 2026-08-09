@@ -72,16 +72,19 @@ export const localDraftAnswerSchema = z.discriminatedUnion("kind", [
         }),
       )
       .max(MAX_ASSOCIATION_PAIRS_PER_ANSWER),
+    missedOnce: z.boolean().optional(),
   }),
   z.strictObject({
     kind: z.literal("word_order"),
     tokenIds: z
       .array(canonicalUuidSchema)
       .max(MAX_WORD_ORDER_TOKENS_PER_ANSWER),
+    missedOnce: z.boolean().optional(),
   }),
   z.strictObject({
     kind: z.literal("recall"),
     value: z.string().max(MAX_RECALL_ANSWER_LENGTH),
+    missedOnce: z.boolean().optional(),
   }),
 ]);
 
@@ -179,7 +182,9 @@ export const localLessonReplacementTargetSchema = z.strictObject({
   exerciseId: canonicalUuidSchema,
 });
 
-export const LOCAL_EXPEDITION_MAX_EXERCISES = 20;
+// La leçon interne 1B compile 21 exercices mixtes. La limite reste bornée
+// pour protéger le checkpoint local, sans tronquer silencieusement ce plan.
+export const LOCAL_EXPEDITION_MAX_EXERCISES = 24;
 
 const localExpeditionResultSchema = z.strictObject({
   exerciseId: canonicalUuidSchema,
@@ -708,10 +713,14 @@ export function saveLocalLessonDraft(
       "Une réponse ne peut être construite qu'à l'étape question.",
     );
   }
-  const answer =
+  const parsedAnswer =
     draft.answer === null ? null : localDraftAnswerSchema.parse(draft.answer);
   // L'erreur est un cliquet : une fois commise, elle ne se retire plus.
   const missedOnce = lesson.missedOnce || (draft.missedOnce ?? false);
+  const answer =
+    parsedAnswer === null || !missedOnce
+      ? parsedAnswer
+      : { ...parsedAnswer, missedOnce: true };
   if (
     draftAnswersAreEqual(lesson.draftAnswer, answer) &&
     missedOnce === lesson.missedOnce

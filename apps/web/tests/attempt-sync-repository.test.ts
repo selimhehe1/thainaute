@@ -17,6 +17,7 @@ function eventRow(sequence: number) {
     item_id: ITEM_ID,
     lesson_version_id: "31000000-0000-4000-8000-000000000001",
     selected_option_id: "52000000-0000-4000-8000-000000000001",
+    answer: null,
     dimension: "listening",
     rating: 1,
     answered_at: `2026-08-01T10:00:0${sequence}.000Z`,

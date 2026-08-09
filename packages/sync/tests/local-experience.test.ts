@@ -568,6 +568,22 @@ describe("expédition locale multi-exercices", () => {
     expect(cleared.expedition).toBeNull();
   });
 
+  it("accepte un plan borné de 21 exercices comme la leçon mobile 1B", () => {
+    const plan = Array.from(
+      { length: 21 },
+      (_, index) =>
+        `60000000-0000-4000-8000-${String(index + 1).padStart(12, "0")}`,
+    );
+
+    const snapshot = startLocalExpedition(onboarded(), {
+      lessonVersionId: LESSON_ID,
+      exerciseIds: plan,
+      startedAt: STARTED_AT,
+    });
+
+    expect(snapshot.expedition?.exerciseIds).toEqual(plan);
+  });
+
   it("rejoue un résultat identique de façon idempotente et refuse un résultat divergent", () => {
     const first = recordLocalExpeditionResult(expedition(), {
       exerciseId: PLAN[0],
@@ -753,6 +769,37 @@ describe("brouillon de réponse durable", () => {
     );
     if (snapshot.lesson?.phase !== "question") throw new Error("phase perdue.");
     expect(snapshot.lesson.missedOnce).toBe(true);
+  });
+
+  it("recopie le cliquet dans le brouillon avant une soumission typée", () => {
+    let snapshot = saveLocalLessonDraft(
+      questionForDraft(),
+      { answer: null, missedOnce: true },
+      "2026-08-02T08:00:20.000Z",
+    );
+    snapshot = saveLocalLessonDraft(
+      snapshot,
+      { answer: wordOrderDraft, missedOnce: false },
+      "2026-08-02T08:00:30.000Z",
+    );
+    expect(snapshot.lesson?.phase).toBe("question");
+    if (snapshot.lesson?.phase !== "question") {
+      throw new Error("phase perdue.");
+    }
+    expect(snapshot.lesson.draftAnswer).toEqual({
+      ...wordOrderDraft,
+      missedOnce: true,
+    });
+    expect(
+      prepareLocalLessonSubmission(
+        snapshot,
+        submission({
+          selectedOptionId: undefined,
+          answer: { ...wordOrderDraft, missedOnce: true },
+        }),
+        ANSWERED_AT,
+      ).lesson?.phase,
+    ).toBe("submitting");
   });
 
   it("relit un instantané v1 dont la question n'a ni brouillon ni erreur", () => {

@@ -1,6 +1,6 @@
 import type {
+  AnyExerciseAnswerKey,
   AttemptEvent,
-  ExerciseAnswerKey,
   LearnerItemState as DomainLearnerItemState,
 } from "@thainaute/domain";
 import type {
@@ -9,13 +9,14 @@ import type {
   ValidatedAttemptSubmission,
 } from "@thainaute/sync";
 
-export interface ServerExerciseAnswerKey extends ExerciseAnswerKey {
-  readonly validOptionIds: readonly string[];
+export type ServerExerciseAnswerKey = AnyExerciseAnswerKey & {
   readonly feedback: {
     readonly correctFr: string;
     readonly incorrectFr: string;
   };
-}
+  /** Vide pour une réponse typée ; renseigné pour une option unique. */
+  readonly validOptionIds: readonly string[];
+};
 
 export interface AttemptSyncSnapshot {
   readonly revision: number;

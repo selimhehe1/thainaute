@@ -44,6 +44,9 @@ vi.mock("../lib/client/auth-session", () => ({
   useWebAuthSession: () => sessionCourante,
 }));
 
+const { WebAttemptSyncBootstrap } =
+  await import("../lib/client/attempt-sync-bootstrap");
+
 const UTILISATEUR = "33333333-3333-4333-8333-333333333333";
 
 function connecte() {
@@ -60,15 +63,13 @@ function avecUneTentativeEnAttente() {
   };
 }
 
-async function monter() {
-  const { WebAttemptSyncBootstrap } =
-    await import("../lib/client/attempt-sync-bootstrap");
+function monter() {
   return render(<WebAttemptSyncBootstrap />);
 }
 
 beforeEach(() => {
-  synchronizeWebAccount.mockClear();
-  vi.resetModules();
+  synchronizeWebAccount.mockReset();
+  synchronizeWebAccount.mockResolvedValue({});
   sessionCourante = {
     status: "signed_out",
     session: null,
@@ -89,7 +90,7 @@ describe("reprise automatique de la synchronisation", () => {
     connecte();
     avecUneTentativeEnAttente();
 
-    await monter();
+    monter();
 
     await waitFor(() => {
       expect(synchronizeWebAccount).toHaveBeenCalledWith({
@@ -104,7 +105,7 @@ describe("reprise automatique de la synchronisation", () => {
   it("ne part pas en réseau quand il n'y a rien à envoyer", async () => {
     connecte();
 
-    await monter();
+    monter();
 
     // Sans ce contrôle, chaque retour d'onglet déclencherait un
     // enregistrement d'appareil et un instantané de progression pour rien.
@@ -120,7 +121,7 @@ describe("reprise automatique de la synchronisation", () => {
       configurable: true,
     });
 
-    await monter();
+    monter();
     await new Promise((resolve) => setTimeout(resolve, 30));
     expect(synchronizeWebAccount).not.toHaveBeenCalled();
 
@@ -138,7 +139,7 @@ describe("reprise automatique de la synchronisation", () => {
     avecUneTentativeEnAttente();
     suppressionEnCours = { userId: UTILISATEUR };
 
-    await monter();
+    monter();
 
     await new Promise((resolve) => setTimeout(resolve, 30));
     expect(synchronizeWebAccount).not.toHaveBeenCalled();
@@ -147,7 +148,7 @@ describe("reprise automatique de la synchronisation", () => {
   it("ne fait rien sans compte connecté", async () => {
     avecUneTentativeEnAttente();
 
-    await monter();
+    monter();
 
     await new Promise((resolve) => setTimeout(resolve, 30));
     expect(synchronizeWebAccount).not.toHaveBeenCalled();
@@ -164,7 +165,7 @@ describe("reprise automatique de la synchronisation", () => {
         }),
     );
 
-    await monter();
+    monter();
     window.dispatchEvent(new Event("online"));
     window.dispatchEvent(new Event("online"));
 

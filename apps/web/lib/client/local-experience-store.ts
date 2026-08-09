@@ -14,6 +14,8 @@ import {
 } from "@thainaute/sync";
 import Dexie, { type EntityTable } from "dexie";
 
+import { getWebExperienceDatabaseName } from "../language-pack";
+
 const SNAPSHOT_KEY = "local-experience-v1";
 
 interface LocalExperienceRow {
@@ -69,7 +71,7 @@ export class WebLocalExperienceStore {
   readonly #snapshotKey: string;
 
   public constructor(
-    databaseName = "thainaute-local-experience-v1",
+    databaseName = getWebExperienceDatabaseName(),
     ownerInput: AttemptOutboxOwner = ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
   ) {
     this.#database = openDatabase(databaseName);

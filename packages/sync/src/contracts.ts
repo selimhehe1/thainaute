@@ -30,6 +30,10 @@ export const API_ERROR_CODES = [
   "idempotency_key_reused",
   "concurrent_update",
   "auth_unavailable",
+  "billing_disabled",
+  "billing_unavailable",
+  "billing_invalid_signature",
+  "billing_conflict",
   "database_unavailable",
   "internal_error",
 ] as const;
@@ -65,6 +69,7 @@ export const attemptAnswerSchema = z.discriminatedUnion("kind", [
       )
       .min(1)
       .max(MAX_ASSOCIATION_PAIRS_PER_ANSWER),
+    missedOnce: z.boolean().optional(),
   }),
   z.strictObject({
     kind: z.literal("word_order"),
@@ -72,11 +77,13 @@ export const attemptAnswerSchema = z.discriminatedUnion("kind", [
       .array(canonicalUuidSchema)
       .min(1)
       .max(MAX_WORD_ORDER_TOKENS_PER_ANSWER),
+    missedOnce: z.boolean().optional(),
   }),
   z.strictObject({
     kind: z.literal("recall"),
     /** Saisie brute : la normalisation Unicode appartient au serveur. */
     value: z.string().min(1).max(MAX_RECALL_ANSWER_LENGTH),
+    missedOnce: z.boolean().optional(),
   }),
 ]);
 
@@ -273,9 +280,18 @@ export type ComparableAttemptAnswer =
         readonly promptPairId: string;
         readonly chosenPairId: string;
       }[];
+      readonly missedOnce?: boolean | undefined;
     }
-  | { readonly kind: "word_order"; readonly tokenIds: readonly string[] }
-  | { readonly kind: "recall"; readonly value: string };
+  | {
+      readonly kind: "word_order";
+      readonly tokenIds: readonly string[];
+      readonly missedOnce?: boolean | undefined;
+    }
+  | {
+      readonly kind: "recall";
+      readonly value: string;
+      readonly missedOnce?: boolean | undefined;
+    };
 
 /** Comparateur unique : trois copies divergentes laissaient passer deux
  * réponses différentes pour un même identifiant d'événement. */
@@ -286,12 +302,17 @@ export function attemptAnswersAreEqual(
   if (left == null || right == null) return (left ?? null) === (right ?? null);
   if (left.kind !== right.kind) return false;
   if (left.kind === "recall") {
-    return right.kind === "recall" && left.value === right.value;
+    return (
+      right.kind === "recall" &&
+      left.value === right.value &&
+      left.missedOnce === right.missedOnce
+    );
   }
   if (left.kind === "word_order") {
     return (
       right.kind === "word_order" &&
       left.tokenIds.length === right.tokenIds.length &&
+      left.missedOnce === right.missedOnce &&
       left.tokenIds.every((tokenId, index) => tokenId === right.tokenIds[index])
     );
   }
@@ -302,7 +323,8 @@ export function attemptAnswersAreEqual(
       (pair, index) =>
         pair.promptPairId === right.pairs[index]?.promptPairId &&
         pair.chosenPairId === right.pairs[index]?.chosenPairId,
-    )
+    ) &&
+    left.missedOnce === right.missedOnce
   );
 }
 
@@ -311,9 +333,9 @@ export type OptionAttemptSubmission = ValidatedAttemptSubmission & {
 };
 
 /**
- * Garde de frontière : la notation actuelle ne sait corriger qu'une option
- * unique. Les réponses typées sont conservées mais restent sans note
- * autoritaire tant que le serveur ne les corrige pas (ADR-0024, phase C).
+ * Garde de frontière pour les écrans qui emploient encore une option unique.
+ * Les réponses typées suivent le même outbox et sont corrigées par la clé
+ * autoritaire de leur release côté serveur.
  */
 export function isOptionAttempt(
   submission: ValidatedAttemptSubmission,
