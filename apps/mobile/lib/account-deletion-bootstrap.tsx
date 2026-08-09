@@ -21,7 +21,15 @@ function shouldRetryWithoutSessionChange(error: unknown): boolean {
   if (error instanceof MobileAccountDeletionError) {
     return error.code === "operation_storage_unavailable";
   }
-  if (error instanceof SyncHttpApiError) return error.retryable;
+  if (error instanceof SyncHttpApiError) {
+    if (
+      error.endpoint === "account_deletion" &&
+      error.code === "billing_unavailable"
+    ) {
+      return false;
+    }
+    return error.retryable;
+  }
   if (error instanceof SyncHttpProtocolError) return error.retryable;
   if (
     error instanceof SyncHttpAuthenticationError ||
@@ -42,6 +50,7 @@ export function MobileAccountDeletionBootstrap() {
     let active = true;
     let retryTimer: ReturnType<typeof setTimeout> | undefined;
     let attemptRunning = false;
+    let retryBlockedUntilSessionChange = false;
 
     const clearRetry = () => {
       if (retryTimer === undefined) return;
@@ -54,7 +63,7 @@ export function MobileAccountDeletionBootstrap() {
     };
 
     const attempt = async () => {
-      if (!active || attemptRunning) return;
+      if (!active || attemptRunning || retryBlockedUntilSessionChange) return;
       clearRetry();
       attemptRunning = true;
       try {
@@ -65,6 +74,8 @@ export function MobileAccountDeletionBootstrap() {
       } catch (error) {
         if (active && shouldRetryWithoutSessionChange(error)) {
           scheduleRetry();
+        } else {
+          retryBlockedUntilSessionChange = true;
         }
       } finally {
         attemptRunning = false;

@@ -186,6 +186,12 @@ describe("orchestration UI de la suppression mobile", () => {
       needsReauthentication: false,
       retryable: true,
     },
+    {
+      code: "billing_unavailable" as const,
+      status: 503,
+      needsReauthentication: false,
+      retryable: true,
+    },
   ])(
     "présente l'erreur serveur $status sans perdre la commande",
     async ({ code, status, needsReauthentication, retryable }) => {
@@ -203,6 +209,12 @@ describe("orchestration UI de la suppression mobile", () => {
       expect(result.current.hasPendingOperation).toBe(true);
       expect(result.current.needsReauthentication).toBe(needsReauthentication);
       expect(result.current.retryable).toBe(retryable);
+      if (code === "billing_unavailable") {
+        expect(result.current.message).toMatch(/compte n’a pas été supprimé/iu);
+        expect(result.current.message).toMatch(
+          /pas relancée automatiquement/iu,
+        );
+      }
     },
   );
 

@@ -77,6 +77,37 @@ export interface AccountDeletionStoragePurger {
   }): Promise<void>;
 }
 
+/**
+ * Lecture serveur minimale et non sensible de toute trace de facturation.
+ * Une erreur doit fermer la suppression : seul `false` prouve que le no-op du
+ * mode billing désactivé est admissible.
+ */
+export interface AccountDeletionBillingHistoryReader {
+  hasBillingHistory(input: {
+    readonly userId: string;
+    readonly signal: AbortSignal;
+  }): Promise<boolean>;
+}
+
+/**
+ * Porte de sécurité billing. Le preflight précède la création d'un nouveau
+ * reçu afin qu'une indisponibilité statique ne laisse pas de commande serveur
+ * orpheline. La préparation reste appelée après le reçu durable et avant tout
+ * effet destructif ; une implémentation active devra être idempotente sur
+ * receiptId et durablement reprenable.
+ */
+export interface AccountDeletionBillingCoordinator {
+  assertCanStartAccountDeletion(input: {
+    readonly userId: string;
+    readonly signal: AbortSignal;
+  }): Promise<void>;
+  prepareForAccountDeletion(input: {
+    readonly receiptId: string;
+    readonly userId: string;
+    readonly signal: AbortSignal;
+  }): Promise<void>;
+}
+
 export interface AccountDeletionAuthAdministrator {
   revokeGlobalSessions(input: {
     readonly accessToken: string;

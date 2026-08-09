@@ -11,8 +11,13 @@ de suppression du compte.
       cycle de vie et aux noms de fournisseurs de connexion.
 - [x] Profil, appareils, tentatives, progression et signalements linguistiques
       reçus par le serveur uniquement.
+- [x] Les tentatives restituent soit l'ancien `selectedOptionId`, soit la
+      réponse typée `association`, `word_order` ou `recall`. Les nouveaux
+      fichiers émettent toujours `selectedOptionId` et `answer`, avec une seule
+      valeur non nulle ; le lecteur v2 accepte encore les anciens fichiers sans
+      champ `answer`.
 - [x] Absence de `user_metadata`, identités OAuth détaillées, jetons, secrets,
-      données de paiement, journaux internes et réponses idempotentes.
+      payloads de paiement, journaux internes et réponses idempotentes.
 - [x] Exclusion explicite des prises de voix, de la progression anonyme, des
       tentatives encore locales et des caches hors ligne.
 - [x] Contrat JSON fermé, versionné et validé avant remise.
@@ -62,6 +67,15 @@ de suppression du compte.
 - Les données modifiées seulement hors ligne ne figurent pas dans l’export tant
   qu’elles n’ont pas été synchronisées ; l’export ne déclenche jamais cette
   synchronisation implicitement.
+- Le format v2 n'exporte pas encore les enregistrements serveur des tables
+  privées `billing_customers`, `entitlements_cache` et `billing_events`. Ces
+  tables existent, mais l'abstraction courante ne sait lire que la progression
+  sous RLS et les signalements via une lecture serveur ciblée ; elle ne définit
+  ni whitelist portable des identifiants fournisseur, ni snapshot cohérent des
+  événements de facturation. Le billing doit donc rester désactivé jusqu'à un
+  contrat d'export versionné dédié et sa revue juridique. Les factures et moyens
+  de paiement conservés par Stripe, Apple ou Google relèvent en plus de leurs
+  propres procédures d'accès.
 - Un compte dépassant les bornes reçoit une erreur sans fichier partiel. Une
   future voie asynchrone devra définir son stockage chiffré et sa rétention
   avant toute implémentation.

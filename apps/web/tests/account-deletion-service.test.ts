@@ -60,6 +60,10 @@ function dependencies() {
         receipt: RECEIPT,
       })),
     },
+    billingCoordinator: {
+      assertCanStartAccountDeletion: vi.fn(async () => undefined),
+      prepareForAccountDeletion: vi.fn(async () => undefined),
+    },
     storage: { purgeUserObjects: vi.fn(async () => undefined) },
     authAdministrator: {
       revokeGlobalSessions: vi.fn(async () => undefined),
@@ -81,6 +85,12 @@ describe("service de suppression de compte", () => {
 
     await expect(deleteAccount(input(null))).resolves.toEqual(RECEIPT);
     expect(deps.identityVerifier.verify).not.toHaveBeenCalled();
+    expect(
+      deps.billingCoordinator.assertCanStartAccountDeletion,
+    ).not.toHaveBeenCalled();
+    expect(
+      deps.billingCoordinator.prepareForAccountDeletion,
+    ).not.toHaveBeenCalled();
     expect(deps.storage.purgeUserObjects).not.toHaveBeenCalled();
     expect(deps.authAdministrator.hardDeleteUser).not.toHaveBeenCalled();
   });
@@ -133,6 +143,19 @@ describe("service de suppression de compte", () => {
       targetUserId: USER_ID,
       signal: expect.any(AbortSignal),
     });
+    expect(
+      deps.billingCoordinator.assertCanStartAccountDeletion,
+    ).toHaveBeenCalledWith({
+      userId: USER_ID,
+      signal: expect.any(AbortSignal),
+    });
+    expect(
+      deps.billingCoordinator.prepareForAccountDeletion,
+    ).toHaveBeenCalledWith({
+      receiptId: RECEIPT.receiptId,
+      userId: USER_ID,
+      signal: expect.any(AbortSignal),
+    });
     expect(deps.storage.purgeUserObjects).toHaveBeenCalledWith({
       userId: USER_ID,
       signal: expect.any(AbortSignal),
@@ -153,6 +176,9 @@ describe("service de suppression de compte", () => {
     });
 
     const order = [
+      deps.billingCoordinator.assertCanStartAccountDeletion,
+      deps.repository.begin,
+      deps.billingCoordinator.prepareForAccountDeletion,
       deps.storage.purgeUserObjects,
       deps.authAdministrator.revokeGlobalSessions,
       deps.authAdministrator.hardDeleteUser,
@@ -173,8 +199,84 @@ describe("service de suppression de compte", () => {
       RECEIPT,
     );
     expect(deps.identityVerifier.verify).not.toHaveBeenCalled();
+    expect(
+      deps.billingCoordinator.assertCanStartAccountDeletion,
+    ).not.toHaveBeenCalled();
+    expect(
+      deps.billingCoordinator.prepareForAccountDeletion,
+    ).toHaveBeenCalledWith({
+      receiptId: RECEIPT.receiptId,
+      userId: USER_ID,
+      signal: expect.any(AbortSignal),
+    });
     expect(deps.authAdministrator.revokeGlobalSessions).not.toHaveBeenCalled();
     expect(deps.authAdministrator.hardDeleteUser).toHaveBeenCalledOnce();
+  });
+
+  it("reprend la même coordination billing après une panne sans franchir d'étape destructive", async () => {
+    const deps = dependencies();
+    deps.billingCoordinator.prepareForAccountDeletion.mockRejectedValueOnce(
+      new AccountDeletionInfrastructureError("billing_unavailable"),
+    );
+    const deleteAccount = createAccountDeleter(deps);
+
+    await expect(deleteAccount(input())).rejects.toMatchObject({
+      code: "billing_unavailable",
+    });
+    expect(deps.repository.begin).toHaveBeenCalledOnce();
+    expect(
+      deps.billingCoordinator.assertCanStartAccountDeletion,
+    ).toHaveBeenCalledOnce();
+    expect(deps.storage.purgeUserObjects).not.toHaveBeenCalled();
+    expect(deps.authAdministrator.revokeGlobalSessions).not.toHaveBeenCalled();
+    expect(deps.authAdministrator.hardDeleteUser).not.toHaveBeenCalled();
+
+    deps.repository.resume.mockResolvedValueOnce({
+      kind: "in_progress",
+      receiptId: RECEIPT.receiptId,
+      targetUserId: USER_ID,
+    });
+    await expect(deleteAccount(input(null))).resolves.toEqual(RECEIPT);
+
+    expect(deps.repository.begin).toHaveBeenCalledOnce();
+    expect(
+      deps.billingCoordinator.prepareForAccountDeletion,
+    ).toHaveBeenCalledTimes(2);
+    expect(
+      deps.billingCoordinator.prepareForAccountDeletion,
+    ).toHaveBeenNthCalledWith(1, {
+      receiptId: RECEIPT.receiptId,
+      userId: USER_ID,
+      signal: expect.any(AbortSignal),
+    });
+    expect(
+      deps.billingCoordinator.prepareForAccountDeletion,
+    ).toHaveBeenNthCalledWith(2, {
+      receiptId: RECEIPT.receiptId,
+      userId: USER_ID,
+      signal: expect.any(AbortSignal),
+    });
+    expect(deps.identityVerifier.verify).toHaveBeenCalledOnce();
+    expect(deps.authAdministrator.revokeGlobalSessions).not.toHaveBeenCalled();
+    expect(deps.authAdministrator.hardDeleteUser).toHaveBeenCalledOnce();
+  });
+
+  it("échoue au preflight billing avant de créer le reçu", async () => {
+    const deps = dependencies();
+    deps.billingCoordinator.assertCanStartAccountDeletion.mockRejectedValueOnce(
+      new AccountDeletionInfrastructureError("billing_unavailable"),
+    );
+
+    await expect(createAccountDeleter(deps)(input())).rejects.toMatchObject({
+      code: "billing_unavailable",
+    });
+    expect(deps.repository.begin).not.toHaveBeenCalled();
+    expect(
+      deps.billingCoordinator.prepareForAccountDeletion,
+    ).not.toHaveBeenCalled();
+    expect(deps.storage.purgeUserObjects).not.toHaveBeenCalled();
+    expect(deps.authAdministrator.revokeGlobalSessions).not.toHaveBeenCalled();
+    expect(deps.authAdministrator.hardDeleteUser).not.toHaveBeenCalled();
   });
 
   it("ne franchit aucune étape suivante après une panne Storage", async () => {

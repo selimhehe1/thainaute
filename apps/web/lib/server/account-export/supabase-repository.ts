@@ -4,6 +4,7 @@ import {
   MAX_ACCOUNT_EXPORT_CONTENT_REPORTS,
   MAX_ACCOUNT_EXPORT_DEVICES,
   MAX_ACCOUNT_EXPORT_LEARNER_STATES,
+  accountExportAttemptAnswerSchema,
   accountExportDataSchema,
   type AccountExportAttemptEvent,
   type AccountExportContentReport,
@@ -37,22 +38,34 @@ const deviceRowSchema = z.strictObject({
   app_version: z.string(),
   created_at: z.string(),
 });
-const attemptEventRowSchema = z.strictObject({
-  event_id: canonicalUuidSchema,
-  user_id: canonicalUuidSchema,
-  device_id: canonicalUuidSchema,
-  exercise_id: canonicalUuidSchema,
-  item_id: canonicalUuidSchema,
-  lesson_version_id: canonicalUuidSchema,
-  selected_option_id: canonicalUuidSchema,
-  dimension: z.enum(["listening", "reading", "recall", "production", "tone"]),
-  rating: z.union([z.literal(0), z.literal(1)]),
-  answered_at: z.string(),
-  duration_ms: z.number(),
-  algorithm_version: z.string(),
-  payload_sha256: z.string(),
-  received_at: z.string(),
-});
+const attemptEventRowSchema = z
+  .strictObject({
+    event_id: canonicalUuidSchema,
+    user_id: canonicalUuidSchema,
+    device_id: canonicalUuidSchema,
+    exercise_id: canonicalUuidSchema,
+    item_id: canonicalUuidSchema,
+    lesson_version_id: canonicalUuidSchema,
+    selected_option_id: canonicalUuidSchema.nullable(),
+    answer: accountExportAttemptAnswerSchema.nullable(),
+    dimension: z.enum(["listening", "reading", "recall", "production", "tone"]),
+    rating: z.union([z.literal(0), z.literal(1)]),
+    answered_at: z.string(),
+    duration_ms: z.number(),
+    algorithm_version: z.string(),
+    payload_sha256: z.string(),
+    received_at: z.string(),
+  })
+  .superRefine((attempt, context) => {
+    if ((attempt.selected_option_id === null) === (attempt.answer === null)) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "Une tentative persistée porte soit une option choisie, soit une réponse typée.",
+        path: ["answer"],
+      });
+    }
+  });
 const learnerItemStateRowSchema = z.strictObject({
   user_id: canonicalUuidSchema,
   item_id: canonicalUuidSchema,
@@ -199,7 +212,7 @@ async function readDevices(
   return parseRows(deviceRowSchema, rows);
 }
 
-async function readAttemptEvents(
+export async function readAttemptEvents(
   client: SupabaseClient,
   userId: string,
 ): Promise<AttemptEventRow[]> {
@@ -209,7 +222,7 @@ async function readAttemptEvents(
       const { data, error, count } = await client
         .from("attempt_events")
         .select(
-          "event_id,user_id,device_id,exercise_id,item_id,lesson_version_id,selected_option_id,dimension,rating,answered_at,duration_ms,algorithm_version,payload_sha256,received_at",
+          "event_id,user_id,device_id,exercise_id,item_id,lesson_version_id,selected_option_id,answer,dimension,rating,answered_at,duration_ms,algorithm_version,payload_sha256,received_at",
           includeExactCount ? { count: "exact" } : undefined,
         )
         .eq("user_id", userId)
@@ -355,6 +368,7 @@ export function accountExportDataFromRows(input: {
       itemId: attempt.item_id,
       lessonVersionId: attempt.lesson_version_id,
       selectedOptionId: attempt.selected_option_id,
+      answer: attempt.answer,
       skill: attempt.dimension,
       rating: attempt.rating,
       answeredAt: attempt.answered_at,

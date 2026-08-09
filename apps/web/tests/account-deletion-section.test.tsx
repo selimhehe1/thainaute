@@ -117,6 +117,9 @@ describe("suppression de compte web", () => {
     expect(
       screen.getByText(/signalements linguistiques conservés localement/iu),
     ).toHaveTextContent(/en attente ou refusés/iu);
+    expect(
+      screen.getByText(/ne prouve pas à elle seule l'annulation/iu),
+    ).toHaveTextContent(/App Store, Google Play ou Stripe/iu);
     expect(requestButton).toBeDisabled();
     fireEvent.click(
       screen.getByRole("checkbox", {
@@ -221,6 +224,12 @@ describe("suppression de compte web", () => {
       code: "database_unavailable" as const,
       status: 503,
       expected: "momentan\u00e9ment indisponible",
+      button: "Reprendre la m\u00eame demande",
+    },
+    {
+      code: "billing_unavailable" as const,
+      status: 503,
+      expected: "Votre compte n'a pas \u00e9t\u00e9 supprim\u00e9",
       button: "Reprendre la m\u00eame demande",
     },
   ])(

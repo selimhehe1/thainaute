@@ -172,6 +172,7 @@ describe("transport HTTP de suppression de compte", () => {
 
   it("mappe les pannes d'infrastructure sans détail amont", async () => {
     for (const code of [
+      "billing_unavailable",
       "auth_unavailable",
       "storage_unavailable",
       "database_unavailable",
@@ -183,6 +184,11 @@ describe("transport HTTP de suppression de compte", () => {
       const response = await createAccountDeletionHttpHandler(deps)(request());
       expect(response.status).toBe(503);
       expect(await response.json()).toMatchObject({ error: { code } });
+      expect(deps.reportOperationalFailure).toHaveBeenCalledWith({
+        operation: "account_deletion",
+        errorKind: code,
+        requestId: REQUEST_ID,
+      });
     }
   });
 

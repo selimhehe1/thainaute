@@ -8,6 +8,7 @@ import { assertRecentAccountDeletionOtp } from "./fresh-auth";
 import type {
   AccountDeleter,
   AccountDeletionAuthAdministrator,
+  AccountDeletionBillingCoordinator,
   AccountDeletionHasher,
   AccountDeletionIdentityVerifier,
   AccountDeletionReceiptRepository,
@@ -25,8 +26,16 @@ function terminalReceipt(state: AccountDeletionReceiptState) {
   return parsed.data;
 }
 
-function targetFromState(state: AccountDeletionReceiptState): string {
-  if (state.kind === "in_progress") return state.targetUserId;
+function operationFromState(state: AccountDeletionReceiptState): {
+  readonly receiptId: string;
+  readonly targetUserId: string;
+} {
+  if (state.kind === "in_progress") {
+    return {
+      receiptId: state.receiptId,
+      targetUserId: state.targetUserId,
+    };
+  }
   if (state.kind === "idempotency_key_reused") {
     throw new AccountDeletionApiError("idempotency_key_reused");
   }
@@ -40,6 +49,7 @@ export function createAccountDeleter(dependencies: {
   readonly identityVerifier: AccountDeletionIdentityVerifier;
   readonly sessionVerifier: AccountDeletionSessionVerifier;
   readonly repository: AccountDeletionReceiptRepository;
+  readonly billingCoordinator: AccountDeletionBillingCoordinator;
   readonly storage: AccountDeletionStoragePurger;
   readonly authAdministrator: AccountDeletionAuthAdministrator;
   readonly hasher: AccountDeletionHasher;
@@ -78,6 +88,10 @@ export function createAccountDeleter(dependencies: {
       ) {
         throw new AccountDeletionApiError("unauthorized");
       }
+      await dependencies.billingCoordinator.assertCanStartAccountDeletion({
+        userId: identity.userId,
+        signal,
+      });
       const fingerprints = dependencies.hasher.fingerprint({
         userId: identity.userId,
         request,
@@ -93,9 +107,15 @@ export function createAccountDeleter(dependencies: {
       initialAccessToken = accessToken;
     }
 
-    const targetUserId = targetFromState(state);
+    const operation = operationFromState(state);
+    await dependencies.billingCoordinator.prepareForAccountDeletion({
+      receiptId: operation.receiptId,
+      userId: operation.targetUserId,
+      signal,
+    });
+
     await dependencies.storage.purgeUserObjects({
-      userId: targetUserId,
+      userId: operation.targetUserId,
       signal,
     });
 
@@ -106,7 +126,7 @@ export function createAccountDeleter(dependencies: {
       });
     }
     await dependencies.authAdministrator.hardDeleteUser({
-      userId: targetUserId,
+      userId: operation.targetUserId,
       signal,
       // Dès que le reçu durable existe, une absence Auth signifie qu'un appel
       // concurrent ou précédent a franchi la même étape destructive.

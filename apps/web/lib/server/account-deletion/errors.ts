@@ -6,6 +6,7 @@ const HTTP_STATUS_BY_CODE = {
   reauthentication_required: 403,
   idempotency_key_reused: 409,
   deletion_in_progress: 409,
+  billing_unavailable: 503,
   auth_unavailable: 503,
   storage_unavailable: 503,
   database_unavailable: 503,
@@ -21,6 +22,8 @@ const PUBLIC_MESSAGE_BY_CODE = {
     "Cette clé de reprise a déjà été utilisée pour une autre demande.",
   deletion_in_progress:
     "La suppression est déjà en cours. Réessayez avec les mêmes identifiants de reprise.",
+  billing_unavailable:
+    "Le compte n'a pas été supprimé : la coordination avec le service d'abonnement est indisponible.",
   auth_unavailable: "Le service d’authentification est indisponible.",
   storage_unavailable: "Le stockage du compte est indisponible.",
   database_unavailable: "Le service de suppression est indisponible.",
@@ -40,7 +43,10 @@ export class AccountDeletionApiError extends Error {
 }
 
 export type AccountDeletionInfrastructureFailure =
-  "auth_unavailable" | "storage_unavailable" | "database_unavailable";
+  | "billing_unavailable"
+  | "auth_unavailable"
+  | "storage_unavailable"
+  | "database_unavailable";
 
 export class AccountDeletionInfrastructureError extends Error {
   public readonly code: AccountDeletionInfrastructureFailure;
