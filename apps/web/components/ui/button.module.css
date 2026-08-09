@@ -12,7 +12,10 @@
   gap: var(--space-sm);
   cursor: pointer;
   border: none;
-  transition: background-color var(--motion-base) var(--ease-standard);
+  transition:
+    background-color var(--motion-base) var(--ease-standard),
+    box-shadow var(--motion-base) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
 }
 
 .base:focus-visible {
@@ -37,10 +40,17 @@
 .primary {
   background: var(--color-coral);
   color: var(--color-paper);
+  box-shadow: var(--shadow-lifted);
 }
 
 .primary:hover:not(:disabled) {
   background: var(--color-coral-deep);
+  transform: translateY(-2px);
+}
+
+.primary:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 rgba(40, 52, 80, 0.1);
 }
 
 .secondary {
@@ -84,5 +94,10 @@
 @media (prefers-reduced-motion: reduce) {
   .base {
     transition: none;
+  }
+
+  .primary:hover:not(:disabled),
+  .primary:active:not(:disabled) {
+    transform: none;
   }
 }

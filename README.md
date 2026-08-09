@@ -34,6 +34,18 @@ pnpm content:audit
 pnpm build
 ```
 
+## Packs de langue
+
+Une build sélectionne une seule langue cible avec `THAINAUTE_LANGUAGE_PACK`.
+Le français reste la langue d'enseignement. La valeur actuellement disponible
+est `thai-fr` ; un identifiant absent du registre fait échouer la build plutôt
+que de servir silencieusement du contenu thaï. Pour le web, la configuration
+Next.js recopie aussi l'identifiant dans `NEXT_PUBLIC_THAINAUTE_LANGUAGE_PACK`.
+
+Ajouter une langue signifie donc ajouter un pack enregistré, son registre de
+contenu audité et ses adaptateurs audio/typographiques avant de sélectionner
+son profil. Aucun cours italien n'est inclus dans cette tranche.
+
 Pour la base locale :
 
 ```powershell
@@ -49,6 +61,8 @@ pnpm exec supabase status -o env `
   --override-name auth.anon_key=NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY `
   --override-name auth.service_role_key=SUPABASE_SECRET_KEY
 $env:THAINAUTE_SYNC_MODE="supabase"
+$env:THAINAUTE_LANGUAGE_PACK="thai-fr"
+$env:NEXT_PUBLIC_THAINAUTE_LANGUAGE_PACK="thai-fr"
 $pepperBytes = [byte[]]::new(32)
 $pepperRng = [Security.Cryptography.RandomNumberGenerator]::Create()
 try { $pepperRng.GetBytes($pepperBytes) } finally { $pepperRng.Dispose() }

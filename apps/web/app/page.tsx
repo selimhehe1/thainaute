@@ -2,9 +2,11 @@ import Link from "next/link";
 
 import { BrandCurve, ToneCurve } from "@/components/brand/tone-curve";
 import { SiteHeader } from "@/components/layout/site-header";
+import siteHeaderStyles from "@/components/layout/site-header.module.css";
 import { buttonClass } from "@/components/ui/button";
 import type { ToneCurveName } from "@thainaute/design-tokens";
 
+import { getActiveWebLanguagePack } from "@/lib/language-pack";
 import styles from "./home.module.css";
 
 const TONES: ReadonlyArray<{ tone: ToneCurveName; label: string }> = [
@@ -16,13 +18,19 @@ const TONES: ReadonlyArray<{ tone: ToneCurveName; label: string }> = [
 ];
 
 export default function HomePage() {
+  const languagePack = getActiveWebLanguagePack();
+
   return (
-    <main>
+    <main data-language-pack={languagePack.id}>
       <div className={styles.shell}>
         <SiteHeader navLabel="Navigation principale">
-          <Link href="#methode">Méthode</Link>
+          <Link className={siteHeaderStyles.optional} href="#methode">
+            Méthode
+          </Link>
           <Link href="/path">Parcours</Link>
-          <Link href="/account">Compte</Link>
+          <Link className={siteHeaderStyles.optional} href="/account">
+            Compte
+          </Link>
           <Link className={buttonClass("ghost")} href="/today">
             Aujourd’hui
           </Link>
@@ -31,14 +39,22 @@ export default function HomePage() {
 
       <section className={`${styles.hero} ${styles.shell}`}>
         <div className={styles.heroHalo} aria-hidden="true" />
-        <div className={styles.heroSpecimen} lang="th" aria-hidden="true">
-          ไทย
+        <div
+          className={styles.heroSpecimen}
+          lang={languagePack.targetLocale}
+          aria-hidden="true"
+        >
+          {languagePack.targetLanguage.nativeName}
         </div>
         <p className={styles.eyebrow}>
           Bêta privée · marque à confirmer juridiquement
         </p>
-        <h1 className={styles.heroTitle}>
-          Le thaï, enfin pensé <em>en français.</em>
+        <h1
+          className={styles.heroTitle}
+          aria-label={languagePack.app.taglineFr}
+        >
+          Le {languagePack.targetLanguage.labelFr}, enfin pensé{" "}
+          <em>en français.</em>
         </h1>
         <BrandCurve
           className={styles.heroCurve}
@@ -51,6 +67,15 @@ export default function HomePage() {
           Une méthode adulte qui rend visibles les sons, la lecture et la
           maîtrise, sans transformer l’apprentissage en punition.
         </p>
+        <div
+          className={styles.heroSignals}
+          role="group"
+          aria-label="Repères de la méthode"
+        >
+          <span>5 tons</span>
+          <span>10 minutes</span>
+          <span>maîtrise visible</span>
+        </div>
         <div className={styles.heroActions}>
           <Link className={buttonClass("primary")} href="/today">
             Commencer sans compte
@@ -61,28 +86,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        className={`${styles.tones} ${styles.shell}`}
-        aria-labelledby="tones-title"
-      >
-        <p className={styles.eyebrow}>La signature de la méthode</p>
-        <h2 className={styles.sectionTitle} id="tones-title">
-          Cinq tons, cinq courbes.
-        </h2>
-        <p className={styles.sectionNote}>
-          Chaque ton thaï est un contour mélodique. Thaïnaute les dessine, les
-          fait écouter et les suit dans votre progression : la forme et le
-          libellé portent l’information, jamais la couleur seule.
-        </p>
-        <div className={styles.toneGrid}>
-          {TONES.map(({ tone, label }) => (
-            <div key={tone} className={styles.toneCard}>
-              <ToneCurve tone={tone} title={label} />
-              <p className={styles.toneName}>{label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {languagePack.capabilities.toneContours && (
+        <section
+          className={`${styles.tones} ${styles.shell}`}
+          aria-labelledby="tones-title"
+        >
+          <p className={styles.eyebrow}>La signature de la méthode</p>
+          <h2 className={styles.sectionTitle} id="tones-title">
+            Cinq tons, cinq courbes.
+          </h2>
+          <p className={styles.sectionNote}>
+            Chaque ton thaï correspond à un contour tonal. Thaïnaute les fait
+            écouter, les dessine et les suit dans votre progression : la forme
+            et le libellé portent l’information, jamais la couleur seule.
+          </p>
+          <div className={styles.toneGrid}>
+            {TONES.map(({ tone, label }) => (
+              <div key={tone} className={styles.toneCard}>
+                <ToneCurve tone={tone} title={label} />
+                <p className={styles.toneName}>{label}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section
         className={`${styles.principles} ${styles.shell}`}
@@ -121,7 +148,7 @@ export default function HomePage() {
       </section>
 
       <footer className={`${styles.footer} ${styles.shell}`}>
-        <span>Thaïnaute · fondation technique privée</span>
+        <span>{languagePack.app.displayName} · fondation technique privée</span>
         <Link href="/privacy">Confidentialité et mesure d’audience</Link>
         <span>Le nom et le contenu restent non publiés.</span>
       </footer>

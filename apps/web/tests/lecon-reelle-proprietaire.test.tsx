@@ -20,6 +20,8 @@ import { readFiveMechanicsFixtureBundle } from "@thainaute/content";
 import { cleanup, render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { ExpeditionExperience } from "../app/learn/demo/expedition-experience";
+
 const magasins: { nom: string | undefined; proprietaire: unknown }[] = [];
 
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
@@ -54,9 +56,7 @@ vi.mock("../lib/client/auth-session", () => ({
 
 const { lesson } = readFiveMechanicsFixtureBundle();
 
-async function monter(attemptStorage: "demo" | "learning") {
-  const { ExpeditionExperience } =
-    await import("../app/learn/demo/expedition-experience");
+function monter(attemptStorage: "demo" | "learning") {
   render(
     <ExpeditionExperience lesson={lesson} attemptStorage={attemptStorage} />,
   );
@@ -86,7 +86,6 @@ beforeEach(() => {
 
 afterEach(() => {
   cleanup();
-  vi.resetModules();
 });
 
 describe("propriétaire du journal des tentatives", () => {

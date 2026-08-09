@@ -8,7 +8,7 @@ Une décision `OPEN` bloque seulement la fonctionnalité ou la phase indiquée.
 | OPEN-PRODUCT-001 | premier segment et résultat à quatre semaines                          | avant validation Phase 1          | ouverte |
 | OPEN-LEARN-001   | seuils de maîtrise et rôle de la transcription                         | avant contenu réel Phase 2        | ouverte |
 | OPEN-CONTENT-001 | liste opérationnelle des sources et auditeurs autorisés                | avant première publication        | ouverte |
-| OPEN-BILL-001    | orchestration RevenueCat Web ou Checkout Next.js                       | avant Phase 3                     | ouverte |
+| OPEN-BILL-001    | orchestration RevenueCat Web ou Checkout Next.js                       | avant Phase 3                     | résolue |
 | OPEN-PRICE-001   | prix, essai et seuils Premium                                          | avant Phase 3                     | ouverte |
 | OPEN-PRIVACY-001 | mineurs et durée exacte de rétention vocale                            | avant collecte distante/bêta      | ouverte |
 | OPEN-TAX-001     | pays de lancement et traitement fiscal                                 | avant paiement réel               | ouverte |
@@ -29,3 +29,8 @@ Une décision `OPEN` bloque seulement la fonctionnalité ou la phase indiquée.
 - `OPEN-SYNC-001` — résolue par une fenêtre serveur inclusive de trente jours
   dans le passé et cinq minutes dans le futur, sans réécriture de
   `answeredAt`, dans [ADR-0010](adr/0010-attempt-temporal-trust.md).
+- `OPEN-BILL-001` — résolue par Checkout Sessions + Customer Portal Stripe sur
+  le web et RevenueCat pour les achats natifs. Les deux chemins alimentent le
+  même miroir serveur `premium`, documenté dans
+  [ADR-0036](adr/0036-paiements-web-entitlements.md). Cette décision ne valide
+  ni les prix, ni la fiscalité, ni l'encaissement live.

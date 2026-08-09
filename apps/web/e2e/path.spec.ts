@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import {
-  completeLecon1a,
+  completeExpedition,
   openExpeditionAfterOnboarding,
 } from "./expedition-helpers";
 
@@ -45,15 +45,19 @@ test("ouvre le parcours local depuis l’accueil sans inventer de contenu", asyn
     .boundingBox();
   expect(todayLinkBox?.width).toBeGreaterThanOrEqual(44);
   expect(todayLinkBox?.height).toBeGreaterThanOrEqual(44);
-  await expect(page.getByRole("link", { name: "Compte" })).toBeHidden();
+  await expect(
+    page.getByRole("link", { name: "Compte", exact: true }),
+  ).toBeHidden();
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth),
   ).toBeLessThanOrEqual(await page.evaluate(() => window.innerWidth));
 });
 
-test("reflète la clôture durable de la leçon 1A", async ({ page }) => {
+test("reflète la clôture durable de la démonstration technique", async ({
+  page,
+}) => {
   await openExpeditionAfterOnboarding(page);
-  await completeLecon1a(page);
+  await completeExpedition(page);
   await page.goto("/path");
 
   await expect(page.getByText("Expédition terminée")).toBeVisible();

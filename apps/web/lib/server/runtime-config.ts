@@ -15,6 +15,13 @@ import {
   type PublicContentMode,
 } from "./content-delivery/runtime";
 import { readContentStudioConfiguration } from "./content-studio/runtime";
+import { areBillingProviderActionsEnabled } from "./billing/capability";
+import {
+  readBillingConfiguration,
+  readBillingMode,
+  readRevenueCatWebhookConfiguration,
+  type BillingMode,
+} from "./billing/runtime";
 
 const LOCAL_PUBLIC_URL = "http://localhost:3000/";
 const RELEASE_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/u;
@@ -25,6 +32,11 @@ export type SyncMode = "disabled" | "supabase";
 export type StudioMode = "disabled" | "fixture";
 
 export type RuntimeIssue =
+  | "account_deletion_billing_coordinator_missing"
+  | "billing_config_missing"
+  | "billing_mode_invalid"
+  | "billing_provider_actions_not_approved"
+  | "billing_revenuecat_config_missing"
   | "account_deletion_config_missing"
   | "content_report_config_missing"
   | "content_report_mode_invalid"
@@ -48,6 +60,7 @@ export interface RuntimeDiagnostic {
   readonly release: string;
   readonly publicOrigin: string | null;
   readonly publicIndexing: boolean;
+  readonly billingMode: BillingMode | null;
   readonly syncMode: SyncMode | null;
   readonly contentReportMode: ContentReportMode | null;
   readonly publicContentMode: PublicContentMode | null;
@@ -119,6 +132,32 @@ export function diagnoseRuntime(
     issues.push("public_indexing_invalid");
   }
 
+  const billingMode = readBillingMode(environment);
+  const accountDeletionConfiguration =
+    readAccountDeletionConfiguration(environment);
+  if (billingMode === null) {
+    issues.push("billing_mode_invalid");
+  } else if (billingMode !== "disabled") {
+    if (!areBillingProviderActionsEnabled()) {
+      issues.push("billing_provider_actions_not_approved");
+    }
+    // Aucun coordinateur externe durable n'est encore branché au workflow de
+    // suppression. Un runtime billing actif ne doit donc jamais être ready.
+    issues.push("account_deletion_billing_coordinator_missing");
+    if (readBillingConfiguration(environment) === null) {
+      issues.push("billing_config_missing");
+    }
+    if (readRevenueCatWebhookConfiguration(environment) === null) {
+      issues.push("billing_revenuecat_config_missing");
+    }
+    if (readSupabaseServerConfiguration(environment) === null) {
+      issues.push("supabase_config_missing");
+    }
+    if (accountDeletionConfiguration === null) {
+      issues.push("account_deletion_config_missing");
+    }
+  }
+
   const syncMode = resolveSyncMode(environment.THAINAUTE_SYNC_MODE);
   if (syncMode === null) {
     issues.push("sync_mode_invalid");
@@ -129,7 +168,8 @@ export function diagnoseRuntime(
     issues.push("supabase_config_missing");
   } else if (
     syncMode === "supabase" &&
-    readAccountDeletionConfiguration(environment) === null
+    accountDeletionConfiguration === null &&
+    !issues.includes("account_deletion_config_missing")
   ) {
     issues.push("account_deletion_config_missing");
   }
@@ -188,6 +228,7 @@ export function diagnoseRuntime(
     release,
     publicOrigin: publicUrl?.origin ?? null,
     publicIndexing,
+    billingMode,
     syncMode,
     contentReportMode,
     publicContentMode,

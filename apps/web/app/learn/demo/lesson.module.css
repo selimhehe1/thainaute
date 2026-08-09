@@ -16,6 +16,9 @@
   padding: 24px 30px 34px 68px;
   box-shadow: var(--shadow-card);
   overflow: hidden;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 98%), rgb(255 255 255 / 86%)),
+    var(--color-paper);
 }
 
 /* La règle de marge du carnet : le filet vertical qui longe la reliure. */
@@ -135,6 +138,10 @@
   position: relative;
   display: grid;
   gap: 10px;
+  padding: 10px 14px 12px;
+  border: 1px solid rgb(67 162 131 / 20%);
+  border-radius: var(--radius-md);
+  background: var(--color-jade-pale);
 }
 
 /* Le folio « 6/6 » a ete retire : marque aria-hidden, il ne portait rien
@@ -152,6 +159,59 @@
   letter-spacing: 0.01em;
 }
 
+/* Aperçu texte : même carnet que l'expédition, avec un repère plus doux
+   pour distinguer clairement une page à lire d'une séance jouable. */
+.draftCard {
+  border-left: 1px solid var(--color-line);
+  border-top: 5px solid var(--color-jade);
+  border-radius: var(--radius-lg);
+  padding: 30px 34px 40px;
+  background:
+    radial-gradient(circle at 96% 0%, rgb(67 162 131 / 12%), transparent 15rem),
+    linear-gradient(135deg, rgb(255 255 255 / 98%), rgb(255 255 255 / 88%)),
+    var(--color-paper);
+}
+
+.draftCard::before {
+  display: none;
+}
+
+.draftTopline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.draftTopline .eyebrow {
+  margin-bottom: 0;
+}
+
+.draftBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border: 1px solid rgb(67 162 131 / 28%);
+  border-radius: var(--radius-pill);
+  background: var(--color-jade-pale);
+  color: var(--color-jade-ink);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.draftNoteProminent {
+  border: 1px solid rgb(67 162 131 / 24%);
+  border-left: 4px solid var(--color-jade);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 12px 15px;
+  background: var(--color-jade-pale);
+  color: var(--color-jade-ink);
+}
+
 /* Le cours, avant les exercices. Il occupe la place d'une page de carnet :
    une idee par ecran, le specimen en grand, et rien d'autre. */
 .cours {
@@ -160,6 +220,33 @@
   border-left: 3px solid var(--color-coral);
   background: var(--color-jasmine);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.draftPage {
+  border: 1px solid var(--color-line);
+  border-top: 3px solid var(--color-coral);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 96%), rgb(251 250 247 / 88%)),
+    var(--color-jasmine);
+  box-shadow: 0 6px 18px rgb(40 52 80 / 5%);
+}
+
+.draftPage:nth-of-type(3n + 2) {
+  border-top-color: var(--color-sky);
+}
+
+.draftPage:nth-of-type(3n) {
+  border-top-color: var(--color-saffron);
+}
+
+.draftSource {
+  margin: 4px 0 0;
+  padding-top: 14px;
+  border-top: 1px dashed var(--color-line);
+  color: var(--color-ink-soft);
+  font-size: 12.5px;
+  line-height: 1.5;
 }
 
 .coursRang {
@@ -182,6 +269,43 @@
   font-size: 15.5px;
   line-height: 1.6;
   max-width: 58ch;
+}
+
+.coursCitation {
+  margin: 2px 0 14px;
+  padding: 12px 16px;
+  border-left: 4px solid var(--color-jade-ink);
+  background: var(--color-paper);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-family: var(--font-thai);
+  font-size: clamp(22px, 4vw, 30px);
+  line-height: 1.7;
+  color: var(--color-ink);
+}
+
+.coursCitationLine {
+  display: block;
+}
+
+.coursList {
+  margin: 0 0 14px;
+  padding-left: 28px;
+  max-width: 58ch;
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+
+.coursList li + li {
+  margin-top: 7px;
+}
+
+.coursCode {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: var(--color-paper);
+  color: var(--color-coral-deep);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.92em;
 }
 
 /* Le specimen est ce que la page donne a VOIR : il domine le texte qui
@@ -489,7 +613,7 @@
   border: 1.5px solid var(--color-line);
   border-radius: var(--radius-md);
   background: var(--color-paper);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-lifted);
   font-family: var(--font-thai);
   font-size: 30px;
   line-height: 1.5;
@@ -881,6 +1005,10 @@
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
   }
 
+  .draftCard {
+    padding: 20px 18px 28px;
+  }
+
   .card::before {
     left: 30px;
   }
@@ -924,6 +1052,10 @@
   .token,
   .matchTile {
     transition: none;
+  }
+
+  .token {
+    box-shadow: var(--shadow-card);
   }
 
   /* L'inclinaison des jetons est une posture, pas une animation :

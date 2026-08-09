@@ -53,23 +53,35 @@ export async function lireLeCours(page: Page): Promise<void> {
   throw new Error("Le cours ne se termine jamais.");
 }
 
-/** Les cinq tirages d'ecoute de la lecon 1A, dans l'ordre du vivier. */
-const TIRAGES_1A = [
-  { mot: "คา", transcription: "khaa", reponse: "à plat au milieu (moyen)" },
-  { mot: "ข่า", transcription: "khàa", reponse: "posé en bas (bas)" },
-  { mot: "ค่า", transcription: "khâa", reponse: "qui tombe (descendant)" },
-  { mot: "ค้า", transcription: "kháa", reponse: "perché et tendu (haut)" },
-  { mot: "ขา", transcription: "khǎa", reponse: "qui grimpe (montant)" },
+/** Les six tirages actifs de la leçon 1A : le contraste tombe/grimpe. */
+const TIRAGES_AUDIO_1A = [
+  { mot: "ค่า", transcription: "khâa", reponse: "la voix tombe" },
+  { mot: "ขา", transcription: "khǎa", reponse: "la voix grimpe" },
+  { mot: "ขา", transcription: "khǎa", reponse: "la voix grimpe" },
+  { mot: "ค่า", transcription: "khâa", reponse: "la voix tombe" },
+  { mot: "ค่า", transcription: "khâa", reponse: "la voix tombe" },
+  { mot: "ขา", transcription: "khǎa", reponse: "la voix grimpe" },
 ] as const;
 
-/** Termine la lecon reelle de l'unite 1 : cinq ecoutes puis une association. */
+/** Les trois associations actives : moyen, descendant, montant. */
+const ASSOCIATIONS_1A = [
+  { mot: "คา", transcription: "khaa" },
+  { mot: "ค่า", transcription: "khâa" },
+  { mot: "ขา", transcription: "khǎa" },
+] as const;
+
+const TOTAL_EXERCICES_1A = TIRAGES_AUDIO_1A.length + 1;
+
+/** Termine la leçon réelle de l'unité 1 : écoute puis association. */
 export async function completeLecon1a(page: Page): Promise<void> {
   await lireLeCours(page);
   await page.getByRole("button", { name: "Commencer l’expédition" }).click();
 
-  for (const [index, tirage] of TIRAGES_1A.entries()) {
+  for (const [index, tirage] of TIRAGES_AUDIO_1A.entries()) {
     await expect(
-      page.getByText(`Écoute · exercice ${index + 1} sur 6`),
+      page.getByText(
+        `Écoute · exercice ${index + 1} sur ${TOTAL_EXERCICES_1A}`,
+      ),
     ).toBeVisible();
     await page.getByRole("radio", { name: tirage.reponse }).check();
     await page.getByRole("button", { name: "Valider" }).click();
@@ -81,8 +93,12 @@ export async function completeLecon1a(page: Page): Promise<void> {
     await page.getByRole("button", { name: "Continuer" }).click();
   }
 
-  await expect(page.getByText("Association · exercice 6 sur 6")).toBeVisible();
-  for (const tirage of TIRAGES_1A) {
+  await expect(
+    page.getByText(
+      `Association · exercice ${TOTAL_EXERCICES_1A} sur ${TOTAL_EXERCICES_1A}`,
+    ),
+  ).toBeVisible();
+  for (const tirage of ASSOCIATIONS_1A) {
     await page.getByRole("button", { name: tirage.mot, exact: true }).click();
     await page
       .getByRole("button", {

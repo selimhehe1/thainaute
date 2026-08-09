@@ -14,21 +14,22 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 type Handler = (request: Request) => Promise<Response>;
-let cachedHandler: Handler | undefined;
 
 function contentStudioHandler(): Handler | null {
-  if (cachedHandler !== undefined) return cachedHandler;
   const configuration = readContentStudioConfiguration();
   const reportConfiguration = readSupabaseServerConfiguration();
   if (configuration === null || reportConfiguration === null) return null;
 
-  cachedHandler = createContentStudioHttpHandler({
+  // La configuration est relue à chaque requête. La construction du handler
+  // est pure et peu coûteuse ; ne pas la mettre en cache évite surtout qu'un
+  // runtime long-lived conserve un ancien mode Studio après une rotation de
+  // configuration ou un redémarrage partiel.
+  return createContentStudioHttpHandler({
     authorizer: createSupabaseContentStudioAuthorizer(configuration),
     reviewFixture: () => reviewContentBundle(readFixtureBundle()),
     reportAggregateReader:
       createSupabaseContentReportAggregateReader(reportConfiguration),
   });
-  return cachedHandler;
 }
 
 export async function GET(request: Request): Promise<Response> {

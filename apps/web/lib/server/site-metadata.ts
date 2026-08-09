@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 
 import { diagnoseRuntime } from "./runtime-config";
+import { getActiveWebLanguagePack } from "../language-pack";
 
 type Environment = Readonly<Record<string, string | undefined>>;
 
 export function createSiteMetadata(
   environment: Environment = process.env,
 ): Metadata {
+  const languagePack = getActiveWebLanguagePack(environment);
   const diagnostic = diagnoseRuntime(environment);
   const indexingAllowed =
     diagnostic.ready &&
@@ -15,11 +17,10 @@ export function createSiteMetadata(
 
   return {
     title: {
-      default: "Thaïnaute — Le thaï, pensé en français",
-      template: "%s · Thaïnaute",
+      default: languagePack.app.seoTitleFr,
+      template: `%s · ${languagePack.app.displayName}`,
     },
-    description:
-      "Bêta privée d'une méthode de thaï conçue pour les francophones.",
+    description: languagePack.app.descriptionFr,
     ...(diagnostic.publicOrigin === null
       ? {}
       : {

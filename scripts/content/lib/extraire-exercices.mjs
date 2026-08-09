@@ -172,31 +172,73 @@ function consigneDuBloc(corps) {
  */
 function extraireAssociation(bloc, resoudreItem) {
   const paires = [];
+  let erreurNumerotee = null;
   for (const { rang, texte } of lignesTirage(bloc.corps)) {
     const cote = texte.split("↔");
     if (cote.length !== 2) {
-      return { erreur: `tirage ${rang} : pas de séparateur ↔ unique` };
+      erreurNumerotee = `tirage ${rang} : pas de séparateur ↔ unique`;
+      break;
     }
     const graphies = [...cote[0].matchAll(THAI)].map((t) => t[0]);
     if (graphies.length !== 1) {
-      return {
-        erreur: `tirage ${rang} : ${graphies.length} graphies à gauche`,
-      };
+      erreurNumerotee = `tirage ${rang} : ${graphies.length} graphies à gauche`;
+      break;
     }
     const libelle = cote[1].match(/«\s*([^»]+?)\s*»/u)?.[1];
     if (libelle === undefined) {
-      return { erreur: `tirage ${rang} : libellé non cité à droite` };
+      erreurNumerotee = `tirage ${rang} : libellé non cité à droite`;
+      break;
     }
     const itemId = resoudreItem(graphies[0]);
     if (itemId === null) {
-      return {
-        erreur: `tirage ${rang} : item introuvable pour ${graphies[0]}`,
-      };
+      erreurNumerotee = `tirage ${rang} : item introuvable pour ${graphies[0]}`;
+      break;
     }
     paires.push({ rang, itemId, labelFr: libelle.slice(0, 120) });
   }
-  if (paires.length < 2) return { erreur: "moins de deux paires" };
-  return { paires };
+  if (erreurNumerotee === null && paires.length >= 2) return { paires };
+
+  // Plusieurs dossiers écrivent les manches comme une liste de prose, par
+  // exemple « A ↔ « sens » ; B ↔ « sens » », ou comme deux graphies
+  // thaïes (« ค ↔ ข »). Ces deux formes sont explicites : on les extrait
+  // sans déduire de sens. Pour la seconde, la graphie de droite devient la
+  // carte partenaire affichée, ce qui conserve exactement le jeu de lettres
+  // écrit par l'auteur.
+  const pairesCitees = [];
+  const motifCite = new RegExp(
+    `(${THAI.source}(?:[ \\t]+${THAI.source})*)[ \\t]*↔[ \\t]*«\\s*([^»]+?)\\s*»`,
+    "gu",
+  );
+  for (const trouve of bloc.corps.matchAll(motifCite)) {
+    const itemId = resoudreItem(trouve[1]);
+    if (itemId !== null) {
+      pairesCitees.push({
+        rang: pairesCitees.length + 1,
+        itemId,
+        labelFr: trouve[2].trim().slice(0, 120),
+      });
+    }
+  }
+  if (pairesCitees.length >= 2) return { paires: pairesCitees };
+
+  const pairesGraphies = [];
+  const motifGraphies = new RegExp(
+    `(${THAI.source}(?:[ \\t]+${THAI.source})*)[ \\t]*↔[ \\t]*(${THAI.source}(?:[ \\t]+${THAI.source})*)`,
+    "gu",
+  );
+  for (const trouve of bloc.corps.matchAll(motifGraphies)) {
+    const itemId = resoudreItem(trouve[1]);
+    if (itemId !== null) {
+      pairesGraphies.push({
+        rang: pairesGraphies.length + 1,
+        itemId,
+        labelFr: trouve[2].trim().slice(0, 120),
+      });
+    }
+  }
+  if (pairesGraphies.length >= 2) return { paires: pairesGraphies };
+
+  return { erreur: erreurNumerotee ?? "moins de deux paires" };
 }
 
 /**
@@ -212,10 +254,16 @@ function extraireAssociation(bloc, resoudreItem) {
  * quand les cartes ne bougent pas, la seconde quand elles dependent du mot.
  */
 function optionsDuTirage(texte) {
-  const brut = texte.match(/Options\s*:\s*([^.]+?)\s*\.\s*R[ée]ponse/u)?.[1];
-  if (brut === undefined) return null;
-  const libelles = brut
-    .split(/\s*\/\s*/u)
+  const trouve = texte.match(
+    /\bOptions?\s*:?\s*(.+?)\s*[.:;]\s*R[ée]ponse\s*:?\s*(.+?)\s*\.?\s*$/iu,
+  );
+  if (trouve === null) return null;
+  const brut = trouve[1].trim();
+  const libelles = (
+    /^\d+(?:\s*,\s*\d+)+$/u.test(brut)
+      ? brut.split(/\s*,\s*/u)
+      : brut.split(/\s*\/\s*/u)
+  )
     .map((part) => part.trim())
     .filter(Boolean);
   return libelles.length >= 2 ? libelles : null;
@@ -223,6 +271,14 @@ function optionsDuTirage(texte) {
 
 function extraireEcoute(bloc, resoudreItem) {
   const libellesBloc = optionsDeclarees(bloc.corps);
+
+  // Quand chaque ligne « Audio … ; options … ; réponse … » porte son
+  // propre jeu, les options du champ introductif ne sont pas le jeu réel.
+  // Prioriser la forme par tirage évite notamment d'englober les graphies
+  // citées dans les notes de production de la même ligne numérotée.
+  if (/^\s*\d+\.\s+Audio\b.*\boptions?\b/imu.test(bloc.corps)) {
+    return extraireEcouteParTirage(bloc, resoudreItem);
+  }
 
   // Sans options de bloc, on tente les options par tirage avant de refuser.
   if (libellesBloc === null) {
@@ -331,7 +387,7 @@ function extraireEcouteParTirage(bloc, resoudreItem) {
       if (libelles === null) {
         return { erreur: `tirage ${rang} : options du tirage non lisibles` };
       }
-      const reponse = texte.match(/R[ée]ponse\s*:\s*([^.;]+)/u)?.[1]?.trim();
+      const reponse = texte.match(/R[ée]ponse\s*:?\s*([^.;]+)/iu)?.[1]?.trim();
       if (reponse === undefined) {
         return { erreur: `tirage ${rang} : réponse illisible` };
       }
@@ -341,11 +397,14 @@ function extraireEcouteParTirage(bloc, resoudreItem) {
           erreur: `tirage ${rang} : réponse « ${reponse} » hors options`,
         };
       }
-      const graphies = [...texte.matchAll(THAI)].map((trouve) => trouve[0]);
-      if (graphies.length !== 1) {
-        return { erreur: `tirage ${rang} : ${graphies.length} graphies` };
+      graphieAudio = texte.match(/\bAudio\s+([ก-๿]+)/u)?.[1] ?? null;
+      if (graphieAudio === null) {
+        const graphies = [...texte.matchAll(THAI)].map((trouve) => trouve[0]);
+        if (graphies.length !== 1) {
+          return { erreur: `tirage ${rang} : ${graphies.length} graphies` };
+        }
+        graphieAudio = graphies[0];
       }
-      graphieAudio = graphies[0];
     }
 
     if (reference === null) reference = libelles;

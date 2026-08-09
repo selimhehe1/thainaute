@@ -3,13 +3,14 @@ import {
   completeLocalOnboarding,
   updateLocalOnboarding,
 } from "@thainaute/sync";
-import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Dexie from "dexie";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { TodayExperience } from "../app/today/today-experience";
 import { WebLocalExperienceStore } from "../lib/client/local-experience-store";
+import { LOCAL_STORAGE_HYDRATION_TIMEOUT_MS } from "../lib/client/local-storage-deadline";
 
 const lesson = {
   versionId: "10000000-0000-4000-8000-000000000002",
@@ -53,62 +54,68 @@ afterEach(async () => {
 });
 
 describe("écran Aujourd’hui web", () => {
-  it("termine un onboarding local borné puis affiche une seule action", async () => {
-    const user = userEvent.setup();
-    const capture = vi.fn();
-    render(<TodayExperience lesson={lesson} analytics={{ capture }} />);
+  it(
+    "termine un onboarding local borné puis affiche une seule action",
+    async () => {
+      const user = userEvent.setup();
+      const capture = vi.fn();
+      render(<TodayExperience lesson={lesson} analytics={{ capture }} />);
 
-    expect(
-      await screen.findByRole("heading", {
-        name: "Préparons votre première session.",
-      }),
-    ).toBeVisible();
-    expect(capture).toHaveBeenCalledWith({
-      name: "onboarding_started",
-      platform: "web",
-    });
-    expect(
-      screen.getByRole("button", { name: "Préparer ma session" }),
-    ).toBeDisabled();
+      expect(
+        await screen.findByRole(
+          "heading",
+          { name: "Préparons votre première session." },
+          { timeout: LOCAL_STORAGE_HYDRATION_TIMEOUT_MS + 2_000 },
+        ),
+      ).toBeVisible();
+      expect(capture).toHaveBeenCalledWith({
+        name: "onboarding_started",
+        platform: "web",
+      });
+      expect(
+        screen.getByRole("button", { name: "Préparer ma session" }),
+      ).toBeDisabled();
 
-    await user.click(screen.getByRole("radio", { name: "10 minutes" }));
-    await user.click(
-      screen.getByRole("radio", { name: "Communiquer au quotidien" }),
-    );
-    await user.click(
-      screen.getByRole("radio", { name: "J’ai quelques bases" }),
-    );
-    await user.click(
-      screen.getByRole("button", { name: "Préparer ma session" }),
-    );
+      await user.click(screen.getByRole("radio", { name: "10 minutes" }));
+      await user.click(
+        screen.getByRole("radio", { name: "Communiquer au quotidien" }),
+      );
+      await user.click(
+        screen.getByRole("radio", { name: "J’ai quelques bases" }),
+      );
+      await user.click(
+        screen.getByRole("button", { name: "Préparer ma session" }),
+      );
 
-    expect(
-      await screen.findByRole("heading", {
-        name: "Une seule étape, bien comprise.",
-      }),
-    ).toBeVisible();
-    expect(
-      screen.getByRole("link", { name: "Commencer la session" }),
-    ).toHaveAttribute("href", "/learn/demo");
-    expect(
-      screen
-        .getAllByRole("link")
-        .filter((link) => link.className.includes("primary")),
-    ).toHaveLength(1);
-    expect(capture).toHaveBeenCalledWith({
-      name: "onboarding_completed",
-      platform: "web",
-    });
+      expect(
+        await screen.findByRole("heading", {
+          name: "Une seule étape, bien comprise.",
+        }),
+      ).toBeVisible();
+      expect(
+        screen.getByRole("link", { name: "Commencer la session" }),
+      ).toHaveAttribute("href", "/learn/demo");
+      expect(
+        screen
+          .getAllByRole("link")
+          .filter((link) => link.className.includes("primary")),
+      ).toHaveLength(1);
+      expect(capture).toHaveBeenCalledWith({
+        name: "onboarding_completed",
+        platform: "web",
+      });
 
-    const inspector = new WebLocalExperienceStore();
-    expect((await inspector.read()).onboarding).toMatchObject({
-      status: "completed",
-      goalOptionId: "ten_minutes",
-      motivationOptionId: "daily_life",
-      experienceOptionId: "some_basics",
-    });
-    inspector.close();
-  });
+      const inspector = new WebLocalExperienceStore();
+      expect((await inspector.read()).onboarding).toMatchObject({
+        status: "completed",
+        goalOptionId: "ten_minutes",
+        motivationOptionId: "daily_life",
+        experienceOptionId: "some_basics",
+      });
+      inspector.close();
+    },
+    LOCAL_STORAGE_HYDRATION_TIMEOUT_MS + 7_000,
+  );
 
   it("restaure l’onboarding sans renvoyer les analytics", async () => {
     await seedCompletedOnboarding();
@@ -233,5 +240,32 @@ describe("écran Aujourd’hui web", () => {
       expect(row.snapshot).toBe("{cassé");
     });
     inspector.close();
+  });
+
+  it("quitte la préparation si IndexedDB ne répond plus", async () => {
+    vi.spyOn(WebLocalExperienceStore.prototype, "update").mockImplementation(
+      () => new Promise<never>(() => undefined),
+    );
+    vi.useFakeTimers();
+
+    try {
+      render(<TodayExperience lesson={lesson} />);
+
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(LOCAL_STORAGE_HYDRATION_TIMEOUT_MS);
+      });
+
+      expect(
+        screen.getByRole("heading", {
+          name: "Vos données existantes sont conservées.",
+        }),
+      ).toBeVisible();
+      expect(
+        screen.getByText(/Le stockage local ne répond pas/u),
+      ).toBeVisible();
+      expect(screen.getByRole("button", { name: "Réessayer" })).toBeEnabled();
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

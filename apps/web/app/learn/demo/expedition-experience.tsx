@@ -35,6 +35,7 @@ import {
   useRef,
   useState,
   useSyncExternalStore,
+  type ReactNode,
 } from "react";
 
 import { ExpeditionTrail } from "@/components/brand/expedition-trail";
@@ -43,7 +44,8 @@ import { buttonClass } from "@/components/ui/button";
 import {
   AttemptOutboxStorageError,
   WebAttemptOutboxStore,
-  migrateLegacyDemoFixtureAttempts,
+  startLegacyDemoFixtureMigration,
+  type LegacyDemoFixtureMigrationOperation,
 } from "@/lib/client/attempt-outbox-store";
 import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
 import { useWebAuthSession } from "@/lib/client/auth-session";
@@ -52,6 +54,10 @@ import {
   LocalExperienceStorageError,
   WebLocalExperienceStore,
 } from "@/lib/client/local-experience-store";
+import {
+  LocalStorageDeadlineError,
+  withLocalStorageDeadline,
+} from "@/lib/client/local-storage-deadline";
 
 import { ContentReportPanel } from "./content-report-panel";
 import { LocalVoiceComparison } from "./local-voice-comparison";
@@ -105,12 +111,23 @@ interface ExpeditionProps {
    * page de démonstration ne se mette pas à polluer la progression réelle.
    */
   readonly attemptStorage?: "demo" | "learning" | undefined;
+  /** Délai injectable pour les tests de reprise ; la production garde 8 s. */
+  readonly storageHydrationTimeoutMs?: number | undefined;
+  /** L'hydratation possède et ferme explicitement les handles de migration. */
+  readonly storageMigrationFactory?:
+    (() => LegacyDemoFixtureMigrationOperation) | undefined;
 }
 
 interface Celebration {
   readonly exerciseId: string;
   readonly correct: boolean;
   readonly feedback: string;
+}
+
+interface StorageGeneration {
+  readonly experience: WebLocalExperienceStore;
+  readonly key: string;
+  readonly outbox: WebAttemptOutboxStore;
 }
 
 const MECHANIC_LABELS: Record<LessonExercise["type"], string> = {
@@ -120,6 +137,118 @@ const MECHANIC_LABELS: Record<LessonExercise["type"], string> = {
   recall: "Rappel",
   reading: "Lecture",
 };
+
+type TeachingBlock =
+  | { readonly kind: "paragraph"; readonly lines: readonly string[] }
+  | { readonly kind: "quote"; readonly lines: readonly string[] }
+  | { readonly kind: "list"; readonly lines: readonly string[] };
+
+function inlineTeaching(text: string, keyPrefix: string): ReactNode[] {
+  return text.split(/(`[^`]+`)/gu).map((fragment, index) => {
+    if (fragment.startsWith("`") && fragment.endsWith("`")) {
+      return (
+        <code key={`${keyPrefix}-code-${index}`} className={styles.coursCode}>
+          {fragment.slice(1, -1)}
+        </code>
+      );
+    }
+    return fragment;
+  });
+}
+
+/** Rend le petit sous-ensemble Markdown autorisé dans les pages de cours. */
+function renderTeachingBody(body: string): ReactNode[] {
+  const blocks: TeachingBlock[] = [];
+  let current: { kind: TeachingBlock["kind"]; lines: string[] } | null = null;
+
+  const flush = () => {
+    if (current !== null && current.lines.length > 0) {
+      blocks.push({ kind: current.kind, lines: [...current.lines] });
+    }
+    current = null;
+  };
+
+  for (const rawLine of body.split(/\r?\n/gu)) {
+    const trimmed = rawLine.trim();
+    if (trimmed === "") {
+      flush();
+      continue;
+    }
+
+    const quote = trimmed.match(/^>\s?(.*)$/u);
+    if (quote !== null) {
+      if (current?.kind !== "quote") {
+        flush();
+        current = { kind: "quote", lines: [] };
+      }
+      current.lines.push(quote[1] ?? "");
+      continue;
+    }
+
+    if (/^\d+\.\s+/u.test(trimmed)) {
+      if (current?.kind !== "list") {
+        flush();
+        current = { kind: "list", lines: [] };
+      }
+      for (const item of trimmed.split(/\s+(?=\d+\.\s)/u)) {
+        current.lines.push(item.replace(/^\d+\.\s+/u, ""));
+      }
+      continue;
+    }
+
+    if (
+      current !== null &&
+      (current.kind === "quote" || current.kind === "list") &&
+      /^\s/.test(rawLine)
+    ) {
+      current.lines[current.lines.length - 1] += ` ${trimmed}`;
+      continue;
+    }
+
+    if (current?.kind !== "paragraph") {
+      flush();
+      current = { kind: "paragraph", lines: [] };
+    }
+    current.lines.push(trimmed);
+  }
+  flush();
+
+  return blocks.map((block, blockIndex) => {
+    const keyPrefix = `cours-${blockIndex}`;
+    if (block.kind === "quote") {
+      return (
+        <blockquote className={styles.coursCitation} key={keyPrefix}>
+          {block.lines.map((line, lineIndex) => (
+            <span
+              className={styles.coursCitationLine}
+              key={`${keyPrefix}-${lineIndex}`}
+            >
+              {inlineTeaching(line, `${keyPrefix}-${lineIndex}`)}
+            </span>
+          ))}
+        </blockquote>
+      );
+    }
+
+    if (block.kind === "list") {
+      return (
+        <ol className={styles.coursList} key={keyPrefix}>
+          {block.lines.map((line, lineIndex) => (
+            <li key={`${keyPrefix}-${lineIndex}`}>
+              {inlineTeaching(line, `${keyPrefix}-${lineIndex}`)}
+            </li>
+          ))}
+        </ol>
+      );
+    }
+
+    return (
+      <p className={styles.coursTexte} key={keyPrefix}>
+        {inlineTeaching(block.lines.join(" "), keyPrefix)}
+      </p>
+    );
+  });
+}
 
 function captureSafely(
   analytics: AnalyticsSink,
@@ -170,6 +299,8 @@ export function ExpeditionExperience({
   audioSources,
   analytics: analyticsOverride,
   attemptStorage = "demo",
+  storageHydrationTimeoutMs,
+  storageMigrationFactory = startLegacyDemoFixtureMigration,
 }: ExpeditionProps) {
   const router = useRouter();
   const { analytics: consentAwareAnalytics } = useWebAnalyticsConsent();
@@ -183,9 +314,10 @@ export function ExpeditionExperience({
   const userId =
     auth.status === "signed_in" ? (auth.session?.user.id ?? null) : null;
 
-  const [store, setStore] = useState<WebAttemptOutboxStore | null>(null);
-  const [experienceStore, setExperienceStore] =
-    useState<WebLocalExperienceStore | null>(null);
+  const [storageGeneration, setStorageGeneration] =
+    useState<StorageGeneration | null>(null);
+  const store = storageGeneration?.outbox ?? null;
+  const experienceStore = storageGeneration?.experience ?? null;
   const [snapshot, setSnapshot] = useState<LocalExperienceSnapshot | null>(
     null,
   );
@@ -196,6 +328,7 @@ export function ExpeditionExperience({
     "loading" | "ready" | "error"
   >("loading");
   const [storageRetryToken, setStorageRetryToken] = useState(0);
+  const storageGenerationKey = `${attemptStorage}:${userId ?? "anonymous"}:${sessionBoundaryRevision}:${storageRetryToken}`;
   const [errorMessage, setErrorMessage] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [abandonConfirmation, setAbandonConfirmation] = useState(false);
@@ -349,13 +482,17 @@ export function ExpeditionExperience({
       proprietaire === undefined ? undefined : browserSha256Hex,
     );
     const experienceInstance = new WebLocalExperienceStore();
+    const generationKey = storageGenerationKey;
     queueMicrotask(() => {
       if (!active) return;
       setStorageStatus("loading");
       setOutbox(createAttemptOutboxSnapshot());
       setSnapshot(null);
-      setStore(outboxInstance);
-      setExperienceStore(experienceInstance);
+      setStorageGeneration({
+        experience: experienceInstance,
+        key: generationKey,
+        outbox: outboxInstance,
+      });
     });
     return () => {
       active = false;
@@ -366,7 +503,13 @@ export function ExpeditionExperience({
     // de base OU de compte doit rouvrir le magasin, pas continuer d'écrire
     // dans l'ancien. `sessionBoundaryRevision` couvre la reconnexion sur le
     // même identifiant après une bascule.
-  }, [attemptStorage, userId, sessionBoundaryRevision]);
+  }, [
+    attemptStorage,
+    sessionBoundaryRevision,
+    storageGenerationKey,
+    storageRetryToken,
+    userId,
+  ]);
 
   useEffect(() => {
     const stopOnPageExit = () => stopSignal();
@@ -378,15 +521,24 @@ export function ExpeditionExperience({
   }, [stopSignal]);
 
   useEffect(() => {
-    if (store === null || experienceStore === null) return;
+    if (
+      storageGeneration === null ||
+      storageGeneration.key !== storageGenerationKey
+    ) {
+      return;
+    }
     let active = true;
-    const activeOutboxStore = store;
-    const activeExperienceStore = experienceStore;
+    const activeOutboxStore = storageGeneration.outbox;
+    const activeExperienceStore = storageGeneration.experience;
+    const legacyMigration = storageMigrationFactory();
 
     async function hydrate(): Promise<void> {
-      await migrateLegacyDemoFixtureAttempts();
+      await legacyMigration.promise;
+      if (!active) return;
       let nextOutbox = await activeOutboxStore.read();
+      if (!active) return;
       let nextExperience = await activeExperienceStore.read();
+      if (!active) return;
       let replayedCelebration: Celebration | null = null;
 
       // Une tentative réservée avant un crash est re-poussée vers le journal.
@@ -394,6 +546,7 @@ export function ExpeditionExperience({
         nextOutbox = await activeOutboxStore.enqueue(
           nextExperience.lesson.submission,
         );
+        if (!active) return;
         const durableOutbox = nextOutbox;
         nextExperience = await activeExperienceStore.update((current) =>
           confirmLocalLessonResult(
@@ -402,6 +555,7 @@ export function ExpeditionExperience({
             new Date().toISOString(),
           ),
         );
+        if (!active) return;
       }
 
       // Un résultat durable interrompu avant sa consignation est rejoué.
@@ -420,6 +574,7 @@ export function ExpeditionExperience({
           nextExperience = await activeExperienceStore.update((current) =>
             finishLocalLesson(current, durableOutbox, new Date().toISOString()),
           );
+          if (!active) return;
         }
         const answered = lesson.exercises.find(
           (exercise) =>
@@ -456,6 +611,7 @@ export function ExpeditionExperience({
                 answeredAt: interrupted.submission.answeredAt,
               }),
             );
+            if (!active) return;
             // L'exercice a été noté sans que sa correction ait été montrée :
             // on la présente à la reprise plutôt que de la sauter.
             replayedCelebration = {
@@ -509,15 +665,34 @@ export function ExpeditionExperience({
       setStorageStatus("ready");
     }
 
-    void hydrate().catch(() => {
+    void withLocalStorageDeadline(hydrate(), storageHydrationTimeoutMs, () => {
+      legacyMigration.close();
+      activeOutboxStore.close();
+      activeExperienceStore.close();
+    }).catch((error: unknown) => {
       if (!active) return;
+      setErrorMessage(
+        error instanceof LocalStorageDeadlineError
+          ? "Le stockage local ne répond pas. Fermez les autres onglets Thaïnaute, puis réessayez."
+          : "Le stockage local est temporairement indisponible.",
+      );
       setStorageStatus("error");
+      // Une opération IndexedDB qui se débloquerait après l'échéance ne doit
+      // pas remplacer silencieusement l'écran de reprise par un état tardif.
+      active = false;
     });
 
     return () => {
       active = false;
+      legacyMigration.close();
     };
-  }, [experienceStore, lesson, storageRetryToken, store]);
+  }, [
+    lesson,
+    storageGeneration,
+    storageGenerationKey,
+    storageHydrationTimeoutMs,
+    storageMigrationFactory,
+  ]);
 
   const expedition = snapshot?.expedition ?? null;
   const expeditionMatchesLesson =
@@ -549,10 +724,10 @@ export function ExpeditionExperience({
   const currentStep = currentIndex < 0 ? plan.length : currentIndex + 1;
 
   const stage: "loading" | "error" | "stale" | "intro" | "card" | "recap" =
-    storageStatus === "loading" || snapshot === null
-      ? "loading"
-      : storageStatus === "error"
-        ? "error"
+    storageStatus === "error"
+      ? "error"
+      : storageStatus === "loading" || snapshot === null
+        ? "loading"
         : staleLesson !== null || staleExpedition !== null
           ? "stale"
           : !expeditionMatchesLesson
@@ -1287,11 +1462,7 @@ export function ExpeditionExperience({
                 {pageCours + 1} sur {cours.length}
               </p>
               <h2 className={styles.coursTitre}>{pageActive.titleFr}</h2>
-              {pageActive.bodyFr.split("\n\n").map((paragraphe) => (
-                <p key={paragraphe.slice(0, 40)} className={styles.coursTexte}>
-                  {paragraphe}
-                </p>
-              ))}
+              {renderTeachingBody(pageActive.bodyFr)}
               {pageActive.specimen !== null && (
                 <p className={styles.coursSpecimen} lang="th">
                   {pageActive.specimen}

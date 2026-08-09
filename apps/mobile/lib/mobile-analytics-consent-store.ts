@@ -7,6 +7,11 @@ import {
 } from "@thainaute/analytics";
 import type { SQLiteDatabase } from "expo-sqlite";
 
+import {
+  runMobileSQLiteTransaction,
+  serializeMobileSQLiteOperation,
+} from "./mobile-sqlite-operation-queue";
+
 const ANALYTICS_CONSENT_METADATA_KEY = "analytics_consent_v1";
 const ANALYTICS_DENIAL_METADATA_KEY = "analytics_consent_denied_v1";
 const UPSERT_METADATA_SQL = `INSERT INTO local_metadata (key, value) VALUES (?, ?)
@@ -81,14 +86,12 @@ async function readSnapshotForExplicitDecision(
  * et partage la table clé/valeur déjà créée par la migration SQLite v1.
  */
 export class MobileAnalyticsConsentStore implements MobileAnalyticsConsentStorePort {
-  private operationTail: Promise<void> = Promise.resolve();
-
   public constructor(private readonly database: SQLiteDatabase) {}
 
   public read(): Promise<AnalyticsConsentSnapshot> {
     return this.enqueue(async () => {
       let snapshot: AnalyticsConsentSnapshot | null = null;
-      await this.database.withExclusiveTransactionAsync(async (transaction) => {
+      await runMobileSQLiteTransaction(this.database, async (transaction) => {
         snapshot = await readStoredSnapshot(transaction);
       });
       if (snapshot === null) {
@@ -106,12 +109,7 @@ export class MobileAnalyticsConsentStore implements MobileAnalyticsConsentStoreP
   }
 
   private enqueue<T>(operation: () => Promise<T>): Promise<T> {
-    const queued = this.operationTail.then(operation);
-    this.operationTail = queued.then(
-      () => undefined,
-      () => undefined,
-    );
-    return queued;
+    return serializeMobileSQLiteOperation(this.database, operation);
   }
 
   private async persistDecision(
@@ -124,7 +122,7 @@ export class MobileAnalyticsConsentStore implements MobileAnalyticsConsentStoreP
       // Le tombstone denied est l'état autoritaire jusqu'à un nouvel accord.
       // L'ancien snapshot peut rester présent : read() consulte toujours ce
       // refus en premier dans une transaction cohérente.
-      await this.database.withExclusiveTransactionAsync(async (transaction) => {
+      await runMobileSQLiteTransaction(this.database, async (transaction) => {
         const current = await readSnapshotForExplicitDecision(transaction);
         const next = applyAnalyticsConsentDecision(
           current,
@@ -148,7 +146,7 @@ export class MobileAnalyticsConsentStore implements MobileAnalyticsConsentStoreP
       return persisted;
     }
 
-    await this.database.withExclusiveTransactionAsync(async (transaction) => {
+    await runMobileSQLiteTransaction(this.database, async (transaction) => {
       // Une action explicite de l'utilisateur peut réparer une ancienne valeur
       // corrompue. Avant cette action, read() reste strictement fail-closed.
       const current = await readSnapshotForExplicitDecision(transaction);

@@ -1,4 +1,9 @@
-import { expect, test, type APIResponse } from "@playwright/test";
+import {
+  expect,
+  test,
+  type APIResponse,
+  type Response,
+} from "@playwright/test";
 
 function expectApiSecurityHeaders(response: APIResponse): void {
   const headers = response.headers();
@@ -10,6 +15,19 @@ function expectApiSecurityHeaders(response: APIResponse): void {
   expect(headers["permissions-policy"]).toContain("microphone=()");
   expect(headers["permissions-policy"]).toContain("payment=()");
   expect(headers["access-control-allow-origin"]).toBeUndefined();
+  expect(headers["x-powered-by"]).toBeUndefined();
+}
+
+function expectProductPageSecurityHeaders(response: Response): void {
+  const headers = response.headers();
+  expect(headers["x-content-type-options"]).toBe("nosniff");
+  expect(headers["referrer-policy"]).toBe("strict-origin-when-cross-origin");
+  expect(headers["content-security-policy"]).toBe(
+    "frame-ancestors 'none'; base-uri 'self'; object-src 'none'",
+  );
+  expect(headers["permissions-policy"]).toContain("microphone=(self)");
+  expect(headers["permissions-policy"]).not.toContain("microphone=()");
+  expect(headers["permissions-policy"]).toContain("payment=()");
   expect(headers["x-powered-by"]).toBeUndefined();
 }
 
@@ -114,10 +132,28 @@ test("masque entièrement le studio tant que son mode reste fermé", async ({
   await expect(page.getByText("Publication refusée")).toHaveCount(0);
 });
 
+test("interdit les anciens WAV internes sans retirer la fixture publique", async ({
+  request,
+}) => {
+  const internal = await request.get(
+    "/audio/u01-l1a/9ae0a4f7-d9cb-551d-b247-7d258e606b29.wav",
+  );
+  expect(internal.status()).toBe(404);
+  expect(internal.headers()["content-type"]).not.toContain("audio/");
+  expect(internal.headers()["cache-control"]).toContain("no-store");
+  expect(internal.headers()["x-content-type-options"]).toBe("nosniff");
+
+  const fixture = await request.get("/audio/fixture-tone.wav");
+  expect(fixture.status()).toBe(200);
+  expect(fixture.headers()["content-type"]).toContain("audio/wav");
+});
+
 test("reste non indexable tant que la porte publique est fermée", async ({
   page,
 }) => {
-  await page.goto("/");
+  const response = await page.goto("/");
+  expect(response).not.toBeNull();
+  expectProductPageSecurityHeaders(response!);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
     "content",
     /noindex/u,

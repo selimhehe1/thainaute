@@ -283,12 +283,17 @@ function optionsEnLigne(segment) {
     .split(" / ")
     .map((morceau) => morceau.trim())
     .filter((morceau) => morceau !== "");
+  const parVirgule = /^\d+(?:\s*,\s*\d+)+$/u.test(brut)
+    ? brut.split(/\s*,\s*/u).map((morceau) => morceau.trim())
+    : [];
   const jetons =
     parBarre.length >= MIN_OPTIONS
       ? parBarre
-      : brut.split(/\s+/u).every((jeton) => /^[฀-๿]+$/u.test(jeton))
-        ? brut.split(/\s+/u)
-        : null;
+      : parVirgule.length >= MIN_OPTIONS
+        ? parVirgule
+        : brut.split(/\s+/u).every((jeton) => /^[฀-๿]+$/u.test(jeton))
+          ? brut.split(/\s+/u)
+          : null;
   if (jetons === null || jetons.length < MIN_OPTIONS) {
     return { erreur: `options non séparables : « ${brut} »` };
   }

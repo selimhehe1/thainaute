@@ -17,6 +17,8 @@ export interface PaireExtraite {
 export interface TirageExtrait {
   readonly rang: number;
   readonly itemId: string;
+  /** Présentes quand les options varient d'un tirage à l'autre. */
+  readonly libelles?: readonly string[];
   readonly indiceCorrect: number;
 }
 

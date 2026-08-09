@@ -7,6 +7,9 @@
   --color-jade: #43a283;
   --color-saffron: #f1b84b;
   --color-mist: #eef1f4;
+  --color-sky: #5b8ee8;
+  --color-sky-ink: #315b9c;
+  --color-sky-pale: #edf3ff;
   --color-paper: #ffffff;
   --color-ink-soft: #56607a;
   --color-coral-deep: #cf4a45;
@@ -39,6 +42,7 @@
   --motion-trace: 900ms;
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --shadow-card: 0 1px 2px rgba(40, 52, 80, 0.05), 0 10px 28px rgba(40, 52, 80, 0.07);
+  --shadow-lifted: 0 3px 0 rgba(40, 52, 80, 0.10), 0 12px 24px rgba(40, 52, 80, 0.08);
   --thai-scale: 1.18;
   --touch-target: 44px;
 }

@@ -1,9 +1,13 @@
 import type { AnalyticsSink } from "@thainaute/analytics";
-import { readFiveMechanicsFixtureBundle } from "@thainaute/content";
+import {
+  readCompiledLessonBundle,
+  readFiveMechanicsFixtureBundle,
+} from "@thainaute/content";
 import {
   attemptSubmissionSchema,
   completeLocalOnboarding,
   confirmLocalLessonResult,
+  createAttemptOutboxSnapshot,
   openLocalLessonQuestion,
   prepareLocalLessonSubmission,
   selectLocalLessonOption,
@@ -16,7 +20,11 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ExpeditionExperience } from "../app/learn/demo/expedition-experience";
-import { WebAttemptOutboxStore } from "../lib/client/attempt-outbox-store";
+import {
+  WebAttemptOutboxStore,
+  type LegacyDemoFixtureMigrationOperation,
+  type LegacyDemoFixtureMigrationResult,
+} from "../lib/client/attempt-outbox-store";
 import { WebAuthSessionProvider } from "../lib/client/auth-session";
 import { WebLocalExperienceStore } from "../lib/client/local-experience-store";
 
@@ -26,6 +34,7 @@ vi.mock("next/navigation", () => ({
 }));
 
 const { lesson } = readFiveMechanicsFixtureBundle();
+const dialogueLesson = readCompiledLessonBundle("u01-l1e")?.lesson;
 const OLD_FIXTURE_LESSON_ID = "10000000-0000-4000-8000-000000000002";
 const OLD_FIXTURE_EXERCISE_ID = "10000000-0000-4000-8000-000000000004";
 
@@ -41,12 +50,23 @@ class FakeLessonAudio {
 const NativeAudio = globalThis.Audio;
 const nativeMatchMedia = window.matchMedia;
 
-function renderExpedition(analytics?: AnalyticsSink) {
+function renderExpedition(
+  analytics?: AnalyticsSink,
+  lessonOverride = lesson,
+  storageHydrationTimeoutMs?: number,
+  storageMigrationFactory?: () => LegacyDemoFixtureMigrationOperation,
+) {
   return render(
     <WebAuthSessionProvider>
       <ExpeditionExperience
-        lesson={lesson}
+        lesson={lessonOverride}
         {...(analytics === undefined ? {} : { analytics })}
+        {...(storageHydrationTimeoutMs === undefined
+          ? {}
+          : { storageHydrationTimeoutMs })}
+        {...(storageMigrationFactory === undefined
+          ? {}
+          : { storageMigrationFactory })}
       />
     </WebAuthSessionProvider>,
   );
@@ -178,6 +198,88 @@ async function passReadingCard(user: ReturnType<typeof userEvent.setup>) {
 }
 
 describe("lecteur Expédition", () => {
+  it("ferme toute la génération expirée et ignore sa reprise tardive après retry", async () => {
+    let resolveFirstMigration: (() => void) | undefined;
+    const firstMigration = new Promise<LegacyDemoFixtureMigrationResult>(
+      (resolve) => {
+        resolveFirstMigration = () =>
+          resolve({
+            status: "not_needed",
+            copiedEntries: 0,
+            deduplicatedEntries: 0,
+          });
+      },
+    );
+    const closeFirstMigration = vi.fn();
+    const closeRetryMigration = vi.fn();
+    const startMigration = vi
+      .fn<() => LegacyDemoFixtureMigrationOperation>()
+      .mockReturnValueOnce({
+        promise: firstMigration,
+        close: closeFirstMigration,
+      })
+      .mockReturnValueOnce({
+        promise: Promise.resolve({
+          status: "not_needed",
+          copiedEntries: 0,
+          deduplicatedEntries: 0,
+        }),
+        close: closeRetryMigration,
+      });
+    const read = vi
+      .spyOn(WebAttemptOutboxStore.prototype, "read")
+      .mockResolvedValue(createAttemptOutboxSnapshot());
+    const closeOutbox = vi.spyOn(WebAttemptOutboxStore.prototype, "close");
+    const closeExperience = vi.spyOn(
+      WebLocalExperienceStore.prototype,
+      "close",
+    );
+    const user = userEvent.setup();
+
+    renderExpedition(undefined, lesson, 100, startMigration);
+    await screen.findByRole("heading", {
+      name: "Vos réponses ne peuvent pas être enregistrées.",
+    });
+    expect(closeFirstMigration).toHaveBeenCalledOnce();
+    expect(closeOutbox).toHaveBeenCalled();
+    expect(closeExperience).toHaveBeenCalled();
+    expect(read).not.toHaveBeenCalled();
+
+    await user.click(
+      screen.getByRole("button", { name: "Réessayer le stockage" }),
+    );
+    await screen.findByRole("button", { name: "Commencer l’expédition" });
+    expect(startMigration).toHaveBeenCalledTimes(2);
+    expect(read).toHaveBeenCalledOnce();
+
+    resolveFirstMigration?.();
+    await firstMigration;
+    await Promise.resolve();
+    expect(read).toHaveBeenCalledOnce();
+    expect(
+      screen.getByRole("button", { name: "Commencer l’expédition" }),
+    ).toBeInTheDocument();
+    expect(closeRetryMigration).not.toHaveBeenCalled();
+  });
+
+  it("rend les pages de cours réelles sans afficher les marqueurs Markdown", async () => {
+    if (dialogueLesson === undefined) {
+      throw new Error("Leçon réelle u01-l1e absente du registre.");
+    }
+    const user = userEvent.setup();
+    renderExpedition(undefined, dialogueLesson);
+
+    await screen.findByText(/sawàtdii/u);
+    expect(screen.getByText("dii")).toBeInTheDocument();
+
+    for (let page = 0; page < 4; page += 1) {
+      await user.click(screen.getByRole("button", { name: "Page suivante" }));
+    }
+
+    expect(screen.getAllByRole("list")).toHaveLength(2);
+    expect(screen.getAllByRole("listitem")).toHaveLength(5);
+  });
+
   it("joue les cinq mécaniques puis clôt la séance", async () => {
     const user = userEvent.setup();
     renderExpedition();

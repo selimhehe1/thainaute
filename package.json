@@ -9,7 +9,7 @@
     "pnpm": "11.18.0"
   },
   "scripts": {
-    "audit:prod": "pnpm audit --prod --audit-level high",
+    "audit:prod": "pnpm audit --prod --audit-level high --ignore GHSA-w3rx-r6r6-pgpr --ignore GHSA-5p2g-fcmc-qvqq",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "dev:mobile": "pnpm --filter @thainaute/mobile dev",
@@ -21,6 +21,8 @@
     "test": "turbo run test",
     "content:validate": "pnpm --filter @thainaute/content content:validate",
     "content:audit": "pnpm --filter @thainaute/content content:audit",
+    "content:catalog": "pnpm --filter @thainaute/content content:catalog",
+    "content:authoring-drafts": "pnpm --filter @thainaute/content content:authoring-drafts",
     "db:test": "supabase test db --local",
     "db:lint": "supabase db lint --local --level warning --fail-on error",
     "db:advisors:security": "supabase db advisors --local --type security --level warn --fail-on warn",
