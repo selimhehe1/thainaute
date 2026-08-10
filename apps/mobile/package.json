@@ -37,7 +37,7 @@
     "@thainaute/domain": "workspace:*",
     "@thainaute/sync": "workspace:*",
     "expo": "57.0.9",
-    "expo-asset": "57.0.8",
+    "expo-asset": "57.0.9",
     "expo-audio": "57.0.3",
     "expo-constants": "57.0.8",
     "expo-crypto": "57.0.1",
