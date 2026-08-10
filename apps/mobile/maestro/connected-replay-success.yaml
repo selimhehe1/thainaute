@@ -1,0 +1,15 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- tapOn:
+    id: ".*connected-attempt-retry.*"
+    retryTapIfNoChange: true
+    waitToSettleTimeoutMs: 5000
+- scrollUntilVisible:
+    centerElement: true
+    element:
+      id: ".*connected-attempt-status-result.*"
+    direction: DOWN
+    timeout: 30000
+- assertVisible: '^La boucle technique fonctionne\.$'

@@ -1,0 +1,15 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- scrollUntilVisible:
+    centerElement: true
+    element:
+      id: ".*connected-progress.*"
+    direction: DOWN
+    timeout: 30000
+- extendedWaitUntil:
+    visible: "Maîtrise technique 25 %"
+    timeout: 30000
+- assertVisible: "Maîtrise technique 25 %"
+- assertVisible: "Tentatives 1"

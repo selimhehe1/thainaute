@@ -83,6 +83,29 @@ pnpm test:e2e:web:connected:reports
 Ces commandes exigent Docker. `pnpm test:e2e:mobile` exige Maestro et une
 application mobile en cours d'exécution.
 
+La preuve native connectée se lance séparément :
+
+```powershell
+pnpm test:e2e:mobile:connected
+```
+
+Cette commande locale purge la stack Supabase de ce dépôt et les données
+privées de `com.thainaute.app` sur un unique émulateur Android. Sans hook de
+build APK, elle régénère aussi `apps/mobile/android` avec
+`expo prebuild --clean` : aucun changement local à conserver ne doit rester
+dans ce répertoire généré. Elle exige Docker Desktop, Maestro, ADB, un
+émulateur Android déjà démarré, le SDK Android et Java 17. Elle possède et
+nettoie ses serveurs Next.js et Metro avec des commandes non surchargeables et
+une écoute loopback, force le mode paiement désactivé et n'utilise aucune
+ressource cloud. Seul le build APK peut être remplacé par le hook local sans
+shell documenté par le pilote.
+Sous Linux Desktop ou rootless sans `/var/run/docker.sock`, définir
+explicitement `DOCKER_HOST=unix:///chemin/absolu/local.sock`. Le garde local
+refuse les endpoints Docker TCP/SSH et les contextes distants ; cette origine
+Unix n'est transmise qu'aux enfants Docker proxifiés de la recette.
+Le parcours standard `pnpm test:e2e:mobile` exclut volontairement ces flows
+connectés afin de rester une vérification rapide de la fixture publique.
+
 La boucle connectée locale vérifiée est volontairement séparée du parcours fictif :
 `/learn/connected` sur le web et `/connected-lesson` dans Expo. Elle ne devient
 disponible qu'avec `THAINAUTE_PUBLIC_CONTENT_MODE=supabase`, une release locale

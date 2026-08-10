@@ -424,6 +424,54 @@ emails et OTP locaux nécessaires aux scénarios. Cette preuve valide le contrat
 transport/données Android ; elle ne remplace pas le scénario Maestro dans une
 vraie application Expo.
 
+La preuve native locale est portée par :
+
+```powershell
+pnpm test:e2e:mobile:connected
+```
+
+Le pilote refuse plusieurs appareils et exige un unique émulateur Android. Il
+remet la base Supabase locale à zéro, charge la fixture et son audio, démarre
+des serveurs Next.js et Metro isolés, construit puis installe une APK debug et
+crée un compte synthétique via le Mailpit local. Il coupe ensuite le réseau,
+soumet une tentative dans l'outbox SQLite, force l'arrêt de l'application et
+atteste la reprise hors ligne. À la reconnexion, un proxy loopback coupe la
+première réponse seulement après le commit serveur ; le second envoi doit être
+strictement identique et ne produire qu'un effet de progression. Enfin, un
+contexte Playwright neuf retrouve exactement `attemptCount`, `masteryPermille`,
+`status` et `dueAt` avec le même compte, puis contrôle l'isolation RLS A/B et
+anonyme.
+
+Les commandes Next.js et Metro sont fixes, possédées par le pilote et liées au
+loopback ; les variables `THAINAUTE_QA_WEB_COMMAND_JSON` et
+`THAINAUTE_QA_METRO_COMMAND_JSON` sont refusées. Seul le build APK peut employer
+le hook local sans shell `THAINAUTE_QA_APK_BUILD_COMMAND_JSON`.
+
+Sous Linux Desktop ou rootless, si le daemon n'écoute pas sur
+`/var/run/docker.sock`, fournir explicitement un endpoint Unix local absolu,
+par exemple `DOCKER_HOST=unix:///chemin/absolu/local.sock`. Les endpoints Docker
+TCP/SSH et les contextes distants sont refusés ; le garde remplace cet endpoint
+uniquement dans l'environnement des enfants Docker proxifiés.
+
+L'email synthétique et l'OTP ne sont jamais transmis à Maestro. Le pilote les
+saisit caractère par caractère par des keyevents Android envoyés sur un stdin
+borné, sans valeur sensible dans les arguments, les variables Maestro, les
+traces ou les captures ; le handler React efface le champ avant son premier
+`await`, puis le pilote attend ce traitement avant toute nouvelle étape
+Maestro. L'OTP n'est jamais écrit dans le handoff. Le handoff Android → web est un fichier
+privé, borné et à usage unique sous le répertoire temporaire du système. Il
+contient uniquement sa version de schéma, l'email synthétique et les quatre
+valeurs de progression attendues ; il ne contient ni OTP, ni token, ni
+identifiant de ligne et doit être consommé puis supprimé. Traces, vidéos et
+captures de ce parcours sont désactivées. Le nettoyage force l'arrêt de
+l'application, efface ses données privées, restaure le mode avion, retire le
+reverse ADB et arrête uniquement les processus créés par le pilote. Un échec de
+nettoyage conserve l'erreur primaire et nomme seulement l'étape locale
+concernée.
+
+Cette recette ne prouve ni iOS, ni un appareil Android physique, ni Supabase
+hébergé. Ces preuves restent obligatoires avant une bêta distante.
+
 ### Portes des Database Advisors
 
 La CLI Supabase est épinglée à `2.111.0`. Le job `database` exécute les portes

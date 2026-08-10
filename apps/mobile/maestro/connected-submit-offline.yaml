@@ -1,0 +1,25 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- scrollUntilVisible:
+    centerElement: true
+    element:
+      id: ".*connected-attempt-submit-ready.*"
+    direction: DOWN
+- waitForAnimationToEnd:
+    timeout: 5000
+- tapOn:
+    id: ".*connected-attempt-submit-ready.*"
+    enabled: true
+    point: "50%,50%"
+    retryTapIfNoChange: true
+    waitToSettleTimeoutMs: 5000
+- extendedWaitUntil:
+    visible:
+      id: ".*connected-attempt-retry.*"
+    timeout: 30000
+- extendedWaitUntil:
+    visible: "Réponse enregistrée sur cet appareil. La correction sera reprise avec ce même événement."
+    timeout: 30000
+- assertVisible: "Reprendre la correction"

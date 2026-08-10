@@ -1,0 +1,9 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- openLink: thainaute://account
+- extendedWaitUntil:
+    visible: "^État du compte : (connecté|déconnecté|session en vérification|non configuré)$"
+    timeout: 30000
+- assertVisible: "^État du compte : (connecté|déconnecté|session en vérification|non configuré)$"

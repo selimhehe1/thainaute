@@ -1,0 +1,20 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- scrollUntilVisible:
+    centerElement: true
+    element:
+      text: "^Option A$"
+    direction: DOWN
+- waitForAnimationToEnd:
+    timeout: 5000
+- tapOn:
+    text: "^Option A$"
+    point: "50%,50%"
+    retryTapIfNoChange: true
+    waitToSettleTimeoutMs: 5000
+- extendedWaitUntil:
+    visible:
+      id: ".*connected-option-[0-9]+-selected.*"
+    timeout: 10000

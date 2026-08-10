@@ -1,0 +1,14 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- launchApp:
+    permissions:
+      all: deny
+- extendedWaitUntil:
+    visible: "Un départ simple, pensé pour vous."
+    timeout: 60000
+- openLink: thainaute://account
+- extendedWaitUntil:
+    visible: "Retrouver sa progression partout."
+    timeout: 30000

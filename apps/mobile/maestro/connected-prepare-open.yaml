@@ -1,0 +1,26 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- scrollUntilVisible:
+    centerElement: true
+    element:
+      id: ".*account-connected-preview-ready.*"
+    direction: DOWN
+- extendedWaitUntil:
+    visible:
+      id: ".*account-connected-preview-ready.*"
+      enabled: true
+    timeout: 20000
+- waitForAnimationToEnd:
+    timeout: 5000
+- tapOn:
+    id: ".*account-connected-preview-ready.*"
+    enabled: true
+    point: "50%,50%"
+    retryTapIfNoChange: true
+    waitToSettleTimeoutMs: 5000
+- extendedWaitUntil:
+    notVisible:
+      id: ".*account-connected-preview-ready.*"
+    timeout: 10000

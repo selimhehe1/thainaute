@@ -1,0 +1,10 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- assertVisible: "Retrouver sa progression partout."
+- tapOn:
+    id: "account-email-input"
+- assertVisible:
+    id: "account-email-input"
+    focused: true
