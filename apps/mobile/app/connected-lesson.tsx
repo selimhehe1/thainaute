@@ -209,7 +209,6 @@ export default function ConnectedLessonScreen() {
     audioController.current = null;
     audioOperationRevision.current += 1;
     player.pause();
-    player.replace(null);
     const reset = new Promise<void>((resolve) => {
       setTimeout(() => {
         if (active) {
@@ -444,6 +443,14 @@ export default function ConnectedLessonScreen() {
   }
   const optionDisabled =
     !audioReady || phase === "submitting" || phase === "pending";
+  const submitDisabled =
+    !audioReady ||
+    selectedOptionId === null ||
+    phase === "submitting" ||
+    phase === "pending";
+  const submitTestId = submitDisabled
+    ? `connected-attempt-submit-${phase === "submitting" ? "submitting" : phase === "pending" ? "pending" : "blocked"}`
+    : "connected-attempt-submit-ready";
   const result = attempt?.status === "synced" ? attempt : null;
 
   return (
@@ -502,15 +509,25 @@ export default function ConnectedLessonScreen() {
             2. {exercise.promptFr}
           </Text>
           <View accessibilityRole="radiogroup" style={styles.options}>
-            {exercise.options.map((option) => (
+            {exercise.options.map((option, optionIndex) => (
               <Pressable
                 key={option.id}
+                accessibilityLabel={
+                  option.labelFr ?? `Option ${optionIndex + 1}`
+                }
                 accessibilityRole="radio"
                 accessibilityState={{
                   checked: selectedOptionId === option.id,
                   disabled: optionDisabled,
                 }}
                 disabled={optionDisabled}
+                testID={`connected-option-${optionIndex}-${
+                  selectedOptionId === option.id
+                    ? "selected"
+                    : optionDisabled
+                      ? "blocked"
+                      : "ready"
+                }`}
                 style={[
                   styles.option,
                   selectedOptionId === option.id && styles.optionSelected,
@@ -538,29 +555,21 @@ export default function ConnectedLessonScreen() {
             </View>
           ) : (
             <Pressable
+              accessibilityLabel={
+                phase === "submitting"
+                  ? "Conservation de la réponse"
+                  : phase === "pending"
+                    ? "Correction en attente"
+                    : "Valider ma réponse"
+              }
               accessibilityRole="button"
               accessibilityState={{
                 busy: phase === "submitting",
-                disabled:
-                  !audioReady ||
-                  selectedOptionId === null ||
-                  phase === "submitting" ||
-                  phase === "pending",
+                disabled: submitDisabled,
               }}
-              disabled={
-                !audioReady ||
-                selectedOptionId === null ||
-                phase === "submitting" ||
-                phase === "pending"
-              }
-              style={[
-                styles.primaryButton,
-                (!audioReady ||
-                  selectedOptionId === null ||
-                  phase === "submitting" ||
-                  phase === "pending") &&
-                  styles.disabled,
-              ]}
+              disabled={submitDisabled}
+              testID={submitTestId}
+              style={[styles.primaryButton, submitDisabled && styles.disabled]}
               onPress={() => void submit()}
             >
               <Text style={styles.primaryButtonText}>
@@ -576,6 +585,7 @@ export default function ConnectedLessonScreen() {
 
         {message !== "" && (
           <View
+            testID={`connected-attempt-status-${phase}`}
             style={[
               styles.status,
               phase === "result" && styles.statusSuccess,
@@ -600,7 +610,9 @@ export default function ConnectedLessonScreen() {
               attempt?.status === "pending" &&
               userId !== null && (
                 <Pressable
+                  accessibilityLabel="Reprendre la correction"
                   accessibilityRole="button"
+                  testID="connected-attempt-retry"
                   style={styles.secondaryButton}
                   onPress={() =>
                     void synchronize(
@@ -620,19 +632,29 @@ export default function ConnectedLessonScreen() {
         )}
 
         {progress !== null && (
-          <View style={styles.section}>
+          <View testID="connected-progress" style={styles.section}>
             <Text style={styles.eyebrow}>PROJECTION SERVEUR PROVISOIRE</Text>
             <Text accessibilityRole="header" style={styles.sectionTitle}>
               Maîtrise et prochaine révision
             </Text>
             <View style={styles.metrics}>
-              <View style={styles.metric}>
+              <View
+                accessible
+                accessibilityLabel={`Maîtrise technique ${Math.round(progress.masteryPermille / 10)} %`}
+                testID="connected-progress-mastery"
+                style={styles.metric}
+              >
                 <Text style={styles.metricLabel}>MAÎTRISE TECHNIQUE</Text>
                 <Text style={styles.metricValue}>
                   {Math.round(progress.masteryPermille / 10)} %
                 </Text>
               </View>
-              <View style={styles.metric}>
+              <View
+                accessible
+                accessibilityLabel={`Tentatives ${progress.attemptCount}`}
+                testID="connected-progress-attempts"
+                style={styles.metric}
+              >
                 <Text style={styles.metricLabel}>TENTATIVES</Text>
                 <Text style={styles.metricValue}>{progress.attemptCount}</Text>
               </View>

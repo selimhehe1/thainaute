@@ -1,5 +1,6 @@
 import {
   createPublicContentClient,
+  PublicContentTransportError,
   type CachedPublicLesson,
   type CachedPublicRelease,
   type PublicContentClient,
@@ -71,6 +72,20 @@ function manifestMatchesLesson(
   );
 }
 
+async function readVerifiedCachedLesson(
+  store: MobileConnectedPublicLessonStore,
+  release: CachedPublicRelease | null,
+): Promise<{
+  readonly release: CachedPublicRelease;
+  readonly lesson: CachedPublicLesson;
+} | null> {
+  const announcedLesson = release?.response.release.lessons[0];
+  if (release === null || announcedLesson === undefined) return null;
+  const lesson = await store.readLesson(announcedLesson.versionId);
+  if (lesson === null || !manifestMatchesLesson(release, lesson)) return null;
+  return { release, lesson };
+}
+
 export async function loadCurrentMobileConnectedPublicLesson(input: {
   readonly database: SQLiteDatabase;
   readonly store?: MobileConnectedPublicLessonStore;
@@ -87,8 +102,9 @@ export async function loadCurrentMobileConnectedPublicLesson(input: {
       allowInsecureHttp: process.env.NODE_ENV !== "production",
       sha256Hex: mobileSha256Hex,
     });
+  let previousRelease: CachedPublicRelease | null = null;
   try {
-    const previousRelease = await store.readCurrentRelease();
+    previousRelease = await store.readCurrentRelease();
     const fetchedRelease = await client.getCurrentRelease(
       previousRelease ?? undefined,
     );
@@ -116,6 +132,19 @@ export async function loadCurrentMobileConnectedPublicLesson(input: {
       audioUrl: (assetId) => client.audioUrl(fetchedLesson.entry.key, assetId),
     };
   } catch (error) {
+    if (error instanceof PublicContentTransportError) {
+      try {
+        const cached = await readVerifiedCachedLesson(store, previousRelease);
+        if (cached !== null) {
+          return {
+            ...cached,
+            audioUrl: (assetId) => client.audioUrl(cached.lesson.key, assetId),
+          };
+        }
+      } catch {
+        // Un cache illisible ou divergent reste inutilisable hors ligne.
+      }
+    }
     if (error instanceof MobileConnectedPublicLessonError) throw error;
     throw new MobileConnectedPublicLessonError();
   }

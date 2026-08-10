@@ -1,6 +1,6 @@
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { useSQLiteContext } from "expo-sqlite";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   Pressable,
   Platform,
@@ -43,15 +43,18 @@ function accountLocalStateForUser(
 }
 
 export default function AccountScreen() {
+  const router = useRouter();
   const database = useSQLiteContext();
   const auth = useMobileAuthSession();
   const { analytics } = useMobileAnalytics();
   const [email, setEmail] = useState("");
+  const [challengeEmail, setChallengeEmail] = useState("");
   const [code, setCode] = useState("");
   const [codeRequested, setCodeRequested] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [localState, setLocalState] = useState<LocalState | null>(null);
+  const scrollViewRef = useRef<ScrollView>(null);
   const [logoutConfirmationUserId, setLogoutConfirmationUserId] = useState<
     string | null
   >(null);
@@ -112,10 +115,12 @@ export default function AccountScreen() {
     const timeout = setTimeout(() => {
       if (!active) return;
       setEmail("");
+      setChallengeEmail("");
       setCode("");
       setCodeRequested(false);
       setLogoutConfirmationUserId(null);
       setDeletionConfirmationUserId(null);
+      scrollViewRef.current?.scrollTo({ y: 0, animated: false });
     }, 0);
     return () => {
       active = false;
@@ -123,34 +128,47 @@ export default function AccountScreen() {
     };
   }, [auth.status, userId]);
 
-  async function requestCode() {
-    if (!/^\S+@\S+\.\S+$/u.test(email.trim())) {
+  async function requestCode(submittedEmail: string) {
+    const normalizedEmail = submittedEmail.trim();
+    if (!/^\S+@\S+\.\S+$/u.test(normalizedEmail)) {
+      setChallengeEmail("");
       setMessage("Saisissez une adresse email valide.");
       return;
     }
+    setChallengeEmail(normalizedEmail);
+    setEmail("");
     setBusy(true);
     setMessage("");
     try {
-      await auth.requestEmailCode(email);
+      await auth.requestEmailCode(normalizedEmail);
       setCodeRequested(true);
       setMessage("Code envoyé. Il expire rapidement.");
     } catch (error) {
+      setChallengeEmail("");
       setMessage(error instanceof Error ? error.message : "Envoi impossible.");
     } finally {
       setBusy(false);
     }
   }
 
-  async function verifyCode() {
-    if (!/^\d{6}$/u.test(code.trim())) {
+  async function verifyCode(submittedCode: string) {
+    const normalizedCode = submittedCode.trim();
+    const submittedChallengeEmail = challengeEmail;
+    if (!/^\d{6}$/u.test(normalizedCode)) {
       setMessage("Le code doit contenir exactement six chiffres.");
       return;
     }
+    if (!/^\S+@\S+\.\S+$/u.test(submittedChallengeEmail)) {
+      setMessage("Demandez un nouveau code avant de vous connecter.");
+      return;
+    }
+    setCode("");
     setBusy(true);
     setMessage("");
     try {
-      await auth.verifyEmailCode(email, code);
+      await auth.verifyEmailCode(submittedChallengeEmail, normalizedCode);
       setEmail("");
+      setChallengeEmail("");
       setCode("");
       setCodeRequested(false);
       setMessage("Compte connecté sur cet appareil.");
@@ -314,18 +332,34 @@ export default function AccountScreen() {
   const activeFusionForAnotherAccount =
     currentLocalState?.fusionMarker?.status === "awaiting_server_ack" &&
     currentLocalState.fusionMarker.targetUserId !== userId?.toLowerCase();
+  const authStatusAccessibilityLabel =
+    auth.status === "signed_in"
+      ? "État du compte : connecté"
+      : auth.status === "signed_out"
+        ? "État du compte : déconnecté"
+        : auth.status === "loading"
+          ? "État du compte : session en vérification"
+          : "État du compte : non configuré";
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.header}>
-        <Text style={styles.brand}>Thaïnaute</Text>
+        <Text
+          accessible
+          accessibilityLabel={authStatusAccessibilityLabel}
+          accessibilityRole="header"
+          testID={`account-auth-${auth.status.replace("_", "-")}`}
+          style={styles.brand}
+        >
+          Thaïnaute
+        </Text>
         <Link href="/" asChild>
           <Pressable accessibilityRole="button" style={styles.backButton}>
             <Text style={styles.backText}>Retour</Text>
           </Pressable>
         </Link>
       </View>
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView ref={scrollViewRef} contentContainerStyle={styles.content}>
         {auth.status === "loading" && (
           <Text accessibilityLiveRegion="polite">
             Vérification de la session…
@@ -342,7 +376,16 @@ export default function AccountScreen() {
         )}
 
         {auth.status === "signed_out" && (
-          <View style={styles.card}>
+          <View
+            testID={
+              codeRequested
+                ? busy
+                  ? "account-otp-verifying-card"
+                  : "account-otp-idle-card"
+                : "account-email-card"
+            }
+            style={styles.card}
+          >
             <Text style={styles.eyebrow}>APRÈS UNE PREMIÈRE RÉUSSITE</Text>
             <Text style={styles.title}>Retrouver sa progression partout.</Text>
             <Text style={styles.body}>
@@ -355,17 +398,24 @@ export default function AccountScreen() {
                 <Text style={styles.label}>Adresse email</Text>
                 <TextInput
                   accessibilityLabel="Adresse email"
+                  testID="account-email-input"
                   autoCapitalize="none"
                   autoComplete="email"
                   inputMode="email"
+                  onSubmitEditing={({ nativeEvent }) => {
+                    if (busy) return;
+                    void requestCode(nativeEvent.text);
+                  }}
+                  returnKeyType="send"
                   style={styles.input}
+                  submitBehavior="blurAndSubmit"
                   value={email}
                   onChangeText={setEmail}
                 />
                 <ActionButton
                   disabled={busy}
                   label={busy ? "Envoi…" : "Recevoir mon code"}
-                  onPress={() => void requestCode()}
+                  onPress={() => void requestCode(email)}
                 />
               </>
             ) : (
@@ -373,17 +423,24 @@ export default function AccountScreen() {
                 <Text style={styles.label}>Code reçu par email</Text>
                 <TextInput
                   accessibilityLabel="Code à six chiffres"
+                  testID="account-otp-input"
                   autoComplete="one-time-code"
                   inputMode="numeric"
                   maxLength={6}
+                  onSubmitEditing={({ nativeEvent }) => {
+                    if (busy) return;
+                    void verifyCode(nativeEvent.text);
+                  }}
+                  returnKeyType="done"
                   style={styles.input}
+                  submitBehavior="blurAndSubmit"
                   value={code}
                   onChangeText={setCode}
                 />
                 <ActionButton
                   disabled={busy}
                   label={busy ? "Vérification…" : "Me connecter"}
-                  onPress={() => void verifyCode()}
+                  onPress={() => void verifyCode(code)}
                 />
               </>
             )}
@@ -391,9 +448,11 @@ export default function AccountScreen() {
         )}
 
         {auth.status === "signed_in" && (
-          <View style={styles.card}>
+          <View testID="account-signed-in-card" style={styles.card}>
             <Text style={styles.eyebrow}>COMPTE CONNECTÉ</Text>
-            <Text style={styles.title}>Votre progression, sous contrôle.</Text>
+            <Text testID="account-signed-in-heading" style={styles.title}>
+              Votre progression, sous contrôle.
+            </Text>
             <View style={styles.metrics} accessibilityLiveRegion="polite">
               <Metric
                 label="états synchronisés"
@@ -468,21 +527,26 @@ export default function AccountScreen() {
               label={busy ? "Synchronisation…" : "Synchroniser maintenant"}
               onPress={() => void synchronize(false)}
             />
-            <Link href="/connected-lesson" asChild>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityState={{ disabled: accountOperationBusy }}
-                disabled={accountOperationBusy}
-                style={[
-                  styles.previewButton,
-                  accountOperationBusy && styles.disabled,
-                ]}
-              >
-                <Text style={styles.previewButtonText}>
-                  Ouvrir la preview connectée
-                </Text>
-              </Pressable>
-            </Link>
+            <Pressable
+              accessibilityLabel="Ouvrir la preview connectée"
+              accessibilityRole="button"
+              accessibilityState={{ disabled: accountOperationBusy }}
+              disabled={accountOperationBusy}
+              testID={
+                accountOperationBusy
+                  ? "account-connected-preview-busy"
+                  : "account-connected-preview-ready"
+              }
+              style={StyleSheet.flatten([
+                styles.previewButton,
+                accountOperationBusy && styles.disabled,
+              ])}
+              onPress={() => router.push("/connected-lesson")}
+            >
+              <Text style={styles.previewButtonText}>
+                Ouvrir la preview connectée
+              </Text>
+            </Pressable>
             <AccountExportSection
               anonymousAttemptCount={anonymousEntries.length}
               disabled={accountOperationBusy}

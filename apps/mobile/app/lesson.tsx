@@ -643,7 +643,10 @@ function ResultStage({
           accessibilityRole="button"
           accessibilityState={{ disabled: accountDisabled }}
           disabled={accountDisabled}
-          style={[styles.secondaryButton, accountDisabled && styles.disabled]}
+          style={StyleSheet.flatten([
+            styles.secondaryButton,
+            accountDisabled && styles.disabled,
+          ])}
           onPress={voicePractice.pausePlayback}
         >
           <Text style={styles.secondaryButtonText}>{accountButtonText}</Text>

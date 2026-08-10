@@ -86,7 +86,7 @@ function session(
       is_anonymous: false,
       user_metadata: {},
     },
-  } as Session;
+  };
 }
 
 function wrapper({ children }: PropsWithChildren) {
@@ -191,6 +191,35 @@ describe("session Auth mobile", () => {
     emitAuthStateChange("SIGNED_IN", session(ids.userA));
 
     await waitFor(() => expect(result.current.status).toBe("signed_in"));
+    expect(result.current.sessionBoundaryRevision).toBe(1);
+  });
+
+  it("applique la session OTP retournée même sans événement puis déduplique SIGNED_IN", async () => {
+    mocks.getSession.mockResolvedValue({
+      data: { session: null },
+      error: null,
+    });
+    mocks.verifyOtp.mockResolvedValue({
+      data: { session: session(ids.userA) },
+      error: null,
+    });
+    const { result } = renderHook(() => useMobileAuthSession(), { wrapper });
+    await waitFor(() => expect(result.current.status).toBe("signed_out"));
+
+    await act(async () => {
+      await result.current.verifyEmailCode(
+        "Selim.Exact+test@example.invalid",
+        "123456",
+      );
+    });
+
+    expect(result.current.status).toBe("signed_in");
+    expect(result.current.session?.user.id).toBe(ids.userA);
+    expect(result.current.sessionBoundaryRevision).toBe(1);
+
+    emitAuthStateChange("SIGNED_IN", session(ids.userA));
+
+    expect(result.current.status).toBe("signed_in");
     expect(result.current.sessionBoundaryRevision).toBe(1);
   });
 

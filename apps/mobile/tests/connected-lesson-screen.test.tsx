@@ -16,9 +16,12 @@ import {
 import type { ReactNode } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import ConnectedLessonScreen from "../app/connected-lesson";
+import type { ensureExpoPublicAudioCached } from "../lib/expo-public-audio-cache";
+
 const state = vi.hoisted(() => ({
   announce: vi.fn(),
-  audio: vi.fn(),
+  audio: vi.fn<typeof ensureExpoPublicAudioCached>(),
   auth: vi.fn(),
   database: {},
   enqueue: vi.fn(),
@@ -59,6 +62,7 @@ vi.mock("react-native-safe-area-context", async () => {
 vi.mock("react-native", async () => {
   const React = await import("react");
   interface NativeProps {
+    readonly accessibilityLabel?: string;
     readonly accessibilityLiveRegion?: string;
     readonly accessibilityRole?: string;
     readonly accessibilityState?: {
@@ -70,8 +74,14 @@ vi.mock("react-native", async () => {
     readonly disabled?: boolean;
     readonly onPress?: () => void;
   }
-  const container = ({ children }: NativeProps) =>
-    React.createElement("div", null, children);
+  const container = ({ accessibilityLabel, children }: NativeProps) =>
+    React.createElement(
+      "div",
+      accessibilityLabel === undefined
+        ? null
+        : { "aria-label": accessibilityLabel },
+      children,
+    );
   return {
     AccessibilityInfo: { announceForAccessibility: state.announce },
     Pressable: ({
@@ -134,10 +144,6 @@ vi.mock("../lib/mobile-connected-public-lesson", () => ({
 vi.mock("../lib/mobile-lesson-progress", () => ({
   readMobileLessonProgress: state.progress,
 }));
-
-// Les doubles natifs sont installés avant la résolution de l'écran.
-// eslint-disable-next-line import/first
-import ConnectedLessonScreen from "../app/connected-lesson";
 
 const ids = {
   user: "00000000-0000-4000-8000-000000000001",
@@ -250,8 +256,12 @@ beforeEach(() => {
     audioUrl: (assetId: string) => `https://api.test/audio/${assetId}`,
   });
   state.readLatest.mockResolvedValue(null);
+  const audioAsset = lesson.response.lesson.audioAssets[0];
+  if (audioAsset === undefined) {
+    throw new Error("Le fixture de leçon doit contenir un asset audio.");
+  }
   state.audio.mockResolvedValue({
-    asset: lesson.response.lesson.audioAssets[0],
+    asset: audioAsset,
     uri: "file:///verified.wav",
     reused: false,
   });
@@ -291,6 +301,7 @@ describe("écran mobile de preview connectée", () => {
     expect(
       await screen.findByRole("heading", { name: "Boucle technique locale" }),
     ).toBeTruthy();
+    expect(state.replace).not.toHaveBeenCalledWith(null);
     fireEvent.click(
       screen.getByRole("button", { name: "Télécharger et écouter" }),
     );
@@ -306,6 +317,8 @@ describe("écran mobile de preview connectée", () => {
       await screen.findByRole("heading", { name: "Correction autoritaire" }),
     ).toBeTruthy();
     expect(screen.getByText("La boucle technique fonctionne.")).toBeTruthy();
+    expect(screen.getByLabelText("Maîtrise technique 100 %")).toBeTruthy();
+    expect(screen.getByLabelText("Tentatives 1")).toBeTruthy();
     expect(state.enqueue.mock.invocationCallOrder[0]).toBeLessThan(
       state.synchronize.mock.invocationCallOrder[0] ?? 0,
     );
@@ -372,8 +385,7 @@ describe("écran mobile de preview connectée", () => {
       screen.getByRole("button", { name: "Télécharger et écouter" }),
     );
     await waitFor(() => expect(state.audio).toHaveBeenCalledOnce());
-    const signal = state.audio.mock.calls[0]?.[0]?.signal as
-      AbortSignal | undefined;
+    const signal = state.audio.mock.calls[0]?.[0].signal;
 
     state.auth.mockReturnValue({
       status: "signed_in",
