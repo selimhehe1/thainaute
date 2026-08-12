@@ -220,17 +220,17 @@ jobs:
           set +a
           unset supabase_env
           pnpm --filter @thainaute/web exec playwright test e2e/connected-sync.spec.ts \
-            --project=chromium --workers=1 --retries=0 --trace=off
+            --project=chromium --workers=1 --retries=0 --trace=retain-on-failure
           THAINAUTE_LOCAL_FIXTURE_BOOTSTRAP=1 \
             pnpm fixture:bootstrap-local-audio
           THAINAUTE_PUBLIC_CONTENT_MODE=supabase \
             pnpm --filter @thainaute/web exec playwright test \
               e2e/connected-learning-ui.spec.ts \
-              --project=chromium --workers=1 --retries=0 --trace=off
+              --project=chromium --workers=1 --retries=0 --trace=retain-on-failure
           THAINAUTE_CONTENT_REPORT_MODE=supabase \
             pnpm --filter @thainaute/web exec playwright test \
               e2e/connected-content-report.spec.ts \
-              --project=chromium --workers=1 --retries=0 --trace=off
+              --project=chromium --workers=1 --retries=0 --trace=retain-on-failure
       # Playwright écrit un instantané de la page au moment de l'échec, mais
       # il restait dans le conteneur : un scénario connecté rouge ne laissait
       # qu'un « element(s) not found » sans dire ce que la page affichait.
