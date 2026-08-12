@@ -15,7 +15,7 @@
   "audioManifestId": "0a9d27ac-8c16-5fe7-a448-826f4e72937d",
   "items": [
     {
-      "id": "13a5cfb8-a45e-5c9b-ae6e-3d8de389add7",
+      "id": "ee148134-4f7a-5c9c-871e-2f2c56c254f6",
       "thaiRaw": "ตัวนี้",
       "unicodeCodePoints": [
         "U+0E15",
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "id": "4e8624ed-7a80-58d8-8307-4f40f5f490b5",
+      "id": "09a368ce-6be3-58c0-adfb-63393d2f280e",
       "thaiRaw": "หา",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -84,7 +84,7 @@
       ]
     },
     {
-      "id": "56f5a518-2000-59cb-a089-401cff1ff750",
+      "id": "ce3c2f7d-a868-5170-a91a-1abdddc3f2ab",
       "thaiRaw": "เสื้อ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -116,7 +116,7 @@
       ]
     },
     {
-      "id": "e0522fe2-7513-5ad3-b5b3-8b73d526b308",
+      "id": "dd29ee3e-a4a0-5a7a-915f-17ed324dedf5",
       "thaiRaw": "ตัว",
       "unicodeCodePoints": [
         "U+0E15",
@@ -146,7 +146,7 @@
       ]
     },
     {
-      "id": "5214591b-e20c-5e0b-b3fc-efa0ff844bd2",
+      "id": "b4987ef2-5eb0-5b2d-a67d-397669c17149",
       "thaiRaw": "เงิน",
       "unicodeCodePoints": [
         "U+0E40",
@@ -177,7 +177,7 @@
       ]
     },
     {
-      "id": "8830cb3a-1e29-59bf-9d4e-9b484253e364",
+      "id": "83157308-4516-5a85-899b-c1b7bb474bf1",
       "thaiRaw": "เกินไป",
       "unicodeCodePoints": [
         "U+0E40",
@@ -218,7 +218,7 @@
       ]
     },
     {
-      "id": "96af2131-f96e-5af1-9595-1fae5b608c59",
+      "id": "9244aeac-d0a9-5ede-8200-a79f91e0d106",
       "thaiRaw": "แพงเกินไป",
       "unicodeCodePoints": [
         "U+0E41",
@@ -269,7 +269,7 @@
       ]
     },
     {
-      "id": "78006203-c25d-5486-9d48-2c3071f3120f",
+      "id": "335fec12-3370-563f-b33d-347ba89622bd",
       "thaiRaw": "ใหญ่เกินไป",
       "unicodeCodePoints": [
         "U+0E43",
@@ -322,7 +322,7 @@
       ]
     },
     {
-      "id": "732659e9-205b-5a13-a227-f6cb3b5a362a",
+      "id": "f3040aaf-5929-542c-8880-c78ce99d0254",
       "thaiRaw": "ปัญหา",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -362,7 +362,7 @@
       ]
     },
     {
-      "id": "039562ee-2abd-5931-a925-51357cc1419d",
+      "id": "88d292bc-f6b0-52e2-87bb-b09c4e7f30ba",
       "thaiRaw": "เปลี่ยน",
       "unicodeCodePoints": [
         "U+0E40",
@@ -396,7 +396,7 @@
       ]
     },
     {
-      "id": "eac869dc-8300-5449-9c49-6482b4671657",
+      "id": "ef5c34ff-5e97-5be0-9086-1252d039dfe7",
       "thaiRaw": "ตัวนี้เท่าไรครับ",
       "unicodeCodePoints": [
         "U+0E15",
@@ -432,18 +432,34 @@
         },
         {
           "thaiRaw": "ตัวนี้เท่าไรครับ",
-          "ipa": "niː˦˥ tʰaw˥˩",
-          "tone": "falling",
+          "ipa": "niː˦˥",
+          "tone": "high",
           "vowelLength": "long",
           "initial": "n",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตัวนี้เท่าไรครับ",
+          "ipa": "tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "tʰ",
           "final": "w"
         },
         {
           "thaiRaw": "ตัวนี้เท่าไรครับ",
-          "ipa": "raj˧ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "raj˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "r",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ตัวนี้เท่าไรครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -464,12 +480,12 @@
       "pairs": [
         {
           "id": "e63c37ae-26ef-5903-a315-f9d19783e19a",
-          "itemId": "96af2131-f96e-5af1-9595-1fae5b608c59",
+          "itemId": "9244aeac-d0a9-5ede-8200-a79f91e0d106",
           "labelFr": "trop cher"
         },
         {
           "id": "b457cdf8-c19a-593e-974b-ecfa178e28ea",
-          "itemId": "78006203-c25d-5486-9d48-2c3071f3120f",
+          "itemId": "335fec12-3370-563f-b33d-347ba89622bd",
           "labelFr": "trop grand"
         }
       ],

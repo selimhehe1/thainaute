@@ -15,7 +15,7 @@
   "audioManifestId": "64a67651-61c2-5264-b1da-7af3a7a929aa",
   "items": [
     {
-      "id": "78f481ee-6e21-518a-a8d8-9bf4a64b2d99",
+      "id": "45a5f564-0841-5be4-a772-8f48904f3f01",
       "thaiRaw": "ไม่ใช่",
       "unicodeCodePoints": [
         "U+0E44",
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "id": "fcfed46c-8433-5cb3-a235-62c3c585e2e8",
+      "id": "f3040aaf-5929-542c-8880-c78ce99d0254",
       "thaiRaw": "ปัญหา",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -98,7 +98,7 @@
       ]
     },
     {
-      "id": "d2871e70-b67d-50e3-a83b-cf6570cb9764",
+      "id": "88d292bc-f6b0-52e2-87bb-b09c4e7f30ba",
       "thaiRaw": "เปลี่ยน",
       "unicodeCodePoints": [
         "U+0E40",
@@ -133,7 +133,7 @@
       ]
     },
     {
-      "id": "d4a7c661-af80-5233-8e9b-f8bec5dc07e6",
+      "id": "d6711de6-5776-52ad-8b60-caea981aa84f",
       "thaiRaw": "เสีย",
       "unicodeCodePoints": [
         "U+0E40",
@@ -165,7 +165,7 @@
       ]
     },
     {
-      "id": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "id": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "thaiRaw": "ขอ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -195,7 +195,7 @@
       ]
     },
     {
-      "id": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "id": "3e84a18d-87da-501f-962c-0bbe547faf4e",
       "thaiRaw": "อันนี้",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -237,7 +237,7 @@
       ]
     },
     {
-      "id": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "id": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
       "thaiRaw": "มี",
       "unicodeCodePoints": [
         "U+0E21",
@@ -273,7 +273,7 @@
       "drawIndex": 1,
       "id": "47ce2486-af36-5c62-bde7-fc03701ec6f4",
       "type": "word_order",
-      "itemId": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "itemId": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase. Les deux particules de politesse sont proposées à chaque fois : une seule convient au locuteur annoncé, retirez l’autre.",
@@ -326,7 +326,7 @@
       "drawIndex": 2,
       "id": "e797c1a1-936b-5c2b-bdb6-8e03e52bdc7c",
       "type": "word_order",
-      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "itemId": "3e84a18d-87da-501f-962c-0bbe547faf4e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase. Les deux particules de politesse sont proposées à chaque fois : une seule convient au locuteur annoncé, retirez l’autre.",
@@ -379,7 +379,7 @@
       "drawIndex": 3,
       "id": "111e9ead-10f0-5604-b55e-81239c2f8cb6",
       "type": "word_order",
-      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "itemId": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase. Les deux particules de politesse sont proposées à chaque fois : une seule convient au locuteur annoncé, retirez l’autre.",
@@ -438,7 +438,7 @@
       "drawIndex": 4,
       "id": "25dec6ec-ac5e-57f4-b922-38f66730a6b8",
       "type": "word_order",
-      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "itemId": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase. Les deux particules de politesse sont proposées à chaque fois : une seule convient au locuteur annoncé, retirez l’autre.",
@@ -497,7 +497,7 @@
       "drawIndex": 5,
       "id": "dd9f72ab-34f3-552c-bd11-9721324c6a16",
       "type": "word_order",
-      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "itemId": "3e84a18d-87da-501f-962c-0bbe547faf4e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase. Les deux particules de politesse sont proposées à chaque fois : une seule convient au locuteur annoncé, retirez l’autre.",

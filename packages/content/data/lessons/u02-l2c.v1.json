@@ -15,7 +15,7 @@
   "audioManifestId": "b2b554cf-ef5d-58f6-924c-cc2e21acb66b",
   "items": [
     {
-      "id": "05151261-20ed-53cc-a362-23653d2eb3c0",
+      "id": "19383b08-bd77-5e48-901a-7a34e18acbf4",
       "thaiRaw": "ไม่เป็นไร",
       "unicodeCodePoints": [
         "U+0E44",
@@ -68,7 +68,7 @@
       ]
     },
     {
-      "id": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "id": "fcda4f61-187c-53f0-a834-fffce7facf86",
       "thaiRaw": "ขอโทษ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "id": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "id": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "thaiRaw": "ขอ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -139,7 +139,7 @@
       ]
     },
     {
-      "id": "a8c92a6c-0861-58c8-a586-9b54449fedcb",
+      "id": "a4ac202d-30dd-5ccf-95ec-e312d88dc127",
       "thaiRaw": "น้ำ",
       "unicodeCodePoints": [
         "U+0E19",
@@ -170,7 +170,7 @@
       ]
     },
     {
-      "id": "84bf6b4f-1b25-5deb-9067-d0cd9eec1a57",
+      "id": "0595605f-6136-5b43-9ab4-95dc1e3c8b13",
       "thaiRaw": "หน่อย",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -203,7 +203,7 @@
       ]
     },
     {
-      "id": "889b7a30-866b-530b-a523-d39509dda7c8",
+      "id": "3ddee077-b183-5e63-8ffb-0ca02edde65e",
       "thaiRaw": "ขอน้ำหน่อย",
       "unicodeCodePoints": [
         "U+0E02",
@@ -262,7 +262,7 @@
       "drawIndex": 1,
       "id": "dd0522f0-f8c7-5b13-8831-94e8d859091b",
       "type": "word_order",
-      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "itemId": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Claire, une femme, veut de l’eau au comptoir. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",

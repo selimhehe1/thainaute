@@ -15,7 +15,7 @@
   "audioManifestId": "0dae9e91-73bb-54f1-9ab7-4bd2938d8975",
   "items": [
     {
-      "id": "3a805e99-162d-5c57-8fcb-b7166441b625",
+      "id": "2c997489-7df2-5c26-aacb-1260738652cf",
       "thaiRaw": "ยา",
       "unicodeCodePoints": [
         "U+0E22",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "id": "a03cfa67-e528-518e-ac9e-4a4f9ed47970",
+      "id": "4f88a370-da83-51bd-b3c9-fea766689978",
       "thaiRaw": "ร้านขายยา",
       "unicodeCodePoints": [
         "U+0E23",
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "id": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "id": "7b459b92-ea44-5023-bd07-cf77cc1dd710",
       "thaiRaw": "แล้ว",
       "unicodeCodePoints": [
         "U+0E41",
@@ -127,7 +127,7 @@
       ]
     },
     {
-      "id": "3bede919-36fc-54c9-be94-1a8b0394bc5e",
+      "id": "dd0c5952-b8ec-51ab-a5d4-779c04c04abf",
       "thaiRaw": "สองวันแล้ว",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -149,10 +149,26 @@
       "syllables": [
         {
           "thaiRaw": "สองวันแล้ว",
-          "ipa": "sɔːŋ˩˩˦ wan˧ lɛːw˦˥",
-          "tone": "high",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
           "vowelLength": "long",
           "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "สองวันแล้ว",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "สองวันแล้ว",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
           "final": "w"
         }
       ],
@@ -163,7 +179,7 @@
       ]
     },
     {
-      "id": "55ed059c-c220-5537-96ed-f50be8be81ec",
+      "id": "3a063856-518d-5b43-a1c4-9294c1712e5b",
       "thaiRaw": "สามวันแล้ว",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -185,10 +201,26 @@
       "syllables": [
         {
           "thaiRaw": "สามวันแล้ว",
-          "ipa": "saːm˩˩˦ wan˧ lɛːw˦˥",
-          "tone": "high",
+          "ipa": "saːm˩˩˦",
+          "tone": "rising",
           "vowelLength": "long",
           "initial": "s",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "สามวันแล้ว",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "สามวันแล้ว",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
           "final": "w"
         }
       ],
@@ -210,12 +242,12 @@
       "pairs": [
         {
           "id": "8f9b22b9-68cf-531a-80f2-a2cc4a88649a",
-          "itemId": "3bede919-36fc-54c9-be94-1a8b0394bc5e",
+          "itemId": "dd0c5952-b8ec-51ab-a5d4-779c04c04abf",
           "labelFr": "ça fait deux jours"
         },
         {
           "id": "6e084e32-b0ea-59f4-b459-fb063e979ea2",
-          "itemId": "55ed059c-c220-5537-96ed-f50be8be81ec",
+          "itemId": "3a063856-518d-5b43-a1c4-9294c1712e5b",
           "labelFr": "ça fait trois jours"
         }
       ],

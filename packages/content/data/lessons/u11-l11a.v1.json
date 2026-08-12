@@ -15,7 +15,7 @@
   "audioManifestId": "fa4dedf5-843f-5790-be60-a6c225e20cb9",
   "items": [
     {
-      "id": "2b038b96-36d3-5241-ad09-264337463e3d",
+      "id": "ee12e354-4f9b-5b96-95d8-f24702f1c917",
       "thaiRaw": "เข้าใจ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -56,7 +56,7 @@
       ]
     },
     {
-      "id": "6b769c18-8a82-567b-a6f4-bdbc7c41067f",
+      "id": "136b0d98-fcff-5921-9b73-af7793ee01d0",
       "thaiRaw": "ไม่เข้าใจ",
       "unicodeCodePoints": [
         "U+0E44",
@@ -77,10 +77,18 @@
       "syllables": [
         {
           "thaiRaw": "ไม่เข้าใจ",
-          "ipa": "maj˥˩ kʰaw˥˩",
+          "ipa": "maj˥˩",
           "tone": "falling",
           "vowelLength": "short",
           "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่เข้าใจ",
+          "ipa": "kʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
           "final": "w"
         },
         {
@@ -100,7 +108,7 @@
       ]
     },
     {
-      "id": "870a9464-a95c-5f9a-bd0e-02c4bdb658a3",
+      "id": "e2f22d14-ec50-5eb5-bb3a-37ae733e20f1",
       "thaiRaw": "เข้าใจนิดหน่อย",
       "unicodeCodePoints": [
         "U+0E40",
@@ -134,10 +142,18 @@
         },
         {
           "thaiRaw": "เข้าใจนิดหน่อย",
-          "ipa": "t͡ɕaj˧ nit̚˦˥",
-          "tone": "high",
+          "ipa": "t͡ɕaj˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "t͡ɕ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "เข้าใจนิดหน่อย",
+          "ipa": "nit̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
           "final": "t̚"
         },
         {
@@ -156,7 +172,7 @@
       ]
     },
     {
-      "id": "251abdea-36a9-5e7d-bd0f-099d10088752",
+      "id": "c590059a-a9e0-5951-a66b-e2fb8d604b94",
       "thaiRaw": "อีกที",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -196,7 +212,7 @@
       ]
     },
     {
-      "id": "cf72c0a4-dd6f-5ec2-a76f-8520bb294ffc",
+      "id": "7225a91b-91f9-508f-a075-ac79ad5667b4",
       "thaiRaw": "ได้ไหม",
       "unicodeCodePoints": [
         "U+0E44",
@@ -214,10 +230,18 @@
       "syllables": [
         {
           "thaiRaw": "ได้ไหม",
-          "ipa": "daːj˥˩ maj˩˩˦",
-          "tone": "rising",
+          "ipa": "daːj˥˩",
+          "tone": "falling",
           "vowelLength": "long",
           "initial": "d",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ได้ไหม",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
           "final": "j"
         }
       ],
@@ -229,7 +253,7 @@
       ]
     },
     {
-      "id": "de37c7eb-d28e-5d05-af5c-209f2cd8ce79",
+      "id": "4d0a1449-33b5-5909-b2e2-963819621615",
       "thaiRaw": "ช้า",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -259,7 +283,7 @@
       ]
     },
     {
-      "id": "a683428c-f3ff-560f-aade-4e8a6e9904d3",
+      "id": "1b02c2c0-ac86-59c1-bf2e-fe7798bf823f",
       "thaiRaw": "พูด",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -291,7 +315,7 @@
       ]
     },
     {
-      "id": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "id": "fcda4f61-187c-53f0-a834-fffce7facf86",
       "thaiRaw": "ขอโทษ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -332,7 +356,7 @@
       ]
     },
     {
-      "id": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "id": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "thaiRaw": "ไม่",
       "unicodeCodePoints": [
         "U+0E44",
@@ -369,7 +393,7 @@
       "drawIndex": 1,
       "id": "78e7bf1f-b150-5093-ae92-cb855a5a0e26",
       "type": "word_order",
-      "itemId": "a683428c-f3ff-560f-aade-4e8a6e9904d3",
+      "itemId": "1b02c2c0-ac86-59c1-bf2e-fe7798bf823f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -423,7 +447,7 @@
       "drawIndex": 2,
       "id": "bb3e1418-1f00-5f63-acd3-510fb6140e91",
       "type": "word_order",
-      "itemId": "a683428c-f3ff-560f-aade-4e8a6e9904d3",
+      "itemId": "1b02c2c0-ac86-59c1-bf2e-fe7798bf823f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -477,7 +501,7 @@
       "drawIndex": 3,
       "id": "628273cf-1fca-548c-b227-1ea14cd227e0",
       "type": "word_order",
-      "itemId": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "itemId": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -525,7 +549,7 @@
       "drawIndex": 4,
       "id": "78917ec8-2e01-565a-83fb-41600a073d38",
       "type": "word_order",
-      "itemId": "2b038b96-36d3-5241-ad09-264337463e3d",
+      "itemId": "ee12e354-4f9b-5b96-95d8-f24702f1c917",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -573,7 +597,7 @@
       "drawIndex": 5,
       "id": "1719d3e1-30a2-5ed4-800c-9ec0e3f0ed7d",
       "type": "word_order",
-      "itemId": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "itemId": "fcda4f61-187c-53f0-a834-fffce7facf86",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -639,7 +663,7 @@
       "drawIndex": 6,
       "id": "7b44f607-b0e8-5062-81a2-1812a7615700",
       "type": "word_order",
-      "itemId": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "itemId": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",

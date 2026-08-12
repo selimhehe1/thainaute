@@ -15,7 +15,7 @@
   "audioManifestId": "39f19e98-40e3-5df5-b15d-2cef244b1f60",
   "items": [
     {
-      "id": "54b3f14b-7381-5be2-80a7-9b9f5b8db927",
+      "id": "4501865f-920a-5d39-b753-48bce84e63f9",
       "thaiRaw": "มือ",
       "unicodeCodePoints": [
         "U+0E21",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "7dbe7d3a-d483-51c5-b04a-a53770f8c4cb",
+      "id": "2a20ea30-e3c2-55b2-8dff-4e36097f491f",
       "thaiRaw": "ลืม",
       "unicodeCodePoints": [
         "U+0E25",
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "id": "997c4f47-512e-5375-bde5-e070f90b6e4a",
+      "id": "5a7a79d6-62a8-5013-a483-3b78d57da671",
       "thaiRaw": "ถือ",
       "unicodeCodePoints": [
         "U+0E16",
@@ -108,7 +108,7 @@
       ]
     },
     {
-      "id": "2dfa6c37-e4dc-589a-b409-ed0da93401f0",
+      "id": "93a9ee69-3d8c-548d-9e33-20cff5702638",
       "thaiRaw": "ชื่อ",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -140,7 +140,7 @@
       ]
     },
     {
-      "id": "0c126918-462d-545b-b95e-2320df1e3aa9",
+      "id": "7a29ba21-4135-5dac-ba3c-0f92c012b5b7",
       "thaiRaw": "เธอ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -171,7 +171,7 @@
       ]
     },
     {
-      "id": "d4a7f1aa-23ca-54e3-9702-b211bbc34785",
+      "id": "c8658a0c-f046-56f2-97a7-ec0e9ad60038",
       "thaiRaw": "เจอ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -202,7 +202,7 @@
       ]
     },
     {
-      "id": "0eb2c4b5-3915-58ec-bb37-22832197a2dd",
+      "id": "8cdaeb1b-dff6-5d53-89b4-26507d1ea972",
       "thaiRaw": "คน",
       "unicodeCodePoints": [
         "U+0E04",
@@ -243,12 +243,12 @@
       "pairs": [
         {
           "id": "6e336960-65ad-5a02-ac7b-0551e6d7f7a7",
-          "itemId": "54b3f14b-7381-5be2-80a7-9b9f5b8db927",
+          "itemId": "4501865f-920a-5d39-b753-48bce84e63f9",
           "labelFr": "la main"
         },
         {
           "id": "3c4a0d2b-c08d-5c89-821d-b7d823e865a5",
-          "itemId": "7dbe7d3a-d483-51c5-b04a-a53770f8c4cb",
+          "itemId": "2a20ea30-e3c2-55b2-8dff-4e36097f491f",
           "labelFr": "oublier"
         }
       ],

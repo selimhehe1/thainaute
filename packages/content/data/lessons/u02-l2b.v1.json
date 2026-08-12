@@ -15,7 +15,7 @@
   "audioManifestId": "24d3d94f-27c6-5695-9f58-1747b672753e",
   "items": [
     {
-      "id": "7324f3fd-7232-52c2-b3e1-7f99acd8f0a7",
+      "id": "c18efbcc-1f72-57ec-9ffa-25cc6435685f",
       "thaiRaw": "ไหว้",
       "unicodeCodePoints": [
         "U+0E44",
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "id": "f556b70a-d01b-5013-9b6a-7357c7edcc2e",
+      "id": "3522dbc6-1f43-5b91-adc4-fc973affc013",
       "thaiRaw": "สวัสดีครับ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "id": "8b32a212-1410-5b5e-9a05-caccd46ee262",
+      "id": "591314c5-5f85-529f-9517-fd96ca706119",
       "thaiRaw": "สวัสดีค่ะ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -169,7 +169,7 @@
       ]
     },
     {
-      "id": "b67231cc-60a6-5a0f-be22-5f1cac35dd0c",
+      "id": "d2c0764d-d46e-5236-953a-7bf7de63b754",
       "thaiRaw": "สบายดีไหมครับ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -241,7 +241,7 @@
       ]
     },
     {
-      "id": "85686c30-f54d-5605-bd3f-4a1dde086d5a",
+      "id": "aae4dbc0-2998-5569-97b5-93326b37ce62",
       "thaiRaw": "สบายดีไหมคะ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -312,7 +312,7 @@
       ]
     },
     {
-      "id": "1bd5e25a-f055-57f2-b744-922fd86360d0",
+      "id": "d801d8a4-a72b-5b2f-8234-2081155e9476",
       "thaiRaw": "สบายดีครับ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -373,7 +373,7 @@
       ]
     },
     {
-      "id": "bd6023ed-d364-5d53-9bf4-441a5c07bbad",
+      "id": "57ce3a67-d421-52ee-acec-093ca35b60e6",
       "thaiRaw": "สบายดีค่ะ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -432,7 +432,7 @@
       ]
     },
     {
-      "id": "d699b650-7e3f-5cb4-bb5b-2068624b2adf",
+      "id": "53a339f7-5d69-5023-8110-f3abc37ca29b",
       "thaiRaw": "หวัดดี",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -471,6 +471,54 @@
         "WIKTIONARY-EN",
         "WIKTIONARY-TH"
       ]
+    },
+    {
+      "id": "2d788d0b-1dbb-50ec-9a98-94bfd1b11585",
+      "thaiRaw": "สบายดี",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E14",
+        "U+0E35"
+      ],
+      "translationFr": "aller bien",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·baai·dii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สบายดี",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดี",
+          "ipa": "baːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดี",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli avec la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
     }
   ],
   "exercises": [
@@ -479,7 +527,7 @@
       "drawIndex": 1,
       "id": "0b38d681-0705-51c9-abc5-8938ed628cb4",
       "type": "word_order",
-      "itemId": "85686c30-f54d-5605-bd3f-4a1dde086d5a",
+      "itemId": "aae4dbc0-2998-5569-97b5-93326b37ce62",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Nok, une femme, demande à sa voisine comment elle va. Remettez les blocs dans l’ordre. Attention, un bloc est de trop : retirez-le.",
@@ -513,6 +561,41 @@
       "feedback": {
         "correctFr": "Exactement. Le sens d’abord, puis ไหม qui en fait une question, puis คะ parce que Nok est une femme et qu’elle interroge.",
         "incorrectFr": "Trois repères : สบายดี porte le sens, ไหม transforme la phrase en question, et la particule de politesse ferme toujours le bloc. Il reste à choisir entre ค่ะ et คะ : Nok pose une question.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u02-l2b-p4",
+      "drawIndex": 1,
+      "id": "c6cc3891-04f6-5027-a854-9902e1018275",
+      "type": "reading",
+      "itemId": "2d788d0b-1dbb-50ec-9a98-94bfd1b11585",
+      "skill": "reading",
+      "promptFr": "Vous venez de rencontrer ce bloc. Que dit-il ?",
+      "options": [
+        {
+          "id": "c15873ce-20df-5880-92c5-698662fb2d62",
+          "labelFr": "Ça va bien",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e38d67e3-7dd9-5443-ab08-2e7625b4059a",
+          "labelFr": "Bonjour",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "99d89248-1f50-57c1-b432-46def7d40e28",
+          "labelFr": "Merci",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "c15873ce-20df-5880-92c5-698662fb2d62",
+      "feedback": {
+        "correctFr": "Bien lu. สบายดี, sà·baai·dii. Le bonjour สวัสดี lui ressemble beaucoup à l’œil, mais sa deuxième lettre est ว, pas บ.",
+        "incorrectFr": "Regardez la deuxième lettre. Ici c’est บ, la consonne moyenne vue en unité 1. Dans สวัสดี, c’est ว, et il y a un ส de plus au milieu. Réessayez.",
         "variants": []
       }
     }
@@ -566,6 +649,14 @@
       "poolId": "u02-l2b-p2",
       "promptFr": "Nok, une femme, demande à sa voisine comment elle va. Remettez les blocs dans l’ordre. Attention, un bloc est de trop : retirez-le.",
       "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u02-l2b-p4",
+      "promptFr": "Vous venez de rencontrer ce bloc. Que dit-il ?",
+      "mechanic": "reading",
       "drawCount": 1,
       "passRequired": 1,
       "sampleSize": 1

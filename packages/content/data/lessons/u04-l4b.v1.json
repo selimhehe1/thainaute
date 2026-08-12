@@ -15,7 +15,7 @@
   "audioManifestId": "dd77a21b-5db5-5ed4-a31b-677ce2bb622c",
   "items": [
     {
-      "id": "4f8f162a-5730-5c9a-ac38-23416981fbbf",
+      "id": "05a77a3e-ca78-5ebf-abc9-ed3fc2fa5347",
       "thaiRaw": "กิน",
       "unicodeCodePoints": [
         "U+0E01",
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "id": "bd5e5d5f-44f3-59ab-9645-38d760125be9",
+      "id": "05d0911e-473a-5597-874f-926685132517",
       "thaiRaw": "กินข้าว",
       "unicodeCodePoints": [
         "U+0E01",
@@ -90,7 +90,7 @@
       ]
     },
     {
-      "id": "a4443c13-99b3-5571-98df-96b6c5251811",
+      "id": "94b19415-ea40-5ce0-a293-9f76d15e21f7",
       "thaiRaw": "รับประทาน",
       "unicodeCodePoints": [
         "U+0E23",
@@ -143,7 +143,7 @@
       ]
     },
     {
-      "id": "b9e0aa86-719d-52b0-9d30-1385830c6d30",
+      "id": "e1571511-2b8b-5be7-8466-f4dc9b52322b",
       "thaiRaw": "ทาน",
       "unicodeCodePoints": [
         "U+0E17",
@@ -174,7 +174,7 @@
       ]
     },
     {
-      "id": "bd2d8ac2-1b81-5a89-9e44-f499ed58fe56",
+      "id": "1a026af8-73af-5c22-b759-95c2bef64d19",
       "thaiRaw": "ดื่ม",
       "unicodeCodePoints": [
         "U+0E14",
@@ -207,7 +207,7 @@
       ]
     },
     {
-      "id": "ec0ad6bc-6ab6-591d-b5dc-3f0a120d34c9",
+      "id": "78b1cecc-94b3-5d1a-adf5-f3fa064bb7a2",
       "thaiRaw": "หิว",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -239,7 +239,7 @@
       ]
     },
     {
-      "id": "7b26b7be-8c47-50f7-a1c6-e314dc4ead88",
+      "id": "d8964c2c-692f-52bd-965f-024b4cc2198e",
       "thaiRaw": "หิวน้ำ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -281,7 +281,7 @@
       ]
     },
     {
-      "id": "2f9f26c2-b8ac-5814-9c30-d43795077143",
+      "id": "18d19707-ec63-512e-a19e-e19d3719a7b6",
       "thaiRaw": "อร่อย",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -328,9 +328,9 @@
       "drawIndex": 1,
       "id": "bfd3d5dc-c1d8-521a-b2d7-ad62a7299e5e",
       "type": "audio_choice",
-      "itemId": "ec0ad6bc-6ab6-591d-b5dc-3f0a120d34c9",
+      "itemId": "78b1cecc-94b3-5d1a-adf5-f3fa064bb7a2",
       "skill": "listening",
-      "audioAssetId": "a3ecb531-4a81-5d76-8cbc-f1c6b744db0a",
+      "audioAssetId": "3e5c3d05-a634-5f22-a6b8-4004150c7e18",
       "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
       "options": [
         {
@@ -375,9 +375,9 @@
       "drawIndex": 2,
       "id": "01fd8a07-5577-52ea-bd81-ed31248b6633",
       "type": "audio_choice",
-      "itemId": "7b26b7be-8c47-50f7-a1c6-e314dc4ead88",
+      "itemId": "d8964c2c-692f-52bd-965f-024b4cc2198e",
       "skill": "listening",
-      "audioAssetId": "5633f861-6cd7-5aff-9763-623c2e980019",
+      "audioAssetId": "f5c3d73e-ad18-5ec7-a437-65357485674c",
       "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
       "options": [
         {
@@ -422,9 +422,9 @@
       "drawIndex": 3,
       "id": "e3e2cc9e-bd91-5b93-8952-a6e1a0517270",
       "type": "audio_choice",
-      "itemId": "bd5e5d5f-44f3-59ab-9645-38d760125be9",
+      "itemId": "05d0911e-473a-5597-874f-926685132517",
       "skill": "listening",
-      "audioAssetId": "011e3460-1392-58a8-9e5c-2d45d49f993f",
+      "audioAssetId": "6aa40bec-ddd1-533c-b70c-4c8af4eff160",
       "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
       "options": [
         {
@@ -469,9 +469,9 @@
       "drawIndex": 4,
       "id": "2b482bb2-f468-54fe-9fa9-a8cd00912a94",
       "type": "audio_choice",
-      "itemId": "bd2d8ac2-1b81-5a89-9e44-f499ed58fe56",
+      "itemId": "1a026af8-73af-5c22-b759-95c2bef64d19",
       "skill": "listening",
-      "audioAssetId": "be657b8e-a9e5-54bd-897a-ef508971e8de",
+      "audioAssetId": "f1548948-3690-5ff3-bcbc-d0127daf2799",
       "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
       "options": [
         {
@@ -516,9 +516,9 @@
       "drawIndex": 5,
       "id": "f287160b-fa16-5dd3-96c8-0c38c7bcd940",
       "type": "audio_choice",
-      "itemId": "2f9f26c2-b8ac-5814-9c30-d43795077143",
+      "itemId": "18d19707-ec63-512e-a19e-e19d3719a7b6",
       "skill": "listening",
-      "audioAssetId": "4d20ad7d-5983-5e72-920e-dd4c29e11aa3",
+      "audioAssetId": "dfdcc725-4e64-5211-8d45-273e17186f43",
       "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
       "options": [
         {
@@ -563,9 +563,9 @@
       "drawIndex": 6,
       "id": "8447f1b3-7d48-51d1-814c-157ab78ed91d",
       "type": "audio_choice",
-      "itemId": "7b26b7be-8c47-50f7-a1c6-e314dc4ead88",
+      "itemId": "d8964c2c-692f-52bd-965f-024b4cc2198e",
       "skill": "listening",
-      "audioAssetId": "5633f861-6cd7-5aff-9763-623c2e980019",
+      "audioAssetId": "f5c3d73e-ad18-5ec7-a437-65357485674c",
       "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
       "options": [
         {
@@ -615,22 +615,22 @@
       "pairs": [
         {
           "id": "e2ed63b4-5e06-5957-a38b-3899cb85c417",
-          "itemId": "4f8f162a-5730-5c9a-ac38-23416981fbbf",
+          "itemId": "05a77a3e-ca78-5ebf-abc9-ed3fc2fa5347",
           "labelFr": "manger"
         },
         {
           "id": "04392740-b8dd-589f-80aa-ce9527b24a1d",
-          "itemId": "bd2d8ac2-1b81-5a89-9e44-f499ed58fe56",
+          "itemId": "1a026af8-73af-5c22-b759-95c2bef64d19",
           "labelFr": "boire"
         },
         {
           "id": "f6f405cd-79e5-59c1-8849-d82d0d4592ca",
-          "itemId": "ec0ad6bc-6ab6-591d-b5dc-3f0a120d34c9",
+          "itemId": "78b1cecc-94b3-5d1a-adf5-f3fa064bb7a2",
           "labelFr": "avoir faim"
         },
         {
           "id": "907bc69e-cb99-5b6e-ade0-f31bc530b80e",
-          "itemId": "2f9f26c2-b8ac-5814-9c30-d43795077143",
+          "itemId": "18d19707-ec63-512e-a19e-e19d3719a7b6",
           "labelFr": "c’est bon, au goût"
         }
       ],
@@ -661,17 +661,17 @@
       "pairs": [
         {
           "id": "f577d32e-1568-5231-a83b-1abff6cbc18d",
-          "itemId": "bd5e5d5f-44f3-59ab-9645-38d760125be9",
+          "itemId": "05d0911e-473a-5597-874f-926685132517",
           "labelFr": "prendre un repas"
         },
         {
           "id": "538d2973-1379-5cd3-b3af-ce8fee00d6e3",
-          "itemId": "7b26b7be-8c47-50f7-a1c6-e314dc4ead88",
+          "itemId": "d8964c2c-692f-52bd-965f-024b4cc2198e",
           "labelFr": "avoir soif"
         },
         {
           "id": "2f34bb19-634e-53a5-904d-5a593df62245",
-          "itemId": "a4443c13-99b3-5571-98df-96b6c5251811",
+          "itemId": "94b19415-ea40-5ce0-a293-9f76d15e21f7",
           "labelFr": "manger, dans la forme marquée comme formelle"
         }
       ],

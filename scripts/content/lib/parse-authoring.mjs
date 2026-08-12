@@ -172,6 +172,11 @@ const CHAMPS_ITEM = [
   "registre",
   "note_fr",
   "sources",
+  // Discriminant de sens, employé UNIQUEMENT par les homographes. Deux mots
+  // sans rapport peuvent partager une graphie : ไหม est la soie, et aussi la
+  // particule qui ferme une question. Sans ce champ, la consolidation des
+  // cartes en ferait une seule carte enseignant deux mots.
+  "sens",
 ];
 
 /**

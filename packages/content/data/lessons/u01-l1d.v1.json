@@ -15,9 +15,13 @@
   "audioManifestId": "47082c2c-9a56-56c3-80a5-3e87d5fed4e5",
   "items": [
     {
-      "id": "99ccbd6a-386d-59e3-9b72-cad436e0a3f1",
+      "id": "dcb06ffb-fee4-526c-b6cb-be66a07276eb",
       "thaiRaw": "หมา",
-      "unicodeCodePoints": ["U+0E2B", "U+0E21", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E21",
+        "U+0E32"
+      ],
       "translationFr": "chien",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -34,12 +38,20 @@
         }
       ],
       "register": "courant, familier",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "c9fbdf87-a25b-5f43-adee-65bb62a01e90",
+      "id": "4193b284-8a6e-5919-9b2d-7e9705221749",
       "thaiRaw": "ม้า",
-      "unicodeCodePoints": ["U+0E21", "U+0E49", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E49",
+        "U+0E32"
+      ],
       "translationFr": "cheval",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -56,12 +68,19 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "4c1d8dd0-cc90-5fde-818a-71cab54f4dfe",
+      "id": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
       "thaiRaw": "ขา",
-      "unicodeCodePoints": ["U+0E02", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E32"
+      ],
       "translationFr": "jambe",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -78,12 +97,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "f571d0fd-5b69-5ff5-99f0-91bf8ba7fd14",
+      "id": "8b3c716f-8414-5107-9da6-2f49fd641d16",
       "thaiRaw": "ค้า",
-      "unicodeCodePoints": ["U+0E04", "U+0E49", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E49",
+        "U+0E32"
+      ],
       "translationFr": "faire commerce, vendre",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -100,12 +127,20 @@
         }
       ],
       "register": "neutre, surtout rencontré en composés comme การค้า (le commerce)",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "d6904ad1-2701-53a1-b828-b97511506bd3",
+      "id": "04e41fc0-f2f4-5638-a715-2e81a8d3abf4",
       "thaiRaw": "หนา",
-      "unicodeCodePoints": ["U+0E2B", "U+0E19", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E19",
+        "U+0E32"
+      ],
       "translationFr": "épais, épaisse",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -122,12 +157,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "87aec6f2-7331-5a0a-bcf4-0da154fe37b6",
+      "id": "6ef70ca4-73d6-5c73-968f-d4b653de910a",
       "thaiRaw": "น้า",
-      "unicodeCodePoints": ["U+0E19", "U+0E49", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E49",
+        "U+0E32"
+      ],
       "translationFr": "oncle ou tante plus jeune que votre mère (côté maternel)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -144,12 +187,20 @@
         }
       ],
       "register": "neutre, familial",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "a44b843a-cb97-5b04-9d22-3d81acdc4692",
+      "id": "6f2a5c3c-63ab-520f-86d1-ed8cf683e7da",
       "thaiRaw": "หนี",
-      "unicodeCodePoints": ["U+0E2B", "U+0E19", "U+0E35"],
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E19",
+        "U+0E35"
+      ],
       "translationFr": "fuir, s'échapper",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -166,12 +217,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "130f449f-11ff-5f14-acaf-c3586c245da1",
+      "id": "2c666c9a-ab80-5d7b-b424-8730bc8b2f64",
       "thaiRaw": "นี้",
-      "unicodeCodePoints": ["U+0E19", "U+0E35", "U+0E49"],
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
       "translationFr": "ce, cette (démonstratif)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -188,12 +247,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "3a79cf66-3ca1-5015-a9ee-372fd533d6b1",
+      "id": "42e964e2-0d96-5145-8acd-59b62537dcf3",
       "thaiRaw": "ไหม",
-      "unicodeCodePoints": ["U+0E44", "U+0E2B", "U+0E21"],
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21"
+      ],
       "translationFr": "la soie",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -210,12 +277,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "c8cd5e8e-a2c6-5370-b1d9-e166a5c29cda",
+      "id": "68b48a6b-a76a-5d4c-9889-b71747c93dca",
       "thaiRaw": "ไม้",
-      "unicodeCodePoints": ["U+0E44", "U+0E21", "U+0E49"],
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E49"
+      ],
       "translationFr": "le bois, l'arbre, la plante",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -232,7 +307,11 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
@@ -241,9 +320,9 @@
       "drawIndex": 1,
       "id": "c15d1e19-b5ec-510d-bca6-a134e283ff1d",
       "type": "audio_choice",
-      "itemId": "99ccbd6a-386d-59e3-9b72-cad436e0a3f1",
+      "itemId": "dcb06ffb-fee4-526c-b6cb-be66a07276eb",
       "skill": "listening",
-      "audioAssetId": "3f6b0947-2cc9-550b-a3fa-4409aefb126b",
+      "audioAssetId": "4c6628dd-72bf-5542-8bac-9914442ac0db",
       "promptFr": "Écoutez. La voix part-elle d'en bas pour grimper (montant), ou reste-t-elle perchée (haut) ? Dessinez le ton avec le doigt avant de répondre.",
       "options": [
         {
@@ -271,9 +350,9 @@
       "drawIndex": 2,
       "id": "69c7375c-9739-5acc-987d-336929718d29",
       "type": "audio_choice",
-      "itemId": "87aec6f2-7331-5a0a-bcf4-0da154fe37b6",
+      "itemId": "6ef70ca4-73d6-5c73-968f-d4b653de910a",
       "skill": "listening",
-      "audioAssetId": "74e503f6-c2f7-5f77-8367-63a833dc4445",
+      "audioAssetId": "e8d81712-a0d7-5c05-a15f-c24ea329edd6",
       "promptFr": "Écoutez. La voix part-elle d'en bas pour grimper (montant), ou reste-t-elle perchée (haut) ? Dessinez le ton avec le doigt avant de répondre.",
       "options": [
         {
@@ -301,9 +380,9 @@
       "drawIndex": 3,
       "id": "af9054b3-c2c3-529b-9967-e3008bfbc805",
       "type": "audio_choice",
-      "itemId": "4c1d8dd0-cc90-5fde-818a-71cab54f4dfe",
+      "itemId": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
       "skill": "listening",
-      "audioAssetId": "3ce3875e-da10-52ab-b054-e00563e3e074",
+      "audioAssetId": "fd3fe01d-a270-5a56-9d70-beeb8d54d904",
       "promptFr": "Écoutez. La voix part-elle d'en bas pour grimper (montant), ou reste-t-elle perchée (haut) ? Dessinez le ton avec le doigt avant de répondre.",
       "options": [
         {
@@ -331,9 +410,9 @@
       "drawIndex": 4,
       "id": "6b347e5a-65d5-5c39-a8c0-64f63b7aea33",
       "type": "audio_choice",
-      "itemId": "130f449f-11ff-5f14-acaf-c3586c245da1",
+      "itemId": "2c666c9a-ab80-5d7b-b424-8730bc8b2f64",
       "skill": "listening",
-      "audioAssetId": "44ebb3a1-f074-562b-95e8-c3b2b0e1c3e0",
+      "audioAssetId": "b9291211-07ab-561f-a915-c1f2ba01db28",
       "promptFr": "Écoutez. La voix part-elle d'en bas pour grimper (montant), ou reste-t-elle perchée (haut) ? Dessinez le ton avec le doigt avant de répondre.",
       "options": [
         {
@@ -361,9 +440,9 @@
       "drawIndex": 5,
       "id": "8494ab6e-f059-5cbd-8335-b998571c4fe6",
       "type": "audio_choice",
-      "itemId": "f571d0fd-5b69-5ff5-99f0-91bf8ba7fd14",
+      "itemId": "8b3c716f-8414-5107-9da6-2f49fd641d16",
       "skill": "listening",
-      "audioAssetId": "f24014ed-596b-51db-854f-9d772f115fe3",
+      "audioAssetId": "1c6d78a9-6bfe-5078-9cca-04f398f03eb1",
       "promptFr": "Écoutez. La voix part-elle d'en bas pour grimper (montant), ou reste-t-elle perchée (haut) ? Dessinez le ton avec le doigt avant de répondre.",
       "options": [
         {
@@ -391,9 +470,9 @@
       "drawIndex": 6,
       "id": "bfd25bbf-86ea-517c-a4cd-3babbace65f9",
       "type": "audio_choice",
-      "itemId": "a44b843a-cb97-5b04-9d22-3d81acdc4692",
+      "itemId": "6f2a5c3c-63ab-520f-86d1-ed8cf683e7da",
       "skill": "listening",
-      "audioAssetId": "31dbd568-7b89-5d85-a2b5-b7ea0c09c7d1",
+      "audioAssetId": "62c99441-79b0-5831-a62f-5d758c8486c2",
       "promptFr": "Écoutez. La voix part-elle d'en bas pour grimper (montant), ou reste-t-elle perchée (haut) ? Dessinez le ton avec le doigt avant de répondre.",
       "options": [
         {
@@ -426,22 +505,22 @@
       "pairs": [
         {
           "id": "13e4d30f-020a-5eab-b80d-f453dd039b41",
-          "itemId": "99ccbd6a-386d-59e3-9b72-cad436e0a3f1",
+          "itemId": "dcb06ffb-fee4-526c-b6cb-be66a07276eb",
           "labelFr": "chien"
         },
         {
           "id": "23753467-51d2-5191-82bb-cf44bab1cb4e",
-          "itemId": "c9fbdf87-a25b-5f43-adee-65bb62a01e90",
+          "itemId": "4193b284-8a6e-5919-9b2d-7e9705221749",
           "labelFr": "cheval"
         },
         {
           "id": "ac2d7d9c-5cbc-57eb-81d5-ebab513a69ee",
-          "itemId": "87aec6f2-7331-5a0a-bcf4-0da154fe37b6",
+          "itemId": "6ef70ca4-73d6-5c73-968f-d4b653de910a",
           "labelFr": "oncle ou tante côté maman"
         },
         {
           "id": "2e48eace-0225-5663-abd4-fc1299c34c33",
-          "itemId": "a44b843a-cb97-5b04-9d22-3d81acdc4692",
+          "itemId": "6f2a5c3c-63ab-520f-86d1-ed8cf683e7da",
           "labelFr": "fuir"
         }
       ],
@@ -456,7 +535,7 @@
       "drawIndex": 1,
       "id": "c5e5ef74-24c0-506a-897e-40ec0b3a58cb",
       "type": "recall",
-      "itemId": "c9fbdf87-a25b-5f43-adee-65bb62a01e90",
+      "itemId": "4193b284-8a6e-5919-9b2d-7e9705221749",
       "skill": "recall",
       "promptFr": "Répondez de mémoire, sans réécouter. Écrivez la réponse en thaï ou en transcription Thaïnaute.",
       "acceptedAnswers": [
@@ -481,7 +560,7 @@
       "drawIndex": 2,
       "id": "26d5d470-29ef-5bf4-8231-e026fd93d5e1",
       "type": "recall",
-      "itemId": "99ccbd6a-386d-59e3-9b72-cad436e0a3f1",
+      "itemId": "dcb06ffb-fee4-526c-b6cb-be66a07276eb",
       "skill": "recall",
       "promptFr": "Répondez de mémoire, sans réécouter. Écrivez la réponse en thaï ou en transcription Thaïnaute.",
       "acceptedAnswers": [
@@ -506,7 +585,7 @@
       "drawIndex": 3,
       "id": "96642f49-9d7d-57a5-ad42-b2aafada73d5",
       "type": "recall",
-      "itemId": "130f449f-11ff-5f14-acaf-c3586c245da1",
+      "itemId": "2c666c9a-ab80-5d7b-b424-8730bc8b2f64",
       "skill": "recall",
       "promptFr": "Répondez de mémoire, sans réécouter. Écrivez la réponse en thaï ou en transcription Thaïnaute.",
       "acceptedAnswers": [
@@ -592,7 +671,11 @@
     }
   ],
   "provenance": {
-    "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"],
+    "sourceIds": [
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
     "generationActors": [
       {
         "actorId": "24f46498-58ce-5405-be1e-ec9d17dc0afc",

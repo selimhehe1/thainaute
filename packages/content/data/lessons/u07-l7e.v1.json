@@ -15,7 +15,7 @@
   "audioManifestId": "b0342c66-6f80-5d60-9285-7a609fed624d",
   "items": [
     {
-      "id": "3278ebdc-3b6e-539a-ac49-59164793b71d",
+      "id": "7596ca9d-18dd-5149-b601-649b044c17c5",
       "thaiRaw": "วัน",
       "unicodeCodePoints": [
         "U+0E27",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "9b6dd22c-4613-5627-adbb-11d68ac6cedf",
+      "id": "809bd927-981f-57a7-961b-1553aa2e3d30",
       "thaiRaw": "วันนี้",
       "unicodeCodePoints": [
         "U+0E27",
@@ -88,7 +88,7 @@
       ]
     },
     {
-      "id": "6b483c8e-fb9e-5e70-b97e-e1d028d2bd66",
+      "id": "2c666c9a-ab80-5d7b-b424-8730bc8b2f64",
       "thaiRaw": "นี้",
       "unicodeCodePoints": [
         "U+0E19",
@@ -119,7 +119,7 @@
       ]
     },
     {
-      "id": "b33b1c0e-7120-5127-b6ff-2cba85dc760d",
+      "id": "2d788d0b-1dbb-50ec-9a98-94bfd1b11585",
       "thaiRaw": "สบายดี",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -167,7 +167,7 @@
       ]
     },
     {
-      "id": "49f9e8b6-18e2-563a-8c9d-21d4f3844424",
+      "id": "25df140d-de13-5fae-93df-3a8b1d91d111",
       "thaiRaw": "ไหม",
       "unicodeCodePoints": [
         "U+0E44",
@@ -196,7 +196,7 @@
       ]
     },
     {
-      "id": "dfc330f5-2903-5331-9f0e-9e98b0799cd3",
+      "id": "69d6653c-a167-57e2-ad62-f46a8def13ff",
       "thaiRaw": "แล้วคุณล่ะ",
       "unicodeCodePoints": [
         "U+0E41",
@@ -218,9 +218,25 @@
       "syllables": [
         {
           "thaiRaw": "แล้วคุณล่ะ",
-          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
-          "tone": "falling",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
           "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
           "initial": "l",
           "final": "aucune"
         }
@@ -232,7 +248,7 @@
       ]
     },
     {
-      "id": "643a4281-7514-514e-8a7b-395eccf6de6d",
+      "id": "89a1013b-a371-5815-b0b0-9492ef877c14",
       "thaiRaw": "ผมไปตลาดครับ",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -256,18 +272,42 @@
       "syllables": [
         {
           "thaiRaw": "ผมไปตลาดครับ",
-          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
-          "tone": "low",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
           "vowelLength": "short",
           "initial": "pʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
           "final": "aucune"
         },
         {
           "thaiRaw": "ผมไปตลาดครับ",
-          "ipa": "laːt̚˨˩ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "l",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -278,7 +318,7 @@
       ]
     },
     {
-      "id": "6c98b873-f3d7-58bc-ae1f-2146e11b2e71",
+      "id": "57421039-0ac4-57c0-965f-fbf272f17245",
       "thaiRaw": "ไม่ไกล",
       "unicodeCodePoints": [
         "U+0E44",
@@ -296,10 +336,18 @@
       "syllables": [
         {
           "thaiRaw": "ไม่ไกล",
-          "ipa": "maj˥˩ klaj˧",
-          "tone": "mid",
+          "ipa": "maj˥˩",
+          "tone": "falling",
           "vowelLength": "short",
           "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่ไกล",
+          "ipa": "klaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kl",
           "final": "j"
         }
       ],
@@ -310,7 +358,7 @@
       ]
     },
     {
-      "id": "7e0a9290-6ed3-5a61-9b9c-0d8c295ac12e",
+      "id": "b580ef9b-4d3f-5f3e-91de-ee86e6b2e83c",
       "thaiRaw": "ข้าวผัด",
       "unicodeCodePoints": [
         "U+0E02",
@@ -351,7 +399,7 @@
       ]
     },
     {
-      "id": "f85cf97c-4856-50c4-a2f9-94012ae73b78",
+      "id": "1c437b77-9a47-5cf1-9a3f-b815087d2876",
       "thaiRaw": "อร่อยมาก",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -379,10 +427,18 @@
         },
         {
           "thaiRaw": "อร่อยมาก",
-          "ipa": "rɔj˨˩ maːk̚˥˩",
+          "ipa": "rɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "อร่อยมาก",
+          "ipa": "maːk̚˥˩",
           "tone": "falling",
           "vowelLength": "long",
-          "initial": "r",
+          "initial": "m",
           "final": "k̚"
         }
       ],
@@ -393,7 +449,7 @@
       ]
     },
     {
-      "id": "29a99abe-8a82-5103-8e1f-e94886603d57",
+      "id": "37bee23d-3348-5016-a5ec-adc662519dc6",
       "thaiRaw": "หิวมาก",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -411,10 +467,18 @@
       "syllables": [
         {
           "thaiRaw": "หิวมาก",
-          "ipa": "hiw˩˩˦ maːk̚˥˩",
+          "ipa": "hiw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "หิวมาก",
+          "ipa": "maːk̚˥˩",
           "tone": "falling",
           "vowelLength": "long",
-          "initial": "h",
+          "initial": "m",
           "final": "k̚"
         }
       ],
@@ -425,7 +489,7 @@
       ]
     },
     {
-      "id": "784cc6b6-fab0-5199-a5c7-91c151406ce4",
+      "id": "e6662fad-a0c9-5768-a115-f30b78800083",
       "thaiRaw": "ข้าวผัดเท่าไร",
       "unicodeCodePoints": [
         "U+0E02",
@@ -458,10 +522,18 @@
         },
         {
           "thaiRaw": "ข้าวผัดเท่าไร",
-          "ipa": "pʰat̚˨˩ tʰaw˥˩",
-          "tone": "falling",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
           "vowelLength": "short",
           "initial": "pʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ข้าวผัดเท่าไร",
+          "ipa": "tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "tʰ",
           "final": "w"
         },
         {
@@ -480,7 +552,7 @@
       ]
     },
     {
-      "id": "bc297c28-0804-5de6-8464-b09eb57d1834",
+      "id": "5bba2265-45b1-56e8-a104-fc2c494e8e36",
       "thaiRaw": "สี่สิบบาท",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -509,10 +581,18 @@
         },
         {
           "thaiRaw": "สี่สิบบาท",
-          "ipa": "sip̚˨˩ baːt̚˨˩",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "สี่สิบบาท",
+          "ipa": "baːt̚˨˩",
           "tone": "low",
           "vowelLength": "long",
-          "initial": "s",
+          "initial": "b",
           "final": "t̚"
         }
       ],
@@ -523,7 +603,7 @@
       ]
     },
     {
-      "id": "3a041919-db0b-5148-9d58-f5144ab9cb3a",
+      "id": "b876f998-b244-526f-baf6-eedcc424928f",
       "thaiRaw": "ขอบคุณ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -563,7 +643,7 @@
       ]
     },
     {
-      "id": "9cdd2823-4b13-532c-8f43-f6d9415c4549",
+      "id": "55315f39-8bf0-5202-99f3-905da3243386",
       "thaiRaw": "แล้วเจอกัน",
       "unicodeCodePoints": [
         "U+0E41",
@@ -626,12 +706,12 @@
       "pairs": [
         {
           "id": "060c9d22-232a-5de1-8517-43551a76ec24",
-          "itemId": "7e0a9290-6ed3-5a61-9b9c-0d8c295ac12e",
+          "itemId": "b580ef9b-4d3f-5f3e-91de-ee86e6b2e83c",
           "labelFr": "riz sauté"
         },
         {
           "id": "b22f5565-246c-5871-bf15-8db62424ca7c",
-          "itemId": "f85cf97c-4856-50c4-a2f9-94012ae73b78",
+          "itemId": "1c437b77-9a47-5cf1-9a3f-b815087d2876",
           "labelFr": "très bon, au goût"
         }
       ],

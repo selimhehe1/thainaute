@@ -15,7 +15,7 @@
   "audioManifestId": "182efe4b-cdb1-55e7-b11f-a907534255cf",
   "items": [
     {
-      "id": "54c3fe2f-41b6-541e-a617-aac81dc0ec4f",
+      "id": "ac51834e-ccda-533c-a510-c2fccd4e5b9b",
       "thaiRaw": "ปา",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "d8ee8135-fc17-51c6-9bab-1e9dc54e3b62",
+      "id": "14091eca-4f0d-5767-a1d8-ae0fea34c3a1",
       "thaiRaw": "พา",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "id": "fe27fb79-2f42-57c6-8e80-d41853b2903d",
+      "id": "0962b3d1-10ff-53f2-92e4-679765122be3",
       "thaiRaw": "ป่า",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "id": "90b32bc6-38f8-5884-a640-94cd8ae93e7f",
+      "id": "650e7aad-ef9c-5b56-b54b-2cf4a2d9c0c9",
       "thaiRaw": "ผ่า",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -139,7 +139,7 @@
       ]
     },
     {
-      "id": "a683428c-f3ff-560f-aade-4e8a6e9904d3",
+      "id": "1b02c2c0-ac86-59c1-bf2e-fe7798bf823f",
       "thaiRaw": "พูด",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -171,7 +171,7 @@
       ]
     },
     {
-      "id": "a12ebbfa-b208-5472-98f2-9a976298cdc6",
+      "id": "05692bb9-f1d0-5735-a866-858c559c74a0",
       "thaiRaw": "พอ",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -202,7 +202,7 @@
       ]
     },
     {
-      "id": "2ed3b3fe-146b-5754-be59-56c3b22081c2",
+      "id": "53e711b1-0695-5c94-92b2-f1eae6970f76",
       "thaiRaw": "แพง",
       "unicodeCodePoints": [
         "U+0E41",
@@ -233,7 +233,7 @@
       ]
     },
     {
-      "id": "9d188981-6e79-56a9-a973-ffc9ebe8e93d",
+      "id": "b4357e2c-cbcc-508f-b6c8-962371ccb674",
       "thaiRaw": "เพลง",
       "unicodeCodePoints": [
         "U+0E40",
@@ -271,7 +271,7 @@
       "drawIndex": 1,
       "id": "9aed26ae-042a-52a2-9b35-bc4df8327a9f",
       "type": "recall",
-      "itemId": "d8ee8135-fc17-51c6-9bab-1e9dc54e3b62",
+      "itemId": "14091eca-4f0d-5767-a1d8-ae0fea34c3a1",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Ce qui est mesuré ici, c’est le h du souffle.",
       "acceptedAnswers": [
@@ -296,7 +296,7 @@
       "drawIndex": 2,
       "id": "620b1bb0-a388-5e87-9864-224b882ea7e5",
       "type": "recall",
-      "itemId": "54c3fe2f-41b6-541e-a617-aac81dc0ec4f",
+      "itemId": "ac51834e-ccda-533c-a510-c2fccd4e5b9b",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Ce qui est mesuré ici, c’est le h du souffle.",
       "acceptedAnswers": [
@@ -321,7 +321,7 @@
       "drawIndex": 3,
       "id": "46488290-5af7-5e16-b130-b13e217034f4",
       "type": "recall",
-      "itemId": "90b32bc6-38f8-5884-a640-94cd8ae93e7f",
+      "itemId": "650e7aad-ef9c-5b56-b54b-2cf4a2d9c0c9",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Ce qui est mesuré ici, c’est le h du souffle.",
       "acceptedAnswers": [
@@ -350,7 +350,7 @@
       "drawIndex": 4,
       "id": "0567d261-1908-575a-a061-76c62e9bd23d",
       "type": "recall",
-      "itemId": "fe27fb79-2f42-57c6-8e80-d41853b2903d",
+      "itemId": "0962b3d1-10ff-53f2-92e4-679765122be3",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Ce qui est mesuré ici, c’est le h du souffle.",
       "acceptedAnswers": [
@@ -379,7 +379,7 @@
       "drawIndex": 5,
       "id": "507bc2ef-860c-540c-af70-013d88cacc2c",
       "type": "recall",
-      "itemId": "a12ebbfa-b208-5472-98f2-9a976298cdc6",
+      "itemId": "05692bb9-f1d0-5735-a866-858c559c74a0",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Ce qui est mesuré ici, c’est le h du souffle.",
       "acceptedAnswers": [
@@ -404,7 +404,7 @@
       "drawIndex": 1,
       "id": "4d9bcc5f-f36d-5cac-b8eb-48e22c029964",
       "type": "reading",
-      "itemId": "2ed3b3fe-146b-5754-be59-56c3b22081c2",
+      "itemId": "53e711b1-0695-5c94-92b2-f1eae6970f76",
       "skill": "reading",
       "promptFr": "Regardez le mot. Quelle est la première lettre que l’on prononce ?",
       "options": [
@@ -445,7 +445,7 @@
       "drawIndex": 2,
       "id": "020307f8-aefa-5841-b6ef-68a34a0c2094",
       "type": "reading",
-      "itemId": "9d188981-6e79-56a9-a973-ffc9ebe8e93d",
+      "itemId": "b4357e2c-cbcc-508f-b6c8-962371ccb674",
       "skill": "reading",
       "promptFr": "Regardez le mot. Quelle est la première lettre que l’on prononce ?",
       "options": [
@@ -486,7 +486,7 @@
       "drawIndex": 3,
       "id": "09d2ec55-cd98-5a31-bbdb-438b50f72f8f",
       "type": "reading",
-      "itemId": "a683428c-f3ff-560f-aade-4e8a6e9904d3",
+      "itemId": "1b02c2c0-ac86-59c1-bf2e-fe7798bf823f",
       "skill": "reading",
       "promptFr": "Regardez le mot. Quelle est la première lettre que l’on prononce ?",
       "options": [
@@ -527,7 +527,7 @@
       "drawIndex": 4,
       "id": "4fa4e61e-c081-5b34-9e74-91681725b919",
       "type": "reading",
-      "itemId": "a12ebbfa-b208-5472-98f2-9a976298cdc6",
+      "itemId": "05692bb9-f1d0-5735-a866-858c559c74a0",
       "skill": "reading",
       "promptFr": "Regardez le mot. Quelle est la première lettre que l’on prononce ?",
       "options": [
@@ -562,7 +562,7 @@
       "drawIndex": 5,
       "id": "33dee72e-b9e3-5d14-b323-f8b92d9d651e",
       "type": "reading",
-      "itemId": "54c3fe2f-41b6-541e-a617-aac81dc0ec4f",
+      "itemId": "ac51834e-ccda-533c-a510-c2fccd4e5b9b",
       "skill": "reading",
       "promptFr": "Regardez le mot. Quelle est la première lettre que l’on prononce ?",
       "options": [

@@ -15,7 +15,7 @@
   "audioManifestId": "1fe475fa-956d-5127-9719-f0b192ee256f",
   "items": [
     {
-      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "id": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "thaiRaw": "ดิฉัน",
       "unicodeCodePoints": [
         "U+0E14",
@@ -86,7 +86,7 @@
       ]
     },
     {
-      "id": "ec31bb5a-e823-5845-abcf-b97b5875178c",
+      "id": "8571e8be-a7b9-5e38-bec5-286ee3071718",
       "thaiRaw": "คุณ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -117,7 +117,7 @@
       ]
     },
     {
-      "id": "acb8c73c-3f44-5f8f-a216-4f4a6666d377",
+      "id": "93a9ee69-3d8c-548d-9e33-20cff5702638",
       "thaiRaw": "ชื่อ",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -149,7 +149,7 @@
       ]
     },
     {
-      "id": "732389ad-5e92-5e6a-b1d8-3ab3643a6a1c",
+      "id": "80b6b321-610c-5d5f-9311-2ec3717f837c",
       "thaiRaw": "อะไร",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -189,7 +189,7 @@
       ]
     },
     {
-      "id": "fd8dc7fa-f511-562b-a006-4074f91b6bef",
+      "id": "7aad53ff-473e-5144-afbd-0c1c3b885b80",
       "thaiRaw": "มาจาก",
       "unicodeCodePoints": [
         "U+0E21",
@@ -230,7 +230,7 @@
       ]
     },
     {
-      "id": "e3935789-56d2-5fc9-b0eb-1519af871cd4",
+      "id": "7cb77f01-3265-5744-bd79-19093f207dc6",
       "thaiRaw": "ฝรั่งเศส",
       "unicodeCodePoints": [
         "U+0E1D",
@@ -288,7 +288,7 @@
       "drawIndex": 1,
       "id": "ad8adc2f-2f9d-55e7-be29-2e519a5cbc99",
       "type": "word_order",
-      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Claire, une femme, dit d’où elle vient. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
@@ -336,7 +336,7 @@
       "drawIndex": 1,
       "id": "994d3daa-4ab3-5538-9c0a-440f571cb65e",
       "type": "reading",
-      "itemId": "ec31bb5a-e823-5845-abcf-b97b5875178c",
+      "itemId": "8571e8be-a7b9-5e38-bec5-286ee3071718",
       "skill": "reading",
       "promptFr": "Vous voyez ce mot juste avant le nom d’une personne. Que signifie-t-il ici ?",
       "options": [
@@ -371,7 +371,7 @@
       "drawIndex": 1,
       "id": "e138ec73-c19f-5abd-97ac-59e0e4e9301c",
       "type": "word_order",
-      "itemId": "ec31bb5a-e823-5845-abcf-b97b5875178c",
+      "itemId": "8571e8be-a7b9-5e38-bec5-286ee3071718",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Malee, une femme, demande son nom à un client. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",

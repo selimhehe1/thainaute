@@ -29,6 +29,7 @@ import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { graphiesFabriquees } from "../src/anti-fabrication";
+import { DEFAULT_LANGUAGE_PACK_ID } from "../src/language-packs";
 import { itemSchema } from "../src/schemas";
 
 // Modules JavaScript partagés avec scripts/verification, typés par les
@@ -168,7 +169,17 @@ export function compilerItem(
   if (sourceIds.length === 0) return refus("aucune source reconnue");
 
   const compile = {
-    id: uuidStable("item", identifiantLecon, thaiRaw),
+    // L'identité d'une carte est la GRAPHIE, pas la leçon qui l'enseigne.
+    //
+    // Elle a longtemps porté `identifiantLecon` : le même mot revu dans une
+    // autre leçon devenait donc une autre carte, et comme `learner_item_state`
+    // s'indexe sur l'identifiant, la maîtrise ne se consolidait jamais.
+    // ครับ existait en neuf exemplaires, révisés séparément. Voir ADR-0042.
+    //
+    // Le pack de langue reste dans l'empreinte : deux cours différents ne
+    // partagent pas leur mémoire. Le sens n'y entre que pour les homographes,
+    // qui déclarent un `sens` explicite.
+    id: uuidStable("item", DEFAULT_LANGUAGE_PACK_ID, thaiRaw, item.sens ?? ""),
     thaiRaw,
     unicodeCodePoints: recalcules,
     translationFr: item.fr ?? null,

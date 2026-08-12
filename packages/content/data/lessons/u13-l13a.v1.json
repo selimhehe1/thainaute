@@ -15,7 +15,7 @@
   "audioManifestId": "0ced35ae-8dbc-53e4-9716-10180553b4ad",
   "items": [
     {
-      "id": "8a880f7c-14c7-5880-9954-ceb23b2e8218",
+      "id": "8c649ea6-42c1-56bf-bf81-e741d756dd54",
       "thaiRaw": "ครับ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "9d79d1f6-412b-5381-beb3-e2daee33cb58",
+      "id": "de8d77e0-edeb-5fd5-bb0c-ef6355da5e14",
       "thaiRaw": "ค่ะ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "id": "2286caa2-0f40-5233-8146-5a5c63043b0f",
+      "id": "7a2a550a-4e7c-59a7-9428-1949931cfbce",
       "thaiRaw": "คะ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "id": "c974f188-923d-592d-b9c4-cedd6c3e1629",
+      "id": "25df140d-de13-5fae-93df-3a8b1d91d111",
       "thaiRaw": "ไหม",
       "unicodeCodePoints": [
         "U+0E44",
@@ -135,7 +135,7 @@
       ]
     },
     {
-      "id": "fbda15ce-6b47-52ed-8149-b2667680e2e4",
+      "id": "69d6653c-a167-57e2-ad62-f46a8def13ff",
       "thaiRaw": "แล้วคุณล่ะ",
       "unicodeCodePoints": [
         "U+0E41",
@@ -157,9 +157,25 @@
       "syllables": [
         {
           "thaiRaw": "แล้วคุณล่ะ",
-          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
-          "tone": "falling",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
           "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
           "initial": "l",
           "final": "aucune"
         }
@@ -171,7 +187,7 @@
       ]
     },
     {
-      "id": "b67231cc-60a6-5a0f-be22-5f1cac35dd0c",
+      "id": "d2c0764d-d46e-5236-953a-7bf7de63b754",
       "thaiRaw": "สบายดีไหมครับ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -243,7 +259,7 @@
       ]
     },
     {
-      "id": "bd6023ed-d364-5d53-9bf4-441a5c07bbad",
+      "id": "57ce3a67-d421-52ee-acec-093ca35b60e6",
       "thaiRaw": "สบายดีค่ะ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -302,7 +318,7 @@
       ]
     },
     {
-      "id": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "id": "82c986ae-8f02-59eb-bf25-d7093e725a70",
       "thaiRaw": "ไป",
       "unicodeCodePoints": [
         "U+0E44",
@@ -333,7 +349,7 @@
       ]
     },
     {
-      "id": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "id": "277c2b47-0a34-5384-934d-b71aa8cb5e6a",
       "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -374,18 +390,42 @@
         },
         {
           "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
-          "ipa": "naːm˦˥ juː˨˩ tʰiː˥˩",
-          "tone": "falling",
+          "ipa": "naːm˦˥",
+          "tone": "high",
           "vowelLength": "long",
           "initial": "n",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
           "final": "aucune"
         },
         {
           "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
-          "ipa": "naj˩˩˦ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
           "vowelLength": "short",
           "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -396,7 +436,7 @@
       ]
     },
     {
-      "id": "4adafc69-1048-5617-9c16-2c66bd6ab2ef",
+      "id": "7418d8c9-687e-523a-ada3-79e6b3199db7",
       "thaiRaw": "ตลาดอยู่ที่ไหน",
       "unicodeCodePoints": [
         "U+0E15",
@@ -430,10 +470,26 @@
         },
         {
           "thaiRaw": "ตลาดอยู่ที่ไหน",
-          "ipa": "laːt̚˨˩ juː˨˩ tʰiː˥˩",
-          "tone": "falling",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "l",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
           "final": "aucune"
         },
         {
@@ -452,7 +508,7 @@
       ]
     },
     {
-      "id": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "id": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
       "thaiRaw": "มี",
       "unicodeCodePoints": [
         "U+0E21",
@@ -482,7 +538,7 @@
       ]
     },
     {
-      "id": "2a9fea40-17eb-5b3d-a4e3-fabe48d0c0f6",
+      "id": "9f54a6ee-fbad-5b19-a8f2-cfeafcefa4b5",
       "thaiRaw": "ปวดหัว",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -523,7 +579,7 @@
       ]
     },
     {
-      "id": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "id": "7b459b92-ea44-5023-bd07-cf77cc1dd710",
       "thaiRaw": "แล้ว",
       "unicodeCodePoints": [
         "U+0E41",
@@ -565,22 +621,22 @@
       "pairs": [
         {
           "id": "6a2d0b63-d852-5f3b-9a81-80b44f4b5910",
-          "itemId": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+          "itemId": "277c2b47-0a34-5384-934d-b71aa8cb5e6a",
           "labelFr": "une seule particule, celle d’un homme"
         },
         {
           "id": "0bbff80e-d36d-5d12-ad1d-9dafa300f711",
-          "itemId": "bd6023ed-d364-5d53-9bf4-441a5c07bbad",
+          "itemId": "57ce3a67-d421-52ee-acec-093ca35b60e6",
           "labelFr": "une seule particule, celle d’une femme"
         },
         {
           "id": "9d5483a9-32d8-5b1d-b20e-68c2276645cd",
-          "itemId": "4adafc69-1048-5617-9c16-2c66bd6ab2ef",
+          "itemId": "7418d8c9-687e-523a-ada3-79e6b3199db7",
           "labelFr": "aucune particule"
         },
         {
           "id": "ef76075c-9548-5fe3-8c82-c05fbb7a279e",
-          "itemId": "fbda15ce-6b47-52ed-8149-b2667680e2e4",
+          "itemId": "69d6653c-a167-57e2-ad62-f46a8def13ff",
           "labelFr": "une seule particule, et ce n’est pas une politesse"
         }
       ],
@@ -601,7 +657,7 @@
       "drawIndex": 1,
       "id": "820328df-a3b8-54e3-ba04-d329d441b91b",
       "type": "word_order",
-      "itemId": "b67231cc-60a6-5a0f-be22-5f1cac35dd0c",
+      "itemId": "d2c0764d-d46e-5236-953a-7bf7de63b754",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -649,7 +705,7 @@
       "drawIndex": 2,
       "id": "bfac0e5a-61aa-55a3-a111-bad6aee94659",
       "type": "word_order",
-      "itemId": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "itemId": "7b459b92-ea44-5023-bd07-cf77cc1dd710",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -703,7 +759,7 @@
       "drawIndex": 3,
       "id": "a8979042-e86a-5996-9237-5aaf7d0dfce0",
       "type": "word_order",
-      "itemId": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "itemId": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -757,7 +813,7 @@
       "drawIndex": 4,
       "id": "e4125939-d640-5410-bb6d-8ae97276b0d0",
       "type": "word_order",
-      "itemId": "2a9fea40-17eb-5b3d-a4e3-fabe48d0c0f6",
+      "itemId": "9f54a6ee-fbad-5b19-a8f2-cfeafcefa4b5",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -805,7 +861,7 @@
       "drawIndex": 5,
       "id": "3e433f33-3846-5087-87bb-4c33c2f7c34b",
       "type": "word_order",
-      "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "itemId": "82c986ae-8f02-59eb-bf25-d7093e725a70",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -847,7 +903,7 @@
       "drawIndex": 6,
       "id": "cda1d162-3c28-5790-89c2-2b9826151664",
       "type": "word_order",
-      "itemId": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "itemId": "277c2b47-0a34-5384-934d-b71aa8cb5e6a",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",

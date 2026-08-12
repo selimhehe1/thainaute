@@ -15,7 +15,7 @@
   "audioManifestId": "82653a9a-2001-53eb-9024-99f88c29a4ee",
   "items": [
     {
-      "id": "02409488-cf0d-5a27-a47a-c84cef979c89",
+      "id": "6b292295-cdc4-527c-9bbb-a6eac10553aa",
       "thaiRaw": "กู",
       "unicodeCodePoints": [
         "U+0E01",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "id": "bad6e567-bb4e-5098-a735-72812045d9f3",
+      "id": "e77347d5-debd-5228-bd30-7684e8d8c18a",
       "thaiRaw": "มึง",
       "unicodeCodePoints": [
         "U+0E21",
@@ -74,7 +74,7 @@
       ]
     },
     {
-      "id": "8316e77d-6ff4-572c-91b4-4ff25c1e07a8",
+      "id": "c4321a39-2111-529f-a0e2-6c21384584a0",
       "thaiRaw": "แก",
       "unicodeCodePoints": [
         "U+0E41",
@@ -103,7 +103,7 @@
       ]
     },
     {
-      "id": "f9b8d807-5211-50fe-a855-c9dfe355aa6e",
+      "id": "08ef470e-328d-52c5-9daa-22274dfc8f20",
       "thaiRaw": "มัน",
       "unicodeCodePoints": [
         "U+0E21",
@@ -133,7 +133,7 @@
       ]
     },
     {
-      "id": "fd3a5c25-748c-5777-a9d4-9ae2b17bb582",
+      "id": "0da81f62-db11-55cc-9cc4-41d99b449e59",
       "thaiRaw": "วะ",
       "unicodeCodePoints": [
         "U+0E27",
@@ -162,7 +162,7 @@
       ]
     },
     {
-      "id": "676434c9-9143-5d76-be63-413c0781b391",
+      "id": "caa9883d-9133-517a-a8eb-cc985f63a802",
       "thaiRaw": "ไอ้",
       "unicodeCodePoints": [
         "U+0E44",
@@ -192,7 +192,7 @@
       ]
     },
     {
-      "id": "c9760cd0-ad35-5551-abc6-2781db61756a",
+      "id": "592d5745-ca30-50a4-9940-d9dbf9b42f21",
       "thaiRaw": "อี",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -221,7 +221,7 @@
       ]
     },
     {
-      "id": "b7f6fcc7-9b67-5724-9a15-34a932b0dfe4",
+      "id": "ccbe4f82-db18-5e45-a09e-3830852706ea",
       "thaiRaw": "เออ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -262,22 +262,22 @@
       "pairs": [
         {
           "id": "4746a7b8-e827-5d4e-aee6-0704f20d73ad",
-          "itemId": "02409488-cf0d-5a27-a47a-c84cef979c89",
+          "itemId": "6b292295-cdc4-527c-9bbb-a6eac10553aa",
           "labelFr": "je, moi, dans une forme que le dictionnaire donne pour impolie aujourd’hui"
         },
         {
           "id": "ef8b10d9-b398-5f3d-b199-1079ef2731a9",
-          "itemId": "bad6e567-bb4e-5098-a735-72812045d9f3",
+          "itemId": "e77347d5-debd-5228-bd30-7684e8d8c18a",
           "labelFr": "tu, toi, dans une forme que le dictionnaire donne pour impolie ou grossière"
         },
         {
           "id": "5cdd993a-3544-5161-b63b-955370301be1",
-          "itemId": "8316e77d-6ff4-572c-91b4-4ff25c1e07a8",
+          "itemId": "c4321a39-2111-529f-a0e2-6c21384584a0",
           "labelFr": "tu, toi, adressé à quelqu’un de proche, plus jeune ou de rang inférieur"
         },
         {
           "id": "2fb05fd9-3b8c-5fc4-86c2-d4fdb66a7506",
-          "itemId": "f9b8d807-5211-50fe-a855-c9dfe355aa6e",
+          "itemId": "08ef470e-328d-52c5-9daa-22274dfc8f20",
           "labelFr": "il, elle, en parlant de quelqu’un sans égard pour lui"
         }
       ],
@@ -308,22 +308,22 @@
       "pairs": [
         {
           "id": "061ced49-2766-57a9-9e4b-5f9353190c39",
-          "itemId": "fd3a5c25-748c-5777-a9d4-9ae2b17bb582",
+          "itemId": "0da81f62-db11-55cc-9cc4-41d99b449e59",
           "labelFr": "à la fin d’une phrase : entre soi, ou impoli"
         },
         {
           "id": "44f0e471-0a5f-5a17-9911-936f3909ab58",
-          "itemId": "676434c9-9143-5d76-be63-413c0781b391",
+          "itemId": "caa9883d-9133-517a-a8eb-cc985f63a802",
           "labelFr": "devant le prénom d’un homme, très proche ou méprisant"
         },
         {
           "id": "34186f88-329f-5fde-a660-80288e75c963",
-          "itemId": "c9760cd0-ad35-5551-abc6-2781db61756a",
+          "itemId": "592d5745-ca30-50a4-9940-d9dbf9b42f21",
           "labelFr": "devant le prénom d’une femme, très proche ou méprisant"
         },
         {
           "id": "aa4b7a7e-944d-55e4-aaff-641ef8895e18",
-          "itemId": "b7f6fcc7-9b67-5724-9a15-34a932b0dfe4",
+          "itemId": "ccbe4f82-db18-5e45-a09e-3830852706ea",
           "labelFr": "oui, d’accord ; les sources ne s’accordent pas sur ce qu’il signale d’autre"
         }
       ],

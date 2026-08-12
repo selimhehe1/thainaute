@@ -15,7 +15,7 @@
   "audioManifestId": "27a1a0ab-6ffe-5442-89f9-7eb5ff5bc7a5",
   "items": [
     {
-      "id": "5302f19f-6702-5094-a265-594987302b16",
+      "id": "37fcf196-05db-5803-9862-62d8984887a6",
       "thaiRaw": "ถูก",
       "unicodeCodePoints": [
         "U+0E16",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "3b32ec46-b612-521c-bd58-7a1f048f4368",
+      "id": "752aa6a6-a173-55e0-83b2-3808fd821fb5",
       "thaiRaw": "ใหญ่",
       "unicodeCodePoints": [
         "U+0E43",
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "id": "3f367f63-b643-5daa-802e-61f9975189cf",
+      "id": "9e563010-ab8d-58fc-a820-554d6f61d15b",
       "thaiRaw": "เล็ก",
       "unicodeCodePoints": [
         "U+0E40",
@@ -110,7 +110,7 @@
       ]
     },
     {
-      "id": "e7f91cd1-397b-5a7e-a5c9-f3e681bcd480",
+      "id": "83157308-4516-5a85-899b-c1b7bb474bf1",
       "thaiRaw": "เกินไป",
       "unicodeCodePoints": [
         "U+0E40",
@@ -152,7 +152,7 @@
       ]
     },
     {
-      "id": "30c4ce14-29f0-50e8-8ac3-44b124756689",
+      "id": "9244aeac-d0a9-5ede-8200-a79f91e0d106",
       "thaiRaw": "แพงเกินไป",
       "unicodeCodePoints": [
         "U+0E41",
@@ -203,7 +203,7 @@
       ]
     },
     {
-      "id": "f32a93fa-b1ce-5398-954e-c95f7c826324",
+      "id": "335fec12-3370-563f-b33d-347ba89622bd",
       "thaiRaw": "ใหญ่เกินไป",
       "unicodeCodePoints": [
         "U+0E43",
@@ -255,7 +255,7 @@
       ]
     },
     {
-      "id": "665107f8-96f5-548b-b155-6c23b16e4124",
+      "id": "bdc62c83-9724-5d7f-8217-5c313f43122b",
       "thaiRaw": "เล็กเกินไป",
       "unicodeCodePoints": [
         "U+0E40",
@@ -307,7 +307,7 @@
       ]
     },
     {
-      "id": "0793fd77-21c3-5f7b-a4f8-a99e4ea795b2",
+      "id": "d8f23408-a3bb-5398-b2a3-84427b48fefb",
       "thaiRaw": "อันนี้แพงเกินไปครับ",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -392,7 +392,7 @@
       ]
     },
     {
-      "id": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "id": "3e84a18d-87da-501f-962c-0bbe547faf4e",
       "thaiRaw": "อันนี้",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -434,7 +434,7 @@
       ]
     },
     {
-      "id": "6cee9997-d90d-57a1-92f1-2f0ec07962a4",
+      "id": "8cad0c9b-eb0b-57eb-8100-5abaa5dfc2c8",
       "thaiRaw": "อันนี้เท่าไรครับ",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -470,18 +470,34 @@
         },
         {
           "thaiRaw": "อันนี้เท่าไรครับ",
-          "ipa": "niː˦˥ tʰaw˥˩",
-          "tone": "falling",
+          "ipa": "niː˦˥",
+          "tone": "high",
           "vowelLength": "long",
           "initial": "n",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อันนี้เท่าไรครับ",
+          "ipa": "tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "tʰ",
           "final": "w"
         },
         {
           "thaiRaw": "อันนี้เท่าไรครับ",
-          "ipa": "raj˧ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "raj˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "r",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "อันนี้เท่าไรครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -498,7 +514,7 @@
       "drawIndex": 1,
       "id": "be9d9ab1-ec53-546c-a128-3d3da3233e75",
       "type": "word_order",
-      "itemId": "0793fd77-21c3-5f7b-a4f8-a99e4ea795b2",
+      "itemId": "d8f23408-a3bb-5398-b2a3-84427b48fefb",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",
@@ -557,7 +573,7 @@
       "drawIndex": 2,
       "id": "c131ab79-9515-5df3-96d8-95e9ad86f81b",
       "type": "word_order",
-      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "itemId": "3e84a18d-87da-501f-962c-0bbe547faf4e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",
@@ -616,7 +632,7 @@
       "drawIndex": 3,
       "id": "4c86936b-2323-5075-b5d9-28f55c56c9e4",
       "type": "word_order",
-      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "itemId": "3e84a18d-87da-501f-962c-0bbe547faf4e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",
@@ -675,7 +691,7 @@
       "drawIndex": 4,
       "id": "70e91670-466e-59e9-8c4e-14967af4fd4f",
       "type": "word_order",
-      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "itemId": "3e84a18d-87da-501f-962c-0bbe547faf4e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",
@@ -733,7 +749,7 @@
       "drawIndex": 5,
       "id": "32481c7d-802b-5345-822f-5691fdf1485a",
       "type": "word_order",
-      "itemId": "6cee9997-d90d-57a1-92f1-2f0ec07962a4",
+      "itemId": "8cad0c9b-eb0b-57eb-8100-5abaa5dfc2c8",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",

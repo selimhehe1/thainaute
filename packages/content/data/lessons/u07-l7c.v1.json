@@ -15,7 +15,7 @@
   "audioManifestId": "4372d7cf-8095-5147-8973-2df200744dd4",
   "items": [
     {
-      "id": "9bab9965-79bc-56f2-aad7-d2f646120697",
+      "id": "eec9a0ed-621d-5af5-8755-6aceac575964",
       "thaiRaw": "เช้า",
       "unicodeCodePoints": [
         "U+0E40",
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "id": "c5d98c3e-6ae4-56e4-b327-bb1b59d0b0cc",
+      "id": "e2714eff-70fe-5455-b0b0-d2d9924b14ad",
       "thaiRaw": "เย็น",
       "unicodeCodePoints": [
         "U+0E40",
@@ -79,7 +79,7 @@
       ]
     },
     {
-      "id": "4eaa5e3d-da3d-5f76-a452-84e6a05d7241",
+      "id": "7596ca9d-18dd-5149-b601-649b044c17c5",
       "thaiRaw": "วัน",
       "unicodeCodePoints": [
         "U+0E27",
@@ -110,7 +110,7 @@
       ]
     },
     {
-      "id": "496ad6df-38fa-5994-9cac-4500379d1834",
+      "id": "5a653239-e648-59bf-9c8a-78c5a74c5933",
       "thaiRaw": "ตอนเช้า",
       "unicodeCodePoints": [
         "U+0E15",
@@ -153,7 +153,7 @@
       ]
     },
     {
-      "id": "210ff548-ec87-56e9-8b94-88dfd26b9962",
+      "id": "c8f45994-4a9a-5055-adcf-9e416899bfbb",
       "thaiRaw": "ตอนเย็น",
       "unicodeCodePoints": [
         "U+0E15",
@@ -195,7 +195,7 @@
       ]
     },
     {
-      "id": "4de42781-0194-5a1e-9abd-bf1861631ebb",
+      "id": "2ca0118e-7713-595f-9452-81e323365b89",
       "thaiRaw": "ทุกวัน",
       "unicodeCodePoints": [
         "U+0E17",
@@ -237,7 +237,7 @@
       ]
     },
     {
-      "id": "ad23e9f9-0719-5ed9-ad30-f4a5eb42f2b1",
+      "id": "b549c2b7-049e-5dc5-a0f0-5d0562604d98",
       "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -268,26 +268,58 @@
       "syllables": [
         {
           "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
-          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
-          "tone": "low",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
           "vowelLength": "short",
           "initial": "pʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
           "final": "aucune"
         },
         {
           "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
-          "ipa": "laːt̚˨˩ tɔːn˧",
-          "tone": "mid",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "l",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
+          "ipa": "tɔːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t",
           "final": "n"
         },
         {
           "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
-          "ipa": "t͡ɕʰaːw˦˥ kʰrap̚˦˥",
+          "ipa": "t͡ɕʰaːw˦˥",
           "tone": "high",
           "vowelLength": "long",
           "initial": "t͡ɕʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -297,7 +329,7 @@
       ]
     },
     {
-      "id": "a2314622-905a-5774-b4da-2f3d28ad2449",
+      "id": "fa1b13f5-5aa2-5d63-8a6e-14fe4754f8c9",
       "thaiRaw": "ผมไปตลาดทุกวันครับ",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -327,26 +359,58 @@
       "syllables": [
         {
           "thaiRaw": "ผมไปตลาดทุกวันครับ",
-          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
-          "tone": "low",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
           "vowelLength": "short",
           "initial": "pʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดทุกวันครับ",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดทุกวันครับ",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
           "final": "aucune"
         },
         {
           "thaiRaw": "ผมไปตลาดทุกวันครับ",
-          "ipa": "laːt̚˨˩ tʰuk̚˦˥",
-          "tone": "high",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "l",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดทุกวันครับ",
+          "ipa": "tʰuk̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "tʰ",
           "final": "k̚"
         },
         {
           "thaiRaw": "ผมไปตลาดทุกวันครับ",
-          "ipa": "wan˧ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "wan˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "w",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดทุกวันครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -356,7 +420,7 @@
       ]
     },
     {
-      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -386,7 +450,7 @@
       ]
     },
     {
-      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "id": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "thaiRaw": "ดิฉัน",
       "unicodeCodePoints": [
         "U+0E14",
@@ -433,7 +497,7 @@
       "drawIndex": 1,
       "id": "a6a55a1c-51e1-5d37-97f9-325d7fe00d2a",
       "type": "word_order",
-      "itemId": "ad23e9f9-0719-5ed9-ad30-f4a5eb42f2b1",
+      "itemId": "b549c2b7-049e-5dc5-a0f0-5d0562604d98",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -498,7 +562,7 @@
       "drawIndex": 2,
       "id": "4924617c-597a-5933-b082-ab5b86aa42f6",
       "type": "word_order",
-      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -563,7 +627,7 @@
       "drawIndex": 3,
       "id": "97ff39b1-b332-5ca4-b7a0-270d8f07ad97",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -628,7 +692,7 @@
       "drawIndex": 4,
       "id": "3d51da74-8609-536c-a651-a0977d58d1de",
       "type": "word_order",
-      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -693,7 +757,7 @@
       "drawIndex": 5,
       "id": "be899459-aaaa-56a3-8062-8c999477c941",
       "type": "word_order",
-      "itemId": "a2314622-905a-5774-b4da-2f3d28ad2449",
+      "itemId": "fa1b13f5-5aa2-5d63-8a6e-14fe4754f8c9",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -758,7 +822,7 @@
       "drawIndex": 6,
       "id": "c10184fd-62d3-561a-bd60-81b0e509fece",
       "type": "word_order",
-      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",

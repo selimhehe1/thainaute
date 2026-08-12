@@ -15,7 +15,7 @@
   "audioManifestId": "69249e1f-7caf-58f4-85c6-cb1130cba204",
   "items": [
     {
-      "id": "3c691250-d0c5-5bcb-84cb-c856d144425d",
+      "id": "69d6653c-a167-57e2-ad62-f46a8def13ff",
       "thaiRaw": "แล้วคุณล่ะ",
       "unicodeCodePoints": [
         "U+0E41",
@@ -37,9 +37,25 @@
       "syllables": [
         {
           "thaiRaw": "แล้วคุณล่ะ",
-          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
-          "tone": "falling",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
           "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
           "initial": "l",
           "final": "aucune"
         }
@@ -52,7 +68,7 @@
       ]
     },
     {
-      "id": "8aac3ffa-05b9-5cd7-b0c5-80a81b273151",
+      "id": "25df140d-de13-5fae-93df-3a8b1d91d111",
       "thaiRaw": "ไหม",
       "unicodeCodePoints": [
         "U+0E44",
@@ -82,7 +98,7 @@
       ]
     },
     {
-      "id": "9d6177af-5574-5ae6-a894-0ef3d5d61c46",
+      "id": "809bd927-981f-57a7-961b-1553aa2e3d30",
       "thaiRaw": "วันนี้",
       "unicodeCodePoints": [
         "U+0E27",
@@ -123,7 +139,7 @@
       ]
     },
     {
-      "id": "fa5e2e41-d6f9-5b21-987e-f1afa1f82c6d",
+      "id": "2ca0118e-7713-595f-9452-81e323365b89",
       "thaiRaw": "ทุกวัน",
       "unicodeCodePoints": [
         "U+0E17",
@@ -164,7 +180,7 @@
       ]
     },
     {
-      "id": "ddddf0cc-c64f-5ec2-bed7-fdb48e302697",
+      "id": "5a653239-e648-59bf-9c8a-78c5a74c5933",
       "thaiRaw": "ตอนเช้า",
       "unicodeCodePoints": [
         "U+0E15",
@@ -205,7 +221,7 @@
       ]
     },
     {
-      "id": "79053b0f-f9fd-56c3-8c83-f80e620e11f7",
+      "id": "c8f45994-4a9a-5055-adcf-9e416899bfbb",
       "thaiRaw": "ตอนเย็น",
       "unicodeCodePoints": [
         "U+0E15",
@@ -246,7 +262,7 @@
       ]
     },
     {
-      "id": "b7ad34fe-3e55-5ec9-a2fe-94bf43e8fe59",
+      "id": "7d938caa-d331-5b12-906f-ef7cd8ac2300",
       "thaiRaw": "เขา",
       "unicodeCodePoints": [
         "U+0E40",
@@ -276,7 +292,7 @@
       ]
     },
     {
-      "id": "7ead28ea-6167-5c5b-9370-69af43e4d191",
+      "id": "55315f39-8bf0-5202-99f3-905da3243386",
       "thaiRaw": "แล้วเจอกัน",
       "unicodeCodePoints": [
         "U+0E41",
@@ -340,12 +356,12 @@
       "pairs": [
         {
           "id": "e20711c5-b7af-5a1d-b7c0-d1eb8b74e17d",
-          "itemId": "9d6177af-5574-5ae6-a894-0ef3d5d61c46",
+          "itemId": "809bd927-981f-57a7-961b-1553aa2e3d30",
           "labelFr": "aujourd’hui"
         },
         {
           "id": "6f59f74e-f13a-515d-ac3f-4448d4b5d5ed",
-          "itemId": "fa5e2e41-d6f9-5b21-987e-f1afa1f82c6d",
+          "itemId": "2ca0118e-7713-595f-9452-81e323365b89",
           "labelFr": "tous les jours"
         }
       ],

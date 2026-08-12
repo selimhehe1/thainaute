@@ -10,12 +10,12 @@
   "publishedAt": null,
   "locale": "fr-FR",
   "titleFr": "La même phrase, cinq attitudes",
-  "objectiveFr": "à la fin de la leçon, devant une forme entendue à débit naturel, l’apprenant reconnaît laquelle des trois écritures proposées il a entendue, sur 9 tirages sur 12 ; il apparie six particules à ce que le corps de leur entrée attache à chacune, 6 sur 6 ; il remet dans l’ordre les blocs de six énoncés complets, sur 5 tirages sur 6 ; il produit en transcription, à partir du français seul, huit formes, ",
+  "objectiveFr": "à la fin de la leçon, devant une forme entendue à débit naturel, l’apprenant reconnaît laquelle des trois écritures proposées il a entendue, sur 9 tirages sur 12 ; il apparie six particules à ce que le corps de leur entrée attache à chacune, 6 sur 6 ; il remet dans l’ordre les blocs de six énoncés complets, sur 5 tirages sur 6 ; il produit en transcription, à partir du français seul, huit formes,",
   "requiredEntitlement": null,
   "audioManifestId": "2fd237a7-d89f-5152-a54f-0aa56b720893",
   "items": [
     {
-      "id": "0f665fba-51c4-56fa-a67f-2b856bde255a",
+      "id": "47fd999a-32f9-5983-86f1-249929c92dcf",
       "thaiRaw": "นะ",
       "unicodeCodePoints": [
         "U+0E19",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "id": "90825fc9-a267-5769-aa50-cbee045afc3f",
+      "id": "b876f998-b244-526f-baf6-eedcc424928f",
       "thaiRaw": "ขอบคุณ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -85,7 +85,7 @@
       ]
     },
     {
-      "id": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "id": "fcda4f61-187c-53f0-a834-fffce7facf86",
       "thaiRaw": "ขอโทษ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -126,7 +126,7 @@
       ]
     },
     {
-      "id": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "id": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "thaiRaw": "ไม่",
       "unicodeCodePoints": [
         "U+0E44",
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "id": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "id": "82c986ae-8f02-59eb-bf25-d7093e725a70",
       "thaiRaw": "ไป",
       "unicodeCodePoints": [
         "U+0E44",
@@ -194,7 +194,7 @@
       "drawIndex": 1,
       "id": "65f22076-da75-5eef-8dbf-987c908b9530",
       "type": "word_order",
-      "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "itemId": "82c986ae-8f02-59eb-bf25-d7093e725a70",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -242,7 +242,7 @@
       "drawIndex": 2,
       "id": "74e9f10e-b648-597f-837b-eb4f48ee5768",
       "type": "word_order",
-      "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "itemId": "82c986ae-8f02-59eb-bf25-d7093e725a70",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -290,7 +290,7 @@
       "drawIndex": 3,
       "id": "53b04c88-2855-5c16-aca5-68e2ebb8f9f7",
       "type": "word_order",
-      "itemId": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "itemId": "fcda4f61-187c-53f0-a834-fffce7facf86",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -350,7 +350,7 @@
       "drawIndex": 4,
       "id": "d8f4f645-ebca-55f3-a2d0-dd4497943207",
       "type": "word_order",
-      "itemId": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "itemId": "fcda4f61-187c-53f0-a834-fffce7facf86",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -410,7 +410,7 @@
       "drawIndex": 5,
       "id": "2dd1e919-4663-5b04-9b9d-8608e03e3295",
       "type": "word_order",
-      "itemId": "90825fc9-a267-5769-aa50-cbee045afc3f",
+      "itemId": "b876f998-b244-526f-baf6-eedcc424928f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -470,7 +470,7 @@
       "drawIndex": 6,
       "id": "6e62b183-9bb8-5a87-af6b-ab5fcce1502e",
       "type": "word_order",
-      "itemId": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "itemId": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",

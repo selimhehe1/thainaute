@@ -15,7 +15,7 @@
   "audioManifestId": "c8228f09-ef1e-50b7-bf54-8a90dfdafa19",
   "items": [
     {
-      "id": "7ad8052e-2dd5-5670-82de-588eb5fba6e6",
+      "id": "ac51834e-ccda-533c-a510-c2fccd4e5b9b",
       "thaiRaw": "ปา",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "id": "d8ee8135-fc17-51c6-9bab-1e9dc54e3b62",
+      "id": "14091eca-4f0d-5767-a1d8-ae0fea34c3a1",
       "thaiRaw": "พา",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -86,12 +86,12 @@
       "pairs": [
         {
           "id": "aa6ebdde-7b1a-5640-b205-388fecec41b4",
-          "itemId": "7ad8052e-2dd5-5670-82de-588eb5fba6e6",
+          "itemId": "ac51834e-ccda-533c-a510-c2fccd4e5b9b",
           "labelFr": "lancer, à la main"
         },
         {
           "id": "535c01a3-52db-5b22-b56a-276dd4be631c",
-          "itemId": "d8ee8135-fc17-51c6-9bab-1e9dc54e3b62",
+          "itemId": "14091eca-4f0d-5767-a1d8-ae0fea34c3a1",
           "labelFr": "emmener"
         }
       ],

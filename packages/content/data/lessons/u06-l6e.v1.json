@@ -15,14 +15,14 @@
   "audioManifestId": "ecd86258-3c2a-51a7-8efc-0cedeba3fcb0",
   "items": [
     {
-      "id": "e0ae43ca-b4f0-51f5-97f1-c8ab8fc1236c",
+      "id": "3c0f25e3-ae21-557a-9f27-8337c9940a70",
       "thaiRaw": "ล่ะ",
       "unicodeCodePoints": [
         "U+0E25",
         "U+0E48",
         "U+0E30"
       ],
-      "translationFr": "particule finale ; enseignée ici uniquement comme dernière syllabe du bloc แล้วคุณล่ะ, c’est le bloc entier qui porte le sens « et vous ? »",
+      "translationFr": "particule finale ; appuie ce qui vient d’être dit et lui donne plus de poids",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
         "value": "lâ"
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "8e00fd47-2658-5e9a-9168-4b0e6025aaea",
+      "id": "69d6653c-a167-57e2-ad62-f46a8def13ff",
       "thaiRaw": "แล้วคุณล่ะ",
       "unicodeCodePoints": [
         "U+0E41",
@@ -68,9 +68,25 @@
       "syllables": [
         {
           "thaiRaw": "แล้วคุณล่ะ",
-          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
-          "tone": "falling",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
           "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
           "initial": "l",
           "final": "aucune"
         }
@@ -82,7 +98,7 @@
       ]
     },
     {
-      "id": "d96fe470-9f04-5fb8-bd74-dc9f61e78f92",
+      "id": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
       "thaiRaw": "มี",
       "unicodeCodePoints": [
         "U+0E21",
@@ -112,7 +128,7 @@
       ]
     },
     {
-      "id": "ffcb8ddc-ecbc-593c-b595-6f2dd43901f9",
+      "id": "52432ef3-a6db-542c-8bd9-134bf29c803c",
       "thaiRaw": "พี่น้อง",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -155,7 +171,7 @@
       ]
     },
     {
-      "id": "2a943315-98a1-5bc9-899b-8f6dce415d30",
+      "id": "f8a7c18d-b236-50a8-8ea5-164dcbbee50c",
       "thaiRaw": "พี่ชาย",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -197,7 +213,7 @@
       ]
     },
     {
-      "id": "22481ecb-23cd-55a0-a077-407ff2fb977a",
+      "id": "6401cd6d-539f-5083-ba5d-7cf6a5cc68e9",
       "thaiRaw": "น้องสาว",
       "unicodeCodePoints": [
         "U+0E19",
@@ -240,7 +256,7 @@
       ]
     },
     {
-      "id": "d8cffef6-8740-5e9f-93d6-75d33981d67b",
+      "id": "e81e4d1c-1e37-5a8d-b98c-349740dd43bb",
       "thaiRaw": "น้องสาวสองคน",
       "unicodeCodePoints": [
         "U+0E19",
@@ -272,10 +288,26 @@
         },
         {
           "thaiRaw": "น้องสาวสองคน",
-          "ipa": "saːw˩˩˦ sɔːŋ˩˩˦ kʰon˧",
-          "tone": "mid",
+          "ipa": "saːw˩˩˦",
+          "tone": "rising",
           "vowelLength": "long",
           "initial": "s",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "น้องสาวสองคน",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "น้องสาวสองคน",
+          "ipa": "kʰon˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
           "final": "n"
         }
       ],
@@ -286,7 +318,7 @@
       ]
     },
     {
-      "id": "f6e08ac0-1c7f-5a0b-8ae7-8ba9a958cf44",
+      "id": "9dca7c12-08bb-5dec-9b40-7ec8c07d684c",
       "thaiRaw": "สอง",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -316,7 +348,7 @@
       ]
     },
     {
-      "id": "a012a8f3-20ef-5a56-9da4-28a63bc39d91",
+      "id": "8cdaeb1b-dff6-5d53-89b4-26507d1ea972",
       "thaiRaw": "คน",
       "unicodeCodePoints": [
         "U+0E04",
@@ -345,7 +377,7 @@
       ]
     },
     {
-      "id": "6e2d07ee-a9b6-5f8c-872d-21dfd2b2441e",
+      "id": "67a12ef9-7fdd-50b7-a73e-db4ecbf948d3",
       "thaiRaw": "หนึ่ง",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -377,7 +409,7 @@
       ]
     },
     {
-      "id": "9e6614e0-f6dc-5047-bff0-eb9cbab76161",
+      "id": "f47f1dd9-816e-5f5c-9d82-43bb713842e2",
       "thaiRaw": "พี่ชายอยู่ที่ไหน",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -413,10 +445,26 @@
         },
         {
           "thaiRaw": "พี่ชายอยู่ที่ไหน",
-          "ipa": "t͡ɕʰaːj˧ juː˨˩ tʰiː˥˩",
-          "tone": "falling",
+          "ipa": "t͡ɕʰaːj˧",
+          "tone": "mid",
           "vowelLength": "long",
           "initial": "t͡ɕʰ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "พี่ชายอยู่ที่ไหน",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "พี่ชายอยู่ที่ไหน",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
           "final": "aucune"
         },
         {
@@ -436,7 +484,7 @@
       ]
     },
     {
-      "id": "dd029417-0b02-571c-b594-c35c5b7fee78",
+      "id": "d51797fa-ac99-517b-aae7-3537461a2cc7",
       "thaiRaw": "อยู่ที่นี่",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -458,10 +506,18 @@
       "syllables": [
         {
           "thaiRaw": "อยู่ที่นี่",
-          "ipa": "juː˨˩ tʰiː˥˩",
-          "tone": "falling",
+          "ipa": "juː˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อยู่ที่นี่",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
           "final": "aucune"
         },
         {
@@ -481,7 +537,7 @@
       ]
     },
     {
-      "id": "9268176f-4ee2-5759-bd83-829dfa3d38d0",
+      "id": "957e1f6c-5568-5b1e-bfae-38654bcd6bd0",
       "thaiRaw": "อยู่ที่ฝรั่งเศส",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -508,10 +564,26 @@
       "syllables": [
         {
           "thaiRaw": "อยู่ที่ฝรั่งเศส",
-          "ipa": "juː˨˩ tʰiː˥˩ fa˨˩",
+          "ipa": "juː˨˩",
           "tone": "low",
           "vowelLength": "long",
           "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อยู่ที่ฝรั่งเศส",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อยู่ที่ฝรั่งเศส",
+          "ipa": "fa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "f",
           "final": "aucune"
         },
         {
@@ -539,7 +611,7 @@
       ]
     },
     {
-      "id": "eaaab6db-8f2a-5ab8-abca-a07ee9f2b5c6",
+      "id": "6800760a-904a-5291-818e-63f739c1f280",
       "thaiRaw": "ไกลมาก",
       "unicodeCodePoints": [
         "U+0E44",
@@ -557,10 +629,18 @@
       "syllables": [
         {
           "thaiRaw": "ไกลมาก",
-          "ipa": "klaj˧ maːk̚˥˩",
+          "ipa": "klaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kl",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไกลมาก",
+          "ipa": "maːk̚˥˩",
           "tone": "falling",
           "vowelLength": "long",
-          "initial": "kl",
+          "initial": "m",
           "final": "k̚"
         }
       ],
@@ -583,12 +663,12 @@
       "pairs": [
         {
           "id": "72c77e8d-8de9-5231-950e-7a5ddf2ba036",
-          "itemId": "2a943315-98a1-5bc9-899b-8f6dce415d30",
+          "itemId": "f8a7c18d-b236-50a8-8ea5-164dcbbee50c",
           "labelFr": "frère aîné"
         },
         {
           "id": "655541b0-4396-5234-8fb0-2e34a7b8022c",
-          "itemId": "22481ecb-23cd-55a0-a077-407ff2fb977a",
+          "itemId": "6401cd6d-539f-5083-ba5d-7cf6a5cc68e9",
           "labelFr": "sœur cadette"
         }
       ],

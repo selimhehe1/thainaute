@@ -15,7 +15,7 @@
   "audioManifestId": "3881ab76-2737-5fa3-aa16-2a540930d91f",
   "items": [
     {
-      "id": "86ff46b9-7424-5f24-8092-54b4380beedb",
+      "id": "4c85b49a-6c20-50ec-a06e-0a47700d8bca",
       "thaiRaw": "มา",
       "unicodeCodePoints": [
         "U+0E21",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "id": "22ea0932-ad60-593d-9ee3-104611623a5c",
+      "id": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
       "thaiRaw": "ขา",
       "unicodeCodePoints": [
         "U+0E02",
@@ -73,7 +73,7 @@
       ]
     },
     {
-      "id": "44526c1f-efd6-5716-b94d-e661a6802a2e",
+      "id": "0962b3d1-10ff-53f2-92e4-679765122be3",
       "thaiRaw": "ป่า",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -103,7 +103,7 @@
       ]
     },
     {
-      "id": "a1184b41-ad7c-5a0e-9d93-10d40355f7ff",
+      "id": "e4e9366b-5352-50e1-8208-771f1e1d6700",
       "thaiRaw": "พ่อ",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -133,7 +133,7 @@
       ]
     },
     {
-      "id": "47dc0440-59fd-5672-b281-1b466b56a10a",
+      "id": "5805ec59-76e9-5cb5-92e2-e9b014cbfbe1",
       "thaiRaw": "สี่",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -163,7 +163,7 @@
       ]
     },
     {
-      "id": "12b3a002-93c2-550d-ba1d-134d3c106869",
+      "id": "63268df4-3684-5f70-a70b-728ce0f6be8b",
       "thaiRaw": "ห้า",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -193,7 +193,7 @@
       ]
     },
     {
-      "id": "2f19d9f8-7be0-516c-97fc-0702d1f00cdc",
+      "id": "05a77a3e-ca78-5ebf-abc9-ed3fc2fa5347",
       "thaiRaw": "กิน",
       "unicodeCodePoints": [
         "U+0E01",
@@ -223,7 +223,7 @@
       ]
     },
     {
-      "id": "17edbeb9-7681-5c0c-92c5-54abd752b66d",
+      "id": "9dca7c12-08bb-5dec-9b40-7ec8c07d684c",
       "thaiRaw": "สอง",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -253,7 +253,7 @@
       ]
     },
     {
-      "id": "bcd102b6-994c-5a7b-9c19-b02b70a81ddd",
+      "id": "09029612-9774-5162-a16f-6367bc4e8a8f",
       "thaiRaw": "บ้าน",
       "unicodeCodePoints": [
         "U+0E1A",
@@ -284,7 +284,7 @@
       ]
     },
     {
-      "id": "00d06e0e-4718-519f-b7e5-afebe4c7235d",
+      "id": "06ee8115-534b-55ef-bb8e-00b15e79586f",
       "thaiRaw": "น้อง",
       "unicodeCodePoints": [
         "U+0E19",
@@ -315,7 +315,7 @@
       ]
     },
     {
-      "id": "96435cb5-5d26-5295-8f6a-625a3399530e",
+      "id": "7b459b92-ea44-5023-bd07-cf77cc1dd710",
       "thaiRaw": "แล้ว",
       "unicodeCodePoints": [
         "U+0E41",
@@ -347,7 +347,7 @@
       ]
     },
     {
-      "id": "c17aeef7-4d69-5782-b44d-e5a29a80b9f2",
+      "id": "b4357e2c-cbcc-508f-b6c8-962371ccb674",
       "thaiRaw": "เพลง",
       "unicodeCodePoints": [
         "U+0E40",
@@ -378,7 +378,7 @@
       ]
     },
     {
-      "id": "f9d4aa26-856e-5c82-80f2-4334bf3b4ec0",
+      "id": "88d292bc-f6b0-52e2-87bb-b09c4e7f30ba",
       "thaiRaw": "เปลี่ยน",
       "unicodeCodePoints": [
         "U+0E40",
@@ -424,32 +424,32 @@
       "pairs": [
         {
           "id": "e778e55e-8236-5e4b-ad17-ec0878fa1315",
-          "itemId": "86ff46b9-7424-5f24-8092-54b4380beedb",
+          "itemId": "4c85b49a-6c20-50ec-a06e-0a47700d8bca",
           "labelFr": "classe basse, aucune marque"
         },
         {
           "id": "4449b554-3d8b-52d8-9a76-e0108ebb7f97",
-          "itemId": "22ea0932-ad60-593d-9ee3-104611623a5c",
+          "itemId": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
           "labelFr": "classe haute, aucune marque"
         },
         {
           "id": "8e6461ff-11fe-5742-afb1-a1489911ee5e",
-          "itemId": "44526c1f-efd6-5716-b94d-e661a6802a2e",
+          "itemId": "0962b3d1-10ff-53f2-92e4-679765122be3",
           "labelFr": "classe moyenne, ไม้เอก"
         },
         {
           "id": "5408ec2f-b9d1-5e60-aff8-91c005f9a806",
-          "itemId": "a1184b41-ad7c-5a0e-9d93-10d40355f7ff",
+          "itemId": "e4e9366b-5352-50e1-8208-771f1e1d6700",
           "labelFr": "classe basse, ไม้เอก"
         },
         {
           "id": "83ef00ad-6fdc-559f-978b-da6b568bad1b",
-          "itemId": "bcd102b6-994c-5a7b-9c19-b02b70a81ddd",
+          "itemId": "09029612-9774-5162-a16f-6367bc4e8a8f",
           "labelFr": "classe moyenne, ไม้โท"
         },
         {
           "id": "69cb4dce-f3f6-5096-923b-90af95804d55",
-          "itemId": "00d06e0e-4718-519f-b7e5-afebe4c7235d",
+          "itemId": "06ee8115-534b-55ef-bb8e-00b15e79586f",
           "labelFr": "classe basse, ไม้โท"
         }
       ],
@@ -470,7 +470,7 @@
       "drawIndex": 1,
       "id": "5b6fb13b-b579-5b9d-88ae-e4c4aee9fce9",
       "type": "recall",
-      "itemId": "86ff46b9-7424-5f24-8092-54b4380beedb",
+      "itemId": "4c85b49a-6c20-50ec-a06e-0a47700d8bca",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
       "acceptedAnswers": [
@@ -501,7 +501,7 @@
       "drawIndex": 2,
       "id": "30818c97-9ef9-5213-aa96-d2ee1de8ee31",
       "type": "recall",
-      "itemId": "22ea0932-ad60-593d-9ee3-104611623a5c",
+      "itemId": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
       "acceptedAnswers": [
@@ -532,7 +532,7 @@
       "drawIndex": 3,
       "id": "5e9ae02f-a9ed-5de7-8246-2cc0a4859928",
       "type": "recall",
-      "itemId": "44526c1f-efd6-5716-b94d-e661a6802a2e",
+      "itemId": "0962b3d1-10ff-53f2-92e4-679765122be3",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
       "acceptedAnswers": [
@@ -563,7 +563,7 @@
       "drawIndex": 4,
       "id": "7295786c-e5b7-50b4-9e6b-def1b140af35",
       "type": "recall",
-      "itemId": "a1184b41-ad7c-5a0e-9d93-10d40355f7ff",
+      "itemId": "e4e9366b-5352-50e1-8208-771f1e1d6700",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
       "acceptedAnswers": [
@@ -594,7 +594,7 @@
       "drawIndex": 5,
       "id": "2c5c83bd-99a7-59c0-b9d6-05f78609fab0",
       "type": "recall",
-      "itemId": "47dc0440-59fd-5672-b281-1b466b56a10a",
+      "itemId": "5805ec59-76e9-5cb5-92e2-e9b014cbfbe1",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
       "acceptedAnswers": [
@@ -625,7 +625,7 @@
       "drawIndex": 6,
       "id": "4d2abed7-fdd7-5f92-864b-7bc8a0565130",
       "type": "recall",
-      "itemId": "12b3a002-93c2-550d-ba1d-134d3c106869",
+      "itemId": "63268df4-3684-5f70-a70b-728ce0f6be8b",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
       "acceptedAnswers": [
@@ -656,7 +656,7 @@
       "drawIndex": 7,
       "id": "e753833c-517c-52b8-9dfb-37a9bfdf0d44",
       "type": "recall",
-      "itemId": "00d06e0e-4718-519f-b7e5-afebe4c7235d",
+      "itemId": "06ee8115-534b-55ef-bb8e-00b15e79586f",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
       "acceptedAnswers": [
@@ -687,7 +687,7 @@
       "drawIndex": 8,
       "id": "c9c0e079-55cd-5c6c-a65a-f7efd8bf8823",
       "type": "recall",
-      "itemId": "96435cb5-5d26-5295-8f6a-625a3399530e",
+      "itemId": "7b459b92-ea44-5023-bd07-cf77cc1dd710",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous l’entendrez après avoir répondu.",
       "acceptedAnswers": [

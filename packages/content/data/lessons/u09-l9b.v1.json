@@ -15,7 +15,7 @@
   "audioManifestId": "0819ebf5-52ea-5d5e-99dd-76bb6b5000ba",
   "items": [
     {
-      "id": "e7d9f402-fb88-5efa-9a81-bf6daa50a8a0",
+      "id": "6e059209-c538-5828-aea6-5931fb9c9b20",
       "thaiRaw": "ปวด",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "31572d98-0068-5dc5-81cf-c4b7638b16b3",
+      "id": "f8e46495-8539-58e1-97d6-ec30d01f3f9f",
       "thaiRaw": "หัว",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -75,7 +75,7 @@
       ]
     },
     {
-      "id": "2a9fea40-17eb-5b3d-a4e3-fabe48d0c0f6",
+      "id": "9f54a6ee-fbad-5b19-a8f2-cfeafcefa4b5",
       "thaiRaw": "ปวดหัว",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -116,7 +116,7 @@
       ]
     },
     {
-      "id": "a77b8b0c-9913-5a72-90e6-e09d4e387b55",
+      "id": "5c65a406-fab3-5301-b779-f230ada32042",
       "thaiRaw": "ท้อง",
       "unicodeCodePoints": [
         "U+0E17",
@@ -147,7 +147,7 @@
       ]
     },
     {
-      "id": "3988bc3d-fd93-53d5-8afa-0fbdac6bd6eb",
+      "id": "93de2a1e-9b49-5699-a163-9cd01f8af75b",
       "thaiRaw": "ปวดท้อง",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -189,7 +189,7 @@
       ]
     },
     {
-      "id": "2a3308c3-d279-562a-ac63-b297433e550e",
+      "id": "d9713fa1-85a7-5133-bb68-d252ecfe30f5",
       "thaiRaw": "เจ็บ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -220,7 +220,7 @@
       ]
     },
     {
-      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -250,7 +250,7 @@
       ]
     },
     {
-      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "id": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "thaiRaw": "ดิฉัน",
       "unicodeCodePoints": [
         "U+0E14",
@@ -291,7 +291,7 @@
       ]
     },
     {
-      "id": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "id": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "thaiRaw": "ไม่",
       "unicodeCodePoints": [
         "U+0E44",
@@ -328,7 +328,7 @@
       "drawIndex": 1,
       "id": "5d65f2c5-4084-523f-bdf7-8172502f7f55",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
@@ -387,7 +387,7 @@
       "drawIndex": 2,
       "id": "15f98be7-da69-57dc-9a2a-d1aed8e97fce",
       "type": "word_order",
-      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
@@ -446,7 +446,7 @@
       "drawIndex": 3,
       "id": "ef0967e5-74e2-5f34-94c5-b1cb60f287f4",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
@@ -505,7 +505,7 @@
       "drawIndex": 4,
       "id": "e3db0838-1010-552d-9e8f-3038ff3b19c2",
       "type": "word_order",
-      "itemId": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "itemId": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
@@ -558,7 +558,7 @@
       "drawIndex": 5,
       "id": "3423465a-00ae-5490-ba15-db1e417c9f4f",
       "type": "word_order",
-      "itemId": "e7d9f402-fb88-5efa-9a81-bf6daa50a8a0",
+      "itemId": "6e059209-c538-5828-aea6-5931fb9c9b20",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
@@ -617,7 +617,7 @@
       "drawIndex": 6,
       "id": "686dafe6-e543-55d6-b524-40e1b299fde2",
       "type": "word_order",
-      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",

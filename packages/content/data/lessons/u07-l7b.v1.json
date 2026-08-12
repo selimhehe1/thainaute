@@ -15,7 +15,7 @@
   "audioManifestId": "73b28a68-86d0-55a1-af8e-d2eb5959e910",
   "items": [
     {
-      "id": "19633361-83de-5a64-8097-12930d578322",
+      "id": "09029612-9774-5162-a16f-6367bc4e8a8f",
       "thaiRaw": "บ้าน",
       "unicodeCodePoints": [
         "U+0E1A",
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "id": "c516d6f4-4757-5b8d-a794-08efce099294",
+      "id": "7ce3b000-d133-573b-b96e-7fbe9a38fe71",
       "thaiRaw": "ห้อง",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -79,7 +79,7 @@
       ]
     },
     {
-      "id": "756e629b-0a38-551c-ad8b-c1fc42ceb30f",
+      "id": "ab288715-c4ff-545a-9739-c4ca361fefcd",
       "thaiRaw": "ห้องนอน",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "id": "1c4b28d9-0863-570f-af19-ae93650cb412",
+      "id": "1dca9c43-9b6e-5855-82e3-d1be38398e3e",
       "thaiRaw": "ห้องครัว",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -165,7 +165,7 @@
       ]
     },
     {
-      "id": "d829d310-ce8a-5348-820a-2d1afaf5d3c1",
+      "id": "7f90abd6-6da7-548a-b0a5-accd8a74da96",
       "thaiRaw": "ห้องน้ำ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -207,7 +207,7 @@
       ]
     },
     {
-      "id": "45d58bd1-091d-51ec-b403-255038bf9cf3",
+      "id": "283d548f-d697-5881-98e7-c48678c6b0e6",
       "thaiRaw": "อยู่บ้าน",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -227,10 +227,18 @@
       "syllables": [
         {
           "thaiRaw": "อยู่บ้าน",
-          "ipa": "juː˨˩ baːn˥˩",
-          "tone": "falling",
+          "ipa": "juː˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อยู่บ้าน",
+          "ipa": "baːn˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "b",
           "final": "n"
         }
       ],
@@ -241,7 +249,7 @@
       ]
     },
     {
-      "id": "72316766-88af-5fe2-b119-5f66203c00a5",
+      "id": "37c2190c-8f95-504d-868c-6d441151658b",
       "thaiRaw": "ไปห้องน้ำ",
       "unicodeCodePoints": [
         "U+0E44",
@@ -262,10 +270,18 @@
       "syllables": [
         {
           "thaiRaw": "ไปห้องน้ำ",
-          "ipa": "paj˧ hɔŋ˥˩",
-          "tone": "falling",
+          "ipa": "paj˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "p",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไปห้องน้ำ",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
           "final": "ŋ"
         },
         {
@@ -284,7 +300,7 @@
       ]
     },
     {
-      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -314,7 +330,7 @@
       ]
     },
     {
-      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "id": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "thaiRaw": "ดิฉัน",
       "unicodeCodePoints": [
         "U+0E14",
@@ -361,7 +377,7 @@
       "drawIndex": 1,
       "id": "4f21235c-65b6-507a-9481-0cae87106f2f",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase.",
@@ -410,7 +426,7 @@
       "drawIndex": 2,
       "id": "944c4966-3d1c-51c9-88fd-8e7b392d5057",
       "type": "word_order",
-      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase.",
@@ -459,7 +475,7 @@
       "drawIndex": 3,
       "id": "28dafd3f-12b5-5403-a7c3-a283a7217a67",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase.",
@@ -508,7 +524,7 @@
       "drawIndex": 4,
       "id": "e142d4d3-e2cd-5e88-b6f3-8923e3461eb1",
       "type": "word_order",
-      "itemId": "1c4b28d9-0863-570f-af19-ae93650cb412",
+      "itemId": "1dca9c43-9b6e-5855-82e3-d1be38398e3e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase.",

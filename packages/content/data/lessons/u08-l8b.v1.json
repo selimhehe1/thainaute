@@ -15,7 +15,7 @@
   "audioManifestId": "80fc1446-59d5-51dc-9ee0-0299e214432d",
   "items": [
     {
-      "id": "fc6c822a-e5c2-5278-bbc0-0d7c59f95b6e",
+      "id": "09a368ce-6be3-58c0-adfb-63393d2f280e",
       "thaiRaw": "หา",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "3eeab8ce-406b-50b6-89df-b6fa4aab8709",
+      "id": "3fa8e3af-a0eb-5512-bfeb-362b8484ea29",
       "thaiRaw": "อยาก",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "id": "2ddcb0bb-ec60-53a4-863e-6df7bc609959",
+      "id": "31499e38-d015-51c3-bd3b-d2a0d5dd117c",
       "thaiRaw": "อยากได้",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -120,7 +120,7 @@
       ]
     },
     {
-      "id": "91c7aa28-70c4-54f7-b094-844d74752928",
+      "id": "82823f4b-7e6d-51f0-b365-b035c3866d08",
       "thaiRaw": "ต้องการ",
       "unicodeCodePoints": [
         "U+0E15",
@@ -163,7 +163,7 @@
       ]
     },
     {
-      "id": "c2309b8f-4586-5a77-ab59-bcdc6fa3faea",
+      "id": "89a486a1-3bf3-54ff-89a9-fc2ccc4581df",
       "thaiRaw": "ลอง",
       "unicodeCodePoints": [
         "U+0E25",
@@ -194,7 +194,7 @@
       ]
     },
     {
-      "id": "21ff4621-edac-5249-91ba-ef2bdce5358e",
+      "id": "2d7513b3-3ed6-54e1-b55e-8033e6968604",
       "thaiRaw": "ลองดู",
       "unicodeCodePoints": [
         "U+0E25",
@@ -235,7 +235,7 @@
       ]
     },
     {
-      "id": "35a360c4-b3e1-5cf6-bb44-c4889b366931",
+      "id": "4c366ac7-e24d-52f3-a92a-707d577f466b",
       "thaiRaw": "เอา",
       "unicodeCodePoints": [
         "U+0E40",
@@ -266,7 +266,7 @@
       ]
     },
     {
-      "id": "4b967037-4ec5-5992-8670-4c123c5a8a91",
+      "id": "f8c4e995-1926-5a6c-8f31-3dfa0d557c5f",
       "thaiRaw": "เอาอันนี้",
       "unicodeCodePoints": [
         "U+0E40",
@@ -287,7 +287,15 @@
       "syllables": [
         {
           "thaiRaw": "เอาอันนี้",
-          "ipa": "ʔaw˧ ʔan˧",
+          "ipa": "ʔaw˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เอาอันนี้",
+          "ipa": "ʔan˧",
           "tone": "mid",
           "vowelLength": "short",
           "initial": "ʔ",
@@ -310,7 +318,7 @@
       ]
     },
     {
-      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -340,7 +348,7 @@
       ]
     },
     {
-      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "id": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "thaiRaw": "ดิฉัน",
       "unicodeCodePoints": [
         "U+0E14",
@@ -381,7 +389,7 @@
       ]
     },
     {
-      "id": "556c6690-9bf4-5ad4-a463-1e4082b5fbae",
+      "id": "63268df4-3684-5f70-a70b-728ce0f6be8b",
       "thaiRaw": "ห้า",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -418,7 +426,7 @@
       "drawIndex": 1,
       "id": "0bfd9111-9575-59ad-8fed-2de1bda5eaa3",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
@@ -488,7 +496,7 @@
       "drawIndex": 2,
       "id": "ad992137-2466-5c2f-961d-8eff5456344d",
       "type": "word_order",
-      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
@@ -557,7 +565,7 @@
       "drawIndex": 3,
       "id": "9bc5c32f-d1ea-5217-afbf-9a2ca9378338",
       "type": "word_order",
-      "itemId": "35a360c4-b3e1-5cf6-bb44-c4889b366931",
+      "itemId": "4c366ac7-e24d-52f3-a92a-707d577f466b",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
@@ -615,7 +623,7 @@
       "drawIndex": 4,
       "id": "adc07cdb-8961-5aaa-9813-118ebcc467f9",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
@@ -679,7 +687,7 @@
       "drawIndex": 1,
       "id": "ede17fd2-929f-540d-a4b7-8a80d9568af4",
       "type": "reading",
-      "itemId": "fc6c822a-e5c2-5278-bbc0-0d7c59f95b6e",
+      "itemId": "09a368ce-6be3-58c0-adfb-63393d2f280e",
       "skill": "reading",
       "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
       "options": [
@@ -731,7 +739,7 @@
       "drawIndex": 2,
       "id": "5cdc941c-e13c-5784-8b31-08e726d6d96a",
       "type": "reading",
-      "itemId": "556c6690-9bf4-5ad4-a463-1e4082b5fbae",
+      "itemId": "63268df4-3684-5f70-a70b-728ce0f6be8b",
       "skill": "reading",
       "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
       "options": [
@@ -783,7 +791,7 @@
       "drawIndex": 3,
       "id": "ce6bcdf5-b983-5100-b384-888150b42cd1",
       "type": "reading",
-      "itemId": "91c7aa28-70c4-54f7-b094-844d74752928",
+      "itemId": "82823f4b-7e6d-51f0-b365-b035c3866d08",
       "skill": "reading",
       "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
       "options": [
@@ -835,7 +843,7 @@
       "drawIndex": 4,
       "id": "ef420b0f-83d3-5458-8e90-70dd78f308d5",
       "type": "reading",
-      "itemId": "556c6690-9bf4-5ad4-a463-1e4082b5fbae",
+      "itemId": "63268df4-3684-5f70-a70b-728ce0f6be8b",
       "skill": "reading",
       "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
       "options": [
@@ -887,7 +895,7 @@
       "drawIndex": 5,
       "id": "60eb8091-7cc4-556a-a704-c6d57571403f",
       "type": "reading",
-      "itemId": "21ff4621-edac-5249-91ba-ef2bdce5358e",
+      "itemId": "2d7513b3-3ed6-54e1-b55e-8033e6968604",
       "skill": "reading",
       "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
       "options": [
@@ -939,7 +947,7 @@
       "drawIndex": 6,
       "id": "ef7b7318-b0d8-558e-9d8e-6c34f3ce8b71",
       "type": "reading",
-      "itemId": "fc6c822a-e5c2-5278-bbc0-0d7c59f95b6e",
+      "itemId": "09a368ce-6be3-58c0-adfb-63393d2f280e",
       "skill": "reading",
       "promptFr": "Lisez le mot, puis choisissez ce qu’il veut dire. Pas de son, pas de transcription : servez-vous du tableau des marques de 7A.",
       "options": [

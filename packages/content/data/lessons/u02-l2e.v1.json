@@ -15,7 +15,7 @@
   "audioManifestId": "5621b446-7b4d-5a4e-b941-9b30befb1e72",
   "items": [
     {
-      "id": "ad1fb7f0-827b-5aca-ad5e-fbeaf88a2393",
+      "id": "7a2a550a-4e7c-59a7-9428-1949931cfbce",
       "thaiRaw": "คะ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -43,7 +43,7 @@
       ]
     },
     {
-      "id": "48974c29-2ec7-5959-a0e2-ec123c2a32c9",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -71,7 +71,7 @@
       ]
     },
     {
-      "id": "1edb7b8f-25e5-5ddb-9301-2a6a4dd89f89",
+      "id": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "thaiRaw": "ดิฉัน",
       "unicodeCodePoints": [
         "U+0E14",
@@ -110,7 +110,7 @@
       ]
     },
     {
-      "id": "cccfde52-c6aa-531d-9af7-5c90227485aa",
+      "id": "93a9ee69-3d8c-548d-9e33-20cff5702638",
       "thaiRaw": "ชื่อ",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -141,7 +141,7 @@
       ]
     },
     {
-      "id": "e8ce51f1-e50f-52ff-9c69-d1078306b6f3",
+      "id": "8571e8be-a7b9-5e38-bec5-286ee3071718",
       "thaiRaw": "คุณ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -170,7 +170,7 @@
       ]
     },
     {
-      "id": "b50ff918-d880-57ee-a7f0-162b4f892792",
+      "id": "80b6b321-610c-5d5f-9311-2ec3717f837c",
       "thaiRaw": "อะไร",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -208,7 +208,7 @@
       ]
     },
     {
-      "id": "1e5ee148-59f7-552d-a13e-723b5390bed5",
+      "id": "8159eda6-a005-5bf1-99f0-7543152de13f",
       "thaiRaw": "ชื่ออะไร",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -258,7 +258,7 @@
       ]
     },
     {
-      "id": "c313bed7-32d5-5e73-a8ef-ccd8cbaa21e9",
+      "id": "7aad53ff-473e-5144-afbd-0c1c3b885b80",
       "thaiRaw": "มาจาก",
       "unicodeCodePoints": [
         "U+0E21",
@@ -297,7 +297,7 @@
       ]
     },
     {
-      "id": "978150bb-e2bc-5fdc-99a5-404ebd1b3016",
+      "id": "7cb77f01-3265-5744-bd79-19093f207dc6",
       "thaiRaw": "ฝรั่งเศส",
       "unicodeCodePoints": [
         "U+0E1D",
@@ -347,7 +347,7 @@
       ]
     },
     {
-      "id": "cdfb4760-5d35-5cbc-a6b8-be7dc61d8a08",
+      "id": "25df140d-de13-5fae-93df-3a8b1d91d111",
       "thaiRaw": "ไหม",
       "unicodeCodePoints": [
         "U+0E44",
@@ -376,7 +376,7 @@
       ]
     },
     {
-      "id": "9a801e23-fc2a-59a4-9ef3-5caf384bf4c0",
+      "id": "81c15181-d871-5981-b2cf-d812ec5337ee",
       "thaiRaw": "ต้น",
       "unicodeCodePoints": [
         "U+0E15",
@@ -405,7 +405,7 @@
       ]
     },
     {
-      "id": "ceddf566-90f7-5ade-bd03-7d54a6c62c36",
+      "id": "94bee5bf-e959-5540-932f-9f1ed5f8795d",
       "thaiRaw": "นก",
       "unicodeCodePoints": [
         "U+0E19",
@@ -439,7 +439,7 @@
       "drawIndex": 1,
       "id": "29695330-89eb-53ae-b817-a161a021663d",
       "type": "word_order",
-      "itemId": "48974c29-2ec7-5959-a0e2-ec123c2a32c9",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Ton, un homme, se présente. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",

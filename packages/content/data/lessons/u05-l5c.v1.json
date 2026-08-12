@@ -15,7 +15,7 @@
   "audioManifestId": "4565d7b0-29bd-542f-9b8c-c6b295e4d4ce",
   "items": [
     {
-      "id": "c6af485a-2542-545f-bd04-cee1c1f7816c",
+      "id": "7a35486b-5808-5dd5-b2cd-1f78e02ce854",
       "thaiRaw": "อยู่",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "id": "36cc07a9-e691-5ffb-839c-2058e61e289c",
+      "id": "b0f1cc48-bb43-5791-9270-b96c5d7eb9c0",
       "thaiRaw": "ที่ไหน",
       "unicodeCodePoints": [
         "U+0E17",
@@ -89,7 +89,7 @@
       ]
     },
     {
-      "id": "c0777f30-2d86-563b-a957-27fef2d81eac",
+      "id": "65318f5b-2fa5-535c-8cdd-7915f14fe27e",
       "thaiRaw": "อยู่ที่ไหน",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -111,10 +111,18 @@
       "syllables": [
         {
           "thaiRaw": "อยู่ที่ไหน",
-          "ipa": "juː˨˩ tʰiː˥˩",
-          "tone": "falling",
+          "ipa": "juː˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อยู่ที่ไหน",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
           "final": "aucune"
         },
         {
@@ -133,7 +141,7 @@
       ]
     },
     {
-      "id": "d7c51ca1-c81f-5bfb-aea1-e684dacffd4e",
+      "id": "d3efc7a0-9772-541b-8188-65ecf8a2e415",
       "thaiRaw": "อยู่ไหน",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -152,10 +160,18 @@
       "syllables": [
         {
           "thaiRaw": "อยู่ไหน",
-          "ipa": "juː˨˩ naj˩˩˦",
-          "tone": "rising",
+          "ipa": "juː˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อยู่ไหน",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "n",
           "final": "j"
         }
       ],
@@ -166,7 +182,7 @@
       ]
     },
     {
-      "id": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "id": "7f90abd6-6da7-548a-b0a5-accd8a74da96",
       "thaiRaw": "ห้องน้ำ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -209,7 +225,7 @@
       ]
     },
     {
-      "id": "b2c309e4-fbc6-5591-8997-2387d866a842",
+      "id": "f99f957b-d570-53e5-99b1-bd3466e2855c",
       "thaiRaw": "สถานี",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -258,7 +274,7 @@
       ]
     },
     {
-      "id": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "id": "277c2b47-0a34-5384-934d-b71aa8cb5e6a",
       "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -299,18 +315,42 @@
         },
         {
           "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
-          "ipa": "naːm˦˥ juː˨˩ tʰiː˥˩",
-          "tone": "falling",
+          "ipa": "naːm˦˥",
+          "tone": "high",
           "vowelLength": "long",
           "initial": "n",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
           "final": "aucune"
         },
         {
           "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
-          "ipa": "naj˩˩˦ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
           "vowelLength": "short",
           "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -327,7 +367,7 @@
       "drawIndex": 1,
       "id": "4564d317-4657-5f9c-a2fc-f8f1943a42e7",
       "type": "word_order",
-      "itemId": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "itemId": "7f90abd6-6da7-548a-b0a5-accd8a74da96",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Claire, une femme, cherche les toilettes. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
@@ -375,7 +415,7 @@
       "drawIndex": 2,
       "id": "e89f6cd3-d612-589b-b5c6-cba58c7f64d7",
       "type": "word_order",
-      "itemId": "b2c309e4-fbc6-5591-8997-2387d866a842",
+      "itemId": "f99f957b-d570-53e5-99b1-bd3466e2855c",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Claire, une femme, cherche les toilettes. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
@@ -423,7 +463,7 @@
       "drawIndex": 3,
       "id": "0cdff683-d72b-501b-a4fe-d2c9be73fc9b",
       "type": "word_order",
-      "itemId": "c6af485a-2542-545f-bd04-cee1c1f7816c",
+      "itemId": "7a35486b-5808-5dd5-b2cd-1f78e02ce854",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Claire, une femme, cherche les toilettes. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
@@ -471,7 +511,7 @@
       "drawIndex": 4,
       "id": "4b5eaed9-e322-5d30-ba0f-1e08f7723705",
       "type": "word_order",
-      "itemId": "c6af485a-2542-545f-bd04-cee1c1f7816c",
+      "itemId": "7a35486b-5808-5dd5-b2cd-1f78e02ce854",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Claire, une femme, cherche les toilettes. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
