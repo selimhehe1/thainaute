@@ -53,6 +53,16 @@ export function createPlaywrightConfig(
     // n'attend que la racine. Sans ce préchauffage, la première navigation
     // vers une route lourde court contre sa propre compilation.
     globalSetup: "./e2e/global-setup.ts",
+    // Les scénarios connectés ouvrent un SECOND contexte navigateur pour
+    // prouver qu'un autre appareil retrouve la progression. Ce contexte n'a
+    // aucun cache HTTP : il retélécharge tous les modules de `next dev`, non
+    // minifiés, avant d'hydrater React puis de relire la session. Cinq
+    // secondes suffisent sur un poste, pas sur un exécuteur partagé.
+    //
+    // Ce budget n'affaiblit aucune assertion : un élément qui n'apparaît
+    // jamais échoue toujours, simplement plus tard. Les nouvelles tentatives
+    // restent à zéro, pour qu'un vrai défaut ne soit jamais masqué.
+    expect: { timeout: 20_000 },
     use: {
       baseURL: externalOrigin ?? DEFAULT_ORIGIN,
       launchOptions: {
