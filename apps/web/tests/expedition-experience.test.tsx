@@ -306,6 +306,74 @@ describe("lecteur Expédition", () => {
     await waitFor(() => expect(routerPush).toHaveBeenCalledWith("/today"));
   }, 20_000);
 
+  it("consigne les cinq mécaniques dans le journal durable, pas seulement l’écoute", async () => {
+    const user = userEvent.setup();
+    renderExpedition();
+
+    await user.click(
+      await screen.findByRole("button", { name: "Commencer l’expédition" }),
+    );
+    await passListeningCard(user);
+    await passAssociationCard(user);
+    await passWordOrderCard(user);
+    await passRecallCard(user, " ก่ ");
+    await passReadingCard(user);
+    await screen.findByRole("heading", {
+      name: "La courbe de la séance est complète.",
+    });
+
+    const store = new WebAttemptOutboxStore("thainaute-demo-v1");
+    const durable = await store.read();
+    store.close();
+
+    // Une tentative par exercice : avant, quatre sur cinq n'atteignaient
+    // jamais le journal et donc jamais le serveur.
+    expect(durable.entries).toHaveLength(5);
+    expect(
+      durable.entries.map(({ submission }) => submission.exerciseId).sort(),
+    ).toStrictEqual(lesson.exercises.map(({ id }) => id).sort());
+
+    const byExercise = new Map(
+      durable.entries.map(({ submission }) => [
+        submission.exerciseId,
+        submission,
+      ]),
+    );
+    for (const exercise of lesson.exercises) {
+      const submission = byExercise.get(exercise.id);
+      if (exercise.type === "audio_choice" || exercise.type === "reading") {
+        expect(submission?.selectedOptionId).toBe(exercise.correctOptionId);
+        expect(submission?.answer).toBeUndefined();
+      } else {
+        expect(submission?.answer?.kind).toBe(exercise.type);
+        expect(submission?.selectedOptionId).toBeUndefined();
+      }
+    }
+  }, 30_000);
+
+  it("affiche la maîtrise de chaque mécanique, plus seulement celle de l’écoute", async () => {
+    const user = userEvent.setup();
+    renderExpedition();
+
+    await user.click(
+      await screen.findByRole("button", { name: "Commencer l’expédition" }),
+    );
+    await passListeningCard(user);
+    await passAssociationCard(user);
+    await passWordOrderCard(user);
+    await passRecallCard(user, " ก่ ");
+    await passReadingCard(user);
+    await screen.findByRole("heading", {
+      name: "La courbe de la séance est complète.",
+    });
+
+    // Cinq lignes portent une maîtrise chiffrée. Aucune ne reste « à
+    // calculer », qui était le sort de quatre exercices sur cinq.
+    expect(screen.getAllByText(/^Maîtrise \d+ ‰$/u)).toHaveLength(5);
+    expect(screen.queryByText("Maîtrise à calculer")).not.toBeInTheDocument();
+    expect(screen.queryByText("À calculer")).not.toBeInTheDocument();
+  }, 30_000);
+
   it("consigne une erreur d’association sans punir", async () => {
     const user = userEvent.setup();
     renderExpedition();

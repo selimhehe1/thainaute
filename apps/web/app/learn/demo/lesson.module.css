@@ -751,14 +751,23 @@
   margin: 0;
 }
 
+/* Le verdict reste sur la ligne du libellé ; la maîtrise passe dessous.
+   À 390 px, les trois côte à côte se serraient jusqu'à devenir illisibles. */
 .recapRow {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: baseline;
-  gap: 16px;
+  column-gap: 16px;
+  row-gap: 2px;
   padding: 12px 2px;
   border-bottom: 1px solid var(--color-line);
   font-size: 15.5px;
+}
+
+.recapMastery {
+  grid-column: 1 / -1;
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
 }
 
 .recapRow:first-child {

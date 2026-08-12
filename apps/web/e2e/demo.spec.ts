@@ -33,7 +33,11 @@ test("termine l'expédition des cinq mécaniques", async ({ page }) => {
 
   await completeExpedition(page);
   await expect(page.getByText("Juste")).toHaveCount(5);
-  await expect(page.getByText("250 ‰")).toBeVisible();
+  // Les cinq exercices portent une maîtrise chiffrée. Deux d'entre eux
+  // entraînent le même item dans la même compétence, donc leur projection
+  // est commune et vaut le double : c'est le SRS qui parle, pas un défaut.
+  await expect(page.getByText(/^Maîtrise \d+ ‰$/u)).toHaveCount(5);
+  await expect(page.getByText("250 ‰", { exact: true })).toBeVisible();
 });
 
 test("enregistre, compare puis supprime une prise locale", async ({ page }) => {
