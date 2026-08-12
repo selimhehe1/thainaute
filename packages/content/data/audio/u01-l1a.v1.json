@@ -4,10 +4,10 @@
   "lessonVersionId": "588f4a02-d985-5d29-99dc-9d4a58ce9c77",
   "entries": [
     {
-      "assetId": "9ae0a4f7-d9cb-551d-b247-7d258e606b29",
-      "itemId": "dc3e3565-fa17-5173-9e45-85219d0a8608",
+      "assetId": "5ce9163c-d337-53b6-9bb1-f6188ee788c9",
+      "itemId": "20e65f80-4023-5527-9d01-b13b4703a3a9",
       "variant": "pedagogical",
-      "canonicalPath": "packages/content/assets/audio/u01-l1a/9ae0a4f7-d9cb-551d-b247-7d258e606b29.wav",
+      "canonicalPath": "packages/content/assets/audio/u01-l1a/5ce9163c-d337-53b6-9bb1-f6188ee788c9.wav",
       "distributionPaths": [],
       "mimeType": "audio/wav",
       "sha256": "932983c627055e483312813b6ec8f8a8b399c1ee89256b25f561332669e285c1",
@@ -39,10 +39,10 @@
       }
     },
     {
-      "assetId": "d07bc9d9-f989-5a6b-9249-572a58ace81f",
-      "itemId": "f6d47faa-3143-51be-99b0-3a1ac9e2ebd2",
+      "assetId": "47189157-2358-5855-94a3-71c8e8a90a80",
+      "itemId": "f8bb5385-0505-5051-b2cd-fd4c4af5d3eb",
       "variant": "pedagogical",
-      "canonicalPath": "packages/content/assets/audio/u01-l1a/d07bc9d9-f989-5a6b-9249-572a58ace81f.wav",
+      "canonicalPath": "packages/content/assets/audio/u01-l1a/47189157-2358-5855-94a3-71c8e8a90a80.wav",
       "distributionPaths": [],
       "mimeType": "audio/wav",
       "sha256": "453ccb9ce9d42f1c653244b9e5b684a80bf4d278cbfd9e47d80409b7cbff5ce7",
@@ -74,10 +74,10 @@
       }
     },
     {
-      "assetId": "34626c45-7ae4-5c93-9b97-63f0d3b75fbe",
-      "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
+      "assetId": "a6344f49-bc07-5123-8493-aa0a5e92f90f",
+      "itemId": "5e991a34-2a7e-5c52-beb1-726b83a281e3",
       "variant": "pedagogical",
-      "canonicalPath": "packages/content/assets/audio/u01-l1a/34626c45-7ae4-5c93-9b97-63f0d3b75fbe.wav",
+      "canonicalPath": "packages/content/assets/audio/u01-l1a/a6344f49-bc07-5123-8493-aa0a5e92f90f.wav",
       "distributionPaths": [],
       "mimeType": "audio/wav",
       "sha256": "65a80cf3b623db989df83de09ea3c76f43b2811b91dd84520c86d20852dcc9e3",
@@ -109,10 +109,10 @@
       }
     },
     {
-      "assetId": "56515ba0-a225-5046-bfca-0e4b60e3ea92",
-      "itemId": "e0c580b2-d255-5600-9148-11a48d633edc",
+      "assetId": "c5138e64-e845-5779-be4b-3e36f4509926",
+      "itemId": "8b3c716f-8414-5107-9da6-2f49fd641d16",
       "variant": "pedagogical",
-      "canonicalPath": "packages/content/assets/audio/u01-l1a/56515ba0-a225-5046-bfca-0e4b60e3ea92.wav",
+      "canonicalPath": "packages/content/assets/audio/u01-l1a/c5138e64-e845-5779-be4b-3e36f4509926.wav",
       "distributionPaths": [],
       "mimeType": "audio/wav",
       "sha256": "f8c9472a10569f868354e921940a930240f3dcc21f139753c6c3e93fcd407cc5",
@@ -144,10 +144,10 @@
       }
     },
     {
-      "assetId": "9251e9ef-cd4d-5274-8054-97488c3605d4",
-      "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
+      "assetId": "a69b6ab3-921b-5430-86a0-47bde5bf1a7b",
+      "itemId": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
       "variant": "pedagogical",
-      "canonicalPath": "packages/content/assets/audio/u01-l1a/9251e9ef-cd4d-5274-8054-97488c3605d4.wav",
+      "canonicalPath": "packages/content/assets/audio/u01-l1a/a69b6ab3-921b-5430-86a0-47bde5bf1a7b.wav",
       "distributionPaths": [],
       "mimeType": "audio/wav",
       "sha256": "07c3490358c83a98a62869e42b32e1762c31cfd0be3c83efe256b78962ddcf69",

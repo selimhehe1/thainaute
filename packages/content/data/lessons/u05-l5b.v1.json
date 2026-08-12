@@ -15,7 +15,7 @@
   "audioManifestId": "c4ed21e0-d8be-59be-a687-cbfb7ea7e0c2",
   "items": [
     {
-      "id": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "id": "82c986ae-8f02-59eb-bf25-d7093e725a70",
       "thaiRaw": "ไป",
       "unicodeCodePoints": [
         "U+0E44",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "89f0ef39-dd5a-5b22-a346-b5d51fbc3e7d",
+      "id": "4c85b49a-6c20-50ec-a06e-0a47700d8bca",
       "thaiRaw": "มา",
       "unicodeCodePoints": [
         "U+0E21",
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "id": "bf053ce6-b7a5-5f68-a35e-f5e8575d0ec5",
+      "id": "f8cc9919-2bb5-52e7-b67b-1487cfd4f607",
       "thaiRaw": "เลี้ยว",
       "unicodeCodePoints": [
         "U+0E40",
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "id": "964061e2-8e24-5f9d-a858-18fe41054deb",
+      "id": "b6a94242-de96-5d38-aa7d-839d94ce0e40",
       "thaiRaw": "เลี้ยวซ้าย",
       "unicodeCodePoints": [
         "U+0E40",
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "id": "93339cda-4bf7-559a-8848-4e8b0c3a1c70",
+      "id": "4e44c6d6-b4b1-5274-bc4b-6291ff25e1bd",
       "thaiRaw": "เลี้ยวขวา",
       "unicodeCodePoints": [
         "U+0E40",
@@ -202,7 +202,7 @@
       ]
     },
     {
-      "id": "cb7e3a43-7c3d-5a2b-8f47-e4f9089cdf74",
+      "id": "a79f9aae-7277-5c3a-a0b0-51c4fc4b03aa",
       "thaiRaw": "ตรง",
       "unicodeCodePoints": [
         "U+0E15",
@@ -233,7 +233,7 @@
       ]
     },
     {
-      "id": "da91a584-7217-50ad-aab1-8b756e713ec2",
+      "id": "c769a6f0-4a54-5e87-b9b5-52e308c9dd0e",
       "thaiRaw": "หยุด",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -277,22 +277,22 @@
       "pairs": [
         {
           "id": "0e9e70af-3807-5172-bf4a-c531abe3afa9",
-          "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+          "itemId": "82c986ae-8f02-59eb-bf25-d7093e725a70",
           "labelFr": "aller, s’éloigner de celui qui parle"
         },
         {
           "id": "33e89767-bb30-5977-be71-ef691f6e4bc7",
-          "itemId": "89f0ef39-dd5a-5b22-a346-b5d51fbc3e7d",
+          "itemId": "4c85b49a-6c20-50ec-a06e-0a47700d8bca",
           "labelFr": "venir, se rapprocher de celui qui parle"
         },
         {
           "id": "da9bbf9c-10a1-5684-9dc4-d1ca33ab6e1a",
-          "itemId": "bf053ce6-b7a5-5f68-a35e-f5e8575d0ec5",
+          "itemId": "f8cc9919-2bb5-52e7-b67b-1487cfd4f607",
           "labelFr": "tourner"
         },
         {
           "id": "beea1b47-5aa0-59cb-bb39-427f3c566ab7",
-          "itemId": "da91a584-7217-50ad-aab1-8b756e713ec2",
+          "itemId": "c769a6f0-4a54-5e87-b9b5-52e308c9dd0e",
           "labelFr": "s’arrêter"
         }
       ],
@@ -323,17 +323,17 @@
       "pairs": [
         {
           "id": "dc8a85c3-eb85-52d8-80c2-d2cdbcd8b802",
-          "itemId": "964061e2-8e24-5f9d-a858-18fe41054deb",
+          "itemId": "b6a94242-de96-5d38-aa7d-839d94ce0e40",
           "labelFr": "tourner à gauche"
         },
         {
           "id": "b50e7bc0-e47e-5d2d-9928-d18c7debd751",
-          "itemId": "93339cda-4bf7-559a-8848-4e8b0c3a1c70",
+          "itemId": "4e44c6d6-b4b1-5274-bc4b-6291ff25e1bd",
           "labelFr": "tourner à droite"
         },
         {
           "id": "439c3209-a95c-5a2c-a222-c74f89c687d5",
-          "itemId": "cb7e3a43-7c3d-5a2b-8f47-e4f9089cdf74",
+          "itemId": "a79f9aae-7277-5c3a-a0b0-51c4fc4b03aa",
           "labelFr": "droit, qui ne tourne pas"
         }
       ],
@@ -359,7 +359,7 @@
       "drawIndex": 1,
       "id": "3a752aee-fd59-52fa-8b39-c2586070e585",
       "type": "recall",
-      "itemId": "bf053ce6-b7a5-5f68-a35e-f5e8575d0ec5",
+      "itemId": "f8cc9919-2bb5-52e7-b67b-1487cfd4f607",
       "skill": "recall",
       "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
       "acceptedAnswers": [
@@ -394,7 +394,7 @@
       "drawIndex": 2,
       "id": "40f45cea-cb37-512a-99c5-d7551a0ff454",
       "type": "recall",
-      "itemId": "da91a584-7217-50ad-aab1-8b756e713ec2",
+      "itemId": "c769a6f0-4a54-5e87-b9b5-52e308c9dd0e",
       "skill": "recall",
       "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
       "acceptedAnswers": [
@@ -429,7 +429,7 @@
       "drawIndex": 3,
       "id": "e5f28d88-6344-51b4-9937-dfd269dd28f2",
       "type": "recall",
-      "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "itemId": "82c986ae-8f02-59eb-bf25-d7093e725a70",
       "skill": "recall",
       "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
       "acceptedAnswers": [
@@ -460,7 +460,7 @@
       "drawIndex": 4,
       "id": "b6b56f2b-69f1-5215-8cf9-95adbdc1d95a",
       "type": "recall",
-      "itemId": "964061e2-8e24-5f9d-a858-18fe41054deb",
+      "itemId": "b6a94242-de96-5d38-aa7d-839d94ce0e40",
       "skill": "recall",
       "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
       "acceptedAnswers": [
@@ -495,7 +495,7 @@
       "drawIndex": 5,
       "id": "3642a3da-6e55-5d76-9ac3-25293aeb5382",
       "type": "recall",
-      "itemId": "cb7e3a43-7c3d-5a2b-8f47-e4f9089cdf74",
+      "itemId": "a79f9aae-7277-5c3a-a0b0-51c4fc4b03aa",
       "skill": "recall",
       "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
       "acceptedAnswers": [
@@ -526,7 +526,7 @@
       "drawIndex": 6,
       "id": "42a7e653-0670-5419-a612-899cc34577bd",
       "type": "recall",
-      "itemId": "93339cda-4bf7-559a-8848-4e8b0c3a1c70",
+      "itemId": "4e44c6d6-b4b1-5274-bc4b-6291ff25e1bd",
       "skill": "recall",
       "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
       "acceptedAnswers": [

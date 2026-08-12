@@ -207,8 +207,8 @@ privé, sur votre appareil.
 - `ipa` : /laʔ˥˩/
 - `ton` : descendant
 - `longueur` : courte
-- `fr` : particule finale ; enseignée ici uniquement comme dernière syllabe du
-  bloc แล้วคุณล่ะ, c’est le bloc entier qui porte le sens « et vous ? »
+- `fr` : particule finale ; appuie ce qui vient d’être dit et lui donne plus
+  de poids
 - `transcription` : lâ
 - `registre` : neutre, courant à l’oral
 - `note_fr` : la syllabe est brève et tombe, exactement comme le ค่ะ que

@@ -15,7 +15,7 @@
   "audioManifestId": "2b48e21d-980b-518b-bbaa-eabda09ea63a",
   "items": [
     {
-      "id": "abcdfdbc-855d-5beb-b407-54c5108fe5c6",
+      "id": "9793a5f5-e4d9-5bd1-9b9b-939fa0d66867",
       "thaiRaw": "สิ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "id": "36527df3-fa6f-58c6-918c-a8b5ada8c6c2",
+      "id": "6849905a-92b3-54b6-9d2b-f456c83f2af2",
       "thaiRaw": "ซิ",
       "unicodeCodePoints": [
         "U+0E0B",
@@ -73,7 +73,7 @@
       ]
     },
     {
-      "id": "3334b03d-5769-5c01-ae3e-1804c0a5f872",
+      "id": "3c0f25e3-ae21-557a-9f27-8337c9940a70",
       "thaiRaw": "ล่ะ",
       "unicodeCodePoints": [
         "U+0E25",
@@ -103,7 +103,7 @@
       ]
     },
     {
-      "id": "43ac1650-465b-5166-a0e2-32c92c7ac92d",
+      "id": "25fa9c45-962a-56b3-be09-1a558623ee77",
       "thaiRaw": "ลองดูสิ",
       "unicodeCodePoints": [
         "U+0E25",
@@ -130,10 +130,18 @@
         },
         {
           "thaiRaw": "ลองดูสิ",
-          "ipa": "duː˧ siʔ˨˩",
-          "tone": "low",
+          "ipa": "duː˧",
+          "tone": "mid",
           "vowelLength": "long",
           "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ลองดูสิ",
+          "ipa": "siʔ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
           "final": "aucune"
         }
       ],
@@ -145,7 +153,7 @@
       ]
     },
     {
-      "id": "239195ee-f5aa-56be-92b6-7bfe2ad06834",
+      "id": "8e658996-3548-5aa4-9522-66b984cc601a",
       "thaiRaw": "เอาสิ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -162,10 +170,18 @@
       "syllables": [
         {
           "thaiRaw": "เอาสิ",
-          "ipa": "ʔaw˧ siʔ˨˩",
-          "tone": "low",
+          "ipa": "ʔaw˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "ʔ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เอาสิ",
+          "ipa": "siʔ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
           "final": "aucune"
         }
       ],
@@ -176,7 +192,7 @@
       ]
     },
     {
-      "id": "85e4acb4-35d1-52cf-9233-c7124d0734af",
+      "id": "f3b6d598-08a8-5e5e-9858-e3ee36036e58",
       "thaiRaw": "ไม่รู้สิ",
       "unicodeCodePoints": [
         "U+0E44",
@@ -196,10 +212,26 @@
       "syllables": [
         {
           "thaiRaw": "ไม่รู้สิ",
-          "ipa": "maj˥˩ ruː˦˥ siʔ˨˩",
-          "tone": "low",
-          "vowelLength": "long",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
           "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่รู้สิ",
+          "ipa": "ruː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ไม่รู้สิ",
+          "ipa": "siʔ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
           "final": "aucune"
         }
       ],
@@ -211,7 +243,7 @@
       ]
     },
     {
-      "id": "678c83e5-67eb-54ce-8ca4-1d033f152280",
+      "id": "ffee41dc-2748-5d36-a867-5937208ee029",
       "thaiRaw": "เข้าใจล่ะ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -240,10 +272,18 @@
         },
         {
           "thaiRaw": "เข้าใจล่ะ",
-          "ipa": "t͡ɕaj˧ laʔ˥˩",
-          "tone": "falling",
+          "ipa": "t͡ɕaj˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "t͡ɕ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "เข้าใจล่ะ",
+          "ipa": "laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "l",
           "final": "aucune"
         }
       ],
@@ -254,7 +294,7 @@
       ]
     },
     {
-      "id": "000b5071-41d4-5b5e-b6f0-b61d1565b52c",
+      "id": "69d6653c-a167-57e2-ad62-f46a8def13ff",
       "thaiRaw": "แล้วคุณล่ะ",
       "unicodeCodePoints": [
         "U+0E41",
@@ -276,9 +316,25 @@
       "syllables": [
         {
           "thaiRaw": "แล้วคุณล่ะ",
-          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
-          "tone": "falling",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
           "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
           "initial": "l",
           "final": "aucune"
         }
@@ -290,7 +346,7 @@
       ]
     },
     {
-      "id": "7ed2c206-3261-55fc-8c8b-2a776cf032c4",
+      "id": "969eb7f8-8a81-5e89-a00a-b89ee4b8abe0",
       "thaiRaw": "ดู",
       "unicodeCodePoints": [
         "U+0E14",
@@ -319,7 +375,7 @@
       ]
     },
     {
-      "id": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "id": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "thaiRaw": "ไม่",
       "unicodeCodePoints": [
         "U+0E44",
@@ -350,7 +406,7 @@
       ]
     },
     {
-      "id": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "id": "82c986ae-8f02-59eb-bf25-d7093e725a70",
       "thaiRaw": "ไป",
       "unicodeCodePoints": [
         "U+0E44",
@@ -381,7 +437,7 @@
       ]
     },
     {
-      "id": "21ff4621-edac-5249-91ba-ef2bdce5358e",
+      "id": "2d7513b3-3ed6-54e1-b55e-8033e6968604",
       "thaiRaw": "ลองดู",
       "unicodeCodePoints": [
         "U+0E25",
@@ -422,7 +478,7 @@
       ]
     },
     {
-      "id": "35a360c4-b3e1-5cf6-bb44-c4889b366931",
+      "id": "4c366ac7-e24d-52f3-a92a-707d577f466b",
       "thaiRaw": "เอา",
       "unicodeCodePoints": [
         "U+0E40",
@@ -453,7 +509,7 @@
       ]
     },
     {
-      "id": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "id": "7b459b92-ea44-5023-bd07-cf77cc1dd710",
       "thaiRaw": "แล้ว",
       "unicodeCodePoints": [
         "U+0E41",
@@ -484,7 +540,7 @@
       ]
     },
     {
-      "id": "2b038b96-36d3-5241-ad09-264337463e3d",
+      "id": "ee12e354-4f9b-5b96-95d8-f24702f1c917",
       "thaiRaw": "เข้าใจ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -531,7 +587,7 @@
       "drawIndex": 1,
       "id": "f7af3863-9385-53cc-ad1b-ea8eb923a050",
       "type": "word_order",
-      "itemId": "21ff4621-edac-5249-91ba-ef2bdce5358e",
+      "itemId": "2d7513b3-3ed6-54e1-b55e-8033e6968604",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -579,7 +635,7 @@
       "drawIndex": 2,
       "id": "7aff002e-3bb6-570f-9ed0-bdb046968a15",
       "type": "word_order",
-      "itemId": "85e4acb4-35d1-52cf-9233-c7124d0734af",
+      "itemId": "f3b6d598-08a8-5e5e-9858-e3ee36036e58",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -627,7 +683,7 @@
       "drawIndex": 3,
       "id": "1712df64-e14d-5799-87b9-3e8bb4ffdd25",
       "type": "word_order",
-      "itemId": "2b038b96-36d3-5241-ad09-264337463e3d",
+      "itemId": "ee12e354-4f9b-5b96-95d8-f24702f1c917",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -675,7 +731,7 @@
       "drawIndex": 4,
       "id": "2d98ebcb-3a71-55c5-ade7-517065e3ff80",
       "type": "word_order",
-      "itemId": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "itemId": "7b459b92-ea44-5023-bd07-cf77cc1dd710",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -729,7 +785,7 @@
       "drawIndex": 5,
       "id": "d0ba469a-397a-50ab-adba-babc3aedac1b",
       "type": "word_order",
-      "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "itemId": "82c986ae-8f02-59eb-bf25-d7093e725a70",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -777,7 +833,7 @@
       "drawIndex": 6,
       "id": "ba8579b5-a964-5b5c-b5ca-28bec97530cc",
       "type": "word_order",
-      "itemId": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "itemId": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -825,7 +881,7 @@
       "drawIndex": 7,
       "id": "efad11fe-5bbd-5c62-bed5-d1d216565a2e",
       "type": "word_order",
-      "itemId": "35a360c4-b3e1-5cf6-bb44-c4889b366931",
+      "itemId": "4c366ac7-e24d-52f3-a92a-707d577f466b",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -873,7 +929,7 @@
       "drawIndex": 8,
       "id": "4ecfaf90-b674-5995-a5b3-7a452a60e31f",
       "type": "word_order",
-      "itemId": "7ed2c206-3261-55fc-8c8b-2a776cf032c4",
+      "itemId": "969eb7f8-8a81-5e89-a00a-b89ee4b8abe0",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre de ce que vous venez d’entendre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",

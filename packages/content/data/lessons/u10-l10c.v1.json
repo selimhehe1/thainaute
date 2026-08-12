@@ -10,12 +10,12 @@
   "publishedAt": null,
   "locale": "fr-FR",
   "titleFr": "Lire un menu",
-  "objectiveFr": "à la fin de la leçon, devant une ligne écrite en thaï bâtie sur le modèle de la carte du jour et sans l’entendre, l’apprenant dit à la fois de quel plat il s’agit et combien il coûte, sur 10 lignes sur 12 ; il apparie six lignes écrites à leur contenu français, 6 sur 6, alors que trois plats et deux prix seulement y circulent, de sorte qu’aucun des deux blocs ne suffit ; il reconstruit une de ces ",
+  "objectiveFr": "à la fin de la leçon, devant une ligne écrite en thaï bâtie sur le modèle de la carte du jour et sans l’entendre, l’apprenant dit à la fois de quel plat il s’agit et combien il coûte, sur 10 lignes sur 12 ; il apparie six lignes écrites à leur contenu français, 6 sur 6, alors que trois plats et deux prix seulement y circulent, de sorte qu’aucun des deux blocs ne suffit ; il reconstruit une de ces",
   "requiredEntitlement": null,
   "audioManifestId": "f506ea2a-395f-5a64-8005-2db6698c3a3c",
   "items": [
     {
-      "id": "16db7a7c-b02a-5ec7-96f4-25e3e9e4d0bf",
+      "id": "059c9aab-9fd3-5ce5-a5b2-25ca94cbfd3c",
       "thaiRaw": "หมู",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "180bce57-2455-5ffd-a76a-501b0705896a",
+      "id": "cdbf65c8-5adf-5749-bcd7-5bf1accad674",
       "thaiRaw": "ราคา",
       "unicodeCodePoints": [
         "U+0E23",
@@ -85,7 +85,7 @@
       ]
     },
     {
-      "id": "84916a98-edae-58a2-99ca-c4e2524bf527",
+      "id": "96bb3b7e-9ebd-58f3-9cb9-40bf42705967",
       "thaiRaw": "อาหาร",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -125,7 +125,7 @@
       ]
     },
     {
-      "id": "b72b0e34-b430-5687-82b9-0e641e7c8be2",
+      "id": "b580ef9b-4d3f-5f3e-91de-ee86e6b2e83c",
       "thaiRaw": "ข้าวผัด",
       "unicodeCodePoints": [
         "U+0E02",
@@ -166,7 +166,7 @@
       ]
     },
     {
-      "id": "eeb66868-c0d3-5081-be52-481c8ca06597",
+      "id": "242943c4-d18e-5bf0-9e45-ba330e752522",
       "thaiRaw": "ข้าวผัดหมู",
       "unicodeCodePoints": [
         "U+0E02",
@@ -219,7 +219,7 @@
       ]
     },
     {
-      "id": "422e7256-d670-586e-9c25-db137b85dc08",
+      "id": "23bf7c31-c5d6-517f-8358-a2801bd815f4",
       "thaiRaw": "ข้าวผัดไก่",
       "unicodeCodePoints": [
         "U+0E02",
@@ -271,7 +271,7 @@
       ]
     },
     {
-      "id": "5615d247-f9c4-50ed-9d7f-049bc9a0a7a9",
+      "id": "1c760ed9-3f37-5596-bcbb-5cc612e5a50e",
       "thaiRaw": "บาท",
       "unicodeCodePoints": [
         "U+0E1A",
@@ -300,7 +300,7 @@
       ]
     },
     {
-      "id": "adeccfe4-1a10-5c03-ba9a-2b6644d64f90",
+      "id": "17c7f460-1f0b-5872-9c6a-5f81823e8e40",
       "thaiRaw": "ห้าสิบบาท",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -329,10 +329,18 @@
         },
         {
           "thaiRaw": "ห้าสิบบาท",
-          "ipa": "sip̚˨˩ baːt̚˨˩",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ห้าสิบบาท",
+          "ipa": "baːt̚˨˩",
           "tone": "low",
           "vowelLength": "long",
-          "initial": "s",
+          "initial": "b",
           "final": "t̚"
         }
       ],
@@ -350,7 +358,7 @@
       "drawIndex": 1,
       "id": "c6091522-2f1b-5302-852b-4cff02ee7887",
       "type": "recall",
-      "itemId": "16db7a7c-b02a-5ec7-96f4-25e3e9e4d0bf",
+      "itemId": "059c9aab-9fd3-5ce5-a5b2-25ca94cbfd3c",
       "skill": "recall",
       "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -375,7 +383,7 @@
       "drawIndex": 2,
       "id": "8225b656-dc4e-5109-ab28-00d3dd96ffc0",
       "type": "recall",
-      "itemId": "180bce57-2455-5ffd-a76a-501b0705896a",
+      "itemId": "cdbf65c8-5adf-5749-bcd7-5bf1accad674",
       "skill": "recall",
       "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -404,7 +412,7 @@
       "drawIndex": 3,
       "id": "10907a8f-3e97-5374-9d3a-55b2bf414033",
       "type": "recall",
-      "itemId": "84916a98-edae-58a2-99ca-c4e2524bf527",
+      "itemId": "96bb3b7e-9ebd-58f3-9cb9-40bf42705967",
       "skill": "recall",
       "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -433,7 +441,7 @@
       "drawIndex": 4,
       "id": "8f78d7ce-7792-5e41-9bbc-e0413176e2e4",
       "type": "recall",
-      "itemId": "b72b0e34-b430-5687-82b9-0e641e7c8be2",
+      "itemId": "b580ef9b-4d3f-5f3e-91de-ee86e6b2e83c",
       "skill": "recall",
       "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -462,7 +470,7 @@
       "drawIndex": 5,
       "id": "74f9425a-f1a0-5ef9-9642-e11107e7444c",
       "type": "recall",
-      "itemId": "eeb66868-c0d3-5081-be52-481c8ca06597",
+      "itemId": "242943c4-d18e-5bf0-9e45-ba330e752522",
       "skill": "recall",
       "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -491,7 +499,7 @@
       "drawIndex": 6,
       "id": "1680e75a-96df-5f12-99eb-c83d0dda518c",
       "type": "recall",
-      "itemId": "422e7256-d670-586e-9c25-db137b85dc08",
+      "itemId": "23bf7c31-c5d6-517f-8358-a2801bd815f4",
       "skill": "recall",
       "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -520,7 +528,7 @@
       "drawIndex": 7,
       "id": "f23cdc1c-3270-5c3b-bbef-33f2a7187576",
       "type": "recall",
-      "itemId": "5615d247-f9c4-50ed-9d7f-049bc9a0a7a9",
+      "itemId": "1c760ed9-3f37-5596-bcbb-5cc612e5a50e",
       "skill": "recall",
       "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -545,7 +553,7 @@
       "drawIndex": 8,
       "id": "11751196-d891-5e27-bbb9-9bf8020f54e9",
       "type": "recall",
-      "itemId": "adeccfe4-1a10-5c03-ba9a-2b6644d64f90",
+      "itemId": "17c7f460-1f0b-5872-9c6a-5f81823e8e40",
       "skill": "recall",
       "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [

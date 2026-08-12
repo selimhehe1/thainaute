@@ -15,7 +15,7 @@
   "audioManifestId": "0feaa814-b00e-5e4b-ab7a-1c24d1d06715",
   "items": [
     {
-      "id": "48b73a9b-91e9-56bb-b3a1-e16d2c288600",
+      "id": "88b6458b-a841-55e2-9dda-aef7a96f0b32",
       "thaiRaw": "ทาง",
       "unicodeCodePoints": [
         "U+0E17",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "ae51103f-a1ed-53dd-bbc4-35dc76a8313e",
+      "id": "6918a301-79cf-55ad-b245-e968346622e6",
       "thaiRaw": "ออก",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -75,7 +75,7 @@
       ]
     },
     {
-      "id": "95decd4b-94d5-5f0f-9ce6-29fe7f2790b1",
+      "id": "b6c2b98f-72b4-5cf8-abde-53dd378d3b78",
       "thaiRaw": "ทางเข้า",
       "unicodeCodePoints": [
         "U+0E17",
@@ -117,7 +117,7 @@
       ]
     },
     {
-      "id": "a46d4c34-1ecd-538b-b4a7-65d750bb7a82",
+      "id": "840a2483-9cfc-5eb3-b47b-c66dedc48cca",
       "thaiRaw": "ทางออก",
       "unicodeCodePoints": [
         "U+0E17",
@@ -158,7 +158,7 @@
       ]
     },
     {
-      "id": "fd432c2d-2103-5091-9323-112a44179a32",
+      "id": "2d133729-77b4-5082-883c-015a445167a3",
       "thaiRaw": "เปิด",
       "unicodeCodePoints": [
         "U+0E40",
@@ -189,7 +189,7 @@
       ]
     },
     {
-      "id": "3fd652f9-8560-5724-80db-5ad33a169d62",
+      "id": "32d320b9-04fe-57aa-bbb2-09a01590be6f",
       "thaiRaw": "ปิด",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -219,7 +219,7 @@
       ]
     },
     {
-      "id": "1eaa8b77-0183-558d-906d-b1daf06c7d30",
+      "id": "bfdce205-866e-5ebd-8455-4e20a2d3215e",
       "thaiRaw": "ห้าม",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -250,7 +250,7 @@
       ]
     },
     {
-      "id": "f839da8d-88e9-5ade-abf8-0e45dc781f62",
+      "id": "3f620b73-d00b-5b3a-a833-54471addd4b6",
       "thaiRaw": "ห้ามเข้า",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -293,7 +293,7 @@
       ]
     },
     {
-      "id": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "id": "7f90abd6-6da7-548a-b0a5-accd8a74da96",
       "thaiRaw": "ห้องน้ำ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -336,7 +336,7 @@
       ]
     },
     {
-      "id": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "id": "277c2b47-0a34-5384-934d-b71aa8cb5e6a",
       "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -377,18 +377,42 @@
         },
         {
           "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
-          "ipa": "naːm˦˥ juː˨˩ tʰiː˥˩",
-          "tone": "falling",
+          "ipa": "naːm˦˥",
+          "tone": "high",
           "vowelLength": "long",
           "initial": "n",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
           "final": "aucune"
         },
         {
           "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
-          "ipa": "naj˩˩˦ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
           "vowelLength": "short",
           "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -405,7 +429,7 @@
       "drawIndex": 1,
       "id": "472892ad-c3e3-5a5b-a101-cb692e7cdfc9",
       "type": "word_order",
-      "itemId": "95decd4b-94d5-5f0f-9ce6-29fe7f2790b1",
+      "itemId": "b6c2b98f-72b4-5cf8-abde-53dd378d3b78",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
@@ -457,7 +481,7 @@
       "drawIndex": 2,
       "id": "f923ecdf-45e6-53e5-95fd-4ac4c2a97c8d",
       "type": "word_order",
-      "itemId": "a46d4c34-1ecd-538b-b4a7-65d750bb7a82",
+      "itemId": "840a2483-9cfc-5eb3-b47b-c66dedc48cca",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
@@ -509,7 +533,7 @@
       "drawIndex": 3,
       "id": "6c5c8e64-26b5-540c-9b04-03488d46cb72",
       "type": "word_order",
-      "itemId": "f839da8d-88e9-5ade-abf8-0e45dc781f62",
+      "itemId": "3f620b73-d00b-5b3a-a833-54471addd4b6",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
@@ -561,7 +585,7 @@
       "drawIndex": 4,
       "id": "8a2b7975-5a7b-5e9f-9d84-50e5d4b2540f",
       "type": "word_order",
-      "itemId": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "itemId": "7f90abd6-6da7-548a-b0a5-accd8a74da96",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
@@ -613,7 +637,7 @@
       "drawIndex": 5,
       "id": "8b3561fb-ddc1-55b7-ac4c-2d2409a7863e",
       "type": "word_order",
-      "itemId": "a46d4c34-1ecd-538b-b4a7-65d750bb7a82",
+      "itemId": "840a2483-9cfc-5eb3-b47b-c66dedc48cca",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
@@ -667,7 +691,7 @@
       "drawIndex": 6,
       "id": "3bd331b2-9f70-5dcc-9c9a-525627bc82d8",
       "type": "word_order",
-      "itemId": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "itemId": "277c2b47-0a34-5384-934d-b71aa8cb5e6a",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
@@ -726,22 +750,22 @@
       "pairs": [
         {
           "id": "bcbd4182-bf6c-5b82-be50-aa4fe61dbef3",
-          "itemId": "48b73a9b-91e9-56bb-b3a1-e16d2c288600",
+          "itemId": "88b6458b-a841-55e2-9dda-aef7a96f0b32",
           "labelFr": "le chemin, la voie"
         },
         {
           "id": "143f9ae6-6a0d-51ef-b300-889e2fdfc8a2",
-          "itemId": "ae51103f-a1ed-53dd-bbc4-35dc76a8313e",
+          "itemId": "6918a301-79cf-55ad-b245-e968346622e6",
           "labelFr": "sortir"
         },
         {
           "id": "b345394e-df35-5458-abf4-1369df61981a",
-          "itemId": "95decd4b-94d5-5f0f-9ce6-29fe7f2790b1",
+          "itemId": "b6c2b98f-72b4-5cf8-abde-53dd378d3b78",
           "labelFr": "l’entrée"
         },
         {
           "id": "3381690e-8c97-5f23-b155-424dd3a83394",
-          "itemId": "a46d4c34-1ecd-538b-b4a7-65d750bb7a82",
+          "itemId": "840a2483-9cfc-5eb3-b47b-c66dedc48cca",
           "labelFr": "la sortie"
         }
       ],
@@ -767,22 +791,22 @@
       "pairs": [
         {
           "id": "5c798a60-bbb6-504c-909e-e83b80a2f93b",
-          "itemId": "fd432c2d-2103-5091-9323-112a44179a32",
+          "itemId": "2d133729-77b4-5082-883c-015a445167a3",
           "labelFr": "ouvert"
         },
         {
           "id": "7a090d5f-8a6d-54d7-b8a4-ba833e7fb173",
-          "itemId": "3fd652f9-8560-5724-80db-5ad33a169d62",
+          "itemId": "32d320b9-04fe-57aa-bbb2-09a01590be6f",
           "labelFr": "fermé"
         },
         {
           "id": "77081c1b-f3eb-5c21-ab2d-6e6951e5b3b2",
-          "itemId": "1eaa8b77-0183-558d-906d-b1daf06c7d30",
+          "itemId": "bfdce205-866e-5ebd-8455-4e20a2d3215e",
           "labelFr": "il est interdit de"
         },
         {
           "id": "2529e70e-8e57-52d8-a0fe-4381707e4a35",
-          "itemId": "f839da8d-88e9-5ade-abf8-0e45dc781f62",
+          "itemId": "3f620b73-d00b-5b3a-a833-54471addd4b6",
           "labelFr": "entrée interdite"
         }
       ],
@@ -803,7 +827,7 @@
       "drawIndex": 1,
       "id": "754118ee-4e22-57f9-8c01-554c8b7214e6",
       "type": "recall",
-      "itemId": "48b73a9b-91e9-56bb-b3a1-e16d2c288600",
+      "itemId": "88b6458b-a841-55e2-9dda-aef7a96f0b32",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -839,7 +863,7 @@
       "drawIndex": 2,
       "id": "adf5a85b-eced-5f6e-89f1-3ab620bd7ea7",
       "type": "recall",
-      "itemId": "ae51103f-a1ed-53dd-bbc4-35dc76a8313e",
+      "itemId": "6918a301-79cf-55ad-b245-e968346622e6",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -875,7 +899,7 @@
       "drawIndex": 3,
       "id": "fcf23af0-4f5c-5489-a620-580bff9d76fc",
       "type": "recall",
-      "itemId": "95decd4b-94d5-5f0f-9ce6-29fe7f2790b1",
+      "itemId": "b6c2b98f-72b4-5cf8-abde-53dd378d3b78",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -915,7 +939,7 @@
       "drawIndex": 4,
       "id": "3fe90464-6f3d-55d4-949c-458c3aee1b5b",
       "type": "recall",
-      "itemId": "a46d4c34-1ecd-538b-b4a7-65d750bb7a82",
+      "itemId": "840a2483-9cfc-5eb3-b47b-c66dedc48cca",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -955,7 +979,7 @@
       "drawIndex": 5,
       "id": "b11c2a60-9126-5ec5-aefe-b7dfd4f75dfd",
       "type": "recall",
-      "itemId": "fd432c2d-2103-5091-9323-112a44179a32",
+      "itemId": "2d133729-77b4-5082-883c-015a445167a3",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -991,7 +1015,7 @@
       "drawIndex": 6,
       "id": "5a96e091-7fa8-5794-8f57-27b6cc7a811c",
       "type": "recall",
-      "itemId": "3fd652f9-8560-5724-80db-5ad33a169d62",
+      "itemId": "32d320b9-04fe-57aa-bbb2-09a01590be6f",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -1027,7 +1051,7 @@
       "drawIndex": 7,
       "id": "0189bd32-c5ce-5ad9-904a-26fc6c124d7c",
       "type": "recall",
-      "itemId": "1eaa8b77-0183-558d-906d-b1daf06c7d30",
+      "itemId": "bfdce205-866e-5ebd-8455-4e20a2d3215e",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -1063,7 +1087,7 @@
       "drawIndex": 8,
       "id": "d76539f1-e2c3-53d4-aa2d-81d21c9223fa",
       "type": "recall",
-      "itemId": "f839da8d-88e9-5ade-abf8-0e45dc781f62",
+      "itemId": "3f620b73-d00b-5b3a-a833-54471addd4b6",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [

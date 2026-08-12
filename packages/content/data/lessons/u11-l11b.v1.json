@@ -15,7 +15,7 @@
   "audioManifestId": "9327924f-60e1-5800-b6e2-8eaf0a18c7d8",
   "items": [
     {
-      "id": "8ef7dd94-0558-5a9f-a0ec-02aea81a1fd7",
+      "id": "8583ac94-455a-54b4-9823-243da852a834",
       "thaiRaw": "พี่",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "af91990b-7970-540a-bce7-edfd7e55332a",
+      "id": "06ee8115-534b-55ef-bb8e-00b15e79586f",
       "thaiRaw": "น้อง",
       "unicodeCodePoints": [
         "U+0E19",
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "id": "c379cf78-da51-5807-9166-9c6f774ac566",
+      "id": "ec9fccab-ba70-538f-a8bc-eb0c1674c7cb",
       "thaiRaw": "คุณพ่อ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -116,7 +116,7 @@
       ]
     },
     {
-      "id": "1a2638e5-ad7c-5460-8fb3-eb72b1227f79",
+      "id": "d4abe378-f0df-552e-a2b3-f256b041b739",
       "thaiRaw": "คุณแม่",
       "unicodeCodePoints": [
         "U+0E04",
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "id": "0c0e142f-9e92-5d0f-8e44-9121b626fcc1",
+      "id": "8571e8be-a7b9-5e38-bec5-286ee3071718",
       "thaiRaw": "คุณ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -187,7 +187,7 @@
       ]
     },
     {
-      "id": "18a185bc-30d4-5c81-ba76-77d40b51a4c7",
+      "id": "8c649ea6-42c1-56bf-bf81-e741d756dd54",
       "thaiRaw": "ครับ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -218,7 +218,7 @@
       ]
     },
     {
-      "id": "2d5cc485-f95d-50fb-a61e-f5050a32fca4",
+      "id": "de8d77e0-edeb-5fd5-bb0c-ef6355da5e14",
       "thaiRaw": "ค่ะ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -248,7 +248,7 @@
       ]
     },
     {
-      "id": "9a77bd50-ef71-5d94-8f01-b68ef0957406",
+      "id": "7a2a550a-4e7c-59a7-9428-1949931cfbce",
       "thaiRaw": "คะ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -277,7 +277,7 @@
       ]
     },
     {
-      "id": "e37e18d1-418b-590b-974a-2ba3350babcf",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -306,7 +306,7 @@
       ]
     },
     {
-      "id": "dece4e05-af17-5907-97a5-16a6610758f8",
+      "id": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "thaiRaw": "ดิฉัน",
       "unicodeCodePoints": [
         "U+0E14",
@@ -344,7 +344,7 @@
       ]
     },
     {
-      "id": "16df5172-f146-5026-8494-e5f1473bccdf",
+      "id": "e4e9366b-5352-50e1-8208-771f1e1d6700",
       "thaiRaw": "พ่อ",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -374,7 +374,7 @@
       ]
     },
     {
-      "id": "3c37508f-1512-5110-8569-122615673ddd",
+      "id": "54bc9ea8-bf6e-5772-8a37-5328e68f4d39",
       "thaiRaw": "แม่",
       "unicodeCodePoints": [
         "U+0E41",
@@ -404,7 +404,7 @@
       ]
     },
     {
-      "id": "2f7eef17-ff18-5aed-88ac-f6f6e4d26faf",
+      "id": "f8a7c18d-b236-50a8-8ea5-164dcbbee50c",
       "thaiRaw": "พี่ชาย",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -444,7 +444,7 @@
       ]
     },
     {
-      "id": "c932f751-42aa-54ee-9da9-cd7dd5e7f025",
+      "id": "81c15181-d871-5981-b2cf-d812ec5337ee",
       "thaiRaw": "ต้น",
       "unicodeCodePoints": [
         "U+0E15",
@@ -472,7 +472,7 @@
       ]
     },
     {
-      "id": "a7cb437a-415d-5ba9-b900-94ddee544965",
+      "id": "94bee5bf-e959-5540-932f-9f1ed5f8795d",
       "thaiRaw": "นก",
       "unicodeCodePoints": [
         "U+0E19",
@@ -510,27 +510,27 @@
       "pairs": [
         {
           "id": "41966b35-3965-5589-bec8-3fc50afd5cda",
-          "itemId": "0c0e142f-9e92-5d0f-8e44-9121b626fcc1",
+          "itemId": "8571e8be-a7b9-5e38-bec5-286ee3071718",
           "labelFr": "la personne à qui vous parlez, quelle qu’elle soit, par égard, sans condition d’âge"
         },
         {
           "id": "5b8ad555-fb8b-5b01-99ea-9f7923e67c22",
-          "itemId": "8ef7dd94-0558-5a9f-a0ec-02aea81a1fd7",
+          "itemId": "8583ac94-455a-54b4-9823-243da852a834",
           "labelFr": "une personne dont l’âge est celui d’un aîné"
         },
         {
           "id": "c027147d-c840-5aac-badc-ef9014a697a9",
-          "itemId": "af91990b-7970-540a-bce7-edfd7e55332a",
+          "itemId": "06ee8115-534b-55ef-bb8e-00b15e79586f",
           "labelFr": "une personne dont l’âge est celui d’un cadet"
         },
         {
           "id": "61578f4d-4f5e-5828-ae16-38efaea7ffeb",
-          "itemId": "c379cf78-da51-5807-9166-9c6f774ac566",
+          "itemId": "ec9fccab-ba70-538f-a8bc-eb0c1674c7cb",
           "labelFr": "le père, avec la marque d’égard placée devant"
         },
         {
           "id": "3490cada-d588-50ef-9b25-ace82a7dd4c2",
-          "itemId": "1a2638e5-ad7c-5460-8fb3-eb72b1227f79",
+          "itemId": "d4abe378-f0df-552e-a2b3-f256b041b739",
           "labelFr": "la mère, avec la marque d’égard placée devant"
         }
       ],

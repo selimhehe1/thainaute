@@ -94,6 +94,11 @@ export function tonDepuisContour(barres) {
 export function decouperSyllabe(syllabe) {
   const brut = syllabe.normalize("NFC").trim();
   if (brut === "") return null;
+  // Une syllabe ne contient jamais d'espace interne. En accepter une, c'est
+  // rendre une pseudo-syllabe qui en contient deux, avec un seul ton et une
+  // seule longueur : exactement le défaut que `decouperItem` vient de
+  // corriger, et qu'il ne faut pas pouvoir réintroduire ailleurs.
+  if (/\s/u.test(brut)) return null;
 
   const tonTrouve = brut.match(TONS);
   const ton = tonTrouve ? tonTrouve[0] : "";
@@ -191,13 +196,34 @@ export function decouperItem(champIpa) {
   const encadre = brut.match(/^\/([^/]+)\/$/u);
   if (encadre === null) return null;
 
-  const syllabes = encadre[1].split(".").map((part) => part.trim());
+  // Le point sépare les syllabes d'un mot, l'espace sépare les mots. Les
+  // DEUX terminent une syllabe.
+  //
+  // Ne couper que sur le point produisait des syllabes fusionnées : le
+  // bloc « /sa˨˩.wat̚˨˩.diː˧ kʰrap̚˦˥/ » rendait trois syllabes dont la
+  // dernière valait « diː˧ kʰrap̚˦˥ », étiquetée d'un seul ton et d'une
+  // seule longueur qui n'en décrivaient aucune. 95 syllabes du corpus sur
+  // 984 étaient dans ce cas, et le contrôle croisé du ton ne pouvait pas le
+  // voir puisqu'il comparait ligne à ligne.
+  const separateurs = [...encadre[1].matchAll(/[.\s]+/gu)].map(
+    (trouve) => trouve[0],
+  );
+  const syllabes = encadre[1].split(/[.\s]+/u).map((part) => part.trim());
   const decoupees = syllabes.map(decouperSyllabe);
   if (decoupees.some((syllabe) => syllabe === null)) return null;
 
   // Reconstitution de l'ensemble, pour que le découpage en syllabes soit
-  // vérifié au même titre que le découpage interne de chacune.
-  if (`/${decoupees.map((s) => s.ipa).join(".")}/` !== brut) return null;
+  // vérifié au même titre que le découpage interne de chacune. Les
+  // séparateurs d'origine sont replacés tels quels : une espace ne doit pas
+  // devenir un point sans qu'on s'en aperçoive.
+  const reconstruit = decoupees
+    .map((syllabe) => syllabe.ipa)
+    .reduce(
+      (accumule, ipa, index) =>
+        index === 0 ? ipa : `${accumule}${separateurs[index - 1] ?? "."}${ipa}`,
+      "",
+    );
+  if (`/${reconstruit}/` !== brut) return null;
 
   return decoupees;
 }

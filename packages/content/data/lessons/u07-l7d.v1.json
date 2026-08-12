@@ -15,7 +15,7 @@
   "audioManifestId": "108a286b-2915-568c-a237-f5c32fb344b5",
   "items": [
     {
-      "id": "26b6d867-afa8-5fa8-9c65-6ff2252e91fd",
+      "id": "4c581765-8488-5a1e-9354-c081505732e8",
       "thaiRaw": "นอน",
       "unicodeCodePoints": [
         "U+0E19",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "572bd80c-6108-523d-a7fd-8c07c389525c",
+      "id": "ca64341b-7775-51d9-b9cf-3a9efe1aab4f",
       "thaiRaw": "ทำงาน",
       "unicodeCodePoints": [
         "U+0E17",
@@ -87,7 +87,7 @@
       ]
     },
     {
-      "id": "aaca500b-e861-55bf-baf1-4fcfc5c1d5eb",
+      "id": "969eb7f8-8a81-5e89-a00a-b89ee4b8abe0",
       "thaiRaw": "ดู",
       "unicodeCodePoints": [
         "U+0E14",
@@ -117,7 +117,7 @@
       ]
     },
     {
-      "id": "06b81505-5582-561c-9c57-a5ae2a5271d0",
+      "id": "c838aa15-cb55-53aa-9cf2-6970e80cb32e",
       "thaiRaw": "ทีวี",
       "unicodeCodePoints": [
         "U+0E17",
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "id": "91f27a3d-4cd4-5a43-a3d2-995508338f8c",
+      "id": "2ca0118e-7713-595f-9452-81e323365b89",
       "thaiRaw": "ทุกวัน",
       "unicodeCodePoints": [
         "U+0E17",
@@ -198,7 +198,7 @@
       ]
     },
     {
-      "id": "c0e0553f-0559-5187-a39b-fbcdba3868d4",
+      "id": "5a653239-e648-59bf-9c8a-78c5a74c5933",
       "thaiRaw": "ตอนเช้า",
       "unicodeCodePoints": [
         "U+0E15",
@@ -241,7 +241,7 @@
       ]
     },
     {
-      "id": "01f2011c-3d80-5ac4-bdb2-5e4d21c3b880",
+      "id": "739bf1b7-d011-5325-bff9-bf167eaabe7f",
       "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -348,7 +348,7 @@
       ]
     },
     {
-      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -384,7 +384,7 @@
       "drawIndex": 1,
       "id": "fb2199c4-ba7c-58b3-8ffe-e3718e917778",
       "type": "word_order",
-      "itemId": "01f2011c-3d80-5ac4-bdb2-5e4d21c3b880",
+      "itemId": "739bf1b7-d011-5325-bff9-bf167eaabe7f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
@@ -444,7 +444,7 @@
       "drawIndex": 2,
       "id": "ac4d3ce5-0ad7-5545-b67c-0d26ccf812cc",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
@@ -504,7 +504,7 @@
       "drawIndex": 3,
       "id": "bf15cf34-536b-59c3-a999-657f316f4cc6",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
@@ -564,7 +564,7 @@
       "drawIndex": 4,
       "id": "e3a7915d-8e1e-5af4-aba5-87a40702953b",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
@@ -618,7 +618,7 @@
       "drawIndex": 5,
       "id": "e3d3be35-2ce5-55d2-a2c2-744370b21a3d",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
@@ -672,7 +672,7 @@
       "drawIndex": 6,
       "id": "20d06f57-b447-56dc-8f21-b97828e64c33",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",

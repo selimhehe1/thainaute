@@ -10,12 +10,12 @@
   "publishedAt": null,
   "locale": "fr-FR",
   "titleFr": "Commander un plat",
-  "objectiveFr": "à la fin de la leçon, l’apprenant reconstruit le bloc complet dans l’ordre ขอ, chose, nombre, mot de comptage, หน่อย, particule sur au moins 3 assemblages sur 3, sans erreur d’ordre ni erreur de particule ; il apparie sans erreur les cinq situations de la manche 2 de l’exercice 2, ce qui demande de distinguer le contenu du contenant, จาน, ขวด ou แก้ว d’un côté et ใบ de l’autre ; et il identifie à ",
+  "objectiveFr": "à la fin de la leçon, l’apprenant reconstruit le bloc complet dans l’ordre ขอ, chose, nombre, mot de comptage, หน่อย, particule sur au moins 3 assemblages sur 3, sans erreur d’ordre ni erreur de particule ; il apparie sans erreur les cinq situations de la manche 2 de l’exercice 2, ce qui demande de distinguer le contenu du contenant, จาน, ขวด ou แก้ว d’un côté et ใบ de l’autre ; et il identifie à",
   "requiredEntitlement": null,
   "audioManifestId": "b696f36f-6ecc-517f-ade7-508c2e1bc09c",
   "items": [
     {
-      "id": "d59a112d-c264-5e09-ab91-476c845c7ae3",
+      "id": "b580ef9b-4d3f-5f3e-91de-ee86e6b2e83c",
       "thaiRaw": "ข้าวผัด",
       "unicodeCodePoints": [
         "U+0E02",
@@ -58,7 +58,7 @@
       ]
     },
     {
-      "id": "29272b97-e39b-5591-b568-bc216c15548e",
+      "id": "e31b979a-ead8-5756-9d41-2751fe5cea70",
       "thaiRaw": "จาน",
       "unicodeCodePoints": [
         "U+0E08",
@@ -89,7 +89,7 @@
       ]
     },
     {
-      "id": "6e9644f9-2ce0-53b8-b3bc-2312bb6c430d",
+      "id": "83f2a8bb-f89a-5ed1-ade1-e9034129b82f",
       "thaiRaw": "แก้ว",
       "unicodeCodePoints": [
         "U+0E41",
@@ -121,7 +121,7 @@
       ]
     },
     {
-      "id": "447dc926-7127-522f-8144-a796ac6eec11",
+      "id": "81ee493e-2330-57e0-b78f-0be66ce34285",
       "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -219,7 +219,7 @@
       ]
     },
     {
-      "id": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "id": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "thaiRaw": "ขอ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -255,7 +255,7 @@
       "drawIndex": 1,
       "id": "7e0175e1-1454-53aa-99a0-b35d210e025e",
       "type": "word_order",
-      "itemId": "447dc926-7127-522f-8144-a796ac6eec11",
+      "itemId": "81ee493e-2330-57e0-b78f-0be66ce34285",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
@@ -326,7 +326,7 @@
       "drawIndex": 2,
       "id": "1816b12d-9c78-5cc4-8329-b3f85ad09b73",
       "type": "word_order",
-      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "itemId": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
@@ -397,7 +397,7 @@
       "drawIndex": 3,
       "id": "aa1cd085-a306-56fe-aa78-19e1d4cd7633",
       "type": "word_order",
-      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "itemId": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",

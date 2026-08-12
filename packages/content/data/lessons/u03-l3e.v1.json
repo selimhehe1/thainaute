@@ -10,12 +10,12 @@
   "publishedAt": null,
   "locale": "fr-FR",
   "titleFr": "Au marché",
-  "objectiveFr": "à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre une cliente et un vendeur ; il transcrit en chiffres le montant entendu au moins 3 fois sur les 4 tirages de l’exercice 4, dont สามสิบ et สิบสาม, et retrouve le même montant parmi trois montants proches aux deux tirages de prix de l’exercice 1 ; il reconstruit la demande d’achat dans l’ordre ขอ, nom, nombre, ",
+  "objectiveFr": "à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre une cliente et un vendeur ; il transcrit en chiffres le montant entendu au moins 3 fois sur les 4 tirages de l’exercice 4, dont สามสิบ et สิบสาม, et retrouve le même montant parmi trois montants proches aux deux tirages de prix de l’exercice 1 ; il reconstruit la demande d’achat dans l’ordre ขอ, nom, nombre,",
   "requiredEntitlement": null,
   "audioManifestId": "ef87e90a-ddbb-512b-bdff-feda9a88e0e8",
   "items": [
     {
-      "id": "c0a2fdea-92cb-54c3-b365-bfd8bc66eef9",
+      "id": "63006235-6460-53b8-af95-7d0accbe5dc9",
       "thaiRaw": "ไข่",
       "unicodeCodePoints": [
         "U+0E44",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "a7e20d34-d7aa-58e0-ae22-d2288ce33ee1",
+      "id": "8ce4aee5-8d38-54e8-a3e3-5c85a6cc6ae1",
       "thaiRaw": "ฟอง",
       "unicodeCodePoints": [
         "U+0E1F",
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "id": "ed7f3b13-7632-541a-acca-e9a34293f8d4",
+      "id": "381c593e-7f92-5ef5-a74d-0f56c44d8b46",
       "thaiRaw": "เท่าไร",
       "unicodeCodePoints": [
         "U+0E40",
@@ -120,7 +120,7 @@
       ]
     },
     {
-      "id": "329bd133-c7ea-55fd-ada1-b196c0854c45",
+      "id": "5510d550-8e91-5e18-a600-2bfcbff63972",
       "thaiRaw": "สิบ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -151,7 +151,7 @@
       ]
     },
     {
-      "id": "83b7e175-6a86-5fc1-a02f-6538e2410c66",
+      "id": "385ea3d1-63f6-5f90-99e8-2f1d0138432e",
       "thaiRaw": "สาม",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -182,7 +182,7 @@
       ]
     },
     {
-      "id": "a3ec79e3-ec13-5468-8639-a92a6808afd8",
+      "id": "b2d000f4-f7b4-5bfa-bc67-172e453a9e1b",
       "thaiRaw": "สามสิบ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -224,7 +224,7 @@
       ]
     },
     {
-      "id": "37417fef-7e62-5cf4-805b-3b99b62fc1ec",
+      "id": "1c760ed9-3f37-5596-bcbb-5cc612e5a50e",
       "thaiRaw": "บาท",
       "unicodeCodePoints": [
         "U+0E1A",
@@ -255,7 +255,7 @@
       ]
     },
     {
-      "id": "97eab91d-0080-51e9-9e44-c7ed9f12af5d",
+      "id": "23737606-2374-5e8a-9789-838aa4d28620",
       "thaiRaw": "ขอไข่สิบฟองหน่อย",
       "unicodeCodePoints": [
         "U+0E02",
@@ -283,10 +283,42 @@
       "syllables": [
         {
           "thaiRaw": "ขอไข่สิบฟองหน่อย",
-          "ipa": "kʰɔː˩˩˦ kʰaj˨˩ sip̚˨˩ fɔːŋ˧ nɔj˨˩",
-          "tone": "low",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
           "vowelLength": "long",
           "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอไข่สิบฟองหน่อย",
+          "ipa": "kʰaj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ขอไข่สิบฟองหน่อย",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอไข่สิบฟองหน่อย",
+          "ipa": "fɔːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "f",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ขอไข่สิบฟองหน่อย",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
           "final": "j"
         }
       ],
@@ -297,7 +329,7 @@
       ]
     },
     {
-      "id": "4573d5fe-eea9-5b91-9b13-f21ebfa811b3",
+      "id": "7daa3d90-a4ea-5c99-8aff-ac7a1fb1cb96",
       "thaiRaw": "สวัสดี",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -345,7 +377,7 @@
       ]
     },
     {
-      "id": "dc0137b8-8475-55e4-9da4-c2d2c75088f7",
+      "id": "8c649ea6-42c1-56bf-bf81-e741d756dd54",
       "thaiRaw": "ครับ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -375,7 +407,7 @@
       ]
     },
     {
-      "id": "77afb811-916d-5afa-b490-d1b1dc3456ca",
+      "id": "b876f998-b244-526f-baf6-eedcc424928f",
       "thaiRaw": "ขอบคุณ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -415,7 +447,7 @@
       ]
     },
     {
-      "id": "bf3ccbec-8d69-54f5-84b9-47e0cf497ea7",
+      "id": "94bee5bf-e959-5540-932f-9f1ed5f8795d",
       "thaiRaw": "นก",
       "unicodeCodePoints": [
         "U+0E19",
@@ -443,7 +475,7 @@
       ]
     },
     {
-      "id": "1089499a-6fbc-59bc-95a5-17d9108c6e6b",
+      "id": "efa49ec3-9cb8-5470-8acf-55fe2dc214c4",
       "thaiRaw": "สิบสาม",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -484,7 +516,7 @@
       ]
     },
     {
-      "id": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "id": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "thaiRaw": "ขอ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -520,7 +552,7 @@
       "drawIndex": 1,
       "id": "e3b3c20a-5151-570d-bf8e-ee160d4e2690",
       "type": "word_order",
-      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "itemId": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Nok, une femme, veut dix œufs. Remettez les éléments dans l’ordre. Un élément est de trop : retirez-le.",

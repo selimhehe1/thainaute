@@ -1,5 +1,7 @@
 {
   "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
   "lessonId": "2c11ab53-837a-5a6a-b8b4-221a6edb20c4",
   "versionId": "40ff9864-0bf6-5e2e-a9b2-16f2b05a63b9",
   "revision": 1,
@@ -13,7 +15,7 @@
   "audioManifestId": "5fcb4def-b93c-5787-bff4-d15a21016853",
   "items": [
     {
-      "id": "2978549c-cdc2-5240-bcdb-912c46d448a8",
+      "id": "7daa3d90-a4ea-5c99-8aff-ac7a1fb1cb96",
       "thaiRaw": "สวัสดี",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -63,7 +65,7 @@
       ]
     },
     {
-      "id": "c7c122f1-407e-55dc-ba20-5087be168681",
+      "id": "8c649ea6-42c1-56bf-bf81-e741d756dd54",
       "thaiRaw": "ครับ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -94,7 +96,7 @@
       ]
     },
     {
-      "id": "7c926b57-d6c6-56a0-9c0b-26cdae4ab6eb",
+      "id": "de8d77e0-edeb-5fd5-bb0c-ef6355da5e14",
       "thaiRaw": "ค่ะ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -124,7 +126,7 @@
       ]
     },
     {
-      "id": "90825fc9-a267-5769-aa50-cbee045afc3f",
+      "id": "b876f998-b244-526f-baf6-eedcc424928f",
       "thaiRaw": "ขอบคุณ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -165,7 +167,7 @@
       ]
     },
     {
-      "id": "296d0ed3-9f45-5258-a1f5-32fd61431ec9",
+      "id": "55315f39-8bf0-5202-99f3-905da3243386",
       "thaiRaw": "แล้วเจอกัน",
       "unicodeCodePoints": [
         "U+0E41",
@@ -215,6 +217,58 @@
         "VOLUBILIS-26-2",
         "WIKTIONARY-EN"
       ]
+    },
+    {
+      "id": "77066334-9315-5282-91fb-b93737fe97c9",
+      "thaiRaw": "ขอบคุณครับ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Merci. (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàwwp·khoun khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰɔːp̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
     }
   ],
   "exercises": [
@@ -223,10 +277,10 @@
       "drawIndex": 1,
       "id": "78effc38-b6c9-52ca-b0e0-e3619a746056",
       "type": "word_order",
-      "itemId": "90825fc9-a267-5769-aa50-cbee045afc3f",
+      "itemId": "77066334-9315-5282-91fb-b93737fe97c9",
       "skill": "production",
       "audioAssetId": null,
-      "promptFr": "Paul, un homme, veut dire merci poliment. Touchez uniquement les éléments utiles dans l'ordre. L'élément en trop reste dans la liste : ne le sélectionnez pas.",
+      "promptFr": "Paul, un homme, veut dire merci poliment. Remettez les éléments dans l'ordre. Attention, un élément est de trop : retirez-le.",
       "tokens": [
         {
           "id": "cb836b89-3cf8-50bd-8756-cf61c3b0ef5f",
@@ -259,7 +313,7 @@
       "drawIndex": 1,
       "id": "3f3d4c45-ad00-59f5-a0c6-c5d86167d90c",
       "type": "reading",
-      "itemId": "90825fc9-a267-5769-aa50-cbee045afc3f",
+      "itemId": "b876f998-b244-526f-baf6-eedcc424928f",
       "skill": "reading",
       "promptFr": "Vous avez rencontré ce mot dans la leçon. Que dit-il ?",
       "options": [
@@ -325,7 +379,7 @@
   "pools": [
     {
       "poolId": "u01-l1e-p2",
-      "promptFr": "Paul, un homme, veut dire merci poliment. Touchez uniquement les éléments utiles dans l'ordre. L'élément en trop reste dans la liste : ne le sélectionnez pas.",
+      "promptFr": "Paul, un homme, veut dire merci poliment. Remettez les éléments dans l'ordre. Attention, un élément est de trop : retirez-le.",
       "mechanic": "word_order",
       "drawCount": 1,
       "passRequired": 1,

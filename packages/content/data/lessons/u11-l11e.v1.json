@@ -15,7 +15,7 @@
   "audioManifestId": "cbae41de-3314-5c1a-8c64-e708320ec73c",
   "items": [
     {
-      "id": "c1c9a43f-1c75-5ae0-8b4d-8ab9fc492e32",
+      "id": "8c649ea6-42c1-56bf-bf81-e741d756dd54",
       "thaiRaw": "ครับ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "1e6994d8-2703-5e8c-9cf6-37873ea558ad",
+      "id": "de8d77e0-edeb-5fd5-bb0c-ef6355da5e14",
       "thaiRaw": "ค่ะ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "id": "3dce1df3-17f8-5e1b-900e-c510bc4cd637",
+      "id": "7a2a550a-4e7c-59a7-9428-1949931cfbce",
       "thaiRaw": "คะ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "id": "3a81e66f-c2f1-5bd3-8e3f-47508bfa8372",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -134,7 +134,7 @@
       ]
     },
     {
-      "id": "b3c9613b-70b7-5392-aa1d-6db186d60142",
+      "id": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "thaiRaw": "ดิฉัน",
       "unicodeCodePoints": [
         "U+0E14",
@@ -174,7 +174,7 @@
       ]
     },
     {
-      "id": "e512a26f-7097-5744-a729-74f48e83c8c9",
+      "id": "8571e8be-a7b9-5e38-bec5-286ee3071718",
       "thaiRaw": "คุณ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -204,7 +204,7 @@
       ]
     },
     {
-      "id": "c1565376-98c1-5208-a2f1-ac4d859b215c",
+      "id": "93a9ee69-3d8c-548d-9e33-20cff5702638",
       "thaiRaw": "ชื่อ",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -235,7 +235,7 @@
       ]
     },
     {
-      "id": "3b345aca-7899-5a97-ae39-e8f1eabae4bf",
+      "id": "69d6653c-a167-57e2-ad62-f46a8def13ff",
       "thaiRaw": "แล้วคุณล่ะ",
       "unicodeCodePoints": [
         "U+0E41",
@@ -257,9 +257,25 @@
       "syllables": [
         {
           "thaiRaw": "แล้วคุณล่ะ",
-          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
-          "tone": "falling",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
           "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
           "initial": "l",
           "final": "aucune"
         }
@@ -271,7 +287,7 @@
       ]
     },
     {
-      "id": "b535260d-c829-564e-a764-607609dc820b",
+      "id": "7418d8c9-687e-523a-ada3-79e6b3199db7",
       "thaiRaw": "ตลาดอยู่ที่ไหน",
       "unicodeCodePoints": [
         "U+0E15",
@@ -305,10 +321,26 @@
         },
         {
           "thaiRaw": "ตลาดอยู่ที่ไหน",
-          "ipa": "laːt̚˨˩ juː˨˩ tʰiː˥˩",
-          "tone": "falling",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "l",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
           "final": "aucune"
         },
         {
@@ -327,7 +359,7 @@
       ]
     },
     {
-      "id": "d25bb9f6-0f3c-5504-a9b6-785e011cce79",
+      "id": "81c15181-d871-5981-b2cf-d812ec5337ee",
       "thaiRaw": "ต้น",
       "unicodeCodePoints": [
         "U+0E15",
@@ -356,7 +388,7 @@
       ]
     },
     {
-      "id": "41a42750-b9f4-5250-8cda-548ceb2aa8f4",
+      "id": "94bee5bf-e959-5540-932f-9f1ed5f8795d",
       "thaiRaw": "นก",
       "unicodeCodePoints": [
         "U+0E19",
@@ -384,7 +416,7 @@
       ]
     },
     {
-      "id": "8b32a212-1410-5b5e-9a05-caccd46ee262",
+      "id": "591314c5-5f85-529f-9517-fd96ca706119",
       "thaiRaw": "สวัสดีค่ะ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -444,7 +476,7 @@
       ]
     },
     {
-      "id": "85686c30-f54d-5605-bd3f-4a1dde086d5a",
+      "id": "aae4dbc0-2998-5569-97b5-93326b37ce62",
       "thaiRaw": "สบายดีไหมคะ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -515,7 +547,7 @@
       ]
     },
     {
-      "id": "1bd5e25a-f055-57f2-b744-922fd86360d0",
+      "id": "d801d8a4-a72b-5b2f-8234-2081155e9476",
       "thaiRaw": "สบายดีครับ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -576,7 +608,7 @@
       ]
     },
     {
-      "id": "957b1e11-508d-5a2a-8cde-8d3082c7b6b4",
+      "id": "4f6771b3-d15a-5f4a-86da-88dbcba19d03",
       "thaiRaw": "ตลาด",
       "unicodeCodePoints": [
         "U+0E15",
@@ -616,7 +648,7 @@
       ]
     },
     {
-      "id": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "id": "7b459b92-ea44-5023-bd07-cf77cc1dd710",
       "thaiRaw": "แล้ว",
       "unicodeCodePoints": [
         "U+0E41",
@@ -653,7 +685,7 @@
       "drawIndex": 1,
       "id": "0604a7d7-41d4-55b9-8050-837f01b3001b",
       "type": "word_order",
-      "itemId": "1bd5e25a-f055-57f2-b744-922fd86360d0",
+      "itemId": "d801d8a4-a72b-5b2f-8234-2081155e9476",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
@@ -705,7 +737,7 @@
       "drawIndex": 2,
       "id": "77866e98-1269-5623-826a-de6b66f6c8e7",
       "type": "word_order",
-      "itemId": "8b32a212-1410-5b5e-9a05-caccd46ee262",
+      "itemId": "591314c5-5f85-529f-9517-fd96ca706119",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
@@ -757,7 +789,7 @@
       "drawIndex": 3,
       "id": "31628202-465d-5237-a7b1-a1f29a754f72",
       "type": "word_order",
-      "itemId": "85686c30-f54d-5605-bd3f-4a1dde086d5a",
+      "itemId": "aae4dbc0-2998-5569-97b5-93326b37ce62",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
@@ -815,7 +847,7 @@
       "drawIndex": 4,
       "id": "a9a17183-ab72-5d39-8ed8-7fbd4b6fc1fb",
       "type": "word_order",
-      "itemId": "4d8054ef-8a3c-5926-ac38-8590c0c1fb97",
+      "itemId": "7b459b92-ea44-5023-bd07-cf77cc1dd710",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
@@ -879,7 +911,7 @@
       "drawIndex": 5,
       "id": "f4e4cbbf-56ca-56f2-9e0f-567b78c0d563",
       "type": "word_order",
-      "itemId": "b3c9613b-70b7-5392-aa1d-6db186d60142",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",
@@ -943,7 +975,7 @@
       "drawIndex": 6,
       "id": "d13e6825-5edf-51d2-9531-3a78e7551e06",
       "type": "word_order",
-      "itemId": "957b1e11-508d-5a2a-8cde-8d3082c7b6b4",
+      "itemId": "4f6771b3-d15a-5f4a-86da-88dbcba19d03",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Vous jouez la personne indiquée. Mettez les mots dans l’ordre et retirez les deux fins qui ne sont pas les vôtres.",

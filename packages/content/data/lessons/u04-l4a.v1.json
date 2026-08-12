@@ -15,7 +15,7 @@
   "audioManifestId": "a19e27dd-696f-560d-aeca-b3776cba97a3",
   "items": [
     {
-      "id": "904f306e-1fbf-54da-b222-e3dc305a34aa",
+      "id": "05a77a3e-ca78-5ebf-abc9-ed3fc2fa5347",
       "thaiRaw": "กิน",
       "unicodeCodePoints": [
         "U+0E01",
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "id": "b5b456ac-b9f7-5e22-9e67-47fcb22d69e5",
+      "id": "280dff89-ebb5-58e1-96f6-f5866e2c2510",
       "thaiRaw": "ไก่",
       "unicodeCodePoints": [
         "U+0E44",
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "id": "ccd03baa-c89b-59b1-acf3-409aa8697f5e",
+      "id": "63006235-6460-53b8-af95-7d0accbe5dc9",
       "thaiRaw": "ไข่",
       "unicodeCodePoints": [
         "U+0E44",
@@ -110,7 +110,7 @@
       ]
     },
     {
-      "id": "a1c1e84d-7d68-553b-b3a5-a9e0b5135a40",
+      "id": "2d3fb4c3-89b5-590a-b0c5-1eabb7a38896",
       "thaiRaw": "ก้าว",
       "unicodeCodePoints": [
         "U+0E01",
@@ -142,7 +142,7 @@
       ]
     },
     {
-      "id": "14fc3faf-bfef-5e7d-b683-cb0fbd2006a7",
+      "id": "5851f77a-3381-55d7-b1ad-7cf1444e9dfa",
       "thaiRaw": "ข้าว",
       "unicodeCodePoints": [
         "U+0E02",
@@ -174,7 +174,7 @@
       ]
     },
     {
-      "id": "4c6f8f53-dcb8-5412-bb77-dffe3a37acd3",
+      "id": "2c78f200-3ea6-5e16-8915-7906750dfd65",
       "thaiRaw": "ขาว",
       "unicodeCodePoints": [
         "U+0E02",
@@ -205,7 +205,7 @@
       ]
     },
     {
-      "id": "84e69037-5f2f-5c61-893e-8ebd11e83bab",
+      "id": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
       "thaiRaw": "ขา",
       "unicodeCodePoints": [
         "U+0E02",
@@ -241,7 +241,7 @@
       "drawIndex": 1,
       "id": "3ca1a123-e3c5-5bbc-aa12-67bf275ef591",
       "type": "recall",
-      "itemId": "ccd03baa-c89b-59b1-acf3-409aa8697f5e",
+      "itemId": "63006235-6460-53b8-af95-7d0accbe5dc9",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Une seule chose est vraiment mesurée : le h du souffle.",
       "acceptedAnswers": [
@@ -270,7 +270,7 @@
       "drawIndex": 2,
       "id": "238661c4-11bd-5e00-ae9c-29103a47bf67",
       "type": "recall",
-      "itemId": "b5b456ac-b9f7-5e22-9e67-47fcb22d69e5",
+      "itemId": "280dff89-ebb5-58e1-96f6-f5866e2c2510",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Une seule chose est vraiment mesurée : le h du souffle.",
       "acceptedAnswers": [
@@ -299,7 +299,7 @@
       "drawIndex": 3,
       "id": "2bf1142c-d25e-5657-85b2-6ba6e146b0ab",
       "type": "recall",
-      "itemId": "14fc3faf-bfef-5e7d-b683-cb0fbd2006a7",
+      "itemId": "5851f77a-3381-55d7-b1ad-7cf1444e9dfa",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Une seule chose est vraiment mesurée : le h du souffle.",
       "acceptedAnswers": [
@@ -328,7 +328,7 @@
       "drawIndex": 4,
       "id": "1059dc94-4e27-5ba9-86a8-c81c5fea0b47",
       "type": "recall",
-      "itemId": "a1c1e84d-7d68-553b-b3a5-a9e0b5135a40",
+      "itemId": "2d3fb4c3-89b5-590a-b0c5-1eabb7a38896",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Une seule chose est vraiment mesurée : le h du souffle.",
       "acceptedAnswers": [
@@ -357,7 +357,7 @@
       "drawIndex": 5,
       "id": "7188913f-d323-5c4c-8149-377f38b2cff4",
       "type": "recall",
-      "itemId": "904f306e-1fbf-54da-b222-e3dc305a34aa",
+      "itemId": "05a77a3e-ca78-5ebf-abc9-ed3fc2fa5347",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Une seule chose est vraiment mesurée : le h du souffle.",
       "acceptedAnswers": [

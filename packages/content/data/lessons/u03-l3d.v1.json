@@ -15,7 +15,7 @@
   "audioManifestId": "567c2e9d-e4b0-5180-a940-5ffe96ae0cd2",
   "items": [
     {
-      "id": "44f0b4b1-e979-5339-80f9-b43d5bd7c32e",
+      "id": "8cdaeb1b-dff6-5d53-89b4-26507d1ea972",
       "thaiRaw": "คน",
       "unicodeCodePoints": [
         "U+0E04",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "a49016b5-4663-549d-b60b-da1885b2f75d",
+      "id": "dd29ee3e-a4a0-5a7a-915f-17ed324dedf5",
       "thaiRaw": "ตัว",
       "unicodeCodePoints": [
         "U+0E15",
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "id": "7e118ad0-c786-5aff-8cd0-0e9ff6f5083f",
+      "id": "8805d67d-b738-5fd9-97eb-7e5cb315df91",
       "thaiRaw": "ใบ",
       "unicodeCodePoints": [
         "U+0E43",
@@ -106,7 +106,7 @@
       ]
     },
     {
-      "id": "d1879ce0-12c9-57d9-90dc-ded67226ef65",
+      "id": "20daff5c-11f2-5a53-979e-9570fdf4349a",
       "thaiRaw": "อัน",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -137,7 +137,7 @@
       ]
     },
     {
-      "id": "9b8716f3-a288-5bcd-9018-86567d23052e",
+      "id": "09f103b7-7e9b-56a0-88e0-17b534d28ca6",
       "thaiRaw": "ปลา",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -168,7 +168,7 @@
       ]
     },
     {
-      "id": "e4088e26-643a-579a-9398-7abf95bb39e6",
+      "id": "141be519-ac1a-5635-bce4-36f145dc00b4",
       "thaiRaw": "ปลาสองตัว",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -189,10 +189,26 @@
       "syllables": [
         {
           "thaiRaw": "ปลาสองตัว",
-          "ipa": "plaː˧ sɔːŋ˩˩˦ tua̯˧",
+          "ipa": "plaː˧",
           "tone": "mid",
           "vowelLength": "long",
           "initial": "pl",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ปลาสองตัว",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ปลาสองตัว",
+          "ipa": "tua̯˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t",
           "final": "aucune"
         }
       ],
@@ -205,7 +221,7 @@
       ]
     },
     {
-      "id": "1a9b082c-f8ef-514b-9b1d-a2fa1abeb923",
+      "id": "617515c2-d963-5d1c-a0d4-8dc9a8354374",
       "thaiRaw": "ถุงสองใบ",
       "unicodeCodePoints": [
         "U+0E16",
@@ -225,10 +241,26 @@
       "syllables": [
         {
           "thaiRaw": "ถุงสองใบ",
-          "ipa": "tʰuŋ˩˩˦ sɔːŋ˩˩˦ baj˧",
-          "tone": "mid",
-          "vowelLength": "long",
+          "ipa": "tʰuŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
           "initial": "tʰ",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ถุงสองใบ",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ถุงสองใบ",
+          "ipa": "baj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "b",
           "final": "j"
         }
       ],
@@ -240,7 +272,7 @@
       ]
     },
     {
-      "id": "d4537506-836f-5a1a-b5b4-6e4fb6244056",
+      "id": "d49ecac4-befc-5705-884c-b5a68e73e64d",
       "thaiRaw": "กี่คน",
       "unicodeCodePoints": [
         "U+0E01",
@@ -257,10 +289,18 @@
       "syllables": [
         {
           "thaiRaw": "กี่คน",
-          "ipa": "kiː˨˩ kʰon˧",
-          "tone": "mid",
+          "ipa": "kiː˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "k",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "กี่คน",
+          "ipa": "kʰon˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
           "final": "n"
         }
       ],
@@ -273,7 +313,7 @@
       ]
     },
     {
-      "id": "230b21e0-ce35-5914-8acf-062efa9f89eb",
+      "id": "5194b833-af83-5a6d-9cc1-bc5ffdd2d6dd",
       "thaiRaw": "ถุง",
       "unicodeCodePoints": [
         "U+0E16",
@@ -310,7 +350,7 @@
       "drawIndex": 1,
       "id": "ccab3ca1-7965-50f0-8363-deb25a88f391",
       "type": "word_order",
-      "itemId": "e4088e26-643a-579a-9398-7abf95bb39e6",
+      "itemId": "141be519-ac1a-5635-bce4-36f145dc00b4",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
@@ -358,7 +398,7 @@
       "drawIndex": 2,
       "id": "7e0d7936-c1e8-573a-916d-6a83995b228e",
       "type": "word_order",
-      "itemId": "1a9b082c-f8ef-514b-9b1d-a2fa1abeb923",
+      "itemId": "617515c2-d963-5d1c-a0d4-8dc9a8354374",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
@@ -406,7 +446,7 @@
       "drawIndex": 3,
       "id": "bd8b9e78-9222-53b9-a296-c3f38259a136",
       "type": "word_order",
-      "itemId": "9b8716f3-a288-5bcd-9018-86567d23052e",
+      "itemId": "09f103b7-7e9b-56a0-88e0-17b534d28ca6",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
@@ -454,7 +494,7 @@
       "drawIndex": 4,
       "id": "34d6ac9d-f24f-52e0-bb96-b78feefabe4e",
       "type": "word_order",
-      "itemId": "230b21e0-ce35-5914-8acf-062efa9f89eb",
+      "itemId": "5194b833-af83-5a6d-9cc1-bc5ffdd2d6dd",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
@@ -502,7 +542,7 @@
       "drawIndex": 5,
       "id": "5db7a055-3ca9-56e7-97b2-aca09fb913d8",
       "type": "word_order",
-      "itemId": "e4088e26-643a-579a-9398-7abf95bb39e6",
+      "itemId": "141be519-ac1a-5635-bce4-36f145dc00b4",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",
@@ -545,7 +585,7 @@
       "drawIndex": 6,
       "id": "89279560-0c22-5895-94b1-85b2ef148e5a",
       "type": "word_order",
-      "itemId": "1a9b082c-f8ef-514b-9b1d-a2fa1abeb923",
+      "itemId": "617515c2-d963-5d1c-a0d4-8dc9a8354374",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Formez le groupe demandé. Une carte est en trop : retirez-la.",

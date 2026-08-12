@@ -15,7 +15,7 @@
   "audioManifestId": "6f9b762f-d48b-5f20-bce0-a7879c68d7d4",
   "items": [
     {
-      "id": "a97a5eaa-4c2a-580c-9752-9f9553aeeced",
+      "id": "381c593e-7f92-5ef5-a74d-0f56c44d8b46",
       "thaiRaw": "เท่าไร",
       "unicodeCodePoints": [
         "U+0E40",
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "id": "69a90566-4fb1-5e95-9b3e-38f50050478e",
+      "id": "03f96d22-5c15-50ec-90eb-8e76bea13658",
       "thaiRaw": "เท่าไหร่",
       "unicodeCodePoints": [
         "U+0E40",
@@ -101,7 +101,7 @@
       ]
     },
     {
-      "id": "a79bfa44-5924-5655-9e66-5bc5540f2085",
+      "id": "1c760ed9-3f37-5596-bcbb-5cc612e5a50e",
       "thaiRaw": "บาท",
       "unicodeCodePoints": [
         "U+0E1A",
@@ -132,7 +132,7 @@
       ]
     },
     {
-      "id": "a42633e6-1e6a-5ae6-b42f-d4114b0019e6",
+      "id": "06332004-ed8f-5e19-b528-57228e6a0d9b",
       "thaiRaw": "กี่บาท",
       "unicodeCodePoints": [
         "U+0E01",
@@ -150,10 +150,18 @@
       "syllables": [
         {
           "thaiRaw": "กี่บาท",
-          "ipa": "kiː˨˩ baːt̚˨˩",
+          "ipa": "kiː˨˩",
           "tone": "low",
           "vowelLength": "long",
           "initial": "k",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "กี่บาท",
+          "ipa": "baːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "b",
           "final": "t̚"
         }
       ],
@@ -166,7 +174,7 @@
       ]
     },
     {
-      "id": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "id": "3e84a18d-87da-501f-962c-0bbe547faf4e",
       "thaiRaw": "อันนี้",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -208,7 +216,7 @@
       ]
     },
     {
-      "id": "6cee9997-d90d-57a1-92f1-2f0ec07962a4",
+      "id": "8cad0c9b-eb0b-57eb-8100-5abaa5dfc2c8",
       "thaiRaw": "อันนี้เท่าไรครับ",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -244,18 +252,34 @@
         },
         {
           "thaiRaw": "อันนี้เท่าไรครับ",
-          "ipa": "niː˦˥ tʰaw˥˩",
-          "tone": "falling",
+          "ipa": "niː˦˥",
+          "tone": "high",
           "vowelLength": "long",
           "initial": "n",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อันนี้เท่าไรครับ",
+          "ipa": "tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "tʰ",
           "final": "w"
         },
         {
           "thaiRaw": "อันนี้เท่าไรครับ",
-          "ipa": "raj˧ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "raj˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "r",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "อันนี้เท่าไรครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -266,7 +290,7 @@
       ]
     },
     {
-      "id": "20662c3d-feb5-5880-8d07-31b040b813ef",
+      "id": "17c7f460-1f0b-5872-9c6a-5f81823e8e40",
       "thaiRaw": "ห้าสิบบาท",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -295,10 +319,18 @@
         },
         {
           "thaiRaw": "ห้าสิบบาท",
-          "ipa": "sip̚˨˩ baːt̚˨˩",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ห้าสิบบาท",
+          "ipa": "baːt̚˨˩",
           "tone": "low",
           "vowelLength": "long",
-          "initial": "s",
+          "initial": "b",
           "final": "t̚"
         }
       ],
@@ -311,7 +343,7 @@
       ]
     },
     {
-      "id": "6073eea7-629f-5f85-8cb2-ec408bff3d50",
+      "id": "ef744e77-d4be-57f3-9610-3286ef1a71e1",
       "thaiRaw": "สิบห้าบาท",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -340,10 +372,18 @@
         },
         {
           "thaiRaw": "สิบห้าบาท",
-          "ipa": "haː˥˩ baːt̚˨˩",
-          "tone": "low",
+          "ipa": "haː˥˩",
+          "tone": "falling",
           "vowelLength": "long",
           "initial": "h",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สิบห้าบาท",
+          "ipa": "baːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "b",
           "final": "t̚"
         }
       ],
@@ -362,7 +402,7 @@
       "drawIndex": 1,
       "id": "304beb6a-a39f-5386-a6ca-47a6f262a990",
       "type": "word_order",
-      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "itemId": "3e84a18d-87da-501f-962c-0bbe547faf4e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Claire, une femme, montre un objet sur un étal. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
@@ -404,7 +444,7 @@
       "drawIndex": 2,
       "id": "5f242a01-af01-5945-a5fa-85b8fde858bf",
       "type": "word_order",
-      "itemId": "6cee9997-d90d-57a1-92f1-2f0ec07962a4",
+      "itemId": "8cad0c9b-eb0b-57eb-8100-5abaa5dfc2c8",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Claire, une femme, montre un objet sur un étal. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
@@ -438,6 +478,31 @@
       "feedback": {
         "correctFr": "Parfait. On désigne, on demande, on signe avec sa particule. Et la particule suit la personne qui parle, jamais celle d’en face.",
         "incorrectFr": "Suivez l’ordre de la formule : la chose d’abord, la question ensuite, la particule tout à la fin. Puis regardez qui parle.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3c-p4",
+      "drawIndex": 1,
+      "id": "545451dd-39c6-5eaf-abe2-484eb0b8ee2d",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque énoncé à ce qu’il fait.",
+      "pairs": [
+        {
+          "id": "70a52057-6e3c-5063-b854-2c6df3bd1cf1",
+          "itemId": "8cad0c9b-eb0b-57eb-8100-5abaa5dfc2c8",
+          "labelFr": "Un homme montre un objet et en demande le prix."
+        },
+        {
+          "id": "be39dd28-13fc-5896-aff4-4f504d8fa518",
+          "itemId": "06332004-ed8f-5e19-b528-57228e6a0d9b",
+          "labelFr": "La même question, formulée avec l’unité : combien de bahts ?"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Les deux moitiés de l’échange sont en place : la question qui désigne, et la réponse qui donne un nombre suivi de บาท.",
+        "incorrectFr": "Reprenez carte par carte. Est-ce une question ou une réponse ? Si c’est une question, qui la pose, un homme ou une femme ? Si c’est une réponse, quel mot arrive en premier dans le nombre ?",
         "variants": []
       }
     }
@@ -494,6 +559,14 @@
       "drawCount": 2,
       "passRequired": 2,
       "sampleSize": 2
+    },
+    {
+      "poolId": "u03-l3c-p4",
+      "promptFr": "Reliez chaque énoncé à ce qu’il fait.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
     }
   ],
   "provenance": {

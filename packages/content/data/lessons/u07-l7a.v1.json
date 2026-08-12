@@ -15,7 +15,7 @@
   "audioManifestId": "aa7ec594-cbf7-50c2-ae82-f0732709d26f",
   "items": [
     {
-      "id": "91b109b3-ea8f-5292-92bf-b190b0967e43",
+      "id": "09029612-9774-5162-a16f-6367bc4e8a8f",
       "thaiRaw": "บ้าน",
       "unicodeCodePoints": [
         "U+0E1A",
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "id": "7b52bd91-7374-5487-b38b-c0b9f0744ea9",
+      "id": "7ce3b000-d133-573b-b96e-7fbe9a38fe71",
       "thaiRaw": "ห้อง",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -79,7 +79,7 @@
       ]
     },
     {
-      "id": "3493ad55-809c-5436-9640-33761b24cfdf",
+      "id": "4c581765-8488-5a1e-9354-c081505732e8",
       "thaiRaw": "นอน",
       "unicodeCodePoints": [
         "U+0E19",
@@ -110,7 +110,7 @@
       ]
     },
     {
-      "id": "81acd463-fc54-5f21-a891-1b42182a4f58",
+      "id": "55054da5-ea39-5df9-b15b-eed33bc59087",
       "thaiRaw": "นั่ง",
       "unicodeCodePoints": [
         "U+0E19",
@@ -142,7 +142,7 @@
       ]
     },
     {
-      "id": "628aaa94-32e0-56f1-8c39-d05106e455f9",
+      "id": "a7777598-d903-5859-af94-00110bcfc5f4",
       "thaiRaw": "ช้อน",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -174,7 +174,7 @@
       ]
     },
     {
-      "id": "c72b0bdf-430d-5b2f-a631-ebaef5fa4556",
+      "id": "bc80b8c7-83ab-5a4f-828a-67ff73638377",
       "thaiRaw": "อ่าน",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -206,7 +206,7 @@
       ]
     },
     {
-      "id": "206fdd40-9fd7-5950-b929-41309a538e6e",
+      "id": "5236972e-5f83-56b7-b338-613961ea8085",
       "thaiRaw": "ถ่าน",
       "unicodeCodePoints": [
         "U+0E16",
@@ -238,7 +238,7 @@
       ]
     },
     {
-      "id": "b02e7121-a64b-58df-9511-1550f5d5bdd1",
+      "id": "7e29e12d-d66f-5eb6-b3f3-9dfc5875df22",
       "thaiRaw": "ตื่น",
       "unicodeCodePoints": [
         "U+0E15",
@@ -281,32 +281,32 @@
       "pairs": [
         {
           "id": "1d5fe45e-e35a-5d00-8474-c97ba236772d",
-          "itemId": "c72b0bdf-430d-5b2f-a631-ebaef5fa4556",
+          "itemId": "bc80b8c7-83ab-5a4f-828a-67ff73638377",
           "labelFr": "ไม้เอก"
         },
         {
           "id": "44059d3e-a37b-5ddc-a890-607c4c3eec91",
-          "itemId": "206fdd40-9fd7-5950-b929-41309a538e6e",
+          "itemId": "5236972e-5f83-56b7-b338-613961ea8085",
           "labelFr": "ไม้เอก"
         },
         {
           "id": "6ab0f29b-4d39-566c-ad68-9bc2087f3ce3",
-          "itemId": "81acd463-fc54-5f21-a891-1b42182a4f58",
+          "itemId": "55054da5-ea39-5df9-b15b-eed33bc59087",
           "labelFr": "ไม้เอก"
         },
         {
           "id": "c67ea6a5-6dda-52f0-ab94-fb06b31f3b53",
-          "itemId": "91b109b3-ea8f-5292-92bf-b190b0967e43",
+          "itemId": "09029612-9774-5162-a16f-6367bc4e8a8f",
           "labelFr": "ไม้โท"
         },
         {
           "id": "d9c57d77-6214-5b93-8d61-61881cf31cbc",
-          "itemId": "7b52bd91-7374-5487-b38b-c0b9f0744ea9",
+          "itemId": "7ce3b000-d133-573b-b96e-7fbe9a38fe71",
           "labelFr": "ไม้โท"
         },
         {
           "id": "73f96f37-eee7-55e1-8a69-a866c01a0901",
-          "itemId": "628aaa94-32e0-56f1-8c39-d05106e455f9",
+          "itemId": "a7777598-d903-5859-af94-00110bcfc5f4",
           "labelFr": "ไม้โท"
         }
       ],

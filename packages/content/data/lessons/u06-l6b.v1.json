@@ -15,7 +15,7 @@
   "audioManifestId": "f54759cc-ac09-5a13-9e6f-cd79bba793aa",
   "items": [
     {
-      "id": "24cf1d01-17de-5721-8586-4a1b1b2b4282",
+      "id": "e4e9366b-5352-50e1-8208-771f1e1d6700",
       "thaiRaw": "พ่อ",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "1b5f94d1-7d85-5088-87a5-dcf4d3270e31",
+      "id": "54bc9ea8-bf6e-5772-8a37-5328e68f4d39",
       "thaiRaw": "แม่",
       "unicodeCodePoints": [
         "U+0E41",
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "id": "82a29488-2e7d-5f74-a443-0282f13d69ee",
+      "id": "8583ac94-455a-54b4-9823-243da852a834",
       "thaiRaw": "พี่",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "id": "6056d647-e323-5c8e-8481-060f5082dc31",
+      "id": "06ee8115-534b-55ef-bb8e-00b15e79586f",
       "thaiRaw": "น้อง",
       "unicodeCodePoints": [
         "U+0E19",
@@ -141,7 +141,7 @@
       ]
     },
     {
-      "id": "cfc916b6-92e0-5dca-ade8-b9540e1d8703",
+      "id": "f8a7c18d-b236-50a8-8ea5-164dcbbee50c",
       "thaiRaw": "พี่ชาย",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -183,7 +183,7 @@
       ]
     },
     {
-      "id": "3bf2e737-231f-565c-b190-69ed3a7be139",
+      "id": "6401cd6d-539f-5083-ba5d-7cf6a5cc68e9",
       "thaiRaw": "น้องสาว",
       "unicodeCodePoints": [
         "U+0E19",
@@ -226,7 +226,7 @@
       ]
     },
     {
-      "id": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "id": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
       "thaiRaw": "มี",
       "unicodeCodePoints": [
         "U+0E21",
@@ -254,15 +254,284 @@
         "WIKTIONARY-EN",
         "WIKTIONARY-TH"
       ]
+    },
+    {
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "21070bf6-b398-5f4d-8560-415c63c5cd85",
+      "thaiRaw": "ดิฉัน",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "je, moi (locutrice femme, échange poli)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u06-l6b-p3",
+      "drawIndex": 1,
+      "id": "6ea9c2ae-6603-563a-9420-52ca826db274",
+      "type": "word_order",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre pour dire cette phrase. Un bloc reste toujours à la fin.",
+      "tokens": [
+        {
+          "id": "103ab77c-7d83-5042-bdd1-a62337e4409c",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "97c540bf-7201-5da5-a250-9b4f90afe113",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "2052e576-8593-504b-b81c-cc37dc7beecb",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "3bd248de-ab96-56fc-9eed-b676a01c93aa",
+          "thaiRaw": "คน",
+          "transcription": null
+        },
+        {
+          "id": "ad25158d-b90c-5c5f-8812-007acea7a424",
+          "thaiRaw": "พี่ชาย",
+          "transcription": null
+        },
+        {
+          "id": "e26bcda4-69cf-5ee8-b919-5ecc21eef4eb",
+          "thaiRaw": "มี",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "2052e576-8593-504b-b81c-cc37dc7beecb",
+        "e26bcda4-69cf-5ee8-b919-5ecc21eef4eb",
+        "ad25158d-b90c-5c5f-8812-007acea7a424",
+        "97c540bf-7201-5da5-a250-9b4f90afe113",
+        "3bd248de-ab96-56fc-9eed-b676a01c93aa",
+        "103ab77c-7d83-5042-bdd1-a62337e4409c"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. Qui, avoir, qui, combien, คน, particule. Vous n’avez plus qu’à changer les deux blocs du milieu.",
+        "incorrectFr": "Le nombre ne se met pas devant la personne. En thaï on nomme d’abord la personne, puis on compte : พี่ชาย, puis สอง, puis คน. Vous aviez déjà fait ça avec ปลาสองตัว.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mot de comptage mal placé ou oublié",
+            "textFr": "คน doit venir juste après le nombre et fermer le groupe. Sans lui, la phrase reste incomplète."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule inadaptée",
+            "textFr": "Regardez qui parle. Un homme finit par ครับ, une femme par ค่ะ. C’est la même règle que ผมชื่อ … ครับ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u06-l6b-p3",
+      "drawIndex": 2,
+      "id": "057397ba-e55c-5703-991a-9363a380b774",
+      "type": "word_order",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre pour dire cette phrase. Un bloc reste toujours à la fin.",
+      "tokens": [
+        {
+          "id": "2a49d989-dc7c-565e-b06b-77b2c2f765b4",
+          "thaiRaw": "คน",
+          "transcription": null
+        },
+        {
+          "id": "668af31f-ceb3-549d-89df-7b5d946a04a8",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        },
+        {
+          "id": "d2bc482b-27a4-5598-8f07-304f87870b1a",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "d45ec187-340f-52af-9e69-f4bd77698257",
+          "thaiRaw": "น้องสาว",
+          "transcription": null
+        },
+        {
+          "id": "f093a985-3068-5f44-8f9b-25ce0655629f",
+          "thaiRaw": "มี",
+          "transcription": null
+        },
+        {
+          "id": "e527057b-5c1b-5456-9d2d-531ff20a62ce",
+          "thaiRaw": "สาม",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "668af31f-ceb3-549d-89df-7b5d946a04a8",
+        "f093a985-3068-5f44-8f9b-25ce0655629f",
+        "d45ec187-340f-52af-9e69-f4bd77698257",
+        "e527057b-5c1b-5456-9d2d-531ff20a62ce",
+        "2a49d989-dc7c-565e-b06b-77b2c2f765b4",
+        "d2bc482b-27a4-5598-8f07-304f87870b1a"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. Qui, avoir, qui, combien, คน, particule. Vous n’avez plus qu’à changer les deux blocs du milieu.",
+        "incorrectFr": "Le nombre ne se met pas devant la personne. En thaï on nomme d’abord la personne, puis on compte : พี่ชาย, puis สอง, puis คน. Vous aviez déjà fait ça avec ปลาสองตัว.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mot de comptage mal placé ou oublié",
+            "textFr": "คน doit venir juste après le nombre et fermer le groupe. Sans lui, la phrase reste incomplète."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule inadaptée",
+            "textFr": "Regardez qui parle. Un homme finit par ครับ, une femme par ค่ะ. C’est la même règle que ผมชื่อ … ครับ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u06-l6b-p3",
+      "drawIndex": 3,
+      "id": "9a12d95d-4eb7-5712-8ce0-e64b7349ac3f",
+      "type": "word_order",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre pour dire cette phrase. Un bloc reste toujours à la fin.",
+      "tokens": [
+        {
+          "id": "a1a1baf0-3ced-5baf-b0ed-d733f31f2660",
+          "thaiRaw": "พี่สาว",
+          "transcription": null
+        },
+        {
+          "id": "830040ca-358b-5d0c-97d1-517bfe6652cf",
+          "thaiRaw": "มี",
+          "transcription": null
+        },
+        {
+          "id": "ec6450ad-2691-5af5-b216-35150dc0d5bf",
+          "thaiRaw": "คน",
+          "transcription": null
+        },
+        {
+          "id": "5fa80069-4e45-5460-a8af-430ea6ac38c0",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "b220ecd2-18ae-52f7-a89a-e7083d252482",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "2acd82b3-e070-51d1-93f0-38ce80fe535a",
+          "thaiRaw": "สอง",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "b220ecd2-18ae-52f7-a89a-e7083d252482",
+        "830040ca-358b-5d0c-97d1-517bfe6652cf",
+        "a1a1baf0-3ced-5baf-b0ed-d733f31f2660",
+        "2acd82b3-e070-51d1-93f0-38ce80fe535a",
+        "ec6450ad-2691-5af5-b216-35150dc0d5bf",
+        "5fa80069-4e45-5460-a8af-430ea6ac38c0"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. Qui, avoir, qui, combien, คน, particule. Vous n’avez plus qu’à changer les deux blocs du milieu.",
+        "incorrectFr": "Le nombre ne se met pas devant la personne. En thaï on nomme d’abord la personne, puis on compte : พี่ชาย, puis สอง, puis คน. Vous aviez déjà fait ça avec ปลาสองตัว.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mot de comptage mal placé ou oublié",
+            "textFr": "คน doit venir juste après le nombre et fermer le groupe. Sans lui, la phrase reste incomplète."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule inadaptée",
+            "textFr": "Regardez qui parle. Un homme finit par ครับ, une femme par ค่ะ. C’est la même règle que ผมชื่อ … ครับ."
+          }
+        ]
+      }
+    },
     {
       "poolId": "u06-l6b-p4",
       "drawIndex": 1,
       "id": "54e76346-a7f0-5a2c-9149-19887f6883c7",
       "type": "reading",
-      "itemId": "cfc916b6-92e0-5dca-ade8-b9540e1d8703",
+      "itemId": "f8a7c18d-b236-50a8-8ea5-164dcbbee50c",
       "skill": "reading",
       "promptFr": "Regardez le mot, puis dites ce qu’il porte. Comparez-le aux deux modèles affichés en bas.",
       "options": [
@@ -308,7 +577,7 @@
       "drawIndex": 2,
       "id": "e12400b8-7bf8-52ae-a29d-be8d4ea50e12",
       "type": "reading",
-      "itemId": "3bf2e737-231f-565c-b190-69ed3a7be139",
+      "itemId": "6401cd6d-539f-5083-ba5d-7cf6a5cc68e9",
       "skill": "reading",
       "promptFr": "Regardez le mot, puis dites ce qu’il porte. Comparez-le aux deux modèles affichés en bas.",
       "options": [
@@ -354,7 +623,7 @@
       "drawIndex": 3,
       "id": "d3dd8c92-71bb-5333-8212-d7716f4a1832",
       "type": "reading",
-      "itemId": "6056d647-e323-5c8e-8481-060f5082dc31",
+      "itemId": "06ee8115-534b-55ef-bb8e-00b15e79586f",
       "skill": "reading",
       "promptFr": "Regardez le mot, puis dites ce qu’il porte. Comparez-le aux deux modèles affichés en bas.",
       "options": [
@@ -400,7 +669,7 @@
       "drawIndex": 4,
       "id": "d5e9c7bc-43ed-549a-a8b8-22b396ebd44f",
       "type": "reading",
-      "itemId": "1b5f94d1-7d85-5088-87a5-dcf4d3270e31",
+      "itemId": "54bc9ea8-bf6e-5772-8a37-5328e68f4d39",
       "skill": "reading",
       "promptFr": "Regardez le mot, puis dites ce qu’il porte. Comparez-le aux deux modèles affichés en bas.",
       "options": [
@@ -499,6 +768,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u06-l6b-p3",
+      "promptFr": "Remettez les blocs dans l’ordre pour dire cette phrase. Un bloc reste toujours à la fin.",
+      "mechanic": "word_order",
+      "drawCount": 3,
+      "passRequired": 3,
+      "sampleSize": 3
+    },
     {
       "poolId": "u06-l6b-p4",
       "promptFr": "Regardez le mot, puis dites ce qu’il porte. Comparez-le aux deux modèles affichés en bas.",

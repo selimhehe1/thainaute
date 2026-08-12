@@ -1,5 +1,7 @@
 {
   "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
   "lessonId": "74aa634a-5859-5c62-b565-7737fb8188f0",
   "versionId": "9faf3b58-2bff-5c57-9b3a-1035c793f1f2",
   "revision": 1,
@@ -13,7 +15,7 @@
   "audioManifestId": "2b183229-604a-5ef7-abcd-38a1660a4654",
   "items": [
     {
-      "id": "7ad8052e-2dd5-5670-82de-588eb5fba6e6",
+      "id": "ac51834e-ccda-533c-a510-c2fccd4e5b9b",
       "thaiRaw": "ปา",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -42,7 +44,7 @@
       ]
     },
     {
-      "id": "046bbbf0-1b80-5a65-b623-1332429d1ccf",
+      "id": "0962b3d1-10ff-53f2-92e4-679765122be3",
       "thaiRaw": "ป่า",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -72,7 +74,7 @@
       ]
     },
     {
-      "id": "1179dd6d-b95e-563b-b9b7-c7dec73a560a",
+      "id": "03610c7d-2f63-5974-a6e2-439adee3f6a6",
       "thaiRaw": "ปู",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -101,7 +103,7 @@
       ]
     },
     {
-      "id": "a2474571-b0d7-56eb-bb59-41dfbe43fe54",
+      "id": "443d9fea-1634-5612-b97e-64937e5560ab",
       "thaiRaw": "ปู่",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -131,7 +133,7 @@
       ]
     },
     {
-      "id": "19114c85-4647-51bf-a7f2-c6e1bf23d933",
+      "id": "1d00389c-9d7e-5c1a-a457-d513d2e7e1a1",
       "thaiRaw": "ปี",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -160,7 +162,7 @@
       ]
     },
     {
-      "id": "c9c631c5-9001-510a-b966-1bec734df84d",
+      "id": "4e08caa9-2d30-599b-a465-48b3e279463a",
       "thaiRaw": "ปี่",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -190,7 +192,7 @@
       ]
     },
     {
-      "id": "0b7488db-b1fa-54ab-a460-0bf49b726229",
+      "id": "20e65f80-4023-5527-9d01-b13b4703a3a9",
       "thaiRaw": "คา",
       "unicodeCodePoints": [
         "U+0E04",
@@ -219,7 +221,7 @@
       ]
     },
     {
-      "id": "f3a2c399-1f63-5668-89c9-bb6653d0b640",
+      "id": "f8bb5385-0505-5051-b2cd-fd4c4af5d3eb",
       "thaiRaw": "ข่า",
       "unicodeCodePoints": [
         "U+0E02",
@@ -249,7 +251,7 @@
       ]
     },
     {
-      "id": "261cefe8-6580-5eea-a850-3cf780403186",
+      "id": "2c997489-7df2-5c26-aacb-1260738652cf",
       "thaiRaw": "ยา",
       "unicodeCodePoints": [
         "U+0E22",
@@ -278,7 +280,7 @@
       ]
     },
     {
-      "id": "dca1ac0d-dc5a-5a85-9f0a-57bbdd89687b",
+      "id": "a9d2c5dd-82fb-5473-bcda-8a36a7ba0dfe",
       "thaiRaw": "หย่า",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -315,10 +317,10 @@
       "drawIndex": 1,
       "id": "6d7e8b35-aaef-570c-a705-17fbb5d6bf6e",
       "type": "word_order",
-      "itemId": "046bbbf0-1b80-5a65-b623-1332429d1ccf",
+      "itemId": "0962b3d1-10ff-53f2-92e4-679765122be3",
       "skill": "production",
       "audioAssetId": null,
-      "promptFr": "Écoute les deux syllabes, puis touche uniquement les jetons entendus dans l'ordre du ton le plus bas au ton le plus haut. L'intrus reste dans la liste : ne le sélectionne pas.",
+      "promptFr": "Écoute les deux syllabes, puis range les jetons du ton le plus bas au ton le plus haut avec le bouton Déplacer. Un jeton de la liste n'a pas été entendu : écarte-le avec le bouton Retirer.",
       "tokens": [
         {
           "id": "b0126bc1-6075-57a1-8549-1b537deb9146",
@@ -388,7 +390,7 @@
   "pools": [
     {
       "poolId": "u01-l1c-p3",
-      "promptFr": "Écoute les deux syllabes, puis touche uniquement les jetons entendus dans l'ordre du ton le plus bas au ton le plus haut. L'intrus reste dans la liste : ne le sélectionne pas.",
+      "promptFr": "Écoute les deux syllabes, puis range les jetons du ton le plus bas au ton le plus haut avec le bouton Déplacer. Un jeton de la liste n'a pas été entendu : écarte-le avec le bouton Retirer.",
       "mechanic": "word_order",
       "drawCount": 1,
       "passRequired": 1,

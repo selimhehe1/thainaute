@@ -386,7 +386,8 @@ privé, sur votre appareil.
   enseignée ni affichée pour ce mot. Ce qui est en revanche établi, et suffit à
   la leçon, c’est que ce noyau n’est pas le noyau BREF : la forme brève est un
   graphème distinct, เ◌ียะ.
-- `fr` : être en panne, ne plus marcher ; s’abîmer
+- `fr` : être hors d’usage, en panne, ne plus marcher ; s’abîmer, et pour un
+  aliment avoir tourné
 - `transcription` : sǐa
 - `registre` : neutre
 - `note_fr` : le mot central de la seconde moitié de l’unité, celle qui règle un

@@ -15,7 +15,7 @@
   "audioManifestId": "de8afd1a-cb44-59c7-82f2-a469d00ec11d",
   "items": [
     {
-      "id": "4bdf51fc-e2ab-54ec-9864-04e6fb4d5da8",
+      "id": "2d133729-77b4-5082-883c-015a445167a3",
       "thaiRaw": "เปิด",
       "unicodeCodePoints": [
         "U+0E40",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "141122ca-ab97-566c-999f-a672a9fe2c8a",
+      "id": "32d320b9-04fe-57aa-bbb2-09a01590be6f",
       "thaiRaw": "ปิด",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "id": "447dc926-7127-522f-8144-a796ac6eec11",
+      "id": "81ee493e-2330-57e0-b78f-0be66ce34285",
       "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -175,7 +175,7 @@
       ]
     },
     {
-      "id": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "id": "7f90abd6-6da7-548a-b0a5-accd8a74da96",
       "thaiRaw": "ห้องน้ำ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -218,7 +218,7 @@
       ]
     },
     {
-      "id": "1f377f34-daa6-5217-bb02-4bbab98c553b",
+      "id": "c2ceacee-e82a-5ce3-b795-be5254010bcc",
       "thaiRaw": "รถเมล์",
       "unicodeCodePoints": [
         "U+0E23",
@@ -261,7 +261,7 @@
       ]
     },
     {
-      "id": "957b1e11-508d-5a2a-8cde-8d3082c7b6b4",
+      "id": "4f6771b3-d15a-5f4a-86da-88dbcba19d03",
       "thaiRaw": "ตลาด",
       "unicodeCodePoints": [
         "U+0E15",
@@ -301,7 +301,7 @@
       ]
     },
     {
-      "id": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "id": "89a1013b-a371-5815-b0b0-9492ef877c14",
       "thaiRaw": "ผมไปตลาดครับ",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -325,18 +325,42 @@
       "syllables": [
         {
           "thaiRaw": "ผมไปตลาดครับ",
-          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
-          "tone": "low",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
           "vowelLength": "short",
           "initial": "pʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
           "final": "aucune"
         },
         {
           "thaiRaw": "ผมไปตลาดครับ",
-          "ipa": "laːt̚˨˩ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "l",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -347,7 +371,7 @@
       ]
     },
     {
-      "id": "eac869dc-8300-5449-9c49-6482b4671657",
+      "id": "ef5c34ff-5e97-5be0-9086-1252d039dfe7",
       "thaiRaw": "ตัวนี้เท่าไรครับ",
       "unicodeCodePoints": [
         "U+0E15",
@@ -383,18 +407,34 @@
         },
         {
           "thaiRaw": "ตัวนี้เท่าไรครับ",
-          "ipa": "niː˦˥ tʰaw˥˩",
-          "tone": "falling",
+          "ipa": "niː˦˥",
+          "tone": "high",
           "vowelLength": "long",
           "initial": "n",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตัวนี้เท่าไรครับ",
+          "ipa": "tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "tʰ",
           "final": "w"
         },
         {
           "thaiRaw": "ตัวนี้เท่าไรครับ",
-          "ipa": "raj˧ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "raj˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "r",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ตัวนี้เท่าไรครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -404,7 +444,7 @@
       ]
     },
     {
-      "id": "a03cfa67-e528-518e-ac9e-4a4f9ed47970",
+      "id": "4f88a370-da83-51bd-b3c9-fea766689978",
       "thaiRaw": "ร้านขายยา",
       "unicodeCodePoints": [
         "U+0E23",
@@ -462,7 +502,7 @@
       "drawIndex": 1,
       "id": "46aa7496-4c0d-550b-9097-23451bec4fd9",
       "type": "recall",
-      "itemId": "4bdf51fc-e2ab-54ec-9864-04e6fb4d5da8",
+      "itemId": "2d133729-77b4-5082-883c-015a445167a3",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -498,7 +538,7 @@
       "drawIndex": 2,
       "id": "33fb020f-6321-5111-9673-bfb4a9cdc93b",
       "type": "recall",
-      "itemId": "141122ca-ab97-566c-999f-a672a9fe2c8a",
+      "itemId": "32d320b9-04fe-57aa-bbb2-09a01590be6f",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -534,7 +574,7 @@
       "drawIndex": 3,
       "id": "5dd8c7cb-9dd8-509a-a464-a6e3116427a2",
       "type": "recall",
-      "itemId": "957b1e11-508d-5a2a-8cde-8d3082c7b6b4",
+      "itemId": "4f6771b3-d15a-5f4a-86da-88dbcba19d03",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -574,7 +614,7 @@
       "drawIndex": 4,
       "id": "8bf3f73c-c657-576a-a235-f84825343fbe",
       "type": "recall",
-      "itemId": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "itemId": "7f90abd6-6da7-548a-b0a5-accd8a74da96",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -614,7 +654,7 @@
       "drawIndex": 5,
       "id": "ec2e958a-3c26-52df-a283-dfdaf4ba7f65",
       "type": "recall",
-      "itemId": "1f377f34-daa6-5217-bb02-4bbab98c553b",
+      "itemId": "c2ceacee-e82a-5ce3-b795-be5254010bcc",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -654,7 +694,7 @@
       "drawIndex": 6,
       "id": "cfeb0a47-7534-5d9a-8953-d50053df60bc",
       "type": "recall",
-      "itemId": "a03cfa67-e528-518e-ac9e-4a4f9ed47970",
+      "itemId": "4f88a370-da83-51bd-b3c9-fea766689978",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -694,7 +734,7 @@
       "drawIndex": 1,
       "id": "2cc9eb17-6a71-57f9-8571-dc2838596036",
       "type": "word_order",
-      "itemId": "a03cfa67-e528-518e-ac9e-4a4f9ed47970",
+      "itemId": "4f88a370-da83-51bd-b3c9-fea766689978",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Vous venez de lire ce support. Remettez les étiquettes dans l’ordre pour poser la question.",
@@ -737,7 +777,7 @@
       "drawIndex": 2,
       "id": "6cb10e90-7249-5120-b236-624680de2760",
       "type": "word_order",
-      "itemId": "447dc926-7127-522f-8144-a796ac6eec11",
+      "itemId": "81ee493e-2330-57e0-b78f-0be66ce34285",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Vous venez de lire ce support. Remettez les étiquettes dans l’ordre pour poser la question.",
@@ -792,7 +832,7 @@
       "drawIndex": 3,
       "id": "5fac9ee3-4756-5524-827c-d74f183d2f4f",
       "type": "word_order",
-      "itemId": "eac869dc-8300-5449-9c49-6482b4671657",
+      "itemId": "ef5c34ff-5e97-5be0-9086-1252d039dfe7",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Vous venez de lire ce support. Remettez les étiquettes dans l’ordre pour poser la question.",
@@ -829,7 +869,7 @@
       "drawIndex": 4,
       "id": "ad2031e8-9250-5c7d-a988-39b5a9b9d195",
       "type": "word_order",
-      "itemId": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "itemId": "89a1013b-a371-5815-b0b0-9492ef877c14",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Vous venez de lire ce support. Remettez les étiquettes dans l’ordre pour poser la question.",

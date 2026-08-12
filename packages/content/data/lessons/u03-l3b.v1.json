@@ -15,7 +15,7 @@
   "audioManifestId": "897ae1e8-1871-583d-ba09-8463a18bcfb6",
   "items": [
     {
-      "id": "c2781f38-1fec-52c3-b37a-351d511e4f96",
+      "id": "67a12ef9-7fdd-50b7-a73e-db4ecbf948d3",
       "thaiRaw": "หนึ่ง",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -48,7 +48,7 @@
       ]
     },
     {
-      "id": "61578d22-24a9-5b77-b506-a5e388e59f14",
+      "id": "9dca7c12-08bb-5dec-9b40-7ec8c07d684c",
       "thaiRaw": "สอง",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -79,7 +79,7 @@
       ]
     },
     {
-      "id": "73049c2e-6939-52e8-b0c1-aa10d15b67b1",
+      "id": "385ea3d1-63f6-5f90-99e8-2f1d0138432e",
       "thaiRaw": "สาม",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -110,7 +110,7 @@
       ]
     },
     {
-      "id": "7f5a3254-11f3-5b59-9d5a-5079b4541944",
+      "id": "5805ec59-76e9-5cb5-92e2-e9b014cbfbe1",
       "thaiRaw": "สี่",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -141,7 +141,7 @@
       ]
     },
     {
-      "id": "556c6690-9bf4-5ad4-a463-1e4082b5fbae",
+      "id": "63268df4-3684-5f70-a70b-728ce0f6be8b",
       "thaiRaw": "ห้า",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -172,7 +172,7 @@
       ]
     },
     {
-      "id": "4ab2001d-20ad-5910-8293-6ba80cd9ae68",
+      "id": "e576da95-1337-5615-8bd4-b09fdcdfeba7",
       "thaiRaw": "หก",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -202,7 +202,7 @@
       ]
     },
     {
-      "id": "b8a7671e-605a-53db-ad53-bb908f3197ec",
+      "id": "e062f5a2-1473-538b-bb2d-7a080a5f25b1",
       "thaiRaw": "เจ็ด",
       "unicodeCodePoints": [
         "U+0E40",
@@ -235,7 +235,7 @@
       ]
     },
     {
-      "id": "e1596de7-d431-5631-82b5-669357f57014",
+      "id": "e118e1ab-e67e-5fcd-aae2-dee59d059817",
       "thaiRaw": "แปด",
       "unicodeCodePoints": [
         "U+0E41",
@@ -266,7 +266,7 @@
       ]
     },
     {
-      "id": "2f41932d-4ab4-56a1-9787-35c9f470f691",
+      "id": "fae09e4d-5c73-52f4-845f-9227e3c6e930",
       "thaiRaw": "เก้า",
       "unicodeCodePoints": [
         "U+0E40",
@@ -298,7 +298,7 @@
       ]
     },
     {
-      "id": "e89147da-3e37-5261-8774-6e8c3c6c8bc3",
+      "id": "5510d550-8e91-5e18-a600-2bfcbff63972",
       "thaiRaw": "สิบ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -329,7 +329,7 @@
       ]
     },
     {
-      "id": "88d3dc02-32af-514b-8840-bf069d2345db",
+      "id": "dc7c213a-7b01-55fa-9480-b43fe1149b45",
       "thaiRaw": "ยี่สิบ",
       "unicodeCodePoints": [
         "U+0E22",
@@ -371,7 +371,7 @@
       ]
     },
     {
-      "id": "e9318eb5-a206-5b69-adbe-1116ebf36df7",
+      "id": "0d6621c7-f13d-5cb3-a109-453a05164da5",
       "thaiRaw": "เอ็ด",
       "unicodeCodePoints": [
         "U+0E40",
@@ -403,7 +403,7 @@
       ]
     },
     {
-      "id": "8b98aa1e-06e5-574b-aba8-2817a08d2e7e",
+      "id": "34141730-6f3f-56db-89f7-13b02638a070",
       "thaiRaw": "สิบเอ็ด",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -446,7 +446,7 @@
       ]
     },
     {
-      "id": "dc14e22a-65b9-51dd-99aa-1801425d77c4",
+      "id": "d2587087-924c-5112-a3d3-7bebe43ab1e4",
       "thaiRaw": "ยี่สิบเอ็ด",
       "unicodeCodePoints": [
         "U+0E22",
@@ -500,7 +500,7 @@
       ]
     },
     {
-      "id": "2e184359-c052-505d-9ea3-1e1ee40c4c1c",
+      "id": "d4bd0e44-b7f5-56c8-8d63-553c2ff63bcf",
       "thaiRaw": "๐",
       "unicodeCodePoints": [
         "U+0E50"
@@ -530,7 +530,7 @@
       ]
     },
     {
-      "id": "55ebd1d3-0617-5067-99fa-62d3795b2cc0",
+      "id": "83a5641c-b3af-589c-b5e9-83ced502e252",
       "thaiRaw": "๑",
       "unicodeCodePoints": [
         "U+0E51"
@@ -560,7 +560,7 @@
       ]
     },
     {
-      "id": "c9044688-0f69-50bb-9ff7-a5498ddd19ea",
+      "id": "394b0935-aa3f-5394-a82a-64c07730a26b",
       "thaiRaw": "๒",
       "unicodeCodePoints": [
         "U+0E52"
@@ -590,7 +590,7 @@
       ]
     },
     {
-      "id": "fe56de8e-bd1f-597c-ae66-a2aac971b926",
+      "id": "534b38e9-0892-501e-984b-e013d810f355",
       "thaiRaw": "๓",
       "unicodeCodePoints": [
         "U+0E53"
@@ -620,7 +620,7 @@
       ]
     },
     {
-      "id": "fa56de41-6861-5e84-badd-dda972be6a26",
+      "id": "56603a30-3ea3-503c-abd8-8cbf45c607e7",
       "thaiRaw": "๔",
       "unicodeCodePoints": [
         "U+0E54"
@@ -650,7 +650,7 @@
       ]
     },
     {
-      "id": "aa4f4c66-5f4c-54a9-9a13-a645cfdf3e67",
+      "id": "b2b0a0dc-0421-58e3-8c70-418fbbaa1ffe",
       "thaiRaw": "๕",
       "unicodeCodePoints": [
         "U+0E55"
@@ -680,7 +680,7 @@
       ]
     },
     {
-      "id": "fc78d6fc-f51a-5b26-9318-bf7c1b6e187a",
+      "id": "7dd70e90-99f5-5040-8610-8ea1f7f58d8e",
       "thaiRaw": "๖",
       "unicodeCodePoints": [
         "U+0E56"
@@ -710,7 +710,7 @@
       ]
     },
     {
-      "id": "febddbfa-b78d-5b2e-b94f-759fb08e3e00",
+      "id": "71d46846-f164-5166-a252-d8906bc3d165",
       "thaiRaw": "๗",
       "unicodeCodePoints": [
         "U+0E57"
@@ -740,7 +740,7 @@
       ]
     },
     {
-      "id": "cc7e3767-f9e0-5dd4-999a-c949069eabae",
+      "id": "068423b6-070f-57a2-a88d-697efa81e485",
       "thaiRaw": "๘",
       "unicodeCodePoints": [
         "U+0E58"
@@ -770,7 +770,7 @@
       ]
     },
     {
-      "id": "526e48bb-8616-535c-9e4a-1bcd4b7cf6da",
+      "id": "fb3a9e7b-bd9b-5815-bae7-d0082b86d561",
       "thaiRaw": "๙",
       "unicodeCodePoints": [
         "U+0E59"
@@ -800,7 +800,7 @@
       ]
     },
     {
-      "id": "a3ec79e3-ec13-5468-8639-a92a6808afd8",
+      "id": "b2d000f4-f7b4-5bfa-bc67-172e453a9e1b",
       "thaiRaw": "สามสิบ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -848,9 +848,9 @@
       "drawIndex": 1,
       "id": "7eeb7401-b1b7-503c-a6e2-cf3d60faa991",
       "type": "audio_choice",
-      "itemId": "4ab2001d-20ad-5910-8293-6ba80cd9ae68",
+      "itemId": "e576da95-1337-5615-8bd4-b09fdcdfeba7",
       "skill": "listening",
-      "audioAssetId": "4ff66f67-65c9-5271-b5aa-2f4de0be3b98",
+      "audioAssetId": "afce21e9-d966-58b5-af2f-32d41f74d82e",
       "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
       "options": [
         {
@@ -890,9 +890,9 @@
       "drawIndex": 2,
       "id": "1c7f92f7-2c73-5880-800a-be3ceb499847",
       "type": "audio_choice",
-      "itemId": "b8a7671e-605a-53db-ad53-bb908f3197ec",
+      "itemId": "e062f5a2-1473-538b-bb2d-7a080a5f25b1",
       "skill": "listening",
-      "audioAssetId": "35617c35-5aba-5da0-a2ce-f82b72e28373",
+      "audioAssetId": "5d59926c-c617-5706-9de5-806a51973334",
       "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
       "options": [
         {
@@ -932,9 +932,9 @@
       "drawIndex": 3,
       "id": "f8df232f-e390-566a-82f0-22041f558235",
       "type": "audio_choice",
-      "itemId": "61578d22-24a9-5b77-b506-a5e388e59f14",
+      "itemId": "9dca7c12-08bb-5dec-9b40-7ec8c07d684c",
       "skill": "listening",
-      "audioAssetId": "4e39d2fb-1f66-59f9-826e-b17b8ede2302",
+      "audioAssetId": "a79b3d19-9e1a-525a-83af-ab27594c5241",
       "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
       "options": [
         {
@@ -974,9 +974,9 @@
       "drawIndex": 4,
       "id": "e5cc312a-46a7-576c-bc2a-eaf524a57dea",
       "type": "audio_choice",
-      "itemId": "73049c2e-6939-52e8-b0c1-aa10d15b67b1",
+      "itemId": "385ea3d1-63f6-5f90-99e8-2f1d0138432e",
       "skill": "listening",
-      "audioAssetId": "eeaca5b4-f835-559d-a468-c154f3781cda",
+      "audioAssetId": "313f9c5c-956d-5fba-8dd4-6658d55ef819",
       "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
       "options": [
         {
@@ -1016,9 +1016,9 @@
       "drawIndex": 5,
       "id": "b481368c-4093-5c49-a27a-f388d63bd2c0",
       "type": "audio_choice",
-      "itemId": "2f41932d-4ab4-56a1-9787-35c9f470f691",
+      "itemId": "fae09e4d-5c73-52f4-845f-9227e3c6e930",
       "skill": "listening",
-      "audioAssetId": "de50bdbf-3f44-5063-b4e3-f72b0b85d2c7",
+      "audioAssetId": "a91be1cd-7095-5695-9a33-dce4625f6ce6",
       "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
       "options": [
         {
@@ -1058,9 +1058,9 @@
       "drawIndex": 6,
       "id": "a77e458b-fc33-50f3-80a0-823800d2bbef",
       "type": "audio_choice",
-      "itemId": "88d3dc02-32af-514b-8840-bf069d2345db",
+      "itemId": "dc7c213a-7b01-55fa-9480-b43fe1149b45",
       "skill": "listening",
-      "audioAssetId": "63f1b7b7-b9b8-564c-a0fe-b93fddb7d962",
+      "audioAssetId": "7fe2216b-ff68-571a-a4f9-d13217d2f20a",
       "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
       "options": [
         {
@@ -1100,9 +1100,9 @@
       "drawIndex": 7,
       "id": "15149578-9b9b-57b4-8a4a-4283cef7be75",
       "type": "audio_choice",
-      "itemId": "8b98aa1e-06e5-574b-aba8-2817a08d2e7e",
+      "itemId": "34141730-6f3f-56db-89f7-13b02638a070",
       "skill": "listening",
-      "audioAssetId": "16f808a6-950f-5109-b862-7045b3cca1bb",
+      "audioAssetId": "895d3a06-996f-554d-8a36-b4a3a1990395",
       "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
       "options": [
         {
@@ -1142,9 +1142,9 @@
       "drawIndex": 8,
       "id": "a8ed723a-f751-57ae-95d9-2dfedde97405",
       "type": "audio_choice",
-      "itemId": "dc14e22a-65b9-51dd-99aa-1801425d77c4",
+      "itemId": "d2587087-924c-5112-a3d3-7bebe43ab1e4",
       "skill": "listening",
-      "audioAssetId": "925df7a5-a7cc-5f36-a769-c3fa982af2a8",
+      "audioAssetId": "0bf58664-7df4-5098-ad64-d6b97303e41e",
       "promptFr": "Écoutez, puis touchez le nombre que vous avez entendu.",
       "options": [
         {
@@ -1184,7 +1184,7 @@
       "drawIndex": 1,
       "id": "b477045e-a8a2-5e5f-95c7-6cab1c52b679",
       "type": "word_order",
-      "itemId": "a3ec79e3-ec13-5468-8639-a92a6808afd8",
+      "itemId": "b2d000f4-f7b4-5bfa-bc67-172e453a9e1b",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Composez le nombre demandé. Certaines étiquettes ne servent pas.",
@@ -1236,7 +1236,7 @@
       "drawIndex": 2,
       "id": "b093c29c-9ac3-5606-bea3-f30370fbbb5e",
       "type": "word_order",
-      "itemId": "88d3dc02-32af-514b-8840-bf069d2345db",
+      "itemId": "dc7c213a-7b01-55fa-9480-b43fe1149b45",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Composez le nombre demandé. Certaines étiquettes ne servent pas.",
@@ -1288,7 +1288,7 @@
       "drawIndex": 3,
       "id": "d2932d89-c6a2-5342-8d74-7ba91dcb8a0f",
       "type": "word_order",
-      "itemId": "8b98aa1e-06e5-574b-aba8-2817a08d2e7e",
+      "itemId": "34141730-6f3f-56db-89f7-13b02638a070",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Composez le nombre demandé. Certaines étiquettes ne servent pas.",
@@ -1340,7 +1340,7 @@
       "drawIndex": 4,
       "id": "e09ed0d9-4357-5976-ba16-308094919969",
       "type": "word_order",
-      "itemId": "dc14e22a-65b9-51dd-99aa-1801425d77c4",
+      "itemId": "d2587087-924c-5112-a3d3-7bebe43ab1e4",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Composez le nombre demandé. Certaines étiquettes ne servent pas.",
@@ -1398,7 +1398,7 @@
       "drawIndex": 5,
       "id": "c2eb5774-e124-5006-859a-405a9feb198b",
       "type": "word_order",
-      "itemId": "2f41932d-4ab4-56a1-9787-35c9f470f691",
+      "itemId": "fae09e4d-5c73-52f4-845f-9227e3c6e930",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Composez le nombre demandé. Certaines étiquettes ne servent pas.",

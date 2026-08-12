@@ -239,6 +239,7 @@ temps. Ils ne doivent pas entrer dans le score de maîtrise de 1D.
 - `ton` : montant
 - `longueur` : courte
 - `fr` : la soie
+- `sens` : soie
 - `transcription` : mǎi
 - `registre` : neutre
 - `note_fr` : la finale ai se lit comme dans « aïe » ; la voyelle est courte,

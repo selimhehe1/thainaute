@@ -15,7 +15,7 @@
   "audioManifestId": "60d4fa26-1667-5768-aa42-4c2f85ea1c66",
   "items": [
     {
-      "id": "1e58e238-eb8d-51d6-9fc9-d5d0cce7be93",
+      "id": "d9713fa1-85a7-5133-bb68-d252ecfe30f5",
       "thaiRaw": "เจ็บ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "c8798501-2467-538f-8cd3-4b153afb9a61",
+      "id": "6e059209-c538-5828-aea6-5931fb9c9b20",
       "thaiRaw": "ปวด",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "id": "e3d5467f-416a-57c1-b32c-240ebad2bebe",
+      "id": "3c0e6525-a344-5fa1-ad64-63a8c9a26f58",
       "thaiRaw": "หมอ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -106,7 +106,7 @@
       ]
     },
     {
-      "id": "10c0854d-acf8-5451-b258-80b605121b44",
+      "id": "8be8dbee-eb69-58f9-8303-8c65dad93d5a",
       "thaiRaw": "แพทย์",
       "unicodeCodePoints": [
         "U+0E41",
@@ -138,7 +138,7 @@
       ]
     },
     {
-      "id": "c78a5ad1-2159-52f5-9a3f-2ce3e61e7fe7",
+      "id": "0398dc42-0aa7-5e0d-b1a1-81c47067747a",
       "thaiRaw": "โรค",
       "unicodeCodePoints": [
         "U+0E42",
@@ -168,7 +168,7 @@
       ]
     },
     {
-      "id": "725c6b6f-900f-53f4-a51a-094b248e2abe",
+      "id": "52c883de-fdd3-5277-a935-2e3fb8e75ebd",
       "thaiRaw": "อาการ",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -208,7 +208,7 @@
       ]
     },
     {
-      "id": "841427a5-6699-5d15-ac6d-7d6375c3336f",
+      "id": "d57a0905-41a3-581c-a4c0-e5732377ea87",
       "thaiRaw": "โรงพยาบาล",
       "unicodeCodePoints": [
         "U+0E42",
@@ -268,7 +268,7 @@
       ]
     },
     {
-      "id": "8bc28522-3e7b-51d9-9e80-ca343e8a359d",
+      "id": "368e2c43-b7a9-567a-b7aa-6c7a6736e573",
       "thaiRaw": "โทรศัพท์",
       "unicodeCodePoints": [
         "U+0E42",
@@ -325,7 +325,7 @@
       "drawIndex": 1,
       "id": "c70983b5-8e14-560b-965b-3a3e6a0e5931",
       "type": "recall",
-      "itemId": "1e58e238-eb8d-51d6-9fc9-d5d0cce7be93",
+      "itemId": "d9713fa1-85a7-5133-bb68-d252ecfe30f5",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -361,7 +361,7 @@
       "drawIndex": 2,
       "id": "5ef1fa29-bd94-5bc4-943e-dc759933cfdb",
       "type": "recall",
-      "itemId": "c8798501-2467-538f-8cd3-4b153afb9a61",
+      "itemId": "6e059209-c538-5828-aea6-5931fb9c9b20",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -397,7 +397,7 @@
       "drawIndex": 3,
       "id": "5ba6124c-6177-5111-829a-7bc45825ffb3",
       "type": "recall",
-      "itemId": "e3d5467f-416a-57c1-b32c-240ebad2bebe",
+      "itemId": "3c0e6525-a344-5fa1-ad64-63a8c9a26f58",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -433,7 +433,7 @@
       "drawIndex": 4,
       "id": "94ba8349-4aea-5004-9f0a-1fcf41f2c398",
       "type": "recall",
-      "itemId": "10c0854d-acf8-5451-b258-80b605121b44",
+      "itemId": "8be8dbee-eb69-58f9-8303-8c65dad93d5a",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -469,7 +469,7 @@
       "drawIndex": 5,
       "id": "a6e672cd-479c-5047-83c1-11cafe572db3",
       "type": "recall",
-      "itemId": "c78a5ad1-2159-52f5-9a3f-2ce3e61e7fe7",
+      "itemId": "0398dc42-0aa7-5e0d-b1a1-81c47067747a",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -505,7 +505,7 @@
       "drawIndex": 6,
       "id": "8d39a009-4e4e-5f02-9048-de59f89180f5",
       "type": "recall",
-      "itemId": "725c6b6f-900f-53f4-a51a-094b248e2abe",
+      "itemId": "52c883de-fdd3-5277-a935-2e3fb8e75ebd",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -545,7 +545,7 @@
       "drawIndex": 7,
       "id": "093ab078-0347-5c5f-8e1d-14a2e169496c",
       "type": "recall",
-      "itemId": "841427a5-6699-5d15-ac6d-7d6375c3336f",
+      "itemId": "d57a0905-41a3-581c-a4c0-e5732377ea87",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -585,7 +585,7 @@
       "drawIndex": 8,
       "id": "f286b494-d919-5b09-8885-b1db1daf8b65",
       "type": "recall",
-      "itemId": "8bc28522-3e7b-51d9-9e80-ca343e8a359d",
+      "itemId": "368e2c43-b7a9-567a-b7aa-6c7a6736e573",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [

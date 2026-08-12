@@ -15,7 +15,7 @@
   "audioManifestId": "0e9792de-9c33-5a90-ba58-c6e9de2e6c28",
   "items": [
     {
-      "id": "43fbe212-e78e-57bd-8c4f-5aedccc74d05",
+      "id": "b6d1f088-d380-56f6-b2c4-975e7cc46ffb",
       "thaiRaw": "ไกล",
       "unicodeCodePoints": [
         "U+0E44",
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "id": "804701d1-d9ca-59a7-ad3e-d10096f644e0",
+      "id": "57421039-0ac4-57c0-965f-fbf272f17245",
       "thaiRaw": "ไม่ไกล",
       "unicodeCodePoints": [
         "U+0E44",
@@ -65,10 +65,18 @@
       "syllables": [
         {
           "thaiRaw": "ไม่ไกล",
-          "ipa": "maj˥˩ klaj˧",
-          "tone": "mid",
+          "ipa": "maj˥˩",
+          "tone": "falling",
           "vowelLength": "short",
           "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่ไกล",
+          "ipa": "klaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kl",
           "final": "j"
         }
       ],
@@ -80,7 +88,7 @@
       ]
     },
     {
-      "id": "fefbb0b8-8383-55cb-802c-2872444e2069",
+      "id": "adcdc64c-485f-54ea-b68a-a00f68765572",
       "thaiRaw": "ไกลไหม",
       "unicodeCodePoints": [
         "U+0E44",
@@ -98,10 +106,18 @@
       "syllables": [
         {
           "thaiRaw": "ไกลไหม",
-          "ipa": "klaj˧ maj˩˩˦",
-          "tone": "rising",
+          "ipa": "klaj˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "kl",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไกลไหม",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
           "final": "j"
         }
       ],
@@ -113,7 +129,7 @@
       ]
     },
     {
-      "id": "55aefbfb-f9ae-5954-91ea-26428a7d0e97",
+      "id": "4f6771b3-d15a-5f4a-86da-88dbcba19d03",
       "thaiRaw": "ตลาด",
       "unicodeCodePoints": [
         "U+0E15",
@@ -153,7 +169,7 @@
       ]
     },
     {
-      "id": "adee0023-b829-5c8f-8a9b-4b5567baa36e",
+      "id": "7a35486b-5808-5dd5-b2cd-1f78e02ce854",
       "thaiRaw": "อยู่",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -185,7 +201,7 @@
       ]
     },
     {
-      "id": "38e20d7e-2dd4-5b7b-bc76-677f578f39fd",
+      "id": "b0f1cc48-bb43-5791-9270-b96c5d7eb9c0",
       "thaiRaw": "ที่ไหน",
       "unicodeCodePoints": [
         "U+0E17",
@@ -227,7 +243,7 @@
       ]
     },
     {
-      "id": "4adafc69-1048-5617-9c16-2c66bd6ab2ef",
+      "id": "7418d8c9-687e-523a-ada3-79e6b3199db7",
       "thaiRaw": "ตลาดอยู่ที่ไหน",
       "unicodeCodePoints": [
         "U+0E15",
@@ -261,10 +277,26 @@
         },
         {
           "thaiRaw": "ตลาดอยู่ที่ไหน",
-          "ipa": "laːt̚˨˩ juː˨˩ tʰiː˥˩",
-          "tone": "falling",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "l",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
           "final": "aucune"
         },
         {
@@ -283,7 +315,7 @@
       ]
     },
     {
-      "id": "4a485386-7ac4-5336-ae1e-ddb547feeaa7",
+      "id": "2c5b95c5-0718-5c04-ae8c-c66bcd9bdd13",
       "thaiRaw": "ตรงไป",
       "unicodeCodePoints": [
         "U+0E15",
@@ -300,10 +332,18 @@
       "syllables": [
         {
           "thaiRaw": "ตรงไป",
-          "ipa": "troŋ˧ paj˧",
+          "ipa": "troŋ˧",
           "tone": "mid",
           "vowelLength": "short",
           "initial": "tr",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ตรงไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
           "final": "j"
         }
       ],
@@ -315,7 +355,7 @@
       ]
     },
     {
-      "id": "b28b899e-7187-563c-92ac-7ac8bfd77bd4",
+      "id": "fcda4f61-187c-53f0-a834-fffce7facf86",
       "thaiRaw": "ขอโทษ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -355,7 +395,7 @@
       ]
     },
     {
-      "id": "5a138bb5-b83f-524e-88d9-5db9c7814859",
+      "id": "8c649ea6-42c1-56bf-bf81-e741d756dd54",
       "thaiRaw": "ครับ",
       "unicodeCodePoints": [
         "U+0E04",
@@ -386,7 +426,7 @@
       ]
     },
     {
-      "id": "ba21b75c-4a03-5d3e-9cb0-e284d582a125",
+      "id": "25df140d-de13-5fae-93df-3a8b1d91d111",
       "thaiRaw": "ไหม",
       "unicodeCodePoints": [
         "U+0E44",
@@ -415,7 +455,7 @@
       ]
     },
     {
-      "id": "77129d99-9f6f-5dcc-a33f-d2c77695c9e9",
+      "id": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "thaiRaw": "ไม่",
       "unicodeCodePoints": [
         "U+0E44",
@@ -444,7 +484,7 @@
       ]
     },
     {
-      "id": "df3e20a8-b0a8-53f5-8abb-f2321b549ef8",
+      "id": "b876f998-b244-526f-baf6-eedcc424928f",
       "thaiRaw": "ขอบคุณ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -485,7 +525,7 @@
       ]
     },
     {
-      "id": "c0789cb0-9288-58f4-8baa-125eca5a3583",
+      "id": "19383b08-bd77-5e48-901a-7a34e18acbf4",
       "thaiRaw": "ไม่เป็นไร",
       "unicodeCodePoints": [
         "U+0E44",
@@ -543,7 +583,7 @@
       "drawIndex": 1,
       "id": "795aa03a-2b60-5a45-9eb3-1e7b66c6248f",
       "type": "word_order",
-      "itemId": "55aefbfb-f9ae-5954-91ea-26428a7d0e97",
+      "itemId": "4f6771b3-d15a-5f4a-86da-88dbcba19d03",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Une femme cherche le marché. Remettez les éléments dans l’ordre. Un élément est de trop : retirez-le.",
@@ -591,7 +631,7 @@
       "drawIndex": 1,
       "id": "39e087d2-08d0-5f18-b83e-10d74e521c7f",
       "type": "recall",
-      "itemId": "43fbe212-e78e-57bd-8c4f-5aedccc74d05",
+      "itemId": "b6d1f088-d380-56f6-b2c4-975e7cc46ffb",
       "skill": "recall",
       "promptFr": "Écoutez, puis écrivez ce que vous entendez en transcription Thaïnaute. Ce qui est mesuré, c’est la place de chaque mot.",
       "acceptedAnswers": [
@@ -622,7 +662,7 @@
       "drawIndex": 2,
       "id": "05f89764-4f3e-5813-a353-3a9ef1f86cbe",
       "type": "recall",
-      "itemId": "804701d1-d9ca-59a7-ad3e-d10096f644e0",
+      "itemId": "57421039-0ac4-57c0-965f-fbf272f17245",
       "skill": "recall",
       "promptFr": "Écoutez, puis écrivez ce que vous entendez en transcription Thaïnaute. Ce qui est mesuré, c’est la place de chaque mot.",
       "acceptedAnswers": [
@@ -657,7 +697,7 @@
       "drawIndex": 3,
       "id": "e69a0426-2621-5424-89ca-da531bb421ce",
       "type": "recall",
-      "itemId": "fefbb0b8-8383-55cb-802c-2872444e2069",
+      "itemId": "adcdc64c-485f-54ea-b68a-a00f68765572",
       "skill": "recall",
       "promptFr": "Écoutez, puis écrivez ce que vous entendez en transcription Thaïnaute. Ce qui est mesuré, c’est la place de chaque mot.",
       "acceptedAnswers": [

@@ -15,7 +15,7 @@
   "audioManifestId": "9177c391-fbd4-5cea-8067-43192c4c5f80",
   "items": [
     {
-      "id": "280e24b9-a49d-5305-afa3-7bc2bd70588f",
+      "id": "9c3d3240-c9a5-51e3-b4aa-c972a6f47b2e",
       "thaiRaw": "ช่วย",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "8edd02a7-0de9-5821-8cff-5552a7f43842",
+      "id": "98c2c010-75a4-5a46-82a3-78534148f0dd",
       "thaiRaw": "ด้วย",
       "unicodeCodePoints": [
         "U+0E14",
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "id": "d2a24ef6-15b0-53c0-b942-277729c1dae5",
+      "id": "cea63724-0490-5a17-ba52-b995a78e578b",
       "thaiRaw": "ช่วยด้วย",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -120,7 +120,7 @@
       ]
     },
     {
-      "id": "138151d6-94cd-5d9c-ac28-08316a896849",
+      "id": "2eeb9b37-2303-59f6-b6e0-a27fb77f462c",
       "thaiRaw": "เรียก",
       "unicodeCodePoints": [
         "U+0E40",
@@ -152,7 +152,7 @@
       ]
     },
     {
-      "id": "6ff8fcb4-f3cc-56ff-9ac7-eacecb422a94",
+      "id": "3c0e6525-a344-5fa1-ad64-63a8c9a26f58",
       "thaiRaw": "หมอ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -182,7 +182,7 @@
       ]
     },
     {
-      "id": "25048330-50ce-5122-8b84-cbc1d05b6f48",
+      "id": "0aa1ad2a-a35d-5278-9d0d-7edf5db5c6c6",
       "thaiRaw": "เรียกหมอ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -224,7 +224,7 @@
       ]
     },
     {
-      "id": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "id": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "thaiRaw": "ขอ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -254,7 +254,7 @@
       ]
     },
     {
-      "id": "447dc926-7127-522f-8144-a796ac6eec11",
+      "id": "81ee493e-2330-57e0-b78f-0be66ce34285",
       "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -352,7 +352,7 @@
       ]
     },
     {
-      "id": "7aad064c-a851-5359-80c0-438e55ed90f3",
+      "id": "77066334-9315-5282-91fb-b93737fe97c9",
       "thaiRaw": "ขอบคุณครับ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -382,10 +382,18 @@
         },
         {
           "thaiRaw": "ขอบคุณครับ",
-          "ipa": "kʰun˧ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "kʰun˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -407,12 +415,12 @@
       "pairs": [
         {
           "id": "80f0f67c-3b2a-55c4-9a2f-b076fea2d137",
-          "itemId": "d2a24ef6-15b0-53c0-b942-277729c1dae5",
+          "itemId": "cea63724-0490-5a17-ba52-b995a78e578b",
           "labelFr": "Vous avez besoin d’aide tout de suite et vous n’avez pas le\n     temps de faire une phrase."
         },
         {
           "id": "fddcb19d-7311-5847-bddf-c7d909a1ad3c",
-          "itemId": "7aad064c-a851-5359-80c0-438e55ed90f3",
+          "itemId": "77066334-9315-5282-91fb-b93737fe97c9",
           "labelFr": "La personne vient de vous aider."
         }
       ],
@@ -433,7 +441,7 @@
       "drawIndex": 1,
       "id": "f4b60e76-2e9d-5e1c-b848-27ab9dbc26e8",
       "type": "word_order",
-      "itemId": "280e24b9-a49d-5305-afa3-7bc2bd70588f",
+      "itemId": "9c3d3240-c9a5-51e3-b4aa-c972a6f47b2e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
@@ -486,7 +494,7 @@
       "drawIndex": 2,
       "id": "8e83b664-c6bc-5a1d-a809-ce6911ba2856",
       "type": "word_order",
-      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "itemId": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
@@ -545,7 +553,7 @@
       "drawIndex": 3,
       "id": "4f1dc7fa-48c5-5553-9ac2-4bd85ae5b43a",
       "type": "word_order",
-      "itemId": "280e24b9-a49d-5305-afa3-7bc2bd70588f",
+      "itemId": "9c3d3240-c9a5-51e3-b4aa-c972a6f47b2e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
@@ -598,7 +606,7 @@
       "drawIndex": 4,
       "id": "9f9c0dd8-37f1-58b4-954d-d0f1d48df0d1",
       "type": "word_order",
-      "itemId": "447dc926-7127-522f-8144-a796ac6eec11",
+      "itemId": "81ee493e-2330-57e0-b78f-0be66ce34285",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
@@ -663,7 +671,7 @@
       "drawIndex": 5,
       "id": "022decf0-9287-5509-a572-24c3b7e6a89d",
       "type": "word_order",
-      "itemId": "280e24b9-a49d-5305-afa3-7bc2bd70588f",
+      "itemId": "9c3d3240-c9a5-51e3-b4aa-c972a6f47b2e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",
@@ -716,7 +724,7 @@
       "drawIndex": 6,
       "id": "6beddc43-5a1e-5098-bd95-ed73f615cfca",
       "type": "word_order",
-      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "itemId": "ca434e32-e6d5-5075-839c-7127ea680f81",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les jetons dans l’ordre pour former la demande. Un jeton ne sert pas : retirez-le.",

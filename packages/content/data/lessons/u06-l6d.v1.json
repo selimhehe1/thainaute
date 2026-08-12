@@ -15,7 +15,7 @@
   "audioManifestId": "1a7c1d2d-2f16-536f-8014-de8b618adb29",
   "items": [
     {
-      "id": "a6f999bf-e8ce-5c99-a4a6-714e73a91476",
+      "id": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
       "thaiRaw": "มี",
       "unicodeCodePoints": [
         "U+0E21",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "5f45ee39-ccad-5580-affa-5ed5498f82e5",
+      "id": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "thaiRaw": "ไม่",
       "unicodeCodePoints": [
         "U+0E44",
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "id": "a1871874-1a39-510c-b511-0df8b875336c",
+      "id": "55738b1d-725c-52ee-a93c-8003441634d7",
       "thaiRaw": "ไม่มี",
       "unicodeCodePoints": [
         "U+0E44",
@@ -117,7 +117,7 @@
       ]
     },
     {
-      "id": "be2dd9f6-3f7d-51d8-a6cb-e61ac0af2bc1",
+      "id": "8cdaeb1b-dff6-5d53-89b4-26507d1ea972",
       "thaiRaw": "คน",
       "unicodeCodePoints": [
         "U+0E04",
@@ -147,7 +147,7 @@
       ]
     },
     {
-      "id": "6c8e12f9-f3d8-535a-bd59-ad1fb09b3a11",
+      "id": "e748cfb3-861e-5dab-9e09-fa39e1517dfa",
       "thaiRaw": "มีกี่คน",
       "unicodeCodePoints": [
         "U+0E21",
@@ -166,10 +166,26 @@
       "syllables": [
         {
           "thaiRaw": "มีกี่คน",
-          "ipa": "miː˧ kiː˨˩ kʰon˧",
+          "ipa": "miː˧",
           "tone": "mid",
           "vowelLength": "long",
           "initial": "m",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "มีกี่คน",
+          "ipa": "kiː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "มีกี่คน",
+          "ipa": "kʰon˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
           "final": "n"
         }
       ],
@@ -182,7 +198,7 @@
       ]
     },
     {
-      "id": "5f624c4c-b58f-5b1c-bdec-b50457b85e92",
+      "id": "52432ef3-a6db-542c-8bd9-134bf29c803c",
       "thaiRaw": "พี่น้อง",
       "unicodeCodePoints": [
         "U+0E1E",
@@ -225,7 +241,7 @@
       ]
     },
     {
-      "id": "328c9d02-6c6e-53b2-8f77-7e98f8da7eeb",
+      "id": "f1329824-2545-5815-8bdb-4b2792940c29",
       "thaiRaw": "ครอบครัว",
       "unicodeCodePoints": [
         "U+0E04",
@@ -269,7 +285,7 @@
       ]
     },
     {
-      "id": "8ae5fc7e-7292-503a-a936-d9813080fdf2",
+      "id": "bff3bac9-e0d4-58c5-b7fe-1381b5e83d06",
       "thaiRaw": "มีพี่น้องสองคน",
       "unicodeCodePoints": [
         "U+0E21",
@@ -295,18 +311,42 @@
       "syllables": [
         {
           "thaiRaw": "มีพี่น้องสองคน",
-          "ipa": "miː˧ pʰiː˥˩",
-          "tone": "falling",
+          "ipa": "miː˧",
+          "tone": "mid",
           "vowelLength": "long",
           "initial": "m",
           "final": "aucune"
         },
         {
           "thaiRaw": "มีพี่น้องสองคน",
-          "ipa": "nɔːŋ˦˥ sɔːŋ˩˩˦ kʰon˧",
-          "tone": "mid",
+          "ipa": "pʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "มีพี่น้องสองคน",
+          "ipa": "nɔːŋ˦˥",
+          "tone": "high",
           "vowelLength": "long",
           "initial": "n",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "มีพี่น้องสองคน",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "มีพี่น้องสองคน",
+          "ipa": "kʰon˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
           "final": "n"
         }
       ],
@@ -330,12 +370,12 @@
       "pairs": [
         {
           "id": "f8e857e5-e389-515b-8457-94bb3f3386db",
-          "itemId": "a6f999bf-e8ce-5c99-a4a6-714e73a91476",
+          "itemId": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
           "labelFr": "avoir ; il y a"
         },
         {
           "id": "669315f2-d771-5ebc-b0e6-1db80a0f3c79",
-          "itemId": "5f45ee39-ccad-5580-affa-5ed5498f82e5",
+          "itemId": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
           "labelFr": "ne … pas"
         }
       ],

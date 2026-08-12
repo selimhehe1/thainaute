@@ -15,7 +15,7 @@
   "audioManifestId": "18a1f74c-eefe-53bb-a79a-baa5625febd2",
   "items": [
     {
-      "id": "cdb06d12-3370-512e-944a-f955f6d45b9e",
+      "id": "77b14806-5741-5f9a-85c5-a31b184f046d",
       "thaiRaw": "ตา",
       "unicodeCodePoints": [
         "U+0E15",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "9b05a13d-9113-5965-9806-ca2162a3df72",
+      "id": "6f5a8731-005e-5b8c-a448-e8f2cc25d306",
       "thaiRaw": "ทา",
       "unicodeCodePoints": [
         "U+0E17",
@@ -75,7 +75,7 @@
       ]
     },
     {
-      "id": "3f0d64e3-7356-5a62-b858-dc96cec7e7fb",
+      "id": "7c3d5ca7-a1b9-5a1a-923a-057bdbe2c2ba",
       "thaiRaw": "ตัด",
       "unicodeCodePoints": [
         "U+0E15",
@@ -106,7 +106,7 @@
       ]
     },
     {
-      "id": "40abfab1-d746-5a7d-a3a4-e6505b3ddfd1",
+      "id": "ce7a70fa-b971-517e-91d8-0eebbe7f3643",
       "thaiRaw": "ถัด",
       "unicodeCodePoints": [
         "U+0E16",
@@ -137,7 +137,7 @@
       ]
     },
     {
-      "id": "5e1ba9f4-16e1-5291-b906-549b3b4c4f45",
+      "id": "8850955a-e030-5409-80a3-a09644fb1a4f",
       "thaiRaw": "เตะ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -168,7 +168,7 @@
       ]
     },
     {
-      "id": "3821c0c4-d1fa-5e83-a5f4-41920ed58826",
+      "id": "af93b920-3d6b-51cc-8ae6-5571fd55f06c",
       "thaiRaw": "แตะ",
       "unicodeCodePoints": [
         "U+0E41",
@@ -199,7 +199,7 @@
       ]
     },
     {
-      "id": "45576477-21aa-5b8f-a274-c1b2d299d50b",
+      "id": "64077181-fbd5-59e6-b104-cf1546c9d5b6",
       "thaiRaw": "ติด",
       "unicodeCodePoints": [
         "U+0E15",
@@ -230,7 +230,7 @@
       ]
     },
     {
-      "id": "230b21e0-ce35-5914-8acf-062efa9f89eb",
+      "id": "5194b833-af83-5a6d-9cc1-bc5ffdd2d6dd",
       "thaiRaw": "ถุง",
       "unicodeCodePoints": [
         "U+0E16",
@@ -259,6 +259,67 @@
         "WIKTIONARY-EN",
         "WIKTIONARY-TH"
       ]
+    },
+    {
+      "id": "1d00389c-9d7e-5c1a-a457-d513d2e7e1a1",
+      "thaiRaw": "ปี",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E35"
+      ],
+      "translationFr": "année, an",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปี",
+          "ipa": "piː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b4357e2c-cbcc-508f-b6c8-962371ccb674",
+      "thaiRaw": "เพลง",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1E",
+        "U+0E25",
+        "U+0E07"
+      ],
+      "translationFr": "chanson (aussi : morceau de musique)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phleeng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เพลง",
+          "ipa": "pʰleːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰl",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
@@ -267,7 +328,7 @@
       "drawIndex": 1,
       "id": "1ab211cf-c321-5be5-a3d2-d0f3b40c4634",
       "type": "recall",
-      "itemId": "9b05a13d-9113-5965-9806-ca2162a3df72",
+      "itemId": "6f5a8731-005e-5b8c-a448-e8f2cc25d306",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Deux choses sont mesurées : le h du souffle, et le doublement de la voyelle longue.",
       "acceptedAnswers": [
@@ -292,7 +353,7 @@
       "drawIndex": 2,
       "id": "410b8581-488f-5cfa-95e6-68bd6ac17976",
       "type": "recall",
-      "itemId": "cdb06d12-3370-512e-944a-f955f6d45b9e",
+      "itemId": "77b14806-5741-5f9a-85c5-a31b184f046d",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Deux choses sont mesurées : le h du souffle, et le doublement de la voyelle longue.",
       "acceptedAnswers": [
@@ -317,7 +378,7 @@
       "drawIndex": 3,
       "id": "bd73f21e-37ed-5884-8f54-e8fd016f7459",
       "type": "recall",
-      "itemId": "3f0d64e3-7356-5a62-b858-dc96cec7e7fb",
+      "itemId": "7c3d5ca7-a1b9-5a1a-923a-057bdbe2c2ba",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Deux choses sont mesurées : le h du souffle, et le doublement de la voyelle longue.",
       "acceptedAnswers": [
@@ -346,7 +407,7 @@
       "drawIndex": 4,
       "id": "b52c719c-78a7-556f-a3af-85a5e1c7d014",
       "type": "recall",
-      "itemId": "40abfab1-d746-5a7d-a3a4-e6505b3ddfd1",
+      "itemId": "ce7a70fa-b971-517e-91d8-0eebbe7f3643",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Deux choses sont mesurées : le h du souffle, et le doublement de la voyelle longue.",
       "acceptedAnswers": [
@@ -375,7 +436,7 @@
       "drawIndex": 5,
       "id": "ef21ddba-05e9-5900-bd9b-4eeec5af8703",
       "type": "recall",
-      "itemId": "230b21e0-ce35-5914-8acf-062efa9f89eb",
+      "itemId": "5194b833-af83-5a6d-9cc1-bc5ffdd2d6dd",
       "skill": "recall",
       "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Deux choses sont mesurées : le h du souffle, et le doublement de la voyelle longue.",
       "acceptedAnswers": [
@@ -397,6 +458,246 @@
         "correctFr": "C’est ça. Le h note la bouffée d’air, et la voyelle simple note la brièveté.",
         "incorrectFr": "Un détail manque. Posez-vous deux questions dans l’ordre : y a-t-il un souffle entre la consonne et la voyelle ? La voyelle est-elle tenue, ou coupée court ?",
         "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3a-p3",
+      "drawIndex": 1,
+      "id": "08e7de17-bf5f-5a05-a8a2-9275c12f2c4f",
+      "type": "reading",
+      "itemId": "7c3d5ca7-a1b9-5a1a-923a-057bdbe2c2ba",
+      "skill": "reading",
+      "promptFr": "Regardez le mot. La voyelle est-elle brève ou longue ?",
+      "options": [
+        {
+          "id": "089ec580-e2f2-52e1-bfb1-7be09710ba5c",
+          "labelFr": "brève",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "caf87ac2-19dd-5acf-8d66-1ba1859ec674",
+          "labelFr": "longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "089ec580-e2f2-52e1-bfb1-7be09710ba5c",
+      "feedback": {
+        "correctFr": "Oui. Le chapeau ั et le petit ิ notent une voyelle brève.",
+        "incorrectFr": "Cherchez le signe de voyelle avant de décider. Un ะ à la fin, un chapeau ั, un petit ิ ou un petit ุ : dans ces quatre cas, la voyelle est brève.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5",
+            "textFr": "Oui. Le ะ posé à la fin de la syllabe la garde brève, même si le signe เ est écrit devant la consonne."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4 et 6",
+            "textFr": "Oui. Ce sont les signes longs que vous avez appris en 2A."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3a-p3",
+      "drawIndex": 2,
+      "id": "eba13150-fc87-57a4-b5a6-a65d287e15da",
+      "type": "reading",
+      "itemId": "77b14806-5741-5f9a-85c5-a31b184f046d",
+      "skill": "reading",
+      "promptFr": "Regardez le mot. La voyelle est-elle brève ou longue ?",
+      "options": [
+        {
+          "id": "1929055f-9629-55e7-8877-f1293834c1f6",
+          "labelFr": "brève",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "2a555420-e976-53ae-9111-c02b33b343d9",
+          "labelFr": "longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "2a555420-e976-53ae-9111-c02b33b343d9",
+      "feedback": {
+        "correctFr": "Oui. Le chapeau ั et le petit ิ notent une voyelle brève.",
+        "incorrectFr": "Cherchez le signe de voyelle avant de décider. Un ะ à la fin, un chapeau ั, un petit ิ ou un petit ุ : dans ces quatre cas, la voyelle est brève.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5",
+            "textFr": "Oui. Le ะ posé à la fin de la syllabe la garde brève, même si le signe เ est écrit devant la consonne."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4 et 6",
+            "textFr": "Oui. Ce sont les signes longs que vous avez appris en 2A."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3a-p3",
+      "drawIndex": 3,
+      "id": "20cfe7d3-e4e6-57a6-805d-92ef3b2a22aa",
+      "type": "reading",
+      "itemId": "64077181-fbd5-59e6-b104-cf1546c9d5b6",
+      "skill": "reading",
+      "promptFr": "Regardez le mot. La voyelle est-elle brève ou longue ?",
+      "options": [
+        {
+          "id": "d1d0612d-20de-5937-b98d-267792e01c7d",
+          "labelFr": "brève",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "1cfecd3c-b6e2-5274-91e3-9bd07a7bbb9a",
+          "labelFr": "longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "d1d0612d-20de-5937-b98d-267792e01c7d",
+      "feedback": {
+        "correctFr": "Oui. Le chapeau ั et le petit ิ notent une voyelle brève.",
+        "incorrectFr": "Cherchez le signe de voyelle avant de décider. Un ะ à la fin, un chapeau ั, un petit ิ ou un petit ุ : dans ces quatre cas, la voyelle est brève.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5",
+            "textFr": "Oui. Le ะ posé à la fin de la syllabe la garde brève, même si le signe เ est écrit devant la consonne."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4 et 6",
+            "textFr": "Oui. Ce sont les signes longs que vous avez appris en 2A."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3a-p3",
+      "drawIndex": 4,
+      "id": "0fb99fd4-343c-5019-b16b-f4e14c14d0c0",
+      "type": "reading",
+      "itemId": "1d00389c-9d7e-5c1a-a457-d513d2e7e1a1",
+      "skill": "reading",
+      "promptFr": "Regardez le mot. La voyelle est-elle brève ou longue ?",
+      "options": [
+        {
+          "id": "27484349-66e3-54d6-84b5-0bb26aa4d977",
+          "labelFr": "brève",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "45f8e403-3ef2-565a-b4ba-bd3d223429dc",
+          "labelFr": "longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "45f8e403-3ef2-565a-b4ba-bd3d223429dc",
+      "feedback": {
+        "correctFr": "Oui. Le chapeau ั et le petit ิ notent une voyelle brève.",
+        "incorrectFr": "Cherchez le signe de voyelle avant de décider. Un ะ à la fin, un chapeau ั, un petit ิ ou un petit ุ : dans ces quatre cas, la voyelle est brève.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5",
+            "textFr": "Oui. Le ะ posé à la fin de la syllabe la garde brève, même si le signe เ est écrit devant la consonne."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4 et 6",
+            "textFr": "Oui. Ce sont les signes longs que vous avez appris en 2A."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3a-p3",
+      "drawIndex": 5,
+      "id": "74eee96d-9707-5dd9-89ec-a8ae1f68537e",
+      "type": "reading",
+      "itemId": "8850955a-e030-5409-80a3-a09644fb1a4f",
+      "skill": "reading",
+      "promptFr": "Regardez le mot. La voyelle est-elle brève ou longue ?",
+      "options": [
+        {
+          "id": "f5a6fe01-dd60-5022-abb3-68291a306041",
+          "labelFr": "brève",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b2690f08-6fb5-5f7e-9842-1090e9b66ae4",
+          "labelFr": "longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "f5a6fe01-dd60-5022-abb3-68291a306041",
+      "feedback": {
+        "correctFr": "Oui. Le chapeau ั et le petit ิ notent une voyelle brève.",
+        "incorrectFr": "Cherchez le signe de voyelle avant de décider. Un ะ à la fin, un chapeau ั, un petit ิ ou un petit ุ : dans ces quatre cas, la voyelle est brève.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5",
+            "textFr": "Oui. Le ะ posé à la fin de la syllabe la garde brève, même si le signe เ est écrit devant la consonne."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4 et 6",
+            "textFr": "Oui. Ce sont les signes longs que vous avez appris en 2A."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u03-l3a-p3",
+      "drawIndex": 6,
+      "id": "f885eab7-dc0e-5b62-8719-0e0e0aa1e32d",
+      "type": "reading",
+      "itemId": "b4357e2c-cbcc-508f-b6c8-962371ccb674",
+      "skill": "reading",
+      "promptFr": "Regardez le mot. La voyelle est-elle brève ou longue ?",
+      "options": [
+        {
+          "id": "b87695c1-b3c0-5ee4-981c-6b6d27c61c97",
+          "labelFr": "brève",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "53283c15-9a5f-54df-be35-e3ce3ddbac10",
+          "labelFr": "longue",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "53283c15-9a5f-54df-be35-e3ce3ddbac10",
+      "feedback": {
+        "correctFr": "Oui. Le chapeau ั et le petit ิ notent une voyelle brève.",
+        "incorrectFr": "Cherchez le signe de voyelle avant de décider. Un ะ à la fin, un chapeau ั, un petit ิ ou un petit ุ : dans ces quatre cas, la voyelle est brève.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 5",
+            "textFr": "Oui. Le ะ posé à la fin de la syllabe la garde brève, même si le signe เ est écrit devant la consonne."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4 et 6",
+            "textFr": "Oui. Ce sont les signes longs que vous avez appris en 2A."
+          }
+        ]
       }
     }
   ],
@@ -458,6 +759,14 @@
       "drawCount": 5,
       "passRequired": 5,
       "sampleSize": 5
+    },
+    {
+      "poolId": "u03-l3a-p3",
+      "promptFr": "Regardez le mot. La voyelle est-elle brève ou longue ?",
+      "mechanic": "reading",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
     }
   ],
   "provenance": {

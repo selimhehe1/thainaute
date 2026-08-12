@@ -15,7 +15,7 @@
   "audioManifestId": "090d6755-6272-5a58-b180-7f59e4d1140c",
   "items": [
     {
-      "id": "cf496481-fa9b-5764-ae61-8f49f7d80fe1",
+      "id": "cdbf65c8-5adf-5749-bcd7-5bf1accad674",
       "thaiRaw": "ราคา",
       "unicodeCodePoints": [
         "U+0E23",
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "id": "c23460db-34a5-5386-a2c2-06f86adbfc28",
+      "id": "fe0f42a4-70f6-5c8c-a0f3-827d3d6670d6",
       "thaiRaw": "กิโล",
       "unicodeCodePoints": [
         "U+0E01",
@@ -93,7 +93,7 @@
       ]
     },
     {
-      "id": "bc963f09-49b0-5269-a8fd-fe6d750458eb",
+      "id": "9d5292c4-b622-5cb0-9504-369e0f872080",
       "thaiRaw": "ขีด",
       "unicodeCodePoints": [
         "U+0E02",
@@ -123,7 +123,7 @@
       ]
     },
     {
-      "id": "197ef0d4-bb96-5c44-9e47-84a5b5a78802",
+      "id": "274f2f1e-1f07-5bc9-b04e-5076aa18ce7f",
       "thaiRaw": "ครึ่ง",
       "unicodeCodePoints": [
         "U+0E04",
@@ -155,7 +155,7 @@
       ]
     },
     {
-      "id": "4d8a26b0-8549-5597-8c5c-572fb41eab81",
+      "id": "136912e9-d9bf-5bdc-8240-a5ca5f2910b4",
       "thaiRaw": "ชั้น",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -186,7 +186,7 @@
       ]
     },
     {
-      "id": "bd071eac-0a60-5622-8c22-9806c9a21215",
+      "id": "823b4c99-8f30-523f-9df2-1cfc98c1258a",
       "thaiRaw": "นาฬิกา",
       "unicodeCodePoints": [
         "U+0E19",
@@ -236,7 +236,7 @@
       ]
     },
     {
-      "id": "5635ea45-0eb5-5b8a-bf47-176f2639c159",
+      "id": "7a6a8d6e-c9a7-5c89-9edc-92fa26b35a2d",
       "thaiRaw": "ชั่วโมง",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -278,7 +278,7 @@
       ]
     },
     {
-      "id": "47f40fa1-8bb3-5d8b-9a05-db8971959d84",
+      "id": "743478d4-4d16-51fd-bd4c-2f1a51267249",
       "thaiRaw": "นาที",
       "unicodeCodePoints": [
         "U+0E19",
@@ -315,15 +315,455 @@
         "VOLUBILIS-26-2",
         "WIKTIONARY-EN"
       ]
+    },
+    {
+      "id": "e118e1ab-e67e-5fcd-aae2-dee59d059817",
+      "thaiRaw": "แปด",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E1B",
+        "U+0E14"
+      ],
+      "translationFr": "huit (le nombre 8)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pàeet"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แปด",
+          "ipa": "pɛːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "dc7c213a-7b01-55fa-9480-b43fe1149b45",
+      "thaiRaw": "ยี่สิบ",
+      "unicodeCodePoints": [
+        "U+0E22",
+        "U+0E35",
+        "U+0E48",
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A"
+      ],
+      "translationFr": "vingt (le nombre 20)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yîi·sìp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ยี่สิบ",
+          "ipa": "jiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ยี่สิบ",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "efa49ec3-9cb8-5470-8acf-55fe2dc214c4",
+      "thaiRaw": "สิบสาม",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A",
+        "U+0E2A",
+        "U+0E32",
+        "U+0E21"
+      ],
+      "translationFr": "treize",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sìp·sǎam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สิบสาม",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "สิบสาม",
+          "ipa": "saːm˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "09029612-9774-5162-a16f-6367bc4e8a8f",
+      "thaiRaw": "บ้าน",
+      "unicodeCodePoints": [
+        "U+0E1A",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "la maison",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "bâan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "บ้าน",
+          "ipa": "baːn˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u10-l10d-p3",
+      "drawIndex": 1,
+      "id": "49b304b2-bb3a-5007-a4a3-0e38be95c101",
+      "type": "word_order",
+      "itemId": "e118e1ab-e67e-5fcd-aae2-dee59d059817",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici un bloc écrit et les mots qui le disent, en désordre. Remettez-les dans l’ordre où on les prononce.",
+      "tokens": [
+        {
+          "id": "846133aa-e9c0-5305-9cb7-aeddf60593bc",
+          "thaiRaw": "แปด",
+          "transcription": null
+        },
+        {
+          "id": "dec55294-00d3-515b-b0da-65c301e8d271",
+          "thaiRaw": "นาฬิกา",
+          "transcription": null
+        },
+        {
+          "id": "b2c15b19-0cc0-5250-b83e-bf9977a82250",
+          "thaiRaw": "สามสิบ",
+          "transcription": null
+        },
+        {
+          "id": "99961742-2e41-5316-91fd-234f0e8c4504",
+          "thaiRaw": "นาที",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "846133aa-e9c0-5305-9cb7-aeddf60593bc",
+        "dec55294-00d3-515b-b0da-65c301e8d271",
+        "b2c15b19-0cc0-5250-b83e-bf9977a82250",
+        "99961742-2e41-5316-91fd-234f0e8c4504"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le thaï le dit exactement dans l’ordre où il l’écrit : l’heure, puis นาฬิกา, puis les minutes, puis นาที.",
+        "incorrectFr": "Vous avez mis les minutes en premier. Relisez le bloc de gauche : ce qui est écrit à gauche du point se dit en premier.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 4 et 5",
+            "textFr": "C’est ça. Devant le nombre, ชั้น désigne un étage ; derrière, il en compte."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 4 ou 5",
+            "textFr": "Regardez ce que la phrase française vous demande : désigner un étage, ou en compter ? La place de ชั้น change avec la réponse."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p3",
+      "drawIndex": 2,
+      "id": "9060870c-3d29-5e09-a925-5d42b2687f6d",
+      "type": "word_order",
+      "itemId": "efa49ec3-9cb8-5470-8acf-55fe2dc214c4",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici un bloc écrit et les mots qui le disent, en désordre. Remettez-les dans l’ordre où on les prononce.",
+      "tokens": [
+        {
+          "id": "bd3d2af9-fc49-5952-a35b-8dd4fce730b1",
+          "thaiRaw": "สิบสาม",
+          "transcription": null
+        },
+        {
+          "id": "8ee44aeb-f17c-5920-b785-1a3f1e208e68",
+          "thaiRaw": "นาฬิกา",
+          "transcription": null
+        },
+        {
+          "id": "ff8bbc1f-46cc-51a9-9a38-727d8ab733b4",
+          "thaiRaw": "สิบห้า",
+          "transcription": null
+        },
+        {
+          "id": "c5ed9f2d-dd9f-51bc-a5f1-292be12937f8",
+          "thaiRaw": "นาที",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "bd3d2af9-fc49-5952-a35b-8dd4fce730b1",
+        "8ee44aeb-f17c-5920-b785-1a3f1e208e68",
+        "ff8bbc1f-46cc-51a9-9a38-727d8ab733b4",
+        "c5ed9f2d-dd9f-51bc-a5f1-292be12937f8"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le thaï le dit exactement dans l’ordre où il l’écrit : l’heure, puis นาฬิกา, puis les minutes, puis นาที.",
+        "incorrectFr": "Vous avez mis les minutes en premier. Relisez le bloc de gauche : ce qui est écrit à gauche du point se dit en premier.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 4 et 5",
+            "textFr": "C’est ça. Devant le nombre, ชั้น désigne un étage ; derrière, il en compte."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 4 ou 5",
+            "textFr": "Regardez ce que la phrase française vous demande : désigner un étage, ou en compter ? La place de ชั้น change avec la réponse."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p3",
+      "drawIndex": 3,
+      "id": "2e53b665-1f43-5bca-917a-375c4f38554a",
+      "type": "word_order",
+      "itemId": "dc7c213a-7b01-55fa-9480-b43fe1149b45",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici un bloc écrit et les mots qui le disent, en désordre. Remettez-les dans l’ordre où on les prononce.",
+      "tokens": [
+        {
+          "id": "6f24cf6f-b294-5de9-ae63-76cbeefc180f",
+          "thaiRaw": "ยี่สิบ",
+          "transcription": null
+        },
+        {
+          "id": "f68a5bf8-5d0f-5478-8205-c5b1b32e15fb",
+          "thaiRaw": "นาฬิกา",
+          "transcription": null
+        },
+        {
+          "id": "f3e7016b-a383-58fd-bc39-c525eb6d5034",
+          "thaiRaw": "สี่สิบห้า",
+          "transcription": null
+        },
+        {
+          "id": "e1113f76-c1ec-509a-b7c9-5aa82ad39b47",
+          "thaiRaw": "นาที",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "6f24cf6f-b294-5de9-ae63-76cbeefc180f",
+        "f68a5bf8-5d0f-5478-8205-c5b1b32e15fb",
+        "f3e7016b-a383-58fd-bc39-c525eb6d5034",
+        "e1113f76-c1ec-509a-b7c9-5aa82ad39b47"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le thaï le dit exactement dans l’ordre où il l’écrit : l’heure, puis นาฬิกา, puis les minutes, puis นาที.",
+        "incorrectFr": "Vous avez mis les minutes en premier. Relisez le bloc de gauche : ce qui est écrit à gauche du point se dit en premier.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 4 et 5",
+            "textFr": "C’est ça. Devant le nombre, ชั้น désigne un étage ; derrière, il en compte."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 4 ou 5",
+            "textFr": "Regardez ce que la phrase française vous demande : désigner un étage, ou en compter ? La place de ชั้น change avec la réponse."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p3",
+      "drawIndex": 4,
+      "id": "c8ac9260-6557-55d1-bffa-543be189e9eb",
+      "type": "word_order",
+      "itemId": "136912e9-d9bf-5bdc-8240-a5ca5f2910b4",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici un bloc écrit et les mots qui le disent, en désordre. Remettez-les dans l’ordre où on les prononce.",
+      "tokens": [
+        {
+          "id": "4377aa22-26c9-5371-8655-83cfdeb6d08a",
+          "thaiRaw": "ชั้น",
+          "transcription": null
+        },
+        {
+          "id": "9a16b303-e335-5452-9ea9-5e7090a040c9",
+          "thaiRaw": "ห้า",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "4377aa22-26c9-5371-8655-83cfdeb6d08a",
+        "9a16b303-e335-5452-9ea9-5e7090a040c9"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le thaï le dit exactement dans l’ordre où il l’écrit : l’heure, puis นาฬิกา, puis les minutes, puis นาที.",
+        "incorrectFr": "Vous avez mis les minutes en premier. Relisez le bloc de gauche : ce qui est écrit à gauche du point se dit en premier.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 4 et 5",
+            "textFr": "C’est ça. Devant le nombre, ชั้น désigne un étage ; derrière, il en compte."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 4 ou 5",
+            "textFr": "Regardez ce que la phrase française vous demande : désigner un étage, ou en compter ? La place de ชั้น change avec la réponse."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p3",
+      "drawIndex": 5,
+      "id": "1a8a5e51-da19-5644-8f7c-bd7b87fd3421",
+      "type": "word_order",
+      "itemId": "09029612-9774-5162-a16f-6367bc4e8a8f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici un bloc écrit et les mots qui le disent, en désordre. Remettez-les dans l’ordre où on les prononce.",
+      "tokens": [
+        {
+          "id": "97915cb0-6608-5eda-8e87-6e4f1054c0e5",
+          "thaiRaw": "บ้าน",
+          "transcription": null
+        },
+        {
+          "id": "208b0d9a-eeeb-557c-a797-9cf0013fd795",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "fc7ff76b-6e88-51f1-9016-450db0080d63",
+          "thaiRaw": "ชั้น",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "97915cb0-6608-5eda-8e87-6e4f1054c0e5",
+        "208b0d9a-eeeb-557c-a797-9cf0013fd795",
+        "fc7ff76b-6e88-51f1-9016-450db0080d63"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le thaï le dit exactement dans l’ordre où il l’écrit : l’heure, puis นาฬิกา, puis les minutes, puis นาที.",
+        "incorrectFr": "Vous avez mis les minutes en premier. Relisez le bloc de gauche : ce qui est écrit à gauche du point se dit en premier.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 4 et 5",
+            "textFr": "C’est ça. Devant le nombre, ชั้น désigne un étage ; derrière, il en compte."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 4 ou 5",
+            "textFr": "Regardez ce que la phrase française vous demande : désigner un étage, ou en compter ? La place de ชั้น change avec la réponse."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p3",
+      "drawIndex": 6,
+      "id": "b7562d4b-804c-5525-9ab2-27ae88ad85e3",
+      "type": "word_order",
+      "itemId": "274f2f1e-1f07-5bc9-b04e-5076aa18ce7f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici un bloc écrit et les mots qui le disent, en désordre. Remettez-les dans l’ordre où on les prononce.",
+      "tokens": [
+        {
+          "id": "75404633-1b14-5ac7-ae39-ad5a1f15c0ab",
+          "thaiRaw": "ครึ่ง",
+          "transcription": null
+        },
+        {
+          "id": "bca2ff23-a6d2-589d-b90a-3c15e9e62e14",
+          "thaiRaw": "ชั่วโมง",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "75404633-1b14-5ac7-ae39-ad5a1f15c0ab",
+        "bca2ff23-a6d2-589d-b90a-3c15e9e62e14"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le thaï le dit exactement dans l’ordre où il l’écrit : l’heure, puis นาฬิกา, puis les minutes, puis นาที.",
+        "incorrectFr": "Vous avez mis les minutes en premier. Relisez le bloc de gauche : ce qui est écrit à gauche du point se dit en premier.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 4 et 5",
+            "textFr": "C’est ça. Devant le nombre, ชั้น désigne un étage ; derrière, il en compte."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 4 ou 5",
+            "textFr": "Regardez ce que la phrase française vous demande : désigner un étage, ou en compter ? La place de ชั้น change avec la réponse."
+          }
+        ]
+      }
+    },
     {
       "poolId": "u10-l10d-p5",
       "drawIndex": 1,
       "id": "f25d96d8-f78c-5f74-a9d2-ae2d4880c66f",
       "type": "recall",
-      "itemId": "cf496481-fa9b-5764-ae61-8f49f7d80fe1",
+      "itemId": "cdbf65c8-5adf-5749-bcd7-5bf1accad674",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -358,7 +798,7 @@
       "drawIndex": 2,
       "id": "d3b48c64-b615-52af-b6cc-aff99f0729ad",
       "type": "recall",
-      "itemId": "c23460db-34a5-5386-a2c2-06f86adbfc28",
+      "itemId": "fe0f42a4-70f6-5c8c-a0f3-827d3d6670d6",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -393,7 +833,7 @@
       "drawIndex": 3,
       "id": "c4e345cd-cc64-5e49-931e-732e1d0b518e",
       "type": "recall",
-      "itemId": "bc963f09-49b0-5269-a8fd-fe6d750458eb",
+      "itemId": "9d5292c4-b622-5cb0-9504-369e0f872080",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -424,7 +864,7 @@
       "drawIndex": 4,
       "id": "9db48bc4-12d4-5b49-a17a-2460eaf8af9d",
       "type": "recall",
-      "itemId": "197ef0d4-bb96-5c44-9e47-84a5b5a78802",
+      "itemId": "274f2f1e-1f07-5bc9-b04e-5076aa18ce7f",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -455,7 +895,7 @@
       "drawIndex": 5,
       "id": "55cb50d9-0ef0-5192-b223-8fe2d2fba38b",
       "type": "recall",
-      "itemId": "4d8a26b0-8549-5597-8c5c-572fb41eab81",
+      "itemId": "136912e9-d9bf-5bdc-8240-a5ca5f2910b4",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -486,7 +926,7 @@
       "drawIndex": 6,
       "id": "47b9db5b-56e6-53ba-a3e8-9fd3b5143362",
       "type": "recall",
-      "itemId": "bd071eac-0a60-5622-8c22-9806c9a21215",
+      "itemId": "823b4c99-8f30-523f-9df2-1cfc98c1258a",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -521,7 +961,7 @@
       "drawIndex": 7,
       "id": "2cbc2107-6de2-5ce2-8f12-16fa8dce234c",
       "type": "recall",
-      "itemId": "5635ea45-0eb5-5b8a-bf47-176f2639c159",
+      "itemId": "7a6a8d6e-c9a7-5c89-9edc-92fa26b35a2d",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -556,7 +996,7 @@
       "drawIndex": 8,
       "id": "445b7b0a-1e31-5c3a-8b63-78c1284466f5",
       "type": "recall",
-      "itemId": "47f40fa1-8bb3-5d8b-9a05-db8971959d84",
+      "itemId": "743478d4-4d16-51fd-bd4c-2f1a51267249",
       "skill": "recall",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "acceptedAnswers": [
@@ -680,6 +1120,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u10-l10d-p3",
+      "promptFr": "Voici un bloc écrit et les mots qui le disent, en désordre. Remettez-les dans l’ordre où on les prononce.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    },
     {
       "poolId": "u10-l10d-p5",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",

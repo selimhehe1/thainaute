@@ -18,6 +18,8 @@ export interface ItemAutorat {
   readonly registre?: string;
   readonly note_fr?: string;
   readonly sources?: string;
+  /** Discriminant de sens, réservé aux homographes. Voir ADR-0042. */
+  readonly sens?: string;
 }
 
 export interface BlocExercice {

@@ -15,7 +15,7 @@
   "audioManifestId": "9d3f0e70-75bd-5876-a3e6-f15e40728da0",
   "items": [
     {
-      "id": "6559812e-cdf9-5431-a51b-e8d4fb2b8ff6",
+      "id": "82c986ae-8f02-59eb-bf25-d7093e725a70",
       "thaiRaw": "ไป",
       "unicodeCodePoints": [
         "U+0E44",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "bfc483fe-e106-5dc6-99ac-4e252a656f2c",
+      "id": "5eab4767-464a-54f9-90e0-62144e32765a",
       "thaiRaw": "รถ",
       "unicodeCodePoints": [
         "U+0E23",
@@ -75,7 +75,7 @@
       ]
     },
     {
-      "id": "74650bcf-592f-5158-88f1-7d18be7a121c",
+      "id": "19a9136d-ca90-5831-8352-a3a0a86283fd",
       "thaiRaw": "แท็กซี่",
       "unicodeCodePoints": [
         "U+0E41",
@@ -119,7 +119,7 @@
       ]
     },
     {
-      "id": "1f377f34-daa6-5217-bb02-4bbab98c553b",
+      "id": "c2ceacee-e82a-5ce3-b795-be5254010bcc",
       "thaiRaw": "รถเมล์",
       "unicodeCodePoints": [
         "U+0E23",
@@ -162,7 +162,7 @@
       ]
     },
     {
-      "id": "e76b358c-e5ad-513d-88f7-eecd7b93a38c",
+      "id": "3048fa68-4259-5bbc-8a67-deb919482438",
       "thaiRaw": "เรือ",
       "unicodeCodePoints": [
         "U+0E40",
@@ -194,7 +194,7 @@
       ]
     },
     {
-      "id": "957b1e11-508d-5a2a-8cde-8d3082c7b6b4",
+      "id": "4f6771b3-d15a-5f4a-86da-88dbcba19d03",
       "thaiRaw": "ตลาด",
       "unicodeCodePoints": [
         "U+0E15",
@@ -234,7 +234,7 @@
       ]
     },
     {
-      "id": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "id": "89a1013b-a371-5815-b0b0-9492ef877c14",
       "thaiRaw": "ผมไปตลาดครับ",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -258,18 +258,42 @@
       "syllables": [
         {
           "thaiRaw": "ผมไปตลาดครับ",
-          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
-          "tone": "low",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
           "vowelLength": "short",
           "initial": "pʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
           "final": "aucune"
         },
         {
           "thaiRaw": "ผมไปตลาดครับ",
-          "ipa": "laːt̚˨˩ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "l",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -280,7 +304,7 @@
       ]
     },
     {
-      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "id": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "thaiRaw": "ดิฉัน",
       "unicodeCodePoints": [
         "U+0E14",
@@ -327,7 +351,7 @@
       "drawIndex": 1,
       "id": "137e5813-b0bd-5abb-b98d-9911165b0d1b",
       "type": "word_order",
-      "itemId": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "itemId": "89a1013b-a371-5815-b0b0-9492ef877c14",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
@@ -386,7 +410,7 @@
       "drawIndex": 2,
       "id": "6d53e7f9-1cbf-5693-b468-62ba3cef8791",
       "type": "word_order",
-      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
@@ -450,7 +474,7 @@
       "drawIndex": 3,
       "id": "a051051f-3b18-51f2-97d2-a73b7145515e",
       "type": "word_order",
-      "itemId": "6559812e-cdf9-5431-a51b-e8d4fb2b8ff6",
+      "itemId": "82c986ae-8f02-59eb-bf25-d7093e725a70",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",

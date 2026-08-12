@@ -15,7 +15,7 @@
   "audioManifestId": "a68a348c-df89-53e8-8d53-84f31a557fd5",
   "items": [
     {
-      "id": "c21ec58d-f35c-5c7c-af63-0ca6ef019395",
+      "id": "faed665d-cdc8-57a6-a59a-83646b939af5",
       "thaiRaw": "และ",
       "unicodeCodePoints": [
         "U+0E41",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "7d4f848e-728a-50c3-bcc9-4ffa1e7a68ca",
+      "id": "65025cf2-4f89-58ef-810c-9a603d26d2c0",
       "thaiRaw": "แต่",
       "unicodeCodePoints": [
         "U+0E41",
@@ -75,7 +75,7 @@
       ]
     },
     {
-      "id": "57ad1066-44b9-5c93-a334-6207dca1f221",
+      "id": "98c2c010-75a4-5a46-82a3-78534148f0dd",
       "thaiRaw": "ด้วย",
       "unicodeCodePoints": [
         "U+0E14",
@@ -106,7 +106,7 @@
       ]
     },
     {
-      "id": "03dda86c-d806-5e2a-93d3-0da4c0d954ac",
+      "id": "7b459b92-ea44-5023-bd07-cf77cc1dd710",
       "thaiRaw": "แล้ว",
       "unicodeCodePoints": [
         "U+0E41",
@@ -137,7 +137,7 @@
       ]
     },
     {
-      "id": "962f2ceb-1fd0-5d0c-82d8-57a0f44f99ad",
+      "id": "08ba2b4c-1342-573d-809b-4ad5d2a7a5e0",
       "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -173,7 +173,23 @@
       "syllables": [
         {
           "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
-          "ipa": "pʰom˩˩˦ miː˧ pʰiː˥˩",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
+          "ipa": "pʰiː˥˩",
           "tone": "falling",
           "vowelLength": "long",
           "initial": "pʰ",
@@ -181,18 +197,42 @@
         },
         {
           "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
-          "ipa": "t͡ɕʰaːj˧ lɛʔ˦˥ nɔːŋ˦˥",
-          "tone": "high",
+          "ipa": "t͡ɕʰaːj˧",
+          "tone": "mid",
           "vowelLength": "long",
           "initial": "t͡ɕʰ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
+          "ipa": "lɛʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "l",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
+          "ipa": "nɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
           "final": "ŋ"
         },
         {
           "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
-          "ipa": "saːw˩˩˦ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "saːw˩˩˦",
+          "tone": "rising",
           "vowelLength": "long",
           "initial": "s",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -203,7 +243,7 @@
       ]
     },
     {
-      "id": "60cec83f-423d-5994-afea-917680186cc2",
+      "id": "c0821000-e062-5c00-99f4-ee0f7036ac73",
       "thaiRaw": "อร่อยแต่เผ็ดมากครับ",
       "unicodeCodePoints": [
         "U+0E2D",
@@ -242,10 +282,42 @@
         },
         {
           "thaiRaw": "อร่อยแต่เผ็ดมากครับ",
-          "ipa": "rɔj˨˩ tɛː˨˩ pʰet̚˨˩ maːk̚˥˩ kʰrap̚˦˥",
-          "tone": "high",
-          "vowelLength": "long",
+          "ipa": "rɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
           "initial": "r",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "อร่อยแต่เผ็ดมากครับ",
+          "ipa": "tɛː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อร่อยแต่เผ็ดมากครับ",
+          "ipa": "pʰet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "อร่อยแต่เผ็ดมากครับ",
+          "ipa": "maːk̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "อร่อยแต่เผ็ดมากครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -256,7 +328,7 @@
       ]
     },
     {
-      "id": "3310dfeb-98ba-5a8f-90c5-faebef74881b",
+      "id": "9d4eff52-64c5-5855-9a21-825bf233c10d",
       "thaiRaw": "แพงเกินไปผมก็ไม่เอาครับ",
       "unicodeCodePoints": [
         "U+0E41",
@@ -307,10 +379,50 @@
         },
         {
           "thaiRaw": "แพงเกินไปผมก็ไม่เอาครับ",
-          "ipa": "paj˧ pʰom˩˩˦ kɔʔ˥˩ maj˥˩ ʔaw˧ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "paj˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "p",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "แพงเกินไปผมก็ไม่เอาครับ",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "แพงเกินไปผมก็ไม่เอาครับ",
+          "ipa": "kɔʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "แพงเกินไปผมก็ไม่เอาครับ",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "แพงเกินไปผมก็ไม่เอาครับ",
+          "ipa": "ʔaw˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "แพงเกินไปผมก็ไม่เอาครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -321,7 +433,7 @@
       ]
     },
     {
-      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -351,7 +463,7 @@
       ]
     },
     {
-      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "id": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "thaiRaw": "ดิฉัน",
       "unicodeCodePoints": [
         "U+0E14",
@@ -392,7 +504,7 @@
       ]
     },
     {
-      "id": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "id": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
       "thaiRaw": "มี",
       "unicodeCodePoints": [
         "U+0E21",
@@ -422,7 +534,7 @@
       ]
     },
     {
-      "id": "5302f19f-6702-5094-a265-594987302b16",
+      "id": "37fcf196-05db-5803-9862-62d8984887a6",
       "thaiRaw": "ถูก",
       "unicodeCodePoints": [
         "U+0E16",
@@ -459,7 +571,7 @@
       "drawIndex": 1,
       "id": "26329c83-a2d1-5828-8f72-3855b916fb65",
       "type": "word_order",
-      "itemId": "962f2ceb-1fd0-5d0c-82d8-57a0f44f99ad",
+      "itemId": "08ba2b4c-1342-573d-809b-4ad5d2a7a5e0",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -535,7 +647,7 @@
       "drawIndex": 2,
       "id": "89589109-06c0-520a-9afe-a149e96bdfd5",
       "type": "word_order",
-      "itemId": "60cec83f-423d-5994-afea-917680186cc2",
+      "itemId": "c0821000-e062-5c00-99f4-ee0f7036ac73",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -605,7 +717,7 @@
       "drawIndex": 3,
       "id": "87a15778-042b-50b5-8d81-7351adc5ad73",
       "type": "word_order",
-      "itemId": "3310dfeb-98ba-5a8f-90c5-faebef74881b",
+      "itemId": "9d4eff52-64c5-5855-9a21-825bf233c10d",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -681,7 +793,7 @@
       "drawIndex": 4,
       "id": "09458cc0-efc5-5abb-a64f-96c2b41b978f",
       "type": "word_order",
-      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -745,7 +857,7 @@
       "drawIndex": 5,
       "id": "5c6d6f9a-0a94-5325-acb2-b3994d0bd79c",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -815,7 +927,7 @@
       "drawIndex": 6,
       "id": "fa639a0f-91e2-5173-a0fa-22ca3a58ce82",
       "type": "word_order",
-      "itemId": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "itemId": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -885,7 +997,7 @@
       "drawIndex": 7,
       "id": "e3725def-b017-5a33-8262-fae2b7b9cedf",
       "type": "word_order",
-      "itemId": "5302f19f-6702-5094-a265-594987302b16",
+      "itemId": "37fcf196-05db-5803-9862-62d8984887a6",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
@@ -949,7 +1061,7 @@
       "drawIndex": 8,
       "id": "86c652f8-3440-57b1-9657-68fa40b84043",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",

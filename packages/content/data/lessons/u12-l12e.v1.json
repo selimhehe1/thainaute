@@ -15,7 +15,7 @@
   "audioManifestId": "668a2db8-00e9-5428-adaa-ad7c595f3ade",
   "items": [
     {
-      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "id": "447dc926-7127-522f-8144-a796ac6eec11",
+      "id": "81ee493e-2330-57e0-b78f-0be66ce34285",
       "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -143,7 +143,7 @@
       ]
     },
     {
-      "id": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "id": "277c2b47-0a34-5384-934d-b71aa8cb5e6a",
       "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -184,18 +184,42 @@
         },
         {
           "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
-          "ipa": "naːm˦˥ juː˨˩ tʰiː˥˩",
-          "tone": "falling",
+          "ipa": "naːm˦˥",
+          "tone": "high",
           "vowelLength": "long",
           "initial": "n",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
           "final": "aucune"
         },
         {
           "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
-          "ipa": "naj˩˩˦ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
           "vowelLength": "short",
           "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -206,7 +230,7 @@
       ]
     },
     {
-      "id": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "id": "89a1013b-a371-5815-b0b0-9492ef877c14",
       "thaiRaw": "ผมไปตลาดครับ",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -230,18 +254,42 @@
       "syllables": [
         {
           "thaiRaw": "ผมไปตลาดครับ",
-          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
-          "tone": "low",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
           "vowelLength": "short",
           "initial": "pʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
           "final": "aucune"
         },
         {
           "thaiRaw": "ผมไปตลาดครับ",
-          "ipa": "laːt̚˨˩ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
           "vowelLength": "long",
           "initial": "l",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -252,7 +300,7 @@
       ]
     },
     {
-      "id": "01f2011c-3d80-5ac4-bdb2-5e4d21c3b880",
+      "id": "739bf1b7-d011-5325-bff9-bf167eaabe7f",
       "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -359,7 +407,7 @@
       ]
     },
     {
-      "id": "13a5cfb8-a45e-5c9b-ae6e-3d8de389add7",
+      "id": "ee148134-4f7a-5c9c-871e-2f2c56c254f6",
       "thaiRaw": "ตัวนี้",
       "unicodeCodePoints": [
         "U+0E15",
@@ -405,7 +453,7 @@
       "drawIndex": 1,
       "id": "750062b7-d549-509a-b933-035ec04109d3",
       "type": "word_order",
-      "itemId": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "itemId": "89a1013b-a371-5815-b0b0-9492ef877c14",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -459,7 +507,7 @@
       "drawIndex": 2,
       "id": "5ec22e6d-e5c6-5d51-8261-913c3e3952dd",
       "type": "word_order",
-      "itemId": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "itemId": "277c2b47-0a34-5384-934d-b71aa8cb5e6a",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -513,7 +561,7 @@
       "drawIndex": 3,
       "id": "0257257f-f851-5f7c-961b-23c80f1ae258",
       "type": "word_order",
-      "itemId": "447dc926-7127-522f-8144-a796ac6eec11",
+      "itemId": "81ee493e-2330-57e0-b78f-0be66ce34285",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -579,7 +627,7 @@
       "drawIndex": 4,
       "id": "1357fbfc-10ec-5d5b-855b-b01ff7d12302",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -645,7 +693,7 @@
       "drawIndex": 5,
       "id": "4d4224e1-d719-5c2c-b1e5-c265de4252b8",
       "type": "word_order",
-      "itemId": "01f2011c-3d80-5ac4-bdb2-5e4d21c3b880",
+      "itemId": "739bf1b7-d011-5325-bff9-bf167eaabe7f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
@@ -705,7 +753,7 @@
       "drawIndex": 6,
       "id": "014f13e1-1e8a-5164-8335-5fc9ca37f128",
       "type": "word_order",
-      "itemId": "13a5cfb8-a45e-5c9b-ae6e-3d8de389add7",
+      "itemId": "ee148134-4f7a-5c9c-871e-2f2c56c254f6",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",

@@ -15,7 +15,7 @@
   "audioManifestId": "5d3bc90d-f124-5a06-bd0c-7c8f594bdc2f",
   "items": [
     {
-      "id": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "id": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
       "thaiRaw": "ไม่",
       "unicodeCodePoints": [
         "U+0E44",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "9cbb1015-8868-58dc-8f34-d81b48c7dcd3",
+      "id": "f7d74995-4457-5564-b826-27fafa7e1c61",
       "thaiRaw": "เผ็ด",
       "unicodeCodePoints": [
         "U+0E40",
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "id": "8a8dc9a8-76ee-5b47-b000-a97a41f6a5f7",
+      "id": "1ac28918-22f0-5c7c-b728-bee4d48ca331",
       "thaiRaw": "ไม่เผ็ด",
       "unicodeCodePoints": [
         "U+0E44",
@@ -121,7 +121,7 @@
       ]
     },
     {
-      "id": "198ab5bd-d4bf-5a56-916e-9123d10c8a77",
+      "id": "40c7a1f6-a374-52d5-a06a-af2103c9ef63",
       "thaiRaw": "นิดหน่อย",
       "unicodeCodePoints": [
         "U+0E19",
@@ -165,7 +165,7 @@
       ]
     },
     {
-      "id": "d0bdc510-f484-524b-b643-aff38afa07fd",
+      "id": "e2d4300e-6e84-5b1e-a0ab-2e115654651c",
       "thaiRaw": "เผ็ดนิดหน่อย",
       "unicodeCodePoints": [
         "U+0E40",
@@ -220,7 +220,7 @@
       ]
     },
     {
-      "id": "fa8eff5f-5ff8-5eaa-95d6-a63c74eef9d7",
+      "id": "b9759fba-56ba-53b8-bdb4-81b62867039e",
       "thaiRaw": "ชอบ",
       "unicodeCodePoints": [
         "U+0E0A",
@@ -251,7 +251,7 @@
       ]
     },
     {
-      "id": "773c2132-f715-53e1-b438-fe94edb9d298",
+      "id": "0735617f-ed18-56e6-b57c-24b17073709d",
       "thaiRaw": "ไม่ชอบ",
       "unicodeCodePoints": [
         "U+0E44",
@@ -292,7 +292,7 @@
       ]
     },
     {
-      "id": "170227e8-089e-50be-ae69-8d667e5e05bf",
+      "id": "557f5b4a-ac3f-5e55-8f7c-2d4f1b93a2aa",
       "thaiRaw": "มาก",
       "unicodeCodePoints": [
         "U+0E21",
@@ -323,7 +323,7 @@
       ]
     },
     {
-      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
         "U+0E1C",
@@ -359,7 +359,7 @@
       "drawIndex": 1,
       "id": "2a67d6e4-bd8f-5bdc-b95c-5f0ffdeacc93",
       "type": "word_order",
-      "itemId": "8a8dc9a8-76ee-5b47-b000-a97a41f6a5f7",
+      "itemId": "1ac28918-22f0-5c7c-b728-bee4d48ca331",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",
@@ -396,7 +396,7 @@
       "drawIndex": 2,
       "id": "b940a96f-4f25-5cd2-8a1f-679822dfdb98",
       "type": "word_order",
-      "itemId": "773c2132-f715-53e1-b438-fe94edb9d298",
+      "itemId": "0735617f-ed18-56e6-b57c-24b17073709d",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",
@@ -433,7 +433,7 @@
       "drawIndex": 3,
       "id": "4dca1438-072a-58a3-8e38-81661a4f99ba",
       "type": "word_order",
-      "itemId": "d0bdc510-f484-524b-b643-aff38afa07fd",
+      "itemId": "e2d4300e-6e84-5b1e-a0ab-2e115654651c",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",
@@ -470,7 +470,7 @@
       "drawIndex": 4,
       "id": "ac4a6ff6-6ee6-5ee9-a211-dfbc01177e09",
       "type": "word_order",
-      "itemId": "fa8eff5f-5ff8-5eaa-95d6-a63c74eef9d7",
+      "itemId": "b9759fba-56ba-53b8-bdb4-81b62867039e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",
@@ -507,7 +507,7 @@
       "drawIndex": 5,
       "id": "28fa8a18-0d69-516c-9237-9b3124095044",
       "type": "word_order",
-      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",

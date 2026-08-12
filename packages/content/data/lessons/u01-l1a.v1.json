@@ -15,9 +15,12 @@
   "audioManifestId": "c27603aa-ca4b-5650-bdb7-46fabead845c",
   "items": [
     {
-      "id": "dc3e3565-fa17-5173-9e45-85219d0a8608",
+      "id": "20e65f80-4023-5527-9d01-b13b4703a3a9",
       "thaiRaw": "คา",
-      "unicodeCodePoints": ["U+0E04", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E32"
+      ],
       "translationFr": "rester coincé, être pris (aussi : herbe à toits de chaume)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -34,12 +37,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "f6d47faa-3143-51be-99b0-3a1ac9e2ebd2",
+      "id": "f8bb5385-0505-5051-b2cd-fd4c4af5d3eb",
       "thaiRaw": "ข่า",
-      "unicodeCodePoints": ["U+0E02", "U+0E48", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E48",
+        "U+0E32"
+      ],
       "translationFr": "galanga (rhizome parfumé de la cuisine thaïe)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -56,12 +67,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
+      "id": "5e991a34-2a7e-5c52-beb1-726b83a281e3",
       "thaiRaw": "ค่า",
-      "unicodeCodePoints": ["U+0E04", "U+0E48", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E48",
+        "U+0E32"
+      ],
       "translationFr": "valeur, prix",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -78,12 +97,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "e0c580b2-d255-5600-9148-11a48d633edc",
+      "id": "8b3c716f-8414-5107-9da6-2f49fd641d16",
       "thaiRaw": "ค้า",
-      "unicodeCodePoints": ["U+0E04", "U+0E49", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E49",
+        "U+0E32"
+      ],
       "translationFr": "faire commerce, vendre",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -100,12 +127,19 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "993d6ffe-7775-5980-8548-7671ec1150fa",
+      "id": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
       "thaiRaw": "ขา",
-      "unicodeCodePoints": ["U+0E02", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E32"
+      ],
       "translationFr": "jambe",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -122,12 +156,18 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
-      "id": "58f548c5-df8e-5e1e-a1a9-afdf2788c358",
+      "id": "295a0a8b-1337-5d5d-808f-aec31eef6a2b",
       "thaiRaw": "ก",
-      "unicodeCodePoints": ["U+0E01"],
+      "unicodeCodePoints": [
+        "U+0E01"
+      ],
       "translationFr": "lettre « k » ; nom traditionnel ก ไก่, le k de la poule",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -152,9 +192,11 @@
       ]
     },
     {
-      "id": "0e777840-a7e1-5ca4-befe-c058a98b9470",
+      "id": "e380e37b-2e5a-5984-8b9e-466eca101f29",
       "thaiRaw": "จ",
-      "unicodeCodePoints": ["U+0E08"],
+      "unicodeCodePoints": [
+        "U+0E08"
+      ],
       "translationFr": "lettre « j » de Thaïnaute ; nom traditionnel จ จาน, le j de l'assiette",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -179,9 +221,11 @@
       ]
     },
     {
-      "id": "5839515f-513e-589b-86f5-08727c2171d9",
+      "id": "22e77b9f-ca37-5e95-b9d8-00fe69875154",
       "thaiRaw": "ฎ",
-      "unicodeCodePoints": ["U+0E0E"],
+      "unicodeCodePoints": [
+        "U+0E0E"
+      ],
       "translationFr": "lettre « d » rare ; nom traditionnel ฎ ชฎา, le d de la coiffe de danse",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -206,9 +250,11 @@
       ]
     },
     {
-      "id": "0e05740b-8a89-55ea-9b3a-b1850875a22b",
+      "id": "7cf6de89-e45c-59a0-bb29-51d3610b0e52",
       "thaiRaw": "ฏ",
-      "unicodeCodePoints": ["U+0E0F"],
+      "unicodeCodePoints": [
+        "U+0E0F"
+      ],
       "translationFr": "lettre « t » rare ; nom traditionnel ฏ ปฏัก, le t de l'aiguillon",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -233,9 +279,11 @@
       ]
     },
     {
-      "id": "fd12720d-a0f2-5cf4-9516-a4d65327bf08",
+      "id": "56f1bdea-5806-55b9-add9-ccdf7b3e3536",
       "thaiRaw": "ด",
-      "unicodeCodePoints": ["U+0E14"],
+      "unicodeCodePoints": [
+        "U+0E14"
+      ],
       "translationFr": "lettre « d » ; nom traditionnel ด เด็ก, le d de l'enfant",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -260,9 +308,11 @@
       ]
     },
     {
-      "id": "b0843524-a422-5d1b-9f76-ef9fce3f5e96",
+      "id": "9a57c812-6b0b-5347-8f13-f6ff91db46be",
       "thaiRaw": "ต",
-      "unicodeCodePoints": ["U+0E15"],
+      "unicodeCodePoints": [
+        "U+0E15"
+      ],
       "translationFr": "lettre « t » ; nom traditionnel ต เต่า, le t de la tortue",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -287,9 +337,11 @@
       ]
     },
     {
-      "id": "270125a4-e3e9-5801-9e84-12826d7d43b5",
+      "id": "f7e50308-b66f-552b-9983-fc4567aa2a5e",
       "thaiRaw": "บ",
-      "unicodeCodePoints": ["U+0E1A"],
+      "unicodeCodePoints": [
+        "U+0E1A"
+      ],
       "translationFr": "lettre « b » ; nom traditionnel บ ใบไม้, le b de la feuille",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -314,9 +366,11 @@
       ]
     },
     {
-      "id": "d4865b6e-e13c-51fd-bc8c-c3f28d36b2e6",
+      "id": "bb2fc84c-6255-5477-b8cc-f0cbd9ef9a4f",
       "thaiRaw": "ป",
-      "unicodeCodePoints": ["U+0E1B"],
+      "unicodeCodePoints": [
+        "U+0E1B"
+      ],
       "translationFr": "lettre « p » ; nom traditionnel ป ปลา, le p du poisson",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -341,9 +395,11 @@
       ]
     },
     {
-      "id": "34e8ac1d-f1cd-5a67-afd2-aa6cfff209d1",
+      "id": "692946f0-53ef-58d5-b1be-a2aaf69a7886",
       "thaiRaw": "อ",
-      "unicodeCodePoints": ["U+0E2D"],
+      "unicodeCodePoints": [
+        "U+0E2D"
+      ],
       "translationFr": "lettre muette de départ ; nom traditionnel อ อ่าง, le o de la bassine",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -360,7 +416,11 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
@@ -369,9 +429,9 @@
       "drawIndex": 1,
       "id": "56661afb-1a24-5e0f-83c2-0b744f983903",
       "type": "audio_choice",
-      "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
+      "itemId": "5e991a34-2a7e-5c52-beb1-726b83a281e3",
       "skill": "listening",
-      "audioAssetId": "34626c45-7ae4-5c93-9b97-63f0d3b75fbe",
+      "audioAssetId": "a6344f49-bc07-5123-8493-aa0a5e92f90f",
       "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "options": [
         {
@@ -399,9 +459,9 @@
       "drawIndex": 2,
       "id": "1d363218-5a2b-5303-99fa-d55361893bc3",
       "type": "audio_choice",
-      "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
+      "itemId": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
       "skill": "listening",
-      "audioAssetId": "9251e9ef-cd4d-5274-8054-97488c3605d4",
+      "audioAssetId": "a69b6ab3-921b-5430-86a0-47bde5bf1a7b",
       "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "options": [
         {
@@ -429,9 +489,9 @@
       "drawIndex": 3,
       "id": "430fed36-b06f-55d6-83f9-f65fe52fbf6f",
       "type": "audio_choice",
-      "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
+      "itemId": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
       "skill": "listening",
-      "audioAssetId": "9251e9ef-cd4d-5274-8054-97488c3605d4",
+      "audioAssetId": "a69b6ab3-921b-5430-86a0-47bde5bf1a7b",
       "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "options": [
         {
@@ -459,9 +519,9 @@
       "drawIndex": 4,
       "id": "dd33c1a3-dead-5efa-9dd0-e6efbceec9e7",
       "type": "audio_choice",
-      "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
+      "itemId": "5e991a34-2a7e-5c52-beb1-726b83a281e3",
       "skill": "listening",
-      "audioAssetId": "34626c45-7ae4-5c93-9b97-63f0d3b75fbe",
+      "audioAssetId": "a6344f49-bc07-5123-8493-aa0a5e92f90f",
       "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "options": [
         {
@@ -489,9 +549,9 @@
       "drawIndex": 5,
       "id": "8bde3aad-445b-5b19-b7e4-3dbe048d6bfb",
       "type": "audio_choice",
-      "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
+      "itemId": "5e991a34-2a7e-5c52-beb1-726b83a281e3",
       "skill": "listening",
-      "audioAssetId": "34626c45-7ae4-5c93-9b97-63f0d3b75fbe",
+      "audioAssetId": "a6344f49-bc07-5123-8493-aa0a5e92f90f",
       "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "options": [
         {
@@ -519,9 +579,9 @@
       "drawIndex": 6,
       "id": "d4874954-cacd-54fe-be8a-a8cd3c7f9840",
       "type": "audio_choice",
-      "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
+      "itemId": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
       "skill": "listening",
-      "audioAssetId": "9251e9ef-cd4d-5274-8054-97488c3605d4",
+      "audioAssetId": "a69b6ab3-921b-5430-86a0-47bde5bf1a7b",
       "promptFr": "Vous n'entendrez que deux mots, plusieurs fois chacun. C'est voulu : le but n'est pas de les retenir, mais d'entendre que la voix part dans deux directions opposées. Elle tombe, ou elle grimpe ?",
       "options": [
         {
@@ -554,17 +614,17 @@
       "pairs": [
         {
           "id": "b8efab7f-db00-5752-a5a0-56f7987750eb",
-          "itemId": "dc3e3565-fa17-5173-9e45-85219d0a8608",
+          "itemId": "20e65f80-4023-5527-9d01-b13b4703a3a9",
           "labelFr": "courbe plate au milieu · khaa"
         },
         {
           "id": "795a25a1-911d-53e7-b519-0eae56e1b4cd",
-          "itemId": "e1fb42ca-6bab-5221-9594-896b7b8db0fc",
+          "itemId": "5e991a34-2a7e-5c52-beb1-726b83a281e3",
           "labelFr": "courbe qui tombe · khâa"
         },
         {
           "id": "71a82c5b-e6f5-55a5-88ae-d25b3d61429c",
-          "itemId": "993d6ffe-7775-5980-8548-7671ec1150fa",
+          "itemId": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
           "labelFr": "courbe qui grimpe du bas vers le haut · khǎa"
         }
       ],

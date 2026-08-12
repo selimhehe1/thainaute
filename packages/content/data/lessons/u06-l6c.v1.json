@@ -15,7 +15,7 @@
   "audioManifestId": "c0dd25f8-eb72-5ac6-b325-aedd36aeb3f4",
   "items": [
     {
-      "id": "cf3a730c-fd74-5a29-bd90-1b98c072068d",
+      "id": "7d938caa-d331-5b12-906f-ef7cd8ac2300",
       "thaiRaw": "เขา",
       "unicodeCodePoints": [
         "U+0E40",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "f48545e5-453d-55d7-8e21-ea61e9fed933",
+      "id": "c9abc059-e5de-5115-94b7-9cff3b87ea08",
       "thaiRaw": "คนนี้",
       "unicodeCodePoints": [
         "U+0E04",
@@ -87,7 +87,7 @@
       ]
     },
     {
-      "id": "90f48d62-80d8-53b4-beea-9d74079170c8",
+      "id": "6b064ca3-8e29-5a54-9fc0-0c27dec877a0",
       "thaiRaw": "ใจดี",
       "unicodeCodePoints": [
         "U+0E43",
@@ -127,7 +127,7 @@
       ]
     },
     {
-      "id": "d65534a4-1b01-5ba7-9110-c137788af87e",
+      "id": "d49dd142-2c0a-5641-9d5f-7e72709409fd",
       "thaiRaw": "สูง",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -158,7 +158,7 @@
       ]
     },
     {
-      "id": "66acd268-c8e3-5bdf-9afd-7745e4d1a0e6",
+      "id": "c28a1f47-d283-5f21-b20e-bb4b3b2c1b9f",
       "thaiRaw": "เขาใจดี",
       "unicodeCodePoints": [
         "U+0E40",
@@ -207,7 +207,7 @@
       ]
     },
     {
-      "id": "9790525e-66af-54f6-898a-7ca2031913c9",
+      "id": "11cafeea-6670-546d-bd6c-5e710265507e",
       "thaiRaw": "เขาสูงไหม",
       "unicodeCodePoints": [
         "U+0E40",
@@ -258,7 +258,7 @@
       ]
     },
     {
-      "id": "16cedffc-9ee9-560f-9e9a-0d3392da3a7f",
+      "id": "3f44c0aa-76dd-5389-b607-d80022900954",
       "thaiRaw": "คุณใจดีมาก",
       "unicodeCodePoints": [
         "U+0E04",
@@ -320,7 +320,7 @@
       ]
     },
     {
-      "id": "998f1e6e-95b7-5253-b270-2d85f0b55f13",
+      "id": "8a22d632-d7d5-5290-985e-e7f715f03fa0",
       "thaiRaw": "เขาชื่ออะไร",
       "unicodeCodePoints": [
         "U+0E40",
@@ -381,7 +381,7 @@
       ]
     },
     {
-      "id": "87aec6f2-7331-5a0a-bcf4-0da154fe37b6",
+      "id": "6ef70ca4-73d6-5c73-968f-d4b653de910a",
       "thaiRaw": "น้า",
       "unicodeCodePoints": [
         "U+0E19",
@@ -417,7 +417,7 @@
       "drawIndex": 1,
       "id": "f2e6329d-bc22-5735-8ac1-8554f9267142",
       "type": "word_order",
-      "itemId": "66acd268-c8e3-5bdf-9afd-7745e4d1a0e6",
+      "itemId": "c28a1f47-d283-5f21-b20e-bb4b3b2c1b9f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les mots dans l’ordre. Certains tirages contiennent un mot en trop : retirez-le.",
@@ -459,7 +459,7 @@
       "drawIndex": 2,
       "id": "4b450a2c-b281-5080-a13f-2bd9a2028211",
       "type": "word_order",
-      "itemId": "16cedffc-9ee9-560f-9e9a-0d3392da3a7f",
+      "itemId": "3f44c0aa-76dd-5389-b607-d80022900954",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les mots dans l’ordre. Certains tirages contiennent un mot en trop : retirez-le.",
@@ -507,7 +507,7 @@
       "drawIndex": 3,
       "id": "35b892bc-8c9c-5e85-b380-f4aa3984e717",
       "type": "word_order",
-      "itemId": "9790525e-66af-54f6-898a-7ca2031913c9",
+      "itemId": "11cafeea-6670-546d-bd6c-5e710265507e",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les mots dans l’ordre. Certains tirages contiennent un mot en trop : retirez-le.",
@@ -555,7 +555,7 @@
       "drawIndex": 4,
       "id": "0c2fd581-a8ec-5cf0-bf86-a4e9f859fa3b",
       "type": "word_order",
-      "itemId": "998f1e6e-95b7-5253-b270-2d85f0b55f13",
+      "itemId": "8a22d632-d7d5-5290-985e-e7f715f03fa0",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les mots dans l’ordre. Certains tirages contiennent un mot en trop : retirez-le.",
@@ -603,7 +603,7 @@
       "drawIndex": 5,
       "id": "7d5b6d12-a620-58cf-bfd0-bf1bf11da367",
       "type": "word_order",
-      "itemId": "87aec6f2-7331-5a0a-bcf4-0da154fe37b6",
+      "itemId": "6ef70ca4-73d6-5c73-968f-d4b653de910a",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Remettez les mots dans l’ordre. Certains tirages contiennent un mot en trop : retirez-le.",

@@ -15,7 +15,7 @@
   "audioManifestId": "cb871984-6050-5e08-bdb0-4360a489e9d2",
   "items": [
     {
-      "id": "7477d57a-d137-5628-83c7-d5ae7bb3201c",
+      "id": "ca769cba-bdb1-5a06-b8f1-061adcb8a617",
       "thaiRaw": "ไม่สบาย",
       "unicodeCodePoints": [
         "U+0E44",
@@ -65,7 +65,7 @@
       ]
     },
     {
-      "id": "05a15368-fe1e-5db2-9f46-3c9b2790593f",
+      "id": "2b4ac5e9-5e92-511f-8ab1-3363a5246ff0",
       "thaiRaw": "ไปหาหมอ",
       "unicodeCodePoints": [
         "U+0E44",
@@ -115,7 +115,7 @@
       ]
     },
     {
-      "id": "fe4c052b-809f-51ea-b81f-1e024efb6a82",
+      "id": "9f54a6ee-fbad-5b19-a8f2-cfeafcefa4b5",
       "thaiRaw": "ปวดหัว",
       "unicodeCodePoints": [
         "U+0E1B",
@@ -156,7 +156,7 @@
       ]
     },
     {
-      "id": "16d3ac17-aef7-5a18-a906-3ad54d4046e0",
+      "id": "3c0e6525-a344-5fa1-ad64-63a8c9a26f58",
       "thaiRaw": "หมอ",
       "unicodeCodePoints": [
         "U+0E2B",
@@ -186,7 +186,7 @@
       ]
     },
     {
-      "id": "a2997d58-56ff-5236-947d-98654c9ae9bc",
+      "id": "dd0c5952-b8ec-51ab-a5d4-779c04c04abf",
       "thaiRaw": "สองวันแล้ว",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -208,10 +208,26 @@
       "syllables": [
         {
           "thaiRaw": "สองวันแล้ว",
-          "ipa": "sɔːŋ˩˩˦ wan˧ lɛːw˦˥",
-          "tone": "high",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
           "vowelLength": "long",
           "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "สองวันแล้ว",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "สองวันแล้ว",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
           "final": "w"
         }
       ],
@@ -221,7 +237,7 @@
       ]
     },
     {
-      "id": "8909972d-a91b-52ac-83c6-571d90be6c0b",
+      "id": "557f5b4a-ac3f-5e55-8f7c-2d4f1b93a2aa",
       "thaiRaw": "มาก",
       "unicodeCodePoints": [
         "U+0E21",
@@ -250,7 +266,7 @@
       ]
     },
     {
-      "id": "d2e46e73-cf4f-5ae1-81f0-f0eedad5a882",
+      "id": "3522dbc6-1f43-5b91-adc4-fc973affc013",
       "thaiRaw": "สวัสดีครับ",
       "unicodeCodePoints": [
         "U+0E2A",
@@ -288,10 +304,18 @@
         },
         {
           "thaiRaw": "สวัสดีครับ",
-          "ipa": "diː˧ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "diː˧",
+          "tone": "mid",
           "vowelLength": "long",
           "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สวัสดีครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -301,7 +325,7 @@
       ]
     },
     {
-      "id": "7aad064c-a851-5359-80c0-438e55ed90f3",
+      "id": "77066334-9315-5282-91fb-b93737fe97c9",
       "thaiRaw": "ขอบคุณครับ",
       "unicodeCodePoints": [
         "U+0E02",
@@ -331,10 +355,18 @@
         },
         {
           "thaiRaw": "ขอบคุณครับ",
-          "ipa": "kʰun˧ kʰrap̚˦˥",
-          "tone": "high",
+          "ipa": "kʰun˧",
+          "tone": "mid",
           "vowelLength": "short",
           "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
           "final": "p̚"
         }
       ],
@@ -345,7 +377,7 @@
       ]
     },
     {
-      "id": "1b9d33c3-f1d7-51bd-974e-2bde46c9e328",
+      "id": "19383b08-bd77-5e48-901a-7a34e18acbf4",
       "thaiRaw": "ไม่เป็นไร",
       "unicodeCodePoints": [
         "U+0E44",
@@ -407,12 +439,12 @@
       "pairs": [
         {
           "id": "96002b44-282b-5b61-b885-dd6663fdd94b",
-          "itemId": "7477d57a-d137-5628-83c7-d5ae7bb3201c",
+          "itemId": "ca769cba-bdb1-5a06-b8f1-061adcb8a617",
           "labelFr": "ne pas se sentir bien"
         },
         {
           "id": "23a8d4a8-e0a2-5757-8061-249bf2e1c8d8",
-          "itemId": "05a15368-fe1e-5db2-9f46-3c9b2790593f",
+          "itemId": "2b4ac5e9-5e92-511f-8ab1-3363a5246ff0",
           "labelFr": "aller voir le médecin"
         }
       ],

@@ -114,6 +114,26 @@ export function getPublicationBlockers(
       detail: "Chaque audit publié doit référencer un auditeur humain.",
     });
   }
+  // Un exercice peut attendre sa voix pendant tout le brouillon. Il ne peut
+  // pas être PUBLIÉ muet : l'apprenant cliquerait « Réécouter » sur du vide.
+  const assetsPresents = new Set(
+    audioManifest.entries.map(({ assetId }) => assetId),
+  );
+  const attendus = lesson.exercises.flatMap((exercise) => {
+    if (exercise.type === "audio_choice") return [exercise.audioAssetId];
+    // `word_order` porte un audio FACULTATIF : `null` veut dire « cet
+    // exercice n'en demande pas », et non « il en demande un qui manque ».
+    if (exercise.type === "word_order" && exercise.audioAssetId !== null) {
+      return [exercise.audioAssetId];
+    }
+    return [];
+  });
+  if (attendus.some((assetId) => !assetsPresents.has(assetId))) {
+    blockers.push({
+      code: "AUDIO_ASSET_MISSING",
+      detail: "Un exercice attend un audio que le manifeste ne porte pas.",
+    });
+  }
   if (
     audioManifest.entries.some(
       ({ variant, voiceKind }) =>
