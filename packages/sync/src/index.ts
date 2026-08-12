@@ -113,6 +113,7 @@ export * from "./hydration";
 export * from "./coordinator";
 export * from "./account-export-contracts";
 export * from "./account-deletion-contracts";
+export * from "./learning-progress";
 export * from "./local-answer-keys";
 export * from "./local-experience";
 export * from "./fixture-learning-path";

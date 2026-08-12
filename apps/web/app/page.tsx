@@ -150,6 +150,10 @@ export default function HomePage() {
       <footer className={`${styles.footer} ${styles.shell}`}>
         <span>{languagePack.app.displayName} · fondation technique privée</span>
         <Link href="/privacy">Confidentialité et mesure d’audience</Link>
+        <Link href="/mentions-legales">Mentions légales</Link>
+        <Link href="/conditions">Conditions d’utilisation</Link>
+        <Link href="/confidentialite">Politique de confidentialité</Link>
+        <Link href="/cookies">Cookies</Link>
         <span>Le nom et le contenu restent non publiés.</span>
       </footer>
     </main>

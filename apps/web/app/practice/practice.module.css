@@ -1,0 +1,51 @@
+.lessons {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.lesson {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+  padding: 18px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-paper);
+}
+
+/* La boucle technique se distingue par son cadre et son badge, jamais par
+   la seule couleur : le brief interdit qu'une couleur porte seule un sens. */
+.technique {
+  border-style: dashed;
+  background: transparent;
+}
+
+.badge {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.lessonTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.lessonObjective {
+  margin: 0;
+  max-width: 56ch;
+  font-size: 15px;
+  color: var(--color-ink-soft);
+}
+
+.lessonMeta {
+  margin: 0 0 6px;
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+}

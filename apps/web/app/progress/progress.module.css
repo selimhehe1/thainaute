@@ -1,0 +1,65 @@
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+  margin: 24px 0 8px;
+}
+
+.metrics dt {
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+}
+
+.metrics dd {
+  margin: 2px 0 0;
+  font-family: var(--font-serif-accent);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.lessons {
+  list-style: none;
+  display: grid;
+  gap: 4px;
+  padding: 0;
+  margin: 16px 0 0;
+}
+
+.lesson {
+  padding: 14px 2px;
+  border-top: 1px solid var(--color-line);
+}
+
+.lessonTitle {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.lessonMeta {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+}
+
+/* La barre reste lisible sans couleur : sa longueur porte l'information,
+   et `role="progressbar"` porte la valeur pour les lecteurs d'écran. */
+.bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-mist);
+  overflow: hidden;
+}
+
+.barFill {
+  display: block;
+  height: 100%;
+  background: var(--color-jade-ink);
+  transition: width var(--motion-slow) var(--ease-standard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .barFill {
+    transition: none;
+  }
+}
