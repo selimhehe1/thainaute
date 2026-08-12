@@ -1,0 +1,671 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "0f3b9614-3dea-5faa-b1ba-4ec430c0d7b5",
+  "versionId": "d648d25b-33b0-57f4-80ea-0c3733baa586",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "La même phrase, cinq attitudes",
+  "objectiveFr": "à la fin de la leçon, devant une forme entendue à débit naturel, l’apprenant reconnaît laquelle des trois écritures proposées il a entendue, sur 9 tirages sur 12 ; il apparie six particules à ce que le corps de leur entrée attache à chacune, 6 sur 6 ; il remet dans l’ordre les blocs de six énoncés complets, sur 5 tirages sur 6 ; il produit en transcription, à partir du français seul, huit formes, ",
+  "requiredEntitlement": null,
+  "audioManifestId": "2fd237a7-d89f-5152-a54f-0aa56b720893",
+  "items": [
+    {
+      "id": "0f665fba-51c4-56fa-a67f-2b856bde255a",
+      "thaiRaw": "นะ",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E30"
+      ],
+      "translationFr": "(aucune traduction française ; particule finale qui adresse la phrase à l’interlocuteur)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ná"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นะ",
+          "ipa": "naʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "**non étiqueté**, et le motif est écrit plutôt que comblé. Le corps de l’entrée du dictionnaire normatif a été LU le 2026-08-04 et ne porte aucune des étiquettes attendues par ce parcours, ni `(ปาก)` langue parlée, ni marque régionale. La base franco-thaïe ne marque pas la ligne, et le second ouvrage ne donne pas de note d’usage. **Aucune affirmation de registre n’est donc faite pour นะ**, ni dans un sens ni dans l’autre. C’est l’état de fait des sources, pas une omission.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "90825fc9-a267-5769-aa50-cbee045afc3f",
+      "thaiRaw": "ขอบคุณ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13"
+      ],
+      "translationFr": "merci",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàwwp·khoun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰɔːp̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "thaiRaw": "ขอโทษ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E42",
+        "U+0E17",
+        "U+0E29"
+      ],
+      "translationFr": "désolé ; excusez-moi ; pardon (et, comme verbe, s’excuser)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww·thôot"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอโทษ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอโทษ",
+          "ipa": "tʰoːt̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "thaiRaw": "ไม่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "ne … pas ; non",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "thaiRaw": "ไป",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "aller, partir, se rendre à ; s’éloigner de celui qui parle",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre comme verbe. **Une lecture d’interjection existe** pour ไป employé seul, au sens de « va-t’en » : cet EMPLOI est attesté par deux sources, mais aucune des deux ne porte de marque de registre, et le RID ne l’enregistre pas du tout. La leçon n’affirme donc aucun registre pour cette lecture, et se borne à signaler qu’elle existe. Voir l’incertitude 13.",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u13-l13e-p3",
+      "drawIndex": 1,
+      "id": "65f22076-da75-5eef-8dbf-987c908b9530",
+      "type": "word_order",
+      "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "a303110a-8b86-5840-8423-0f45bc9adaca",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "9aad3add-044f-5685-909c-5178ce772398",
+          "thaiRaw": "นะ",
+          "transcription": null
+        },
+        {
+          "id": "edc51497-0a1a-5b5a-b63b-3e6aaa39f342",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "a303110a-8b86-5840-8423-0f45bc9adaca",
+        "9aad3add-044f-5685-909c-5178ce772398",
+        "edc51497-0a1a-5b5a-b63b-3e6aaa39f342"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, l’adoucissement, la politesse. Dans cet ordre.",
+        "incorrectFr": "นะ adoucit ce qui précède, la particule polie ferme la phrase. La politesse passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 à 5",
+            "textFr": "Deux blocs d’affilée, et chacun se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ au lieu de คะ après นะ",
+            "textFr": "Après นะ, une locutrice dit khá. Ce n’est pas la règle des questions : c’est la forme que le dictionnaire imprime lui-même."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13e-p3",
+      "drawIndex": 2,
+      "id": "74e9f10e-b648-597f-837b-eb4f48ee5768",
+      "type": "word_order",
+      "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "c1970b3a-9edc-5d74-b6d6-c55d3b1ea22b",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "73297add-138b-5b2d-807e-b7f1c2dbd30b",
+          "thaiRaw": "นะ",
+          "transcription": null
+        },
+        {
+          "id": "6641342e-a0d1-50c3-b54d-d019ec986251",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "c1970b3a-9edc-5d74-b6d6-c55d3b1ea22b",
+        "73297add-138b-5b2d-807e-b7f1c2dbd30b",
+        "6641342e-a0d1-50c3-b54d-d019ec986251"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, l’adoucissement, la politesse. Dans cet ordre.",
+        "incorrectFr": "นะ adoucit ce qui précède, la particule polie ferme la phrase. La politesse passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 à 5",
+            "textFr": "Deux blocs d’affilée, et chacun se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ au lieu de คะ après นะ",
+            "textFr": "Après นะ, une locutrice dit khá. Ce n’est pas la règle des questions : c’est la forme que le dictionnaire imprime lui-même."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13e-p3",
+      "drawIndex": 3,
+      "id": "53b04c88-2855-5c16-aca5-68e2ebb8f9f7",
+      "type": "word_order",
+      "itemId": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "d60c66f2-deac-56db-8bdf-af64c2a48499",
+          "thaiRaw": "ขอโทษ",
+          "transcription": null
+        },
+        {
+          "id": "e6f186a6-c47d-5f9e-9cab-66bc12b22d04",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "31ec0b72-0428-5b2f-be3c-7fee86b4f17f",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "9ea784aa-1c4b-54eb-b300-4885b5d21f39",
+          "thaiRaw": "นะ",
+          "transcription": null
+        },
+        {
+          "id": "a989ab90-b51c-5254-bd96-bdab3ec709b2",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "d60c66f2-deac-56db-8bdf-af64c2a48499",
+        "e6f186a6-c47d-5f9e-9cab-66bc12b22d04",
+        "31ec0b72-0428-5b2f-be3c-7fee86b4f17f",
+        "9ea784aa-1c4b-54eb-b300-4885b5d21f39",
+        "a989ab90-b51c-5254-bd96-bdab3ec709b2"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, l’adoucissement, la politesse. Dans cet ordre.",
+        "incorrectFr": "นะ adoucit ce qui précède, la particule polie ferme la phrase. La politesse passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 à 5",
+            "textFr": "Deux blocs d’affilée, et chacun se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ au lieu de คะ après นะ",
+            "textFr": "Après นะ, une locutrice dit khá. Ce n’est pas la règle des questions : c’est la forme que le dictionnaire imprime lui-même."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13e-p3",
+      "drawIndex": 4,
+      "id": "d8f4f645-ebca-55f3-a2d0-dd4497943207",
+      "type": "word_order",
+      "itemId": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "e582688c-03f3-56d0-9525-3f488eed2c18",
+          "thaiRaw": "ขอโทษ",
+          "transcription": null
+        },
+        {
+          "id": "b2bc3fe7-e50d-5d82-9518-e41fa06debcc",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "61702f21-5601-586a-9837-35d31425fd48",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "081ab17e-1ae1-5522-a220-b32ebf2caac6",
+          "thaiRaw": "นะ",
+          "transcription": null
+        },
+        {
+          "id": "b411c711-a504-5b4e-9986-7dec0aa0526c",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "e582688c-03f3-56d0-9525-3f488eed2c18",
+        "b2bc3fe7-e50d-5d82-9518-e41fa06debcc",
+        "61702f21-5601-586a-9837-35d31425fd48",
+        "081ab17e-1ae1-5522-a220-b32ebf2caac6",
+        "b411c711-a504-5b4e-9986-7dec0aa0526c"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, l’adoucissement, la politesse. Dans cet ordre.",
+        "incorrectFr": "นะ adoucit ce qui précède, la particule polie ferme la phrase. La politesse passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 à 5",
+            "textFr": "Deux blocs d’affilée, et chacun se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ au lieu de คะ après นะ",
+            "textFr": "Après นะ, une locutrice dit khá. Ce n’est pas la règle des questions : c’est la forme que le dictionnaire imprime lui-même."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13e-p3",
+      "drawIndex": 5,
+      "id": "2dd1e919-4663-5b04-9b9d-8608e03e3295",
+      "type": "word_order",
+      "itemId": "90825fc9-a267-5769-aa50-cbee045afc3f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "0b1abd94-57ce-5fe9-b09b-95c0fdd86d65",
+          "thaiRaw": "ขอบคุณ",
+          "transcription": null
+        },
+        {
+          "id": "c5adb76d-d383-52ac-8515-a4fe1c719688",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "719c9e4e-1db1-5ec2-9608-5449803c7d7e",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "a9517f02-9d13-5082-87ff-7ceddc2817c9",
+          "thaiRaw": "นะ",
+          "transcription": null
+        },
+        {
+          "id": "cc128654-2aba-59f2-b0c6-a6a4bba00209",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "0b1abd94-57ce-5fe9-b09b-95c0fdd86d65",
+        "c5adb76d-d383-52ac-8515-a4fe1c719688",
+        "719c9e4e-1db1-5ec2-9608-5449803c7d7e",
+        "a9517f02-9d13-5082-87ff-7ceddc2817c9",
+        "cc128654-2aba-59f2-b0c6-a6a4bba00209"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, l’adoucissement, la politesse. Dans cet ordre.",
+        "incorrectFr": "นะ adoucit ce qui précède, la particule polie ferme la phrase. La politesse passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 à 5",
+            "textFr": "Deux blocs d’affilée, et chacun se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ au lieu de คะ après นะ",
+            "textFr": "Après นะ, une locutrice dit khá. Ce n’est pas la règle des questions : c’est la forme que le dictionnaire imprime lui-même."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13e-p3",
+      "drawIndex": 6,
+      "id": "6e62b183-9bb8-5a87-af6b-ab5fcce1502e",
+      "type": "word_order",
+      "itemId": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "0ba561dd-c9fa-5cb1-962b-6dc1990f57c0",
+          "thaiRaw": "ไม่",
+          "transcription": null
+        },
+        {
+          "id": "fd09076d-46fa-540c-8894-f80a686b8716",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "faef19b3-26b1-5784-b408-3d29cecc4a31",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "0ba561dd-c9fa-5cb1-962b-6dc1990f57c0",
+        "fd09076d-46fa-540c-8894-f80a686b8716",
+        "faef19b3-26b1-5784-b408-3d29cecc4a31"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, l’adoucissement, la politesse. Dans cet ordre.",
+        "incorrectFr": "นะ adoucit ce qui précède, la particule polie ferme la phrase. La politesse passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 à 5",
+            "textFr": "Deux blocs d’affilée, et chacun se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ค่ะ au lieu de คะ après นะ",
+            "textFr": "Après นะ, une locutrice dit khá. Ce n’est pas la règle des questions : c’est la forme que le dictionnaire imprime lui-même."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "un mot, et rien d’autre",
+      "bodyFr": "Vous connaissez ไป depuis l’unité 5. Un mot, deux lettres, ton moyen : aller. Aujourd’hui, il ne change pas une seule fois. Ce sont les particules qui travaillent, et vous allez entendre la même phrase dire cinq choses différentes.",
+      "specimen": "ไป (pai)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "les cinq, en une fois",
+      "bodyFr": "Voici tout ce que la leçon vous demande de reconnaître. Lisez la colonne de gauche : elle est identique partout, à la dernière syllabe près.\n\n> **ไปครับ** · pai khráp · j’y vais, poliment, et rien de plus > **ไปนะครับ** · pai ná khráp · j’y vais, dit avec douceur > **ไปสิ** · pai sì · allez-y donc > **ไปเหรอ** · pai rǒee · vous y allez ? > **ไปไหนวะ** · pai nǎi wá · tu vas où ? (sans aucune distance)\n\n**Deux d’entre elles seulement sont à vous.** Les deux premières, et vous les produirez aux exercices. Les trois autres, vous apprenez à les entendre et à comprendre ce qu’elles portent. Le motif est écrit page par page, et il ne tient jamais sur une impression : à chaque fois, c’est le corps de l’entrée du dictionnaire normatif qui décide.\n\n**Une remarque d’honnêteté, tout de suite.** La cinquième ligne ne se pose pas sur ไป seul, mais sur ไปไหน. Ce n’est pas une coquetterie : aucune des sources consultées n’atteste ไปวะ, alors que le dictionnaire imprime lui-même ไปไหนวะ. Le cours montre ce qui est attesté et ne fabrique pas une forme pour faire tenir un tableau. La page 7 y revient.",
+      "specimen": "ไปครับ · ไปนะครับ · ไปสิ · ไปเหรอ · ไปไหนวะ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "นะ, ce que le dictionnaire en dit",
+      "bodyFr": "นะ (ná) se pose à la fin. Une syllabe brève, au ton HAUT, qui reste perchée du début à la fin et ne monte pas.\n\nLe dictionnaire normatif range นะ parmi les mots qui s’ajoutent derrière un autre, et il lui donne trois valeurs : la prière, l’injonction, et l’appui qui rend l’énoncé plus ferme. Deux autres ouvrages décrivent un effet différent : une atténuation, la phrase devenant moins abrupte et plus persuasive, l’ordre se faisant moins sec. **Ces deux descriptions ne disent pas la même chose, et ce cours ne les fond pas en une seule.** Ce qu’elles ont en commun est le seul point qui vous serve aujourd’hui : **la phrase ne change pas de contenu, elle change de main.**\n\n**Une conséquence, et elle vaut d’être sue avant l’exercice 2.** L’injonction que le dictionnaire prête à นะ est écrite avec le mot même qu’il emploie pour สิ, à la page 5. Les deux entrées se recouvrent sur ce point ; aucun exercice de cette leçon ne vous demande de les départager là-dessus, et l’exercice 2 a été refait pour cette raison au contre-audit interne du 2026-08-04.\n\n> ไป · pai · aller > ไปนะ · pai ná · j’y vais, hein\n\nC’est 13B qui vous a installé cette particule ; cette page-ci la remet en place dans la série, elle ne la réenseigne pas.\n\n**Ce que ce cours ne vous dit pas** : ni le dictionnaire normatif, ni le second ouvrage, ni la base franco-thaïe consultée ne mettent d’étiquette de registre sur นะ. Ni « langue parlée », ni « familier », ni « formel ». Le champ `registre` de l’item porte donc la mention **non étiqueté**, et vous ne lirez nulle part ici que นะ serait familière. Ce serait une affirmation que rien n’appuie.",
+      "specimen": "นะ (ná) · ไปนะ (pai ná)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "la forme sûre, et pourquoi elle est sûre",
+      "bodyFr": "Voici la seule déclinaison neuve que ce cours vous fait produire.\n\n> **ไปนะครับ** · pai ná khráp · un homme > **ไปนะคะ** · pai ná khá · une femme\n\nRegardez la forme féminine de près, parce qu’elle n’est pas celle que la règle de l’unité 2 vous ferait écrire. Vous avez appris que ค่ะ ferme une affirmation et คะ ferme une question. ไปนะ n’est pas une question, et pourtant la particule est **คะ**.\n\nCe n’est pas une licence de notre part. Le dictionnaire normatif écrit à son entrée « คะ » que c’est le mot de fin de phrase qu’une locutrice emploie **après les mots ซิ et นะ**, pour marquer la politesse, et il donne **ไปนะคะ** en exemple imprimé. La forme que vous allez produire est donc l’exemple même du dictionnaire, pas une reconstruction.\n\n**Le motif de sûreté, écrit tel qu’il est.** Ces deux formes sont les seules du jour dont le caractère poli soit dit dans le corps de l’entrée : « mot de fin de phrase poli employé par un homme » pour ครับ, « pour marquer la politesse » pour คะ après นะ. Les trois autres particules de la leçon n’ont rien de tel, et deux d’entre elles ont l’inverse.",
+      "specimen": "ไปนะครับ · ไปนะคะ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "สิ, celle qui pousse",
+      "bodyFr": "สิ (sì) est brève et BASSE. La voix descend et reste en bas. Collée derrière ไป, elle donne ไปสิ, et le contraste tombe à l’intérieur du mot : ไป est au milieu, สิ est en bas. C’est exactement le couple que l’unité 7 vous a fait sur-entraîner.\n\nLe dictionnaire normatif la décrit comme le mot qui se met en fin de phrase pour faire ressortir l’énoncé, et il précise qu’elle s’emploie surtout avec un verbe, en valeur d’injonction, d’invitation ou d’acceptation. Ses deux exemples imprimés sont **ไปสิ** et **มาสิ**, c’est-à-dire précisément les deux verbes de la leçon 5B. Un second ouvrage indépendant la donne pour une particule de demande, de confirmation ou d’insistance.\n\n> ไปสิ · pai sì · allez-y donc > มาสิ · maa sì · venez donc\n\n**Cette leçon-ci ne vous fait pas produire สิ**, et le motif n’est pas qu’elle serait grossière : aucune source consultée ne lui met la moindre étiquette. Le motif est qu’aucune source ne dit non plus qui peut l’adresser à qui. Pousser quelqu’un à faire quelque chose n’est pas un geste neutre, et ce cours n’a rien pour vous dire comment il est reçu.\n\n**Ce n’est pas une interdiction, et il faut le dire précisément.** C’est 13C qui publie สิ dans cette unité, et 13C admet la production de deux blocs précis, เอาสิ et ไม่รู้สิ, en le déclarant comme un parti pris pédagogique et non comme un fait de registre. 13E ne revient pas là-dessus et n’y ajoute rien : son récapitulatif s’en tient à la reconnaissance, parce que la phrase qu’il décline est ไป et que rien n’atteste ไปสิ en production pour un apprenant francophone.",
+      "specimen": "สิ (sì) · ไปสิ · มาสิ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "เหรอ, et la seule étiquette de la leçon",
+      "bodyFr": "เหรอ (rǒee) est longue et MONTANTE : la voix creuse, puis remonte. Posée à la fin, elle transforme l’énoncé en question.\n\nC’est la seule des cinq particules du jour que le dictionnaire normatif **étiquette**. Il la marque **(ปาก)**, langue parlée, et il la définit comme la forme dont le son s’est écarté de หรือ. Or หรือ, à sa propre entrée, porte deux valeurs, dont la seconde est celle du mot qui accompagne une phrase interrogative, avec **ไปหรือ** pour exemple imprimé. Le second ouvrage consulté dit la même chose de son côté et marque l’entrée « colloquial ».\n\n> ไปหรือ · pai rǔee · vous y allez ? (la forme du dictionnaire) > ไปเหรอ · pai rǒee · vous y allez ? (la même, telle qu’elle se dit)\n\nVoilà, en une ligne, ce que cette unité est venue vous apprendre : **le même sens, deux formes, et une seule des deux porte une étiquette de langue parlée.**\n\n**Ce qui est neuf ici n’est pas le mot « familier ».** Le fondamental vous a bien montré des formes que leurs sources marquaient ainsi, et `u12-l12e` en a compté six sur ses 525 fiches. Ce qui est neuf est l’étiquette **(ปาก)** du dictionnaire normatif, lue dans le corps de l’entrée : sur les dix-sept graphies dépouillées pour cette leçon, เหรอ est la seule à la porter. Quant à savoir laquelle des deux formes vous entendrez le plus, le relevé de sous-titres les met au coude à coude, เหรอ au rang 79 et หรือ au rang 84 sur 50 000 ; mais หรือ y compte aussi tous ses emplois de « ou », si bien que ce chiffre ne mesure pas la particule seule. Attendez-vous aux deux.",
+      "specimen": "เหรอ (rǒee) · ไปหรือ · ไปเหรอ"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "วะ, à reconnaître et jamais à dire",
+      "bodyFr": "Celle-ci, vous la comprendrez, et ce cours ne vous la fera jamais produire. Le motif n’est pas une prudence de notre part : il est écrit dans l’entrée. C’est 13D qui vous l’a montrée, avec les autres formes que l’on reconnaît sans les dire ; cette page la remet dans la série des particules finales.\n\nLe dictionnaire normatif décrit วะ comme le mot de fin de phrase qui marque la familiarité sans distance **ou** le manque de politesse, et il donne **ไปไหนวะ** en exemple imprimé. Le second ouvrage consulté va plus loin et marque l’entrée « vulgar, offensive ». La base franco-thaïe porte bien la graphie, mais sa ligne **n’a pas de colonne française** : sa seule glose y est anglaise et dit une particule informelle et impolie. C’est une concordance de plus, pas un pivot français, et la nuance est écrite ici parce que le contre-audit interne du 2026-08-04 a montré qu’elle avait été perdue.\n\n> ไปไหนวะ · pai nǎi wá · tu vas où ? > อะไรวะ · à·rai wá · c’est quoi ?\n\n**Et la forme que ce cours ne montre pas.** Vous ne verrez nulle part ici ไปวะ. Le dictionnaire imprime ไปไหนวะ, le second ouvrage imprime อะไรวะ, la base franco-thaïe n’a pas la combinaison, et le relevé de fréquence non plus. Fabriquer ไปวะ pour compléter la série aurait été facile et malhonnête.\n\nRetenez le geste plutôt que la liste : quand vous entendez วะ, vous savez que la personne parle sans aucune distance, et vous ne savez pas si c’est de l’amitié ou de la brutalité. Le dictionnaire lui-même met les deux dans la même phrase.",
+      "specimen": "ไปไหนวะ · อะไรวะ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ce que la présence d’une graphie ne prouve pas",
+      "bodyFr": "Une page de méthode, courte, et elle vous servira au-delà de cette leçon.\n\nIl existe une autre écriture de la particule de la page 6 : **หรอ**. Elle est même fréquente dans les sous-titres. Le second ouvrage consulté la range parmi les variantes de หรือ. Et pourtant ce cours ne vous l’enseigne pas, parce que l’entrée qu’ouvre cette graphie dans le dictionnaire normatif **n’est pas la particule** : c’est un verbe, qui parle d’usure et d’érosion, avec deux exemples qui n’ont rien à voir avec une question.\n\nUne graphie qui « existe » dans le dictionnaire n’est donc pas une graphie attestée pour le sens qu’on lui prête. Il faut ouvrir l’entrée et la lire. C’est la règle de tout ce parcours, et c’est elle qui a écarté deux formes de cette leçon.",
+      "specimen": "หรือ · เหรอ · หรอ (à ne pas confondre)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "ce que vous savez faire maintenant",
+      "bodyFr": "Cinq formes, et pour chacune ce que son entrée lui attache, et rien de plus.\n\n> **ครับ / ค่ะ** · c’est poli, et rien d’autre n’est ajouté > **นะ** · elle prie, elle pousse ou elle appuie : son entrée donne les trois > **สิ** · on pousse à faire, et le dictionnaire ne l’imprime qu’avec un verbe > **เหรอ** · la phrase devient une question > **วะ** · aucune distance, et cela peut être de l’impolitesse\n\nEt une sixième que vous aviez déjà, sans savoir qu’elle appartenait à cette famille : **ล่ะ**, rencontrée en 6E dans แล้วคุณล่ะ. Le dictionnaire normatif la décrit comme le mot qui pèse sur ce qui vient JUSTE d’être dit, pour lui donner plus de poids ; c’est `13C` qui la publie avec cette valeur, 6E ne l’enseignant qu’à l’intérieur du bloc. Vous la reverrez à l’exercice 2, avec les cinq autres.\n\n**Deux d’entre elles se recouvrent, et c’est écrit plutôt que tu.** L’entrée de นะ et celle de สิ emploient le même mot d’injonction ; celle de นะ et celle de ล่ะ portent toutes deux une valeur d’appui. Ce qui les sépare et que vous pouvez retenir : สิ ne s’imprime qu’avec un verbe, ล่ะ s’accroche à ce qui la précède immédiatement, et นะ est la plus large des trois puisque son entrée donne les trois valeurs à la fois.",
+      "specimen": "ครับ · นะ · สิ · เหรอ · วะ · ล่ะ"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "à vous",
+      "bodyFr": "Dans les exercices, la voix ne ralentira pas et vous n’aurez pas la transcription sous les yeux pour les deux exercices qui mesurent l’oreille et la lecture. Vous ne produirez que ไปครับ, ไปค่ะ, ไปนะครับ, ไปนะคะ et leurs formes niées : c’est volontaire, et c’est la promesse de cette unité.\n\nAprès les exercices, enregistrez-vous en disant ไปนะครับ ou ไปนะคะ, puis comparez en A/B avec la voix de référence. Écoutez la fin : ná reste perchée, et la particule polie qui la suit reste perchée elle aussi. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u13-l13e-p3",
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "ce9af222-85b6-5970-a634-7f6b1f636eb3",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "27e0f986-cf9e-5763-8601-874a3ee0fed6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "083513e5-47e4-567c-9d74-1805eb689f47",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6670ce5d-c553-52af-85d4-0f1f87eaf223",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "345fd8e3-ade6-504d-8c91-17c20c896ecb",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "33534288-23e8-59de-8352-e7bde20af525",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "eb2a6c3a-7ce1-56fa-8415-ad1e96333c6c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6379a962-2ca4-54eb-9b35-470699cc93b1",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

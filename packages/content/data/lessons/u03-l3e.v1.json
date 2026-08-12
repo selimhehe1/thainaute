@@ -1,0 +1,709 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "8f7175b6-b6fa-5697-9558-4e9ab10c9802",
+  "versionId": "74217d99-1b89-58ad-9018-0be28c73993b",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Au marché",
+  "objectiveFr": "à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre une cliente et un vendeur ; il transcrit en chiffres le montant entendu au moins 3 fois sur les 4 tirages de l’exercice 4, dont สามสิบ et สิบสาม, et retrouve le même montant parmi trois montants proches aux deux tirages de prix de l’exercice 1 ; il reconstruit la demande d’achat dans l’ordre ขอ, nom, nombre, ",
+  "requiredEntitlement": null,
+  "audioManifestId": "ef87e90a-ddbb-512b-bdff-feda9a88e0e8",
+  "items": [
+    {
+      "id": "c0a2fdea-92cb-54c3-b365-bfd8bc66eef9",
+      "thaiRaw": "ไข่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E02",
+        "U+0E48"
+      ],
+      "translationFr": "œuf",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khài"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไข่",
+          "ipa": "kʰaj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a7e20d34-d7aa-58e0-ae22-d2288ce33ee1",
+      "thaiRaw": "ฟอง",
+      "unicodeCodePoints": [
+        "U+0E1F",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "classificateur des œufs (et des bulles)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "fawwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ฟอง",
+          "ipa": "fɔːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "f",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ed7f3b13-7632-541a-acca-e9a34293f8d4",
+      "thaiRaw": "เท่าไร",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E17",
+        "U+0E48",
+        "U+0E32",
+        "U+0E44",
+        "U+0E23"
+      ],
+      "translationFr": "combien",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thâo·rai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เท่าไร",
+          "ipa": "tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เท่าไร",
+          "ipa": "raj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "329bd133-c7ea-55fd-ada1-b196c0854c45",
+      "thaiRaw": "สิบ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A"
+      ],
+      "translationFr": "dix",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sìp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สิบ",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "83b7e175-6a86-5fc1-a02f-6538e2410c66",
+      "thaiRaw": "สาม",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E32",
+        "U+0E21"
+      ],
+      "translationFr": "trois",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สาม",
+          "ipa": "saːm˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a3ec79e3-ec13-5468-8639-a92a6808afd8",
+      "thaiRaw": "สามสิบ",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E32",
+        "U+0E21",
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A"
+      ],
+      "translationFr": "trente",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎam·sìp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สามสิบ",
+          "ipa": "saːm˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "สามสิบ",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "37417fef-7e62-5cf4-805b-3b99b62fc1ec",
+      "thaiRaw": "บาท",
+      "unicodeCodePoints": [
+        "U+0E1A",
+        "U+0E32",
+        "U+0E17"
+      ],
+      "translationFr": "baht (unité monétaire de la Thaïlande)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "bàat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "บาท",
+          "ipa": "baːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "97eab91d-0080-51e9-9e44-c7ed9f12af5d",
+      "thaiRaw": "ขอไข่สิบฟองหน่อย",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E44",
+        "U+0E02",
+        "U+0E48",
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A",
+        "U+0E1F",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22"
+      ],
+      "translationFr": "dix œufs, s’il vous plaît",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww khài sìp fawwng nàwi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอไข่สิบฟองหน่อย",
+          "ipa": "kʰɔː˩˩˦ kʰaj˨˩ sip̚˨˩ fɔːŋ˧ nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "j"
+        }
+      ],
+      "register": "poli avec la particule finale (ขอไข่สิบฟองหน่อยครับ / ขอไข่สิบฟองหน่อยค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "4573d5fe-eea9-5b91-9b13-f21ebfa811b3",
+      "thaiRaw": "สวัสดี",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E27",
+        "U+0E31",
+        "U+0E2A",
+        "U+0E14",
+        "U+0E35"
+      ],
+      "translationFr": "bonjour (sert aussi à prendre congé)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·wàt·dii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สวัสดี",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สวัสดี",
+          "ipa": "wat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "สวัสดี",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli avec la particule finale",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "dc0137b8-8475-55e4-9da4-c2d2c75088f7",
+      "thaiRaw": "ครับ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "particule de politesse d’un locuteur homme, en fin de phrase",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "77afb811-916d-5afa-b490-d1b1dc3456ca",
+      "thaiRaw": "ขอบคุณ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13"
+      ],
+      "translationFr": "merci",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàwwp·khoun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰɔːp̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli avec la particule finale",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "bf3ccbec-8d69-54f5-84b9-47e0cf497ea7",
+      "thaiRaw": "นก",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E01"
+      ],
+      "translationFr": "Nok (prénom du personnage féminin)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nók"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นก",
+          "ipa": "nok̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "1089499a-6fbc-59bc-95a5-17d9108c6e6b",
+      "thaiRaw": "สิบสาม",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A",
+        "U+0E2A",
+        "U+0E32",
+        "U+0E21"
+      ],
+      "translationFr": "treize",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sìp·sǎam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สิบสาม",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "สิบสาม",
+          "ipa": "saːm˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "thaiRaw": "ขอ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D"
+      ],
+      "translationFr": "demander ; solliciter (et, en tête de phrase, « je voudrais », « puis-je »)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (la politesse vient de หน่อย et de la particule finale)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u03-l3e-p2",
+      "drawIndex": 1,
+      "id": "e3b3c20a-5151-570d-bf8e-ee160d4e2690",
+      "type": "word_order",
+      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Nok, une femme, veut dix œufs. Remettez les éléments dans l’ordre. Un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "0ef4b78b-081a-5e7c-90c3-29405c231381",
+          "thaiRaw": "สิบ",
+          "transcription": null
+        },
+        {
+          "id": "3d3de467-82e6-5a71-9a8f-c9198ee77c03",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "6464a249-b23a-5f54-a81f-620ecf62207a",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "02ff4d12-2c20-5e9c-a04a-56ed790a7f24",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "88095519-f912-52d3-a3b3-0a045ed9dcbd",
+          "thaiRaw": "ฟอง",
+          "transcription": null
+        },
+        {
+          "id": "407467f1-bc87-5d85-a37f-76dc8ddfe6ac",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "cea40cfc-5eaa-53f4-b994-ccb52f6b9625",
+          "thaiRaw": "ไข่",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "6464a249-b23a-5f54-a81f-620ecf62207a",
+        "cea40cfc-5eaa-53f4-b994-ccb52f6b9625",
+        "0ef4b78b-081a-5e7c-90c3-29405c231381",
+        "88095519-f912-52d3-a3b3-0a045ed9dcbd",
+        "02ff4d12-2c20-5e9c-a04a-56ed790a7f24",
+        "407467f1-bc87-5d85-a37f-76dc8ddfe6ac"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. ขอ ouvre la demande, le groupe à acheter vient au milieu dans l’ordre nom, nombre, compteur, puis หน่อย adoucit et la particule ferme. Nok est une femme, donc ค่ะ.",
+        "incorrectFr": "Trois repères. ขอ reste en tête. À l’intérieur, le nom passe avant le nombre et le compteur ferme le groupe. หน่อย ne bouge pas de sa place, juste avant la particule.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "un achat entier, du bonjour au merci",
+      "bodyFr": "Vous avez appris à compter, à demander un prix et à poser un classificateur derrière un nombre. Aujourd’hui, tout cela sert d’un coup. Nok entre dans un marché, s’arrête devant un étal d’œufs et repart avec dix œufs, en huit répliques et sans un mot que vous ne connaissiez pas.",
+      "specimen": "ไข่เท่าไรคะ"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "deux mots nouveaux, et pas un de plus",
+      "bodyFr": "ไข่ (khài), c’est l’œuf. ฟอง (fawwng), c’est le mot qui sert à les compter, un compteur réservé aux œufs et aux bulles. Le dictionnaire de l’Institut royal donne d’ailleurs ฟอง comme le classificateur de l’œuf, aux côtés de ลูก et de ใบ, et illustre l’usage par ไข่ ๒ ฟอง.",
+      "specimen": "ไข่ · ฟอง"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "le compteur vient toujours en dernier",
+      "bodyFr": "Rappel de 3D, et le seul réflexe à surveiller aujourd’hui : le nom d’abord, le nombre ensuite, le compteur à la fin. ไข่ สิบ ฟอง, mot à mot œuf, dix, compteur. Le français dit « dix œufs » et met le nombre devant ; le thaï fait l’inverse, et il ajoute une brique que le français n’a pas.",
+      "specimen": "ไข่สิบฟอง (khài sìp fawwng)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "สามสิบ ou สิบสาม, l’ordre change tout",
+      "bodyFr": "Les mêmes deux syllabes, échangées, ne font pas le même montant. สามสิบ (sǎam·sìp), c’est trois fois dix, donc trente ; สิบสาม (sìp·sǎam), c’est dix plus trois, donc treize. Devant สิบ, le chiffre multiplie ; derrière สิบ, il s’ajoute, et cela vaut pour deux à neuf. Seule l’unité « un » fait exception, avec เอ็ด vu en 3B : onze se dit สิบเอ็ด (sìp·èt).",
+      "specimen": "สามสิบ (30) · สิบสาม (13)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "la particule vous dit qui parle",
+      "bodyFr": "Dans ce dialogue, personne ne dit son nom. Vous saurez pourtant à chaque réplique si c’est la cliente ou le vendeur, parce que la fin de la phrase le dit : ครับ pour lui, ค่ะ et คะ pour elle. Et chez elle, ค่ะ ferme une affirmation ou une demande, คะ ferme une question.",
+      "specimen": "สามสิบบาทครับ · ไข่เท่าไรคะ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "à vous",
+      "bodyFr": "Écoutez le dialogue en entier une première fois sans lire. Reprenez ensuite avec le texte, puis enregistrez la réplique de Nok, ขอไข่สิบฟองหน่อยค่ะ, et comparez en A/B avec la voix de référence. Votre enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u03-l3e-p2",
+      "promptFr": "Nok, une femme, veut dix œufs. Remettez les éléments dans l’ordre. Un élément est de trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "12dfc89c-f0ea-544c-adb7-cd312413784a",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c3409423-a34e-54c2-9afc-51841dc6bdc1",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f682439d-1f32-5275-836e-da2c256010c8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6bfbb372-9f43-5861-ac4a-0d8fc4075c24",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "02ca73da-f8eb-57b8-ae83-d4b630e6bbc5",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d77879fb-811a-5225-87a8-e296dfbce48a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "90393c75-f758-55fc-86ad-8c7537291d9f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "85c06988-2aff-5b75-bba7-bad984ab0f27",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

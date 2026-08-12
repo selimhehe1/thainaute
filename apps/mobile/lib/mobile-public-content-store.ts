@@ -10,7 +10,11 @@ import {
 import { publicLessonVersionIdSchema } from "@thainaute/content/public";
 import type { SQLiteDatabase } from "expo-sqlite";
 
-const SQLITE_BUSY_RETRY_COUNT = 3;
+import {
+  runMobileSQLiteTransaction,
+  serializeMobileSQLiteOperation,
+} from "./mobile-sqlite-operation-queue";
+import { getActiveMobileLanguagePack } from "./mobile-language-pack";
 
 type PublicContentCacheKind = "lesson" | "release";
 type PublicContentCacheEntry = CachedPublicLesson | CachedPublicRelease;
@@ -19,8 +23,6 @@ interface PublicContentCacheRow {
   readonly payload: string;
   readonly validated_at: string;
 }
-
-const databaseQueues = new WeakMap<object, Promise<void>>();
 
 export type MobilePublicContentCacheFailureCode =
   | "cache_conflict"
@@ -39,44 +41,11 @@ export class MobilePublicContentCacheError extends Error {
   }
 }
 
-function isSqliteBusy(error: unknown): boolean {
-  return (
-    error instanceof Error &&
-    /SQLITE_BUSY|database is locked/iu.test(error.message)
-  );
-}
-
-async function retrySqliteBusy<T>(operation: () => Promise<T>): Promise<T> {
-  for (let retry = 0; ; retry += 1) {
-    try {
-      return await operation();
-    } catch (error) {
-      if (!isSqliteBusy(error) || retry >= SQLITE_BUSY_RETRY_COUNT) throw error;
-      await new Promise<void>((resolve) =>
-        setTimeout(() => resolve(), 10 * (retry + 1)),
-      );
-    }
-  }
-}
-
 function serializeDatabaseOperation<T>(
   database: SQLiteDatabase,
   operation: () => Promise<T>,
 ): Promise<T> {
-  const previous = databaseQueues.get(database) ?? Promise.resolve();
-  const result = previous.then(
-    () => retrySqliteBusy(operation),
-    () => retrySqliteBusy(operation),
-  );
-  const tail = result.then(
-    () => undefined,
-    () => undefined,
-  );
-  databaseQueues.set(database, tail);
-  void tail.finally(() => {
-    if (databaseQueues.get(database) === tail) databaseQueues.delete(database);
-  });
-  return result;
+  return serializeMobileSQLiteOperation(database, operation);
 }
 
 function parseEntry(
@@ -88,6 +57,17 @@ function parseEntry(
       ? cachedPublicReleaseSchema.safeParse(value)
       : cachedPublicLessonSchema.safeParse(value);
   if (!result.success) {
+    throw new MobilePublicContentCacheError("cache_corrupt");
+  }
+  const activePack = getActiveMobileLanguagePack();
+  const content =
+    result.data.kind === "release"
+      ? result.data.response.release
+      : result.data.response.lesson;
+  if (
+    content.languagePackId !== activePack.id ||
+    content.targetLocale !== activePack.targetLocale
+  ) {
     throw new MobilePublicContentCacheError("cache_corrupt");
   }
   return result.data;
@@ -282,7 +262,8 @@ export class MobilePublicContentStore {
     try {
       return await serializeDatabaseOperation(this.#database, async () => {
         let stored: PublicContentCacheEntry | null | undefined;
-        await this.#database.withExclusiveTransactionAsync(
+        await runMobileSQLiteTransaction(
+          this.#database,
           async (transaction) => {
             const row = await transaction.getFirstAsync<PublicContentCacheRow>(
               `SELECT payload, validated_at
@@ -321,7 +302,8 @@ export class MobilePublicContentStore {
     try {
       return await serializeDatabaseOperation(this.#database, async () => {
         let stored: PublicContentCacheEntry | undefined;
-        await this.#database.withExclusiveTransactionAsync(
+        await runMobileSQLiteTransaction(
+          this.#database,
           async (transaction) => {
             const row = await transaction.getFirstAsync<PublicContentCacheRow>(
               `SELECT payload, validated_at

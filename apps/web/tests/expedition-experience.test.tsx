@@ -1,9 +1,13 @@
 import type { AnalyticsSink } from "@thainaute/analytics";
-import { readFiveMechanicsFixtureBundle } from "@thainaute/content";
+import {
+  readCompiledLessonBundle,
+  readFiveMechanicsFixtureBundle,
+} from "@thainaute/content";
 import {
   attemptSubmissionSchema,
   completeLocalOnboarding,
   confirmLocalLessonResult,
+  createAttemptOutboxSnapshot,
   openLocalLessonQuestion,
   prepareLocalLessonSubmission,
   selectLocalLessonOption,
@@ -16,7 +20,11 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ExpeditionExperience } from "../app/learn/demo/expedition-experience";
-import { WebAttemptOutboxStore } from "../lib/client/attempt-outbox-store";
+import {
+  WebAttemptOutboxStore,
+  type LegacyDemoFixtureMigrationOperation,
+  type LegacyDemoFixtureMigrationResult,
+} from "../lib/client/attempt-outbox-store";
 import { WebAuthSessionProvider } from "../lib/client/auth-session";
 import { WebLocalExperienceStore } from "../lib/client/local-experience-store";
 
@@ -26,6 +34,7 @@ vi.mock("next/navigation", () => ({
 }));
 
 const { lesson } = readFiveMechanicsFixtureBundle();
+const dialogueLesson = readCompiledLessonBundle("u01-l1e")?.lesson;
 const OLD_FIXTURE_LESSON_ID = "10000000-0000-4000-8000-000000000002";
 const OLD_FIXTURE_EXERCISE_ID = "10000000-0000-4000-8000-000000000004";
 
@@ -41,12 +50,23 @@ class FakeLessonAudio {
 const NativeAudio = globalThis.Audio;
 const nativeMatchMedia = window.matchMedia;
 
-function renderExpedition(analytics?: AnalyticsSink) {
+function renderExpedition(
+  analytics?: AnalyticsSink,
+  lessonOverride = lesson,
+  storageHydrationTimeoutMs?: number,
+  storageMigrationFactory?: () => LegacyDemoFixtureMigrationOperation,
+) {
   return render(
     <WebAuthSessionProvider>
       <ExpeditionExperience
-        lesson={lesson}
+        lesson={lessonOverride}
         {...(analytics === undefined ? {} : { analytics })}
+        {...(storageHydrationTimeoutMs === undefined
+          ? {}
+          : { storageHydrationTimeoutMs })}
+        {...(storageMigrationFactory === undefined
+          ? {}
+          : { storageMigrationFactory })}
       />
     </WebAuthSessionProvider>,
   );
@@ -178,6 +198,88 @@ async function passReadingCard(user: ReturnType<typeof userEvent.setup>) {
 }
 
 describe("lecteur Expédition", () => {
+  it("ferme toute la génération expirée et ignore sa reprise tardive après retry", async () => {
+    let resolveFirstMigration: (() => void) | undefined;
+    const firstMigration = new Promise<LegacyDemoFixtureMigrationResult>(
+      (resolve) => {
+        resolveFirstMigration = () =>
+          resolve({
+            status: "not_needed",
+            copiedEntries: 0,
+            deduplicatedEntries: 0,
+          });
+      },
+    );
+    const closeFirstMigration = vi.fn();
+    const closeRetryMigration = vi.fn();
+    const startMigration = vi
+      .fn<() => LegacyDemoFixtureMigrationOperation>()
+      .mockReturnValueOnce({
+        promise: firstMigration,
+        close: closeFirstMigration,
+      })
+      .mockReturnValueOnce({
+        promise: Promise.resolve({
+          status: "not_needed",
+          copiedEntries: 0,
+          deduplicatedEntries: 0,
+        }),
+        close: closeRetryMigration,
+      });
+    const read = vi
+      .spyOn(WebAttemptOutboxStore.prototype, "read")
+      .mockResolvedValue(createAttemptOutboxSnapshot());
+    const closeOutbox = vi.spyOn(WebAttemptOutboxStore.prototype, "close");
+    const closeExperience = vi.spyOn(
+      WebLocalExperienceStore.prototype,
+      "close",
+    );
+    const user = userEvent.setup();
+
+    renderExpedition(undefined, lesson, 100, startMigration);
+    await screen.findByRole("heading", {
+      name: "Vos réponses ne peuvent pas être enregistrées.",
+    });
+    expect(closeFirstMigration).toHaveBeenCalledOnce();
+    expect(closeOutbox).toHaveBeenCalled();
+    expect(closeExperience).toHaveBeenCalled();
+    expect(read).not.toHaveBeenCalled();
+
+    await user.click(
+      screen.getByRole("button", { name: "Réessayer le stockage" }),
+    );
+    await screen.findByRole("button", { name: "Commencer l’expédition" });
+    expect(startMigration).toHaveBeenCalledTimes(2);
+    expect(read).toHaveBeenCalledOnce();
+
+    resolveFirstMigration?.();
+    await firstMigration;
+    await Promise.resolve();
+    expect(read).toHaveBeenCalledOnce();
+    expect(
+      screen.getByRole("button", { name: "Commencer l’expédition" }),
+    ).toBeInTheDocument();
+    expect(closeRetryMigration).not.toHaveBeenCalled();
+  });
+
+  it("rend les pages de cours réelles sans afficher les marqueurs Markdown", async () => {
+    if (dialogueLesson === undefined) {
+      throw new Error("Leçon réelle u01-l1e absente du registre.");
+    }
+    const user = userEvent.setup();
+    renderExpedition(undefined, dialogueLesson);
+
+    await screen.findByText(/sawàtdii/u);
+    expect(screen.getByText("dii")).toBeInTheDocument();
+
+    for (let page = 0; page < 4; page += 1) {
+      await user.click(screen.getByRole("button", { name: "Page suivante" }));
+    }
+
+    expect(screen.getAllByRole("list")).toHaveLength(2);
+    expect(screen.getAllByRole("listitem")).toHaveLength(5);
+  });
+
   it("joue les cinq mécaniques puis clôt la séance", async () => {
     const user = userEvent.setup();
     renderExpedition();
@@ -203,6 +305,74 @@ describe("lecteur Expédition", () => {
     );
     await waitFor(() => expect(routerPush).toHaveBeenCalledWith("/today"));
   }, 20_000);
+
+  it("consigne les cinq mécaniques dans le journal durable, pas seulement l’écoute", async () => {
+    const user = userEvent.setup();
+    renderExpedition();
+
+    await user.click(
+      await screen.findByRole("button", { name: "Commencer l’expédition" }),
+    );
+    await passListeningCard(user);
+    await passAssociationCard(user);
+    await passWordOrderCard(user);
+    await passRecallCard(user, " ก่ ");
+    await passReadingCard(user);
+    await screen.findByRole("heading", {
+      name: "La courbe de la séance est complète.",
+    });
+
+    const store = new WebAttemptOutboxStore("thainaute-demo-v1");
+    const durable = await store.read();
+    store.close();
+
+    // Une tentative par exercice : avant, quatre sur cinq n'atteignaient
+    // jamais le journal et donc jamais le serveur.
+    expect(durable.entries).toHaveLength(5);
+    expect(
+      durable.entries.map(({ submission }) => submission.exerciseId).sort(),
+    ).toStrictEqual(lesson.exercises.map(({ id }) => id).sort());
+
+    const byExercise = new Map(
+      durable.entries.map(({ submission }) => [
+        submission.exerciseId,
+        submission,
+      ]),
+    );
+    for (const exercise of lesson.exercises) {
+      const submission = byExercise.get(exercise.id);
+      if (exercise.type === "audio_choice" || exercise.type === "reading") {
+        expect(submission?.selectedOptionId).toBe(exercise.correctOptionId);
+        expect(submission?.answer).toBeUndefined();
+      } else {
+        expect(submission?.answer?.kind).toBe(exercise.type);
+        expect(submission?.selectedOptionId).toBeUndefined();
+      }
+    }
+  }, 30_000);
+
+  it("affiche la maîtrise de chaque mécanique, plus seulement celle de l’écoute", async () => {
+    const user = userEvent.setup();
+    renderExpedition();
+
+    await user.click(
+      await screen.findByRole("button", { name: "Commencer l’expédition" }),
+    );
+    await passListeningCard(user);
+    await passAssociationCard(user);
+    await passWordOrderCard(user);
+    await passRecallCard(user, " ก่ ");
+    await passReadingCard(user);
+    await screen.findByRole("heading", {
+      name: "La courbe de la séance est complète.",
+    });
+
+    // Cinq lignes portent une maîtrise chiffrée. Aucune ne reste « à
+    // calculer », qui était le sort de quatre exercices sur cinq.
+    expect(screen.getAllByText(/^Maîtrise \d+ ‰$/u)).toHaveLength(5);
+    expect(screen.queryByText("Maîtrise à calculer")).not.toBeInTheDocument();
+    expect(screen.queryByText("À calculer")).not.toBeInTheDocument();
+  }, 30_000);
 
   it("consigne une erreur d’association sans punir", async () => {
     const user = userEvent.setup();

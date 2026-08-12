@@ -9,9 +9,16 @@ allowBuilds:
   supabase: true
   unrs-resolver: true
 
+auditConfig:
+  ignoreGhsas:
+    - GHSA-w3rx-r6r6-pgpr
+    - GHSA-5p2g-fcmc-qvqq
+
 engineStrict: true
 nodeVersion: 24.18.1
 overrides:
+  js-yaml: 4.3.1
+  nanoid: 3.3.18
   "next@16.2.12>postcss": 8.5.25
   "next@16.2.12>sharp": 0.35.3
 patchedDependencies:

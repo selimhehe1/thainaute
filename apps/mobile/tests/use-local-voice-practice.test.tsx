@@ -42,6 +42,7 @@ const testState = vi.hoisted(() => ({
     isRecording: false,
     mediaServicesDidReset: false,
   },
+  getRecordingPermissionsAsync: vi.fn(),
   requestRecordingPermissionsAsync: vi.fn(),
   setAudioModeAsync: vi.fn(),
   setIsAudioActiveAsync: vi.fn(),
@@ -90,6 +91,7 @@ function createDeferred<T>() {
 
 vi.mock("expo-audio", () => ({
   AudioModule: {
+    getRecordingPermissionsAsync: testState.getRecordingPermissionsAsync,
     requestRecordingPermissionsAsync:
       testState.requestRecordingPermissionsAsync,
   },
@@ -233,6 +235,11 @@ beforeEach(() => {
     canAskAgain: true,
     granted: true,
     status: "granted",
+  });
+  testState.getRecordingPermissionsAsync.mockResolvedValue({
+    canAskAgain: true,
+    granted: false,
+    status: "undetermined",
   });
   testState.setAudioModeAsync.mockResolvedValue(undefined);
   testState.setIsAudioActiveAsync.mockResolvedValue(undefined);
@@ -380,6 +387,23 @@ describe("useLocalVoicePractice", () => {
       expect(result.current.error).toMatch(expectedMessage);
     },
   );
+
+  it("does not re-request an already granted microphone permission", async () => {
+    testState.getRecordingPermissionsAsync.mockResolvedValue({
+      canAskAgain: true,
+      granted: true,
+      status: "granted",
+    });
+    const modelPlayer = createPlayer();
+    const { result } = renderHook(() =>
+      useLocalVoicePractice(modelPlayer as never),
+    );
+
+    await beginRecording(result.current.startRecording);
+
+    expect(testState.getRecordingPermissionsAsync).toHaveBeenCalledOnce();
+    expect(testState.requestRecordingPermissionsAsync).not.toHaveBeenCalled();
+  });
 
   it.each<StartBoundary>(["permission", "activation", "audio-mode", "prepare"])(
     "cancels safely when the app backgrounds during the %s await",
@@ -1014,6 +1038,10 @@ describe("useLocalVoicePractice", () => {
     act(() => {
       retryPromise = result.current.startRecording();
     });
+    await act(async () => {
+      await Promise.resolve();
+      await Promise.resolve();
+    });
     expect(testState.requestRecordingPermissionsAsync).toHaveBeenCalledTimes(2);
     act(() => testState.appBlurListener?.());
     await act(async () => {
@@ -1288,6 +1316,14 @@ describe("useLocalVoicePractice", () => {
           url: uri,
         });
       });
+      if (fileState === "valid") {
+        // Le timeout du décodeur n'est armé qu'après les lectures FileSystem.
+        // Sous la suite complète, avancer l'horloge avant cet instant rendait
+        // le test dépendant de la charge CPU des autres workspaces.
+        await vi.waitFor(() => {
+          expect(testState.createAudioPlayer).toHaveBeenCalledOnce();
+        });
+      }
       await act(async () => {
         await vi.advanceTimersByTimeAsync(2_600);
         await stopPromise;

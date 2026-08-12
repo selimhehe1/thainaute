@@ -1,0 +1,601 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "571575d3-13b4-5d2b-a417-f30cd00f287f",
+  "versionId": "b8cbd9e4-27ad-5763-9906-35c35adeb3ef",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Commander un plat",
+  "objectiveFr": "à la fin de la leçon, l’apprenant reconstruit le bloc complet dans l’ordre ขอ, chose, nombre, mot de comptage, หน่อย, particule sur au moins 3 assemblages sur 3, sans erreur d’ordre ni erreur de particule ; il apparie sans erreur les cinq situations de la manche 2 de l’exercice 2, ce qui demande de distinguer le contenu du contenant, จาน, ขวด ou แก้ว d’un côté et ใบ de l’autre ; et il identifie à ",
+  "requiredEntitlement": null,
+  "audioManifestId": "b696f36f-6ecc-517f-ade7-508c2e1bc09c",
+  "items": [
+    {
+      "id": "d59a112d-c264-5e09-ab91-476c845c7ae3",
+      "thaiRaw": "ข้าวผัด",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14"
+      ],
+      "translationFr": "riz sauté",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâao·phàt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข้าวผัด",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ข้าวผัด",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "29272b97-e39b-5591-b568-bc216c15548e",
+      "thaiRaw": "จาน",
+      "unicodeCodePoints": [
+        "U+0E08",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "assiette ; et, comme mot de comptage, ce qui est servi dans une assiette",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "jaan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "จาน",
+          "ipa": "t͡ɕaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "6e9644f9-2ce0-53b8-b3bc-2312bb6c430d",
+      "thaiRaw": "แก้ว",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E01",
+        "U+0E49",
+        "U+0E27"
+      ],
+      "translationFr": "verre (le récipient dans lequel on boit) ; et, comme mot de comptage, ce qui est servi dans un verre",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kâeew"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แก้ว",
+          "ipa": "kɛːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "447dc926-7127-522f-8144-a796ac6eec11",
+      "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14",
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E08",
+        "U+0E32",
+        "U+0E19",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "deux riz sautés, s’il vous plaît",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww khâao·phàt sǎwwng jaan nàwi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "t͡ɕaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli. Version féminine : ขอข้าวผัดสองจานหน่อยค่ะ, khǎww khâao·phàt sǎwwng jaan nàwi khâ.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "thaiRaw": "ขอ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D"
+      ],
+      "translationFr": "demander ; solliciter (et, en tête de phrase, « je voudrais », « puis-je »)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (la politesse vient de หน่อย et de la particule finale)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u04-l4c-p3",
+      "drawIndex": 1,
+      "id": "7e0175e1-1454-53aa-99a0-b35d210e025e",
+      "type": "word_order",
+      "itemId": "447dc926-7127-522f-8144-a796ac6eec11",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "tokens": [
+        {
+          "id": "9f9b93c2-dd10-5ad9-b7d9-ed4aa2c9e9c0",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "02afa630-c5be-5911-9a8c-55879d3c7c12",
+          "thaiRaw": "ข้าวผัด",
+          "transcription": null
+        },
+        {
+          "id": "f4d21d66-1800-5221-87ed-226f838b07fd",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "87cabf01-30cf-5420-96b9-2a181b2d324b",
+          "thaiRaw": "จาน",
+          "transcription": null
+        },
+        {
+          "id": "617d1ba0-f092-5dff-a726-c34590824918",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "2435d8a3-b396-51ea-ab5b-f3236f58a251",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "f19f0965-f300-5b70-94c0-02f99ed31910",
+          "thaiRaw": "ขวด",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "9f9b93c2-dd10-5ad9-b7d9-ed4aa2c9e9c0",
+        "02afa630-c5be-5911-9a8c-55879d3c7c12",
+        "f4d21d66-1800-5221-87ed-226f838b07fd",
+        "87cabf01-30cf-5420-96b9-2a181b2d324b",
+        "617d1ba0-f092-5dff-a726-c34590824918",
+        "2435d8a3-b396-51ea-ab5b-f3236f58a251"
+      ],
+      "feedback": {
+        "correctFr": "C’est le bon ordre. La chose, le nombre, le mot de comptage : c’est le même geste qu’en 3D, avec ขอ devant et หน่อย derrière.",
+        "incorrectFr": "Vous avez inversé le nombre et le mot de comptage. Le français dit deux assiettes de riz ; le thaï dit riz, deux, assiette.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, erreur de particule",
+            "textFr": "La particule dépend de vous, pas de la personne en face. Un homme dit khráp, une femme dit khâ, comme depuis la leçon 1E."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc n’a rien à faire là. Relisez la traduction affichée et cherchez ce qu’elle ne dit pas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4c-p3",
+      "drawIndex": 2,
+      "id": "1816b12d-9c78-5cc4-8329-b3f85ad09b73",
+      "type": "word_order",
+      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "tokens": [
+        {
+          "id": "1979bf94-8fc0-59af-a60d-876fab3dd423",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "80bd9671-6f9d-5df2-849f-bd23be97dbc7",
+          "thaiRaw": "น้ำเปล่า",
+          "transcription": null
+        },
+        {
+          "id": "86bfe46f-ad68-591a-b23a-3eab2a4a7006",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "a89b5784-8135-5da1-aada-775277eb2576",
+          "thaiRaw": "ขวด",
+          "transcription": null
+        },
+        {
+          "id": "4e6c9ab2-5a44-51dc-8855-6b8df2e61292",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "86d47cda-f245-525d-b81d-6f582e4e4c96",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "21406775-a767-5649-ba5d-9e3ba35cb1e0",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "1979bf94-8fc0-59af-a60d-876fab3dd423",
+        "80bd9671-6f9d-5df2-849f-bd23be97dbc7",
+        "86bfe46f-ad68-591a-b23a-3eab2a4a7006",
+        "a89b5784-8135-5da1-aada-775277eb2576",
+        "4e6c9ab2-5a44-51dc-8855-6b8df2e61292",
+        "86d47cda-f245-525d-b81d-6f582e4e4c96"
+      ],
+      "feedback": {
+        "correctFr": "C’est le bon ordre. La chose, le nombre, le mot de comptage : c’est le même geste qu’en 3D, avec ขอ devant et หน่อย derrière.",
+        "incorrectFr": "Vous avez inversé le nombre et le mot de comptage. Le français dit deux assiettes de riz ; le thaï dit riz, deux, assiette.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, erreur de particule",
+            "textFr": "La particule dépend de vous, pas de la personne en face. Un homme dit khráp, une femme dit khâ, comme depuis la leçon 1E."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc n’a rien à faire là. Relisez la traduction affichée et cherchez ce qu’elle ne dit pas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4c-p3",
+      "drawIndex": 3,
+      "id": "aa1cd085-a306-56fe-aa78-19e1d4cd7633",
+      "type": "word_order",
+      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "tokens": [
+        {
+          "id": "66553f5e-55f5-5036-90a5-5eab681c59b2",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "12593dee-852f-5d14-806a-1894c8de0f64",
+          "thaiRaw": "น้ำเปล่า",
+          "transcription": null
+        },
+        {
+          "id": "2c892c2b-806c-57e5-b09c-e1792bb384c1",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "81ad5ea9-aae0-50a6-825e-fe699adea2c8",
+          "thaiRaw": "แก้ว",
+          "transcription": null
+        },
+        {
+          "id": "df60b919-b8dd-5705-a100-7e57db6e56ac",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "3898d374-58ec-551b-aa40-bbc593f07111",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "8a594587-2e18-5a05-bccd-00883558ca29",
+          "thaiRaw": "จาน",
+          "transcription": null
+        },
+        {
+          "id": "b3890fc3-e787-5695-a547-629ab298d47e",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "66553f5e-55f5-5036-90a5-5eab681c59b2",
+        "12593dee-852f-5d14-806a-1894c8de0f64",
+        "2c892c2b-806c-57e5-b09c-e1792bb384c1",
+        "81ad5ea9-aae0-50a6-825e-fe699adea2c8",
+        "df60b919-b8dd-5705-a100-7e57db6e56ac",
+        "3898d374-58ec-551b-aa40-bbc593f07111"
+      ],
+      "feedback": {
+        "correctFr": "C’est le bon ordre. La chose, le nombre, le mot de comptage : c’est le même geste qu’en 3D, avec ขอ devant et หน่อย derrière.",
+        "incorrectFr": "Vous avez inversé le nombre et le mot de comptage. Le français dit deux assiettes de riz ; le thaï dit riz, deux, assiette.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, erreur de particule",
+            "textFr": "La particule dépend de vous, pas de la personne en face. Un homme dit khráp, une femme dit khâ, comme depuis la leçon 1E."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc n’a rien à faire là. Relisez la traduction affichée et cherchez ce qu’elle ne dit pas."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous savez déjà commander",
+      "bodyFr": "Vous avez appris ขอ … หน่อย en 2C, puis vous avez ajouté un nombre et un mot de comptage en 3D, et vous avez acheté dix œufs en 3E. Commander à table, c’est exactement la même phrase. Aujourd’hui vous ne changez que ce qu’il y a dedans.",
+      "specimen": "ขอ … หน่อยครับ"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "deux choses à demander",
+      "bodyFr": "ข้าวผัด (khâao·phàt), c’est le riz sauté. Vous en connaissez déjà la première moitié, ข้าว, le riz, appris en 4A ; la seconde, ผัด, veut dire faire sauter à la poêle. น้ำเปล่า (náam·plào), c’est l’eau plate, l’eau nature, celle qu’on vous apporte sans rien dedans. Vous connaissez déjà น้ำ depuis 2C, et เปล่า veut dire vide, sans rien.",
+      "specimen": "ข้าวผัด · น้ำเปล่า"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "le contenant sert à compter",
+      "bodyFr": "Voici l’idée neuve de la leçon, et elle est simple. Pour compter ce qu’on vous sert, le thaï prend le nom du contenant. Une assiette se dit จาน (jaan), et un plat servi dans une assiette se compte en จาน. Un verre se dit แก้ว (kâeew), une bouteille se dit ขวด (khòuat), et une boisson se compte donc en แก้ว ou en ขวด selon ce qu’on vous tend.",
+      "specimen": "จาน · แก้ว · ขวด"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "le bloc entier, six morceaux",
+      "bodyFr": "Mettez tout bout à bout, dans l’ordre appris en 3D : la chose, puis le nombre, puis le mot de comptage. Le ขอ ouvre, le หน่อย adoucit, la particule ferme.\n\n> ขอ ข้าวผัด สอง จาน หน่อย ครับ > khǎww khâao·phàt sǎwwng jaan nàwi khráp\n\nMot à mot : demander, riz sauté, deux, assiette, un peu, particule. En thaï tout s’écrit collé ; notre transcription sépare les blocs pour que vous voyiez lesquels sont remplaçables.",
+      "specimen": null
+    },
+    {
+      "ordre": 5,
+      "titleFr": "ce qui bouge, et ce qui ne bouge pas",
+      "bodyFr": "Regardez la même phrase avec une autre commande. Trois blocs seulement ont changé : la chose, le mot de comptage, et la particule, qui suit la personne qui parle et non la personne en face. Le ขอ, le nombre et le หน่อย, eux, sont restés exactement où ils étaient.\n\n> ขอ น้ำเปล่า สอง ขวด หน่อย ค่ะ > khǎww náam·plào sǎwwng khòuat nàwi khâ\n\nUne réserve honnête, déjà signalée en 3D : avec le nombre « un », les sources donnent aussi l’ordre inverse, chose puis mot de comptage puis « un ». Aujourd’hui vous commandez à partir de deux, et cette question ne se pose pas.",
+      "specimen": null
+    },
+    {
+      "ordre": 6,
+      "titleFr": "à vous",
+      "bodyFr": "Un seul réflexe à installer aujourd’hui, et il est d’ordre, pas de son : la chose, le nombre, le mot de comptage. Si vous hésitez sur le mot de comptage, demandez-vous dans quoi on va vous l’apporter.\n\nAprès les exercices, enregistrez-vous en disant ขอข้าวผัดสองจานหน่อยครับ, puis comparez en A/B avec la voix de référence. Écoutez surtout le début : khǎww monte, khâao tombe. C’est là que la phrase se joue, et, du premier bloc au dernier, elle vous fait produire les cinq tons du thaï. Votre enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u04-l4c-p3",
+      "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",
+      "mechanic": "word_order",
+      "drawCount": 3,
+      "passRequired": 3,
+      "sampleSize": 3
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "d41b863a-9f78-53c7-a2e8-323e743e0e44",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e7f5a7e2-7158-5044-9bdb-78a19982d420",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "022631bb-785e-50b5-8d68-fa2faf98f7b4",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "27296cec-690c-587b-a1ea-7a879b70b3b4",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3baa3111-8575-5265-a31c-bb6722ce62ef",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "fe08c025-240a-5bd5-90c7-2651ca305ac1",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1126e97b-0039-50ca-90ce-7fae05251cfb",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e31a1dd7-8d57-5d2a-8432-ad9a2b46e824",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

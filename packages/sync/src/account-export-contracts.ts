@@ -1,6 +1,8 @@
 import { SKILL_DIMENSIONS } from "@thainaute/domain";
 import { z } from "zod";
 
+import { attemptAnswerSchema } from "./contracts";
+
 export const ACCOUNT_EXPORT_FORMAT = "thainaute.account-export/v2" as const;
 export const ACCOUNT_EXPORT_FILE_NAME = "thainaute-account-export-v2.json";
 
@@ -72,21 +74,64 @@ export const accountExportDeviceSchema = z.strictObject({
   createdAt: utcIsoTimestampSchema,
 });
 
-export const accountExportAttemptEventSchema = z.strictObject({
-  eventId: canonicalUuidSchema,
-  deviceId: canonicalUuidSchema,
-  exerciseId: canonicalUuidSchema,
-  itemId: canonicalUuidSchema,
-  lessonVersionId: canonicalUuidSchema,
-  selectedOptionId: canonicalUuidSchema,
-  skill: z.enum(SKILL_DIMENSIONS),
-  rating: z.union([z.literal(0), z.literal(1)]),
-  answeredAt: utcIsoTimestampSchema,
-  durationMs: z.number().int().min(0).max(1_800_000),
-  algorithmVersion: z.string().regex(/^[0-9A-Za-z._-]{1,64}$/u),
-  payloadSha256: z.string().regex(/^[0-9a-f]{64}$/u),
-  receivedAt: utcIsoTimestampSchema,
-});
+export const accountExportAttemptAnswerSchema = attemptAnswerSchema.superRefine(
+  (answer, context) => {
+    if (answer.kind !== "association") return;
+
+    const promptIds = answer.pairs.map(({ promptPairId }) => promptPairId);
+    const chosenIds = answer.pairs.map(({ chosenPairId }) => chosenPairId);
+    if (new Set(promptIds).size !== promptIds.length) {
+      context.addIssue({
+        code: "custom",
+        message: "Chaque paire proposée ne peut être appariée qu'une fois.",
+        path: ["pairs"],
+      });
+    }
+    if (new Set(chosenIds).size !== chosenIds.length) {
+      context.addIssue({
+        code: "custom",
+        message: "Chaque étiquette ne peut être choisie qu'une fois.",
+        path: ["pairs"],
+      });
+    }
+  },
+);
+
+export const accountExportAttemptEventSchema = z
+  .strictObject({
+    eventId: canonicalUuidSchema,
+    deviceId: canonicalUuidSchema,
+    exerciseId: canonicalUuidSchema,
+    itemId: canonicalUuidSchema,
+    lessonVersionId: canonicalUuidSchema,
+    /** UUID historique pour l'écoute et la lecture ; `null` sinon. */
+    selectedOptionId: canonicalUuidSchema.nullable(),
+    /**
+     * Absent seulement dans un document v2 produit avant les réponses typées.
+     * Les nouveaux exports émettent explicitement `null` pour une option.
+     */
+    answer: accountExportAttemptAnswerSchema.nullable().optional(),
+    skill: z.enum(SKILL_DIMENSIONS),
+    rating: z.union([z.literal(0), z.literal(1)]),
+    answeredAt: utcIsoTimestampSchema,
+    durationMs: z.number().int().min(0).max(1_800_000),
+    algorithmVersion: z.string().regex(/^[0-9A-Za-z._-]{1,64}$/u),
+    payloadSha256: z.string().regex(/^[0-9a-f]{64}$/u),
+    receivedAt: utcIsoTimestampSchema,
+  })
+  .superRefine((attempt, context) => {
+    const hasOption = attempt.selectedOptionId !== null;
+    const hasTypedAnswer =
+      attempt.answer !== undefined && attempt.answer !== null;
+    if (hasOption === hasTypedAnswer) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "Une tentative exportée porte soit une option choisie, soit une réponse typée.",
+        path: ["answer"],
+      });
+    }
+  });
 
 export const accountExportContentReportSchema = z.strictObject({
   idempotencyKey: canonicalUuidSchema,
@@ -272,6 +317,9 @@ export type AccountExportProfile = z.infer<typeof accountExportProfileSchema>;
 export type AccountExportDevice = z.infer<typeof accountExportDeviceSchema>;
 export type AccountExportAttemptEvent = z.infer<
   typeof accountExportAttemptEventSchema
+>;
+export type AccountExportAttemptAnswer = z.infer<
+  typeof accountExportAttemptAnswerSchema
 >;
 export type AccountExportContentReport = z.infer<
   typeof accountExportContentReportSchema

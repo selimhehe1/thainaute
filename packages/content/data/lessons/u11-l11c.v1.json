@@ -1,0 +1,1171 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "f880156d-ee9f-50fa-ae40-bf43b8d2f628",
+  "versionId": "5d839c0d-7dfc-55ea-a86d-f549a338fc03",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Enchaîner sans bloquer",
+  "objectiveFr": "à la fin de la leçon, devant une phrase à reconstruire dont le mot de liaison est fourni comme un bloc parmi les autres, l’apprenant pose ce bloc à sa place et rend la phrase entière, sur 7 phrases sur 8 ; il entend lequel des cinq mots de liaison est employé dans une phrase dite à débit normal, sur 8 tirages sur 10 ; devant une phrase écrite trouée et sa traduction française, il choisit le mot qu",
+  "requiredEntitlement": null,
+  "audioManifestId": "a68a348c-df89-53e8-8d53-84f31a557fd5",
+  "items": [
+    {
+      "id": "c21ec58d-f35c-5c7c-af63-0ca6ef019395",
+      "thaiRaw": "และ",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E30"
+      ],
+      "translationFr": "et (relie deux choses de même nature, et se place entre elles)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láe"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "และ",
+          "ipa": "lɛʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "l",
+          "final": "aucune"
+        }
+      ],
+      "register": "**NON ÉTABLI.** Une seule des trois sources consultées porte une étiquette, et elle dit `formal` : en.wiktionary écrit `{{lb|th|formal}}` en tête de sa ligne de définition, relevé en `action=raw` le 2026-08-04. L’absence d’étiquette sur la vedette และ ๒ du RID et l’absence du code `(form.)` à la ligne 47205 de VOLUBILIS sont des ABSENCES : rien n’établit que VOLUBILIS applique ce code systématiquement, et le RID n’étiquette qu’une partie de ses vedettes. Écrire « neutre » serait donc trancher sans source contre la seule source qui parle, ce que la leçon refuse ici comme elle le refuse pour la longueur de ก็. **Aucune étiquette de registre n’est affichée à l’apprenant**, et la leçon prend une précaution de conception à la place : และ n’est demandé que dans des énumérations. Voir l’incertitude 1 et l’arbitrage 6.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "7d4f848e-728a-50c3-bcc9-4ffa1e7a68ca",
+      "thaiRaw": "แต่",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E15",
+        "U+0E48"
+      ],
+      "translationFr": "mais (ouvre le morceau qui contredit ce qui vient d’être dit)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tàee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แต่",
+          "ipa": "tɛː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "t",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "57ad1066-44b9-5c93-a334-6207dca1f221",
+      "thaiRaw": "ด้วย",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E49",
+        "U+0E27",
+        "U+0E22"
+      ],
+      "translationFr": "posé à la fin d’un énoncé, ajoute : marque que ce qui vient d’être dit vaut aussi pour la personne ou la chose dont on parle ; se rend en français par « aussi »",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dôuai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ด้วย",
+          "ipa": "dua̯j˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "03dda86c-d806-5e2a-93d3-0da4c0d954ac",
+      "thaiRaw": "แล้ว",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27"
+      ],
+      "translationFr": "en fin de phrase, marque que c’est accompli ou que l’état est désormais en place ; se rend en français par « déjà », « maintenant », ou par le seul temps du verbe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้ว",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "962f2ceb-1fd0-5d0c-82d8-57a0f44f99ad",
+      "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21",
+        "U+0E21",
+        "U+0E35",
+        "U+0E1E",
+        "U+0E35",
+        "U+0E48",
+        "U+0E0A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E41",
+        "U+0E25",
+        "U+0E30",
+        "U+0E19",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E2A",
+        "U+0E32",
+        "U+0E27",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "J’ai un grand frère et une petite sœur.",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm mii phîi·chaai láe náwwng·sǎao khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
+          "ipa": "pʰom˩˩˦ miː˧ pʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
+          "ipa": "t͡ɕʰaːj˧ lɛʔ˦˥ nɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ผมมีพี่ชายและน้องสาวครับ",
+          "ipa": "saːw˩˩˦ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre, poli par la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "60cec83f-423d-5994-afea-917680186cc2",
+      "thaiRaw": "อร่อยแต่เผ็ดมากครับ",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E23",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E41",
+        "U+0E15",
+        "U+0E48",
+        "U+0E40",
+        "U+0E1C",
+        "U+0E47",
+        "U+0E14",
+        "U+0E21",
+        "U+0E32",
+        "U+0E01",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "C’est bon, mais c’est très épicé.",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "à·ràwi tàee phèt mâak khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อร่อยแต่เผ็ดมากครับ",
+          "ipa": "ʔa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อร่อยแต่เผ็ดมากครับ",
+          "ipa": "rɔj˨˩ tɛː˨˩ pʰet̚˨˩ maːk̚˥˩ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre, poli par la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "3310dfeb-98ba-5a8f-90c5-faebef74881b",
+      "thaiRaw": "แพงเกินไปผมก็ไม่เอาครับ",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E1E",
+        "U+0E07",
+        "U+0E40",
+        "U+0E01",
+        "U+0E34",
+        "U+0E19",
+        "U+0E44",
+        "U+0E1B",
+        "U+0E1C",
+        "U+0E21",
+        "U+0E01",
+        "U+0E47",
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E40",
+        "U+0E2D",
+        "U+0E32",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "C’est trop cher, alors je ne le prends pas.",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phaeeng koeen·pai phǒm kâw mâi ao khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แพงเกินไปผมก็ไม่เอาครับ",
+          "ipa": "pʰɛːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "แพงเกินไปผมก็ไม่เอาครับ",
+          "ipa": "kɤːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "แพงเกินไปผมก็ไม่เอาครับ",
+          "ipa": "paj˧ pʰom˩˩˦ kɔʔ˥˩ maj˥˩ ʔaw˧ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre, poli par la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "thaiRaw": "ดิฉัน",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "je, moi (locutrice femme, échange poli)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "thaiRaw": "มี",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35"
+      ],
+      "translationFr": "avoir ; posséder",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มี",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "5302f19f-6702-5094-a265-594987302b16",
+      "thaiRaw": "ถูก",
+      "unicodeCodePoints": [
+        "U+0E16",
+        "U+0E39",
+        "U+0E01"
+      ],
+      "translationFr": "bon marché, d’un prix bas",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thòuuk"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ถูก",
+          "ipa": "tʰuːk̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u11-l11c-p1",
+      "drawIndex": 1,
+      "id": "26329c83-a2d1-5828-8f72-3855b916fb65",
+      "type": "word_order",
+      "itemId": "962f2ceb-1fd0-5d0c-82d8-57a0f44f99ad",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "95c70028-49d7-5d28-a26d-a053d128942b",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "b0e3d582-fc1d-50ba-a601-65bb2cf12925",
+          "thaiRaw": "มี",
+          "transcription": null
+        },
+        {
+          "id": "b581c7de-5f6c-52a1-9317-2bcaaa2b8b18",
+          "thaiRaw": "พี่ชาย",
+          "transcription": null
+        },
+        {
+          "id": "d65262bc-27ba-5b47-aaf9-186eba81615c",
+          "thaiRaw": "และ",
+          "transcription": null
+        },
+        {
+          "id": "cce03675-fbdf-5ecf-800e-37efaae1acf5",
+          "thaiRaw": "น้องสาว",
+          "transcription": null
+        },
+        {
+          "id": "3d6b9647-332a-5ef2-b5e2-4f0cd0f4e6ee",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "87dfb7eb-af13-5466-87af-1d8edda4288a",
+          "thaiRaw": "แต่",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "95c70028-49d7-5d28-a26d-a053d128942b",
+        "b0e3d582-fc1d-50ba-a601-65bb2cf12925",
+        "b581c7de-5f6c-52a1-9317-2bcaaa2b8b18",
+        "d65262bc-27ba-5b47-aaf9-186eba81615c",
+        "cce03675-fbdf-5ecf-800e-37efaae1acf5",
+        "3d6b9647-332a-5ef2-b5e2-4f0cd0f4e6ee"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le mot ET sa place, ensemble.",
+        "incorrectFr": "Presque. En français « alors",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Bien joué, c’est la place que le français ne donne pas : le sujet passe devant ก็."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, และ ou แต่ posé à la fin",
+            "textFr": "Presque. Ces deux mots-là ne ferment jamais une phrase : ils tiennent deux morceaux, donc ils sont entre eux."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop laissé dans la phrase",
+            "textFr": "La phrase est bien ordonnée, mais un mot de liaison est resté dedans. Il n’y en a qu’un par phrase."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11c-p1",
+      "drawIndex": 2,
+      "id": "89589109-06c0-520a-9afe-a149e96bdfd5",
+      "type": "word_order",
+      "itemId": "60cec83f-423d-5994-afea-917680186cc2",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "d2e66234-4a67-506b-9dae-10f88a36bcb2",
+          "thaiRaw": "อร่อย",
+          "transcription": null
+        },
+        {
+          "id": "12be3ee1-3742-55eb-b8eb-7754bb5c3959",
+          "thaiRaw": "แต่",
+          "transcription": null
+        },
+        {
+          "id": "6ed02a6a-f6a1-5da1-a40d-c5efe386d510",
+          "thaiRaw": "เผ็ด",
+          "transcription": null
+        },
+        {
+          "id": "162c8098-19e1-55e6-9a20-116ade5bf88d",
+          "thaiRaw": "มาก",
+          "transcription": null
+        },
+        {
+          "id": "1b0f8d5c-581e-54e3-b7b1-7ab064dec198",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "09f5f2d1-3730-5f46-a772-96cad2d24293",
+          "thaiRaw": "และ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "d2e66234-4a67-506b-9dae-10f88a36bcb2",
+        "12be3ee1-3742-55eb-b8eb-7754bb5c3959",
+        "6ed02a6a-f6a1-5da1-a40d-c5efe386d510",
+        "162c8098-19e1-55e6-9a20-116ade5bf88d",
+        "1b0f8d5c-581e-54e3-b7b1-7ab064dec198"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le mot ET sa place, ensemble.",
+        "incorrectFr": "Presque. En français « alors",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Bien joué, c’est la place que le français ne donne pas : le sujet passe devant ก็."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, และ ou แต่ posé à la fin",
+            "textFr": "Presque. Ces deux mots-là ne ferment jamais une phrase : ils tiennent deux morceaux, donc ils sont entre eux."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop laissé dans la phrase",
+            "textFr": "La phrase est bien ordonnée, mais un mot de liaison est resté dedans. Il n’y en a qu’un par phrase."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11c-p1",
+      "drawIndex": 3,
+      "id": "87a15778-042b-50b5-8d81-7351adc5ad73",
+      "type": "word_order",
+      "itemId": "3310dfeb-98ba-5a8f-90c5-faebef74881b",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "915d05b3-cf10-57dc-a6b5-2f0bd941cf46",
+          "thaiRaw": "แพงเกินไป",
+          "transcription": null
+        },
+        {
+          "id": "372852b5-7606-5098-9e73-16285c8e2ed9",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "61d02ca0-d269-56fe-8173-b57ba0ea6d14",
+          "thaiRaw": "ก็",
+          "transcription": null
+        },
+        {
+          "id": "78f2e74d-e536-570c-9b41-b8103172c622",
+          "thaiRaw": "ไม่",
+          "transcription": null
+        },
+        {
+          "id": "0556768b-1791-5829-97a5-149707afb851",
+          "thaiRaw": "เอา",
+          "transcription": null
+        },
+        {
+          "id": "b26f5d3c-78a4-58a3-adf8-8f886e2f0835",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "e654c97f-a9d6-57cf-88f4-b7f2c41a24d4",
+          "thaiRaw": "แต่",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "915d05b3-cf10-57dc-a6b5-2f0bd941cf46",
+        "372852b5-7606-5098-9e73-16285c8e2ed9",
+        "61d02ca0-d269-56fe-8173-b57ba0ea6d14",
+        "78f2e74d-e536-570c-9b41-b8103172c622",
+        "0556768b-1791-5829-97a5-149707afb851",
+        "b26f5d3c-78a4-58a3-adf8-8f886e2f0835"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le mot ET sa place, ensemble.",
+        "incorrectFr": "Presque. En français « alors",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Bien joué, c’est la place que le français ne donne pas : le sujet passe devant ก็."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, และ ou แต่ posé à la fin",
+            "textFr": "Presque. Ces deux mots-là ne ferment jamais une phrase : ils tiennent deux morceaux, donc ils sont entre eux."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop laissé dans la phrase",
+            "textFr": "La phrase est bien ordonnée, mais un mot de liaison est resté dedans. Il n’y en a qu’un par phrase."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11c-p1",
+      "drawIndex": 4,
+      "id": "09458cc0-efc5-5abb-a64f-96c2b41b978f",
+      "type": "word_order",
+      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "33ba3a97-e77c-5f4c-ba7a-e3d9b3fce3d9",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        },
+        {
+          "id": "191a040f-a950-5749-8609-36b87786fb1b",
+          "thaiRaw": "เอา",
+          "transcription": null
+        },
+        {
+          "id": "e794793e-7afa-5908-802a-8c0b5cbacd84",
+          "thaiRaw": "ด้วย",
+          "transcription": null
+        },
+        {
+          "id": "18a9e818-ca56-54d2-bf97-2641c25f6b36",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "f266d8ce-5850-5ee8-bc2f-1a721992dfe6",
+          "thaiRaw": "ก็",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "33ba3a97-e77c-5f4c-ba7a-e3d9b3fce3d9",
+        "191a040f-a950-5749-8609-36b87786fb1b",
+        "e794793e-7afa-5908-802a-8c0b5cbacd84",
+        "18a9e818-ca56-54d2-bf97-2641c25f6b36"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le mot ET sa place, ensemble.",
+        "incorrectFr": "Presque. En français « alors",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Bien joué, c’est la place que le français ne donne pas : le sujet passe devant ก็."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, และ ou แต่ posé à la fin",
+            "textFr": "Presque. Ces deux mots-là ne ferment jamais une phrase : ils tiennent deux morceaux, donc ils sont entre eux."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop laissé dans la phrase",
+            "textFr": "La phrase est bien ordonnée, mais un mot de liaison est resté dedans. Il n’y en a qu’un par phrase."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11c-p1",
+      "drawIndex": 5,
+      "id": "5c6d6f9a-0a94-5325-acb2-b3994d0bd79c",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "42c32ab6-2984-50a0-979a-04f39b3901fa",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "ae647ef1-49b1-5833-ad69-156b9822c8bd",
+          "thaiRaw": "กิน",
+          "transcription": null
+        },
+        {
+          "id": "b5298b1c-79c2-536d-8335-8b5c2af159f9",
+          "thaiRaw": "ข้าว",
+          "transcription": null
+        },
+        {
+          "id": "259ee92a-2076-521f-a552-80e4de4b7708",
+          "thaiRaw": "แล้ว",
+          "transcription": null
+        },
+        {
+          "id": "9965f9ea-4700-527f-af69-dfb5c26be00d",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "a266a14e-3cdb-549f-bb4e-6820042d8781",
+          "thaiRaw": "ด้วย",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "42c32ab6-2984-50a0-979a-04f39b3901fa",
+        "ae647ef1-49b1-5833-ad69-156b9822c8bd",
+        "b5298b1c-79c2-536d-8335-8b5c2af159f9",
+        "259ee92a-2076-521f-a552-80e4de4b7708",
+        "9965f9ea-4700-527f-af69-dfb5c26be00d"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le mot ET sa place, ensemble.",
+        "incorrectFr": "Presque. En français « alors",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Bien joué, c’est la place que le français ne donne pas : le sujet passe devant ก็."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, และ ou แต่ posé à la fin",
+            "textFr": "Presque. Ces deux mots-là ne ferment jamais une phrase : ils tiennent deux morceaux, donc ils sont entre eux."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop laissé dans la phrase",
+            "textFr": "La phrase est bien ordonnée, mais un mot de liaison est resté dedans. Il n’y en a qu’un par phrase."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11c-p1",
+      "drawIndex": 6,
+      "id": "fa639a0f-91e2-5173-a0fa-22ca3a58ce82",
+      "type": "word_order",
+      "itemId": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "c2c3d16e-87d6-53db-89e3-2c0235412b8f",
+          "thaiRaw": "มี",
+          "transcription": null
+        },
+        {
+          "id": "65a734b7-e655-553c-9118-2bd6a2258815",
+          "thaiRaw": "ข้าวผัดหมู",
+          "transcription": null
+        },
+        {
+          "id": "f69620a2-5f9f-5282-95e8-a51548eb1e99",
+          "thaiRaw": "และ",
+          "transcription": null
+        },
+        {
+          "id": "1a5a67ac-0c0a-52fb-8ac5-fd490f039936",
+          "thaiRaw": "ข้าวผัดไก่",
+          "transcription": null
+        },
+        {
+          "id": "888d9cb8-4a96-5c0a-a4ad-1bc0e132ffd2",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "7a99ba66-ae13-5240-8501-06c7ed5b45c4",
+          "thaiRaw": "ก็",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "c2c3d16e-87d6-53db-89e3-2c0235412b8f",
+        "65a734b7-e655-553c-9118-2bd6a2258815",
+        "f69620a2-5f9f-5282-95e8-a51548eb1e99",
+        "1a5a67ac-0c0a-52fb-8ac5-fd490f039936",
+        "888d9cb8-4a96-5c0a-a4ad-1bc0e132ffd2"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le mot ET sa place, ensemble.",
+        "incorrectFr": "Presque. En français « alors",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Bien joué, c’est la place que le français ne donne pas : le sujet passe devant ก็."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, และ ou แต่ posé à la fin",
+            "textFr": "Presque. Ces deux mots-là ne ferment jamais une phrase : ils tiennent deux morceaux, donc ils sont entre eux."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop laissé dans la phrase",
+            "textFr": "La phrase est bien ordonnée, mais un mot de liaison est resté dedans. Il n’y en a qu’un par phrase."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11c-p1",
+      "drawIndex": 7,
+      "id": "e3725def-b017-5a33-8262-fae2b7b9cedf",
+      "type": "word_order",
+      "itemId": "5302f19f-6702-5094-a265-594987302b16",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "cbdd4c0e-4498-5784-88a3-be0c6ed6fed2",
+          "thaiRaw": "ถูก",
+          "transcription": null
+        },
+        {
+          "id": "2bec4777-66bf-5005-bb3c-413db044522b",
+          "thaiRaw": "แต่",
+          "transcription": null
+        },
+        {
+          "id": "64255c66-807d-5d9f-9559-ef656d39261d",
+          "thaiRaw": "อร่อย",
+          "transcription": null
+        },
+        {
+          "id": "b125363c-7f7e-536e-a8f6-19aaff60c77c",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "91d50811-30a5-5c3b-bf3b-7b6e3824b621",
+          "thaiRaw": "แล้ว",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "cbdd4c0e-4498-5784-88a3-be0c6ed6fed2",
+        "2bec4777-66bf-5005-bb3c-413db044522b",
+        "64255c66-807d-5d9f-9559-ef656d39261d",
+        "b125363c-7f7e-536e-a8f6-19aaff60c77c"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le mot ET sa place, ensemble.",
+        "incorrectFr": "Presque. En français « alors",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Bien joué, c’est la place que le français ne donne pas : le sujet passe devant ก็."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, และ ou แต่ posé à la fin",
+            "textFr": "Presque. Ces deux mots-là ne ferment jamais une phrase : ils tiennent deux morceaux, donc ils sont entre eux."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop laissé dans la phrase",
+            "textFr": "La phrase est bien ordonnée, mais un mot de liaison est resté dedans. Il n’y en a qu’un par phrase."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11c-p1",
+      "drawIndex": 8,
+      "id": "86c652f8-3440-57b1-9657-68fa40b84043",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "8e4da65a-37b6-5d13-8df5-e1d1213dff4f",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "ec754326-d2fc-5906-8860-990a0a54e390",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "51404f68-1ba6-5cf4-83e3-61c161e948b0",
+          "thaiRaw": "ด้วย",
+          "transcription": null
+        },
+        {
+          "id": "aa38107d-9868-515f-a98f-af53dd165d80",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "a6589369-a971-5a88-815c-9f7e91ecac54",
+          "thaiRaw": "และ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "8e4da65a-37b6-5d13-8df5-e1d1213dff4f",
+        "ec754326-d2fc-5906-8860-990a0a54e390",
+        "51404f68-1ba6-5cf4-83e3-61c161e948b0",
+        "aa38107d-9868-515f-a98f-af53dd165d80"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le mot ET sa place, ensemble.",
+        "incorrectFr": "Presque. En français « alors",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Bien joué, c’est la place que le français ne donne pas : le sujet passe devant ก็."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, และ ou แต่ posé à la fin",
+            "textFr": "Presque. Ces deux mots-là ne ferment jamais une phrase : ils tiennent deux morceaux, donc ils sont entre eux."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop laissé dans la phrase",
+            "textFr": "La phrase est bien ordonnée, mais un mot de liaison est resté dedans. Il n’y en a qu’un par phrase."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "ce qui vous manque n’est plus du vocabulaire",
+      "bodyFr": "Vous savez commander, demander un prix, dire que vous n’allez pas bien, compter et lire. Ce qui casse encore une conversation, ce n’est plus le mot : c’est le blanc entre deux phrases. Aujourd’hui vous n’apprenez que trois mots, et ils ne servent à rien tout seuls. Ils servent à ne pas s’arrêter.",
+      "specimen": "และ (láe) · แต่ (tàee) · ก็ (kâw)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "quatre liens, quatre places",
+      "bodyFr": "Voici tout ce que dit la leçon, en une page. Retenez le mot ET sa place, jamais l’un sans l’autre.\n\n> **และ** se met ENTRE les deux choses reliées. > **แต่** se met EN TÊTE du second morceau. > **ก็** se met JUSTE DEVANT le verbe du second morceau. > **ด้วย** se met À LA FIN.\n\nUn cinquième mot occupe la même place que ด้วย et vous le connaissez déjà : **แล้ว**, appris en 9D, se met lui aussi à la fin. La page 8 dit ce qui les sépare.",
+      "specimen": "และ · แต่ · ก็ · ด้วย · แล้ว"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "และ, entre les deux",
+      "bodyFr": "C’est le lien le plus simple, et sa place est celle du français : il tient deux choses de même nature et se glisse entre elles.\n\n> มีข้าวผัดหมู **และ** ข้าวผัดไก่ค่ะ > Il y a du riz sauté au porc et du riz sauté au poulet.\n\nDeux plats appris en 10C, un mot entre les deux, rien d’autre. Il fonctionne aussi bien sur des personnes.\n\n> ผมมีพี่ชาย **และ** น้องสาวครับ > J’ai un grand frère et une petite sœur.\n\nUne chose à savoir avant de l’employer partout : le dictionnaire normatif explique และ par deux autres mots, que ce cours n’enseigne ni l’un ni l’autre. Ce cours ne vous donne aujourd’hui que และ, et seulement pour relier deux choses de même nature.",
+      "specimen": "ข้าวผัดหมูและข้าวผัดไก่ · พี่ชายและน้องสาว"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "แต่, en tête du second morceau",
+      "bodyFr": "แต่ ne se glisse pas entre deux choses : il OUVRE le morceau qui contredit le précédent. Dites la première chose en entier, puis commencez la seconde par lui.\n\n> อร่อย **แต่** เผ็ดมากครับ > C’est bon, mais c’est très épicé.\n\n> ถูก **แต่** อร่อยค่ะ > Ce n’est pas cher, mais c’est bon.\n\nÀ l’œil la différence avec และ est mince, puisque les deux se retrouvent au milieu de la phrase. À l’usage elle est nette : และ ajoute, แต่ retourne. Si le second morceau va dans le même sens que le premier, ce n’est pas แต่.",
+      "specimen": "อร่อยแต่เผ็ดมาก · ถูกแต่อร่อย"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "ก็, juste devant le verbe",
+      "bodyFr": "C’est la place qui surprend, et c’est la seule qu’un francophone ne devine pas. En français, « alors » ouvre la phrase : « alors je ne le prends pas ». En thaï, ก็ ne l’ouvre pas. Le sujet passe d’abord, ก็ vient ensuite, et le verbe le suit immédiatement.\n\n> แพงเกินไป ผม **ก็** ไม่เอาครับ > C’est trop cher, alors je ne le prends pas.\n\n> เผ็ดเกินไป ดิฉัน **ก็** ไม่กินค่ะ > C’est trop épicé, alors je n’en mange pas.\n\nLisez l’ordre à voix haute : le premier morceau, le sujet, ก็, le verbe. Dans les deux phrases ci-dessus le verbe est nié, et le ไม่ se pose là où 4D vous l’a appris, devant le mot qu’il nie : ก็ garde sa place devant l’ensemble ไม่เอา, ไม่กิน.",
+      "specimen": "ผมก็ไม่เอา · ดิฉันก็ไม่กิน"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "ด้วย, à la fin",
+      "bodyFr": "Vous avez déjà rencontré ce mot en 9C, à la fin de ช่วยด้วย, où il portait la demande. Les trois ouvrages consultés lui enregistrent aussi un autre emploi, séparément du premier, et il se pose de la même façon : APRÈS ce à quoi il s’ajoute. Dans les phrases du jour, ce à quoi il s’ajoute est le verbe, donc il se retrouve à la fin, juste avant la particule polie. Il dit que ce qui vient d’être dit vaut aussi pour vous, ou aussi pour cette chose-là.\n\n> ผมไป **ด้วย** ครับ > J’y vais aussi.\n\n> ดิฉันเอา **ด้วย** ค่ะ > J’en prends aussi.\n\nLe français le rendra par « aussi », et c’est le seul rendu que la leçon enseigne. Le même mot thaï sert ailleurs à dire « avec », mais dans une autre construction, que ce cours n’ouvre pas aujourd’hui. Retenez le geste : quelque chose s’ajoute à ce qui était déjà là, et le mot reste derrière ce à quoi il s’ajoute, jamais devant.",
+      "specimen": "ไปด้วย · เอาด้วย"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "แล้ว, à la fin lui aussi",
+      "bodyFr": "Rien de nouveau ici, et c’est voulu. 9D vous a donné แล้ว en fin de phrase pour dire que c’est accompli, ou que l’état est désormais en place. Il n’a pas changé de place et il n’a pas changé de sens.\n\n> ผมกินข้าว **แล้ว** ครับ > J’ai déjà mangé.\n\n> ดิฉันไปตลาด **แล้ว** ค่ะ > Je suis déjà allée au marché.\n\nIl est ici pour une raison précise : il occupe exactement la place de ด้วย, et c’est la seule collision de places de la leçon.",
+      "specimen": "กินข้าวแล้ว · ไปตลาดแล้ว"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "deux mots à la fin, deux choses différentes",
+      "bodyFr": "Mettez les deux côte à côte, sur le même verbe, et écoutez ce qui change.\n\n> ผมไป **ด้วย** ครับ : j’y vais AUSSI, avec vous. > ผมไป **แล้ว** ครับ : j’y suis DÉJÀ allé.\n\nMême verbe, même place, deux phrases qui n’ont rien à voir. C’est le seul point de la leçon où la place ne suffit pas : il faut le mot. Les deux se ressemblent peu à l’oreille : `dôuai` DESCEND, `láeew` reste HAUT, et ils ne finissent pas sur le même son, un `i` pour l’un, un `w` pour l’autre. L’exercice 3 vous remettra quatre fois devant ce choix, sur deux phrases écrites deux fois chacune, où seule la traduction française change.",
+      "specimen": "ไปด้วย contre ไปแล้ว"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "ce que la lecture de 10A rend ici, et ce qu’elle ne rend pas",
+      "bodyFr": "Trois mots nouveaux, et la méthode en trois questions de 10A ne marche que sur un seul. Autant le savoir avant d’essayer.\n\n**แต่.** Elle marche entièrement. Un : l’initiale est ต, le แ étant écrit devant elle. Deux : un ไม้เอก. Trois : voyelle longue et rien ne ferme la syllabe, donc vivante. ต est moyenne, moyenne plus ไม้เอก donne le ton BAS. tàee.\n\n**และ.** Elle s’arrête à la troisième question. L’initiale est ล et il n’y a aucune marque, mais regardez la fin : la voyelle est BRÈVE et rien ne la ferme. 10A n’ouvrait son tableau qu’à deux cas, la voyelle longue toute seule et la fermeture sur ง, น, ม, ย ou ว. Ni l’un ni l’autre ici. Le tableau ne dit donc rien de ce mot, exactement comme il ne disait rien de รถ à la page 8 de 10A. Son ton est haut, et il se retient.\n\n**ก็.** Elle s’arrête à la troisième question elle aussi, et pour la même raison que และ. L’initiale est ก, une moyenne. Le signe posé dessus est ◌็, celui de เจ็บ, qui raccourcit la voyelle et ne change aucun ton : 10A vous l’a dit à sa page 4. Et justement, la voyelle est BRÈVE et rien ne la ferme. Ni voyelle longue toute seule, ni fermeture sur ง, น, ม, ย ou ว : le tableau ne dit rien de ce mot non plus, et il ne faut pas le lui faire dire. Son ton est descendant, et il se retient. Deux mots sur trois hors du tableau dans la même leçon, ce n’est pas un accident : c’est la limite de la méthode, et 10A vous avait prévenu à sa page 8 que la bonne réponse est alors de reconnaître le cas et de s’arrêter.",
+      "specimen": "แต่ (calculable) · และ (hors tableau) · ก็ (hors tableau)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "les deux contrastes, on les entretient",
+      "bodyFr": "Rien n’est acquis une fois pour toutes. Reprenez vos repères avant les exercices, comme à chaque unité depuis la huitième.\n\n> ปา (paa) contre ป่า (pàa) : la voix reste plate, puis elle descend et reste > basse. > หมา (mǎa) contre ม้า (máa) : la voix creuse puis remonte, contre la voix qui > reste perchée.\n\nLes mots du jour vous en donnent six de plus, trois par contraste : แพง et มี sont moyens, แต่ est bas ; ผม monte, และ et แล้ว restent hauts.",
+      "specimen": "ปา / ป่า puis หมา / ม้า"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "à vous",
+      "bodyFr": "Une seule chose à emporter : le mot ET sa place. และ entre les deux, แต่ en tête du second morceau, ก็ juste devant le verbe, ด้วย et แล้ว à la fin.\n\nAprès les exercices, enregistrez-vous en disant ผมไปด้วยครับ puis ผมไปแล้วครับ, et comparez en A/B avec la voix de référence. Vous entendrez la seule paire du jour que la place ne distingue pas. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u11-l11c-p1",
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 8,
+      "passRequired": 8,
+      "sampleSize": 8
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "6c381029-e1e8-51df-a292-ebdf03376bd3",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3f87d969-a83b-53fe-a7c0-09a344142f48",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b587bb7e-3c0d-5ecc-9a2b-6947ca30d668",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "5cd05739-84c1-590b-bfab-c431ecb30c52",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b0e9a6a4-92f4-5360-95bd-cb995ef812c9",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "38c62cea-622e-5d4e-ab83-6f490441d064",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0e453fab-20b0-56cc-857b-237211b0c80c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6fd3515b-e5c6-567d-ac8c-13a567ab0efb",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

@@ -25,7 +25,7 @@
 //   pnpm --filter @thainaute/content content:compile -- --unite 1 --json
 
 import { readdirSync, readFileSync } from "node:fs";
-import { dirname, join, relative } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { graphiesFabriquees } from "../src/anti-fabrication";
@@ -221,26 +221,125 @@ export function compilerLecon(chemin: string) {
   const compiles: unknown[] = [];
   const refuses: Refus[] = [];
   for (const item of lecon.items) {
-    const resultat = compilerItem(item, identifiant, version);
-    if (!resultat.ok) {
-      refuses.push(resultat);
-      continue;
+    // Certains dossiers regroupent plusieurs cartes dans un seul bloc
+    // (`thai`, `ipa`, `ton`, `longueur`, `fr` et `transcription` séparés par
+    // le point médian). On n'éclate le bloc que si les champs portent
+    // exactement le même nombre de segments ; sinon le bloc reste refusé.
+    const thaiSource = item.thai ?? "";
+    const graphiesItem = /^[๐-๙](?:\s+[๐-๙])+$/u.test(thaiSource.trim())
+      ? thaiSource
+          .trim()
+          .split(/\s+/u)
+          .map((valeur) => ({
+            valeur,
+            sansGlose: valeur,
+            gloseFr: null,
+            propre: true,
+          }))
+      : graphies(thaiSource);
+    const listeChiffres = /^[๐-๙](?:\s+[๐-๙])+$/u.test(thaiSource.trim());
+    const segments = (
+      valeur: string | undefined,
+      champIndex: number,
+    ): string[] | null => {
+      if (valeur === undefined) return null;
+      if (listeChiffres && champIndex === 0) {
+        const formesIpa = [...valeur.matchAll(/\/[^/]+\//gu)].map(
+          (trouve) => trouve[0],
+        );
+        return formesIpa.length === graphiesItem.length ? formesIpa : null;
+      }
+      if (listeChiffres && (champIndex === 1 || champIndex === 2)) {
+        const morceauxVirgule = valeur
+          .split(",")
+          .map((morceau) => morceau.trim())
+          .filter(Boolean);
+        return morceauxVirgule.length === graphiesItem.length
+          ? morceauxVirgule
+          : null;
+      }
+      const morceaux = valeur
+        .split(/\s+·\s+/u)
+        .map((morceau) => morceau.trim());
+      return morceaux.length === graphiesItem.length ? morceaux : null;
+    };
+    const champsSegmentes = [
+      item.ipa,
+      item.ton,
+      item.longueur,
+      item.fr,
+      item.transcription,
+    ].map((valeur, index) => segments(valeur, index));
+    const champsObligatoires = [
+      champsSegmentes[0],
+      champsSegmentes[1],
+      champsSegmentes[2],
+      champsSegmentes[4],
+    ];
+    const segmentObligatoire = (
+      champ: string[] | null,
+      index: number,
+    ): string => {
+      const segment = champ?.[index];
+      if (segment === undefined) {
+        throw new Error(
+          `Segment obligatoire absent pour ${item.titre}, position ${index + 1}.`,
+        );
+      }
+      return segment;
+    };
+    const itemsEtendus =
+      graphiesItem.length > 1 &&
+      graphiesItem.every((graphie) => graphie.propre) &&
+      champsObligatoires.every((champ) => champ !== null) &&
+      (champsSegmentes[3] === null ||
+        champsSegmentes[3]?.length === graphiesItem.length)
+        ? graphiesItem.map((graphie, index) => {
+            // Les champs groupés ne peuvent pas être recopiés sur une seule
+            // graphie : on les retire avant de remettre uniquement les
+            // segments alignés. Le compilateur recalculera les points de code.
+            const itemSansChampsGroupes = { ...item };
+            Reflect.deleteProperty(itemSansChampsGroupes, "codepoints");
+            Reflect.deleteProperty(itemSansChampsGroupes, "fr");
+            const itemEtendu: ItemAutorat = {
+              ...itemSansChampsGroupes,
+              titre: `${item.titre} · graphie ${index + 1}`,
+              thai: graphie.sansGlose,
+              ipa: segmentObligatoire(champsSegmentes[0] ?? null, index),
+              ton: segmentObligatoire(champsSegmentes[1] ?? null, index),
+              longueur: segmentObligatoire(champsSegmentes[2] ?? null, index),
+              transcription: segmentObligatoire(
+                champsSegmentes[4] ?? null,
+                index,
+              ),
+            };
+            const fr = champsSegmentes[3]?.[index];
+            return fr === undefined ? itemEtendu : { ...itemEtendu, fr };
+          })
+        : [item];
+
+    for (const itemEtendu of itemsEtendus) {
+      const resultat = compilerItem(itemEtendu, identifiant, version);
+      if (!resultat.ok) {
+        refuses.push(resultat);
+        continue;
+      }
+      // Defense en profondeur. Cette compilation-ci derive deja chaque champ
+      // d'un champ ecrit, donc la porte ne devrait rien trouver. C'est
+      // precisement pour cela qu'on la passe : le jour ou un chemin
+      // d'assistance sera ajoute, la garantie sera deja en place et non a
+      // ajouter dans l'urgence.
+      const fabriquees = graphiesFabriquees(resultat.item, source);
+      if (fabriquees.length > 0) {
+        refuses.push({
+          ok: false,
+          titre: itemEtendu.titre,
+          motif: `graphie absente de la source : ${fabriquees[0]?.valeur}`,
+        });
+        continue;
+      }
+      compiles.push(resultat.item);
     }
-    // Defense en profondeur. Cette compilation-ci derive deja chaque champ
-    // d'un champ ecrit, donc la porte ne devrait rien trouver. C'est
-    // precisement pour cela qu'on la passe : le jour ou un chemin
-    // d'assistance sera ajoute, la garantie sera deja en place et non a
-    // ajouter dans l'urgence.
-    const fabriquees = graphiesFabriquees(resultat.item, source);
-    if (fabriquees.length > 0) {
-      refuses.push({
-        ok: false,
-        titre: item.titre,
-        motif: `graphie absente de la source : ${fabriquees[0]?.valeur}`,
-      });
-      continue;
-    }
-    compiles.push(resultat.item);
   }
   return { identifiant, version, compiles, refuses };
 }
@@ -300,4 +399,9 @@ function main(): void {
   );
 }
 
-main();
+if (
+  process.argv[1] !== undefined &&
+  resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  main();
+}

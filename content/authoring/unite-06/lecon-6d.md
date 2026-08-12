@@ -808,6 +808,16 @@ l’exercice 1 mesure déjà mieux, avec le son.
   lettre, `naawng` ou `saawng` au lieu de `nawwng` et `sawwng`, piège d’autant
   plus probable que `aa` est le doublement que l’apprenant écrit depuis 1B.
 
+### Exercice de consolidation textuelle : avoir et nier (`association`)
+
+- Mécanique : `association`
+- Consigne : « Reliez chaque forme à son sens. »
+- Tirages :
+  1. มี ↔ « avoir ; il y a »
+  2. ไม่ ↔ « ne … pas »
+- Feedback correct : « Exact. »
+- Feedback incorrect : « Relisez la forme et son sens, puis réessayez. »
+
 ## Dialogue
 
 Quatre répliques, tous les blocs déjà vus ou construits aujourd’hui. Les deux

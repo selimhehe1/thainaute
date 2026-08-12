@@ -87,27 +87,27 @@ test("reprend exactement la question puis retrouve l’expédition depuis Aujour
   await page.getByRole("link", { name: "Commencer la session" }).click();
   await lireLeCours(page);
   await page.getByRole("button", { name: "Commencer l’expédition" }).click();
-  await page.getByRole("radio", { name: "posé en bas (bas)" }).check();
+  await page.getByRole("radio", { name: "Signal technique A" }).check();
   await expect
     .poll(() => readLocalLessonCheckpoint(page))
     .toMatchObject({
       phase: "question",
-      selectedOptionId: "b78d3b37-8017-5166-a2d5-58d53b271868",
+      selectedOptionId: "41000000-0000-4000-8000-000000000001",
     });
 
   await page.reload();
   await expect(
-    page.getByRole("radio", { name: "posé en bas (bas)" }),
+    page.getByRole("radio", { name: "Signal technique A" }),
   ).toBeChecked();
-  await page.getByRole("radio", { name: "à plat au milieu (moyen)" }).check();
+  await page.getByRole("radio", { name: "Signal technique B" }).check();
   await page.getByRole("button", { name: "Valider" }).click();
   await expect(
     page.getByRole("heading", {
-      name: "Oui. คา (khaa) : à plat au milieu (moyen). Votre oreille vient de faire le travail.",
+      name: "Réécoutez le signal et choisissez l’étiquette A.",
     }),
   ).toBeVisible();
   await page.goto("/today");
-  await expect(page.getByText("Expédition en cours · 1 sur 6")).toBeVisible();
+  await expect(page.getByText("Expédition en cours · 1 sur 5")).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Reprendre l’expédition" }),
   ).toBeVisible();

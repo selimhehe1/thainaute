@@ -241,6 +241,7 @@ export function createAccountDeletionHttpHandler(
         dependencies.reportOperationalFailure?.({
           operation: "account_deletion",
           errorKind:
+            apiError.code === "billing_unavailable" ||
             apiError.code === "auth_unavailable" ||
             apiError.code === "storage_unavailable" ||
             apiError.code === "database_unavailable"

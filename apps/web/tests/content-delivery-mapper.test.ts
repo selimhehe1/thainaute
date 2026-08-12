@@ -5,6 +5,7 @@ import { toPublicLessonResponse } from "../lib/server/content-delivery/mapper";
 import { verifyPublishedBundleRow } from "../lib/server/content-delivery/verified-bundle";
 import {
   makePublishableBundle,
+  makePublishableMechanicsBundle,
   makePublishedLessonRow,
 } from "./content-delivery-test-data";
 
@@ -83,6 +84,13 @@ describe("DTO public de lecon", () => {
     expect(verifyPublishedBundleRow(row)).toBeNull();
   });
 
+  it("refuse une ligne dont le pack ne correspond pas au payload", () => {
+    const row = makePublishedLessonRow(makePublishableBundle());
+    const mismatchedRow = { ...row, language_pack_id: "other-fr" };
+
+    expect(verifyPublishedBundleRow(mismatchedRow)).toBeNull();
+  });
+
   it("neutralise l'ordre editorial des options dans le DTO", () => {
     const firstBundle = makePublishableBundle();
     const firstVerified = verifyPublishedBundleRow(
@@ -103,9 +111,36 @@ describe("DTO public de lecon", () => {
     if (secondVerified === null) throw new Error("Second bundle invalide.");
     const secondResponse = toPublicLessonResponse(secondVerified);
 
-    expect(secondResponse?.lesson.exercises[0]?.options).toEqual(
-      firstResponse?.lesson.exercises[0]?.options,
-    );
+    const firstExercise = firstResponse?.lesson.exercises[0];
+    const secondExercise = secondResponse?.lesson.exercises[0];
+    if (
+      firstExercise?.type !== "audio_choice" ||
+      secondExercise?.type !== "audio_choice"
+    ) {
+      throw new Error("Le DTO public audio est invalide.");
+    }
+    expect(secondExercise.options).toEqual(firstExercise.options);
     expect(secondResponse?.contentSha256).toBe(firstResponse?.contentSha256);
+  });
+
+  it("distribue les champs d'exercice typé sans clé éditoriale", () => {
+    const verified = verifyPublishedBundleRow(
+      makePublishedLessonRow(makePublishableMechanicsBundle()),
+    );
+    if (verified === null) throw new Error("Bundle mécanique invalide.");
+
+    const response = toPublicLessonResponse(verified);
+    expect(response).not.toBeNull();
+    expect(response?.lesson.exercises).toHaveLength(5);
+    const exercise = response?.lesson.exercises.find(
+      (candidate) => candidate.type === "word_order",
+    );
+    if (exercise?.type !== "word_order") {
+      throw new Error("Exercice word_order absent du DTO.");
+    }
+    expect(exercise.tokens).toHaveLength(3);
+    expect(exercise).not.toHaveProperty("itemId");
+    expect(exercise).not.toHaveProperty("translationFr");
+    expect(exercise).not.toHaveProperty("correctOrder");
   });
 });

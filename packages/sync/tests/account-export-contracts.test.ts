@@ -15,6 +15,13 @@ const ids = {
   lesson: "60000000-0000-4000-8000-000000000001",
   option: "70000000-0000-4000-8000-000000000001",
   report: "80000000-0000-4000-8000-000000000001",
+  associationEvent: "30000000-0000-4000-8000-000000000002",
+  wordOrderEvent: "30000000-0000-4000-8000-000000000003",
+  recallEvent: "30000000-0000-4000-8000-000000000004",
+  promptPair: "90000000-0000-4000-8000-000000000001",
+  chosenPair: "90000000-0000-4000-8000-000000000002",
+  firstToken: "90000000-0000-4000-8000-000000000003",
+  secondToken: "90000000-0000-4000-8000-000000000004",
 } as const;
 
 const identity = {
@@ -94,13 +101,114 @@ const document = {
 };
 
 describe("contrat de l'export de compte v2", () => {
-  it("valide un document portable fermé et versionné", () => {
+  it("valide un ancien document v2 à option sans champ answer", () => {
     expect(accountExportDocumentSchema.parse(document)).toEqual(document);
+    expect(
+      accountExportDocumentSchema.parse(document).data.attemptEvents[0],
+    ).not.toHaveProperty("answer");
     expect(
       accountExportDocumentSchema.safeParse({
         ...document,
         serviceRole: "ne-doit-jamais-sortir",
       }).success,
+    ).toBe(false);
+  });
+
+  it("valide explicitement les réponses association, ordre des mots et rappel", () => {
+    const typedAttempts = [
+      {
+        ...document.data.attemptEvents[0],
+        eventId: ids.associationEvent,
+        selectedOptionId: null,
+        answer: {
+          kind: "association" as const,
+          pairs: [
+            {
+              promptPairId: ids.promptPair,
+              chosenPairId: ids.chosenPair,
+            },
+          ],
+        },
+        answeredAt: "2026-08-01T10:01:00.000Z",
+        receivedAt: "2026-08-01T10:01:01.000Z",
+      },
+      {
+        ...document.data.attemptEvents[0],
+        eventId: ids.wordOrderEvent,
+        selectedOptionId: null,
+        answer: {
+          kind: "word_order" as const,
+          tokenIds: [ids.firstToken, ids.secondToken],
+          missedOnce: true,
+        },
+        answeredAt: "2026-08-01T10:02:00.000Z",
+        receivedAt: "2026-08-01T10:02:01.000Z",
+      },
+      {
+        ...document.data.attemptEvents[0],
+        eventId: ids.recallEvent,
+        selectedOptionId: null,
+        answer: { kind: "recall" as const, value: "สวัสดีครับ" },
+        answeredAt: "2026-08-01T10:03:00.000Z",
+        receivedAt: "2026-08-01T10:03:01.000Z",
+      },
+    ];
+    const candidate = {
+      ...document,
+      data: {
+        ...document.data,
+        attemptEvents: [...document.data.attemptEvents, ...typedAttempts],
+      },
+    };
+
+    expect(accountExportDocumentSchema.parse(candidate)).toEqual(candidate);
+  });
+
+  it("refuse les réponses absentes, concurrentes ou malformées", () => {
+    const baseTypedAttempt = {
+      ...document.data.attemptEvents[0],
+      eventId: ids.recallEvent,
+      selectedOptionId: null,
+      answer: { kind: "recall" as const, value: "สวัสดี" },
+      answeredAt: "2026-08-01T10:03:00.000Z",
+      receivedAt: "2026-08-01T10:03:01.000Z",
+    };
+    const acceptsAttempt = (attempt: unknown) =>
+      accountExportDocumentSchema.safeParse({
+        ...document,
+        data: {
+          ...document.data,
+          attemptEvents: [...document.data.attemptEvents, attempt],
+        },
+      }).success;
+
+    expect(acceptsAttempt({ ...baseTypedAttempt, answer: null })).toBe(false);
+    expect(
+      acceptsAttempt({ ...baseTypedAttempt, selectedOptionId: ids.option }),
+    ).toBe(false);
+    expect(
+      acceptsAttempt({
+        ...baseTypedAttempt,
+        answer: { kind: "recall", value: "" },
+      }),
+    ).toBe(false);
+    expect(
+      acceptsAttempt({
+        ...baseTypedAttempt,
+        answer: {
+          kind: "association",
+          pairs: [
+            {
+              promptPairId: ids.promptPair,
+              chosenPairId: ids.chosenPair,
+            },
+            {
+              promptPairId: ids.promptPair,
+              chosenPairId: ids.firstToken,
+            },
+          ],
+        },
+      }),
     ).toBe(false);
   });
 

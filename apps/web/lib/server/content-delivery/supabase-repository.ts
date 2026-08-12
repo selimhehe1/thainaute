@@ -30,7 +30,7 @@ export function createSupabasePublishedLessonRepository(input: {
       const { data, error } = await client
         .from("lesson_versions")
         .select(
-          "id,lesson_id,version,release_id,status,title_fr,payload,payload_sha256,published_at,content_releases!inner(id,version,status,published_at)",
+          "id,lesson_id,version,release_id,status,language_pack_id,target_locale,title_fr,payload,payload_sha256,published_at,content_releases!inner(id,version,status,language_pack_id,target_locale,published_at)",
         )
         .eq("id", versionId)
         .eq("release_id", input.releaseId)
@@ -50,7 +50,7 @@ export function createSupabasePublishedLessonRepository(input: {
       const { data, error } = await client
         .from("lesson_versions")
         .select(
-          "id,lesson_id,version,release_id,status,title_fr,payload,payload_sha256,published_at,content_releases!inner(id,version,status,published_at)",
+          "id,lesson_id,version,release_id,status,language_pack_id,target_locale,title_fr,payload,payload_sha256,published_at,content_releases!inner(id,version,status,language_pack_id,target_locale,published_at)",
         )
         .eq("release_id", releaseId)
         .eq("content_releases.status", "published")

@@ -1,0 +1,890 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "f7f1d98e-7906-5877-8bfe-be7050a60eae",
+  "versionId": "0bb8585f-71ae-5b53-a98b-070ecc1a0d3a",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Ce que je fais chez moi",
+  "objectiveFr": "à la fin de la leçon, l’apprenant assemble dans le bon ordre [qui] + verbe + ที่ + [lieu] + [temps] + [particule], sur 5 assemblages sur 6 ; il écoute une phrase du jour et désigne, parmi deux phrases françaises qui ne diffèrent que d’un élément, celle qui correspond, 5 fois sur 6 ; devant une situation décrite en français, il écrit en transcription Thaïnaute le bloc à dire, 5 fois sur 6 ; et il a",
+  "requiredEntitlement": null,
+  "audioManifestId": "108a286b-2915-568c-a237-f5c32fb344b5",
+  "items": [
+    {
+      "id": "26b6d867-afa8-5fa8-9c65-6ff2252e91fd",
+      "thaiRaw": "นอน",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E2D",
+        "U+0E19"
+      ],
+      "translationFr": "dormir, se coucher",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nawwn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นอน",
+          "ipa": "nɔːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "572bd80c-6108-523d-a7fd-8c07c389525c",
+      "thaiRaw": "ทำงาน",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E33",
+        "U+0E07",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "travailler",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tham·ngaan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ทำงาน",
+          "ipa": "tʰam˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ทำงาน",
+          "ipa": "ŋaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "ŋ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "aaca500b-e861-55bf-baf1-4fcfc5c1d5eb",
+      "thaiRaw": "ดู",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E39"
+      ],
+      "translationFr": "regarder",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "douu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดู",
+          "ipa": "duː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "06b81505-5582-561c-9c57-a5ae2a5271d0",
+      "thaiRaw": "ทีวี",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E35",
+        "U+0E27",
+        "U+0E35"
+      ],
+      "translationFr": "la télé",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thii·wii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ทีวี",
+          "ipa": "tʰiː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ทีวี",
+          "ipa": "wiː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "w",
+          "final": "aucune"
+        }
+      ],
+      "register": "familier",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "91f27a3d-4cd4-5a43-a3d2-995508338f8c",
+      "thaiRaw": "ทุกวัน",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E38",
+        "U+0E01",
+        "U+0E27",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "tous les jours, chaque jour",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thóuk·wan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ทุกวัน",
+          "ipa": "tʰuk̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "ทุกวัน",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "c0e0553f-0559-5187-a39b-fbcdba3868d4",
+      "thaiRaw": "ตอนเช้า",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E2D",
+        "U+0E19",
+        "U+0E40",
+        "U+0E0A",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "le matin (comme moment où l’on fait quelque chose)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tawwn·cháao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตอนเช้า",
+          "ipa": "tɔːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ตอนเช้า",
+          "ipa": "t͡ɕʰaːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "01f2011c-3d80-5ac4-bdb2-5e4d21c3b880",
+      "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21",
+        "U+0E17",
+        "U+0E33",
+        "U+0E07",
+        "U+0E32",
+        "U+0E19",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E1A",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19",
+        "U+0E17",
+        "U+0E38",
+        "U+0E01",
+        "U+0E27",
+        "U+0E31",
+        "U+0E19",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Je travaille à la maison tous les jours.",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm tham·ngaan thîi bâan thóuk·wan khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "tʰam˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "ŋaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "ŋ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "baːn˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "tʰuk̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli, locuteur homme",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u07-l7d-p2",
+      "drawIndex": 1,
+      "id": "fb2199c4-ba7c-58b3-8ffe-e3718e917778",
+      "type": "word_order",
+      "itemId": "01f2011c-3d80-5ac4-bdb2-5e4d21c3b880",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
+      "tokens": [
+        {
+          "id": "26a51a19-7132-5ffa-a8d1-80b9559fdc38",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "bcd0424c-8856-5370-b10f-5bac61a729bd",
+          "thaiRaw": "ทำงาน",
+          "transcription": null
+        },
+        {
+          "id": "f99be58b-8633-57fa-ad34-445a67f1150a",
+          "thaiRaw": "ที่บ้าน",
+          "transcription": null
+        },
+        {
+          "id": "5e6c8b74-44e5-5e87-b586-fa0d9b2471cb",
+          "thaiRaw": "ทุกวัน",
+          "transcription": null
+        },
+        {
+          "id": "f01c6db2-6776-5332-b2c5-bfffe90a3602",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "26a51a19-7132-5ffa-a8d1-80b9559fdc38",
+        "bcd0424c-8856-5370-b10f-5bac61a729bd",
+        "f99be58b-8633-57fa-ad34-445a67f1150a",
+        "5e6c8b74-44e5-5e87-b586-fa0d9b2471cb",
+        "f01c6db2-6776-5332-b2c5-bfffe90a3602"
+      ],
+      "feedback": {
+        "correctFr": "C’est l’ordre. Le moment se pose en dernier, juste avant la politesse.",
+        "incorrectFr": "Vous avez les bons blocs. Un seul se déplace : l’endroit vient avant le moment.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il reste collé devant le verbe, comme dans ไม่เผ็ด appris en 4D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule mal placée",
+            "textFr": "La particule polie ferme toujours la phrase, depuis la première unité."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7d-p2",
+      "drawIndex": 2,
+      "id": "ac4d3ce5-0ad7-5545-b67c-0d26ccf812cc",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
+      "tokens": [
+        {
+          "id": "7116bfe1-b7c7-590f-ba33-79a184529533",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "8bb8cdc0-5d7b-53f9-93d0-bf5043a213c6",
+          "thaiRaw": "ดูทีวี",
+          "transcription": null
+        },
+        {
+          "id": "0739cc25-e894-5224-ae83-f005f317890b",
+          "thaiRaw": "ที่บ้าน",
+          "transcription": null
+        },
+        {
+          "id": "1179581e-3aac-5abb-901a-1815c76b61b6",
+          "thaiRaw": "ตอนเช้า",
+          "transcription": null
+        },
+        {
+          "id": "827ec074-4093-502a-aa1f-5f2ede6dde7f",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "7116bfe1-b7c7-590f-ba33-79a184529533",
+        "8bb8cdc0-5d7b-53f9-93d0-bf5043a213c6",
+        "0739cc25-e894-5224-ae83-f005f317890b",
+        "1179581e-3aac-5abb-901a-1815c76b61b6",
+        "827ec074-4093-502a-aa1f-5f2ede6dde7f"
+      ],
+      "feedback": {
+        "correctFr": "C’est l’ordre. Le moment se pose en dernier, juste avant la politesse.",
+        "incorrectFr": "Vous avez les bons blocs. Un seul se déplace : l’endroit vient avant le moment.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il reste collé devant le verbe, comme dans ไม่เผ็ด appris en 4D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule mal placée",
+            "textFr": "La particule polie ferme toujours la phrase, depuis la première unité."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7d-p2",
+      "drawIndex": 3,
+      "id": "bf15cf34-536b-59c3-a999-657f316f4cc6",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
+      "tokens": [
+        {
+          "id": "4aaf6da2-b009-5c7b-b8b9-b472d7390a47",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "3483ef2c-c254-5f0a-8005-1d536bf4a6e5",
+          "thaiRaw": "นอน",
+          "transcription": null
+        },
+        {
+          "id": "df18aaa2-608e-51a0-9eae-96e80487a159",
+          "thaiRaw": "ที่บ้าน",
+          "transcription": null
+        },
+        {
+          "id": "344128e6-3106-52d7-a7b5-87c41f2e3d3d",
+          "thaiRaw": "ทุกวัน",
+          "transcription": null
+        },
+        {
+          "id": "6bc02208-fef3-5d31-946e-e73bc294ab60",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "4aaf6da2-b009-5c7b-b8b9-b472d7390a47",
+        "3483ef2c-c254-5f0a-8005-1d536bf4a6e5",
+        "df18aaa2-608e-51a0-9eae-96e80487a159",
+        "344128e6-3106-52d7-a7b5-87c41f2e3d3d",
+        "6bc02208-fef3-5d31-946e-e73bc294ab60"
+      ],
+      "feedback": {
+        "correctFr": "C’est l’ordre. Le moment se pose en dernier, juste avant la politesse.",
+        "incorrectFr": "Vous avez les bons blocs. Un seul se déplace : l’endroit vient avant le moment.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il reste collé devant le verbe, comme dans ไม่เผ็ด appris en 4D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule mal placée",
+            "textFr": "La particule polie ferme toujours la phrase, depuis la première unité."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7d-p2",
+      "drawIndex": 4,
+      "id": "e3a7915d-8e1e-5af4-aba5-87a40702953b",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
+      "tokens": [
+        {
+          "id": "ef396db0-9e4b-5c42-93b7-62c544ba2ab5",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "9a85752b-0304-5822-8d36-144b1c6604d0",
+          "thaiRaw": "ไม่ทำงาน",
+          "transcription": null
+        },
+        {
+          "id": "130c60c5-b985-53f4-b363-400ea05d4d0d",
+          "thaiRaw": "ที่บ้าน",
+          "transcription": null
+        },
+        {
+          "id": "575aba98-96f0-59ea-8e02-b77706bd85a1",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "ef396db0-9e4b-5c42-93b7-62c544ba2ab5",
+        "9a85752b-0304-5822-8d36-144b1c6604d0",
+        "130c60c5-b985-53f4-b363-400ea05d4d0d",
+        "575aba98-96f0-59ea-8e02-b77706bd85a1"
+      ],
+      "feedback": {
+        "correctFr": "C’est l’ordre. Le moment se pose en dernier, juste avant la politesse.",
+        "incorrectFr": "Vous avez les bons blocs. Un seul se déplace : l’endroit vient avant le moment.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il reste collé devant le verbe, comme dans ไม่เผ็ด appris en 4D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule mal placée",
+            "textFr": "La particule polie ferme toujours la phrase, depuis la première unité."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7d-p2",
+      "drawIndex": 5,
+      "id": "e3d3be35-2ce5-55d2-a2c2-744370b21a3d",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
+      "tokens": [
+        {
+          "id": "3f465861-69f8-5114-8234-50a2e4ed4014",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "8c8b29e2-a358-5e7d-995e-3be87a3f07f5",
+          "thaiRaw": "ไม่มี",
+          "transcription": null
+        },
+        {
+          "id": "543c5644-261d-51ff-b44a-f397db8b87cb",
+          "thaiRaw": "ทีวี",
+          "transcription": null
+        },
+        {
+          "id": "0575c9f1-c214-5f93-9f70-e4e5dc3c622d",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "3f465861-69f8-5114-8234-50a2e4ed4014",
+        "8c8b29e2-a358-5e7d-995e-3be87a3f07f5",
+        "543c5644-261d-51ff-b44a-f397db8b87cb",
+        "0575c9f1-c214-5f93-9f70-e4e5dc3c622d"
+      ],
+      "feedback": {
+        "correctFr": "C’est l’ordre. Le moment se pose en dernier, juste avant la politesse.",
+        "incorrectFr": "Vous avez les bons blocs. Un seul se déplace : l’endroit vient avant le moment.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il reste collé devant le verbe, comme dans ไม่เผ็ด appris en 4D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule mal placée",
+            "textFr": "La particule polie ferme toujours la phrase, depuis la première unité."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7d-p2",
+      "drawIndex": 6,
+      "id": "20d06f57-b447-56dc-8f21-b97828e64c33",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
+      "tokens": [
+        {
+          "id": "19c4858f-0966-5443-a0cd-d5c74dc3c57d",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "1fcd526f-af5e-514c-abfd-2df35dde5b1f",
+          "thaiRaw": "ทำงาน",
+          "transcription": null
+        },
+        {
+          "id": "230355ba-7ede-5b01-9934-24047a2d4620",
+          "thaiRaw": "ทุกวัน",
+          "transcription": null
+        },
+        {
+          "id": "89bee3c6-0079-52ab-a800-c84d5bf67e55",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "19c4858f-0966-5443-a0cd-d5c74dc3c57d",
+        "1fcd526f-af5e-514c-abfd-2df35dde5b1f",
+        "230355ba-7ede-5b01-9934-24047a2d4620",
+        "89bee3c6-0079-52ab-a800-c84d5bf67e55"
+      ],
+      "feedback": {
+        "correctFr": "C’est l’ordre. Le moment se pose en dernier, juste avant la politesse.",
+        "incorrectFr": "Vous avez les bons blocs. Un seul se déplace : l’endroit vient avant le moment.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il reste collé devant le verbe, comme dans ไม่เผ็ด appris en 4D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule mal placée",
+            "textFr": "La particule polie ferme toujours la phrase, depuis la première unité."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous savez dire où et quand, il vous manque quoi",
+      "bodyFr": "Depuis 5D vous dites où vous allez, et depuis hier vous savez y accrocher un moment : ผมไปตลาดตอนเช้าครับ. Il vous manque le plus utile, et c’est le milieu de la phrase : dire ce que vous FAITES. Trois verbes suffisent à couvrir l’essentiel d’une journée chez soi, et vous en avez déjà deux : ดู depuis la première unité, นอน depuis 7A.",
+      "specimen": "นอน · ทำงาน · ดู"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "นอน, que vous avez depuis 7A",
+      "bodyFr": "นอน (nawwn), dormir, se coucher. C’est un mot de 7A, où vous l’avez appris et où vous l’avez lu. Rien de neuf sur le mot lui-même : une seule syllabe, une voyelle longue, un n à la fin qu’il faut aller chercher jusqu’au bout, et un ton que vous calculez depuis 6A puisque น est une consonne basse, que la syllabe se ferme sur un น sonore donc qu’elle est vivante, et qu’aucune marque n’est posée au-dessus. Ton moyen. Ce qui est neuf, c’est ce que vous allez en faire : le poser dans une phrase entière.",
+      "specimen": "นอน (nawwn)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ทำงาน, travailler, et un ำ qui ne dure pas",
+      "bodyFr": "ทำงาน (tham·ngaan) veut dire travailler. Le mot se laisse ouvrir : ทำ veut dire faire, งาน veut dire le travail. Faire le travail, donc travailler. Attention à la première syllabe : son ำ est BREF, d’où `tham` et non `thaam`. Comparez avec le seul ำ que vous connaissiez, celui de ห้องน้ำ (hâwng·náam), dont la voyelle est longue. Les deux s’écrivent pareil et ne durent pas pareil ; c’est une irrégularité de น้ำ, pas une règle que vous auriez mal apprise.",
+      "specimen": "ทำ (tham) contre น้ำ (náam)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "deux syllabes, une seule ligne plate",
+      "bodyFr": "`tham·ngaan` porte deux tons moyens de suite. Posez votre voix et ne la laissez pas remonter à la fin, ni descendre. Dites la phrase française « il travaille » puis dites `tham·ngaan`, et écoutez où votre voix bouge dans chacune des deux : c’est le seul juge utile ici, et c’est vous qui l’avez. Une seule des deux syllabes se calcule pour l’instant, et autant le dire franchement : งาน a une initiale basse, une forme vivante et aucune marque, donc le tableau de 6A donne moyen. ทำ a bien lui aussi une initiale basse, ท, mais sa forme en ◌ำ fait partie de celles que 4A avait mises de côté et que personne n’a rouvertes depuis : son ton moyen vous est DONNÉ ici, il ne se déduit pas.",
+      "specimen": "ทำงาน (tham·ngaan)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "ดู, que vous avez depuis la première unité",
+      "bodyFr": "ดู (douu), regarder. Vous l’avez appris en 1B pour sa voyelle longue, et vous ne l’aviez jamais employé. Il a une particularité que นอน et ทำงาน n’ont pas : on regarde toujours quelque chose, et ce quelque chose se pose juste derrière lui. Le dictionnaire normatif le montre lui-même, avec ดูภาพ, regarder une image, et ดูละคร, regarder un spectacle.",
+      "specimen": "ดู (douu)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "ทีวี, la télé",
+      "bodyFr": "ทีวี (thii·wii) est la télé, et le mot vient de l’anglais. Le dictionnaire normatif ne le connaît pas et enregistre la forme soutenue โทรทัศน์ (relevé du 2026-08-04, voir verification-rid.md) : ทีวี est un emprunt familier, très courant à l’oral. Deux syllabes, deux voyelles longues, deux tons moyens, et rien de piégeux : ท est basse, ว est basse, les deux syllabes sont vivantes et nues. Vous savez donc en calculer les deux tons. ดูทีวี (douu thii·wii) veut dire regarder la télé.",
+      "specimen": "ทีวี (thii·wii) · ดูทีวี (douu thii·wii)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "ที่ + le lieu, et le mot que vous fabriquez sans le vouloir",
+      "bodyFr": "Voilà le vrai point de la leçon. Pour dire à quel endroit une action se passe, la forme sûre est ที่ suivi du lieu, posée derrière le verbe : c’est ce que vous faites depuis 5C dans อยู่ที่นี่ et depuis 6E dans อยู่ที่ฝรั่งเศส. Avec บ้าน (bâan), la maison, cela donne ที่บ้าน (thîi bâan), à la maison, et donc ทำงานที่บ้าน (tham·ngaan thîi bâan), travailler à la maison.\n\nAvec ce verbe-là, ce n’est pas une case qu’on peut sauter. Sans ที่, les deux mots se recollent et vous en obtenez un autre, qui existe : งานบ้าน, ce sont les tâches ménagères, et ทำงานบ้าน veut donc dire faire le ménage. Un mot de moins, un sens entièrement différent. C’est le seul vrai piège du jour.\n\nL’inverse existe aussi, sinon vous mettriez ที่ partout : ไป emmène sa destination toute nue, ไปตลาด, aller au marché, et en 7B vous avez appris อยู่บ้าน, être à la maison, également sans ที่. Retenez donc les blocs entiers, tels que la leçon vous les donne, plutôt qu’une règle qui vaudrait pour tous les verbes.",
+      "specimen": "ทำงานที่บ้าน (travailler à la maison) contre ทำงานบ้าน (faire le ménage)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "le temps se pose au bout, comme hier",
+      "bodyFr": "Rien de neuf ici, et c’est une bonne nouvelle. Le bloc de temps garde exactement la place que 7C lui a donnée : à la FIN, après le lieu, juste avant la politesse. ทุกวัน (thóuk·wan), tous les jours, et ตอนเช้า (tawwn·cháao), le matin, se posent donc là où vous les posiez déjà. La seule chose qui a changé, c’est ce qu’il y a devant eux.",
+      "specimen": "ผมไปตลาดตอนเช้าครับ contre ผมทำงานที่บ้านตอนเช้าครับ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "la ligne complète",
+      "bodyFr": "Assemblez, et n’y touchez plus.\n\n> ผมทำงานที่บ้านทุกวันครับ > phǒm tham·ngaan thîi bâan thóuk·wan khráp\n\nQui, ce que je fais, à quel endroit, à quel moment, la politesse. Une femme dirait la même chose avec ค่ะ à la place de ครับ. Les deux cases du milieu sont facultatives : ผมทำงานครับ se dit très bien, et ผมทำงานทุกวันครับ aussi.",
+      "specimen": "ผมทำงานที่บ้านทุกวันครับ"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "dire non, sans rien apprendre de neuf",
+      "bodyFr": "Vous avez déjà tout ce qu’il faut. ไม่ (mâi) se pose devant le mot qu’il nie, comme en 4D et en 6D. Devant le verbe du jour, cela donne ไม่ทำงาน (mâi tham·ngaan), ne pas travailler. Et le มี de 6D fonctionne pareil : ผมไม่มีทีวีครับ (phǒm mâi mii thii·wii khráp), je n’ai pas de télé. Écoutez le début de ce bloc : la voix tombe sur `mâi`, puis se pose à plat sur `mii`.",
+      "specimen": "ไม่ทำงาน (mâi tham·ngaan) · ไม่มีทีวี (mâi mii thii·wii)"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "ce que vous savez lire maintenant, et les trois qui attendent",
+      "bodyFr": "Comptons, parce que le résultat va vous surprendre. Les mots du jour font douze syllabes en tout, et vous en lisez neuf à la règle, sans rien retenir.\n\nSept sont nues, sans marque au-dessus : นอน, งาน, ดู, ที, วี, วัน et ตอน. Initiale basse ou moyenne, syllabe vivante, rien de posé dessus, donc ton moyen partout, par 4A puis par 6A.\n\nLes deux autres sont neuves, et c’est le cadeau de 7A. ที่ porte un ไม้เอก sur une initiale BASSE, ท : ton descendant. บ้าน porte un ไม้โท sur une initiale MOYENNE, บ : ton descendant aussi. Le tableau de 7A vous donne les deux, et vous voyez maintenant pourquoi `thîi bâan` tombe deux fois de suite.\n\nTrois syllabes attendent encore, et il vaut mieux le savoir que le deviner. ทุก se ferme sur un ก, c’est une syllabe morte, cas que 6A avait explicitement laissé de côté. ทำ s’écrit avec ◌ำ et เช้า avec เ◌า, deux formes que 4A avait rangées à part et que 7A n’a pas rouvertes, la règle des marques n’ayant été donnée que pour les syllabes vivantes ordinaires. Ces trois-là, reconnaissez-les.",
+      "specimen": "ที่บ้าน (lisible depuis 7A) contre ทำ, ทุก et เช้า (pas encore)"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "à vous",
+      "bodyFr": "Un réflexe, quatre temps. Qui, quoi, où, quand. Décidez d’abord si c’est oui ou non, donc si ไม่ est là ou pas, puis remplissez les cases dans cet ordre et posez la particule au bout.\n\nAprès les exercices, enregistrez-vous en disant ผมทำงานที่บ้านทุกวันครับ, puis comparez en A/B avec la voix de référence. Écoutez surtout le milieu : sur `thîi bâan` votre voix doit tomber deux fois, alors qu’elle vient de rester plate sur `tham·ngaan`. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u07-l7d-p2",
+      "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "93de433a-6e3b-5aa8-942e-67c98f04148c",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f50a6f39-983a-59b2-a236-5261116a55d8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8927bbfd-f711-5a3a-ac34-f43a87ed1c36",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "77e3ef2c-7a27-5be4-b9f6-c2caca67adfb",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d9eb5f23-e2b3-56b9-a8ad-5b621944dee3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f5ae1019-6dd3-5a41-bb8c-cf55e7698a9e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "93b238d9-6b0a-5734-953d-fb9a7eeab45d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7496b8d8-20b8-5e51-a578-561bea4a3dea",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

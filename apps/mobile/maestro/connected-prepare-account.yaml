@@ -1,0 +1,16 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- launchApp:
+    stopApp: true
+    clearState: false
+    permissions:
+      all: deny
+- extendedWaitUntil:
+    visible: "Un départ simple, pensé pour vous."
+    timeout: 60000
+- openLink: thainaute://account
+- extendedWaitUntil:
+    visible: "État du compte : connecté"
+    timeout: 30000

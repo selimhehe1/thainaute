@@ -18,15 +18,7 @@ export function indexServerAnswerKeys(
     const existing = index.get(identity);
     if (
       existing !== undefined &&
-      (existing.itemId !== answerKey.itemId ||
-        existing.skill !== answerKey.skill ||
-        existing.correctOptionId !== answerKey.correctOptionId ||
-        existing.feedback.correctFr !== answerKey.feedback.correctFr ||
-        existing.feedback.incorrectFr !== answerKey.feedback.incorrectFr ||
-        existing.validOptionIds.length !== answerKey.validOptionIds.length ||
-        existing.validOptionIds.some(
-          (optionId, index) => optionId !== answerKey.validOptionIds[index],
-        ))
+      JSON.stringify(existing) !== JSON.stringify(answerKey)
     ) {
       throw new AttemptInfrastructureError("database_unavailable");
     }

@@ -2,7 +2,6 @@ import type { AttemptEvent, LearnerItemState } from "@thainaute/domain";
 import {
   attemptBatchResponseSchema,
   ingestAttemptBatch,
-  isOptionAttempt,
   type AttemptBatchResponse,
   type AttemptBatchResult,
   type AttemptRejectionCode,
@@ -78,17 +77,19 @@ function preflightRejections(
       }
     }
 
-    // Une réponse typée n'a pas encore de correction autoritaire : le
-    // serveur la refuse plutôt que de la noter à tort (ADR-0024, phase C).
-    if (!isOptionAttempt(attempt)) {
-      rejected.set(attempt.eventId, "invalid_submission");
-      continue;
-    }
-
     const answerKey = answerKeys.get(answerKeyIdentity(attempt));
-    if (
+    if (answerKey !== undefined && answerKey.kind !== undefined) {
+      if (
+        answerKey.kind === "option" &&
+        (attempt.selectedOptionId === undefined ||
+          !answerKey.validOptionIds.includes(attempt.selectedOptionId))
+      ) {
+        rejected.set(attempt.eventId, "invalid_submission");
+      }
+    } else if (
       answerKey !== undefined &&
-      !answerKey.validOptionIds.includes(attempt.selectedOptionId)
+      (attempt.selectedOptionId === undefined ||
+        !answerKey.validOptionIds.includes(attempt.selectedOptionId))
     ) {
       rejected.set(attempt.eventId, "invalid_submission");
     }
@@ -158,11 +159,9 @@ function buildCandidate(
 } {
   const preflight = preflightRejections(snapshot, attempts, serverNowMs);
   const answerKeys = indexServerAnswerKeys(snapshot.answerKeys);
-  // Le préflight a déjà écarté les réponses typées : seules des tentatives
-  // à option atteignent le moteur de notation.
-  const eligibleAttempts = attempts
-    .filter((attempt) => !preflight.has(attempt.eventId))
-    .filter(isOptionAttempt);
+  const eligibleAttempts = attempts.filter(
+    (attempt) => !preflight.has(attempt.eventId),
+  );
   const ingestion = ingestAttemptBatch({
     authenticatedUserId: userId,
     existingEvents: snapshot.existingEvents,
@@ -264,17 +263,7 @@ function currentContentEligibility(
   const answerKeys = indexServerAnswerKeys(snapshot.answerKeys);
   return attempts.map((attempt) => {
     const answerKey = answerKeys.get(answerKeyIdentity(attempt));
-    return answerKey === undefined
-      ? null
-      : {
-          contentVersionId: answerKey.contentVersionId,
-          correctOptionId: answerKey.correctOptionId,
-          exerciseId: answerKey.exerciseId,
-          feedback: answerKey.feedback,
-          itemId: answerKey.itemId,
-          skill: answerKey.skill,
-          validOptionIds: answerKey.validOptionIds,
-        };
+    return answerKey === undefined ? null : answerKey;
   });
 }
 

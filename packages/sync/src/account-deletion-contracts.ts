@@ -26,6 +26,7 @@ export const ACCOUNT_DELETION_ERROR_CODES = [
   "reauthentication_required",
   "idempotency_key_reused",
   "deletion_in_progress",
+  "billing_unavailable",
   "auth_unavailable",
   "storage_unavailable",
   "database_unavailable",

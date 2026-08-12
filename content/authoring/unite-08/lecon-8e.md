@@ -1272,6 +1272,16 @@ khráp` ; mêmes variantes. Refusé : `sìp·pàeet`, qui est un autre nombre.
   les exercices 1 et 2 de 8A, qui tirent dix et neuf fois sur la même cible,
   comptage refait dans le dépôt le 2026-08-04, et sa carte SRS le déclare.
 
+### Exercice de consolidation textuelle : décrire un objet (`association`)
+
+- Mécanique : `association`
+- Consigne : « Reliez chaque expression à son sens. »
+- Tirages :
+  1. แพงเกินไป ↔ « trop cher »
+  2. ใหญ่เกินไป ↔ « trop grand »
+- Feedback correct : « Exact. »
+- Feedback incorrect : « Relisez l’expression et son sens, puis réessayez. »
+
 ## Dialogue
 
 Scène : dans un magasin de vêtements de quartier, en fin d’après-midi. Un client

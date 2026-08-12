@@ -1,0 +1,635 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "f75097e9-c69b-50d9-bcf2-cc30afbefd8b",
+  "versionId": "55d017bc-e99b-54e5-8a55-5de2e1fa22ff",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Au magasin",
+  "objectiveFr": "à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre un homme et une femme dans un magasin de vêtements, et répond correctement à 5 questions sur 6 ; il reconstruit la réclamation ขอ เปลี่ยน หน่อย ครับ et la demande de prix ตัวนี้ เท่าไร ครับ dans cet ordre, avec la particule qui correspond au locuteur indiqué, soit 2 tirages sur 2 ; il écrit en transcription 3",
+  "requiredEntitlement": null,
+  "audioManifestId": "0a9d27ac-8c16-5fe7-a448-826f4e72937d",
+  "items": [
+    {
+      "id": "13a5cfb8-a45e-5c9b-ae6e-3d8de389add7",
+      "thaiRaw": "ตัวนี้",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E31",
+        "U+0E27",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
+      "translationFr": "celui-ci (en parlant d’un objet que l’on compte avec ตัว)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "toua·níi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตัวนี้",
+          "ipa": "tua̯˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตัวนี้",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "4e8624ed-7a80-58d8-8307-4f40f5f490b5",
+      "thaiRaw": "หา",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E32"
+      ],
+      "translationFr": "chercher",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hǎa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หา",
+          "ipa": "haː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "56f5a518-2000-59cb-a089-401cff1ff750",
+      "thaiRaw": "เสื้อ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E2A",
+        "U+0E37",
+        "U+0E49",
+        "U+0E2D"
+      ],
+      "translationFr": "le haut, la chemise (le vêtement du buste)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sûea"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เสื้อ",
+          "ipa": "sɯa̯˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "e0522fe2-7513-5ad3-b5b3-8b73d526b308",
+      "thaiRaw": "ตัว",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E31",
+        "U+0E27"
+      ],
+      "translationFr": "classificateur des animaux, et des vêtements à manches ou à jambes",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "toua"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตัว",
+          "ipa": "tua̯˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "5214591b-e20c-5e0b-b3fc-efa0ff844bd2",
+      "thaiRaw": "เงิน",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E07",
+        "U+0E34",
+        "U+0E19"
+      ],
+      "translationFr": "l’argent (la monnaie)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ngoen"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เงิน",
+          "ipa": "ŋɤn˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ŋ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "8830cb3a-1e29-59bf-9d4e-9b484253e364",
+      "thaiRaw": "เกินไป",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E01",
+        "U+0E34",
+        "U+0E19",
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "trop, excessivement",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "koeen·pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เกินไป",
+          "ipa": "kɤːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "เกินไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "96af2131-f96e-5af1-9595-1fae5b608c59",
+      "thaiRaw": "แพงเกินไป",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E1E",
+        "U+0E07",
+        "U+0E40",
+        "U+0E01",
+        "U+0E34",
+        "U+0E19",
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "trop cher",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phaeeng koeen·pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แพงเกินไป",
+          "ipa": "pʰɛːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "แพงเกินไป",
+          "ipa": "kɤːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "แพงเกินไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "78006203-c25d-5486-9d48-2c3071f3120f",
+      "thaiRaw": "ใหญ่เกินไป",
+      "unicodeCodePoints": [
+        "U+0E43",
+        "U+0E2B",
+        "U+0E0D",
+        "U+0E48",
+        "U+0E40",
+        "U+0E01",
+        "U+0E34",
+        "U+0E19",
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "trop grand",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yài koeen·pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ใหญ่เกินไป",
+          "ipa": "jaj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "j",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ใหญ่เกินไป",
+          "ipa": "kɤːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ใหญ่เกินไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "732659e9-205b-5a13-a227-f6cb3b5a362a",
+      "thaiRaw": "ปัญหา",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E31",
+        "U+0E0D",
+        "U+0E2B",
+        "U+0E32"
+      ],
+      "translationFr": "le problème",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pan·hǎa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปัญหา",
+          "ipa": "pan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ปัญหา",
+          "ipa": "haː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "039562ee-2abd-5931-a925-51357cc1419d",
+      "thaiRaw": "เปลี่ยน",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1B",
+        "U+0E25",
+        "U+0E35",
+        "U+0E48",
+        "U+0E22",
+        "U+0E19"
+      ],
+      "translationFr": "changer, échanger",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "plìan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เปลี่ยน",
+          "ipa": "plia̯n˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pl",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "eac869dc-8300-5449-9c49-6482b4671657",
+      "thaiRaw": "ตัวนี้เท่าไรครับ",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E31",
+        "U+0E27",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49",
+        "U+0E40",
+        "U+0E17",
+        "U+0E48",
+        "U+0E32",
+        "U+0E44",
+        "U+0E23",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Celui-ci, c’est combien ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "toua·níi thâo·rai khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตัวนี้เท่าไรครับ",
+          "ipa": "tua̯˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตัวนี้เท่าไรครับ",
+          "ipa": "niː˦˥ tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ตัวนี้เท่าไรครับ",
+          "ipa": "raj˧ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli (particule masculine)",
+      "sourceIds": [
+        "RID-2554"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u08-l8e-p5",
+      "drawIndex": 1,
+      "id": "8f53408d-e727-5d84-950a-9575c1291ab0",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "pairs": [
+        {
+          "id": "e63c37ae-26ef-5903-a315-f9d19783e19a",
+          "itemId": "96af2131-f96e-5af1-9595-1fae5b608c59",
+          "labelFr": "trop cher"
+        },
+        {
+          "id": "b457cdf8-c19a-593e-974b-ecfa178e28ea",
+          "itemId": "78006203-c25d-5486-9d48-2c3071f3120f",
+          "labelFr": "trop grand"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Exact.",
+        "incorrectFr": "Relisez l’expression et son sens, puis réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "tout ce que l’unité vous a donné, en une seule scène",
+      "bodyFr": "Vous savez chercher un article depuis 8B, dire qu’un prix est trop élevé depuis 8C, signaler un problème et demander un échange depuis 8D. Aujourd’hui, tout cela tient dans un seul achat de huit répliques, dans un magasin de vêtements. Un seul assemblage vous manque, et vous l’avez déjà fait deux fois sans le savoir.",
+      "specimen": "ตัวนี้"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ตัวนี้, le geste que vous faites depuis l’unité 3",
+      "bodyFr": "อันนี้ en 3C, pour désigner l’objet devant vous. คนนี้ en 6C, pour désigner la personne devant vous. ตัวนี้ aujourd’hui, pour désigner le vêtement devant vous. Le classificateur se met en tête, นี้ le suit, et le mot de devant est le seul qui change. Vous connaissez ตัว depuis 3D et 8A vous a dit que c’est lui qui compte les chemises.",
+      "specimen": "อันนี้ · คนนี้ · ตัวนี้"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "deux glissades qui commencent pareil",
+      "bodyFr": "Voici la paire que 8A vous a annoncée, et il faut la voir côte à côte parce que les deux mots commencent par le même ส. เสื้อ (sûea) est le vêtement, avec la glissade `uea` ; เสีย (sǐa) est ce qui est abîmé, avec la glissade `ia`. Les deux noyaux ne s’écrivent pas pareil en transcription, `uea` contre `ia`, et les deux tons diffèrent aussi, descendant contre montant. Prononcez-les l’un après l’autre et écoutez où part votre langue.",
+      "specimen": "เสื้อ (sûea) contre เสีย (sǐa)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "เกินไป se pose après, toujours",
+      "bodyFr": "Rien de neuf, seulement un rappel avant l’écoute, parce que le dialogue l’emploie deux fois. Depuis 8C, เกินไป se place APRÈS le mot qu’il pousse à l’excès, exactement comme มาก de 4D. แพงเกินไป, trop cher. ใหญ่เกินไป, trop grand. Dites les deux traductions françaises à voix haute, puis les deux blocs thaïs, et regardez de quel côté du mot tombe l’excès dans chacune : vous êtes locuteur natif du français, vous tranchez mieux que nous.",
+      "specimen": "แพงเกินไป · ใหญ่เกินไป"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "demander le prix d’un vêtement",
+      "bodyFr": "Le patron de 3C ne bouge pas : [la chose] + เท่าไร + votre particule. Ce qui change, c’est ce qu’on met dans la case de gauche. En 3C c’était อันนี้, en 8C c’était encore อันนี้ ; aujourd’hui c’est ตัวนี้, parce qu’on parle d’un vêtement et que le classificateur change avec l’objet. La réponse arrive comme en 3C, un nombre puis บาท.",
+      "specimen": "ตัวนี้เท่าไรครับ · เก้าสิบบาทค่ะ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "dire ce que vous avez",
+      "bodyFr": "เงิน, l’argent, est le premier mot de 8A et le seul mot de ce dialogue à commencer par le son ng. Ce n’est pas le seul du parcours : 8A vous a fait entendre ง่าย, facile, où la lettre ง est cette fois la première du mot écrit, et donc plus facile à repérer. Le client s’en sert pour une chose très concrète : au lieu de discuter le prix, il annonce ce qu’il a. ผมมีเงินแปดสิบบาทครับ. Le มี est celui de 6B, posséder. Vérifiez le calcul vous-même, il est fait pour cela : เก้าสิบ demandés, แปดสิบ proposés.",
+      "specimen": "ผมมีเงินแปดสิบบาทครับ"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "la chaîne complète de la réclamation",
+      "bodyFr": "C’est le passage le plus utile du parcours à ce jour, et il ne contient aucun mot nouveau. Quatre gestes, dans cet ordre, tous publiés par 8D. On adoucit : ขอโทษครับ. On annonce qu’il y a un souci : มีปัญหาครับ. On dit lequel : ตัวนี้ใหญ่เกินไปครับ. On demande la solution : ขอเปลี่ยนหน่อยครับ. Retenez l’ordre plutôt que les mots, vous les avez déjà.",
+      "specimen": "มีปัญหาครับ · ขอเปลี่ยนหน่อยครับ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "la particule ne quitte jamais la fin",
+      "bodyFr": "Le client dit ครับ neuf fois dans ce dialogue, dont quatre fois dans la seule réplique 7. Ce n’est pas une exagération : en thaï, chaque petit énoncé porte sa particule, et une réclamation faite de quatre énoncés en porte quatre. La vendeuse dit ค่ะ six fois, et คะ une seule fois, à sa seule question.",
+      "specimen": "ตัวนี้ไหมคะ contre ตัวนี้ใหญ่เกินไปครับ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "ce que cette leçon ne fait pas",
+      "bodyFr": "Trois honnêtetés avant l’écoute. D’abord, ce dialogue ne contient aucune des deux marques que 8A vient de vous apprendre : ni ◌๊ ni ◌๋ n’y figurent, parce que ตั๋ว, เก๊ et กระเป๋า ne sont pas dans cette scène. Vous les réviserez ailleurs. Ensuite, un mot du jour demande vos deux dernières leçons d’écriture en même temps : dans เปลี่ยน, ปล se lit d’un seul mouvement, c’est le groupe consonantique de 8A, et le petit signe se pose après le groupe, pas sur le ป. Son ton se calcule très bien, à une condition, celle que 8A vous a donnée à sa page 13 : dans un groupe, c’est la PREMIÈRE lettre qui commande. ป est moyenne, la syllabe se ferme sur น donc elle est vivante, et un ไม้เอก sur une moyenne donne le ton bas. Si vous lisiez la classe sur le ล, qui est basse, vous obtiendriez le ton descendant, et ce serait l’erreur. Enfin, aucune formule de marchandage n’est enseignée : le client dit que c’est trop cher, puis annonce ce qu’il a, et c’est tout ce que la leçon affirme sur la façon d’acheter en Thaïlande.",
+      "specimen": "เปลี่ยน (le groupe ปล, et c’est ป qui commande)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "à vous",
+      "bodyFr": "Écoutez le dialogue en entier une première fois sans lire. Reprenez avec le texte, puis enregistrez la réplique 7 et comparez en A/B avec la voix de référence. Écoutez trois choses dans l’ordre : que toua glisse sans s’arrêter au milieu, que plìan fasse la même glissade mais dans l’autre sens, et que les quatre khráp tombent tous à la même hauteur. Votre enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u08-l8e-p5",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN"
+    ],
+    "generationActors": [
+      {
+        "actorId": "1177040a-be53-5fc9-907a-f958467bb72d",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ca02cd82-6f18-51f8-8105-849524bedcfe",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6cf8a2e7-f8b9-5f72-a50e-d264593936f8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0ae40cfd-2871-541a-a43a-337f8fd7428f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "fbf6a4b1-66f7-5459-ba4b-be4236dd73e5",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "59666a6e-2e22-5f36-a4c2-f84a90e63d36",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7090100a-45df-58aa-ae11-9623e64848a6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7392fef0-a2b3-59e8-9715-c1128214d1f5",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

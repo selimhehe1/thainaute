@@ -4,6 +4,12 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-md);
+  margin: 8px 0 2px;
+  padding: 8px 12px 8px 16px;
+  border: 1px solid rgb(231 228 218 / 88%);
+  border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / 72%);
+  box-shadow: 0 5px 18px rgb(40 52 80 / 4%);
 }
 
 .brand {
@@ -13,6 +19,13 @@
 }
 
 .step {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 11px;
+  border: 1px solid rgb(86 96 122 / 16%);
+  border-radius: var(--radius-pill);
+  background: var(--color-mist);
   font-size: 13px;
   font-weight: var(--weight-semibold);
   color: var(--color-ink-soft);

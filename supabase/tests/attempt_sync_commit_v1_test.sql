@@ -2,7 +2,7 @@ begin;
 create extension if not exists pgtap with schema extensions;
 set local search_path = public, extensions;
 
-select plan(32);
+select plan(34);
 
 insert into auth.users (id, aud, role, email, created_at, updated_at)
 values
@@ -503,6 +503,81 @@ select is(
   'le lot vide rejoue la reponse stockee malgre une revision rafraichie'
 );
 
+select is(
+  public.commit_attempt_batch_v1(
+    'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
+    '60000000-0000-4000-8000-000000000007',
+    repeat('7', 64),
+    2,
+    jsonb_build_array(
+      jsonb_build_object(
+        'event_id', '50000000-0000-4000-8000-000000000003',
+        'device_id', 'daaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
+        'exercise_id', '51000000-0000-4000-8000-000000000002',
+        'item_id', '32000000-0000-4000-8000-000000000001',
+        'lesson_version_id', '31000000-0000-4000-8000-000000000001',
+        'selected_option_id', null,
+        'answer', jsonb_build_object(
+          'kind', 'word_order',
+          'tokenIds', jsonb_build_array(
+            '53000000-0000-4000-8000-000000000001'
+          ),
+          'missedOnce', false
+        ),
+        'dimension', 'production',
+        'rating', 1,
+        'answered_at', now(),
+        'duration_ms', 1000,
+        'algorithm_version', 'srs-v0',
+        'payload_sha256', repeat('7', 64)
+      )
+    ),
+    jsonb_build_array(
+      jsonb_build_object(
+        'item_id', '32000000-0000-4000-8000-000000000001',
+        'lesson_version_id', '31000000-0000-4000-8000-000000000001',
+        'dimension', 'production',
+        'mastery_permille', 250,
+        'successful_attempts', 1,
+        'consecutive_correct', 1,
+        'attempt_count', 1,
+        'last_event_id', '50000000-0000-4000-8000-000000000003',
+        'last_answered_at', now(),
+        'due_at', now() + interval '1 day',
+        'algorithm_version', 'srs-v0'
+      )
+    ),
+    (select response_changed from pg_temp.sync_test_payloads)
+  ),
+  jsonb_build_object(
+    'kind', 'committed',
+    'response', (select response_changed from pg_temp.sync_test_payloads) || '{"syncRevision":3}'::jsonb,
+    'syncRevision', 3
+  ),
+  'le RPC accepte une reponse composee sans conserver de faux selected_option_id'
+);
+select is(
+  (
+    select jsonb_build_object(
+      'selectedOptionId', selected_option_id,
+      'answer', answer
+    )
+    from public.attempt_events
+    where event_id = '50000000-0000-4000-8000-000000000003'
+  ),
+  jsonb_build_object(
+    'selectedOptionId', null,
+    'answer', jsonb_build_object(
+      'kind', 'word_order',
+      'tokenIds', jsonb_build_array(
+        '53000000-0000-4000-8000-000000000001'
+      ),
+      'missedOnce', false
+    )
+  ),
+  'la reponse composee est materialisee apres le commit atomique'
+);
+
 reset role;
 
 select set_config(
@@ -519,7 +594,7 @@ select is(
     )
     from public.profiles
   ),
-  '{"count":1,"revision":2}'::jsonb,
+  '{"count":1,"revision":3}'::jsonb,
   'A ne lit que sa revision de profil'
 );
 reset role;

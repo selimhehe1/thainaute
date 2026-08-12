@@ -4,25 +4,23 @@
 
 - Identifiant : `u13-l13b`
 - Titre français : นะ, la particule qui adoucit
-- **Titre de travail, et la leçon le corrige au lieu de le porter.** « Adoucit »
+- Note éditoriale du titre : **titre de travail, et la leçon le corrige au lieu de le porter.** « Adoucit »
   est ce que disent DEUX des trois ouvrages consultés. Le dictionnaire normatif,
   lui, n’emploie pas ce mot : il range นะ du côté de la prière, de l’injonction
   et de l’insistance. Le titre est conservé parce qu’il a été assigné, la page 4
   dit exactement ce qu’il masque, et son réexamen est porté à l’arbitrage 1.
-- Objectif observable : à la fin de la leçon, devant une forme entendue à débit
-  naturel, l’apprenant reconnaît laquelle des trois écritures proposées il a
-  entendue, sur 9 tirages sur 12 ; il apparie six blocs à ce qu’ils font, 6 sur
-  6 ; il remet dans l’ordre les blocs de six énoncés portant นะ et une particule
-  de politesse, sur 5 tirages sur 6 ; il produit en transcription **huit
-  formes, dont six sont du jour**, à partir du français seul, sur 6 sur 8 ; et
-  devant une forme écrite en thaï, sans transcription et sans l’entendre, il dit
-  ce qu’elle fait, sur 7 tirages sur 8.
-  - **Six et non huit, et le chiffre vient du plancher du même exercice.** Les
-    tirages 7 et 8 de l’exercice 4 attendent `à·rai` et `pai`, items publiés par
-    `u02-l2d` et `u05-l5b` : `tmp-13b-planchers.mjs` les compte comme « 2 sur 8
-    gagnables par l’antérieur seul ». Un objectif qui annonçait « les huit formes
-    du jour » comptait donc deux blocs anciens parmi les neufs. Corrigé au
-    contre-audit interne du 2026-08-04, finding `OBJ-HUIT`.
+- Objectif observable : à la fin de la leçon, l’apprenant distingue à l’écoute
+  trois écritures proposées, sur 9 tirages sur 12 ; il associe six blocs à leur
+  fonction, 6 sur 6 ; il remet en ordre six énoncés avec นะ et une particule de
+  politesse, 5 fois sur 6 ; il produit en transcription huit formes, dont six du
+  jour, 6 fois sur 8 ; puis il explique la fonction d’une forme thaïe lue sans
+  audio, 7 fois sur 8.
+- Note éditoriale de l'objectif : **six et non huit, et le chiffre vient du plancher du même exercice.** Les
+  tirages 7 et 8 de l’exercice 4 attendent `à·rai` et `pai`, items publiés par
+  `u02-l2d` et `u05-l5b` : `tmp-13b-planchers.mjs` les compte comme « 2 sur 8
+  gagnables par l’antérieur seul ». Un objectif qui annonçait « les huit formes
+  du jour » comptait donc deux blocs anciens parmi les neufs. Corrigé au
+  contre-audit interne du 2026-08-04, finding `OBJ-HUIT`.
 - Nature : deuxième leçon de l’unité 13, **première unité du parcours avancé**.
   Les douze unités du fondamental enseignent le thaï central poli, et `u12-l12e`
   le dit explicitement à sa page 3. L’unité 13 est la première dont l’objet est

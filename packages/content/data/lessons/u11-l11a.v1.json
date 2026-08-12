@@ -1,0 +1,876 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "9d272aa0-8985-5fcf-8446-5afa7ac07590",
+  "versionId": "44d82f1a-ca76-53f4-ae3a-a21f92eae9d1",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Quand ça va trop vite",
+  "objectiveFr": "à la fin de la leçon, devant une phrase thaïe entendue à débit naturel, l’apprenant reconnaît laquelle des trois écritures proposées il a entendue, sur 9 tirages sur 12 ; il apparie six blocs thaïs à ce qu’ils ajoutent à une phrase, 6 sur 6 ; il remet dans l’ordre les blocs de quatre demandes complètes, sur 5 tirages sur 6 ; il produit en transcription les huit formules du jour à partir du françai",
+  "requiredEntitlement": null,
+  "audioManifestId": "fa4dedf5-843f-5790-be60-a6c225e20cb9",
+  "items": [
+    {
+      "id": "2b038b96-36d3-5241-ad09-264337463e3d",
+      "thaiRaw": "เข้าใจ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E43",
+        "U+0E08"
+      ],
+      "translationFr": "comprendre, saisir",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâo·jai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เข้าใจ",
+          "ipa": "kʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เข้าใจ",
+          "ipa": "t͡ɕaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre. Aucune étiquette de registre sur la vedette du RID, aucune colonne d’usage chez VOLUBILIS pour la ligne retenue, aucune chez en.wiktionary, vérifié le 2026-08-04.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "6b769c18-8a82-567b-a6f4-bdbc7c41067f",
+      "thaiRaw": "ไม่เข้าใจ",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E40",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E43",
+        "U+0E08"
+      ],
+      "translationFr": "ne pas comprendre ; je ne comprends pas",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi khâo·jai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่เข้าใจ",
+          "ipa": "maj˥˩ kʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ไม่เข้าใจ",
+          "ipa": "t͡ɕaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ไม่เข้าใจครับ / ไม่เข้าใจค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "870a9464-a95c-5f9a-bd0e-02c4bdb658a3",
+      "thaiRaw": "เข้าใจนิดหน่อย",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E43",
+        "U+0E08",
+        "U+0E19",
+        "U+0E34",
+        "U+0E14",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22"
+      ],
+      "translationFr": "comprendre un peu ; je comprends un peu",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâo·jai nít·nàwi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เข้าใจนิดหน่อย",
+          "ipa": "kʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เข้าใจนิดหน่อย",
+          "ipa": "t͡ɕaj˧ nit̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "เข้าใจนิดหน่อย",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : เข้าใจนิดหน่อยครับ / เข้าใจนิดหน่อยค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "251abdea-36a9-5e7d-bd0f-099d10088752",
+      "thaiRaw": "อีกที",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E35",
+        "U+0E01",
+        "U+0E17",
+        "U+0E35"
+      ],
+      "translationFr": "une fois de plus, encore une fois",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ìik·thii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อีกที",
+          "ipa": "ʔiːk̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "ʔ",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "อีกที",
+          "ipa": "tʰiː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre. Aucune étiquette de registre sur les entrées consultées, vérifié le 2026-08-04.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "cf72c0a4-dd6f-5ec2-a76f-8520bb294ffc",
+      "thaiRaw": "ได้ไหม",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E14",
+        "U+0E49",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21"
+      ],
+      "translationFr": "est-ce possible ? ; vous pouvez ? ; je peux ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dâai mǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ได้ไหม",
+          "ipa": "daːj˥˩ maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "j"
+        }
+      ],
+      "register": "neutre ; l’effet est de politesse, puisque la demande remplace l’ordre. Aucune étiquette de registre sur les sources consultées.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "de37c7eb-d28e-5d05-af5c-209f2cd8ce79",
+      "thaiRaw": "ช้า",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "lent ; lentement",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "cháa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ช้า",
+          "ipa": "t͡ɕʰaː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre pour le sens enseigné. **Réserve nécessaire** : le RID range sous la même graphie deux autres vedettes, ช้า ๒ et ช้า ๓, dont la première porte des sens péjoratifs et la seconde des sens de musique et de théâtre. Aucune n’est enseignée, aucune n’ouvre de carte, et la vedette retenue est ช้า ๑.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "a683428c-f3ff-560f-aade-4e8a6e9904d3",
+      "thaiRaw": "พูด",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E39",
+        "U+0E14"
+      ],
+      "translationFr": "parler",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phôuut"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พูด",
+          "ipa": "pʰuːt̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "thaiRaw": "ขอโทษ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E42",
+        "U+0E17",
+        "U+0E29"
+      ],
+      "translationFr": "désolé ; excusez-moi ; pardon (et, comme verbe, s’excuser)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww·thôot"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอโทษ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอโทษ",
+          "ipa": "tʰoːt̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "thaiRaw": "ไม่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "ne … pas ; non",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u11-l11a-p3",
+      "drawIndex": 1,
+      "id": "78e7bf1f-b150-5093-ae92-cb855a5a0e26",
+      "type": "word_order",
+      "itemId": "a683428c-f3ff-560f-aade-4e8a6e9904d3",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "ba2fd770-9926-5698-b22a-bbb03aba97b3",
+          "thaiRaw": "พูด",
+          "transcription": null
+        },
+        {
+          "id": "d1cf4011-76ff-5efa-8f6a-5d42a713d862",
+          "thaiRaw": "อีกที",
+          "transcription": null
+        },
+        {
+          "id": "f8bef15f-e3c8-5bfd-ab0d-5aeda2ce5c68",
+          "thaiRaw": "ได้ไหม",
+          "transcription": null
+        },
+        {
+          "id": "6664d37f-35d2-5794-884a-59d42dca45c8",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "ba2fd770-9926-5698-b22a-bbb03aba97b3",
+        "d1cf4011-76ff-5efa-8f6a-5d42a713d862",
+        "f8bef15f-e3c8-5bfd-ab0d-5aeda2ce5c68",
+        "6664d37f-35d2-5794-884a-59d42dca45c8"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, ce qu’on lui ajoute, la demande, la particule.",
+        "incorrectFr": "ได้ไหม pose la question, la particule ferme la phrase. La particule passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Deux phrases d’affilée, et chacune se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc central mal placé",
+            "textFr": "อีกที et ช้า ๆ disent comment on parle : ils se posent juste après พูด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11a-p3",
+      "drawIndex": 2,
+      "id": "bb3e1418-1f00-5f63-acd3-510fb6140e91",
+      "type": "word_order",
+      "itemId": "a683428c-f3ff-560f-aade-4e8a6e9904d3",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "5ccc6b50-2c3e-527c-9365-03f8cfb7efcf",
+          "thaiRaw": "พูด",
+          "transcription": null
+        },
+        {
+          "id": "ba2555bf-41a3-5af2-93e1-c825f09968a3",
+          "thaiRaw": "ช้า ๆ",
+          "transcription": null
+        },
+        {
+          "id": "97bdc331-da81-5f4d-9b86-41d26536328b",
+          "thaiRaw": "ได้ไหม",
+          "transcription": null
+        },
+        {
+          "id": "8afd6a4a-155a-5430-8eef-9dcd2d5d1bfb",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "5ccc6b50-2c3e-527c-9365-03f8cfb7efcf",
+        "ba2555bf-41a3-5af2-93e1-c825f09968a3",
+        "97bdc331-da81-5f4d-9b86-41d26536328b",
+        "8afd6a4a-155a-5430-8eef-9dcd2d5d1bfb"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, ce qu’on lui ajoute, la demande, la particule.",
+        "incorrectFr": "ได้ไหม pose la question, la particule ferme la phrase. La particule passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Deux phrases d’affilée, et chacune se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc central mal placé",
+            "textFr": "อีกที et ช้า ๆ disent comment on parle : ils se posent juste après พูด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11a-p3",
+      "drawIndex": 3,
+      "id": "628273cf-1fca-548c-b227-1ea14cd227e0",
+      "type": "word_order",
+      "itemId": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "ce08d1ed-e915-5aaf-bfb0-a954b0c2ad9c",
+          "thaiRaw": "ไม่",
+          "transcription": null
+        },
+        {
+          "id": "bc6f8d97-a901-5a13-943c-bef0ea176562",
+          "thaiRaw": "เข้าใจ",
+          "transcription": null
+        },
+        {
+          "id": "cca319e4-233a-59b3-b6bc-f9d540428d6b",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "ce08d1ed-e915-5aaf-bfb0-a954b0c2ad9c",
+        "bc6f8d97-a901-5a13-943c-bef0ea176562",
+        "cca319e4-233a-59b3-b6bc-f9d540428d6b"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, ce qu’on lui ajoute, la demande, la particule.",
+        "incorrectFr": "ได้ไหม pose la question, la particule ferme la phrase. La particule passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Deux phrases d’affilée, et chacune se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc central mal placé",
+            "textFr": "อีกที et ช้า ๆ disent comment on parle : ils se posent juste après พูด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11a-p3",
+      "drawIndex": 4,
+      "id": "78917ec8-2e01-565a-83fb-41600a073d38",
+      "type": "word_order",
+      "itemId": "2b038b96-36d3-5241-ad09-264337463e3d",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "475bb410-6659-52e4-91a3-670fe8630957",
+          "thaiRaw": "เข้าใจ",
+          "transcription": null
+        },
+        {
+          "id": "acbfdbcf-9543-57f2-a88c-c66c4aa2f5c7",
+          "thaiRaw": "นิดหน่อย",
+          "transcription": null
+        },
+        {
+          "id": "e50240df-33e3-5447-a67a-1c4e07e0a7fa",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "475bb410-6659-52e4-91a3-670fe8630957",
+        "acbfdbcf-9543-57f2-a88c-c66c4aa2f5c7",
+        "e50240df-33e3-5447-a67a-1c4e07e0a7fa"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, ce qu’on lui ajoute, la demande, la particule.",
+        "incorrectFr": "ได้ไหม pose la question, la particule ferme la phrase. La particule passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Deux phrases d’affilée, et chacune se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc central mal placé",
+            "textFr": "อีกที et ช้า ๆ disent comment on parle : ils se posent juste après พูด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11a-p3",
+      "drawIndex": 5,
+      "id": "1719d3e1-30a2-5ed4-800c-9ec0e3f0ed7d",
+      "type": "word_order",
+      "itemId": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "52d154b1-e40a-573c-a726-746590480f74",
+          "thaiRaw": "ขอโทษ",
+          "transcription": null
+        },
+        {
+          "id": "c1f63746-3061-5001-b8dd-b45da551a90f",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "4ef8e264-7da0-54c2-a226-a169813583f2",
+          "thaiRaw": "พูด",
+          "transcription": null
+        },
+        {
+          "id": "b6338f2f-829e-52a0-9c51-51393f5e1385",
+          "thaiRaw": "อีกที",
+          "transcription": null
+        },
+        {
+          "id": "7d915c8a-403a-5169-8299-f14aa2d14a2e",
+          "thaiRaw": "ได้ไหม",
+          "transcription": null
+        },
+        {
+          "id": "41040d68-6e67-5a81-bdd2-0079de98eacc",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "52d154b1-e40a-573c-a726-746590480f74",
+        "c1f63746-3061-5001-b8dd-b45da551a90f",
+        "4ef8e264-7da0-54c2-a226-a169813583f2",
+        "b6338f2f-829e-52a0-9c51-51393f5e1385",
+        "7d915c8a-403a-5169-8299-f14aa2d14a2e",
+        "41040d68-6e67-5a81-bdd2-0079de98eacc"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, ce qu’on lui ajoute, la demande, la particule.",
+        "incorrectFr": "ได้ไหม pose la question, la particule ferme la phrase. La particule passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Deux phrases d’affilée, et chacune se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc central mal placé",
+            "textFr": "อีกที et ช้า ๆ disent comment on parle : ils se posent juste après พูด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u11-l11a-p3",
+      "drawIndex": 6,
+      "id": "7b44f607-b0e8-5062-81a2-1812a7615700",
+      "type": "word_order",
+      "itemId": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "b1131b55-153a-5c00-a362-94aedc85d2dc",
+          "thaiRaw": "ไม่",
+          "transcription": null
+        },
+        {
+          "id": "d298f494-a5d7-518f-b1cc-f796b2991f1f",
+          "thaiRaw": "เข้าใจ",
+          "transcription": null
+        },
+        {
+          "id": "e2ae8e72-61f5-5706-b4cd-615c1f98cd48",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "be48baa6-a5dd-5332-bc1d-d59fad667812",
+          "thaiRaw": "พูด",
+          "transcription": null
+        },
+        {
+          "id": "7407bd89-1a4b-5475-9aa4-38102a6fbe68",
+          "thaiRaw": "ช้า ๆ",
+          "transcription": null
+        },
+        {
+          "id": "8932726e-644f-52e0-a9d5-5ea04369d958",
+          "thaiRaw": "ได้ไหม",
+          "transcription": null
+        },
+        {
+          "id": "71716fbe-3266-5a1e-98f7-adf7ef4e8ecd",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "b1131b55-153a-5c00-a362-94aedc85d2dc",
+        "d298f494-a5d7-518f-b1cc-f796b2991f1f",
+        "e2ae8e72-61f5-5706-b4cd-615c1f98cd48",
+        "be48baa6-a5dd-5332-bc1d-d59fad667812",
+        "7407bd89-1a4b-5475-9aa4-38102a6fbe68",
+        "8932726e-644f-52e0-a9d5-5ea04369d958",
+        "71716fbe-3266-5a1e-98f7-adf7ef4e8ecd"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le verbe, ce qu’on lui ajoute, la demande, la particule.",
+        "incorrectFr": "ได้ไหม pose la question, la particule ferme la phrase. La particule passe donc en dernier, comme depuis 1E.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Deux phrases d’affilée, et chacune se ferme sur sa particule. C’est exactement ce que vous direz."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc central mal placé",
+            "textFr": "อีกที et ช้า ๆ disent comment on parle : ils se posent juste après พูด."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "quand la phrase est déjà finie",
+      "bodyFr": "Depuis dix unités, chaque phrase thaïe que vous entendez a été dite pour vous, posément, une seule fois à la fois. Une conversation réelle ne vous doit pas ce confort : la phrase peut arriver vite, être déjà finie, et il n’en reste rien. Ce cours ne vous dira pas ce que font les gens autour de vous, il n’a pas de source pour cela. Il vous donne autre chose, et c’est tout l’objet du jour : une phrase prête pour ce moment-là.",
+      "specimen": "พูดอีกทีได้ไหมครับ (phôuut ìik·thii dâai mǎi khráp)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "quatre phrases, et vous tenez la conversation",
+      "bodyFr": "Voici tout ce que la leçon vous demande. Quatre phrases, deux qui demandent et deux qui répondent.\n\n> **พูดอีกทีได้ไหมครับ** · phôuut ìik·thii dâai mǎi khráp · Vous pouvez répéter ? > **พูดช้า ๆ ได้ไหมครับ** · phôuut cháa cháa dâai mǎi khráp · Vous pouvez parler > lentement ? > **ไม่เข้าใจครับ** · mâi khâo·jai khráp · Je ne comprends pas. > **เข้าใจนิดหน่อยครับ** · khâo·jai nít·nàwi khráp · Je comprends un peu.\n\nUne locutrice remplace ครับ par ค่ะ dans les deux réponses, et par คะ dans les deux demandes, puisque ce sont des questions. C’est la règle de 1E et de 2E, et elle ne change pas ici.",
+      "specimen": "พูดอีกทีได้ไหมครับ · พูดช้า ๆ ได้ไหมคะ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ได้ไหม, la brique qui transforme l’énoncé en question",
+      "bodyFr": "Posé à la fin, ได้ไหม (dâai mǎi) change la nature de ce qui précède : ce qui était un énoncé devient une question. Les deux ouvrages consultés le disent de la même façon, le dictionnaire normatif en rangeant ได้ après un verbe du côté du possible et du permis, et l’autre en rendant le bloc entier par « est-ce possible ? » et « can you? ».\n\n> พูดอีกที · phôuut ìik·thii · répéter > พูดอีกทีได้ไหม · phôuut ìik·thii dâai mǎi · vous pouvez répéter ?\n\nVous connaissez déjà la moitié du bloc : ไหม est la particule de question de 2B. La nouveauté est ได้, qui se place après un verbe et veut dire que la chose est possible. Et une remarque d’oreille, à faire tout de suite : ได้ s’écrit avec le ไ de ไม่, mais il se dit LONG, dâai, comme le ง่าย de 8A. Ne le raccourcissez pas.\n\nCe cours vous fait toujours poser ได้ไหม. Il ne vous dit pas ce que vaut la forme sans lui : aucune des sources consultées ne le décrit, et il ne servirait à rien d’inventer une règle de politesse à sa place.",
+      "specimen": "ได้ไหม (dâai mǎi) · พูดอีกทีได้ไหม"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "demander la même phrase une fois de plus",
+      "bodyFr": "อีกที (ìik·thii) veut dire une fois de plus. Deux syllabes, deux étages différents : la première est BASSE, la seconde est MOYENNE. C’est le contraste que 7A a sur-entraîné, et il est ici à l’intérieur d’un seul mot.\n\n> พูด + อีกที + ได้ไหม + ครับ > phôuut · ìik·thii · dâai mǎi · khráp\n\nRien à conjuguer, rien à retourner. Vous posez quatre briques dans cet ordre, et la particule ferme la phrase, comme depuis 1E.",
+      "specimen": "อีกที (ìik·thii) · พูดอีกทีได้ไหมครับ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "demander la même phrase moins vite, et un signe nouveau",
+      "bodyFr": "ช้า (cháa) veut dire lent. Pour dire lentement, le thaï répète le mot, et il l’écrit avec un signe fait pour cela.\n\n> ๆ se lit en relisant le mot d’avant. Il ne se prononce pas lui-même. > ช้า ๆ se dit donc cháa cháa.\n\nCe signe s’appelle ไม้ยมก, et la note culturelle vous en dit un mot. Vous le verrez écrit de deux façons, séparé du mot par une espace, ช้า ๆ, ou collé, ช้าๆ. Les deux formes sont attestées et notent la même chose ; ce cours écrit l’espace, qui est la forme employée par les deux ouvrages consultés. Ce cours ne vous dit pas laquelle des deux est la plus fréquente : il n’a rien pour le mesurer.\n\n> พูด + ช้า ๆ + ได้ไหม + ครับ > phôuut · cháa cháa · dâai mǎi · khráp\n\nÉcoutez la fin de cette phrase de près, parce qu’elle contient les deux tons que le parcours vous fait entretenir : cháa est HAUT, il reste perché ; mǎi est MONTANT, il creuse avant de remonter. Une seule syllabe les sépare, dâai. C’est le contraste que 4A vous a fait travailler sur deux mots isolés ; ici il est à l’intérieur d’une phrase qui défile, et c’est plus difficile.",
+      "specimen": "ช้า (cháa) · ช้า ๆ (cháa cháa) · พูดช้า ๆ ได้ไหมครับ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "dire que vous ne comprenez pas",
+      "bodyFr": "เข้าใจ (khâo·jai) veut dire comprendre. Vous en connaissez les deux morceaux depuis longtemps : เข้า, entrer, appris en 1B, et ใจ, le cœur, que vous avez vu dans ใจดี en 6C. Entrer dans le cœur.\n\n> เข้าใจ · khâo·jai · comprendre > ไม่เข้าใจ · mâi khâo·jai · je ne comprends pas\n\nLa négation ne demande aucune règle nouvelle. ไม่ se met devant le mot nié, comme dans ไม่เผ็ด et ไม่ชอบ de 4D, et comme dans ไม่ไกล de 5E. Ajoutez la particule et la phrase est polie : ไม่เข้าใจครับ.\n\nUne chose à ne pas confondre, et elle est à l’oreille seulement : ไม่ (mâi) tombe, ไหม (mǎi) monte. Le premier refuse, le second interroge. 4D vous avait prévenu ; c’est aujourd’hui que ça compte, parce que les deux sont dans la même conversation.",
+      "specimen": "เข้าใจ · ไม่เข้าใจ · ไม่เข้าใจครับ"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "trois façons de le dire, et une seule est enseignée",
+      "bodyFr": "Il existe d’autres façons de dire qu’on ne comprend pas. Voici exactement ce que les dictionnaires consultés permettent d’en dire, et rien de plus.\n\n> **ไม่เข้าใจ** · celle que ce cours vous donne. Les deux ouvrages la rendent > directement par « je ne comprends pas », et aucun des deux ne lui met > d’étiquette de registre. C’est la formule dont le sens est le mieux établi, et > c’est le seul motif pour lequel elle est choisie. > **ฟังไม่ออก** · elle existe et elle veut dire, elle aussi, qu’on n’a pas > compris. Le dictionnaire normatif glose sa forme positive par le mot même que > cette leçon vous enseigne, เข้าใจ. > **ไม่รู้เรื่อง** · elle existe, et les sources la donnent des deux côtés à la > fois : ne rien comprendre à ce qui vient d’être dit, et ne pas être au courant > d’une affaire. Le dictionnaire normatif signale en outre qu’elle s’emploie > surtout à la forme niée.\n\n**Ce que ce cours NE peut PAS vous dire, et il préfère l’écrire que de le combler** : ce qui sépare ces trois formules. Aucune source consultée ne les distingue par leur objet, par leur registre ni par leur emploi. Une version antérieure de cette page vous interdisait ไม่รู้เรื่อง pour dire qu’on n’a pas compris ; l’interdiction était contredite par les deux sources citées à son appui, et elle est retirée.\n\nRetenez donc le geste plutôt que la liste : une seule formule à produire, ไม่เข้าใจ, et deux à reconnaître si vous les entendez.",
+      "specimen": "ไม่เข้าใจ (à dire) · ฟังไม่ออก · ไม่รู้เรื่อง (à reconnaître)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "dire que vous comprenez un peu",
+      "bodyFr": "C’est la réponse la plus utile de la leçon, parce qu’elle vous laisse dire ce que vous avez réellement saisi au lieu de choisir entre tout et rien. Elle n’exige rien de neuf : นิดหน่อย se place après ce qu’il dose, exactement comme dans เผ็ดนิดหน่อย de 4D.\n\n> เข้าใจ + นิดหน่อย + ครับ > khâo·jai · nít·nàwi · khráp\n\nQuatre syllabes brèves à la file, et la mélodie ne se repose pas : descendante, moyenne, haute, basse. Ne fusionnez pas นิดหน่อย en une seule masse, et gardez la dernière syllabe aussi courte que les autres.",
+      "specimen": "เข้าใจนิดหน่อย · เข้าใจนิดหน่อยครับ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "ce qu’on vous dira, à vous",
+      "bodyFr": "Une conversation va dans les deux sens. Cette question-ci est faite des blocs que vous venez d’apprendre, et c’est la raison pour laquelle elle est montrée ici.\n\n> เข้าใจไหมคะ · khâo·jai mǎi khá · C’est compris ?\n\nVous n’avez pas à produire cette question, et aucune carte de révision ne vous la demandera. Vous avez seulement à la reconnaître, parce qu’elle vous ouvre la porte pour répondre เข้าใจนิดหน่อยครับ ou ไม่เข้าใจครับ.",
+      "specimen": "เข้าใจไหมคะ"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "deux tons à ne pas laisser filer",
+      "bodyFr": "Rien n’est acquis une fois pour toutes, et surtout pas ces deux couples. Ils sont tous les deux dans les phrases du jour, ce qui vous évite un détour.\n\n> ไหม (mǎi) contre ไม้ (máai) : la voix creuse puis remonte, contre la voix qui > reste perchée. Attention, ces deux-là diffèrent aussi par la longueur, et 1D > vous l’avait dit. > ปา (paa) contre ป่า (pàa) : la voix reste plate, puis elle descend et reste > basse.\n\nDans พูดช้า ๆ ได้ไหมครับ, vous avez cháa perché et mǎi qui remonte. Dans อีกที, vous avez ìik en bas et thii au milieu. Écoutez-les à côté de vos repères.",
+      "specimen": "ไหม / ไม้ puis ปา / ป่า"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "ce que ce cours vous conseille, et il le déclare comme tel",
+      "bodyFr": "Une dernière chose, et c’est un parti pris pédagogique assumé, pas une règle d’usage. Ce cours vous encourage à redemander plutôt qu’à laisser filer : c’est pour cela qu’il vous donne deux demandes au lieu d’une, et qu’il les fait répéter par le SRS. Il vous encourage aussi à répondre เข้าใจนิดหน่อยครับ quand c’est ce qui est vrai, plutôt que d’acquiescer.\n\n**Ce cours ne vous dit rien de l’effet que cela produit sur la personne en face.** Aucune source de sa politique ne décrit cet effet, et il ne l’invente pas.",
+      "specimen": "พูดอีกทีได้ไหมครับ · พูดช้า ๆ ได้ไหมครับ"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "à vous",
+      "bodyFr": "Dans les exercices, la voix ne ralentira pas pour vous. Dans le dialogue, vous entendrez deux fois la même phrase à deux endroits, et les deux fois parce que Paul l’aura demandé : la première paire est ralentie, parce qu’il a demandé de ralentir ; la seconde est redite au même débit, parce qu’il a seulement demandé de répéter. Les deux demandes ne font pas la même chose, et c’est exactement ce que la leçon vous fait distinguer.\n\nAprès les exercices, enregistrez-vous en disant พูดช้า ๆ ได้ไหมครับ, puis comparez en A/B avec la voix de référence. Écoutez surtout la fin : cháa reste en haut, mǎi remonte. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u11-l11a-p3",
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "fe1d7c39-0761-5120-99ed-06e780107cd2",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f4cad106-e481-50e1-9512-6d7de2051cf3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b8e7ff30-b81a-5ec5-8945-cd1066d5f049",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e54ec5ae-dea9-5176-bfe4-338e75f2b21d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ddeed65e-91fc-57d6-b5c8-ef1fd0ca8875",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d988be3b-71f2-523d-af8b-3bf6e734e439",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a7e92cda-bd07-590a-8c0c-deadf6aee8f5",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "12d14501-ea93-5f8e-8bbd-2e8c2c8df5d8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

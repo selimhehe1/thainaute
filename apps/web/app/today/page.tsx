@@ -1,4 +1,4 @@
-import { readUnite01Lecon1aBundle } from "@thainaute/content";
+import { readFiveMechanicsFixtureBundle } from "@thainaute/content";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/layout/site-header";
@@ -10,7 +10,7 @@ import styles from "./today.module.css";
 export const metadata = { title: "Aujourd’hui" };
 
 export default function TodayPage() {
-  const { lesson } = readUnite01Lecon1aBundle();
+  const { lesson } = readFiveMechanicsFixtureBundle();
   const exercise = lesson.exercises[0];
 
   return (

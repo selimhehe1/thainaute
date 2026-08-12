@@ -155,6 +155,60 @@ describe("stockage du parcours local mobile", () => {
     });
   });
 
+  it("persiste puis libère une expédition multi-exercices", async () => {
+    const { database, store } = createStore();
+    await completedOnboarding(store);
+    await store.startExpedition({
+      lessonVersionId: ids.lesson,
+      exerciseIds: [ids.exercise, ids.nextExercise],
+      startedAt,
+    });
+    await store.recordExpeditionResult({
+      exerciseId: ids.exercise,
+      rating: 1,
+      answeredAt: "2026-08-02T08:00:01.000Z",
+    });
+    await store.recordExpeditionResult({
+      exerciseId: ids.nextExercise,
+      rating: 0,
+      answeredAt: "2026-08-02T08:00:02.000Z",
+    });
+
+    await expect(
+      store.clearCompletedExpedition("2026-08-02T08:00:03.000Z"),
+    ).resolves.toMatchObject({ expedition: null });
+    expect(database.transactionCount).toBe(5);
+  });
+
+  it("ouvre la question et conserve le premier choix dans une transaction", async () => {
+    const { database, store } = createStore();
+    await completedOnboarding(store);
+    await store.startExpedition({
+      lessonVersionId: ids.lesson,
+      exerciseIds: [ids.exercise, ids.nextExercise],
+      startedAt,
+    });
+
+    await expect(
+      store.selectExpeditionOption({
+        lessonVersionId: ids.lesson,
+        exerciseId: ids.exercise,
+        startedAt,
+        selectedOptionId: ids.option,
+        now: "2026-08-02T08:00:01.000Z",
+      }),
+    ).resolves.toMatchObject({
+      expedition: { exerciseIds: [ids.exercise, ids.nextExercise] },
+      lesson: {
+        phase: "question",
+        lessonVersionId: ids.lesson,
+        exerciseId: ids.exercise,
+        selectedOptionId: ids.option,
+      },
+    });
+    expect(database.transactionCount).toBe(3);
+  });
+
   it("remplace une ancienne version atomiquement après confirmation", async () => {
     const { database, store } = createStore();
     await completedOnboarding(store);
@@ -187,6 +241,43 @@ describe("stockage du parcours local mobile", () => {
       },
     });
     expect(database.transactionCount).toBe(transactionsBeforeReplacement + 1);
+  });
+
+  it("libère aussi une expédition active avant de créer la version suivante", async () => {
+    const { store } = createStore();
+    await completedOnboarding(store);
+    await store.startExpedition({
+      lessonVersionId: ids.lesson,
+      exerciseIds: [ids.exercise, ids.nextExercise],
+      startedAt,
+    });
+    const active = await store.selectExpeditionOption({
+      lessonVersionId: ids.lesson,
+      exerciseId: ids.exercise,
+      startedAt,
+      selectedOptionId: ids.option,
+      now: "2026-08-02T08:00:01.000Z",
+    });
+    if (active.lesson === null) throw new Error("Checkpoint attendu");
+
+    await expect(
+      store.replaceLessonVersion(
+        active.lesson,
+        {
+          lessonVersionId: ids.nextLesson,
+          exerciseId: ids.nextExercise,
+          startedAt: "2026-08-02T08:00:02.000Z",
+        },
+        createAttemptOutboxSnapshot(),
+      ),
+    ).resolves.toMatchObject({
+      expedition: null,
+      lesson: {
+        phase: "intro",
+        lessonVersionId: ids.nextLesson,
+        exerciseId: ids.nextExercise,
+      },
+    });
   });
 
   it("refuse une ligne corrompue sans l’écraser", async () => {

@@ -9,6 +9,12 @@ supabase/config.toml
 **/dist/**
 **/node_modules/**
 **/*.wav
+apps/mobile/android/**
+apps/mobile/expo-env.d.ts
+
+# Generated content artifacts are validated by content:validate.
+packages/content/data/lessons/*.v1.json
+scripts/content/lib/extraire-enseignement.d.mts
 
 # Généré par design-tokens generate:css, verrouillé par test anti-dérive
 packages/design-tokens/src/tokens.css

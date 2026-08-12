@@ -65,7 +65,12 @@
     {
       "id": "c7c122f1-407e-55dc-ba20-5087be168681",
       "thaiRaw": "ครับ",
-      "unicodeCodePoints": ["U+0E04", "U+0E23", "U+0E31", "U+0E1A"],
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
       "translationFr": "particule de politesse d'un locuteur homme (fin de phrase)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -82,12 +87,20 @@
         }
       ],
       "register": "poli",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "7c926b57-d6c6-56a0-9c0b-26cdae4ab6eb",
       "thaiRaw": "ค่ะ",
-      "unicodeCodePoints": ["U+0E04", "U+0E48", "U+0E30"],
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
       "translationFr": "particule de politesse d'une locutrice femme (phrase affirmative)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -104,7 +117,11 @@
         }
       ],
       "register": "poli",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "90825fc9-a267-5769-aa50-cbee045afc3f",
@@ -141,7 +158,11 @@
         }
       ],
       "register": "poli",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "296d0ed3-9f45-5258-a1f5-32fd61431ec9",
@@ -190,7 +211,10 @@
         }
       ],
       "register": "neutre (poli avec la particule)",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
     }
   ],
   "exercises": [
@@ -202,7 +226,7 @@
       "itemId": "90825fc9-a267-5769-aa50-cbee045afc3f",
       "skill": "production",
       "audioAssetId": null,
-      "promptFr": "Paul, un homme, veut dire merci poliment. Remettez les éléments dans l'ordre. Attention, un élément est de trop : retirez-le.",
+      "promptFr": "Paul, un homme, veut dire merci poliment. Touchez uniquement les éléments utiles dans l'ordre. L'élément en trop reste dans la liste : ne le sélectionnez pas.",
       "tokens": [
         {
           "id": "cb836b89-3cf8-50bd-8756-cf61c3b0ef5f",
@@ -294,14 +318,14 @@
     {
       "ordre": 5,
       "titleFr": "à vous, puis bilan",
-      "bodyFr": "Vous allez maintenant écouter le dialogue complet, reconstruire une réplique et lire un mot appris. Tout est déjà dans votre oreille.\n\nAprès les exercices, enregistrez-vous en disant สวัสดีครับ ou สวัสดีค่ะ, puis comparez en A/B avec la voix de référence. L'enregistrement reste privé, sur votre appareil. Écoutez surtout vos deux premières syllabes : sont-elles vraiment basses ?",
+      "bodyFr": "Vous allez maintenant écouter le dialogue complet, reconstruire une réplique et lire un mot appris. Tout est déjà dans votre oreille.\n\nAprès les exercices, enregistrez-vous en disant สวัสดีครับ ou สวัสดีค่ะ, puis comparez en A/B avec la voix de référence. L'enregistrement reste privé, sur votre appareil. Écoutez surtout vos deux premières syllabes : sont-elles vraiment basses ?\n\nFaites ensuite deux mini-tours de rôle, sans chercher la perfection :\n\n1. Vous êtes une femme : ouvrez l'échange avec สวัสดีค่ะ, puis remerciez avec ขอบคุณค่ะ. 2. Vous êtes un homme : ouvrez l'échange avec สวัสดีครับ, puis prenez congé avec แล้วเจอกันครับ.\n\nLe but est de choisir votre propre particule sans attendre un indice du genre de l'interlocuteur. C'est le même bloc qui doit sortir quand la situation change.\n\nPour consolider sans vous épuiser, faites trois passages :\n\n1. écoutez chaque réplique et répétez-la juste après la voix, morceau par morceau ; 2. relisez le thaï et dites les quatre répliques avec la transcription cachée ; 3. rejouez la scène en choisissant vous-même `ครับ` ou `ค่ะ`, sans attendre que l'écran vous rappelle qui parle.\n\nUne seule prise attentive suffit. L'objectif est une réponse qui sort dans la situation, pas une imitation parfaite obtenue après vingt répétitions.",
       "specimen": null
     }
   ],
   "pools": [
     {
       "poolId": "u01-l1e-p2",
-      "promptFr": "Paul, un homme, veut dire merci poliment. Remettez les éléments dans l'ordre. Attention, un élément est de trop : retirez-le.",
+      "promptFr": "Paul, un homme, veut dire merci poliment. Touchez uniquement les éléments utiles dans l'ordre. L'élément en trop reste dans la liste : ne le sélectionnez pas.",
       "mechanic": "word_order",
       "drawCount": 1,
       "passRequired": 1,

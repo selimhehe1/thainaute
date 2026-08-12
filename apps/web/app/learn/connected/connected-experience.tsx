@@ -1,6 +1,6 @@
 "use client";
 
-import type { PublicAudioAsset } from "@thainaute/content/public";
+import type { PublicAudioAsset, PublicLesson } from "@thainaute/content/public";
 import { buttonClass } from "@/components/ui/button";
 import styles from "./connected.module.css";
 import type {
@@ -45,6 +45,17 @@ type Phase =
   | "rejected"
   | "error";
 
+type PublicAudioChoiceExercise = Extract<
+  PublicLesson["exercises"][number],
+  { type: "audio_choice" }
+>;
+
+function isAudioChoiceExercise(
+  exercise: PublicLesson["exercises"][number] | undefined,
+): exercise is PublicAudioChoiceExercise {
+  return exercise?.type === "audio_choice";
+}
+
 function subscribeToNetworkStatus(callback: () => void): () => void {
   window.addEventListener("online", callback);
   window.addEventListener("offline", callback);
@@ -58,7 +69,7 @@ function matchingAudio(
   connected: ConnectedPublicLesson,
 ): PublicAudioAsset | null {
   const exercise = connected.lesson.response.lesson.exercises[0];
-  if (exercise === undefined) return null;
+  if (!isAudioChoiceExercise(exercise)) return null;
   return (
     connected.lesson.response.lesson.audioAssets.find(
       ({ assetId }) => assetId === exercise.audioAssetId,
@@ -454,6 +465,22 @@ export function ConnectedExperience() {
   const lesson = connected.lesson.response.lesson;
   const exercise = lesson.exercises[0];
   if (exercise === undefined) return null;
+  if (!isAudioChoiceExercise(exercise)) {
+    return (
+      <section className={styles.panel} role="status">
+        <p className={styles.eyebrow}>Contenu typé</p>
+        <h1>Cette leçon attend son lecteur dédié.</h1>
+        <p className={styles.lede}>
+          La boucle connectée conserve encore uniquement les exercices audio à
+          choix. Les exercices typés sont disponibles dans le parcours local
+          adapté à leur mécanique.
+        </p>
+        <Link className={buttonClass("ghost")} href="/learn/demo">
+          Ouvrir le parcours local
+        </Link>
+      </section>
+    );
+  }
   const result = attempt?.status === "synced" ? attempt : null;
 
   return (

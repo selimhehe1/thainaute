@@ -1,0 +1,11 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- scrollUntilVisible:
+    element: "Télécharger et écouter"
+    direction: DOWN
+- tapOn: "Télécharger et écouter"
+- extendedWaitUntil:
+    visible: "Signal vérifié et lu depuis le cache privé de l’app."
+    timeout: 20000

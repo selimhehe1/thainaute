@@ -1,0 +1,755 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "d8c9ce01-7bed-53eb-bb41-1f1e5d9720fc",
+  "versionId": "6b89b5ef-40ce-58d0-b6d2-5be544b40b74",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Présenter sa famille",
+  "objectiveFr": "à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre un homme et une femme qui parlent de leurs frères et sœurs ; il reconstruit la phrase ผม มี น้องสาว สอง คน ครับ dans cet ordre, sans erreur de place du nombre ni du classificateur, et il retire la particule qui ne correspond pas au locuteur indiqué ; il écrit en transcription la relance แล้วคุณล่ะ suivie de l",
+  "requiredEntitlement": null,
+  "audioManifestId": "ecd86258-3c2a-51a7-8efc-0cedeba3fcb0",
+  "items": [
+    {
+      "id": "e0ae43ca-b4f0-51f5-97f1-c8ab8fc1236c",
+      "thaiRaw": "ล่ะ",
+      "unicodeCodePoints": [
+        "U+0E25",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "particule finale ; enseignée ici uniquement comme dernière syllabe du bloc แล้วคุณล่ะ, c’est le bloc entier qui porte le sens « et vous ? »",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "lâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ล่ะ",
+          "ipa": "laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "l",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre, courant à l’oral",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8e00fd47-2658-5e9a-9168-4b0e6025aaea",
+      "thaiRaw": "แล้วคุณล่ะ",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E25",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "et vous ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew khoun lâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (poli avec la particule : แล้วคุณล่ะครับ / แล้วคุณล่ะคะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "d96fe470-9f04-5fb8-bd74-dc9f61e78f92",
+      "thaiRaw": "มี",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35"
+      ],
+      "translationFr": "avoir, posséder",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มี",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ffcb8ddc-ecbc-593c-b595-6f2dd43901f9",
+      "thaiRaw": "พี่น้อง",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E35",
+        "U+0E48",
+        "U+0E19",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "frères et sœurs, la fratrie",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phîi·náwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พี่น้อง",
+          "ipa": "pʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "พี่น้อง",
+          "ipa": "nɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2a943315-98a1-5bc9-899b-8f6dce415d30",
+      "thaiRaw": "พี่ชาย",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E35",
+        "U+0E48",
+        "U+0E0A",
+        "U+0E32",
+        "U+0E22"
+      ],
+      "translationFr": "frère aîné",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phîi·chaai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พี่ชาย",
+          "ipa": "pʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "พี่ชาย",
+          "ipa": "t͡ɕʰaːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "22481ecb-23cd-55a0-a077-407ff2fb977a",
+      "thaiRaw": "น้องสาว",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E2A",
+        "U+0E32",
+        "U+0E27"
+      ],
+      "translationFr": "sœur cadette",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "náwwng·sǎao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "น้องสาว",
+          "ipa": "nɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "น้องสาว",
+          "ipa": "saːw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d8cffef6-8740-5e9f-93d6-75d33981d67b",
+      "thaiRaw": "น้องสาวสองคน",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E2A",
+        "U+0E32",
+        "U+0E27",
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E04",
+        "U+0E19"
+      ],
+      "translationFr": "deux sœurs cadettes",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "náwwng·sǎao sǎwwng khon"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "น้องสาวสองคน",
+          "ipa": "nɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "น้องสาวสองคน",
+          "ipa": "saːw˩˩˦ sɔːŋ˩˩˦ kʰon˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "f6e08ac0-1c7f-5a0b-8ae7-8ba9a958cf44",
+      "thaiRaw": "สอง",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "deux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สอง",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "a012a8f3-20ef-5a56-9da4-28a63bc39d91",
+      "thaiRaw": "คน",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E19"
+      ],
+      "translationFr": "personne ; classificateur des personnes",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khon"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คน",
+          "ipa": "kʰon˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "6e2d07ee-a9b6-5f8c-872d-21dfd2b2441e",
+      "thaiRaw": "หนึ่ง",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E19",
+        "U+0E36",
+        "U+0E48",
+        "U+0E07"
+      ],
+      "translationFr": "un (le nombre 1)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nùeng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หนึ่ง",
+          "ipa": "nɯŋ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "9e6614e0-f6dc-5047-bff0-eb9cbab76161",
+      "thaiRaw": "พี่ชายอยู่ที่ไหน",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E35",
+        "U+0E48",
+        "U+0E0A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19"
+      ],
+      "translationFr": "où est le frère aîné ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phîi·chaai yòuu thîi·nǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พี่ชายอยู่ที่ไหน",
+          "ipa": "pʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "พี่ชายอยู่ที่ไหน",
+          "ipa": "t͡ɕʰaːj˧ juː˨˩ tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "พี่ชายอยู่ที่ไหน",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : พี่ชายอยู่ที่ไหนครับ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "dd029417-0b02-571c-b594-c35c5b7fee78",
+      "thaiRaw": "อยู่ที่นี่",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E19",
+        "U+0E35",
+        "U+0E48"
+      ],
+      "translationFr": "il est ici, elle est ici",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yòuu thîi·nîi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อยู่ที่นี่",
+          "ipa": "juː˨˩ tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อยู่ที่นี่",
+          "ipa": "niː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (poli avec la particule : อยู่ที่นี่ค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "9268176f-4ee2-5759-bd83-829dfa3d38d0",
+      "thaiRaw": "อยู่ที่ฝรั่งเศส",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E1D",
+        "U+0E23",
+        "U+0E31",
+        "U+0E48",
+        "U+0E07",
+        "U+0E40",
+        "U+0E28",
+        "U+0E2A"
+      ],
+      "translationFr": "elles sont en France, elles habitent en France",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yòuu thîi fà·ràng·sèet"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อยู่ที่ฝรั่งเศส",
+          "ipa": "juː˨˩ tʰiː˥˩ fa˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อยู่ที่ฝรั่งเศส",
+          "ipa": "raŋ˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "อยู่ที่ฝรั่งเศส",
+          "ipa": "seːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre (poli avec la particule : อยู่ที่ฝรั่งเศสครับ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "eaaab6db-8f2a-5ab8-abca-a07ee9f2b5c6",
+      "thaiRaw": "ไกลมาก",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E01",
+        "U+0E25",
+        "U+0E21",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "très loin",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "klai mâak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไกลมาก",
+          "ipa": "klaj˧ maːk̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kl",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ไกลมากค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u06-l6e-p5",
+      "drawIndex": 1,
+      "id": "ace45055-c749-56aa-a21e-28a427a36d2a",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "pairs": [
+        {
+          "id": "72c77e8d-8de9-5231-950e-7a5ddf2ba036",
+          "itemId": "2a943315-98a1-5bc9-899b-8f6dce415d30",
+          "labelFr": "frère aîné"
+        },
+        {
+          "id": "655541b0-4396-5234-8fb0-2e34a7b8022c",
+          "itemId": "22481ecb-23cd-55a0-a077-407ff2fb977a",
+          "labelFr": "sœur cadette"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Exact.",
+        "incorrectFr": "Relisez l’expression et son sens, puis réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "un échange qui revient vers vous",
+      "bodyFr": "Vous savez dire qui vous êtes et d’où vous venez depuis l’unité 2. Vous savez compter des choses depuis l’unité 3 et demander où elles se trouvent depuis l’unité 5. Aujourd’hui tout cela sert d’un coup, assis en face de quelqu’un : on vous demande si vous avez des frères et sœurs, vous répondez, et vous renvoyez la question.",
+      "specimen": "คุณมีพี่น้องไหมครับ"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "en thaï, l’âge passe avant le sexe",
+      "bodyFr": "Voilà la chose à comprendre, et elle change la façon de ranger les mots dans votre tête. Le thaï dit d’abord si la personne est née avant ou après vous : พี่ (phîi) pour celle qui est née avant, น้อง (náwwng) pour celle qui est née après. Le sexe arrive seulement ensuite, collé derrière : พี่ชาย (phîi·chaai), le frère aîné, น้องสาว (náwwng·sǎao), la sœur cadette. En français vous choisissez d’abord frère ou sœur ; ici vous choisissez d’abord aîné ou cadet.",
+      "specimen": "พี่ชาย (phîi·chaai) contre น้องสาว (náwwng·sǎao)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "et les deux ensemble font « la fratrie »",
+      "bodyFr": "Collez les deux mots l’un derrière l’autre et vous obtenez พี่น้อง (phîi·náwwng), c’est-à-dire l’ensemble des frères et sœurs, sans dire ni combien ni de quel sexe. C’est exactement ce mot qu’emploie la première réplique du dialogue : คุณมีพี่น้องไหมครับ, avez-vous des frères et sœurs ?",
+      "specimen": "พี่น้อง (phîi·náwwng)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "compter des personnes, vous savez déjà le faire",
+      "bodyFr": "Rien de nouveau ici, seulement un rappel utile avant d’écouter. Depuis 3D, le nombre et le classificateur se posent APRÈS le nom : ปลาสองตัว, deux poissons. Les personnes se comptent avec คน, et l’ordre ne bouge pas : น้องสาวสองคน, deux sœurs cadettes, พี่ชายหนึ่งคน, un frère aîné.",
+      "specimen": "น้องสาวสองคน (náwwng·sǎao sǎwwng khon)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "le petit bloc qui renvoie la question",
+      "bodyFr": "Voici tout le vocabulaire neuf du jour. ล่ะ (lâ) est une particule qui se pose à la toute fin d’un énoncé. Vous ne l’apprenez pas seule, et c’est volontaire : c’est le bloc entier แล้วคุณล่ะ (láeew khoun lâ) qui vaut « et vous ? ». Vous connaissez déjà แล้ว, la première syllabe de แล้วเจอกัน apprise en 1E, où elle enchaîne deux moments, et คุณ, le « vous » poli de 2D.",
+      "specimen": "แล้วคุณล่ะ (láeew khoun lâ)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "deux particules dans un même souffle",
+      "bodyFr": "Regardez la quatrième réplique, c’est le petit exploit de cette leçon. La femme dit d’abord อยู่ที่นี่ค่ะ, il est ici, puis enchaîne แล้วคุณล่ะคะ, et vous ? Même personne, même respiration, et pourtant la dernière syllabe change : ค่ะ (khâ) tombe et ferme une affirmation, คะ (khá) monte et ferme une question. Ce n’est pas la locutrice qui change, c’est ce qu’elle fait.",
+      "specimen": "อยู่ที่นี่ค่ะ · แล้วคุณล่ะคะ"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "dire oui en répétant le verbe",
+      "bodyFr": "Quand on vous pose une question en ไหม, vous pouvez répondre en reprenant le mot qui portait la question, puis en ajoutant votre particule. Vous faites ce geste depuis 2B avec สบายดีไหม puis สบายดี. Ici la question porte sur มี, avoir, alors la réponse est มีค่ะ : oui, j’en ai.",
+      "specimen": "คุณมีพี่น้องไหมครับ · มีค่ะ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "où est-il ? le patron de 5C, appliqué à quelqu’un",
+      "bodyFr": "En 5C, vous demandiez où se trouvait un lieu : ห้องน้ำอยู่ที่ไหนครับ. Le même patron sert pour une personne, sans rien changer : พี่ชายอยู่ที่ไหนครับ, où est votre frère aîné ? Dans ce patron, le mot qui interroge reste tout à la fin. Vérifiez-le vous-même : dites votre traduction française à voix haute, puis la phrase thaïe, et regardez où tombe la question dans chacune des deux.",
+      "specimen": "พี่ชายอยู่ที่ไหนครับ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "ce que ce dialogue ne fait pas travailler",
+      "bodyFr": "Une honnêteté avant l’écoute. L’unité vous a fait travailler deux voyelles longues, celle de อือ et celle de เออ. Aucune des deux n’est dans le dialogue d’aujourd’hui. Ce qui revient, une seule fois, c’est la version BRÈVE de la première, dans หนึ่ง, à la deuxième réplique. Les deux longues restent portées par 6A et par vos révisions, pas par ce bilan. Trois graphies, อยู่, ไหน et ฝรั่งเศส, ne se déchiffrent pas encore avec ce que vous savez : apprenez-les comme des images entières.",
+      "specimen": "หนึ่ง (nùeng)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "à vous",
+      "bodyFr": "Écoutez le dialogue en entier une première fois sans lire. Reprenez avec le texte, puis enregistrez les deux répliques du jour, แล้วคุณล่ะคะ et แล้วคุณล่ะครับ, et comparez en A/B avec la voix de référence. Écoutez surtout la toute dernière syllabe : c’est elle qui dit qui parle. Votre enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u06-l6e-p5",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "2fd5e524-7b8f-58f1-bc3b-413f00bf598b",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1f193cc1-51ed-5c3a-9960-19dcc7499f6b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "02c0011c-c348-51a7-8f27-0a4e9ddf692b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "51e4c019-4f30-58df-82fb-483ce614c94a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0b524a97-5362-5273-af2f-802995c4c504",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "223a2f83-8b1d-5463-9d15-3a3087f20492",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "485de108-f0f6-5f31-9348-2846fb4ee3fb",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "5067312d-c68b-5b23-ab8a-efcb444daa14",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

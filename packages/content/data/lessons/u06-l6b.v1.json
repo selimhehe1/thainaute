@@ -1,0 +1,593 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "823781aa-a9a1-51cd-8209-8d925fa79490",
+  "versionId": "eb2d682e-205f-5a87-9fea-7cad165e0b7d",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Père, mère, frères et sœurs",
+  "objectiveFr": "à la fin de la leçon, l’apprenant 1. identifie à l’écoute lequel des quatre mots พี่ชาย, พี่สาว, น้องชาย et น้องสาว a été dit, sur au moins 5 tirages sur 6, les quatre étant proposés à chaque fois ; 2. associe six mots de la famille à la description qui donne l’âge relatif et, quand le mot le précise, le sexe, sur au moins 5 appariements sur 6 ; 3. reconstruit le bloc [qui] + มี + [qui] + [nombre]",
+  "requiredEntitlement": null,
+  "audioManifestId": "f54759cc-ac09-5a13-9e6f-cd79bba793aa",
+  "items": [
+    {
+      "id": "24cf1d01-17de-5721-8586-4a1b1b2b4282",
+      "thaiRaw": "พ่อ",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E48",
+        "U+0E2D"
+      ],
+      "translationFr": "père ; papa",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phâww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พ่อ",
+          "ipa": "pʰɔː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1b5f94d1-7d85-5088-87a5-dcf4d3270e31",
+      "thaiRaw": "แม่",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "mère ; maman",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แม่",
+          "ipa": "mɛː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "82a29488-2e7d-5f74-a443-0282f13d69ee",
+      "thaiRaw": "พี่",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E35",
+        "U+0E48"
+      ],
+      "translationFr": "aîné, aînée ; frère ou sœur né avant vous",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phîi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พี่",
+          "ipa": "pʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "6056d647-e323-5c8e-8481-060f5082dc31",
+      "thaiRaw": "น้อง",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "cadet, cadette ; frère ou sœur né après vous",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "náwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "น้อง",
+          "ipa": "nɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "cfc916b6-92e0-5dca-ade8-b9540e1d8703",
+      "thaiRaw": "พี่ชาย",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E35",
+        "U+0E48",
+        "U+0E0A",
+        "U+0E32",
+        "U+0E22"
+      ],
+      "translationFr": "frère aîné",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phîi·chaai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พี่ชาย",
+          "ipa": "pʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "พี่ชาย",
+          "ipa": "t͡ɕʰaːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "3bf2e737-231f-565c-b190-69ed3a7be139",
+      "thaiRaw": "น้องสาว",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E2A",
+        "U+0E32",
+        "U+0E27"
+      ],
+      "translationFr": "sœur cadette",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "náwwng·sǎao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "น้องสาว",
+          "ipa": "nɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "น้องสาว",
+          "ipa": "saːw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "thaiRaw": "มี",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35"
+      ],
+      "translationFr": "avoir ; posséder",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มี",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u06-l6b-p4",
+      "drawIndex": 1,
+      "id": "54e76346-a7f0-5a2c-9149-19887f6883c7",
+      "type": "reading",
+      "itemId": "cfc916b6-92e0-5dca-ade8-b9540e1d8703",
+      "skill": "reading",
+      "promptFr": "Regardez le mot, puis dites ce qu’il porte. Comparez-le aux deux modèles affichés en bas.",
+      "options": [
+        {
+          "id": "76f2019c-4be7-5238-86cf-0010ac9798d9",
+          "labelFr": "พี่ : la personne est née avant moi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "64b47b29-1c94-560e-990a-54b6082fe063",
+          "labelFr": "น้อง : la personne est née après moi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "adad9f66-166e-5e2a-a5b1-637d112c1ad9",
+          "labelFr": "Ni l’un ni l’autre : ce mot ne dit pas l’ordre de naissance",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "76f2019c-4be7-5238-86cf-0010ac9798d9",
+      "feedback": {
+        "correctFr": "Bien vu. Le bloc du début suffisait : พี่ ou น้อง.",
+        "incorrectFr": "Comparez le début du mot aux deux modèles du bas, พี่ et น้อง. L’un des deux est là, lettre pour lettre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "Oui. แม่ ne contient ni พี่ ni น้อง. L’ordre de naissance ne se lit que sur ces deux blocs."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Comparez lettre pour lettre avec les deux modèles du bas : แม่ ne correspond à aucun des deux. Une mère est bien née avant vous, mais ce n’est pas le mot qui vous le dit, c’est ce que vous savez d’une mère. Les blocs พี่ et น้อง, eux, l’écrivent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u06-l6b-p4",
+      "drawIndex": 2,
+      "id": "e12400b8-7bf8-52ae-a29d-be8d4ea50e12",
+      "type": "reading",
+      "itemId": "3bf2e737-231f-565c-b190-69ed3a7be139",
+      "skill": "reading",
+      "promptFr": "Regardez le mot, puis dites ce qu’il porte. Comparez-le aux deux modèles affichés en bas.",
+      "options": [
+        {
+          "id": "734f6367-e87f-5c37-81db-c53ece810fa4",
+          "labelFr": "พี่ : la personne est née avant moi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "afa72196-c61b-53a8-9b19-690f1bcbe737",
+          "labelFr": "น้อง : la personne est née après moi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9da8dd28-0148-5923-b771-20d1d2a542fc",
+          "labelFr": "Ni l’un ni l’autre : ce mot ne dit pas l’ordre de naissance",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "afa72196-c61b-53a8-9b19-690f1bcbe737",
+      "feedback": {
+        "correctFr": "Bien vu. Le bloc du début suffisait : พี่ ou น้อง.",
+        "incorrectFr": "Comparez le début du mot aux deux modèles du bas, พี่ et น้อง. L’un des deux est là, lettre pour lettre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "Oui. แม่ ne contient ni พี่ ni น้อง. L’ordre de naissance ne se lit que sur ces deux blocs."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Comparez lettre pour lettre avec les deux modèles du bas : แม่ ne correspond à aucun des deux. Une mère est bien née avant vous, mais ce n’est pas le mot qui vous le dit, c’est ce que vous savez d’une mère. Les blocs พี่ et น้อง, eux, l’écrivent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u06-l6b-p4",
+      "drawIndex": 3,
+      "id": "d3dd8c92-71bb-5333-8212-d7716f4a1832",
+      "type": "reading",
+      "itemId": "6056d647-e323-5c8e-8481-060f5082dc31",
+      "skill": "reading",
+      "promptFr": "Regardez le mot, puis dites ce qu’il porte. Comparez-le aux deux modèles affichés en bas.",
+      "options": [
+        {
+          "id": "58117be2-a63a-5d41-9756-0ec2c9d515bf",
+          "labelFr": "พี่ : la personne est née avant moi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c7d995b5-02f2-5a7e-8541-05d910074acb",
+          "labelFr": "น้อง : la personne est née après moi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "3ea5a075-4c9a-5d7d-b97b-240468d43ed9",
+          "labelFr": "Ni l’un ni l’autre : ce mot ne dit pas l’ordre de naissance",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "c7d995b5-02f2-5a7e-8541-05d910074acb",
+      "feedback": {
+        "correctFr": "Bien vu. Le bloc du début suffisait : พี่ ou น้อง.",
+        "incorrectFr": "Comparez le début du mot aux deux modèles du bas, พี่ et น้อง. L’un des deux est là, lettre pour lettre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "Oui. แม่ ne contient ni พี่ ni น้อง. L’ordre de naissance ne se lit que sur ces deux blocs."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Comparez lettre pour lettre avec les deux modèles du bas : แม่ ne correspond à aucun des deux. Une mère est bien née avant vous, mais ce n’est pas le mot qui vous le dit, c’est ce que vous savez d’une mère. Les blocs พี่ et น้อง, eux, l’écrivent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u06-l6b-p4",
+      "drawIndex": 4,
+      "id": "d5e9c7bc-43ed-549a-a8b8-22b396ebd44f",
+      "type": "reading",
+      "itemId": "1b5f94d1-7d85-5088-87a5-dcf4d3270e31",
+      "skill": "reading",
+      "promptFr": "Regardez le mot, puis dites ce qu’il porte. Comparez-le aux deux modèles affichés en bas.",
+      "options": [
+        {
+          "id": "869f641c-32c7-5fae-81dd-8fa4e6358550",
+          "labelFr": "พี่ : la personne est née avant moi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9a154d68-58dc-5a64-aaa1-639872e925c1",
+          "labelFr": "น้อง : la personne est née après moi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a36ab216-249b-53ce-81b0-17c8dc9fe76c",
+          "labelFr": "Ni l’un ni l’autre : ce mot ne dit pas l’ordre de naissance",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "a36ab216-249b-53ce-81b0-17c8dc9fe76c",
+      "feedback": {
+        "correctFr": "Bien vu. Le bloc du début suffisait : พี่ ou น้อง.",
+        "incorrectFr": "Comparez le début du mot aux deux modèles du bas, พี่ et น้อง. L’un des deux est là, lettre pour lettre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 4",
+            "textFr": "Oui. แม่ ne contient ni พี่ ni น้อง. L’ordre de naissance ne se lit que sur ces deux blocs."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Comparez lettre pour lettre avec les deux modèles du bas : แม่ ne correspond à aucun des deux. Une mère est bien née avant vous, mais ce n’est pas le mot qui vous le dit, c’est ce que vous savez d’une mère. Les blocs พี่ et น้อง, eux, l’écrivent."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "ce que vous allez pouvoir dire aujourd’hui",
+      "bodyFr": "Parler de sa famille est l’une des trois ou quatre choses qu’on vous demandera le plus vite. Aujourd’hui vous apprenez les quatre mots du noyau, vous découvrez que le thaï ne les découpe pas comme le français, et vous repartez avec une phrase entière à remplir.",
+      "specimen": "พ่อ · แม่ · พี่ · น้อง"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "พ่อ et แม่",
+      "bodyFr": "พ่อ (phâww), c’est le père. แม่ (mâee), c’est la mère. Deux mots courts, deux voyelles longues, et le même ton descendant sur les deux : la voix part haut et tombe, comme dans ค่ะ que vous dites depuis la première unité. Ce sont deux des mots les plus fréquents de toute la langue, et vous les entendrez partout.",
+      "specimen": "พ่อ · แม่"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "là où le thaï coupe ailleurs que le français",
+      "bodyFr": "Voici le point de la leçon. Avant de lire la suite, faites l’essai vous-même : parlez en français de votre frère ou de votre sœur sans dire si c’est un garçon ou une fille. Vous verrez tout de suite ce que le français vous demande de trancher en premier. Le thaï, lui, tranche d’abord autre chose : l’ordre de naissance.\n\nพี่ (phîi) désigne la personne née avant vous. น้อง (náwwng) désigne la personne née après vous. Ni l’un ni l’autre ne dit si c’est un garçon ou une fille : le dictionnaire normatif définit พี่ comme celui ou celle qui a le même père ou la même mère et qui est né avant, et น้อง de la même façon mais né après. Le sexe n’apparaît dans aucune des deux définitions.",
+      "specimen": "พี่ · น้อง"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "deux mots que seule la voix sépare",
+      "bodyFr": "พี่ et น้อง ne se ressemblent pas à l’écrit, mais à l’oral, dans une phrase rapide, c’est la mélodie qui vous dira lequel des deux a été dit. พี่ tombe, น้อง monte et reste en haut. C’est exactement le duel de 2B, ton descendant contre ton haut, sauf qu’ici il ne sépare pas deux objets : il sépare deux personnes, et se tromper de ton revient à parler de quelqu’un d’autre.\n\nPetite vigilance en plus, sur trois mots que vous connaissez presque tous. ปี (pii) veut dire année, ปี่ (pìi) est un instrument à vent, พี่ (phîi) est l’aîné. Regardez-les deux par deux, parce que ce qui les sépare n’est pas le même d’une paire à l’autre. Entre ปี et ปี่, la bouche ne change pas : seule la voix bouge. Entre ปี่ et พี่, la voix bouge ET le souffle du ph arrive, celui de 2A. Entre ปี et พี่, les deux changent aussi. Prononcez les trois à la suite en écoutant l’audio.",
+      "specimen": "ปี · ปี่ · พี่"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "préciser le sexe quand c’est utile",
+      "bodyFr": "Quand le sexe compte, le thaï ne change pas de mot : il en ajoute un second. ชาย s’ajoute pour un homme, สาว pour une femme, et les quatre combinaisons sont des mots courants.\n\n> พี่ชาย (phîi·chaai) : né avant vous, un homme. Frère aîné. > พี่สาว (phîi·sǎao) : née avant vous, une femme. Sœur aînée. > น้องชาย (náwwng·chaai) : né après vous, un homme. Frère cadet. > น้องสาว (náwwng·sǎao) : née après vous, une femme. Sœur cadette.\n\nLisez la grille dans ce sens et pas dans l’autre : le premier bloc porte l’âge, le second porte le sexe. C’est l’inverse de la façon dont le français range ces quatre personnes, et c’est tout l’intérêt de la leçon.",
+      "specimen": "พี่ชาย · พี่สาว · น้องชาย · น้องสาว"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "une honnêteté sur ชาย et สาว",
+      "bodyFr": "Ces deux mots existent seuls, et leur sens seul n’est pas exactement celui qu’ils prennent dans la grille. ชาย seul veut dire homme. สาว seul, lui, ne veut pas dire « femme » : le dictionnaire normatif le définit par une tranche d’âge, une femme sortie de l’enfance, à partir de quinze à trente ans et au-delà.\n\nFaites alors le calcul. Si les quatre mots de la page 5 étaient de simples additions, น้องสาว devrait vouloir dire « une cadette de quinze à trente ans ». Ce n’est pas ce que les dictionnaires en donnent : ils le traduisent par sœur cadette et par petite sœur, sans aucune condition d’âge, et une น้องสาว peut avoir six ans. Le second bloc de ces quatre mots ne fait donc qu’une chose, préciser le sexe, et il ne transporte pas avec lui tout le sens que สาว a lorsqu’il est seul.\n\nRetenez les quatre mots entiers, et ne fabriquez pas d’autres combinaisons par analogie.",
+      "specimen": "ชาย · สาว"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "มี, et le bloc du jour",
+      "bodyFr": "มี (mii) veut dire avoir, au sens de posséder. Le dictionnaire normatif l’illustre lui-même avec « avoir de l’argent » et « avoir des enfants » : c’est bien le verbe qu’il vous faut pour parler de votre famille. Une seule syllabe, voyelle longue, ton moyen, donc plate : rien à faire de la voix.\n\nMettez maintenant bout à bout ce que vous savez, dans l’ordre de 2D, puis ajoutez le comptage de 3D.\n\n> ผม มี พี่ชาย สอง คน ครับ > phǒm mii phîi·chaai sǎwwng khon khráp\n\nMot à mot : moi, avoir, frère aîné, deux, personnes, particule. Une femme dira ดิฉันมีพี่ชายสองคนค่ะ (dì·chǎn mii phîi·chaai sǎwwng khon khâ). Deux blocs bougent : celui de la personne, où entrent les quatre mots de la page 5, et celui du nombre. Le mot de comptage คน, lui, ne bouge pas : on compte des gens.\n\nUne réserve, et 3D vous l’avait déjà annoncée : pour dire « un seul », l’ordre des mots n’est pas aussi simple, et les sources consultées ne s’accordent pas. Restez aujourd’hui à partir de deux. On y reviendra quand ce sera propre.",
+      "specimen": null
+    },
+    {
+      "ordre": 8,
+      "titleFr": "pourquoi vous ne pouvez pas encore lire ces tons",
+      "bodyFr": "Regardez พ่อ, แม่, พี่ et น้อง. Bonne nouvelle d’abord : vous avez déjà rencontré tout ce qui les compose. Les consonnes พ, ม, น et ง viennent de 5A, อ de 1A ; la voyelle แ vient de แพง en 2A, la voyelle ี de ปี en 1C ; et les petites marques posées au-dessus, vous les avez vues dès 4A sur ไก่ et sur ข้าว.\n\nMauvaise nouvelle ensuite : vous ne pouvez toujours pas en prévoir le ton, et la raison est la même pour les quatre. **Tous les quatre portent une marque de ton**, la même sur trois d’entre eux, ่ sur พ่อ, แม่ et พี่, et ้ sur น้อง. Or 4A vous l’a dit dès sa page 8 : dès qu’une marque est là, c’est elle qui commande le ton. Aucune leçon ne vous a encore appris ce qu’elle commande. Ces quatre mots sont donc à retenir à l’oreille aujourd’hui, et à lire plus tard.\n\nEt attention à une chose que 4A a déjà dite : la règle se lit sur la CONSONNE INITIALE, jamais sur la première lettre écrite. Dans แม่, la consonne initiale est ม, pas แ, parce que แ s’écrit avant la consonne qu’on prononce après elle. Vous aviez déjà le cas avec ไ dans ไหม et ไม่.",
+      "specimen": "แม่ · น้อง"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "à vous",
+      "bodyFr": "Un seul réflexe à emporter, et il est de découpage : en thaï, on dit d’abord si la personne est née avant ou après, ensuite seulement si c’est un homme ou une femme. Le reste du bloc, vous le connaissiez déjà.\n\nAprès les exercices, enregistrez-vous en disant พี่ puis น้อง, puis la phrase entière, et comparez en A/B avec la voix de référence. Écoutez surtout le milieu de la phrase : le ton descendant de phîi ne doit pas s’aplatir parce que chaai vient se coller derrière. Votre enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u06-l6b-p4",
+      "promptFr": "Regardez le mot, puis dites ce qu’il porte. Comparez-le aux deux modèles affichés en bas.",
+      "mechanic": "reading",
+      "drawCount": 4,
+      "passRequired": 4,
+      "sampleSize": 4
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "f7820ebb-f63e-5e64-a587-a1af71b0fc58",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "42d08f3e-37f2-51dd-8c0f-456aecb9b825",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3c1e95e6-2ec9-54d8-a246-ee03d6575716",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2b591817-76b7-54b2-8083-4a3a6474480f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "fbebcd6e-9b64-5c36-a173-574cf01e2888",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f84599a6-040b-5a9d-9947-1ab3f0d5894f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "47923bc7-c53e-52c0-a371-a8e30a2617b8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3d296022-fb0e-5dff-bd6d-ad566885d5d2",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

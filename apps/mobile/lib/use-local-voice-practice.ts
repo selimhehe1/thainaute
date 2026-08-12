@@ -710,6 +710,7 @@ export function useLocalVoicePractice(
 
   const abortPreparingSession = useCallback(
     async (session: RecorderSession): Promise<boolean> => {
+      if (recorderSessionRef.current !== session) return true;
       session.forceDiscard = true;
       clearStopTimer();
       clearHealthTimer();
@@ -970,7 +971,11 @@ export function useLocalVoicePractice(
 
   const prepareRecordingSession = useCallback(
     async (session: RecorderSession): Promise<boolean> => {
-      const permission = await AudioModule.requestRecordingPermissionsAsync();
+      const currentPermission =
+        await AudioModule.getRecordingPermissionsAsync();
+      const permission = currentPermission.granted
+        ? currentPermission
+        : await AudioModule.requestRecordingPermissionsAsync();
       if (await abortStalePreparingSession(session)) return false;
       if (!permission.granted) {
         recorderSessionRef.current = null;
@@ -1313,7 +1318,9 @@ export function useLocalVoicePractice(
       const session = recorderSessionRef.current;
       if (session !== null) {
         session.forceDiscard = true;
-        if (session.phase !== "preparing") {
+        if (session.phase === "preparing") {
+          await abortPreparingSession(session);
+        } else {
           await stopRecordingInternal(
             reason === "background" ? reason : "route",
           );
@@ -1326,12 +1333,14 @@ export function useLocalVoicePractice(
       }
 
       await deactivateAudioSession();
+      finishOperation("permission");
       if (hadSessionBoundVoiceActivity) {
         showNotice(SESSION_BOUNDARY_NOTICE);
       }
     },
     [
       cancelPendingPlayerValidation,
+      abortPreparingSession,
       deactivateAudioSession,
       disposeRecordingUri,
       finishOperation,

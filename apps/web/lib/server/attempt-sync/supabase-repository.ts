@@ -1,6 +1,7 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { SRS_ALGORITHM_VERSION, type AttemptEvent } from "@thainaute/domain";
 import {
+  attemptAnswerSchema,
   attemptBatchResponseSchema,
   type ValidatedAttemptSubmission,
 } from "@thainaute/sync";
@@ -33,7 +34,8 @@ const attemptEventRowSchema = z.strictObject({
   exercise_id: z.uuid(),
   item_id: z.uuid(),
   lesson_version_id: z.uuid(),
-  selected_option_id: z.uuid(),
+  selected_option_id: z.uuid().nullable(),
+  answer: attemptAnswerSchema.nullable(),
   dimension: z.enum(["listening", "reading", "recall", "production", "tone"]),
   rating: z.union([z.literal(0), z.literal(1)]),
   answered_at: z.string().datetime({ offset: true }),
@@ -68,6 +70,7 @@ const ATTEMPT_EVENT_COLUMNS = [
   "item_id",
   "lesson_version_id",
   "selected_option_id",
+  "answer",
   "dimension",
   "rating",
   "answered_at",
@@ -137,7 +140,10 @@ function toAttemptEvent(
     exerciseId: row.exercise_id,
     itemId: row.item_id,
     contentVersionId: row.lesson_version_id,
-    selectedOptionId: row.selected_option_id,
+    ...(row.selected_option_id === null
+      ? {}
+      : { selectedOptionId: row.selected_option_id }),
+    ...(row.answer === null ? {} : { answer: row.answer }),
     skill: row.dimension,
     rating: row.rating,
     answeredAt: new Date(row.answered_at).toISOString(),
@@ -163,26 +169,86 @@ export function derivePublishedAnswerKeys(
 
     const itemIds = new Set(lesson.items.map((item) => item.id));
     for (const exercise of lesson.exercises) {
-      if (exercise.type !== "audio_choice") {
-        // Les autres mécaniques seront notées à la phase C (ADR-0024).
-        continue;
-      }
-      const validOptionIds = exercise.options.map((option) => option.id);
-      if (
-        !itemIds.has(exercise.itemId) ||
-        new Set(validOptionIds).size !== validOptionIds.length ||
-        !validOptionIds.includes(exercise.correctOptionId)
-      ) {
+      const itemId =
+        exercise.type === "association"
+          ? exercise.pairs[0]?.itemId
+          : exercise.itemId;
+      if (itemId === undefined || !itemIds.has(itemId)) continue;
+
+      if (exercise.type === "audio_choice" || exercise.type === "reading") {
+        const validOptionIds = exercise.options.map((option) => option.id);
+        if (
+          new Set(validOptionIds).size !== validOptionIds.length ||
+          !validOptionIds.includes(exercise.correctOptionId)
+        ) {
+          continue;
+        }
+        answerKeys.push({
+          exerciseId: exercise.id,
+          itemId,
+          correctOptionId: exercise.correctOptionId,
+          skill: exercise.skill,
+          contentVersionId: lesson.versionId,
+          validOptionIds,
+          feedback: exercise.feedback,
+        });
         continue;
       }
 
+      if (exercise.type === "association") {
+        const pairIds = exercise.pairs.map((pair) => pair.id);
+        if (new Set(pairIds).size !== pairIds.length) continue;
+        answerKeys.push({
+          kind: "association",
+          exerciseId: exercise.id,
+          itemId,
+          skill: exercise.skill,
+          contentVersionId: lesson.versionId,
+          pairIds,
+          validOptionIds: [],
+          feedback: exercise.feedback,
+        });
+        continue;
+      }
+
+      if (exercise.type === "word_order") {
+        const validTokenIds = exercise.tokens.map((token) => token.id);
+        if (
+          new Set(validTokenIds).size !== validTokenIds.length ||
+          new Set(exercise.correctOrder).size !==
+            exercise.correctOrder.length ||
+          exercise.correctOrder.some(
+            (tokenId) => !validTokenIds.includes(tokenId),
+          )
+        ) {
+          continue;
+        }
+        answerKeys.push({
+          kind: "word_order",
+          exerciseId: exercise.id,
+          itemId,
+          skill: exercise.skill,
+          contentVersionId: lesson.versionId,
+          validTokenIds,
+          correctOrder: exercise.correctOrder,
+          validOptionIds: [],
+          feedback: exercise.feedback,
+        });
+        continue;
+      }
+
+      const acceptedAnswers = exercise.acceptedAnswers.map(
+        ({ value }) => value,
+      );
       answerKeys.push({
+        kind: "recall",
         exerciseId: exercise.id,
-        itemId: exercise.itemId,
-        correctOptionId: exercise.correctOptionId,
+        itemId,
         skill: exercise.skill,
         contentVersionId: lesson.versionId,
-        validOptionIds,
+        acceptedAnswers,
+        answerPolicy: exercise.answerPolicy,
+        validOptionIds: [],
         feedback: exercise.feedback,
       });
     }
@@ -275,7 +341,8 @@ function eventPayload(event: AttemptEvent) {
     exercise_id: event.exerciseId,
     item_id: event.itemId,
     lesson_version_id: event.contentVersionId,
-    selected_option_id: event.selectedOptionId,
+    selected_option_id: event.selectedOptionId ?? null,
+    answer: event.answer ?? null,
     dimension: event.skill,
     rating: event.rating,
     answered_at: event.answeredAt,
@@ -347,7 +414,7 @@ export function createSupabaseAttemptRepository(input: {
         const lessonsPromise = client
           .from("lesson_versions")
           .select(
-            "id,lesson_id,version,release_id,status,title_fr,payload,payload_sha256,published_at,content_releases!inner(id,version,status,published_at)",
+            "id,lesson_id,version,release_id,status,language_pack_id,target_locale,title_fr,payload,payload_sha256,published_at,content_releases!inner(id,version,status,language_pack_id,target_locale,published_at)",
           )
           .in("id", contentVersionIds)
           .eq("release_id", input.releaseId)

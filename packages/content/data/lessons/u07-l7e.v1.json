@@ -1,0 +1,798 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "ecb6de23-2fa9-5225-978a-0367ebc36f3b",
+  "versionId": "47a22339-02af-5127-8641-6ae273d6ea58",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Une journée ordinaire",
+  "objectiveFr": "à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre un homme et une femme qui se croisent le matin, et répond correctement à 5 questions sur 6 ; il reconstruit la phrase วันนี้ ผม ไป ตลาด ครับ dans cet ordre, avec วันนี้ en tête et la particule qui correspond au locuteur indiqué, et il fait de même pour ข้าวผัด อร่อย มาก ค่ะ, soit 2 tirages sur 2 ; il distingu",
+  "requiredEntitlement": null,
+  "audioManifestId": "b0342c66-6f80-5d60-9285-7a609fed624d",
+  "items": [
+    {
+      "id": "3278ebdc-3b6e-539a-ac49-59164793b71d",
+      "thaiRaw": "วัน",
+      "unicodeCodePoints": [
+        "U+0E27",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "le jour, la journée",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "wan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "วัน",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "9b6dd22c-4613-5627-adbb-11d68ac6cedf",
+      "thaiRaw": "วันนี้",
+      "unicodeCodePoints": [
+        "U+0E27",
+        "U+0E31",
+        "U+0E19",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
+      "translationFr": "aujourd’hui",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "wan·níi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "วันนี้",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "วันนี้",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "6b483c8e-fb9e-5e70-b97e-e1d028d2bd66",
+      "thaiRaw": "นี้",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
+      "translationFr": "ce, cette (démonstratif)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "níi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นี้",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b33b1c0e-7120-5127-b6ff-2cba85dc760d",
+      "thaiRaw": "สบายดี",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E22",
+        "U+0E14",
+        "U+0E35"
+      ],
+      "translationFr": "aller bien",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·baai·dii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สบายดี",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สบายดี",
+          "ipa": "baːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "สบายดี",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli avec la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "49f9e8b6-18e2-563a-8c9d-21d4f3844424",
+      "thaiRaw": "ไหม",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21"
+      ],
+      "translationFr": "particule de question fermée",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไหม",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "dfc330f5-2903-5331-9f0e-9e98b0799cd3",
+      "thaiRaw": "แล้วคุณล่ะ",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E25",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "et vous ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew khoun lâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (poli avec la particule)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "643a4281-7514-514e-8a7b-395eccf6de6d",
+      "thaiRaw": "ผมไปตลาดครับ",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21",
+        "U+0E44",
+        "U+0E1B",
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "je vais au marché (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm pai tà·làat khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "laːt̚˨˩ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "6c98b873-f3d7-58bc-ae1f-2146e11b2e71",
+      "thaiRaw": "ไม่ไกล",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E44",
+        "U+0E01",
+        "U+0E25"
+      ],
+      "translationFr": "pas loin, ce n’est pas loin",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi klai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่ไกล",
+          "ipa": "maj˥˩ klaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "7e0a9290-6ed3-5a61-9b9c-0d8c295ac12e",
+      "thaiRaw": "ข้าวผัด",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14"
+      ],
+      "translationFr": "riz sauté",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâao·phàt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข้าวผัด",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ข้าวผัด",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "f85cf97c-4856-50c4-a2f9-94012ae73b78",
+      "thaiRaw": "อร่อยมาก",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E23",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E21",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "très bon (au goût)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "à·ràwi mâak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อร่อยมาก",
+          "ipa": "ʔa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อร่อยมาก",
+          "ipa": "rɔj˨˩ maːk̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "29a99abe-8a82-5103-8e1f-e94886603d57",
+      "thaiRaw": "หิวมาก",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E34",
+        "U+0E27",
+        "U+0E21",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "avoir très faim",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hǐo mâak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หิวมาก",
+          "ipa": "hiw˩˩˦ maːk̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "784cc6b6-fab0-5199-a5c7-91c151406ce4",
+      "thaiRaw": "ข้าวผัดเท่าไร",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14",
+        "U+0E40",
+        "U+0E17",
+        "U+0E48",
+        "U+0E32",
+        "U+0E44",
+        "U+0E23"
+      ],
+      "translationFr": "le riz sauté, c’est combien ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâao·phàt thâo·rai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข้าวผัดเท่าไร",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ข้าวผัดเท่าไร",
+          "ipa": "pʰat̚˨˩ tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ข้าวผัดเท่าไร",
+          "ipa": "raj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ข้าวผัดเท่าไรครับ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "bc297c28-0804-5de6-8464-b09eb57d1834",
+      "thaiRaw": "สี่สิบบาท",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E35",
+        "U+0E48",
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E17"
+      ],
+      "translationFr": "quarante bahts",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sìi·sìp bàat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สี่สิบบาท",
+          "ipa": "siː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สี่สิบบาท",
+          "ipa": "sip̚˨˩ baːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "3a041919-db0b-5148-9d58-f5144ab9cb3a",
+      "thaiRaw": "ขอบคุณ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13"
+      ],
+      "translationFr": "merci",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàwwp·khoun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰɔːp̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli avec la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "9cdd2823-4b13-532c-8f43-f6d9415c4549",
+      "thaiRaw": "แล้วเจอกัน",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E40",
+        "U+0E08",
+        "U+0E2D",
+        "U+0E01",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "à plus tard (prise de congé courante)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew·joee·kan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้วเจอกัน",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "แล้วเจอกัน",
+          "ipa": "t͡ɕɤː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "แล้วเจอกัน",
+          "ipa": "kan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "n"
+        }
+      ],
+      "register": "neutre (poli avec la particule)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u07-l7e-p5",
+      "drawIndex": 1,
+      "id": "945e3580-c0fe-5be5-9f21-0a724e00cf4f",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "pairs": [
+        {
+          "id": "060c9d22-232a-5de1-8517-43551a76ec24",
+          "itemId": "7e0a9290-6ed3-5a61-9b9c-0d8c295ac12e",
+          "labelFr": "riz sauté"
+        },
+        {
+          "id": "b22f5565-246c-5871-bf15-8db62424ca7c",
+          "itemId": "f85cf97c-4856-50c4-a2f9-94012ae73b78",
+          "labelFr": "très bon, au goût"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Exact.",
+        "incorrectFr": "Relisez l’expression et son sens, puis réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "tout ce que vous savez, dans une seule conversation",
+      "bodyFr": "Vous savez saluer depuis l’unité 2, compter et demander un prix depuis l’unité 3, parler de nourriture depuis l’unité 4, dire où vous allez depuis l’unité 5 et renvoyer une question depuis l’unité 6. Aujourd’hui, tout cela tient dans un seul échange de huit répliques, entre deux personnes qui se croisent le matin. Un seul mot vous manque encore, et c’est celui qui situe la journée.",
+      "specimen": "วันนี้"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "วัน, que vous avez appris en 7C",
+      "bodyFr": "Vous l’avez rencontré dans ทุกวัน : วัน (wan), le jour. Regardez-le encore une fois lettre par lettre, ว, puis ◌ั, puis น, parce que c’est la première moitié du bloc d’aujourd’hui. Son ton se prévoit toujours sans l’entendre : la consonne initiale est basse, la syllabe se ferme sur un น donc elle est vivante, aucune marque ne la surplombe. La règle complétée en 6A annonce le ton moyen. Écoutez, et vérifiez.",
+      "specimen": "วัน (wan)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "วันนี้, c’est วัน plus นี้",
+      "bodyFr": "นี้ (níi) est à vous depuis la leçon 1D : c’est le mot qui montre ce qui est proche, « ce, cette ». Collez-le derrière วัน et vous obtenez วันนี้ (wan·níi), aujourd’hui, mot à mot « ce jour-ci ». Vous avez déjà fait ce geste deux fois : อันนี้ en 3C, pour désigner l’objet devant vous, et คนนี้ en 6C, pour désigner la personne devant vous. Le patron ne change pas, seul le mot de devant change.",
+      "specimen": "อันนี้ · คนนี้ · วันนี้"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "où se place วันนี้ dans la phrase",
+      "bodyFr": "Au début, avant tout le reste. วันนี้ผมไปตลาดครับ : aujourd’hui, je vais au marché. Le reste de la phrase ne bouge pas d’un millimètre, c’est exactement le bloc de 5D, [qui] + ไป + [où] + [particule], avec วันนี้ posé devant. Faites la comparaison vous-même à voix haute : dites la traduction française, puis la phrase thaïe, et regardez où tombe le mot de temps dans chacune des deux.",
+      "specimen": "วันนี้ผมไปตลาดครับ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "la ligne d’horizon, et l’étage en dessous",
+      "bodyFr": "C’est le contraste de toute l’unité, et le dialogue en est plein. Reprenez l’ancre de la leçon 1C : le ton moyen est votre ligne d’horizon, plate et tranquille ; le ton bas est aussi plat, un étage plus bas. Dites ตลาด (tà·làat) à voix haute, puis ไกล (klai) : dans le premier, les deux syllabes restent en dessous de la ligne ; dans le second, la syllabe unique est sur la ligne. Écoutez-vous, puis comparez avec la voix de référence.",
+      "specimen": "ตลาด (tà·làat) contre ไกล (klai)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "deux étages dans un seul mot",
+      "bodyFr": "Le cas le plus utile est celui où les deux tons se suivent à l’intérieur d’un même mot, parce qu’il n’y a alors plus aucun repère extérieur. สบายดี (sà·baai·dii) : la première syllabe est en dessous, les deux suivantes sont sur la ligne. ขอบคุณ (khàwwp·khoun) : la première est en dessous, la seconde est sur la ligne. Vous prononcez ces deux mots depuis l’unité 2 ; aujourd’hui vous savez ce que vous y faites.",
+      "specimen": "สบายดี (sà·baai·dii) · ขอบคุณ (khàwwp·khoun)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "มาก se pose toujours après",
+      "bodyFr": "Rien de nouveau, seulement un rappel avant l’écoute, parce que le dialogue l’emploie deux fois. Depuis 4D, มาก (mâak) se place APRÈS le mot qu’il renforce, et cet ordre ne se négocie pas. หิวมาก (hǐo mâak), très faim. อร่อยมาก (à·ràwi mâak), très bon. Dites les deux traductions françaises à voix haute, puis les deux phrases thaïes, et regardez de quel côté du mot renforcé tombe l’intensité dans chacune : vous êtes locuteur natif du français, vous tranchez mieux que nous.",
+      "specimen": "หิวมาก (hǐo mâak) · อร่อยมาก (à·ràwi mâak)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "demander le prix d’un plat",
+      "bodyFr": "Vous connaissez le patron depuis 3C : [la chose] + เท่าไร + votre particule, comme dans อันนี้เท่าไรครับ. Il se remplit avec n’importe quel nom, donc avec un plat : ข้าวผัดเท่าไรครับ, le riz sauté, c’est combien ? La réponse arrive dans la même forme qu’en 3C, un nombre puis บาท : สี่สิบบาท, quarante bahts. Attention à l’ordre du nombre, exactement comme en 3C : สี่สิบ vaut quarante, สิบสี่ vaudrait quatorze.",
+      "specimen": "ข้าวผัดเท่าไรครับ · สี่สิบบาทค่ะ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "ce que cette leçon ne fait pas",
+      "bodyFr": "Trois honnêtetés avant l’écoute. D’abord, le dialogue est rempli des deux petites marques ◌่ et ◌้, dix-sept fois en tout, dans ค่ะ, ไม่, อร่อย, เท่าไร, สี่, ล่ะ, แล้ว, ข้าว et นี้. Quatre de ces mots se lisent maintenant avec le tableau de 7A : สี่, แล้ว, ข้าว, et นี้, dont le ton haut vient d’une consonne basse surmontée de ไม้โท. Ensuite, les cinq autres sont précisément ceux que 7A a mis de côté, et ils restent des images entières : ne cherchez pas à calculer ค่ะ, ไม่, อร่อย, เท่าไร ni ล่ะ, rien ici ne vous le demandera. Enfin, les traductions françaises sont toutes au présent : la leçon ne dit rien de la façon dont le thaï situe une action dans le temps, et ne vous demande rien à ce sujet.",
+      "specimen": "นี้ · ค่ะ · ไม่"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "à vous",
+      "bodyFr": "Écoutez le dialogue en entier une première fois sans lire. Reprenez avec le texte, puis enregistrez les deux répliques qui contiennent วันนี้ et comparez en A/B avec la voix de référence. Écoutez d’abord vos deux premières syllabes : wan doit rester sur la ligne, níi doit monter. Puis dites ตลาด juste après ไกล, et vérifiez que votre voix change bien d’étage. Votre enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u07-l7e-p5",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "14cc0928-9cbb-5f71-90a7-bca620b5c239",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "70f86051-fe4e-50c5-9879-dced2df38cb0",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "cc2eaa9b-4787-5301-bb01-935c57862d3a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0f97721d-50c3-5336-aca5-f44a2c8d56e8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "444616c2-bc95-5743-9fc7-e535c7d4df7f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "50e1dc1b-7554-5771-ae98-195d80ad24dc",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "00a6d507-3fd6-5a08-afb1-a99929773ddb",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "245202f5-2feb-55cb-81b0-e03e6062e33c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

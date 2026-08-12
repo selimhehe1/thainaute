@@ -1,6 +1,6 @@
 # Registre des dépendances
 
-Dernière vérification : 2 août 2026. Les versions sont exactes dans chaque
+Dernière vérification : 9 août 2026. Les versions sont exactes dans chaque
 `package.json` et dans `pnpm-lock.yaml`.
 
 | Dépendance                      | Besoin                                                          | Licence / coût                            | Alternative examinée                                                                      |
@@ -20,8 +20,8 @@ Dernière vérification : 2 août 2026. Les versions sont exactes dans chaque
 | Vitest / fast-check             | Tests unitaires et propriétés du SRS                            | MIT ; gratuits                            | Jest seul, moins intégré au socle ESM/Vite                                                |
 | Testing Library React / jsdom   | Courses du hook vocal testées avec React et cycle de vie simulé | MIT ; test uniquement                     | Helpers purs seuls ne prouvent pas l’intégration ; React Test Renderer est déprécié       |
 | Playwright                      | Parcours web réels                                              | Apache-2.0 ; gratuit                      | Cypress, sans avantage décisif pour cette tranche                                         |
-| RevenueCat                      | Entitlement mobile partagé, phase ultérieure                    | service commercial                        | Implémentation StoreKit/Play Billing maison, plus risquée                                 |
-| Stripe                          | Abonnements web, phase ultérieure                               | service facturé à l'usage                 | Paiement maison exclu pour sécurité et conformité                                         |
+| RevenueCat                      | Entitlement mobile partagé et webhooks                          | service commercial                        | Implémentation StoreKit/Play Billing maison, plus risquée                                 |
+| Stripe 22.4.0                   | Checkout d'abonnement web et Customer Portal                    | MIT ; frais Stripe à l'usage              | Paiement maison exclu pour sécurité et conformité                                         |
 
 TypeScript reste en `6.0.3` : le dist-tag `latest` pointe déjà vers TypeScript 7,
 mais Expo SDK 57 et `typescript-eslint` 8.65 bornent encore la version supportée
@@ -33,12 +33,15 @@ par l’ADR-0012. Une montée de version ne peut pas conserver aveuglément ce
 patch : elle doit d’abord vérifier le comportement natif amont, puis compiler
 et recetter une nouvelle build iOS et Android sur appareils. Le patch stoppe
 les interruptions iOS et les changements physiques de route audio sur les deux
-plateformes ; il n’ajoute aucune permission. `expo-file-system` 57.0.1 est
+plateformes ; il n’ajoute aucune permission. `expo-file-system` 57.0.2 est
 utilisé uniquement pour confirmer la présence, la taille, l’entête et la
 suppression du fichier privé avant d’autoriser B ; il n’accorde aucun accès aux
-fichiers partagés de l’utilisateur.
+fichiers partagés de l’utilisateur. Les autres paquets mobiles suivent la
+matrice officielle Expo SDK 57 vérifiée par `expo install --check`, notamment
+React 19.2.3, `expo-file-system` 57.0.2,
+`react-native-safe-area-context` 5.7.0 et `react-native-worklets` 0.10.1.
 
-`expo-sharing` 57.0.8 est épinglé à la version compatible avec Expo SDK 57. Il
+`expo-sharing` 57.0.10 est épinglé à la version compatible avec Expo SDK 57. Il
 n’est appelé qu’après vérification de sa disponibilité et seulement pour un
 fichier JSON temporaire placé sur un chemin applicatif dédié du cache privé. Le
 fichier est supprimé après fermeture du panneau, lors d’une frontière de
@@ -71,6 +74,32 @@ et [PostCSS](https://github.com/advisories/GHSA-r28c-9q8g-f849). L'audit de
 production et le build complet doivent rester des portes de CI tant que Next ne
 les référence pas directement.
 
+Un override transitif supplémentaire épingle `js-yaml` à `4.3.1` : `@expo/xcpretty`
+déclare une plage compatible, mais sa résolution antérieure exposait la chaîne Expo
+CLI à un avis élevé de consommation CPU. `js-yaml` est MIT et sans coût ; l'alternative
+retenue à terme reste une mise à jour Expo/xcpretty qui référence directement la
+version corrigée. Le build Expo et `pnpm audit:prod` doivent rester verts après toute
+évolution de cette chaîne.
+
+Un override transitif épingle aussi `nanoid` à `3.3.18`. Les plages déclarées
+par Expo Router, PostCSS et Next restent compatibles, mais le lockfile
+antérieur résolvait `3.3.16`, concerné par
+[GHSA-2v37-7h3g-55p8](https://github.com/advisories/GHSA-2v37-7h3g-55p8).
+`nanoid` est MIT, sans coût et déjà transitif ; l'override sera retiré dès que
+les parents verrouilleront directement une version corrigée.
+
+Deux avis élevés `image-size`,
+[GHSA-w3rx-r6r6-pgpr](https://github.com/advisories/GHSA-w3rx-r6r6-pgpr) et
+[GHSA-5p2g-fcmc-qvqq](https://github.com/advisories/GHSA-5p2g-fcmc-qvqq),
+sont ignorés individuellement par `audit:prod` tant qu'aucune version corrigée
+annoncée (`2.0.3`) n'est publiée. La version `1.2.1` n'est atteinte que par
+Metro pendant le développement et la construction ; Metro ne traite ici que
+les assets versionnés du dépôt, jamais une image fournie par un utilisateur au
+runtime. Il ne s'agit pas d'un ignore global : tout autre avis reste bloquant.
+Cette exception doit être revue à chaque patch Expo/Metro et au plus tard le
+1er septembre 2026 ; elle doit disparaître dès qu'un correctif compatible est
+publié.
+
 `sharp` 0.35.3 fait par ailleurs l'objet d'un
 [incident ouvert sur certains imports serveur Vercel](https://github.com/lovell/sharp/issues/4567).
 Avant le premier déploiement, la CI Linux devra compléter le build par un smoke
@@ -85,3 +114,10 @@ buffer. Un override hors contrat vers la version majeure 11 créerait ici plus d
 risque de build natif que cette voie non atteignable ; l'alerte est donc acceptée
 temporairement et doit disparaître par une mise à jour Expo/xcode. La CI bloque
 les vulnérabilités élevées et critiques avec `pnpm audit:prod`.
+
+`stripe@22.4.0` est la version stable épinglée au moment de l'intégration ; elle
+déclare l'API `2026-07-29.dahlia`, est distribuée sous MIT et ne crée aucune
+ressource distante à l'installation. Le serveur utilise uniquement une clé
+restreinte, Checkout Sessions en mode abonnement et Customer Portal ; le mode
+reste `disabled` par défaut et Stripe Tax n'est pas activé. Le prix, la fiscalité
+et l'autorisation d'encaisser restent des décisions séparées avant le live.

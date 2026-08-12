@@ -2,5 +2,251 @@
   "schemaVersion": 1,
   "manifestId": "bd58a2cf-bc33-5967-8da7-bf158ccb9b9b",
   "lessonVersionId": "54c5440b-8414-5a78-a84b-bfae11b64082",
-  "entries": []
+  "entries": [
+    {
+      "assetId": "eb3d8d6a-820f-5b11-b3eb-11c5a0ddd8b2",
+      "itemId": "89522fd2-a6da-59a1-90b2-bd747ce60fdb",
+      "variant": "pedagogical",
+      "canonicalPath": "packages/content/assets/audio/u01-l1b/eb3d8d6a-820f-5b11-b3eb-11c5a0ddd8b2.wav",
+      "distributionPaths": [],
+      "mimeType": "audio/wav",
+      "sha256": "a81e95f69a53729275bbe67fa89e4cb1e1d5d731734f5048eb83ce4e55c8863b",
+      "byteLength": 55244,
+      "durationMs": 1150,
+      "voiceKind": "synthetic_tts",
+      "consentReference": null,
+      "synthesis": {
+        "provider": "openai",
+        "model": "gpt-audio-1.5",
+        "voice": "coral",
+        "sourceText": "หาด",
+        "parameters": {
+          "format": "wav",
+          "modalities": "text+audio"
+        },
+        "generatedAt": "2026-08-06T16:45:06.767Z"
+      },
+      "roundTrip": null,
+      "toneCheck": {
+        "method": "f0_contour",
+        "tool": "scripts/verification/f0-contour.mjs",
+        "expectedTone": "low",
+        "observedShape": "falling",
+        "semitoneSlope": -5.32,
+        "semitoneRange": 6.2,
+        "consistent": true,
+        "checkedAt": "2026-08-06T16:45:06.768Z"
+      }
+    },
+    {
+      "assetId": "402cfd23-810d-5771-9cc8-373dcb6ff2cf",
+      "itemId": "3be9755c-9041-5dc9-85dd-db66c1beefce",
+      "variant": "pedagogical",
+      "canonicalPath": "packages/content/assets/audio/u01-l1b/402cfd23-810d-5771-9cc8-373dcb6ff2cf.wav",
+      "distributionPaths": [],
+      "mimeType": "audio/wav",
+      "sha256": "580381df9b25103d745d6401004b1cfa8a28a53439cbbafe2eb3f16347b42a87",
+      "byteLength": 48044,
+      "durationMs": 1000,
+      "voiceKind": "synthetic_tts",
+      "consentReference": null,
+      "synthesis": {
+        "provider": "openai",
+        "model": "gpt-audio-1.5",
+        "voice": "coral",
+        "sourceText": "หัด",
+        "parameters": {
+          "format": "wav",
+          "modalities": "text+audio"
+        },
+        "generatedAt": "2026-08-06T16:45:08.334Z"
+      },
+      "roundTrip": null,
+      "toneCheck": {
+        "method": "f0_contour",
+        "tool": "scripts/verification/f0-contour.mjs",
+        "expectedTone": "low",
+        "observedShape": "falling",
+        "semitoneSlope": -5.64,
+        "semitoneRange": 9.32,
+        "consistent": true,
+        "checkedAt": "2026-08-06T16:45:08.334Z"
+      }
+    },
+    {
+      "assetId": "4e0040ad-bb5a-53c4-a6a9-a9378b2d0088",
+      "itemId": "93940210-b361-5471-be6e-bdbf1a482c55",
+      "variant": "pedagogical",
+      "canonicalPath": "packages/content/assets/audio/u01-l1b/4e0040ad-bb5a-53c4-a6a9-a9378b2d0088.wav",
+      "distributionPaths": [],
+      "mimeType": "audio/wav",
+      "sha256": "47c509b79250b0611d72dcf481a6897d6ffcdddde5a0f4da948a767a294266e5",
+      "byteLength": 55244,
+      "durationMs": 1150,
+      "voiceKind": "synthetic_tts",
+      "consentReference": null,
+      "synthesis": {
+        "provider": "openai",
+        "model": "gpt-audio-1.5",
+        "voice": "coral",
+        "sourceText": "ข้าว",
+        "parameters": {
+          "format": "wav",
+          "modalities": "text+audio"
+        },
+        "generatedAt": "2026-08-06T16:45:09.732Z"
+      },
+      "roundTrip": null,
+      "toneCheck": {
+        "method": "f0_contour",
+        "tool": "scripts/verification/f0-contour.mjs",
+        "expectedTone": "falling",
+        "observedShape": "falling",
+        "semitoneSlope": -4.44,
+        "semitoneRange": 9.56,
+        "consistent": true,
+        "checkedAt": "2026-08-06T16:45:09.732Z"
+      }
+    },
+    {
+      "assetId": "a80861fa-87ce-5755-95af-6e04dd60f149",
+      "itemId": "09df4821-87e5-5c4f-8902-5bc807aceeb7",
+      "variant": "pedagogical",
+      "canonicalPath": "packages/content/assets/audio/u01-l1b/a80861fa-87ce-5755-95af-6e04dd60f149.wav",
+      "distributionPaths": [],
+      "mimeType": "audio/wav",
+      "sha256": "3de15b0eabd2b744b881bfbd7cef141929a5b79e9ef4af8a54038e12603a44ed",
+      "byteLength": 91244,
+      "durationMs": 1900,
+      "voiceKind": "synthetic_tts",
+      "consentReference": null,
+      "synthesis": {
+        "provider": "openai",
+        "model": "gpt-audio-1.5",
+        "voice": "coral",
+        "sourceText": "ขาว",
+        "parameters": {
+          "format": "wav",
+          "modalities": "text+audio"
+        },
+        "generatedAt": "2026-08-06T16:45:16.243Z"
+      },
+      "roundTrip": null,
+      "toneCheck": {
+        "method": "f0_contour",
+        "tool": "scripts/verification/f0-contour.mjs",
+        "expectedTone": "rising",
+        "observedShape": "dipping",
+        "semitoneSlope": -0.65,
+        "semitoneRange": 4.7,
+        "consistent": true,
+        "checkedAt": "2026-08-06T16:45:16.243Z"
+      }
+    },
+    {
+      "assetId": "d3f24fd9-1f99-5304-bc7c-eec85e3c10d1",
+      "itemId": "dfd18061-30af-5400-a5da-565768783f05",
+      "variant": "pedagogical",
+      "canonicalPath": "packages/content/assets/audio/u01-l1b/d3f24fd9-1f99-5304-bc7c-eec85e3c10d1.wav",
+      "distributionPaths": [],
+      "mimeType": "audio/wav",
+      "sha256": "f3ee03898122554139d04b58b1d7c893cf873e49cb3a71c2d0cd3c61968ff637",
+      "byteLength": 55244,
+      "durationMs": 1150,
+      "voiceKind": "synthetic_tts",
+      "consentReference": null,
+      "synthesis": {
+        "provider": "openai",
+        "model": "gpt-audio-1.5",
+        "voice": "coral",
+        "sourceText": "เขา",
+        "parameters": {
+          "format": "wav",
+          "modalities": "text+audio"
+        },
+        "generatedAt": "2026-08-06T16:45:17.336Z"
+      },
+      "roundTrip": null,
+      "toneCheck": {
+        "method": "f0_contour",
+        "tool": "scripts/verification/f0-contour.mjs",
+        "expectedTone": "rising",
+        "observedShape": "rising",
+        "semitoneSlope": 7.39,
+        "semitoneRange": 10.79,
+        "consistent": true,
+        "checkedAt": "2026-08-06T16:45:17.336Z"
+      }
+    },
+    {
+      "assetId": "81300b42-913d-5f40-b652-ae640a0ba287",
+      "itemId": "ac9ae9ed-ab46-546b-8939-834adcb43455",
+      "variant": "pedagogical",
+      "canonicalPath": "packages/content/assets/audio/u01-l1b/81300b42-913d-5f40-b652-ae640a0ba287.wav",
+      "distributionPaths": [],
+      "mimeType": "audio/wav",
+      "sha256": "1ba78bf0a2b1360e3fe99b35d47ec7bd78890f6e320ffb58eefb607f39c74d94",
+      "byteLength": 64844,
+      "durationMs": 1350,
+      "voiceKind": "synthetic_tts",
+      "consentReference": null,
+      "synthesis": {
+        "provider": "openai",
+        "model": "gpt-audio-1.5",
+        "voice": "coral",
+        "sourceText": "ยาง",
+        "parameters": {
+          "format": "wav",
+          "modalities": "text+audio"
+        },
+        "generatedAt": "2026-08-06T16:45:19.369Z"
+      },
+      "roundTrip": null,
+      "toneCheck": {
+        "method": "f0_contour",
+        "tool": "scripts/verification/f0-contour.mjs",
+        "expectedTone": "mid",
+        "observedShape": "level",
+        "semitoneSlope": 0.47,
+        "semitoneRange": 7.43,
+        "consistent": true,
+        "checkedAt": "2026-08-06T16:45:19.369Z"
+      }
+    },
+    {
+      "assetId": "c799f3d9-1765-5d31-9607-ab53fd1fa34a",
+      "itemId": "3f1fe645-c716-5dcc-9f29-96547e3cb7e8",
+      "variant": "pedagogical",
+      "canonicalPath": "packages/content/assets/audio/u01-l1b/c799f3d9-1765-5d31-9607-ab53fd1fa34a.wav",
+      "distributionPaths": [],
+      "mimeType": "audio/wav",
+      "sha256": "9206d6c7e6d8b7c2f8fc4b4b4d5d77febd8b204aa334a88cfc2db63cc1c38bb0",
+      "byteLength": 52844,
+      "durationMs": 1100,
+      "voiceKind": "synthetic_tts",
+      "consentReference": null,
+      "synthesis": {
+        "provider": "openai",
+        "model": "gpt-audio-1.5",
+        "voice": "coral",
+        "sourceText": "ยัง",
+        "parameters": {
+          "format": "wav",
+          "modalities": "text+audio"
+        },
+        "generatedAt": "2026-08-06T17:24:48.070Z"
+      },
+      "roundTrip": null,
+      "toneCheck": {
+        "method": "f0_contour",
+        "tool": "scripts/verification/f0-contour.mjs",
+        "expectedTone": "mid",
+        "observedShape": "level",
+        "semitoneSlope": 0.91,
+        "semitoneRange": 1.99,
+        "consistent": true,
+        "checkedAt": "2026-08-06T17:24:48.070Z"
+      }
+    }
+  ]
 }

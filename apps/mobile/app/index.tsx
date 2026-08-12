@@ -1,4 +1,4 @@
-import { fixtureLesson } from "@thainaute/content/fixture";
+import { colors } from "@thainaute/design-tokens";
 import {
   ingestAttemptBatch,
   isOptionAttempt,
@@ -19,21 +19,11 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { MobileAttemptOutboxStore } from "../lib/attempt-outbox-store";
+import { fixtureLessonConfig } from "../lib/lesson-config";
 import { MobileLocalExperienceStore } from "../lib/mobile-local-experience-store";
+import { MobilePrimaryNavigation } from "../lib/mobile-primary-navigation";
 
-const lesson = fixtureLesson;
-function requiredFixtureValue<T>(value: T | undefined, label: string): T {
-  if (value === undefined) {
-    throw new Error(`La fixture mobile doit contenir ${label}.`);
-  }
-  return value;
-}
-const firstExercise = requiredFixtureValue(lesson.exercises[0], "un exercice");
-if (firstExercise.type !== "audio_choice") {
-  throw new Error("La fixture locale doit commencer par un exercice d'écoute.");
-}
-const exercise = firstExercise;
-const item = requiredFixtureValue(lesson.items[0], "un item");
+const { exercise, item, lesson } = fixtureLessonConfig;
 
 type ScreenStatus = "loading" | "ready" | "error";
 
@@ -102,7 +92,8 @@ export default function TodayScreen() {
         experienceStore.read(),
         outboxStore.migrateLegacyFixtureAttemptsToDemo(),
       ])
-        .then(async ([experience, currentOutbox]) => {
+        .then(async ([experience]) => {
+          const currentOutbox = await outboxStore.read();
           let recoveredExperience = experience;
           let recoveredOutbox = currentOutbox;
           if (experience.lesson?.phase === "submitting") {
@@ -283,8 +274,8 @@ export default function TodayScreen() {
           : lessonPhase === "intro"
             ? "Commencer la séance"
             : lessonPhase === "completed"
-              ? "Revoir la démo locale"
-              : "Commencer la démo locale";
+              ? "Revoir l’extrait local"
+              : "Commencer l’extrait local";
   const pendingAttempts = outbox.entries.filter(
     ({ status: entryStatus }) => entryStatus === "pending",
   ).length;
@@ -323,8 +314,8 @@ export default function TodayScreen() {
         <View style={styles.offlineCard} accessibilityRole="summary">
           <Text style={styles.offlineTitle}>Disponible hors connexion</Text>
           <Text style={styles.offlineBody}>
-            Cette fixture et son signal audio sont déjà sur cet appareil. Aucun
-            réseau n’est nécessaire pour cette démonstration.
+            La démonstration technique et son signal audio sont déjà sur cet
+            appareil. Aucun réseau n’est nécessaire pour vérifier la boucle.
           </Text>
         </View>
 
@@ -394,12 +385,13 @@ export default function TodayScreen() {
           </Text>
         )}
       </ScrollView>
+      <MobilePrimaryNavigation activeRoute="/" />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: "#fbfaf7" },
+  safeArea: { flex: 1, backgroundColor: colors.jasmine },
   centered: {
     flex: 1,
     alignItems: "center",
@@ -407,7 +399,7 @@ const styles = StyleSheet.create({
     padding: 28,
     gap: 16,
   },
-  loadingText: { color: "#283450", fontSize: 16, fontWeight: "700" },
+  loadingText: { color: colors.ink, fontSize: 16, fontWeight: "700" },
   header: {
     minHeight: 68,
     paddingHorizontal: 20,
@@ -417,12 +409,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     rowGap: 4,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: "#cbd0d8",
+    borderColor: colors.line,
   },
   brand: {
     flexGrow: 1,
     flexShrink: 1,
-    color: "#283450",
+    color: colors.ink,
     fontSize: 18,
     fontWeight: "800",
   },
@@ -453,7 +445,7 @@ const styles = StyleSheet.create({
   },
   headerActionText: {
     flexShrink: 1,
-    color: "#283450",
+    color: colors.ink,
     fontWeight: "700",
     textAlign: "center",
   },
@@ -465,54 +457,70 @@ const styles = StyleSheet.create({
     paddingBottom: 56,
   },
   eyebrow: {
-    color: "#236b58",
+    color: colors.jadeInk,
     fontSize: 12,
     fontWeight: "800",
     letterSpacing: 1.4,
   },
   title: {
     marginTop: 12,
-    color: "#283450",
+    color: colors.ink,
     fontSize: 36,
     lineHeight: 43,
     fontWeight: "800",
   },
-  body: { marginTop: 12, color: "#5e6980", fontSize: 16, lineHeight: 24 },
+  body: { marginTop: 12, color: colors.inkSoft, fontSize: 16, lineHeight: 24 },
   offlineCard: {
     marginTop: 24,
     padding: 18,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: colors.jadePale,
     borderRadius: 18,
-    backgroundColor: "#eff9f5",
+    backgroundColor: colors.jadePale,
+    shadowColor: colors.ink,
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 5 },
+    elevation: 1,
   },
-  offlineTitle: { color: "#325f54", fontSize: 16, fontWeight: "800" },
+  offlineTitle: { color: colors.jadeInk, fontSize: 16, fontWeight: "800" },
   offlineBody: {
     marginTop: 6,
-    color: "#496b62",
+    color: colors.jadeInk,
     fontSize: 14,
     lineHeight: 21,
   },
   lessonCard: {
     marginTop: 20,
     padding: 22,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: colors.line,
+    borderLeftWidth: 4,
+    borderLeftColor: colors.coral,
     borderRadius: 24,
     backgroundColor: "white",
+    shadowColor: colors.ink,
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 2,
   },
   fixtureLabel: {
-    color: "#9b514d",
+    color: colors.coralDeep,
     fontSize: 11,
     fontWeight: "800",
     letterSpacing: 1,
   },
   lessonTitle: {
     marginTop: 10,
-    color: "#283450",
+    color: colors.ink,
     fontSize: 25,
     lineHeight: 31,
     fontWeight: "800",
   },
   localStatus: {
     marginTop: 14,
-    color: "#697389",
+    color: colors.inkSoft,
     fontSize: 13,
     lineHeight: 19,
   },
@@ -522,7 +530,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 999,
-    backgroundColor: "#283450",
+    backgroundColor: colors.coral,
   },
   primaryText: { color: "white", fontSize: 16, fontWeight: "800" },
   replacementConfirmation: { marginTop: 18 },

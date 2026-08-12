@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
+import type { AccountExportDocument } from "@thainaute/sync";
 
 import { AccountExportApiError } from "../lib/server/account-export/errors";
 import { createAccountExportHttpHandler } from "../lib/server/account-export/http";
@@ -6,7 +7,8 @@ import { createAccountExportHttpHandler } from "../lib/server/account-export/htt
 const REQUEST_ID = "10000000-0000-4000-8000-000000000001";
 const USER_ID = "20000000-0000-4000-8000-000000000001";
 const ACCESS_TOKEN = "header.payload.sensitive-token";
-const document = {
+const DEVICE_ID = "30000000-0000-4000-8000-000000000001";
+const document: AccountExportDocument = {
   format: "thainaute.account-export/v2" as const,
   exportedAt: "2026-08-02T10:00:00.000Z",
   identity: {
@@ -21,9 +23,98 @@ const document = {
     phoneConfirmedAt: null,
   },
   data: {
-    profile: null,
-    devices: [],
-    attemptEvents: [],
+    profile: {
+      createdAt: "2026-08-01T09:00:01.000Z",
+      syncRevision: 4,
+    },
+    devices: [
+      {
+        id: DEVICE_ID,
+        platform: "web",
+        appVersion: "1.0.0",
+        createdAt: "2026-08-01T09:00:02.000Z",
+      },
+    ],
+    attemptEvents: [
+      {
+        eventId: "40000000-0000-4000-8000-000000000001",
+        deviceId: DEVICE_ID,
+        exerciseId: "50000000-0000-4000-8000-000000000001",
+        itemId: "60000000-0000-4000-8000-000000000001",
+        lessonVersionId: "70000000-0000-4000-8000-000000000001",
+        selectedOptionId: "80000000-0000-4000-8000-000000000001",
+        answer: null,
+        skill: "listening",
+        rating: 1,
+        answeredAt: "2026-08-01T10:00:00.000Z",
+        durationMs: 1_000,
+        algorithmVersion: "srs-v0",
+        payloadSha256: "a".repeat(64),
+        receivedAt: "2026-08-01T10:00:01.000Z",
+      },
+      {
+        eventId: "40000000-0000-4000-8000-000000000002",
+        deviceId: DEVICE_ID,
+        exerciseId: "50000000-0000-4000-8000-000000000002",
+        itemId: "60000000-0000-4000-8000-000000000002",
+        lessonVersionId: "70000000-0000-4000-8000-000000000001",
+        selectedOptionId: null,
+        answer: {
+          kind: "association",
+          pairs: [
+            {
+              promptPairId: "80000000-0000-4000-8000-000000000002",
+              chosenPairId: "80000000-0000-4000-8000-000000000003",
+            },
+          ],
+        },
+        skill: "reading",
+        rating: 1,
+        answeredAt: "2026-08-01T10:01:00.000Z",
+        durationMs: 2_000,
+        algorithmVersion: "srs-v0",
+        payloadSha256: "b".repeat(64),
+        receivedAt: "2026-08-01T10:01:01.000Z",
+      },
+      {
+        eventId: "40000000-0000-4000-8000-000000000003",
+        deviceId: DEVICE_ID,
+        exerciseId: "50000000-0000-4000-8000-000000000003",
+        itemId: "60000000-0000-4000-8000-000000000003",
+        lessonVersionId: "70000000-0000-4000-8000-000000000001",
+        selectedOptionId: null,
+        answer: {
+          kind: "word_order",
+          tokenIds: [
+            "80000000-0000-4000-8000-000000000004",
+            "80000000-0000-4000-8000-000000000005",
+          ],
+        },
+        skill: "production",
+        rating: 0,
+        answeredAt: "2026-08-01T10:02:00.000Z",
+        durationMs: 3_000,
+        algorithmVersion: "srs-v0",
+        payloadSha256: "c".repeat(64),
+        receivedAt: "2026-08-01T10:02:01.000Z",
+      },
+      {
+        eventId: "40000000-0000-4000-8000-000000000004",
+        deviceId: DEVICE_ID,
+        exerciseId: "50000000-0000-4000-8000-000000000004",
+        itemId: "60000000-0000-4000-8000-000000000004",
+        lessonVersionId: "70000000-0000-4000-8000-000000000001",
+        selectedOptionId: null,
+        answer: { kind: "recall", value: "ไม่เป็นไรครับ" },
+        skill: "recall",
+        rating: 1,
+        answeredAt: "2026-08-01T10:03:00.000Z",
+        durationMs: 4_000,
+        algorithmVersion: "srs-v0",
+        payloadSha256: "d".repeat(64),
+        receivedAt: "2026-08-01T10:03:01.000Z",
+      },
+    ],
     learnerItemStates: [],
     contentReports: [],
   },
@@ -36,7 +127,7 @@ function request(token = ACCESS_TOKEN): Request {
 }
 
 describe("GET /api/v1/account/export", () => {
-  it("télécharge le JSON versionné avec des headers privés", async () => {
+  it("télécharge toutes les formes de réponse avec des headers privés", async () => {
     const exportAccount = vi.fn(() => Promise.resolve(document));
     const response = await createAccountExportHttpHandler({
       exportAccount,
@@ -54,7 +145,14 @@ describe("GET /api/v1/account/export", () => {
       "application/json; charset=utf-8",
     );
     expect(response.headers.get("x-request-id")).toBe(REQUEST_ID);
-    await expect(response.json()).resolves.toEqual(document);
+    const body = await response.json();
+    expect(body).toEqual(document);
+    expect(
+      body.data.attemptEvents.map(
+        (attempt: AccountExportDocument["data"]["attemptEvents"][number]) =>
+          attempt.answer?.kind ?? "option",
+      ),
+    ).toEqual(["option", "association", "word_order", "recall"]);
     expect(exportAccount).toHaveBeenCalledWith({
       accessToken: ACCESS_TOKEN,
       signal: expect.any(AbortSignal),
@@ -83,6 +181,36 @@ describe("GET /api/v1/account/export", () => {
     expect(response.status).toBe(409);
     await expect(response.json()).resolves.toMatchObject({
       error: { code: "export_capacity_exceeded", requestId: REQUEST_ID },
+    });
+    expect(response.headers.get("content-disposition")).toBeNull();
+  });
+
+  it("ne remet aucun fichier si une réponse persistée est malformée", async () => {
+    const optionAttempt = document.data.attemptEvents[0];
+    if (optionAttempt === undefined) {
+      throw new Error("La fixture d'export doit contenir une tentative.");
+    }
+    const malformedDocument: AccountExportDocument = {
+      ...document,
+      data: {
+        ...document.data,
+        attemptEvents: [
+          {
+            ...optionAttempt,
+            selectedOptionId: null,
+            answer: null,
+          },
+        ],
+      },
+    };
+    const response = await createAccountExportHttpHandler({
+      exportAccount: () => Promise.resolve(malformedDocument),
+      requestIdFactory: () => REQUEST_ID,
+    })(request());
+
+    expect(response.status).toBe(500);
+    await expect(response.json()).resolves.toMatchObject({
+      error: { code: "internal_error", requestId: REQUEST_ID },
     });
     expect(response.headers.get("content-disposition")).toBeNull();
   });

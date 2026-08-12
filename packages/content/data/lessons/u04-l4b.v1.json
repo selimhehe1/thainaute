@@ -1,0 +1,860 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "8d7b9153-356a-59b7-b51d-9fb70129e0cf",
+  "versionId": "ebd69c20-1d5a-599a-b16a-bf298837203b",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Manger, boire, avoir faim",
+  "objectiveFr": "à la fin de la leçon, l’apprenant associe sans indice sept des huit formes du jour à leur sens français, ทาน excepté, 6 sur 7 ; il distingue à l’écoute หิว de หิวน้ำ au moins 5 fois sur 6 ; il écrit en transcription Thaïnaute le mot qu’il vient d’entendre sur 5 tirages sur 6, en notant correctement les graphèmes `io`, `uee` et `awi` ; et devant les trois formes de « manger » écrites en thaï, il dé",
+  "requiredEntitlement": null,
+  "audioManifestId": "dd77a21b-5db5-5ed4-a31b-677ce2bb622c",
+  "items": [
+    {
+      "id": "4f8f162a-5730-5c9a-ac38-23416981fbbf",
+      "thaiRaw": "กิน",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E34",
+        "U+0E19"
+      ],
+      "translationFr": "manger, boire, consommer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kin"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "กิน",
+          "ipa": "kin˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "n"
+        }
+      ],
+      "register": "neutre. Aucune des deux autorités ne porte de marque d’usage sur cette entrée, contrairement à รับประทาน.",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "bd5e5d5f-44f3-59ab-9645-38d760125be9",
+      "thaiRaw": "กินข้าว",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E34",
+        "U+0E19",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27"
+      ],
+      "translationFr": "manger, prendre un repas",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kin khâao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "กินข้าว",
+          "ipa": "kin˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "กินข้าว",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a4443c13-99b3-5571-98df-96b6c5251811",
+      "thaiRaw": "รับประทาน",
+      "unicodeCodePoints": [
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A",
+        "U+0E1B",
+        "U+0E23",
+        "U+0E30",
+        "U+0E17",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "manger, prendre un repas",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ráp·prà·thaan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "รับประทาน",
+          "ipa": "rap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "รับประทาน",
+          "ipa": "pra˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pr",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "รับประทาน",
+          "ipa": "tʰaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "n"
+        }
+      ],
+      "register": "formel. Marque portée par deux autorités indépendantes, voir les sources.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b9e0aa86-719d-52b0-9d30-1385830c6d30",
+      "thaiRaw": "ทาน",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "manger",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thaan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ทาน",
+          "ipa": "tʰaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "n"
+        }
+      ],
+      "register": "**indéterminé.** Les deux sources descriptives disponibles se contredisent, et le dictionnaire normatif ne connaît pas ce sens. Voir la note et l’incertitude 1.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "bd2d8ac2-1b81-5a89-9e44-f499ed58fe56",
+      "thaiRaw": "ดื่ม",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E37",
+        "U+0E48",
+        "U+0E21"
+      ],
+      "translationFr": "boire",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dùeem"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดื่ม",
+          "ipa": "dɯːm˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ec0ad6bc-6ab6-591d-b5dc-3f0a120d34c9",
+      "thaiRaw": "หิว",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E34",
+        "U+0E27"
+      ],
+      "translationFr": "avoir faim",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hǐo"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หิว",
+          "ipa": "hiw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "7b26b7be-8c47-50f7-a1c6-e314dc4ead88",
+      "thaiRaw": "หิวน้ำ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E34",
+        "U+0E27",
+        "U+0E19",
+        "U+0E49",
+        "U+0E33"
+      ],
+      "translationFr": "avoir soif",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hǐo náam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หิวน้ำ",
+          "ipa": "hiw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "หิวน้ำ",
+          "ipa": "naːm˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2f9f26c2-b8ac-5814-9c30-d43795077143",
+      "thaiRaw": "อร่อย",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E23",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22"
+      ],
+      "translationFr": "bon, délicieux (au goût)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "à·ràwi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อร่อย",
+          "ipa": "ʔa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อร่อย",
+          "ipa": "rɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre pour le sens alimentaire, le seul enseigné.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u04-l4b-p1",
+      "drawIndex": 1,
+      "id": "bfd3d5dc-c1d8-521a-b2d7-ad62a7299e5e",
+      "type": "audio_choice",
+      "itemId": "ec0ad6bc-6ab6-591d-b5dc-3f0a120d34c9",
+      "skill": "listening",
+      "audioAssetId": "a3ecb531-4a81-5d76-8cbc-f1c6b744db0a",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "0704178a-dc11-5046-ac15-63b5f3af7bdf",
+          "labelFr": "« avoir faim »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8f836338-e611-5847-8cbb-77745944eaf3",
+          "labelFr": "« prendre un repas »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b43dd9a1-e5ab-5389-9c8d-de4569758cce",
+          "labelFr": "« boire »",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "0704178a-dc11-5046-ac15-63b5f3af7bdf",
+      "feedback": {
+        "correctFr": "Oui. Tout se joue sur ce qui suit หิว : rien, c’est la faim ; น้ำ, c’est la soif.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. หิว seul en a une, หิวน้ำ en a deux, et la seconde est น้ำ, l’eau, que vous connaissez depuis la leçon 2C.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, autres tirages",
+            "textFr": "C’est bien ça."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres cas",
+            "textFr": "Pas encore. Réécoutez, puis demandez-vous d’abord si le mot parle de ce qu’on fait, manger ou boire, ou de ce qu’on ressent, la faim ou la soif."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p1",
+      "drawIndex": 2,
+      "id": "01fd8a07-5577-52ea-bd81-ed31248b6633",
+      "type": "audio_choice",
+      "itemId": "7b26b7be-8c47-50f7-a1c6-e314dc4ead88",
+      "skill": "listening",
+      "audioAssetId": "5633f861-6cd7-5aff-9763-623c2e980019",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "7e79dd65-2373-5bf2-96ef-6ecb49405cf1",
+          "labelFr": "« avoir soif »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bcf4127c-1fce-5368-854e-2f7e3e279fdf",
+          "labelFr": "« avoir faim »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "1a83f019-efb9-5c62-896c-1bdbe9e25b95",
+          "labelFr": "« manger »",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "7e79dd65-2373-5bf2-96ef-6ecb49405cf1",
+      "feedback": {
+        "correctFr": "Oui. Tout se joue sur ce qui suit หิว : rien, c’est la faim ; น้ำ, c’est la soif.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. หิว seul en a une, หิวน้ำ en a deux, et la seconde est น้ำ, l’eau, que vous connaissez depuis la leçon 2C.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, autres tirages",
+            "textFr": "C’est bien ça."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres cas",
+            "textFr": "Pas encore. Réécoutez, puis demandez-vous d’abord si le mot parle de ce qu’on fait, manger ou boire, ou de ce qu’on ressent, la faim ou la soif."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p1",
+      "drawIndex": 3,
+      "id": "e3e2cc9e-bd91-5b93-8952-a6e1a0517270",
+      "type": "audio_choice",
+      "itemId": "bd5e5d5f-44f3-59ab-9645-38d760125be9",
+      "skill": "listening",
+      "audioAssetId": "011e3460-1392-58a8-9e5c-2d45d49f993f",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "33614ed8-81f5-5f2e-ade9-945373b6268b",
+          "labelFr": "« prendre un repas »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "dcd87e0c-5ee3-5bb3-bf21-317ebb696509",
+          "labelFr": "« boire de l’eau »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "eca3973f-413f-5852-a160-59c9506459b8",
+          "labelFr": "« avoir soif »",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "33614ed8-81f5-5f2e-ade9-945373b6268b",
+      "feedback": {
+        "correctFr": "Oui. Tout se joue sur ce qui suit หิว : rien, c’est la faim ; น้ำ, c’est la soif.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. หิว seul en a une, หิวน้ำ en a deux, et la seconde est น้ำ, l’eau, que vous connaissez depuis la leçon 2C.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, autres tirages",
+            "textFr": "C’est bien ça."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres cas",
+            "textFr": "Pas encore. Réécoutez, puis demandez-vous d’abord si le mot parle de ce qu’on fait, manger ou boire, ou de ce qu’on ressent, la faim ou la soif."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p1",
+      "drawIndex": 4,
+      "id": "2b482bb2-f468-54fe-9fa9-a8cd00912a94",
+      "type": "audio_choice",
+      "itemId": "bd2d8ac2-1b81-5a89-9e44-f499ed58fe56",
+      "skill": "listening",
+      "audioAssetId": "be657b8e-a9e5-54bd-897a-ef508971e8de",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "c1aad5b2-8f49-573a-bbc3-fc80eb0db2af",
+          "labelFr": "« boire »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9ed9b136-e7e1-58ef-973f-97b541d4b2a8",
+          "labelFr": "« manger »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e5737bf4-ef7f-5380-b262-c380b486e905",
+          "labelFr": "« c’est bon »",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "c1aad5b2-8f49-573a-bbc3-fc80eb0db2af",
+      "feedback": {
+        "correctFr": "Oui. Tout se joue sur ce qui suit หิว : rien, c’est la faim ; น้ำ, c’est la soif.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. หิว seul en a une, หิวน้ำ en a deux, et la seconde est น้ำ, l’eau, que vous connaissez depuis la leçon 2C.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, autres tirages",
+            "textFr": "C’est bien ça."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres cas",
+            "textFr": "Pas encore. Réécoutez, puis demandez-vous d’abord si le mot parle de ce qu’on fait, manger ou boire, ou de ce qu’on ressent, la faim ou la soif."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p1",
+      "drawIndex": 5,
+      "id": "f287160b-fa16-5dd3-96c8-0c38c7bcd940",
+      "type": "audio_choice",
+      "itemId": "2f9f26c2-b8ac-5814-9c30-d43795077143",
+      "skill": "listening",
+      "audioAssetId": "4d20ad7d-5983-5e72-920e-dd4c29e11aa3",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "f7d419b8-96b7-55c4-b310-2ddd025d4f1e",
+          "labelFr": "« c’est bon »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a89fbab4-86af-5b2c-a8fc-213fb65ae990",
+          "labelFr": "« j’ai faim »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71c2d362-ebfa-52ae-a5f6-f3f743c57dce",
+          "labelFr": "« je bois »",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "f7d419b8-96b7-55c4-b310-2ddd025d4f1e",
+      "feedback": {
+        "correctFr": "Oui. Tout se joue sur ce qui suit หิว : rien, c’est la faim ; น้ำ, c’est la soif.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. หิว seul en a une, หิวน้ำ en a deux, et la seconde est น้ำ, l’eau, que vous connaissez depuis la leçon 2C.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, autres tirages",
+            "textFr": "C’est bien ça."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres cas",
+            "textFr": "Pas encore. Réécoutez, puis demandez-vous d’abord si le mot parle de ce qu’on fait, manger ou boire, ou de ce qu’on ressent, la faim ou la soif."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p1",
+      "drawIndex": 6,
+      "id": "8447f1b3-7d48-51d1-814c-157ab78ed91d",
+      "type": "audio_choice",
+      "itemId": "7b26b7be-8c47-50f7-a1c6-e314dc4ead88",
+      "skill": "listening",
+      "audioAssetId": "5633f861-6cd7-5aff-9763-623c2e980019",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "21b57a5b-28c6-5607-b7ff-3f663d1b0844",
+          "labelFr": "« avoir soif »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c866cc60-0043-56d2-97a2-a36b65238c60",
+          "labelFr": "« avoir faim »",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "2c5917b2-50b8-57d2-8cc0-aae4e68dcf3c",
+          "labelFr": "« prendre un repas »",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "21b57a5b-28c6-5607-b7ff-3f663d1b0844",
+      "feedback": {
+        "correctFr": "Oui. Tout se joue sur ce qui suit หิว : rien, c’est la faim ; น้ำ, c’est la soif.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. หิว seul en a une, หิวน้ำ en a deux, et la seconde est น้ำ, l’eau, que vous connaissez depuis la leçon 2C.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, autres tirages",
+            "textFr": "C’est bien ça."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres cas",
+            "textFr": "Pas encore. Réécoutez, puis demandez-vous d’abord si le mot parle de ce qu’on fait, manger ou boire, ou de ce qu’on ressent, la faim ou la soif."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p2-m1",
+      "drawIndex": 1,
+      "id": "5e411eba-ba91-5f5c-a47f-364d40d89e62",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque forme thaïe à son sens.",
+      "pairs": [
+        {
+          "id": "e2ed63b4-5e06-5957-a38b-3899cb85c417",
+          "itemId": "4f8f162a-5730-5c9a-ac38-23416981fbbf",
+          "labelFr": "manger"
+        },
+        {
+          "id": "04392740-b8dd-589f-80aa-ce9527b24a1d",
+          "itemId": "bd2d8ac2-1b81-5a89-9e44-f499ed58fe56",
+          "labelFr": "boire"
+        },
+        {
+          "id": "f6f405cd-79e5-59c1-8849-d82d0d4592ca",
+          "itemId": "ec0ad6bc-6ab6-591d-b5dc-3f0a120d34c9",
+          "labelFr": "avoir faim"
+        },
+        {
+          "id": "907bc69e-cb99-5b6e-ade0-f31bc530b80e",
+          "itemId": "2f9f26c2-b8ac-5814-9c30-d43795077143",
+          "labelFr": "c’est bon, au goût"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Bonne association.",
+        "incorrectFr": "Ces deux cartes ne vont pas ensemble. Regardez d’abord le nombre de syllabes, puis la première d’entre elles.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paire รับประทาน",
+            "textFr": "Oui. C’est la forme longue, et c’est la seule des trois que nos deux sources s’accordent à marquer comme formelle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, กิน relié à « boire » en manche 1",
+            "textFr": "Vous avez bien lu la page 2 : กิน couvre aussi ce qu’on avale. Dans cette manche, chaque carte n’a qu’un partenaire, et « boire"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p2-m2",
+      "drawIndex": 1,
+      "id": "03836c2e-33bb-550e-b306-ed3ee6fce749",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque forme thaïe à son sens.",
+      "pairs": [
+        {
+          "id": "f577d32e-1568-5231-a83b-1abff6cbc18d",
+          "itemId": "bd5e5d5f-44f3-59ab-9645-38d760125be9",
+          "labelFr": "prendre un repas"
+        },
+        {
+          "id": "538d2973-1379-5cd3-b3af-ce8fee00d6e3",
+          "itemId": "7b26b7be-8c47-50f7-a1c6-e314dc4ead88",
+          "labelFr": "avoir soif"
+        },
+        {
+          "id": "2f34bb19-634e-53a5-904d-5a593df62245",
+          "itemId": "a4443c13-99b3-5571-98df-96b6c5251811",
+          "labelFr": "manger, dans la forme marquée comme formelle"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Bonne association.",
+        "incorrectFr": "Ces deux cartes ne vont pas ensemble. Regardez d’abord le nombre de syllabes, puis la première d’entre elles.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paire รับประทาน",
+            "textFr": "Oui. C’est la forme longue, et c’est la seule des trois que nos deux sources s’accordent à marquer comme formelle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, กิน relié à « boire » en manche 1",
+            "textFr": "Vous avez bien lu la page 2 : กิน couvre aussi ce qu’on avale. Dans cette manche, chaque carte n’a qu’un partenaire, et « boire"
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "ce qui se dit à table",
+      "bodyFr": "Vous savez demander un prix et compter. Il vous manque le verbe qui va avec le plat. Aujourd’hui, cinq idées seulement : manger, boire, avoir faim, avoir soif, et dire que c’est bon. Vous les apprenez en blocs, parce que c’est ainsi qu’elles s’emploient.",
+      "specimen": "กิน · ดื่ม · หิว · อร่อย"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "กิน, le verbe de tous les jours",
+      "bodyFr": "กิน (kin) veut dire manger. Vous l’avez déjà lu en 4A, où il servait de premier exemple à la règle de ton ; aujourd’hui il redevient ce qu’il est d’abord, un verbe. Notez tout de suite une chose qui surprend un francophone : le dictionnaire normatif et notre base française donnent aussi à กิน le sens de boire, pour ce qui s’avale.",
+      "specimen": "กิน (kin)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "กินข้าว, ou manger « du riz »",
+      "bodyFr": "ข้าว (khâao), le riz, vous vient de 4A. Collé à กิน, il donne กินข้าว (kin khâao), qui ne parle pas forcément de riz : c’est le bloc courant pour « prendre un repas ». Retenez-le tel quel, c’est exactement le genre de chunk qui vous servira sans que vous ayez à le construire.",
+      "specimen": "กิน (kin) puis กินข้าว (kin khâao)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "trois façons d’écrire « manger »",
+      "bodyFr": "Trois formes se traduisent par « manger », et elles ne se valent pas. กิน est la forme ordinaire, sans aucune marque d’usage chez nos deux autorités. รับประทาน (ráp·prà·thaan), trois syllabes, est marqué comme formel par nos deux autorités indépendantes. Entre les deux se glisse ทาน (thaan), que vous rencontrerez souvent.\n\nSur ทาน, soyons exacts plutôt que rassurants. Le dictionnaire normatif ne lui donne pas du tout le sens de manger ; il l’enregistre pour l’aumône, pour soutenir une charge, et pour relire un texte. Nos deux sources descriptives, en revanche, lui donnent bien le sens de manger, mais elles se contredisent sur le niveau de langue : l’une le dit formel et poli, l’autre le dit familier. Cette leçon vous apprend donc à reconnaître ทาน, et s’arrête là.",
+      "specimen": "กิน · ทาน · รับประทาน"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "ดื่ม, boire",
+      "bodyFr": "ดื่ม (dùeem) est le verbe spécialisé du boire. Le signe ◌ื est celui que vous avez déjà croisé dans ชื่อ (chûee) en 2D, et il note ici la même voyelle longue, notée `uee` : un i tenu, prononcé les lèvres étirées et non arrondies. Le ton est bas, la voyelle est longue.",
+      "specimen": "ชื่อ (chûee) puis ดื่ม (dùeem)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "หิว, une faim qui vise aussi la boisson",
+      "bodyFr": "หิว (hǐo) veut dire avoir faim. Attention à sa portée : le dictionnaire normatif le définit comme vouloir manger ou vouloir boire, et notre source descriptive dit la même chose. Pour lever l’ambiguïté, on nomme ce dont on a envie : หิวน้ำ (hǐo náam), littéralement une faim d’eau, veut dire avoir soif.\n\nLe ว final de หิว ne se prononce pas comme une consonne : il ferme la syllabe par un glissement vers ou, et c’est pour cela que nous écrivons `io`.",
+      "specimen": "หิว (hǐo) puis หิวน้ำ (hǐo náam)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "อร่อย, le mot du goût",
+      "bodyFr": "อร่อย (à·ràwi) veut dire bon, délicieux. Deux syllabes brèves, deux tons bas. Le dictionnaire normatif attache ce sens à ce qui se mange, et c’est la seule valeur que cette leçon vous demande de retenir. Les deux mêmes sources signalent par ailleurs un emploi familier hors de la nourriture, avec des valeurs différentes selon la source : n’allez donc pas dire qu’un film était อร่อย.",
+      "specimen": "อร่อย (à·ràwi)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "une notation nouvelle, une notation déjà écrite",
+      "bodyFr": "Une seule notation est nouvelle aujourd’hui, `io`. La seconde, `awi`, vous l’avez déjà écrite en 2C avec หน่อย (nàwi). Regardez chacune à côté d’une notation voisine, c’est le seul contrôle fiable.\n\n> `io` contre `aao` : หิว (hǐo) contre เก้า (kâao, 3B) > `awi` contre `aww` : อร่อย (à·ràwi) contre ฟอง (fawwng, 3E)\n\nLa première paire garde le même glissement final vers ou et change de noyau, `i` bref contre `aa` long. La seconde garde le même noyau `aw` et lui ajoute un glissement vers i. Dans les deux cas, le noyau est la première lettre, et c’est elle qui porte l’accent de ton : le `i` de `hǐo`, le `a` de `ràwi`.",
+      "specimen": "hǐo · kâao puis à·ràwi · fawwng"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "à vous",
+      "bodyFr": "Deux réflexes aujourd’hui. À l’oreille : quand vous entendez หิว, écoutez si une deuxième syllabe suit, parce que c’est elle qui fait passer de la faim à la soif. À l’œil : dans รับประทาน, repérez ทาน à la fin, cela vous évitera de confondre deux mots que vous connaissez maintenant tous les deux.\n\nAprès les exercices, enregistrez-vous en disant หิว puis หิวน้ำ, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u04-l4b-p1",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "mechanic": "audio_choice",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    },
+    {
+      "poolId": "u04-l4b-p2-m1",
+      "promptFr": "Reliez chaque forme thaïe à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u04-l4b-p2-m2",
+      "promptFr": "Reliez chaque forme thaïe à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "05538652-59c7-5450-a880-e65b9716118e",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "88250c7c-f14e-5f5b-a4f6-1a33cf607280",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "bbb1cb56-e259-509e-ab54-3babdf8f612c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "90e6fb91-4f11-56d7-a60f-6d9687121499",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0a1e3db9-3126-55df-9de2-09bfe77219ce",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f35528e3-1da4-5d8d-965a-f1920f6c9f57",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f77ce7e9-8da2-591c-a0fd-c5094e4d9ae2",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1901d037-9636-5cc1-94ad-b3d0c857db8e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

@@ -86,6 +86,13 @@ function errorPresentation(
           needsReauthentication: false,
           retryable: true,
         };
+      case "billing_unavailable":
+        return {
+          message:
+            "Votre compte n’a pas été supprimé : la vérification sûre du service d’abonnement n’est pas disponible. La commande reste protégée sur cet appareil et ne sera pas relancée automatiquement ; vous pouvez tenter une reprise manuelle. Si le blocage persiste, conservez les données de l’application et contactez le support.",
+          needsReauthentication: false,
+          retryable: true,
+        };
       case "auth_unavailable":
       case "storage_unavailable":
       case "database_unavailable":

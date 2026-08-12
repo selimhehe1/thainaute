@@ -1,0 +1,969 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "79e3bb60-a709-5e0d-b1ca-76db7caa0ba8",
+  "versionId": "d79aba9c-5977-5e45-9234-f981ba549a3a",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Le matin, le soir, tous les jours",
+  "objectiveFr": "à la fin de la leçon, l’apprenant entend une phrase du jour et dit à quel moment elle renvoie, le matin, le soir ou tous les jours, sur 5 tirages sur 6 ; il remet dans l’ordre les blocs d’une phrase du schéma du jour, bloc de temps compris, sur 5 phrases sur 6 ; il écrit en transcription les trois blocs `tawwn·cháao`, `tawwn·yen` et `thóuk·wan` d’après l’audio, sur 5 tirages sur 6 ; et, devant une",
+  "requiredEntitlement": null,
+  "audioManifestId": "4372d7cf-8095-5147-8973-2df200744dd4",
+  "items": [
+    {
+      "id": "9bab9965-79bc-56f2-aad7-d2f646120697",
+      "thaiRaw": "เช้า",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E0A",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "le matin",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "cháao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เช้า",
+          "ipa": "t͡ɕʰaːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "c5d98c3e-6ae4-56e4-b327-bb1b59d0b0cc",
+      "thaiRaw": "เย็น",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E22",
+        "U+0E47",
+        "U+0E19"
+      ],
+      "translationFr": "le soir, la fin de journée (16 h à 18 h environ) ; comme adjectif : frais, froid",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yen"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เย็น",
+          "ipa": "jen˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "j",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "4eaa5e3d-da3d-5f76-a452-84e6a05d7241",
+      "thaiRaw": "วัน",
+      "unicodeCodePoints": [
+        "U+0E27",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "le jour, la journée",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "wan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "วัน",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "496ad6df-38fa-5994-9cac-4500379d1834",
+      "thaiRaw": "ตอนเช้า",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E2D",
+        "U+0E19",
+        "U+0E40",
+        "U+0E0A",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "le matin (comme moment où l’on fait quelque chose)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tawwn·cháao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตอนเช้า",
+          "ipa": "tɔːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ตอนเช้า",
+          "ipa": "t͡ɕʰaːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "210ff548-ec87-56e9-8b94-88dfd26b9962",
+      "thaiRaw": "ตอนเย็น",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E2D",
+        "U+0E19",
+        "U+0E40",
+        "U+0E22",
+        "U+0E47",
+        "U+0E19"
+      ],
+      "translationFr": "le soir, en fin de journée (comme moment où l’on fait quelque chose)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tawwn·yen"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตอนเย็น",
+          "ipa": "tɔːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ตอนเย็น",
+          "ipa": "jen˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "j",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "4de42781-0194-5a1e-9abd-bf1861631ebb",
+      "thaiRaw": "ทุกวัน",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E38",
+        "U+0E01",
+        "U+0E27",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "tous les jours, chaque jour",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thóuk·wan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ทุกวัน",
+          "ipa": "tʰuk̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "ทุกวัน",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ad23e9f9-0719-5ed9-ad30-f4a5eb42f2b1",
+      "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21",
+        "U+0E44",
+        "U+0E1B",
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14",
+        "U+0E15",
+        "U+0E2D",
+        "U+0E19",
+        "U+0E40",
+        "U+0E0A",
+        "U+0E49",
+        "U+0E32",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Le matin, je vais au marché.",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm pai tà·làat tawwn·cháao khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
+          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
+          "ipa": "laːt̚˨˩ tɔːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดตอนเช้าครับ",
+          "ipa": "t͡ɕʰaːw˦˥ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554"
+      ]
+    },
+    {
+      "id": "a2314622-905a-5774-b4da-2f3d28ad2449",
+      "thaiRaw": "ผมไปตลาดทุกวันครับ",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21",
+        "U+0E44",
+        "U+0E1B",
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14",
+        "U+0E17",
+        "U+0E38",
+        "U+0E01",
+        "U+0E27",
+        "U+0E31",
+        "U+0E19",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Je vais au marché tous les jours.",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm pai tà·làat thóuk·wan khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผมไปตลาดทุกวันครับ",
+          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดทุกวันครับ",
+          "ipa": "laːt̚˨˩ tʰuk̚˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดทุกวันครับ",
+          "ipa": "wan˧ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554"
+      ]
+    },
+    {
+      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "thaiRaw": "ดิฉัน",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "je, moi (locutrice femme, échange poli)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u07-l7c-p2",
+      "drawIndex": 1,
+      "id": "a6a55a1c-51e1-5d37-97f9-325d7fe00d2a",
+      "type": "word_order",
+      "itemId": "ad23e9f9-0719-5ed9-ad30-f4a5eb42f2b1",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "e982dfda-2a4d-5ae8-9d53-42149a6da8ba",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "9c7029c5-beac-59c1-b67a-fbf76c694b10",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "30935839-5669-5790-9db4-43292d1aa6a8",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "ca4fe43c-56b1-5495-baea-dc8756dd851c",
+          "thaiRaw": "ตอนเช้า",
+          "transcription": null
+        },
+        {
+          "id": "31578b19-90b7-50be-b496-70556395e6a3",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "894f18c0-ec4c-580f-a4c1-781f3c56188a",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "e982dfda-2a4d-5ae8-9d53-42149a6da8ba",
+        "9c7029c5-beac-59c1-b67a-fbf76c694b10",
+        "30935839-5669-5790-9db4-43292d1aa6a8",
+        "ca4fe43c-56b1-5495-baea-dc8756dd851c",
+        "31578b19-90b7-50be-b496-70556395e6a3"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le moment après le lieu, la particule polie en dernier.",
+        "incorrectFr": "Presque. Vous avez coupé ไปตลาด en deux. Dans les phrases de cette leçon, le moment attend que le lieu soit dit.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc de temps après la particule",
+            "textFr": "Presque. ครับ et ค่ะ ferment la phrase, toujours : le moment passe avant elles."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvaise particule",
+            "textFr": "Le pronom et la particule vont par paire. ผม avec ครับ, ดิฉัน avec ค่ะ, comme en leçon 5D."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7c-p2",
+      "drawIndex": 2,
+      "id": "4924617c-597a-5933-b082-ab5b86aa42f6",
+      "type": "word_order",
+      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "37de0993-e429-5a92-9660-9ab13b601a37",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        },
+        {
+          "id": "e20a6cc3-c90f-579a-ad0e-440437abbd1a",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "df6fdab1-b750-5f99-a01d-c4f93107ea19",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "3382c93e-9a1d-5574-888b-d128677d2d8b",
+          "thaiRaw": "ทุกวัน",
+          "transcription": null
+        },
+        {
+          "id": "3dde289f-d8fb-593d-81f1-3366524d395a",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "6320fb64-d164-5921-813a-54d954833ddd",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "37de0993-e429-5a92-9660-9ab13b601a37",
+        "e20a6cc3-c90f-579a-ad0e-440437abbd1a",
+        "df6fdab1-b750-5f99-a01d-c4f93107ea19",
+        "3382c93e-9a1d-5574-888b-d128677d2d8b",
+        "3dde289f-d8fb-593d-81f1-3366524d395a"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le moment après le lieu, la particule polie en dernier.",
+        "incorrectFr": "Presque. Vous avez coupé ไปตลาด en deux. Dans les phrases de cette leçon, le moment attend que le lieu soit dit.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc de temps après la particule",
+            "textFr": "Presque. ครับ et ค่ะ ferment la phrase, toujours : le moment passe avant elles."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvaise particule",
+            "textFr": "Le pronom et la particule vont par paire. ผม avec ครับ, ดิฉัน avec ค่ะ, comme en leçon 5D."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7c-p2",
+      "drawIndex": 3,
+      "id": "97ff39b1-b332-5ca4-b7a0-270d8f07ad97",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "cab3b7c4-420d-5cfe-91a4-1db86ac28361",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "f68a8c4f-192f-5a78-8af9-81610919a107",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "b8c41bcf-9a1d-5425-a1d6-16f563cd2909",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "b83ddf63-22a7-5a8a-925e-38463cf21b90",
+          "thaiRaw": "ตอนเย็น",
+          "transcription": null
+        },
+        {
+          "id": "2f275cdf-56ff-5491-9261-98755fef9907",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "64b19edc-ab51-5f0f-90fe-644206b4a19d",
+          "thaiRaw": "ตอนเช้า",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "cab3b7c4-420d-5cfe-91a4-1db86ac28361",
+        "f68a8c4f-192f-5a78-8af9-81610919a107",
+        "b8c41bcf-9a1d-5425-a1d6-16f563cd2909",
+        "b83ddf63-22a7-5a8a-925e-38463cf21b90",
+        "2f275cdf-56ff-5491-9261-98755fef9907"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le moment après le lieu, la particule polie en dernier.",
+        "incorrectFr": "Presque. Vous avez coupé ไปตลาด en deux. Dans les phrases de cette leçon, le moment attend que le lieu soit dit.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc de temps après la particule",
+            "textFr": "Presque. ครับ et ค่ะ ferment la phrase, toujours : le moment passe avant elles."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvaise particule",
+            "textFr": "Le pronom et la particule vont par paire. ผม avec ครับ, ดิฉัน avec ค่ะ, comme en leçon 5D."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7c-p2",
+      "drawIndex": 4,
+      "id": "3d51da74-8609-536c-a651-a0977d58d1de",
+      "type": "word_order",
+      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "9b3bf974-f9bc-5d82-b87a-2691c6ad3589",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        },
+        {
+          "id": "a87c3441-f330-53ad-b1b6-8e6291ab5a37",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "8c8d3039-4db0-5dab-a0f4-5cb1d8f12ce5",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "e69dcdc9-09fd-559a-adb3-2406b653d6d2",
+          "thaiRaw": "ตอนเช้า",
+          "transcription": null
+        },
+        {
+          "id": "16b45177-8869-528d-aa10-94b15e9c8ce1",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "9fe0cacd-6a38-59e5-85c7-59b922ce3f4d",
+          "thaiRaw": "ผม",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "9b3bf974-f9bc-5d82-b87a-2691c6ad3589",
+        "a87c3441-f330-53ad-b1b6-8e6291ab5a37",
+        "8c8d3039-4db0-5dab-a0f4-5cb1d8f12ce5",
+        "e69dcdc9-09fd-559a-adb3-2406b653d6d2",
+        "16b45177-8869-528d-aa10-94b15e9c8ce1"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le moment après le lieu, la particule polie en dernier.",
+        "incorrectFr": "Presque. Vous avez coupé ไปตลาด en deux. Dans les phrases de cette leçon, le moment attend que le lieu soit dit.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc de temps après la particule",
+            "textFr": "Presque. ครับ et ค่ะ ferment la phrase, toujours : le moment passe avant elles."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvaise particule",
+            "textFr": "Le pronom et la particule vont par paire. ผม avec ครับ, ดิฉัน avec ค่ะ, comme en leçon 5D."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7c-p2",
+      "drawIndex": 5,
+      "id": "be899459-aaaa-56a3-8062-8c999477c941",
+      "type": "word_order",
+      "itemId": "a2314622-905a-5774-b4da-2f3d28ad2449",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "409d37f5-7715-5bed-a2fa-f3c72ee86026",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "8d47db23-6ca5-5f4a-9cd6-bf8c995e7952",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "b212cbd5-6de7-526f-970d-c4bde8f5d3e4",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "bc66864c-d159-5b23-a265-6b101c1033e6",
+          "thaiRaw": "ทุกวัน",
+          "transcription": null
+        },
+        {
+          "id": "616014eb-f634-5f16-a71c-39c977977017",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "e39c9e7d-49ad-53fc-a536-50c70ecbddb1",
+          "thaiRaw": "ตอนเย็น",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "409d37f5-7715-5bed-a2fa-f3c72ee86026",
+        "8d47db23-6ca5-5f4a-9cd6-bf8c995e7952",
+        "b212cbd5-6de7-526f-970d-c4bde8f5d3e4",
+        "bc66864c-d159-5b23-a265-6b101c1033e6",
+        "616014eb-f634-5f16-a71c-39c977977017"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le moment après le lieu, la particule polie en dernier.",
+        "incorrectFr": "Presque. Vous avez coupé ไปตลาด en deux. Dans les phrases de cette leçon, le moment attend que le lieu soit dit.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc de temps après la particule",
+            "textFr": "Presque. ครับ et ค่ะ ferment la phrase, toujours : le moment passe avant elles."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvaise particule",
+            "textFr": "Le pronom et la particule vont par paire. ผม avec ครับ, ดิฉัน avec ค่ะ, comme en leçon 5D."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7c-p2",
+      "drawIndex": 6,
+      "id": "c10184fd-62d3-561a-bd60-81b0e509fece",
+      "type": "word_order",
+      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "2612433f-af99-569f-933d-1a66b647bb31",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        },
+        {
+          "id": "5fb69d4b-d5ea-50bc-959b-d257223ac4ba",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "622d4d26-6279-5666-a69b-9e746a46c712",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "efd08d45-3589-5c0c-9236-6c9f6d6ba50a",
+          "thaiRaw": "ตอนเย็น",
+          "transcription": null
+        },
+        {
+          "id": "ba8f8b49-2f2a-59be-871f-ca91db3d43d0",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "4a96861a-485c-5e3c-a541-002bdd9e1e65",
+          "thaiRaw": "ทุกวัน",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "2612433f-af99-569f-933d-1a66b647bb31",
+        "5fb69d4b-d5ea-50bc-959b-d257223ac4ba",
+        "622d4d26-6279-5666-a69b-9e746a46c712",
+        "efd08d45-3589-5c0c-9236-6c9f6d6ba50a",
+        "ba8f8b49-2f2a-59be-871f-ca91db3d43d0"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le moment après le lieu, la particule polie en dernier.",
+        "incorrectFr": "Presque. Vous avez coupé ไปตลาด en deux. Dans les phrases de cette leçon, le moment attend que le lieu soit dit.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc de temps après la particule",
+            "textFr": "Presque. ครับ et ค่ะ ferment la phrase, toujours : le moment passe avant elles."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, mauvaise particule",
+            "textFr": "Le pronom et la particule vont par paire. ผม avec ครับ, ดิฉัน avec ค่ะ, comme en leçon 5D."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "une phrase que vous savez déjà, et un bloc de plus",
+      "bodyFr": "Depuis la leçon 5D vous dites ผมไปตลาดครับ, « je vais au marché ». Il vous manque une seule chose pour que cette phrase serve vraiment : dire QUAND. Trois blocs suffisent pour aujourd’hui, et ils se posent tous les trois au même endroit.",
+      "specimen": "ผมไปตลาดครับ"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "เช้า, le matin",
+      "bodyFr": "เช้า (cháao) est le nom du matin. Le dictionnaire normatif le chiffre : de six heures à neuf heures environ, et parfois jusqu’à midi. Attention à la lecture, c’est le piège annoncé en 4A : la première lettre écrite est เ, mais la consonne qu’on prononce d’abord est ช.",
+      "specimen": "เช้า (cháao)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "เย็น, le soir, et le même mot qui veut dire frais",
+      "bodyFr": "เย็น (yen) est le nom de la fin de journée. Le dictionnaire le chiffre lui aussi : entre seize et dix-huit heures. Le même mot sert par ailleurs d’adjectif et veut dire frais ou froid ; le dictionnaire en fait deux entrées séparées, et vous n’avez pas à choisir aujourd’hui, parce que le bloc de la page 4 lève l’ambiguïté à lui seul.",
+      "specimen": "เย็น (yen)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "ตอน, le mot qui fait d’un moment un bloc",
+      "bodyFr": "Pour dire « le matin » comme complément de temps, le thaï pose ตอน (tawwn) devant le nom du moment. ตอน nomme une tranche découpée dans un ensemble, et dans les deux blocs d’aujourd’hui rien ne s’intercale entre lui et le moment. Cela donne ตอนเช้า (tawwn·cháao) et ตอนเย็น (tawwn·yen). Les deux ouvrages consultés pour cette leçon ne donnent à ตอนเย็น que la valeur de moment, jamais celle de frais.",
+      "specimen": "ตอนเช้า · ตอนเย็น"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "วัน et ทุกวัน",
+      "bodyFr": "วัน (wan) est le jour. ทุก (thóuk) veut dire chaque, pris unité par unité. Collés, ils donnent ทุกวัน (thóuk·wan), tous les jours. Rien ne se met au pluriel, rien ne s’accorde : c’est un bloc de deux syllabes et il ne bouge pas.",
+      "specimen": "ทุกวัน (thóuk·wan)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "où se pose le bloc, dans ces phrases-ci",
+      "bodyFr": "Reprenez ผมไปตลาดครับ et glissez le bloc juste avant la particule polie.\n\n> ผมไปตลาดครับ → ผมไปตลาดตอนเช้าครับ > ผมไปตลาดครับ → ผมไปตลาดทุกวันครับ\n\nLe moment ferme donc ce qui est dit, et la particule polie reste le tout dernier mot. Le dictionnaire normatif écrit ses propres exemples de la même façon, ขอให้มาตอนเช้า, le moment en dernier. Soyons précis sur ce que vous venez d’apprendre : c’est le schéma de ces phrases-ci, pas une règle générale de l’ordre des mots thaï. Cette leçon ne vous donne pas cette règle, et le thaï connaît d’autres arrangements que 7C n’aborde pas.",
+      "specimen": "ผมไปตลาดตอนเช้าครับ"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "une chose à essayer, en français",
+      "bodyFr": "Dites à voix haute « je vais tous les jours au marché », puis « je vais au marché tous les jours ». Les deux vous viennent-elles aussi facilement ? Vous êtes le seul juge, c’est votre langue. Regardez maintenant les phrases thaïes de cette leçon : une seule des deux places y est occupée, celle de la fin. Le bloc ne se glisse jamais entre ไป et ตลาด dans ce que vous apprenez ici.",
+      "specimen": "ผมไปตลาดทุกวันครับ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "trois de ces mots, vous savez déjà les lire",
+      "bodyFr": "Sortez le tableau des tons de 4A et de 6A et appliquez-le.\n\n> เย็น : consonne initiale ย, basse ; syllabe vivante, fermée sur น ; aucune > marque posée. Ton moyen. > วัน : consonne initiale ว, basse ; vivante, fermée sur น ; aucune marque. Ton > moyen. > ตอน : consonne initiale ต, moyenne ; vivante, voyelle longue et finale น ; > aucune marque. Ton moyen.\n\nTrois mots, trois prédictions justes. Les deux autres restent hors de votre portée, et c’est exactement ce que 6A avait annoncé : เช้า porte une marque au-dessus de ช, et ทุก est une syllabe morte, fermée sur ก. Vous les apprenez donc à l’oreille, comme ครับ et รถ, dont ทุก partage d’ailleurs la mélodie.",
+      "specimen": "เย็น contre เช้า"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "à vous",
+      "bodyFr": "Trois blocs à emporter, et une seule place à retenir. ตอนเช้า pour le matin, ตอนเย็น pour le soir, ทุกวัน pour tous les jours. La place : après le lieu, avant ครับ ou ค่ะ.\n\nUn dernier détail d’œil, utile pour l’exercice de lecture : le thaï écrit ces phrases sans espace entre les mots. Dans ผมไปตลาดตอนเช้าครับ, rien ne vous signale où finit ตลาด et où commence ตอนเช้า, sinon les mots eux-mêmes. Les exemples du dictionnaire sont écrits exactement de la même façon.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u07-l7c-p2",
+      "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "947c622e-01a9-5055-8791-0baec1e2dde5",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "781c6151-e2db-5263-bb0a-20eacc2bf47d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "daf75177-8076-5191-bc52-2b0a8e4d5304",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a9b2d581-5ab7-5e11-a136-906ad6f8c7ef",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1326da95-1170-5b53-9893-2faceb3b6473",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "50663de3-8b05-53d3-a2f2-5bd871bae64d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "451fcf7f-6660-5fa9-9002-39cbb0e88f65",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "631c74ba-71e6-538f-9998-4df98c38d7da",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

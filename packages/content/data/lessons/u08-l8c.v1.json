@@ -1,0 +1,949 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "2c2ce1ed-7553-5fda-8a6c-d4df7d36bbdb",
+  "versionId": "d76cbbc8-c746-5644-9b4c-0c6da35ed9eb",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Trop cher, trop grand, trop petit",
+  "objectiveFr": "à la fin de la leçon, l’apprenant identifie à l’écoute lequel de trois blocs a été prononcé, alors que deux d’entre eux ne diffèrent que par la présence de เกินไป, sur 6 tirages sur 8 ; il associe les six blocs du jour à leur sens français, sur 5 paires sur 6 ; il construit par blocs quatre phrases sur cinq en plaçant เกินไป APRÈS le mot qu’il modifie, dont deux phrases où เกินไป ne doit pas appar",
+  "requiredEntitlement": null,
+  "audioManifestId": "27a1a0ab-6ffe-5442-89f9-7eb5ff5bc7a5",
+  "items": [
+    {
+      "id": "5302f19f-6702-5094-a265-594987302b16",
+      "thaiRaw": "ถูก",
+      "unicodeCodePoints": [
+        "U+0E16",
+        "U+0E39",
+        "U+0E01"
+      ],
+      "translationFr": "bon marché, d’un prix bas",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thòuuk"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ถูก",
+          "ipa": "tʰuːk̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "3b32ec46-b612-521c-bd58-7a1f048f4368",
+      "thaiRaw": "ใหญ่",
+      "unicodeCodePoints": [
+        "U+0E43",
+        "U+0E2B",
+        "U+0E0D",
+        "U+0E48"
+      ],
+      "translationFr": "grand, de grande taille",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yài"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ใหญ่",
+          "ipa": "jaj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "j",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "3f367f63-b643-5daa-802e-61f9975189cf",
+      "thaiRaw": "เล็ก",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E25",
+        "U+0E47",
+        "U+0E01"
+      ],
+      "translationFr": "petit, de petite taille",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "lék"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เล็ก",
+          "ipa": "lek̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "l",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "e7f91cd1-397b-5a7e-a5c9-f3e681bcd480",
+      "thaiRaw": "เกินไป",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E01",
+        "U+0E34",
+        "U+0E19",
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "trop, excessivement",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "koeen·pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เกินไป",
+          "ipa": "kɤːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "เกินไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "30c4ce14-29f0-50e8-8ac3-44b124756689",
+      "thaiRaw": "แพงเกินไป",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E1E",
+        "U+0E07",
+        "U+0E40",
+        "U+0E01",
+        "U+0E34",
+        "U+0E19",
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "trop cher",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phaeeng koeen·pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แพงเกินไป",
+          "ipa": "pʰɛːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "แพงเกินไป",
+          "ipa": "kɤːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "แพงเกินไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "f32a93fa-b1ce-5398-954e-c95f7c826324",
+      "thaiRaw": "ใหญ่เกินไป",
+      "unicodeCodePoints": [
+        "U+0E43",
+        "U+0E2B",
+        "U+0E0D",
+        "U+0E48",
+        "U+0E40",
+        "U+0E01",
+        "U+0E34",
+        "U+0E19",
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "trop grand",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yài koeen·pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ใหญ่เกินไป",
+          "ipa": "jaj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "j",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ใหญ่เกินไป",
+          "ipa": "kɤːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ใหญ่เกินไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "665107f8-96f5-548b-b155-6c23b16e4124",
+      "thaiRaw": "เล็กเกินไป",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E25",
+        "U+0E47",
+        "U+0E01",
+        "U+0E40",
+        "U+0E01",
+        "U+0E34",
+        "U+0E19",
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "trop petit",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "lék koeen·pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เล็กเกินไป",
+          "ipa": "lek̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "l",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "เล็กเกินไป",
+          "ipa": "kɤːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "เล็กเกินไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "0793fd77-21c3-5f7b-a4f8-a99e4ea795b2",
+      "thaiRaw": "อันนี้แพงเกินไปครับ",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E31",
+        "U+0E19",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49",
+        "U+0E41",
+        "U+0E1E",
+        "U+0E07",
+        "U+0E40",
+        "U+0E01",
+        "U+0E34",
+        "U+0E19",
+        "U+0E44",
+        "U+0E1B",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "celui-ci est trop cher",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "an·níi phaeeng koeen·pai khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อันนี้แพงเกินไปครับ",
+          "ipa": "ʔan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "อันนี้แพงเกินไปครับ",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อันนี้แพงเกินไปครับ",
+          "ipa": "pʰɛːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "อันนี้แพงเกินไปครับ",
+          "ipa": "kɤːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "อันนี้แพงเกินไปครับ",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "อันนี้แพงเกินไปครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli, locuteur masculin",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "thaiRaw": "อันนี้",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E31",
+        "U+0E19",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
+      "translationFr": "ceci, celui-ci",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "an·níi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อันนี้",
+          "ipa": "ʔan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "อันนี้",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "6cee9997-d90d-57a1-92f1-2f0ec07962a4",
+      "thaiRaw": "อันนี้เท่าไรครับ",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E31",
+        "U+0E19",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49",
+        "U+0E40",
+        "U+0E17",
+        "U+0E48",
+        "U+0E32",
+        "U+0E44",
+        "U+0E23",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Ça coûte combien ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "an·níi thâo·rai khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อันนี้เท่าไรครับ",
+          "ipa": "ʔan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "อันนี้เท่าไรครับ",
+          "ipa": "niː˦˥ tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "อันนี้เท่าไรครับ",
+          "ipa": "raj˧ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u08-l8c-p3",
+      "drawIndex": 1,
+      "id": "be9d9ab1-ec53-546c-a128-3d3da3233e75",
+      "type": "word_order",
+      "itemId": "0793fd77-21c3-5f7b-a4f8-a99e4ea795b2",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",
+      "tokens": [
+        {
+          "id": "27186664-ee0c-5f14-a372-2cf0522af231",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "86b7f26c-ce3b-58de-95c5-292a98427166",
+          "thaiRaw": "แพง",
+          "transcription": null
+        },
+        {
+          "id": "6e443761-8f75-5c4f-be4b-6725a9fad9ed",
+          "thaiRaw": "เกินไป",
+          "transcription": null
+        },
+        {
+          "id": "67513a6d-9410-5af3-8147-3acc0eb1aa5e",
+          "thaiRaw": "อันนี้",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "67513a6d-9410-5af3-8147-3acc0eb1aa5e",
+        "86b7f26c-ce3b-58de-95c5-292a98427166",
+        "6e443761-8f75-5c4f-be4b-6725a9fad9ed",
+        "27186664-ee0c-5f14-a372-2cf0522af231"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. เกินไป se colle après le mot d’état, jamais devant.",
+        "incorrectFr": "Vous avez construit l’ordre français. En thaï, l’excès vient en dernier : d’abord ce qu’on constate, ensuite เกินไป.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 4 et 5",
+            "textFr": "Bien vu. Le français ne disait pas trop : เกินไป n’avait rien à faire là."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, เกินไป conservé aux tirages 4 et 5",
+            "textFr": "Relisez la phrase française : elle ne contient pas le mot trop. Retirez le bloc เกินไป."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule mal choisie",
+            "textFr": "ครับ pour un homme, ค่ะ pour une femme, comme depuis la leçon 1E."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8c-p3",
+      "drawIndex": 2,
+      "id": "c131ab79-9515-5df3-96d8-95e9ad86f81b",
+      "type": "word_order",
+      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",
+      "tokens": [
+        {
+          "id": "1968f35f-afa5-5518-8e9d-0f25ae79503a",
+          "thaiRaw": "เล็ก",
+          "transcription": null
+        },
+        {
+          "id": "3e994a3d-80ca-5892-82e7-43d0829fb779",
+          "thaiRaw": "อันนี้",
+          "transcription": null
+        },
+        {
+          "id": "8e0a3a38-8b6d-578c-bae8-52dac9474bff",
+          "thaiRaw": "เกินไป",
+          "transcription": null
+        },
+        {
+          "id": "a071fe02-3d42-5f07-acc4-0bb67adebcfc",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "3e994a3d-80ca-5892-82e7-43d0829fb779",
+        "1968f35f-afa5-5518-8e9d-0f25ae79503a",
+        "8e0a3a38-8b6d-578c-bae8-52dac9474bff",
+        "a071fe02-3d42-5f07-acc4-0bb67adebcfc"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. เกินไป se colle après le mot d’état, jamais devant.",
+        "incorrectFr": "Vous avez construit l’ordre français. En thaï, l’excès vient en dernier : d’abord ce qu’on constate, ensuite เกินไป.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 4 et 5",
+            "textFr": "Bien vu. Le français ne disait pas trop : เกินไป n’avait rien à faire là."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, เกินไป conservé aux tirages 4 et 5",
+            "textFr": "Relisez la phrase française : elle ne contient pas le mot trop. Retirez le bloc เกินไป."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule mal choisie",
+            "textFr": "ครับ pour un homme, ค่ะ pour une femme, comme depuis la leçon 1E."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8c-p3",
+      "drawIndex": 3,
+      "id": "4c86936b-2323-5075-b5d9-28f55c56c9e4",
+      "type": "word_order",
+      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",
+      "tokens": [
+        {
+          "id": "65816aed-c619-53c6-a750-f9ab8e4466da",
+          "thaiRaw": "เกินไป",
+          "transcription": null
+        },
+        {
+          "id": "845a1f1d-01f1-58e6-9838-0bad28b2ffe6",
+          "thaiRaw": "ใหญ่",
+          "transcription": null
+        },
+        {
+          "id": "72c38efe-f837-543e-aade-6a40218cd72a",
+          "thaiRaw": "อันนี้",
+          "transcription": null
+        },
+        {
+          "id": "af06d40d-7fbf-5a37-8afd-a6e2db7950ec",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "72c38efe-f837-543e-aade-6a40218cd72a",
+        "845a1f1d-01f1-58e6-9838-0bad28b2ffe6",
+        "65816aed-c619-53c6-a750-f9ab8e4466da",
+        "af06d40d-7fbf-5a37-8afd-a6e2db7950ec"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. เกินไป se colle après le mot d’état, jamais devant.",
+        "incorrectFr": "Vous avez construit l’ordre français. En thaï, l’excès vient en dernier : d’abord ce qu’on constate, ensuite เกินไป.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 4 et 5",
+            "textFr": "Bien vu. Le français ne disait pas trop : เกินไป n’avait rien à faire là."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, เกินไป conservé aux tirages 4 et 5",
+            "textFr": "Relisez la phrase française : elle ne contient pas le mot trop. Retirez le bloc เกินไป."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule mal choisie",
+            "textFr": "ครับ pour un homme, ค่ะ pour une femme, comme depuis la leçon 1E."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8c-p3",
+      "drawIndex": 4,
+      "id": "70e91670-466e-59e9-8c4e-14967af4fd4f",
+      "type": "word_order",
+      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",
+      "tokens": [
+        {
+          "id": "db0835a3-567c-5f96-b25a-6fcb2184bf46",
+          "thaiRaw": "อันนี้",
+          "transcription": null
+        },
+        {
+          "id": "8ecdf605-8ab9-5c78-a15a-01d356006af6",
+          "thaiRaw": "ถูก",
+          "transcription": null
+        },
+        {
+          "id": "462c45b1-02cd-535c-9110-fd2f8c4b431a",
+          "thaiRaw": "เกินไป",
+          "transcription": null
+        },
+        {
+          "id": "5514b1f0-9d75-5d65-9bb7-89133d6453a8",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "db0835a3-567c-5f96-b25a-6fcb2184bf46",
+        "8ecdf605-8ab9-5c78-a15a-01d356006af6",
+        "5514b1f0-9d75-5d65-9bb7-89133d6453a8"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. เกินไป se colle après le mot d’état, jamais devant.",
+        "incorrectFr": "Vous avez construit l’ordre français. En thaï, l’excès vient en dernier : d’abord ce qu’on constate, ensuite เกินไป.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 4 et 5",
+            "textFr": "Bien vu. Le français ne disait pas trop : เกินไป n’avait rien à faire là."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, เกินไป conservé aux tirages 4 et 5",
+            "textFr": "Relisez la phrase française : elle ne contient pas le mot trop. Retirez le bloc เกินไป."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule mal choisie",
+            "textFr": "ครับ pour un homme, ค่ะ pour une femme, comme depuis la leçon 1E."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8c-p3",
+      "drawIndex": 5,
+      "id": "32481c7d-802b-5345-822f-5691fdf1485a",
+      "type": "word_order",
+      "itemId": "6cee9997-d90d-57a1-92f1-2f0ec07962a4",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",
+      "tokens": [
+        {
+          "id": "5aa94af4-38c1-5054-9ac4-ff48186a0dea",
+          "thaiRaw": "เท่าไร",
+          "transcription": null
+        },
+        {
+          "id": "c8f3f3d0-f690-5705-bd62-3c188f333858",
+          "thaiRaw": "อันนี้",
+          "transcription": null
+        },
+        {
+          "id": "57f561fd-6ea9-5197-a669-af0ff2af6210",
+          "thaiRaw": "เกินไป",
+          "transcription": null
+        },
+        {
+          "id": "cdf909db-edb5-59eb-9ee5-06d6e2aac06f",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "c8f3f3d0-f690-5705-bd62-3c188f333858",
+        "5aa94af4-38c1-5054-9ac4-ff48186a0dea",
+        "cdf909db-edb5-59eb-9ee5-06d6e2aac06f"
+      ],
+      "feedback": {
+        "correctFr": "C’est ça. เกินไป se colle après le mot d’état, jamais devant.",
+        "incorrectFr": "Vous avez construit l’ordre français. En thaï, l’excès vient en dernier : d’abord ce qu’on constate, ensuite เกินไป.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 4 et 5",
+            "textFr": "Bien vu. Le français ne disait pas trop : เกินไป n’avait rien à faire là."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, เกินไป conservé aux tirages 4 et 5",
+            "textFr": "Relisez la phrase française : elle ne contient pas le mot trop. Retirez le bloc เกินไป."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, particule mal choisie",
+            "textFr": "ครับ pour un homme, ค่ะ pour une femme, comme depuis la leçon 1E."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous savez déjà dire cher",
+      "bodyFr": "Depuis l’unité 2, vous connaissez แพง (phaeeng), qui dit d’une chose qu’elle coûte beaucoup. Vous l’aviez appris pour entendre le souffle du พ, jamais pour vous en servir. Aujourd’hui il redevient utile, et il vient avec son contraire.",
+      "specimen": "แพง (phaeeng)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ถูก, l’autre bout de l’étiquette",
+      "bodyFr": "ถูก (thòuuk) dit l’inverse : le prix est bas. Le dictionnaire va jusqu’à définir chacun des deux mots par l’autre, แพง par « le contraire de ถูก » et ถูก par « qui n’est pas แพง ». Notez le k final, qui se ferme sans éclater, comme dans ผัก et มาก de la leçon 5A. Un mot sur la transcription : le noyau de la syllabe est `aee` dans phaeeng et `ouu` dans thòuuk, et l’accent de ton se pose toujours sur sa PREMIÈRE lettre, d’où le `ò` posé sur le o de thòuuk.",
+      "specimen": "แพง (phaeeng) contre ถูก (thòuuk)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ใหญ่ et เล็ก, la taille",
+      "bodyFr": "ใหญ่ (yài), c’est grand ; เล็ก (lék), c’est petit. Le dictionnaire définit ใหญ่ par la taille qui n’est pas เล็ก, et les deux éditions de Wiktionary consultées donnent chacun des deux mots comme le contraire de l’autre. Quatre mots d’état, deux couples : le prix et la taille. Même règle d’accent qu’à la page précédente : le noyau de yài est le digramme `ai` et celui de lék la seule lettre `e`, donc l’accent tombe sur le `a` du premier et sur le `e` du second.",
+      "specimen": "ใหญ่ (yài) contre เล็ก (lék)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "le piège de ถูก, à lire avant de l’employer",
+      "bodyFr": "Voici la chose à savoir avant de dire ถูก à quelqu’un. Le dictionnaire ne range pas ce mot sous une vedette, mais sous DEUX, sans lien de sens entre elles. La seconde, et elle seule, parle du prix bas. La première, complètement séparée, couvre le fait de toucher, le fait de tomber juste ou d’être exact, et sert d’auxiliaire pour dire qu’on subit quelque chose de désagréable. Devant une étiquette, dans une boutique, en regardant un objet, personne ne se trompera sur ce que vous voulez dire. Hors de ce cadre, ถูก tout seul ne veut rien dire de précis, et c’est le contexte qui tranche.",
+      "specimen": "ถูก (thòuuk)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "เกินไป, le mot qui dit trop",
+      "bodyFr": "เกินไป (koeen·pai) ajoute l’idée d’excès à un mot d’état. Il est fait de deux morceaux que vous connaissez à moitié : เกิน, dépasser, et ไป, le ไป de la leçon 5B, qui ne veut plus dire aller ici. Surveillez la voyelle de เกิน : c’est le `oee` de เธอ et de เจอ, appris en 6A, ni ou ni eu.",
+      "specimen": "เกินไป (koeen·pai)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "il se met APRÈS, et le français fait l’inverse",
+      "bodyFr": "Dites « trop cher » à voix haute, puis « trop grand ». En français, le mot qui dit l’excès arrive en premier. En thaï, il arrive en dernier : แพงเกินไป, littéralement cher-trop. Le dictionnaire le dit dans sa définition même de เกินไป, qu’il présente comme un élément venant se coller à la fin d’un mot qualifiant.\n\n> แพง + เกินไป → แพงเกินไป (phaeeng koeen·pai), trop cher > ใหญ่ + เกินไป → ใหญ่เกินไป (yài koeen·pai), trop grand > เล็ก + เกินไป → เล็กเกินไป (lék koeen·pai), trop petit",
+      "specimen": "แพงเกินไป (phaeeng koeen·pai)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "ไม่ devant, เกินไป derrière",
+      "bodyFr": "Vous avez maintenant deux petits mots qui modifient un mot d’état, et ils tombent de part et d’autre. ไม่, appris en 4D, se place AVANT : ไม่แพง, pas cher. เกินไป se place APRÈS : แพงเกินไป, trop cher. C’est la même logique que มาก, également appris en 4D, qui suit lui aussi ce qu’il renforce.\n\n> ไม่ + แพง → ไม่แพง, pas cher > แพง + เกินไป → แพงเกินไป, trop cher",
+      "specimen": "ไม่แพง contre แพงเกินไป"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "trois tons à retenir par l’oreille, et un que vous savez déjà lire",
+      "bodyFr": "En 7A, vous avez appris à lire le ton d’un mot d’après sa marque et la classe de sa consonne initiale, en syllabe vivante. Trois des mots du jour restent hors de ce tableau, et une syllabe du quatrième avec eux : il vaut mieux le savoir tout de suite que de s’acharner. ถูก et เล็ก se ferment sur un k, donc ce sont des syllabes mortes, que 7A avait mises de côté. ใหญ่ commence par un ห suivi d’une autre consonne, exactement la famille que la page 10 de 7A nommait comme hors du tableau. Et dans เกินไป, la syllabe ไป s’écrit avec ไ, l’une des quatre formes que 4A puis 7A avaient écartées. Ces trois mots et cette syllabe se retiennent donc par l’oreille, comme au début du parcours : les règles qui les expliquent viendront.",
+      "specimen": "ถูก (thòuuk) · เล็ก (lék) · ใหญ่ (yài)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "เกิน, celui que la règle de 7A lit sans effort",
+      "bodyFr": "Ne renoncez pas devant la première syllabe de เกินไป : elle entre exactement dans le tableau de 7A, et c’est l’occasion de vous en servir sur un mot que vous venez d’apprendre. Reprenez les trois réflexes de la page 8 de 7A. La consonne initiale est ก, l’une des neuf moyennes de 1A, et souvenez-vous que le เ s’écrit avant elle sans être la première lettre lue. Au-dessus de ce ก il y a bien un signe, ◌ิ, mais c’est une voyelle, pas une marque de ton : les seules marques sont ไม้เอก et ไม้โท, et aucune des deux n’est là. La syllabe se ferme sur un น, elle est donc vivante au sens de 4A, et la première colonne du tableau dit alors : consonne moyenne, aucune marque, ton MOYEN. C’est exactement ce que vous entendez dans koeen.",
+      "specimen": "เกิน (koeen), ton moyen"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "la phrase entière",
+      "bodyFr": "Reprenez le patron publié en 3C, อันนี้เท่าไรครับ : celui-ci, puis ce qu’on en dit, puis la particule polie. Remplacez le milieu et vous obtenez tout ce dont vous avez besoin devant un étal. Aucun verbe n’est nécessaire entre l’objet et son état, exactement comme dans เขาใจดี appris en 6C.\n\n> อันนี้แพงเกินไปครับ (an·níi phaeeng koeen·pai khráp) > อันนี้เล็กเกินไปค่ะ (an·níi lék koeen·pai khâ)",
+      "specimen": "อันนี้แพงเกินไปครับ"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "à vous",
+      "bodyFr": "Deux choses à emporter. La première est une place : en thaï, l’excès se colle à la fin, jamais devant. La seconde est une prudence : ถูก devant une étiquette veut dire bon marché, ถูก ailleurs veut dire autre chose, et vous n’avez pas besoin aujourd’hui de savoir quoi. Les exercices appliquent exactement cette règle : chaque fois qu’ils vous montrent ถูก dans le cadre de la boutique, la bonne réponse est bon marché ; une seule fois, ils vous le montreront nu, sans cadre, et la bonne réponse sera alors qu’on ne peut pas trancher.\n\nAprès les exercices, enregistrez-vous en disant แพง puis แพงเกินไป, et écoutez si la voyelle de เกิน reste bien le `oee` de 6A. Comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u08-l8c-p3",
+      "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",
+      "mechanic": "word_order",
+      "drawCount": 5,
+      "passRequired": 5,
+      "sampleSize": 5
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "8df6a750-69c2-58f0-9511-4c56d4693175",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0849b282-3292-5953-8700-0b78fb435e7a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ab9d60e2-3215-5c41-8ff0-172fe8c58d3e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1c64e24d-20a5-5baa-b713-73d5b47b69fc",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "34554d1a-86ff-5d33-9819-9daae74e00a6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "64480f04-b1de-52e8-91ff-675d936278f4",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c1066a54-9444-51b0-9de6-cd4da484491a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f86d5fed-5e50-50d2-85bc-8f46b2bd6923",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

@@ -58,6 +58,12 @@ export function AccountDeletionSection(props: {
         leçon avant de continuer si vous souhaitez les envoyer ou résoudre un
         refus.
       </Text>
+      <Text style={styles.warning}>
+        La suppression du compte ne prouve pas à elle seule l’annulation d’un
+        abonnement App Store, Google Play ou Stripe. Si sa vérification sûre ne
+        peut pas être confirmée, le compte reste intact. Gérez aussi tout
+        abonnement mobile depuis la boutique concernée.
+      </Text>
       {props.fusionInProgress && (
         <Text style={styles.warning}>
           Une fusion locale est encore en cours pour ce compte. Sa copie dans le

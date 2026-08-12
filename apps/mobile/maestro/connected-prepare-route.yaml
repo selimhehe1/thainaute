@@ -1,0 +1,8 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- extendedWaitUntil:
+    visible: "Boucle technique locale"
+    timeout: 60000
+- assertVisible: "Fixture technique · aucune valeur pédagogique · non publiable"

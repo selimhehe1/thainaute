@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "990db2ea-1606-50fa-9348-b8582950ea63",
+  "versionId": "c5a342d9-ab2d-5350-a0b4-6a49d6848cfe",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Ce qui résiste encore",
+  "objectiveFr": "à la fin de la leçon, devant un mot thaï entendu une fois, à débit normal, sans transcription et parmi trois graphies affichées, l’apprenant reconnaît celle qu’il a entendue, sur 14 tirages sur 18 ; devant huit paires de mots entendues sans aucun mot affiché, il nomme la dimension qui sépare les deux membres de chaque paire, 8 sur 8 ; devant un mot écrit en thaï, sans transcription et sans l’enten",
+  "requiredEntitlement": null,
+  "audioManifestId": "c8228f09-ef1e-50b7-bf54-8a90dfdafa19",
+  "items": [
+    {
+      "id": "7ad8052e-2dd5-5670-82de-588eb5fba6e6",
+      "thaiRaw": "ปา",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E32"
+      ],
+      "translationFr": "lancer (jeter avec le bras)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "paa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปา",
+          "ipa": "paː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d8ee8135-fc17-51c6-9bab-1e9dc54e3b62",
+      "thaiRaw": "พา",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E32"
+      ],
+      "translationFr": "emmener, conduire (une personne ou un animal quelque part)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พา",
+          "ipa": "pʰaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u12-l12b-p5",
+      "drawIndex": 1,
+      "id": "05e196c7-6cbb-5103-97a8-b538da9d6d10",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque forme à son sens.",
+      "pairs": [
+        {
+          "id": "aa6ebdde-7b1a-5640-b205-388fecec41b4",
+          "itemId": "7ad8052e-2dd5-5670-82de-588eb5fba6e6",
+          "labelFr": "lancer, à la main"
+        },
+        {
+          "id": "535c01a3-52db-5b22-b56a-276dd4be631c",
+          "itemId": "d8ee8135-fc17-51c6-9bab-1e9dc54e3b62",
+          "labelFr": "emmener"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Exact. Ces deux formes sont attestées dans cette leçon.",
+        "incorrectFr": "Relisez la forme et son sens dans cette leçon, puis réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "six points, et ce que cette leçon peut honnêtement en dire",
+      "bodyFr": "Vous arrivez à la dernière unité. Cette leçon ne vous apprend aucun mot : elle revient sur six points de prononciation, tous déjà travaillés, et elle vous les fait refaire sur des mots que vous connaissez déjà.\n\nUne chose tout de suite, pour que le reste soit clair. Ce cours ne sait pas ce qui est le plus difficile aux francophones en général : il n’a aucune étude à citer là-dessus, et il n’en invente pas. Ce qu’il sait, c’est ce qu’il a lui-même construit. Ces six points sont les six cibles phonétiques de son propre parcours, une par unité, et les voici avec la leçon qui les a installées.\n\n> **le ton moyen contre le ton bas** · `u01-l1c` « Mi contre bas », puis > `u07-l7a` > **le ton montant contre le ton haut** · `u01-l1d` « Montant contre haut », puis > `u04-l4a` > **la longueur de la voyelle** · `u01-l1b` « Longues et courtes » > **le souffle après la consonne initiale** · `u02-l2a`, `u03-l3a`, `u04-l4a` > **le ห qui se prononce, et celui qui ne se prononce pas** · `u05-l5a` > **les finales retenues -p, -t, -k** · `u05-l5a`",
+      "specimen": "ปา · ป่า · หมา · ม้า · เขา · ขาว"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "le ton moyen contre le ton bas",
+      "bodyFr": "Deux syllabes identiques, deux hauteurs. Le ton moyen se pose à mi-hauteur et reste plat. Le ton bas part plus bas et descend encore un peu.\n\n> **ปา** · paa · lancer, à la main, bras levé > **ป่า** · pàa · la forêt > **ปู** · pouu · le crabe > **ปู่** · pòuu · le grand-père paternel > **ปี** · pii · l’année > **ปี่** · pìi · le hautbois thaï\n\nCes six mots sont les items 1 à 6 de `u01-l1c`, repris sans rien changer. La marque ่ que vous voyez sur trois d’entre eux est celle de `u07-l7a`, et elle se lit avec la classe de la consonne initiale, jamais avec la première lettre du mot : dans ป่า, la consonne initiale est ป, et c’est elle qui décide.\n\nLe contraste ne vit pas que dans des paires de laboratoire. Il est à l’intérieur de mots que vous dites tous les jours, et chaque fois il vous fait changer d’étage au milieu du mot.\n\n> **กิโล** · kì·loo · le kilo · première syllabe BASSE, seconde MOYENNE > **ขอบคุณ** · khàwwp·khoun · merci · première syllabe BASSE, seconde MOYENNE\n\nUn contrôle que vous pouvez faire seul, et il vaut mieux qu’une consigne : dites กิโล, réécoutez-vous, et regardez si vos deux syllabes sont au même étage. Si elles y sont, c’est la première qu’il faut descendre.",
+      "specimen": "ปี / ปี่ puis กิโล"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "le ton montant contre le ton haut",
+      "bodyFr": "Celui-ci se joue sur la forme de la voix, pas seulement sur sa hauteur. Le ton montant creuse d’abord, puis remonte. Le ton haut ne creuse pas : il part haut et finit encore un peu plus haut.\n\n> **ขา** · khǎa · la jambe · MONTANT > **ค้า** · kháa · faire commerce · HAUT > **หมา** · mǎa · le chien · MONTANT > **ม้า** · máa · le cheval · HAUT > **หนี** · nǐi · fuir · MONTANT > **นี้** · níi · ce, cette · HAUT\n\nขา et ค้า sont la seule paire du parcours qui oppose le MONTANT au HAUT et dont aucun des deux mots ne s’écrit avec un ห. C’est pour cela qu’elle revient dans deux exercices sur trois. Le parcours a d’autres paires qui ne diffèrent que par le ton, et vous en avez trois sous les yeux à la page précédente : elles opposent d’autres tons que ces deux-là.\n\nEt une paire à traiter avec précaution, celle que `u01-l1d` signale elle-même :\n\n> **ไหม** · mǎi · la soie · MONTANT, et voyelle BRÈVE > **ไม้** · máai · le bois · HAUT, et voyelle LONGUE\n\nCes deux-là ne diffèrent pas seulement par le ton. Si vous les réussissez, vous ne savez pas encore lequel des deux indices vous a servi. C’est pourquoi les exercices du jour ne s’en servent pas pour mesurer le ton.",
+      "specimen": "ขา / ค้า puis หมา / ม้า"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "la longueur de la voyelle",
+      "bodyFr": "Le thaï change de mot quand la voyelle dure plus longtemps. `u01-l1b` a rangé cela en paires où le ton est tenu CONSTANT, ce qui est la seule façon d’être sûr que c’est bien la durée qui décide.\n\n> **เขา** · khǎo · il, elle · BRÈVE, ton montant > **ขาว** · khǎao · blanc · LONGUE, même ton montant > **เข้า** · khâo · entrer · BRÈVE, ton descendant > **ข้าว** · khâao · le riz · LONGUE, même ton descendant > **หัด** · hàt · s’entraîner · BRÈVE, ton bas > **หาด** · hàat · la plage · LONGUE, même ton bas > **ยัง** · yang · encore · BRÈVE, ton moyen > **ยาง** · yaang · le caoutchouc · LONGUE, même ton moyen\n\nQuatre paires, quatre tons différents, et à chaque fois la seule chose qui change est la durée. En transcription Thaïnaute, c’est ce que note la voyelle doublée : `khǎo` contre `khǎao`.\n\nDeux mots vous tendent un piège d’écriture, et le cours préfère vous le montrer plutôt que vous laisser le découvrir en vous trompant.\n\n> **ห้อง** · hâwng · la pièce · la graphie ออ fait attendre une voyelle longue. > Elle est BRÈVE. `u07-l7b` le signale déjà. > **ได้ไหม** · dâai mǎi · est-ce possible ? · ได้ porte le ไ de ไม่, dont la > voyelle est brève, et pourtant il se dit LONG. `u11-l11a` le signale déjà.\n\nCes deux-là ne se déduisent pas de l’écriture. Ils se retiennent.",
+      "specimen": "เขา / ขาว puis หัด / หาด"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "le souffle après la consonne initiale",
+      "bodyFr": "Le thaï distingue deux façons d’attaquer un mot : sans souffle, et avec un souffle audible juste après la consonne. La transcription Thaïnaute écrit ce souffle avec un h : `p` contre `ph`, `t` contre `th`, `k` contre `kh`.\n\n> **ปา** · paa · lancer · SANS souffle > **พา** · phaa · emmener · AVEC souffle > **ป่า** · pàa · la forêt · SANS souffle > **ผ่า** · phàa · fendre · AVEC souffle > **ตา** · taa · l’œil · SANS souffle > **ทา** · thaa · étaler · AVEC souffle > **ตัด** · tàt · couper · SANS souffle > **ถัด** · thàt · suivant · AVEC souffle > **ไก่** · kài · le poulet · SANS souffle > **ไข่** · khài · l’œuf · AVEC souffle > **ก้าว** · kâao · un pas · SANS souffle > **ข้าว** · khâao · le riz · AVEC souffle\n\nSix paires, trois endroits de la bouche, et dans chaque paire le ton et la voyelle sont identiques : le souffle est la seule chose qui change le mot.\n\nLe contrôle que ce cours vous propose est celui que vous pouvez faire vous-même, et il n’a pas besoin d’être cru sur parole : posez la main à plat devant votre bouche, dites ไก่ puis ไข่, et regardez sur laquelle des deux votre paume reçoit un coup d’air. Vous êtes locuteur natif du français : vous jugez cela mieux qu’une phrase de leçon.",
+      "specimen": "ปา / พา puis ไก่ / ไข่"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "le ห qui se prononce, et celui qui ne se prononce pas",
+      "bodyFr": "Le ห note un souffle à l’initiale, un son que le français écrit parfois et ne prononce pas. Ces huit mots l’ont, et vous l’entendez.\n\n> **ห้า** · hâa · cinq > **หก** · hòk · six > **หา** · hǎa · chercher > **หิว** · hǐo · avoir faim > **หัด** · hàt · s’entraîner > **หาด** · hàat · la plage > **ห้อง** · hâwng · la pièce > **ห้าม** · hâam · il est interdit de\n\nEt ces huit-là s’écrivent aussi avec un ห, mais **leur transcription publiée n’en porte aucun**. C’est la transcription qui dit ce qui s’entend.\n\n> **หมา** · mǎa · le chien > **หมอ** · mǎww · le médecin > **หมู** · mǒuu · le cochon > **หนา** · nǎa · épais > **หนี** · nǐi · fuir > **ไหม** · mǎi · la soie, et la particule de question > **หยุด** · yòut · s’arrêter > **ใหญ่** · yài · grand\n\n**Un repère de lecture vous a déjà été donné, et le voici tel que `u05-l5a` l’a écrit à sa page 5** : le ห se tait quand une des lettres ง, น, ม, ย, ว ou ร est collée juste derrière lui, sans le moindre signe posé sur le ห. Il tranche quinze des seize mots de cette page. Le seizième est ใหญ่, dont la lettre placée derrière le ห n’est pas dans cette liste : le repère y attendrait un souffle, et il n’y en a pas. `u05-l5a` annonçait d’ailleurs que « la liste complète et ce que ce ห muet fabrique viendront plus tard ».\n\n**Ce que ce cours ne vous a jamais expliqué, et il ne le fait pas aujourd’hui**, c’est ce que ce ห muet fabrique sur le TON du mot. `u05-l5a` écrit noir sur blanc, dans son champ « ce que la leçon n’ouvre pas », qu’elle laisse fermé « le rôle du ห de tête sur le ton » ; aucune leçon depuis ne l’a ouvert. Ce qu’on vous demande ici est plus modeste et entièrement vérifiable à l’oreille : ne mettez pas de souffle là où la transcription n’en met pas.\n\nLa paire à travailler est celle-ci, parce que les deux mots portent le même ton montant et la même voyelle longue.\n\n> **หา** · hǎa · chercher · le ห s’entend > **หมา** · mǎa · le chien · le ห ne s’entend pas",
+      "specimen": "หา / หมา"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "les finales retenues",
+      "bodyFr": "Quand un mot thaï se termine par un p, un t ou un k, la bouche se ferme et le son s’arrête là. Rien ne se détend, rien ne s’ajoute derrière.\n\n> **มาก** · mâak · beaucoup · finale k > **ผัก** · phàk · le légume · finale k > **ถูก** · thòuuk · bon marché · finale k > **ออก** · àwwk · sortir · finale k > **พูด** · phôuut · parler · finale t > **ผัด** · phàt · faire sauter à la poêle · finale t > **บาท** · bàat · le baht · finale t > **หยุด** · yòut · s’arrêter · finale t > **สิบ** · sìp · dix · finale p > **ชอบ** · châwwp · aimer · finale p > **ครับ** · khráp · la particule polie d’un homme · finale p\n\n`u05-l5a` mesure ce point sur une paire qui ne laisse aucune échappatoire, et c’est celle que la leçon d’aujourd’hui reprend :\n\n> **ผัด** · phàt · faire sauter · **ผัก** · phàk · le légume\n\nMême consonne initiale, même voyelle, même ton. Seule la fermeture change, et elle décide du mot. C’est aussi le seul endroit du jour où une syllabe entière peut vous échapper parce que sa fin ne fait presque pas de bruit.",
+      "specimen": "ผัด / ผัก puis สิบ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ce que vous savez faire, et ce que ce cours ne sait pas",
+      "bodyFr": "Cette page parle de votre niveau sur ces six points, et elle le fait pour dire quelque chose de précis plutôt que quelque chose d’agréable.\n\n**Ce que vous savez faire, en actes, et seulement si vous passez les exercices du jour** : reconnaître, parmi trois graphies affichées et sans transcription, le mot thaï que vous venez d’entendre une fois ; nommer ce qui sépare deux mots que vous entendez, sans aucun mot à l’écran ; lire un mot écrit en thaï, sans l’entendre, et retrouver son sens ; écrire ce mot en transcription à partir du français seul, sans modèle au moment de répondre, avec son ton et sa longueur. Voilà ce qui est mesuré, et rien de plus.\n\n**Ce dont ce cours n’a aucune preuve, ce qui n’est pas la même chose que de dire que vous n’en êtes pas capable** : que vous produisiez ces contrastes de façon fiable dans une phrase qui défile, ce qu’aucun exercice d’ici ne mesure ; que vous lisiez du thaï suivi hors des mots que le parcours vous a montrés. Et une chose qui, elle, est certaine : **personne n’a écouté votre voix.** La revue par un locuteur natif est en attente sur tout le parcours, et cette page ne peut donc rien vous dire de votre prononciation réelle.\n\n**Ce que ce cours ne dit pas, parce qu’il ne le mesure pas** : aucun niveau du Cadre européen, aucun nombre d’heures, aucune équivalence avec un examen, et aucune prédiction sur ce que vous saurez faire dans six mois.\n\n**Combien de temps ces six points demandent-ils ?** Ce cours ne le sait pas et ne le mesure pas. Voici ce qu’il fait, et vous pouvez le vérifier : il ne déclare aucun de ces points acquis. Ses propres conventions écrivent que les deux contrastes de tons sont entretenus et jamais supposés su. Le calendrier de révisions les fait revenir tant que vous vous trompez, et les espace quand vous réussissez.\n\nAprès les exercices, enregistrez-vous en disant les six paires de la page 5, puis comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u12-l12b-p5",
+      "promptFr": "Reliez chaque forme à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "5190848f-696f-543a-b2a6-38a04babcb58",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "966ca6cb-82b9-5836-970e-ba0fa044e203",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6ff66804-23bc-5655-863a-b031989c02c1",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a5f65d5f-e038-5d13-acc3-3d6c34a8092c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a0c5a5fa-b885-54b9-934e-3c0e41f502c2",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "4ed803b1-9745-5142-b3f9-62ceb290c2a9",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2bfa8c67-1d26-5309-86d8-d27d6dcfbca0",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c18ea8e7-8497-581a-9ff8-0fc3cb71888a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

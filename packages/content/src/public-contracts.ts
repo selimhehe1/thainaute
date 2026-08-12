@@ -1,6 +1,11 @@
 import { z } from "zod";
 
 import { CONTENT_SCHEMA_LIMITS } from "./schemas";
+import {
+  DEFAULT_LANGUAGE_PACK_ID,
+  LANGUAGE_PACK_IDS,
+  thaiFrLanguagePack,
+} from "./language-packs";
 
 export const publicContentUuidSchema = z
   .string()
@@ -12,45 +17,104 @@ const utcDateTimeSchema = z.iso.datetime({ precision: 3, offset: true });
 
 export const PUBLIC_AUDIO_MAX_BYTES = 25 * 1_024 * 1_024;
 
-const publicLessonExerciseSchema = z.strictObject({
+const publicOptionSchema = z
+  .strictObject({
+    id: publicContentUuidSchema,
+    labelFr: z.string().min(1).max(120).nullable().default(null),
+    targetText: z
+      .string()
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
+      .nullable()
+      .default(null),
+    thaiRaw: z
+      .string()
+      .min(1)
+      .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
+      .nullable()
+      .default(null),
+  })
+  .refine(
+    (option) =>
+      option.labelFr !== null ||
+      option.targetText !== null ||
+      option.thaiRaw !== null,
+    { message: "Une option publique doit porter un texte." },
+  );
+
+const publicExerciseBase = {
   id: publicContentUuidSchema,
-  type: z.literal("audio_choice"),
-  skill: z.literal("listening"),
-  audioAssetId: publicContentUuidSchema,
   promptFr: z.string().min(1).max(280),
-  options: z
-    .array(
-      // Une option d'ecoute oppose souvent des graphies thaies entre elles.
-      // Le DTO les distribue telles quelles plutot que de les ranger dans
-      // un champ francais : c'est du thai, il doit etre nomme comme tel.
-      //
-      // La transcription de l'option n'est deliberement PAS distribuee. Sur
-      // un exercice de discrimination tonale opposant ขา et ข่า, joindre
-      // khaa et khaa avec leurs accents reviendrait a ecrire la reponse a
-      // cote de la question. Le contenu la porte, le reseau non.
-      z
-        .strictObject({
+} as const;
+
+const publicItemReference = {
+  targetText: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+  thaiRaw: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+} as const;
+
+const publicLessonExerciseSchema = z.discriminatedUnion("type", [
+  z.strictObject({
+    ...publicExerciseBase,
+    type: z.literal("audio_choice"),
+    skill: z.literal("listening"),
+    audioAssetId: publicContentUuidSchema,
+    options: z.array(publicOptionSchema).min(2).max(6),
+  }),
+  z.strictObject({
+    ...publicExerciseBase,
+    type: z.literal("association"),
+    skill: z.literal("reading"),
+    pairs: z
+      .array(
+        z.strictObject({
           id: publicContentUuidSchema,
-          labelFr: z.string().min(1).max(120).nullable().default(null),
-          // Valeur par defaut assumee : c'est un contrat reseau. Un client
-          // a jour doit savoir lire une charge produite par un serveur qui
-          // ne connait pas encore ce champ, sinon un deploiement progressif
-          // casse les clients deja deployes.
-          thaiRaw: z
+          ...publicItemReference,
+          labelFr: z.string().min(1).max(120),
+        }),
+      )
+      .min(2)
+      .max(6),
+  }),
+  z.strictObject({
+    ...publicExerciseBase,
+    type: z.literal("word_order"),
+    skill: z.literal("production"),
+    ...publicItemReference,
+    audioAssetId: publicContentUuidSchema.nullable(),
+    tokens: z
+      .array(
+        z.strictObject({
+          id: publicContentUuidSchema,
+          targetText: z
             .string()
             .min(1)
-            .max(CONTENT_SCHEMA_LIMITS.thaiRawLength)
-            .nullable()
-            .default(null),
-        })
-        .refine(
-          (option) => option.labelFr !== null || option.thaiRaw !== null,
-          { message: "Une option doit porter un libelle francais ou thai." },
-        ),
-    )
-    .min(2)
-    .max(6),
-});
+            .max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+          thaiRaw: z.string().min(1).max(CONTENT_SCHEMA_LIMITS.thaiRawLength),
+          transcription: z.string().max(120).nullable(),
+        }),
+      )
+      .min(2)
+      .max(12),
+  }),
+  z.strictObject({
+    ...publicExerciseBase,
+    type: z.literal("recall"),
+    skill: z.literal("recall"),
+    ...publicItemReference,
+    answerPolicy: z.strictObject({
+      normalization: z.literal("nfc"),
+      trimWhitespace: z.boolean(),
+      collapseInnerWhitespace: z.boolean(),
+    }),
+  }),
+  z.strictObject({
+    ...publicExerciseBase,
+    type: z.literal("reading"),
+    skill: z.literal("reading"),
+    ...publicItemReference,
+    options: z.array(publicOptionSchema).min(2).max(6),
+  }),
+]);
 
 export const publicAudioAssetSchema = z.strictObject({
   assetId: publicContentUuidSchema,
@@ -61,10 +125,15 @@ export const publicAudioAssetSchema = z.strictObject({
   durationMs: z.number().int().positive().max(3_600_000),
 });
 
-/** DTO v1 distribue aux clients. Il ne contient aucune cle de correction. */
+/** DTO distribué aux clients. Il ne contient aucune clé de correction. */
 export const publicLessonSchema = z.strictObject({
   releaseId: publicContentUuidSchema,
   releaseVersion: z.number().int().positive(),
+  languagePackId: z.enum(LANGUAGE_PACK_IDS).default(DEFAULT_LANGUAGE_PACK_ID),
+  targetLocale: z
+    .string()
+    .regex(/^[a-z]{2,3}(?:-[A-Z]{2})?$/u)
+    .default(thaiFrLanguagePack.targetLocale),
   lessonId: publicContentUuidSchema,
   versionId: publicContentUuidSchema,
   revision: z.number().int().positive(),
@@ -79,7 +148,6 @@ export const publicLessonSchema = z.strictObject({
     .max(CONTENT_SCHEMA_LIMITS.exercisesPerLesson),
   audioAssets: z
     .array(publicAudioAssetSchema)
-    .min(1)
     .max(CONTENT_SCHEMA_LIMITS.audioEntriesPerManifest),
 });
 
@@ -108,10 +176,25 @@ export const publicReleaseSchema = z
   .strictObject({
     releaseId: publicContentUuidSchema,
     releaseVersion: z.number().int().positive(),
+    languagePackId: z.enum(LANGUAGE_PACK_IDS).default(DEFAULT_LANGUAGE_PACK_ID),
+    targetLocale: z
+      .string()
+      .regex(/^[a-z]{2,3}(?:-[A-Z]{2})?$/u)
+      .default(thaiFrLanguagePack.targetLocale),
     publishedAt: utcDateTimeSchema,
     lessons: z.array(publicReleaseLessonSchema).min(1).max(500),
   })
   .superRefine((release, context) => {
+    if (
+      release.languagePackId === DEFAULT_LANGUAGE_PACK_ID &&
+      release.targetLocale !== thaiFrLanguagePack.targetLocale
+    ) {
+      context.addIssue({
+        code: "custom",
+        message: "La locale cible de la release thai-fr doit rester th-TH.",
+        path: ["targetLocale"],
+      });
+    }
     let previousKey: string | undefined;
     release.lessons.forEach((lesson, index) => {
       const key = `${lesson.lessonId}\u0000${lesson.versionId}`;

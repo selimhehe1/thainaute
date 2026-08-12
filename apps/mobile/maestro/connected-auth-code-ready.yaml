@@ -1,0 +1,15 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- extendedWaitUntil:
+    visible: "Code reçu par email"
+    timeout: 30000
+- extendedWaitUntil:
+    visible: "Me connecter"
+    timeout: 30000
+- tapOn:
+    id: "account-otp-input"
+- assertVisible:
+    id: "account-otp-input"
+    focused: true

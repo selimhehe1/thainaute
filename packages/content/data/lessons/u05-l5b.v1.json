@@ -1,0 +1,748 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "b8e48d8c-d13b-5e78-b0d9-8194ad7a4816",
+  "versionId": "66ae2cf3-0a88-5815-adc3-640c1c3eed56",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Aller, venir, tourner",
+  "objectiveFr": "à la fin de la leçon, l’apprenant associe sans indice les sept formes du jour à leur sens français, 6 sur 7 ; il identifie à l’écoute si la consigne entendue nomme la gauche, la droite, ou aucun côté, 5 fois sur 6 ; devant une situation décrite en français, il choisit entre ไป et มา selon que le mouvement s’éloigne de celui qui parle ou se dirige vers lui, 5 fois sur 6 ; et il écrit en transcripti",
+  "requiredEntitlement": null,
+  "audioManifestId": "c4ed21e0-d8be-59be-a687-cbfb7ea7e0c2",
+  "items": [
+    {
+      "id": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "thaiRaw": "ไป",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "aller, partir, se rendre à ; s’éloigner de celui qui parle",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre comme verbe. **Une lecture d’interjection existe** pour ไป employé seul, au sens de « va-t’en » : cet EMPLOI est attesté par deux sources, mais aucune des deux ne porte de marque de registre, et le RID ne l’enregistre pas du tout. La leçon n’affirme donc aucun registre pour cette lecture, et se borne à signaler qu’elle existe. Voir l’incertitude 13.",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "89f0ef39-dd5a-5b22-a346-b5d51fbc3e7d",
+      "thaiRaw": "มา",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E32"
+      ],
+      "translationFr": "venir, arriver ; se déplacer vers celui qui parle",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "maa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มา",
+          "ipa": "maː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "bf053ce6-b7a5-5f68-a35e-f5e8575d0ec5",
+      "thaiRaw": "เลี้ยว",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E25",
+        "U+0E35",
+        "U+0E49",
+        "U+0E22",
+        "U+0E27"
+      ],
+      "translationFr": "tourner, changer de direction",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "líao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เลี้ยว",
+          "ipa": "lia̯w˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "l",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "964061e2-8e24-5f9d-a858-18fe41054deb",
+      "thaiRaw": "เลี้ยวซ้าย",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E25",
+        "U+0E35",
+        "U+0E49",
+        "U+0E22",
+        "U+0E27",
+        "U+0E0B",
+        "U+0E49",
+        "U+0E32",
+        "U+0E22"
+      ],
+      "translationFr": "tourner à gauche, prendre à gauche",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "líao sáai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เลี้ยวซ้าย",
+          "ipa": "lia̯w˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เลี้ยวซ้าย",
+          "ipa": "saːj˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "93339cda-4bf7-559a-8848-4e8b0c3a1c70",
+      "thaiRaw": "เลี้ยวขวา",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E25",
+        "U+0E35",
+        "U+0E49",
+        "U+0E22",
+        "U+0E27",
+        "U+0E02",
+        "U+0E27",
+        "U+0E32"
+      ],
+      "translationFr": "tourner à droite, prendre à droite",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "líao khwǎa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เลี้ยวขวา",
+          "ipa": "lia̯w˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เลี้ยวขวา",
+          "ipa": "kʰwaː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰw",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "cb7e3a43-7c3d-5a2b-8f47-e4f9089cdf74",
+      "thaiRaw": "ตรง",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E23",
+        "U+0E07"
+      ],
+      "translationFr": "droit, qui ne tourne pas",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "trong"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตรง",
+          "ipa": "troŋ˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "tr",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "da91a584-7217-50ad-aab1-8b756e713ec2",
+      "thaiRaw": "หยุด",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E22",
+        "U+0E38",
+        "U+0E14"
+      ],
+      "translationFr": "s’arrêter, arrêter, cesser",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yòut"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หยุด",
+          "ipa": "jut̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "j",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u05-l5b-p2-m1",
+      "drawIndex": 1,
+      "id": "e6af105d-a9ed-551b-996e-2d02e0f6b95a",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque forme thaïe à son sens.",
+      "pairs": [
+        {
+          "id": "0e9e70af-3807-5172-bf4a-c531abe3afa9",
+          "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+          "labelFr": "aller, s’éloigner de celui qui parle"
+        },
+        {
+          "id": "33e89767-bb30-5977-be71-ef691f6e4bc7",
+          "itemId": "89f0ef39-dd5a-5b22-a346-b5d51fbc3e7d",
+          "labelFr": "venir, se rapprocher de celui qui parle"
+        },
+        {
+          "id": "da9bbf9c-10a1-5684-9dc4-d1ca33ab6e1a",
+          "itemId": "bf053ce6-b7a5-5f68-a35e-f5e8575d0ec5",
+          "labelFr": "tourner"
+        },
+        {
+          "id": "beea1b47-5aa0-59cb-bb39-427f3c566ab7",
+          "itemId": "da91a584-7217-50ad-aab1-8b756e713ec2",
+          "labelFr": "s’arrêter"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Bonne association.",
+        "incorrectFr": "Les deux mots sont bien des verbes de déplacement, vous ne vous trompez pas de famille. Reprenez la page 2 : celui qui s’éloigne de celui qui parle, c’est ไป.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paires ไป et มา",
+            "textFr": "Oui. Et retenez le repère : ce n’est pas la destination qui décide, c’est l’endroit d’où l’on parle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, manche 2",
+            "textFr": "Ces deux cartes ne vont pas ensemble. Regardez d’abord si la carte thaïe contient เลี้ยว, puis ce qui suit."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5b-p2-m2",
+      "drawIndex": 1,
+      "id": "105fbedd-7c53-584f-80eb-6c1a813255aa",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque forme thaïe à son sens.",
+      "pairs": [
+        {
+          "id": "dc8a85c3-eb85-52d8-80c2-d2cdbcd8b802",
+          "itemId": "964061e2-8e24-5f9d-a858-18fe41054deb",
+          "labelFr": "tourner à gauche"
+        },
+        {
+          "id": "b50e7bc0-e47e-5d2d-9928-d18c7debd751",
+          "itemId": "93339cda-4bf7-559a-8848-4e8b0c3a1c70",
+          "labelFr": "tourner à droite"
+        },
+        {
+          "id": "439c3209-a95c-5a2c-a222-c74f89c687d5",
+          "itemId": "cb7e3a43-7c3d-5a2b-8f47-e4f9089cdf74",
+          "labelFr": "droit, qui ne tourne pas"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Bonne association.",
+        "incorrectFr": "Les deux mots sont bien des verbes de déplacement, vous ne vous trompez pas de famille. Reprenez la page 2 : celui qui s’éloigne de celui qui parle, c’est ไป.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paires ไป et มา",
+            "textFr": "Oui. Et retenez le repère : ce n’est pas la destination qui décide, c’est l’endroit d’où l’on parle."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, manche 2",
+            "textFr": "Ces deux cartes ne vont pas ensemble. Regardez d’abord si la carte thaïe contient เลี้ยว, puis ce qui suit."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5b-p4",
+      "drawIndex": 1,
+      "id": "3a752aee-fd59-52fa-8b39-c2586070e585",
+      "type": "recall",
+      "itemId": "bf053ce6-b7a5-5f68-a35e-f5e8575d0ec5",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "líao",
+          "kind": "transcription"
+        },
+        {
+          "value": "liao",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez syllabe par syllabe, sans vous occuper des accents.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1, 4 et 6",
+            "textFr": "Oui. `iao` note la diphtongue `ia` suivie du glissement vers ou, et l’accent se pose sur le `i` parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5b-p4",
+      "drawIndex": 2,
+      "id": "40f45cea-cb37-512a-99c5-d7551a0ff454",
+      "type": "recall",
+      "itemId": "da91a584-7217-50ad-aab1-8b756e713ec2",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "yòut",
+          "kind": "transcription"
+        },
+        {
+          "value": "yout",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez syllabe par syllabe, sans vous occuper des accents.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1, 4 et 6",
+            "textFr": "Oui. `iao` note la diphtongue `ia` suivie du glissement vers ou, et l’accent se pose sur le `i` parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5b-p4",
+      "drawIndex": 3,
+      "id": "e5f28d88-6344-51b4-9937-dfd269dd28f2",
+      "type": "recall",
+      "itemId": "0ca80255-d355-59f4-86d4-44c8dc18c0db",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "pai",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez syllabe par syllabe, sans vous occuper des accents.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1, 4 et 6",
+            "textFr": "Oui. `iao` note la diphtongue `ia` suivie du glissement vers ou, et l’accent se pose sur le `i` parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5b-p4",
+      "drawIndex": 4,
+      "id": "b6b56f2b-69f1-5215-8cf9-95adbdc1d95a",
+      "type": "recall",
+      "itemId": "964061e2-8e24-5f9d-a858-18fe41054deb",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "líao sáai",
+          "kind": "transcription"
+        },
+        {
+          "value": "liao saai",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez syllabe par syllabe, sans vous occuper des accents.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1, 4 et 6",
+            "textFr": "Oui. `iao` note la diphtongue `ia` suivie du glissement vers ou, et l’accent se pose sur le `i` parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5b-p4",
+      "drawIndex": 5,
+      "id": "3642a3da-6e55-5d76-9ac3-25293aeb5382",
+      "type": "recall",
+      "itemId": "cb7e3a43-7c3d-5a2b-8f47-e4f9089cdf74",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "trong",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez syllabe par syllabe, sans vous occuper des accents.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1, 4 et 6",
+            "textFr": "Oui. `iao` note la diphtongue `ia` suivie du glissement vers ou, et l’accent se pose sur le `i` parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5b-p4",
+      "drawIndex": 6,
+      "id": "42a7e653-0670-5419-a612-899cc34577bd",
+      "type": "recall",
+      "itemId": "93339cda-4bf7-559a-8848-4e8b0c3a1c70",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "líao khwǎa",
+          "kind": "transcription"
+        },
+        {
+          "value": "liao khwaa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez syllabe par syllabe, sans vous occuper des accents.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1, 4 et 6",
+            "textFr": "Oui. `iao` note la diphtongue `ia` suivie du glissement vers ou, et l’accent se pose sur le `i` parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "sortir de table",
+      "bodyFr": "L’unité 4 vous a assis à une table. Celle-ci vous remet debout. Cinq idées seulement aujourd’hui : aller, venir, tourner, tourner d’un côté précis, et s’arrêter. Vous les apprenez en blocs, parce que c’est ainsi qu’on vous les dira dans la rue.",
+      "specimen": "ไป · มา · เลี้ยว · หยุด"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "la découverte du jour, une boussole plantée sur celui qui parle",
+      "bodyFr": "ไป (pai) veut dire aller, มา (maa) veut dire venir. Jusque-là, rien d’étrange. Mais le dictionnaire normatif ne les définit pas par la destination : il définit ไป comme le mouvement qui s’éloigne de celui qui parle, et มา comme le mouvement qui vient vers lui. Chacune des deux entrées renvoie d’ailleurs explicitement à l’autre comme à son contraire.",
+      "specimen": "ไป (pai) contre มา (maa)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "la question à se poser avant de choisir",
+      "bodyFr": "Une seule question commande le choix : où se tient celui qui parle ? Les deux définitions du dictionnaire sont écrites par rapport à lui, et non par rapport au lieu visé. Il donne มานี่ pour appeler quelqu’un vers l’endroit où l’on se trouve, et เขาไปตลาด pour dire qu’il part au marché.",
+      "specimen": "มานี่ contre เขาไปตลาด"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "deux prudences sur ไป",
+      "bodyFr": "Première prudence : ไป a une seconde lecture. Deux de nos sources l’enregistrent comme une interjection au sens de « va-t’en », sans dire dans quel registre elle se situe, et le dictionnaire normatif ne l’enregistre pas du tout. Comme aucune source ne nous dit comment cette lecture est reçue, ne lancez pas ไป seul à quelqu’un. Deuxième prudence : placé APRÈS un mot de qualité, ไป change complètement de rôle et sert à dire « trop ». Le dictionnaire donne lui-même ขาวไป, à partir de ขาว que vous avez appris en 4A. Cet emploi n’est pas enseigné ici : sachez seulement qu’il existe, pour ne pas le confondre avec le verbe.",
+      "specimen": "ไป (pai) · ขาว (khǎao) puis ขาวไป"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "มา, vous l’avez déjà dit",
+      "bodyFr": "Vous connaissez มา depuis la leçon 2D, où il était collé à จาก dans le bloc มาจาก (maa·jàak), « venir de ». C’est le même mot, sorti de son bloc. Rien de nouveau à apprendre dans sa prononciation : voyelle longue, ton moyen, exactement comme vous le disiez déjà.",
+      "specimen": "มาจาก (maa·jàak) puis มา (maa)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "เลี้ยว, tourner",
+      "bodyFr": "เลี้ยว (líao) veut dire tourner, changer de direction. Le dictionnaire le définit comme le fait de s’écarter de la ligne droite, et il donne pour exemples les deux blocs mêmes que vous allez apprendre. Regardez sa graphie sans vous inquiéter : deux signes se superposent au-dessus de la lettre ล, un signe de voyelle puis un signe de ton.",
+      "specimen": "เลี้ยว (líao)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "ซ้าย et ขวา, dans leur bloc",
+      "bodyFr": "ซ้าย (sáai) est la gauche, ขวา (khwǎa) est la droite. Vous ne les apprenez pas seuls, vous les apprenez soudés à เลี้ยว : เลี้ยวซ้าย (líao sáai), tourner à gauche, et เลี้ยวขวา (líao khwǎa), tourner à droite. Tout se joue sur la seconde moitié du bloc, et c’est elle qu’il faut écouter.",
+      "specimen": "เลี้ยวซ้าย (líao sáai) contre เลี้ยวขวา (líao khwǎa)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ตรง, la ligne qui ne tourne pas",
+      "bodyFr": "ตรง (trong) veut dire droit, au sens de la ligne qui ne tourne pas ; le dictionnaire l’illustre par ทางตรง, la route droite. Il définit par ailleurs เลี้ยว comme un écart par rapport à แนวตรง, la ligne droite. Retenez donc les deux côte à côte : เลี้ยว quitte la ligne droite, ตรง la décrit. Une remarque d’écriture : dans ตรง, aucune voyelle n’est écrite. Elle est sous-entendue, comme dans ผม (phǒm) depuis 2D.",
+      "specimen": "เลี้ยว (líao) puis ตรง (trong)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "หยุด, s’arrêter",
+      "bodyFr": "หยุด (yòut) veut dire s’arrêter. Le ห du début NE SE PRONONCE PAS, et c’est très exactement le cas vu en 5A : un ห écrit devant ย, ม, น, ว ou ร reste muet. Nos sources écrivent d’ailleurs la prononciation sans aucun h. Lisez donc « yòut », en une seule syllabe brève ; la fermeture de la finale est celle travaillée en 5A et n’est pas réenseignée ici.",
+      "specimen": "หยุด (yòut)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "ce que la règle de 4A prédit ici, et ce qu’elle ne dit pas",
+      "bodyFr": "Vous avez appris en 4A à annoncer un ton d’après la classe de la consonne initiale. Elle marche sur deux mots du jour, et sur deux seulement. ตรง commence par ต, une des neuf moyennes de 1A, la syllabe se ferme sur ง donc elle est vivante, rien ne la surplombe : ton moyen. ขวา commence par ข, une des neuf hautes de 4A, voyelle longue, rien au-dessus : ton montant. Attention, dans les deux cas la consonne initiale n’est pas la seule lettre à gauche.\n\n> ตรง : la consonne initiale est ต, pas ร > ขวา : la consonne initiale est ข, pas ว",
+      "specimen": "ตรง (trong) · ขวา (khwǎa)"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "et pour les cinq autres, ne cherchez pas",
+      "bodyFr": "เลี้ยว et ซ้าย portent une marque de ton : la règle de 4A ne les couvre pas, sa page 8 le disait déjà. ม, ซ et ล ne figurent ni parmi les neuf consonnes moyennes de 1A, ni parmi les neuf hautes de 4A : มา, ซ้าย et เลี้ยว sortent donc aussi du domaine par ce côté. หยุด se ferme sur un ด, et ไป s’écrit avec ไ : 4A rangeait déjà ces deux formes parmi les cas non couverts. Rien à deviner aujourd’hui, donc : ces cinq tons s’apprennent à l’oreille.",
+      "specimen": "เลี้ยว · ซ้าย · มา · หยุด · ไป"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "trois graphèmes, côte à côte",
+      "bodyFr": "Une seule notation est nouvelle, `iao`. Les deux autres, vous les avez déjà écrites. Regardez-les l’une à côté de l’autre, c’est le seul contrôle fiable.\n\n> `iao` contre `io` : เลี้ยว (líao) contre หิว (hǐo, 4B) > `aai` contre `aao` : ซ้าย (sáai) contre ข้าว (khâao, 4A) > `ou` bref : หยุด (yòut) comme ถุง (thǒung, 3A)\n\nDans les trois cas, l’accent de ton se pose sur la PREMIÈRE lettre du noyau : le `i` de `líao`, le premier `a` de `sáai`, le `o` de `yòut`.",
+      "specimen": "líao · sáai · yòut"
+    },
+    {
+      "ordre": 13,
+      "titleFr": "à vous",
+      "bodyFr": "Deux réflexes aujourd’hui. À l’oreille : dans un bloc qui commence par เลี้ยว, n’écoutez que la fin, c’est elle qui donne le côté. À la réflexion : avant de choisir entre ไป et มา, demandez-vous où se tient celui qui parle, et non où va le mouvement.\n\nAprès les exercices, enregistrez-vous en disant เลี้ยวซ้าย puis เลี้ยวขวา, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u05-l5b-p2-m1",
+      "promptFr": "Reliez chaque forme thaïe à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u05-l5b-p2-m2",
+      "promptFr": "Reliez chaque forme thaïe à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u05-l5b-p4",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "mechanic": "recall",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "2c9327e2-52cf-5f27-aefb-85146de8ec5b",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "83d8ea59-a0e9-5ec2-b639-69c914bbbe7a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ecd1b2b9-3ed4-51ad-8215-a18cd29bf400",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "be6b0723-e294-5091-9867-b3e21c7137b2",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a1bc79be-371f-502d-ac4f-541d615aabc7",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "fb8b88a9-89a9-5678-87a6-e81158e5c62b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1fade24d-72bd-583a-9535-1330855c3308",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7d8d1286-1861-5d0f-a95e-149be7221b5f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

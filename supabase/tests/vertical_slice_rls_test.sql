@@ -2,7 +2,7 @@ BEGIN;
 create extension if not exists pgtap with schema extensions;
 set local search_path = public, extensions;
 
-select plan(17);
+select plan(22);
 
 insert into auth.users (id, aud, role, email, created_at, updated_at)
 values
@@ -105,6 +105,27 @@ values
     '40000000-0000-4000-8000-000000000002',
     '2026-08-01T10:00:00Z', '2026-08-02T10:00:00Z', 'srs-v0'
   );
+
+select has_column(
+  'public', 'content_releases', 'language_pack_id',
+  'les releases portent leur pack de langue'
+);
+select has_column(
+  'public', 'content_releases', 'target_locale',
+  'les releases portent leur locale cible'
+);
+select has_column(
+  'public', 'lesson_versions', 'language_pack_id',
+  'les versions de lecon portent leur pack de langue'
+);
+select has_column(
+  'public', 'lesson_versions', 'target_locale',
+  'les versions de lecon portent leur locale cible'
+);
+select has_column(
+  'public', 'attempt_events', 'answer',
+  'les tentatives portent une reponse typee optionnelle'
+);
 
 select is(
   (

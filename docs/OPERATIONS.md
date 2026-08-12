@@ -1,7 +1,7 @@
 # Guide d'exploitation et cible d'hébergement
 
 - Statut : cible technique acceptée, aucune ressource cloud créée
-- Date de vérification documentaire : 2026-08-01
+- Date de vérification documentaire : 2026-08-07
 - Portée : MVP et première bêta ; à réévaluer avant la production
 
 Ce guide applique le brief sans autoriser un déploiement. Toute ouverture de
@@ -89,31 +89,81 @@ l'environnement et l'indexation reste désactivée sur toute URL temporaire.
 
 ## Variables de la tranche actuelle
 
-| Variable                               | Surface                   | Secret  | Rôle                                  |
-| -------------------------------------- | ------------------------- | ------- | ------------------------------------- |
-| `THAINAUTE_PUBLIC_URL`                 | serveur                   | non     | origine canonique exacte, sans chemin |
-| `THAINAUTE_PUBLIC_INDEXING`            | serveur                   | non     | `disabled` ou `enabled`               |
-| `THAINAUTE_RELEASE`                    | serveur                   | non     | identifiant court de release          |
-| `THAINAUTE_SYNC_MODE`                  | serveur                   | non     | `disabled` ou `supabase`              |
-| `THAINAUTE_CONTENT_REPORT_MODE`        | serveur                   | non     | `disabled` ou `supabase`              |
-| `THAINAUTE_PUBLIC_CONTENT_MODE`        | serveur                   | non     | `disabled` ou `supabase`              |
-| `THAINAUTE_PUBLIC_CONTENT_RELEASE_ID`  | serveur                   | non     | UUID de la release publique active    |
-| `THAINAUTE_STUDIO_MODE`                | serveur                   | non     | `disabled` ou `fixture`               |
-| `NEXT_PUBLIC_SUPABASE_URL`             | web et serveur            | non     | URL publique du projet Supabase       |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | web et serveur            | non     | clé publique soumise à RLS            |
-| `EXPO_PUBLIC_SUPABASE_URL`             | mobile                    | non     | URL publique du même environnement    |
-| `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | mobile                    | non     | clé publique soumise à RLS            |
-| `EXPO_PUBLIC_API_URL`                  | mobile                    | non     | origine HTTPS de l’API Next.js        |
-| `SUPABASE_SECRET_KEY`                  | serveur Next.js seulement | **oui** | accès élevé `service_role`/BYPASSRLS  |
-| `ACCOUNT_DELETION_RECEIPT_PEPPER`      | serveur Next.js seulement | **oui** | HMAC des reçus de suppression         |
+| Variable                               | Surface                   | Secret  | Rôle                                          |
+| -------------------------------------- | ------------------------- | ------- | --------------------------------------------- |
+| `THAINAUTE_PUBLIC_URL`                 | serveur                   | non     | origine canonique exacte, sans chemin         |
+| `THAINAUTE_PUBLIC_INDEXING`            | serveur                   | non     | `disabled` ou `enabled`                       |
+| `THAINAUTE_RELEASE`                    | serveur                   | non     | identifiant court de release                  |
+| `THAINAUTE_SYNC_MODE`                  | serveur                   | non     | `disabled` ou `supabase`                      |
+| `THAINAUTE_CONTENT_REPORT_MODE`        | serveur                   | non     | `disabled` ou `supabase`                      |
+| `THAINAUTE_PUBLIC_CONTENT_MODE`        | serveur                   | non     | `disabled` ou `supabase`                      |
+| `THAINAUTE_PUBLIC_CONTENT_RELEASE_ID`  | serveur                   | non     | UUID de la release publique active            |
+| `THAINAUTE_LANGUAGE_PACK`              | build web/mobile          | non     | identifiant du pack cible                     |
+| `NEXT_PUBLIC_THAINAUTE_LANGUAGE_PACK`  | web client                | non     | copie publique du pack actif                  |
+| `THAINAUTE_STUDIO_MODE`                | serveur                   | non     | `disabled` ou `fixture`                       |
+| `THAINAUTE_BILLING_MODE`               | serveur                   | non     | `disabled`, `stripe_test` ou `stripe_live`    |
+| `NEXT_PUBLIC_SUPABASE_URL`             | web et serveur            | non     | URL publique du projet Supabase               |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | web et serveur            | non     | clé publique soumise à RLS                    |
+| `EXPO_PUBLIC_SUPABASE_URL`             | mobile                    | non     | URL publique du même environnement            |
+| `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | mobile                    | non     | clé publique soumise à RLS                    |
+| `EXPO_PUBLIC_API_URL`                  | mobile                    | non     | origine HTTPS de l’API Next.js                |
+| `SUPABASE_SECRET_KEY`                  | serveur Next.js seulement | **oui** | accès élevé `service_role`/BYPASSRLS          |
+| `ACCOUNT_DELETION_RECEIPT_PEPPER`      | serveur Next.js seulement | **oui** | HMAC des reçus de suppression                 |
+| `REVENUECAT_WEBHOOK_AUTHORIZATION`     | serveur Next.js seulement | **oui** | autorisation exacte des webhooks RevenueCat   |
+| `REVENUECAT_WEBHOOK_SIGNING_SECRET`    | serveur Next.js seulement | **oui** | secret HMAC du webhook RevenueCat             |
+| `REVENUECAT_ALLOWED_APP_IDS`           | serveur Next.js seulement | non     | App IDs RevenueCat autorisés, séparés par `,` |
+| `STRIPE_RESTRICTED_KEY`                | serveur Next.js seulement | **oui** | clé restreinte Stripe test/live               |
+| `STRIPE_WEBHOOK_SECRET`                | serveur Next.js seulement | **oui** | secret de signature du webhook Stripe         |
+| `STRIPE_PREMIUM_PRICE_ID`              | serveur Next.js seulement | non     | prix récurrent Premium déjà créé              |
+| `STRIPE_LIVE_CONFIRMATION`             | serveur Next.js seulement | non     | doit valoir `ENABLE_STRIPE_LIVE`              |
 
 `SUPABASE_SECRET_KEY` est enregistrée comme variable sensible dans Vercel. Elle
 n'est ni copiée dans EAS, ni préfixée par `NEXT_PUBLIC_`, ni téléchargée dans un
 fichier commité. Elle n'est utilisée que derrière les autorisations serveur et
 les RPC explicitement accordées ; sa portée réelle reste élevée. Les secrets
-RevenueCat et Stripe présents dans
-`.env.example` restent hors périmètre tant que les tranches de paiement ne sont
-pas commencées.
+RevenueCat et Stripe présents dans `.env.example` restent absents des builds
+clients. Les routes de paiement restent fermées par défaut avec
+`THAINAUTE_BILLING_MODE=disabled` et par une capacité serveur codée en dur,
+indépendante des variables ; aucun secret, prix ou endpoint distant n'a été
+créé dans cette tranche.
+
+### Socle de facturation sans encaissement réel
+
+Le web utilise Checkout Sessions Stripe en mode abonnement et Customer Portal ;
+les mobiles recevront leurs événements via
+`POST /api/v1/billing/revenuecat/webhook`. Les deux fournisseurs alimentent le
+même miroir privé `entitlements_cache` avec l'entitlement unique `premium`.
+Le webhook RevenueCat exige à la fois l'autorisation statique et le HMAC
+`X-RevenueCat-Webhook-Signature` du corps brut, refuse les App IDs absents de
+`REVENUECAT_ALLOWED_APP_IDS` et attend `SANDBOX` en `stripe_test`, puis
+`PRODUCTION` en `stripe_live`. Le webhook Stripe vérifie sa signature et le
+champ `livemode`. Les événements sont dédupliqués par `(provider, event_id)` et
+les événements plus anciens sont ignorés. Le statut du compte passe par
+`GET /api/v1/billing/status` ; aucun client ne lit les tables privées.
+Avant d'accorder `invoice.paid`, le serveur relit la Subscription et son prix
+chez Stripe. La clé restreinte doit donc autoriser au minimum la lecture des
+Subscriptions, en plus des créations Checkout, Customer et Customer Portal
+nécessaires aux routes ; aucune permission d'écriture Subscription directe
+n'est requise par ce socle.
+
+`BILLING_PROVIDER_ACTIONS_CAPABILITY.enabled` reste explicitement à `false`
+dans le code serveur. Les routes Checkout, Portal, statut, webhook Stripe et
+webhook RevenueCat vérifient cette capacité avant toute construction de leurs
+dépendances. Même avec une configuration `stripe_test` ou `stripe_live`
+complète, elles répondent donc `503 billing_unavailable` sans contacter Stripe,
+RevenueCat ou Supabase. La readiness expose séparément
+`billing_provider_actions_not_approved` : elle documente le blocage mais ne
+constitue pas elle-même le contrôle d'exécution. La capacité ne pourra être
+ouverte qu'après l'agrégation autoritaire par fournisseur/abonnement, l'ajout
+de la facturation à l'export de compte, la coordination durable de suppression
+chez les deux fournisseurs et la validation de la matrice sandbox.
+
+Le mode `stripe_test` est réservé à une sandbox explicitement configurée avec
+un prix et des secrets de test. Le mode `stripe_live` exige une origine HTTPS et
+`STRIPE_LIVE_CONFIRMATION=ENABLE_STRIPE_LIVE`, mais cette validation technique
+ne résout ni `OPEN-PRICE-001`, ni `OPEN-TAX-001`, ni les règles de publication
+Apple/Google. Il ne faut donc pas renseigner ces variables ou brancher un
+webhook distant avant le go/no-go légal et commercial.
 
 Turborepo fonctionne en mode d'environnement strict. Les variables publiques
 et les modes `THAINAUTE_*` déclarés dans `turbo.json` sont donc transmis aux
@@ -265,6 +315,16 @@ connecté couvrent ces portes en preview. Les sondes sont non cachables ; toute
 la surface `/api/v1` porte `nosniff`, une politique de référent fermée, une CSP
 d'API et une Permissions Policy restrictive.
 
+Les pages du produit portent également `nosniff`, une politique de référent
+`strict-origin-when-cross-origin` et une CSP documentaire minimale qui interdit
+l'intégration en frame, les changements de base hors origine et les objets
+embarqués. Cette CSP ne définit volontairement ni `default-src`, ni
+`script-src`, ni `style-src` : les scripts, styles et polices gérés par Next.js
+restent fonctionnels sans nonce artificiel. La Permissions Policy des pages
+réserve le microphone à la même origine pour les exercices vocaux et désactive
+l'API Payment ; le Checkout Stripe hébergé reste une redirection vers Stripe et
+n'utilise ni Stripe.js ni l'API Payment dans la page Thaïnaute.
+
 ## Chemin de mise en service
 
 Cette séquence est un runbook à exécuter seulement après autorisation :
@@ -363,6 +423,54 @@ artefacts, ni journalisé par l'application. Mailpit conserve temporairement les
 emails et OTP locaux nécessaires aux scénarios. Cette preuve valide le contrat
 transport/données Android ; elle ne remplace pas le scénario Maestro dans une
 vraie application Expo.
+
+La preuve native locale est portée par :
+
+```powershell
+pnpm test:e2e:mobile:connected
+```
+
+Le pilote refuse plusieurs appareils et exige un unique émulateur Android. Il
+remet la base Supabase locale à zéro, charge la fixture et son audio, démarre
+des serveurs Next.js et Metro isolés, construit puis installe une APK debug et
+crée un compte synthétique via le Mailpit local. Il coupe ensuite le réseau,
+soumet une tentative dans l'outbox SQLite, force l'arrêt de l'application et
+atteste la reprise hors ligne. À la reconnexion, un proxy loopback coupe la
+première réponse seulement après le commit serveur ; le second envoi doit être
+strictement identique et ne produire qu'un effet de progression. Enfin, un
+contexte Playwright neuf retrouve exactement `attemptCount`, `masteryPermille`,
+`status` et `dueAt` avec le même compte, puis contrôle l'isolation RLS A/B et
+anonyme.
+
+Les commandes Next.js et Metro sont fixes, possédées par le pilote et liées au
+loopback ; les variables `THAINAUTE_QA_WEB_COMMAND_JSON` et
+`THAINAUTE_QA_METRO_COMMAND_JSON` sont refusées. Seul le build APK peut employer
+le hook local sans shell `THAINAUTE_QA_APK_BUILD_COMMAND_JSON`.
+
+Sous Linux Desktop ou rootless, si le daemon n'écoute pas sur
+`/var/run/docker.sock`, fournir explicitement un endpoint Unix local absolu,
+par exemple `DOCKER_HOST=unix:///chemin/absolu/local.sock`. Les endpoints Docker
+TCP/SSH et les contextes distants sont refusés ; le garde remplace cet endpoint
+uniquement dans l'environnement des enfants Docker proxifiés.
+
+L'email synthétique et l'OTP ne sont jamais transmis à Maestro. Le pilote les
+saisit caractère par caractère par des keyevents Android envoyés sur un stdin
+borné, sans valeur sensible dans les arguments, les variables Maestro, les
+traces ou les captures ; le handler React efface le champ avant son premier
+`await`, puis le pilote attend ce traitement avant toute nouvelle étape
+Maestro. L'OTP n'est jamais écrit dans le handoff. Le handoff Android → web est un fichier
+privé, borné et à usage unique sous le répertoire temporaire du système. Il
+contient uniquement sa version de schéma, l'email synthétique et les quatre
+valeurs de progression attendues ; il ne contient ni OTP, ni token, ni
+identifiant de ligne et doit être consommé puis supprimé. Traces, vidéos et
+captures de ce parcours sont désactivées. Le nettoyage force l'arrêt de
+l'application, efface ses données privées, restaure le mode avion, retire le
+reverse ADB et arrête uniquement les processus créés par le pilote. Un échec de
+nettoyage conserve l'erreur primaire et nomme seulement l'étape locale
+concernée.
+
+Cette recette ne prouve ni iOS, ni un appareil Android physique, ni Supabase
+hébergé. Ces preuves restent obligatoires avant une bêta distante.
 
 ### Portes des Database Advisors
 
@@ -494,10 +602,12 @@ les contrôles locaux.
   suivants. Auth, suppression, transport, `408`, `429`, `5xx` et violations de
   protocole restent non retirables. Aucun analytics n'est émis pour un rejet ou
   son retrait ; seuls les accusés `received|duplicate` sont mesurés.
-- Le flux SQLite → HTTP → accusé est couvert par tests unitaires React Native,
-  mais pas encore par Maestro sur un appareil ni par une build iOS/Android
-  connectée au Supabase local. Cette preuve sur appareil reste obligatoire
-  avant bêta.
+- Le flux SQLite → HTTP → accusé est couvert par tests unitaires React Native
+  et le parcours Maestro canonique passe sur l'émulateur Android local avec la
+  build release installée. La recette iOS sur appareil réel, ainsi qu'une
+  vérification native connectée au Supabase hébergé, restent des portes avant
+  bêta distante ; la preuve Android locale est consignée dans
+  `docs/qa/native-android-maestro-2026-08-07.md`.
 - `private.attempt_sync_commits` conserve actuellement ses réponses sans purge
   temporelle. La durée minimale compatible avec les retries, la suppression et
   la supervision relèvent de `OPEN-SYNC-002` avant bêta distante.

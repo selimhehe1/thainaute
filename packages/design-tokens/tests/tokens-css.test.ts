@@ -22,6 +22,8 @@ describe("tokens.css", () => {
     expect(colors.jade).toBe("#43a283");
     expect(colors.saffron).toBe("#f1b84b");
     expect(colors.mist).toBe("#eef1f4");
+    expect(colors.sky).toBe("#5b8ee8");
+    expect(colors.skyPale).toBe("#edf3ff");
   });
 
   it("fournit un tracé pour chacun des cinq tons", () => {

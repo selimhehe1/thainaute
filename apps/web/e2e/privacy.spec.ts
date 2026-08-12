@@ -1,14 +1,19 @@
 import { expect, test } from "@playwright/test";
 
 test("conserve un choix analytics local, réversible et sans trafic distant", async ({
+  baseURL,
   page,
 }) => {
+  if (baseURL === undefined) {
+    throw new Error("L'origine applicative Playwright est absente.");
+  }
+  const applicationOrigin = new URL(baseURL).origin;
   const externalRequests: string[] = [];
   page.on("request", (request) => {
     const url = new URL(request.url());
     if (
       (url.protocol === "http:" || url.protocol === "https:") &&
-      url.origin !== "http://localhost:3000"
+      url.origin !== applicationOrigin
     ) {
       externalRequests.push(url.origin);
     }

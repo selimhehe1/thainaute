@@ -1125,6 +1125,16 @@ survit longtemps.
   contenu nouveau du jour. Les tirages 3 et 4 sont des contrôles de
   consolidation et ne comptent pas pour la carte `srs-u07-l7e-01`.
 
+### Exercice de consolidation textuelle : parler du repas (`association`)
+
+- Mécanique : `association`
+- Consigne : « Reliez chaque expression à son sens. »
+- Tirages :
+  1. ข้าวผัด ↔ « riz sauté »
+  2. อร่อยมาก ↔ « très bon, au goût »
+- Feedback correct : « Exact. »
+- Feedback incorrect : « Relisez l’expression et son sens, puis réessayez. »
+
 ## Dialogue
 
 Scène : le matin, dans la rue. Un homme et une femme qui habitent le même

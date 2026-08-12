@@ -6,6 +6,7 @@ import {
   type CachedPublicRelease,
   type PublicContentClient,
 } from "@thainaute/sync";
+import { getActiveWebLanguagePack } from "../language-pack";
 
 import { WebPublicContentCache } from "./public-content-cache";
 import { browserSha256Hex } from "./sha256";
@@ -47,6 +48,8 @@ function manifestMatchesLesson(
     announced !== undefined &&
     release.releaseId === lesson.releaseId &&
     release.releaseVersion === lesson.releaseVersion &&
+    release.languagePackId === lesson.languagePackId &&
+    release.targetLocale === lesson.targetLocale &&
     announced.lessonId === lesson.lessonId &&
     announced.revision === lesson.revision &&
     announced.titleFr === lesson.titleFr &&
@@ -81,6 +84,17 @@ export async function loadCurrentConnectedPublicLesson(input?: {
       announcedLesson.versionId,
       previousLesson ?? undefined,
     );
+    const activePack = getActiveWebLanguagePack();
+    if (
+      fetchedRelease.entry.response.release.languagePackId !== activePack.id ||
+      fetchedRelease.entry.response.release.targetLocale !==
+        activePack.targetLocale ||
+      fetchedLesson.entry.response.lesson.languagePackId !== activePack.id ||
+      fetchedLesson.entry.response.lesson.targetLocale !==
+        activePack.targetLocale
+    ) {
+      throw new ConnectedPublicLessonError();
+    }
     if (!manifestMatchesLesson(fetchedRelease.entry, fetchedLesson.entry)) {
       throw new ConnectedPublicLessonError();
     }

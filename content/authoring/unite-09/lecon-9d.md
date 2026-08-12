@@ -1316,6 +1316,16 @@ couvertes par des cases déjà publiées. Ce serait une répétition, pas une me
   question sans verbe entre les deux ; écrire `khaai` en `khai`, la voyelle étant
   longue ; intervertir `mii` et `yaa` au tirage 3.
 
+### Exercice de consolidation textuelle : une durée (`association`)
+
+- Mécanique : `association`
+- Consigne : « Reliez chaque expression à son sens. »
+- Tirages :
+  1. สองวันแล้ว ↔ « ça fait deux jours »
+  2. สามวันแล้ว ↔ « ça fait trois jours »
+- Feedback correct : « Exact. »
+- Feedback incorrect : « Relisez l’expression et son sens, puis réessayez. »
+
 ## Dialogue
 
 Micro-situation en deux moments, la rue puis le comptoir, avec trois voix. Les

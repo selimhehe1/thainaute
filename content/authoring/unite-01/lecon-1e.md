@@ -8,7 +8,7 @@
   un échange réel de 4 répliques (saluer, remercier, prendre congé) et
   reconstruit une réplique polie en choisissant la particule qui correspond
   au genre du locuteur.
-- Prérequis : leçons 1A à 1D (perception des cinq tons, longueurs
+- Prérequis : leçons 1A à 1D, puis 1F (synthèse des cinq tons ; longueurs
   vocaliques, contrastes mi/bas et montant/haut).
 - Cible phonétique : réinvestir les tons bas, moyen, haut et descendant dans
   de vrais mots ; entendre les longueurs `aww`, `aee` et `oee` en contexte.
@@ -71,6 +71,29 @@ Après les exercices, enregistrez-vous en disant สวัสดีครับ 
 comparez en A/B avec la voix de référence. L'enregistrement reste privé, sur
 votre appareil. Écoutez surtout vos deux premières syllabes : sont-elles
 vraiment basses ?
+
+Faites ensuite deux mini-tours de rôle, sans chercher la perfection :
+
+1. Vous êtes une femme : ouvrez l'échange avec สวัสดีค่ะ, puis remerciez avec
+   ขอบคุณค่ะ.
+2. Vous êtes un homme : ouvrez l'échange avec สวัสดีครับ, puis prenez congé
+   avec แล้วเจอกันครับ.
+
+Le but est de choisir votre propre particule sans attendre un indice du genre
+de l'interlocuteur. C'est le même bloc qui doit sortir quand la situation
+change.
+
+Pour consolider sans vous épuiser, faites trois passages :
+
+1. écoutez chaque réplique et répétez-la juste après la voix, morceau par
+   morceau ;
+2. relisez le thaï et dites les quatre répliques avec la transcription
+   cachée ;
+3. rejouez la scène en choisissant vous-même `ครับ` ou `ค่ะ`, sans attendre
+   que l'écran vous rappelle qui parle.
+
+Une seule prise attentive suffit. L'objectif est une réponse qui sort dans la
+situation, pas une imitation parfaite obtenue après vingt répétitions.
 
 ## Items
 

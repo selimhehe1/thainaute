@@ -34,6 +34,18 @@ pnpm content:audit
 pnpm build
 ```
 
+## Packs de langue
+
+Une build sélectionne une seule langue cible avec `THAINAUTE_LANGUAGE_PACK`.
+Le français reste la langue d'enseignement. La valeur actuellement disponible
+est `thai-fr` ; un identifiant absent du registre fait échouer la build plutôt
+que de servir silencieusement du contenu thaï. Pour le web, la configuration
+Next.js recopie aussi l'identifiant dans `NEXT_PUBLIC_THAINAUTE_LANGUAGE_PACK`.
+
+Ajouter une langue signifie donc ajouter un pack enregistré, son registre de
+contenu audité et ses adaptateurs audio/typographiques avant de sélectionner
+son profil. Aucun cours italien n'est inclus dans cette tranche.
+
 Pour la base locale :
 
 ```powershell
@@ -49,6 +61,8 @@ pnpm exec supabase status -o env `
   --override-name auth.anon_key=NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY `
   --override-name auth.service_role_key=SUPABASE_SECRET_KEY
 $env:THAINAUTE_SYNC_MODE="supabase"
+$env:THAINAUTE_LANGUAGE_PACK="thai-fr"
+$env:NEXT_PUBLIC_THAINAUTE_LANGUAGE_PACK="thai-fr"
 $pepperBytes = [byte[]]::new(32)
 $pepperRng = [Security.Cryptography.RandomNumberGenerator]::Create()
 try { $pepperRng.GetBytes($pepperBytes) } finally { $pepperRng.Dispose() }
@@ -68,6 +82,29 @@ pnpm test:e2e:web:connected:reports
 
 Ces commandes exigent Docker. `pnpm test:e2e:mobile` exige Maestro et une
 application mobile en cours d'exécution.
+
+La preuve native connectée se lance séparément :
+
+```powershell
+pnpm test:e2e:mobile:connected
+```
+
+Cette commande locale purge la stack Supabase de ce dépôt et les données
+privées de `com.thainaute.app` sur un unique émulateur Android. Sans hook de
+build APK, elle régénère aussi `apps/mobile/android` avec
+`expo prebuild --clean` : aucun changement local à conserver ne doit rester
+dans ce répertoire généré. Elle exige Docker Desktop, Maestro, ADB, un
+émulateur Android déjà démarré, le SDK Android et Java 17. Elle possède et
+nettoie ses serveurs Next.js et Metro avec des commandes non surchargeables et
+une écoute loopback, force le mode paiement désactivé et n'utilise aucune
+ressource cloud. Seul le build APK peut être remplacé par le hook local sans
+shell documenté par le pilote.
+Sous Linux Desktop ou rootless sans `/var/run/docker.sock`, définir
+explicitement `DOCKER_HOST=unix:///chemin/absolu/local.sock`. Le garde local
+refuse les endpoints Docker TCP/SSH et les contextes distants ; cette origine
+Unix n'est transmise qu'aux enfants Docker proxifiés de la recette.
+Le parcours standard `pnpm test:e2e:mobile` exclut volontairement ces flows
+connectés afin de rester une vérification rapide de la fixture publique.
 
 La boucle connectée locale vérifiée est volontairement séparée du parcours fictif :
 `/learn/connected` sur le web et `/connected-lesson` dans Expo. Elle ne devient

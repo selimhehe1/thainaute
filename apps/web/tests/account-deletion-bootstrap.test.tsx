@@ -144,4 +144,25 @@ describe("bootstrap racine de suppression web", () => {
     await flushEffects();
     expect(mocks.complete).toHaveBeenCalledTimes(2);
   });
+
+  it("ne relance pas billing_unavailable sur la boucle fixe", async () => {
+    vi.useFakeTimers();
+    mocks.complete.mockRejectedValue(
+      new SyncHttpApiError({
+        endpoint: "account_deletion",
+        status: 503,
+        code: "billing_unavailable",
+      }),
+    );
+
+    render(<WebAccountDeletionBootstrap />);
+    await flushEffects();
+    expect(mocks.complete).toHaveBeenCalledOnce();
+
+    window.dispatchEvent(new Event("online"));
+    document.dispatchEvent(new Event("visibilitychange"));
+    await flushEffects();
+    await act(async () => vi.advanceTimersByTimeAsync(60_000));
+    expect(mocks.complete).toHaveBeenCalledOnce();
+  });
 });

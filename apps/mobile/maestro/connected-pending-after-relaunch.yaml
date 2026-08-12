@@ -1,0 +1,23 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- launchApp:
+    stopApp: true
+    clearState: false
+    permissions:
+      all: deny
+- extendedWaitUntil:
+    visible: '^(Un départ simple, pensé pour vous\.|Boucle technique locale)$'
+    timeout: 60000
+- openLink: thainaute://connected-lesson
+- scrollUntilVisible:
+    centerElement: true
+    element:
+      id: ".*connected-attempt-retry.*"
+    direction: DOWN
+    timeout: 60000
+- extendedWaitUntil:
+    visible: "Réponse enregistrée sur cet appareil. La correction sera reprise avec ce même événement."
+    timeout: 30000
+- assertNotVisible: "Correction autoritaire"

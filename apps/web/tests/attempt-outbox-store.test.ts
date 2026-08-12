@@ -7,11 +7,12 @@ import {
   type AttemptOutboxOwner,
 } from "@thainaute/sync";
 import Dexie from "dexie";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import {
   WebAttemptOutboxStore as RealWebAttemptOutboxStore,
   migrateLegacyDemoFixtureAttempts,
+  startLegacyDemoFixtureMigration,
 } from "../lib/client/attempt-outbox-store";
 
 const ids = {
@@ -267,6 +268,29 @@ describe("outbox IndexedDB web", () => {
     expect(prepared.prepared?.batch.attempts[0]).not.toHaveProperty("skill");
     expect((await store.read()).schemaVersion).toBe(3);
     await store.deleteForTests();
+  });
+
+  it("ferme les deux handles d'une migration annulée et autorise un rejeu propre", async () => {
+    const names = migrationDatabaseNames();
+    const close = vi.spyOn(Dexie.prototype, "close");
+
+    try {
+      const cancelled = startLegacyDemoFixtureMigration(names);
+      cancelled.close();
+
+      await expect(cancelled.promise).rejects.toThrow("interrompue");
+      // Deux fermetures immédiates, puis deux autres au settle : Dexie peut
+      // achever une ouverture déjà mise en file après le premier close.
+      expect(close.mock.calls.length).toBeGreaterThanOrEqual(4);
+      await expect(migrateLegacyDemoFixtureAttempts(names)).resolves.toEqual({
+        status: "not_needed",
+        copiedEntries: 0,
+        deduplicatedEntries: 0,
+      });
+    } finally {
+      close.mockRestore();
+      await deleteMigrationDatabases(names);
+    }
   });
 
   it("déplace la fixture historique et conserve toutes les vraies tentatives", async () => {

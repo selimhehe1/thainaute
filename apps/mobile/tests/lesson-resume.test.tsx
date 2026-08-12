@@ -191,6 +191,15 @@ vi.mock("react-native", async () => {
     ScrollView: container,
     StyleSheet: {
       create: <T,>(styles: T) => styles,
+      flatten: <T extends object>(
+        styles: readonly (T | false | null | undefined)[],
+      ) =>
+        Object.assign(
+          {},
+          ...styles.filter(
+            (style): style is T => typeof style === "object" && style !== null,
+          ),
+        ),
       hairlineWidth: 1,
     },
     Text,

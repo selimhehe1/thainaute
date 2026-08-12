@@ -136,4 +136,26 @@ describe("bootstrap racine de suppression mobile", () => {
     await flushEffects();
     expect(mocks.resume).toHaveBeenCalledTimes(3);
   });
+
+  it("ne relance pas billing_unavailable sur la boucle fixe", async () => {
+    vi.useFakeTimers();
+    mocks.resume.mockRejectedValue(
+      new SyncHttpApiError({
+        endpoint: "account_deletion",
+        status: 503,
+        code: "billing_unavailable",
+      }),
+    );
+
+    render(<MobileAccountDeletionBootstrap />);
+    await flushEffects();
+    expect(mocks.resume).toHaveBeenCalledOnce();
+
+    await act(async () => {
+      mocks.AppState.listener?.("active");
+      await Promise.resolve();
+    });
+    await act(async () => vi.advanceTimersByTimeAsync(60_000));
+    expect(mocks.resume).toHaveBeenCalledOnce();
+  });
 });

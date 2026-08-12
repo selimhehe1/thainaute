@@ -63,22 +63,15 @@ export function MobileAuthSessionProvider({
   );
   const [sessionBoundaryRevision, setSessionBoundaryRevision] = useState(0);
   const lastDurableUserId = useRef<string | null | undefined>(undefined);
+  const providerActive = useRef(false);
   const expectedLocalSignOuts = useRef(new Set<string>());
   const accountDeletionReauthentication = useRef<{
     readonly expectedUserId: string;
     readonly email: string;
   } | null>(null);
 
-  useEffect(() => {
-    if (client === null) return;
-    let active = true;
-    let authEventRevision = 0;
-
-    const applySession = (
-      nextSession: Session | null,
-      signedOut: boolean,
-      bootstrap: boolean,
-    ) => {
+  const applySession = useCallback(
+    (nextSession: Session | null, signedOut: boolean, bootstrap: boolean) => {
       const current = isDurableSession(nextSession) ? nextSession : null;
       const nextUserId = current?.user.id.toLowerCase() ?? null;
       const previousUserId = lastDurableUserId.current;
@@ -98,7 +91,10 @@ export function MobileAuthSessionProvider({
           signedOut && expectedLocalSignOuts.current.delete(previousUserId);
         if (!expected) {
           setTimeout(() => {
-            if (!active || lastDurableUserId.current === previousUserId) {
+            if (
+              !providerActive.current ||
+              lastDurableUserId.current === previousUserId
+            ) {
               return;
             }
             void purgeSettledMobileAccountData(database, previousUserId).catch(
@@ -120,14 +116,24 @@ export function MobileAuthSessionProvider({
       lastDurableUserId.current = nextUserId;
       setSession(current);
       setStatus(current === null ? "signed_out" : "signed_in");
-    };
+    },
+    [database],
+  );
 
-    if (AppState.currentState === "active") client.auth.startAutoRefresh();
+  useEffect(() => {
+    if (client === null) return;
+    let active = true;
+    let authEventRevision = 0;
+    providerActive.current = true;
+
+    if (AppState.currentState === "active") {
+      void client.auth.startAutoRefresh();
+    }
     const appStateSubscription = AppState.addEventListener(
       "change",
       (nextState) => {
-        if (nextState === "active") client.auth.startAutoRefresh();
-        else client.auth.stopAutoRefresh();
+        if (nextState === "active") void client.auth.startAutoRefresh();
+        else void client.auth.stopAutoRefresh();
       },
     );
 
@@ -154,11 +160,12 @@ export function MobileAuthSessionProvider({
 
     return () => {
       active = false;
-      client.auth.stopAutoRefresh();
+      providerActive.current = false;
+      void client.auth.stopAutoRefresh();
       appStateSubscription.remove();
       data.subscription.unsubscribe();
     };
-  }, [client, database]);
+  }, [applySession, client]);
 
   const requestEmailCode = useCallback(async (email: string) => {
     const { error } = await assertConfigured().auth.signInWithOtp({
@@ -168,16 +175,25 @@ export function MobileAuthSessionProvider({
     if (error !== null) throw new Error("Le code n’a pas pu être envoyé.");
   }, []);
 
-  const verifyEmailCode = useCallback(async (email: string, code: string) => {
-    const { data, error } = await assertConfigured().auth.verifyOtp({
-      email: email.trim(),
-      token: code.trim(),
-      type: "email",
-    });
-    if (error !== null || !isDurableSession(data.session)) {
-      throw new Error("Le code est invalide ou a expiré.");
-    }
-  }, []);
+  const verifyEmailCode = useCallback(
+    async (email: string, code: string) => {
+      const { data, error } = await assertConfigured().auth.verifyOtp({
+        email: email.trim(),
+        token: code.trim(),
+        type: "email",
+      });
+      if (error !== null || !isDurableSession(data.session)) {
+        throw new Error("Le code est invalide ou a expiré.");
+      }
+
+      // Le résultat de l'opération est autoritaire pour cette interaction. Le
+      // callback SIGNED_IN reste la source des changements externes, mais une
+      // notification manquée ne doit pas laisser l'interface déconnectée alors
+      // que la session a déjà été persistée et validée par Supabase.
+      applySession(data.session, false, false);
+    },
+    [applySession],
+  );
 
   const requestAccountDeletionReauthenticationCode = useCallback(
     async (expectedUserIdInput: string) => {

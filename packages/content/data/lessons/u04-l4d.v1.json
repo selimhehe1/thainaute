@@ -1,0 +1,702 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "875bcc79-cc5e-5a9b-9cf3-be70b2a18a22",
+  "versionId": "9bec8d36-c669-524e-84b4-72f686e435f9",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Doser le piment et dire ses goûts",
+  "objectiveFr": "à la fin de la leçon, l’apprenant reconnaît à l’écoute laquelle des quatre formes ไม่เผ็ด, เผ็ดนิดหน่อย, เผ็ดมาก et เผ็ดไหม lui est adressée, au moins 6 fois sur 8 ; il construit ไม่เผ็ด, ไม่ชอบ, เผ็ดนิดหน่อย et ชอบมาก en plaçant ไม่ devant et นิดหน่อย ou มาก derrière, sans erreur d’ordre sur 4 constructions sur 5 ; devant une situation de commande décrite en français, il écrit en transcription Th",
+  "requiredEntitlement": null,
+  "audioManifestId": "5d3bc90d-f124-5a06-bd0c-7c8f594bdc2f",
+  "items": [
+    {
+      "id": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "thaiRaw": "ไม่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "ne … pas ; non",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "9cbb1015-8868-58dc-8f34-d81b48c7dcd3",
+      "thaiRaw": "เผ็ด",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1C",
+        "U+0E47",
+        "U+0E14"
+      ],
+      "translationFr": "épicé, pimenté",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phèt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เผ็ด",
+          "ipa": "pʰet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8a8dc9a8-76ee-5b47-b000-a97a41f6a5f7",
+      "thaiRaw": "ไม่เผ็ด",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E40",
+        "U+0E1C",
+        "U+0E47",
+        "U+0E14"
+      ],
+      "translationFr": "pas épicé, sans piquant",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi phèt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่เผ็ด",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่เผ็ด",
+          "ipa": "pʰet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ไม่เผ็ดครับ / ไม่เผ็ดค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "198ab5bd-d4bf-5a56-916e-9123d10c8a77",
+      "thaiRaw": "นิดหน่อย",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E34",
+        "U+0E14",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22"
+      ],
+      "translationFr": "un tout petit peu, un peu",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nít·nàwi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นิดหน่อย",
+          "ipa": "nit̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "นิดหน่อย",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d0bdc510-f484-524b-b643-aff38afa07fd",
+      "thaiRaw": "เผ็ดนิดหน่อย",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1C",
+        "U+0E47",
+        "U+0E14",
+        "U+0E19",
+        "U+0E34",
+        "U+0E14",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22"
+      ],
+      "translationFr": "un peu épicé, légèrement épicé",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phèt nít·nàwi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เผ็ดนิดหน่อย",
+          "ipa": "pʰet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "เผ็ดนิดหน่อย",
+          "ipa": "nit̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "เผ็ดนิดหน่อย",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : เผ็ดนิดหน่อยครับ / เผ็ดนิดหน่อยค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "fa8eff5f-5ff8-5eaa-95d6-a63c74eef9d7",
+      "thaiRaw": "ชอบ",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E2D",
+        "U+0E1A"
+      ],
+      "translationFr": "aimer, apprécier",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "châwwp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ชอบ",
+          "ipa": "t͡ɕʰɔːp̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "773c2132-f715-53e1-b438-fe94edb9d298",
+      "thaiRaw": "ไม่ชอบ",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E0A",
+        "U+0E2D",
+        "U+0E1A"
+      ],
+      "translationFr": "ne pas aimer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi châwwp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่ชอบ",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่ชอบ",
+          "ipa": "t͡ɕʰɔːp̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ไม่ชอบครับ / ไม่ชอบค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "170227e8-089e-50be-ae69-8d667e5e05bf",
+      "thaiRaw": "มาก",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "beaucoup ; très",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มาก",
+          "ipa": "maːk̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u04-l4d-p2",
+      "drawIndex": 1,
+      "id": "2a67d6e4-bd8f-5bdc-b95c-5f0ffdeacc93",
+      "type": "word_order",
+      "itemId": "8a8dc9a8-76ee-5b47-b000-a97a41f6a5f7",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",
+      "tokens": [
+        {
+          "id": "7c138c57-f500-53f8-a2d2-618d57b6bbcc",
+          "thaiRaw": "เผ็ด",
+          "transcription": null
+        },
+        {
+          "id": "74e40090-dbd2-5359-95e3-1ad5a8e169a0",
+          "thaiRaw": "ไม่",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "74e40090-dbd2-5359-95e3-1ad5a8e169a0",
+        "7c138c57-f500-53f8-a2d2-618d57b6bbcc"
+      ],
+      "feedback": {
+        "correctFr": "Oui. ไม่ est bien collé devant le mot qu’il nie.",
+        "incorrectFr": "Une tuile n’est pas à sa place. Posez-vous une seule question : est-ce que ce mot nie, ou est-ce qu’il dose ? S’il nie, il passe devant. S’il dose, il passe derrière.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Oui. Le doseur vient après le mot qu’il dose."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4d-p2",
+      "drawIndex": 2,
+      "id": "b940a96f-4f25-5cd2-8a1f-679822dfdb98",
+      "type": "word_order",
+      "itemId": "773c2132-f715-53e1-b438-fe94edb9d298",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",
+      "tokens": [
+        {
+          "id": "0a05a281-7111-5a4f-a0ae-d48d66bac99c",
+          "thaiRaw": "ชอบ",
+          "transcription": null
+        },
+        {
+          "id": "19c46d30-2b39-5a9d-8b81-7e9b18d25fc2",
+          "thaiRaw": "ไม่",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "19c46d30-2b39-5a9d-8b81-7e9b18d25fc2",
+        "0a05a281-7111-5a4f-a0ae-d48d66bac99c"
+      ],
+      "feedback": {
+        "correctFr": "Oui. ไม่ est bien collé devant le mot qu’il nie.",
+        "incorrectFr": "Une tuile n’est pas à sa place. Posez-vous une seule question : est-ce que ce mot nie, ou est-ce qu’il dose ? S’il nie, il passe devant. S’il dose, il passe derrière.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Oui. Le doseur vient après le mot qu’il dose."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4d-p2",
+      "drawIndex": 3,
+      "id": "4dca1438-072a-58a3-8e38-81661a4f99ba",
+      "type": "word_order",
+      "itemId": "d0bdc510-f484-524b-b643-aff38afa07fd",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",
+      "tokens": [
+        {
+          "id": "c4e0cea4-407e-5922-aeb0-fed53f7aae27",
+          "thaiRaw": "นิดหน่อย",
+          "transcription": null
+        },
+        {
+          "id": "13365876-3d8b-542d-8f03-415406b2bd47",
+          "thaiRaw": "เผ็ด",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "13365876-3d8b-542d-8f03-415406b2bd47",
+        "c4e0cea4-407e-5922-aeb0-fed53f7aae27"
+      ],
+      "feedback": {
+        "correctFr": "Oui. ไม่ est bien collé devant le mot qu’il nie.",
+        "incorrectFr": "Une tuile n’est pas à sa place. Posez-vous une seule question : est-ce que ce mot nie, ou est-ce qu’il dose ? S’il nie, il passe devant. S’il dose, il passe derrière.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Oui. Le doseur vient après le mot qu’il dose."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4d-p2",
+      "drawIndex": 4,
+      "id": "ac4a6ff6-6ee6-5ee9-a211-dfbc01177e09",
+      "type": "word_order",
+      "itemId": "fa8eff5f-5ff8-5eaa-95d6-a63c74eef9d7",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",
+      "tokens": [
+        {
+          "id": "6e32bd58-5eb7-5476-a7d8-eba1c7709819",
+          "thaiRaw": "มาก",
+          "transcription": null
+        },
+        {
+          "id": "df3989da-882e-5b6d-91e5-071a7752f986",
+          "thaiRaw": "ชอบ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "df3989da-882e-5b6d-91e5-071a7752f986",
+        "6e32bd58-5eb7-5476-a7d8-eba1c7709819"
+      ],
+      "feedback": {
+        "correctFr": "Oui. ไม่ est bien collé devant le mot qu’il nie.",
+        "incorrectFr": "Une tuile n’est pas à sa place. Posez-vous une seule question : est-ce que ce mot nie, ou est-ce qu’il dose ? S’il nie, il passe devant. S’il dose, il passe derrière.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Oui. Le doseur vient après le mot qu’il dose."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4d-p2",
+      "drawIndex": 5,
+      "id": "28fa8a18-0d69-516c-9237-9b3124095044",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",
+      "tokens": [
+        {
+          "id": "00249d98-a3a9-525d-8a59-8948e52a595f",
+          "thaiRaw": "ไข่",
+          "transcription": null
+        },
+        {
+          "id": "acdf2d5f-3413-574f-8076-1261f1e46ebd",
+          "thaiRaw": "ไม่",
+          "transcription": null
+        },
+        {
+          "id": "a40c4957-1af7-502a-80f3-55054c9a145e",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "50af4bbd-0cba-5abe-bd8b-2592e3168fb0",
+          "thaiRaw": "ชอบ",
+          "transcription": null
+        },
+        {
+          "id": "ff3ac46e-45bf-52d9-ae78-98ce6c87d1a6",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "a40c4957-1af7-502a-80f3-55054c9a145e",
+        "acdf2d5f-3413-574f-8076-1261f1e46ebd",
+        "50af4bbd-0cba-5abe-bd8b-2592e3168fb0",
+        "00249d98-a3a9-525d-8a59-8948e52a595f",
+        "ff3ac46e-45bf-52d9-ae78-98ce6c87d1a6"
+      ],
+      "feedback": {
+        "correctFr": "Oui. ไม่ est bien collé devant le mot qu’il nie.",
+        "incorrectFr": "Une tuile n’est pas à sa place. Posez-vous une seule question : est-ce que ce mot nie, ou est-ce qu’il dose ? S’il nie, il passe devant. S’il dose, il passe derrière.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Oui. Le doseur vient après le mot qu’il dose."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "une question revient tout le temps",
+      "bodyFr": "Devant un comptoir, une question revient plus souvent que les autres : เผ็ดไหม, épicé ? Vous n’avez pas besoin d’une phrase complète pour y répondre. Vous avez besoin de trois blocs courts, et d’un quatrième pour dire ce que vous aimez.",
+      "specimen": "เผ็ดไหม"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ไม่ se place devant",
+      "bodyFr": "Vous avez déjà prononcé ไม่ en 2C, à l’intérieur de ไม่เป็นไร, sans qu’on vous l’ait présenté seul. Pris à part, c’est l’outil de négation du thaï, et sa règle tient en une ligne : il nie le mot qui le suit, donc il se place devant lui. ไม่ puis เผ็ด, et vous obtenez ไม่เผ็ด, pas épicé.",
+      "specimen": "ไม่ · เผ็ด · ไม่เผ็ด"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "เผ็ด et le signe que vous connaissez déjà",
+      "bodyFr": "เผ็ด veut dire épicé. Le petit signe posé sur le ผ, ◌็, ne vous est pas inconnu : c’est celui de เจ็ด, sept, et de เอ็ด, le un de สิบเอ็ด, tous deux vus en 3B. Il rend la syllabe brève, ici comme là. En 3A, เตะ finissait par un ะ visible ; ici, le ด final occupe cette place, et la brièveté monte au-dessus de la consonne, comme faisait déjà le chapeau ั de ตัด.\n\nUn mot pour éviter un faux pas : la règle de ton de 4A ne s’applique à aucun des mots d’aujourd’hui. Elle vaut pour les syllabes vivantes sans marque de ton, et เผ็ด se ferme sur un ด. Prenez les tons du jour tels qu’ils sont donnés.",
+      "specimen": "เจ็ด puis เผ็ด"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "trois doses, un seul mot qui bouge",
+      "bodyFr": "ไม่เผ็ด, aucun piquant. เผ็ดนิดหน่อย, un peu. เผ็ดมาก, beaucoup. Le mot เผ็ด ne change jamais ; ce sont les mots autour qui règlent la dose. Choisissez la vôtre avant d’ouvrir la bouche, vous n’aurez plus qu’un bloc à dire.",
+      "specimen": "ไม่เผ็ด · เผ็ดนิดหน่อย · เผ็ดมาก"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "นิดหน่อย et มาก se placent derrière",
+      "bodyFr": "Deux outils qui font exactement l’inverse de ไม่. นิดหน่อย veut dire un tout petit peu, et vous y reconnaissez หน่อย, l’adoucisseur de 2C. มาก veut dire beaucoup, ou très. Retenez la géométrie plutôt que les mots : ไม่ devant, นิดหน่อย et มาก derrière.",
+      "specimen": "เผ็ดนิดหน่อย · เผ็ดมาก"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "dire ce qu’on aime, et ce qu’on n’aime pas",
+      "bodyFr": "ชอบ veut dire aimer, apprécier, et il se place devant ce qu’on aime : ผมชอบปลา, j’aime le poisson. Mettez ไม่ devant, vous obtenez ไม่ชอบ, ne pas aimer. Ajoutez มาก derrière, vous obtenez ชอบมาก, aimer beaucoup. La même géométrie qu’à la page précédente, sur un autre mot.",
+      "specimen": "ชอบ · ไม่ชอบ · ชอบมาก"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "ไม่ contre ไหม",
+      "bodyFr": "Deux mots minuscules qui se ressemblent dangereusement, et qui ne disent pas du tout la même chose. ไหม (mǎi) monte : c’est la particule qui transforme une phrase en question, celle de สบายดีไหม en 2B. ไม่ (mâi) tombe : c’est la négation d’aujourd’hui. Même syllabe, deux directions opposées, deux rôles opposés.\n\nC’est un duel que votre oreille n’a pas encore fait. En 1D, vous aviez opposé ไหม qui monte à ไม้ qui reste perché ; aujourd’hui, l’adversaire de ไหม tombe. Reprenez le geste de l’index de 1D : pour ไหม, partez du menton et montez ; pour ไม่, partez du front et laissez tomber la main d’un coup. Faites-le en écoutant, avant de répondre.",
+      "specimen": "เผ็ดไหม ≠ ไม่เผ็ด"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "à vous",
+      "bodyFr": "Un seul réflexe à installer aujourd’hui. Décidez la dose, puis placez ไม่ devant ou มาก derrière, et ne cherchez pas de phrase autour.\n\nAprès les exercices, enregistrez-vous en disant ไม่เผ็ด puis เผ็ดนิดหน่อย, et comparez en A/B avec la voix de référence. Écoutez surtout la première syllabe de ไม่ : elle doit tomber, pas monter. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u04-l4d-p2",
+      "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",
+      "mechanic": "word_order",
+      "drawCount": 5,
+      "passRequired": 5,
+      "sampleSize": 5
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "f7ea4ca2-06de-5a6d-b434-11e7382c9bce",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "40ce2325-c056-53be-90c9-c00bcecf20a2",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3b315300-7bc7-562a-86cf-cfe18f901937",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "eddd212e-c3d1-5eac-872e-0efed0d8aec1",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3500dcbf-c5e4-50be-b928-47eec065be91",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c560da19-d35d-51c5-b343-2873ec51a44a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1e233665-4e47-5712-a6bf-e8cdefeee6ec",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6a335ead-2058-5fac-b0f9-779d6f8e7630",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

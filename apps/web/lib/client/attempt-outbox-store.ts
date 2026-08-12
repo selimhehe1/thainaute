@@ -56,13 +56,16 @@ import {
 } from "@thainaute/sync";
 import Dexie, { type EntityTable } from "dexie";
 
+import {
+  getWebDemoDatabaseName,
+  getWebLearningDatabaseName,
+} from "../language-pack";
+
 const OUTBOX_KEY = "attempts-v1";
 const DEVICE_KEY = "device-id-v1";
 const INSTALLATION_KEY = "installation-id-v1";
 const FUSION_MARKER_KEY = "anonymous-progress-fusion-v1";
 const CONTENT_REPORT_OUTBOX_KEY = "content-reports-v1";
-const DEFAULT_LEARNING_DATABASE_NAME = "thainaute-learning-v1";
-const DEFAULT_DEMO_DATABASE_NAME = "thainaute-demo-v1";
 const LEGACY_DEMO_FIXTURE_QUARANTINE_KEY = "legacy-demo-fixture-quarantine-v1";
 const DELETED_ACCOUNT_TOMBSTONE_PREFIX = "deleted-account-subject-v1:";
 const DELETED_ACCOUNT_TOMBSTONE_VALUE = "deleted";
@@ -115,6 +118,15 @@ export interface ExpectedWebAccountPurgeState {
 export interface LegacyDemoFixtureMigrationOptions {
   readonly learningDatabaseName?: string;
   readonly demoDatabaseName?: string;
+}
+
+export interface LegacyDemoFixtureMigrationOperation {
+  readonly promise: Promise<LegacyDemoFixtureMigrationResult>;
+  /**
+   * Interrompt la migration entre deux étapes atomiques et ferme les deux
+   * connexions Dexie qu'elle possède. L'appel est idempotent.
+   */
+  close(): void;
 }
 
 export type LegacyDemoFixtureMigrationResult =
@@ -408,27 +420,32 @@ function fixturePayloadSetsAreEqual(
 
 async function inspectLegacyFixtureSource(
   database: LearningDatabase,
+  assertActive: () => void,
 ): Promise<readonly AttemptOutboxEntry[]> {
   return database.transaction(
     "r",
     database.metadata,
     database.outbox,
     async () => {
+      assertActive();
       const learningSnapshot = parseStoredSnapshot(
         await database.outbox.get(OUTBOX_KEY),
         ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
       );
+      assertActive();
       const fixtureEntries = learningSnapshot.entries.filter(
         isLegacyDemoFixtureEntry,
       );
       const quarantineRow = await database.outbox.get(
         LEGACY_DEMO_FIXTURE_QUARANTINE_KEY,
       );
+      assertActive();
       if (fixtureEntries.length === 0 && quarantineRow === undefined) return [];
 
       const marker = parseStoredFusionMarker(
         await database.metadata.get(FUSION_MARKER_KEY),
       );
+      assertActive();
       const quarantine = parseStoredFixtureQuarantine(quarantineRow);
       const migrationEntries = mergeFixtureEntries(quarantine, fixtureEntries)
         .snapshot.entries;
@@ -446,19 +463,23 @@ async function inspectLegacyFixtureSource(
 async function assertDemoCanReceiveFixture(
   database: LearningDatabase,
   fixtureEntries: readonly AttemptOutboxEntry[],
+  assertActive: () => void,
 ): Promise<void> {
   await database.transaction(
     "r",
     database.metadata,
     database.outbox,
     async () => {
+      assertActive();
       const snapshot = parseStoredSnapshot(
         await database.outbox.get(OUTBOX_KEY),
         ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
       );
+      assertActive();
       const marker = parseStoredFusionMarker(
         await database.metadata.get(FUSION_MARKER_KEY),
       );
+      assertActive();
       assertMigrationCanMutate(snapshot, marker, fixtureEntries, "demo");
       mergeFixtureEntries(snapshot, fixtureEntries);
     },
@@ -467,13 +488,16 @@ async function assertDemoCanReceiveFixture(
 
 async function quarantineLegacyFixtureSource(
   database: LearningDatabase,
+  assertActive: () => void,
 ): Promise<readonly AttemptOutboxEntry[]> {
   return database.transaction(
     "rw",
     database.metadata,
     database.outbox,
     async () => {
+      assertActive();
       const learningRow = await database.outbox.get(OUTBOX_KEY);
+      assertActive();
       const learningSnapshot = parseStoredSnapshot(
         learningRow,
         ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
@@ -484,11 +508,13 @@ async function quarantineLegacyFixtureSource(
       const quarantineRow = await database.outbox.get(
         LEGACY_DEMO_FIXTURE_QUARANTINE_KEY,
       );
+      assertActive();
       if (fixtureEntries.length === 0 && quarantineRow === undefined) return [];
 
       const marker = parseStoredFusionMarker(
         await database.metadata.get(FUSION_MARKER_KEY),
       );
+      assertActive();
       const quarantine = parseStoredFixtureQuarantine(quarantineRow);
       const quarantined = mergeFixtureEntries(quarantine, fixtureEntries);
       assertMigrationCanMutate(
@@ -505,6 +531,7 @@ async function quarantineLegacyFixtureSource(
             (entry) => !isLegacyDemoFixtureEntry(entry),
           ),
         });
+        assertActive();
         await database.outbox.bulkPut([
           {
             key: OUTBOX_KEY,
@@ -515,6 +542,7 @@ async function quarantineLegacyFixtureSource(
             snapshot: serializeAttemptOutboxSnapshot(quarantined.snapshot),
           },
         ]);
+        assertActive();
       }
 
       return quarantined.snapshot.entries;
@@ -525,6 +553,7 @@ async function quarantineLegacyFixtureSource(
 async function copyFixtureToDemo(
   database: LearningDatabase,
   fixtureEntries: readonly AttemptOutboxEntry[],
+  assertActive: () => void,
 ): Promise<{
   readonly copiedEntries: number;
   readonly deduplicatedEntries: number;
@@ -534,19 +563,24 @@ async function copyFixtureToDemo(
     database.metadata,
     database.outbox,
     async () => {
+      assertActive();
       const snapshot = parseStoredSnapshot(
         await database.outbox.get(OUTBOX_KEY),
         ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
       );
+      assertActive();
       const marker = parseStoredFusionMarker(
         await database.metadata.get(FUSION_MARKER_KEY),
       );
+      assertActive();
       assertMigrationCanMutate(snapshot, marker, fixtureEntries, "demo");
       const merged = mergeFixtureEntries(snapshot, fixtureEntries);
+      assertActive();
       await database.outbox.put({
         key: OUTBOX_KEY,
         snapshot: serializeAttemptOutboxSnapshot(merged.snapshot),
       });
+      assertActive();
       return {
         copiedEntries: merged.copiedEntries,
         deduplicatedEntries: merged.deduplicatedEntries,
@@ -558,24 +592,29 @@ async function copyFixtureToDemo(
 async function clearFixtureQuarantine(
   database: LearningDatabase,
   expectedEntries: readonly AttemptOutboxEntry[],
+  assertActive: () => void,
 ): Promise<void> {
   await database.transaction(
     "rw",
     database.metadata,
     database.outbox,
     async () => {
+      assertActive();
       const quarantineRow = await database.outbox.get(
         LEGACY_DEMO_FIXTURE_QUARANTINE_KEY,
       );
+      assertActive();
       if (quarantineRow === undefined) return;
 
       const learningSnapshot = parseStoredSnapshot(
         await database.outbox.get(OUTBOX_KEY),
         ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
       );
+      assertActive();
       const marker = parseStoredFusionMarker(
         await database.metadata.get(FUSION_MARKER_KEY),
       );
+      assertActive();
       assertMigrationCanMutate(
         learningSnapshot,
         marker,
@@ -594,7 +633,9 @@ async function clearFixtureQuarantine(
           "La quarantaine a changé pendant la migration et a été conservée.",
         );
       }
+      assertActive();
       await database.outbox.delete(LEGACY_DEMO_FIXTURE_QUARANTINE_KEY);
+      assertActive();
     },
   );
 }
@@ -606,18 +647,39 @@ async function clearFixtureQuarantine(
  * source, la quarantaine ou les deux : le rejeu strict termine sans perte et
  * la fusion de compte ne lit jamais la clé de quarantaine.
  */
-export async function migrateLegacyDemoFixtureAttempts(
+export function startLegacyDemoFixtureMigration(
   options: LegacyDemoFixtureMigrationOptions = {},
-): Promise<LegacyDemoFixtureMigrationResult> {
+): LegacyDemoFixtureMigrationOperation {
   const learningDatabase = openDatabase(
-    options.learningDatabaseName ?? DEFAULT_LEARNING_DATABASE_NAME,
+    options.learningDatabaseName ?? getWebLearningDatabaseName(),
   );
   const demoDatabase = openDatabase(
-    options.demoDatabaseName ?? DEFAULT_DEMO_DATABASE_NAME,
+    options.demoDatabaseName ?? getWebDemoDatabaseName(),
   );
+  let cancelled = false;
+  let closeRequested = false;
+  let settled = false;
 
-  try {
-    const inspectedEntries = await inspectLegacyFixtureSource(learningDatabase);
+  const closeDatabases = (): void => {
+    learningDatabase.close();
+    demoDatabase.close();
+  };
+
+  const assertActive = (): void => {
+    if (cancelled) {
+      throw new AttemptOutboxStorageError(
+        "La migration de la fixture historique a été interrompue.",
+      );
+    }
+  };
+
+  const promise = (async (): Promise<LegacyDemoFixtureMigrationResult> => {
+    assertActive();
+    const inspectedEntries = await inspectLegacyFixtureSource(
+      learningDatabase,
+      assertActive,
+    );
+    assertActive();
     if (inspectedEntries.length === 0) {
       return {
         status: "not_needed",
@@ -628,9 +690,17 @@ export async function migrateLegacyDemoFixtureAttempts(
 
     // Le préflight laisse encore la source principale intacte en cas de conflit
     // déjà présent dans demo. La transaction de copie revalide après quarantaine.
-    await assertDemoCanReceiveFixture(demoDatabase, inspectedEntries);
-    const quarantinedEntries =
-      await quarantineLegacyFixtureSource(learningDatabase);
+    await assertDemoCanReceiveFixture(
+      demoDatabase,
+      inspectedEntries,
+      assertActive,
+    );
+    assertActive();
+    const quarantinedEntries = await quarantineLegacyFixtureSource(
+      learningDatabase,
+      assertActive,
+    );
+    assertActive();
     if (quarantinedEntries.length === 0) {
       return {
         status: "not_needed",
@@ -642,23 +712,54 @@ export async function migrateLegacyDemoFixtureAttempts(
     const destinationResult = await copyFixtureToDemo(
       demoDatabase,
       quarantinedEntries,
+      assertActive,
     );
-    await clearFixtureQuarantine(learningDatabase, quarantinedEntries);
+    assertActive();
+    await clearFixtureQuarantine(
+      learningDatabase,
+      quarantinedEntries,
+      assertActive,
+    );
+    assertActive();
     return {
       status: "migrated",
       copiedEntries: destinationResult.copiedEntries,
       deduplicatedEntries: destinationResult.deduplicatedEntries,
     };
-  } catch (error) {
-    if (error instanceof AttemptOutboxStorageError) throw error;
-    throw new AttemptOutboxStorageError(
-      "La fixture historique n'a pas pu être déplacée sans risque.",
-      { cause: error },
-    );
-  } finally {
-    learningDatabase.close();
-    demoDatabase.close();
-  }
+  })()
+    .catch((error: unknown) => {
+      if (cancelled) {
+        throw new AttemptOutboxStorageError(
+          "La migration de la fixture historique a été interrompue.",
+          { cause: error },
+        );
+      }
+      if (error instanceof AttemptOutboxStorageError) throw error;
+      throw new AttemptOutboxStorageError(
+        "La fixture historique n'a pas pu être déplacée sans risque.",
+        { cause: error },
+      );
+    })
+    .finally(() => {
+      settled = true;
+      closeDatabases();
+    });
+
+  return {
+    promise,
+    close: () => {
+      if (settled || closeRequested) return;
+      closeRequested = true;
+      cancelled = true;
+      closeDatabases();
+    },
+  };
+}
+
+export async function migrateLegacyDemoFixtureAttempts(
+  options: LegacyDemoFixtureMigrationOptions = {},
+): Promise<LegacyDemoFixtureMigrationResult> {
+  return startLegacyDemoFixtureMigration(options).promise;
 }
 
 /**
@@ -676,7 +777,7 @@ export class WebAttemptOutboxStore {
   #accountTombstoneKeyPromise: Promise<string> | null = null;
 
   public constructor(
-    databaseName = DEFAULT_LEARNING_DATABASE_NAME,
+    databaseName = getWebLearningDatabaseName(),
     ownerInput: AttemptOutboxOwner = ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
     sha256Hex?: Sha256Hex,
   ) {

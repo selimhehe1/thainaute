@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "55625718-64e8-5991-8f3f-c8b197cdfd6d",
+  "versionId": "afd6577e-0a0a-5bc2-9466-3809d4d04e43",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Remercier, s’excuser, demander poliment",
+  "objectiveFr": "à la fin de la leçon, l’apprenant reconnaît ขอโทษ à l’écoute et ne le confond pas avec ขอบคุณ, choisit entre « désolé » et « excusez-moi » sur une situation décrite, et reconstruit une demande polie de la forme ขอ + objet + หน่อย + particule sans erreur d’ordre ni erreur de particule. Le seuil de discrimination à l’écoute (4 réussites sur 5) est un critère de maîtrise SRS, mesuré par `srs-u02-l2c-",
+  "requiredEntitlement": null,
+  "audioManifestId": "b2b554cf-ef5d-58f6-924c-cc2e21acb66b",
+  "items": [
+    {
+      "id": "05151261-20ed-53cc-a362-23653d2eb3c0",
+      "thaiRaw": "ไม่เป็นไร",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E40",
+        "U+0E1B",
+        "U+0E47",
+        "U+0E19",
+        "U+0E44",
+        "U+0E23"
+      ],
+      "translationFr": "ce n’est rien ; de rien ; pas de problème",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi·pen·rai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่เป็นไร",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่เป็นไร",
+          "ipa": "pen˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ไม่เป็นไร",
+          "ipa": "raj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ไม่เป็นไรครับ / ไม่เป็นไรค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2d2518e1-4caf-52d3-a2e5-3dff91a6fc09",
+      "thaiRaw": "ขอโทษ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E42",
+        "U+0E17",
+        "U+0E29"
+      ],
+      "translationFr": "désolé ; excusez-moi ; pardon (et, comme verbe, s’excuser)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww·thôot"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอโทษ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอโทษ",
+          "ipa": "tʰoːt̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "thaiRaw": "ขอ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D"
+      ],
+      "translationFr": "demander ; solliciter (et, en tête de phrase, « je voudrais », « puis-je »)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (la politesse vient de หน่อย et de la particule finale)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a8c92a6c-0861-58c8-a586-9b54449fedcb",
+      "thaiRaw": "น้ำ",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E49",
+        "U+0E33"
+      ],
+      "translationFr": "eau ; liquide",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "náam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "น้ำ",
+          "ipa": "naːm˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "84bf6b4f-1b25-5deb-9067-d0cd9eec1a57",
+      "thaiRaw": "หน่อย",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22"
+      ],
+      "translationFr": "un peu ; un instant (en fin de demande : adoucisseur, « s’il vous plaît »)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nàwi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หน่อย",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "889b7a30-866b-530b-a523-d39509dda7c8",
+      "thaiRaw": "ขอน้ำหน่อย",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E19",
+        "U+0E49",
+        "U+0E33",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22"
+      ],
+      "translationFr": "de l’eau, s’il vous plaît",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww náam nàwi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอน้ำหน่อย",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอน้ำหน่อย",
+          "ipa": "naːm˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ขอน้ำหน่อย",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre à poli (poli avec la particule : ขอน้ำหน่อยครับ / ขอน้ำหน่อยค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u02-l2c-p3",
+      "drawIndex": 1,
+      "id": "dd0522f0-f8c7-5b13-8831-94e8d859091b",
+      "type": "word_order",
+      "itemId": "62c5f770-d068-5ff1-be18-581b8ef40f5b",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Claire, une femme, veut de l’eau au comptoir. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "3faea0d8-63e3-5985-8d98-30967e090462",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "4b331315-81ca-55ef-8cd5-085b999f1e74",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "bef58f4f-0716-504b-88c2-c5a0905f324a",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "430f08b0-3f15-5583-af26-3a99c9b127a6",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "7322418c-1678-541d-8c63-07f48f80bcda",
+          "thaiRaw": "น้ำ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "bef58f4f-0716-504b-88c2-c5a0905f324a",
+        "7322418c-1678-541d-8c63-07f48f80bcda",
+        "3faea0d8-63e3-5985-8d98-30967e090462",
+        "430f08b0-3f15-5583-af26-3a99c9b127a6"
+      ],
+      "feedback": {
+        "correctFr": "Parfait. On demande, on nomme la chose, on adoucit, on signe avec sa particule. Claire est une femme, donc ค่ะ.",
+        "incorrectFr": "Suivez l’ordre de la formule : ขอ d’abord, puis la chose demandée, puis หน่อย, et la particule tout à la fin. Claire est une femme.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "merci, le bloc entier cette fois",
+      "bodyFr": "Vous connaissez déjà ขอบคุณ depuis la leçon 1E. Aujourd’hui, on ne le dit plus jamais tout seul : on l’apprend collé à sa particule, comme les Thaïs le prononcent.\n\n> ขอบคุณครับ / ขอบคุณค่ะ > khàwwp·khoun khráp / khàwwp·khoun khâ\n\nRappel utile : la particule dépend de vous, la personne qui parle, jamais de la personne en face. Un homme dit khráp, une femme dit khâ, même si tout le monde change de rôle dans la conversation.",
+      "specimen": null
+    },
+    {
+      "ordre": 2,
+      "titleFr": "et la réponse au merci",
+      "bodyFr": "Un merci appelle une réponse. La plus courante tient en trois syllabes très simples.\n\n> ไม่เป็นไร > mâi·pen·rai\n\nPremier ton descendant, puis deux tons moyens à plat : mâi tombe, pen et rai restent posés. Le sens tourne autour de « ce n’est rien », et vous pouvez la dire aussi bien après un merci qu’après une petite excuse.",
+      "specimen": null
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ขอโทษ, désolé et excusez-moi",
+      "bodyFr": "Les dictionnaires donnent à ขอโทษ deux valeurs de traduction, pas une. La première est « désolé », quand vous revenez sur quelque chose qui vient d’arriver. La seconde est « excusez-moi », celle que vous adressez à quelqu’un avant de lui parler.\n\n> ขอโทษครับ / ขอโทษค่ะ > khǎww·thôot khráp / khǎww·thôot khâ\n\nC’est la place dans l’échange qui vous dit laquelle des deux vous entendez. Une excuse répond à quelque chose. Un « excusez-moi » ouvre l’échange, et la question arrive juste derrière.",
+      "specimen": null
+    },
+    {
+      "ordre": 4,
+      "titleFr": "demander avec ขอ",
+      "bodyFr": "ขอโทษ commence par ขอ, et ce n’est pas un hasard : ขอ, c’est demander. Écoutez son ton montant, qui part du bas et grimpe, sur une voyelle longue.\n\n> ขอ > khǎww\n\nAttention au duo qui va vous piéger : ขอบ de ขอบคุณ est bas et se termine sur un p retenu, ขอ de ขอโทษ est montant et reste ouvert. Même consonne soufflée au départ, deux mélodies opposées.",
+      "specimen": null
+    },
+    {
+      "ordre": 5,
+      "titleFr": "la formule complète",
+      "bodyFr": "Pour demander quelque chose, mettez la chose demandée juste après ขอ, puis adoucissez avec หน่อย, littéralement « un peu ».\n\n> ขอน้ำหน่อยครับ / ขอน้ำหน่อยค่ะ > khǎww náam nàwi khráp / khǎww náam nàwi khâ\n\nน้ำ (náam, ton haut tenu) veut dire eau. หน่อย se lit nàwi, en une seule syllabe : `aw` est le o ouvert de « sort », et le i final n’est qu’une fermeture rapide, pas une deuxième syllabe. Changez น้ำ, gardez le reste : la structure ne bouge pas.",
+      "specimen": null
+    },
+    {
+      "ordre": 6,
+      "titleFr": "à vous",
+      "bodyFr": "Vous allez écouter, choisir entre s’excuser et s’adresser à quelqu’un, puis reconstruire une demande complète. Rien de nouveau côté sons : tout repose sur l’unité 1.\n\nAprès les exercices, enregistrez-vous en disant ขอโทษครับ ou ขอโทษค่ะ, puis comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil. Écoutez la première syllabe : votre voix monte-t-elle vraiment, ou reste-t-elle plate ?",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u02-l2c-p3",
+      "promptFr": "Claire, une femme, veut de l’eau au comptoir. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "cdf269ba-aaa6-5dd9-b693-89234f60085c",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1911044f-081b-526f-b090-cf674115c02f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a527b825-8601-5671-8b8a-9623579ba73d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "16dca2ac-10b6-5b07-8c8f-f5c16876f5e1",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3fdd1af8-7352-52b6-a29e-e757a5d1d433",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d7753613-d731-5ca3-ab08-1b3a94b1909c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e22f40e0-3510-502c-aa86-f70a8a9f185e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e1e6bb0e-afa7-59ca-bebb-d62237b0098c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

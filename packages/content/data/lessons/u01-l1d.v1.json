@@ -1,5 +1,7 @@
 {
   "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
   "lessonId": "24feb701-6741-5958-aa19-70f4d7548494",
   "versionId": "d9a38b2a-1420-50a6-ae4a-12e2b2cd562e",
   "revision": 1,
@@ -8,7 +10,7 @@
   "publishedAt": null,
   "locale": "fr-FR",
   "titleFr": "Montant contre haut",
-  "objectiveFr": "à l'écoute d'un mot isolé parmi les dix mots de la leçon, dit à voix normale, l'apprenant identifie le ton montant ou le ton haut avec au moins 5 réussites sur 6, et associe les cinq paires de mots à leur sens sans erreur.",
+  "objectiveFr": "à l'écoute d'un mot isolé parmi les huit mots actifs de la leçon, dit à voix normale, l'apprenant identifie le ton montant ou le ton haut avec au moins 5 réussites sur 6, et associe les quatre paires de mots à leur sens sans erreur.",
   "requiredEntitlement": null,
   "audioManifestId": "47082c2c-9a56-56c3-80a5-3e87d5fed4e5",
   "items": [
@@ -413,6 +415,116 @@
         "incorrectFr": "Pas grave, ces deux tons finissent au même endroit. Réécoutez le tout début du mot : s'il démarre sous votre voix parlée, c'est un montant ; s'il démarre déjà au-dessus, c'est un haut. Refaites le geste du doigt en même temps.",
         "variants": []
       }
+    },
+    {
+      "poolId": "u01-l1d-p2",
+      "drawIndex": 1,
+      "id": "1c4f5da8-f748-5dc0-9f63-4c4fb0dedb08",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Associez chaque mot thaï à son sens. Touchez un mot, puis son sens : aucun glisser-déposer n'est nécessaire.",
+      "pairs": [
+        {
+          "id": "13e4d30f-020a-5eab-b80d-f453dd039b41",
+          "itemId": "99ccbd6a-386d-59e3-9b72-cad436e0a3f1",
+          "labelFr": "chien"
+        },
+        {
+          "id": "23753467-51d2-5191-82bb-cf44bab1cb4e",
+          "itemId": "c9fbdf87-a25b-5f43-adee-65bb62a01e90",
+          "labelFr": "cheval"
+        },
+        {
+          "id": "ac2d7d9c-5cbc-57eb-81d5-ebab513a69ee",
+          "itemId": "87aec6f2-7331-5a0a-bcf4-0da154fe37b6",
+          "labelFr": "oncle ou tante côté maman"
+        },
+        {
+          "id": "2e48eace-0225-5663-abd4-fc1299c34c33",
+          "itemId": "a44b843a-cb97-5b04-9d22-3d81acdc4692",
+          "labelFr": "fuir"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Bien joué. Remarquez le motif : dans cette leçon, les mots écrits avec un ห muet portent le ton montant, ceux avec la marque ้ portent le ton haut.",
+        "incorrectFr": "Regardez la transcription sous chaque mot : le chapeau qui creuse (ǎ) grimpe, l'accent aigu (á) reste perché. Réessayez avec une paire dont vous êtes sûr.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1d-p3",
+      "drawIndex": 1,
+      "id": "c5e5ef74-24c0-506a-897e-40ec0b3a58cb",
+      "type": "recall",
+      "itemId": "c9fbdf87-a25b-5f43-adee-65bb62a01e90",
+      "skill": "recall",
+      "promptFr": "Répondez de mémoire, sans réécouter. Écrivez la réponse en thaï ou en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "ม้า",
+          "kind": "thai"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": false,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C'est ancré. Le ton fait partie du mot, pas de la décoration.",
+        "incorrectFr": "Indice : le cheval se dit avec la voix perchée (máa), le chien avec la voix qui grimpe (mǎa). Rejouez les deux dans votre tête avec le geste du doigt.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1d-p3",
+      "drawIndex": 2,
+      "id": "26d5d470-29ef-5bf4-8231-e026fd93d5e1",
+      "type": "recall",
+      "itemId": "99ccbd6a-386d-59e3-9b72-cad436e0a3f1",
+      "skill": "recall",
+      "promptFr": "Répondez de mémoire, sans réécouter. Écrivez la réponse en thaï ou en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "หมา",
+          "kind": "thai"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": false,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C'est ancré. Le ton fait partie du mot, pas de la décoration.",
+        "incorrectFr": "Indice : le cheval se dit avec la voix perchée (máa), le chien avec la voix qui grimpe (mǎa). Rejouez les deux dans votre tête avec le geste du doigt.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u01-l1d-p3",
+      "drawIndex": 3,
+      "id": "96642f49-9d7d-57a5-ad42-b2aafada73d5",
+      "type": "recall",
+      "itemId": "130f449f-11ff-5f14-acaf-c3586c245da1",
+      "skill": "recall",
+      "promptFr": "Répondez de mémoire, sans réécouter. Écrivez la réponse en thaï ou en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "níi",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": false,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C'est ancré. Le ton fait partie du mot, pas de la décoration.",
+        "incorrectFr": "Indice : le cheval se dit avec la voix perchée (máa), le chien avec la voix qui grimpe (mǎa). Rejouez les deux dans votre tête avec le geste du doigt.",
+        "variants": []
+      }
     }
   ],
   "teaching": [
@@ -431,7 +543,7 @@
     {
       "ordre": 3,
       "titleFr": "L'astuce pour une oreille française",
-      "bodyFr": "Le montant, vous le faites déjà : c'est la mélodie d'une vraie question française, comme la fin de « tu viens ? ». Le haut, c'est une voix tendue, un peu perchée, qui reste là-haut du début à la fin. Si le mot commence bas, c'est un montant ; s'il commence déjà haut, c'est un haut.\n\ntrop haut.",
+      "bodyFr": "Le montant, vous le faites déjà : c'est l'intonation d'une vraie question française, comme la fin de « tu viens ? ». Le haut, c'est une voix tendue, un peu perchée, qui reste là-haut du début à la fin. Si le mot commence bas, c'est un montant ; s'il commence déjà haut, c'est un haut.\n\ntrop haut.",
       "specimen": "หมา (mǎa, le chien) devient ม้า (máa, le cheval) si la voix part"
     },
     {
@@ -439,6 +551,18 @@
       "titleFr": "D'abord exagéré, puis normal",
       "bodyFr": "Comme pour le duel mi contre bas, vous entendrez chaque paire deux fois : d'abord avec un contraste exagéré, puis à voix normale. Gardez le doigt levé et dessinez ce que vous entendez avant de répondre. Écoutez le mouvement de la voix, pas sa hauteur absolue : chaque personne parle à sa propre hauteur.\n\nleçon 1A.",
       "specimen": "ขา (khǎa) contre ค้า (kháa), déjà croisés dans la série de la"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "Le transfert : d'abord le départ, ensuite la trajectoire",
+      "bodyFr": "Pour un mot nouveau, ne cherchez pas à savoir si la voix « sonne haut » dans l'absolu. Écoutez d'abord son départ : bas puis en mouvement, ou déjà perché ? Vérifiez ensuite la trajectoire. Deux voix peuvent finir haut tout en ayant des départs différents ; c'est ce premier instant qui protège votre oreille française de l'intonation de question.",
+      "specimen": null
+    },
+    {
+      "ordre": 6,
+      "titleFr": "Choisir le mot avant de le dire",
+      "bodyFr": "Prenez une image de chien puis une image de cheval, ou dites simplement leur nom français à voix basse. Pour « chien », partez bas puis montez avec หมา (mǎa) ; pour « cheval », partez déjà haut avec ม้า (máa). Ne corrigez pas la hauteur en cours de route comme une intonation française : préparez le départ avant la première syllabe, puis laissez le mouvement suivre. Cette étape relie le ton au mot voulu avant le dialogue de 1E.",
+      "specimen": null
     }
   ],
   "pools": [
@@ -449,6 +573,22 @@
       "drawCount": 6,
       "passRequired": 6,
       "sampleSize": 6
+    },
+    {
+      "poolId": "u01-l1d-p2",
+      "promptFr": "Associez chaque mot thaï à son sens. Touchez un mot, puis son sens : aucun glisser-déposer n'est nécessaire.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u01-l1d-p3",
+      "promptFr": "Répondez de mémoire, sans réécouter. Écrivez la réponse en thaï ou en transcription Thaïnaute.",
+      "mechanic": "recall",
+      "drawCount": 3,
+      "passRequired": 3,
+      "sampleSize": 3
     }
   ],
   "provenance": {

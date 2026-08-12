@@ -9,12 +9,15 @@ appId: com.thainaute.app
 - tapOn: "5 minutes"
 - tapOn: "Voyager"
 - tapOn: "Je débute"
+- scrollUntilVisible:
+    element: "Voir ma séance du jour"
+    direction: DOWN
 - tapOn: "Voir ma séance du jour"
 - assertVisible: "AUJOURD’HUI"
 - assertVisible: "Disponible hors connexion"
-- tapOn: "Commencer la démo locale"
-- assertVisible: "Donnée fictive — non publiable"
-- assertVisible: "ก่"
+- tapOn: "Commencer l’extrait local"
+- assertVisible: "Chaîne technique uniquement"
+- assertVisible: "Boucle technique locale"
 - tapOn: "Commencer"
 - tapOn: "Option A"
 - waitForAnimationToEnd:
@@ -24,6 +27,9 @@ appId: com.thainaute.app
 - assertVisible: "Reprendre l’exercice"
 - tapOn: "Reprendre l’exercice"
 - assertVisible: "Option A"
+- scrollUntilVisible:
+    element: "Valider"
+    direction: DOWN
 - tapOn: "Valider"
 - assertVisible: "La boucle technique fonctionne."
 - assertVisible: "250 ‰"
@@ -35,8 +41,11 @@ appId: com.thainaute.app
 - assertVisible: "B, écouter ma voix"
 - tapOn: "Supprimer cette prise locale"
 - assertVisible: "Essai vocal supprimé du cache local."
+- scrollUntilVisible:
+    element: "Terminer"
+    direction: DOWN
 - tapOn: "Terminer"
-- assertVisible: "Revoir la démo locale"
+- assertVisible: "Revoir l’extrait local"
 - tapOn: "Compte"
 - assertVisible: "Compte non configuré ici"
 - assertVisible: "Cette build locale reste utilisable hors ligne sans compte."

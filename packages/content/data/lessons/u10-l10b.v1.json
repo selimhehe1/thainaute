@@ -1,0 +1,1303 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "7156256e-ce2a-59bd-8590-0d5966f94891",
+  "versionId": "b8473704-c4b0-560d-a03b-a0e5896e45db",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Les mots qu’on voit partout",
+  "objectiveFr": "à la fin de la leçon, devant douze mots écrits et sans les entendre, l’apprenant choisit le sens de chacun parmi quatre propositions, sur 10 mots sur 12 ; à l’écoute, il reconnaît lequel des quatre mots เปิด, ปิด, ทางเข้า et ทางออก il vient d’entendre, sur 11 tirages sur 12 ; il reconstruit six suites de blocs, quatre composés et deux phrases, sur 5 tirages sur 6 ; il apparie les huit mots du jour",
+  "requiredEntitlement": null,
+  "audioManifestId": "0feaa814-b00e-5e4b-ab7a-1c24d1d06715",
+  "items": [
+    {
+      "id": "48b73a9b-91e9-56bb-b3a1-e16d2c288600",
+      "thaiRaw": "ทาง",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E32",
+        "U+0E07"
+      ],
+      "translationFr": "le chemin, la voie",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thaang"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ทาง",
+          "ipa": "tʰaːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "ae51103f-a1ed-53dd-bbc4-35dc76a8313e",
+      "thaiRaw": "ออก",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E2D",
+        "U+0E01"
+      ],
+      "translationFr": "sortir",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "àwwk"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ออก",
+          "ipa": "ʔɔːk̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "ʔ",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "95decd4b-94d5-5f0f-9ce6-29fe7f2790b1",
+      "thaiRaw": "ทางเข้า",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E32",
+        "U+0E07",
+        "U+0E40",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "l’entrée",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thaang·khâo"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ทางเข้า",
+          "ipa": "tʰaːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ทางเข้า",
+          "ipa": "kʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "a46d4c34-1ecd-538b-b4a7-65d750bb7a82",
+      "thaiRaw": "ทางออก",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E32",
+        "U+0E07",
+        "U+0E2D",
+        "U+0E2D",
+        "U+0E01"
+      ],
+      "translationFr": "la sortie",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thaang·àwwk"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ทางออก",
+          "ipa": "tʰaːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ทางออก",
+          "ipa": "ʔɔːk̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "ʔ",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "fd432c2d-2103-5091-9323-112a44179a32",
+      "thaiRaw": "เปิด",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1B",
+        "U+0E34",
+        "U+0E14"
+      ],
+      "translationFr": "ouvrir ; ouvert",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pòeet"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เปิด",
+          "ipa": "pɤːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "3fd652f9-8560-5724-80db-5ad33a169d62",
+      "thaiRaw": "ปิด",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E34",
+        "U+0E14"
+      ],
+      "translationFr": "fermer ; fermé",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pìt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปิด",
+          "ipa": "pit̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "1eaa8b77-0183-558d-906d-b1daf06c7d30",
+      "thaiRaw": "ห้าม",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E32",
+        "U+0E21"
+      ],
+      "translationFr": "interdire ; il est interdit de",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้าม",
+          "ipa": "haːm˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "f839da8d-88e9-5ade-abf8-0e45dc781f62",
+      "thaiRaw": "ห้ามเข้า",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E32",
+        "U+0E21",
+        "U+0E40",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "entrée interdite ; défense d’entrer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâam·khâo"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้ามเข้า",
+          "ipa": "haːm˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ห้ามเข้า",
+          "ipa": "kʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "thaiRaw": "ห้องน้ำ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E19",
+        "U+0E49",
+        "U+0E33"
+      ],
+      "translationFr": "les toilettes ; la salle de bains",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng·náam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้องน้ำ",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ห้องน้ำ",
+          "ipa": "naːm˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E19",
+        "U+0E49",
+        "U+0E33",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Où sont les toilettes ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng·náam yòuu thîi·nǎi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naːm˦˥ juː˨˩ tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naj˩˩˦ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u10-l10b-p3",
+      "drawIndex": 1,
+      "id": "472892ad-c3e3-5a5b-a101-cb692e7cdfc9",
+      "type": "word_order",
+      "itemId": "95decd4b-94d5-5f0f-9ce6-29fe7f2790b1",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
+      "tokens": [
+        {
+          "id": "6b2920f4-a5a9-5261-83f7-5af9c668ffc0",
+          "thaiRaw": "ทาง",
+          "transcription": null
+        },
+        {
+          "id": "6b8e468c-9f89-5ab8-887c-34a1a49c3d50",
+          "thaiRaw": "เข้า",
+          "transcription": null
+        },
+        {
+          "id": "a938778d-958d-500b-8066-1aabc461a8ad",
+          "thaiRaw": "ห้าม",
+          "transcription": null
+        },
+        {
+          "id": "c9a416aa-271d-5406-b0dc-472f8e0e19a4",
+          "thaiRaw": "ออก",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "6b2920f4-a5a9-5261-83f7-5af9c668ffc0",
+        "6b8e468c-9f89-5ab8-887c-34a1a49c3d50"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Et vous avez écarté les deux blocs de trop, ce qui est la moitié du travail.",
+        "incorrectFr": "Les deux bons blocs, mais dans l’autre sens. En thaï comme en français, ici, c’est le premier mot qui dit de quoi on parle et le second qui précise.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Oui. C’est la même phrase que celle de la leçon 5C, avec un autre lieu devant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc de trop est resté. Relisez la cible : combien de morceaux lui faut-il ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p3",
+      "drawIndex": 2,
+      "id": "f923ecdf-45e6-53e5-95fd-4ac4c2a97c8d",
+      "type": "word_order",
+      "itemId": "a46d4c34-1ecd-538b-b4a7-65d750bb7a82",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
+      "tokens": [
+        {
+          "id": "d5995f86-7001-5807-b456-20defcf91cef",
+          "thaiRaw": "ออก",
+          "transcription": null
+        },
+        {
+          "id": "04903481-589f-5c2e-b196-2c302e561204",
+          "thaiRaw": "ห้าม",
+          "transcription": null
+        },
+        {
+          "id": "acffdeab-17e7-5c96-8026-facfad1dd5ce",
+          "thaiRaw": "ทาง",
+          "transcription": null
+        },
+        {
+          "id": "3ec3ef42-6704-5e45-9d71-a93c8af14d38",
+          "thaiRaw": "เข้า",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "acffdeab-17e7-5c96-8026-facfad1dd5ce",
+        "d5995f86-7001-5807-b456-20defcf91cef"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Et vous avez écarté les deux blocs de trop, ce qui est la moitié du travail.",
+        "incorrectFr": "Les deux bons blocs, mais dans l’autre sens. En thaï comme en français, ici, c’est le premier mot qui dit de quoi on parle et le second qui précise.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Oui. C’est la même phrase que celle de la leçon 5C, avec un autre lieu devant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc de trop est resté. Relisez la cible : combien de morceaux lui faut-il ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p3",
+      "drawIndex": 3,
+      "id": "6c5c8e64-26b5-540c-9b04-03488d46cb72",
+      "type": "word_order",
+      "itemId": "f839da8d-88e9-5ade-abf8-0e45dc781f62",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
+      "tokens": [
+        {
+          "id": "d3365fea-1a16-50bb-b67c-bcbbf48954e7",
+          "thaiRaw": "เข้า",
+          "transcription": null
+        },
+        {
+          "id": "79810a54-011a-5ae8-93e3-75220a564e6d",
+          "thaiRaw": "ทาง",
+          "transcription": null
+        },
+        {
+          "id": "08fe00cf-79d2-5ed9-89a6-9d76cda5d258",
+          "thaiRaw": "ออก",
+          "transcription": null
+        },
+        {
+          "id": "62a2161c-7976-58ed-8227-d7e85027f0da",
+          "thaiRaw": "ห้าม",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "62a2161c-7976-58ed-8227-d7e85027f0da",
+        "d3365fea-1a16-50bb-b67c-bcbbf48954e7"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Et vous avez écarté les deux blocs de trop, ce qui est la moitié du travail.",
+        "incorrectFr": "Les deux bons blocs, mais dans l’autre sens. En thaï comme en français, ici, c’est le premier mot qui dit de quoi on parle et le second qui précise.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Oui. C’est la même phrase que celle de la leçon 5C, avec un autre lieu devant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc de trop est resté. Relisez la cible : combien de morceaux lui faut-il ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p3",
+      "drawIndex": 4,
+      "id": "8a2b7975-5a7b-5e9f-9d84-50e5d4b2540f",
+      "type": "word_order",
+      "itemId": "7cad57e0-2266-5411-a54b-613377bd9fc5",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
+      "tokens": [
+        {
+          "id": "96313316-2043-5af2-803d-2f5cfd4dd649",
+          "thaiRaw": "น้ำ",
+          "transcription": null
+        },
+        {
+          "id": "85076c44-fa3d-5410-bf39-5d518121a9e6",
+          "thaiRaw": "ทาง",
+          "transcription": null
+        },
+        {
+          "id": "60009413-1671-568e-b3f9-aa680c0c3755",
+          "thaiRaw": "ห้อง",
+          "transcription": null
+        },
+        {
+          "id": "48908c78-860c-5f1e-ba9e-f434dc198152",
+          "thaiRaw": "เข้า",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "60009413-1671-568e-b3f9-aa680c0c3755",
+        "96313316-2043-5af2-803d-2f5cfd4dd649"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Et vous avez écarté les deux blocs de trop, ce qui est la moitié du travail.",
+        "incorrectFr": "Les deux bons blocs, mais dans l’autre sens. En thaï comme en français, ici, c’est le premier mot qui dit de quoi on parle et le second qui précise.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Oui. C’est la même phrase que celle de la leçon 5C, avec un autre lieu devant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc de trop est resté. Relisez la cible : combien de morceaux lui faut-il ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p3",
+      "drawIndex": 5,
+      "id": "8b3561fb-ddc1-55b7-ac4c-2d2409a7863e",
+      "type": "word_order",
+      "itemId": "a46d4c34-1ecd-538b-b4a7-65d750bb7a82",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
+      "tokens": [
+        {
+          "id": "16c4ae33-03f7-53e2-93f4-dbc94c8f30b6",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "1a12cad3-c8c3-50c0-af04-15ddeee7ffd6",
+          "thaiRaw": "ที่ไหน",
+          "transcription": null
+        },
+        {
+          "id": "6ff02b04-1c4b-5273-8080-64cef580cf48",
+          "thaiRaw": "ทางออก",
+          "transcription": null
+        },
+        {
+          "id": "44bfe5d3-9b75-5058-9db1-a963016d5cbb",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "6ff02b04-1c4b-5273-8080-64cef580cf48",
+        "44bfe5d3-9b75-5058-9db1-a963016d5cbb",
+        "1a12cad3-c8c3-50c0-af04-15ddeee7ffd6",
+        "16c4ae33-03f7-53e2-93f4-dbc94c8f30b6"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Et vous avez écarté les deux blocs de trop, ce qui est la moitié du travail.",
+        "incorrectFr": "Les deux bons blocs, mais dans l’autre sens. En thaï comme en français, ici, c’est le premier mot qui dit de quoi on parle et le second qui précise.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Oui. C’est la même phrase que celle de la leçon 5C, avec un autre lieu devant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc de trop est resté. Relisez la cible : combien de morceaux lui faut-il ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p3",
+      "drawIndex": 6,
+      "id": "3bd331b2-9f70-5dcc-9c9a-525627bc82d8",
+      "type": "word_order",
+      "itemId": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
+      "tokens": [
+        {
+          "id": "c2f32443-c1b5-5136-af51-d1ee08afc052",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        },
+        {
+          "id": "94dc1dd0-7606-5678-b234-7e3ffffe7279",
+          "thaiRaw": "ห้องน้ำ",
+          "transcription": null
+        },
+        {
+          "id": "78bf58e1-66a8-575f-af59-2271e1a06190",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "1998c03c-90fd-5120-9d75-f5239969901d",
+          "thaiRaw": "ที่ไหน",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "94dc1dd0-7606-5678-b234-7e3ffffe7279",
+        "c2f32443-c1b5-5136-af51-d1ee08afc052",
+        "1998c03c-90fd-5120-9d75-f5239969901d",
+        "78bf58e1-66a8-575f-af59-2271e1a06190"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Et vous avez écarté les deux blocs de trop, ce qui est la moitié du travail.",
+        "incorrectFr": "Les deux bons blocs, mais dans l’autre sens. En thaï comme en français, ici, c’est le premier mot qui dit de quoi on parle et le second qui précise.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 5 et 6",
+            "textFr": "Oui. C’est la même phrase que celle de la leçon 5C, avec un autre lieu devant."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, bloc en trop conservé",
+            "textFr": "Un bloc de trop est resté. Relisez la cible : combien de morceaux lui faut-il ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p4-m1",
+      "drawIndex": 1,
+      "id": "9303b8ec-4b6a-5f6d-988a-b47668de944c",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Chaque mot de gauche a un sens et un seul. Associez-les. Touchez un mot, puis un sens : aucun glisser-déposer n’est nécessaire.",
+      "pairs": [
+        {
+          "id": "bcbd4182-bf6c-5b82-be50-aa4fe61dbef3",
+          "itemId": "48b73a9b-91e9-56bb-b3a1-e16d2c288600",
+          "labelFr": "le chemin, la voie"
+        },
+        {
+          "id": "143f9ae6-6a0d-51ef-b300-889e2fdfc8a2",
+          "itemId": "ae51103f-a1ed-53dd-bbc4-35dc76a8313e",
+          "labelFr": "sortir"
+        },
+        {
+          "id": "b345394e-df35-5458-abf4-1369df61981a",
+          "itemId": "95decd4b-94d5-5f0f-9ce6-29fe7f2790b1",
+          "labelFr": "l’entrée"
+        },
+        {
+          "id": "3381690e-8c97-5f23-b155-424dd3a83394",
+          "itemId": "a46d4c34-1ecd-538b-b4a7-65d750bb7a82",
+          "labelFr": "la sortie"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui. Huit mots, huit sens, et trois d’entre eux sont faits de deux autres.",
+        "incorrectFr": "Prenez le mot de gauche et cherchez dedans un mot que vous connaissez déjà. Puis lisez ce qui reste.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paires 3, 4 et 8",
+            "textFr": "Oui, et vous avez lu les deux moitiés. C’est exactement le geste de la leçon."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p4-m2",
+      "drawIndex": 1,
+      "id": "19060425-7c1f-5682-a533-608abcd1d540",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Chaque mot de gauche a un sens et un seul. Associez-les. Touchez un mot, puis un sens : aucun glisser-déposer n’est nécessaire.",
+      "pairs": [
+        {
+          "id": "5c798a60-bbb6-504c-909e-e83b80a2f93b",
+          "itemId": "fd432c2d-2103-5091-9323-112a44179a32",
+          "labelFr": "ouvert"
+        },
+        {
+          "id": "7a090d5f-8a6d-54d7-b8a4-ba833e7fb173",
+          "itemId": "3fd652f9-8560-5724-80db-5ad33a169d62",
+          "labelFr": "fermé"
+        },
+        {
+          "id": "77081c1b-f3eb-5c21-ab2d-6e6951e5b3b2",
+          "itemId": "1eaa8b77-0183-558d-906d-b1daf06c7d30",
+          "labelFr": "il est interdit de"
+        },
+        {
+          "id": "2529e70e-8e57-52d8-a0fe-4381707e4a35",
+          "itemId": "f839da8d-88e9-5ade-abf8-0e45dc781f62",
+          "labelFr": "entrée interdite"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui. Huit mots, huit sens, et trois d’entre eux sont faits de deux autres.",
+        "incorrectFr": "Prenez le mot de gauche et cherchez dedans un mot que vous connaissez déjà. Puis lisez ce qui reste.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paires 3, 4 et 8",
+            "textFr": "Oui, et vous avez lu les deux moitiés. C’est exactement le geste de la leçon."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p5",
+      "drawIndex": 1,
+      "id": "754118ee-4e22-57f9-8c01-554c8b7214e6",
+      "type": "recall",
+      "itemId": "48b73a9b-91e9-56bb-b3a1-e16d2c288600",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "thaang",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `àwwk`, `pòeet`, `hâam`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Les deux syllabes n’ont pas le même ton. La première est moyenne et ne prend rien, la seconde est basse et prend un accent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p5",
+      "drawIndex": 2,
+      "id": "adf5a85b-eced-5f6e-89f1-3ab620bd7ea7",
+      "type": "recall",
+      "itemId": "ae51103f-a1ed-53dd-bbc4-35dc76a8313e",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "àwwk",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `àwwk`, `pòeet`, `hâam`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Les deux syllabes n’ont pas le même ton. La première est moyenne et ne prend rien, la seconde est basse et prend un accent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p5",
+      "drawIndex": 3,
+      "id": "fcf23af0-4f5c-5489-a620-580bff9d76fc",
+      "type": "recall",
+      "itemId": "95decd4b-94d5-5f0f-9ce6-29fe7f2790b1",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "thaang·khâo",
+          "kind": "transcription"
+        },
+        {
+          "value": "thaangkhâo",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `àwwk`, `pòeet`, `hâam`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Les deux syllabes n’ont pas le même ton. La première est moyenne et ne prend rien, la seconde est basse et prend un accent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p5",
+      "drawIndex": 4,
+      "id": "3fe90464-6f3d-55d4-949c-458c3aee1b5b",
+      "type": "recall",
+      "itemId": "a46d4c34-1ecd-538b-b4a7-65d750bb7a82",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "thaang·àwwk",
+          "kind": "transcription"
+        },
+        {
+          "value": "thaangàwwk",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `àwwk`, `pòeet`, `hâam`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Les deux syllabes n’ont pas le même ton. La première est moyenne et ne prend rien, la seconde est basse et prend un accent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p5",
+      "drawIndex": 5,
+      "id": "b11c2a60-9126-5ec5-aefe-b7dfd4f75dfd",
+      "type": "recall",
+      "itemId": "fd432c2d-2103-5091-9323-112a44179a32",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "pòeet",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `àwwk`, `pòeet`, `hâam`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Les deux syllabes n’ont pas le même ton. La première est moyenne et ne prend rien, la seconde est basse et prend un accent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p5",
+      "drawIndex": 6,
+      "id": "5a96e091-7fa8-5794-8f57-27b6cc7a811c",
+      "type": "recall",
+      "itemId": "3fd652f9-8560-5724-80db-5ad33a169d62",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "pìt",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `àwwk`, `pòeet`, `hâam`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Les deux syllabes n’ont pas le même ton. La première est moyenne et ne prend rien, la seconde est basse et prend un accent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p5",
+      "drawIndex": 7,
+      "id": "0189bd32-c5ce-5ad9-904a-26fc6c124d7c",
+      "type": "recall",
+      "itemId": "1eaa8b77-0183-558d-906d-b1daf06c7d30",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "hâam",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `àwwk`, `pòeet`, `hâam`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Les deux syllabes n’ont pas le même ton. La première est moyenne et ne prend rien, la seconde est basse et prend un accent."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10b-p5",
+      "drawIndex": 8,
+      "id": "d76539f1-e2c3-53d4-aa2d-81d21c9223fa",
+      "type": "recall",
+      "itemId": "f839da8d-88e9-5ade-abf8-0e45dc781f62",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "hâam·khâo",
+          "kind": "transcription"
+        },
+        {
+          "value": "hâamkhâo",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `àwwk`, `pòeet`, `hâam`."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirage 4",
+            "textFr": "Les deux syllabes n’ont pas le même ton. La première est moyenne et ne prend rien, la seconde est basse et prend un accent."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "aujourd’hui, un mot tout seul",
+      "bodyFr": "Depuis neuf unités, vous lisez du thaï dans des phrases, avec une traduction juste dessous et un audio à portée de doigt. À partir d’aujourd’hui, on retire tout cela. Un mot, seul, sans contexte et sans son. C’est la situation la plus inconfortable de l’apprentissage, et c’est aussi la seule qui compte quand on lève les yeux vers quelque chose d’écrit.",
+      "specimen": "ปิด"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "un mot peut en contenir deux",
+      "bodyFr": "Voici le premier outil, et il vaut mieux que n’importe quelle règle. Devant une suite de lettres qui vous paraît longue, ne la lisez pas d’un bloc : cherchez dedans un mot que vous connaissez déjà. Le thaï construit énormément de mots en collant deux mots existants l’un contre l’autre, sans rien entre les deux.",
+      "specimen": "ห้อง + น้ำ → ห้องน้ำ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ทาง, la voie",
+      "bodyFr": "Premier bloc du jour, et il en ouvre deux autres. ทาง veut dire la voie, le chemin, le passage. Trois lettres, aucune surprise : ท que vous lisez depuis la leçon 5A, la voyelle า longue, et le ง qui ferme sur un `ng`, comme dans โรง appris en 9A.\n\nSon ton, vous pouvez le déduire tout seul. ท est une consonne BASSE, la syllabe est vivante puisqu’elle se ferme sur ง, et aucune marque n’est posée : le tableau de 8A donne alors le ton moyen. Vérifiez-le sur le tableau plutôt que de me croire.",
+      "specimen": "ทาง (thaang)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "ทางเข้า et ทางออก",
+      "bodyFr": "Maintenant collez à ทาง un mot que vous avez appris à la leçon 1B, เข้า, entrer. Vous obtenez ทางเข้า, la voie par laquelle on entre : l’entrée. Collez-lui ออก, sortir, et vous obtenez ทางออก, la sortie.\n\nLe sens se construit de gauche à droite, et le second bloc précise le premier. Une voie, puis quel genre de voie.\n\n> ทาง + เข้า → ทางเข้า > ทาง + ออก → ทางออก",
+      "specimen": "ทางเข้า (thaang·khâo) contre ทางออก (thaang·àwwk)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "où se lit le ton, et l’erreur à ne pas faire",
+      "bodyFr": "Un rappel qui vaut pour toute la suite du parcours, et qui se trompe très facilement. Le ton d’une syllabe se lit sur sa **consonne initiale**. Pas sur sa première lettre écrite. Les deux coïncident souvent, et c’est précisément ce qui rend l’erreur facile.\n\nRegardez เปิด. La première lettre écrite est เ, qui est une voyelle. La consonne initiale est ป, la deuxième lettre à l’écran. C’est ป qui décide, avec la marque posée sur la syllabe s’il y en a une. Le rappel de 4A tient tout entier là-dedans : เ, แ, โ, ใ et ไ s’écrivent avant la consonne qu’elles accompagnent.",
+      "specimen": "เปิด, consonne initiale ป"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "ce que vous lisez tout seul aujourd’hui",
+      "bodyFr": "Deux des huit mots du jour ont un ton que vous pouvez calculer entièrement, avec le tableau de 8A et rien d’autre. Faites-le, un par un, avant de regarder la réponse.\n\n> ทาง : ท basse, syllabe vivante, aucune marque → ton MOYEN > ห้าม : ห haute, syllabe vivante, ไม้โท → ton DESCENDANT\n\nLe second est celui que vous connaissez le mieux sans le savoir : ห้อง, la pièce, se lit exactement de la même façon, et c’est l’exemple que la leçon 7A donnait déjà pour ce croisement.\n\nTrois autres mots vous en laissent lire la MOITIÉ, et c’est déjà beaucoup : ทางเข้า et ทางออก commencent par ทาง, ห้ามเข้า commence par ห้าม. Sur ces trois-là, calculez la première syllabe et arrêtez-vous : la page suivante vous dit pourquoi la seconde ne se calcule pas.",
+      "specimen": "ห้อง (hâwng) puis ห้าม (hâam)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "ce que je vous donne, et pourquoi",
+      "bodyFr": "Le reste, non, et je préfère vous dire pourquoi plutôt que de vous laisser chercher. Deux raisons différentes, pas une.\n\nLa première : ออก, เปิด et ปิด se ferment sur une occlusive, `k` pour le premier, `t` pour les deux autres, et la seconde syllabe de ทางออก fait pareil. Le tableau de 8A ne couvre que les syllabes qui se terminent sur une voyelle ou sur ง, น, ม, ย, ว. Celles qui se ferment sur `k`, `t` ou `p` obéissent à une autre règle, et le parcours ne vous l’a pas encore donnée.\n\nLa seconde : la syllabe เข้า, celle qui termine ทางเข้า et ห้ามเข้า, s’écrit avec la forme เ◌า. C’est l’une des quatre formes que la leçon 4A avait mises de côté, avec ไ, ใ et ◌ำ, en vous demandant expressément de ne pas essayer de les trancher. Rien n’a changé depuis. Vous connaissez pourtant son ton, et depuis longtemps : เข้า est un mot de la leçon 1B, vous l’avez appris à l’oreille, il est descendant. Vous le SAVEZ ; vous ne le calculez pas.\n\nAlors ces tons vous sont donnés, comme l’ont été ceux de กระเป๋า en 8A et ceux de โรค et แพทย์ en 9A. Ce n’est pas une lacune de votre part, ce sont deux pièces qui manquent encore au parcours, et elles sont signalées là où elles manquent.",
+      "specimen": "ออก (àwwk) · เปิด (pòeet) · ปิด (pìt) · เข้า (khâo)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "un seul signe sépare ouvert de fermé",
+      "bodyFr": "Voici le cœur de la leçon, et vous ne l’oublierez plus après l’avoir vu une fois. เปิด est le verbe ouvrir, et il vaut aussi pour l’état : ouvert. ปิด est le verbe fermer, et il vaut aussi pour l’état : fermé. Deux sens opposés.\n\nRegardez-les côte à côte. Retirez le เ de เปิด et il ne reste rien d’autre que ปิด, à la lettre près. Un seul signe à l’écran sépare les deux mots, et ce signe est celui qui se pose AVANT la consonne initiale.\n\n> เปิด = เ + ป + ิ + ด > ปิด = ป + ิ + ด\n\nÀ l’oreille, en revanche, rien ne les confond : เปิด porte un `oee` long, celui de เธอ et de เจอ, et ปิด un `i` bref. Le contraste est donc facile à entendre et difficile à voir. C’est exactement l’inverse de ce à quoi on s’attend, et c’est pour cela que la leçon vous fait travailler les deux séparément.",
+      "specimen": "เปิด (pòeet) contre ปิด (pìt)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "ออก a deux อ, et ils ne font pas le même travail",
+      "bodyFr": "Trois lettres, et deux d’entre elles sont la même. Ce n’est pas une coquille. Le premier อ est la consonne initiale, celle qui ne s’entend presque pas, l’appui muet de la leçon 1A que vous lisez depuis อะไร et อยู่. Le second อ est la VOYELLE, le `aww` long de ขอ appris en 2C. Et le ก ferme la syllabe sur un `k`.\n\nLe dictionnaire dit lui-même les deux emplois à son entrée de lettre : อ sert de consonne initiale, et อ sert aussi à écrire la voyelle ออ.\n\n> ออก = อ (consonne) + อ (voyelle) + ก (finale)",
+      "specimen": "ออก (àwwk)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "ห้าม, l’interdiction",
+      "bodyFr": "ห้าม est un verbe, et il veut dire interdire, défendre. Quatre lettres, un ton que vous savez calculer, et une lecture sans piège : le ห est ici une vraie consonne initiale qui se prononce, pas le ห muet de หมา.",
+      "specimen": "ห้าม (hâam)"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "ห้ามเข้า, et le mot qui commande",
+      "bodyFr": "Collez เข้า derrière ห้าม et vous obtenez ห้ามเข้า. Le premier mot commande le second : ce qui est interdit, c’est d’entrer. C’est la même construction de gauche à droite qu’à la page 4, mais elle porte cette fois sur une action et non sur un lieu.\n\nLes deux syllabes portent le même ton, descendant toutes les deux, et vous y arrivez par deux chemins différents. La première, ห้าม, vous la calculez : ห haute, syllabe vivante, un ไม้โท posé. La seconde, เข้า, vous la savez depuis la leçon 1B, et la page 7 vous a dit pourquoi elle ne se calcule pas.",
+      "specimen": "ห้าม (hâam) puis ห้ามเข้า (hâam·khâo)"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "ce que vous savez déjà lire",
+      "bodyFr": "ห้องน้ำ, les toilettes, vous l’avez appris en 5C et vous le dites depuis. Vous ne l’aviez jamais regardé comme un composé. Regardez-le maintenant : ห้อง, la pièce, apprise en 7A, plus น้ำ, l’eau, apprise en 2C. Une pièce d’eau.\n\nC’est le meilleur entraînement possible, parce que vous connaissez la réponse avant de commencer : vous ne mesurez que le geste, pas le vocabulaire.",
+      "specimen": "ห้อง + น้ำ → ห้องน้ำ (hâwng·náam)"
+    },
+    {
+      "ordre": 13,
+      "titleFr": "moyen contre bas, on l’entretient",
+      "bodyFr": "Rien n’est acquis une fois pour toutes, et ce contraste-là est dans les mots du jour. Reprenez votre repère avant les exercices.\n\n> ปา (paa) contre ป่า (pàa) : la voix reste plate, puis elle descend et reste > basse\n\nLes mots du jour vous en donnent quatre de plus : ทาง est au ton moyen ; ออก, เปิด et ปิด sont au ton bas. Et ทางออก les enchaîne dans un seul mot, moyen d’abord, bas ensuite. Dites-le lentement, en écoutant la marche descendre.",
+      "specimen": "ปา / ป่า puis ทางออก (thaang·àwwk)"
+    },
+    {
+      "ordre": 14,
+      "titleFr": "à vous, et une chose que cette leçon ne vous dit pas",
+      "bodyFr": "Le geste tient en trois temps. Un, cherchez dans le mot un morceau que vous connaissez déjà. Deux, lisez ce qui reste. Trois, pour chaque syllabe, trouvez la consonne initiale avant de penser au ton.\n\nAprès les exercices, enregistrez-vous en disant เปิด puis ปิด, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.\n\nEt une précision honnête, parce qu’elle change ce que vous devez attendre de cette leçon. Nous vous avons donné le SENS de huit mots, vérifié deux fois chacun. Nous ne vous avons rien dit de l’endroit où ils sont écrits, ni de leur fréquence sur les panneaux, ni de la forme sous laquelle vous les rencontrerez : nous n’avons pas de source qui l’établisse, et nous préférons vous le dire que de l’inventer. Vous savez ce que ces mots veulent dire. Le reste s’apprendra en regardant.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u10-l10b-p3",
+      "promptFr": "Voici quatre blocs. Deux suffisent. Écartez les deux autres et mettez les bons dans l’ordre.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    },
+    {
+      "poolId": "u10-l10b-p4-m1",
+      "promptFr": "Chaque mot de gauche a un sens et un seul. Associez-les. Touchez un mot, puis un sens : aucun glisser-déposer n’est nécessaire.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u10-l10b-p4-m2",
+      "promptFr": "Chaque mot de gauche a un sens et un seul. Associez-les. Touchez un mot, puis un sens : aucun glisser-déposer n’est nécessaire.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u10-l10b-p5",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "mechanic": "recall",
+      "drawCount": 8,
+      "passRequired": 8,
+      "sampleSize": 8
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "d1576126-6f5e-5297-85ac-d7fab7a776a6",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "56e6b6ad-9c4f-5c7d-b38e-1c5e807c7924",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a1e5b79b-7155-59b2-b6d9-22cc31f0d5bf",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c0635972-5c8f-5830-a6a4-fceb3b2816cc",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b6ec7788-9679-5a22-8740-119b7118f1d5",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1a0a9434-dde5-5a33-ace1-a8aa9d0ac9b3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9c3c1055-6d87-5b53-b152-99347dc27d29",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "87d97bdd-d238-5cc3-9e05-73d74c6a83b7",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

@@ -1,0 +1,733 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "71756245-ff96-54bf-beca-43af4b6cdd0d",
+  "versionId": "a3560abd-1f18-54d3-81e1-610605d45e50",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Lire un menu",
+  "objectiveFr": "à la fin de la leçon, devant une ligne écrite en thaï bâtie sur le modèle de la carte du jour et sans l’entendre, l’apprenant dit à la fois de quel plat il s’agit et combien il coûte, sur 10 lignes sur 12 ; il apparie six lignes écrites à leur contenu français, 6 sur 6, alors que trois plats et deux prix seulement y circulent, de sorte qu’aucun des deux blocs ne suffit ; il reconstruit une de ces ",
+  "requiredEntitlement": null,
+  "audioManifestId": "f506ea2a-395f-5a64-8005-2db6698c3a3c",
+  "items": [
+    {
+      "id": "16db7a7c-b02a-5ec7-96f4-25e3e9e4d0bf",
+      "thaiRaw": "หมู",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E21",
+        "U+0E39"
+      ],
+      "translationFr": "le cochon ; et, dans un nom de plat, le porc",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mǒuu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หมู",
+          "ipa": "muː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "180bce57-2455-5ffd-a76a-501b0705896a",
+      "thaiRaw": "ราคา",
+      "unicodeCodePoints": [
+        "U+0E23",
+        "U+0E32",
+        "U+0E04",
+        "U+0E32"
+      ],
+      "translationFr": "le prix",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "raa·khaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ราคา",
+          "ipa": "raː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ราคา",
+          "ipa": "kʰaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "84916a98-edae-58a2-99ca-c4e2524bf527",
+      "thaiRaw": "อาหาร",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E32",
+        "U+0E2B",
+        "U+0E32",
+        "U+0E23"
+      ],
+      "translationFr": "la nourriture ; ce qui se mange, pris comme catégorie",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "aa·hǎan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อาหาร",
+          "ipa": "ʔaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "ʔ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "อาหาร",
+          "ipa": "haːn˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "b72b0e34-b430-5687-82b9-0e641e7c8be2",
+      "thaiRaw": "ข้าวผัด",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14"
+      ],
+      "translationFr": "riz sauté",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâao·phàt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข้าวผัด",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ข้าวผัด",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "eeb66868-c0d3-5081-be52-481c8ca06597",
+      "thaiRaw": "ข้าวผัดหมู",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14",
+        "U+0E2B",
+        "U+0E21",
+        "U+0E39"
+      ],
+      "translationFr": "riz sauté au porc",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâao·phàt·mǒuu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข้าวผัดหมู",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ข้าวผัดหมู",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ข้าวผัดหมู",
+          "ipa": "muː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "422e7256-d670-586e-9c25-db137b85dc08",
+      "thaiRaw": "ข้าวผัดไก่",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14",
+        "U+0E44",
+        "U+0E01",
+        "U+0E48"
+      ],
+      "translationFr": "riz sauté au poulet",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâao·phàt·kài"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข้าวผัดไก่",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ข้าวผัดไก่",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ข้าวผัดไก่",
+          "ipa": "kaj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "5615d247-f9c4-50ed-9d7f-049bc9a0a7a9",
+      "thaiRaw": "บาท",
+      "unicodeCodePoints": [
+        "U+0E1A",
+        "U+0E32",
+        "U+0E17"
+      ],
+      "translationFr": "baht (la monnaie de la Thaïlande)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "bàat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "บาท",
+          "ipa": "baːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "adeccfe4-1a10-5c03-ba9a-2b6644d64f90",
+      "thaiRaw": "ห้าสิบบาท",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E32",
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E17"
+      ],
+      "translationFr": "cinquante bahts",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâa·sìp bàat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้าสิบบาท",
+          "ipa": "haː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ห้าสิบบาท",
+          "ipa": "sip̚˨˩ baːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u10-l10c-p5",
+      "drawIndex": 1,
+      "id": "c6091522-2f1b-5302-852b-4cff02ee7887",
+      "type": "recall",
+      "itemId": "16db7a7c-b02a-5ec7-96f4-25e3e9e4d0bf",
+      "skill": "recall",
+      "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "mǒuu",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u10-l10c-p5",
+      "drawIndex": 2,
+      "id": "8225b656-dc4e-5109-ab28-00d3dd96ffc0",
+      "type": "recall",
+      "itemId": "180bce57-2455-5ffd-a76a-501b0705896a",
+      "skill": "recall",
+      "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "raa·khaa",
+          "kind": "transcription"
+        },
+        {
+          "value": "raakhaa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u10-l10c-p5",
+      "drawIndex": 3,
+      "id": "10907a8f-3e97-5374-9d3a-55b2bf414033",
+      "type": "recall",
+      "itemId": "84916a98-edae-58a2-99ca-c4e2524bf527",
+      "skill": "recall",
+      "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "aa·hǎan",
+          "kind": "transcription"
+        },
+        {
+          "value": "aahǎan",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u10-l10c-p5",
+      "drawIndex": 4,
+      "id": "8f78d7ce-7792-5e41-9bbc-e0413176e2e4",
+      "type": "recall",
+      "itemId": "b72b0e34-b430-5687-82b9-0e641e7c8be2",
+      "skill": "recall",
+      "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "khâao·phàt",
+          "kind": "transcription"
+        },
+        {
+          "value": "khâaophàt",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u10-l10c-p5",
+      "drawIndex": 5,
+      "id": "74f9425a-f1a0-5ef9-9642-e11107e7444c",
+      "type": "recall",
+      "itemId": "eeb66868-c0d3-5081-be52-481c8ca06597",
+      "skill": "recall",
+      "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "khâao·phàt·mǒuu",
+          "kind": "transcription"
+        },
+        {
+          "value": "khâaophàtmǒuu",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u10-l10c-p5",
+      "drawIndex": 6,
+      "id": "1680e75a-96df-5f12-99eb-c83d0dda518c",
+      "type": "recall",
+      "itemId": "422e7256-d670-586e-9c25-db137b85dc08",
+      "skill": "recall",
+      "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "khâao·phàt·kài",
+          "kind": "transcription"
+        },
+        {
+          "value": "khâaophàtkài",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u10-l10c-p5",
+      "drawIndex": 7,
+      "id": "f23cdc1c-3270-5c3b-bbef-33f2a7187576",
+      "type": "recall",
+      "itemId": "5615d247-f9c4-50ed-9d7f-049bc9a0a7a9",
+      "skill": "recall",
+      "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "bàat",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u10-l10c-p5",
+      "drawIndex": 8,
+      "id": "11751196-d891-5e27-bbb9-9bf8020f54e9",
+      "type": "recall",
+      "itemId": "adeccfe4-1a10-5c03-ba9a-2b6644d64f90",
+      "skill": "recall",
+      "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "hâa·sìp bàat",
+          "kind": "transcription"
+        },
+        {
+          "value": "hâasìp bàat",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous savez déjà lire la moitié d’une carte",
+      "bodyFr": "Depuis l’unité 4 vous lisez ข้าวผัด, depuis l’unité 3 vous lisez บาท et les chiffres ๐ à ๙, depuis 9A vous savez qu’un ร à la fin d’un mot sort en `n`. Mettez ces trois choses ensemble et vous tenez presque une ligne de carte entière. Il manque deux mots et une manière de regarder. C’est tout le programme du jour.",
+      "specimen": "ข้าวผัด (khâao·phàt) · ๕๐ บาท (hâa·sìp bàat)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "une ligne, deux blocs",
+      "bodyFr": "Les lignes que vous allez lire aujourd’hui répondent à deux questions, dans cet ordre : quoi, puis combien. Ne les lisez pas comme des phrases, lisez-les comme deux paquets posés côte à côte. Le premier paquet nomme. Le second chiffre, et il se ferme sur บาท.\n\n> ข้าวผัด · ๕๐ บาท > ce que c’est · ce que ça coûte",
+      "specimen": "ข้าวผัด ๕๐ บาท"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "le bloc de droite, un nombre puis บาท",
+      "bodyFr": "Vous l’avez déjà rencontré en 3C et en 7E : le nombre vient d’abord, le nom de la monnaie ensuite, et บาท s’écrit de la même façon dans les trois. ๕๐ บาท se dit ห้าสิบบาท, ๔๐ บาท se dit สี่สิบบาท, ๑๕ บาท se dit สิบห้าบาท. Attention à l’ordre des chiffres, le piège de 3C : สิบห้า vaut quinze, ห้าสิบ vaut cinquante.",
+      "specimen": "๑๕ บาท (sìp·hâa bàat) contre ๕๐ บาท (hâa·sìp bàat)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "le bloc de gauche est lui aussi un bloc",
+      "bodyFr": "Regardez ces deux lignes. Elles commencent pareil et ne finissent pas pareil.\n\n> ข้าวผัดหมู > ข้าวผัดไก่\n\nLe début, ข้าวผัด, vous le connaissez : c’est le riz sauté de 4C. Ce qui suit dit ce qu’il y a dedans. Le geste de lecture est donc économique : reconnaissez le début d’un coup d’œil, puis lisez ce qui vient après, parce que c’est là qu’est toute la différence entre deux lignes voisines. Notez au passage que จาน, le mot de comptage appris en 4C, ne figure nulle part sur notre carte. Vous le connaissez d’ailleurs dans une phrase où l’on COMMANDE, ขอข้าวผัดสองจานหน่อยครับ, et pas dans une ligne qui affiche.",
+      "specimen": "ข้าวผัดหมู (khâao·phàt·mǒuu) contre ข้าวผัดไก่ (khâao·phàt·kài)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "หมู",
+      "bodyFr": "Trois lettres, ห puis ม puis la voyelle ◌ู. Le ห ne se prononce pas, et vous savez pourquoi depuis la page 5 de 5A : il se tait quand ง, น, ม, ย, ว ou ร est collée juste derrière lui sans aucun signe posé sur le ห. C’est le même ห que dans หมา de 1D et หมอ de 9A. La voyelle est le `ou` long, tenu. Le ton MONTANT vous est donné : ce que ce ห muet fabrique au ton n’a été enseigné nulle part dans le parcours.",
+      "specimen": "หมู (mǒuu) · หมา (mǎa) · หมอ (mǎww)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "le même ห, deux comportements, et vous avez déjà le repère",
+      "bodyFr": "Voici le deuxième mot du jour. Il veut dire la nourriture, ce qui se mange pris comme catégorie.\n\n> อาหาร\n\nIl porte un ห lui aussi, et celui-là se PRONONCE. Vérifiez avec le repère de 5A plutôt que de me croire : derrière le ห de อาหาร il y a une voyelle, า, et non l’une des six lettres ง, น, ม, ย, ว, ร. Derrière le ห de หมู il y a un ม, qui est de la liste. Un seul coup d’œil à la lettre suivante suffit à trancher.\n\nCe coup d’œil vous donne une réponse sûre dans deux cas, et il faut savoir lesquels. Si une VOYELLE est collée derrière le ห, il se prononce. Si l’une des six lettres de la liste de 5A est collée derrière lui et qu’aucun signe n’est posé sur le ห, il se tait. Dans tout autre cas, ne concluez rien pour l’instant : 5A vous avait prévenu que la liste complète viendrait plus tard, et elle n’est pas encore arrivée.",
+      "specimen": "อาหาร (aa·hǎan) contre หมู (mǒuu)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "et sa dernière lettre est un ร qui sort en n",
+      "bodyFr": "C’est 9A appliqué, sur un mot que vous venez de rencontrer. อาหาร finit à l’écrit par ร, et ce qui sort à la fin est un `n`, exactement comme dans อาการ que vous avez lu en 9A. Lisez le mot lettre à lettre, écoutez-le, comparez.",
+      "specimen": "อาหาร (aa·hǎan) · อาการ (aa·kaan)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ราคา, le prix, et deux tons que vous calculez",
+      "bodyFr": "Quatre lettres, deux syllabes, et un cadeau : c’est le seul mot neuf du jour dont vous pouvez calculer les DEUX tons sans qu’on vous les donne. ร est basse, ค est basse, les deux syllabes se terminent sur une voyelle longue, aucune marque n’est posée. La règle de 6A donne donc le ton moyen deux fois. Faites le calcul, puis écoutez : ça vaut mieux que de me croire.",
+      "specimen": "ราคา (raa·khaa)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "la carte, et elle est construite",
+      "bodyFr": "Voici la carte du jour. Elle a été **fabriquée pour cette leçon** : ce n’est la copie d’aucune carte existante, elle ne porte le nom d’aucun restaurant, et ses prix ne sont pas des prix relevés quelque part. Ce sont trois nombres que vous avez déjà appris, posés là pour que vous les lisiez.\n\nUne précision qui compte, et nous préférons vous la donner : les deux mots posés en tête de colonnes, อาหาร et ราคา, sont notre mise en page à nous. Les deux mots existent et sont vérifiés, mais **rien dans nos sources ne dit qu’une carte thaïe les emploie ainsi**. Ils sont là pour vous dire ce que chaque colonne contient, pas pour vous montrer à quoi ressemble une carte en Thaïlande.\n\n> อาหาร ／ ราคา > ข้าวผัดหมู ／ ๕๐ บาท > ข้าวผัดไก่ ／ ๕๐ บาท > ข้าวผัดไข่ ／ ๔๐ บาท > น้ำเปล่า ／ ๑๕ บาท\n\nDeux colonnes, cinq lignes, et vous savez déjà lire chacune d’elles. Prenez le temps de les parcourir dans les deux sens : de gauche à droite pour savoir ce que coûte un plat, de droite à gauche pour savoir ce que vous pouvez prendre avec ce que vous avez.",
+      "specimen": "la carte complète"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "ce que vous calculez, et ce qu’on vous donne",
+      "bodyFr": "Soyons précis, parce que c’est utile et parce que c’est honnête. Sur cette carte, **douze syllabes DIFFÉRENTES** sont écrites en lettres thaïes. Trois d’entre elles reviennent plusieurs fois, ce qui fait dix-neuf syllabes à lire en tout. **Cinq de ces douze ont un ton que vous pouvez calculer aujourd’hui** avec le tableau de 7A et 8A : อา et หาน de อาหาร, รา et คา de ราคา, et ข้าว. **Les sept autres vous sont données**, et pour cinq motifs distincts que vous connaissez déjà :\n\n> ผัด et บาท : la syllabe se ferme sur une occlusive, cas que le tableau ne > couvre pas encore > หมู : consonne de tête, mécanisme jamais enseigné > ไก่ et ไข่ : forme en ไ, hors du tableau depuis 4A > น้ำ : forme en ◌ำ, hors du tableau depuis 4A > เปล่า : forme en เ◌า, hors du tableau depuis 4A\n\nCe n’est pas un trou dans ce que vous savez, c’est la carte de ce qui reste à apprendre. Lire une carte ne demande pas de calculer les tons : ça demande de reconnaître des blocs.",
+      "specimen": "ราคา (calculé) contre บาท (donné)"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "à vous",
+      "bodyFr": "Sur nos lignes, le geste tient en trois temps. Un, coupez la ligne en deux à l’endroit où les chiffres commencent. Deux, à gauche, reconnaissez le début du nom puis lisez ce qui vient après. Trois, à droite, lisez le nombre, puis lisez ce qui le suit.\n\nAprès les exercices, enregistrez-vous en disant หมู puis อาหาร, et comparez en A/B avec la voix de référence : ce sont deux ห qui ne font pas la même chose. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u10-l10c-p5",
+      "promptFr": "Lisez, puis écrivez en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "mechanic": "recall",
+      "drawCount": 8,
+      "passRequired": 8,
+      "sampleSize": 8
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "c005e3bb-84c8-5733-ac4c-271d43210961",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3c777bee-fb5f-5814-817c-01b3b6c67402",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3ede0583-f021-5e95-9705-5d08860deb99",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "fe092854-0807-556e-8620-bf73afe37e6c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6124ea3e-28a7-56ee-81e4-5664c4397ed5",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0f10c07d-acd5-5dfe-be32-445ccbf5bf14",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6e4abf05-b4d3-53fc-a5ff-479a51a999f7",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ee989e5b-43c4-5514-b639-fa2560bb4c61",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

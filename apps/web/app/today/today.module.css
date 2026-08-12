@@ -12,6 +12,10 @@
   padding: 30px 30px 34px;
   box-shadow: var(--shadow-card);
   overflow: hidden;
+  border-top: 5px solid var(--color-saffron);
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 96%), rgb(255 255 255 / 84%)),
+    var(--color-paper);
 }
 
 .panelCurve {
@@ -33,6 +37,8 @@
   border-radius: var(--radius-pill);
   padding: 6px 13px;
   margin-bottom: 18px;
+  border: 1px solid rgb(67 162 131 / 20%);
+  background: var(--color-jade-pale);
 }
 
 .statusDot {
@@ -139,12 +145,14 @@
   transition:
     border-color var(--motion-base) var(--ease-standard),
     background-color var(--motion-base) var(--ease-standard),
-    transform var(--motion-fast) var(--ease-standard);
+    transform var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-base) var(--ease-standard);
 }
 
 .choices label:hover {
   border-color: var(--color-ink-soft);
-  transform: translateX(2px);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lifted);
 }
 
 .choices label:hover input {
@@ -155,6 +163,7 @@
   border-color: var(--color-jade-ink);
   background: var(--color-jade-pale);
   font-weight: var(--weight-bold);
+  box-shadow: 0 3px 0 rgb(67 162 131 / 18%);
 }
 
 .choices label:has(input:focus-visible) {
@@ -197,6 +206,7 @@
 
   .choices label:hover {
     transform: none;
+    box-shadow: none;
   }
 }
 

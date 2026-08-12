@@ -20,6 +20,10 @@ import {
   LocalExperienceStorageError,
   WebLocalExperienceStore,
 } from "@/lib/client/local-experience-store";
+import {
+  LocalStorageDeadlineError,
+  withLocalStorageDeadline,
+} from "@/lib/client/local-storage-deadline";
 import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
 import { ToneCurve } from "@/components/brand/tone-curve";
 import { buttonClass } from "@/components/ui/button";
@@ -124,12 +128,15 @@ export function TodayExperience({
       setMessage("");
     });
 
-    void instance
-      .update((current) => {
+    void withLocalStorageDeadline(
+      instance.update((current) => {
         if (current.onboarding.status !== "not_started") return current;
         didStartOnboarding = true;
         return beginLocalOnboarding(current, new Date().toISOString());
-      })
+      }),
+      undefined,
+      () => instance.close(),
+    )
       .then((current) => {
         if (!active) return;
         setSnapshot(current);
@@ -158,8 +165,13 @@ export function TodayExperience({
           });
         }
       })
-      .catch(() => {
+      .catch((error: unknown) => {
         if (!active) return;
+        setMessage(
+          error instanceof LocalStorageDeadlineError
+            ? "Le stockage local ne répond pas. Fermez les autres onglets Thaïnaute, puis réessayez."
+            : "Le stockage local est temporairement indisponible.",
+        );
         setStorageStatus("error");
       });
 
@@ -235,6 +247,11 @@ export function TodayExperience({
           Thaïnaute n’écrase pas un parcours illisible. Réessayez après avoir
           vérifié que le stockage du navigateur est autorisé.
         </p>
+        {message !== "" && (
+          <p className={styles.inlineError} role="alert">
+            {message}
+          </p>
+        )}
         <div className={styles.actionRow}>
           <button
             className={buttonClass("primary")}

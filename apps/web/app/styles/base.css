@@ -12,11 +12,23 @@ html {
 
 body {
   margin: 0;
-  background: var(--color-jasmine);
+  background:
+    radial-gradient(
+      circle at 96% 2%,
+      var(--color-saffron-halo) 0,
+      transparent 22rem
+    ),
+    radial-gradient(circle at 2% 86%, rgb(91 142 232 / 7%), transparent 24rem),
+    var(--color-jasmine);
   color: var(--color-ink);
   font-family: var(--font-sans);
   font-weight: var(--weight-body);
   -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-coral-pale);
+  color: var(--color-ink);
 }
 
 a {

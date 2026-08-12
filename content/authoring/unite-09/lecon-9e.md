@@ -1560,6 +1560,16 @@ montré tous les deux qu’un motif faux survit longtemps.
   assemblages plutôt que du vocabulaire nouveau, ce qui est le propre d’un bilan,
   et la carte `srs-u09-l9e-03` le dit.
 
+### Exercice de consolidation textuelle : dire son état (`association`)
+
+- Mécanique : `association`
+- Consigne : « Reliez chaque expression à son sens. »
+- Tirages :
+  1. ไม่สบาย ↔ « ne pas se sentir bien »
+  2. ไปหาหมอ ↔ « aller voir le médecin »
+- Feedback correct : « Exact. »
+- Feedback incorrect : « Relisez l’expression et son sens, puis réessayez. »
+
 ## Dialogue
 
 Scène : dans une pharmacie de quartier, en milieu de matinée. Un homme entre. La

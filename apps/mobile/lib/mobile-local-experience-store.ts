@@ -1,15 +1,21 @@
 import {
+  abandonLocalExpeditionForVersionChange,
   abandonLocalLessonForVersionChange,
+  discardLocalLessonQuestion,
   beginLocalOnboarding,
   completeLocalOnboarding,
   confirmLocalLessonResult,
   createLocalExperienceSnapshot,
+  clearCompletedLocalExpedition,
   deserializeLocalExperienceSnapshot,
   finishLocalLesson,
   openLocalLessonQuestion,
   prepareLocalLessonSubmission,
+  recordLocalExpeditionResult,
+  saveLocalLessonDraft,
   selectLocalLessonOption,
   serializeLocalExperienceSnapshot,
+  startLocalExpedition,
   startLocalLesson,
   updateLocalOnboarding,
   ANONYMOUS_ATTEMPT_OUTBOX_OWNER,
@@ -26,60 +32,22 @@ import {
 } from "@thainaute/sync";
 import type { SQLiteDatabase } from "expo-sqlite";
 
+import {
+  runMobileSQLiteTransaction,
+  serializeMobileSQLiteOperation,
+} from "./mobile-sqlite-operation-queue";
+
 const EXPERIENCE_KEY = "local-experience-v1";
-const SQLITE_BUSY_RETRY_COUNT = 3;
 
 interface ExperienceRow {
   readonly snapshot: string;
 }
-
-const databaseQueues = new WeakMap<object, Promise<void>>();
 
 export class MobileLocalExperienceStorageError extends Error {
   public constructor(message: string, options?: ErrorOptions) {
     super(message, options);
     this.name = "MobileLocalExperienceStorageError";
   }
-}
-
-function isSqliteBusy(error: unknown): boolean {
-  return (
-    error instanceof Error &&
-    /SQLITE_BUSY|database is locked/iu.test(error.message)
-  );
-}
-
-async function retrySqliteBusy<T>(operation: () => Promise<T>): Promise<T> {
-  for (let retry = 0; ; retry += 1) {
-    try {
-      return await operation();
-    } catch (error) {
-      if (!isSqliteBusy(error) || retry >= SQLITE_BUSY_RETRY_COUNT) throw error;
-      await new Promise<void>((resolve) =>
-        setTimeout(() => resolve(), 10 * (retry + 1)),
-      );
-    }
-  }
-}
-
-function serializeDatabaseOperation<T>(
-  database: SQLiteDatabase,
-  operation: () => Promise<T>,
-): Promise<T> {
-  const previous = databaseQueues.get(database) ?? Promise.resolve();
-  const result = previous.then(
-    () => retrySqliteBusy(operation),
-    () => retrySqliteBusy(operation),
-  );
-  const tail = result.then(
-    () => undefined,
-    () => undefined,
-  );
-  databaseQueues.set(database, tail);
-  void tail.finally(() => {
-    if (databaseQueues.get(database) === tail) databaseQueues.delete(database);
-  });
-  return result;
 }
 
 async function readSnapshot(
@@ -134,7 +102,7 @@ export class MobileLocalExperienceStore {
 
   public async read(): Promise<LocalExperienceSnapshot> {
     try {
-      return await serializeDatabaseOperation(this.#database, () =>
+      return await serializeMobileSQLiteOperation(this.#database, () =>
         readSnapshot(this.#database, this.#experienceKey, this.#owner),
       );
     } catch (error) {
@@ -179,6 +147,16 @@ export class MobileLocalExperienceStore {
     );
   }
 
+  public startExpedition(input: {
+    readonly lessonVersionId: string;
+    readonly exerciseIds: readonly string[];
+    readonly startedAt: string;
+  }): Promise<LocalExperienceSnapshot> {
+    return this.#replace(input.startedAt, (snapshot) =>
+      startLocalExpedition(snapshot, input),
+    );
+  }
+
   public replaceLessonVersion(
     expectedCheckpoint: LocalLessonCheckpoint,
     replacement: LocalLessonReplacementTarget & { readonly startedAt: string },
@@ -188,15 +166,45 @@ export class MobileLocalExperienceStore {
       lessonVersionId: replacement.lessonVersionId,
       exerciseId: replacement.exerciseId,
     };
-    return this.#replace(replacement.startedAt, (snapshot) =>
-      startLocalLesson(
-        abandonLocalLessonForVersionChange(
-          snapshot,
-          expectedCheckpoint,
-          replacementTarget,
-          outbox,
-        ),
-        replacement,
+    return this.#replace(replacement.startedAt, (snapshot) => {
+      let next = abandonLocalLessonForVersionChange(
+        snapshot,
+        expectedCheckpoint,
+        replacementTarget,
+        outbox,
+      );
+      if (next.expedition !== null) {
+        next = abandonLocalExpeditionForVersionChange(
+          next,
+          next.expedition,
+          replacement.lessonVersionId,
+        );
+      }
+      return startLocalLesson(next, replacement);
+    });
+  }
+
+  public discardLessonQuestion(): Promise<LocalExperienceSnapshot> {
+    return this.#replace(new Date().toISOString(), (snapshot) =>
+      discardLocalLessonQuestion(snapshot),
+    );
+  }
+
+  public abandonLessonForVersionChange(
+    expectedCheckpoint: LocalLessonCheckpoint,
+    replacementLessonVersionId: string,
+    replacementExerciseId: string,
+    outbox: AttemptOutboxSnapshot,
+  ): Promise<LocalExperienceSnapshot> {
+    return this.#replace(new Date().toISOString(), (snapshot) =>
+      abandonLocalLessonForVersionChange(
+        snapshot,
+        expectedCheckpoint,
+        {
+          lessonVersionId: replacementLessonVersionId,
+          exerciseId: replacementExerciseId,
+        },
+        outbox,
       ),
     );
   }
@@ -205,6 +213,65 @@ export class MobileLocalExperienceStore {
     return this.#replace(now, (snapshot) =>
       openLocalLessonQuestion(snapshot, now),
     );
+  }
+
+  public saveLessonDraft(
+    draft: Parameters<typeof saveLocalLessonDraft>[1],
+    now: string,
+  ): Promise<LocalExperienceSnapshot> {
+    return this.#replace(now, (snapshot) =>
+      saveLocalLessonDraft(snapshot, draft, now),
+    );
+  }
+
+  /**
+   * Ouvre le checkpoint de l'exercice courant et conserve son choix dans une
+   * seule transaction. Cela évite une chaîne de verrous SQLite lors du
+   * premier choix d'une expédition sur Android.
+   */
+  public selectExpeditionOption(input: {
+    readonly lessonVersionId: string;
+    readonly exerciseId: string;
+    readonly startedAt: string;
+    readonly selectedOptionId: string;
+    readonly now: string;
+  }): Promise<LocalExperienceSnapshot> {
+    return this.#replace(input.now, (snapshot) => {
+      let next = snapshot;
+      if (next.lesson === null) {
+        next = startLocalLesson(next, {
+          lessonVersionId: input.lessonVersionId,
+          exerciseId: input.exerciseId,
+          startedAt: input.startedAt,
+        });
+      } else if (next.lesson.phase !== "question") {
+        if (next.lesson.phase !== "intro") {
+          throw new Error(
+            "Une autre question locale doit d'abord être terminée.",
+          );
+        }
+        if (
+          next.lesson.lessonVersionId !== input.lessonVersionId ||
+          next.lesson.exerciseId !== input.exerciseId
+        ) {
+          throw new Error(
+            "Une autre question locale doit d'abord être terminée.",
+          );
+        }
+      } else if (
+        next.lesson.lessonVersionId !== input.lessonVersionId ||
+        next.lesson.exerciseId !== input.exerciseId
+      ) {
+        throw new Error(
+          "Une autre question locale doit d'abord être terminée.",
+        );
+      }
+
+      if (next.lesson?.phase === "intro") {
+        next = openLocalLessonQuestion(next, input.now);
+      }
+      return selectLocalLessonOption(next, input.selectedOptionId, input.now);
+    });
   }
 
   public selectLessonOption(
@@ -243,14 +310,33 @@ export class MobileLocalExperienceStore {
     );
   }
 
+  public recordExpeditionResult(result: {
+    readonly exerciseId: string;
+    readonly rating: 0 | 1;
+    readonly answeredAt: string;
+  }): Promise<LocalExperienceSnapshot> {
+    return this.#replace(result.answeredAt, (snapshot) =>
+      recordLocalExpeditionResult(snapshot, result),
+    );
+  }
+
+  public clearCompletedExpedition(
+    now: string,
+  ): Promise<LocalExperienceSnapshot> {
+    return this.#replace(now, (snapshot) =>
+      clearCompletedLocalExpedition(snapshot),
+    );
+  }
+
   async #replace(
     updatedAt: string,
     update: (snapshot: LocalExperienceSnapshot) => LocalExperienceSnapshot,
   ): Promise<LocalExperienceSnapshot> {
     try {
-      return await serializeDatabaseOperation(this.#database, async () => {
+      return await serializeMobileSQLiteOperation(this.#database, async () => {
         let returned: LocalExperienceSnapshot | undefined;
-        await this.#database.withExclusiveTransactionAsync(
+        await runMobileSQLiteTransaction(
+          this.#database,
           async (transaction) => {
             const current = await readSnapshot(
               transaction,

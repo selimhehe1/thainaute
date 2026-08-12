@@ -24,6 +24,7 @@ import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
 import { useWebAuthSession } from "@/lib/client/auth-session";
 
 import { AccountDeletionSection } from "./account-deletion-section";
+import { AccountBillingSection } from "./account-billing-section";
 import { AccountExportSection } from "./account-export-section";
 
 type LocalState = Awaited<ReturnType<typeof readWebAccountLocalState>>;
@@ -356,6 +357,7 @@ function SignedInAccountActions({
 
 interface SignedInAccountPanelProps {
   readonly analytics: AnalyticsSink;
+  readonly accessToken: string | null;
   readonly busy: boolean;
   readonly currentLocalState: LocalState | null;
   readonly deletionConfirmationUserId: string | null;
@@ -373,6 +375,7 @@ interface SignedInAccountPanelProps {
 }
 
 function SignedInAccountPanel({
+  accessToken,
   analytics,
   busy,
   currentLocalState,
@@ -422,6 +425,10 @@ function SignedInAccountPanel({
           sessionBoundaryRevision={sessionBoundaryRevision}
         />
       )}
+      <AccountBillingSection
+        accessToken={accessToken}
+        sessionBoundaryRevision={sessionBoundaryRevision}
+      />
       <SignedInAccountActions
         busy={busy}
         canLogout={currentLocalState !== null}
@@ -729,6 +736,7 @@ export function AccountExperience() {
   return (
     <>
       <SignedInAccountPanel
+        accessToken={auth.session?.access_token ?? null}
         analytics={analytics}
         busy={busy}
         currentLocalState={currentLocalState}

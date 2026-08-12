@@ -20,6 +20,7 @@ const testState = vi.hoisted(() => ({
   focusEffect: null as (() => void | (() => void)) | null,
   migrate: vi.fn(),
   migrateFixture: vi.fn(),
+  outboxRead: vi.fn(),
   push: vi.fn(),
   read: vi.fn(),
   replace: vi.fn(),
@@ -68,6 +69,7 @@ vi.mock("../lib/attempt-outbox-store", () => ({
   MobileAttemptOutboxStore: class {
     migrateLegacyFixtureAttemptsToDemo = testState.migrateFixture;
     migrateLegacyJournal = testState.migrate;
+    read = testState.outboxRead;
     enqueue = testState.enqueue;
   },
 }));
@@ -157,6 +159,10 @@ vi.mock("react-native", async () => {
 import TodayScreen from "../app/index";
 
 const startedAt = "2026-08-02T08:00:00.000Z";
+const lessonVersionId = "10000000-0000-4000-8000-000000000002";
+const exerciseId = "10000000-0000-4000-8000-000000000004";
+const firstOptionId = "20000000-0000-4000-8000-000000000001";
+const secondOptionId = "20000000-0000-4000-8000-000000000002";
 
 function attributeValue(element: unknown, name: string): string | null {
   return (
@@ -189,11 +195,12 @@ beforeEach(() => {
   testState.read.mockResolvedValue(experience());
   testState.migrateFixture.mockResolvedValue(createAttemptOutboxSnapshot());
   testState.migrate.mockResolvedValue(createAttemptOutboxSnapshot());
+  testState.outboxRead.mockResolvedValue(createAttemptOutboxSnapshot());
   testState.startLesson.mockResolvedValue(
     experience({
       phase: "intro",
-      lessonVersionId: "10000000-0000-4000-8000-000000000002",
-      exerciseId: "10000000-0000-4000-8000-000000000004",
+      lessonVersionId,
+      exerciseId,
       sessionStartedAt: startedAt,
       updatedAt: startedAt,
     }),
@@ -204,8 +211,8 @@ beforeEach(() => {
   testState.replaceVersion.mockResolvedValue(
     experience({
       phase: "intro",
-      lessonVersionId: "10000000-0000-4000-8000-000000000002",
-      exerciseId: "10000000-0000-4000-8000-000000000004",
+      lessonVersionId,
+      exerciseId,
       sessionStartedAt: startedAt,
       updatedAt: startedAt,
     }),
@@ -235,7 +242,7 @@ describe("écran Aujourd’hui mobile", () => {
     expect(testState.push).toHaveBeenCalledWith("/path");
   });
 
-  it("annonce honnêtement la fixture locale et persiste avant navigation", async () => {
+  it("annonce honnêtement la fixture technique et persiste avant navigation", async () => {
     render(<TodayScreen />);
 
     expect(
@@ -246,11 +253,12 @@ describe("écran Aujourd’hui mobile", () => {
     expect(screen.getByText("Disponible hors connexion")).toBeTruthy();
     expect(screen.getByText(/Objectif choisi : 5 minutes/iu)).toBeTruthy();
     expect(testState.migrateFixture.mock.invocationCallOrder[0]).toBeLessThan(
-      testState.migrate.mock.invocationCallOrder[0] ?? Number.MAX_SAFE_INTEGER,
+      testState.outboxRead.mock.invocationCallOrder[0] ??
+        Number.MAX_SAFE_INTEGER,
     );
 
     fireEvent.click(
-      screen.getByRole("button", { name: "Commencer la démo locale" }),
+      screen.getByRole("button", { name: "Commencer l’extrait local" }),
     );
     await waitFor(() => expect(testState.startLesson).toHaveBeenCalledOnce());
     expect(testState.push).toHaveBeenCalledWith("/lesson");
@@ -263,9 +271,9 @@ describe("écran Aujourd’hui mobile", () => {
     testState.read.mockResolvedValue(
       experience({
         phase: "question",
-        lessonVersionId: "10000000-0000-4000-8000-000000000002",
-        exerciseId: "10000000-0000-4000-8000-000000000004",
-        selectedOptionId: "20000000-0000-4000-8000-000000000002",
+        lessonVersionId,
+        exerciseId,
+        selectedOptionId: secondOptionId,
         sessionStartedAt: startedAt,
         updatedAt: startedAt,
       }),
@@ -299,11 +307,11 @@ describe("écran Aujourd’hui mobile", () => {
     const exact = {
       eventId: "30000000-0000-4000-8000-000000000001",
       deviceId: "40000000-0000-4000-8000-000000000001",
-      exerciseId: "10000000-0000-4000-8000-000000000004",
-      selectedOptionId: "20000000-0000-4000-8000-000000000001",
+      exerciseId,
+      selectedOptionId: firstOptionId,
       answeredAt: "2026-08-02T08:01:00.000Z",
       durationMs: 1_000,
-      contentVersionId: "10000000-0000-4000-8000-000000000002",
+      contentVersionId: lessonVersionId,
       algorithmVersion: "srs-v0",
     } as const;
     testState.read.mockResolvedValue(
@@ -399,8 +407,8 @@ describe("écran Aujourd’hui mobile", () => {
     expect(testState.replaceVersion).toHaveBeenCalledWith(
       recovered.lesson,
       expect.objectContaining({
-        lessonVersionId: "10000000-0000-4000-8000-000000000002",
-        exerciseId: "10000000-0000-4000-8000-000000000004",
+        lessonVersionId,
+        exerciseId,
       }),
       recoveredOutbox,
     );
@@ -411,11 +419,11 @@ describe("écran Aujourd’hui mobile", () => {
     const exact = {
       eventId: "30000000-0000-4000-8000-000000000001",
       deviceId: "40000000-0000-4000-8000-000000000001",
-      exerciseId: "10000000-0000-4000-8000-000000000004",
-      selectedOptionId: "20000000-0000-4000-8000-000000000001",
+      exerciseId,
+      selectedOptionId: firstOptionId,
       answeredAt: "2026-08-02T08:01:00.000Z",
       durationMs: 1_000,
-      contentVersionId: "10000000-0000-4000-8000-000000000002",
+      contentVersionId: lessonVersionId,
       algorithmVersion: "srs-v0",
     } as const;
     testState.migrate.mockResolvedValue(
@@ -435,7 +443,7 @@ describe("écran Aujourd’hui mobile", () => {
     render(<TodayScreen />);
 
     fireEvent.click(
-      await screen.findByRole("button", { name: "Revoir la démo locale" }),
+      await screen.findByRole("button", { name: "Revoir l’extrait local" }),
     );
     await waitFor(() => expect(testState.push).toHaveBeenCalledWith("/lesson"));
     expect(testState.startLesson).not.toHaveBeenCalled();
@@ -444,14 +452,14 @@ describe("écran Aujourd’hui mobile", () => {
 
   it("relit le checkpoint quand Aujourd’hui reprend le focus", async () => {
     render(<TodayScreen />);
-    await screen.findByRole("button", { name: "Commencer la démo locale" });
+    await screen.findByRole("button", { name: "Commencer l’extrait local" });
 
     testState.read.mockResolvedValue(
       experience({
         phase: "question",
-        lessonVersionId: "10000000-0000-4000-8000-000000000002",
-        exerciseId: "10000000-0000-4000-8000-000000000004",
-        selectedOptionId: "20000000-0000-4000-8000-000000000002",
+        lessonVersionId,
+        exerciseId,
+        selectedOptionId: secondOptionId,
         sessionStartedAt: startedAt,
         updatedAt: startedAt,
       }),

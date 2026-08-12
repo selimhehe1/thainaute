@@ -126,6 +126,11 @@ describe("section de suppression du compte mobile", () => {
       screen.getByText(/signalements linguistiques conservés localement/iu),
     ).toBeTruthy();
     expect(screen.getByText(/en attente ou refusés/iu)).toBeTruthy();
+    expect(
+      screen.getByText(/ne prouve pas à elle seule l’annulation/iu),
+    ).toBeTruthy();
+    expect(screen.getByText(/App Store, Google Play ou Stripe/iu)).toBeTruthy();
+    expect(screen.getByText(/le compte reste intact/iu)).toBeTruthy();
     expect(screen.getByText(/fusion locale est encore en cours/i)).toBeTruthy();
 
     fireEvent.click(
@@ -212,5 +217,22 @@ describe("section de suppression du compte mobile", () => {
         name: "Recevoir un nouveau code de sécurité",
       }),
     ).toBeNull();
+  });
+
+  it("laisse reprendre manuellement une vérification billing sans la relancer seule", () => {
+    const deletionState = state({
+      status: "error",
+      message:
+        "La vérification sûre du service d’abonnement n’est pas disponible.",
+      hasPendingOperation: true,
+      retryable: true,
+    });
+    renderSection(deletionState);
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Reprendre la même suppression" }),
+    );
+
+    expect(deletionState.retry).toHaveBeenCalledOnce();
   });
 });

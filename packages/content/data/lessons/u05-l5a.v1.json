@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "0dbd9546-c6e1-5fd8-b029-b0537004a1e5",
+  "versionId": "f9fad45b-aeb7-521c-808e-90a0c104322f",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Le h qu’on oublie et les finales retenues",
+  "objectiveFr": "à la fin de la leçon, l’apprenant identifie à l’écoute le mot entendu dans les paires ห้า / อ้า et หก / อก au moins 5 fois sur 6, alors que le ton et la voyelle sont identiques des deux côtés ; il écrit en transcription le h initial, présent ou absent, correctement sur 4 mots sur 5 ; il identifie à l’écoute la consonne de fermeture d’une syllabe, `p`, `t` ou `k`, sur 5 tirages sur 6 ; et il retrou",
+  "requiredEntitlement": null,
+  "audioManifestId": "e58ccbe3-7974-5584-b7c9-6e0a70cc0565",
+  "items": [
+    {
+      "id": "5d75b301-54ce-50ec-b57b-1c1d2fdbf40c",
+      "thaiRaw": "ห้า",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "cinq (le nombre 5)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้า",
+          "ipa": "haː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1be1f13b-a9dd-51b1-9437-5b54f624f21b",
+      "thaiRaw": "หก",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E01"
+      ],
+      "translationFr": "six (le nombre 6)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hòk"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หก",
+          "ipa": "hok̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "0499f723-4236-584c-a332-798ec28f3f24",
+      "thaiRaw": "หิว",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E34",
+        "U+0E27"
+      ],
+      "translationFr": "avoir faim",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hǐo"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หิว",
+          "ipa": "hiw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "f348a2e1-322a-5140-b5ba-b1df150cfd38",
+      "thaiRaw": "ผัด",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14"
+      ],
+      "translationFr": "faire sauter à la poêle ; un sauté",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phàt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผัด",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2818d61c-e293-59ed-be13-63194ae0c791",
+      "thaiRaw": "ผัก",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E31",
+        "U+0E01"
+      ],
+      "translationFr": "légume",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phàk"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผัก",
+          "ipa": "pʰak̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a7d12482-d874-5332-8345-ca15d2dd75ef",
+      "thaiRaw": "ครับ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "particule de politesse d’un locuteur homme (fin de phrase)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a319e43c-fd9c-5ad3-aaf2-c6c921df7d29",
+      "thaiRaw": "มาก",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "beaucoup ; très",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มาก",
+          "ipa": "maːk̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u05-l5a-p5",
+      "drawIndex": 1,
+      "id": "c2e80506-e1bd-58ad-93ab-a77f869280a7",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque mot à son sens.",
+      "pairs": [
+        {
+          "id": "9ba990cb-7a92-5e20-a7db-7cdf689aee26",
+          "itemId": "f348a2e1-322a-5140-b5ba-b1df150cfd38",
+          "labelFr": "faire sauter à la poêle"
+        },
+        {
+          "id": "f73f83bf-f83c-5b43-bf73-265e8460c98f",
+          "itemId": "2818d61c-e293-59ed-be13-63194ae0c791",
+          "labelFr": "légume"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Exact. Ces deux mots sont bien ceux de la leçon.",
+        "incorrectFr": "Relisez le mot et son sens dans cette leçon, puis réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "un souffle que le thaï attend de vous",
+      "bodyFr": "Dites « hôtel » à voix haute. Le h est écrit, et il y a de fortes chances qu’aucun souffle ne sorte avant la voyelle. Le thaï, lui, a une vraie consonne `/h/`, et elle porte trois mots que vous dites depuis les unités 3 et 4 : ห้า, หก, หิว. Si le souffle manque au début, cela s’entend.",
+      "specimen": "ห"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "le geste, en une seconde",
+      "bodyFr": "Soufflez sur une vitre froide comme pour y faire de la buée. Ce filet d’air tiède, c’est le `/h/`. Enchaînez maintenant la voyelle sans couper le souffle : `hâa`, et non `h` puis `âa`. C’est un seul mouvement, pas deux syllabes.",
+      "specimen": "ห้า"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "votre h de transcription fait deux métiers",
+      "bodyFr": "Depuis 2A, le `h` de `kh`, `th` et `ph` est collé à une autre consonne et signale la bouffée d’air qui l’accompagne. Le `h` seul devant une voyelle est différent : c’est une consonne à produire pour de bon. Lisez à voix haute `phàt`, puis `hâa` : dans le premier, le souffle est soudé au p et ne s’entend pas tout seul ; dans le second, il s’entend tout seul, avant la voyelle.",
+      "specimen": "`phàt` contre `hâa`"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "deux paires où seul le h change",
+      "bodyFr": "ห้า (hâa), cinq, contre อ้า (âa), ouvrir grand. หก (hòk), six, contre อก (òk), la poitrine. Dans chaque paire, la voyelle est la même, le ton est le même, la fin est la même : il ne reste que le souffle. Si vous oubliez le h, vous ne dites pas cinq, vous dites autre chose.",
+      "specimen": "ห้า / อ้า puis หก / อก"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "le ห qui, lui, ne se prononce pas",
+      "bodyFr": "Attention, vous connaissez déjà un tout autre emploi de cette lettre. Dans หน่อย vu en 2C, dans หมา et หนา vus en 1D, dans ไหม et หวัดดี vus en 2B, le ห est écrit mais muet. Le repère est le contact : le ห se tait quand une des lettres ง, น, ม, ย, ว ou ร est collée juste derrière lui, sans le moindre signe posé sur le ห. Dans ห้า et หิว, le ห porte un signe, et dans หก la lettre collée derrière lui n’est pas de cette famille : dans les trois, il se prononce. La liste complète et ce que ce ห muet fabrique viendront plus tard.",
+      "specimen": "หิว (hǐo) contre หมา (mǎa)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "fermer la syllabe sans lâcher l’air",
+      "bodyFr": "Deuxième chantier du jour, et il est physique. En thaï, une syllabe qui se termine par p, t ou k se ferme et s’arrête là : les lèvres se joignent pour le p, la pointe de la langue touche derrière les dents du haut pour le t, l’arrière de la langue monte pour le k, et plus rien ne sort. Vous allez sans doute lâcher un petit bruit de détente au moment d’ouvrir, et parfois une voyelle à peine dite : c’est exactement ce qu’il faut supprimer.",
+      "specimen": "หก (hòk)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "vous les dites déjà, probablement mal",
+      "bodyFr": "ครับ finit sur un p tenu, lèvres fermées, sans le moindre souffle après. เผ็ด, ตัด et แปด finissent sur un t tenu. มาก et หก finissent sur un k tenu. Six mots que vous connaissez, une seule correction pour tous : ne libérez rien à la fin.",
+      "specimen": "ครับ · เผ็ด · มาก"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "une seule fermeture change, et le mot change",
+      "bodyFr": "ผัด (phàt), faire sauter à la poêle, celui de ข้าวผัด appris en 4C, contre ผัก (phàk), le légume. Même consonne, même voyelle, même ton bas : seule la fermeture diffère. Trois mots vont plus loin encore, รัก (rák), aimer, รับ (ráp), recevoir, et รัด (rát), serrer : une syllabe, un même ton haut, trois fermetures.",
+      "specimen": "ผัด / ผัก puis รัก · รับ · รัด"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "la troisième famille de lettres",
+      "bodyFr": "Après les neuf moyennes de 1A et les neuf hautes de 4A, voici neuf lettres de la classe basse. Six d’entre elles ne vous demandent aucun son nouveau : elles notent exactement le son d’une haute que vous connaissez déjà.\n\n> ค = kh, คอ ควาย (le buffle), la jumelle de ข > ช = ch, ชอ ช้าง (l’éléphant), la jumelle de ฉ > ซ = s, ซอ โซ่ (la chaîne), la jumelle de ส > ท = th, ทอ ทหาร (le soldat), la jumelle de ถ > พ = ph, พอ พาน (le plateau à offrandes), la jumelle de ผ > ฟ = f, ฟอ ฟัน (la dent), la jumelle de ฝ > ง = ng, งอ งู (le serpent) > น = n, นอ หนู (la souris) > ม = m, มอ ม้า (le cheval)\n\nLes trois dernières, ง, น et ม, n’ont pas de jumelle : ce sont trois des cinq finales sonantes de la règle de 4A, dont ย et ว, qui restent pour plus tard. Une honnêteté de comptage : le dictionnaire range vingt-quatre lettres dans cette classe, pas neuf. Les autres viendront.",
+      "specimen": "ค ง ช ซ ท น พ ฟ ม"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "six de ces lettres ferment aussi une syllabe",
+      "bodyFr": "Le lien avec la première moitié de la leçon est là. Placée à la fin d’une syllabe, ค donne la fermeture k ; ช, ซ et ท donnent la fermeture t ; พ et ฟ donnent la fermeture p. La lettre ne se lit alors plus comme à l’initiale : ท ne souffle plus, elle ferme. Vous n’avez rien à produire là-dessus aujourd’hui, seulement à ne pas être surpris en lecture.",
+      "specimen": "ท à l’initiale contre ท en fin de syllabe"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "ce que ces neuf lettres ne vous permettent pas encore",
+      "bodyFr": "La règle de ton de 4A vaut pour une consonne initiale moyenne ou haute. Elle ne dit rien de la classe basse, et vous ne pouvez donc pas encore prévoir le ton d’un mot qui commence par l’une de ces neuf lettres. La preuve est dans les mots du jour : ครับ commence par ค et porte un ton haut, มาก commence par ม et porte un ton descendant, alors que les deux sont fermés par une occlusive. Une autre règle s’applique, et elle viendra plus tard.",
+      "specimen": "ครับ (khráp) contre มาก (mâak)"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "à vous",
+      "bodyFr": "Deux gestes à emporter. À l’attaque : quand la consonne initiale est ห, soufflez, sauf si ง, น, ม, ย, ว ou ร est collée juste derrière elle sans aucun signe posé sur le ห. Et souvenez-vous de 4A, la consonne initiale n’est pas toujours la première lettre écrite : dans ไหม, c’est bien ห, puisque ไ s’écrit avant sa consonne. À la fin : fermez la bouche et arrêtez-vous, sans détente et sans petite voyelle ajoutée.\n\nAprès les exercices, enregistrez-vous en disant ห้า puis อ้า, et หก puis อก, et comparez en A/B avec la voix de référence. C’est la façon la plus directe de savoir si votre h passe. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u05-l5a-p5",
+      "promptFr": "Reliez chaque mot à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "10864600-d439-5d41-b47b-c934d057821c",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "21684fb2-9d03-5830-8d20-fe2f693ac005",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "4d7c1726-962c-50f1-b295-fbbb643f9f86",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2f2b71f8-a5eb-5962-a2a0-387964a08f02",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9447571a-a8cf-57e3-852b-888f9561ed3e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9f6dfd94-7b9c-59cc-b5fd-f7685e85b853",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "113ee69c-3f57-5a09-8938-da6fc54a338e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "839051cf-7713-5cb0-99c5-c424b338543f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

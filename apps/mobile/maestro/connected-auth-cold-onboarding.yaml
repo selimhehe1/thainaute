@@ -1,0 +1,8 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- extendedWaitUntil:
+    visible: "Un départ simple, pensé pour vous."
+    timeout: 60000
+- assertVisible: "Un départ simple, pensé pour vous."

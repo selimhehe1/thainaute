@@ -19,6 +19,8 @@
 // Usage :
 //   pnpm --filter @thainaute/content content:audio -- <lecon.md>
 //   ... -- <lecon.md> --run
+//   ... -- <lecon.md> --run --retry-failed
+//   ... -- <lecon.md> --run --retry-failed --voice=alloy
 
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -36,8 +38,9 @@ import {
 import { compilerLeconComplete } from "./compile-lesson";
 
 const RACINE = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
-const MODELE = "gpt-audio-1.5";
-const VOIX = "coral";
+const MODELE_CHAT = "gpt-audio-1.5";
+const VOIX_DEFAUT = "coral";
+const VOIX_AUTORISEES = new Set(["alloy", "ash", "coral"]);
 
 /** Plafond dur, très au-dessus du coût estimé de la série. */
 const PLAFOND_APPELS = 60;
@@ -56,7 +59,12 @@ const CONSIGNE =
  * parce que la premiere passe l'a manifestement rate.
  */
 const CONTOUR_DECRIT: Record<string, string> = {
-  mid: "ton moyen : la voix reste plate, au milieu, sans bouger",
+  mid:
+    "ton moyen : la voix reste parfaitement plate, au milieu, de l'attaque " +
+    "jusqu'à la fin nasale, sans chute finale, montée ni intonation de phrase. " +
+    "En thaï : วรรณยุกต์สามัญ, ระดับเสียงกลางคงที่, ไม่ตกและไม่ขึ้น. " +
+    "Prends ยาง (yaang) comme repère de hauteur moyenne, mais ne prononce jamais ce repère. " +
+    "In English: keep a steady mid-level pitch from onset through the final nasal; do not fall or rise",
   low: "ton bas : la voix se pose en bas et y reste, sans tomber",
   falling: "ton descendant : la voix part haut et tombe franchement",
   high: "ton haut : la voix reste perchee et se tend vers le haut, elle ne tombe jamais",
@@ -95,8 +103,15 @@ function lireCle(): string {
 async function synthetiser(
   cle: string,
   texte: string,
+  ipa: string | null,
+  tone: string,
   insistance: string | null,
+  voix: string,
 ): Promise<Buffer> {
+  const repereTon =
+    CONTOUR_DECRIT[tone] ?? "respecte le ton lexical indiqué par l'IPA";
+  const repereIpa = ipa === null ? "" : ` La référence phonétique est ${ipa}.`;
+  const consigne = `${CONSIGNE} ${repereTon}.${repereIpa}`;
   const reponse = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
@@ -104,13 +119,13 @@ async function synthetiser(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: MODELE,
+      model: MODELE_CHAT,
       modalities: ["text", "audio"],
-      audio: { voice: VOIX, format: "wav" },
+      audio: { voice: voix, format: "wav" },
       messages: [
         {
           role: "system",
-          content: insistance === null ? CONSIGNE : `${CONSIGNE} ${insistance}`,
+          content: insistance === null ? consigne : `${consigne} ${insistance}`,
         },
         { role: "user", content: `Prononce ce mot thai : ${texte}` },
       ],
@@ -119,10 +134,10 @@ async function synthetiser(
   if (!reponse.ok) {
     throw new Error(`${reponse.status} ${await reponse.text()}`);
   }
-  const corps = (await reponse.json()) as {
+  const resultat = (await reponse.json()) as {
     choices?: { message?: { audio?: { data?: string } } }[];
   };
-  const donnees = corps.choices?.[0]?.message?.audio?.data;
+  const donnees = resultat.choices?.[0]?.message?.audio?.data;
   if (donnees === undefined) throw new Error("Pas d'audio dans la réponse.");
   return Buffer.from(donnees, "base64");
 }
@@ -169,11 +184,13 @@ async function main(): Promise<void> {
   }
 
   const { identifiant, lesson } = compilerLeconComplete(join(RACINE, chemin));
+  const distribuerPubliquement =
+    lesson.workflowStatus === "published" && lesson.visibility === "public";
 
   // Un asset par item réellement cité par un exercice d'écoute.
-  const aProduire = new Map<
+  const aProduireComplete = new Map<
     string,
-    { assetId: string; thaiRaw: string; tone: string }
+    { assetId: string; thaiRaw: string; ipa: string | null; tone: string }
   >();
   for (const exercice of lesson.exercises) {
     if (exercice.type !== "audio_choice") continue;
@@ -182,15 +199,50 @@ async function main(): Promise<void> {
     );
     const tone = item?.syllables[0]?.tone;
     if (item === undefined || tone === null || tone === undefined) continue;
-    aProduire.set(exercice.audioAssetId, {
+    aProduireComplete.set(exercice.audioAssetId, {
       assetId: exercice.audioAssetId,
       thaiRaw: item.thaiRaw,
+      ipa: item.syllables[0]?.ipa ?? null,
       tone,
     });
   }
 
+  const cheminManifeste = join(
+    RACINE,
+    "packages",
+    "content",
+    "data",
+    "audio",
+    `${identifiant}.v1.json`,
+  );
+  const retryFailed = args.includes("--retry-failed");
+  const voix =
+    args
+      .find((argument) => argument.startsWith("--voice="))
+      ?.slice("--voice=".length) ?? VOIX_DEFAUT;
+  if (!VOIX_AUTORISEES.has(voix)) {
+    throw new Error(
+      `Voix non autorisee : ${voix}. Choisir ${[...VOIX_AUTORISEES].join(", ")}.`,
+    );
+  }
+  const manifesteExistant = retryFailed
+    ? audioManifestSchema.parse(
+        JSON.parse(readFileSync(cheminManifeste, "utf8")),
+      )
+    : null;
+  const aProduire = retryFailed
+    ? new Map(
+        [...aProduireComplete].filter(([assetId]) => {
+          const entree = manifesteExistant?.entries.find(
+            (candidate) => candidate.assetId === assetId,
+          );
+          return entree?.toneCheck?.consistent !== true;
+        }),
+      )
+    : aProduireComplete;
+
   console.log(`${identifiant} : ${aProduire.size} fichiers à produire`);
-  console.log(`  moteur ${MODELE}, voix ${VOIX}`);
+  console.log(`  moteur ${MODELE_CHAT}, voix ${voix}`);
   for (const { thaiRaw, tone } of aProduire.values()) {
     console.log(`    ${thaiRaw.padEnd(6)} ton attendu ${tone}`);
   }
@@ -221,12 +273,12 @@ async function main(): Promise<void> {
     identifiant,
   );
   mkdirSync(dossierAssets, { recursive: true });
-  mkdirSync(dossierWeb, { recursive: true });
+  if (distribuerPubliquement) mkdirSync(dossierWeb, { recursive: true });
 
   const entrees: unknown[] = [];
   const echecs: string[] = [];
 
-  for (const { assetId, thaiRaw, tone } of aProduire.values()) {
+  for (const { assetId, thaiRaw, ipa, tone } of aProduire.values()) {
     const nom = `${assetId}.wav`;
     let wav: Buffer | null = null;
     let mesure: AnalyseTon | null = null;
@@ -234,15 +286,15 @@ async function main(): Promise<void> {
     let conforme = false;
     let essais = 0;
 
-    // On regenere tant que le contour contredit le ton, en decrivant le
-    // contour attendu a partir du deuxieme essai. La generation etant
-    // stochastique, un second tirage suffit souvent.
+    // On regenere tant que le contour contredit le ton, en renforcant la
+    // consigne a partir du deuxieme essai. La generation etant stochastique,
+    // un second tirage suffit souvent.
     while (essais < ESSAIS_MAX && !conforme) {
       essais += 1;
       const insistance =
         essais === 1 ? null : `Attention, ${CONTOUR_DECRIT[tone] ?? ""}.`;
       try {
-        wav = await synthetiser(cle, thaiRaw, insistance);
+        wav = await synthetiser(cle, thaiRaw, ipa, tone, insistance, voix);
       } catch (erreur) {
         echecs.push(`${thaiRaw} : ${String(erreur).slice(0, 120)}`);
         break;
@@ -264,16 +316,16 @@ async function main(): Promise<void> {
 
     const chemin = join(dossierAssets, nom);
     writeFileSync(chemin, wav);
-    writeFileSync(join(dossierWeb, nom), wav);
+    if (distribuerPubliquement) writeFileSync(join(dossierWeb, nom), wav);
 
     entrees.push({
       assetId,
       itemId: [...lesson.items].find((i) => i.thaiRaw === thaiRaw)?.id,
       variant: "pedagogical",
       canonicalPath: relative(RACINE, chemin).replace(/\\/gu, "/"),
-      distributionPaths: [
-        relative(RACINE, join(dossierWeb, nom)).replace(/\\/gu, "/"),
-      ],
+      distributionPaths: distribuerPubliquement
+        ? [relative(RACINE, join(dossierWeb, nom)).replace(/\\/gu, "/")]
+        : [],
       mimeType: "audio/wav",
       sha256: createHash("sha256").update(wav).digest("hex"),
       byteLength: wav.length,
@@ -282,8 +334,8 @@ async function main(): Promise<void> {
       consentReference: null,
       synthesis: {
         provider: "openai",
-        model: MODELE,
-        voice: VOIX,
+        model: MODELE_CHAT,
+        voice: voix,
         sourceText: thaiRaw,
         parameters: { format: "wav", modalities: "text+audio" },
         generatedAt: new Date().toISOString(),
@@ -306,22 +358,39 @@ async function main(): Promise<void> {
     );
   }
 
+  const entreesFinalesBrutes =
+    manifesteExistant === null
+      ? entrees
+      : [
+          ...manifesteExistant.entries.filter(
+            (entry) => !aProduire.has(entry.assetId),
+          ),
+          ...entrees,
+        ];
+  const entreesFinales = distribuerPubliquement
+    ? entreesFinalesBrutes
+    : entreesFinalesBrutes.map((entry) => {
+        const parsedEntry =
+          audioManifestSchema.shape.entries.element.parse(entry);
+        return {
+          ...parsedEntry,
+          distributionPaths: parsedEntry.distributionPaths.filter(
+            (path) => !path.startsWith("apps/web/public/audio/"),
+          ),
+        };
+      });
   const manifeste = audioManifestSchema.parse({
     schemaVersion: 1,
     manifestId: lesson.audioManifestId,
     lessonVersionId: lesson.versionId,
-    entries: entrees,
+    entries: entreesFinales,
   });
-  const cible = join(
-    RACINE,
-    "packages",
-    "content",
-    "data",
-    "audio",
-    `${identifiant}.v1.json`,
+  writeFileSync(
+    cheminManifeste,
+    `${JSON.stringify(manifeste, null, 2)}\n`,
+    "utf8",
   );
-  writeFileSync(cible, `${JSON.stringify(manifeste, null, 2)}\n`, "utf8");
-  console.log(`\nmanifeste écrit : ${relative(RACINE, cible)}`);
+  console.log(`\nmanifeste écrit : ${relative(RACINE, cheminManifeste)}`);
   if (echecs.length > 0) {
     console.log("échecs :");
     for (const e of echecs) console.log(`  ${e}`);

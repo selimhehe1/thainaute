@@ -4,15 +4,24 @@
 
 - Identifiant : `u01-l1a`
 - Titre français : Écouter le thaï pour la première fois
-- Objectif observable : après la leçon, l'apprenant identifie à l'écoute le
-  ton d'un mot de la série คา ข่า ค่า ค้า ขา au moins 4 fois sur 5, associe
-  chaque contour dessiné au mot entendu, et reconnaît les 9 consonnes
-  moyennes en retrouvant la lettre à partir de son nom traditionnel.
+- Objectif observable : après la leçon, l'apprenant distingue à l'écoute une
+  voix qui tombe d'une voix qui grimpe (ค่า contre ขา) au moins 5 fois sur 6,
+  et relie au mot entendu trois contours nettement distincts (qui tombe, qui
+  grimpe, à plat). Aucune reconnaissance de lettre n'est exigée dans cette
+  première séance.
 - Prérequis : aucun (première leçon du parcours).
-- Cible phonétique : perception des cinq tons du thaï standard (moyen, bas,
-  descendant, haut, montant) sur une même syllabe longue ; imitation guidée
-  à faible enjeu, sans aucune notation. La longueur vocalique est seulement
-  entendue ici, elle devient la cible de la leçon 1B.
+- Cible phonétique : exposition aux cinq tons du thaï standard (moyen, bas,
+  descendant, haut, montant) sur une même syllabe longue, puis discrimination
+  du seul contraste à écart maximal, descendant contre montant, qui oppose
+  deux mouvements de sens inverse. Les cinq contours sont montrés et
+  entendus ici ; ils ne sont pas évalués à cinq choix, ce que fait la leçon
+  1F au terme de l'arc tonal. La longueur vocalique est seulement entendue
+  ici, elle devient la cible de la leçon 1B. L'écriture est annoncée, mais
+  son décodage détaillé est volontairement reporté.
+- Progression de la tâche : cette leçon est le premier barreau d'une échelle
+  explicite, 2 choix ici, fondation de la longueur en 1B, 2 choix sur paire
+  difficile en 1C puis 1D, et 5 choix en 1F. Voir
+  `docs/curriculum/ordre-par-difficulte.md`.
 - Durée visée : 8 à 10 minutes.
 - Transcription : convention `thainaute-fr` v1.1 (amendement du 3 août 2026 ;
   diacritiques réservés aux tons, qualités vocaliques en digrammes sans
@@ -23,10 +32,10 @@
 
 ### Page 1 : la hauteur fait le mot
 
-En français, la mélodie de la voix exprime une attitude : la surprise, le
-doute, la question. Le mot, lui, ne change pas. En thaï, la mélodie fait
-partie du mot : la même syllabe, dite plus haut, plus bas ou en mouvement,
-devient un autre mot. Aujourd'hui, vous n'apprenez rien par cœur : vous
+En français, l'intonation de la voix exprime une attitude : la surprise, le
+doute, la question. Le mot, lui, ne change pas. En thaï, le ton lexical fait
+partie du mot : la même syllabe, réalisée avec un autre contour tonal, peut
+devenir un autre mot. Aujourd'hui, vous n'apprenez rien par cœur : vous
 écoutez.
 
 Spécimen : ค่า ≠ ค้า
@@ -70,14 +79,15 @@ Votre oreille progresse même quand votre imitation est approximative.
 
 Spécimen : ขา (khǎa)
 
-### Page 6 : neuf lettres à reconnaître
+### Page 6 : accrocher le son à un sens
 
-L'écriture thaïe arrive dès aujourd'hui, car c'est elle qui, bientôt, vous
-dira le ton d'un mot. Voici les 9 consonnes dites moyennes, chacune récitée
-avec son mot-image traditionnel, comme notre « B de Bateau ». Votre seule
-mission : les reconnaître à vue et à l'oreille, sans les écrire.
-
-Spécimen : ก จ ฎ ฏ ด ต บ ป อ
+Un ton ne doit pas rester une courbe abstraite. Pour les deux mots de
+l'exercice, gardez une image simple en tête : ค่า (khâa) signifie « valeur,
+prix » et ขา (khǎa) signifie « jambe ». Après chaque écoute, dites d'abord
+« valeur » ou « jambe », puis refaites le contour avec le doigt et la voix.
+Vous n'avez pas à mémoriser les cinq mots aujourd'hui : deux ancres suffisent
+pour que la hauteur commence à faire partie du mot, et non de la seule
+musique de la phrase.
 
 ## Items
 
@@ -197,7 +207,14 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
   - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03, voir
     verification-volubilis.md
 
-### Les 9 consonnes moyennes (items 6 à 14, reconnaissance uniquement)
+### Réserve script (hors parcours actif de 1A)
+
+Les neuf fiches ci-dessous sont conservées comme contenu vérifié pour une
+future leçon de lecture. Elles ne sont ni enseignées, ni évaluées, ni ajoutées
+à la révision de 1A : la première séance doit rester centrée sur l'écoute des
+tons. Aucun exercice de cette leçon ne doit les référencer.
+
+### Les 9 consonnes moyennes (items 6 à 14, réserve uniquement)
 
 #### Item 6 : ก
 
@@ -417,106 +434,84 @@ Spécimen : ก จ ฎ ฏ ด ต บ ป อ
 
 ## Exercices
 
-### Exercice 1 : quel ton entendez-vous ? (listening)
+### Exercice 1 : elle tombe, ou elle grimpe ? (listening)
 
 - Mécanique : `listening`
-- Consigne : « Écoutez le mot, puis choisissez la carte qui décrit ce que
-  fait la voix. »
-- Options : cinq cartes fixes, chacune avec la courbe dessinée, l'étiquette
-  du ton et un mot-repère : « à plat au milieu (moyen) », « posé en bas
-  (bas) », « qui tombe (descendant) », « perché et tendu (haut) », « qui
-  grimpe (montant) ». La couleur n'est jamais le seul signal : courbe et
-  étiquette disent la même chose.
+- Consigne : « Vous n'entendrez que deux mots, plusieurs fois chacun. C'est
+  voulu : le but n'est pas de les retenir, mais d'entendre que la voix part
+  dans deux directions opposées. Elle tombe, ou elle grimpe ? »
+- Options (identiques à chaque écoute) : deux cartes fixes, chacune avec sa
+  courbe dessinée et son étiquette : « la voix tombe » / « la voix grimpe ».
+  La couleur n'est jamais le seul signal, la courbe et l'étiquette disent la
+  même chose.
 - Tirages et réponses :
-  1. Audio คา : réponse « moyen ».
-  2. Audio ข่า : réponse « bas ».
-  3. Audio ค่า : réponse « descendant ».
-  4. Audio ค้า : réponse « haut ».
-  5. Audio ขา : réponse « montant ».
+  1. Audio ค่า : réponse « la voix tombe ».
+  2. Audio ขา : réponse « la voix grimpe ».
+  3. Audio ขา : réponse « la voix grimpe ».
+  4. Audio ค่า : réponse « la voix tombe ».
+  5. Audio ค่า : réponse « la voix tombe ».
+  6. Audio ขา : réponse « la voix grimpe ».
 - Feedback correct : « Oui. {mot} ({transcription}) : {description du
   contour}. Votre oreille vient de faire le travail. »
-- Feedback incorrect : indice ciblé selon la confusion, puis réécoute
-  proposée, au ralenti si besoin, jamais de pénalité. Bas contre
-  descendant : « La voix a-t-elle bougé ? Si elle se pose en bas sans
-  tomber, c'est le ton bas. » Haut contre montant : « Le montant part du bas
-  et grimpe ; le haut reste perché du début à la fin. » Moyen : « Rien ne
-  bouge et la voix reste au milieu : c'est le ton moyen, pas une absence de
-  ton. »
-- Pièges connus : bas et descendant sont les plus confondus au début ;
-  l'oreille française entend le montant comme une question, image utile mais
-  à détacher du sens interrogatif ; le moyen est parfois perçu comme « sans
-  ton ».
+- Feedback incorrect : « Réécoutez, et ne vous occupez que d'une chose : le
+  début et la fin. Si la voix finit plus bas qu'elle n'a commencé, elle
+  tombe. Si elle finit plus haut, elle grimpe. » Réécoute proposée, au
+  ralenti si besoin, jamais de pénalité.
+- Pièges connus : le montant est spontanément entendu comme une question par
+  une oreille française, image utile au début mais à détacher du sens
+  interrogatif, car ขา reste « jambe » qu'il termine une question ou non.
+  Le descendant peut être entendu comme une fin de phrase plutôt que comme
+  un mot, même piège que celui traité en 1C. Ces deux tons sont choisis
+  parce qu'ils bougent en sens inverse et forment le contraste le plus
+  large des cinq, le seul raisonnablement identifiable sans entraînement
+  préalable.
 
 ### Exercice 2 : chaque courbe a son mot (association)
 
 - Mécanique : `association` (sélection successive de deux cartes, sans
   glisser-déposer obligatoire)
-- Consigne : « Reliez chaque mot entendu à la courbe qui le dessine. »
+- Consigne : « Reliez chaque mot entendu à la courbe qui le dessine. Un
+  troisième mouvement s'ajoute aux deux précédents : la voix qui ne bouge
+  pas du tout. »
 - Paires à associer :
   1. Audio คา ↔ carte « courbe plate au milieu · khaa »
-  2. Audio ข่า ↔ carte « courbe plate en bas · khàa »
-  3. Audio ค่า ↔ carte « courbe qui tombe · khâa »
-  4. Audio ค้า ↔ carte « courbe perchée qui se tend vers le haut · kháa »
-  5. Audio ขา ↔ carte « courbe qui grimpe du bas vers le haut · khǎa »
+  2. Audio ค่า ↔ carte « courbe qui tombe · khâa »
+  3. Audio ขา ↔ carte « courbe qui grimpe du bas vers le haut · khǎa »
 - Feedback correct : « Bonne association : la courbe dessine exactement ce
   que votre oreille a entendu. »
 - Feedback incorrect : « Ces deux cartes ne vont pas ensemble. Réécoutez :
   la voix reste-t-elle stable, tombe-t-elle, ou grimpe-t-elle ? » Les cartes
   restent en place pour un nouvel essai.
-- Pièges connus : les courbes du bas et du descendant se ressemblent si l'on
-  ne regarde que la fin du tracé ; celles du haut et du montant se
-  distinguent par le point de départ, pas par le point d'arrivée.
-
-### Exercice 3 : retrouvez la lettre (reading)
-
-- Mécanique : `reading`
-- Consigne (tirages 1 à 6) : « Écoutez le nom de la lettre, puis touchez la
-  lettre correspondante. » Consigne (tirages 7 et 8) : « Cette lettre rare
-  se prononce comme laquelle de ces deux lettres ? »
-- Tirages et réponses :
-  1. Audio « kaww kài » : options ก อ จ ; réponse ก.
-  2. Audio « daww dèk » : options ด ต ฎ ; réponse ด.
-  3. Audio « taww tào » : options ต ด ฏ ; réponse ต.
-  4. Audio « baww bai·máai » : options บ ป ; réponse บ.
-  5. Audio « paww plaa » : options ป บ ; réponse ป.
-  6. Audio « aww àang » : options อ ก ด ; réponse อ.
-  7. Lettre affichée ฎ : options « d de เด็ก » / « t de เต่า » ; réponse
-     « d de เด็ก ».
-  8. Lettre affichée ฏ : options « t de เต่า » / « d de เด็ก » ; réponse
-     « t de เต่า ».
-- Feedback correct : « Exact : {lettre}, {nom traditionnel}, {mot-image en
-  français}. »
-- Feedback incorrect : indice visuel puis nouvel essai, jamais de
-  pénalité : « ป est บ avec une tige qui monte » ; « ต est ด avec une
-  petite dent sur le dos » ; « ฎ et ฏ portent un socle brisé : ce sont les
-  jumelles rares de ด et ต ».
-- Pièges connus : les paires sosies บ/ป et ด/ต ; les lettres rares ฎ/ฏ que
-  l'on identifie d'abord comme paire avant de les distinguer entre elles ;
-  อ que l'on cherche à « entendre » alors qu'elle ne produit pas de son
-  propre.
+- Pièges connus : le ton moyen est souvent perçu comme « pas de ton », alors
+  qu'il est un ton à part entière ; le feedback doit dire « elle ne bouge
+  pas » plutôt que « il n'y a rien ». Les deux tons restants, bas et haut,
+  sont entendus et montrés dans les pages d'enseignement mais ne sont pas
+  évalués ici : ils se distinguent de leurs voisins par la hauteur de
+  départ et non par le mouvement, ce qui demande une ancre que l'apprenant
+  n'a pas encore. C'est le travail de 1C, 1D puis 1F.
 
 ## SRS
 
-- Items en révision : les 14 items de la leçon (5 mots de la série, 9
-  lettres).
+- Items en révision : les 5 mots de la série tonale. Les 9 fiches de lettres
+  restent une réserve de contenu et ne sont pas introduites par 1A.
 - Cartes générées :
-  1. Identification de ton : entendre un mot de la série, choisir le ton
-     parmi cinq (items 1 à 5).
+  1. Identification de contour : entendre ค่า ou ขา, choisir « tombe » ou
+     « grimpe ».
   2. Association contour : entendre un mot, choisir la courbe (items 1 à 5).
-  3. Reconnaissance de lettre : entendre le nom traditionnel, toucher la
-     lettre parmi trois (items 6 à 14).
-  4. Paires sosies : distinguer บ/ป, ด/ต et ฎ/ฏ côte à côte (items 8 à 13).
 - Critère de maîtrise : sur deux sessions espacées, au moins 4 réussites
-  sur 5 en identification de ton à vitesse normale, et les 9 lettres
-  reconnues sans erreur. Un échec renvoie la carte en réapprentissage avec
-  réécoute lente, jamais de pénalité.
+  sur 5 en identification du contour tonal à vitesse normale. Un échec renvoie la carte
+  en réapprentissage avec réécoute lente, jamais de pénalité.
+- Ancrage lexical : lors de la révision de ค่า et ขา, l'apprenant rappelle
+  aussi leur sens français avant de répéter le contour. Cet ancrage est un
+  rappel léger, pas un nouveau seuil qui bloquerait la suite.
 - Hors périmètre : aucune carte de production (ni orale ni écrite) en 1A ;
   les sens français des mots de la série ne sont pas exigés en révision, ils
   reviendront naturellement plus tard dans le parcours.
 
 ## Note culturelle
 
-Chaque consonne thaïe se récite avec un mot-image : ก ไก่ « le k de la
+Réserve de rédaction, non affichée dans la séance active : chaque consonne
+thaïe se récite avec un mot-image : ก ไก่ « le k de la
 poule », ด เด็ก « le d de l'enfant », comme notre « B de Bateau » au
 téléphone. Cette récitation, une comptine traditionnelle d'apprentissage
 des lettres, sert surtout à distinguer les lettres qui se prononcent
@@ -554,7 +549,7 @@ suffisent.
   contre-vérification RID effectuée le 2026-08-03 (graphie attestée, voir verification-rid.md)
   review. Lot de contre-audit externe `unite-01/contre-audit-gpt56.md` à
   préparer. Revue native : en attente.
-- Audio : aucune piste produite ; les exercices 1 à 3 et les pages
+- Audio : aucune piste produite ; les exercices 1 et 2 et les pages
   d'enseignement dépendent de la production audio tracée (fournisseur,
   modèle, version, paramètres à consigner avant enregistrement ; voix
   synthétique déclarée au lancement).
@@ -589,9 +584,8 @@ suffisent.
   chute » alors que ˨˩ note une légère descente en registre bas ;
   simplification pédagogique assumée, le discriminant enseigné (se poser en
   bas contre tomber depuis le haut) reste correct.
-- R3 (consignée) : exercice 3 étiqueté `reading` alors que les tirages 1
-  à 6 relèvent de l'écoute et choix ; reclassement ou scission à trancher à
-  la compilation.
+- R3 (résolue le 2026-08-05) : l'ancien exercice 3 étiqueté `reading` a été
+  retiré ; la séance active ne conserve que l'écoute et l'association.
 - R4 (consignée) : point médian utilisé comme séparateur visuel (spécimen
   page 3, cartes de l'exercice 2) alors que la convention le réserve aux
   syllabes ; séparateur visuel à trancher avec la revue des assets.

@@ -7,6 +7,7 @@
   position: relative;
   padding: 72px 0 40px;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .heroHalo {
@@ -104,6 +105,42 @@
   z-index: 1;
 }
 
+.heroSignals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroSignals span {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 5px 11px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / 72%);
+  color: var(--color-ink-soft);
+  font-size: 12.5px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.01em;
+  box-shadow: 0 3px 10px rgb(40 52 80 / 4%);
+}
+
+.heroSignals span:nth-child(2) {
+  border-color: rgb(91 142 232 / 25%);
+  background: var(--color-sky-pale);
+  color: var(--color-sky-ink);
+}
+
+.heroSignals span:nth-child(3) {
+  border-color: rgb(67 162 131 / 25%);
+  background: var(--color-jade-pale);
+  color: var(--color-jade-ink);
+}
+
 .quiet {
   color: var(--color-ink-soft);
   font-size: 13.5px;
@@ -141,6 +178,24 @@
   padding: 18px;
   box-shadow: var(--shadow-card);
   color: var(--color-ink);
+  transition:
+    transform var(--motion-base) var(--ease-standard),
+    box-shadow var(--motion-base) var(--ease-standard),
+    border-color var(--motion-base) var(--ease-standard);
+}
+
+.toneCard:nth-child(odd) {
+  transform: rotate(-0.8deg);
+}
+
+.toneCard:nth-child(even) {
+  transform: rotate(0.8deg);
+}
+
+.toneCard:hover {
+  border-color: var(--color-coral);
+  transform: translateY(-4px) rotate(0deg);
+  box-shadow: var(--shadow-lifted);
 }
 
 .toneName {
@@ -167,6 +222,9 @@
   border-radius: var(--radius-md);
   padding: 22px 22px 18px;
   box-shadow: var(--shadow-card);
+  transition:
+    transform var(--motion-base) var(--ease-standard),
+    box-shadow var(--motion-base) var(--ease-standard);
 }
 
 .principleGrid article:nth-child(2) {
@@ -175,6 +233,15 @@
 
 .principleGrid article:nth-child(3) {
   border-left-color: var(--color-saffron);
+}
+
+.principleGrid article:nth-child(2) {
+  transform: translateY(5px);
+}
+
+.principleGrid article:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lifted);
 }
 
 .principleGrid span {
@@ -228,6 +295,19 @@
     animation: none;
     stroke-dasharray: none;
     stroke-dashoffset: 0;
+  }
+
+  .toneCard,
+  .principleGrid article {
+    transition: none;
+  }
+
+  .toneCard:nth-child(odd),
+  .toneCard:nth-child(even),
+  .toneCard:hover,
+  .principleGrid article:nth-child(2),
+  .principleGrid article:hover {
+    transform: none;
   }
 }
 

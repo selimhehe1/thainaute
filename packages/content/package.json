@@ -6,7 +6,11 @@
   "exports": {
     ".": "./src/index.ts",
     "./fixture": "./src/fixture.ts",
+    "./language-packs": "./src/language-packs.ts",
+    "./mobile": "./src/mobile.ts",
+    "./preview": "./src/preview-contracts.ts",
     "./public": "./src/public-contracts.ts",
+    "./schemas": "./src/schemas.ts",
     "./studio": "./src/studio.ts"
   },
   "scripts": {
@@ -18,6 +22,10 @@
     "content:audit": "tsx src/cli.ts audit",
     "content:compile": "tsx scripts/compile-items.ts",
     "content:compile-lesson": "tsx scripts/compile-lesson.ts",
+    "content:compile-text": "tsx scripts/compile-text-lessons.ts",
+    "content:catalog": "tsx scripts/generate-authoring-catalog.ts && tsx scripts/generate-authoring-module.ts",
+    "content:authoring-module": "tsx scripts/generate-authoring-module.ts",
+    "content:authoring-drafts": "tsx scripts/generate-authoring-drafts.ts",
     "content:audio": "tsx scripts/generate-audio.ts",
     "content:verify": "tsx scripts/verify-bundle.ts"
   },

@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "3580ae06-d71f-5480-b9f5-907cb853bd98",
+  "versionId": "d0b94b4e-a219-51c2-b9cb-d7919689f75b",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Les deux voyelles qui ne sont ni ou ni eu",
+  "objectiveFr": "à la fin de la leçon, l’apprenant identifie à l’écoute le mot entendu dans les paires คือ / คู et ถือ / ถู au moins 5 fois sur 6, alors que la consonne, la longueur et le ton sont identiques des deux côtés ; il fait de même sur les paires เจอ / จอ et เธอ / ทอ, 5 fois sur 6 ; il écrit en transcription les quatre graphèmes vocaliques `uee`, `ouu`, `oee` et `aww` correctement sur 6 mots sur 8 ; devan",
+  "requiredEntitlement": null,
+  "audioManifestId": "39f19e98-40e3-5df5-b15d-2cef244b1f60",
+  "items": [
+    {
+      "id": "54b3f14b-7381-5be2-80a7-9b9f5b8db927",
+      "thaiRaw": "มือ",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E37",
+        "U+0E2D"
+      ],
+      "translationFr": "la main",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "muee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มือ",
+          "ipa": "mɯː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "7dbe7d3a-d483-51c5-b04a-a53770f8c4cb",
+      "thaiRaw": "ลืม",
+      "unicodeCodePoints": [
+        "U+0E25",
+        "U+0E37",
+        "U+0E21"
+      ],
+      "translationFr": "oublier",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "lueem"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ลืม",
+          "ipa": "lɯːm˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "997c4f47-512e-5375-bde5-e070f90b6e4a",
+      "thaiRaw": "ถือ",
+      "unicodeCodePoints": [
+        "U+0E16",
+        "U+0E37",
+        "U+0E2D"
+      ],
+      "translationFr": "tenir (dans la main)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thǔee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ถือ",
+          "ipa": "tʰɯː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2dfa6c37-e4dc-589a-b409-ed0da93401f0",
+      "thaiRaw": "ชื่อ",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E37",
+        "U+0E48",
+        "U+0E2D"
+      ],
+      "translationFr": "nom, prénom",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "chûee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ชื่อ",
+          "ipa": "t͡ɕʰɯː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "0c126918-462d-545b-b95e-2320df1e3aa9",
+      "thaiRaw": "เธอ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E18",
+        "U+0E2D"
+      ],
+      "translationFr": "toi, tu (entre proches)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thoee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เธอ",
+          "ipa": "tʰɤː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "familier",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d4a7f1aa-23ca-54e3-9702-b211bbc34785",
+      "thaiRaw": "เจอ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E08",
+        "U+0E2D"
+      ],
+      "translationFr": "rencontrer, tomber sur",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "joee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เจอ",
+          "ipa": "t͡ɕɤː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "0eb2c4b5-3915-58ec-bb37-22832197a2dd",
+      "thaiRaw": "คน",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E19"
+      ],
+      "translationFr": "personne (le nom) ; classificateur des personnes",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khon"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คน",
+          "ipa": "kʰon˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u06-l6a-p6",
+      "drawIndex": 1,
+      "id": "7f444aee-1b79-5d40-897c-9a6852cafd5e",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque mot à son sens.",
+      "pairs": [
+        {
+          "id": "6e336960-65ad-5a02-ac7b-0551e6d7f7a7",
+          "itemId": "54b3f14b-7381-5be2-80a7-9b9f5b8db927",
+          "labelFr": "la main"
+        },
+        {
+          "id": "3c4a0d2b-c08d-5c89-821d-b7d823e865a5",
+          "itemId": "7dbe7d3a-d483-51c5-b04a-a53770f8c4cb",
+          "labelFr": "oublier"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Exact. Ces deux mots sont bien ceux de la leçon.",
+        "incorrectFr": "Relisez le mot et son sens dans cette leçon, puis réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous les écrivez déjà, sans qu’on vous les ait expliquées",
+      "bodyFr": "Depuis la leçon 1E vous dites แล้วเจอกัน, et depuis la leçon 2D vous dites ชื่อ. Ces deux mots contiennent chacun une voyelle qui n’a jamais été travaillée pour elle-même : le `oee` de `láeew·joee·kan` et le `uee` de `chûee`. Aujourd’hui elles deviennent l’objet de la leçon.",
+      "specimen": "ชื่อ · แล้วเจอกัน"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "le geste de อือ, en une seconde",
+      "bodyFr": "Dites « ou » à voix haute et regardez vos lèvres, dans une glace ou dans l’écran éteint de votre téléphone : elles s’avancent et forment un rond. Dites maintenant « i » : elles s’étirent et se relâchent. Le son thaï du jour se fabrique en laissant la langue là où elle est pour « ou », et les lèvres là où elles sont pour « i ». Rien ne s’avance.",
+      "specimen": "มือ (muee)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "อือ contre อู, deux paires où seule la voyelle change",
+      "bodyFr": "คือ (khuee), c’est-à-dire, contre คู (khouu), le fossé creusé autour d’une ville ancienne. Puis ถือ (thǔee), tenir dans la main, contre ถู (thǒuu), frotter. Dans chaque paire, la consonne est la même, la longueur est la même, le ton est le même. Si les lèvres s’avancent, vous dites l’autre mot.",
+      "specimen": "คือ / คู puis ถือ / ถู"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "le geste de เออ",
+      "bodyFr": "Même méthode, avec un autre repère. Dites le « eu » de « deux », puis regardez vos lèvres : voyez si elles s’arrondissent. Pour la voyelle thaïe, relâchez-les complètement, comme quand vous dites simplement « e » dans « le », et laissez la langue reculer un peu.",
+      "specimen": "เธอ (thoee)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "เออ contre ออ, deux paires de plus",
+      "bodyFr": "Vous connaissez ออ depuis ขอบคุณ et สอง : c’est le `aww` de `khàwwp` et de `sǎwwng`, un o ouvert et long, lèvres arrondies. เจอ (joee), rencontrer, contre จอ (jaww), l’écran. Puis เธอ (thoee), toi, contre ทอ (thaww), tisser. Vos lèvres donnent le premier indice : le rond pour `aww`, le relâchement pour `oee`. Ce geste ne suffit pas à lui seul : écoutez la voix de référence et comparez-vous en A/B.",
+      "specimen": "เจอ / จอ puis เธอ / ทอ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "où tombe l’accent de ton, et pourquoi il se déplace",
+      "bodyFr": "Regardez ces deux mots côte à côte : `thǔee` et `thǒuu`. Ils portent le MÊME ton montant, et pourtant l’accent n’est pas sur la même lettre. La règle est simple et sans exception : l’accent se pose sur la première lettre du noyau vocalique. Le noyau de `thǔee` est `uee`, sa première lettre est le u ; le noyau de `thǒuu` est `ouu`, sa première lettre est le o. Même chose pour `chûee`, dont le noyau est `uee`.",
+      "specimen": "`thǔee` contre `thǒuu`"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "sept lettres basses, et quatre que vous lisez déjà",
+      "bodyFr": "Après les neuf lettres basses de 5A, en voici sept. Les quatre premières sont dans des mots que vous lisez depuis des semaines.\n\n> ย = y, ยอ ยักษ์ (le géant), comme dans ยา, ยี่สิบ, หน่อย > ร = r, รอ เรือ (le bateau), comme dans ครับ, รถ, เรือ, เท่าไร > ล = l, ลอ ลิง (le singe), comme dans ปลา, ตลาด, ไกล, แล้วเจอกัน > ว = w, วอ แหวน (la bague), comme dans ข้าว, สวัสดี, แก้ว, ไหว้ > ธ = th, ธอ ธง (le drapeau), encore un jumeau bas de ถ, après ท > ภ = ph, ภอ สำเภา (la jonque), la deuxième jumelle basse de ผ, après พ > ฮ = h, ฮอ นกฮูก (le hibou), la seule autre lettre à noter le h de ห\n\nNeuf plus sept font seize. Le dictionnaire en range vingt-quatre dans cette classe : ฅ, ฆ, ฌ, ญ, ฑ, ฒ, ณ et ฬ ne sont pas enseignées ici et viendront plus tard. Deux d’entre elles, ฑ et ฒ, se lisent elles aussi ทอ : le son th ne s’arrête donc pas à ถ, ท et ธ. Pour ph et pour h, en revanche, vous avez maintenant toutes les lettres.",
+      "specimen": "ย ร ล ว ธ ภ ฮ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ces lettres à la fin d’une syllabe",
+      "bodyFr": "Comme les neuf de 5A, plusieurs de ces lettres savent aussi fermer une syllabe, et la valeur change alors. ย et ว gardent leur son. Dans หน่อย et dans หิว, la transcription les rattache à la voyelle plutôt que de les écrire comme une consonne : c’est le i de `nàwi` et le o de `hǐo`. ร et ล, elles, se lisent n en fin de syllabe, comme le ferait น. ธ ferme sur un t tenu, ภ sur un p tenu. ฮ ne ferme jamais rien.",
+      "specimen": "หน่อย (nàwi) · หิว (hǐo)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "la règle du ton, enfin complète",
+      "bodyFr": "En 4A vous avez appris à lire le ton d’une syllabe vivante sans marque, à condition que sa consonne initiale soit moyenne ou haute. La troisième ligne du tableau vous manquait. La voici.\n\n> consonne MOYENNE → ton MOYEN > consonne HAUTE → ton MONTANT > consonne BASSE → ton MOYEN\n\nDeux classes sur trois donnent donc le même ton dans ce cas précis, et seule la classe haute se distingue. Et rappelez-vous de 4A : la consonne initiale n’est pas la première lettre écrite quand un เ la précède. Dans เธอ, cherchez ธ ; dans เจอ, cherchez จ.",
+      "specimen": "มือ (muee) contre ถือ (thǔee)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "vous le faisiez déjà, et voici ce qui reste",
+      "bodyFr": "Regardez ce que la troisième ligne explique d’un coup : ยา, คา, พา, พอ, ทา, แพง, เพลง, ทาน, คน, คุณ, ฟอง, มา et เรือ commencent tous par une consonne basse, ils sont tous vivants, aucun ne porte de marque, et vous les dites tous au ton moyen depuis longtemps. Treize mots appris avant aujourd’hui, une seule ligne de tableau. Deux limites subsistent, exactement celles que 4A avait annoncées. D’abord la marque de ton commande toujours : ชื่อ commence par ช, une basse, et son ton est descendant à cause du petit signe posé au-dessus. Ensuite les syllabes mortes ne sont toujours pas couvertes : ครับ et มาก se ferment sur une occlusive, et leurs tons restent imprévisibles pour vous.",
+      "specimen": "ชื่อ (chûee) contre คน (khon)"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "เธอ, un « toi » qui ne va pas partout",
+      "bodyFr": "เธอ mérite un avertissement d’usage. Le dictionnaire le décrit comme un pronom de deuxième personne employé surtout entre amies, ou par quelqu’un vers une personne de rang inférieur, un professeur parlant à son élève par exemple. Ce n’est donc pas le « vous » que vous adressez à un inconnu : celui-là reste คุณ, appris en 2D. Gardez เธอ pour des personnes proches, à qui vous parlez d’égal à égal.",
+      "specimen": "เธอ (thoee) contre คุณ (khoun)"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "à vous",
+      "bodyFr": "Trois gestes à emporter. Pour อือ : la langue de « ou », les lèvres de « i ». Pour เออ : les lèvres relâchées, sans arrondi, puis l’oreille contre la voix de référence, parce que le geste des lèvres ne suffit pas seul ici. Pour lire un ton : trouvez la consonne initiale, vérifiez qu’aucune marque ne surplombe la syllabe, puis appliquez les trois lignes du tableau.\n\nAprès les exercices, enregistrez-vous en disant คือ puis คู, et เจอ puis จอ, et comparez en A/B avec la voix de référence. C’est la façon la plus directe de savoir si vos lèvres tiennent en place. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u06-l6a-p6",
+      "promptFr": "Reliez chaque mot à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "0b86a425-6245-52aa-8b29-06805e901db2",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8b14d724-55ce-5289-99d7-9962c0d9e09c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "416de7d0-b2d8-5188-aab7-30c0832b7ca8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "771d2eb7-264e-5edb-bea1-003022bd7b05",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c2ebf71e-2773-5179-ad36-8011b53cf75f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "fd6d04f7-f3e4-52da-9276-55855f292525",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "044aa581-309f-5f8a-b370-dae5f69d64ff",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "5857f5cc-392c-519a-908c-71e4028ebcc9",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

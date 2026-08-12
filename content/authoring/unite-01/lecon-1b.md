@@ -10,8 +10,9 @@
   la transcription Thaïnaute (voyelle simple ou doublée).
 - Prérequis : leçon 1A (avoir entendu les cinq contours de ton).
 - Cible phonétique : longueur vocalique phonémique, contrastes /a/ vs /aː/ et
-  /u/ vs /uː/, ton maintenu constant à l'intérieur de chaque paire (une seule
-  paire fait exception et elle est signalée).
+  /u/ vs /uː/, ton maintenu constant dans toutes les paires du parcours actif.
+  La paire ดุ/ดู est conservée en réserve pour une révision mixte ultérieure :
+  elle ne sert ni d'exemple central ni d'exercice noté dans 1B.
 - Durée visée : 8 à 10 minutes.
 - Statut : `draft`. Revue native : en attente.
 
@@ -53,6 +54,11 @@ comme une porte qui claque. Une voyelle longue se pose et s'étire, comme une
 porte qu'on retient. Au début, aidez-vous d'un geste : pincez deux doigts
 pour une courte, écartez-les pour une longue.
 
+Avant de répondre, gardez le volume et la hauteur de votre voix de référence
+stables. Posez-vous une seule question : « est-ce que le son dure ? » Une
+voyelle longue n'est ni plus forte ni plus aiguë. Si vous doutez, marquez deux
+pulsations régulières avec le doigt et comparez la durée, pas l'accent.
+
 Spécimen : ดุ (dòu) / ดู (douu)
 
 ### Page 5 : dans l'écriture thaïe aussi
@@ -64,6 +70,27 @@ s'accrochent autour de la consonne : avant, après, dessus ou dessous.
 L'unité 1 du fil lecture y reviendra pas à pas.
 
 Spécimen : ยัง / ยาง
+
+### Page 6 : le transfert sans accent français
+
+Refaites le geste avec deux paires déjà vues : เข้า / ข้าว, puis หัด / หาด.
+Dites les deux membres à volume égal, puis laissez seulement la voyelle
+longue occuper davantage de temps. Le doublement dans `khâao` ou `hàat` ne se
+prononce pas deux fois : il vous rappelle de tenir la même voyelle.
+
+Cette répétition est un entraînement, pas un test. Si vous entendez surtout
+la hauteur ou le volume, revenez à la question « court ou long ? » avant de
+regarder la transcription.
+
+### Page 7 : le premier pont vers l'écriture
+
+Vous pouvez maintenant repérer la durée sans savoir lire toute la syllabe.
+Cachez la transcription et cherchez seulement le signe vocalique : `ั` dans
+หัด et ยัง indique une voyelle courte ; `า` dans หาด et ยาง indique une
+voyelle longue. Dites ensuite « brève » ou « longue », puis vérifiez la
+transcription. Cette lecture partielle est volontaire : vous apprenez à
+utiliser l'écriture thaïe comme un indice fiable, sans devoir mémoriser les
+consonnes avant le moment prévu.
 
 ## Items
 
@@ -252,11 +279,12 @@ Spécimen : ยัง / ยาง
   - Volubilis Database v26.2 (CC BY-SA), entrée confirmée, 2026-08-03,
     voir verification-volubilis.md.
 
-### Paire 5 : sévère / regarder (attention : les tons diffèrent)
+### Réserve de contraste mixte (items 9 et 10, hors parcours actif)
 
 Cette paire montre la durée sur une autre voyelle, le « ou ». Les tons ne
-sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le signale
-à l'écran et l'exercice ne note que la durée.
+sont pas identiques (bas pour ดุ, moyen pour ดู). Elle est documentée pour
+une future révision mixte, mais ne doit pas être utilisée pour mesurer la
+maîtrise de la longueur dans cette leçon.
 
 #### Item 9 : ดุ
 
@@ -314,17 +342,17 @@ sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le sign
 - Tirages et réponses :
   1. Audio หาด : réponse « Longue ».
   2. Audio หัด : réponse « Courte ».
-  3. Audio ดู : réponse « Longue ».
-  4. Audio ดุ : réponse « Courte ».
-  5. Audio ข้าว : réponse « Longue ».
-  6. Audio ยัง : réponse « Courte ».
+  3. Audio ข้าว : réponse « Longue ».
+  4. Audio ยัง : réponse « Courte ».
+  5. Audio ขาว : réponse « Longue ».
+  6. Audio เขา : réponse « Courte ».
 - Feedback correct : « Oui. {mot} ({transcription}) : la voyelle
   {simple/doublée} le confirme dans la transcription. »
 - Feedback incorrect : « Pas cette fois. Réécoutez : {transcription}.
-  Une courte tombe net, une longue se pose. Comparez avec {mot jumeau} de
+  Une courte tombe net, une longue se pose. Comparez avec son mot jumeau de
   la même paire. » Aucune pénalité, proposition de réécoute au ralenti.
-- Pièges connus : la voyelle courte finale de ดุ se termine par un coup de
-  glotte que l'on peut prendre pour une consonne.
+- Pièges connus : ne cherchez pas un indice dans l'accent tonique français ;
+  la voyelle longue est tenue, elle n'est pas accentuée.
 
 ### Exercice 2 : laquelle des deux ? (listening)
 
@@ -355,17 +383,17 @@ sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le sign
   obligatoire)
 - Consigne : « Associez chaque mot entendu à sa fiche durée + sens. »
 - Paires à associer :
-  1. Audio เขา ↔ carte « courte · khǎo · il, elle »
-  2. Audio ขาว ↔ carte « longue · khǎao · blanc »
-  3. Audio ดุ ↔ carte « courte · dòu · sévère »
-  4. Audio ดู ↔ carte « longue · douu · regarder »
+  1. Audio เข้า ↔ carte « courte · khâo · entrer »
+  2. Audio ข้าว ↔ carte « longue · khâao · riz »
+  3. Audio ยัง ↔ carte « courte · yang · encore »
+  4. Audio ยาง ↔ carte « longue · yaang · caoutchouc »
 - Feedback correct : « Bonne association : la graphie doublée ou simple
   correspond à ce que vous avez entendu. »
 - Feedback incorrect : « Ces deux cartes ne vont pas ensemble. Réécoutez le
   mot : sa voyelle se pose-t-elle, ou tombe-t-elle net ? » Les cartes
   restent en place pour un nouvel essai.
-- Pièges connus : la paire ดุ / ดู mélange durée et ton (bas contre moyen) ;
-  l'écran le rappelle et seul le choix de durée est noté.
+- Pièges connus : les quatre cartes proviennent de paires dont le ton reste
+  constant ; le ton ne doit pas devenir un indice concurrent.
 
 ### Exercice 4 : écrivez la durée (recall)
 
@@ -391,21 +419,44 @@ sont pas identiques (bas pour ดุ, moyen pour ดู) : l'application le sign
   français ; ajouter un h final pour « allonger » ; les signes de ton
   oubliés ne comptent pas comme erreur en 1B.
 
+### Exercice 5 : repérer la durée dans l'écriture (`reading`)
+
+- Mécanique : `reading`
+- Affichage : le mot thaï en grand, sans transcription ni audio.
+- Consigne : « Regardez seulement le signe de voyelle. La voyelle est-elle
+  brève ou longue ? »
+- Options : A « Brève » ; B « Longue »
+- Tirages :
+  1. หัด → A.
+  2. หาด → B.
+  3. ยัง → A.
+  4. ยาง → B.
+- Feedback correct : « Oui. Le signe `ั` est bref ; le signe `า` est long.
+  Vous avez utilisé l'écriture comme un repère, pas comme une devinette. »
+- Feedback incorrect : « Regardez la voyelle, pas la consonne : `ั` se coupe
+  court et `า` se tient. Comparez avec le mot jumeau de la même paire. »
+- Pièges connus : confondre un signe vocalique placé au-dessus avec une
+  marque de ton ; chercher la longueur dans la consonne ; lire la graphie
+  comme une transcription française.
+
 ## SRS
 
-- Items en révision : les 10 items de la leçon, organisés par paires.
+- Items en révision : les 8 items des quatre paires à ton constant. ดุ/ดู reste
+  une réserve documentée, hors maîtrise de 1B.
 - Cartes générées :
   1. Discrimination audio : entendre un mot, répondre courte ou longue
-     (items 1 à 10).
+     (items 1 à 8).
   2. Discrimination de paire : entendre un mot, choisir le bon membre de la
      paire (paires 1 à 4, tons constants).
   3. Production écrite : sens français vers transcription, durée notée
-     (items 1 à 8 ; la paire 5 reste en discrimination tant que les tons
-     bas et moyen ne sont pas maîtrisés, voir 1C).
+     (items 1 à 8).
 - Critère de maîtrise : sur deux sessions espacées, 4 réussites sur 4 en
   discrimination audio à vitesse normale et durée correctement transcrite
   sans indice. Un échec renvoie la carte en réapprentissage avec réécoute
   lente, jamais de pénalité.
+- Pont lecture : les quatre tirages de l'exercice 5 sont revus après la
+  séance, puis à la première révision suivante. La lecture des signes ne
+  remplace pas l'écoute : elle doit confirmer une durée déjà entendue.
 
 ## Note culturelle
 
@@ -437,7 +488,10 @@ un des mots les plus utiles de la langue.
   RID requise avant `review`. Revue native : en attente.
 - Audio : aucune piste produite ; les exercices 1 à 3 dépendent de la
   production audio tracée (fournisseur, modèle, version, paramètres à
-  consigner avant enregistrement).
+  consigner avant enregistrement). La prochaine production devra fournir,
+  pour les huit items actifs, une version normale et une version lente : la
+  version lente allonge la durée sans exagérer le ton ni le volume, et garde
+  la même voix de référence pour chaque paire.
 
 ### Résolution des findings bloquants (audit interne du 2026-08-03)
 

@@ -1,0 +1,773 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "b243ee28-d390-5936-82a2-278e30328ba6",
+  "versionId": "6fe47ee1-7169-5515-8f80-2d2b0674ed6a",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Lire les nombres en situation",
+  "objectiveFr": "à la fin de la leçon, devant un spécimen écrit et sans l’entendre, l’apprenant nomme la grandeur que le nombre compte, parmi un prix, une heure du jour, un poids, un étage et une durée, sur 9 spécimens sur 10 ; il apparie six spécimens écrits à leur lecture orale, les six portant tous le même chiffre ๕, 6 sur 6 ; il reconstitue dans l’ordre la lecture orale de trois heures écrites et de trois bloc",
+  "requiredEntitlement": null,
+  "audioManifestId": "090d6755-6272-5a58-b180-7f59e4d1140c",
+  "items": [
+    {
+      "id": "cf496481-fa9b-5764-ae61-8f49f7d80fe1",
+      "thaiRaw": "ราคา",
+      "unicodeCodePoints": [
+        "U+0E23",
+        "U+0E32",
+        "U+0E04",
+        "U+0E32"
+      ],
+      "translationFr": "le prix",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "raa·khaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ราคา",
+          "ipa": "raː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ราคา",
+          "ipa": "kʰaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "c23460db-34a5-5386-a2c2-06f86adbfc28",
+      "thaiRaw": "กิโล",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E34",
+        "U+0E42",
+        "U+0E25"
+      ],
+      "translationFr": "le kilo (forme courte, valant kilogramme ou kilomètre selon le contexte)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kì·loo"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "กิโล",
+          "ipa": "ki˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "กิโล",
+          "ipa": "loː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "aucune"
+        }
+      ],
+      "register": "**NON ÉTABLI, et les sources divergent explicitement.** en.wiktionary étiquette l’entrée entière « colloquial » ; le RID pose bien une étiquette (ปาก) sur son sens (๒), la balance, mais **n’en pose aucune sur le sens (๓)**, celui de forme courte de กิโลกรัม et กิโลเมตร, qui est le sens enseigné ; VOLUBILIS pose `(inf.)` sur la ligne 40886, celle du kilomètre, mais **rien sur la ligne 40885**, celle du kilogramme. Deux sources se taisent là où la troisième parle. Un fait qui ne tient pas sur deux sources concordantes est retiré : la leçon n’enseigne donc AUCUNE règle de registre sur ce mot et se contente de la traduction du champ `fr`. Même traitement qu’au champ `registre` de แพทย์ en `u09-l9a`. Voir l’incertitude 1.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "bc963f09-49b0-5269-a8fd-fe6d750458eb",
+      "thaiRaw": "ขีด",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E35",
+        "U+0E14"
+      ],
+      "translationFr": "cent grammes (le dixième d’un kilogramme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khìit"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขีด",
+          "ipa": "kʰiːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "**NON ÉTABLI pour le sens de poids**, et la divergence est de même forme qu’à l’item 2. en.wiktionary étiquette explicitement ce sens « colloquial » ; le RID pose une étiquette (ปาก) sur son sens (๕), le galon d’uniforme, mais **n’en pose aucune sur le sens (๖)**, celui du poids, qui est le sens enseigné ; VOLUBILIS étiquette `(oral)` sa ligne 34105, celle du galon, mais **rien sur la ligne 34104**, celle des cent grammes. Deux silences contre une étiquette : le fait ne tient pas sur deux sources concordantes et il est retiré. Voir l’incertitude 1.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "197ef0d4-bb96-5c44-9e47-84a5b5a78802",
+      "thaiRaw": "ครึ่ง",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E23",
+        "U+0E36",
+        "U+0E48",
+        "U+0E07"
+      ],
+      "translationFr": "la moitié ; demi",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khrûeng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ครึ่ง",
+          "ipa": "kʰrɯŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "4d8a26b0-8549-5597-8c5c-572fb41eab81",
+      "thaiRaw": "ชั้น",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E31",
+        "U+0E49",
+        "U+0E19"
+      ],
+      "translationFr": "l’étage, le niveau",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "chán"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ชั้น",
+          "ipa": "t͡ɕʰan˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "bd071eac-0a60-5622-8c22-9806c9a21215",
+      "thaiRaw": "นาฬิกา",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E32",
+        "U+0E2C",
+        "U+0E34",
+        "U+0E01",
+        "U+0E32"
+      ],
+      "translationFr": "heure (l’unité de l’échelle de 1 à 24 qui donne l’heure du jour) ; l’horloge, la montre",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "naa·lí·kaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นาฬิกา",
+          "ipa": "naː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "นาฬิกา",
+          "ipa": "li˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "l",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "นาฬิกา",
+          "ipa": "kaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre pour les deux sens enseignés. en.wiktionary étiquette « formal » le sens d’unité de temps ; le RID n’étiquette ni l’un ni l’autre sens, VOLUBILIS étiquette `(form.)` la seule glose anglaise « timepiece » et non la française. La divergence est mineure et de même nature qu’aux items 2 et 3 : le champ retient `neutre`, la leçon n’enseigne aucune règle d’emploi entre นาฬิกา et le système oral, et la page 12 dit seulement que l’autre système existe. Voir l’incertitude 1.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "5635ea45-0eb5-5b8a-bf47-176f2639c159",
+      "thaiRaw": "ชั่วโมง",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E31",
+        "U+0E48",
+        "U+0E27",
+        "U+0E42",
+        "U+0E21",
+        "U+0E07"
+      ],
+      "translationFr": "l’heure (la durée de soixante minutes)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "chôua·moong"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ชั่วโมง",
+          "ipa": "t͡ɕʰua̯˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ชั่วโมง",
+          "ipa": "moːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "47f40fa1-8bb3-5d8b-9a05-db8971959d84",
+      "thaiRaw": "นาที",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E32",
+        "U+0E17",
+        "U+0E35"
+      ],
+      "translationFr": "la minute",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "naa·thii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นาที",
+          "ipa": "naː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "นาที",
+          "ipa": "tʰiː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u10-l10d-p5",
+      "drawIndex": 1,
+      "id": "f25d96d8-f78c-5f74-a9d2-ae2d4880c66f",
+      "type": "recall",
+      "itemId": "cf496481-fa9b-5764-ae61-8f49f7d80fe1",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "raa·khaa",
+          "kind": "transcription"
+        },
+        {
+          "value": "raakhaa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `khrûeng`, `chôua`, `khìit`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p5",
+      "drawIndex": 2,
+      "id": "d3b48c64-b615-52af-b6cc-aff99f0729ad",
+      "type": "recall",
+      "itemId": "c23460db-34a5-5386-a2c2-06f86adbfc28",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "kì·loo",
+          "kind": "transcription"
+        },
+        {
+          "value": "kìloo",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `khrûeng`, `chôua`, `khìit`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p5",
+      "drawIndex": 3,
+      "id": "c4e345cd-cc64-5e49-931e-732e1d0b518e",
+      "type": "recall",
+      "itemId": "bc963f09-49b0-5269-a8fd-fe6d750458eb",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "khìit",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `khrûeng`, `chôua`, `khìit`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p5",
+      "drawIndex": 4,
+      "id": "9db48bc4-12d4-5b49-a17a-2460eaf8af9d",
+      "type": "recall",
+      "itemId": "197ef0d4-bb96-5c44-9e47-84a5b5a78802",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "khrûeng",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `khrûeng`, `chôua`, `khìit`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p5",
+      "drawIndex": 5,
+      "id": "55cb50d9-0ef0-5192-b223-8fe2d2fba38b",
+      "type": "recall",
+      "itemId": "4d8a26b0-8549-5597-8c5c-572fb41eab81",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "chán",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `khrûeng`, `chôua`, `khìit`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p5",
+      "drawIndex": 6,
+      "id": "47b9db5b-56e6-53ba-a3e8-9fd3b5143362",
+      "type": "recall",
+      "itemId": "bd071eac-0a60-5622-8c22-9806c9a21215",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "naa·lí·kaa",
+          "kind": "transcription"
+        },
+        {
+          "value": "naalíkaa",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `khrûeng`, `chôua`, `khìit`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p5",
+      "drawIndex": 7,
+      "id": "2cbc2107-6de2-5ce2-8f12-16fa8dce234c",
+      "type": "recall",
+      "itemId": "5635ea45-0eb5-5b8a-bf47-176f2639c159",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "chôua·moong",
+          "kind": "transcription"
+        },
+        {
+          "value": "chôuamoong",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `khrûeng`, `chôua`, `khìit`."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10d-p5",
+      "drawIndex": 8,
+      "id": "445b7b0a-1e31-5c3a-8b63-78c1284466f5",
+      "type": "recall",
+      "itemId": "47f40fa1-8bb3-5d8b-9a05-db8971959d84",
+      "skill": "recall",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "acceptedAnswers": [
+        {
+          "value": "naa·thii",
+          "kind": "transcription"
+        },
+        {
+          "value": "naathii",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Vous l’avez lu sans l’entendre.",
+        "incorrectFr": "L’accent manque, et il fait partie de la réponse. Rien pour le moyen, `à` pour le bas, `â` pour le descendant, `á` pour le haut, `ǎ` pour le montant.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, accent posé sur la mauvaise lettre",
+            "textFr": "L’accent va sur la PREMIÈRE lettre du noyau : `khrûeng`, `chôua`, `khìit`."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous lisez déjà des nombres, depuis l’unité 3",
+      "bodyFr": "Vous connaissez les dix chiffres thaïs depuis la leçon 3A et les nombres depuis 3B. Vous savez lire ๕๐ บาท depuis 3C. Ce qui manque n’est pas le nombre : c’est tout ce qui se colle autour de lui dans la vraie vie, et qui dit ce que le nombre compte. Un même ๕ ne veut pas dire la même chose selon le mot qui le suit ou qui le précède. Aujourd’hui, on lit ces mots-là.",
+      "specimen": "๕๐ บาท (hâa·sìp bàat)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "trois questions, toujours les mêmes",
+      "bodyFr": "Devant un nombre écrit, posez-vous trois questions dans cet ordre, et vous vous en sortirez presque toujours.\n\n> Un, quels chiffres ? Deux, quel mot d’unité, et de quel côté du nombre ? > Trois, comment se dit le bloc entier ?\n\nLa deuxième question est celle du jour. Les chiffres, vous les avez ; la lecture à voix haute vient ensuite toute seule.",
+      "specimen": "๓ ขีด (sǎam khìit)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "le prix, et le mot qui le nomme",
+      "bodyFr": "ราคา veut dire le prix. C’est un nom, et il s’emploie dans une phrase comme n’importe quel autre nom. La monnaie, บาท, se lit derrière le nombre comme vous le faites depuis 3C. Deux syllabes, quatre lettres, aucun signe posé nulle part : ราคา est le mot le plus simple à lire de toute la leçon.",
+      "specimen": "ราคา (raa·khaa) · ๙๐ บาท (kâao·sìp bàat)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "les chiffres sont exactement les vôtres",
+      "bodyFr": "Rien de neuf ici, et c’est le but. ๙๐ se lit เก้าสิบ, ๑๒๐ se lit หนึ่งร้อยยี่สิบ, ๔๕ se lit สี่สิบห้า. Le patron de 3B ne bouge pas quand on met une unité derrière. Un seul rappel utile : le zéro se dit ศูนย์, et ce mot porte le petit signe ◌์ appris en 9A, qui éteint son ย. On lit donc sǒuun, en deux lettres de son, pas en trois.",
+      "specimen": "๐ (sǒuun) · ๔๕ (sìi·sìp·hâa)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "peser, en deux mots",
+      "bodyFr": "Le poids se dit avec deux mots. กิโล, le kilo, et ขีด, qui vaut le dixième d’un kilo, soit cent grammes. Les deux se lisent derrière le nombre, comme บาท.\n\n> ๒ กิโล : deux kilos > ๓ ขีด : trois fois cent grammes\n\nขีด ne se rend pas par un seul mot français : les dictionnaires le traduisent par sa valeur, cent grammes. Ne cherchez donc pas un mot à mot, retenez la valeur.",
+      "specimen": "๒ กิโล (sǎwwng kì·loo) · ๓ ขีด (sǎam khìit)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "กิโล tout seul est ambigu, et c’est le thaï qui le veut",
+      "bodyFr": "Voici le premier vrai piège de lecture du jour. กิโล est une forme courte, et elle abrège DEUX mots différents : กิโลกรัม, le kilogramme, et กิโลเมตร, le kilomètre. Le dictionnaire donne les deux. Seul le contexte tranche : sur une balance, c’est un poids ; sur une distance, c’est une longueur. Ce n’est pas une faiblesse de votre lecture, c’est une propriété du mot.",
+      "specimen": "กิโล (kì·loo)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "la moitié se met devant",
+      "bodyFr": "ครึ่ง veut dire la moitié, et il se place DEVANT ce qu’il divise.\n\n> ครึ่งกิโล : un demi-kilo > ครึ่งชั่วโมง : une demi-heure\n\nDeux choses à regarder à l’écrit. La première lettre est un ค, et le ร qui suit lui est collé : les deux se lisent d’un seul souffle, `khr`, comme ครับ que vous dites depuis la leçon 1E. Le ton se lit sur la PREMIÈRE des deux, exactement comme la page 13 de 8A vous l’a montré.",
+      "specimen": "ครึ่งกิโล (khrûeng kì·loo)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ชั้น, et la place qui change tout",
+      "bodyFr": "ชั้น veut dire l’étage, le niveau. C’est le seul mot du jour qui se lit des deux côtés du nombre, et la place décide du sens.\n\n> ชั้น ๓ : l’étage numéro 3, celui où vous allez > บ้าน ๓ ชั้น : une maison DE trois étages, un compte\n\nDevant le nombre, ชั้น nomme. Derrière, il compte, exactement comme les classificateurs de 3D, où ปลาสองตัว compte des poissons. Faites l’essai plutôt que de me croire : lisez les deux blocs à voix haute et demandez-vous, à chaque fois, si vous êtes en train de désigner un endroit ou d’en dénombrer.",
+      "specimen": "ชั้น ๓ (chán sǎam) contre บ้าน ๓ ชั้น (bâan sǎam chán)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "l’heure écrite, de 1 à 24",
+      "bodyFr": "Le thaï écrit l’heure du jour sur une échelle qui va de 1 à 24, et le mot de cette échelle est นาฬิกา. Le dictionnaire l’énonce ainsi : ๑ นาฬิกา, ๒ นาฬิกา, et ainsi de suite jusqu’à ๒๔ นาฬิกา. Derrière les chiffres, ce mot s’abrège en น., une seule lettre suivie d’un point.\n\n> ๑๑.๐๕ น. > ๑๓.๓๐ น.\n\nNe l’oubliez pas : ce น. ne se lit pas « n ». Il se lit นาฬิกา en entier.\n\nl’Office of the Royal Society · ๑๓.๓๐ น., spécimen construit sur le même patron · นาฬิกา (naa·lí·kaa)",
+      "specimen": "๑๑.๐๕ น., forme attestée telle quelle par la règle d’écriture de"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "lire une heure à voix haute",
+      "bodyFr": "Le bloc se dit dans l’ordre où il s’écrit, et il n’y a rien à inverser.\n\n> [heure] นาฬิกา [minutes] นาที\n\n๑๑.๐๕ น. se lit donc สิบเอ็ด นาฬิกา ห้า นาที, littéralement onze heures cinq minutes. Vous avez déjà tous les nombres depuis 3B : il n’y a que deux mots nouveaux à poser dessus.\n\ntoutes deux attestées par la règle d’écriture de l’Office of the Royal Society",
+      "specimen": "๑๑.๐๕ น. (sìp·èt naa·lí·kaa hâa naa·thii), forme écrite et lecture"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "la durée n’est pas l’heure",
+      "bodyFr": "Deux mots ressemblent à l’heure sans en être. ชั่วโมง est une DURÉE d’une heure, soit soixante นาที. นาฬิกา, lui, est un POINT dans la journée. La différence est la même qu’entre « à deux heures » et « pendant deux heures ».\n\n> ๒ ชั่วโมง : deux heures de durée > ๐๒.๐๐ น. : deux heures du matin",
+      "specimen": "๒ ชั่วโมง (sǎwwng chôua·moong) contre ๐๒.๐๐ น."
+    },
+    {
+      "ordre": 12,
+      "titleFr": "il existe une autre façon de dire l’heure, et ce n’est pas celle-ci",
+      "bodyFr": "Soyons honnêtes avec vous, parce que vous l’entendrez très vite. L’institution qui fixe la norme du thaï décrit TROIS façons de dire l’heure. Celle du jour est la première, l’échelle de 1 à 24 avec นาฬิกา. Les deux autres sont orales, emploient d’autres mots et découpent la journée autrement, et la même institution précise que la troisième est approximative, avec des flottements d’une personne à l’autre.\n\nNous ne vous enseignons pas ces deux systèmes aujourd’hui, et le motif est simple : c’est un volume de vocabulaire et de découpage horaire qui mérite sa propre leçon, pas trois lignes à la fin de celle-ci. Vous les rencontrerez, et vous saurez au moins qu’ils existent et qu’ils ne se lisent pas comme ce que vous venez d’apprendre.",
+      "specimen": "๑๙.๐๐ น. · นาฬิกา (naa·lí·kaa)"
+    },
+    {
+      "ordre": 13,
+      "titleFr": "le ฬ de นาฬิกา, une vieille connaissance à une autre place",
+      "bodyFr": "Regardez la troisième lettre de นาฬิกา : c’est un ฬ. Vous l’avez rencontré en 9A, rangé dans la famille du `n`, celle des lettres qui ferment une syllabe sur un `n`. Ici il n’est pas à la fin : il ouvre la deuxième syllabe, et une lettre qui ouvre garde sa valeur d’initiale. Celle de ฬ est `l`. Le mot se lit donc naa·lí·kaa, et non naa·ní·kaa.\n\nC’est exactement le raisonnement de 9A, pris dans l’autre sens : une lettre n’a pas une valeur, elle en a une par position. Vérifiez-le à l’oreille avant de me croire.",
+      "specimen": "นาฬิกา (naa·lí·kaa) · ฬ"
+    },
+    {
+      "ordre": 14,
+      "titleFr": "ce que vous pouvez calculer, et ce qu’on vous donne",
+      "bodyFr": "Cinq des huit mots du jour ont un ton entièrement calculable avec le tableau de 8A. Vérifiez-en deux, cela vaut mieux qu’une liste.\n\n> ชั้น : ช est BASSE, un ไม้โท est posé, la syllabe est vivante puisque น ne > bloque pas l’air. Basse plus ไม้โท donne le ton HAUT. > ครึ่ง : คร est un groupe, donc c’est ค qui commande, et ค est BASSE. Un ไม้เอก > sur une basse donne le ton DESCENDANT.\n\nTrois tons vous sont en revanche DONNÉS, parce qu’ils sortent du tableau : celui de ขีด, dont la syllabe se ferme sur un `t`, celui de la syllabe กิ de กิโล, qui est brève et ouverte, et celui de la syllabe ลิ de นาฬิกา, qui est dans le même cas. Le tableau de 8A ne couvre que la syllabe vivante, et il n’est ni élargi ni contredit ici.",
+      "specimen": "ชั้น (chán) · ครึ่ง (khrûeng) · ขีด (khìit)"
+    },
+    {
+      "ordre": 15,
+      "titleFr": "à vous",
+      "bodyFr": "Le geste tient en trois temps, ceux de la page 2. Un, lisez les chiffres. Deux, cherchez le mot d’unité et regardez de quel côté du nombre il se trouve. Trois, dites le bloc entier dans l’ordre où il est écrit.\n\nAvant les exercices, reprenez vos deux repères de tons : สอง et สาม montent, ชั้น reste perché, ราคา et นาที restent plats, ขีด se tient en bas.\n\nAprès les exercices, enregistrez-vous en disant ชั้น puis สาม, et ราคา puis ขีด, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.\n\nUn mot pour finir. Tous les prix, toutes les heures et tous les poids de cette leçon sont des exemples que nous avons fabriqués pour vous faire lire. Aucun n’est le tarif ou l’horaire d’un commerce réel, et aucun ne prétend l’être.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u10-l10d-p5",
+      "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
+      "mechanic": "recall",
+      "drawCount": 8,
+      "passRequired": 8,
+      "sampleSize": 8
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "fa06ad96-0dd9-51f7-9dec-f858a3440cf6",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "547ee622-dc70-5c17-b7cc-a337e0b536ec",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "95df181e-68c4-5eac-a053-01d04eff28b6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2cb7827f-6c3f-51fd-820f-48e5aa203f68",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "613a7158-b6d2-5758-9e15-f2e6527ee5c6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1cb20c0d-264c-5729-8ebb-35b73947292f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6f49ffa7-185a-50fc-9a9e-7b9b827813f7",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "5127ad4b-d7d3-5713-b9b8-560fddd2ccb2",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

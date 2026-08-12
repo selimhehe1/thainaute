@@ -55,6 +55,11 @@ import {
 } from "@thainaute/sync";
 import type { SQLiteDatabase } from "expo-sqlite";
 
+import {
+  runMobileSQLiteTransaction,
+  serializeMobileSQLiteOperation,
+} from "./mobile-sqlite-operation-queue";
+
 const OUTBOX_KEY = "attempts-v1";
 const CONTENT_REPORT_OUTBOX_KEY = "content-reports-v1";
 const DEVICE_KEY = "device_id";
@@ -64,7 +69,6 @@ const LEGACY_DEMO_NAMESPACE_REPAIR_KEY = "legacy_demo_namespace_repaired_v1";
 const FUSION_MARKER_KEY = "anonymous_progress_fusion_v1";
 const DELETED_ACCOUNT_TOMBSTONE_PREFIX = "deleted_account_subject_v1:";
 const DELETED_ACCOUNT_TOMBSTONE_VALUE = "deleted";
-const SQLITE_BUSY_RETRY_COUNT = 3;
 const DEMO_OUTBOX_KEY = `demo:${OUTBOX_KEY}`;
 const LEGACY_FIXTURE_EXERCISE_ID = "10000000-0000-4000-8000-000000000004";
 const LEGACY_FIXTURE_CONTENT_VERSION_ID =
@@ -89,8 +93,6 @@ interface LegacyJournalRow {
   readonly payload: string;
 }
 
-const databaseQueues = new WeakMap<object, Promise<void>>();
-
 export class MobileAttemptOutboxStorageError extends Error {
   public constructor(message: string, options?: ErrorOptions) {
     super(message, options);
@@ -113,43 +115,12 @@ export interface ExpectedMobileAccountPurgeState {
   readonly contentReportOutbox: ContentReportOutboxSnapshot;
 }
 
-function isSqliteBusy(error: unknown): boolean {
-  if (!(error instanceof Error)) return false;
-  return /SQLITE_BUSY|database is locked/i.test(error.message);
-}
-
-async function retrySqliteBusy<T>(operation: () => Promise<T>): Promise<T> {
-  for (let retry = 0; ; retry += 1) {
-    try {
-      return await operation();
-    } catch (error) {
-      if (!isSqliteBusy(error) || retry >= SQLITE_BUSY_RETRY_COUNT) throw error;
-      await new Promise<void>((resolve) =>
-        setTimeout(() => resolve(), 10 * (retry + 1)),
-      );
-    }
-  }
-}
-
 /** Une seule mutation SQLite à la fois, même avec deux montages StrictMode. */
 function serializeDatabaseOperation<T>(
   database: SQLiteDatabase,
   operation: () => Promise<T>,
 ): Promise<T> {
-  const previous = databaseQueues.get(database) ?? Promise.resolve();
-  const result = previous.then(
-    () => retrySqliteBusy(operation),
-    () => retrySqliteBusy(operation),
-  );
-  const tail = result.then(
-    () => undefined,
-    () => undefined,
-  );
-  databaseQueues.set(database, tail);
-  void tail.finally(() => {
-    if (databaseQueues.get(database) === tail) databaseQueues.delete(database);
-  });
-  return result;
+  return serializeMobileSQLiteOperation(database, operation);
 }
 
 function parseStoredSnapshot(
@@ -605,7 +576,8 @@ export class MobileAttemptOutboxStore {
       const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let migrated = createAttemptOutboxSnapshot(this.#owner);
-        await this.#database.withExclusiveTransactionAsync(
+        await runMobileSQLiteTransaction(
+          this.#database,
           async (transaction) => {
             await this.#assertAccountWritable(transaction, tombstoneKey);
             const marker = await transaction.getFirstAsync<MetadataRow>(
@@ -678,7 +650,8 @@ export class MobileAttemptOutboxStore {
       await new MobileAttemptOutboxStore(this.#database).migrateLegacyJournal();
       return await serializeDatabaseOperation(this.#database, async () => {
         let demoSnapshot: AttemptOutboxSnapshot | undefined;
-        await this.#database.withExclusiveTransactionAsync(
+        await runMobileSQLiteTransaction(
+          this.#database,
           async (transaction) => {
             const repairMarker = await transaction.getFirstAsync<MetadataRow>(
               "SELECT value FROM local_metadata WHERE key = ?",
@@ -928,7 +901,7 @@ export class MobileAttemptOutboxStore {
     try {
       const tombstoneKey = await this.#resolveAccountTombstoneKey();
       await serializeDatabaseOperation(this.#database, () =>
-        this.#database.withExclusiveTransactionAsync(async (transaction) => {
+        runMobileSQLiteTransaction(this.#database, async (transaction) => {
           await this.#assertAccountWritable(transaction, tombstoneKey);
           const marker = parseStoredFusionMarker(
             await transaction.getFirstAsync<MetadataRow>(
@@ -1025,7 +998,7 @@ export class MobileAttemptOutboxStore {
         );
       }
       await serializeDatabaseOperation(this.#database, () =>
-        this.#database.withExclusiveTransactionAsync(async (transaction) => {
+        runMobileSQLiteTransaction(this.#database, async (transaction) => {
           const removeFusionMarker = validFusionMarkerTargetsAccount(
             await transaction.getFirstAsync<MetadataRow>(
               "SELECT value FROM local_metadata WHERE key = ?",
@@ -1108,7 +1081,8 @@ export class MobileAttemptOutboxStore {
       const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let purged = false;
-        await this.#database.withExclusiveTransactionAsync(
+        await runMobileSQLiteTransaction(
+          this.#database,
           async (transaction) => {
             await this.#assertAccountWritable(transaction, tombstoneKey);
             const row = await transaction.getFirstAsync<OutboxRow>(
@@ -1230,7 +1204,8 @@ export class MobileAttemptOutboxStore {
       const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let value = "";
-        await this.#database.withExclusiveTransactionAsync(
+        await runMobileSQLiteTransaction(
+          this.#database,
           async (transaction) => {
             await this.#assertAccountWritable(transaction, tombstoneKey);
             const row = await transaction.getFirstAsync<MetadataRow>(
@@ -1284,7 +1259,8 @@ export class MobileAttemptOutboxStore {
       const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let returned: T | undefined;
-        await this.#database.withExclusiveTransactionAsync(
+        await runMobileSQLiteTransaction(
+          this.#database,
           async (transaction) => {
             await this.#assertAccountWritable(transaction, tombstoneKey);
             const marker = parseStoredFusionMarker(
@@ -1367,7 +1343,8 @@ export class MobileAttemptOutboxStore {
       const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let returned: ApplyAttemptOutboxSuccessResult | undefined;
-        await this.#database.withExclusiveTransactionAsync(
+        await runMobileSQLiteTransaction(
+          this.#database,
           async (transaction) => {
             await this.#assertAccountWritable(transaction, tombstoneKey);
             const accountSnapshot = await readSnapshot(
@@ -1461,7 +1438,8 @@ export class MobileAttemptOutboxStore {
       const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let returned: ContentReportOutboxSnapshot | undefined;
-        await this.#database.withExclusiveTransactionAsync(
+        await runMobileSQLiteTransaction(
+          this.#database,
           async (transaction) => {
             await this.#assertAccountWritable(transaction, tombstoneKey);
             const next = update(
@@ -1516,7 +1494,8 @@ export class MobileAttemptOutboxStore {
       const tombstoneKey = await this.#resolveAccountTombstoneKey();
       return await serializeDatabaseOperation(this.#database, async () => {
         let returned: T | undefined;
-        await this.#database.withExclusiveTransactionAsync(
+        await runMobileSQLiteTransaction(
+          this.#database,
           async (transaction) => {
             await this.#assertAccountWritable(transaction, tombstoneKey);
             assertFusionMarkerContainsNoLegacyFixture(

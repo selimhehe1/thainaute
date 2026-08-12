@@ -9,6 +9,9 @@ export const colors = {
   jade: "#43a283",
   saffron: "#f1b84b",
   mist: "#eef1f4",
+  sky: "#5b8ee8",
+  skyInk: "#315b9c",
+  skyPale: "#edf3ff",
   paper: "#ffffff",
   inkSoft: "#56607a",
   coralDeep: "#cf4a45",
@@ -64,6 +67,7 @@ export const motionEasings = {
 
 export const shadows = {
   card: "0 1px 2px rgba(40, 52, 80, 0.05), 0 10px 28px rgba(40, 52, 80, 0.07)",
+  lifted: "0 3px 0 rgba(40, 52, 80, 0.10), 0 12px 24px rgba(40, 52, 80, 0.08)",
 } as const;
 
 export {

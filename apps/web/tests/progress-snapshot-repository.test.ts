@@ -2,7 +2,10 @@ import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
 import { describe, expect, it } from "vitest";
 
 import { AttemptInfrastructureError } from "../lib/server/attempt-sync/errors";
-import { parseProgressSnapshotRpcResult } from "../lib/server/progress-snapshot/supabase-repository";
+import {
+  parseLessonProgressSnapshotRpcResult,
+  parseProgressSnapshotRpcResult,
+} from "../lib/server/progress-snapshot/supabase-repository";
 
 describe("repository du snapshot de progression", () => {
   it("valide la forme fermée et conserve une révision zéro", () => {
@@ -64,6 +67,22 @@ describe("repository du snapshot de progression", () => {
         },
         null,
       ),
+    ).toThrow(AttemptInfrastructureError);
+  });
+
+  it("projette explicitement un compte neuf sans profil en état vide pour une leçon", () => {
+    expect(
+      parseLessonProgressSnapshotRpcResult(null, {
+        code: "TP002",
+        message: "Progress profile not found.",
+      }),
+    ).toEqual({ syncRevision: 0, states: [] });
+
+    expect(() =>
+      parseProgressSnapshotRpcResult(null, {
+        code: "TP002",
+        message: "Progress profile not found.",
+      }),
     ).toThrow(AttemptInfrastructureError);
   });
 });

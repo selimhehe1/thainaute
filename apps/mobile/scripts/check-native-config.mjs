@@ -17,16 +17,20 @@ const expectedBlockedAndroidPermissions = new Set([
   "android.permission.VIBRATE",
   "android.permission.WRITE_EXTERNAL_STORAGE",
 ]);
-const expectedMicrophoneMessage =
-  "Autorisez Thaïnaute à utiliser le microphone pour enregistrer votre voix. La réécoute reste locale sur cet appareil.";
-const expectedApplicationIdentity = {
+const lockedLanguagePack = Object.freeze({
+  id: "thai-fr",
+  microphonePermissionFr:
+    "Autorisez Thaïnaute à utiliser le microphone pour enregistrer votre voix. La réécoute reste locale sur cet appareil.",
+  targetLocale: "th-TH",
+});
+const lockedApplicationIdentity = Object.freeze({
   androidPackage: "com.thainaute.app",
   iosBundleIdentifier: "com.thainaute.app",
   name: "Thaïnaute",
   scheme: "thainaute",
   slug: "thainaute",
   version: "0.1.0",
-};
+});
 
 function fail(message) {
   throw new Error(`Contrat de configuration native invalide : ${message}`);
@@ -63,23 +67,35 @@ try {
   fail("la sortie d’introspection Expo n’est pas un JSON valide.");
 }
 
+const packExtra = config.extra ?? {};
+if (packExtra.languagePackId !== lockedLanguagePack.id) {
+  fail(`le profil de pack de langue doit rester ${lockedLanguagePack.id}.`);
+}
+if (packExtra.targetLocale !== lockedLanguagePack.targetLocale) {
+  fail(`la langue cible doit rester ${lockedLanguagePack.targetLocale}.`);
+}
+if (
+  packExtra.microphonePermissionFr !== lockedLanguagePack.microphonePermissionFr
+) {
+  fail("la permission microphone du pack actif a changé.");
+}
+
 for (const [key, expected] of Object.entries({
-  name: expectedApplicationIdentity.name,
-  scheme: expectedApplicationIdentity.scheme,
-  slug: expectedApplicationIdentity.slug,
-  version: expectedApplicationIdentity.version,
+  name: lockedApplicationIdentity.name,
+  scheme: lockedApplicationIdentity.scheme,
+  slug: lockedApplicationIdentity.slug,
+  version: lockedApplicationIdentity.version,
 })) {
   if (config[key] !== expected) {
     fail(`l’identité Expo ${key} doit rester ${expected}.`);
   }
 }
 if (
-  config.ios?.bundleIdentifier !==
-  expectedApplicationIdentity.iosBundleIdentifier
+  config.ios?.bundleIdentifier !== lockedApplicationIdentity.iosBundleIdentifier
 ) {
   fail("le bundle identifier iOS ne respecte plus le brief.");
 }
-if (config.android?.package !== expectedApplicationIdentity.androidPackage) {
+if (config.android?.package !== lockedApplicationIdentity.androidPackage) {
   fail("le package Android ne respecte plus le brief.");
 }
 
@@ -123,7 +139,10 @@ assertSameSet(
 );
 
 const infoPlist = config.ios?.infoPlist ?? {};
-if (infoPlist.NSMicrophoneUsageDescription !== expectedMicrophoneMessage) {
+if (
+  infoPlist.NSMicrophoneUsageDescription !==
+  lockedLanguagePack.microphonePermissionFr
+) {
   fail("le motif iOS d’accès au microphone a changé.");
 }
 if ("NSFaceIDUsageDescription" in infoPlist) {

@@ -31,7 +31,7 @@ function lessonProgressHandler(): Handler | null {
       publishableKey: syncConfiguration.publishableKey,
     }),
     repository: createSupabasePublishedLessonRepository(contentConfiguration),
-    readSnapshot: (userId) => snapshotRepository.read(userId),
+    readSnapshot: (userId) => snapshotRepository.readForLesson(userId),
     activeReleaseId: contentConfiguration.releaseId,
     reportOperationalFailure: reportLessonProgressFailure,
   });

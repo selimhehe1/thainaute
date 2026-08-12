@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "81c683dc-a0a5-57c3-8c9e-4e89fc29ba87",
+  "versionId": "dbbebe63-c40a-5dfd-9014-88f0ae93d9de",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Une dernière conversation",
+  "objectiveFr": "à la fin de la leçon, devant les répliques d’une conversation de douze tours entendues à débit naturel, sans transcription et sans texte, l’apprenant dit ce que chacune veut dire, sur 8 tirages sur 10 ; il apparie huit blocs de cette conversation à ce qu’ils font dans l’échange, 8 sur 8 ; il reconstruit l’ordre des blocs de six répliques, sur 5 tirages sur 6 ; il produit en transcription six énonc",
+  "requiredEntitlement": null,
+  "audioManifestId": "e7e0c1b2-09ad-5813-8df3-60b230ffbe41",
+  "items": [
+    {
+      "id": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "thaiRaw": "ไม่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "ne … pas ; non",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+      "thaiRaw": "มี",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35"
+      ],
+      "translationFr": "avoir ; posséder",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มี",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u12-l12d-p6",
+      "drawIndex": 1,
+      "id": "5ef26935-0d9e-5c38-a201-360f31f60dad",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque forme à son sens.",
+      "pairs": [
+        {
+          "id": "a3beff1c-9e7c-5a12-ba98-fa5fdec3321a",
+          "itemId": "b06ed772-7fdd-5395-a478-440c1d5cbf6a",
+          "labelFr": "avoir ; il y a"
+        },
+        {
+          "id": "46a9fb53-0b15-5550-9055-71cc9c5075a6",
+          "itemId": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+          "labelFr": "ne … pas"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Exact.",
+        "incorrectFr": "Relisez la forme et son sens dans cette leçon, puis réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "ce qui vous attend",
+      "bodyFr": "Vous allez entendre une conversation de douze tours, en entier, sans transcription et sans texte. Personne ne vous dira de quoi elle parle avant, et elle ne s’arrêtera pas entre les sujets.\n\nVous ne comprendrez pas tout, et ce n’est pas le but. Le but est de suivre : savoir de quoi on parle, savoir quand ça change de sujet, savoir quoi répondre. Ce sont les trois choses que les exercices d’aujourd’hui mesurent, et rien n’est mesuré ici qui ne soit fait de blocs publiés par les unités 1 à 11.",
+      "specimen": "สวัสดีค่ะ คุณต้น วันนี้สบายดีไหมคะ"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ce que ce bilan dit, et ce qu’il ne dit pas",
+      "bodyFr": "Une leçon de bilan est le meilleur endroit pour raconter n’importe quoi. Voici donc, écrit avant les exercices, ce que celle-ci se permet et ce qu’elle s’interdit.\n\n> **Ce qu’elle dit** : sur cinq mesures précises, ce que vous avez réussi > aujourd’hui, avec le nombre de tirages et le seuil, tirage par tirage. > **Ce qu’elle ne dit pas** : aucun niveau, ni A1, ni A2, ni aucun autre ; > aucune équivalence avec un examen ou un diplôme ; aucun nombre d’heures ; > aucune durée d’apprentissage ; aucune promesse sur ce que vous saurez faire > dans un mois.\n\nCe cours n’a rien mesuré de tout cela, et il ne l’invente pas. Ce qu’il peut dire, il le dit en actes : vous entendez ceci, vous produisez cela, vous lisez ceci. Le reste serait une phrase agréable posée sur rien.",
+      "specimen": "เข้าใจแล้วครับ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "la conversation change de sujet, et personne ne vous prévient",
+      "bodyFr": "Dans les unités précédentes, chaque dialogue avait un sujet et s’y tenait : la pharmacie en 9E, la boutique en 8E, le marché en 7E. Celui d’aujourd’hui enchaîne la santé, le chemin, le travail, la famille, un plat et un prix, sans transition annoncée.\n\n> Réplique 6 : ร้านขายยาอยู่ที่ไหนครับ (on parle du chemin) > Réplique 8 : ผมไปตลาดทุกวันครับ (on parle de ses habitudes)\n\nCe qui vous fait suivre n’est pas le sujet, c’est le mot que vous reconnaissez en premier. ร้านขายยา ouvre la réplique 6, ตลาด revient à la 8. Accrochez-vous au mot que vous connaissez et laissez passer le reste : c’est ce que fait quelqu’un qui suit une conversation dans une langue qu’il apprend.",
+      "specimen": "ร้านขายยาอยู่ที่ไหนครับ · ผมไปตลาดทุกวันครับ"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "la réplique que vous ne comprendrez pas",
+      "bodyFr": "Il y en a une, et elle est placée exprès. À la réplique 3, Nok pose deux questions d’affilée, à débit normal. Ton n’en attrape rien.\n\n> Réplique 4 : ขอโทษครับ ไม่เข้าใจครับ พูดช้า ๆ ได้ไหมครับ > khǎww·thôot khráp · mâi khâo·jai khráp · phôuut cháa cháa dâai mǎi khráp\n\nC’est l’outil de 11A, et c’est ici qu’il sert. La réplique 5 est la réplique 3 redite par la même voix, nettement ralentie, et la conversation repart. Retenez cette forme plutôt que la liste des choses que vous ne saviez pas dire : c’est elle qui fait que l’échange continue au lieu de s’arrêter à la réplique 4.",
+      "specimen": "พูดช้า ๆ ได้ไหมครับ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "trois mots qui tiennent les répliques ensemble",
+      "bodyFr": "L’unité 11 vous a donné และ, แต่ et ก็. Ils sont tous les trois dans le dialogue, et tous les trois **à l’intérieur d’une seule réplique**, jamais à cheval sur deux tours de parole.\n\n> **และ**, réplique 10 : ผมมีพี่ชายและน้องสาวครับ (deux choses, l’une et l’autre) > **แต่**, réplique 11 : ข้าวผัดหมูอร่อยแต่แพงเกินไปค่ะ (le second morceau > retourne le premier) > **ก็**, réplique 12 : แพงเกินไปผมก็ไม่เอาครับ (le second morceau découle du > premier)\n\nRegardez les deux derniers de près : chacun porte SON motif dans sa propre phrase. แต่ ouvre le morceau qui contredit celui qui précède, ก็ se pose juste devant le verbe du second morceau, derrière le sujet exprimé. C’est exactement la place que `u11-l11c` publie pour l’un et pour l’autre, et le dialogue du jour ne leur en invente pas une seconde.",
+      "specimen": "ข้าวผัดหมูอร่อยแต่แพงเกินไปค่ะ · แพงเกินไปผมก็ไม่เอาครับ"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "deux couples de tons, dans les mots du jour",
+      "bodyFr": "Rien n’est acquis une fois pour toutes, et surtout pas ces deux couples. Ils sont dans le dialogue, ce qui vous évite un détour.\n\n> **Montant contre haut.** Dans ไปหาหมอไหมคะ, mǎi remonte et khá reste perché, > **collés l’un à l’autre**. Dans และน้องสาว, vous avez láe haut, náwwng haut, > puis sǎao qui remonte : deux syllabes perchées, puis une qui creuse. > **Moyen contre bas.** Dans กี่วัน, kìi est en bas et wan revient au milieu. > Dans ไปตลาด, pai est au milieu, puis tà et làat restent en bas tous les deux.\n\nÉcoutez-les dans la phrase, pas isolés. C’est plus difficile qu’en unité 4 et en unité 7, et c’est normal : une phrase qui défile ne vous laisse pas le temps de préparer votre oreille.",
+      "specimen": "ไปหาหมอไหมคะ · และน้องสาว · กี่วัน · ไปตลาด"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "comment écouter la première fois",
+      "bodyFr": "Une seule consigne, et elle est contre-intuitive. **N’essayez pas de traduire pendant que ça parle.** Vous perdrez la réplique suivante pendant que vous cherchez la précédente.\n\nÉcoutez une fois en entier, sans rien noter. Ce premier passage sert à repérer où la conversation change de sujet, pas à retenir des mots.\n\nRéécoutez ensuite autant de fois que vous voulez. La réécoute est libre et illimitée, et elle ne coûte rien à votre résultat. Elle est aussi nécessaire : les trois options de l’exercice 1 ne diffèrent que par un seul élément, une négation, un mot de temps, un membre de la famille, un chiffre ou un plat. **Un mot attrapé au passage ne suffit donc pas** ; il faut avoir entendu celui qui change.",
+      "specimen": "สองวันแล้วครับ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "puis vous reprenez la parole",
+      "bodyFr": "Après avoir écouté, vous reproduisez une partie de ce que dit Ton. Pas tout : la leçon vous demande six énoncés, trois courts et trois complets.\n\n> Court : ไม่สบายครับ · mâi sà·baai khráp > Complet : เข้าใจแล้วครับ ผมไปตลาดทุกวันครับ แล้วคุณล่ะครับ · > khâo·jai láeew khráp phǒm pai tà·làat thóuk·wan khráp láeew khoun lâ khráp\n\nLes trois courts ne suffisent pas à atteindre le seuil, et c’est voulu : le seuil est de quatre sur six. Il vous faut donc au moins une réplique complète, c’est-à-dire enchaîner trois morceaux et fermer chacun par sa particule. **C’est la première fois que le parcours vous le demande.** La forme est dans les dialogues des unités 7, 8 et 11, et aucun exercice ne l’avait jamais fait produire ; c’est un fait sur ce bilan, pas une chose qu’on vous suppose acquise.",
+      "specimen": "เข้าใจแล้วครับ ผมไปตลาดทุกวันครับ แล้วคุณล่ะครับ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "ce qui reste hors de portée, et c’est mesuré",
+      "bodyFr": "Voici ce que ce parcours ne vous a pas donné. Chaque ligne est un constat fait sur le dépôt le 2026-08-04, pas une précaution de style.\n\n> **Vous n’avez jamais écrit une lettre thaïe.** Les 41 exercices de rappel des > unités 1 à 11 ont été relevés un par un : 39 se répondent en alphabet latin, > 1 en chiffres arabes, 1 en touchant des tuiles déjà écrites. Aucun ne demande > de produire une graphie thaïe. Écrire le thaï reste entier devant vous. > **Votre vocabulaire est exactement celui que le parcours a publié**, 353 > graphies distinctes sur 512 entrées d’item. Ce qui n’y est pas n’a pas été > enseigné, et ce cours ne prétend pas que vous le devinerez. > **Vous n’avez jamais suivi une conversation qui ne vous était pas adressée.** > Tous les dialogues du parcours, celui-ci compris, parlent À l’apprenant ou > devant lui, lentement au besoin. Écouter deux personnes qui ne vous attendent > pas est autre chose, et le parcours ne l’a pas travaillé. > **Vos tons ne sont pas notés.** Ce cours vous fait comparer votre voix à une > référence ; il ne mesure pas vos tons et ne vous dit pas s’ils sont justes. > **Aucun locuteur thaï natif n’a relu ce cours.** L’état est affiché partout, > « Revue native : en attente », et il est exact.\n\nRien de tout cela ne s’efface parce que vous êtes arrivé à la dernière leçon. Savoir où s’arrête ce qu’on sait fait partie de ce qu’on sait.",
+      "specimen": "แล้วเจอกันครับ"
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u12-l12d-p6",
+      "promptFr": "Reliez chaque forme à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "64c2cf58-4893-53a7-8f5b-1fdf44b6b7b1",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "496b5365-c996-5f4e-8d9c-9c9bbe48db95",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c9b4f690-e001-5b39-9cdc-531dade504fa",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "41e869b7-da4e-5776-8205-4bb7d0ec7267",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "cc43cbac-fb00-5b9d-95ac-065f847c6b34",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "cd3690ff-5f93-59f2-846b-ad2935e07c1a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e8b8604c-8bda-5a19-98b2-69b8a2dbe7e1",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "29e3a1f5-f676-5e24-9d23-53dd66d6e706",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

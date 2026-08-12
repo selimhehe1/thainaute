@@ -81,6 +81,13 @@ function deletionFailure(error: unknown): DeletionViewState {
           "La suppression est encore en cours. Attendez quelques secondes puis reprenez la m\u00eame demande.",
       };
     }
+    if (error.code === "billing_unavailable") {
+      return {
+        phase: "retry",
+        message:
+          "Votre compte n'a pas été supprimé : la vérification sûre du service d'abonnement n'est pas disponible. La demande sécurisée reste conservée sur cet appareil et ne sera pas relancée automatiquement ; vous pouvez tenter une reprise manuelle. Si le blocage persiste, conservez les données du navigateur et contactez le support. Si l'abonnement vient d'une boutique mobile, gérez-le aussi dans cette boutique.",
+      };
+    }
     if (
       error.code === "auth_unavailable" ||
       error.code === "storage_unavailable" ||
@@ -437,6 +444,12 @@ export function AccountDeletionSection({
             <li>
               Les prises de voix locales ouvertes sur cet appareil seront
               retir&eacute;es de la session.
+            </li>
+            <li>
+              La suppression du compte ne prouve pas &agrave; elle seule
+              l&apos;annulation d&apos;un abonnement App Store, Google Play ou
+              Stripe. Si sa coordination ne peut pas &ecirc;tre
+              confirm&eacute;e, le compte ne sera pas supprim&eacute;.
             </li>
             <li>
               La progression anonyme et l&apos;identit&eacute; de cette

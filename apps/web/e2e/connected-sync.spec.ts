@@ -24,7 +24,9 @@ import {
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 
-const WEB_ORIGIN = "http://localhost:3000";
+import { resolveWebOrigin } from "./origin";
+
+const WEB_ORIGIN = resolveWebOrigin();
 const LEARNING_DATABASE = "thainaute-learning-v1";
 const ANONYMOUS_OUTBOX_KEY = "attempts-v1";
 const FUSION_MARKER_KEY = "anonymous-progress-fusion-v1";

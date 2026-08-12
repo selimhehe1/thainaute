@@ -1,0 +1,834 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "3d19382b-30cc-5eee-91ba-0548607e3de1",
+  "versionId": "aad03e9a-082c-596c-b0ad-3c18b1604714",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Au restaurant",
+  "objectiveFr": "à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre un client et une serveuse ; il place ไม่ devant ce qu’il nie et ไหม à la fin de la question, sans erreur d’ordre, aux deux tirages de l’exercice 3 qui contiennent l’un de ces deux mots, les tirages 1 et 3 ; il reconstruit la commande dans l’ordre ขอ, nom, nombre, compteur, หน่อย, particule, sans erreur d’ordr",
+  "requiredEntitlement": null,
+  "audioManifestId": "c1d6d97c-69d2-56ef-816f-fdd0cfacfbbb",
+  "items": [
+    {
+      "id": "c4c8f8d0-4810-5098-892f-0a8eac5fc180",
+      "thaiRaw": "เผ็ด",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1C",
+        "U+0E47",
+        "U+0E14"
+      ],
+      "translationFr": "piquant, pimenté",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phèt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เผ็ด",
+          "ipa": "pʰet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "9c1b1b96-a056-57a4-a9cf-0fa9c0d2239a",
+      "thaiRaw": "ไม่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "ne … pas, non",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "53bfe6d6-4c79-524d-93da-d0b83c1c0128",
+      "thaiRaw": "ไม่เผ็ด",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E40",
+        "U+0E1C",
+        "U+0E47",
+        "U+0E14"
+      ],
+      "translationFr": "pas piquant, sans piment",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi phèt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่เผ็ด",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่เผ็ด",
+          "ipa": "pʰet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "86757b4f-61be-5196-8d1e-63b6f09cc3ab",
+      "thaiRaw": "ข้าวผัด",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14"
+      ],
+      "translationFr": "riz sauté",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâao·phàt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข้าวผัด",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ข้าวผัด",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "f929eb93-4559-5e18-a54d-c6de7d81507e",
+      "thaiRaw": "จาน",
+      "unicodeCodePoints": [
+        "U+0E08",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "assiette ; compteur de ce qui est servi dans une assiette",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "jaan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "จาน",
+          "ipa": "t͡ɕaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b19a0077-078c-572e-aa5b-24d9a18e7b8b",
+      "thaiRaw": "ขอข้าวผัดสองจานหน่อย",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14",
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E08",
+        "U+0E32",
+        "U+0E19",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22"
+      ],
+      "translationFr": "deux riz sautés, s’il vous plaît",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww khâao·phàt sǎwwng jaan nàwi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อย",
+          "ipa": "kʰɔː˩˩˦ kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อย",
+          "ipa": "pʰat̚˨˩ sɔːŋ˩˩˦ t͡ɕaːn˧ nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "j"
+        }
+      ],
+      "register": "poli avec la particule finale (ขอข้าวผัดสองจานหน่อยครับ / ขอข้าวผัดสองจานหน่อยค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "081b0e8e-1395-5cf4-8514-bae0001c4d80",
+      "thaiRaw": "สอง",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "deux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สอง",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "de3186c7-cc69-56e2-8cce-8d629586c085",
+      "thaiRaw": "ไหม",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21"
+      ],
+      "translationFr": "est-ce que (particule de question fermée)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไหม",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8f10b215-248a-50cc-8d05-1a4830870b12",
+      "thaiRaw": "เท่าไร",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E17",
+        "U+0E48",
+        "U+0E32",
+        "U+0E44",
+        "U+0E23"
+      ],
+      "translationFr": "combien",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thâo·rai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เท่าไร",
+          "ipa": "tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เท่าไร",
+          "ipa": "raj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "eb1ead26-b33c-52d3-a7ed-4967f03f9357",
+      "thaiRaw": "แปดสิบ",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E1B",
+        "U+0E14",
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A"
+      ],
+      "translationFr": "quatre-vingts",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pàeet·sìp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แปดสิบ",
+          "ipa": "pɛːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "แปดสิบ",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "4637e328-4ee5-5078-9a0c-d72c921f2152",
+      "thaiRaw": "บาท",
+      "unicodeCodePoints": [
+        "U+0E1A",
+        "U+0E32",
+        "U+0E17"
+      ],
+      "translationFr": "baht (unité monétaire de la Thaïlande)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "bàat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "บาท",
+          "ipa": "baːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "f8d9e891-3301-5855-92a2-a52dbd462260",
+      "thaiRaw": "สวัสดี",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E27",
+        "U+0E31",
+        "U+0E2A",
+        "U+0E14",
+        "U+0E35"
+      ],
+      "translationFr": "bonjour (sert aussi à prendre congé)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sà·wàt·dii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สวัสดี",
+          "ipa": "sa˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "สวัสดี",
+          "ipa": "wat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "สวัสดี",
+          "ipa": "diː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "d",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli avec la particule finale",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "fc966324-aec8-5df9-9d4b-8efbff3f35cb",
+      "thaiRaw": "ครับ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "particule de politesse d’un locuteur homme, en fin de phrase",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "954c07c8-de84-5223-a728-5b10c81213e3",
+      "thaiRaw": "ขอบคุณ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13"
+      ],
+      "translationFr": "merci",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàwwp·khoun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰɔːp̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli avec la particule finale",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "447dc926-7127-522f-8144-a796ac6eec11",
+      "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14",
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E08",
+        "U+0E32",
+        "U+0E19",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "deux riz sautés, s’il vous plaît",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww khâao·phàt sǎwwng jaan nàwi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "t͡ɕaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli. Version féminine : ขอข้าวผัดสองจานหน่อยค่ะ, khǎww khâao·phàt sǎwwng jaan nàwi khâ.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u04-l4e-p2",
+      "drawIndex": 1,
+      "id": "30e33cf3-cd54-5c67-a982-e44bb073b678",
+      "type": "word_order",
+      "itemId": "447dc926-7127-522f-8144-a796ac6eec11",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Le client, un homme, veut deux riz sautés. Remettez les éléments dans l’ordre. Un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "e03318f0-9798-59d0-abf8-256847ca8854",
+          "thaiRaw": "จาน",
+          "transcription": null
+        },
+        {
+          "id": "41575030-82bd-5f62-8db1-61e89e28506b",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "7b55b8f3-8d73-599a-b79c-97e092dcd6c5",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "2cce1dcb-f71d-5d9f-ac13-959f9050f3c2",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "57113662-4484-58fa-a9ca-09ba1624475e",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "4039c852-a7f6-523e-83fd-93ca8c086c26",
+          "thaiRaw": "ข้าวผัด",
+          "transcription": null
+        },
+        {
+          "id": "7b14e4b9-882c-5217-916d-59c043806141",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "7b55b8f3-8d73-599a-b79c-97e092dcd6c5",
+        "4039c852-a7f6-523e-83fd-93ca8c086c26",
+        "2cce1dcb-f71d-5d9f-ac13-959f9050f3c2",
+        "e03318f0-9798-59d0-abf8-256847ca8854",
+        "57113662-4484-58fa-a9ca-09ba1624475e",
+        "7b14e4b9-882c-5217-916d-59c043806141"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. ขอ ouvre la demande, le groupe à commander vient au milieu dans l’ordre nom, nombre, compteur, puis หน่อย adoucit et la particule ferme. Le client est un homme, donc ครับ.",
+        "incorrectFr": "Trois repères. ขอ reste en tête. À l’intérieur, le plat passe avant le nombre et le compteur ferme le groupe. หน่อย ne bouge pas de sa place, juste avant la particule.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "un repas entier, du bonjour au merci",
+      "bodyFr": "Vous savez saluer, demander poliment, compter, poser un compteur derrière un nombre et demander un prix. Aujourd’hui tout cela sert d’un coup, dans une petite boutique de rue. Un homme s’assied, commande, dit comment il veut son plat, paie et repart, en huit répliques.",
+      "specimen": "ขอข้าวผัดสองจานหน่อยครับ"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "rien de neuf aujourd’hui, tout est déjà à vous",
+      "bodyFr": "Pas un mot nouveau dans cette leçon. เผ็ด (phèt), piquant, et ไม่ (mâi), la négation, viennent de 4D ; ข้าวผัด et จาน viennent de 4C. Aujourd’hui, on ne range plus les briques une par une : on les fait tenir ensemble, dans un repas entier.",
+      "specimen": "เผ็ด · ไม่"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ไม่ se place devant, ไหม se place à la fin",
+      "bodyFr": "Le point de structure du jour est un rappel, et il tient en une image. ไม่ annule le mot qui le suit, donc il passe devant : ไม่เผ็ด, pas piquant. ไหม, que vous employez depuis 2B, fait l’inverse et se pose à la fin pour transformer la phrase en question : เผ็ดไหม, c’est piquant ? À l’oreille les deux mots sont presque jumeaux, et c’est le ton qui les sépare : ไม่ tombe, ไหม monte.",
+      "specimen": "ไม่เผ็ด (mâi phèt) · เผ็ดไหม (phèt mǎi)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "ce qui arrive dans une assiette se compte en จาน",
+      "bodyFr": "Rappel de 3D et de 4C : la chose, puis le nombre, puis le compteur. Pour un plat servi dans une assiette, ce compteur est จาน (jaan), le mot qui désigne aussi l’assiette elle-même. ข้าวผัดสองจาน, mot à mot riz sauté, deux, assiette. Les dictionnaires consultés donnent ce fonctionnement à l’entrée จาน elle-même, avec un exemple portant justement sur du riz.",
+      "specimen": "ข้าวผัดสองจาน (khâao·phàt sǎwwng jaan)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "deux façons de conclure le repas",
+      "bodyFr": "Le repas est fini. Vous savez déjà demander l’addition avec คิดเงิน, appris en 4C. Aujourd’hui vous apprenez l’autre geste, celui qui porte sur ce que vous avez consommé : reprenez ce que vous avez pris, ajoutez เท่าไร de 3C, puis votre particule. ข้าวผัดสองจานเท่าไรครับ, deux riz sautés, ça fait combien.",
+      "specimen": "ข้าวผัดสองจานเท่าไรครับ (khâao·phàt sǎwwng jaan thâo·rai khráp)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "deux répliques identiques, deux personnes différentes",
+      "bodyFr": "Au milieu du dialogue, le client dit ไม่เผ็ดครับ et la serveuse répond ไม่เผ็ดค่ะ. Les mots sont exactement les mêmes. Seule la dernière syllabe change, et c’est elle, et elle seule, qui vous dit qui parle : ครับ pour lui, ค่ะ et คะ pour elle.",
+      "specimen": "ไม่เผ็ดครับ · ไม่เผ็ดค่ะ"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "à vous",
+      "bodyFr": "Écoutez le dialogue en entier une première fois sans lire. Reprenez ensuite avec le texte, puis enregistrez les deux répliques du piment, เผ็ดไหมคะ et ไม่เผ็ดครับ, et comparez en A/B avec la voix de référence. Votre enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u04-l4e-p2",
+      "promptFr": "Le client, un homme, veut deux riz sautés. Remettez les éléments dans l’ordre. Un élément est de trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "06f6ed0f-e2a1-5684-9107-3d579b95aa25",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a5750424-ae6a-5d40-889b-6badf9fa14c3",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "38fb976d-e8db-570a-a236-bc935e826eb4",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9ed69a96-ee6b-592a-9650-25fc666254bc",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "01ad3fd9-7eb6-5dcf-ab91-cdceb83d714b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6934e1cc-99d7-5f6c-919e-12ca508a700f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "eeb32ba3-b96d-564b-8b26-c91d020c1e39",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a1187fd3-2c57-55a8-b5a0-86c4fd4db62c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

@@ -681,6 +681,16 @@ appareil.
   lettres à ห muet de 5A, alors que ฮ n’a rien à voir avec ce mécanisme et se
   prononce toujours.
 
+### Exercice de consolidation textuelle : deux mots du jour (`association`)
+
+- Mécanique : `association`
+- Consigne : « Reliez chaque mot à son sens. »
+- Tirages :
+  1. มือ ↔ « la main »
+  2. ลืม ↔ « oublier »
+- Feedback correct : « Exact. Ces deux mots sont bien ceux de la leçon. »
+- Feedback incorrect : « Relisez le mot et son sens dans cette leçon, puis réessayez. »
+
 ## SRS
 
 - `srs-u06-l6a-01` : `/ɯː/` contre `/uː/` à l’écoute, sur les paires คือ / คู et

@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "3a7fa86c-588a-5252-b902-efa1b3f428e6",
+  "versionId": "a19399db-2082-5945-8b00-240e8569d276",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Une conversation complète",
+  "objectiveFr": "à la fin de la leçon, devant une conversation de douze répliques qu’il n’a pas encore lue en entier, l’apprenant apparie les six répliques de นก aux six de ต้น, 6 sur 6, alors que huit tuiles lui sont proposées pour six places ; il choisit, à l’écoute d’une réplique et sans texte, celle qui peut la suivre, sur 8 tirages sur 10 ; il retrouve dans les douze répliques affichées sans transcription cel",
+  "requiredEntitlement": null,
+  "audioManifestId": "69249e1f-7caf-58f4-85c6-cb1130cba204",
+  "items": [
+    {
+      "id": "3c691250-d0c5-5bcb-84cb-c856d144425d",
+      "thaiRaw": "แล้วคุณล่ะ",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E25",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "et vous ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew khoun lâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้วคุณล่ะ",
+          "ipa": "lɛːw˦˥ kʰun˧ laʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (poli avec la particule : แล้วคุณล่ะครับ / แล้วคุณล่ะคะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "8aac3ffa-05b9-5cd7-b0c5-80a81b273151",
+      "thaiRaw": "ไหม",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21"
+      ],
+      "translationFr": "est-ce que (particule de question fermée)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไหม",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "9d6177af-5574-5ae6-a894-0ef3d5d61c46",
+      "thaiRaw": "วันนี้",
+      "unicodeCodePoints": [
+        "U+0E27",
+        "U+0E31",
+        "U+0E19",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
+      "translationFr": "aujourd’hui",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "wan·níi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "วันนี้",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "วันนี้",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "fa5e2e41-d6f9-5b21-987e-f1afa1f82c6d",
+      "thaiRaw": "ทุกวัน",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E38",
+        "U+0E01",
+        "U+0E27",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "tous les jours, chaque jour",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thóuk·wan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ทุกวัน",
+          "ipa": "tʰuk̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "ทุกวัน",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "ddddf0cc-c64f-5ec2-bed7-fdb48e302697",
+      "thaiRaw": "ตอนเช้า",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E2D",
+        "U+0E19",
+        "U+0E40",
+        "U+0E0A",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "le matin (comme moment où l’on fait quelque chose)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tawwn·cháao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตอนเช้า",
+          "ipa": "tɔːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ตอนเช้า",
+          "ipa": "t͡ɕʰaːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "79053b0f-f9fd-56c3-8c83-f80e620e11f7",
+      "thaiRaw": "ตอนเย็น",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E2D",
+        "U+0E19",
+        "U+0E40",
+        "U+0E22",
+        "U+0E47",
+        "U+0E19"
+      ],
+      "translationFr": "le soir, en fin de journée (comme moment où l’on fait quelque chose)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tawwn·yen"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตอนเย็น",
+          "ipa": "tɔːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ตอนเย็น",
+          "ipa": "jen˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "j",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "b7ad34fe-3e55-5ec9-a2fe-94bf43e8fe59",
+      "thaiRaw": "เขา",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E32"
+      ],
+      "translationFr": "il, elle (la personne dont on parle)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎo"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เขา",
+          "ipa": "kʰaw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre. Aucune de nos sources ne pose de marque de politesse ni de familiarité sur le SENS de troisième personne enseigné ici, alors qu’elles en posent sur ท่าน (respect) et sur มัน (absence de déférence). La formulation est restreinte à ce sens à dessein : la même entrée Wiktionary étiquette `childish` un second sens de PREMIÈRE personne, non enseigné, et `informal` la variante เค้า. Voir l’incertitude 3 : le degré de respect que porte réellement เขา n’est pas mesuré par nos sources et part en revue native.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "7ead28ea-6167-5c5b-9370-69af43e4d191",
+      "thaiRaw": "แล้วเจอกัน",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E40",
+        "U+0E08",
+        "U+0E2D",
+        "U+0E01",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "à plus tard (prise de congé courante)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew·joee·kan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้วเจอกัน",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "แล้วเจอกัน",
+          "ipa": "t͡ɕɤː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "แล้วเจอกัน",
+          "ipa": "kan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "n"
+        }
+      ],
+      "register": "neutre (poli avec la particule)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u11-l11d-p6",
+      "drawIndex": 1,
+      "id": "9175b24a-c4f7-5bc1-8ba2-29838e70e44e",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "pairs": [
+        {
+          "id": "e20711c5-b7af-5a1d-b7c0-d1eb8b74e17d",
+          "itemId": "9d6177af-5574-5ae6-a894-0ef3d5d61c46",
+          "labelFr": "aujourd’hui"
+        },
+        {
+          "id": "6f59f74e-f13a-515d-ac3f-4448d4b5d5ed",
+          "itemId": "fa5e2e41-d6f9-5b21-987e-f1afa1f82c6d",
+          "labelFr": "tous les jours"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Exact.",
+        "incorrectFr": "Relisez l’expression et son sens, puis réessayez.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "douze répliques, et pas un mot nouveau",
+      "bodyFr": "Vous avez tenu des échanges de quatre, six, huit répliques. Aujourd’hui vous en tenez douze, avec deux changements de sujet, et vous n’apprenez rien de neuf pour y arriver. Tous les mots du jour, vous les avez déjà dits. Ce qui change n’est pas la difficulté d’un mot, c’est la longueur de ce qu’il faut garder en tête.",
+      "specimen": "สวัสดีครับ (sà·wàt·dii khráp) · สวัสดีค่ะ (sà·wàt·dii khâ)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ce qui devient difficile quand ça dure",
+      "bodyFr": "Trois choses, et aucune n’est du vocabulaire.\n\n> **Un.** Le sujet bouge. On parle du travail, puis de la famille, puis on > revient au marché. > **Deux.** Rien n’annonce le virage. Vous avez rencontré des mots de liaison > dans cette unité ; cette conversation-ci n’en emploie aucun. C’est une QUESTION > qui la fait tourner. > **Trois.** Un fil peut rester ouvert longtemps. Ce que ต้น dit à la réplique 11 > répond à ce que นก a dit à la réplique 6.\n\nRien de tout cela ne s’entend dans un mot. Cela se suit, ou cela se perd.",
+      "specimen": "ตอนเช้า (tawwn·cháao) · ตอนเย็น (tawwn·yen)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "rendre la parole, et c’est un seul bloc",
+      "bodyFr": "Vous connaissez แล้วคุณล่ะ depuis la leçon 6E. C’est le geste le plus utile d’une conversation longue : il renvoie la question sans rien répéter de ce qui vient d’être dit.\n\n> แล้วคุณล่ะคะ dans la bouche d’une femme qui pose une question > แล้วคุณล่ะครับ dans celle d’un homme\n\nนก l’emploie deux fois aujourd’hui, à la réplique 2 et à la réplique 8. Regardez ce qu’il fait à chaque fois : il coupe court à son propre tour et il oblige ต้น à parler. C’est ce qui fait qu’une conversation dure sans que personne ne cherche quoi dire.",
+      "specimen": "แล้วคุณล่ะคะ (láeew khoun lâ khá)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "répondre en reprenant un mot",
+      "bodyFr": "Vous connaissez déjà une façon de répondre oui, et c’est la plus utile quand une conversation dure : reprendre le mot de la question. Vous la faites depuis 2B, avec สบายดีไหม puis สบายดี, et vous l’avez revue en 6E puis en 9E. Deux répliques du jour la font.\n\n> Question : คุณทำงานที่บ้านทุกวันไหมคะ → Réponse : ทุกวันครับ > Question : คุณมีพี่น้องไหมครับ → Réponse : มีค่ะ\n\nLe mot repris se met devant, la particule derrière, et c’est fini. Vous pouvez ensuite ajouter quelque chose, ou vous arrêter là.",
+      "specimen": "ทุกวันครับ (thóuk·wan khráp) · มีค่ะ (mii khâ)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "changer de sujet, c’est poser une question",
+      "bodyFr": "À la réplique 7, ต้น passe du marché à la famille. Il ne prévient pas, il ne s’excuse pas : il pose une question, et le sujet a tourné.\n\n> คุณมีพี่น้องไหมครับ\n\nC’est le seul outil de changement de sujet que vous avez, et il suffit. Quand vous ne savez plus quoi dire dans une conversation, posez une question que vous savez poser. Vous en avez plusieurs depuis l’unité 2.",
+      "specimen": "คุณมีพี่น้องไหมครับ (khoun mii phîi·náwwng mǎi khráp)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "reprendre quelqu’un par เขา",
+      "bodyFr": "À la réplique 9, ต้น parle de son frère aîné, puis il en reparle sans le renommer.\n\n> ผมมีพี่ชายหนึ่งคนครับ เขาอยู่ที่ฝรั่งเศสครับ\n\nเขา, appris en 6C, remplace la personne dont on vient de parler. Il ne dit ni le genre ni le nombre : c’est la phrase d’avant qui le dit. Dans une conversation longue, c’est ce petit mot qui évite de tout répéter, et c’est aussi lui qui vous perd si vous avez décroché une réplique plus tôt.",
+      "specimen": "เขาอยู่ที่ฝรั่งเศสครับ (khǎo yòuu thîi fà·ràng·sèet khráp)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "réagir sans rien demander",
+      "bodyFr": "À la réplique 10, นก ne pose pas de question et n’apporte pas d’information. Elle réagit, en trois syllabes.\n\n> ไกลมากค่ะ\n\nUne conversation qui n’est faite que de questions et de réponses s’essouffle. Une réaction courte montre qu’on a entendu, et elle laisse à l’autre le soin de continuer. Celle-ci est une réaction à quelque chose qui n’est pas dit : personne n’a prononcé le mot « loin » avant elle. C’est นก qui tire la conclusion de « il est en France ».",
+      "specimen": "ไกลมากค่ะ (klai mâak khâ)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "rouvrir un fil laissé plus tôt",
+      "bodyFr": "Voici le moment que cette leçon existe pour vous faire tenir. À la réplique 6, นก a dit qu’elle va au marché le soir. Cinq répliques plus loin, après tout un passage sur la famille, ต้น y revient.\n\n> Réplique 6 : ดิฉันไปตลาดตอนเย็นค่ะ > Réplique 11 : วันนี้ผมไปตลาดตอนเย็นครับ\n\nPersonne n’a dit « au fait » ni « revenons-y ». Le lien tient parce que les deux répliques emploient les mêmes mots, et parce que นก s’en souvient. Si elle avait décroché, la réplique 11 lui tomberait dessus sans raison.",
+      "specimen": "ดิฉันไปตลาดตอนเย็นค่ะ · วันนี้ผมไปตลาดตอนเย็นครับ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "le rendez-vous n’a pas de mot",
+      "bodyFr": "La conversation se termine sur un rendez-vous, et pourtant aucune réplique ne dit « rendez-vous », « d’accord » ni « à ce soir ». Ce cours ne vous a pas donné ces mots, et il ne va pas vous les donner ici.\n\n> ต้น : วันนี้ผมไปตลาดตอนเย็นครับ > นก : แล้วเจอกันค่ะ\n\nCe qui fait le rendez-vous, c’est l’ordre. Elle a dit qu’elle y allait le soir, il dit qu’il y va le soir, elle prend congé par la formule que vous employez depuis la leçon 1E. Trois répliques, aucun mot nouveau, et le rendez-vous est pris. **C’est exactement ce que cette unité veut vous montrer : avec ce que vous avez déjà, vous pouvez faire plus de choses que vous ne croyez, à condition de suivre.**",
+      "specimen": "แล้วเจอกันค่ะ (láeew·joee·kan khâ)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "deux choses vous disent qui parle",
+      "bodyFr": "Les prénoms ne sont jamais prononcés : ils sont sur l’écran, pas dans la bouche des personnages. Sur douze répliques, deux repères vous disent qui parle.\n\n> La particule finale, sur les douze : ต้น dit ครับ, dix fois. นก dit ค่ะ six > fois, toujours après une affirmation, et คะ trois fois, toujours après une > question. > Le pronom, sur six répliques seulement : ผม aux répliques 3, 5, 9 et 11, > ดิฉัน aux répliques 6 et 8.\n\nComptez-les à l’écoute la deuxième fois que vous passerez le dialogue. La particule est le repère le moins coûteux qui existe pour ne pas perdre le fil : même si un mot vous échappe, vous savez qui parle. Le pronom, lui, arrive une fois sur deux, et il confirme.",
+      "specimen": "ค่ะ (khâ) après une affirmation · คะ (khá) après une question"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "les deux contrastes, on les entretient",
+      "bodyFr": "Rien n’est acquis une fois pour toutes, et surtout pas ces deux-là. Reprenez vos repères avant d’écouter.\n\n> ปา (paa) contre ป่า (pàa) : la voix reste plate, puis elle descend et reste > basse > หมา (mǎa) contre ม้า (máa) : la voix creuse puis remonte, contre la voix qui > reste perchée\n\nLe dialogue vous en donne d’autres : ไป et ตอนเย็น restent au milieu, ตลาด et หนึ่ง sont en bas ; ผม et สอง montent, ครับ et ทุก restent perchés. Et un mot fait les deux tout seul : น้องสาว, perché sur la première syllabe, montant sur la seconde.",
+      "specimen": "ปา / ป่า puis หมา / ม้า puis น้องสาว (náwwng·sǎao)"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "à vous",
+      "bodyFr": "Écoutez la conversation en entier une première fois sans rien lire. Vous ne comprendrez pas tout, et ce n’est pas grave : cherchez seulement qui parle et de quoi on parle. Écoutez-la une seconde fois en suivant le texte thaï, sans la transcription. Ne la lisez en transcription qu’à la troisième écoute.\n\nEnsuite, enregistrez-vous en disant les deux répliques de นก qui rendent la parole, สบายดีค่ะ แล้วคุณล่ะคะ puis แล้วคุณล่ะคะ seul, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u11-l11d-p6",
+      "promptFr": "Reliez chaque expression à son sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN"
+    ],
+    "generationActors": [
+      {
+        "actorId": "dff34ef3-c409-555a-a730-39c8bad4f53d",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "2ccc8d8c-2e7c-5daf-b026-bb5d8dce476d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7199a687-8833-5049-888d-1a15603e3e4c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3d39f807-7a08-53fc-a71e-8c1319d81471",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f37e26d3-b4e4-5d87-910f-3c7434674a77",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a2c95bdd-04a3-546e-8d47-3d5e620256be",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "12d3160b-38f8-5cac-aedd-d650ae41533d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e083c207-b33b-51ef-adc5-65753dcd8f3f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

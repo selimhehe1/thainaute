@@ -15,7 +15,10 @@
     {
       "id": "7ad8052e-2dd5-5670-82de-588eb5fba6e6",
       "thaiRaw": "ปา",
-      "unicodeCodePoints": ["U+0E1B", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E32"
+      ],
       "translationFr": "lancer (jeter avec le bras)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -32,12 +35,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "046bbbf0-1b80-5a65-b623-1332429d1ccf",
       "thaiRaw": "ป่า",
-      "unicodeCodePoints": ["U+0E1B", "U+0E48", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E48",
+        "U+0E32"
+      ],
       "translationFr": "forêt",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -54,12 +65,19 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "1179dd6d-b95e-563b-b9b7-c7dec73a560a",
       "thaiRaw": "ปู",
-      "unicodeCodePoints": ["U+0E1B", "U+0E39"],
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E39"
+      ],
       "translationFr": "crabe",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -76,12 +94,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "a2474571-b0d7-56eb-bb59-41dfbe43fe54",
       "thaiRaw": "ปู่",
-      "unicodeCodePoints": ["U+0E1B", "U+0E39", "U+0E48"],
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E39",
+        "U+0E48"
+      ],
       "translationFr": "grand-père paternel (le père du père)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -98,12 +124,19 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "19114c85-4647-51bf-a7f2-c6e1bf23d933",
       "thaiRaw": "ปี",
-      "unicodeCodePoints": ["U+0E1B", "U+0E35"],
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E35"
+      ],
       "translationFr": "année, an",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -120,12 +153,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "c9c631c5-9001-510a-b966-1bec734df84d",
       "thaiRaw": "ปี่",
-      "unicodeCodePoints": ["U+0E1B", "U+0E35", "U+0E48"],
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E35",
+        "U+0E48"
+      ],
       "translationFr": "hautbois thaï (instrument à vent à anche)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -142,12 +183,19 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "0b7488db-b1fa-54ab-a460-0bf49b726229",
       "thaiRaw": "คา",
-      "unicodeCodePoints": ["U+0E04", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E32"
+      ],
       "translationFr": "être coincé, rester pris (quelque part)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -164,12 +212,20 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "f3a2c399-1f63-5668-89c9-bb6653d0b640",
       "thaiRaw": "ข่า",
-      "unicodeCodePoints": ["U+0E02", "U+0E48", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E48",
+        "U+0E32"
+      ],
       "translationFr": "galanga (rhizome aromatique de la cuisine thaïe)",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -186,12 +242,19 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "261cefe8-6580-5eea-a850-3cf780403186",
       "thaiRaw": "ยา",
-      "unicodeCodePoints": ["U+0E22", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E22",
+        "U+0E32"
+      ],
       "translationFr": "médicament",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -208,12 +271,21 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     },
     {
       "id": "dca1ac0d-dc5a-5a85-9f0a-57bbdd89687b",
       "thaiRaw": "หย่า",
-      "unicodeCodePoints": ["U+0E2B", "U+0E22", "U+0E48", "U+0E32"],
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E22",
+        "U+0E48",
+        "U+0E32"
+      ],
       "translationFr": "divorcer",
       "transcription": {
         "systemVersion": "thainaute-fr-v1-1",
@@ -230,7 +302,11 @@
         }
       ],
       "register": "neutre",
-      "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"]
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
@@ -242,7 +318,7 @@
       "itemId": "046bbbf0-1b80-5a65-b623-1332429d1ccf",
       "skill": "production",
       "audioAssetId": null,
-      "promptFr": "Écoute les deux syllabes, puis range les jetons du ton le plus bas au ton le plus haut avec le bouton Déplacer. Un jeton de la liste n'a pas été entendu : écarte-le avec le bouton Retirer.",
+      "promptFr": "Écoute les deux syllabes, puis touche uniquement les jetons entendus dans l'ordre du ton le plus bas au ton le plus haut. L'intrus reste dans la liste : ne le sélectionne pas.",
       "tokens": [
         {
           "id": "b0126bc1-6075-57a1-8549-1b537deb9146",
@@ -295,12 +371,24 @@
       "titleFr": "Ta stratégie d'écoute : pose une ancre",
       "bodyFr": "Spécimen affiché : ปู et ปู่\n\nCommence par ancrer le ton moyen : c'est ta référence, ta ligne d'horizon. Ensuite, demande-toi seulement si la syllabe entendue est sur la ligne ou en dessous. Tu retrouveras คา et ข่า, déjà croisés en 1A : cette fois, tu sais exactement ce que tu cherches.",
       "specimen": null
+    },
+    {
+      "ordre": 5,
+      "titleFr": "Le transfert : mesurer l'écart, pas la note",
+      "bodyFr": "Avant chaque réponse, imaginez une ligne horizontale à votre hauteur habituelle et écoutez le début de la syllabe. Ne poussez pas la voix vers le bas pour imiter le ton bas : gardez le même volume et comparez seulement sa place à la ligne. Ensuite, reformulez votre observation en deux mots : « ligne » ou « en dessous ». Cette petite phrase vous oblige à écouter le contraste plutôt qu'à deviner le sens français.",
+      "specimen": null
+    },
+    {
+      "ordre": 6,
+      "titleFr": "Le sens doit voyager avec la hauteur",
+      "bodyFr": "Rejouez ensuite la paire ปา (paa, « lancer ») / ป่า (pàa, « forêt ») sans regarder la transcription. Pour chaque mot, rappelez d'abord le sens en français, placez votre voix sur la ligne ou en dessous, puis dites le mot une fois. Le but n'est pas encore de construire une phrase : c'est d'empêcher que le ton appris reste attaché à une syllabe vide. Quand la paire revient en SRS, le sens et la hauteur doivent se rappeler ensemble, même si la question posée ne demande qu'une seule des deux informations.",
+      "specimen": null
     }
   ],
   "pools": [
     {
       "poolId": "u01-l1c-p3",
-      "promptFr": "Écoute les deux syllabes, puis range les jetons du ton le plus bas au ton le plus haut avec le bouton Déplacer. Un jeton de la liste n'a pas été entendu : écarte-le avec le bouton Retirer.",
+      "promptFr": "Écoute les deux syllabes, puis touche uniquement les jetons entendus dans l'ordre du ton le plus bas au ton le plus haut. L'intrus reste dans la liste : ne le sélectionne pas.",
       "mechanic": "word_order",
       "drawCount": 1,
       "passRequired": 1,
@@ -308,7 +396,11 @@
     }
   ],
   "provenance": {
-    "sourceIds": ["VOLUBILIS-26-2", "WIKTIONARY-EN", "WIKTIONARY-TH"],
+    "sourceIds": [
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
     "generationActors": [
       {
         "actorId": "b386e32d-5081-5076-bfed-1a7d58791a11",

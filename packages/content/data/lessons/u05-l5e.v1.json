@@ -1,0 +1,841 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "d41a6a61-7ef9-5441-9afd-ccfc14506b58",
+  "versionId": "663f0c81-7bff-53ce-9236-5386ce9a89b7",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Dans la rue",
+  "objectiveFr": "à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre une passante perdue et un passant ; il reconstruit la question ตลาด อยู่ ที่ไหน คะ dans cet ordre, sans erreur d’ordre ni erreur de particule ; il écrit en transcription la différence entre ไกล et ไม่ไกล, et celle entre ไม่ไกล et ไกลไหม, sur au moins 2 tirages sur 3, l’ordre des mots étant seul mesuré ; il di",
+  "requiredEntitlement": null,
+  "audioManifestId": "0e9792de-9c33-5a90-ba58-c6e9de2e6c28",
+  "items": [
+    {
+      "id": "43fbe212-e78e-57bd-8c4f-5aedccc74d05",
+      "thaiRaw": "ไกล",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E01",
+        "U+0E25"
+      ],
+      "translationFr": "loin, éloigné, lointain",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "klai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไกล",
+          "ipa": "klaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kl",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "804701d1-d9ca-59a7-ad3e-d10096f644e0",
+      "thaiRaw": "ไม่ไกล",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E44",
+        "U+0E01",
+        "U+0E25"
+      ],
+      "translationFr": "pas loin, ce n’est pas loin",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi klai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่ไกล",
+          "ipa": "maj˥˩ klaj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ไม่ไกลครับ / ไม่ไกลค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "fefbb0b8-8383-55cb-802c-2872444e2069",
+      "thaiRaw": "ไกลไหม",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E01",
+        "U+0E25",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21"
+      ],
+      "translationFr": "c’est loin ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "klai mǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไกลไหม",
+          "ipa": "klaj˧ maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "kl",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ไกลไหมครับ / ไกลไหมคะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "55aefbfb-f9ae-5954-91ea-26428a7d0e97",
+      "thaiRaw": "ตลาด",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14"
+      ],
+      "translationFr": "le marché",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tà·làat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตลาด",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาด",
+          "ipa": "laːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "adee0023-b829-5c8f-8a9b-4b5567baa36e",
+      "thaiRaw": "อยู่",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48"
+      ],
+      "translationFr": "se trouver, être situé, être quelque part",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "yòuu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อยู่",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "38e20d7e-2dd4-5b7b-bc76-677f578f39fd",
+      "thaiRaw": "ที่ไหน",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19"
+      ],
+      "translationFr": "où",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thîi·nǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ที่ไหน",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ที่ไหน",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "4adafc69-1048-5617-9c16-2c66bd6ab2ef",
+      "thaiRaw": "ตลาดอยู่ที่ไหน",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19"
+      ],
+      "translationFr": "où est le marché ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tà·làat yòuu thîi·nǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "laːt̚˨˩ juː˨˩ tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตลาดอยู่ที่ไหน",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ตลาดอยู่ที่ไหนคะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "4a485386-7ac4-5336-ae1e-ddb547feeaa7",
+      "thaiRaw": "ตรงไป",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E23",
+        "U+0E07",
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "tout droit",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "trong pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตรงไป",
+          "ipa": "troŋ˧ paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "tr",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ตรงไปครับ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "b28b899e-7187-563c-92ac-7ac8bfd77bd4",
+      "thaiRaw": "ขอโทษ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E42",
+        "U+0E17",
+        "U+0E29"
+      ],
+      "translationFr": "excusez-moi (ici), et par ailleurs désolé, s’excuser",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww·thôot"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอโทษ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอโทษ",
+          "ipa": "tʰoːt̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "t̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "5a138bb5-b83f-524e-88d9-5db9c7814859",
+      "thaiRaw": "ครับ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "particule de politesse d’un homme en fin de phrase ; et, employé seul, oui",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "ba21b75c-4a03-5d3e-9cb0-e284d582a125",
+      "thaiRaw": "ไหม",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21"
+      ],
+      "translationFr": "particule de question fermée",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mǎi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไหม",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "77129d99-9f6f-5dcc-a33f-d2c77695c9e9",
+      "thaiRaw": "ไม่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "ne pas, pas",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "df3e20a8-b0a8-53f5-8abb-f2321b549ef8",
+      "thaiRaw": "ขอบคุณ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13"
+      ],
+      "translationFr": "merci",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàwwp·khoun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰɔːp̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอบคุณ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "c0789cb0-9288-58f4-8baa-125eca5a3583",
+      "thaiRaw": "ไม่เป็นไร",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E40",
+        "U+0E1B",
+        "U+0E47",
+        "U+0E19",
+        "U+0E44",
+        "U+0E23"
+      ],
+      "translationFr": "de rien, ce n’est rien, pas de problème",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi·pen·rai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่เป็นไร",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่เป็นไร",
+          "ipa": "pen˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ไม่เป็นไร",
+          "ipa": "raj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ไม่เป็นไรครับ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u05-l5e-p2",
+      "drawIndex": 1,
+      "id": "795aa03a-2b60-5a45-9eb3-1e7b66c6248f",
+      "type": "word_order",
+      "itemId": "55aefbfb-f9ae-5954-91ea-26428a7d0e97",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Une femme cherche le marché. Remettez les éléments dans l’ordre. Un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "b53f4c44-b174-5ad8-932e-c3471a401d93",
+          "thaiRaw": "ที่ไหน",
+          "transcription": null
+        },
+        {
+          "id": "142f2cc3-b160-5583-84d1-a0c0644035d0",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "88353d58-3c22-59fe-9cda-72caef203003",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "8f11995d-29f6-5e94-9014-456d3552b6c9",
+          "thaiRaw": "คะ",
+          "transcription": null
+        },
+        {
+          "id": "66836504-ca06-5c90-a10f-5ca7fc603bac",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "88353d58-3c22-59fe-9cda-72caef203003",
+        "66836504-ca06-5c90-a10f-5ca7fc603bac",
+        "b53f4c44-b174-5ad8-932e-c3471a401d93",
+        "8f11995d-29f6-5e94-9014-456d3552b6c9"
+      ],
+      "feedback": {
+        "correctFr": "Exactement. Le lieu ouvre la phrase, le verbe vient ensuite, la question ferme, et la particule arrive tout à la fin. La personne qui parle est une femme, et elle pose une question, donc คะ.",
+        "incorrectFr": "Trois repères. Le nom du lieu reste en tête. อยู่ vient juste après lui. ที่ไหน ne bouge pas de la fin : le thaï ne met pas le mot interrogatif au début comme le français.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u05-l5e-p3",
+      "drawIndex": 1,
+      "id": "39e087d2-08d0-5f18-b83e-10d74e521c7f",
+      "type": "recall",
+      "itemId": "43fbe212-e78e-57bd-8c4f-5aedccc74d05",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez ce que vous entendez en transcription Thaïnaute. Ce qui est mesuré, c’est la place de chaque mot.",
+      "acceptedAnswers": [
+        {
+          "value": "klai",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": true
+      },
+      "feedback": {
+        "correctFr": "Oui. Rien devant, rien derrière : le mot tout seul affirme.",
+        "incorrectFr": "Vous avez entendu les bons sons, regardez seulement l’ordre. Posez-vous une question : est-ce que la phrase NIE, ou est-ce qu’elle DEMANDE ? Si elle nie, le petit mot passe devant. Si elle demande, il passe à la fin.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2 et 3",
+            "textFr": "C’est ça, et vous avez mis chaque mot à sa place. ไม่ passe devant ce qu’il nie ; ไหม se pose à la fin pour poser la question."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5e-p3",
+      "drawIndex": 2,
+      "id": "05f89764-4f3e-5813-a353-3a9ef1f86cbe",
+      "type": "recall",
+      "itemId": "804701d1-d9ca-59a7-ad3e-d10096f644e0",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez ce que vous entendez en transcription Thaïnaute. Ce qui est mesuré, c’est la place de chaque mot.",
+      "acceptedAnswers": [
+        {
+          "value": "mâi klai",
+          "kind": "transcription"
+        },
+        {
+          "value": "mai klai",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": true
+      },
+      "feedback": {
+        "correctFr": "Oui. Rien devant, rien derrière : le mot tout seul affirme.",
+        "incorrectFr": "Vous avez entendu les bons sons, regardez seulement l’ordre. Posez-vous une question : est-ce que la phrase NIE, ou est-ce qu’elle DEMANDE ? Si elle nie, le petit mot passe devant. Si elle demande, il passe à la fin.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2 et 3",
+            "textFr": "C’est ça, et vous avez mis chaque mot à sa place. ไม่ passe devant ce qu’il nie ; ไหม se pose à la fin pour poser la question."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5e-p3",
+      "drawIndex": 3,
+      "id": "e69a0426-2621-5424-89ca-da531bb421ce",
+      "type": "recall",
+      "itemId": "fefbb0b8-8383-55cb-802c-2872444e2069",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez ce que vous entendez en transcription Thaïnaute. Ce qui est mesuré, c’est la place de chaque mot.",
+      "acceptedAnswers": [
+        {
+          "value": "klai mǎi",
+          "kind": "transcription"
+        },
+        {
+          "value": "klai mai",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": true
+      },
+      "feedback": {
+        "correctFr": "Oui. Rien devant, rien derrière : le mot tout seul affirme.",
+        "incorrectFr": "Vous avez entendu les bons sons, regardez seulement l’ordre. Posez-vous une question : est-ce que la phrase NIE, ou est-ce qu’elle DEMANDE ? Si elle nie, le petit mot passe devant. Si elle demande, il passe à la fin.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2 et 3",
+            "textFr": "C’est ça, et vous avez mis chaque mot à sa place. ไม่ passe devant ce qu’il nie ; ไหม se pose à la fin pour poser la question."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "un trajet entier, de l’excuse au merci",
+      "bodyFr": "Vous savez saluer, remercier, poser une question fermée et nier un mot. Vous savez depuis cette unité nommer un lieu, demander où il se trouve, tourner et vous arrêter. Aujourd’hui tout cela sert d’un coup, debout dans une rue : une femme cherche le marché, un passant lui répond, et l’échange tient en huit répliques.",
+      "specimen": "ตลาดอยู่ที่ไหนคะ"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "trois blocs nouveaux, pas un de plus",
+      "bodyFr": "ไกล (klai), loin. Et devant lui, la négation que vous employez depuis 4D : ไม่ไกล (mâi klai), pas loin.\n\nIl en vient un troisième, et c’est celui que le passant emploie pour répondre : ตรงไป (trong pai), tout droit. Vous connaissez déjà ses deux moitiés, ตรง, droit, et ไป, aller, apprises toutes les deux en 5B. Mises bout à bout elles font une consigne de direction entière, sur une seule mélodie plate.\n\nC’est tout le vocabulaire neuf du jour. Le reste, vous l’avez déjà : ขอโทษ vient de 2C, ขอบคุณ et ครับ de 1E, ไม่เป็นไร de 2C, ไหม de 2B, et ตลาด, อยู่ et ที่ไหน de cette unité.",
+      "specimen": "ไกล · ไม่ไกล · ตรงไป"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "ไกล et ใกล้, à regarder maintenant plutôt qu’à confondre plus tard",
+      "bodyFr": "Deux mots, un seul son de consonne et une seule voyelle, et pourtant des sens opposés. ไกล (klai) veut dire loin ; ใกล้ (klâi) veut dire près. À l’oreille, seule la mélodie les sépare : ไกล reste à plat, ใกล้ tombe. À l’œil, deux détails et deux seulement : la voyelle de tête n’est pas la même, ไ contre ใ, et ใกล้ porte en plus une marque de ton. Aujourd’hui vous n’apprenez que ไกล ; ใกล้ est montré pour que vous sachiez qu’il existe et à quoi il ressemble.",
+      "specimen": "ไกล (klai) contre ใกล้ (klâi)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "ครับ a deux métiers",
+      "bodyFr": "Vous connaissez ครับ comme la petite syllabe polie qui ferme une phrase d’homme. Il fait aussi autre chose, et vous allez l’entendre à la deuxième réplique : dit tout seul, il répond. C’est le « oui » d’un homme. Le dictionnaire lui donne exactement ces deux emplois, celui de mot de réponse et celui de fin de phrase polie. Rien à mémoriser de plus : c’est le même mot, à une autre place.",
+      "specimen": "ขอโทษค่ะ · ครับ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "là où se pose la question, et là où se pose la négation",
+      "bodyFr": "Deux petites places à ne pas échanger, et vous les connaissez toutes les deux. ไหม se pose à la fin et transforme la phrase en question : ไกลไหม, c’est loin ? ไม่ se pose devant et annule le mot qui suit : ไม่ไกล, pas loin. Les deux s’attachent au même mot ไกล et donnent deux phrases opposées, uniquement par leur place. À l’oreille, écoutez la mélodie : ไหม monte, ไม่ tombe.",
+      "specimen": "ไกลไหม (klai mǎi) · ไม่ไกล (mâi klai)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "les fins de mots qu’on n’entend pas",
+      "bodyFr": "Quatre mots du dialogue se terminent par une consonne bloquée, et c’est le fil sonore de cette unité. ตลาด finit sur un t qu’on pose sans le lâcher, ขอโทษ aussi. ครับ et ขอบคุณ finissent sur un p fermé, lèvres jointes, sans souffle après. Le geste tient en une phrase : la bouche se ferme sur la consonne, et rien ne sort après. Pas de détente, pas de petite voyelle ajoutée.",
+      "specimen": "ตลาด · ขอโทษ · ครับ · ขอบคุณ"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "trois mots qui ne se lisent pas encore",
+      "bodyFr": "Une remarque honnête avant d’écouter. ตลาด, อยู่ et ไหน ne se déchiffrent pas avec ce que vous savez : leur graphie cache des choses qui viennent plus tard. Apprenez-les aujourd’hui comme des images entières, du son vers la forme, sans essayer de les découper. Le ห de ไหน est le même ห muet que celui de ไหม, déjà rencontré en 2B, et que celui de เท่าไหร่ en 3C : il ne se prononce pas.",
+      "specimen": "ตลาด · อยู่ · ไหน"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "à vous",
+      "bodyFr": "Écoutez le dialogue en entier une première fois sans lire. Reprenez ensuite avec le texte, puis enregistrez les trois répliques du jour, ตรงไปครับ, ไกลไหมคะ et ไม่ไกลครับ, et comparez en A/B avec la voix de référence. Votre enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u05-l5e-p2",
+      "promptFr": "Une femme cherche le marché. Remettez les éléments dans l’ordre. Un élément est de trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u05-l5e-p3",
+      "promptFr": "Écoutez, puis écrivez ce que vous entendez en transcription Thaïnaute. Ce qui est mesuré, c’est la place de chaque mot.",
+      "mechanic": "recall",
+      "drawCount": 3,
+      "passRequired": 3,
+      "sampleSize": 3
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "56ee0e1f-4d68-5771-b8fc-df44c68b8205",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9386c412-996a-552d-ba04-82e9f6272659",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d1d04487-6208-5a4f-affd-06d7b8e2f395",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "ff12fdc7-34b5-5e90-ba1f-fe20b619857c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "c2f64163-f3b4-5150-940a-abf9053b955a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a29d194e-e981-553b-841f-d1dffd63df0f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9c810151-a58f-5b0e-940d-9094b9afd939",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8369441d-c1cf-5412-9c43-b1800c6b788e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

@@ -1,0 +1,851 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "c5f3731c-3f53-5da3-ac27-7e74fe9e00cf",
+  "versionId": "8aa89e2b-c996-5122-9ceb-077c5db8bc1b",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Où ça fait mal",
+  "objectiveFr": "à la fin de la leçon, l’apprenant écoute un bloc et dit si la personne a mal à la tête, au ventre, ou si elle ne nomme aucune partie du corps, sur 7 tirages sur 9 ; il annonce le ton d’un mot entendu parmi moyen, bas, montant et haut, sur 9 tirages sur 12 ; il apparie huit blocs thaïs avec leur sens français, sur 6 paires sur 8 ; il assemble dans le bon ordre [qui] + ปวด + [partie du corps] + part",
+  "requiredEntitlement": null,
+  "audioManifestId": "0819ebf5-52ea-5d5e-99dd-76bb6b5000ba",
+  "items": [
+    {
+      "id": "e7d9f402-fb88-5efa-9a81-bf6daa50a8a0",
+      "thaiRaw": "ปวด",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E27",
+        "U+0E14"
+      ],
+      "translationFr": "avoir mal (à un endroit du corps)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pòuat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปวด",
+          "ipa": "pua̯t̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "31572d98-0068-5dc5-81cf-c4b7638b16b3",
+      "thaiRaw": "หัว",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E31",
+        "U+0E27"
+      ],
+      "translationFr": "la tête",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hǒua"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หัว",
+          "ipa": "hua̯˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "2a9fea40-17eb-5b3d-a4e3-fabe48d0c0f6",
+      "thaiRaw": "ปวดหัว",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E27",
+        "U+0E14",
+        "U+0E2B",
+        "U+0E31",
+        "U+0E27"
+      ],
+      "translationFr": "avoir mal à la tête",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pòuat·hǒua"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปวดหัว",
+          "ipa": "pua̯t̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ปวดหัว",
+          "ipa": "hua̯˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "a77b8b0c-9913-5a72-90e6-e09d4e387b55",
+      "thaiRaw": "ท้อง",
+      "unicodeCodePoints": [
+        "U+0E17",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "le ventre",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tháwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ท้อง",
+          "ipa": "tʰɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "3988bc3d-fd93-53d5-8afa-0fbdac6bd6eb",
+      "thaiRaw": "ปวดท้อง",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E27",
+        "U+0E14",
+        "U+0E17",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "avoir mal au ventre",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pòuat·tháwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปวดท้อง",
+          "ipa": "pua̯t̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ปวดท้อง",
+          "ipa": "tʰɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "2a3308c3-d279-562a-ac63-b297433e550e",
+      "thaiRaw": "เจ็บ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E08",
+        "U+0E47",
+        "U+0E1A"
+      ],
+      "translationFr": "avoir mal (après un coup, sur une blessure) ; être blessé ; être malade",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "jèp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เจ็บ",
+          "ipa": "t͡ɕep̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "thaiRaw": "ดิฉัน",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "je, moi (locutrice femme, échange poli)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "thaiRaw": "ไม่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "ne … pas ; non",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u09-l9b-p4",
+      "drawIndex": 1,
+      "id": "5d65f2c5-4084-523f-bdf7-8172502f7f55",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
+      "tokens": [
+        {
+          "id": "ea10b7b5-c681-5c66-9699-b7fafceb2c8d",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "babdbc9c-9a9a-5280-95f8-671bc0e422b7",
+          "thaiRaw": "ปวด",
+          "transcription": null
+        },
+        {
+          "id": "b8e61d02-b048-541f-9699-ab6493a71951",
+          "thaiRaw": "หัว",
+          "transcription": null
+        },
+        {
+          "id": "0354d050-39d4-59c1-99d9-06c17357be3a",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "ea10b7b5-c681-5c66-9699-b7fafceb2c8d",
+        "babdbc9c-9a9a-5280-95f8-671bc0e422b7",
+        "b8e61d02-b048-541f-9699-ab6493a71951",
+        "0354d050-39d4-59c1-99d9-06c17357be3a"
+      ],
+      "feedback": {
+        "correctFr": "Oui. C’est le squelette de 6D avec ปวด à la place de มี.",
+        "incorrectFr": "Dans les blocs que vous apprenez, l’endroit vient APRÈS le verbe. Comparez avec 6D : มี puis ce qu’on a.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, assemblage 6",
+            "textFr": "Bien vu. Les deux particules ne peuvent pas cohabiter : c’est la personne qui parle qui décide laquelle reste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il se place DEVANT ปวด. C’est la même manœuvre qu’avec ไม่มี et ไม่เผ็ด."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, assemblage 6 sans retrait",
+            "textFr": "Il reste une tuile de trop. Regardez les deux dernières : une phrase n’en garde qu’une."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p4",
+      "drawIndex": 2,
+      "id": "15f98be7-da69-57dc-9a2a-d1aed8e97fce",
+      "type": "word_order",
+      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
+      "tokens": [
+        {
+          "id": "3b5c042e-e55a-50bd-8e24-8896da05c5c4",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        },
+        {
+          "id": "1f24e2af-f7ee-5fd9-a351-9ac2ea03556d",
+          "thaiRaw": "ปวด",
+          "transcription": null
+        },
+        {
+          "id": "4fc2e0a9-1ca8-5573-b160-c75434e05784",
+          "thaiRaw": "หัว",
+          "transcription": null
+        },
+        {
+          "id": "067a4efe-1501-5618-8f15-fe54b8baf5ff",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "3b5c042e-e55a-50bd-8e24-8896da05c5c4",
+        "1f24e2af-f7ee-5fd9-a351-9ac2ea03556d",
+        "4fc2e0a9-1ca8-5573-b160-c75434e05784",
+        "067a4efe-1501-5618-8f15-fe54b8baf5ff"
+      ],
+      "feedback": {
+        "correctFr": "Oui. C’est le squelette de 6D avec ปวด à la place de มี.",
+        "incorrectFr": "Dans les blocs que vous apprenez, l’endroit vient APRÈS le verbe. Comparez avec 6D : มี puis ce qu’on a.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, assemblage 6",
+            "textFr": "Bien vu. Les deux particules ne peuvent pas cohabiter : c’est la personne qui parle qui décide laquelle reste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il se place DEVANT ปวด. C’est la même manœuvre qu’avec ไม่มี et ไม่เผ็ด."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, assemblage 6 sans retrait",
+            "textFr": "Il reste une tuile de trop. Regardez les deux dernières : une phrase n’en garde qu’une."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p4",
+      "drawIndex": 3,
+      "id": "ef0967e5-74e2-5f34-94c5-b1cb60f287f4",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
+      "tokens": [
+        {
+          "id": "7f28cef2-bf5e-5a22-80ff-b5ed327f20b0",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "354aa238-77f9-5887-b85c-56d25c2fe0c5",
+          "thaiRaw": "ปวด",
+          "transcription": null
+        },
+        {
+          "id": "e17d59d4-f39c-5333-8947-78dec1100c55",
+          "thaiRaw": "ท้อง",
+          "transcription": null
+        },
+        {
+          "id": "dcde5398-3f58-55bc-85a4-0ca077303dc3",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "7f28cef2-bf5e-5a22-80ff-b5ed327f20b0",
+        "354aa238-77f9-5887-b85c-56d25c2fe0c5",
+        "e17d59d4-f39c-5333-8947-78dec1100c55",
+        "dcde5398-3f58-55bc-85a4-0ca077303dc3"
+      ],
+      "feedback": {
+        "correctFr": "Oui. C’est le squelette de 6D avec ปวด à la place de มี.",
+        "incorrectFr": "Dans les blocs que vous apprenez, l’endroit vient APRÈS le verbe. Comparez avec 6D : มี puis ce qu’on a.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, assemblage 6",
+            "textFr": "Bien vu. Les deux particules ne peuvent pas cohabiter : c’est la personne qui parle qui décide laquelle reste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il se place DEVANT ปวด. C’est la même manœuvre qu’avec ไม่มี et ไม่เผ็ด."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, assemblage 6 sans retrait",
+            "textFr": "Il reste une tuile de trop. Regardez les deux dernières : une phrase n’en garde qu’une."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p4",
+      "drawIndex": 4,
+      "id": "e3db0838-1010-552d-9e8f-3038ff3b19c2",
+      "type": "word_order",
+      "itemId": "d30c2468-1e1e-5189-a40a-204b7026b2ab",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
+      "tokens": [
+        {
+          "id": "bfa487ff-7fa5-5c00-a542-4fac9b32d979",
+          "thaiRaw": "ไม่",
+          "transcription": null
+        },
+        {
+          "id": "8d036653-593a-5815-b856-43c7956d015e",
+          "thaiRaw": "ปวด",
+          "transcription": null
+        },
+        {
+          "id": "73d08ed6-4335-542a-9e69-03da795e0ecd",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "bfa487ff-7fa5-5c00-a542-4fac9b32d979",
+        "8d036653-593a-5815-b856-43c7956d015e",
+        "73d08ed6-4335-542a-9e69-03da795e0ecd"
+      ],
+      "feedback": {
+        "correctFr": "Oui. C’est le squelette de 6D avec ปวด à la place de มี.",
+        "incorrectFr": "Dans les blocs que vous apprenez, l’endroit vient APRÈS le verbe. Comparez avec 6D : มี puis ce qu’on a.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, assemblage 6",
+            "textFr": "Bien vu. Les deux particules ne peuvent pas cohabiter : c’est la personne qui parle qui décide laquelle reste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il se place DEVANT ปวด. C’est la même manœuvre qu’avec ไม่มี et ไม่เผ็ด."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, assemblage 6 sans retrait",
+            "textFr": "Il reste une tuile de trop. Regardez les deux dernières : une phrase n’en garde qu’une."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p4",
+      "drawIndex": 5,
+      "id": "3423465a-00ae-5490-ba15-db1e417c9f4f",
+      "type": "word_order",
+      "itemId": "e7d9f402-fb88-5efa-9a81-bf6daa50a8a0",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
+      "tokens": [
+        {
+          "id": "7cfb9390-497a-54f1-b122-a6a688dafb80",
+          "thaiRaw": "ปวด",
+          "transcription": null
+        },
+        {
+          "id": "e47dc32f-7683-5f0b-aad1-41d391ae9e59",
+          "thaiRaw": "ท้อง",
+          "transcription": null
+        },
+        {
+          "id": "e166c63a-2835-5d54-9818-71c62583b287",
+          "thaiRaw": "ไหม",
+          "transcription": null
+        },
+        {
+          "id": "b108250a-9182-53d7-bef5-b7c339e8c01b",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "7cfb9390-497a-54f1-b122-a6a688dafb80",
+        "e47dc32f-7683-5f0b-aad1-41d391ae9e59",
+        "e166c63a-2835-5d54-9818-71c62583b287",
+        "b108250a-9182-53d7-bef5-b7c339e8c01b"
+      ],
+      "feedback": {
+        "correctFr": "Oui. C’est le squelette de 6D avec ปวด à la place de มี.",
+        "incorrectFr": "Dans les blocs que vous apprenez, l’endroit vient APRÈS le verbe. Comparez avec 6D : มี puis ce qu’on a.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, assemblage 6",
+            "textFr": "Bien vu. Les deux particules ne peuvent pas cohabiter : c’est la personne qui parle qui décide laquelle reste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il se place DEVANT ปวด. C’est la même manœuvre qu’avec ไม่มี et ไม่เผ็ด."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, assemblage 6 sans retrait",
+            "textFr": "Il reste une tuile de trop. Regardez les deux dernières : une phrase n’en garde qu’une."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p4",
+      "drawIndex": 6,
+      "id": "686dafe6-e543-55d6-b524-40e1b299fde2",
+      "type": "word_order",
+      "itemId": "8866058f-5ec3-5935-a4df-4877d9448d6f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
+      "tokens": [
+        {
+          "id": "4b5039ed-18ae-516b-b624-71c9a58b25b2",
+          "thaiRaw": "ดิฉัน",
+          "transcription": null
+        },
+        {
+          "id": "52cc057b-3669-568c-bfab-ee176bf606c3",
+          "thaiRaw": "ปวด",
+          "transcription": null
+        },
+        {
+          "id": "de4116cb-f47b-5bae-bd6e-dc95f4641b30",
+          "thaiRaw": "ท้อง",
+          "transcription": null
+        },
+        {
+          "id": "32f1dc3d-dd6b-5e3e-a6fc-849af3ed39c9",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "ff68cff1-178d-55d2-b54a-c435ec859946",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "4b5039ed-18ae-516b-b624-71c9a58b25b2",
+        "52cc057b-3669-568c-bfab-ee176bf606c3",
+        "de4116cb-f47b-5bae-bd6e-dc95f4641b30",
+        "ff68cff1-178d-55d2-b54a-c435ec859946"
+      ],
+      "feedback": {
+        "correctFr": "Oui. C’est le squelette de 6D avec ปวด à la place de มี.",
+        "incorrectFr": "Dans les blocs que vous apprenez, l’endroit vient APRÈS le verbe. Comparez avec 6D : มี puis ce qu’on a.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, assemblage 6",
+            "textFr": "Bien vu. Les deux particules ne peuvent pas cohabiter : c’est la personne qui parle qui décide laquelle reste."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, ไม่ mal placé",
+            "textFr": "ไม่ nie le mot qui le suit, donc il se place DEVANT ปวด. C’est la même manœuvre qu’avec ไม่มี et ไม่เผ็ด."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, assemblage 6 sans retrait",
+            "textFr": "Il reste une tuile de trop. Regardez les deux dernières : une phrase n’en garde qu’une."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "une phrase française, deux verbes thaïs",
+      "bodyFr": "En français, « j’ai mal » se dit avec le verbe avoir. Le thaï ne fait pas comme ça : il a un verbe qui veut déjà dire « avoir mal », et il en a même deux, ปวด et เจ็บ. Ils ne couvrent pas la même chose, et la moitié de cette leçon consiste à savoir lequel prendre.",
+      "specimen": "ปวด (pòuat) · เจ็บ (jèp)"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ปวด, la douleur qu’on situe",
+      "bodyFr": "ปวด est le verbe qui va avec un endroit du corps. Le dictionnaire normatif le définit comme une douleur ressentie à l’intérieur du corps et donne pour exemples, dans sa propre entrée, ปวดหัว et ปวดฟัน. C’est le mot que vous emploierez pour dire où vous avez mal.",
+      "specimen": "ปวด (pòuat)"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "เจ็บ, et ce qu’il couvre en plus",
+      "bodyFr": "เจ็บ dit aussi « avoir mal », mais il va plus loin que ปวด dans deux directions. Le dictionnaire lui donne d’abord le fait d’être malade, ensuite la douleur qu’on ressent après un coup ou sur une plaie. Les deux autres sources consultées disent la même chose de leur côté : elles traduisent เจ็บ par « être blessé » et par « être malade », et aucune des trois ne donne ces deux sens à ปวด.",
+      "specimen": "เจ็บ (jèp)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "lequel prendre, et jusqu’où on peut le dire",
+      "bodyFr": "Voici ce qui est vérifié, et rien de plus. Pour la tête, c’est ปวด : ปวดหัว est attesté par les trois sources consultées, et เจ็บหัว n’apparaît dans aucune des trois. Pour le ventre, la leçon vous fait dire ปวดท้อง, parce que เจ็บท้อง porte dans le dictionnaire normatif un tout autre sens, celui des douleurs de l’accouchement. Au-delà de ces deux cas, ne devinez pas : chaque partie du corps a ses habitudes, et nous ne vous donnerons que celles que nous avons vérifiées.",
+      "specimen": "ปวดหัว (pòuat·hǒua) · ปวดท้อง (pòuat·tháwwng)"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "หัว, et le ton qui monte",
+      "bodyFr": "หัว, c’est la tête. Vous savez déjà le lire, et vous pouvez le vérifier vous-même : ห est l’une des consonnes hautes de 4A, et le petit signe posé sur le ห n’est PAS une marque de ton, c’est la voyelle. ◌ั et le ว forment ensemble le graphème ◌ัว, comme dans ตัว. Il n’y a donc aucune consonne finale, et AUCUNE MARQUE DE TON. La règle de 4A donne le ton MONTANT. La voix part d’en bas et remonte sur toute la glissade.",
+      "specimen": "หัว (hǒua)"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "ท้อง, et le ton qui reste en haut",
+      "bodyFr": "ท้อง, c’est le ventre. Là aussi le ton se calcule : ท est l’une des consonnes basses de 5A, la syllabe se ferme sur ง donc elle est vivante, et le ไม้โท posé au-dessus donne, d’après le tableau de 7A, le ton HAUT. C’est exactement la case de ช้อน, apprise en 7A. La voix se pose en haut et y reste, elle ne monte pas depuis le bas.",
+      "specimen": "ท้อง (tháwwng) · ช้อน (cháwwn)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "les deux tons côte à côte, et pourquoi on y revient",
+      "bodyFr": "Montant et haut, vous les avez rencontrés dès l’unité 1, puis retravaillés en unité 4. Personne ne considère qu’ils sont acquis, et surtout pas cette leçon : ses deux parties du corps tombent pile dessus, et une confusion vous ferait dire le ventre pour la tête. Écoutez les deux blocs entiers l’un après l’autre, la première syllabe est la même dans les deux.\n\n> ปวดหัว : la voix descend, puis REMONTE > ปวดท้อง : la voix descend, puis se POSE en haut",
+      "specimen": "ปวดหัว (pòuat·hǒua) contre ปวดท้อง (pòuat·tháwwng)"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "la même place qu’en 6D",
+      "bodyFr": "Rappelez-vous le squelette de 6D, [qui] + มี + ce qu’on a + particule : c’est celui de ผมมีพี่ชายสองคนครับ, la phrase que vous avez apprise en 6B. Le squelette d’aujourd’hui est le même, à ceci près que la place du verbe est occupée par ปวด au lieu de มี, et que ce qui suit est une partie du corps. C’est tout ce qu’il y a à retenir de la structure.\n\n> [qui] + ปวด + [partie du corps] + [particule]",
+      "specimen": "ผมปวดหัวครับ (phǒm pòuat·hǒua khráp)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "et pour dire non, ไม่ devant",
+      "bodyFr": "Là non plus rien de neuf. ไม่ nie le mot qui le suit, donc il se place devant le verbe, exactement comme il faisait ไม่มี en 6D et ไม่เผ็ด en 4D. Devant ปวด, cela donne ไม่ปวด. Écoutez la forme d’ensemble : la voix tombe sur ไม่, puis reste basse sur ปวด.",
+      "specimen": "ไม่ปวดครับ (mâi pòuat khráp)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "ปวด s’écrit comme ขวด",
+      "bodyFr": "Un piège de lecture, et vous avez déjà la solution. ปวด commence par deux consonnes écrites, ป puis ว, et pourtant ce n’est pas un groupe : le ว est ici la forme réduite de la voyelle ◌ัว, celle que 8A vous a fait voir dans ขวด. Vous lisez donc `pòuat`, une seule syllabe qui glisse de ou vers a, et non deux lettres soufflées ensemble.",
+      "specimen": "ขวด (khòuat) puis ปวด (pòuat)"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "เจ็บ et เจ็ด, une lettre d’écart",
+      "bodyFr": "Regardez bien la fin du mot. เจ็ด, sept, se termine par ด. เจ็บ, avoir mal, se termine par บ. Tout le reste est identique, jusqu’au petit ◌็ que vous lisez depuis 3B. Et si vous remontez à la consonne INITIALE, celle qui suit le เ, เผ็ด, épicé, appris en 4D, ne diffère de เจ็ด que par elle : ผ au lieu de จ. Trois mots, un même moule.",
+      "specimen": "เจ็ด (jèt) · เจ็บ (jèp) · เผ็ด (phèt)"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "ce que ces mots ne font pas",
+      "bodyFr": "Ces six mots servent à dire ce que vous ressentez et où. Ils ne disent pas ce qu’il faut faire, et cette leçon ne vous le dira pas : ce qui vient ensuite ne relève pas d’une leçon de langue. Ce que la langue vous donne ici est déjà beaucoup, la possibilité de nommer l’endroit à quelqu’un qui peut vous aider.",
+      "specimen": "ปวดหัวครับ (pòuat·hǒua khráp)"
+    },
+    {
+      "ordre": 13,
+      "titleFr": "à vous",
+      "bodyFr": "Trois gestes. Pour choisir le verbe, demandez-vous si vous nommez un endroit du corps : si oui, et pour les deux endroits du jour, c’est ปวด. Pour le ton, écoutez la fin du bloc, elle remonte pour la tête et se pose en haut pour le ventre. Pour la phrase, prenez le squelette de 6D et remplacez มี par ปวด.\n\nAprès les exercices, enregistrez-vous en disant ปวดหัว puis ปวดท้อง, et comparez en A/B avec la voix de référence. Écoutez la seconde syllabe des deux : c’est là que tout se joue. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u09-l9b-p4",
+      "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "f230276d-9906-58fb-8e6e-40bd3fa86a64",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8eb53bf4-95eb-5008-9d12-44fde8e91f25",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "a16864de-fbdb-5fbf-90fc-5298567d700a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "eeebf4c5-3b92-5374-b672-61bbc73f4180",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "be9e1574-dde8-5391-b09e-4c6116536a68",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6f442832-988d-522f-a6f9-c94667d60f51",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1107418b-9e7d-5d1d-9796-bdad03568ebe",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "8958bbb5-533e-5b87-820d-2103622f925f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

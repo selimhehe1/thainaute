@@ -212,7 +212,8 @@ export async function assessReadiness(
     diagnostic.syncMode === "disabled" &&
     diagnostic.contentReportMode === "disabled" &&
     diagnostic.publicContentMode !== "supabase" &&
-    diagnostic.studioMode !== "fixture"
+    diagnostic.studioMode !== "fixture" &&
+    diagnostic.billingMode === "disabled"
   ) {
     return {
       ready: diagnostic.ready,
@@ -264,7 +265,10 @@ export async function assessReadiness(
   }
 
   const authConfiguration =
-    syncConfiguration ?? reportConfiguration ?? studioConfiguration;
+    syncConfiguration ??
+    reportConfiguration ??
+    studioConfiguration ??
+    (diagnostic.billingMode !== "disabled" ? serverConfiguration : null);
 
   const probe = options.probe ?? createSupabaseReadinessProbe();
   const timeoutMs = normalizeTimeout(options.timeoutMs);

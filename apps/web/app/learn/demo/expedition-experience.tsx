@@ -12,11 +12,10 @@ import {
   createAttemptOutboxSnapshot,
   finishLocalLesson,
   ingestAttemptBatch,
-  isOptionAttempt,
+  localAnswerKeysForLesson,
   MAX_ATTEMPT_DURATION_MS,
   openLocalLessonQuestion,
   prepareLocalLessonSubmission,
-  discardLocalLessonQuestion,
   recordLocalExpeditionResult,
   saveLocalLessonDraft,
   selectLocalLessonOption,
@@ -35,6 +34,7 @@ import {
   useRef,
   useState,
   useSyncExternalStore,
+  type ReactNode,
 } from "react";
 
 import { ExpeditionTrail } from "@/components/brand/expedition-trail";
@@ -43,14 +43,20 @@ import { buttonClass } from "@/components/ui/button";
 import {
   AttemptOutboxStorageError,
   WebAttemptOutboxStore,
-  migrateLegacyDemoFixtureAttempts,
+  startLegacyDemoFixtureMigration,
+  type LegacyDemoFixtureMigrationOperation,
 } from "@/lib/client/attempt-outbox-store";
 import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
 import { useWebAuthSession } from "@/lib/client/auth-session";
+import { browserSha256Hex } from "@/lib/client/sha256";
 import {
   LocalExperienceStorageError,
   WebLocalExperienceStore,
 } from "@/lib/client/local-experience-store";
+import {
+  LocalStorageDeadlineError,
+  withLocalStorageDeadline,
+} from "@/lib/client/local-storage-deadline";
 
 import { ContentReportPanel } from "./content-report-panel";
 import { LocalVoiceComparison } from "./local-voice-comparison";
@@ -88,12 +94,39 @@ interface ExpeditionProps {
    */
   readonly audioSources?: Readonly<Record<string, string>> | undefined;
   readonly analytics?: AnalyticsSink | undefined;
+  /**
+   * Où sont journalisées les tentatives de l'apprenant.
+   *
+   * RUPTURE CORRIGÉE : ce composant sert à la fois la démonstration
+   * technique et les vraies leçons du curriculum, et il ouvrait dans les
+   * deux cas la base `thainaute-demo-v1`. Or la synchronisation de compte
+   * ne lit que `thainaute-learning-v1`, et la base de démonstration est
+   * délibérément mise en quarantaine à la fusion. Toute la progression du
+   * cours réel était donc écrite dans un endroit dont personne ne la
+   * relèverait jamais.
+   *
+   * Le choix appartient à l'appelant, parce que lui seul sait s'il rend une
+   * leçon réelle ou une démonstration. Le défaut reste `demo` pour que la
+   * page de démonstration ne se mette pas à polluer la progression réelle.
+   */
+  readonly attemptStorage?: "demo" | "learning" | undefined;
+  /** Délai injectable pour les tests de reprise ; la production garde 8 s. */
+  readonly storageHydrationTimeoutMs?: number | undefined;
+  /** L'hydratation possède et ferme explicitement les handles de migration. */
+  readonly storageMigrationFactory?:
+    (() => LegacyDemoFixtureMigrationOperation) | undefined;
 }
 
 interface Celebration {
   readonly exerciseId: string;
   readonly correct: boolean;
   readonly feedback: string;
+}
+
+interface StorageGeneration {
+  readonly experience: WebLocalExperienceStore;
+  readonly key: string;
+  readonly outbox: WebAttemptOutboxStore;
 }
 
 const MECHANIC_LABELS: Record<LessonExercise["type"], string> = {
@@ -103,6 +136,118 @@ const MECHANIC_LABELS: Record<LessonExercise["type"], string> = {
   recall: "Rappel",
   reading: "Lecture",
 };
+
+type TeachingBlock =
+  | { readonly kind: "paragraph"; readonly lines: readonly string[] }
+  | { readonly kind: "quote"; readonly lines: readonly string[] }
+  | { readonly kind: "list"; readonly lines: readonly string[] };
+
+function inlineTeaching(text: string, keyPrefix: string): ReactNode[] {
+  return text.split(/(`[^`]+`)/gu).map((fragment, index) => {
+    if (fragment.startsWith("`") && fragment.endsWith("`")) {
+      return (
+        <code key={`${keyPrefix}-code-${index}`} className={styles.coursCode}>
+          {fragment.slice(1, -1)}
+        </code>
+      );
+    }
+    return fragment;
+  });
+}
+
+/** Rend le petit sous-ensemble Markdown autorisé dans les pages de cours. */
+function renderTeachingBody(body: string): ReactNode[] {
+  const blocks: TeachingBlock[] = [];
+  let current: { kind: TeachingBlock["kind"]; lines: string[] } | null = null;
+
+  const flush = () => {
+    if (current !== null && current.lines.length > 0) {
+      blocks.push({ kind: current.kind, lines: [...current.lines] });
+    }
+    current = null;
+  };
+
+  for (const rawLine of body.split(/\r?\n/gu)) {
+    const trimmed = rawLine.trim();
+    if (trimmed === "") {
+      flush();
+      continue;
+    }
+
+    const quote = trimmed.match(/^>\s?(.*)$/u);
+    if (quote !== null) {
+      if (current?.kind !== "quote") {
+        flush();
+        current = { kind: "quote", lines: [] };
+      }
+      current.lines.push(quote[1] ?? "");
+      continue;
+    }
+
+    if (/^\d+\.\s+/u.test(trimmed)) {
+      if (current?.kind !== "list") {
+        flush();
+        current = { kind: "list", lines: [] };
+      }
+      for (const item of trimmed.split(/\s+(?=\d+\.\s)/u)) {
+        current.lines.push(item.replace(/^\d+\.\s+/u, ""));
+      }
+      continue;
+    }
+
+    if (
+      current !== null &&
+      (current.kind === "quote" || current.kind === "list") &&
+      /^\s/.test(rawLine)
+    ) {
+      current.lines[current.lines.length - 1] += ` ${trimmed}`;
+      continue;
+    }
+
+    if (current?.kind !== "paragraph") {
+      flush();
+      current = { kind: "paragraph", lines: [] };
+    }
+    current.lines.push(trimmed);
+  }
+  flush();
+
+  return blocks.map((block, blockIndex) => {
+    const keyPrefix = `cours-${blockIndex}`;
+    if (block.kind === "quote") {
+      return (
+        <blockquote className={styles.coursCitation} key={keyPrefix}>
+          {block.lines.map((line, lineIndex) => (
+            <span
+              className={styles.coursCitationLine}
+              key={`${keyPrefix}-${lineIndex}`}
+            >
+              {inlineTeaching(line, `${keyPrefix}-${lineIndex}`)}
+            </span>
+          ))}
+        </blockquote>
+      );
+    }
+
+    if (block.kind === "list") {
+      return (
+        <ol className={styles.coursList} key={keyPrefix}>
+          {block.lines.map((line, lineIndex) => (
+            <li key={`${keyPrefix}-${lineIndex}`}>
+              {inlineTeaching(line, `${keyPrefix}-${lineIndex}`)}
+            </li>
+          ))}
+        </ol>
+      );
+    }
+
+    return (
+      <p className={styles.coursTexte} key={keyPrefix}>
+        {inlineTeaching(block.lines.join(" "), keyPrefix)}
+      </p>
+    );
+  });
+}
 
 function captureSafely(
   analytics: AnalyticsSink,
@@ -152,15 +297,26 @@ export function ExpeditionExperience({
   lesson,
   audioSources,
   analytics: analyticsOverride,
+  attemptStorage = "demo",
+  storageHydrationTimeoutMs,
+  storageMigrationFactory = startLegacyDemoFixtureMigration,
 }: ExpeditionProps) {
   const router = useRouter();
   const { analytics: consentAwareAnalytics } = useWebAnalyticsConsent();
   const analytics = analyticsOverride ?? consentAwareAnalytics;
-  const { sessionBoundaryRevision } = useWebAuthSession();
+  const auth = useWebAuthSession();
+  const { sessionBoundaryRevision } = auth;
+  // Propriétaire du journal des tentatives. Voir `attemptStorage` : sur une
+  // leçon réelle, un apprenant connecté doit écrire dans le magasin de SON
+  // compte, sinon sa progression reste anonyme et n'est remontée que par le
+  // bouton « Fusionner et synchroniser », jamais par la synchro ordinaire.
+  const userId =
+    auth.status === "signed_in" ? (auth.session?.user.id ?? null) : null;
 
-  const [store, setStore] = useState<WebAttemptOutboxStore | null>(null);
-  const [experienceStore, setExperienceStore] =
-    useState<WebLocalExperienceStore | null>(null);
+  const [storageGeneration, setStorageGeneration] =
+    useState<StorageGeneration | null>(null);
+  const store = storageGeneration?.outbox ?? null;
+  const experienceStore = storageGeneration?.experience ?? null;
   const [snapshot, setSnapshot] = useState<LocalExperienceSnapshot | null>(
     null,
   );
@@ -171,6 +327,7 @@ export function ExpeditionExperience({
     "loading" | "ready" | "error"
   >("loading");
   const [storageRetryToken, setStorageRetryToken] = useState(0);
+  const storageGenerationKey = `${attemptStorage}:${userId ?? "anonymous"}:${sessionBoundaryRevision}:${storageRetryToken}`;
   const [errorMessage, setErrorMessage] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [abandonConfirmation, setAbandonConfirmation] = useState(false);
@@ -255,6 +412,34 @@ export function ExpeditionExperience({
     (exercise) => exercise.type === "audio_choice",
   );
 
+  /**
+   * Clés de correction des CINQ mécaniques, dérivées une fois.
+   *
+   * Elles ne servent qu'à la séance jouée sur un paquet déjà présent sur
+   * l'appareil : en ligne, la clé autoritaire appartient au serveur et le
+   * DTO public n'en transporte aucune. Elles rendent la note identique à
+   * celle du mobile, qui emploie le même module.
+   */
+  const answerKeys = useMemo(() => localAnswerKeysForLesson(lesson), [lesson]);
+
+  /**
+   * Note une tentative depuis le journal DURABLE, jamais depuis l'état React.
+   * Une tentative rejouée après un incident doit rendre exactement la même
+   * note que la première fois.
+   */
+  const evaluateDurableAttempt = useCallback(
+    (source: AttemptOutboxSnapshot, eventId: string) =>
+      ingestAttemptBatch({
+        existingEvents: [],
+        submissions: source.entries
+          .filter(({ status }) => status !== "rejected")
+          .map((entry) => entry.submission),
+        answerKeys,
+        authenticatedUserId: null,
+      }).events.find((event) => event.eventId === eventId),
+    [answerKeys],
+  );
+
   const stopSignal = useCallback((): void => {
     const audio = lessonAudio.current;
     lessonAudio.current = null;
@@ -310,22 +495,48 @@ export function ExpeditionExperience({
 
   useEffect(() => {
     let active = true;
-    const outboxInstance = new WebAttemptOutboxStore("thainaute-demo-v1");
+    // Le magasin de démonstration reste toujours anonyme : ses tentatives
+    // portent sur une fixture et n'ont rien à faire dans un compte.
+    const proprietaire =
+      attemptStorage === "learning" && userId !== null
+        ? ({ kind: "account", userId } as const)
+        : undefined;
+    const outboxInstance = new WebAttemptOutboxStore(
+      attemptStorage === "learning"
+        ? "thainaute-learning-v1"
+        : "thainaute-demo-v1",
+      proprietaire,
+      proprietaire === undefined ? undefined : browserSha256Hex,
+    );
     const experienceInstance = new WebLocalExperienceStore();
+    const generationKey = storageGenerationKey;
     queueMicrotask(() => {
       if (!active) return;
       setStorageStatus("loading");
       setOutbox(createAttemptOutboxSnapshot());
       setSnapshot(null);
-      setStore(outboxInstance);
-      setExperienceStore(experienceInstance);
+      setStorageGeneration({
+        experience: experienceInstance,
+        key: generationKey,
+        outbox: outboxInstance,
+      });
     });
     return () => {
       active = false;
       outboxInstance.close();
       experienceInstance.close();
     };
-  }, []);
+    // `attemptStorage` et `userId` sont dans les dépendances : un changement
+    // de base OU de compte doit rouvrir le magasin, pas continuer d'écrire
+    // dans l'ancien. `sessionBoundaryRevision` couvre la reconnexion sur le
+    // même identifiant après une bascule.
+  }, [
+    attemptStorage,
+    sessionBoundaryRevision,
+    storageGenerationKey,
+    storageRetryToken,
+    userId,
+  ]);
 
   useEffect(() => {
     const stopOnPageExit = () => stopSignal();
@@ -337,15 +548,24 @@ export function ExpeditionExperience({
   }, [stopSignal]);
 
   useEffect(() => {
-    if (store === null || experienceStore === null) return;
+    if (
+      storageGeneration === null ||
+      storageGeneration.key !== storageGenerationKey
+    ) {
+      return;
+    }
     let active = true;
-    const activeOutboxStore = store;
-    const activeExperienceStore = experienceStore;
+    const activeOutboxStore = storageGeneration.outbox;
+    const activeExperienceStore = storageGeneration.experience;
+    const legacyMigration = storageMigrationFactory();
 
     async function hydrate(): Promise<void> {
-      await migrateLegacyDemoFixtureAttempts();
+      await legacyMigration.promise;
+      if (!active) return;
       let nextOutbox = await activeOutboxStore.read();
+      if (!active) return;
       let nextExperience = await activeExperienceStore.read();
+      if (!active) return;
       let replayedCelebration: Celebration | null = null;
 
       // Une tentative réservée avant un crash est re-poussée vers le journal.
@@ -353,6 +573,7 @@ export function ExpeditionExperience({
         nextOutbox = await activeOutboxStore.enqueue(
           nextExperience.lesson.submission,
         );
+        if (!active) return;
         const durableOutbox = nextOutbox;
         nextExperience = await activeExperienceStore.update((current) =>
           confirmLocalLessonResult(
@@ -361,6 +582,7 @@ export function ExpeditionExperience({
             new Date().toISOString(),
           ),
         );
+        if (!active) return;
       }
 
       // Un résultat durable interrompu avant sa consignation est rejoué.
@@ -379,31 +601,18 @@ export function ExpeditionExperience({
           nextExperience = await activeExperienceStore.update((current) =>
             finishLocalLesson(current, durableOutbox, new Date().toISOString()),
           );
+          if (!active) return;
         }
+        // Les cinq mécaniques se rejouent, plus seulement l'écoute : une
+        // association interrompue laissait auparavant sa tentative dans le
+        // journal sans jamais consigner son résultat.
         const answered = lesson.exercises.find(
-          (exercise) =>
-            exercise.type === "audio_choice" &&
-            exercise.id === interrupted.exerciseId,
+          (exercise) => exercise.id === interrupted.exerciseId,
         );
-        if (answered?.type === "audio_choice") {
-          const evaluated = ingestAttemptBatch({
-            existingEvents: [],
-            submissions: durableOutbox.entries
-              .filter(({ status }) => status !== "rejected")
-              .map((entry) => entry.submission)
-              .filter(isOptionAttempt),
-            answerKeys: [
-              {
-                exerciseId: answered.id,
-                itemId: answered.itemId,
-                correctOptionId: answered.correctOptionId,
-                skill: "listening",
-                contentVersionId: lesson.versionId,
-              },
-            ],
-            authenticatedUserId: null,
-          }).events.find(
-            ({ eventId }) => eventId === interrupted.submission.eventId,
+        if (answered !== undefined) {
+          const evaluated = evaluateDurableAttempt(
+            durableOutbox,
+            interrupted.submission.eventId,
           );
           if (evaluated !== undefined) {
             nextExperience = await activeExperienceStore.update((current) =>
@@ -415,6 +624,7 @@ export function ExpeditionExperience({
                 answeredAt: interrupted.submission.answeredAt,
               }),
             );
+            if (!active) return;
             // L'exercice a été noté sans que sa correction ait été montrée :
             // on la présente à la reprise plutôt que de la sauter.
             replayedCelebration = {
@@ -468,15 +678,35 @@ export function ExpeditionExperience({
       setStorageStatus("ready");
     }
 
-    void hydrate().catch(() => {
+    void withLocalStorageDeadline(hydrate(), storageHydrationTimeoutMs, () => {
+      legacyMigration.close();
+      activeOutboxStore.close();
+      activeExperienceStore.close();
+    }).catch((error: unknown) => {
       if (!active) return;
+      setErrorMessage(
+        error instanceof LocalStorageDeadlineError
+          ? "Le stockage local ne répond pas. Fermez les autres onglets Thaïnaute, puis réessayez."
+          : "Le stockage local est temporairement indisponible.",
+      );
       setStorageStatus("error");
+      // Une opération IndexedDB qui se débloquerait après l'échéance ne doit
+      // pas remplacer silencieusement l'écran de reprise par un état tardif.
+      active = false;
     });
 
     return () => {
       active = false;
+      legacyMigration.close();
     };
-  }, [experienceStore, lesson, storageRetryToken, store]);
+  }, [
+    evaluateDurableAttempt,
+    lesson,
+    storageGeneration,
+    storageGenerationKey,
+    storageHydrationTimeoutMs,
+    storageMigrationFactory,
+  ]);
 
   const expedition = snapshot?.expedition ?? null;
   const expeditionMatchesLesson =
@@ -508,10 +738,10 @@ export function ExpeditionExperience({
   const currentStep = currentIndex < 0 ? plan.length : currentIndex + 1;
 
   const stage: "loading" | "error" | "stale" | "intro" | "card" | "recap" =
-    storageStatus === "loading" || snapshot === null
-      ? "loading"
-      : storageStatus === "error"
-        ? "error"
+    storageStatus === "error"
+      ? "error"
+      : storageStatus === "loading" || snapshot === null
+        ? "loading"
         : staleLesson !== null || staleExpedition !== null
           ? "stale"
           : !expeditionMatchesLesson
@@ -700,134 +930,149 @@ export function ExpeditionExperience({
   }, [advance, celebration, reducedMotion]);
 
   /**
-   * Clôt une mécanique corrigée localement. La note vient de l'erreur
-   * DURABLE, jamais d'un état de composant qu'un rechargement effacerait.
+   * Réponse construite pour les mécaniques qui ne tiennent pas dans une
+   * option.
+   *
+   * L'appelant peut l'imposer. L'association valide dans le MÊME tick que sa
+   * dernière paire : relire `matchedPairIds` y rendrait la paire finale
+   * absente, et la tentative serait notée fausse alors qu'elle est juste.
    */
-  function settleLocalExercise(exercise: LessonExercise): void {
-    if (experienceStore === null) return;
-    setIsSaving(true);
-    const answeredAt = new Date().toISOString();
-    void experienceStore
-      .update((current) => {
-        const durablyMissed =
-          current.lesson?.phase === "question" &&
-          current.lesson.exerciseId === exercise.id
-            ? current.lesson.missedOnce
-            : missed.current;
-        const cleared =
-          current.lesson === null
-            ? current
-            : discardLocalLessonQuestion(current);
-        return recordLocalExpeditionResult(cleared, {
-          exerciseId: exercise.id,
-          rating: durablyMissed ? 0 : 1,
-          answeredAt,
-        });
-      })
-      .then((next) => {
-        setSnapshot(next);
-        const rating =
-          next.expedition?.results.find(
-            ({ exerciseId }) => exerciseId === exercise.id,
-          )?.rating ?? 1;
-        captureSafely(analytics, {
-          name: "exercise_answered",
-          lessonVersionId: lesson.versionId,
-          exerciseType: exercise.type,
-          correct: rating === 1,
-          durationBucket: durationBucket(
-            Math.min(
-              MAX_ATTEMPT_DURATION_MS,
-              Math.max(0, Date.now() - cardStartedAt),
-            ),
-          ),
-          platform: "web",
-        });
-        if (next.expedition?.results.length === plan.length) {
-          captureSafely(analytics, {
-            name: "lesson_completed",
-            lessonVersionId: lesson.versionId,
-            platform: "web",
-          });
-        }
-        celebrate(exercise, rating);
-      })
-      .catch(failStorage)
-      .finally(() => setIsSaving(false));
+  function draftAnswerFor(
+    exercise: LessonExercise,
+    override?: LocalDraftAnswer,
+  ): LocalDraftAnswer | null {
+    if (override !== undefined) return override;
+    if (exercise.type === "association") {
+      return {
+        kind: "association",
+        pairs: matchedPairIds.map((pairId) => ({
+          promptPairId: pairId,
+          chosenPairId: pairId,
+        })),
+      };
+    }
+    if (exercise.type === "word_order") {
+      return { kind: "word_order", tokenIds: [...orderedTokenIds] };
+    }
+    if (exercise.type === "recall") {
+      return { kind: "recall", value: recallValue };
+    }
+    return null;
   }
 
-  async function settleListeningExercise(
-    exercise: Extract<LessonExercise, { type: "audio_choice" }>,
+  /**
+   * Clôt une mécanique, quelle qu'elle soit, en passant par le journal
+   * durable.
+   *
+   * Les quatre mécaniques composées se contentaient auparavant d'un état
+   * local : leur résultat ne survivait pas à l'appareil, n'atteignait jamais
+   * le serveur, et le récapitulatif affichait « 0 ‰ » pour quatre exercices
+   * sur cinq. Le contrat de réponse typée existait pourtant déjà, et le
+   * mobile s'en servait.
+   *
+   * La tentative envoyée est celle qui a été RÉSERVÉE, relue depuis le
+   * stockage : `prepareLocalLessonSubmission` refuse toute divergence, et le
+   * cliquet d'erreur vit dans le brouillon, pas dans un état React qu'un
+   * rechargement effacerait.
+   */
+  async function settleExercise(
+    exercise: LessonExercise,
+    answerOverride?: LocalDraftAnswer,
   ): Promise<void> {
-    if (
-      store === null ||
-      experienceStore === null ||
-      selectedOptionId === null
-    ) {
-      return;
-    }
-    const deviceId = await store.getOrCreateDeviceId(() => crypto.randomUUID());
-    const answeredAt = new Date().toISOString();
-    const submission = attemptSubmissionSchema.parse({
-      eventId: crypto.randomUUID(),
-      deviceId,
-      exerciseId: exercise.id,
-      selectedOptionId,
-      answeredAt,
-      durationMs: Math.min(
-        MAX_ATTEMPT_DURATION_MS,
-        Math.max(0, Math.round(Date.parse(answeredAt) - cardStartedAt)),
-      ),
-      contentVersionId: lesson.versionId,
-      algorithmVersion: SRS_ALGORITHM_VERSION,
-    });
+    if (store === null || experienceStore === null) return;
+    const answersOption =
+      exercise.type === "audio_choice" || exercise.type === "reading";
+    const chosenOptionId = selectedOptionId;
+    if (answersOption && chosenOptionId === null) return;
 
-    const prepared = await experienceStore.update((current) => {
+    const deviceId = await store.getOrCreateDeviceId(() => crypto.randomUUID());
+    const stagedAt = new Date().toISOString();
+    const staged = await experienceStore.update((current) => {
       let session = current;
       if (session.lesson === null) {
         session = startLocalLesson(session, {
           lessonVersionId: lesson.versionId,
           exerciseId: exercise.id,
-          startedAt: answeredAt,
+          startedAt: stagedAt,
         });
-        session = openLocalLessonQuestion(session, answeredAt);
       }
-      session = selectLocalLessonOption(session, selectedOptionId, answeredAt);
-      return prepareLocalLessonSubmission(session, submission, answeredAt);
+      // Une sous-session ouverte sans question l'attend encore : sans cette
+      // ouverture, la réservation refuserait une réponse pourtant donnée.
+      if (session.lesson?.phase === "intro") {
+        session = openLocalLessonQuestion(session, stagedAt);
+      }
+      // Une tentative déjà réservée avant un incident se rejoue telle quelle.
+      if (session.lesson?.phase !== "question") return session;
+      return answersOption
+        ? selectLocalLessonOption(session, chosenOptionId ?? "", stagedAt)
+        : saveLocalLessonDraft(
+            session,
+            {
+              answer: draftAnswerFor(exercise, answerOverride),
+              missedOnce: missed.current,
+            },
+            stagedAt,
+          );
     });
-    if (prepared.lesson?.phase !== "submitting") {
+
+    const stagedLesson = staged.lesson;
+    if (stagedLesson === null) {
       throw new LocalExperienceStorageError(
-        "La tentative locale n'a pas été réservée.",
+        "La question locale n'a pas pu être ouverte.",
       );
     }
-    const nextOutbox = await store.enqueue(prepared.lesson.submission);
-    const settledAt = new Date().toISOString();
-    let confirmed = await experienceStore.update((current) =>
-      confirmLocalLessonResult(current, nextOutbox, settledAt),
+
+    let exactSubmission;
+    if (stagedLesson.phase === "submitting") {
+      exactSubmission = stagedLesson.submission;
+    } else {
+      if (stagedLesson.phase !== "question") {
+        throw new LocalExperienceStorageError(
+          "La question locale n'est pas prête à recevoir une tentative.",
+        );
+      }
+      const answeredAt = new Date().toISOString();
+      const answerInput = answersOption
+        ? { selectedOptionId: chosenOptionId }
+        : { answer: stagedLesson.draftAnswer };
+      const submission = attemptSubmissionSchema.parse({
+        eventId: crypto.randomUUID(),
+        deviceId,
+        exerciseId: exercise.id,
+        ...answerInput,
+        answeredAt,
+        durationMs: Math.min(
+          MAX_ATTEMPT_DURATION_MS,
+          Math.max(0, Math.round(Date.parse(answeredAt) - cardStartedAt)),
+        ),
+        contentVersionId: lesson.versionId,
+        algorithmVersion: SRS_ALGORITHM_VERSION,
+      });
+      const prepared = await experienceStore.update((current) =>
+        prepareLocalLessonSubmission(current, submission, answeredAt),
+      );
+      if (prepared.lesson?.phase !== "submitting") {
+        throw new LocalExperienceStorageError(
+          "La tentative locale n'a pas été réservée.",
+        );
+      }
+      exactSubmission = prepared.lesson.submission;
+    }
+
+    const nextOutbox = await store.enqueue(exactSubmission);
+    await experienceStore.update((current) =>
+      confirmLocalLessonResult(current, nextOutbox, new Date().toISOString()),
     );
-    confirmed = await experienceStore.update((current) =>
+    const confirmed = await experienceStore.update((current) =>
       finishLocalLesson(current, nextOutbox, new Date().toISOString()),
     );
     setOutbox(nextOutbox);
     setSnapshot(confirmed);
 
-    const evaluated = ingestAttemptBatch({
-      existingEvents: [],
-      submissions: nextOutbox.entries
-        .filter(({ status }) => status !== "rejected")
-        .map((entry) => entry.submission)
-        .filter(isOptionAttempt),
-      answerKeys: [
-        {
-          exerciseId: exercise.id,
-          itemId: exercise.itemId,
-          correctOptionId: exercise.correctOptionId,
-          skill: "listening",
-          contentVersionId: lesson.versionId,
-        },
-      ],
-      authenticatedUserId: null,
-    }).events.find(({ eventId }) => eventId === submission.eventId);
+    const evaluated = evaluateDurableAttempt(
+      nextOutbox,
+      exactSubmission.eventId,
+    );
     if (evaluated === undefined) {
       throw new LocalExperienceStorageError(
         "La tentative locale n'a pas pu être évaluée.",
@@ -835,6 +1080,22 @@ export function ExpeditionExperience({
     }
     await recordResult(exercise, evaluated.rating);
     celebrate(exercise, evaluated.rating);
+  }
+
+  /** Enveloppe commune : une seule tentative à la fois, erreurs consignées. */
+  function submitExercise(
+    exercise: LessonExercise,
+    answerOverride?: LocalDraftAnswer,
+  ): void {
+    if (submissionInFlight.current) return;
+    submissionInFlight.current = true;
+    setIsSaving(true);
+    void settleExercise(exercise, answerOverride)
+      .catch(failStorage)
+      .finally(() => {
+        submissionInFlight.current = false;
+        setIsSaving(false);
+      });
   }
 
   /** La sélection d'écoute est durable : elle survit à un rechargement. */
@@ -870,19 +1131,11 @@ export function ExpeditionExperience({
   function submitListening(
     exercise: Extract<LessonExercise, { type: "audio_choice" }>,
   ): void {
-    if (submissionInFlight.current) return;
     if (selectedOptionId === null) {
       setHint("Choisissez une option avant de valider.");
       return;
     }
-    submissionInFlight.current = true;
-    setIsSaving(true);
-    void settleListeningExercise(exercise)
-      .catch(failStorage)
-      .finally(() => {
-        submissionInFlight.current = false;
-        setIsSaving(false);
-      });
+    submitExercise(exercise);
   }
 
   function chooseMatch(
@@ -898,16 +1151,20 @@ export function ExpeditionExperience({
       setMatchedPairIds(nextMatched);
       setSelectedPairId(null);
       setHint("");
-      persistDraft(exercise, {
+      const answer: LocalDraftAnswer = {
         kind: "association",
         pairs: nextMatched.map((pairId) => ({
           promptPairId: pairId,
           chosenPairId: pairId,
         })),
-      });
+      };
+      // Le plateau complet part directement en tentative : la conserver deux
+      // fois ferait courir deux écritures pour la même réponse.
       if (nextMatched.length === exercise.pairs.length) {
-        settleLocalExercise(exercise);
+        submitExercise(exercise, answer);
+        return;
       }
+      persistDraft(exercise, answer);
       return;
     }
     missed.current = true;
@@ -948,7 +1205,7 @@ export function ExpeditionExperience({
       return;
     }
     setHint("");
-    settleLocalExercise(exercise);
+    submitExercise(exercise);
   }
 
   function submitRecall(
@@ -973,7 +1230,7 @@ export function ExpeditionExperience({
       return;
     }
     setHint("");
-    settleLocalExercise(exercise);
+    submitExercise(exercise);
   }
 
   function submitReading(
@@ -993,7 +1250,7 @@ export function ExpeditionExperience({
       return;
     }
     setHint("");
-    settleLocalExercise(exercise);
+    submitExercise(exercise);
   }
 
   function abandonStaleState(): void {
@@ -1053,28 +1310,52 @@ export function ExpeditionExperience({
       });
   }
 
+  /**
+   * Maîtrise et prochaine révision des CINQ mécaniques.
+   *
+   * Le récapitulatif ne savait projeter que l'écoute : les quatre autres
+   * exercices affichaient « 0 ‰ » quelle que soit la réponse, ce qui donnait
+   * une leçon apparemment ratée aux quatre cinquièmes.
+   */
+  const projections = useMemo(
+    () =>
+      ingestAttemptBatch({
+        existingEvents: [],
+        submissions: outbox.entries
+          .filter(({ status }) => status !== "rejected")
+          .map((entry) => entry.submission),
+        answerKeys,
+        authenticatedUserId: null,
+      }).projections,
+    [answerKeys, outbox.entries],
+  );
+
+  const projectionForExercise = useCallback(
+    (exercise: LessonExercise) => {
+      const key = answerKeys.find(
+        ({ exerciseId }) => exerciseId === exercise.id,
+      );
+      if (key === undefined) return undefined;
+      return projections.find(
+        ({ state }) => state.itemId === key.itemId && state.skill === key.skill,
+      )?.state;
+    },
+    [answerKeys, projections],
+  );
+
   const listeningProjection =
-    listeningExercise?.type === "audio_choice"
-      ? ingestAttemptBatch({
-          existingEvents: [],
-          submissions: outbox.entries
-            .filter(({ status }) => status !== "rejected")
-            .map((entry) => entry.submission)
-            .filter(isOptionAttempt),
-          answerKeys: [
-            {
-              exerciseId: listeningExercise.id,
-              itemId: listeningExercise.itemId,
-              correctOptionId: listeningExercise.correctOptionId,
-              skill: "listening",
-              contentVersionId: lesson.versionId,
-            },
-          ],
-          authenticatedUserId: null,
-        }).projections.find(
-          ({ state }) => state.itemId === listeningExercise.itemId,
-        )?.state
-      : undefined;
+    listeningExercise === undefined
+      ? undefined
+      : projectionForExercise(listeningExercise);
+
+  /** La révision la plus proche parmi les cinq, la seule date actionnable. */
+  const nextReviewAt = useMemo(() => {
+    const dates = projections
+      .map(({ state }) => state.dueAt)
+      .filter((dueAt): dueAt is string => typeof dueAt === "string")
+      .sort();
+    return dates[0] ?? null;
+  }, [projections]);
 
   const pendingAttempts = outbox.entries.filter(
     ({ status }) => status === "pending",
@@ -1246,11 +1527,7 @@ export function ExpeditionExperience({
                 {pageCours + 1} sur {cours.length}
               </p>
               <h2 className={styles.coursTitre}>{pageActive.titleFr}</h2>
-              {pageActive.bodyFr.split("\n\n").map((paragraphe) => (
-                <p key={paragraphe.slice(0, 40)} className={styles.coursTexte}>
-                  {paragraphe}
-                </p>
-              ))}
+              {renderTeachingBody(pageActive.bodyFr)}
               {pageActive.specimen !== null && (
                 <p className={styles.coursSpecimen} lang="th">
                   {pageActive.specimen}
@@ -1742,6 +2019,7 @@ export function ExpeditionExperience({
               const result = results.find(
                 ({ exerciseId }) => exerciseId === exercise.id,
               );
+              const projection = projectionForExercise(exercise);
               return (
                 <li
                   key={exercise.id}
@@ -1753,6 +2031,11 @@ export function ExpeditionExperience({
                 >
                   <span>{MECHANIC_LABELS[exercise.type]}</span>
                   <strong>{result?.rating === 1 ? "Juste" : "À revoir"}</strong>
+                  <span className={styles.recapMastery}>
+                    {projection === undefined
+                      ? "Maîtrise à calculer"
+                      : `Maîtrise ${projection.masteryScore} ‰`}
+                  </span>
                 </li>
               );
             })}
@@ -1765,12 +2048,12 @@ export function ExpeditionExperience({
             <div>
               <span>Prochaine révision</span>
               <strong>
-                {listeningProjection?.dueAt
-                  ? new Intl.DateTimeFormat("fr-FR", {
+                {nextReviewAt === null
+                  ? "À calculer"
+                  : new Intl.DateTimeFormat("fr-FR", {
                       dateStyle: "medium",
                       timeStyle: "short",
-                    }).format(new Date(listeningProjection.dueAt))
-                  : "À calculer"}
+                    }).format(new Date(nextReviewAt))}
               </strong>
             </div>
           </div>
@@ -1780,9 +2063,8 @@ export function ExpeditionExperience({
             sessionBoundaryRevision={sessionBoundaryRevision}
           />
           <p className={styles.note}>
-            Cette démonstration technique reste isolée sur cet appareil. Les
-            résultats des nouvelles mécaniques seront synchronisés dans une
-            étape ultérieure.
+            Les cinq résultats sont consignés sur cet appareil et rejoignent
+            votre compte à la prochaine synchronisation.
           </p>
           <ContentReportPanel
             analytics={analytics}

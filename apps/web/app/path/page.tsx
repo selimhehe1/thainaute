@@ -1,8 +1,4 @@
-import {
-  compiledLessonIds,
-  readCompiledLessonBundle,
-  readUnite01Lecon1aBundle,
-} from "@thainaute/content";
+import { readFiveMechanicsFixtureBundle } from "@thainaute/content";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/layout/site-header";
@@ -18,30 +14,16 @@ export const metadata = {
 };
 
 /**
- * Les leçons réellement compilées, dans l'ordre du parcours. Une leçon
- * absente du registre n'apparaît pas : rien n'est annoncé qui n'existe.
+ * Le parcours public n'énumère aucun brouillon d'autorat. Tant que la
+ * première release n'existe pas, il affiche uniquement la boucle technique
+ * explicitement marquée comme fictive et non publiable.
  */
-function leconsDuParcours() {
-  return compiledLessonIds().flatMap((identifiant) => {
-    const bundle = readCompiledLessonBundle(identifiant);
-    if (bundle === null) return [];
-    return [
-      {
-        identifiant,
-        titre: bundle.lesson.titleFr,
-        exercices: bundle.lesson.exercises.length,
-        avecSon: bundle.audioManifest.entries.length > 0,
-      },
-    ];
-  });
-}
-
 export default function PathPage() {
-  const { lesson } = readUnite01Lecon1aBundle();
+  const { lesson } = readFiveMechanicsFixtureBundle();
   const exercise = lesson.exercises[0];
 
   return (
-    <main className={panel.shell}>
+    <main className={`${panel.shell} ${styles.page}`}>
       <SiteHeader navLabel="Navigation du parcours">
         <Link className={styles.optional} href="/account">
           Compte
@@ -51,35 +33,27 @@ export default function PathPage() {
         </Link>
       </SiteHeader>
 
-      <section className={panel.panel} aria-labelledby="unite-1-titre">
-        <p className={panel.eyebrow}>Unité 1</p>
-        <h2 id="unite-1-titre">Écouter le thaï pour la première fois</h2>
+      <section
+        className={`${panel.panel} ${styles.introPanel}`}
+        aria-labelledby="path-status-title"
+      >
+        <span className={styles.introIndex} aria-hidden="true">
+          01
+        </span>
+        <p className={panel.eyebrow}>Tranche de validation</p>
+        <h1 className={styles.introTitle} id="path-status-title">
+          Le premier parcours linguistique reste en relecture.
+        </h1>
         <p className={panel.lede}>
-          Cinq leçons, des tons aux premières salutations. Chacune se joue
-          seule, dans l’ordre que vous voulez.
+          Les cours internes, leurs notes et leurs exercices ne sont pas
+          accessibles avant le passage de toutes les portes éditoriales.
         </p>
-        <ol className={styles.itinerary}>
-          {leconsDuParcours().map((lecon) => (
-            <li key={lecon.identifiant} className={styles.stop}>
-              <Link
-                className={styles.leconLien}
-                href={`/learn/lecon/${lecon.identifiant}`}
-              >
-                {lecon.titre}
-              </Link>
-              <p className={styles.leconDetail}>
-                {lecon.exercices} exercice{lecon.exercices > 1 ? "s" : ""}
-                {lecon.avecSon ? " · avec audio" : ""}
-              </p>
-            </li>
-          ))}
-        </ol>
       </section>
 
       {exercise === undefined ? (
         <section className={panel.panel} aria-labelledby="path-empty-title">
           <p className={panel.eyebrow}>Parcours technique</p>
-          <h1 id="path-empty-title">Aucune unité technique disponible.</h1>
+          <h2 id="path-empty-title">Aucune unité technique disponible.</h2>
           <p className={panel.lede}>
             La fixture doit rester valide avant d’être affichée. Aucun contenu
             de remplacement n’est inventé.

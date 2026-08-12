@@ -1,6 +1,8 @@
 import {
   cachedPublicLessonSchema,
   cachedPublicReleaseSchema,
+  PublicContentProtocolError,
+  PublicContentTransportError,
   type CachedPublicLesson,
   type PublicContentClient,
 } from "@thainaute/sync";
@@ -14,14 +16,20 @@ import {
   type MobileConnectedPublicLessonStore,
 } from "../lib/mobile-connected-public-lesson";
 
+vi.mock("expo-constants", () => ({
+  default: { expoConfig: undefined },
+}));
+
 vi.mock("../lib/sha256", () => ({
-  mobileSha256Hex: vi.fn(async () => "a".repeat(64)),
+  mobileSha256Hex: vi.fn(() => Promise.resolve("a".repeat(64))),
 }));
 
 const ids = {
   release: "30000000-0000-4000-8000-000000000001",
+  nextRelease: "30000000-0000-4000-8000-000000000002",
   lesson: "10000000-0000-4000-8000-000000000001",
   version: "10000000-0000-4000-8000-000000000002",
+  nextVersion: "10000000-0000-4000-8000-000000000003",
   exercise: "10000000-0000-4000-8000-000000000004",
   asset: "10000000-0000-4000-8000-000000000005",
   optionA: "20000000-0000-4000-8000-000000000001",
@@ -49,6 +57,26 @@ const release = cachedPublicReleaseSchema.parse({
           objectiveFr: "Vérifier le client mobile.",
           access: "free",
           contentSha256: contentHash,
+        },
+      ],
+    },
+  },
+});
+const nextRelease = cachedPublicReleaseSchema.parse({
+  ...release,
+  etag: `"sha256-${"e".repeat(64)}"`,
+  response: {
+    ...release.response,
+    manifestSha256: "e".repeat(64),
+    release: {
+      ...release.response.release,
+      releaseId: ids.nextRelease,
+      releaseVersion: 2,
+      lessons: [
+        {
+          ...release.response.release.lessons[0],
+          versionId: ids.nextVersion,
+          revision: 2,
         },
       ],
     },
@@ -105,30 +133,53 @@ function lesson(hash = contentHash): CachedPublicLesson {
 
 function harness(lessonEntry = lesson()) {
   const writes: string[] = [];
-  const store: MobileConnectedPublicLessonStore = {
-    readCurrentRelease: vi.fn(async () => null),
-    readLesson: vi.fn(async () => null),
-    writeCurrentRelease: vi.fn(async (entry) => {
+  const mocks = {
+    readCurrentRelease: vi.fn<
+      MobileConnectedPublicLessonStore["readCurrentRelease"]
+    >(() => Promise.resolve(null)),
+    readLesson: vi.fn<MobileConnectedPublicLessonStore["readLesson"]>(() =>
+      Promise.resolve(null),
+    ),
+    writeCurrentRelease: vi.fn<
+      MobileConnectedPublicLessonStore["writeCurrentRelease"]
+    >((entry) => {
       writes.push("release");
-      return entry;
+      return Promise.resolve(entry);
     }),
-    writeLesson: vi.fn(async (entry) => {
-      writes.push("lesson");
-      return entry;
-    }),
+    writeLesson: vi.fn<MobileConnectedPublicLessonStore["writeLesson"]>(
+      (entry) => {
+        writes.push("lesson");
+        return Promise.resolve(entry);
+      },
+    ),
+    getCurrentRelease: vi.fn<PublicContentClient["getCurrentRelease"]>(() =>
+      Promise.resolve({
+        entry: release,
+        revalidated: false,
+      }),
+    ),
+    getLesson: vi.fn<PublicContentClient["getLesson"]>(() =>
+      Promise.resolve({
+        entry: lessonEntry,
+        revalidated: false,
+      }),
+    ),
+    audioUrl: vi.fn<PublicContentClient["audioUrl"]>(
+      (versionId, assetId) => `/audio/${versionId}/${assetId}`,
+    ),
+  };
+  const store: MobileConnectedPublicLessonStore = {
+    readCurrentRelease: mocks.readCurrentRelease,
+    readLesson: mocks.readLesson,
+    writeCurrentRelease: mocks.writeCurrentRelease,
+    writeLesson: mocks.writeLesson,
   };
   const client: PublicContentClient = {
-    getCurrentRelease: vi.fn(async () => ({
-      entry: release,
-      revalidated: false,
-    })),
-    getLesson: vi.fn(async () => ({
-      entry: lessonEntry,
-      revalidated: false,
-    })),
-    audioUrl: vi.fn((versionId, assetId) => `/audio/${versionId}/${assetId}`),
+    getCurrentRelease: mocks.getCurrentRelease,
+    getLesson: mocks.getLesson,
+    audioUrl: mocks.audioUrl,
   };
-  return { store, client, writes };
+  return { store, client, mocks, writes };
 }
 
 afterEach(() => {
@@ -154,7 +205,7 @@ describe("chargement public mobile connecté", () => {
   });
 
   it("valide le manifeste avant le compare-and-swap local", async () => {
-    const { store, client, writes } = harness();
+    const { store, client, mocks, writes } = harness();
     const result = await loadCurrentMobileConnectedPublicLesson({
       database: {} as SQLiteDatabase,
       store,
@@ -162,7 +213,7 @@ describe("chargement public mobile connecté", () => {
     });
     expect(result.lesson.key).toBe(ids.version);
     expect(writes).toEqual(["lesson", "release"]);
-    expect(store.writeCurrentRelease).toHaveBeenCalledWith(release, null);
+    expect(mocks.writeCurrentRelease).toHaveBeenCalledWith(release, null);
   });
 
   it("refuse une leçon qui diverge du manifeste sans écrire", async () => {
@@ -175,5 +226,81 @@ describe("chargement public mobile connecté", () => {
       }),
     ).rejects.toBeInstanceOf(MobileConnectedPublicLessonError);
     expect(writes).toEqual([]);
+  });
+
+  it("reprend le cache immuable vérifié après une panne de transport", async () => {
+    const cachedLesson = lesson();
+    const { store, client, mocks, writes } = harness();
+    mocks.readCurrentRelease.mockResolvedValue(release);
+    mocks.readLesson.mockResolvedValue(cachedLesson);
+    mocks.getCurrentRelease.mockRejectedValue(
+      new PublicContentTransportError(),
+    );
+
+    const result = await loadCurrentMobileConnectedPublicLesson({
+      database: {} as SQLiteDatabase,
+      store,
+      client,
+    });
+
+    expect(result.release).toEqual(release);
+    expect(result.lesson).toEqual(cachedLesson);
+    expect(result.audioUrl(ids.asset)).toBe(
+      `/audio/${ids.version}/${ids.asset}`,
+    );
+    expect(writes).toEqual([]);
+  });
+
+  it("conserve l'ancienne release vérifiée si la nouvelle leçon est hors ligne", async () => {
+    const cachedLesson = lesson();
+    const { store, client, mocks, writes } = harness();
+    mocks.readCurrentRelease.mockResolvedValue(release);
+    mocks.readLesson.mockImplementation((versionId) =>
+      Promise.resolve(versionId === ids.version ? cachedLesson : null),
+    );
+    mocks.getCurrentRelease.mockResolvedValue({
+      entry: nextRelease,
+      revalidated: false,
+    });
+    mocks.getLesson.mockRejectedValue(new PublicContentTransportError());
+
+    const result = await loadCurrentMobileConnectedPublicLesson({
+      database: {} as SQLiteDatabase,
+      store,
+      client,
+    });
+
+    expect(result.release).toEqual(release);
+    expect(result.lesson).toEqual(cachedLesson);
+    expect(mocks.readLesson).toHaveBeenNthCalledWith(1, ids.nextVersion);
+    expect(mocks.readLesson).toHaveBeenNthCalledWith(2, ids.version);
+    expect(writes).toEqual([]);
+  });
+
+  it("reste fermé si le cache diverge ou si la réponse est invalide", async () => {
+    const { store, client, mocks } = harness();
+    mocks.readCurrentRelease.mockResolvedValue(release);
+    mocks.readLesson.mockResolvedValue(lesson("d".repeat(64)));
+    mocks.getCurrentRelease.mockRejectedValue(
+      new PublicContentTransportError(),
+    );
+
+    await expect(
+      loadCurrentMobileConnectedPublicLesson({
+        database: {} as SQLiteDatabase,
+        store,
+        client,
+      }),
+    ).rejects.toBeInstanceOf(MobileConnectedPublicLessonError);
+
+    mocks.readLesson.mockResolvedValue(lesson());
+    mocks.getCurrentRelease.mockRejectedValue(new PublicContentProtocolError());
+    await expect(
+      loadCurrentMobileConnectedPublicLesson({
+        database: {} as SQLiteDatabase,
+        store,
+        client,
+      }),
+    ).rejects.toBeInstanceOf(MobileConnectedPublicLessonError);
   });
 });

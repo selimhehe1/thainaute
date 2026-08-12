@@ -1,5 +1,5 @@
 import type { AnalyticsSink } from "@thainaute/analytics";
-import { fixtureLesson } from "@thainaute/content/fixture";
+import { colors } from "@thainaute/design-tokens";
 import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
 import {
   attemptSubmissionSchema,
@@ -37,25 +37,17 @@ import {
 import { useMobileAuthSession } from "../lib/auth-session";
 import { useMobileAnalytics } from "../lib/analytics-provider";
 import { MobileLocalExperienceStore } from "../lib/mobile-local-experience-store";
+import {
+  fixtureLessonConfig,
+  type LessonExperienceConfig,
+} from "../lib/lesson-config";
 import { THAI_FONT_REGULAR, THAI_FONT_SEMIBOLD } from "../lib/typography";
 import { useLocalVoicePractice } from "../lib/use-local-voice-practice";
 
-const lesson = fixtureLesson;
-
-function requiredFixtureValue<T>(value: T | undefined, label: string): T {
-  if (value === undefined)
-    throw new Error(`Fixture invalide : ${label} absent.`);
-  return value;
-}
-
-const firstExercise = requiredFixtureValue(lesson.exercises[0], "exercice");
-if (firstExercise.type !== "audio_choice") {
-  throw new Error("La fixture locale doit commencer par un exercice d'écoute.");
-}
-const exercise = firstExercise;
-const item = requiredFixtureValue(lesson.items[0], "item");
-
-function ingestDemoOutbox(outbox: AttemptOutboxSnapshot) {
+function ingestLessonOutbox(
+  outbox: AttemptOutboxSnapshot,
+  config: LessonExperienceConfig,
+) {
   return ingestAttemptBatch({
     existingEvents: [],
     submissions: outbox.entries
@@ -64,11 +56,11 @@ function ingestDemoOutbox(outbox: AttemptOutboxSnapshot) {
       .filter(isOptionAttempt),
     answerKeys: [
       {
-        exerciseId: exercise.id,
-        itemId: item.id,
-        correctOptionId: exercise.correctOptionId,
+        exerciseId: config.exercise.id,
+        itemId: config.item.id,
+        correctOptionId: config.exercise.correctOptionId,
         skill: "listening",
-        contentVersionId: lesson.versionId,
+        contentVersionId: config.lesson.versionId,
       },
     ],
     authenticatedUserId: null,
@@ -215,12 +207,15 @@ function getDueAtText(dueAt: string | null | undefined): string {
   }).format(new Date(dueAt));
 }
 
-function getFeedbackText(rating: ExerciseRating): string {
+function getFeedbackText(
+  rating: ExerciseRating,
+  exercise: LessonExperienceConfig["exercise"],
+): string {
   if (rating === 1) return exercise.feedback.correctFr;
   return exercise.feedback.incorrectFr;
 }
 
-function DemoHeader() {
+function LessonHeader({ step }: { readonly step: string }) {
   return (
     <View style={styles.header}>
       <View
@@ -231,22 +226,26 @@ function DemoHeader() {
         <Text style={styles.logoThai}>ท</Text>
       </View>
       <Text style={styles.brand}>Thaïnaute</Text>
-      <Text style={styles.step}>1 exercice</Text>
+      <Text style={styles.step}>{step}</Text>
     </View>
   );
 }
 
-function FixtureBanner({
+function LessonBanner({
+  text,
+  title,
   pendingAttempts,
   storageStatus,
 }: {
+  readonly text: string;
+  readonly title: string;
   readonly pendingAttempts: number;
   readonly storageStatus: StorageStatus;
 }) {
   return (
     <View style={styles.fixtureBanner} accessibilityRole="summary">
-      <Text style={styles.fixtureTitle}>Donnée fictive — non publiable</Text>
-      <Text style={styles.fixtureText}>Chaîne technique uniquement</Text>
+      <Text style={styles.fixtureTitle}>{title}</Text>
+      <Text style={styles.fixtureText}>{text}</Text>
       <Text style={styles.fixtureText} accessibilityLiveRegion="polite">
         {getStorageSummary(storageStatus, pendingAttempts)}
       </Text>
@@ -255,6 +254,7 @@ function FixtureBanner({
 }
 
 interface IntroStageProps {
+  readonly config: LessonExperienceConfig;
   readonly error: string;
   readonly onPlaySignal: () => void;
   readonly onRetryStorage: () => void;
@@ -263,6 +263,7 @@ interface IntroStageProps {
 }
 
 function IntroStage({
+  config,
   error,
   onPlaySignal,
   onRetryStorage,
@@ -283,11 +284,11 @@ function IntroStage({
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.eyebrow}>TRANCHE VERTICALE LOCALE</Text>
-      <Text style={styles.title}>{lesson.titleFr}</Text>
-      <Text style={styles.body}>{lesson.objectiveFr}</Text>
+      <Text style={styles.eyebrow}>{config.introEyebrow}</Text>
+      <Text style={styles.title}>{config.lesson.titleFr}</Text>
+      <Text style={styles.body}>{config.lesson.objectiveFr}</Text>
       <Text style={styles.glyph} accessibilityLanguage="th-TH">
-        {item.thaiRaw}
+        {config.item.thaiRaw}
       </Text>
       <Pressable
         accessibilityRole="button"
@@ -319,6 +320,7 @@ function IntroStage({
 }
 
 interface QuestionStageProps {
+  readonly config: LessonExperienceConfig;
   readonly isSaving: boolean;
   readonly message: string;
   readonly onPlaySignal: () => void;
@@ -328,6 +330,7 @@ interface QuestionStageProps {
 }
 
 function QuestionStage({
+  config,
   isSaving,
   message,
   onPlaySignal,
@@ -337,8 +340,8 @@ function QuestionStage({
 }: QuestionStageProps) {
   return (
     <View style={styles.screen}>
-      <Text style={styles.eyebrow}>ÉCOUTE · DONNÉE TECHNIQUE</Text>
-      <Text style={styles.title}>{exercise.promptFr}</Text>
+      <Text style={styles.eyebrow}>{config.questionEyebrow}</Text>
+      <Text style={styles.title}>{config.exercise.promptFr}</Text>
       <Pressable
         accessibilityLabel="Réécouter le signal"
         accessibilityRole="button"
@@ -350,7 +353,7 @@ function QuestionStage({
         </Text>
       </Pressable>
       <View accessibilityRole="radiogroup" style={styles.answers}>
-        {exercise.options.map((option) => {
+        {config.exercise.options.map((option) => {
           const selected = option.id === selectedOptionId;
           return (
             <Pressable
@@ -567,6 +570,7 @@ function VoicePracticeCard({
 
 interface ResultStageProps {
   readonly analytics: AnalyticsSink;
+  readonly config: LessonExperienceConfig;
   readonly completedReview: boolean;
   readonly dueAt: string | null | undefined;
   readonly latestRating: ExerciseRating;
@@ -577,6 +581,7 @@ interface ResultStageProps {
 
 function ResultStage({
   analytics,
+  config,
   completedReview,
   dueAt,
   latestRating,
@@ -609,7 +614,7 @@ function ResultStage({
     <View style={styles.screen}>
       <Text style={styles.eyebrow}>TENTATIVE CONSERVÉE HORS LIGNE</Text>
       <Text ref={resultHeading} style={styles.title} accessibilityRole="header">
-        {getFeedbackText(latestRating)}
+        {getFeedbackText(latestRating, config.exercise)}
       </Text>
       <View style={styles.metric}>
         <Text style={styles.metricLabel}>MAÎTRISE ESTIMÉE</Text>
@@ -620,10 +625,7 @@ function ResultStage({
         <Text style={styles.metricDate}>{getDueAtText(dueAt)}</Text>
       </View>
       <VoicePracticeCard voicePractice={voicePractice} />
-      <Text style={styles.privacy}>
-        Cette démonstration technique reste isolée sur cet appareil et ne sera
-        jamais synchronisée comme contenu pédagogique.
-      </Text>
+      <Text style={styles.privacy}>{config.completionPrivacy}</Text>
       <Pressable
         accessibilityRole="button"
         accessibilityState={{
@@ -641,7 +643,10 @@ function ResultStage({
           accessibilityRole="button"
           accessibilityState={{ disabled: accountDisabled }}
           disabled={accountDisabled}
-          style={[styles.secondaryButton, accountDisabled && styles.disabled]}
+          style={StyleSheet.flatten([
+            styles.secondaryButton,
+            accountDisabled && styles.disabled,
+          ])}
           onPress={voicePractice.pausePlayback}
         >
           <Text style={styles.secondaryButtonText}>{accountButtonText}</Text>
@@ -649,8 +654,8 @@ function ResultStage({
       </Link>
       <MobileContentReportPanel
         analytics={analytics}
-        contentVersionId={lesson.versionId}
-        exerciseId={exercise.id}
+        contentVersionId={config.lesson.versionId}
+        exerciseId={config.exercise.id}
       />
     </View>
   );
@@ -658,6 +663,7 @@ function ResultStage({
 
 interface StageContentProps {
   readonly analytics: AnalyticsSink;
+  readonly config: LessonExperienceConfig;
   readonly completedReview: boolean;
   readonly dueAt: string | null | undefined;
   readonly isSaving: boolean;
@@ -680,6 +686,7 @@ function StageContent(props: StageContentProps) {
   if (props.stage === "intro") {
     return (
       <IntroStage
+        config={props.config}
         error={props.voicePractice.error}
         onPlaySignal={props.onPlaySignal}
         onRetryStorage={props.onRetryStorage}
@@ -691,6 +698,7 @@ function StageContent(props: StageContentProps) {
   if (props.stage === "question") {
     return (
       <QuestionStage
+        config={props.config}
         isSaving={props.isSaving}
         message={props.questionMessage}
         onPlaySignal={props.onPlaySignal}
@@ -703,6 +711,7 @@ function StageContent(props: StageContentProps) {
   return (
     <ResultStage
       analytics={props.analytics}
+      config={props.config}
       completedReview={props.completedReview}
       dueAt={props.dueAt}
       latestRating={props.latestRating}
@@ -715,21 +724,25 @@ function StageContent(props: StageContentProps) {
 
 export function LessonExperience({
   analytics,
+  config = fixtureLessonConfig,
 }: {
   readonly analytics: AnalyticsSink;
+  readonly config?: LessonExperienceConfig;
 }) {
+  const { exercise, item, lesson } = config;
   const database = useSQLiteContext();
   const auth = useMobileAuthSession();
   const router = useRouter();
   const outboxStore = useMemo(
-    () => new MobileAttemptOutboxStore(database, undefined, "demo"),
-    [database],
+    () =>
+      new MobileAttemptOutboxStore(database, undefined, config.outboxNamespace),
+    [config.outboxNamespace, database],
   );
   const experienceStore = useMemo(
     () => new MobileLocalExperienceStore(database),
     [database],
   );
-  const player = useAudioPlayer(require("../assets/audio/fixture-tone.wav"));
+  const player = useAudioPlayer(config.modelAudioSource);
   const voicePractice = useLocalVoicePractice(
     player,
     auth.sessionBoundaryRevision,
@@ -754,21 +767,56 @@ export function LessonExperience({
   useEffect(() => {
     let active = true;
 
-    void Promise.all([
-      outboxStore.migrateLegacyFixtureAttemptsToDemo(),
-      experienceStore.read(),
-    ])
+    const outboxBootstrap =
+      config.outboxNamespace === "demo"
+        ? outboxStore.migrateLegacyFixtureAttemptsToDemo()
+        : outboxStore.read();
+
+    void Promise.all([outboxBootstrap, experienceStore.read()])
       .then(async ([storedOutbox, storedExperience]) => {
-        const checkpoint = storedExperience.lesson;
-        if (
-          storedExperience.onboarding.status !== "completed" ||
-          checkpoint === null
-        ) {
+        if (storedExperience.onboarding.status !== "completed") {
           if (active) router.replace("/");
           return;
         }
         let recoveredOutbox = storedOutbox;
         let recoveredExperience = storedExperience;
+        let checkpoint = storedExperience.lesson;
+        if (
+          checkpoint !== null &&
+          (checkpoint.lessonVersionId !== lesson.versionId ||
+            checkpoint.exerciseId !== exercise.id)
+        ) {
+          if (config.allowColdStart && checkpoint.phase === "completed") {
+            recoveredExperience = await experienceStore.replaceLessonVersion(
+              checkpoint,
+              {
+                lessonVersionId: lesson.versionId,
+                exerciseId: exercise.id,
+                startedAt: new Date().toISOString(),
+              },
+              recoveredOutbox,
+            );
+            checkpoint = recoveredExperience.lesson;
+          } else {
+            if (active) router.replace("/");
+            return;
+          }
+        }
+        if (checkpoint === null) {
+          if (!config.allowColdStart) {
+            if (active) router.replace("/");
+            return;
+          }
+          recoveredExperience = await experienceStore.startLesson({
+            lessonVersionId: lesson.versionId,
+            exerciseId: exercise.id,
+            startedAt: new Date().toISOString(),
+          });
+          checkpoint = recoveredExperience.lesson;
+        }
+        if (checkpoint === null) {
+          throw new Error("Le point de reprise mobile est introuvable.");
+        }
         if (checkpoint.phase === "submitting") {
           recoveredOutbox = await outboxStore.enqueue(checkpoint.submission);
           recoveredExperience = await experienceStore.confirmLessonResult(
@@ -814,7 +862,7 @@ export function LessonExperience({
             );
           }
           recoveredRating =
-            ingestDemoOutbox(recoveredOutbox).events.find(
+            ingestLessonOutbox(recoveredOutbox, config).events.find(
               ({ eventId }) =>
                 eventId === recoveredCheckpoint.submission.eventId,
             )?.rating ?? null;
@@ -851,9 +899,20 @@ export function LessonExperience({
     return () => {
       active = false;
     };
-  }, [experienceStore, outboxStore, router, storageRetryToken]);
+  }, [
+    config,
+    exercise.id,
+    experienceStore,
+    lesson.versionId,
+    outboxStore,
+    router,
+    storageRetryToken,
+  ]);
 
-  const localIngestion = useMemo(() => ingestDemoOutbox(outbox), [outbox]);
+  const localIngestion = useMemo(
+    () => ingestLessonOutbox(outbox, config),
+    [config, outbox],
+  );
   const projection = localIngestion.projections.find(
     ({ state }) => state.itemId === item.id,
   )?.state;
@@ -937,7 +996,7 @@ export function LessonExperience({
       if (confirmedExperience.lesson?.phase !== "result") {
         throw new Error("Le résultat local n'a pas été confirmé.");
       }
-      const accepted = ingestDemoOutbox(durableOutbox).events.find(
+      const accepted = ingestLessonOutbox(durableOutbox, config).events.find(
         ({ eventId }) => eventId === exactSubmission.eventId,
       );
       if (accepted === undefined) {
@@ -1085,14 +1144,17 @@ export function LessonExperience({
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar style="dark" />
-      <DemoHeader />
-      <FixtureBanner
+      <LessonHeader step={config.headerStep} />
+      <LessonBanner
+        text={config.bannerText}
+        title={config.bannerTitle}
         pendingAttempts={pendingAttempts}
         storageStatus={storageStatus}
       />
       <ScrollView contentContainerStyle={styles.content}>
         <StageContent
           analytics={analytics}
+          config={config}
           completedReview={experienceSnapshot?.lesson?.phase === "completed"}
           dueAt={projection?.dueAt}
           isSaving={isSaving}
@@ -1117,11 +1179,11 @@ export function LessonExperience({
 
 export default function LessonRoute() {
   const { analytics } = useMobileAnalytics();
-  return <LessonExperience analytics={analytics} />;
+  return <LessonExperience key="fixture" analytics={analytics} />;
 }
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: "#fbfaf7" },
+  safeArea: { flex: 1, backgroundColor: colors.jasmine },
   centered: {
     flex: 1,
     alignItems: "center",
@@ -1134,7 +1196,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: "#cbd0d8",
+    borderColor: colors.line,
   },
   logo: {
     width: 40,
@@ -1142,7 +1204,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 12,
-    backgroundColor: "#283450",
+    backgroundColor: colors.ink,
   },
   logoThai: {
     color: "white",
@@ -1150,15 +1212,15 @@ const styles = StyleSheet.create({
     fontSize: 23,
     lineHeight: 34,
   },
-  brand: { marginLeft: 10, color: "#283450", fontSize: 18, fontWeight: "800" },
-  step: { marginLeft: "auto", color: "#6b7486", fontSize: 12 },
+  brand: { marginLeft: 10, color: colors.ink, fontSize: 18, fontWeight: "800" },
+  step: { marginLeft: "auto", color: colors.inkSoft, fontSize: 12 },
   fixtureBanner: {
     paddingHorizontal: 20,
     paddingVertical: 13,
-    backgroundColor: "#fff3cf",
+    backgroundColor: colors.saffronHalo,
   },
-  fixtureTitle: { color: "#684c0d", fontSize: 13, fontWeight: "800" },
-  fixtureText: { marginTop: 2, color: "#7f6528", fontSize: 12 },
+  fixtureTitle: { color: colors.ink, fontSize: 13, fontWeight: "800" },
+  fixtureText: { marginTop: 2, color: colors.inkSoft, fontSize: 12 },
   content: { flexGrow: 1 },
   screen: {
     flex: 1,
@@ -1169,22 +1231,22 @@ const styles = StyleSheet.create({
   },
   eyebrow: {
     marginBottom: 16,
-    color: "#236b58",
+    color: colors.jadeInk,
     fontSize: 11,
     fontWeight: "800",
     letterSpacing: 1.5,
   },
   title: {
-    color: "#283450",
+    color: colors.ink,
     fontSize: 38,
     lineHeight: 43,
     fontWeight: "800",
     letterSpacing: -1.5,
   },
-  body: { marginTop: 18, color: "#5e6980", fontSize: 17, lineHeight: 27 },
+  body: { marginTop: 18, color: colors.inkSoft, fontSize: 17, lineHeight: 27 },
   glyph: {
     marginVertical: 36,
-    color: "#283450",
+    color: colors.ink,
     fontFamily: THAI_FONT_REGULAR,
     fontSize: 92,
     lineHeight: 126,
@@ -1196,7 +1258,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 999,
-    backgroundColor: "#283450",
+    backgroundColor: colors.coral,
   },
   primaryButtonText: { color: "white", fontSize: 16, fontWeight: "800" },
   secondaryButton: {
@@ -1205,10 +1267,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 1,
-    borderColor: "#cbd0d8",
+    borderColor: colors.line,
     borderRadius: 999,
   },
-  secondaryButtonText: { color: "#283450", fontWeight: "700" },
+  secondaryButtonText: { color: colors.ink, fontWeight: "700" },
   pressed: { opacity: 0.82 },
   disabled: { opacity: 0.5 },
   audioButton: {
@@ -1218,9 +1280,9 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     justifyContent: "center",
     borderRadius: 14,
-    backgroundColor: "#eef1f4",
+    backgroundColor: colors.mist,
   },
-  audioButtonText: { color: "#283450", fontWeight: "700" },
+  audioButtonText: { color: colors.ink, fontWeight: "700" },
   answers: { gap: 12 },
   answer: {
     minHeight: 68,
@@ -1228,11 +1290,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 2,
-    borderColor: "#eef1f4",
+    borderColor: colors.mist,
     borderRadius: 18,
     backgroundColor: "white",
   },
-  answerSelected: { borderColor: "#43a283", backgroundColor: "#eff9f5" },
+  answerSelected: {
+    borderColor: colors.jade,
+    backgroundColor: colors.jadePale,
+  },
   radio: {
     width: 20,
     height: 20,
@@ -1241,25 +1306,25 @@ const styles = StyleSheet.create({
     borderColor: "#8b94a4",
     borderRadius: 10,
   },
-  radioSelected: { borderWidth: 6, borderColor: "#43a283" },
-  answerText: { color: "#283450", fontSize: 16, fontWeight: "700" },
-  error: { marginTop: 16, color: "#a23d38", fontWeight: "600" },
+  radioSelected: { borderWidth: 6, borderColor: colors.jade },
+  answerText: { color: colors.ink, fontSize: 16, fontWeight: "700" },
+  error: { marginTop: 16, color: colors.coralDeep, fontWeight: "600" },
   metric: {
     minHeight: 106,
     marginTop: 14,
     padding: 20,
     justifyContent: "space-between",
     borderRadius: 18,
-    backgroundColor: "#eef1f4",
+    backgroundColor: colors.mist,
   },
   metricLabel: {
-    color: "#687287",
+    color: colors.inkSoft,
     fontSize: 11,
     fontWeight: "800",
     letterSpacing: 1,
   },
-  metricValue: { color: "#236b58", fontSize: 28, fontWeight: "800" },
-  metricDate: { color: "#283450", fontSize: 19, fontWeight: "700" },
+  metricValue: { color: colors.jadeInk, fontSize: 28, fontWeight: "800" },
+  metricDate: { color: colors.ink, fontSize: 19, fontWeight: "700" },
   voiceCard: {
     marginTop: 24,
     padding: 20,

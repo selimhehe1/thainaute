@@ -11,6 +11,10 @@ const STATUS_BY_CODE = {
   concurrent_update: 409,
   auth_unavailable: 503,
   database_unavailable: 503,
+  billing_disabled: 404,
+  billing_unavailable: 503,
+  billing_invalid_signature: 400,
+  billing_conflict: 409,
   internal_error: 500,
 } as const satisfies Readonly<Record<ApiErrorCode, number>>;
 
@@ -26,6 +30,10 @@ const MESSAGE_BY_CODE = {
   concurrent_update: "La donnée a changé ; réessayez.",
   auth_unavailable: "Le service d'authentification est indisponible.",
   database_unavailable: "Le service de signalement est indisponible.",
+  billing_disabled: "La facturation n'est pas activée.",
+  billing_unavailable: "Le service de facturation est indisponible.",
+  billing_invalid_signature: "La signature de l'événement est invalide.",
+  billing_conflict: "L'état de facturation est en conflit.",
   internal_error: "Une erreur interne est survenue.",
 } as const satisfies Readonly<Record<ApiErrorCode, string>>;
 

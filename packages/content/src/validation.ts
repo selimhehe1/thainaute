@@ -1,4 +1,5 @@
 import type { ContentBundle } from "./schemas";
+import { targetTextOf } from "./target-text";
 
 const CANONICAL_UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u;
@@ -27,17 +28,43 @@ function assertCanonicalUuid(value: string, label: string): void {
   }
 }
 
-/** Vérifie les liens et métadonnées sans lire le système de fichiers. */
-export function validateBundleMetadata(bundle: ContentBundle): void {
-  const { lesson, audioManifest, sources } = bundle;
+const PUBLIC_METADATA_MARKDOWN_PATTERN =
+  /(?:\*\*|__|`|!\[[^\]]*\]\(|\[[^\]]+\]\(|^#{1,6}\s|^\s*[-+*]\s)/mu;
+const INTERNAL_METADATA_PATTERN =
+  /(?:titre de travail|note (?:interne|éditoriale)|contre-audit|finding\s|tmp-[a-z0-9-]+)/iu;
+
+function assertPublicMetadata(
+  value: string,
+  label: string,
+  maximumLength: number,
+): void {
+  if (value !== value.trim() || value.length === 0) {
+    throw new Error(`${label}: texte public vide ou entouré d'espaces.`);
+  }
+  if (value.length > maximumLength) {
+    throw new Error(
+      `${label}: ${value.length} caractères, maximum ${maximumLength}.`,
+    );
+  }
+  if (PUBLIC_METADATA_MARKDOWN_PATTERN.test(value)) {
+    throw new Error(
+      `${label}: Markdown interdit dans une métadonnée publique.`,
+    );
+  }
+  if (INTERNAL_METADATA_PATTERN.test(value)) {
+    throw new Error(`${label}: note éditoriale interne détectée.`);
+  }
+}
+
+/** Vérifie la structure éditoriale, indépendamment de toute dette audio. */
+export function validateBundleStructureMetadata(bundle: ContentBundle): void {
+  const { lesson, sources } = bundle;
   const itemIds = lesson.items.map(({ id }) => id);
   const exerciseIds = lesson.exercises.map(({ id }) => id);
-  const assetIds = audioManifest.entries.map(({ assetId }) => assetId);
   const sourceIds = sources.map(({ sourceId }) => sourceId);
 
   assertUnique(itemIds, "items");
   assertUnique(exerciseIds, "exercises");
-  assertUnique(assetIds, "audio");
   assertUnique(sourceIds, "sources");
   assertUnique(lesson.provenance.sourceIds, "provenance de la leçon");
   assertUnique(
@@ -47,21 +74,15 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
 
   assertCanonicalUuid(lesson.lessonId, "lessonId");
   assertCanonicalUuid(lesson.versionId, "versionId");
-  assertCanonicalUuid(lesson.audioManifestId, "audioManifestId");
-  assertCanonicalUuid(audioManifest.manifestId, "manifestId");
-  assertCanonicalUuid(audioManifest.lessonVersionId, "lessonVersionId audio");
+  assertPublicMetadata(lesson.titleFr, "titleFr", 160);
+  if (lesson.visibility === "public" || lesson.workflowStatus === "published") {
+    assertPublicMetadata(lesson.objectiveFr, "objectiveFr", 400);
+  }
 
   for (const sourceId of lesson.provenance.sourceIds) {
     if (!sourceIds.includes(sourceId)) {
       throw new Error(`Source de provenance inconnue ${sourceId}.`);
     }
-  }
-
-  if (audioManifest.manifestId !== lesson.audioManifestId) {
-    throw new Error("Le manifeste audio ne correspond pas à la leçon.");
-  }
-  if (audioManifest.lessonVersionId !== lesson.versionId) {
-    throw new Error("Le manifeste audio cible une autre version de leçon.");
   }
 
   for (const item of lesson.items) {
@@ -91,23 +112,6 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
     }
   };
 
-  const assertItemAudio = (
-    audioAssetId: string,
-    itemId: string,
-    exerciseId: string,
-  ): void => {
-    assertCanonicalUuid(audioAssetId, `audio de ${exerciseId}`);
-    if (!assetIds.includes(audioAssetId)) {
-      throw new Error(`Audio inconnu pour ${exerciseId}.`);
-    }
-    const audioEntry = audioManifest.entries.find(
-      ({ assetId }) => assetId === audioAssetId,
-    );
-    if (audioEntry?.itemId !== itemId) {
-      throw new Error(`Audio rattache a un autre item pour ${exerciseId}.`);
-    }
-  };
-
   const assertChoiceOptions = (
     options: readonly { id: string }[],
     correctOptionId: string,
@@ -127,13 +131,18 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
   // Une option peut désormais porter du thaï. Elle passe donc la même porte
   // NFC que les items : deux graphies visuellement identiques mais encodées
   // différemment rendraient une comparaison de réponse imprévisible.
-  const assertOptionThai = (
-    options: readonly { id: string; thaiRaw: string | null }[],
+  const assertOptionTarget = (
+    options: readonly {
+      id: string;
+      thaiRaw: string | null;
+      targetText?: string | null | undefined;
+    }[],
     exerciseId: string,
   ): void => {
     for (const option of options) {
-      if (option.thaiRaw === null) continue;
-      if (option.thaiRaw !== option.thaiRaw.normalize("NFC")) {
+      const targetText = targetTextOf(option);
+      if (targetText === null) continue;
+      if (targetText !== targetText.normalize("NFC")) {
         throw new Error(
           `Option non normalisée NFC pour ${exerciseId} (${option.id}).`,
         );
@@ -165,13 +174,12 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
     switch (exercise.type) {
       case "audio_choice": {
         assertKnownItem(exercise.itemId, exercise.id);
-        assertItemAudio(exercise.audioAssetId, exercise.itemId, exercise.id);
         assertChoiceOptions(
           exercise.options,
           exercise.correctOptionId,
           exercise.id,
         );
-        assertOptionThai(exercise.options, exercise.id);
+        assertOptionTarget(exercise.options, exercise.id);
         assertFeedbackVariants(
           exercise.feedback,
           exercise.options.map(({ id }) => id),
@@ -197,9 +205,6 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
       }
       case "word_order": {
         assertKnownItem(exercise.itemId, exercise.id);
-        if (exercise.audioAssetId !== null) {
-          assertItemAudio(exercise.audioAssetId, exercise.itemId, exercise.id);
-        }
         const tokenIds = exercise.tokens.map(({ id }) => id);
         for (const tokenId of tokenIds) {
           assertCanonicalUuid(tokenId, `jeton de ${exercise.id}`);
@@ -239,7 +244,7 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
           exercise.correctOptionId,
           exercise.id,
         );
-        assertOptionThai(exercise.options, exercise.id);
+        assertOptionTarget(exercise.options, exercise.id);
         assertFeedbackVariants(
           exercise.feedback,
           exercise.options.map(({ id }) => id),
@@ -295,6 +300,25 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
       );
     }
   }
+}
+
+/** Vérifie uniquement les identités et références audio du paquet. */
+export function validateBundleAudioReferences(bundle: ContentBundle): void {
+  const { lesson, audioManifest } = bundle;
+  const itemIds = lesson.items.map(({ id }) => id);
+  const assetIds = audioManifest.entries.map(({ assetId }) => assetId);
+
+  assertUnique(assetIds, "audio");
+  assertCanonicalUuid(lesson.audioManifestId, "audioManifestId");
+  assertCanonicalUuid(audioManifest.manifestId, "manifestId");
+  assertCanonicalUuid(audioManifest.lessonVersionId, "lessonVersionId audio");
+
+  if (audioManifest.manifestId !== lesson.audioManifestId) {
+    throw new Error("Le manifeste audio ne correspond pas à la leçon.");
+  }
+  if (audioManifest.lessonVersionId !== lesson.versionId) {
+    throw new Error("Le manifeste audio cible une autre version de leçon.");
+  }
 
   for (const entry of audioManifest.entries) {
     assertCanonicalUuid(entry.assetId, `asset ${entry.assetId}`);
@@ -303,4 +327,38 @@ export function validateBundleMetadata(bundle: ContentBundle): void {
       throw new Error(`Item inconnu pour l'audio ${entry.assetId}.`);
     }
   }
+
+  const assertItemAudio = (
+    audioAssetId: string,
+    itemId: string,
+    exerciseId: string,
+  ): void => {
+    assertCanonicalUuid(audioAssetId, `audio de ${exerciseId}`);
+    if (!assetIds.includes(audioAssetId)) {
+      throw new Error(`Audio inconnu pour ${exerciseId}.`);
+    }
+    const audioEntry = audioManifest.entries.find(
+      ({ assetId }) => assetId === audioAssetId,
+    );
+    if (audioEntry?.itemId !== itemId) {
+      throw new Error(`Audio rattache a un autre item pour ${exerciseId}.`);
+    }
+  };
+
+  for (const exercise of lesson.exercises) {
+    if (exercise.type === "audio_choice") {
+      assertItemAudio(exercise.audioAssetId, exercise.itemId, exercise.id);
+    } else if (
+      exercise.type === "word_order" &&
+      exercise.audioAssetId !== null
+    ) {
+      assertItemAudio(exercise.audioAssetId, exercise.itemId, exercise.id);
+    }
+  }
+}
+
+/** Vérifie tous les liens de métadonnées sans lire le système de fichiers. */
+export function validateBundleMetadata(bundle: ContentBundle): void {
+  validateBundleStructureMetadata(bundle);
+  validateBundleAudioReferences(bundle);
 }

@@ -67,14 +67,21 @@ n'est pas une unité isolée mais le fil A de chaque unité, l'unité 10 en
 
 - **1A. Écouter le thaï pour la première fois** : les cinq contours sur la
   série classique คา ข่า ค่า ค้า ขา (un mot différent par ton), perception
-  pure puis imitation guidée ; les 9 consonnes moyennes en reconnaissance.
+  pure puis imitation guidée. L'écriture est seulement annoncée ; la
+  reconnaissance des consonnes est reportée afin de ne pas surcharger la
+  première séance.
 - **1B. Longues et courtes** : paires minimales de longueur avec marquage
-  visuel de durée, discrimination puis production A/B.
+  visuel de durée, discrimination puis production A/B, et premier pont de
+  lecture limité aux signes `ั` et `า`.
 - **1C. Mi contre bas** : le contraste le plus dur, en perception à une voix,
-  contrastes exagérés puis normaux.
-- **1D. Montant contre haut** : même protocole, geste de hauteur au doigt.
+  contrastes exagérés puis normaux, avec rappel conjoint du sens et du ton.
+- **1D. Montant contre haut** : même protocole, geste de hauteur au doigt,
+  puis préparation du départ de la voix avant la production.
+- **1F. Les cinq d'un coup** : synthèse des contrastes tonals, avec le seul
+  passage de deux à cinq choix de l'unité, puis rappel ton + sens.
 - **1E. Premier dialogue minimal** : สวัสดี + politesse, dialogue de 4
-  répliques compréhensible à 100 %, enregistrement A/B, bilan.
+  répliques compréhensible à 100 %, shadowing en trois passages, rôle-play et
+  bilan.
 
 ## Chaîne de production et de qualité (rappel des portes)
 

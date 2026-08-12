@@ -1,0 +1,580 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "7cc4962f-41d6-524e-9fb1-c0b4028554ee",
+  "versionId": "3413f82b-4256-579f-9a81-5dbc22bb268d",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Demander le prix",
+  "objectiveFr": "à la fin de la leçon, l’apprenant reconstruit la question du prix อันนี้เท่าไร suivie de la particule qui correspond au locuteur indiqué, sans erreur d’ordre ni erreur de particule ; il désigne เท่าไร, et non เท่าไหร่, comme la graphie enregistrée par le dictionnaire normatif tout en reconnaissant les deux comme la même question ; et il distingue à l’écoute สิบห้าบาท de ห้าสิบบาท. Le seuil de disc",
+  "requiredEntitlement": null,
+  "audioManifestId": "6f9b762f-d48b-5f20-bce0-a7879c68d7d4",
+  "items": [
+    {
+      "id": "a97a5eaa-4c2a-580c-9752-9f9553aeeced",
+      "thaiRaw": "เท่าไร",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E17",
+        "U+0E48",
+        "U+0E32",
+        "U+0E44",
+        "U+0E23"
+      ],
+      "translationFr": "combien",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thâo·rai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เท่าไร",
+          "ipa": "tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เท่าไร",
+          "ipa": "raj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "69a90566-4fb1-5e95-9b3e-38f50050478e",
+      "thaiRaw": "เท่าไหร่",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E17",
+        "U+0E48",
+        "U+0E32",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E23",
+        "U+0E48"
+      ],
+      "translationFr": "combien",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thâo·rài"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เท่าไหร่",
+          "ipa": "tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "เท่าไหร่",
+          "ipa": "raj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "j"
+        }
+      ],
+      "register": "familier",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a79bfa44-5924-5655-9e66-5bc5540f2085",
+      "thaiRaw": "บาท",
+      "unicodeCodePoints": [
+        "U+0E1A",
+        "U+0E32",
+        "U+0E17"
+      ],
+      "translationFr": "baht (la monnaie de la Thaïlande)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "bàat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "บาท",
+          "ipa": "baːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a42633e6-1e6a-5ae6-b42f-d4114b0019e6",
+      "thaiRaw": "กี่บาท",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E35",
+        "U+0E48",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E17"
+      ],
+      "translationFr": "combien de bahts ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kìi bàat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "กี่บาท",
+          "ipa": "kiː˨˩ baːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "thaiRaw": "อันนี้",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E31",
+        "U+0E19",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
+      "translationFr": "ceci, celui-ci",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "an·níi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อันนี้",
+          "ipa": "ʔan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "อันนี้",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "6cee9997-d90d-57a1-92f1-2f0ec07962a4",
+      "thaiRaw": "อันนี้เท่าไรครับ",
+      "unicodeCodePoints": [
+        "U+0E2D",
+        "U+0E31",
+        "U+0E19",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49",
+        "U+0E40",
+        "U+0E17",
+        "U+0E48",
+        "U+0E32",
+        "U+0E44",
+        "U+0E23",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Ça coûte combien ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "an·níi thâo·rai khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "อันนี้เท่าไรครับ",
+          "ipa": "ʔan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ʔ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "อันนี้เท่าไรครับ",
+          "ipa": "niː˦˥ tʰaw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "อันนี้เท่าไรครับ",
+          "ipa": "raj˧ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "r",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "20662c3d-feb5-5880-8d07-31b040b813ef",
+      "thaiRaw": "ห้าสิบบาท",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E32",
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E17"
+      ],
+      "translationFr": "cinquante bahts",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâa·sìp bàat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้าสิบบาท",
+          "ipa": "haː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ห้าสิบบาท",
+          "ipa": "sip̚˨˩ baːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "6073eea7-629f-5f85-8cb2-ec408bff3d50",
+      "thaiRaw": "สิบห้าบาท",
+      "unicodeCodePoints": [
+        "U+0E2A",
+        "U+0E34",
+        "U+0E1A",
+        "U+0E2B",
+        "U+0E49",
+        "U+0E32",
+        "U+0E1A",
+        "U+0E32",
+        "U+0E17"
+      ],
+      "translationFr": "quinze bahts",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sìp·hâa bàat"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "สิบห้าบาท",
+          "ipa": "sip̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "s",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "สิบห้าบาท",
+          "ipa": "haː˥˩ baːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u03-l3c-p2",
+      "drawIndex": 1,
+      "id": "304beb6a-a39f-5386-a6ca-47a6f262a990",
+      "type": "word_order",
+      "itemId": "1ff35b77-63e5-56a4-9122-1e73f0bc35f5",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Claire, une femme, montre un objet sur un étal. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "361fc253-6fe9-50eb-b63e-52373cafb836",
+          "thaiRaw": "เท่าไร",
+          "transcription": null
+        },
+        {
+          "id": "71412def-1244-5100-a268-bc941e6105fa",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "15680e0f-33e5-5157-bc17-1d6b1b0a8984",
+          "thaiRaw": "อันนี้",
+          "transcription": null
+        },
+        {
+          "id": "9dfc78fc-2589-5712-a842-cdc643721406",
+          "thaiRaw": "คะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "15680e0f-33e5-5157-bc17-1d6b1b0a8984",
+        "361fc253-6fe9-50eb-b63e-52373cafb836",
+        "9dfc78fc-2589-5712-a842-cdc643721406"
+      ],
+      "feedback": {
+        "correctFr": "Parfait. On désigne, on demande, on signe avec sa particule. Et la particule suit la personne qui parle, jamais celle d’en face.",
+        "incorrectFr": "Suivez l’ordre de la formule : la chose d’abord, la question ensuite, la particule tout à la fin. Puis regardez qui parle.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3c-p2",
+      "drawIndex": 2,
+      "id": "5f242a01-af01-5945-a5fa-85b8fde858bf",
+      "type": "word_order",
+      "itemId": "6cee9997-d90d-57a1-92f1-2f0ec07962a4",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Claire, une femme, montre un objet sur un étal. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "tokens": [
+        {
+          "id": "fb6069de-2fd1-57f6-b001-a6f62d01c83a",
+          "thaiRaw": "คะ",
+          "transcription": null
+        },
+        {
+          "id": "a8c9299c-6549-5bad-a771-38d617e34a56",
+          "thaiRaw": "อันนี้",
+          "transcription": null
+        },
+        {
+          "id": "b7d57b36-e3cb-5470-bf81-aef52ba35533",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "06f87207-056c-5911-b882-8dd15bfe3799",
+          "thaiRaw": "เท่าไร",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "a8c9299c-6549-5bad-a771-38d617e34a56",
+        "06f87207-056c-5911-b882-8dd15bfe3799",
+        "b7d57b36-e3cb-5470-bf81-aef52ba35533"
+      ],
+      "feedback": {
+        "correctFr": "Parfait. On désigne, on demande, on signe avec sa particule. Et la particule suit la personne qui parle, jamais celle d’en face.",
+        "incorrectFr": "Suivez l’ordre de la formule : la chose d’abord, la question ensuite, la particule tout à la fin. Puis regardez qui parle.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "la question tient en un mot",
+      "bodyFr": "Pour demander un prix, vous n’avez pas besoin de faire une phrase. On montre l’objet, et on pose un seul mot, qui veut dire « combien ». Ce mot se place après la chose dont on parle.\n\n> เท่าไร > thâo·rai\n\nPremière syllabe descendante, deuxième syllabe posée à plat. Le ท de เท่า est soufflé : c’est le contraste travaillé en 3A, vous n’avez rien de nouveau à installer ici.",
+      "specimen": null
+    },
+    {
+      "ordre": 2,
+      "titleFr": "le même mot, deux orthographes",
+      "bodyFr": "Vous allez rencontrer ce mot écrit de deux façons, et les deux sont d’un usage courant. เท่าไร est la forme que le dictionnaire normatif du thaï enregistre. เท่าไหร่ n’y figure pas, et un dictionnaire descriptif la signale comme familière.\n\n> เท่าไร / เท่าไหร่ > thâo·rai / thâo·rài\n\nRegardez la deuxième : sa fin porte deux signes de plus, un ห glissé devant le ร et une deuxième marque de ton. Ce ห ne se prononce pas, comme celui de หน่อย vu en 2C. Ce qui s’entend, c’est la mélodie de la fin : la seconde syllabe se dit rài, au ton bas, là où elle reste plate dans เท่าไร. Le calcul du ton à partir de ces signes n’est pas au programme d’aujourd’hui : retenez les deux formes telles quelles.",
+      "specimen": null
+    },
+    {
+      "ordre": 3,
+      "titleFr": "la monnaie, et un ท qui change de métier",
+      "bodyFr": "La monnaie thaïe est le baht. Un seul mot, une seule syllabe, ton bas et voyelle longue.\n\n> บาท > bàat\n\nComparez avec เท่า de la page 1 : c’est la même lettre ท aux deux endroits. À l’attaque d’une syllabe elle souffle, en fermeture elle bloque net, sans relâcher l’air. Vous avez déjà rencontré cette fermeture sur พูด en 2A.",
+      "specimen": null
+    },
+    {
+      "ordre": 4,
+      "titleFr": "la question complète, celle qu’on dit vraiment",
+      "bodyFr": "On montre l’objet, on dit « celui-ci », on pose la question, on signe avec sa particule. Rien de plus.\n\n> อันนี้เท่าไรครับ / อันนี้เท่าไรคะ > an·níi thâo·rai khráp / an·níi thâo·rai khá\n\nอันนี้ (an·níi) veut dire « ceci, celui-ci » : c’est le mot que vous employez en désignant l’objet de la main. Et la particule suit toujours la personne qui parle, jamais celle d’en face : un homme dit khráp, une femme dit khá au bout d’une question.",
+      "specimen": null
+    },
+    {
+      "ordre": 5,
+      "titleFr": "l’autre manière, avec l’unité",
+      "bodyFr": "Il existe une deuxième façon de demander, qui nomme carrément la monnaie. Elle emploie un autre mot pour « combien », กี่, qui ne vit jamais seul : il lui faut toujours une unité derrière lui.\n\n> กี่บาท > kìi bàat\n\nRetenez le partage : เท่าไร se pose après la chose et se suffit à lui-même, กี่ se pose devant l’unité comptée et ne s’emploie jamais seul.",
+      "specimen": null
+    },
+    {
+      "ordre": 6,
+      "titleFr": "lire la réponse, et le piège des dizaines",
+      "bodyFr": "La réponse est un nombre suivi de บาท, dans cet ordre. Le vrai piège n’est pas le prix, c’est l’ordre des deux mots du nombre.\n\n> ห้าสิบบาท / สิบห้าบาท > hâa·sìp bàat / sìp·hâa bàat\n\nVous avez fabriqué les dizaines en 3B ; ici, il s’agit seulement de les reconnaître à l’oreille. Les deux nombres emploient exactement les mêmes mots, cinq et dix, et seul l’ordre les sépare : ห้าสิบ vaut 50, สิบห้า vaut 15. Les mêmes tons et les mêmes longueurs sont présents des deux côtés, mais pas dans le même ordre, et tout se joue donc sur la syllabe qui ouvre : ห้าสิบ commence par hâa, qui tombe de haut et qui dure, สิบห้า par sìp, qui est court et bas. Confondre les deux, c’est confondre quinze bahts et cinquante.",
+      "specimen": null
+    },
+    {
+      "ordre": 7,
+      "titleFr": "à vous",
+      "bodyFr": "Vous allez écouter des prix, remettre la question dans l’ordre, comparer les deux orthographes et relier chaque énoncé à sa situation. Rien de nouveau côté sons ni côté nombres : tout repose sur les unités 1 et 2, sur le travail de 3A et sur les nombres de 3B.\n\nAprès les exercices, enregistrez-vous en disant อันนี้เท่าไรครับ ou อันนี้เท่าไรคะ, puis comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil. Écoutez la fin de la deuxième syllabe : votre voix reste-t-elle posée sur rai, ou la faites-vous monter ?",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u03-l3c-p2",
+      "promptFr": "Claire, une femme, montre un objet sur un étal. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
+      "mechanic": "word_order",
+      "drawCount": 2,
+      "passRequired": 2,
+      "sampleSize": 2
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "d1c0a039-fdba-5c57-b30f-eb5c816e3a99",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f3459f25-7f5c-541f-b7ed-61723e36011f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "13c7c27b-b805-5785-9492-a90d085e3501",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "31204c6a-8bfc-5ee7-9ef7-9f1380d80483",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9b351d9c-b48f-533a-945d-84d6281042c2",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6a83cdfc-cb17-55f1-85a5-7b21accb1d55",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9a371965-9b2c-5133-a930-60716ed506ec",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b2e893a7-e889-5961-b76e-28a54fef6ba0",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

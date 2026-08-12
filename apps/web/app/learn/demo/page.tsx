@@ -1,6 +1,6 @@
 import {
   publicAudioSources,
-  readUnite01Lecon1aBundle,
+  readFiveMechanicsFixtureBundle,
 } from "@thainaute/content";
 
 import { LessonHeader } from "@/components/layout/lesson-header";
@@ -8,12 +8,15 @@ import { LessonHeader } from "@/components/layout/lesson-header";
 import { ExpeditionExperience } from "./expedition-experience";
 import styles from "./lesson.module.css";
 
-export const metadata = { title: "Écouter le thaï pour la première fois" };
+export const metadata = {
+  title: "Démonstration technique",
+  robots: { index: false, follow: false },
+};
 
 export default function DemoLessonPage() {
-  // Premiere lecon reelle du curriculum. La lecture reste cote serveur :
-  // `repository.ts` ouvre des fichiers, il n'est pas embarquable au client.
-  const bundle = readUnite01Lecon1aBundle();
+  // Cette route publique ne charge aucun brouillon linguistique. La fixture
+  // couvre les cinq mécaniques et reste explicitement non publiable.
+  const bundle = readFiveMechanicsFixtureBundle();
   const { lesson } = bundle;
 
   return (

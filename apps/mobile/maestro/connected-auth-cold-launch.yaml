@@ -1,0 +1,9 @@
+appId: com.thainaute.app
+tags:
+  - connected
+---
+- launchApp:
+    stopApp: true
+    clearState: false
+    permissions:
+      all: deny

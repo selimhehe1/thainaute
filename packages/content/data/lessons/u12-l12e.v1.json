@@ -1,0 +1,905 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "7dd09a50-a9c9-5733-acad-65f4d416eba8",
+  "versionId": "32e1074b-0776-5bde-b536-dc390891b342",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "La suite, sans promesse",
+  "objectiveFr": "à la fin de la leçon, devant douze blocs entendus à débit naturel et tirés de huit des onze unités précédentes, l’apprenant reconnaît laquelle des trois écritures proposées il a entendue, sur 9 tirages sur 12 ; il apparie six demandes à ce qu’elles obtiennent, 6 sur 6 ; il remet dans l’ordre les blocs de six phrases complètes, sur 5 tirages sur 6 ; il produit en transcription dix formules du parco",
+  "requiredEntitlement": null,
+  "audioManifestId": "668a2db8-00e9-5428-adaa-ad7c595f3ade",
+  "items": [
+    {
+      "id": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "447dc926-7127-522f-8144-a796ac6eec11",
+      "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27",
+        "U+0E1C",
+        "U+0E31",
+        "U+0E14",
+        "U+0E2A",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E08",
+        "U+0E32",
+        "U+0E19",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "deux riz sautés, s’il vous plaît",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww khâao·phàt sǎwwng jaan nàwi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "pʰat̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "t͡ɕaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli. Version féminine : ขอข้าวผัดสองจานหน่อยค่ะ, khǎww khâao·phàt sǎwwng jaan nàwi khâ.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07",
+        "U+0E19",
+        "U+0E49",
+        "U+0E33",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Où sont les toilettes ?",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâwng·náam yòuu thîi·nǎi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "hɔŋ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "ŋ"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naːm˦˥ juː˨˩ tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ห้องน้ำอยู่ที่ไหนครับ",
+          "ipa": "naj˩˩˦ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "thaiRaw": "ผมไปตลาดครับ",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21",
+        "U+0E44",
+        "U+0E1B",
+        "U+0E15",
+        "U+0E25",
+        "U+0E32",
+        "U+0E14",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Je vais au marché.",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm pai tà·làat khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "pʰom˩˩˦ paj˧ ta˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมไปตลาดครับ",
+          "ipa": "laːt̚˨˩ kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "01f2011c-3d80-5ac4-bdb2-5e4d21c3b880",
+      "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21",
+        "U+0E17",
+        "U+0E33",
+        "U+0E07",
+        "U+0E32",
+        "U+0E19",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E1A",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19",
+        "U+0E17",
+        "U+0E38",
+        "U+0E01",
+        "U+0E27",
+        "U+0E31",
+        "U+0E19",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Je travaille à la maison tous les jours.",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm tham·ngaan thîi bâan thóuk·wan khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "tʰam˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "ŋaːn˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "ŋ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "baːn˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "b",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "tʰuk̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "tʰ",
+          "final": "k̚"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ผมทำงานที่บ้านทุกวันครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli, locuteur homme",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "13a5cfb8-a45e-5c9b-ae6e-3d8de389add7",
+      "thaiRaw": "ตัวนี้",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E31",
+        "U+0E27",
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
+      "translationFr": "celui-ci (en parlant d’un objet que l’on compte avec ตัว)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "toua·níi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตัวนี้",
+          "ipa": "tua̯˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ตัวนี้",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "WIKTIONARY-EN"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u12-l12e-p3",
+      "drawIndex": 1,
+      "id": "750062b7-d549-509a-b933-035ec04109d3",
+      "type": "word_order",
+      "itemId": "c2099db6-da64-5a02-8344-26a057f470cb",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "377c99c8-9449-5987-91e3-f926fadd445d",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "e63b5aeb-8ee6-5972-88e7-fb04c0bb1a12",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "4459da93-0f21-5429-a353-29149ca986f9",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "fb520445-9b19-5c63-b63e-24e202e5f82d",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "377c99c8-9449-5987-91e3-f926fadd445d",
+        "e63b5aeb-8ee6-5972-88e7-fb04c0bb1a12",
+        "4459da93-0f21-5429-a353-29149ca986f9",
+        "fb520445-9b19-5c63-b63e-24e202e5f82d"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Qui, ce qu’il fait, où, quand, et la particule pour fermer.",
+        "incorrectFr": "La particule ferme la phrase, elle ne se glisse pas au milieu. C’est la règle de 1E et elle n’a jamais changé.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Six blocs et un seul ordre juste. Le nombre se place avant le mot de comptage, comme depuis 3D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, nombre et mot de comptage inversés",
+            "textFr": "สอง d’abord, จาน ensuite. Le nombre vient avant le mot de comptage, comme depuis 3D."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12e-p3",
+      "drawIndex": 2,
+      "id": "5ec22e6d-e5c6-5d51-8261-913c3e3952dd",
+      "type": "word_order",
+      "itemId": "ce138101-ee3d-57ac-9c01-1ea68c6c7269",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "9609ebd5-f395-5822-8086-e3b1099a6198",
+          "thaiRaw": "ห้องน้ำ",
+          "transcription": null
+        },
+        {
+          "id": "2f8f4400-99bd-51e1-9f8c-0f7046849f8d",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        },
+        {
+          "id": "086b96bb-81f0-5010-b752-61415d647846",
+          "thaiRaw": "ที่ไหน",
+          "transcription": null
+        },
+        {
+          "id": "cf43c015-b01a-51ad-8f9b-e23d0d0f5e15",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "9609ebd5-f395-5822-8086-e3b1099a6198",
+        "2f8f4400-99bd-51e1-9f8c-0f7046849f8d",
+        "086b96bb-81f0-5010-b752-61415d647846",
+        "cf43c015-b01a-51ad-8f9b-e23d0d0f5e15"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Qui, ce qu’il fait, où, quand, et la particule pour fermer.",
+        "incorrectFr": "La particule ferme la phrase, elle ne se glisse pas au milieu. C’est la règle de 1E et elle n’a jamais changé.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Six blocs et un seul ordre juste. Le nombre se place avant le mot de comptage, comme depuis 3D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, nombre et mot de comptage inversés",
+            "textFr": "สอง d’abord, จาน ensuite. Le nombre vient avant le mot de comptage, comme depuis 3D."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12e-p3",
+      "drawIndex": 3,
+      "id": "0257257f-f851-5f7c-961b-23c80f1ae258",
+      "type": "word_order",
+      "itemId": "447dc926-7127-522f-8144-a796ac6eec11",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "faa48a17-51c7-5a62-83af-aff1f049f570",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "91736c5d-223e-55f2-b33b-9fd54200aeda",
+          "thaiRaw": "ข้าวผัด",
+          "transcription": null
+        },
+        {
+          "id": "f2fac948-aeb7-54da-91c1-6b5fad43d413",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "46a62c6d-7a7c-5ce9-88ed-21afa9e022e2",
+          "thaiRaw": "จาน",
+          "transcription": null
+        },
+        {
+          "id": "4757bbe8-52ab-5174-979d-cbdb8e6115ab",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "03f6150d-8f84-5834-b6d8-88344ce1c465",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "faa48a17-51c7-5a62-83af-aff1f049f570",
+        "91736c5d-223e-55f2-b33b-9fd54200aeda",
+        "f2fac948-aeb7-54da-91c1-6b5fad43d413",
+        "46a62c6d-7a7c-5ce9-88ed-21afa9e022e2",
+        "4757bbe8-52ab-5174-979d-cbdb8e6115ab",
+        "03f6150d-8f84-5834-b6d8-88344ce1c465"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Qui, ce qu’il fait, où, quand, et la particule pour fermer.",
+        "incorrectFr": "La particule ferme la phrase, elle ne se glisse pas au milieu. C’est la règle de 1E et elle n’a jamais changé.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Six blocs et un seul ordre juste. Le nombre se place avant le mot de comptage, comme depuis 3D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, nombre et mot de comptage inversés",
+            "textFr": "สอง d’abord, จาน ensuite. Le nombre vient avant le mot de comptage, comme depuis 3D."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12e-p3",
+      "drawIndex": 4,
+      "id": "1357fbfc-10ec-5d5b-855b-b01ff7d12302",
+      "type": "word_order",
+      "itemId": "2df47d91-9175-52a4-99fd-e9312c1d71ce",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "dc66c063-4f50-5ae2-9552-909af06a3b55",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "03621266-e192-5f50-ab48-6945709ceafe",
+          "thaiRaw": "มี",
+          "transcription": null
+        },
+        {
+          "id": "e285b3ae-3f29-5616-b35f-8c366378c5e0",
+          "thaiRaw": "พี่ชาย",
+          "transcription": null
+        },
+        {
+          "id": "d9e0324a-2088-57c5-8b01-f37fce54d6c1",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "125397c7-96d7-5547-a9b8-388ef08d2af2",
+          "thaiRaw": "คน",
+          "transcription": null
+        },
+        {
+          "id": "a3ce8bac-7af6-595c-b0a5-288ff3ff75c2",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "dc66c063-4f50-5ae2-9552-909af06a3b55",
+        "03621266-e192-5f50-ab48-6945709ceafe",
+        "e285b3ae-3f29-5616-b35f-8c366378c5e0",
+        "d9e0324a-2088-57c5-8b01-f37fce54d6c1",
+        "125397c7-96d7-5547-a9b8-388ef08d2af2",
+        "a3ce8bac-7af6-595c-b0a5-288ff3ff75c2"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Qui, ce qu’il fait, où, quand, et la particule pour fermer.",
+        "incorrectFr": "La particule ferme la phrase, elle ne se glisse pas au milieu. C’est la règle de 1E et elle n’a jamais changé.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Six blocs et un seul ordre juste. Le nombre se place avant le mot de comptage, comme depuis 3D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, nombre et mot de comptage inversés",
+            "textFr": "สอง d’abord, จาน ensuite. Le nombre vient avant le mot de comptage, comme depuis 3D."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12e-p3",
+      "drawIndex": 5,
+      "id": "4d4224e1-d719-5c2c-b1e5-c265de4252b8",
+      "type": "word_order",
+      "itemId": "01f2011c-3d80-5ac4-bdb2-5e4d21c3b880",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "b7a2e2da-f5c2-5c23-ba57-e82baabfeb8d",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "a65654bd-84a4-5204-acd4-73a9a01b8cd2",
+          "thaiRaw": "ทำงาน",
+          "transcription": null
+        },
+        {
+          "id": "98400f1c-4f92-52bd-874b-57da23aa3abc",
+          "thaiRaw": "ที่บ้าน",
+          "transcription": null
+        },
+        {
+          "id": "721c0740-c958-57f2-9737-3699aebdc50b",
+          "thaiRaw": "ทุกวัน",
+          "transcription": null
+        },
+        {
+          "id": "ea06a7de-d021-5420-9098-85c683ff2450",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "b7a2e2da-f5c2-5c23-ba57-e82baabfeb8d",
+        "a65654bd-84a4-5204-acd4-73a9a01b8cd2",
+        "98400f1c-4f92-52bd-874b-57da23aa3abc",
+        "721c0740-c958-57f2-9737-3699aebdc50b",
+        "ea06a7de-d021-5420-9098-85c683ff2450"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Qui, ce qu’il fait, où, quand, et la particule pour fermer.",
+        "incorrectFr": "La particule ferme la phrase, elle ne se glisse pas au milieu. C’est la règle de 1E et elle n’a jamais changé.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Six blocs et un seul ordre juste. Le nombre se place avant le mot de comptage, comme depuis 3D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, nombre et mot de comptage inversés",
+            "textFr": "สอง d’abord, จาน ensuite. Le nombre vient avant le mot de comptage, comme depuis 3D."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u12-l12e-p3",
+      "drawIndex": 6,
+      "id": "014f13e1-1e8a-5164-8335-5fc9ca37f128",
+      "type": "word_order",
+      "itemId": "13a5cfb8-a45e-5c9b-ae6e-3d8de389add7",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "tokens": [
+        {
+          "id": "9e1147a0-62c7-5ee7-a45d-1a6e35e56822",
+          "thaiRaw": "ตัวนี้",
+          "transcription": null
+        },
+        {
+          "id": "840213b3-7e53-51d6-9142-5e48f4e1a365",
+          "thaiRaw": "ใหญ่",
+          "transcription": null
+        },
+        {
+          "id": "a16830b4-ca99-5d3d-a929-4a6d313db965",
+          "thaiRaw": "เกินไป",
+          "transcription": null
+        },
+        {
+          "id": "bd631e03-0c27-5f93-ab61-3680ad4bee6b",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "9e1147a0-62c7-5ee7-a45d-1a6e35e56822",
+        "840213b3-7e53-51d6-9142-5e48f4e1a365",
+        "a16830b4-ca99-5d3d-a929-4a6d313db965",
+        "bd631e03-0c27-5f93-ab61-3680ad4bee6b"
+      ],
+      "feedback": {
+        "correctFr": "Oui. Qui, ce qu’il fait, où, quand, et la particule pour fermer.",
+        "incorrectFr": "La particule ferme la phrase, elle ne se glisse pas au milieu. C’est la règle de 1E et elle n’a jamais changé.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 4",
+            "textFr": "Six blocs et un seul ordre juste. Le nombre se place avant le mot de comptage, comme depuis 3D."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, nombre et mot de comptage inversés",
+            "textFr": "สอง d’abord, จาน ensuite. Le nombre vient avant le mot de comptage, comme depuis 3D."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "ce que vous savez faire, et ce sont des actes",
+      "bodyFr": "Vous arrivez au bout du parcours fondamental. Cette leçon ne vous apprend pas un mot de plus : elle vous dit où vous en êtes, et surtout ce qu’elle ne sait pas de vous. Commençons par ce qui est vrai et vérifiable. Douze actes, au moins un par unité, la onzième en fournissant deux, et tous déjà à vous.\n\n> **แล้วเจอกัน** · láeew·joee·kan · vous prenez congé > **สวัสดีครับ** · sà·wàt·dii khráp · vous saluez > **อันนี้เท่าไรครับ** · an·níi thâo·rai khráp · vous demandez un prix et vous > comprenez le chiffre qu’on vous répond > **ขอข้าวผัดสองจานหน่อยครับ** · khǎww khâao·phàt sǎwwng jaan nàwi khráp · vous > commandez, avec la quantité et le mot de comptage qui va avec > **ห้องน้ำอยู่ที่ไหนครับ** · hâwng·náam yòuu thîi·nǎi khráp · vous demandez où se > trouve un endroit > **ผมมีพี่ชายสองคนครับ** · phǒm mii phîi·chaai sǎwwng khon khráp · vous parlez de > vos proches > **ผมทำงานที่บ้านทุกวันครับ** · phǒm tham·ngaan thîi bâan thóuk·wan khráp · vous > dites ce que vous faites, où, et à quelle fréquence > **ตัวนี้ใหญ่เกินไปครับ** · toua·níi yài koeen·pai khráp · vous dites ce qui ne va > pas dans ce qu’on vous propose > **ผมปวดหัวครับ** · phǒm pòuat·hǒua khráp · vous dites où vous avez mal > **ทางออก · ห้ามเข้า** · thaang·àwwk · hâam·khâo · vous lisez ces deux-là sur un > mur, sans transcription > **ผมมีพี่ชายและน้องสาวครับ** · phǒm mii phîi·chaai láe náwwng·sǎao khráp · vous > reliez deux choses dans la même phrase > **พูดช้า ๆ ได้ไหมครับ** · phôuut cháa cháa dâai mǎi khráp · et quand plus rien ne > passe, vous redemandez au lieu de vous taire",
+      "specimen": "ห้องน้ำอยู่ที่ไหนครับ · ทางออก · พูดช้า ๆ ได้ไหมครับ"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "ce que ce cours ne vous dira pas, et il vaut mieux savoir pourquoi",
+      "bodyFr": "Vous attendez peut-être une lettre, un chiffre, une équivalence. Vous n’en aurez pas ici, et ce n’est pas de la prudence commerciale.\n\n**Ce cours n’a mesuré qu’une chose : ce qu’il vous a lui-même appris, sur ses propres tirages.** Les seuils que vous avez franchis disent que vous avez réussi ces tirages-là, et ils tolèrent l’échec : celui de l’exercice 4 d’aujourd’hui se franchit à sept réponses justes sur dix. Ils ne disent rien de ce que vous feriez devant quelqu’un qui n’a pas lu ce cours, sur un sujet qu’il n’a pas préparé. Personne ne l’a essayé sur vous, donc personne ne peut vous le dire.\n\n**Et une chose de plus, qui compte davantage :** aucun locuteur natif du thaï n’a relu ce que vous venez d’apprendre. Chaque fait a été vérifié contre des dictionnaires et des relevés, deux au minimum, et le détail est consultable ; mais la relecture par une personne dont c’est la langue reste à faire. Vous le lisez à chaque leçon, et vous le relisez ici parce que c’est le dernier écran où cela peut encore vous surprendre.",
+      "specimen": "สวัสดีครับ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "vous avez un registre, et un seul",
+      "bodyFr": "Le thaï change de forme selon à qui l’on parle. Ce cours vous a donné le registre poli ordinaire, celui des particules ครับ et ค่ะ, et il vous l’a donné partout.\n\nLe compte est fait sur les 525 fiches de vocabulaire du parcours entier, redéclarations comprises, et il tient en deux lignes. **2 fiches seulement portent l’étiquette « formel »**, dont l’une avec une divergence entre ses deux sources, consignée par sa leçon ; **6 portent « familier »** ; **10 ne sont pas étiquetées**, faute de source. **Les 507 autres portent « neutre » ou « poli », et 49 d’entre elles portent les deux mots à la fois**, de la forme « neutre (poli avec la particule) » : le partage exact entre ces deux étiquettes dépend donc d’une convention de lecture, et ce n’est pas lui qui fait le fait. Le fait est celui-ci : vous avez vu deux fiches d’un cran au-dessus, six d’un cran en dessous, et tout le reste dans la même zone polie ordinaire.\n\n> **ดิฉัน** · dì·chǎn · le « je » d’une femme dans un échange poli, montré en 2D > **รับประทาน** · ráp·prà·thaan · manger, forme marquée « formel » en 4B > **หวัดดี** · wàt·dii · salut, forme marquée « familier » en 2B\n\n**Ce que cela veut dire concrètement.** Vous n’avez pas appris comment on s’adresse à un moine, à une administration, à quelqu’un de beaucoup plus âgé dans un cadre officiel, ni comment on écrit une demande. Ce cours ne vous dit pas non plus ce qui se passerait si vous employiez le registre poli ordinaire dans ces situations : il n’a aucune source pour le décrire, et il préfère l’écrire que le combler.",
+      "specimen": "ดิฉัน · รับประทาน · หวัดดี"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "vous lisez le thaï, vous ne l’écrivez pas",
+      "bodyFr": "Ce point-là est tranché, et il est mesurable sur le cours lui-même. Sur les 46 exercices de production du parcours, **aucun ne vous a jamais demandé d’ÉCRIRE une graphie thaïe.** Le détail compte, alors le voici en entier : 44 attendent une réponse en transcription, en alphabet latin ; un attend un montant en chiffres arabes ; **un seul, dans la toute première unité, se répond en touchant des tuiles thaïes déjà écrites**. Toucher une tuile n’est pas tracer une lettre, et aucun exercice ne vous a fait tracer la moindre lettre. Treize leçons des onze unités déclarent d’ailleurs noir sur blanc, dans leur politique de saisie, que la saisie thaïe n’est pas attendue.\n\nVous savez donc lire des mots et des phrases courtes en thaï, et vous savez les écrire dans notre transcription. Vous ne savez pas écrire le thaï, ni à la main, ni au clavier. Ce sont deux choses différentes, et la seconde n’a jamais été entraînée.\n\n**Et la lecture, elle non plus, n’est pas entière.** La leçon qui vous a donné la méthode de lecture, en unité 10, pose elle-même quatre familles de mots qu’elle ne couvre pas, et aucune unité ne les a levées depuis. Les syllabes qui se ferment sur un k, un t ou un p, comme la fin de ทางออก. Les mots écrits avec ไ ou ใ, comme ไม่ et ใหญ่. Les mots où une consonne de tête muette passe devant la vraie initiale, comme หมา et อยู่. Et les deux consonnes qui ne forment pas un groupe, comme dans ตลาด. Devant ces cas-là, la méthode vous dit de vous arrêter plutôt que de deviner. Quand vous les lisez quand même, c’est que vous les reconnaissez pour les avoir déjà vus, pas que vous les décodez.\n\n**La lecture a aussi une taille.** La plus longue phrase que ce cours publie fait vingt-quatre signes, ce qui est une phrase simple. Vous n’avez jamais lu un paragraphe, une affiche à plusieurs lignes, un menu de haut en bas, ni un message écrit par quelqu’un qui écrit vite.",
+      "specimen": "ขอข้าวผัดสองจานหน่อยครับ · ผมทำงานที่บ้านทุกวันครับ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "ce que vous avez entendu, et à quelle échelle",
+      "bodyFr": "Là aussi, la mesure existe, et elle a été refaite sur les **43 dialogues du parcours**, ceux rédigés en tableau comme ceux rédigés en liste. Le plus long passage de thaï que ce cours vous fasse entendre d’un coup fait **quatre phrases courtes, soixante et un signes**, et il est dans le dialogue de l’unité 8, que voici. Aucun tirage d’exercice ne va plus loin : le plus long en fait cinquante-trois. Trois dialogues du parcours comptent douze répliques et c’est le maximum. Dans les exercices, vous entendez une phrase à la fois, et vous pouvez réécouter.\n\n> **ขอโทษครับ มีปัญหาครับ ตัวนี้ใหญ่เกินไปครับ ขอเปลี่ยนหน่อยครับ** > khǎww·thôot khráp · mii pan·hǎa khráp · toua·níi yài koeen·pai khráp · > khǎww plìan nàwi khráp > Excusez-moi. Il y a un problème. Celle-ci est trop grande. Je voudrais > l’échanger, s’il vous plaît.\n\n**Ce qui n’a donc pas été mesuré sur vous** : plusieurs personnes qui se parlent sans vous attendre, une voix dans le bruit, un tour de parole long, quelqu’un qui change de sujet en cours de phrase. Ce cours ne vous dit pas que vous n’y arriverez pas. Il vous dit qu’il n’en sait rien, parce qu’il ne vous l’a jamais fait faire.\n\n**Et les tons, qui sont le cœur de la langue, sont dans le même cas.** Vous les avez travaillés sur des mots isolés et sur des phrases courtes, ce que l’exercice 1 vous fait refaire aujourd’hui. Les tons dans la parole qui défile, où ils se déforment les uns les autres, n’ont pas été mesurés sur vous. Ce cours avait prévu un entretien des tons couvrant tout le parcours ; à la date où cette leçon est écrite, cet entretien est écrit mais pas encore branché, et il vaut mieux vous le dire que de vous laisser croire l’inverse.",
+      "specimen": "ไหม / ไม้ puis คา / ข่า"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "le vocabulaire, en chiffres et sans arrondi",
+      "bodyFr": "Le parcours publie **353 graphies de vocabulaire distinctes**, réparties sur 60 leçons. Sur ces 353, **46 se terminent par une particule de politesse** : ce sont pour la plupart des formules ou des phrases entières, prêtes à dire telles quelles, et cinq d’entre elles sont les particules elles-mêmes. Le plan de travail de ce cours visait un volume plus large ; ce qui est réellement publié, c’est ce chiffre-là, et c’est celui qui compte pour vous.\n\nCe qui a été choisi dans ce volume l’a été pour les situations où l’on ne peut pas se taire : saluer, commander, demander un prix, demander son chemin, dire qu’on a mal, dire qu’on n’a pas compris.\n\n**Ce qui n’y est pas, et la liste est courte parce qu’elle est honnête** : le vocabulaire d’un métier, celui d’une administration, celui de la santé au delà de l’urgence immédiate, les mots pour donner un avis, pour raconter ce qui s’est passé, pour discuter. Vous n’avez pas non plus de mot pour dire « oui » : ce cours vous a montré comment répondre oui en reprenant le verbe de la question, et c’est la seule façon qu’il vous ait donnée.",
+      "specimen": "ราคา · อาหาร"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "entretenir, et ce que ce cours ignore de votre mémoire",
+      "bodyFr": "Le parcours a produit **281 cartes de révision** qui portent un identifiant, et elles continuent de tourner après cette leçon. Ce sont elles, et pas cette page, qui décident de ce qui reste.\n\nCe que ce cours vous recommande, et **c’est un parti pris pédagogique déclaré, pas un fait établi** : faites les révisions dues plutôt que de refaire des leçons déjà réussies ; dites à voix haute ce que vous savez déjà dire, plutôt que de le relire ; et réenregistrez-vous de temps en temps sur les phrases que vous produisez, puisque la comparaison A/B est là pour ça.\n\n**Ce que ce cours ne vous dira pas** : à quelle vitesse on oublie. Il n’a aucune source qui mesure cela, et encore moins qui le mesure sur vous. Il ne vous donnera donc ni rythme, ni fréquence, ni seuil au delà duquel ce serait acquis.",
+      "specimen": "พูดช้า ๆ ได้ไหมครับ"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ce que serait la suite, et ce cours ne la promet pas",
+      "bodyFr": "Voici, en actes et non en niveaux, ce qui reste de l’autre côté de la porte : lire un menu entier au lieu de trois lignes ; suivre une conversation entre deux personnes qui ne vous parlent pas ; écrire le thaï ; changer de registre selon la personne en face ; dire quelque chose que vous n’aviez pas préparé.\n\n**Cette suite n’est pas écrite.** Il n’existe aujourd’hui aucune unité au delà de celle-ci dans ce cours. Vous le dire est plus utile que de vous annoncer un prolongement qui n’existe pas encore.\n\nCe que vous pouvez faire de ce que vous avez, en revanche, ne dépend plus de ce cours : les phrases de la page 1 fonctionnent hors de l’application, et c’est le seul endroit où elles peuvent être mises à l’épreuve.",
+      "specimen": "ห้องน้ำอยู่ที่ไหนครับ · ตลาดอยู่ที่ไหน"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "à vous, une dernière fois",
+      "bodyFr": "Les exercices qui suivent tirent dans les onze unités, sans vous dire de laquelle vient chaque phrase. C’est fait exprès : dans une conversation non plus, personne ne vous annonce le chapitre.\n\nAprès les exercices, enregistrez-vous en disant ห้องน้ำอยู่ที่ไหนครับ, puis comparez en A/B avec la voix de référence. Écoutez la fin : thîi·nǎi remonte sur la seconde syllabe, et khráp reste perché. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": "ห้องน้ำอยู่ที่ไหนครับ"
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u12-l12e-p3",
+      "promptFr": "Remettez les blocs dans l’ordre. Touchez un bloc pour le placer, touchez-le à nouveau pour le retirer.",
+      "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "4aa53373-3afa-58a2-b157-e12cb808e096",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e50f070b-e672-5d9c-bda7-c3407ccbcf0a",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "56ba9880-eea2-5a60-a3b0-bdbd0e952952",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "7663c806-a808-5f66-80e7-c75fede4df4f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "1828abbc-4c73-5404-974a-1d39be4b6aee",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "b60b6a18-9ea8-5ddf-aa4c-1952a8b5617b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "6673b70d-7f86-5f28-9cf5-f24872dab112",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "16fda3aa-c8d2-5cd2-82a8-06b15187f6e9",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

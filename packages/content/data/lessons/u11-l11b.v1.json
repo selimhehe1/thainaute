@@ -1,0 +1,725 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "39cfb9e7-03ff-50d9-8687-f542d090472a",
+  "versionId": "8db9e4a0-29b2-5ddc-a061-b75bc593525f",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Deux interlocuteurs, deux registres",
+  "objectiveFr": "à la fin de la leçon, l’apprenant 1. entend une phrase et dit si celui qui l’a dite est un homme, une femme, ou si la phrase ne le dit pas, sur 11 tirages sur 12, les quatre tirages sans particule devant tous être justes, et sans aucun retour avant la fin de la série ; 2. apparie les cinq mots de désignation du jour à ce que les sources leur donnent comme critère, 5 sur 5 ; 3. reconstruit une phra",
+  "requiredEntitlement": null,
+  "audioManifestId": "9327924f-60e1-5800-b6e2-8eaf0a18c7d8",
+  "items": [
+    {
+      "id": "8ef7dd94-0558-5a9f-a0ec-02aea81a1fd7",
+      "thaiRaw": "พี่",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E35",
+        "U+0E48"
+      ],
+      "translationFr": "mot par lequel on désigne une personne dont l’âge est celui d’un aîné ; se place devant son prénom",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phîi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พี่",
+          "ipa": "pʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "**non déterminé par les sources, et le champ le dit au lieu de combler.** Aucune des trois ne pose d’étiquette sur l’emploi enseigné, devant un prénom : le RID n’en pose aucune, la sous-entrée d’adresse d’en.wiktionary qui vise une personne plus âgée n’en porte aucune, et l’étiquette `(inf.)` de VOLUBILIS concerne l’emploi PRONOMINAL de พี่, seul, à la place de คุณ, qui n’est pas enseigné. Le champ ne dit donc plus « neutre » : « neutre » est une valeur positive, et la déduire d’un silence la ferait porter par zéro source, là où la section 1 ter de `docs/content-policy/sources-verification.md` soumet le registre aux deux sources indépendantes **sans exception**. Aucun écran et aucun exercice de cette leçon ne mesure ni n’affiche le registre de cet emploi.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "af91990b-7970-540a-bce7-edfd7e55332a",
+      "thaiRaw": "น้อง",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "mot par lequel on désigne une personne dont l’âge est celui d’un cadet",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "náwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "น้อง",
+          "ipa": "nɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "ŋ"
+        }
+      ],
+      "register": "**non déterminé par les sources**, même motif qu’à l’item 1. Aucune des trois n’en pose sur l’emploi enseigné : la première sous-entrée d’adresse d’en.wiktionary, celle qui vise les cadets et les personnes plus jeunes, ne porte aucune étiquette, et les deux sous-entrées étiquetées de cette entrée, `(slang)` et `(colloquial, sometimes considered offensive)`, ne sont pas celles que la leçon enseigne. Le champ ne dit pas « neutre », qui serait une valeur positive déduite d’un silence.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "c379cf78-da51-5807-9166-9c6f774ac566",
+      "thaiRaw": "คุณพ่อ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E1E",
+        "U+0E48",
+        "U+0E2D"
+      ],
+      "translationFr": "père",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khoun·phâww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คุณพ่อ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "คุณพ่อ",
+          "ipa": "pʰɔː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "**non déterminé par les sources.** Le champ ne dit ni « poli » ni « neutre », et les deux seraient également mal fondés. Volubilis donne au composé les mêmes gloses françaises qu’à พ่อ seul, « père ; papa », sans étiquette ; en.wiktionary redirige la page vers พ่อ et ne dit donc rien du composé ; le RID ne lexicalise pas le composé et parle d’égard à propos de คุณ. **Il faut séparer deux affirmations que la première rédaction confondait.** Que le mot soit BÂTI sur un mot d’égard tient sur deux jambes, le RID sens (๓) `เพื่อแสดงความยกย่อง` et en.wiktionary « out of respect » à l’entrée « คุณ » : c’est cette affirmation-là, et elle seule, qui est affichée à l’exercice 2 et portée par le champ `litteral`. Que le composé ENTIER soit plus déférent que พ่อ ne tient sur rien, n’est enseigné nulle part et reste à l’incertitude 3. Le registre du composé, lui, n’est posé par aucune source, et le champ le dit.",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "1a2638e5-ad7c-5460-8fb3-eb72b1227f79",
+      "thaiRaw": "คุณแม่",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E41",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "mère",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khoun·mâee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คุณแม่",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "คุณแม่",
+          "ipa": "mɛː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "**non déterminé par les sources**, pour le même motif qu’à l’item 3, et avec la même séparation entre la composition, qui est sourcée, et le registre du composé, qui ne l’est pas.",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "0c0e142f-9e92-5d0f-8e44-9121b626fcc1",
+      "thaiRaw": "คุณ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E38",
+        "U+0E13"
+      ],
+      "translationFr": "vous (marque de respect) ; devant le nom d’une personne : Monsieur, Madame",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khoun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คุณ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "18a185bc-30d4-5c81-ba76-77d40b51a4c7",
+      "thaiRaw": "ครับ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "particule de politesse d'un locuteur homme (fin de phrase)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "2d5cc485-f95d-50fb-a61e-f5050a32fca4",
+      "thaiRaw": "ค่ะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "particule de politesse d'une locutrice femme (phrase affirmative)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "9a77bd50-ef71-5d94-8f01-b68ef0957406",
+      "thaiRaw": "คะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "particule finale d’une locutrice, en fin de question ou d’information donnée poliment",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "e37e18d1-418b-590b-974a-2ba3350babcf",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "dece4e05-af17-5907-97a5-16a6610758f8",
+      "thaiRaw": "ดิฉัน",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19"
+      ],
+      "translationFr": "je, moi (locutrice femme, échange poli)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉัน",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "16df5172-f146-5026-8494-e5f1473bccdf",
+      "thaiRaw": "พ่อ",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E48",
+        "U+0E2D"
+      ],
+      "translationFr": "père ; papa",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phâww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พ่อ",
+          "ipa": "pʰɔː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "3c37508f-1512-5110-8569-122615673ddd",
+      "thaiRaw": "แม่",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E21",
+        "U+0E48"
+      ],
+      "translationFr": "mère ; maman",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แม่",
+          "ipa": "mɛː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "2f7eef17-ff18-5aed-88ac-f6f6e4d26faf",
+      "thaiRaw": "พี่ชาย",
+      "unicodeCodePoints": [
+        "U+0E1E",
+        "U+0E35",
+        "U+0E48",
+        "U+0E0A",
+        "U+0E32",
+        "U+0E22"
+      ],
+      "translationFr": "frère aîné",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phîi·chaai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "พี่ชาย",
+          "ipa": "pʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "พี่ชาย",
+          "ipa": "t͡ɕʰaːj˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "c932f751-42aa-54ee-9da9-cd7dd5e7f025",
+      "thaiRaw": "ต้น",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E49",
+        "U+0E19"
+      ],
+      "translationFr": "Ton (nom du personnage masculin du dialogue)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tôn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ต้น",
+          "ipa": "ton˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "a7cb437a-415d-5ba9-b900-94ddee544965",
+      "thaiRaw": "นก",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E01"
+      ],
+      "translationFr": "Nok (nom du personnage féminin du dialogue)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "nók"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นก",
+          "ipa": "nok̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u11-l11b-p2",
+      "drawIndex": 1,
+      "id": "6bbcfad5-99fe-52a8-9a86-652f91d23929",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Chaque mot de gauche va avec ce que les dictionnaires en disent. Associez-les. Touchez un mot, puis l’autre : aucun glisser-déposer n’est nécessaire.",
+      "pairs": [
+        {
+          "id": "41966b35-3965-5589-bec8-3fc50afd5cda",
+          "itemId": "0c0e142f-9e92-5d0f-8e44-9121b626fcc1",
+          "labelFr": "la personne à qui vous parlez, quelle qu’elle soit, par égard, sans condition d’âge"
+        },
+        {
+          "id": "5b8ad555-fb8b-5b01-99ea-9f7923e67c22",
+          "itemId": "8ef7dd94-0558-5a9f-a0ec-02aea81a1fd7",
+          "labelFr": "une personne dont l’âge est celui d’un aîné"
+        },
+        {
+          "id": "c027147d-c840-5aac-badc-ef9014a697a9",
+          "itemId": "af91990b-7970-540a-bce7-edfd7e55332a",
+          "labelFr": "une personne dont l’âge est celui d’un cadet"
+        },
+        {
+          "id": "61578f4d-4f5e-5828-ae16-38efaea7ffeb",
+          "itemId": "c379cf78-da51-5807-9166-9c6f774ac566",
+          "labelFr": "le père, avec la marque d’égard placée devant"
+        },
+        {
+          "id": "3490cada-d588-50ef-9b25-ace82a7dd4c2",
+          "itemId": "1a2638e5-ad7c-5460-8fb3-eb72b1227f79",
+          "labelFr": "la mère, avec la marque d’égard placée devant"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui. Ces mots parlent de la personne, pas de vous.",
+        "incorrectFr": "Reprenez l’axe de `u06-l6b` : พี่ est né avant, น้อง est né après. C’est le même axe ici, sorti de la famille.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paire 1",
+            "textFr": "Exactement. C’est le seul des trois qui ne vous demande rien à savoir sur la personne."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paires 4 et 5",
+            "textFr": "Bien vu. Le mot d’égard se pose devant, et le mot de famille ne change ni de ton ni de longueur."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, คุณ apparié à un critère d’âge",
+            "textFr": "Aucune de nos sources ne met d’âge dans คุณ. C’est justement ce qui le rend utilisable partout."
+          }
+        ]
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "vous savez déjà tout dire aujourd’hui",
+      "bodyFr": "Il n’y a pas un seul mot nouveau à retenir dans cette page ni dans les trois suivantes. Vous savez saluer, demander comment va quelqu’un, répondre et remercier depuis l’unité 2. Ce que vous allez faire aujourd’hui, c’est dire la même chose à deux personnes différentes, et regarder ce qui bouge. Il y a trois réglages, et un seul bouge à la fois.",
+      "specimen": "สวัสดีครับ · สวัสดีค่ะ"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "le premier réglage dépend de vous, pas de l’autre",
+      "bodyFr": "La particule finale ne regarde pas la personne en face. Elle vous regarde vous. Le dictionnaire normatif est très bref là-dessus et il ne laisse pas de place au doute : ครับ est le mot final poli **que les hommes emploient**, ค่ะ et คะ sont les mots finaux polis **que les femmes emploient**. Une seconde source, écrite par d’autres mains, dit la même chose de son côté : elle range ครับ dans la parole des hommes, et donne ค่ะ comme คะ pour des formes aujourd’hui **souvent** employées par les femmes. Retenez ce « souvent » : les deux sources se rejoignent sur qui emploie quoi, et la seconde est un peu moins catégorique que la première.\n\n> ครับ (khráp) : un homme parle > ค่ะ (khâ) et คะ (khá) : une femme parle\n\nVous le saviez depuis 1E, et `u02-l2b` l’écrivait déjà noir sur blanc à sa page 2 : la particule fait partie du bloc, et elle dépend de vous, jamais de la personne en face. Aujourd’hui, on va s’en servir.",
+      "specimen": "ครับ · ค่ะ · คะ"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "le deuxième réglage dépend de la phrase",
+      "bodyFr": "Chez une femme, deux formes se partagent le travail, et la différence se voit à l’œil avant de s’entendre. ค่ะ porte un petit ไม้เอก au-dessus du ค ; คะ n’a rien du tout.\n\n> ค่ะ, avec la marque, tombe. Le dictionnaire la donne pour **informer**. > คะ, sans marque, reste en haut. Le dictionnaire la donne pour ce qui suit une > **question**.\n\nChez un homme, il n’y a rien à choisir : ครับ couvre les deux cas, et le dictionnaire ne lui donne aucune restriction de ce genre. Ce n’est pas une règle sociale, et le cours n’en tire aucune comparaison entre les hommes et les femmes : c’est une répartition de formes, deux d’un côté et une de l’autre, et nos sources n’en disent rien de plus.",
+      "specimen": "ค่ะ (◌่) contre คะ (rien)"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "le troisième réglage, et lui dépend de l’autre",
+      "bodyFr": "Le mot par lequel vous désignez la personne, en revanche, ne dépend pas de vous. Vous connaissez déjà le premier depuis `u02-l2d`.\n\n> คุณ (khoun)\n\nLes trois sources disent la même chose de lui, et aucune ne parle d’âge. Le dictionnaire normatif en fait un mot **poli** employé pour la personne à qui l’on parle. Volubilis le donne pour « vous ». Wiktionary le décrit comme un mot employé devant n’importe qui, par égard. Retenez ce dernier point : **n’importe qui**. คุณ ne vous demande de savoir ni l’âge, ni le rang, ni rien du tout.",
+      "specimen": "คุณ"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "deux mots de famille qui sortent de la famille",
+      "bodyFr": "Vous avez appris พี่ et น้อง en `u06-l6b` comme des mots de fratrie. Le dictionnaire normatif leur donne un second emploi, et c’est le même axe qu’à l’unité 6 : l’ordre de naissance, pas le sexe.\n\n> พี่ (phîi) : une personne dont l’âge est celui d’un aîné. > น้อง (náwwng) : une personne dont l’âge est celui d’un cadet.\n\nCe n’est plus de fratrie qu’il s’agit. C’est de n’importe qui, pourvu qu’on sache si cette personne est plus âgée ou plus jeune. Wiktionary donne exactement le même partage de son côté, en anglais, et pour les deux mots.\n\nUne précision d’honnêteté, parce que ce cours ne vous cache pas ce qu’il laisse de côté : pour พี่, le dictionnaire donne un second critère à côté de l’âge, celui du RANG. Vous ne l’apprendrez pas ici, et la page 10 vous dit pourquoi. Ne lisez donc pas l’âge comme le seul critère qui existe : c’est le seul que ce cours vous donne.",
+      "specimen": "พี่ · น้อง"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "et voici où les sources s’arrêtent",
+      "bodyFr": "Vous allez voir พี่ posé devant un prénom, et vous ne verrez jamais น้อง au même endroit. Ce n’est ni un oubli ni une élégance : c’est que nos sources ne disent pas la même chose des deux.\n\n> Pour พี่, le dictionnaire écrit « mot placé devant le NOM », et il en donne > deux exemples. > Pour น้อง, il écrit seulement « on appelle ainsi une personne » d’un âge de > cadet. Pas un mot sur la position devant un nom.\n\nUne seule de nos sources parle d’un emploi de น้อง devant un nom, et le cours demande deux sources indépendantes pour tout. Ce fait a donc été retiré. Vous apprendrez น้อง comme mot de désignation, ce qui est solide, et pas comme préfixe de prénom, ce qui ne l’est pas encore. Le jour où une seconde source le donnera, la leçon sera corrigée par une nouvelle version.",
+      "specimen": "พี่ต้น (attesté) · น้อง (seul)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "คุณ se pose aussi devant พ่อ et แม่",
+      "bodyFr": "Le dictionnaire normatif, en expliquant ce que fait คุณ devant une personne, prend lui-même deux exemples que vous savez lire depuis `u06-l6b`.\n\n> คุณพ่อ (khoun·phâww) : le père. > คุณแม่ (khoun·mâee) : la mère.\n\nVolubilis enregistre les deux comme des entrées à part entière et les traduit simplement par « père » et « mère ». Ce que le cours ne vous dira pas, parce qu’aucune deuxième source ne le mesure, c’est de combien exactement คุณพ่อ est plus déférent que พ่อ. La forme existe, elle veut dire « père », elle est bâtie sur un mot d’égard : voilà ce qui est établi, et le reste attend.",
+      "specimen": "พ่อ · คุณพ่อ · แม่ · คุณแม่"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "le quatrième réglage, qui n’en est pas un",
+      "bodyFr": "Une phrase peut aussi n’avoir aucune particule. Elle ne devient pas fausse pour autant : elle devient neutre. Vous avez déjà les deux états sous les yeux depuis l’unité 2, sans qu’on vous les ait mis côte à côte.\n\n> สบายดีไหม, forme nue, enregistrée telle quelle par Volubilis > สบายดีไหมครับ, la même, dite par un homme, avec la politesse au bout > สบายดีไหมคะ, la même, dite par une femme\n\nLe mot « poli » n’a rien de solennel ici. Ce que les dictionnaires écrivent en face de ครับ et de ค่ะ, c’est « formule de politesse en fin de phrase », et rien de plus. Ce n’est pas une révérence, c’est une finition.",
+      "specimen": "สบายดีไหม · สบายดีไหมครับ · สบายดีไหมคะ"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "la même phrase, trois fois, et le français ne bouge pas",
+      "bodyFr": "Voici le cœur de la leçon. Trois phrases thaïes, une seule phrase française. Les trois s’adressent à la personne en face.\n\n> คุณสบายดีไหมครับ · Vous allez bien ? > พี่ต้นสบายดีไหมครับ · Vous allez bien ? > สบายดีไหมครับ · Vous allez bien ?\n\nRegardez la colonne de droite : elle est identique trois fois. Ce n’est pas une facilité de traduction, c’est le constat. Le français ne possède pas de case pour ce que le thaï fait ici, et si nous avions écrit « tu » d’un côté et « vous » de l’autre, nous vous aurions vendu une correspondance que personne n’a vérifiée. Le seul endroit où la phrase change, c’est devant. Et ce qui est devant vous dit quelque chose de la personne, jamais de vous.\n\n**Pourquoi คุณพ่อ n’est pas dans cette liste.** Vous venez de l’apprendre à la page 7, et il serait tentant de l’aligner ici comme une quatrième façon de s’adresser à quelqu’un. Ce serait vous induire en erreur. คุณพ่อ veut dire « père » : c’est le mot par lequel on parle DE quelqu’un, et vous le verrez au dialogue employé exactement comme cela. Nos sources en font un nom, elles ne disent pas qu’il sert à interpeller la personne en face. Cette liste-ci ne contient donc que des mots d’adresse, et คุณพ่อ n’y a pas sa place.",
+      "specimen": "คุณ / พี่ต้น / rien"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "ce que vous n’apprendrez pas ici, et pourquoi",
+      "bodyFr": "Il y a deux choses différentes ici, et les mélanger serait vous tromper.\n\n**Ce que nos sources ne disent pas.** Vous vous demandez sûrement quand employer l’un plutôt que l’autre avec une vraie personne. La réponse honnête est qu’aucune de nos sources ne le dit. Elles décrivent des mots, pas des situations. Qui l’emploie avec qui, dans quel lieu et à quel moment appartient à une revue par un locuteur thaï que ce cours attend et qu’il affiche partout comme en attente. Nous préférons vous donner des formes sûres plutôt qu’une règle inventée qui vous mettrait en faute devant quelqu’un.\n\n**Ce qu’elles disent et que nous avons choisi de laisser de côté.** Le dictionnaire donne à พี่ un second critère, alternatif à l’âge : celui d’un rang équivalent à celui d’un aîné. Nous ne l’enseignons pas, et le motif est une question de preuve, pas d’oubli : la seule autre source qui parle de rang décrit un rang SUPÉRIEUR, patron ou chef, et pas un rang équivalent, et elle le marque comme familier. Les deux ne décrivent donc pas la même chose, et le cours demande deux sources qui se rejoignent avant d’enseigner quoi que ce soit.\n\nCe que vous apprenez ici est donc l’âge relatif, et rien de plus. Ce n’est pas tout ce que le thaï fait de ces mots ; c’est tout ce que nous savons prouver aujourd’hui.",
+      "specimen": "คุณ · พี่ · น้อง"
+    },
+    {
+      "ordre": 11,
+      "titleFr": "les tons, on les entretient",
+      "bodyFr": "Trois contrastes reviennent aujourd’hui, et aucun n’est déclaré acquis.\n\n> ค่ะ (khâ) contre คะ (khá) : la voix tombe, contre la voix qui reste perchée. > ผม (phǒm) et ไหม (mǎi) contre ครับ (khráp) et น้อง (náwwng) : la voix creuse > puis remonte, contre la voix qui est déjà en haut. > คุณ (khoun) contre la syllabe sà de สบายดี : la voix reste à mi-hauteur, > contre la voix posée en bas.\n\nLe premier est celui de la leçon. Les deux autres sont ceux que le cours entretient depuis l’unité 8 et qu’il n’arrêtera pas d’entretenir.",
+      "specimen": "ค่ะ / คะ puis ผม / ครับ"
+    },
+    {
+      "ordre": 12,
+      "titleFr": "à vous",
+      "bodyFr": "Trois réglages, dans cet ordre. Qui parle, donc quelle particule. Question ou information, donc laquelle des deux chez une femme. Qui est désigné, donc quel mot devant. Et un quatrième, plus simple : la particule est là, ou elle n’y est pas.\n\nAprès les exercices, enregistrez-vous en disant ค่ะ puis คะ, et comparez en A/B avec la voix de référence. C’est la paire la plus courte du cours et l’une des plus difficiles à entendre : deux syllabes de même durée, séparées par la seule direction de la voix. Votre enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u11-l11b-p2",
+      "promptFr": "Chaque mot de gauche va avec ce que les dictionnaires en disent. Associez-les. Touchez un mot, puis l’autre : aucun glisser-déposer n’est nécessaire.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN"
+    ],
+    "generationActors": [
+      {
+        "actorId": "3b104b84-a78a-54d7-89c8-9b8a366c0044",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "e045ff63-e758-51bc-93db-9e0e73f8d24c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "aed4a534-281f-5192-96ac-bfc1c35d8076",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "0e8ae70b-2833-5109-aa93-04f2c915270c",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9690aa12-c5d7-52a6-87ec-1e359258f02b",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "82bf3a30-7884-5a3e-a477-10e012148478",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "39d376e3-6456-523d-ac07-c08e583811b6",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "299bc987-07a1-57f3-8a3b-6824f190a5a8",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}

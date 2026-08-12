@@ -1,0 +1,535 @@
+{
+  "schemaVersion": 1,
+  "languagePackId": "thai-fr",
+  "targetLocale": "th-TH",
+  "lessonId": "cc8021bf-a19d-5214-a1f0-ba3a1c05e817",
+  "versionId": "86a66153-e72a-57bf-b534-4048d608f520",
+  "revision": 1,
+  "workflowStatus": "draft",
+  "visibility": "internal",
+  "publishedAt": null,
+  "locale": "fr-FR",
+  "titleFr": "Le k qui souffle et la règle du ton",
+  "objectiveFr": "à la fin de la leçon, l’apprenant identifie à l’écoute le mot entendu dans les paires minimales ไก่ / ไข่ et ก้าว / ข้าว au moins 5 fois sur 6 ; il note correctement la présence ou l’absence du souffle en transcription (kh contre k) sur 4 mots sur 5 ; devant un mot écrit en syllabe vivante sans marque de ton, il annonce un ton moyen ou un ton montant d’après la seule classe de la consonne initiale",
+  "requiredEntitlement": null,
+  "audioManifestId": "a19e27dd-696f-560d-aeca-b3776cba97a3",
+  "items": [
+    {
+      "id": "904f306e-1fbf-54da-b222-e3dc305a34aa",
+      "thaiRaw": "กิน",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E34",
+        "U+0E19"
+      ],
+      "translationFr": "manger, boire, consommer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kin"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "กิน",
+          "ipa": "kin˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b5b456ac-b9f7-5e22-9e67-47fcb22d69e5",
+      "thaiRaw": "ไก่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E01",
+        "U+0E48"
+      ],
+      "translationFr": "poulet, poule, coq",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kài"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไก่",
+          "ipa": "kaj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ccd03baa-c89b-59b1-acf3-409aa8697f5e",
+      "thaiRaw": "ไข่",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E02",
+        "U+0E48"
+      ],
+      "translationFr": "œuf",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khài"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไข่",
+          "ipa": "kʰaj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "j"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a1c1e84d-7d68-553b-b3a5-a9e0b5135a40",
+      "thaiRaw": "ก้าว",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27"
+      ],
+      "translationFr": "un pas, une enjambée ; faire un pas, avancer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kâao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ก้าว",
+          "ipa": "kaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "14fc3faf-bfef-5e7d-b683-cb0fbd2006a7",
+      "thaiRaw": "ข้าว",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27"
+      ],
+      "translationFr": "riz",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข้าว",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "4c6f8f53-dcb8-5412-bb77-dffe3a37acd3",
+      "thaiRaw": "ขาว",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E32",
+        "U+0E27"
+      ],
+      "translationFr": "blanc, blanche",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขาว",
+          "ipa": "kʰaːw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "84e69037-5f2f-5c61-893e-8ebd11e83bab",
+      "thaiRaw": "ขา",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E32"
+      ],
+      "translationFr": "jambe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขา",
+          "ipa": "kʰaː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "poolId": "u04-l4a-p3",
+      "drawIndex": 1,
+      "id": "3ca1a123-e3c5-5bbc-aa12-67bf275ef591",
+      "type": "recall",
+      "itemId": "ccd03baa-c89b-59b1-acf3-409aa8697f5e",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Une seule chose est vraiment mesurée : le h du souffle.",
+      "acceptedAnswers": [
+        {
+          "value": "khài",
+          "kind": "transcription"
+        },
+        {
+          "value": "khai",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h note la bouffée d’air, rien d’autre.",
+        "incorrectFr": "Un détail manque. Posez-vous une seule question : y a-t-il un souffle entre la consonne et la voyelle ? Si oui, un h. Si non, rien.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u04-l4a-p3",
+      "drawIndex": 2,
+      "id": "238661c4-11bd-5e00-ae9c-29103a47bf67",
+      "type": "recall",
+      "itemId": "b5b456ac-b9f7-5e22-9e67-47fcb22d69e5",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Une seule chose est vraiment mesurée : le h du souffle.",
+      "acceptedAnswers": [
+        {
+          "value": "kài",
+          "kind": "transcription"
+        },
+        {
+          "value": "kai",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h note la bouffée d’air, rien d’autre.",
+        "incorrectFr": "Un détail manque. Posez-vous une seule question : y a-t-il un souffle entre la consonne et la voyelle ? Si oui, un h. Si non, rien.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u04-l4a-p3",
+      "drawIndex": 3,
+      "id": "2bf1142c-d25e-5657-85b2-6ba6e146b0ab",
+      "type": "recall",
+      "itemId": "14fc3faf-bfef-5e7d-b683-cb0fbd2006a7",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Une seule chose est vraiment mesurée : le h du souffle.",
+      "acceptedAnswers": [
+        {
+          "value": "khâao",
+          "kind": "transcription"
+        },
+        {
+          "value": "khaao",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h note la bouffée d’air, rien d’autre.",
+        "incorrectFr": "Un détail manque. Posez-vous une seule question : y a-t-il un souffle entre la consonne et la voyelle ? Si oui, un h. Si non, rien.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u04-l4a-p3",
+      "drawIndex": 4,
+      "id": "1059dc94-4e27-5ba9-86a8-c81c5fea0b47",
+      "type": "recall",
+      "itemId": "a1c1e84d-7d68-553b-b3a5-a9e0b5135a40",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Une seule chose est vraiment mesurée : le h du souffle.",
+      "acceptedAnswers": [
+        {
+          "value": "kâao",
+          "kind": "transcription"
+        },
+        {
+          "value": "kaao",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h note la bouffée d’air, rien d’autre.",
+        "incorrectFr": "Un détail manque. Posez-vous une seule question : y a-t-il un souffle entre la consonne et la voyelle ? Si oui, un h. Si non, rien.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u04-l4a-p3",
+      "drawIndex": 5,
+      "id": "7188913f-d323-5c4c-8149-377f38b2cff4",
+      "type": "recall",
+      "itemId": "904f306e-1fbf-54da-b222-e3dc305a34aa",
+      "skill": "recall",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Une seule chose est vraiment mesurée : le h du souffle.",
+      "acceptedAnswers": [
+        {
+          "value": "kin",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false
+      },
+      "feedback": {
+        "correctFr": "C’est ça. Le h note la bouffée d’air, rien d’autre.",
+        "incorrectFr": "Un détail manque. Posez-vous une seule question : y a-t-il un souffle entre la consonne et la voyelle ? Si oui, un h. Si non, rien.",
+        "variants": []
+      }
+    }
+  ],
+  "teaching": [
+    {
+      "ordre": 1,
+      "titleFr": "la troisième famille, et la dernière",
+      "bodyFr": "Reprenez la feuille de papier de 2A et de 3A. Vous avez déjà partagé en deux les consonnes labiales, puis les dentales. Il reste une famille, celle du k, et c’est la dernière du genre. Une seule chose à vérifier aujourd’hui, la même que les deux fois précédentes : la feuille bouge, ou elle ne bouge pas.",
+      "specimen": "ไก่ ≠ ไข่"
+    },
+    {
+      "ordre": 2,
+      "titleFr": "trois lettres, deux sons, et deux noms que vous connaissez",
+      "bodyFr": "ก note le k sans souffle. ข et ค notent toutes deux le k soufflé, et rien ne les sépare de ce côté-là. Vous connaissez déjà ก : elle ouvre les neuf consonnes moyennes de 1A. ข appartient à la classe haute, ค à la classe basse. Détail amusant, les deux premières lettres de l’alphabet se récitent กอ ไก่, le k du poulet, et ขอ ไข่, le kh de l’œuf : ce sont exactement les deux mots que vous allez travailler.",
+      "specimen": "ก · ข · ค"
+    },
+    {
+      "ordre": 3,
+      "titleFr": "deux paires, un seul écart",
+      "bodyFr": "Première paire, ไก่ (kài), le poulet, et ไข่ (khài), l’œuf, que vous aviez déjà acheté au marché en 3E. Même voyelle brève, même ton bas. Deuxième paire, ก้าว (kâao), un pas, et ข้าว (khâao), le riz. Même voyelle longue, même ton descendant. Dans les deux cas, la mélodie est identique des deux côtés : ne cherchez rien d’autre que le souffle.",
+      "specimen": "ไก่ / ไข่ puis ก้าว / ข้าว"
+    },
+    {
+      "ordre": 4,
+      "titleFr": "กิน, un seul verbe pour manger et pour boire",
+      "bodyFr": "กิน (kin). Le dictionnaire l’emploie dans une seule et même entrée pour กินข้าว, manger du riz, et pour กินน้ำ, boire de l’eau. Là où le français sépare manger et boire, le thaï courant se contente souvent de ce verbe unique. Retenez-le tel quel : l’unité 4 va s’appuyer dessus.",
+      "specimen": "กิน"
+    },
+    {
+      "ordre": 5,
+      "titleFr": "les neuf consonnes hautes",
+      "bodyFr": "Voici le deuxième groupe de lettres du parcours, après les neuf moyennes de 1A. Chacune note un son et se récite avec un mot-image, comme ก, qui note k et se récite กอ ไก่.\n\n> ข = kh, ขอ ไข่ (l’œuf) · ฉ = ch, ฉอ ฉิ่ง (les cymbales) > ถ = th, ถอ ถุง (le sac) · ผ = ph, ผอ ผึ้ง (l’abeille) > ฝ = f, ฝอ ฝา (le couvercle) · ศ = s, ศอ ศาลา (le pavillon) > ษ = s, ษอ ฤๅษี (l’ermite) · ส = s, สอ เสือ (le tigre) > ห = h, หอ หีบ (le coffre)\n\nTrois d’entre elles, ศ, ษ et ส, notent le même son s. Vous connaissez déjà ถ depuis 3A et ผ depuis 2A. Une remarque honnête : le dictionnaire compte onze lettres dans cette classe, pas neuf. Les deux absentes sont ฃ, abandonnée, et ฐ, rare, que vous verrez plus tard.",
+      "specimen": "ข ฉ ถ ผ ฝ ศ ษ ส ห"
+    },
+    {
+      "ordre": 6,
+      "titleFr": "la découverte du jour",
+      "bodyFr": "Depuis 2A, chaque leçon vous annonce que les classes serviront « plus tard » à calculer le ton. Nous y sommes. Prenez une syllabe qui se termine sur une voyelle longue, ou sur ง, น, ม, ย ou ว, et qui ne porte aucune marque de ton : le dictionnaire range ces deux formes parmi les syllabes vivantes, et ce sont les seules dont nous parlons aujourd’hui. Alors la classe de sa consonne initiale suffit à donner le ton. Attention, la consonne initiale n’est pas toujours la première lettre écrite : เ, แ, โ, ใ et ไ sont des voyelles qui s’écrivent AVANT leur consonne, comme dans เสือ ou ไก่. Cherchez la consonne, pas la place.\n\n> consonne MOYENNE → ton MOYEN, la voix reste à plat > consonne HAUTE → ton MONTANT, la voix part d’en bas et remonte",
+      "specimen": "กา (kaa) contre ขา (khǎa)"
+    },
+    {
+      "ordre": 7,
+      "titleFr": "vous le faisiez déjà",
+      "bodyFr": "Regardez ce que cette règle explique d’un coup. ตา, ปลา, อัน et กิน commencent par une consonne moyenne : ton moyen, et c’est bien ce que vous entendiez. ผม, ถุง, สอง, สาม, ขา et ขาว commencent par une consonne haute : ton montant, et c’est bien ce que vous disiez sans savoir pourquoi. Rien de nouveau à mémoriser aujourd’hui : une explication à installer sur ce que vous saviez déjà.",
+      "specimen": "ตา · ปลา · อัน · กิน puis ผม · ถุง · สอง · สาม"
+    },
+    {
+      "ordre": 8,
+      "titleFr": "ce que la règle ne dit pas encore",
+      "bodyFr": "Trois limites, et elles comptent. La règle ne vaut que sans marque de ton : ไก่, ไข่, ก้าว et ข้าว en portent une, et c’est elle qui commande. Regardez ขาว (khǎao), blanc, et ข้าว (khâao), le riz : même consonne initiale, même voyelle, mais une petite marque en plus et le ton change entièrement. Deuxième limite, il existe une troisième classe, la basse, à laquelle appartient ค. La règle d’aujourd’hui ne dit rien d’elle : devant un mot qui commence par une lettre basse, vous ne pouvez encore rien prévoir. Troisième limite, la règle ne couvre pas toutes les formes de syllabe. Celles qui se terminent sur un k, un t ou un p, et celles qui s’écrivent avec ไ, ใ, เ-า ou -ำ, comme ไก่ et ไข่, sont d’autres cas ; ne cherchez pas à les trancher aujourd’hui. Ces trois limites se lèvent aux unités 5 à 8.",
+      "specimen": "ขาว (khǎao) contre ข้าว (khâao)"
+    },
+    {
+      "ordre": 9,
+      "titleFr": "montant contre haut, deuxième passage",
+      "bodyFr": "Vous savez maintenant lire un ton montant. Le ton haut, lui, ne se lit pas encore : il vient d’ailleurs, et l’écriture vous le donnera plus tard. Pour aujourd’hui, il s’agit seulement de ne plus les confondre à l’oreille. Le montant part bas et remonte sur toute la syllabe ; le haut est perché dès le premier instant et y reste. Reprenez ขา (khǎa), la jambe, contre ค้า (kháa), faire commerce, la paire de 1D : les deux mots ont exactement les mêmes sons, seule la mélodie les sépare.",
+      "specimen": "ขา (khǎa) contre ค้า (kháa)"
+    },
+    {
+      "ordre": 10,
+      "titleFr": "à vous",
+      "bodyFr": "Deux réflexes aujourd’hui. À l’oreille : la feuille bouge ou ne bouge pas, et, pour les tons, la voix monte ou reste perchée. À l’œil : cherchez la consonne initiale avant tout le reste, sans oublier que เ, แ, โ, ใ et ไ s’écrivent avant elle, puis vérifiez qu’aucune marque ne surplombe la syllabe.\n\nAprès les exercices, enregistrez-vous en disant ไก่ puis ไข่, et comparez en A/B avec la voix de référence. L’enregistrement reste privé, sur votre appareil.",
+      "specimen": null
+    }
+  ],
+  "pools": [
+    {
+      "poolId": "u04-l4a-p3",
+      "promptFr": "Écoutez le mot, puis écrivez-le en transcription Thaïnaute. Une seule chose est vraiment mesurée : le h du souffle.",
+      "mechanic": "recall",
+      "drawCount": 5,
+      "passRequired": 5,
+      "sampleSize": 5
+    }
+  ],
+  "provenance": {
+    "sourceIds": [
+      "RID-2554",
+      "UNICODE-17",
+      "VOLUBILIS-26-2",
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
+    ],
+    "generationActors": [
+      {
+        "actorId": "d1b42132-80ad-52cb-a186-c1b8192c4f44",
+        "kind": "ai",
+        "role": "author"
+      }
+    ],
+    "audits": [
+      {
+        "dimension": "orthography",
+        "status": "passed",
+        "auditor": {
+          "actorId": "f3168e40-dc83-5be7-aac3-6d21aa0023b5",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "meaning",
+        "status": "passed",
+        "auditor": {
+          "actorId": "49da844c-939a-53b5-89e0-ffa82276b16d",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "pronunciation",
+        "status": "passed",
+        "auditor": {
+          "actorId": "9485ce33-8d1b-57fd-a3d6-247d809c101e",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "tone",
+        "status": "passed",
+        "auditor": {
+          "actorId": "01d9f251-7760-5a8e-9ffe-439ac857c691",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "vowel_length",
+        "status": "passed",
+        "auditor": {
+          "actorId": "d2ee664c-3043-5521-925b-3799d6b4e44f",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "register",
+        "status": "passed",
+        "auditor": {
+          "actorId": "554d72c5-19b2-59f6-82c7-b696800dce98",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      },
+      {
+        "dimension": "naturalness",
+        "status": "passed",
+        "auditor": {
+          "actorId": "3ad6a491-f8c6-57d8-8eec-993c6f646944",
+          "kind": "ai",
+          "role": "auditor"
+        }
+      }
+    ],
+    "findings": []
+  }
+}
