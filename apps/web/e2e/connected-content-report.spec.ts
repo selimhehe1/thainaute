@@ -9,7 +9,9 @@ import {
 } from "@thainaute/sync";
 import { createClient } from "@supabase/supabase-js";
 
-const WEB_ORIGIN = "http://localhost:3000";
+import { resolveWebOrigin } from "./origin";
+
+const WEB_ORIGIN = resolveWebOrigin();
 const CONTENT_VERSION_ID = "30000000-0000-4000-8000-000000000102";
 const ITEM_ID = "30000000-0000-4000-8000-000000000103";
 const EXERCISE_ID = "30000000-0000-4000-8000-000000000104";

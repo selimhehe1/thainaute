@@ -3,7 +3,9 @@ import { setTimeout as delay } from "node:timers/promises";
 
 import { expect, test, type Page } from "@playwright/test";
 
-const WEB_ORIGIN = "http://localhost:3000";
+import { resolveWebOrigin } from "./origin";
+
+const WEB_ORIGIN = resolveWebOrigin();
 
 test.skip(
   process.env.THAINAUTE_PUBLIC_CONTENT_MODE !== "supabase" ||
