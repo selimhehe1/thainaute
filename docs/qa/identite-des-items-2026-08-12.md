@@ -114,3 +114,33 @@ progression orpheline sur les anciens identifiants.
 
 Décision liée : `OPEN-LEARN-001` (seuils de maîtrise et rôle de la
 transcription), encore ouverte.
+
+## Décision du fondateur, 12 août 2026
+
+Option 1 retenue : **la carte devient l'unité de mémoire, la leçon n'est
+qu'un contexte d'apparition.**
+
+## Ce que la fusion demande réellement
+
+`node scripts/content/divergences-de-cartes.mjs` classe les 104 graphies
+concernées :
+
+| Cas                                       | Graphies |
+| ----------------------------------------- | -------: |
+| Déclarations identiques, fusion mécanique |       50 |
+| Même carte reformulée                     |       47 |
+| **À arbitrer par un humain**              |    **7** |
+
+Les sept cas, et ce qu'ils demandent :
+
+- `ไหม` : véritable homographe, la soie contre la particule de question
+  fermée. Deux cartes distinctes, pas une.
+- `ล่ะ` : deux emplois séparés, dernière syllabe du bloc `แล้วคุณล่ะ` d'un
+  côté, particule d'insistance de l'autre. Probablement deux cartes.
+- `สวัสดีครับ` : **défaut de contenu à corriger avant toute fusion**, les
+  deux leçons n'en déclarent pas la même prononciation.
+- `คะ`, `พี่`, `น้อง`, `เสีย` : une seule carte, une glose à choisir entre
+  une version courte et une version enrichie.
+
+Les 97 autres graphies ne demandent aucune décision : la fusion garde la
+déclaration la plus complète, à empreinte de prononciation identique.
