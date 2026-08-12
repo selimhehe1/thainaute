@@ -160,8 +160,8 @@ importers:
   apps/web:
     dependencies:
       '@fontsource-variable/manrope':
-        specifier: 5.2.5
-        version: 5.2.5
+        specifier: 5.3.0
+        version: 5.3.0
       '@fontsource/noto-sans-thai':
         specifier: 5.3.0
         version: 5.3.0
@@ -1188,8 +1188,8 @@ packages:
     resolution: {integrity: sha512-4aQzz9vgxcNXFfo/iyNgDDYfsU5XGKKxWxZopw0cVotHiW+U8IJbIxMaxsINs6bHhtkG3StKNPcOrn3eBuxKPw==}
     hasBin: true
 
-  '@fontsource-variable/manrope@5.2.5':
-    resolution: {integrity: sha512-6Mo3ldtgAhxvSSyy+bLbFRjkiYhVo6RLcasJfj9Du5k2nX16/RwjQdBbZJfvsofVt6GqQ+O6AVkazmS3Xw5R9A==}
+  '@fontsource-variable/manrope@5.3.0':
+    resolution: {integrity: sha512-6D5dgokHsWDDMtmXHznKa0hK229NN+1a4BLPmUCLqcO1Pw5EEhWY5RFt0AcXnVRAljFFPfRtLkJePQj6LSsV6g==}
 
   '@fontsource/noto-sans-thai@5.3.0':
     resolution: {integrity: sha512-ngqUyvDukkZUHypQbUJvUdAeYa2aYZsyeDTsdqMudf7GK2F2TK19OZ5kbo+37qsBtkNpmAMhEObQnWnzPqzKUw==}
@@ -2334,6 +2334,7 @@ packages:
   '@xmldom/xmldom@0.8.13':
     resolution: {integrity: sha512-KRYzxepc14G/CEpEGc3Yn+JKaAeT63smlDr+vjB8jRfgTBBI9wRj/nkQEO+ucV8p8I9bfKLWp37uHgFrbntPvw==}
     engines: {node: '>=10.0.0'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@xmldom/xmldom@0.9.10':
     resolution: {integrity: sha512-A9gOqLdi6cV4ibazAjcQufGj0B1y/vDqYrcuP6d/6x8P27gRS8643Dj9o1dEKtB6O7fwxb2FgBmJS2mX7gpvdw==}
@@ -6369,7 +6370,7 @@ snapshots:
       chalk: 4.1.2
       js-yaml: 4.3.1
 
-  '@fontsource-variable/manrope@5.2.5': {}
+  '@fontsource-variable/manrope@5.3.0': {}
 
   '@fontsource/noto-sans-thai@5.3.0': {}
 
