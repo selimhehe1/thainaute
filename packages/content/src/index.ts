@@ -98,3 +98,4 @@ export type {
   ContentReviewResponse,
   ContentReviewSummary,
 } from "./studio";
+export * from "./signatures";

@@ -16,7 +16,7 @@
 //   pnpm --filter @thainaute/content content:compile-lesson -- <lecon.md>
 //   ... -- <lecon.md> --ecrire
 
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -30,6 +30,11 @@ import {
   DEFAULT_LANGUAGE_PACK_ID,
   thaiFrLanguagePack,
 } from "../src/language-packs";
+import {
+  signatureCouvre,
+  signatureUniteSchema,
+  type SignatureUnite,
+} from "../src/signatures";
 import { validateBundleMetadata } from "../src/validation";
 import { getPublicationBlockers } from "../src/audit";
 
@@ -75,6 +80,24 @@ function fichiersAutorat(dossier: string): string[] {
       return /^lecon-.*\.md$/u.test(entree.name) ? [chemin] : [];
     })
     .sort((gauche, droite) => (gauche < droite ? -1 : gauche > droite ? 1 : 0));
+}
+
+/**
+ * Signature humaine couvrant cette leçon, ou `null`.
+ *
+ * Lue depuis `content/signatures/<unité>.json`, un fichier committé : l'acte
+ * porte une date, un nom et un périmètre, et se relit dans l'historique. Une
+ * variable d'environnement rendrait cette responsabilité invisible.
+ */
+function signaturePour(identifiantLecon: string): SignatureUnite | null {
+  const unite = /^u(\d{2})-l/u.exec(identifiantLecon)?.[1];
+  if (unite === undefined) return null;
+  const chemin = join(RACINE, "content", "signatures", `${unite}.json`);
+  if (!existsSync(chemin)) return null;
+  const signature = signatureUniteSchema.parse(
+    JSON.parse(readFileSync(chemin, "utf8")),
+  );
+  return signatureCouvre(signature, identifiantLecon) ? signature : null;
 }
 
 let indexItemsAutorat: Map<string, ItemCompile> | null = null;
@@ -131,6 +154,23 @@ function remplirGabarit(
  * c'est ce qui maintient la porte de publication fermée.
  */
 function provenanceDe(identifiant: string, sourceIds: string[]) {
+  // Une signature humaine ne remplace jamais la rédaction par un modèle :
+  // elle S'AJOUTE. Le dossier de preuve doit continuer de dire qui a écrit.
+  const signature = signaturePour(identifiant);
+  const humain =
+    signature === null
+      ? []
+      : [
+          {
+            actorId: uuidStable(
+              "acteur-humain",
+              signature.signataire.nom,
+              signature.unite,
+            ),
+            kind: "human" as const,
+            role: "author" as const,
+          },
+        ];
   return {
     sourceIds,
     generationActors: [
@@ -139,15 +179,28 @@ function provenanceDe(identifiant: string, sourceIds: string[]) {
         kind: "ai" as const,
         role: "author" as const,
       },
+      ...humain,
     ],
     audits: auditDimensionSchema.options.map((dimension) => ({
       dimension,
       status: "passed" as const,
-      auditor: {
-        actorId: uuidStable("auditeur", identifiant, dimension),
-        kind: "ai" as const,
-        role: "auditor" as const,
-      },
+      auditor:
+        signature === null
+          ? {
+              actorId: uuidStable("auditeur", identifiant, dimension),
+              kind: "ai" as const,
+              role: "auditor" as const,
+            }
+          : {
+              actorId: uuidStable(
+                "auditeur-humain",
+                signature.signataire.nom,
+                identifiant,
+                dimension,
+              ),
+              kind: "human" as const,
+              role: "auditor" as const,
+            },
     })),
     findings: [],
   };
@@ -566,9 +619,20 @@ export function compilerLeconComplete(chemin: string) {
     lessonId: uuidStable("lecon", identifiant),
     versionId,
     revision: 1,
-    workflowStatus: "draft",
-    visibility: "internal",
-    publishedAt: null,
+    // Une leçon ne devient publique que si une signature humaine la couvre ET
+    // demande explicitement la publication. Signer sans publier reste
+    // possible, par exemple pendant qu'une voix se termine.
+    ...(signaturePour(identifiant)?.publier === true
+      ? {
+          workflowStatus: "published" as const,
+          visibility: "public" as const,
+          publishedAt: signaturePour(identifiant)?.signeLe ?? null,
+        }
+      : {
+          workflowStatus: "draft" as const,
+          visibility: "internal" as const,
+          publishedAt: null,
+        }),
     locale: "fr-FR",
     titleFr: (lecon.meta.titreFr ?? identifiant).slice(0, 160).trim(),
     objectiveFr: (lecon.meta.objectifFr ?? identifiant).slice(0, 400).trim(),
