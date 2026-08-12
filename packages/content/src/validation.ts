@@ -334,12 +334,18 @@ export function validateBundleAudioReferences(bundle: ContentBundle): void {
     exerciseId: string,
   ): void => {
     assertCanonicalUuid(audioAssetId, `audio de ${exerciseId}`);
-    if (!assetIds.includes(audioAssetId)) {
-      throw new Error(`Audio inconnu pour ${exerciseId}.`);
-    }
     const audioEntry = audioManifest.entries.find(
       ({ assetId }) => assetId === audioAssetId,
     );
+    // Un exercice qui attend sa voix n'est PAS une incohérence de structure :
+    // l'ADR-0040 garde les exercices audio comme contrats textuels tant que
+    // le son n'est pas produit, et un manifeste vide signifie « voix à
+    // produire ». Le refuser ici empêchait `content:validate --all` de
+    // passer, donc la CI de garder le corpus, pour une dette assumée.
+    //
+    // La porte reste entière, elle est simplement à sa place :
+    // `AUDIO_ASSET_MISSING` bloque la publication dans `audit.ts`.
+    if (audioEntry === undefined) return;
     if (audioEntry?.itemId !== itemId) {
       throw new Error(`Audio rattache a un autre item pour ${exerciseId}.`);
     }
