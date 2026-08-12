@@ -54,8 +54,8 @@
 .barFill {
   display: block;
   height: 100%;
-  background: var(--color-jade);
-  transition: width var(--duration-slow) var(--easing-standard);
+  background: var(--color-jade-ink);
+  transition: width var(--motion-slow) var(--ease-standard);
 }
 
 @media (prefers-reduced-motion: reduce) {
