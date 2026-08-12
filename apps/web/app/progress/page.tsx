@@ -1,6 +1,7 @@
 import { readFiveMechanicsFixtureBundle } from "@thainaute/content";
 import Link from "next/link";
 
+import { PrimaryNavigation } from "@/components/layout/primary-navigation";
 import { SiteHeader } from "@/components/layout/site-header";
 import panel from "@/components/ui/panel.module.css";
 
@@ -24,7 +25,8 @@ export default function ProgressPage() {
   return (
     <main className={panel.shell}>
       <SiteHeader navLabel="Navigation des progrès">
-        <Link href="/today">Aujourd’hui</Link>
+        <PrimaryNavigation active="/progress" />
+        <Link href="/account">Compte</Link>
       </SiteHeader>
       <ProgressExperience lessons={[lesson]} storageKey="thainaute-demo-v1" />
     </main>

@@ -1,0 +1,21 @@
+.link,
+.active {
+  /* Cible tactile conforme au brief, même dans un en-tête dense. */
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  padding: 0 2px;
+  text-decoration: none;
+}
+
+.link {
+  color: var(--color-ink-soft);
+}
+
+/* La page courante se marque par un trait, pas seulement par une couleur :
+   une différence de teinte seule ne se voit pas de tous les yeux. */
+.active {
+  color: var(--color-ink);
+  font-weight: var(--weight-semibold);
+  border-bottom: 2px solid var(--color-coral);
+}

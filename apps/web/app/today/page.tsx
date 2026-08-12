@@ -1,8 +1,8 @@
 import { readFiveMechanicsFixtureBundle } from "@thainaute/content";
 import Link from "next/link";
 
+import { PrimaryNavigation } from "@/components/layout/primary-navigation";
 import { SiteHeader } from "@/components/layout/site-header";
-import { buttonClass } from "@/components/ui/button";
 
 import { TodayExperience } from "./today-experience";
 import styles from "./today.module.css";
@@ -16,10 +16,9 @@ export default function TodayPage() {
   return (
     <main className={styles.shell}>
       <SiteHeader navLabel="Navigation de la session">
+        <PrimaryNavigation active="/today" />
         <Link href="/path">Parcours</Link>
-        <Link className={buttonClass("ghost")} href="/account">
-          Compte
-        </Link>
+        <Link href="/account">Compte</Link>
       </SiteHeader>
       {exercise === undefined ? (
         <section className={styles.panel} aria-labelledby="today-empty-title">
