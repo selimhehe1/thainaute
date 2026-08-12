@@ -46,7 +46,7 @@ function submit(
     contentVersionId: lesson.versionId,
     algorithmVersion: SRS_ALGORITHM_VERSION,
     ...fields,
-  } as ValidatedAttemptSubmission;
+  };
 }
 
 describe("localAnswerKeysForLesson", () => {
