@@ -49,6 +49,10 @@ export function createPlaywrightConfig(
   const sharedConfig = defineConfig({
     testDir: "./e2e",
     fullyParallel: true,
+    // `next dev` compile chaque route à sa première requête, et Playwright
+    // n'attend que la racine. Sans ce préchauffage, la première navigation
+    // vers une route lourde court contre sa propre compilation.
+    globalSetup: "./e2e/global-setup.ts",
     use: {
       baseURL: externalOrigin ?? DEFAULT_ORIGIN,
       launchOptions: {
