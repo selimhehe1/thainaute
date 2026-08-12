@@ -10,6 +10,7 @@
     "./mobile": "./src/mobile.ts",
     "./preview": "./src/preview-contracts.ts",
     "./public": "./src/public-contracts.ts",
+    "./schemas": "./src/schemas.ts",
     "./studio": "./src/studio.ts"
   },
   "scripts": {

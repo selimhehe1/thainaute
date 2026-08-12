@@ -4,6 +4,7 @@ import {
 } from "@thainaute/content/mobile";
 import {
   ingestAttemptBatch,
+  localAnswerKeysForLesson,
   type AttemptOutboxSnapshot,
   type LearnerItemProjection,
 } from "@thainaute/sync";
@@ -38,64 +39,12 @@ export function nextMechanicsExpeditionExercise(
   return config.exercises.find(({ exercise }) => !completed.has(exercise.id));
 }
 
-function answerKeyForExercise(
-  exercise: LessonExercise,
-  contentVersionId: string,
-): AnyExerciseAnswerKey | null {
-  if (exercise.type === "association") {
-    const itemId = exercise.pairs[0]?.itemId;
-    if (itemId === undefined) return null;
-    return {
-      kind: "association",
-      exerciseId: exercise.id,
-      itemId,
-      skill: exercise.skill,
-      contentVersionId,
-      pairIds: exercise.pairs.map(({ id }) => id),
-    };
-  }
-  if (exercise.type === "word_order") {
-    return {
-      kind: "word_order",
-      exerciseId: exercise.id,
-      itemId: exercise.itemId,
-      skill: exercise.skill,
-      contentVersionId,
-      validTokenIds: exercise.tokens.map(({ id }) => id),
-      correctOrder: exercise.correctOrder,
-    };
-  }
-  if (exercise.type === "recall") {
-    return {
-      kind: "recall",
-      exerciseId: exercise.id,
-      itemId: exercise.itemId,
-      skill: exercise.skill,
-      contentVersionId,
-      acceptedAnswers: exercise.acceptedAnswers.map(({ value }) => value),
-      answerPolicy: exercise.answerPolicy,
-    };
-  }
-  if (exercise.type === "audio_choice" || exercise.type === "reading") {
-    return {
-      exerciseId: exercise.id,
-      itemId: exercise.itemId,
-      correctOptionId: exercise.correctOptionId,
-      skill: exercise.skill,
-      contentVersionId,
-    };
-  }
-  return null;
-}
-
 export function mechanicsAnswerKeys(
   config: MechanicsExpeditionConfig,
 ): readonly AnyExerciseAnswerKey[] {
-  const bundle = readEmbeddedUnite01LessonBundle(config.key);
-  return bundle.lesson.exercises.flatMap((exercise) => {
-    const key = answerKeyForExercise(exercise, bundle.lesson.versionId);
-    return key === null ? [] : [key];
-  });
+  return localAnswerKeysForLesson(
+    readEmbeddedUnite01LessonBundle(config.key).lesson,
+  );
 }
 
 export function ingestMechanicsExpeditionOutbox(
