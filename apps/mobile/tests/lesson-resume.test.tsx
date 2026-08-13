@@ -463,8 +463,10 @@ describe("reprise de la leçon mobile", () => {
       await screen.findByText("La boucle technique fonctionne."),
     ).toBeTruthy();
     expect(
+      // La maîtrise s'affiche en pour cent depuis que le domaine partagé
+      // en tient l'unique formulation : 250 sur mille valent 25 %.
       (
-        screen.getByText("250 ‰") as {
+        screen.getByText("25 %") as {
           getAttribute: (name: string) => string | null;
         }
       ).getAttribute("data-color"),

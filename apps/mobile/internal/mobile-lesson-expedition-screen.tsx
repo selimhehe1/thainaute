@@ -1,7 +1,7 @@
 // Aperçu éditorial conservé hors du graphe Expo public.
 import type { AnalyticsSink } from "@thainaute/analytics";
 import { colors } from "@thainaute/design-tokens";
-import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
+import { SRS_ALGORITHM_VERSION, libelleMaitrise } from "@thainaute/domain";
 import {
   attemptSubmissionSchema,
   attemptSubmissionsAreEqual,
@@ -663,7 +663,9 @@ function CelebrationStage({
       <Text style={styles.translation}>{current.item.translationFr}</Text>
       <View style={styles.metric}>
         <Text style={styles.metricLabel}>MAÎTRISE ESTIMÉE</Text>
-        <Text style={styles.metricValue}>{celebration.masteryScore} ‰</Text>
+        <Text style={styles.metricValue}>
+          {libelleMaitrise(celebration.masteryScore)}
+        </Text>
       </View>
       <View style={styles.metric}>
         <Text style={styles.metricLabel}>PROCHAINE RÉVISION</Text>
@@ -720,7 +722,7 @@ function RecapStage({
               </View>
               <View style={styles.recapScore}>
                 <Text style={styles.recapScoreValue}>
-                  {projection?.state.masteryScore ?? 0} ‰
+                  {libelleMaitrise(projection?.state.masteryScore ?? 0)}
                 </Text>
                 <Text style={styles.recapDue}>
                   {dueAtText(projection?.state.dueAt)}

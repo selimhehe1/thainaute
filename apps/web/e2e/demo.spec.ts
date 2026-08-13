@@ -36,8 +36,9 @@ test("termine l'expédition des cinq mécaniques", async ({ page }) => {
   // Les cinq exercices portent une maîtrise chiffrée. Deux d'entre eux
   // entraînent le même item dans la même compétence, donc leur projection
   // est commune et vaut le double : c'est le SRS qui parle, pas un défaut.
-  await expect(page.getByText(/^Maîtrise \d+ ‰$/u)).toHaveCount(5);
-  await expect(page.getByText("250 ‰", { exact: true })).toBeVisible();
+  await expect(page.getByText(/^Maîtrise \d+ %$/u)).toHaveCount(5);
+  // Le domaine partagé tient l'unique formulation : 250 sur mille = 25 %.
+  await expect(page.getByText("25 %", { exact: true })).toBeVisible();
 });
 
 test("enregistre, compare puis supprime une prise locale", async ({ page }) => {

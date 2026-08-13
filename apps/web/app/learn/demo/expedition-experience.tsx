@@ -47,6 +47,7 @@ import {
   type LegacyDemoFixtureMigrationOperation,
 } from "@/lib/client/attempt-outbox-store";
 import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
+import { libelleMaitrise } from "@thainaute/domain";
 import { referenceVocalePourLecon } from "@/lib/reference-vocale";
 import { useWebAuthSession } from "@/lib/client/auth-session";
 import { browserSha256Hex } from "@/lib/client/sha256";
@@ -2073,7 +2074,7 @@ export function ExpeditionExperience({
                   <span className={styles.recapMastery}>
                     {projection === undefined
                       ? "Maîtrise à calculer"
-                      : `Maîtrise ${projection.masteryScore} ‰`}
+                      : `Maîtrise ${libelleMaitrise(projection.masteryScore)}`}
                   </span>
                 </li>
               );
@@ -2082,7 +2083,9 @@ export function ExpeditionExperience({
           <div className={styles.masteryPanel}>
             <div>
               <span>Maîtrise estimée</span>
-              <strong>{listeningProjection?.masteryScore ?? 0} ‰</strong>
+              <strong>
+                {libelleMaitrise(listeningProjection?.masteryScore ?? 0)}
+              </strong>
             </div>
             <div>
               <span>Prochaine révision</span>

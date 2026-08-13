@@ -31,3 +31,5 @@ export {
   type LearnerItemState,
   type MasteryStatus,
 } from "./srs";
+
+export { libelleMaitrise, maitriseEnPourcent } from "./maitrise";
