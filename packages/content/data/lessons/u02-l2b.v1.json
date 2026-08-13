@@ -473,6 +473,34 @@
       ]
     },
     {
+      "id": "7a2a550a-4e7c-59a7-9428-1949931cfbce",
+      "thaiRaw": "คะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "particule finale d’une locutrice, en fin de question ou d’information donnée poliment",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
       "id": "2d788d0b-1dbb-50ec-9a98-94bfd1b11585",
       "thaiRaw": "สบายดี",
       "unicodeCodePoints": [
@@ -522,6 +550,36 @@
     }
   ],
   "exercises": [
+    {
+      "poolId": "u02-l2b-p1",
+      "drawIndex": 1,
+      "id": "4755b87d-c8ad-50a2-b6a5-74eccc906c97",
+      "type": "audio_choice",
+      "itemId": "7a2a550a-4e7c-59a7-9428-1949931cfbce",
+      "skill": "listening",
+      "audioAssetId": "27432a11-fb5b-5add-b60a-1f1e8d253991",
+      "promptFr": "Vous entendez une seule syllabe, celle qui termine la phrase d’une femme. Est-ce la particule d’une question, ou celle d’une réponse ?",
+      "options": [
+        {
+          "id": "ad524f56-8171-5a69-994d-03bc7e942e96",
+          "labelFr": "Une question",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "f972a3f9-70f6-56d9-aa94-a91c44be5ab8",
+          "labelFr": "Une réponse",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "ad524f56-8171-5a69-994d-03bc7e942e96",
+      "feedback": {
+        "correctFr": "Bien entendu. La syllabe reste haute et se coupe net (khá) : c’est une question. Quand elle répond, la même syllabe part de haut et tombe (khâ).",
+        "incorrectFr": "Un indice : les deux syllabes sont aussi brèves l’une que l’autre, seule la direction change. Tenue en haut, c’est khá et c’est une question. Descendante, c’est khâ et c’est une réponse. Réécoutez.",
+        "variants": []
+      }
+    },
     {
       "poolId": "u02-l2b-p2",
       "drawIndex": 1,
@@ -645,6 +703,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u02-l2b-p1",
+      "promptFr": "Vous entendez une seule syllabe, celle qui termine la phrase d’une femme. Est-ce la particule d’une question, ou celle d’une réponse ?",
+      "mechanic": "audio_choice",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
     {
       "poolId": "u02-l2b-p2",
       "promptFr": "Nok, une femme, demande à sa voisine comment elle va. Remettez les blocs dans l’ordre. Attention, un bloc est de trop : retirez-le.",

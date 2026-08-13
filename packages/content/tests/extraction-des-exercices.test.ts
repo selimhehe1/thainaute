@@ -130,19 +130,63 @@ ${FEEDBACK}`;
     expect(tirage(CORPS, 4).indiceCorrect).toBe(3);
   });
 
-  it("refuse une sous-liste à puces, dont la barre oblique sépare les faces", () => {
+  it("lit une sous-liste à puces sans confondre les faces d’une option", () => {
     // Repris de u03-l3c : « 15 bahts / สิบห้าบาท / sìp·hâa bàat » est UNE
-    // option montrée de trois façons. La découper inventerait des options.
+    // option montrée de trois façons. La découper sur la barre oblique en
+    // inventerait quatre là où la leçon en pose deux. Le libellé retenu est
+    // la première face, celle que la réponse cite.
     const puces = `
 - Mécanique : \`listening\`
 - Consigne : « Quel prix ? »
-- Options, affichées en chiffres, en thaï et en transcription :
+- Options, affichées en chiffres et en thaï :
   - 15 bahts / สิบห้าบาท / sìp·hâa bàat
   - 50 bahts / ห้าสิบบาท / hâa·sìp bàat
 - Tirages :
   1. Audio ห้าสิบบาท : réponse 50 bahts.
 ${FEEDBACK}`;
-    expect(refus(puces).ok).toBe(false);
+    const extrait = ecoute(puces);
+    expect(extrait.libelles).toEqual(["15 bahts", "50 bahts"]);
+    expect(tirage(puces, 1).indiceCorrect).toBe(1);
+  });
+
+  it("lit des options numérotées et leur réponse, sans champ Tirages", () => {
+    // Repris de u01-l1e et de l'unité 2 : les lignes numérotées sont les
+    // OPTIONS, pas des tirages. `lignesTirage` les prenait pour des tirages
+    // et cherchait ensuite des options à l'intérieur d'une option.
+    const numerotees = `
+- Mécanique : \`listening\`
+- Audio : réplique 4 du dialogue, « ค่า », jouée seule.
+- Consigne : « Qui parle ? »
+- Options :
+  1. Un homme
+  2. Une femme
+  3. Impossible à savoir
+- Réponse correcte : 2 (Une femme)
+${FEEDBACK}`;
+    const extrait = ecoute(numerotees);
+    expect(extrait.libelles).toEqual([
+      "Un homme",
+      "Une femme",
+      "Impossible à savoir",
+    ]);
+    expect(extrait.tirages).toHaveLength(1);
+    expect(tirage(numerotees, 1).indiceCorrect).toBe(1);
+    expect(tirage(numerotees, 1).itemId).toBe("item-ค่า");
+  });
+
+  it("refuse un bloc à question unique dont l’audio ne cite aucune graphie", () => {
+    // Sans graphie, aucune carte n'est créditable. Rattacher au hasard
+    // serait pire qu'un refus.
+    const sansGraphie = `
+- Mécanique : \`listening\`
+- Audio : réplique 4 du dialogue, jouée seule.
+- Consigne : « Qui parle ? »
+- Options :
+  1. Un homme
+  2. Une femme
+- Réponse correcte : 2 (Une femme)
+${FEEDBACK}`;
+    expect(refus(sansGraphie).motif).toMatch(/aucune graphie thaïe/u);
   });
 });
 
