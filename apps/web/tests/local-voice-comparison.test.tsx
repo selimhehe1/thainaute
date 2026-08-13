@@ -9,13 +9,25 @@ import userEvent from "@testing-library/user-event";
 import type { ComponentProps } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { LocalVoiceComparison as LocalVoiceComparisonUnderTest } from "../app/learn/demo/local-voice-comparison";
+import {
+  LocalVoiceComparison as LocalVoiceComparisonUnderTest,
+  type ReferenceVocale,
+} from "../app/learn/demo/local-voice-comparison";
 import {
   type ActiveLocalVoiceRecording,
   type LocalVoiceCapture,
   type LocalVoiceRecorder,
   LocalVoiceRecorderError,
 } from "../lib/client/local-voice-recorder";
+
+/** La référence de la boucle technique, celle que ces tests éprouvaient. */
+const REFERENCE_FIXTURE: ReferenceVocale = {
+  src: "/audio/fixture-tone.wav",
+  libelle: "signal modèle fictif",
+  description:
+    "Signal sonore fictif : une note pure de 440 hertz pendant 0,32 seconde, sans parole.",
+  captionsSrc: "/captions/fixture-tone.fr.vtt",
+};
 
 type TestLocalVoiceComparisonProps = Omit<
   ComponentProps<typeof LocalVoiceComparisonUnderTest>,
@@ -146,17 +158,17 @@ describe("comparaison vocale locale web", () => {
     const recorder = fakeRecorder(first);
     render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
       />,
     );
 
     expect(recorder.start).not.toHaveBeenCalled();
     expect(
-      screen.getByLabelText("Lire le signal modèle fictif"),
+      screen.getByLabelText("Lire la référence, signal modèle fictif"),
     ).toHaveAttribute("src", "/audio/fixture-tone.wav");
     const modelBeforePermission = screen.getByLabelText(
-      "Lire le signal modèle fictif",
+      "Lire la référence, signal modèle fictif",
     );
     expect(
       modelBeforePermission.querySelector('track[kind="captions"]'),
@@ -184,7 +196,9 @@ describe("comparaison vocale locale web", () => {
       "src",
       "/captions/local-voice.fr.vtt",
     );
-    const modelAudio = screen.getByLabelText("Lire le signal modèle fictif");
+    const modelAudio = screen.getByLabelText(
+      "Lire la référence, signal modèle fictif",
+    );
     const pauseModel = vi.fn();
     const pauseLocal = vi.fn();
     (modelAudio as HTMLAudioElement).pause = pauseModel;
@@ -220,7 +234,7 @@ describe("comparaison vocale locale web", () => {
     const recorder = fakeRecorder(first);
     const { rerender } = render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
         sessionBoundaryRevision={0}
       />,
@@ -233,7 +247,7 @@ describe("comparaison vocale locale web", () => {
 
     rerender(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
         sessionBoundaryRevision={1}
       />,
@@ -255,7 +269,7 @@ describe("comparaison vocale locale web", () => {
     const recorder = fakeRecorder(fakeRecording());
     const { rerender } = render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
         sessionBoundaryRevision={0}
       />,
@@ -263,7 +277,7 @@ describe("comparaison vocale locale web", () => {
 
     rerender(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
         sessionBoundaryRevision={1}
       />,
@@ -279,7 +293,7 @@ describe("comparaison vocale locale web", () => {
     const recorder = fakeRecorder(first);
     const { rerender } = render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
         sessionBoundaryRevision={0}
       />,
@@ -289,7 +303,7 @@ describe("comparaison vocale locale web", () => {
 
     rerender(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
         sessionBoundaryRevision={1}
       />,
@@ -313,7 +327,7 @@ describe("comparaison vocale locale web", () => {
     };
     const { rerender } = render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
         sessionBoundaryRevision={0}
       />,
@@ -325,7 +339,7 @@ describe("comparaison vocale locale web", () => {
 
     rerender(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
         sessionBoundaryRevision={1}
       />,
@@ -348,12 +362,14 @@ describe("comparaison vocale locale web", () => {
     };
     render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         onBeforeCapture={onBeforeCapture}
         recorder={recorder}
       />,
     );
-    const modelAudio = screen.getByLabelText("Lire le signal modèle fictif");
+    const modelAudio = screen.getByLabelText(
+      "Lire la référence, signal modèle fictif",
+    );
     const pauseModel = vi.fn();
     (modelAudio as HTMLAudioElement).pause = pauseModel;
     expect(modelAudio).toHaveAttribute("controls");
@@ -379,7 +395,7 @@ describe("comparaison vocale locale web", () => {
     const recorder = fakeRecorder(first);
     render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
       />,
     );
@@ -387,7 +403,9 @@ describe("comparaison vocale locale web", () => {
     const stopButton = await screen.findByRole("button", {
       name: "Arrêter l’enregistrement",
     });
-    const modelAudio = screen.getByLabelText("Lire le signal modèle fictif");
+    const modelAudio = screen.getByLabelText(
+      "Lire la référence, signal modèle fictif",
+    );
     const pauseModel = vi.fn();
     (modelAudio as HTMLAudioElement).pause = pauseModel;
 
@@ -430,7 +448,7 @@ describe("comparaison vocale locale web", () => {
     const recorder = fakeRecorder(first, second);
     render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
       />,
     );
@@ -440,7 +458,9 @@ describe("comparaison vocale locale web", () => {
     );
     const localAudio = await screen.findByLabelText("Lire ma prise locale");
     expect(URL.createObjectURL).toHaveBeenCalledWith(first.capture.blob);
-    const modelAudio = screen.getByLabelText("Lire le signal modèle fictif");
+    const modelAudio = screen.getByLabelText(
+      "Lire la référence, signal modèle fictif",
+    );
     const pauseModel = vi.fn();
     const pauseLocal = vi.fn();
     (modelAudio as HTMLAudioElement).pause = pauseModel;
@@ -473,7 +493,7 @@ describe("comparaison vocale locale web", () => {
     const recorder = fakeRecorder(first);
     const { unmount } = render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
       />,
     );
@@ -496,7 +516,7 @@ describe("comparaison vocale locale web", () => {
     };
     render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
       />,
     );
@@ -520,7 +540,7 @@ describe("comparaison vocale locale web", () => {
     const recorder = fakeRecorder(first);
     render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
       />,
     );
@@ -542,7 +562,7 @@ describe("comparaison vocale locale web", () => {
     const recorder = fakeRecorder(first);
     render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
       />,
     );
@@ -575,7 +595,7 @@ describe("comparaison vocale locale web", () => {
     const recorder = fakeRecorder(first);
     const { unmount } = render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
       />,
     );
@@ -596,7 +616,7 @@ describe("comparaison vocale locale web", () => {
     const recorder = fakeRecorder(first);
     render(
       <LocalVoiceComparison
-        modelAudioSrc="/audio/fixture-tone.wav"
+        reference={REFERENCE_FIXTURE}
         recorder={recorder}
       />,
     );
@@ -606,7 +626,9 @@ describe("comparaison vocale locale web", () => {
     );
     const localAudio = await screen.findByLabelText("Lire ma prise locale");
     expect(URL.createObjectURL).toHaveBeenCalledWith(first.capture.blob);
-    const modelAudio = screen.getByLabelText("Lire le signal modèle fictif");
+    const modelAudio = screen.getByLabelText(
+      "Lire la référence, signal modèle fictif",
+    );
     const pauseModel = vi.fn();
     const pauseLocal = vi.fn();
     (modelAudio as HTMLAudioElement).pause = pauseModel;
@@ -642,7 +664,7 @@ describe("comparaison vocale locale web", () => {
       };
       render(
         <LocalVoiceComparison
-          modelAudioSrc="/audio/fixture-tone.wav"
+          reference={REFERENCE_FIXTURE}
           recorder={recorder}
         />,
       );

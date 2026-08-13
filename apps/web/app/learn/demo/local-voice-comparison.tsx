@@ -61,13 +61,30 @@ function safeRecorderMessage(error: unknown): string {
   }
 }
 
+/**
+ * La référence à laquelle l'apprenant compare sa voix.
+ *
+ * Elle était écrite en dur sur le signal de la fixture, une note pure de
+ * 440 hertz. Une vraie leçon proposait donc de comparer sa prononciation
+ * thaïe à un bip, ce qui est au mieux inutile et au pire trompeur.
+ */
+export interface ReferenceVocale {
+  readonly src: string;
+  /** Ce que le bouton annonce : « ค่า · khâa », ou le signal fictif. */
+  readonly libelle: string;
+  /** Description lue par un lecteur d'écran, jamais inventée. */
+  readonly description: string;
+  /** Piste de sous-titres quand elle existe pour ce média. */
+  readonly captionsSrc: string | null;
+}
+
 export function LocalVoiceComparison({
-  modelAudioSrc,
+  reference,
   onBeforeCapture,
   recorder,
   sessionBoundaryRevision,
 }: {
-  readonly modelAudioSrc: string;
+  readonly reference: ReferenceVocale;
   readonly onBeforeCapture?: () => void;
   readonly recorder?: LocalVoiceRecorder;
   readonly sessionBoundaryRevision: number;
@@ -396,15 +413,14 @@ export function LocalVoiceComparison({
       <div className={lessonStyles.voiceTracks}>
         <article>
           <span className={lessonStyles.voiceTrackLabel}>
-            A · signal modèle fictif
+            A · {reference.libelle}
           </span>
           <span className="srOnly" id="model-audio-description">
-            Signal sonore fictif : une note pure de 440 hertz pendant 0,32
-            seconde, sans parole.
+            {reference.description}
           </span>
           <audio
             aria-describedby="model-audio-description"
-            aria-label="Lire le signal modèle fictif"
+            aria-label={`Lire la référence, ${reference.libelle}`}
             aria-disabled={isCaptureBusy}
             controls={!isCaptureBusy}
             onError={() =>
@@ -422,15 +438,20 @@ export function LocalVoiceComparison({
             }}
             preload="metadata"
             ref={modelAudio}
-            src={modelAudioSrc}
+            src={reference.src}
           >
-            <track
-              default
-              kind="captions"
-              label="Description française du signal"
-              src="/captions/fixture-tone.fr.vtt"
-              srcLang="fr"
-            />
+            {/* Pas de piste inventée : une voix thaïe n'a pas de fichier de
+                sous-titres, et sa description accessible est portée par
+                `model-audio-description` juste au-dessus. */}
+            {reference.captionsSrc !== null && (
+              <track
+                default
+                kind="captions"
+                label="Description française du signal"
+                src={reference.captionsSrc}
+                srcLang="fr"
+              />
+            )}
           </audio>
         </article>
         <article>

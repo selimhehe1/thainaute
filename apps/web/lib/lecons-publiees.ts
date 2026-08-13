@@ -1,5 +1,39 @@
-import { authoringCatalog, readCompiledLessonBundle } from "@thainaute/content";
+import {
+  authoringCatalog,
+  readAuthoringCompiledLessonBundle,
+  readCompiledLessonBundle,
+} from "@thainaute/content";
+import type { ContentBundle } from "@thainaute/content";
 import type { Lesson } from "@thainaute/content/schemas";
+
+/**
+ * Un paquet de cours, quel que soit le registre qui le porte.
+ *
+ * POURQUOI CETTE FONCTION EXISTE : le dépôt tient deux registres. Celui de
+ * `repository.ts` est écrit à la main et n'en connaît que 24 ; celui de
+ * `authoring-compiled.generated.ts` est généré et les connaît toutes. La
+ * route `/learn/lecon/[lecon]` interrogeait déjà les deux, la liste des
+ * leçons publiées un seul. Une leçon signée absente du registre manuel
+ * aurait donc été ouvrable par son adresse et invisible partout ailleurs.
+ *
+ * La publication est gardée par la signature et le statut, pas par
+ * l'appartenance à un registre : les deux lectures doivent voir la même
+ * chose.
+ */
+export function lireCours(slug: string): ContentBundle | null {
+  return (
+    readCompiledLessonBundle(slug) ?? readAuthoringCompiledLessonBundle(slug)
+  );
+}
+
+/** Le paquet, seulement s'il a franchi la porte de publication. */
+export function lireCoursPublie(slug: string): ContentBundle | null {
+  const bundle = lireCours(slug);
+  return bundle?.lesson.workflowStatus === "published" &&
+    bundle.lesson.visibility === "public"
+    ? bundle
+    : null;
+}
 
 /**
  * Les leçons qu'une personne peut réellement ouvrir aujourd'hui.
@@ -22,14 +56,8 @@ export type LeconPubliee = {
 
 export function leconsPubliees(): readonly LeconPubliee[] {
   return authoringCatalog.flatMap((entry) => {
-    const bundle = readCompiledLessonBundle(entry.lessonId);
+    const bundle = lireCoursPublie(entry.lessonId);
     if (bundle === null) return [];
-    if (
-      bundle.lesson.workflowStatus !== "published" ||
-      bundle.lesson.visibility !== "public"
-    ) {
-      return [];
-    }
     return [
       {
         lessonId: entry.lessonId,
@@ -62,7 +90,7 @@ export function paquetsPublies(): readonly {
   readonly lesson: Lesson;
 }[] {
   return leconsPubliees().flatMap(({ lessonId }) => {
-    const bundle = readCompiledLessonBundle(lessonId);
+    const bundle = lireCoursPublie(lessonId);
     return bundle === null ? [] : [{ slug: lessonId, lesson: bundle.lesson }];
   });
 }

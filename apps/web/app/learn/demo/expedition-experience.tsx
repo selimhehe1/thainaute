@@ -47,6 +47,7 @@ import {
   type LegacyDemoFixtureMigrationOperation,
 } from "@/lib/client/attempt-outbox-store";
 import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
+import { referenceVocalePourLecon } from "@/lib/reference-vocale";
 import { useWebAuthSession } from "@/lib/client/auth-session";
 import { browserSha256Hex } from "@/lib/client/sha256";
 import {
@@ -404,6 +405,14 @@ export function ExpeditionExperience({
       lesson.exercises.find((exercice) => exercice.type === "audio_choice")
         ?.audioAssetId ?? null,
     [lesson.exercises],
+  );
+
+  // À quoi l'apprenant compare sa voix. La dérivation vit dans
+  // `@/lib/reference-vocale`, pour être éprouvée sans jouer toute une leçon
+  // jusqu'à son récapitulatif.
+  const referenceVocale = useMemo(
+    () => referenceVocalePourLecon(lesson, audioSources),
+    [audioSources, lesson],
   );
 
   const online = useSyncExternalStore(
@@ -2075,7 +2084,7 @@ export function ExpeditionExperience({
             </div>
           </div>
           <LocalVoiceComparison
-            modelAudioSrc="/audio/fixture-tone.wav"
+            reference={referenceVocale}
             onBeforeCapture={stopSignal}
             sessionBoundaryRevision={sessionBoundaryRevision}
           />

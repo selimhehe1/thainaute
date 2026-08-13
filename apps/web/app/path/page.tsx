@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { buttonClass } from "@/components/ui/button";
 import panel from "@/components/ui/panel.module.css";
 
+import { ParcoursReel, unitesDuParcours } from "./parcours-reel";
 import { PathExperience } from "./path-experience";
 import styles from "./path.module.css";
 
@@ -14,9 +15,15 @@ export const metadata = {
 };
 
 /**
- * Le parcours public n'énumère aucun brouillon d'autorat. Tant que la
- * première release n'existe pas, il affiche uniquement la boucle technique
- * explicitement marquée comme fictive et non publiable.
+ * Le parcours réel, suivi de la boucle technique.
+ *
+ * Cette page annonçait « Le premier parcours linguistique reste en
+ * relecture » et ne servait que la fixture, ce qui est devenu faux le jour
+ * où l'unité 1 a été signée. Elle montre désormais l'itinéraire par unités.
+ *
+ * Ce qu'elle ne fait toujours pas, et ne doit pas faire : révéler un
+ * brouillon. Une leçon non signée n'expose ni titre ni objectif, seulement
+ * son existence comme nombre.
  */
 export default function PathPage() {
   const { lesson } = readFiveMechanicsFixtureBundle();
@@ -33,22 +40,7 @@ export default function PathPage() {
         </Link>
       </SiteHeader>
 
-      <section
-        className={`${panel.panel} ${styles.introPanel}`}
-        aria-labelledby="path-status-title"
-      >
-        <span className={styles.introIndex} aria-hidden="true">
-          01
-        </span>
-        <p className={panel.eyebrow}>Tranche de validation</p>
-        <h1 className={styles.introTitle} id="path-status-title">
-          Le premier parcours linguistique reste en relecture.
-        </h1>
-        <p className={panel.lede}>
-          Les cours internes, leurs notes et leurs exercices ne sont pas
-          accessibles avant le passage de toutes les portes éditoriales.
-        </p>
-      </section>
+      <ParcoursReel unites={unitesDuParcours()} />
 
       {exercise === undefined ? (
         <section className={panel.panel} aria-labelledby="path-empty-title">
