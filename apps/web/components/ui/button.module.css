@@ -55,13 +55,16 @@
 }
 
 .primary {
-  background: var(--color-coral);
+  /* Le corail de marque porte 3,32:1 avec du blanc, là où WCAG AA en
+     demande 4,5:1 pour ce corps de texte. `coral-action` est le corail qui
+     porte du texte ; `coral` reste celui des traits et des pastilles. */
+  background: var(--color-coral-action);
   color: var(--color-paper);
   box-shadow: var(--shadow-lifted);
 }
 
 .primary:hover:not(:disabled) {
-  background: var(--color-coral-deep);
+  background: var(--color-coral-action-deep);
   transform: translateY(-2px);
 }
 
@@ -82,7 +85,7 @@
 
 .danger {
   background: transparent;
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
   border: 1.5px solid var(--color-coral);
 }
 

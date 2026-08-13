@@ -57,7 +57,7 @@ export const fixtureLessonConfig = createLessonExperienceConfig(
   {
     allowColdStart: false,
     bannerText: "Chaîne technique uniquement",
-    bannerTitle: "Donnée fictive — non publiable",
+    bannerTitle: "Donnée fictive · non publiable",
     completionPrivacy:
       "Cette démonstration technique reste isolée sur cet appareil et ne sera jamais synchronisée comme contenu pédagogique.",
     headerStep: "1 exercice",

@@ -39,7 +39,7 @@
 }
 
 .prose a {
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
   text-underline-offset: 3px;
 }
 

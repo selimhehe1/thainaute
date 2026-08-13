@@ -30,7 +30,7 @@
   font-family: var(--font-serif-accent);
   font-style: italic;
   font-size: 15px;
-  color: var(--color-coral);
+  color: var(--color-coral-action);
   margin: 0 0 8px;
 }
 
@@ -77,7 +77,7 @@
   font-style: italic;
   font-size: 30px;
   line-height: 1;
-  color: var(--color-coral);
+  color: var(--color-coral-action);
   opacity: 0.75;
 }
 
@@ -242,7 +242,7 @@
   font-weight: var(--weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.09em;
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
   margin-bottom: 4px;
 }
 
