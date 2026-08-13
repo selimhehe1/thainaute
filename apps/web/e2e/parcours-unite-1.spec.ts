@@ -68,3 +68,20 @@ test("termine la leçon 1A et affiche sa maîtrise", async ({ page }) => {
   ).toBeVisible();
   await expect(page.getByText("Prochaine révision")).toBeVisible();
 });
+
+test("retrouve la séance terminée dans Progrès", async ({ page }) => {
+  // La preuve de bout en bout de la rupture corrigée. Le lecteur écrit dans
+  // `thainaute-learning-v1`, la page de progrès lisait `thainaute-demo-v1` :
+  // une séance réelle disparaissait entre les deux, sans qu'aucun test ne
+  // relie l'écriture à la lecture.
+  await ouvrirLeconPubliee(page, "u01-l1a");
+  await completeLecon1a(page);
+
+  await page.goto("/progress");
+  await expect(
+    page.getByRole("heading", { name: "Ce que vous avez appris." }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Écouter le thaï pour la première fois"),
+  ).toBeVisible();
+});
