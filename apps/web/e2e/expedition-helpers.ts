@@ -17,10 +17,15 @@ export async function terminerOnboarding(page: Page): Promise<void> {
   await page.getByRole("button", { name: "Préparer ma session" }).click();
 }
 
-/** Onboarding court puis ouverture du lecteur sur la boucle technique. */
+/**
+ * Onboarding court puis ouverture du lecteur sur la boucle technique.
+ *
+ * On y va par son adresse et non par le lien de session : depuis que la
+ * séance du jour propose un cours réel, ce lien mène à l'unité 1.
+ */
 export async function openExpeditionAfterOnboarding(page: Page): Promise<void> {
   await terminerOnboarding(page);
-  await page.getByRole("link", { name: "Commencer la session" }).click();
+  await page.goto("/learn/demo");
 }
 
 /**

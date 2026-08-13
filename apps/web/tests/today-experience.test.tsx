@@ -17,7 +17,12 @@ const lesson = {
   exerciseId: "10000000-0000-4000-8000-000000000004",
   title: "Boucle technique locale",
   objective: "Vérifier la reprise sans enseigner de contenu.",
+  href: "/learn/demo",
+  estFixture: true,
 };
+
+/** Une seule séance proposable : la boucle technique, comme avant. */
+const proposables = [lesson];
 
 async function clearExperienceDatabase(): Promise<void> {
   await new WebLocalExperienceStore().deleteForTests();
@@ -59,7 +64,9 @@ describe("écran Aujourd’hui web", () => {
     async () => {
       const user = userEvent.setup();
       const capture = vi.fn();
-      render(<TodayExperience lesson={lesson} analytics={{ capture }} />);
+      render(
+        <TodayExperience proposables={proposables} analytics={{ capture }} />,
+      );
 
       expect(
         await screen.findByRole(
@@ -117,11 +124,51 @@ describe("écran Aujourd’hui web", () => {
     LOCAL_STORAGE_HYDRATION_TIMEOUT_MS + 7_000,
   );
 
+  it("propose un cours réel plutôt que la boucle technique", async () => {
+    // La rupture corrigée : le chemin par défaut, accueil puis Aujourd'hui,
+    // ne rencontrait jamais un cours. La fixture reste en dernier recours,
+    // et ne doit donc pas gagner tant qu'une leçon publiée est proposable.
+    await seedCompletedOnboarding();
+    const cours = {
+      versionId: "20000000-0000-4000-8000-000000000001",
+      exerciseId: "20000000-0000-4000-8000-000000000002",
+      title: "Écouter le thaï pour la première fois",
+      objective: "Distinguer une voix qui tombe d’une voix qui grimpe.",
+      href: "/learn/lecon/u01-l1a",
+      estFixture: false,
+    };
+
+    render(<TodayExperience proposables={[cours, lesson]} />);
+
+    expect(
+      await screen.findByRole("heading", {
+        name: "Écouter le thaï pour la première fois",
+      }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("link", { name: "Commencer la session" }),
+    ).toHaveAttribute("href", "/learn/lecon/u01-l1a");
+    expect(screen.queryByText("Fixture · non publiable")).toBeNull();
+  });
+
+  it("retombe sur la boucle technique quand rien n’est publié", async () => {
+    await seedCompletedOnboarding();
+
+    render(<TodayExperience proposables={proposables} />);
+
+    expect(
+      await screen.findByRole("heading", { name: "Boucle technique locale" }),
+    ).toBeVisible();
+    expect(screen.getByText("Fixture · non publiable")).toBeVisible();
+  });
+
   it("restaure l’onboarding sans renvoyer les analytics", async () => {
     await seedCompletedOnboarding();
     const capture = vi.fn();
 
-    render(<TodayExperience lesson={lesson} analytics={{ capture }} />);
+    render(
+      <TodayExperience proposables={proposables} analytics={{ capture }} />,
+    );
 
     expect(
       await screen.findByRole("heading", {
@@ -136,7 +183,7 @@ describe("écran Aujourd’hui web", () => {
     const user = userEvent.setup();
     const capture = vi.fn();
     const firstRender = render(
-      <TodayExperience lesson={lesson} analytics={{ capture }} />,
+      <TodayExperience proposables={proposables} analytics={{ capture }} />,
     );
 
     await screen.findByRole("heading", {
@@ -155,7 +202,9 @@ describe("écran Aujourd’hui web", () => {
     });
     firstRender.unmount();
 
-    render(<TodayExperience lesson={lesson} analytics={{ capture }} />);
+    render(
+      <TodayExperience proposables={proposables} analytics={{ capture }} />,
+    );
 
     expect(
       await screen.findByRole("radio", { name: "10 minutes" }),
@@ -182,7 +231,7 @@ describe("écran Aujourd’hui web", () => {
     );
     store.close();
 
-    render(<TodayExperience lesson={lesson} />);
+    render(<TodayExperience proposables={proposables} />);
 
     await screen.findByRole("heading", {
       name: "Préparons votre première session.",
@@ -201,7 +250,7 @@ describe("écran Aujourd’hui web", () => {
       value: false,
     });
 
-    render(<TodayExperience lesson={lesson} />);
+    render(<TodayExperience proposables={proposables} />);
 
     expect(
       await screen.findByText(
@@ -222,7 +271,7 @@ describe("écran Aujourd’hui web", () => {
     });
     seed.close();
 
-    render(<TodayExperience lesson={lesson} />);
+    render(<TodayExperience proposables={proposables} />);
 
     expect(
       await screen.findByRole("heading", {
@@ -249,7 +298,7 @@ describe("écran Aujourd’hui web", () => {
     vi.useFakeTimers();
 
     try {
-      render(<TodayExperience lesson={lesson} />);
+      render(<TodayExperience proposables={proposables} />);
 
       await act(async () => {
         await vi.advanceTimersByTimeAsync(LOCAL_STORAGE_HYDRATION_TIMEOUT_MS);

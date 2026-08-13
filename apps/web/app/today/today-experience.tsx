@@ -25,20 +25,23 @@ import {
   withLocalStorageDeadline,
 } from "@/lib/client/local-storage-deadline";
 import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
+import {
+  choisirSeanceDuJour,
+  type SeanceProposable,
+} from "@/lib/seance-du-jour";
 import { ToneCurve } from "@/components/brand/tone-curve";
 import { buttonClass } from "@/components/ui/button";
 
 import styles from "./today.module.css";
 
-interface TodayLesson {
-  readonly versionId: string;
-  readonly exerciseId: string;
-  readonly title: string;
-  readonly objective: string;
-}
-
 interface TodayExperienceProps {
-  readonly lesson: TodayLesson;
+  /**
+   * Les séances ouvrables, dans l'ordre du parcours, la boucle technique en
+   * dernier recours. C'est la page qui les fournit, parce qu'elle seule sait
+   * ce qui est publié ; c'est le navigateur qui choisit, parce que lui seul
+   * connaît la progression locale.
+   */
+  readonly proposables: readonly SeanceProposable[];
   readonly analytics?: AnalyticsSink;
 }
 
@@ -89,7 +92,7 @@ function captureSafely(
 }
 
 export function TodayExperience({
-  lesson,
+  proposables,
   analytics: analyticsOverride,
 }: TodayExperienceProps) {
   const { analytics: consentAwareAnalytics } = useWebAnalyticsConsent();
@@ -396,6 +399,29 @@ export function TodayExperience({
   }
 
   const completedOnboarding = snapshot.onboarding;
+  // La séance du jour se choisit ici, une fois l'instantané local lu :
+  // l'expédition ouverte gagne, sinon la première leçon jamais travaillée.
+  // La progression fine, elle, vit dans le journal des tentatives et n'est
+  // pas relue ici : `/progress` la rend déjà, et deux lectures d'IndexedDB
+  // au chargement d'un écran de départ ne valent pas leur latence.
+  const lesson =
+    choisirSeanceDuJour({
+      proposables,
+      progression: [],
+      expeditionOuverte: snapshot.expedition?.lessonVersionId ?? null,
+    }) ?? proposables[0];
+  if (lesson === undefined) {
+    return (
+      <section className={styles.panel} aria-labelledby="today-empty-title">
+        <p className={styles.eyebrow}>Aujourd’hui</p>
+        <h1 id="today-empty-title">Aucune séance disponible.</h1>
+        <p className={styles.lede}>
+          Aucun cours n’est publié et la boucle technique est indisponible. Rien
+          n’est inventé pour remplir cet écran.
+        </p>
+      </section>
+    );
+  }
   const storedCheckpoint = snapshot.lesson;
   const checkpoint =
     storedCheckpoint?.lessonVersionId === lesson.versionId
@@ -466,8 +492,10 @@ export function TodayExperience({
       <p className={styles.eyebrow}>Aujourd’hui · objectif local</p>
       <h1 id="today-title">Une seule étape, bien comprise.</h1>
       <p className={styles.lede}>
-        Objectif choisi : {goalLabel}. Cette fixture valide la reprise technique
-        sans enseigner de contenu thaï.
+        Objectif choisi : {goalLabel}.{" "}
+        {lesson.estFixture
+          ? "Cette fixture valide la reprise technique sans enseigner de contenu thaï."
+          : "Une seule leçon, jusqu’au bout, plutôt que trois survolées."}
       </p>
 
       <article className={styles.session} aria-labelledby="today-session-title">
@@ -476,7 +504,9 @@ export function TodayExperience({
           <h2 id="today-session-title">{lesson.title}</h2>
           <p>{lesson.objective}</p>
         </div>
-        <span className={styles.fixtureBadge}>Fixture · non publiable</span>
+        {lesson.estFixture && (
+          <span className={styles.fixtureBadge}>Fixture · non publiable</span>
+        )}
       </article>
 
       {!online && (
@@ -487,7 +517,7 @@ export function TodayExperience({
       )}
 
       <div className={styles.actionRow}>
-        <Link className={buttonClass("primary")} href="/learn/demo">
+        <Link className={buttonClass("primary")} href={lesson.href}>
           {actionLabel}
         </Link>
       </div>

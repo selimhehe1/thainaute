@@ -51,7 +51,7 @@ export default function ProgressPage() {
         />
       ) : (
         <ProgressExperience
-          lessons={[...publiees]}
+          lessons={publiees.map(({ lesson }) => lesson)}
           storageKey="thainaute-learning-v1"
         />
       )}

@@ -52,9 +52,20 @@ test("termine l’onboarding local et prépare la session du jour", async ({
 }) => {
   await completeLocalOnboarding(page);
 
+  // La séance du jour est un COURS, pas la boucle technique. C'était la
+  // rupture : le chemin par défaut, accueil puis Aujourd'hui, ne rencontrait
+  // jamais un cours, et les leçons publiées n'étaient atteignables que par
+  // Pratiquer.
   await expect(
     page.getByRole("link", { name: "Commencer la session" }),
-  ).toHaveAttribute("href", "/learn/demo");
+  ).toHaveAttribute("href", "/learn/lecon/u01-l1a");
+  await expect(
+    page.getByRole("heading", {
+      name: "Écouter le thaï pour la première fois",
+    }),
+  ).toBeVisible();
+  await expect(page.getByText("Fixture · non publiable")).toHaveCount(0);
+
   await page.reload();
   await expect(
     page.getByRole("heading", { name: "Une seule étape, bien comprise." }),
@@ -84,7 +95,10 @@ test("reprend exactement la question puis retrouve l’expédition depuis Aujour
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await completeLocalOnboarding(page);
-  await page.getByRole("link", { name: "Commencer la session" }).click();
+  // La reprise se prouve sur la boucle technique, seule à porter les cinq
+  // mécaniques. On y va directement : depuis que la séance du jour est un
+  // cours réel, le lien de session ne mène plus ici.
+  await page.goto("/learn/demo");
   await lireLeCours(page);
   await page.getByRole("button", { name: "Commencer l’expédition" }).click();
   await page.getByRole("radio", { name: "Signal technique A" }).check();
