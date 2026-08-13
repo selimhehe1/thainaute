@@ -88,7 +88,7 @@ Dossier de vérification : `verification-5c.md`.
 - Objectif : à la fin de la leçon, l’apprenant identifie à l’écoute lequel des quatre mots de la famille des transports a été dit, c’est-à-dire les trois moyens de transport et le mot général รถ, sur au moins 5 tirages sur 6 ; il reconstruit le bloc [qui] + ไป + [où] + [particule] dans l’ordre sur 3 assemblages sur 3, sans erreur d’ordre et sans erreur de particule ; il écrit en transcription ce bloc et les de
 - Statut : `draft`, visibilité `internal`
 - Items : 8
-- Exercices : 3 (word_order 3)
+- Exercices : 9 (audio_choice 6, word_order 3)
 - Fichiers audio : 0
 
 Dossier de vérification : `verification-5d.md`.

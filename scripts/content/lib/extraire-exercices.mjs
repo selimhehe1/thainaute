@@ -65,14 +65,46 @@ function lignesTirage(corps) {
 }
 
 /**
- * Les libellés d'option écrits en prose dans le champ `Options`.
- * « … : « à plat au milieu (moyen) », « posé en bas (bas) », … »
+ * Les libellés d'option déclarés au niveau du bloc.
+ *
+ * PIÈGE MESURÉ, le même que pour le feedback et la consigne : le corpus
+ * qualifie massivement son étiquette par une virgule.
+ *
+ *     - Options, identiques à tous les tirages, ordre aléatoire : un taxi /
+ *       un bus / un bateau / un véhicule (le mot général).
+ *
+ * `champ()` ne lit qu'une étiquette nue, donc il ne voyait rien, et le bloc
+ * partait vers le chemin par tirage où ses tirages, qui ne portent pas
+ * d'options puisqu'elles sont déclarées ici, étaient refusés. Le correctif
+ * est celui déjà appliqué ailleurs : `champsPrefixes`.
+ *
+ * Deux notations sont lues. Les libellés cités entre guillemets, forme la
+ * plus explicite, et à défaut la liste séparée par des barres obliques.
+ * Une prose non énumérable rend `null` : le bloc est alors refusé plutôt
+ * qu'approché. Et quelle que soit la notation, l'appariement de la réponse
+ * en aval reste le juge : un découpage faux ne trouve pas sa réponse et
+ * refuse le bloc, au lieu de compiler un corrigé faux.
  */
 function optionsDeclarees(corps) {
-  const brut = champ(corps, "Options");
-  if (brut === undefined) return null;
-  const libelles = [...brut.matchAll(ENTRE_GUILLEMETS)].map((t) => t[1]);
-  return libelles.length >= 2 ? libelles : null;
+  const champs = champsPrefixes(corps, "Options");
+  const brut = champs[0]?.valeur ?? champ(corps, "Options");
+  if (brut === undefined || brut === "") return null;
+
+  const cites = [...brut.matchAll(ENTRE_GUILLEMETS)].map((t) => t[1]);
+  if (cites.length >= 2) return cites;
+
+  // Une sous-liste à puces emploie la barre oblique POUR SÉPARER LES FACES
+  // d'une même option (« 15 bahts / สิบห้าบาท / sìp·hâa bàat »), pas les
+  // options entre elles. La découper donnerait des options fantômes : on
+  // laisse ce cas au refus tant qu'il n'est pas traité pour lui-même.
+  if (/(?:^|\s)-\s/u.test(brut)) return null;
+
+  const barres = brut
+    .replace(/\s*\.\s*$/u, "")
+    .split(/\s+\/\s+/u)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  return barres.length >= 2 ? barres : null;
 }
 
 /** Le texte utile est entre guillemets quand il y en a ; sinon la ligne. */
@@ -106,16 +138,25 @@ function qualificatifLisible(brut) {
  * explicative, et l'inventer serait pire que refuser le bloc.
  */
 function feedbackDuBloc(corps) {
-  const collecte = (prefixe) =>
-    champsPrefixes(corps, prefixe)
-      .map((c) => ({
-        qualificatif: qualificatifLisible(c.qualificatif),
-        texte: texteUtile(c.valeur),
-      }))
-      .filter((c) => c.texte !== "");
+  const collecte = (prefixe, motifSecours) => {
+    const nettoyer = (liste) =>
+      liste
+        .map((c) => ({
+          qualificatif: qualificatifLisible(c.qualificatif),
+          texte: texteUtile(c.valeur),
+        }))
+        .filter((c) => c.texte !== "");
+    const direct = nettoyer(champsPrefixes(corps, prefixe));
+    // Même secours que pour la consigne : un exercice en plusieurs manches
+    // écrit « Manche 1, feedback correct : … » ou l'indente sous sa manche,
+    // et l'étiquette ne commence alors plus par « Feedback ».
+    return direct.length > 0
+      ? direct
+      : nettoyer(lignesEtiquetees(corps, motifSecours));
+  };
 
-  const corrects = collecte("Feedback correct");
-  const incorrects = collecte("Feedback incorrect");
+  const corrects = collecte("Feedback correct", "feedbacks? corrects?");
+  const incorrects = collecte("Feedback incorrect", "feedbacks? incorrects?");
   if (corrects.length === 0 || incorrects.length === 0) return null;
 
   const principal = (liste) =>
@@ -154,13 +195,48 @@ function feedbackDuBloc(corps) {
  * « Consigne (tirages 1 à 6) ». Les trois disent la même chose à
  * l'apprenant, et seule la première était lue.
  */
+/**
+ * Consigne écrite autrement qu'en champ de premier niveau.
+ *
+ * PIÈGE MESURÉ : `champsPrefixes` exige une puce NON INDENTÉE, et c'est
+ * volontaire, sa butée de fin de champ en dépend. Or le corpus écrit sa
+ * consigne en sous-puce quand un exercice se joue en plusieurs manches :
+ *
+ *     - Manche 1, consigne : « Reliez chaque mot à ce qu'il désigne. »
+ *       - Consigne : « Qui pose cette question ? »
+ *
+ * Relâcher `champsPrefixes` casserait la lecture des champs à sous-puces
+ * comme `sources`. On cherche donc ici, et seulement ici, une ligne de
+ * consigne où qu'elle soit, en dernier recours.
+ */
+function lignesEtiquetees(corps, motifEtiquette) {
+  const re = new RegExp(
+    `^\\s*[-*]\\s+([^:\\n]*?)\\b(${motifEtiquette})\\b([^:\\n]*):\\s*(.+)$`,
+    "iu",
+  );
+  const sorties = [];
+  for (const ligne of String(corps).split("\n")) {
+    const trouve = ligne.match(re);
+    const valeur = trouve?.[4]?.trim();
+    if (valeur === undefined || valeur === "") continue;
+    sorties.push({
+      qualificatif: `${trouve[1] ?? ""}${trouve[3] ?? ""}`.trim(),
+      valeur,
+    });
+  }
+  return sorties;
+}
+
 function consigneDuBloc(corps) {
   const trouves = champsPrefixes(corps, "Consigne").filter(
     (c) => c.valeur.trim() !== "",
   );
-  if (trouves.length === 0) return null;
-  const retenu = trouves.find((c) => c.qualificatif === "") ?? trouves[0];
-  return texteUtile(retenu.valeur);
+  if (trouves.length > 0) {
+    const retenu = trouves.find((c) => c.qualificatif === "") ?? trouves[0];
+    return texteUtile(retenu.valeur);
+  }
+  const secours = lignesEtiquetees(corps, "consignes?")[0];
+  return secours === undefined ? null : texteUtile(secours.valeur);
 }
 
 /**
@@ -292,19 +368,16 @@ function extraireEcoute(bloc, resoudreItem) {
     if (graphies.length !== 1) {
       return { erreur: `tirage ${rang} : ${graphies.length} graphies` };
     }
-    const reponse = texte.match(/réponse\s*«\s*([^»]+?)\s*»/u)?.[1];
-    if (reponse === undefined) {
-      return { erreur: `tirage ${rang} : réponse non citée` };
-    }
-    // La réponse doit désigner une des options déclarées. On apparie sur
-    // l'étiquette entre parenthèses, ou sur le libellé entier.
-    const indice = libelles.findIndex(
-      (libelle) =>
-        libelle === reponse ||
-        libelle.match(/\(([^)]+)\)\s*$/u)?.[1] === reponse,
-    );
-    if (indice < 0) {
-      return { erreur: `tirage ${rang} : réponse « ${reponse} » hors options` };
+    // La réponse doit désigner une des options déclarées. `reponseParmi`
+    // lit les trois notations du corpus : graphie thaïe, libellé cité,
+    // libellé nu. L'ancienne version n'acceptait que la forme citée, et
+    // refusait « Réponse : un bateau. » pour « réponse non citée » alors
+    // que la ligne était parfaitement claire.
+    const indice = reponseParmi(texte, libelles);
+    if (indice === null) {
+      return {
+        erreur: `tirage ${rang} : réponse absente des options du bloc`,
+      };
     }
     const itemId = resoudreItem(graphies[0]);
     if (itemId === null) {
@@ -364,6 +437,88 @@ function tirageEnPaireMinimale(texte) {
   return { graphieAudio: audio, libelles, indiceCorrect };
 }
 
+/**
+ * Un tirage qui ne réécrit pas ses options mais renvoie à un jeu déjà posé.
+ *
+ * POURQUOI CE CHEMIN EXISTE
+ * -------------------------
+ * C'était la première cause de refus du corpus, 51 blocs. Une leçon de
+ * paires minimales introduit une paire, la fait entendre deux fois, passe à
+ * la suivante, puis revient sur la première pour mélanger. Personne
+ * n'écrit six fois les mêmes deux options : on écrit « mêmes options », ou
+ * « options de la paire 1 ». C'est de la prose parfaitement claire, que
+ * l'extraction ne savait pas lire.
+ *
+ * `rangJeu === null` désigne le jeu du tirage précédent. Un nombre désigne
+ * le n-ième jeu DISTINCT rencontré, parce que « la paire 2 » nomme la
+ * deuxième paire entendue, pas le deuxième tirage.
+ */
+function renvoiVersUnJeuConnu(texte) {
+  const numerote = texte.match(
+    /\boptions?\s+(?:de\s+la\s+paire|du\s+tirage|de\s+la\s+série)\s+(\d+)/iu,
+  );
+  if (numerote !== null) return { rangJeu: Number(numerote[1]) };
+  return /\b(?:les\s+)?m[êe]mes\s+options\b/iu.test(texte)
+    ? { rangJeu: null }
+    : null;
+}
+
+/**
+ * Indice de l'option que la réponse d'un tirage désigne, ou `null`.
+ *
+ * Le corpus désigne sa réponse de trois façons : par la graphie thaïe
+ * (« réponse พา »), par un libellé cité (« réponse « la voix tombe » »), ou
+ * par le libellé nu (« Réponse : une eau plate »). Les trois sont ici, parce
+ * qu'un renvoi peut apparaître dans n'importe laquelle.
+ */
+/**
+ * Les lectures possibles de ce qui suit « réponse », de la plus courte à la
+ * plus longue.
+ *
+ * PIÈGE MESURÉ : une ligne de tirage ne s'arrête pas à sa réponse. Elle
+ * continue souvent en prose d'intention, sur la même ligne repliée :
+ *
+ *     4. Audio รถ. Réponse : un véhicule (le mot général). Ce tirage et le
+ *        tirage 3 partagent la même cible.
+ *
+ * Prendre tout ce qui suit « Réponse » donne alors un libellé introuvable.
+ * On essaie donc chaque fin de phrase avant la ligne entière.
+ */
+function candidatsDeReponse(brut) {
+  const nettoyer = (valeur) => valeur.replace(/\s*[.;,]\s*$/u, "").trim();
+  const sorties = [];
+  for (const fin of brut.matchAll(/\.\s/gu)) {
+    const candidat = nettoyer(brut.slice(0, fin.index));
+    if (candidat !== "") sorties.push(candidat);
+  }
+  const entier = nettoyer(brut);
+  if (entier !== "") sorties.push(entier);
+  return sorties;
+}
+
+function reponseParmi(texte, libelles) {
+  const brut = texte.match(/R[ée]ponse\s*:?\s*(.+)$/iu)?.[1]?.trim();
+  if (brut === undefined) return null;
+
+  for (const candidat of candidatsDeReponse(brut)) {
+    const graphie = candidat.match(THAI_UNE)?.[0];
+    if (graphie !== undefined) {
+      const parGraphie = libelles.findIndex(
+        (libelle) => libelle.match(THAI_UNE)?.[0] === graphie,
+      );
+      if (parGraphie >= 0) return parGraphie;
+    }
+
+    const cite = candidat.match(/«\s*([^»]+?)\s*»/u)?.[1]?.trim() ?? candidat;
+    const parLibelle = libelles.findIndex(
+      (libelle) =>
+        libelle === cite || libelle.match(/\(([^)]+)\)\s*$/u)?.[1] === cite,
+    );
+    if (parLibelle >= 0) return parLibelle;
+  }
+  return null;
+}
+
 function extraireEcouteParTirage(bloc, resoudreItem) {
   const lignes = lignesTirage(bloc.corps);
   if (lignes.length === 0) {
@@ -373,8 +528,15 @@ function extraireEcouteParTirage(bloc, resoudreItem) {
   let reference = null;
   let optionsVarient = false;
   const tirages = [];
+  // Les jeux d'options DISTINCTS, dans leur ordre d'apparition. C'est à eux
+  // que « la paire 2 » renvoie, pas au deuxième tirage : le corpus introduit
+  // une paire, la fait entendre deux fois, puis introduit la suivante.
+  const jeuxDistincts = [];
+  let jeuPrecedent = null;
+
   for (const { rang, texte } of lignes) {
     const paire = tirageEnPaireMinimale(texte);
+    const renvoi = renvoiVersUnJeuConnu(texte);
 
     let libelles;
     let indice;
@@ -382,6 +544,33 @@ function extraireEcouteParTirage(bloc, resoudreItem) {
 
     if (paire !== null) {
       ({ libelles, indiceCorrect: indice, graphieAudio } = paire);
+    } else if (renvoi !== null) {
+      libelles =
+        renvoi.rangJeu === null
+          ? jeuPrecedent
+          : (jeuxDistincts[renvoi.rangJeu - 1] ?? null);
+      if (libelles === null) {
+        return {
+          erreur: `tirage ${rang} : renvoie à un jeu d'options qui n'existe pas`,
+        };
+      }
+      const trouve = reponseParmi(texte, libelles);
+      if (trouve === null) {
+        // Le garde-fou de tout ce chemin : la réponse écrite DOIT se
+        // retrouver dans le jeu vers lequel le renvoi pointe. Si notre
+        // lecture du renvoi était fausse, elle échoue ici au lieu de
+        // compiler un corrigé faux, ce qui serait bien pire qu'un refus.
+        return {
+          erreur: `tirage ${rang} : réponse absente du jeu d'options auquel il renvoie`,
+        };
+      }
+      indice = trouve;
+      graphieAudio = texte.match(/\bAudio\s*:?\s*([ก-๿]+)/u)?.[1] ?? null;
+      if (graphieAudio === null) {
+        return {
+          erreur: `tirage ${rang} : aucune graphie audio après le renvoi`,
+        };
+      }
     } else {
       libelles = optionsDuTirage(texte);
       if (libelles === null) {
@@ -406,6 +595,12 @@ function extraireEcouteParTirage(bloc, resoudreItem) {
         graphieAudio = graphies[0];
       }
     }
+
+    const empreinte = libelles.join("|");
+    if (!jeuxDistincts.some((jeu) => jeu.join("|") === empreinte)) {
+      jeuxDistincts.push(libelles);
+    }
+    jeuPrecedent = libelles;
 
     if (reference === null) reference = libelles;
     else if (reference.join("|") !== libelles.join("|")) optionsVarient = true;

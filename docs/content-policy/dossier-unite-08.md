@@ -49,7 +49,7 @@ Dossier de vérification : `verification-8a.md`.
 - Objectif : à la fin de la leçon, devant une situation décrite en français, l’apprenant relie le bon verbe parmi หา, อยาก, อยากได้, ต้องการ, ลองดู et เอา, sur 5 appariements justes du premier coup sur 6, les deux verbes qui prennent une CHOSE y étant acceptés indifféremment l’un pour l’autre ; il construit sans erreur d’ordre et sans bloc en trop les quatre phrases de l’exercice 3, dont deux opposent directem
 - Statut : `draft`, visibilité `internal`
 - Items : 11
-- Exercices : 10 (word_order 4, reading 6)
+- Exercices : 16 (audio_choice 6, word_order 4, reading 6)
 - Fichiers audio : 0
 
 Dossier de vérification : `verification-8b.md`.
@@ -72,8 +72,8 @@ Dossier de vérification : `verification-8b.md`.
 
 - Objectif : à la fin de la leçon, l’apprenant identifie à l’écoute lequel de trois blocs a été prononcé, alors que deux d’entre eux ne diffèrent que par la présence de เกินไป, sur 6 tirages sur 8 ; il associe les six blocs du jour à leur sens français, sur 5 paires sur 6 ; il construit par blocs quatre phrases sur cinq en plaçant เกินไป APRÈS le mot qu’il modifie, dont deux phrases où เกินไป ne doit pas appar
 - Statut : `draft`, visibilité `internal`
-- Items : 10
-- Exercices : 5 (word_order 5)
+- Items : 11
+- Exercices : 13 (audio_choice 8, word_order 5)
 - Fichiers audio : 0
 
 Dossier de vérification : `verification-8c.md`.
@@ -88,6 +88,7 @@ Dossier de vérification : `verification-8c.md`.
 | ใหญ่เกินไป          | yài koeen·pai                  | trop grand                | RID-2554, VOLUBILIS-26-2                               |
 | เล็กเกินไป          | lék koeen·pai                  | trop petit                | RID-2554, VOLUBILIS-26-2                               |
 | อันนี้แพงเกินไปครับ | an·níi phaeeng koeen·pai khráp | celui-ci est trop cher    | RID-2554, VOLUBILIS-26-2                               |
+| แพง                 | phaeeng                        | cher (d’un prix élevé)    | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH |
 | อันนี้              | an·níi                         | ceci, celui-ci            | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH |
 | อันนี้เท่าไรครับ    | an·níi thâo·rai khráp          | Ça coûte combien ?        | RID-2554, VOLUBILIS-26-2                               |
 
@@ -115,22 +116,23 @@ Dossier de vérification : `verification-8d.md`.
 
 - Objectif : à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre un homme et une femme dans un magasin de vêtements, et répond correctement à 5 questions sur 6 ; il reconstruit la réclamation ขอ เปลี่ยน หน่อย ครับ et la demande de prix ตัวนี้ เท่าไร ครับ dans cet ordre, avec la particule qui correspond au locuteur indiqué, soit 2 tirages sur 2 ; il écrit en transcription 3
 - Statut : `draft`, visibilité `internal`
-- Items : 11
-- Exercices : 1 (association 1)
+- Items : 12
+- Exercices : 3 (word_order 2, association 1)
 - Fichiers audio : 0
 
 Dossier de vérification : `verification-8e.md`.
 
-| Graphie          | Transcription           | Français                                                           | Sources                                 |
-| ---------------- | ----------------------- | ------------------------------------------------------------------ | --------------------------------------- |
-| ตัวนี้           | toua·níi                | celui-ci (en parlant d’un objet que l’on compte avec ตัว)          | RID-2554, WIKTIONARY-EN                 |
-| หา               | hǎa                     | chercher                                                           | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| เสื้อ            | sûea                    | le haut, la chemise (le vêtement du buste)                         | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| ตัว              | toua                    | classificateur des animaux, et des vêtements à manches ou à jambes | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| เงิน             | ngoen                   | l’argent (la monnaie)                                              | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| เกินไป           | koeen·pai               | trop, excessivement                                                | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| แพงเกินไป        | phaeeng koeen·pai       | trop cher                                                          | RID-2554, VOLUBILIS-26-2                |
-| ใหญ่เกินไป       | yài koeen·pai           | trop grand                                                         | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| ปัญหา            | pan·hǎa                 | le problème                                                        | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| เปลี่ยน          | plìan                   | changer, échanger                                                  | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| ตัวนี้เท่าไรครับ | toua·níi thâo·rai khráp | Celui-ci, c’est combien ?                                          | RID-2554                                |
+| Graphie          | Transcription           | Français                                                                    | Sources                                                |
+| ---------------- | ----------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------ |
+| ตัวนี้           | toua·níi                | celui-ci (en parlant d’un objet que l’on compte avec ตัว)                   | RID-2554, WIKTIONARY-EN                                |
+| หา               | hǎa                     | chercher                                                                    | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                |
+| เสื้อ            | sûea                    | le haut, la chemise (le vêtement du buste)                                  | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                |
+| ตัว              | toua                    | classificateur des animaux, et des vêtements à manches ou à jambes          | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                |
+| เงิน             | ngoen                   | l’argent (la monnaie)                                                       | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                |
+| เกินไป           | koeen·pai               | trop, excessivement                                                         | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                |
+| แพงเกินไป        | phaeeng koeen·pai       | trop cher                                                                   | RID-2554, VOLUBILIS-26-2                               |
+| ใหญ่เกินไป       | yài koeen·pai           | trop grand                                                                  | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                |
+| ปัญหา            | pan·hǎa                 | le problème                                                                 | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                |
+| เปลี่ยน          | plìan                   | changer, échanger                                                           | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                |
+| ตัวนี้เท่าไรครับ | toua·níi thâo·rai khráp | Celui-ci, c’est combien ?                                                   | RID-2554                                               |
+| ขอ               | khǎww                   | demander ; solliciter (et, en tête de phrase, « je voudrais », « puis-je ») | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH |

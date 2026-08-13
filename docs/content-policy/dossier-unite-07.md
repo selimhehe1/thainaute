@@ -114,26 +114,32 @@ Dossier de vérification : `verification-7d.md`.
 
 - Objectif : à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre un homme et une femme qui se croisent le matin, et répond correctement à 5 questions sur 6 ; il reconstruit la phrase วันนี้ ผม ไป ตลาด ครับ dans cet ordre, avec วันนี้ en tête et la particule qui correspond au locuteur indiqué, et il fait de même pour ข้าวผัด อร่อย มาก ค่ะ, soit 2 tirages sur 2 ; il distingu
 - Statut : `draft`, visibilité `internal`
-- Items : 15
-- Exercices : 1 (association 1)
+- Items : 21
+- Exercices : 9 (audio_choice 6, word_order 2, association 1)
 - Fichiers audio : 0
 
 Dossier de vérification : `verification-7e.md`.
 
-| Graphie       | Transcription          | Français                              | Sources                                                |
-| ------------- | ---------------------- | ------------------------------------- | ------------------------------------------------------ |
-| วัน           | wan                    | le jour, la journée                   | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH |
-| วันนี้        | wan·níi                | aujourd’hui                           | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH |
-| นี้           | níi                    | ce, cette (démonstratif)              | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH |
-| สบายดี        | sà·baai·dii            | aller bien                            | RID-2554, VOLUBILIS-26-2                               |
-| ไหม           | mǎi                    | particule de question fermée          | RID-2554, VOLUBILIS-26-2                               |
-| แล้วคุณล่ะ    | láeew khoun lâ         | et vous ?                             | RID-2554, VOLUBILIS-26-2                               |
-| ผมไปตลาดครับ  | phǒm pai tà·làat khráp | je vais au marché (locuteur homme)    | RID-2554, VOLUBILIS-26-2                               |
-| ไม่ไกล        | mâi klai               | pas loin, ce n’est pas loin           | RID-2554, VOLUBILIS-26-2                               |
-| ข้าวผัด       | khâao·phàt             | riz sauté                             | RID-2554, VOLUBILIS-26-2                               |
-| อร่อยมาก      | à·ràwi mâak            | très bon (au goût)                    | RID-2554, VOLUBILIS-26-2                               |
-| หิวมาก        | hǐo mâak               | avoir très faim                       | RID-2554, VOLUBILIS-26-2                               |
-| ข้าวผัดเท่าไร | khâao·phàt thâo·rai    | le riz sauté, c’est combien ?         | RID-2554, VOLUBILIS-26-2                               |
-| สี่สิบบาท     | sìi·sìp bàat           | quarante bahts                        | RID-2554, VOLUBILIS-26-2                               |
-| ขอบคุณ        | khàwwp·khoun           | merci                                 | RID-2554, VOLUBILIS-26-2                               |
-| แล้วเจอกัน    | láeew·joee·kan         | à plus tard (prise de congé courante) | RID-2554, VOLUBILIS-26-2                               |
+| Graphie       | Transcription          | Français                                  | Sources                                                |
+| ------------- | ---------------------- | ----------------------------------------- | ------------------------------------------------------ |
+| วัน           | wan                    | le jour, la journée                       | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH |
+| วันนี้        | wan·níi                | aujourd’hui                               | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH |
+| นี้           | níi                    | ce, cette (démonstratif)                  | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH |
+| สบายดี        | sà·baai·dii            | aller bien                                | RID-2554, VOLUBILIS-26-2                               |
+| ไหม           | mǎi                    | particule de question fermée              | RID-2554, VOLUBILIS-26-2                               |
+| แล้วคุณล่ะ    | láeew khoun lâ         | et vous ?                                 | RID-2554, VOLUBILIS-26-2                               |
+| ผมไปตลาดครับ  | phǒm pai tà·làat khráp | je vais au marché (locuteur homme)        | RID-2554, VOLUBILIS-26-2                               |
+| ไม่ไกล        | mâi klai               | pas loin, ce n’est pas loin               | RID-2554, VOLUBILIS-26-2                               |
+| ข้าวผัด       | khâao·phàt             | riz sauté                                 | RID-2554, VOLUBILIS-26-2                               |
+| อร่อยมาก      | à·ràwi mâak            | très bon (au goût)                        | RID-2554, VOLUBILIS-26-2                               |
+| หิวมาก        | hǐo mâak               | avoir très faim                           | RID-2554, VOLUBILIS-26-2                               |
+| ข้าวผัดเท่าไร | khâao·phàt thâo·rai    | le riz sauté, c’est combien ?             | RID-2554, VOLUBILIS-26-2                               |
+| สี่สิบบาท     | sìi·sìp bàat           | quarante bahts                            | RID-2554, VOLUBILIS-26-2                               |
+| ขอบคุณ        | khàwwp·khoun           | merci                                     | RID-2554, VOLUBILIS-26-2                               |
+| แล้วเจอกัน    | láeew·joee·kan         | à plus tard (prise de congé courante)     | RID-2554, VOLUBILIS-26-2                               |
+| ปา            | paa                    | lancer (jeter avec le bras)               | VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH           |
+| ป่า           | pàa                    | forêt                                     | VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH           |
+| ปู            | pouu                   | crabe                                     | VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH           |
+| ปู่           | pòuu                   | grand-père paternel (le père du père)     | VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH           |
+| ปี            | pii                    | année, an                                 | VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH           |
+| ปี่           | pìi                    | hautbois thaï (instrument à vent à anche) | VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH           |

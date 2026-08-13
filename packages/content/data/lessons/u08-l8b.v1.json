@@ -422,6 +422,252 @@
   ],
   "exercises": [
     {
+      "poolId": "u08-l8b-p1",
+      "drawIndex": 1,
+      "id": "74674c19-47de-593c-80af-65a0c1573a10",
+      "type": "audio_choice",
+      "itemId": "09a368ce-6be3-58c0-adfb-63393d2f280e",
+      "skill": "listening",
+      "audioAssetId": "de3d633b-d118-581c-a154-57092b9b2278",
+      "promptFr": "« Écoutez, puis choisissez le mot entendu. Les deux",
+      "options": [
+        {
+          "id": "1085c750-f339-5ff0-b166-6a118c0b359e",
+          "labelFr": "หา (hǎa, chercher)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "085ec14e-1565-53f2-af94-8ccfbdbed257",
+          "labelFr": "ห้า (hâa, cinq)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "1085c750-f339-5ff0-b166-6a118c0b359e",
+      "feedback": {
+        "correctFr": "« Oui. Mêmes sons, deux hauteurs. Le montant part",
+        "incorrectFr": "« Réécoutez les deux mots l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, Manche B,",
+            "textFr": "« Oui. Le verbe est le bloc qui vient juste après"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, Manche B,",
+            "textFr": "« Réécoutez, et cette fois attendez le bloc qui"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p1",
+      "drawIndex": 2,
+      "id": "cdd839d3-06b8-5f86-8516-565f73060307",
+      "type": "audio_choice",
+      "itemId": "63268df4-3684-5f70-a70b-728ce0f6be8b",
+      "skill": "listening",
+      "audioAssetId": "b3e2447e-4a4d-5058-b224-6eb93faee0c2",
+      "promptFr": "« Écoutez, puis choisissez le mot entendu. Les deux",
+      "options": [
+        {
+          "id": "1085c750-f339-5ff0-b166-6a118c0b359e",
+          "labelFr": "หา (hǎa, chercher)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "085ec14e-1565-53f2-af94-8ccfbdbed257",
+          "labelFr": "ห้า (hâa, cinq)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "085ec14e-1565-53f2-af94-8ccfbdbed257",
+      "feedback": {
+        "correctFr": "« Oui. Mêmes sons, deux hauteurs. Le montant part",
+        "incorrectFr": "« Réécoutez les deux mots l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, Manche B,",
+            "textFr": "« Oui. Le verbe est le bloc qui vient juste après"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, Manche B,",
+            "textFr": "« Réécoutez, et cette fois attendez le bloc qui"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p1",
+      "drawIndex": 3,
+      "id": "57bf3023-3ed2-5e6c-bfba-3bbffd2ba7d5",
+      "type": "audio_choice",
+      "itemId": "63268df4-3684-5f70-a70b-728ce0f6be8b",
+      "skill": "listening",
+      "audioAssetId": "b3e2447e-4a4d-5058-b224-6eb93faee0c2",
+      "promptFr": "« Écoutez, puis choisissez le mot entendu. Les deux",
+      "options": [
+        {
+          "id": "1085c750-f339-5ff0-b166-6a118c0b359e",
+          "labelFr": "หา (hǎa, chercher)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "085ec14e-1565-53f2-af94-8ccfbdbed257",
+          "labelFr": "ห้า (hâa, cinq)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "085ec14e-1565-53f2-af94-8ccfbdbed257",
+      "feedback": {
+        "correctFr": "« Oui. Mêmes sons, deux hauteurs. Le montant part",
+        "incorrectFr": "« Réécoutez les deux mots l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, Manche B,",
+            "textFr": "« Oui. Le verbe est le bloc qui vient juste après"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, Manche B,",
+            "textFr": "« Réécoutez, et cette fois attendez le bloc qui"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p1",
+      "drawIndex": 4,
+      "id": "78a0acc3-6b0f-5a9a-a60d-1ad4c68a8fa9",
+      "type": "audio_choice",
+      "itemId": "09a368ce-6be3-58c0-adfb-63393d2f280e",
+      "skill": "listening",
+      "audioAssetId": "de3d633b-d118-581c-a154-57092b9b2278",
+      "promptFr": "« Écoutez, puis choisissez le mot entendu. Les deux",
+      "options": [
+        {
+          "id": "1085c750-f339-5ff0-b166-6a118c0b359e",
+          "labelFr": "หา (hǎa, chercher)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "085ec14e-1565-53f2-af94-8ccfbdbed257",
+          "labelFr": "ห้า (hâa, cinq)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "1085c750-f339-5ff0-b166-6a118c0b359e",
+      "feedback": {
+        "correctFr": "« Oui. Mêmes sons, deux hauteurs. Le montant part",
+        "incorrectFr": "« Réécoutez les deux mots l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, Manche B,",
+            "textFr": "« Oui. Le verbe est le bloc qui vient juste après"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, Manche B,",
+            "textFr": "« Réécoutez, et cette fois attendez le bloc qui"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p1",
+      "drawIndex": 5,
+      "id": "61ca331a-cb51-52dc-bd72-73040c182f29",
+      "type": "audio_choice",
+      "itemId": "63268df4-3684-5f70-a70b-728ce0f6be8b",
+      "skill": "listening",
+      "audioAssetId": "b3e2447e-4a4d-5058-b224-6eb93faee0c2",
+      "promptFr": "« Écoutez, puis choisissez le mot entendu. Les deux",
+      "options": [
+        {
+          "id": "1085c750-f339-5ff0-b166-6a118c0b359e",
+          "labelFr": "หา (hǎa, chercher)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "085ec14e-1565-53f2-af94-8ccfbdbed257",
+          "labelFr": "ห้า (hâa, cinq)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "085ec14e-1565-53f2-af94-8ccfbdbed257",
+      "feedback": {
+        "correctFr": "« Oui. Mêmes sons, deux hauteurs. Le montant part",
+        "incorrectFr": "« Réécoutez les deux mots l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, Manche B,",
+            "textFr": "« Oui. Le verbe est le bloc qui vient juste après"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, Manche B,",
+            "textFr": "« Réécoutez, et cette fois attendez le bloc qui"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8b-p1",
+      "drawIndex": 6,
+      "id": "de336de9-cfd1-5c59-94b3-f9e9ab47af65",
+      "type": "audio_choice",
+      "itemId": "09a368ce-6be3-58c0-adfb-63393d2f280e",
+      "skill": "listening",
+      "audioAssetId": "de3d633b-d118-581c-a154-57092b9b2278",
+      "promptFr": "« Écoutez, puis choisissez le mot entendu. Les deux",
+      "options": [
+        {
+          "id": "1085c750-f339-5ff0-b166-6a118c0b359e",
+          "labelFr": "หา (hǎa, chercher)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "085ec14e-1565-53f2-af94-8ccfbdbed257",
+          "labelFr": "ห้า (hâa, cinq)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "1085c750-f339-5ff0-b166-6a118c0b359e",
+      "feedback": {
+        "correctFr": "« Oui. Mêmes sons, deux hauteurs. Le montant part",
+        "incorrectFr": "« Réécoutez les deux mots l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, Manche B,",
+            "textFr": "« Oui. Le verbe est le bloc qui vient juste après"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, Manche B,",
+            "textFr": "« Réécoutez, et cette fois attendez le bloc qui"
+          }
+        ]
+      }
+    },
+    {
       "poolId": "u08-l8b-p3",
       "drawIndex": 1,
       "id": "0bfd9111-9575-59ad-8fed-2de1bda5eaa3",
@@ -1064,6 +1310,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u08-l8b-p1",
+      "promptFr": "« Écoutez, puis choisissez le mot entendu. Les deux",
+      "mechanic": "audio_choice",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    },
     {
       "poolId": "u08-l8b-p3",
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",

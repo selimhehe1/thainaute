@@ -392,6 +392,37 @@
       ]
     },
     {
+      "id": "53e711b1-0695-5c94-92b2-f1eae6970f76",
+      "thaiRaw": "แพง",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E1E",
+        "U+0E07"
+      ],
+      "translationFr": "cher (d’un prix élevé)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phaeeng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แพง",
+          "ipa": "pʰɛːŋ˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "pʰ",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
       "id": "3e84a18d-87da-501f-962c-0bbe547faf4e",
       "thaiRaw": "อันนี้",
       "unicodeCodePoints": [
@@ -509,6 +540,342 @@
     }
   ],
   "exercises": [
+    {
+      "poolId": "u08-l8c-p1",
+      "drawIndex": 1,
+      "id": "c58caea9-4149-5052-a411-acbe78d845aa",
+      "type": "audio_choice",
+      "itemId": "53e711b1-0695-5c94-92b2-f1eae6970f76",
+      "skill": "listening",
+      "audioAssetId": "ad5329b2-03af-56e9-97e3-0aef6eeb025d",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "074ba61d-a1b6-54c9-8960-5ec15abb67b8",
+          "labelFr": "แพง (phaeeng, cher)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e34ee1ca-1bbf-5b3f-aff2-461cd1f969ce",
+          "labelFr": "แพงเกินไป (phaeeng koeen·pai, trop cher)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c369c3d5-7f5c-570d-9dce-04f3c04a7653",
+          "labelFr": "ถูก (thòuuk, bon marché)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "074ba61d-a1b6-54c9-8960-5ec15abb67b8",
+      "feedback": {
+        "correctFr": "Oui. La fin des trois blocs est la même : c’est le début qui portait l’information.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. Le mot seul en fait une, le bloc en fait trois. La troisième syllabe est toujours pai.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion sur le mot d’état",
+            "textFr": "Concentrez-vous sur la toute première syllabe. yài part en bas, lék part en haut, phaeeng reste au milieu. Ce qui suit est identique dans les trois cas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8c-p1",
+      "drawIndex": 2,
+      "id": "cc6e938d-65f0-546a-8af7-f62259b0e447",
+      "type": "audio_choice",
+      "itemId": "9244aeac-d0a9-5ede-8200-a79f91e0d106",
+      "skill": "listening",
+      "audioAssetId": "8b70c993-8dcc-5549-bb2d-ab8a4cd7bac8",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "941ea4e8-d4a1-5758-92ce-e43ab2ce2cf6",
+          "labelFr": "แพง (phaeeng, cher)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b3cfa0b8-9670-5ac0-b827-8da98a257067",
+          "labelFr": "แพงเกินไป (phaeeng koeen·pai, trop cher)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8e37b7c3-6436-5830-b1e1-a0e327eab0c3",
+          "labelFr": "ถูก (thòuuk, bon marché)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "b3cfa0b8-9670-5ac0-b827-8da98a257067",
+      "feedback": {
+        "correctFr": "Oui. La fin des trois blocs est la même : c’est le début qui portait l’information.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. Le mot seul en fait une, le bloc en fait trois. La troisième syllabe est toujours pai.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion sur le mot d’état",
+            "textFr": "Concentrez-vous sur la toute première syllabe. yài part en bas, lék part en haut, phaeeng reste au milieu. Ce qui suit est identique dans les trois cas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8c-p1",
+      "drawIndex": 3,
+      "id": "c963f58c-6cd6-53e9-8f36-9f3d5f6b1fb4",
+      "type": "audio_choice",
+      "itemId": "37fcf196-05db-5803-9862-62d8984887a6",
+      "skill": "listening",
+      "audioAssetId": "87acf5aa-db96-5d0d-be62-04dc418ca4cb",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "508e5536-7d35-536d-beca-ec957e71bdc2",
+          "labelFr": "ถูก",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "5a1e3569-c940-5c6b-af2e-3a7cf2531fda",
+          "labelFr": "แพง",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "48a992b4-e841-50a7-8bfa-b76ed0d992e2",
+          "labelFr": "แพงเกินไป",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "508e5536-7d35-536d-beca-ec957e71bdc2",
+      "feedback": {
+        "correctFr": "Oui. La fin des trois blocs est la même : c’est le début qui portait l’information.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. Le mot seul en fait une, le bloc en fait trois. La troisième syllabe est toujours pai.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion sur le mot d’état",
+            "textFr": "Concentrez-vous sur la toute première syllabe. yài part en bas, lék part en haut, phaeeng reste au milieu. Ce qui suit est identique dans les trois cas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8c-p1",
+      "drawIndex": 4,
+      "id": "7cff5f91-7aef-5441-ab4f-ec6826b6214d",
+      "type": "audio_choice",
+      "itemId": "335fec12-3370-563f-b33d-347ba89622bd",
+      "skill": "listening",
+      "audioAssetId": "8c672582-0e75-5f51-88cf-d7724a340cc1",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "ecc9601e-0d65-57b8-a991-5a2c105aa317",
+          "labelFr": "ใหญ่ (yài, grand)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "63f5c2c6-a5a9-5af7-978d-0e3526eecb78",
+          "labelFr": "ใหญ่เกินไป (yài koeen·pai, trop grand)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "ad9ff33a-65a2-5238-9f68-84ec5bb72e71",
+          "labelFr": "เล็กเกินไป (lék koeen·pai, trop petit)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "63f5c2c6-a5a9-5af7-978d-0e3526eecb78",
+      "feedback": {
+        "correctFr": "Oui. La fin des trois blocs est la même : c’est le début qui portait l’information.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. Le mot seul en fait une, le bloc en fait trois. La troisième syllabe est toujours pai.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion sur le mot d’état",
+            "textFr": "Concentrez-vous sur la toute première syllabe. yài part en bas, lék part en haut, phaeeng reste au milieu. Ce qui suit est identique dans les trois cas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8c-p1",
+      "drawIndex": 5,
+      "id": "88fec670-e46b-57a8-a905-351079e0860b",
+      "type": "audio_choice",
+      "itemId": "752aa6a6-a173-55e0-83b2-3808fd821fb5",
+      "skill": "listening",
+      "audioAssetId": "d843ce5b-e40c-50c5-8e8c-094a5943c104",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "29138418-fb6d-5575-9120-76ef25b99860",
+          "labelFr": "ใหญ่ (yài, grand)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "745c6bda-b372-5ee1-b52b-41df9d8cbfd9",
+          "labelFr": "ใหญ่เกินไป (yài koeen·pai, trop grand)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "3cf9615c-fa7a-57f6-a7c4-7915c70b00ee",
+          "labelFr": "เล็กเกินไป (lék koeen·pai, trop petit)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "29138418-fb6d-5575-9120-76ef25b99860",
+      "feedback": {
+        "correctFr": "Oui. La fin des trois blocs est la même : c’est le début qui portait l’information.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. Le mot seul en fait une, le bloc en fait trois. La troisième syllabe est toujours pai.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion sur le mot d’état",
+            "textFr": "Concentrez-vous sur la toute première syllabe. yài part en bas, lék part en haut, phaeeng reste au milieu. Ce qui suit est identique dans les trois cas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8c-p1",
+      "drawIndex": 6,
+      "id": "52c16c9a-a8e5-543c-a4a7-c4ecf7aa98d1",
+      "type": "audio_choice",
+      "itemId": "bdc62c83-9724-5d7f-8217-5c313f43122b",
+      "skill": "listening",
+      "audioAssetId": "0f192943-841d-5d55-9692-db3c6229db42",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "53c0dcb7-d4b2-5d08-bfb9-ccaeba47eb75",
+          "labelFr": "เล็ก (lék, petit)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "73609f05-0358-5c1a-9bbf-f10e404dc0b1",
+          "labelFr": "เล็กเกินไป",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b1c06610-dab3-5dfd-874d-32e41bd3bf87",
+          "labelFr": "ใหญ่เกินไป",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "73609f05-0358-5c1a-9bbf-f10e404dc0b1",
+      "feedback": {
+        "correctFr": "Oui. La fin des trois blocs est la même : c’est le début qui portait l’information.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. Le mot seul en fait une, le bloc en fait trois. La troisième syllabe est toujours pai.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion sur le mot d’état",
+            "textFr": "Concentrez-vous sur la toute première syllabe. yài part en bas, lék part en haut, phaeeng reste au milieu. Ce qui suit est identique dans les trois cas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8c-p1",
+      "drawIndex": 7,
+      "id": "11988251-296d-52cf-9f45-a34c7cdd405e",
+      "type": "audio_choice",
+      "itemId": "9e563010-ab8d-58fc-a820-554d6f61d15b",
+      "skill": "listening",
+      "audioAssetId": "2d15d050-a2bd-580c-8ef9-8b1ab6d5f4b8",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "58892146-0b16-58b1-a12e-4eb5098248f0",
+          "labelFr": "เล็ก",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "72c3e0af-7663-5eeb-8494-05ad144e4309",
+          "labelFr": "เล็กเกินไป",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "64d05150-a60a-5d3f-8a1e-c1ae02d15015",
+          "labelFr": "ถูก",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "58892146-0b16-58b1-a12e-4eb5098248f0",
+      "feedback": {
+        "correctFr": "Oui. La fin des trois blocs est la même : c’est le début qui portait l’information.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. Le mot seul en fait une, le bloc en fait trois. La troisième syllabe est toujours pai.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion sur le mot d’état",
+            "textFr": "Concentrez-vous sur la toute première syllabe. yài part en bas, lék part en haut, phaeeng reste au milieu. Ce qui suit est identique dans les trois cas."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u08-l8c-p1",
+      "drawIndex": 8,
+      "id": "d855ba68-64ae-5fb1-8ded-265220cce90b",
+      "type": "audio_choice",
+      "itemId": "9244aeac-d0a9-5ede-8200-a79f91e0d106",
+      "skill": "listening",
+      "audioAssetId": "8b70c993-8dcc-5549-bb2d-ab8a4cd7bac8",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "options": [
+        {
+          "id": "063a7021-fbf2-5925-bf15-3684d4dbcf3b",
+          "labelFr": "แพงเกินไป",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c2575def-28f1-5236-815d-c3c6482d8549",
+          "labelFr": "ใหญ่เกินไป",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "455725ff-4bda-5eac-9efe-d301eb617d09",
+          "labelFr": "เล็กเกินไป",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "063a7021-fbf2-5925-bf15-3684d4dbcf3b",
+      "feedback": {
+        "correctFr": "Oui. La fin des trois blocs est la même : c’est le début qui portait l’information.",
+        "incorrectFr": "Réécoutez et comptez les syllabes. Le mot seul en fait une, le bloc en fait trois. La troisième syllabe est toujours pai.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion sur le mot d’état",
+            "textFr": "Concentrez-vous sur la toute première syllabe. yài part en bas, lék part en haut, phaeeng reste au milieu. Ce qui suit est identique dans les trois cas."
+          }
+        ]
+      }
+    },
     {
       "poolId": "u08-l8c-p3",
       "drawIndex": 1,
@@ -872,6 +1239,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u08-l8c-p1",
+      "promptFr": "Écoutez, puis choisissez ce qui a été dit.",
+      "mechanic": "audio_choice",
+      "drawCount": 8,
+      "passRequired": 8,
+      "sampleSize": 8
+    },
     {
       "poolId": "u08-l8c-p3",
       "promptFr": "Construisez la phrase thaïe qui dit la phrase française. Déplacez les blocs, et retirez ceux dont vous n’avez pas besoin.",

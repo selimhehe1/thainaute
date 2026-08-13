@@ -15,16 +15,16 @@ décision juridique sur les trois booléens du dictionnaire royal.
 | 02        |      5 |                5 |              0 |             0 |
 | 03        |      5 |                4 |              1 |             0 |
 | 04        |      5 |                4 |              1 |             0 |
-| 05        |      5 |                5 |              0 |             0 |
+| 05        |      5 |                4 |              1 |             0 |
 | 06        |      5 |                5 |              0 |             0 |
-| 07        |      5 |                5 |              0 |             0 |
-| 08        |      5 |                5 |              0 |             0 |
+| 07        |      5 |                4 |              1 |             0 |
+| 08        |      5 |                3 |              2 |             0 |
 | 09        |      5 |                5 |              0 |             0 |
 | 10        |      5 |                5 |              0 |             0 |
 | 11        |      5 |                5 |              0 |             0 |
 | 12        |      5 |                5 |              0 |             0 |
 | 13        |      5 |                5 |              0 |             0 |
-| **total** | **66** |           **64** |                |               |
+| **total** | **66** |           **60** |                |               |
 
 ## Ce que le tableau dit
 
@@ -34,7 +34,7 @@ l'ADR-0043 ; les trois booléens de `RID-2554` autorisent la
 vérification d'une graphie et sa citation par référence, jamais la
 reproduction d'une définition.
 
-2 leçons attendent une voix, et 64
+6 leçons attendent une voix, et 60
 sont publiables dès qu'une signature les couvre.
 
 Ce nombre ne dit pas qu'elles sont prêtes. Il dit ce qui reste à faire

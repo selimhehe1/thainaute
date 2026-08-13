@@ -347,6 +347,324 @@
   ],
   "exercises": [
     {
+      "poolId": "u05-l5d-p1",
+      "drawIndex": 1,
+      "id": "e86c2c1b-941b-5ca5-92f3-855b75ffefe4",
+      "type": "audio_choice",
+      "itemId": "3048fa68-4259-5bbc-8a67-deb919482438",
+      "skill": "listening",
+      "audioAssetId": "01a48826-9d98-584a-b484-dd5a885ec34c",
+      "promptFr": "Écoutez, puis choisissez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "98d4b96b-e5ab-512f-83ee-005920e448a6",
+          "labelFr": "un taxi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9ff21944-0f56-51fc-a513-f47069288b3c",
+          "labelFr": "un bus",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "86658c4e-0ab3-5bf2-86f6-9addc8754a7d",
+          "labelFr": "un bateau",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c863674a-c7cd-5ece-afc8-ca2b04f49a5f",
+          "labelFr": "un véhicule (le mot général)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "86658c4e-0ab3-5bf2-86f6-9addc8754a7d",
+      "feedback": {
+        "correctFr": "Oui. Deux mots bien différents l’un de l’autre : celui-là ne se confond avec rien.",
+        "incorrectFr": "Réécoutez, et comptez les syllabes. Une seule syllabe perchée, brève, fermée sur un t retenu, c’est รถ, le véhicule. Deux syllabes, la première perchée puis une seconde à plat qui dure, c’est รถเมล์, le bus.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3, 4 et 5",
+            "textFr": "Oui, et c’est le tirage difficile. rót tout seul, c’est le véhicule ; rót suivi de mee, c’est le bus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres confusions",
+            "textFr": "Réécoutez le début du mot. tháek attaque avec un souffle et reste perché ; ruea n’a pas de consonne dure, la voix glisse d’un bout à l’autre."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5d-p1",
+      "drawIndex": 2,
+      "id": "3eb32c3a-71b0-5804-8d8b-a913b3ad485a",
+      "type": "audio_choice",
+      "itemId": "19a9136d-ca90-5831-8352-a3a0a86283fd",
+      "skill": "listening",
+      "audioAssetId": "e62d846e-39af-577d-ba5b-e651f6a02c95",
+      "promptFr": "Écoutez, puis choisissez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "98d4b96b-e5ab-512f-83ee-005920e448a6",
+          "labelFr": "un taxi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9ff21944-0f56-51fc-a513-f47069288b3c",
+          "labelFr": "un bus",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "86658c4e-0ab3-5bf2-86f6-9addc8754a7d",
+          "labelFr": "un bateau",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c863674a-c7cd-5ece-afc8-ca2b04f49a5f",
+          "labelFr": "un véhicule (le mot général)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "98d4b96b-e5ab-512f-83ee-005920e448a6",
+      "feedback": {
+        "correctFr": "Oui. Deux mots bien différents l’un de l’autre : celui-là ne se confond avec rien.",
+        "incorrectFr": "Réécoutez, et comptez les syllabes. Une seule syllabe perchée, brève, fermée sur un t retenu, c’est รถ, le véhicule. Deux syllabes, la première perchée puis une seconde à plat qui dure, c’est รถเมล์, le bus.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3, 4 et 5",
+            "textFr": "Oui, et c’est le tirage difficile. rót tout seul, c’est le véhicule ; rót suivi de mee, c’est le bus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres confusions",
+            "textFr": "Réécoutez le début du mot. tháek attaque avec un souffle et reste perché ; ruea n’a pas de consonne dure, la voix glisse d’un bout à l’autre."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5d-p1",
+      "drawIndex": 3,
+      "id": "dc8adbb6-6e40-5819-8c9c-80119181c1f1",
+      "type": "audio_choice",
+      "itemId": "c2ceacee-e82a-5ce3-b795-be5254010bcc",
+      "skill": "listening",
+      "audioAssetId": "bc5af1a2-75b4-57d5-ae4f-e28f5a7bfcc3",
+      "promptFr": "Écoutez, puis choisissez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "98d4b96b-e5ab-512f-83ee-005920e448a6",
+          "labelFr": "un taxi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9ff21944-0f56-51fc-a513-f47069288b3c",
+          "labelFr": "un bus",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "86658c4e-0ab3-5bf2-86f6-9addc8754a7d",
+          "labelFr": "un bateau",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c863674a-c7cd-5ece-afc8-ca2b04f49a5f",
+          "labelFr": "un véhicule (le mot général)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "9ff21944-0f56-51fc-a513-f47069288b3c",
+      "feedback": {
+        "correctFr": "Oui. Deux mots bien différents l’un de l’autre : celui-là ne se confond avec rien.",
+        "incorrectFr": "Réécoutez, et comptez les syllabes. Une seule syllabe perchée, brève, fermée sur un t retenu, c’est รถ, le véhicule. Deux syllabes, la première perchée puis une seconde à plat qui dure, c’est รถเมล์, le bus.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3, 4 et 5",
+            "textFr": "Oui, et c’est le tirage difficile. rót tout seul, c’est le véhicule ; rót suivi de mee, c’est le bus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres confusions",
+            "textFr": "Réécoutez le début du mot. tháek attaque avec un souffle et reste perché ; ruea n’a pas de consonne dure, la voix glisse d’un bout à l’autre."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5d-p1",
+      "drawIndex": 4,
+      "id": "49e817f9-e665-5464-9f1c-3043715d3961",
+      "type": "audio_choice",
+      "itemId": "5eab4767-464a-54f9-90e0-62144e32765a",
+      "skill": "listening",
+      "audioAssetId": "85b87952-012f-5b07-8c52-6d481e4b1549",
+      "promptFr": "Écoutez, puis choisissez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "98d4b96b-e5ab-512f-83ee-005920e448a6",
+          "labelFr": "un taxi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9ff21944-0f56-51fc-a513-f47069288b3c",
+          "labelFr": "un bus",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "86658c4e-0ab3-5bf2-86f6-9addc8754a7d",
+          "labelFr": "un bateau",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c863674a-c7cd-5ece-afc8-ca2b04f49a5f",
+          "labelFr": "un véhicule (le mot général)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "c863674a-c7cd-5ece-afc8-ca2b04f49a5f",
+      "feedback": {
+        "correctFr": "Oui. Deux mots bien différents l’un de l’autre : celui-là ne se confond avec rien.",
+        "incorrectFr": "Réécoutez, et comptez les syllabes. Une seule syllabe perchée, brève, fermée sur un t retenu, c’est รถ, le véhicule. Deux syllabes, la première perchée puis une seconde à plat qui dure, c’est รถเมล์, le bus.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3, 4 et 5",
+            "textFr": "Oui, et c’est le tirage difficile. rót tout seul, c’est le véhicule ; rót suivi de mee, c’est le bus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres confusions",
+            "textFr": "Réécoutez le début du mot. tháek attaque avec un souffle et reste perché ; ruea n’a pas de consonne dure, la voix glisse d’un bout à l’autre."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5d-p1",
+      "drawIndex": 5,
+      "id": "8c31ee56-0363-5e9a-9f86-24a5fa8de7b8",
+      "type": "audio_choice",
+      "itemId": "c2ceacee-e82a-5ce3-b795-be5254010bcc",
+      "skill": "listening",
+      "audioAssetId": "bc5af1a2-75b4-57d5-ae4f-e28f5a7bfcc3",
+      "promptFr": "Écoutez, puis choisissez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "98d4b96b-e5ab-512f-83ee-005920e448a6",
+          "labelFr": "un taxi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9ff21944-0f56-51fc-a513-f47069288b3c",
+          "labelFr": "un bus",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "86658c4e-0ab3-5bf2-86f6-9addc8754a7d",
+          "labelFr": "un bateau",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c863674a-c7cd-5ece-afc8-ca2b04f49a5f",
+          "labelFr": "un véhicule (le mot général)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "9ff21944-0f56-51fc-a513-f47069288b3c",
+      "feedback": {
+        "correctFr": "Oui. Deux mots bien différents l’un de l’autre : celui-là ne se confond avec rien.",
+        "incorrectFr": "Réécoutez, et comptez les syllabes. Une seule syllabe perchée, brève, fermée sur un t retenu, c’est รถ, le véhicule. Deux syllabes, la première perchée puis une seconde à plat qui dure, c’est รถเมล์, le bus.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3, 4 et 5",
+            "textFr": "Oui, et c’est le tirage difficile. rót tout seul, c’est le véhicule ; rót suivi de mee, c’est le bus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres confusions",
+            "textFr": "Réécoutez le début du mot. tháek attaque avec un souffle et reste perché ; ruea n’a pas de consonne dure, la voix glisse d’un bout à l’autre."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u05-l5d-p1",
+      "drawIndex": 6,
+      "id": "651f0d6b-4471-5f60-a7b3-022a0bc5eb6e",
+      "type": "audio_choice",
+      "itemId": "3048fa68-4259-5bbc-8a67-deb919482438",
+      "skill": "listening",
+      "audioAssetId": "01a48826-9d98-584a-b484-dd5a885ec34c",
+      "promptFr": "Écoutez, puis choisissez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "98d4b96b-e5ab-512f-83ee-005920e448a6",
+          "labelFr": "un taxi",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9ff21944-0f56-51fc-a513-f47069288b3c",
+          "labelFr": "un bus",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "86658c4e-0ab3-5bf2-86f6-9addc8754a7d",
+          "labelFr": "un bateau",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c863674a-c7cd-5ece-afc8-ca2b04f49a5f",
+          "labelFr": "un véhicule (le mot général)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "86658c4e-0ab3-5bf2-86f6-9addc8754a7d",
+      "feedback": {
+        "correctFr": "Oui. Deux mots bien différents l’un de l’autre : celui-là ne se confond avec rien.",
+        "incorrectFr": "Réécoutez, et comptez les syllabes. Une seule syllabe perchée, brève, fermée sur un t retenu, c’est รถ, le véhicule. Deux syllabes, la première perchée puis une seconde à plat qui dure, c’est รถเมล์, le bus.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3, 4 et 5",
+            "textFr": "Oui, et c’est le tirage difficile. rót tout seul, c’est le véhicule ; rót suivi de mee, c’est le bus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, autres confusions",
+            "textFr": "Réécoutez le début du mot. tháek attaque avec un souffle et reste perché ; ruea n’a pas de consonne dure, la voix glisse d’un bout à l’autre."
+          }
+        ]
+      }
+    },
+    {
       "poolId": "u05-l5d-p2",
       "drawIndex": 1,
       "id": "137e5813-b0bd-5abb-b98d-9911165b0d1b",
@@ -579,6 +897,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u05-l5d-p1",
+      "promptFr": "Écoutez, puis choisissez ce que vous avez entendu.",
+      "mechanic": "audio_choice",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    },
     {
       "poolId": "u05-l5d-p2",
       "promptFr": "Remettez les blocs dans l’ordre. Un ou deux blocs sont en trop : retirez-les.",

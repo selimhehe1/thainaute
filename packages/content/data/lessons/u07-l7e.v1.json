@@ -693,9 +693,564 @@
         "RID-2554",
         "VOLUBILIS-26-2"
       ]
+    },
+    {
+      "id": "ac51834e-ccda-533c-a510-c2fccd4e5b9b",
+      "thaiRaw": "ปา",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E32"
+      ],
+      "translationFr": "lancer (jeter avec le bras)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "paa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปา",
+          "ipa": "paː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "0962b3d1-10ff-53f2-92e4-679765122be3",
+      "thaiRaw": "ป่า",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E48",
+        "U+0E32"
+      ],
+      "translationFr": "forêt",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pàa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ป่า",
+          "ipa": "paː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "03610c7d-2f63-5974-a6e2-439adee3f6a6",
+      "thaiRaw": "ปู",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E39"
+      ],
+      "translationFr": "crabe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pouu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปู",
+          "ipa": "puː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "443d9fea-1634-5612-b97e-64937e5560ab",
+      "thaiRaw": "ปู่",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E39",
+        "U+0E48"
+      ],
+      "translationFr": "grand-père paternel (le père du père)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pòuu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปู่",
+          "ipa": "puː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "1d00389c-9d7e-5c1a-a457-d513d2e7e1a1",
+      "thaiRaw": "ปี",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E35"
+      ],
+      "translationFr": "année, an",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปี",
+          "ipa": "piː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "4e08caa9-2d30-599b-a465-48b3e279463a",
+      "thaiRaw": "ปี่",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E35",
+        "U+0E48"
+      ],
+      "translationFr": "hautbois thaï (instrument à vent à anche)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pìi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปี่",
+          "ipa": "piː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u07-l7e-p2",
+      "drawIndex": 1,
+      "id": "f9cbadfd-1c7e-5771-ac83-78644db4e4e0",
+      "type": "audio_choice",
+      "itemId": "ac51834e-ccda-533c-a510-c2fccd4e5b9b",
+      "skill": "listening",
+      "audioAssetId": "0e53c8a7-75d9-52ca-8c8c-eef362ec2989",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu. Les deux options ont la même consonne et la même voyelle : n’écoutez que la hauteur.",
+      "options": [
+        {
+          "id": "f4109edf-def9-531c-afed-d2f6ba458dee",
+          "labelFr": "ปา (paa, lancer)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "4adc6833-d5f7-57f9-b0f6-73a703b00be2",
+          "labelFr": "ป่า (pàa, la forêt)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "f4109edf-def9-531c-afed-d2f6ba458dee",
+      "feedback": {
+        "correctFr": "Oui. Même consonne, même voyelle, même longueur : c’est bien la hauteur que vous avez entendue.",
+        "incorrectFr": "Posez d’abord votre ancre, comme en 1C : écoutez le ton moyen, c’est votre ligne d’horizon. Puis demandez-vous seulement si la syllabe entendue est sur cette ligne ou en dessous.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 7",
+            "textFr": "Exactement. Deux tons bas d’affilée, la voix ne remonte pas entre les deux. C’est aussi ce que fait สี่สิบ dans le dialogue."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 8",
+            "textFr": "Bien entendu. Le mot commence un étage en dessous, puis revient sur la ligne. สบายดี fait la même chose, avec une syllabe de plus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 7 et 8",
+            "textFr": "Réécoutez syllabe par syllabe, avec l’audio découpé. Une seule question à chaque fois : sur la ligne, ou en dessous ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7e-p2",
+      "drawIndex": 2,
+      "id": "6a766350-96d1-5f42-89c1-d0eebbb0db15",
+      "type": "audio_choice",
+      "itemId": "0962b3d1-10ff-53f2-92e4-679765122be3",
+      "skill": "listening",
+      "audioAssetId": "b66dc024-2f05-5793-b5f7-80925a3d99ab",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu. Les deux options ont la même consonne et la même voyelle : n’écoutez que la hauteur.",
+      "options": [
+        {
+          "id": "371ba9b7-291d-54b3-a734-f470819be0d6",
+          "labelFr": "ปา (paa, lancer)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c16b47af-b993-54a6-8390-8ccaedb0a467",
+          "labelFr": "ป่า (pàa, la forêt)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "c16b47af-b993-54a6-8390-8ccaedb0a467",
+      "feedback": {
+        "correctFr": "Oui. Même consonne, même voyelle, même longueur : c’est bien la hauteur que vous avez entendue.",
+        "incorrectFr": "Posez d’abord votre ancre, comme en 1C : écoutez le ton moyen, c’est votre ligne d’horizon. Puis demandez-vous seulement si la syllabe entendue est sur cette ligne ou en dessous.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 7",
+            "textFr": "Exactement. Deux tons bas d’affilée, la voix ne remonte pas entre les deux. C’est aussi ce que fait สี่สิบ dans le dialogue."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 8",
+            "textFr": "Bien entendu. Le mot commence un étage en dessous, puis revient sur la ligne. สบายดี fait la même chose, avec une syllabe de plus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 7 et 8",
+            "textFr": "Réécoutez syllabe par syllabe, avec l’audio découpé. Une seule question à chaque fois : sur la ligne, ou en dessous ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7e-p2",
+      "drawIndex": 3,
+      "id": "a5c1fc88-53e4-52e7-848a-19b238cdb0b6",
+      "type": "audio_choice",
+      "itemId": "443d9fea-1634-5612-b97e-64937e5560ab",
+      "skill": "listening",
+      "audioAssetId": "673e513f-d0be-5491-892f-4c96aaf1cf0d",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu. Les deux options ont la même consonne et la même voyelle : n’écoutez que la hauteur.",
+      "options": [
+        {
+          "id": "60ea7d02-9fba-5932-8a90-6001e7a81184",
+          "labelFr": "ปู (pouu, le crabe)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "6f853b50-3e49-5455-8fe9-f7fa19096d8d",
+          "labelFr": "ปู่ (pòuu, le grand-père paternel)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "6f853b50-3e49-5455-8fe9-f7fa19096d8d",
+      "feedback": {
+        "correctFr": "Oui. Même consonne, même voyelle, même longueur : c’est bien la hauteur que vous avez entendue.",
+        "incorrectFr": "Posez d’abord votre ancre, comme en 1C : écoutez le ton moyen, c’est votre ligne d’horizon. Puis demandez-vous seulement si la syllabe entendue est sur cette ligne ou en dessous.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 7",
+            "textFr": "Exactement. Deux tons bas d’affilée, la voix ne remonte pas entre les deux. C’est aussi ce que fait สี่สิบ dans le dialogue."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 8",
+            "textFr": "Bien entendu. Le mot commence un étage en dessous, puis revient sur la ligne. สบายดี fait la même chose, avec une syllabe de plus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 7 et 8",
+            "textFr": "Réécoutez syllabe par syllabe, avec l’audio découpé. Une seule question à chaque fois : sur la ligne, ou en dessous ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7e-p2",
+      "drawIndex": 4,
+      "id": "45125e49-6d2f-5805-a5d4-44df51cc18fe",
+      "type": "audio_choice",
+      "itemId": "1d00389c-9d7e-5c1a-a457-d513d2e7e1a1",
+      "skill": "listening",
+      "audioAssetId": "2a95a670-ba04-5980-adc9-ceb13f708b48",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu. Les deux options ont la même consonne et la même voyelle : n’écoutez que la hauteur.",
+      "options": [
+        {
+          "id": "7f2814eb-1540-5550-8b6e-1d5cdf0f1d75",
+          "labelFr": "ปี (pii, l’année)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c994dfc2-2917-549b-806c-5dd59f85648e",
+          "labelFr": "ปี่ (pìi, le hautbois thaï)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "7f2814eb-1540-5550-8b6e-1d5cdf0f1d75",
+      "feedback": {
+        "correctFr": "Oui. Même consonne, même voyelle, même longueur : c’est bien la hauteur que vous avez entendue.",
+        "incorrectFr": "Posez d’abord votre ancre, comme en 1C : écoutez le ton moyen, c’est votre ligne d’horizon. Puis demandez-vous seulement si la syllabe entendue est sur cette ligne ou en dessous.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 7",
+            "textFr": "Exactement. Deux tons bas d’affilée, la voix ne remonte pas entre les deux. C’est aussi ce que fait สี่สิบ dans le dialogue."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 8",
+            "textFr": "Bien entendu. Le mot commence un étage en dessous, puis revient sur la ligne. สบายดี fait la même chose, avec une syllabe de plus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 7 et 8",
+            "textFr": "Réécoutez syllabe par syllabe, avec l’audio découpé. Une seule question à chaque fois : sur la ligne, ou en dessous ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7e-p2",
+      "drawIndex": 5,
+      "id": "6feb94a1-b2fd-506f-abac-e1dece1b045d",
+      "type": "audio_choice",
+      "itemId": "03610c7d-2f63-5974-a6e2-439adee3f6a6",
+      "skill": "listening",
+      "audioAssetId": "6f564585-8625-56ff-970b-40af644129c6",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu. Les deux options ont la même consonne et la même voyelle : n’écoutez que la hauteur.",
+      "options": [
+        {
+          "id": "8ee68807-45f7-51ab-a9fa-3f821b3a487f",
+          "labelFr": "ปู (pouu, le crabe)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "1b8bca46-b31b-5c19-a820-ab03e95d88bd",
+          "labelFr": "ปู่ (pòuu, le grand-père paternel)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "8ee68807-45f7-51ab-a9fa-3f821b3a487f",
+      "feedback": {
+        "correctFr": "Oui. Même consonne, même voyelle, même longueur : c’est bien la hauteur que vous avez entendue.",
+        "incorrectFr": "Posez d’abord votre ancre, comme en 1C : écoutez le ton moyen, c’est votre ligne d’horizon. Puis demandez-vous seulement si la syllabe entendue est sur cette ligne ou en dessous.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 7",
+            "textFr": "Exactement. Deux tons bas d’affilée, la voix ne remonte pas entre les deux. C’est aussi ce que fait สี่สิบ dans le dialogue."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 8",
+            "textFr": "Bien entendu. Le mot commence un étage en dessous, puis revient sur la ligne. สบายดี fait la même chose, avec une syllabe de plus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 7 et 8",
+            "textFr": "Réécoutez syllabe par syllabe, avec l’audio découpé. Une seule question à chaque fois : sur la ligne, ou en dessous ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7e-p2",
+      "drawIndex": 6,
+      "id": "4e0fdadb-1930-568a-901a-3980d9652b28",
+      "type": "audio_choice",
+      "itemId": "4e08caa9-2d30-599b-a465-48b3e279463a",
+      "skill": "listening",
+      "audioAssetId": "6b070b6e-df43-59d3-9180-2c3e5066943d",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu. Les deux options ont la même consonne et la même voyelle : n’écoutez que la hauteur.",
+      "options": [
+        {
+          "id": "b8c9f045-df64-5dfe-ae5a-6561e5d75c05",
+          "labelFr": "ปี (pii, l’année)",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "ab70b01e-9dd5-51d4-9fb6-72bfd42d6c61",
+          "labelFr": "ปี่ (pìi, le hautbois thaï)",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "ab70b01e-9dd5-51d4-9fb6-72bfd42d6c61",
+      "feedback": {
+        "correctFr": "Oui. Même consonne, même voyelle, même longueur : c’est bien la hauteur que vous avez entendue.",
+        "incorrectFr": "Posez d’abord votre ancre, comme en 1C : écoutez le ton moyen, c’est votre ligne d’horizon. Puis demandez-vous seulement si la syllabe entendue est sur cette ligne ou en dessous.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 7",
+            "textFr": "Exactement. Deux tons bas d’affilée, la voix ne remonte pas entre les deux. C’est aussi ce que fait สี่สิบ dans le dialogue."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 8",
+            "textFr": "Bien entendu. Le mot commence un étage en dessous, puis revient sur la ligne. สบายดี fait la même chose, avec une syllabe de plus."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 7 et 8",
+            "textFr": "Réécoutez syllabe par syllabe, avec l’audio découpé. Une seule question à chaque fois : sur la ligne, ou en dessous ?"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7e-p3",
+      "drawIndex": 1,
+      "id": "27890370-b8d9-5d5b-a963-11a778b11cc3",
+      "type": "word_order",
+      "itemId": "809bd927-981f-57a7-961b-1553aa2e3d30",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "« Un homme dit qu’aujourd’hui il va au marché. Remettez les",
+      "tokens": [
+        {
+          "id": "ecb1f622-fb3f-5626-aefe-dedb91f70e6d",
+          "thaiRaw": "ตลาด",
+          "transcription": null
+        },
+        {
+          "id": "15a1c7d1-2d3f-5610-a70e-0139db088aa2",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "0ae9bf55-5a0f-5c07-9e36-17d7756a54ee",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "7329e01a-848a-53b1-863c-35d770be5ae0",
+          "thaiRaw": "วันนี้",
+          "transcription": null
+        },
+        {
+          "id": "b091fb8f-2267-5ebb-9c11-1e40c51b19d7",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "4ba5515f-36d8-59bb-b07c-b62add11b0dd",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "7329e01a-848a-53b1-863c-35d770be5ae0",
+        "b091fb8f-2267-5ebb-9c11-1e40c51b19d7",
+        "0ae9bf55-5a0f-5c07-9e36-17d7756a54ee",
+        "ecb1f622-fb3f-5626-aefe-dedb91f70e6d",
+        "15a1c7d1-2d3f-5610-a70e-0139db088aa2"
+      ],
+      "feedback": {
+        "correctFr": "« Exactement. Le mot de temps ouvre, le reste est le bloc",
+        "incorrectFr": "« Trois repères. วันนี้ se pose devant tout le reste.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u07-l7e-p3",
+      "drawIndex": 2,
+      "id": "c380907d-a485-511a-a53a-c61b3334ff0f",
+      "type": "word_order",
+      "itemId": "b580ef9b-4d3f-5f3e-91de-ee86e6b2e83c",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "« Un homme dit qu’aujourd’hui il va au marché. Remettez les",
+      "tokens": [
+        {
+          "id": "8f1a33f3-ed00-59ad-b8bb-ce46b52c2749",
+          "thaiRaw": "มาก",
+          "transcription": null
+        },
+        {
+          "id": "5b58343b-2edc-57e9-9def-4aaef541cc91",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "1a70973f-a965-53e3-9870-89875ed2306a",
+          "thaiRaw": "อร่อย",
+          "transcription": null
+        },
+        {
+          "id": "8004d35c-523b-56a0-8f93-f80d3a0a4f8a",
+          "thaiRaw": "ข้าวผัด",
+          "transcription": null
+        },
+        {
+          "id": "b671b8bf-bcfa-5b8a-9428-383d5aab5e89",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "8004d35c-523b-56a0-8f93-f80d3a0a4f8a",
+        "1a70973f-a965-53e3-9870-89875ed2306a",
+        "8f1a33f3-ed00-59ad-b8bb-ce46b52c2749",
+        "5b58343b-2edc-57e9-9def-4aaef541cc91"
+      ],
+      "feedback": {
+        "correctFr": "« Exactement. Le mot de temps ouvre, le reste est le bloc",
+        "incorrectFr": "« Trois repères. วันนี้ se pose devant tout le reste.",
+        "variants": []
+      }
+    },
     {
       "poolId": "u07-l7e-p5",
       "drawIndex": 1,
@@ -785,6 +1340,22 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u07-l7e-p2",
+      "promptFr": "Écoutez, puis choisissez le mot que vous avez entendu. Les deux options ont la même consonne et la même voyelle : n’écoutez que la hauteur.",
+      "mechanic": "audio_choice",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    },
+    {
+      "poolId": "u07-l7e-p3",
+      "promptFr": "« Un homme dit qu’aujourd’hui il va au marché. Remettez les",
+      "mechanic": "word_order",
+      "drawCount": 2,
+      "passRequired": 2,
+      "sampleSize": 2
+    },
     {
       "poolId": "u07-l7e-p5",
       "promptFr": "Reliez chaque expression à son sens.",
