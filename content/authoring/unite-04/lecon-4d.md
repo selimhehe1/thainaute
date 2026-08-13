@@ -479,6 +479,75 @@ appareil.
   - Fréquence, signal indicatif : FrequencyWords `th_50k.txt`, consultée le
     2026-08-03, มาก au rang 1 301, 296 occurrences.
 
+### Item 9 : เผ็ดมาก
+
+Cet item est déclaré parce que deux exercices de cette leçon l'affichent et
+le font écouter comme une réponse entière : c'est la dose la plus forte de la
+jauge, et elle ne s'entend pas dans เผ็ด seul. Il n'ajoute aucun fait
+linguistique : la locution était déjà attestée et sourcée dans la section
+« Assemblages » de l'item 8, avec ses points de code et sa transcription. La
+leçon déclare déjà เผ็ดนิดหน่อย à l'item 5 sur le même principe.
+
+- `thai` : เผ็ดมาก
+- `codepoints` : U+0E40 U+0E1C U+0E47 U+0E14 U+0E21 U+0E32 U+0E01 (NFC)
+- `ipa` : /pʰet̚˨˩.maːk̚˥˩/ (composé des items 2 เผ็ด et 8 มาก, voir leurs
+  sources)
+- `ton` : phèt bas ; mâak descendant
+- `longueur` : phèt courte ; mâak longue
+- `fr` : très épicé
+- `litteral` : épicé beaucoup
+- `transcription` : phèt mâak
+- `registre` : neutre (poli avec la particule : เผ็ดมากครับ / เผ็ดมากค่ะ)
+- `note_fr` : มาก se place APRÈS ce qu'il intensifie, à l'inverse du français
+  qui met « très » devant. La difficulté d'écoute est ailleurs : เผ็ด est
+  brève et fermée sur un ด qui ne se relâche pas, มาก est longue et fermée sur
+  un ก qui ne se relâche pas davantage. Deux syllabes coupées net, dont la
+  seconde descend.
+- `sources` :
+  - VOLUBILIS Database v26.2, ligne 70589, relevée le 2026-08-03 : THAIPHON
+    `_phet \māk`, ENG « very spicy », FRA « très épicé », TYPE `adj.`, DOM
+    `CULINA`, SYLLAB `[เผ็ด มาก]`. Le `_` note le ton bas et le `\` le ton
+    descendant ; le macron note la voyelle longue de la seconde syllabe.
+  - Absente du RID 2554 et de en.wiktionary (HTTP 404, vérifié le 2026-08-03),
+    et absente de `th_50k.txt`. Ces absences sont consignées telles quelles :
+    elles n'affaiblissent pas l'attestation VOLUBILIS, elles disent seulement
+    que la locution n'a pas de vedette propre ailleurs.
+  - Composants attestés séparément dans cette leçon : item 2 เผ็ด (RID 2554,
+    VOLUBILIS ligne 70557, en.wiktionary, th.wiktionary) et item 8 มาก
+    (RID 2554, VOLUBILIS ligne 53109, en.wiktionary, th.wiktionary).
+
+### Item 10 : ชอบมาก
+
+Déclaré pour la même raison que l'item 9, et sur la même base : l'exercice de
+lecture l'affiche comme une étiquette entière. La locution était déjà attestée
+et sourcée dans la section « Assemblages » de l'item 8.
+
+- `thai` : ชอบมาก
+- `codepoints` : U+0E0A U+0E2D U+0E1A U+0E21 U+0E32 U+0E01 (NFC)
+- `ipa` : /t͡ɕʰɔːp̚˥˩.maːk̚˥˩/ (composé des items 6 ชอบ et 8 มาก, voir leurs
+  sources)
+- `ton` : châwwp descendant ; mâak descendant
+- `longueur` : les deux syllabes sont longues
+- `fr` : aimer beaucoup, adorer
+- `litteral` : aimer beaucoup
+- `transcription` : châwwp mâak
+- `registre` : neutre (poli avec la particule : ชอบมากครับ / ชอบมากค่ะ)
+- `note_fr` : deux syllabes descendantes de suite, chacune fermée par une
+  consonne qui ne se relâche pas, le บ puis le ก. La voix retombe deux fois,
+  et c'est ce double mouvement qui distingue la locution de ชอบ seul à
+  l'oreille. Comme à l'item 9, มาก suit ce qu'il intensifie.
+- `sources` :
+  - VOLUBILIS Database v26.2, ligne 9329, relevée le 2026-08-03 : THAIPHON
+    `\chøp \māk`, ENG « be crazy about ; … ; like a lot », citation partielle,
+    FRA « adorer ; aimer beaucoup », TYPE `v. exp.`, SYLLAB `[ชอบ มาก]`. Les
+    deux `\` notent les deux tons descendants.
+  - Absente du RID 2554 et de Wiktionary (https://en.wiktionary.org/wiki/ชอบมาก
+    et https://th.wiktionary.org/wiki/ชอบมาก renvoient HTTP 404, vérifié le
+    2026-08-03). Fréquence `th_50k.txt` rang 12 064, signal indicatif.
+  - Composants attestés séparément dans cette leçon : item 6 ชอบ (RID 2554,
+    VOLUBILIS, en.wiktionary, th.wiktionary) et item 8 มาก (mêmes familles de
+    sources).
+
 ## Exercices
 
 ### Exercice 1 : qu’est-ce qu’on vous dit ? (`listening`)

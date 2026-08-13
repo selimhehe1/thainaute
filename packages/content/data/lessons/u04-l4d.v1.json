@@ -323,6 +323,89 @@
       ]
     },
     {
+      "id": "1dc29bc4-b3e3-5890-98b0-ac511c50a577",
+      "thaiRaw": "เผ็ดมาก",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E1C",
+        "U+0E47",
+        "U+0E14",
+        "U+0E21",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "très épicé",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phèt mâak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เผ็ดมาก",
+          "ipa": "pʰet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "เผ็ดมาก",
+          "ipa": "maːk̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre (poli avec la particule : เผ็ดมากครับ / เผ็ดมากค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "2687fdce-27e1-538a-88f2-998918db4912",
+      "thaiRaw": "ชอบมาก",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E21",
+        "U+0E32",
+        "U+0E01"
+      ],
+      "translationFr": "aimer beaucoup, adorer",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "châwwp mâak"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ชอบมาก",
+          "ipa": "t͡ɕʰɔːp̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ชอบมาก",
+          "ipa": "maːk̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "k̚"
+        }
+      ],
+      "register": "neutre (poli avec la particule : ชอบมากครับ / ชอบมากค่ะ)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
       "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
@@ -470,7 +553,7 @@
       "drawIndex": 4,
       "id": "ac4a6ff6-6ee6-5ee9-a211-dfbc01177e09",
       "type": "word_order",
-      "itemId": "b9759fba-56ba-53b8-bdb4-81b62867039e",
+      "itemId": "2687fdce-27e1-538a-88f2-998918db4912",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Composez ce qu’on vous demande de dire. Une règle suffit : ไม่ se met devant, นิดหน่อย et มาก se mettent derrière.",
@@ -556,6 +639,282 @@
           }
         ]
       }
+    },
+    {
+      "poolId": "u04-l4d-p4",
+      "drawIndex": 1,
+      "id": "ae81c43f-6c20-5fec-a4f4-2c647f496e32",
+      "type": "reading",
+      "itemId": "1ac28918-22f0-5c7c-b728-bee4d48ca331",
+      "skill": "reading",
+      "promptFr": "Lisez, puis choisissez ce que cela veut dire.",
+      "options": [
+        {
+          "id": "0e5c32bd-ea62-5070-a535-cfbb5746aa34",
+          "labelFr": "pas épicé",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "0b39d085-64d3-54b7-8d75-6fccdffe5c6f",
+          "labelFr": "très épicé",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "217b6d47-e48f-5853-b6fc-12036418e23b",
+          "labelFr": "un peu épicé",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "0e5c32bd-ea62-5070-a535-cfbb5746aa34",
+      "feedback": {
+        "correctFr": "Oui. Le ไม่ est en tête : tout ce qui suit est nié.",
+        "incorrectFr": "Regardez d’abord le début du bloc. Si vous y voyez ไม่, la réponse est négative, quoi qu’il y ait après. Sinon, regardez la fin : c’est là que se trouve la dose.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 3 et 5",
+            "textFr": "Oui. Le mot ajouté à la fin donne la dose."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 6",
+            "textFr": "Oui. Rien devant, rien derrière : le mot est seul."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4d-p4",
+      "drawIndex": 2,
+      "id": "c9cdbe2f-996a-5849-886b-94edbcb0192c",
+      "type": "reading",
+      "itemId": "1dc29bc4-b3e3-5890-98b0-ac511c50a577",
+      "skill": "reading",
+      "promptFr": "Lisez, puis choisissez ce que cela veut dire.",
+      "options": [
+        {
+          "id": "8ddf158f-7859-506b-b0e1-401288ce9fd4",
+          "labelFr": "pas épicé",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e94502c5-c4d2-5055-9b66-9878925d5383",
+          "labelFr": "très épicé",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "1e317334-259a-5d49-b7cc-abb2d931deab",
+          "labelFr": "un peu épicé",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "e94502c5-c4d2-5055-9b66-9878925d5383",
+      "feedback": {
+        "correctFr": "Oui. Le ไม่ est en tête : tout ce qui suit est nié.",
+        "incorrectFr": "Regardez d’abord le début du bloc. Si vous y voyez ไม่, la réponse est négative, quoi qu’il y ait après. Sinon, regardez la fin : c’est là que se trouve la dose.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 3 et 5",
+            "textFr": "Oui. Le mot ajouté à la fin donne la dose."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 6",
+            "textFr": "Oui. Rien devant, rien derrière : le mot est seul."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4d-p4",
+      "drawIndex": 3,
+      "id": "e7426074-3e05-5cdc-90f3-ffb2b41d04b0",
+      "type": "reading",
+      "itemId": "e2d4300e-6e84-5b1e-a0ab-2e115654651c",
+      "skill": "reading",
+      "promptFr": "Lisez, puis choisissez ce que cela veut dire.",
+      "options": [
+        {
+          "id": "4638cc73-5c0a-5477-a8ff-a2dd4ff8be65",
+          "labelFr": "pas épicé",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "5d0205cb-a3e6-58c0-9488-0c649c2e0fed",
+          "labelFr": "très épicé",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "f088c4b6-fbee-5f19-b5a1-6c3317e51822",
+          "labelFr": "un peu épicé",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "f088c4b6-fbee-5f19-b5a1-6c3317e51822",
+      "feedback": {
+        "correctFr": "Oui. Le ไม่ est en tête : tout ce qui suit est nié.",
+        "incorrectFr": "Regardez d’abord le début du bloc. Si vous y voyez ไม่, la réponse est négative, quoi qu’il y ait après. Sinon, regardez la fin : c’est là que se trouve la dose.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 3 et 5",
+            "textFr": "Oui. Le mot ajouté à la fin donne la dose."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 6",
+            "textFr": "Oui. Rien devant, rien derrière : le mot est seul."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4d-p4",
+      "drawIndex": 4,
+      "id": "dbf69f39-f0ca-550c-ae20-13779bd233df",
+      "type": "reading",
+      "itemId": "0735617f-ed18-56e6-b57c-24b17073709d",
+      "skill": "reading",
+      "promptFr": "Lisez, puis choisissez ce que cela veut dire.",
+      "options": [
+        {
+          "id": "0512208f-ad8d-5339-9056-bd3bb112e219",
+          "labelFr": "je n’aime pas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "0b9850a3-c183-53a1-ad8e-d14fbd7fc2f8",
+          "labelFr": "j’aime",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "519d9cca-6edc-5b8c-ac98-d11188494c3f",
+          "labelFr": "j’aime beaucoup",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "0512208f-ad8d-5339-9056-bd3bb112e219",
+      "feedback": {
+        "correctFr": "Oui. Le ไม่ est en tête : tout ce qui suit est nié.",
+        "incorrectFr": "Regardez d’abord le début du bloc. Si vous y voyez ไม่, la réponse est négative, quoi qu’il y ait après. Sinon, regardez la fin : c’est là que se trouve la dose.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 3 et 5",
+            "textFr": "Oui. Le mot ajouté à la fin donne la dose."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 6",
+            "textFr": "Oui. Rien devant, rien derrière : le mot est seul."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4d-p4",
+      "drawIndex": 5,
+      "id": "874af9ef-8adf-5e1d-902c-89823dd60a12",
+      "type": "reading",
+      "itemId": "2687fdce-27e1-538a-88f2-998918db4912",
+      "skill": "reading",
+      "promptFr": "Lisez, puis choisissez ce que cela veut dire.",
+      "options": [
+        {
+          "id": "6f81a15b-5522-50e0-8b05-d140a4fcbb92",
+          "labelFr": "je n’aime pas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a3eaa7f6-76f2-5647-a905-dea9040f03cd",
+          "labelFr": "j’aime",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e09371b6-bd6a-5d41-89cb-14cc74a30e39",
+          "labelFr": "j’aime beaucoup",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "e09371b6-bd6a-5d41-89cb-14cc74a30e39",
+      "feedback": {
+        "correctFr": "Oui. Le ไม่ est en tête : tout ce qui suit est nié.",
+        "incorrectFr": "Regardez d’abord le début du bloc. Si vous y voyez ไม่, la réponse est négative, quoi qu’il y ait après. Sinon, regardez la fin : c’est là que se trouve la dose.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 3 et 5",
+            "textFr": "Oui. Le mot ajouté à la fin donne la dose."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 6",
+            "textFr": "Oui. Rien devant, rien derrière : le mot est seul."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4d-p4",
+      "drawIndex": 6,
+      "id": "b96c7112-807c-51b9-abf1-b618a43e7881",
+      "type": "reading",
+      "itemId": "b9759fba-56ba-53b8-bdb4-81b62867039e",
+      "skill": "reading",
+      "promptFr": "Lisez, puis choisissez ce que cela veut dire.",
+      "options": [
+        {
+          "id": "794a306a-bff1-5a62-af05-aaae5e0b1979",
+          "labelFr": "je n’aime pas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "20bb908c-59dd-59ec-b8b6-3a353dc145b9",
+          "labelFr": "j’aime",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "d0059f6e-0f6a-51eb-9efa-53766825add4",
+          "labelFr": "j’aime beaucoup",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "20bb908c-59dd-59ec-b8b6-3a353dc145b9",
+      "feedback": {
+        "correctFr": "Oui. Le ไม่ est en tête : tout ce qui suit est nié.",
+        "incorrectFr": "Regardez d’abord le début du bloc. Si vous y voyez ไม่, la réponse est négative, quoi qu’il y ait après. Sinon, regardez la fin : c’est là que se trouve la dose.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 3 et 5",
+            "textFr": "Oui. Le mot ajouté à la fin donne la dose."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirage 6",
+            "textFr": "Oui. Rien devant, rien derrière : le mot est seul."
+          }
+        ]
+      }
     }
   ],
   "teaching": [
@@ -616,6 +975,14 @@
       "drawCount": 5,
       "passRequired": 5,
       "sampleSize": 5
+    },
+    {
+      "poolId": "u04-l4d-p4",
+      "promptFr": "Lisez, puis choisissez ce que cela veut dire.",
+      "mechanic": "reading",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
     }
   ],
   "provenance": {
