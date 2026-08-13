@@ -5,6 +5,7 @@ import {
   projectLearningProgress,
   type LearningProgress,
 } from "@thainaute/sync";
+import { libelleMaitrise, maitriseEnPourcent } from "@thainaute/domain";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -129,7 +130,7 @@ export function ProgressExperience({
           <dl className={styles.metrics}>
             <div>
               <dt>Maîtrise moyenne</dt>
-              <dd>{progress.masteryPermille} ‰</dd>
+              <dd>{libelleMaitrise(progress.masteryPermille)}</dd>
             </div>
             <div>
               <dt>Essais</dt>
@@ -153,10 +154,10 @@ export function ProgressExperience({
                   <p className={styles.lessonTitle}>{lesson.titleFr}</p>
                   <div
                     aria-label={`Maîtrise de ${lesson.titleFr}`}
-                    aria-valuemax={1000}
+                    aria-valuemax={100}
                     aria-valuemin={0}
-                    aria-valuenow={lesson.masteryPermille}
-                    aria-valuetext={`${lesson.masteryPermille} pour mille`}
+                    aria-valuenow={maitriseEnPourcent(lesson.masteryPermille)}
+                    aria-valuetext={libelleMaitrise(lesson.masteryPermille)}
                     className={styles.bar}
                     role="progressbar"
                   >

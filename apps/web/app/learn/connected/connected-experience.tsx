@@ -29,6 +29,7 @@ import {
   type ConnectedPublicLesson,
 } from "@/lib/client/connected-public-lesson";
 import { useWebAuthSession } from "@/lib/client/auth-session";
+import { libelleMaitrise } from "@thainaute/domain";
 import { useWebAnalyticsConsent } from "@/lib/client/analytics-consent";
 import { readWebLessonProgress } from "@/lib/client/lesson-progress";
 import {
@@ -621,7 +622,7 @@ export function ConnectedExperience() {
           <dl>
             <div>
               <dt>Maîtrise technique</dt>
-              <dd>{Math.round(progress.masteryPermille / 10)} %</dd>
+              <dd>{libelleMaitrise(progress.masteryPermille)}</dd>
             </div>
             <div>
               <dt>Tentatives</dt>

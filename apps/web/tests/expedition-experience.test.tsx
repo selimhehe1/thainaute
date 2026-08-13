@@ -340,7 +340,9 @@ describe("lecteur Expédition", () => {
       name: "La courbe de la séance est complète.",
     });
     expect(screen.getAllByText("Juste")).toHaveLength(5);
-    expect(screen.getByText("250 ‰")).toBeInTheDocument();
+    // Le domaine partagé tient l'unique formulation de la maîtrise :
+    // 250 sur mille valent 25 %.
+    expect(screen.getByText("25 %")).toBeInTheDocument();
 
     await user.click(
       screen.getByRole("button", { name: "Terminer la séance" }),
@@ -411,7 +413,7 @@ describe("lecteur Expédition", () => {
 
     // Cinq lignes portent une maîtrise chiffrée. Aucune ne reste « à
     // calculer », qui était le sort de quatre exercices sur cinq.
-    expect(screen.getAllByText(/^Maîtrise \d+ ‰$/u)).toHaveLength(5);
+    expect(screen.getAllByText(/^Maîtrise \d+ %$/u)).toHaveLength(5);
     expect(screen.queryByText("Maîtrise à calculer")).not.toBeInTheDocument();
     expect(screen.queryByText("À calculer")).not.toBeInTheDocument();
   }, 30_000);

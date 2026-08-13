@@ -1,6 +1,6 @@
 import type { AnalyticsSink } from "@thainaute/analytics";
 import { colors } from "@thainaute/design-tokens";
-import { SRS_ALGORITHM_VERSION } from "@thainaute/domain";
+import { SRS_ALGORITHM_VERSION, libelleMaitrise } from "@thainaute/domain";
 import {
   attemptSubmissionSchema,
   createAttemptOutboxSnapshot,
@@ -618,7 +618,7 @@ function ResultStage({
       </Text>
       <View style={styles.metric}>
         <Text style={styles.metricLabel}>MAÎTRISE ESTIMÉE</Text>
-        <Text style={styles.metricValue}>{masteryScore} ‰</Text>
+        <Text style={styles.metricValue}>{libelleMaitrise(masteryScore)}</Text>
       </View>
       <View style={styles.metric}>
         <Text style={styles.metricLabel}>PROCHAINE RÉVISION</Text>
