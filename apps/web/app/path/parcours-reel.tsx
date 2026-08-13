@@ -5,6 +5,7 @@ import panel from "@/components/ui/panel.module.css";
 import { lireCoursPublie } from "@/lib/lecons-publiees";
 
 import styles from "./path.module.css";
+import parcours from "./parcours-reel.module.css";
 
 /**
  * Le parcours réel, unité par unité.
@@ -24,7 +25,7 @@ interface UniteDuParcours {
   readonly publiees: readonly {
     readonly slug: string;
     readonly titre: string;
-    readonly objectif: string;
+    readonly exercices: number;
   }[];
   readonly enPreparation: number;
 }
@@ -49,7 +50,7 @@ export function unitesDuParcours(): readonly UniteDuParcours[] {
               {
                 slug: entree.lessonId,
                 titre: bundle.lesson.titleFr,
-                objectif: bundle.lesson.objectiveFr,
+                exercices: bundle.lesson.exercises.length,
               },
             ],
           },
@@ -85,29 +86,39 @@ export function ParcoursReel({
           : "Les unités s’ouvrent l’une après l’autre. Celles qui restent en préparation n’annoncent que leur nombre : rien d’un brouillon n’est montré avant sa relecture."}
       </p>
 
-      <ol className={styles.itinerary}>
+      <ol className={parcours.unites}>
         {unites.map((unite) => (
-          <li className={styles.stop} key={unite.numero}>
-            <h2 className={styles.catalogHeading}>
+          <li
+            className={
+              unite.publiees.length > 0
+                ? `${parcours.unite} ${parcours.uniteOuverte}`
+                : parcours.unite
+            }
+            key={unite.numero}
+          >
+            <h2 className={parcours.numero}>
               Unité {String(unite.numero).padStart(2, "0")}
             </h2>
             {unite.publiees.length > 0 && (
-              <ul>
+              <ul className={parcours.lecons}>
                 {unite.publiees.map((lecon) => (
                   <li key={lecon.slug}>
                     <Link
-                      className={styles.leconLien}
+                      className={parcours.lecon}
                       href={`/learn/lecon/${lecon.slug}`}
                     >
-                      {lecon.titre}
+                      <span className={parcours.titre}>{lecon.titre}</span>
+                      <span className={parcours.objectif}>
+                        {lecon.exercices} exercice
+                        {lecon.exercices > 1 ? "s" : ""}
+                      </span>
                     </Link>
-                    <span className={styles.leconDetail}>{lecon.objectif}</span>
                   </li>
                 ))}
               </ul>
             )}
             {unite.enPreparation > 0 && (
-              <p className={styles.leconDetail}>
+              <p className={parcours.attente}>
                 {unite.enPreparation} leçon
                 {unite.enPreparation > 1 ? "s" : ""} en préparation. Revue par
                 un locuteur natif : en attente.

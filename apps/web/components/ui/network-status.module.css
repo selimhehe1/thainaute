@@ -1,0 +1,54 @@
+/* Indicateur de connexion, unique.
+ *
+ * Il existait en deux copies qui avaient dérivé : l'une portait une bordure
+ * jade, l'autre non, et l'une déclarait `background` deux fois, la première
+ * déclaration étant morte.
+ *
+ * Le lecteur de leçon porte une classe du même nom, et ce n'est PAS le même
+ * objet : c'est une ligne de statut transitoire, qui disparaît quand il n'y
+ * a rien à dire. La fusionner ici créerait une fausse parenté.
+ */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink-soft);
+  margin-bottom: 18px;
+}
+
+/* Forme pastille, sur les écrans d'accueil et de parcours. */
+.pill {
+  background: var(--color-jade-pale);
+  border: 1px solid rgb(67 162 131 / 20%);
+  border-radius: var(--radius-pill);
+  padding: 6px 13px;
+}
+
+/* Forme discrète, dans le lecteur, où la pastille ferait du mobilier. */
+.quiet {
+  font-size: 12.5px;
+  margin-bottom: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-ink-soft);
+  flex-shrink: 0;
+}
+
+/* Le lecteur portait un point de 8 px. L'écart d'un pixel entre trois
+ * copies n'était pas une intention, c'était de la dérive. */
+.quiet .dot {
+  width: 8px;
+  height: 8px;
+}
+
+.dotOnline {
+  background: var(--color-jade);
+}

@@ -26,33 +26,6 @@
   pointer-events: none;
 }
 
-.networkStatus {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: var(--weight-semibold);
-  color: var(--color-ink-soft);
-  background: var(--color-mist);
-  border-radius: var(--radius-pill);
-  padding: 6px 13px;
-  margin-bottom: 18px;
-  border: 1px solid rgb(67 162 131 / 20%);
-  background: var(--color-jade-pale);
-}
-
-.statusDot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--color-ink-soft);
-  flex-shrink: 0;
-}
-
-.statusDotOnline {
-  background: var(--color-jade);
-}
-
 .eyebrow {
   font-family: var(--font-serif-accent);
   font-style: italic;

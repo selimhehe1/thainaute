@@ -1,0 +1,105 @@
+/* L'itinéraire réel, unité par unité.
+ *
+ * La première version empruntait les classes de la boucle technique, qui
+ * décrivaient autre chose : le titre et l'objectif se collaient faute de
+ * `display`, et l'objectif, écrit pour un auteur, occupait quatre lignes
+ * dans une liste.
+ */
+
+.unites {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0 0 0 22px;
+  position: relative;
+}
+
+/* Le fil de l'itinéraire, tracé une fois pour toute la colonne. */
+.unites::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: var(--color-line);
+  border-radius: var(--radius-pill);
+}
+
+.unite {
+  position: relative;
+  padding-bottom: 26px;
+}
+
+.unite::before {
+  content: "";
+  position: absolute;
+  left: -22px;
+  top: 7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-jasmine);
+  border: 2px solid var(--color-line);
+}
+
+/* Une unité qui a du contenu ouvert se distingue par sa forme pleine, pas
+ * par sa seule couleur. */
+.uniteOuverte::before {
+  background: var(--color-coral);
+  border-color: var(--color-coral);
+}
+
+.numero {
+  font-size: 15px;
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin: 0 0 10px;
+}
+
+.lecons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.lecon {
+  display: block;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  text-decoration: none;
+  min-height: 44px;
+}
+
+.lecon:hover,
+.lecon:focus-visible {
+  border-color: var(--color-coral);
+}
+
+.titre {
+  display: block;
+  font-size: 15px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink);
+  margin-bottom: 2px;
+}
+
+/* Ce qui aide à choisir une séance : son volume. L'objectif de la leçon,
+ * écrit pour un auteur (« après la leçon, l'apprenant distingue… »), est
+ * de la documentation, pas une interface. Il vit dans la leçon. */
+.objectif {
+  display: block;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+}
+
+.attente {
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+  margin: 10px 0 0;
+}

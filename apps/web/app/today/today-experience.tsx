@@ -9,12 +9,7 @@ import {
   type LocalOnboardingSelection,
 } from "@thainaute/sync";
 import Link from "next/link";
-import {
-  useEffect,
-  useState,
-  useSyncExternalStore,
-  type FormEvent,
-} from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
 import {
   LocalExperienceStorageError,
@@ -30,6 +25,7 @@ import {
   type SeanceProposable,
 } from "@/lib/seance-du-jour";
 import { ToneCurve } from "@/components/brand/tone-curve";
+import { NetworkStatus, useOnline } from "@/components/ui/network-status";
 import { buttonClass } from "@/components/ui/button";
 
 import styles from "./today.module.css";
@@ -71,15 +67,6 @@ function knownOptionId<Options extends readonly { readonly id: string }[]>(
   return options.find(({ id }) => id === optionId)?.id ?? null;
 }
 
-function subscribeToNetworkStatus(callback: () => void): () => void {
-  window.addEventListener("online", callback);
-  window.addEventListener("offline", callback);
-  return () => {
-    window.removeEventListener("online", callback);
-    window.removeEventListener("offline", callback);
-  };
-}
-
 function captureSafely(
   analytics: AnalyticsSink,
   event: Parameters<AnalyticsSink["capture"]>[0],
@@ -112,11 +99,7 @@ export function TodayExperience({
     useState<ExperienceOptionId | null>(null);
   const [message, setMessage] = useState("");
   const [isSaving, setIsSaving] = useState(false);
-  const online = useSyncExternalStore(
-    subscribeToNetworkStatus,
-    () => navigator.onLine,
-    () => true,
-  );
+  const online = useOnline();
 
   useEffect(() => {
     let active = true;
@@ -289,19 +272,11 @@ export function TodayExperience({
 
     return (
       <section className={styles.panel} aria-labelledby="onboarding-title">
-        <div className={styles.networkStatus} aria-live="polite">
-          <span
-            className={
-              online
-                ? `${styles.statusDot} ${styles.statusDotOnline}`
-                : styles.statusDot
-            }
-            aria-hidden="true"
-          />
-          {online
-            ? "Parcours local prêt"
-            : "Hors ligne · vos choix restent sur cet appareil"}
-        </div>
+        <NetworkStatus
+          online={online}
+          enLigne="Parcours local prêt"
+          horsLigne="Hors ligne · vos choix restent sur cet appareil"
+        />
         <p className={styles.eyebrow}>Bienvenue · moins d’une minute</p>
         <h1 id="onboarding-title">Préparons votre première session.</h1>
         <p className={styles.lede}>
@@ -476,19 +451,11 @@ export function TodayExperience({
         height={64}
         strokeWidth={7}
       />
-      <div className={styles.networkStatus} aria-live="polite">
-        <span
-          className={
-            online
-              ? `${styles.statusDot} ${styles.statusDotOnline}`
-              : styles.statusDot
-          }
-          aria-hidden="true"
-        />
-        {online
-          ? "En ligne · parcours local prêt"
-          : "Hors ligne · les données déjà chargées restent locales"}
-      </div>
+      <NetworkStatus
+        online={online}
+        enLigne="En ligne · parcours local prêt"
+        horsLigne="Hors ligne · les données déjà chargées restent locales"
+      />
       <p className={styles.eyebrow}>Aujourd’hui · objectif local</p>
       <h1 id="today-title">Une seule étape, bien comprise.</h1>
       <p className={styles.lede}>
