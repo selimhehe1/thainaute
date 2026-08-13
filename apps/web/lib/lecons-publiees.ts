@@ -50,10 +50,19 @@ export function leconsEnAttente(publiees: number): number {
  * Les paquets complets des leçons publiées, pour qui a besoin du contenu et
  * pas seulement du résumé : la projection de progression, par exemple, doit
  * connaître les exercices pour savoir ce qui reste à faire.
+ *
+ * PIÈGE : `slug` et `lesson.lessonId` sont deux choses différentes qui
+ * portent presque le même nom. Le slug est l'identifiant d'autorat,
+ * `u01-l1a`, celui qu'attend la route `/learn/lecon/[lecon]`.
+ * `lesson.lessonId` est l'UUID canonique dérivé, que la route ne connaît
+ * pas. Les confondre construit un lien qui répond 404.
  */
-export function paquetsPublies(): readonly Lesson[] {
+export function paquetsPublies(): readonly {
+  readonly slug: string;
+  readonly lesson: Lesson;
+}[] {
   return leconsPubliees().flatMap(({ lessonId }) => {
     const bundle = readCompiledLessonBundle(lessonId);
-    return bundle === null ? [] : [bundle.lesson];
+    return bundle === null ? [] : [{ slug: lessonId, lesson: bundle.lesson }];
   });
 }
