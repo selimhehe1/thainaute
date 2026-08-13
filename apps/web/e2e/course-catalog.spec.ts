@@ -13,6 +13,12 @@ test("ne révèle ni catalogue ni brouillon hors mode éditeur", async ({
   await expect(page.locator('a[href^="/learn/lecon/"]')).toHaveCount(0);
   await expect(page.getByText("Compter de un à cent")).toHaveCount(0);
 
+  // Pratiquer annonce désormais un catalogue, mais seulement un nombre : le
+  // titre, l'objectif et le contenu d'un brouillon n'en sortent pas.
+  await page.goto("/practice");
+  await expect(page.locator('a[href="/learn/lecon/u03-l3b"]')).toHaveCount(0);
+  await expect(page.getByText("Compter de un à cent")).toHaveCount(0);
+
   const response = await page.goto("/learn/lecon/u03-l3b");
   expect(response?.status()).toBe(404);
 });

@@ -498,19 +498,26 @@ les contrôles locaux.
 
 ## Limites connues avant tout hébergement
 
-- Aucune ressource d'hébergement Vercel, Supabase ou EAS, aucun domaine, aucune
-  variable distante et aucun déploiement n'ont été créés pour Thaïnaute.
-- Docker ou un runtime compatible n'est pas disponible localement. Le job CI
-  sait démarrer Supabase, exécuter `db:reset`, pgTAP et `db:lint`, mais les
-  workflows de la branche courante ne démarrent pas en raison du blocage de
-  facturation GitHub du compte. La migration de suppression et ses 62
-  assertions pgTAP restent donc une porte non obtenue ; seules leur analyse
-  statique et leur syntaxe PostgreSQL ont été vérifiées sur ce poste.
+- Un projet Vercel (`thainaute`, région `cdg1`, racine `apps/web`) et un projet
+  Supabase de développement (`thainaute-dev`, plan gratuit, `eu-west-3`)
+  existent. Le web est déployé en préversion par branche et en production
+  depuis `main`. Aucun domaine n'est acheté, aucun projet EAS n'est créé, et
+  aucune migration n'est poussée vers le Supabase hébergé : celui-ci ne sert
+  aujourd'hui à aucun mode serveur, qui restent tous `disabled`.
+- Docker n'est pas disponible sur le poste du fondateur, mais le job CI
+  `database` démarre Supabase, exécute `db:reset`, pgTAP, `db:lint` et les
+  advisors sur chaque PR, et il passe. La migration de suppression et ses 62
+  assertions pgTAP sont donc une porte réellement obtenue en intégration, pas
+  seulement une analyse statique. Le blocage de facturation GitHub qui figurait
+  ici a été levé le 2 août 2026 ; seuls les jobs natifs restent conditionnés au
+  cron hebdomadaire, au label `native` et au déclenchement manuel, parce qu'un
+  runner macOS est facturé dix fois.
 - Le manifeste, les leçons expurgées et le téléchargement audio opaque sont
   branchés sur une release explicitement configurée et vérifiés avec la fixture
-  locale. Aucun catalogue ni contenu thaï réel autorisé n'est encore publié. La
-  relation exercice/item est dérivée côté serveur ; elle ne constitue plus une
-  porte ouverte.
+  locale. La livraison serveur ne publie encore aucun catalogue thaï réel : les
+  cinq leçons signées de l'unité 1 sont servies par les paquets compilés du
+  dépôt, pas par une release Supabase. La relation exercice/item est dérivée
+  côté serveur ; elle ne constitue plus une porte ouverte.
 - Le Studio de prépublication est masqué par défaut. En mode `fixture`, il
   relit le rôle `content_editor` dans `app_metadata` puis affiche uniquement un
   rapport borné de la fixture technique. Il ne persiste aucun brouillon, ne

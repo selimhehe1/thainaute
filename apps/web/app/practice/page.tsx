@@ -1,14 +1,11 @@
-import {
-  authoringCatalog,
-  readCompiledLessonBundle,
-  readFiveMechanicsFixtureBundle,
-} from "@thainaute/content";
+import { readFiveMechanicsFixtureBundle } from "@thainaute/content";
 import Link from "next/link";
 
 import { PrimaryNavigation } from "@/components/layout/primary-navigation";
 import { SiteHeader } from "@/components/layout/site-header";
 import { buttonClass } from "@/components/ui/button";
 import panel from "@/components/ui/panel.module.css";
+import { leconsEnAttente, leconsPubliees } from "@/lib/lecons-publiees";
 
 import styles from "./practice.module.css";
 
@@ -20,36 +17,14 @@ export const metadata = {
 /**
  * Ce que la personne peut ouvrir MAINTENANT.
  *
- * La porte est la même que celle de `/learn/lecon/[lecon]` : une leçon
- * n'apparaît que si elle est `published` ET `public`. Le catalogue d'autorat
- * sert uniquement à annoncer ce qui vient, sans jamais révéler le contenu
- * d'un brouillon : ni titre thaï, ni exercice, seulement un nombre.
+ * La sélection vit dans `@/lib/lecons-publiees` : la page d'accueil annonce
+ * le même nombre, et deux comptages séparés auraient fini par diverger. Un
+ * brouillon ne laisse fuiter ni titre thaï, ni exercice, seulement un nombre.
  */
-function leconsPubliees() {
-  return authoringCatalog.flatMap((entry) => {
-    const bundle = readCompiledLessonBundle(entry.lessonId);
-    if (bundle === null) return [];
-    if (
-      bundle.lesson.workflowStatus !== "published" ||
-      bundle.lesson.visibility !== "public"
-    ) {
-      return [];
-    }
-    return [
-      {
-        lessonId: entry.lessonId,
-        titleFr: bundle.lesson.titleFr,
-        objectiveFr: bundle.lesson.objectiveFr,
-        exerciseCount: bundle.lesson.exercises.length,
-      },
-    ];
-  });
-}
-
 export default function PracticePage() {
   const publiees = leconsPubliees();
   const { lesson: fixture } = readFiveMechanicsFixtureBundle();
-  const aVenir = authoringCatalog.length - publiees.length;
+  const aVenir = leconsEnAttente(publiees.length);
 
   return (
     <main className={panel.shell}>

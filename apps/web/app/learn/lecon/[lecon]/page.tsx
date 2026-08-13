@@ -24,6 +24,23 @@ function readCourseBundle(lecon: string) {
   );
 }
 
+/**
+ * La leçon fait-elle entendre une voix entièrement synthétique ?
+ *
+ * Un manifeste vide ne fait entendre aucune voix : dire « voix synthétique »
+ * dans ce cas serait un avertissement inventé. La réponse se lit dans le
+ * manifeste, seule source qui porte `voiceKind`.
+ */
+function voixEntierementSynthetique(bundle: {
+  audioManifest: { entries: ReadonlyArray<{ voiceKind: string }> };
+}): boolean {
+  const { entries } = bundle.audioManifest;
+  return (
+    entries.length > 0 &&
+    entries.every(({ voiceKind }) => voiceKind === "synthetic_tts")
+  );
+}
+
 function readPublishedCourseBundle(lecon: string) {
   const bundle = readCourseBundle(lecon);
   return bundle?.lesson.workflowStatus === "published" &&
@@ -65,6 +82,7 @@ export default async function LeconPage({
         <ExpeditionExperience
           lesson={published.lesson}
           audioSources={publicAudioSources(published)}
+          voixSynthetique={voixEntierementSynthetique(published)}
           attemptStorage="learning"
         />
       </main>

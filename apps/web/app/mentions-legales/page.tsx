@@ -59,10 +59,12 @@ export default function MentionsLegalesPage() {
 
       <h2 id="etat">État du service</h2>
       <p>
-        Thaïnaute est en cours de construction. Aucun cours de thaï n’est publié
-        à ce jour, et la revue par un locuteur natif n’a pas encore eu lieu. Le
-        produit l’indique à chaque endroit où cela compte, plutôt que de laisser
-        croire à une validation qui n’existe pas.
+        Thaïnaute est en cours de construction. Une première unité de cours est
+        publiée sous la responsabilité d’auteur et de relecteur de son éditeur.
+        Le reste du parcours reste interne. La revue par un locuteur natif thaï
+        n’a eu lieu sur aucune leçon. Le produit l’indique à chaque endroit où
+        cela compte, plutôt que de laisser croire à une validation qui n’existe
+        pas.
       </p>
     </LegalPage>
   );

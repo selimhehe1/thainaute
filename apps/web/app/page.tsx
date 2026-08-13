@@ -7,6 +7,7 @@ import { buttonClass } from "@/components/ui/button";
 import type { ToneCurveName } from "@thainaute/design-tokens";
 
 import { getActiveWebLanguagePack } from "@/lib/language-pack";
+import { leconsPubliees } from "@/lib/lecons-publiees";
 import styles from "./home.module.css";
 
 const TONES: ReadonlyArray<{ tone: ToneCurveName; label: string }> = [
@@ -19,6 +20,9 @@ const TONES: ReadonlyArray<{ tone: ToneCurveName; label: string }> = [
 
 export default function HomePage() {
   const languagePack = getActiveWebLanguagePack();
+  // Le chiffre vient des paquets signés, jamais d'une constante : une page
+  // d'accueil qui compte à la main ment dès la publication suivante.
+  const publiees = leconsPubliees().length;
 
   return (
     <main data-language-pack={languagePack.id}>
@@ -77,11 +81,13 @@ export default function HomePage() {
           <span>maîtrise visible</span>
         </div>
         <div className={styles.heroActions}>
-          <Link className={buttonClass("primary")} href="/today">
-            Commencer sans compte
+          <Link className={buttonClass("primary")} href="/practice">
+            {publiees === 0
+              ? "Commencer sans compte"
+              : `Ouvrir les ${publiees} premières leçons`}
           </Link>
           <span className={styles.quiet}>
-            Aucun compte. Aucun contenu pédagogique publié.
+            Aucun compte, gratuit. Revue par un locuteur natif : en attente.
           </span>
         </div>
       </section>
@@ -148,13 +154,13 @@ export default function HomePage() {
       </section>
 
       <footer className={`${styles.footer} ${styles.shell}`}>
-        <span>{languagePack.app.displayName} · fondation technique privée</span>
+        <span>{languagePack.app.displayName} · bêta privée</span>
         <Link href="/privacy">Confidentialité et mesure d’audience</Link>
         <Link href="/mentions-legales">Mentions légales</Link>
         <Link href="/conditions">Conditions d’utilisation</Link>
         <Link href="/confidentialite">Politique de confidentialité</Link>
         <Link href="/cookies">Cookies</Link>
-        <span>Le nom et le contenu restent non publiés.</span>
+        <span>Le nom reste soumis à sa clearance juridique.</span>
       </footer>
     </main>
   );
