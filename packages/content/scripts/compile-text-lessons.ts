@@ -27,6 +27,14 @@ function lessonFiles(directory: string): string[] {
 
 const successes: string[] = [];
 const failures: { id: string; reason: string }[] = [];
+// Une leçon « prête » pouvait l'être en ayant perdu neuf de ses dix
+// exercices : `compilerLeconComplete` écarte un bloc illisible au lieu
+// d'emporter toute la leçon, ce qui est le bon choix, mais le compte
+// n'apparaissait nulle part. La sortie disait « 0 bloquées » pendant que
+// 204 blocs d'exercice restaient au sol.
+let blocsRefuses = 0;
+let exercicesCompiles = 0;
+const leconsMaigres: string[] = [];
 
 for (const sourcePath of lessonFiles(AUTHORING)) {
   const source = readFileSync(sourcePath, "utf8");
@@ -67,6 +75,12 @@ for (const sourcePath of lessonFiles(AUTHORING)) {
         "utf8",
       );
     }
+    blocsRefuses += result.blocsRefuses.length;
+    const nombreExercices = result.lesson.exercises.length;
+    exercicesCompiles += nombreExercices;
+    if (nombreExercices < 5) {
+      leconsMaigres.push(`${identifier} (${nombreExercices})`);
+    }
     successes.push(identifier);
   } catch (error) {
     failures.push({
@@ -82,6 +96,14 @@ for (const sourcePath of lessonFiles(AUTHORING)) {
 console.log(
   `${shouldWrite ? "Compilation écrite" : "Compilation simulée"} : ${successes.length} leçons textuelles prêtes, ${failures.length} bloquées.`,
 );
+console.log(
+  `  ${exercicesCompiles} exercices compilés, ${blocsRefuses} blocs d'exercice écartés.`,
+);
+if (leconsMaigres.length > 0) {
+  console.log(
+    `  ${leconsMaigres.length} leçons sous cinq exercices : ${leconsMaigres.join(", ")}`,
+  );
+}
 for (const identifier of successes) console.log(`  PASS ${identifier}`);
 for (const failure of failures)
   console.log(`  FAIL ${failure.id} : ${failure.reason}`);

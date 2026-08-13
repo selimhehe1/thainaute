@@ -650,9 +650,147 @@
         "VOLUBILIS-26-2",
         "WIKTIONARY-EN"
       ]
+    },
+    {
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u06-l6e-p2",
+      "drawIndex": 1,
+      "id": "b8687b9c-7b21-55cd-8c2c-258c6138e582",
+      "type": "word_order",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "« Un homme dit qu’il a deux sœurs cadettes. Remettez les éléments",
+      "tokens": [
+        {
+          "id": "bebc3799-6742-5cfc-add8-61ea20a96cac",
+          "thaiRaw": "คน",
+          "transcription": null
+        },
+        {
+          "id": "94e35c43-df64-5763-8ee6-b88499660945",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "e0069dac-559f-55b1-b561-d83a57a90ac2",
+          "thaiRaw": "มี",
+          "transcription": null
+        },
+        {
+          "id": "86c69762-9508-5f5c-b371-8dcbbb422202",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "30b94292-09ee-5e09-98ea-87cc7dc26e1a",
+          "thaiRaw": "สอง",
+          "transcription": null
+        },
+        {
+          "id": "ded22bf6-3e70-5d24-9048-b7251820ef46",
+          "thaiRaw": "น้องสาว",
+          "transcription": null
+        },
+        {
+          "id": "12c885f1-3e7b-514d-8edb-0c3504527e7e",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "86c69762-9508-5f5c-b371-8dcbbb422202",
+        "e0069dac-559f-55b1-b561-d83a57a90ac2",
+        "ded22bf6-3e70-5d24-9048-b7251820ef46",
+        "30b94292-09ee-5e09-98ea-87cc7dc26e1a",
+        "bebc3799-6742-5cfc-add8-61ea20a96cac",
+        "94e35c43-df64-5763-8ee6-b88499660945"
+      ],
+      "feedback": {
+        "correctFr": "« Exactement. Le nom d’abord, le nombre ensuite, le",
+        "incorrectFr": "« Trois repères. น้องสาว reste devant son nombre. คน",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u06-l6e-p2",
+      "drawIndex": 2,
+      "id": "bd4825a1-fa27-500c-9f9d-b631a64e9f0e",
+      "type": "word_order",
+      "itemId": "f8a7c18d-b236-50a8-8ea5-164dcbbee50c",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "« Un homme dit qu’il a deux sœurs cadettes. Remettez les éléments",
+      "tokens": [
+        {
+          "id": "661396d5-07b2-55f0-a25e-41c1ea7e3f4f",
+          "thaiRaw": "ที่ไหน",
+          "transcription": null
+        },
+        {
+          "id": "df869c44-467d-57e8-a353-2f2207f6ef1d",
+          "thaiRaw": "พี่ชาย",
+          "transcription": null
+        },
+        {
+          "id": "6035f6e2-cc37-5a97-972c-d422ff651617",
+          "thaiRaw": "คะ",
+          "transcription": null
+        },
+        {
+          "id": "808c17fe-9a0c-5681-b64b-3496a8d96f66",
+          "thaiRaw": "อยู่",
+          "transcription": null
+        },
+        {
+          "id": "6dd28011-9d7f-52ab-9341-2f910630537c",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "df869c44-467d-57e8-a353-2f2207f6ef1d",
+        "808c17fe-9a0c-5681-b64b-3496a8d96f66",
+        "661396d5-07b2-55f0-a25e-41c1ea7e3f4f",
+        "6dd28011-9d7f-52ab-9341-2f910630537c"
+      ],
+      "feedback": {
+        "correctFr": "« Exactement. Le nom d’abord, le nombre ensuite, le",
+        "incorrectFr": "« Trois repères. น้องสาว reste devant son nombre. คน",
+        "variants": []
+      }
+    },
     {
       "poolId": "u06-l6e-p5",
       "drawIndex": 1,
@@ -742,6 +880,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u06-l6e-p2",
+      "promptFr": "« Un homme dit qu’il a deux sœurs cadettes. Remettez les éléments",
+      "mechanic": "word_order",
+      "drawCount": 2,
+      "passRequired": 2,
+      "sampleSize": 2
+    },
     {
       "poolId": "u06-l6e-p5",
       "promptFr": "Reliez chaque expression à son sens.",

@@ -112,8 +112,8 @@ Dossier de vérification : `verification-6d.md`.
 
 - Objectif : à la fin de la leçon, l’apprenant suit sans texte affiché un échange de 8 répliques entre un homme et une femme qui parlent de leurs frères et sœurs ; il reconstruit la phrase ผม มี น้องสาว สอง คน ครับ dans cet ordre, sans erreur de place du nombre ni du classificateur, et il retire la particule qui ne correspond pas au locuteur indiqué ; il écrit en transcription la relance แล้วคุณล่ะ suivie de l
 - Statut : `draft`, visibilité `internal`
-- Items : 14
-- Exercices : 1 (association 1)
+- Items : 15
+- Exercices : 3 (word_order 2, association 1)
 - Fichiers audio : 0
 
 Dossier de vérification : `verification-6e.md`.
@@ -134,3 +134,4 @@ Dossier de vérification : `verification-6e.md`.
 | อยู่ที่นี่       | yòuu thîi·nîi            | il est ici, elle est ici                                                     | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                |
 | อยู่ที่ฝรั่งเศส  | yòuu thîi fà·ràng·sèet   | elles sont en France, elles habitent en France                               | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                |
 | ไกลมาก           | klai mâak                | très loin                                                                    | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                |
+| ผม               | phǒm                     | je, moi (locuteur homme) ; par ailleurs : les cheveux                        | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH |

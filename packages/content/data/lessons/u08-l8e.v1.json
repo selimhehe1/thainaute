@@ -467,9 +467,135 @@
       "sourceIds": [
         "RID-2554"
       ]
+    },
+    {
+      "id": "ca434e32-e6d5-5075-839c-7127ea680f81",
+      "thaiRaw": "ขอ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D"
+      ],
+      "translationFr": "demander ; solliciter (et, en tête de phrase, « je voudrais », « puis-je »)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre (la politesse vient de หน่อย et de la particule finale)",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u08-l8e-p2",
+      "drawIndex": 1,
+      "id": "86114fcf-66da-5594-bda4-a741bd5a93df",
+      "type": "word_order",
+      "itemId": "ee148134-4f7a-5c9c-871e-2f2c56c254f6",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "« Un homme dit que ce vêtement est trop grand. Remettez les",
+      "tokens": [
+        {
+          "id": "5d7bfa0b-fe38-5f25-8f75-bf57ba5eec2e",
+          "thaiRaw": "เกินไป",
+          "transcription": null
+        },
+        {
+          "id": "b95b9198-75a7-510c-bbbd-c09ab69843f0",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "8cdb8b5c-fae3-5da5-a099-ab2af0444e45",
+          "thaiRaw": "ตัวนี้",
+          "transcription": null
+        },
+        {
+          "id": "31d5d9a0-410e-5031-85ef-5d293ef8fac0",
+          "thaiRaw": "ใหญ่",
+          "transcription": null
+        },
+        {
+          "id": "57ac351e-4055-5b07-9b68-9e09486175fd",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "8cdb8b5c-fae3-5da5-a099-ab2af0444e45",
+        "31d5d9a0-410e-5031-85ef-5d293ef8fac0",
+        "5d7bfa0b-fe38-5f25-8f75-bf57ba5eec2e",
+        "b95b9198-75a7-510c-bbbd-c09ab69843f0"
+      ],
+      "feedback": {
+        "correctFr": "« Exactement. เกินไป se pose APRÈS le mot qu’il pousse à",
+        "incorrectFr": "« Regardez où vous avez mis เกินไป. En thaï, il vient",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u08-l8e-p2",
+      "drawIndex": 2,
+      "id": "16ba4e7b-c28e-5b08-b14f-0e4ded093aea",
+      "type": "word_order",
+      "itemId": "ca434e32-e6d5-5075-839c-7127ea680f81",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "« Un homme dit que ce vêtement est trop grand. Remettez les",
+      "tokens": [
+        {
+          "id": "ed91b5ab-cef1-590f-8b3e-b1976ac2bad2",
+          "thaiRaw": "หน่อย",
+          "transcription": null
+        },
+        {
+          "id": "5af697aa-1537-5fb7-995f-4d6fa0074964",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        },
+        {
+          "id": "50bccaa2-04cd-52a8-a9c7-d9409e14e411",
+          "thaiRaw": "ขอ",
+          "transcription": null
+        },
+        {
+          "id": "568ed3fb-55ea-5528-b3e5-db05e9475a23",
+          "thaiRaw": "เปลี่ยน",
+          "transcription": null
+        },
+        {
+          "id": "5b62d7e6-3731-5946-92b5-365fe8db4ab2",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "50bccaa2-04cd-52a8-a9c7-d9409e14e411",
+        "568ed3fb-55ea-5528-b3e5-db05e9475a23",
+        "ed91b5ab-cef1-590f-8b3e-b1976ac2bad2",
+        "5af697aa-1537-5fb7-995f-4d6fa0074964"
+      ],
+      "feedback": {
+        "correctFr": "« Exactement. เกินไป se pose APRÈS le mot qu’il pousse à",
+        "incorrectFr": "« Regardez où vous avez mis เกินไป. En thaï, il vient",
+        "variants": []
+      }
+    },
     {
       "poolId": "u08-l8e-p5",
       "drawIndex": 1,
@@ -560,6 +686,14 @@
   ],
   "pools": [
     {
+      "poolId": "u08-l8e-p2",
+      "promptFr": "« Un homme dit que ce vêtement est trop grand. Remettez les",
+      "mechanic": "word_order",
+      "drawCount": 2,
+      "passRequired": 2,
+      "sampleSize": 2
+    },
+    {
       "poolId": "u08-l8e-p5",
       "promptFr": "Reliez chaque expression à son sens.",
       "mechanic": "association",
@@ -572,7 +706,8 @@
     "sourceIds": [
       "RID-2554",
       "VOLUBILIS-26-2",
-      "WIKTIONARY-EN"
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
     ],
     "generationActors": [
       {

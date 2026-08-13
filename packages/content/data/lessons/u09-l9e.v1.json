@@ -426,9 +426,208 @@
         "RID-2554",
         "VOLUBILIS-26-2"
       ]
+    },
+    {
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "82c986ae-8f02-59eb-bf25-d7093e725a70",
+      "thaiRaw": "ไป",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E1B"
+      ],
+      "translationFr": "aller, partir, se rendre à ; s’éloigner de celui qui parle",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pai"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไป",
+          "ipa": "paj˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "j"
+        }
+      ],
+      "register": "neutre comme verbe. **Une lecture d’interjection existe** pour ไป employé seul, au sens de « va-t’en » : cet EMPLOI est attesté par deux sources, mais aucune des deux ne porte de marque de registre, et le RID ne l’enregistre pas du tout. La leçon n’affirme donc aucun registre pour cette lecture, et se borne à signaler qu’elle existe. Voir l’incertitude 13.",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u09-l9e-p3",
+      "drawIndex": 1,
+      "id": "215e5c05-0c3b-5957-b8e9-f2a3e8e0ece4",
+      "type": "word_order",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "« Un homme dit qu’il ne se sent pas bien. Remettez les éléments",
+      "tokens": [
+        {
+          "id": "c117abdf-83e8-508f-850d-66b750316f5f",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "8d8c1fdb-dfef-5149-af6f-ef513e51fd7f",
+          "thaiRaw": "ไม่สบาย",
+          "transcription": null
+        },
+        {
+          "id": "d4c0a02d-e1bb-5a8f-aca8-bc00d606200d",
+          "thaiRaw": "ผม",
+          "transcription": null
+        },
+        {
+          "id": "54f5b0e7-e9e6-5531-a4e2-b6cfb27f18e8",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "d4c0a02d-e1bb-5a8f-aca8-bc00d606200d",
+        "8d8c1fdb-dfef-5149-af6f-ef513e51fd7f",
+        "c117abdf-83e8-508f-850d-66b750316f5f"
+      ],
+      "feedback": {
+        "correctFr": "« Oui. Le pronom d’abord, ce qui ne va pas ensuite, la",
+        "incorrectFr": "« Trois places seulement, et elles sont toujours dans",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u09-l9e-p3",
+      "drawIndex": 2,
+      "id": "a752fe6b-b06b-55bc-8ca9-a17de283f887",
+      "type": "word_order",
+      "itemId": "82c986ae-8f02-59eb-bf25-d7093e725a70",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "« Un homme dit qu’il ne se sent pas bien. Remettez les éléments",
+      "tokens": [
+        {
+          "id": "685733ce-f4ab-5483-9b84-35cc17468d02",
+          "thaiRaw": "หมอ",
+          "transcription": null
+        },
+        {
+          "id": "b021c835-28f7-5994-995a-5cd7051c9168",
+          "thaiRaw": "คะ",
+          "transcription": null
+        },
+        {
+          "id": "96d36181-388b-52d7-80f8-8f0c18e67b3b",
+          "thaiRaw": "ไหม",
+          "transcription": null
+        },
+        {
+          "id": "0970a6af-559d-5a0b-8a28-30b510caf185",
+          "thaiRaw": "ไป",
+          "transcription": null
+        },
+        {
+          "id": "aa3d388e-c842-5d08-ad76-d6d7514ccb37",
+          "thaiRaw": "หา",
+          "transcription": null
+        },
+        {
+          "id": "b9adc167-aa3b-585c-9955-9573d88b194f",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "0970a6af-559d-5a0b-8a28-30b510caf185",
+        "aa3d388e-c842-5d08-ad76-d6d7514ccb37",
+        "685733ce-f4ab-5483-9b84-35cc17468d02",
+        "96d36181-388b-52d7-80f8-8f0c18e67b3b",
+        "b021c835-28f7-5994-995a-5cd7051c9168"
+      ],
+      "feedback": {
+        "correctFr": "« Oui. Le pronom d’abord, ce qui ne va pas ensuite, la",
+        "incorrectFr": "« Trois places seulement, et elles sont toujours dans",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u09-l9e-p3",
+      "drawIndex": 3,
+      "id": "33156211-a42e-5912-b942-d336935f8262",
+      "type": "word_order",
+      "itemId": "9f54a6ee-fbad-5b19-a8f2-cfeafcefa4b5",
+      "skill": "production",
+      "audioAssetId": null,
+      "promptFr": "« Un homme dit qu’il ne se sent pas bien. Remettez les éléments",
+      "tokens": [
+        {
+          "id": "c6e7d51d-440e-5f09-8296-02db1a4a5be1",
+          "thaiRaw": "มาก",
+          "transcription": null
+        },
+        {
+          "id": "0bd8af66-1e64-5660-b149-d00d8848d307",
+          "thaiRaw": "ปวดหัว",
+          "transcription": null
+        },
+        {
+          "id": "77103374-3dc3-5ed6-980d-dd0120588faa",
+          "thaiRaw": "ครับ",
+          "transcription": null
+        },
+        {
+          "id": "c002be4e-9f97-5df6-82e5-1677caef76f2",
+          "thaiRaw": "ค่ะ",
+          "transcription": null
+        }
+      ],
+      "correctOrder": [
+        "0bd8af66-1e64-5660-b149-d00d8848d307",
+        "c6e7d51d-440e-5f09-8296-02db1a4a5be1",
+        "77103374-3dc3-5ed6-980d-dd0120588faa"
+      ],
+      "feedback": {
+        "correctFr": "« Oui. Le pronom d’abord, ce qui ne va pas ensuite, la",
+        "incorrectFr": "« Trois places seulement, et elles sont toujours dans",
+        "variants": []
+      }
+    },
     {
       "poolId": "u09-l9e-p5",
       "drawIndex": 1,
@@ -525,6 +724,14 @@
   ],
   "pools": [
     {
+      "poolId": "u09-l9e-p3",
+      "promptFr": "« Un homme dit qu’il ne se sent pas bien. Remettez les éléments",
+      "mechanic": "word_order",
+      "drawCount": 3,
+      "passRequired": 3,
+      "sampleSize": 3
+    },
+    {
       "poolId": "u09-l9e-p5",
       "promptFr": "Reliez chaque expression à son sens.",
       "mechanic": "association",
@@ -536,8 +743,10 @@
   "provenance": {
     "sourceIds": [
       "RID-2554",
+      "UNICODE-17",
       "VOLUBILIS-26-2",
-      "WIKTIONARY-EN"
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
     ],
     "generationActors": [
       {

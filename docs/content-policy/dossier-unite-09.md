@@ -110,20 +110,22 @@ Dossier de vérification : `verification-9d.md`.
 
 - Objectif : u09-l9e
 - Statut : `draft`, visibilité `internal`
-- Items : 9
-- Exercices : 1 (association 1)
+- Items : 11
+- Exercices : 4 (word_order 3, association 1)
 - Fichiers audio : 0
 
 Dossier de vérification : `verification-9e.md`.
 
-| Graphie    | Transcription      | Français                                     | Sources                                 |
-| ---------- | ------------------ | -------------------------------------------- | --------------------------------------- |
-| ไม่สบาย    | mâi sà·baai        | ne pas se sentir bien ; être malade          | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| ไปหาหมอ    | pai hǎa mǎww       | aller voir le médecin ; consulter un médecin | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| ปวดหัว     | pòuat·hǒua         | avoir mal à la tête                          | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| หมอ        | mǎww               | le médecin                                   | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN |
-| สองวันแล้ว | sǎwwng wan láeew   | ça fait deux jours                           | RID-2554                                |
-| มาก        | mâak               | beaucoup ; très                              | RID-2554, VOLUBILIS-26-2                |
-| สวัสดีครับ | sà·wàt·dii khráp   | Bonjour. (locuteur homme)                    | RID-2554                                |
-| ขอบคุณครับ | khàwwp·khoun khráp | Merci. (locuteur homme)                      | RID-2554, VOLUBILIS-26-2                |
-| ไม่เป็นไร  | mâi·pen·rai        | De rien.                                     | RID-2554, VOLUBILIS-26-2                |
+| Graphie    | Transcription      | Français                                                   | Sources                                                            |
+| ---------- | ------------------ | ---------------------------------------------------------- | ------------------------------------------------------------------ |
+| ไม่สบาย    | mâi sà·baai        | ne pas se sentir bien ; être malade                        | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                            |
+| ไปหาหมอ    | pai hǎa mǎww       | aller voir le médecin ; consulter un médecin               | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                            |
+| ปวดหัว     | pòuat·hǒua         | avoir mal à la tête                                        | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                            |
+| หมอ        | mǎww               | le médecin                                                 | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN                            |
+| สองวันแล้ว | sǎwwng wan láeew   | ça fait deux jours                                         | RID-2554                                                           |
+| มาก        | mâak               | beaucoup ; très                                            | RID-2554, VOLUBILIS-26-2                                           |
+| สวัสดีครับ | sà·wàt·dii khráp   | Bonjour. (locuteur homme)                                  | RID-2554                                                           |
+| ขอบคุณครับ | khàwwp·khoun khráp | Merci. (locuteur homme)                                    | RID-2554, VOLUBILIS-26-2                                           |
+| ไม่เป็นไร  | mâi·pen·rai        | De rien.                                                   | RID-2554, VOLUBILIS-26-2                                           |
+| ผม         | phǒm               | je, moi (locuteur homme) ; par ailleurs : les cheveux      | RID-2554, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH             |
+| ไป         | pai                | aller, partir, se rendre à ; s’éloigner de celui qui parle | RID-2554, UNICODE-17, VOLUBILIS-26-2, WIKTIONARY-EN, WIKTIONARY-TH |
