@@ -5,6 +5,7 @@ import {
 } from "@thainaute/content";
 import Link from "next/link";
 
+import { PrimaryNavigation } from "@/components/layout/primary-navigation";
 import { SiteHeader } from "@/components/layout/site-header";
 import { buttonClass } from "@/components/ui/button";
 import panel from "@/components/ui/panel.module.css";
@@ -53,7 +54,8 @@ export default function PracticePage() {
   return (
     <main className={panel.shell}>
       <SiteHeader navLabel="Navigation de la pratique">
-        <Link href="/progress">Progrès</Link>
+        <PrimaryNavigation active="/practice" />
+        <Link href="/account">Compte</Link>
       </SiteHeader>
 
       <section className={panel.panel}>
