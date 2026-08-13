@@ -64,7 +64,7 @@ C'est le vrai résultat de cette mesure, et il est plus gênant que l'audio.
 | **u13** |      5 |        30 |       **0** |
 
 **Six unités entières, trente leçons, 174 exercices, n'ont aucun exercice
-d'écoute.** Cinquante-cinq leçons sur soixante-quatre n'en ont aucun.
+d'écoute.** Cinquante-cinq leçons sur soixante-six n'en ont aucun.
 
 Aucune porte ne le signale, et c'est logique : la porte vérifie que l'audio
 _référencé_ existe. Elle ne vérifie pas qu'une leçon de langue fait écouter
