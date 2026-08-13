@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { BrandCurve, ToneCurve } from "@/components/brand/tone-curve";
 import { SiteHeader } from "@/components/layout/site-header";
-import siteHeaderStyles from "@/components/layout/site-header.module.css";
 import { buttonClass } from "@/components/ui/button";
 import type { ToneCurveName } from "@thainaute/design-tokens";
 
@@ -28,13 +27,9 @@ export default function HomePage() {
     <main data-language-pack={languagePack.id}>
       <div className={styles.shell}>
         <SiteHeader navLabel="Navigation principale">
-          <Link className={siteHeaderStyles.optional} href="#methode">
-            Méthode
-          </Link>
+          <Link href="#methode">Méthode</Link>
           <Link href="/path">Parcours</Link>
-          <Link className={siteHeaderStyles.optional} href="/account">
-            Compte
-          </Link>
+          <Link href="/account">Compte</Link>
           <Link className={buttonClass("ghost")} href="/today">
             Aujourd’hui
           </Link>

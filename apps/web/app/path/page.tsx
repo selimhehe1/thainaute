@@ -32,9 +32,7 @@ export default function PathPage() {
   return (
     <main className={`${panel.shell} ${styles.page}`}>
       <SiteHeader navLabel="Navigation du parcours">
-        <Link className={styles.optional} href="/account">
-          Compte
-        </Link>
+        <Link href="/account">Compte</Link>
         <Link className={buttonClass("ghost")} href="/today">
           Aujourd’hui
         </Link>

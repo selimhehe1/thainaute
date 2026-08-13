@@ -45,9 +45,17 @@ test("ouvre le parcours local depuis l’accueil sans inventer de contenu", asyn
     .boundingBox();
   expect(todayLinkBox?.width).toBeGreaterThanOrEqual(44);
   expect(todayLinkBox?.height).toBeGreaterThanOrEqual(44);
-  await expect(
-    page.getByRole("link", { name: "Compte", exact: true }),
-  ).toBeHidden();
+  // Cette assertion exigeait auparavant que « Compte » soit MASQUÉ, parce
+  // que la barre ne se repliait pas et qu'escamoter le lien était le seul
+  // moyen connu d'éviter le débordement. C'était une amputation : la page
+  // Compte porte la connexion, l'export, la suppression et l'abonnement,
+  // et elle n'était joignable depuis aucune page sur un téléphone.
+  // La barre se replie désormais, donc le lien reste et l'écran ne
+  // déborde toujours pas. Voir `pas-de-debordement.spec.ts`.
+  const compte = page.getByRole("link", { name: "Compte", exact: true });
+  await expect(compte).toBeVisible();
+  const compteBox = await compte.boundingBox();
+  expect(compteBox?.height).toBeGreaterThanOrEqual(44);
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth),
   ).toBeLessThanOrEqual(await page.evaluate(() => window.innerWidth));

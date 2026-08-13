@@ -18,12 +18,6 @@
   align-items: center;
 }
 
-.optional {
-  min-height: var(--touch-target);
-  display: inline-flex;
-  align-items: center;
-}
-
 .nav {
   display: flex;
   align-items: center;
@@ -45,17 +39,45 @@
   color: var(--color-coral-action);
 }
 
+/*
+ * Sur téléphone, la barre passe en colonne et la navigation se replie.
+ *
+ * POURQUOI : elle ne se repliait jamais. Les cinq liens d'Aujourd'hui
+ * mesurent 388 px alors qu'il n'en reste que 364 en pleine largeur à
+ * 390 px de fenêtre, et 294 à 320. La barre sortait donc de l'écran de
+ * 143 px sur Aujourd'hui et de 67 px sur Pratiquer et Progrès, à toutes
+ * les largeurs de téléphone jusqu'à 430 px comprises.
+ *
+ * La conséquence n'était pas cosmétique : le lien vers le compte était
+ * masqué sur l'accueil et sur Parcours, hors champ sur les trois écrans
+ * applicatifs, et absent du lecteur de leçon. La connexion, l'export,
+ * la suppression et l'abonnement n'étaient joignables depuis aucune
+ * page sur un téléphone.
+ *
+ * Le repli rend le masquage inutile : la classe `.optional`, qui
+ * escamotait les liens secondaires sous 560 px, a été supprimée. Ses
+ * deux autres propriétés étaient déjà portées par `.nav > a`.
+ */
 @media (max-width: 560px) {
   .header {
-    padding-left: 12px;
-  }
-
-  .optional {
-    display: none !important;
+    /* La marque garde sa taille, la navigation prend le reste de la
+       ligne et se replie dedans. Elle occupe ainsi la moitié droite de
+       la rangée du logo, au lieu de la laisser vide et de descendre
+       entièrement dessous : deux rangées suffisent là où trois étaient
+       nécessaires, soit 110 px de barre au lieu de 158 sur un écran
+       qui n'en fait que 844. */
+    align-items: flex-start;
+    gap: 0 8px;
+    /* La pilule ne tient pas sur deux lignes sans devenir une gélule. */
+    border-radius: var(--radius-lg);
+    padding: 8px 12px;
   }
 
   .nav {
-    gap: 0;
+    flex: 1 1 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0 2px;
   }
 
   .nav > a {
