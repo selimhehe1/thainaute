@@ -228,6 +228,38 @@ situation, pas une imitation parfaite obtenue après vingt répétitions.
     consultée le 2026-08-03 par WebFetch (IPA /lɛːw˦˥/ : ton haut, voyelle
     longue de la première syllabe).
 
+### Item 6 : แล้วเจอกันครับ
+
+Cet item est la réplique 4 du dialogue, prononcée d'un bloc. Il est déclaré
+parce qu'un exercice l'écoute comme un énoncé entier : la particule finale ne
+s'entend que dans la phrase complète, jamais dans le mot isolé. Il n'ajoute
+aucun fait linguistique nouveau. C'est la concaténation exacte des items 5 et
+2 de cette même leçon, vérifiée en NFC, et tous ses champs en sont composés,
+comme l'item 5 l'est lui-même de แล้ว et เจอกัน.
+
+- `thai` : แล้วเจอกันครับ
+- `codepoints` : U+0E41 U+0E25 U+0E49 U+0E27 U+0E40 U+0E08 U+0E2D U+0E01
+  U+0E31 U+0E19 U+0E04 U+0E23 U+0E31 U+0E1A (NFC)
+- `ipa` : /lɛːw˦˥.t͡ɕɤː˧.kan˧.kʰrap̚˦˥/ (composé des items 5 แล้วเจอกัน et 2
+  ครับ de cette leçon, voir leurs sources)
+- `ton` : láeew haut ; joee moyen ; kan moyen ; khráp haut
+- `longueur` : láeew longue ; joee longue ; kan courte ; khráp courte
+- `fr` : à plus tard (prise de congé courante, dite par un homme)
+- `transcription` : láeew·joee·kan·khráp
+- `registre` : poli (la particule masculine rend la formule polie)
+- `note_fr` : c'est la fin de l'énoncé qui porte l'information travaillée
+  ici. khráp est haut et bref, avec un p final retenu et jamais relâché ;
+  une locutrice dirait khâ, descendant. La particule dépend de la personne
+  qui parle, jamais de celle à qui l'on parle.
+- `sources` :
+  - Item 5 แล้วเจอกัน de cette leçon, et ses sources : Volubilis Database
+    v26.2 (CC BY-SA) et en.wiktionary pour เจอกัน et แล้ว.
+  - Item 2 ครับ de cette leçon, et ses sources : en.wiktionary,
+    th.wiktionary et Volubilis Database v26.2 (CC BY-SA).
+  - Aucune source nouvelle n'est requise : la locution complète n'est pas
+    une entrée lexicale distincte, c'est une formule de congé suivie de la
+    particule polie du locuteur, chacune sourcée séparément ci-dessus.
+
 ## Exercices
 
 ### Exercice 1 : écouter le dialogue (`listening`)

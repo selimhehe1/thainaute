@@ -219,6 +219,69 @@
       ]
     },
     {
+      "id": "07a7a90d-b8fd-5d36-a10a-b7e927e11556",
+      "thaiRaw": "แล้วเจอกันครับ",
+      "unicodeCodePoints": [
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E40",
+        "U+0E08",
+        "U+0E2D",
+        "U+0E01",
+        "U+0E31",
+        "U+0E19",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "à plus tard (prise de congé courante, dite par un homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "láeew·joee·kan·khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "แล้วเจอกันครับ",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "แล้วเจอกันครับ",
+          "ipa": "t͡ɕɤː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "t͡ɕ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "แล้วเจอกันครับ",
+          "ipa": "kan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "k",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "แล้วเจอกันครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli (la particule masculine rend la formule polie)",
+      "sourceIds": [
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
       "id": "77066334-9315-5282-91fb-b93737fe97c9",
       "thaiRaw": "ขอบคุณครับ",
       "unicodeCodePoints": [
@@ -272,6 +335,42 @@
     }
   ],
   "exercises": [
+    {
+      "poolId": "u01-l1e-p1",
+      "drawIndex": 1,
+      "id": "40db5453-1b22-5e46-a9bd-79de27069b18",
+      "type": "audio_choice",
+      "itemId": "07a7a90d-b8fd-5d36-a10a-b7e927e11556",
+      "skill": "listening",
+      "audioAssetId": "d6ba563d-15b1-5f96-a85b-d02674c1cf4a",
+      "promptFr": "Écoutez bien la fin de la phrase. Qui parle ?",
+      "options": [
+        {
+          "id": "d956198d-d606-5e31-9c71-58a37f30bda7",
+          "labelFr": "Un homme",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "96b8c6db-875a-5b7c-8d51-4e4d511cbf81",
+          "labelFr": "Une femme",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "fa04bfe4-034a-5927-8c1d-4e3457755e6f",
+          "labelFr": "Impossible à savoir",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "d956198d-d606-5e31-9c71-58a37f30bda7",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu khráp, ton haut et bref : c'est la particule polie des locuteurs hommes. Une femme aurait dit khâ.",
+        "incorrectFr": "Réécoutez la toute fin. khráp (ton haut, bref) est la particule d'un homme ; khâ (ton descendant) celle d'une femme. La particule dépend toujours de la personne qui parle.",
+        "variants": []
+      }
+    },
     {
       "poolId": "u01-l1e-p2",
       "drawIndex": 1,
@@ -377,6 +476,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u01-l1e-p1",
+      "promptFr": "Écoutez bien la fin de la phrase. Qui parle ?",
+      "mechanic": "audio_choice",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
     {
       "poolId": "u01-l1e-p2",
       "promptFr": "Paul, un homme, veut dire merci poliment. Remettez les éléments dans l'ordre. Attention, un élément est de trop : retirez-le.",

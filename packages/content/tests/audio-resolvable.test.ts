@@ -43,6 +43,15 @@ const AUDIO_EN_ATTENTE: Readonly<Record<string, string>> = {
     "n'est pas produite. La leçon est un brouillon interne, et sa porte " +
     "AUDIO_ASSET_MISSING la bloque. Le chiffrage de la production est dans " +
     "docs/qa/chiffrage-audio-2026-08-13.md, en attente d'un budget.",
+  "u01-l1e":
+    "Son exercice d'écoute était écrit depuis le 3 août et refusé par le " +
+    "compilateur, faute d'un item déclarant la réplique entière " +
+    "แล้วเจอกันครับ. L'item composé a été ajouté le 13 août, l'exercice " +
+    "existe donc enfin, et il demande une voix MASCULINE qui n'est pas " +
+    "produite. La leçon reste un brouillon interne que AUDIO_ASSET_MISSING " +
+    "bloque. C'est un progrès, pas une régression : la leçon annonçait " +
+    "déjà une compréhension à l'écoute qu'aucun exercice ne mesurait, et " +
+    "ce manque était alors totalement invisible.",
 };
 
 describe("audio des leçons compilées", () => {
