@@ -74,12 +74,29 @@ export function champ(bloc, nom) {
  *
  * Rend un tableau dans l'ordre d'écriture, vide si rien ne correspond. Le
  * qualificatif est rendu brut, appel à l'appelant de le nettoyer.
+ *
+ * SECOND PIÈGE MESURÉ : une étiquette longue se replie avant son
+ * deux-points, et le champ devenait alors invisible.
+ *
+ *     - Options, affichées en chiffres, en thaï et en transcription, jamais
+ *       distinguées par la seule couleur :
+ *       - 15 bahts / สิบห้าบาท / sìp·hâa bàat
+ *       - 50 bahts / ห้าสิบบาท / hâa·sìp bàat
+ *
+ * Le qualificatif s'arrêtait au saut de ligne, le deux-points n'était donc
+ * jamais atteint, et `u03-l3c` était refusée pour « options du tirage non
+ * lisibles » alors que ses deux options sont parfaitement déclarées.
+ *
+ * Le repli n'est accepté QUE sur une ligne indentée qui n'ouvre pas de
+ * puce. C'est ce qui préserve les deux garde-fous existants : une puce non
+ * indentée continue de fermer le champ précédent, et une sous-puce reste la
+ * valeur du champ au lieu d'être absorbée dans son étiquette.
  */
 export function champsPrefixes(bloc, prefixe) {
   const re = new RegExp(
     "(?:^|\\n)[-*] ?`?" +
       prefixe +
-      "([^`:\\n]*)" +
+      "([^`:\\n]*(?:\\n {2,}(?![-*] )[^`:\\n]*)*)" +
       QUALIFICATIF +
       " ?([\\s\\S]*?)(?=" +
       PROCHAIN_CHAMP +

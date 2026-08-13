@@ -398,6 +398,186 @@
   ],
   "exercises": [
     {
+      "poolId": "u03-l3c-p1",
+      "drawIndex": 1,
+      "id": "a4232985-ce30-5385-9fc4-1af73b89dd1d",
+      "type": "audio_choice",
+      "itemId": "17c7f460-1f0b-5872-9c6a-5f81823e8e40",
+      "skill": "listening",
+      "audioAssetId": "44eea0bf-4294-5609-8d33-b2d9000a9db7",
+      "promptFr": "Écoutez le prix, puis choisissez le bon montant. Les deux options emploient exactement les mêmes syllabes : n’écoutez que l’ordre.",
+      "options": [
+        {
+          "id": "e1092d70-0c3e-5bf4-a85f-3c2b3e8f52fc",
+          "labelFr": "15 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e31d1427-600c-5fd4-93ae-4d4c46e9abed",
+          "labelFr": "50 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "e31d1427-600c-5fd4-93ae-4d4c46e9abed",
+      "feedback": {
+        "correctFr": "Oui. Le mot arrivé en premier a tout décidé : ห้าสิบ vaut cinquante, สิบห้า vaut quinze.",
+        "incorrectFr": "Réécoutez seulement la première syllabe. Si elle tombe de haut, c’est hâa, et le prix est 50. Si elle est courte et basse, c’est sìp, et le prix est 15.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3c-p1",
+      "drawIndex": 2,
+      "id": "100d0620-0b7b-5f72-ae80-f6b204f82e95",
+      "type": "audio_choice",
+      "itemId": "ef744e77-d4be-57f3-9610-3286ef1a71e1",
+      "skill": "listening",
+      "audioAssetId": "06aa33d8-4626-5204-90d7-f751eddbf34e",
+      "promptFr": "Écoutez le prix, puis choisissez le bon montant. Les deux options emploient exactement les mêmes syllabes : n’écoutez que l’ordre.",
+      "options": [
+        {
+          "id": "e1092d70-0c3e-5bf4-a85f-3c2b3e8f52fc",
+          "labelFr": "15 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e31d1427-600c-5fd4-93ae-4d4c46e9abed",
+          "labelFr": "50 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "e1092d70-0c3e-5bf4-a85f-3c2b3e8f52fc",
+      "feedback": {
+        "correctFr": "Oui. Le mot arrivé en premier a tout décidé : ห้าสิบ vaut cinquante, สิบห้า vaut quinze.",
+        "incorrectFr": "Réécoutez seulement la première syllabe. Si elle tombe de haut, c’est hâa, et le prix est 50. Si elle est courte et basse, c’est sìp, et le prix est 15.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3c-p1",
+      "drawIndex": 3,
+      "id": "8713885b-33c6-5dd6-8214-dc3580a20c62",
+      "type": "audio_choice",
+      "itemId": "ef744e77-d4be-57f3-9610-3286ef1a71e1",
+      "skill": "listening",
+      "audioAssetId": "06aa33d8-4626-5204-90d7-f751eddbf34e",
+      "promptFr": "Écoutez le prix, puis choisissez le bon montant. Les deux options emploient exactement les mêmes syllabes : n’écoutez que l’ordre.",
+      "options": [
+        {
+          "id": "e1092d70-0c3e-5bf4-a85f-3c2b3e8f52fc",
+          "labelFr": "15 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e31d1427-600c-5fd4-93ae-4d4c46e9abed",
+          "labelFr": "50 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "e1092d70-0c3e-5bf4-a85f-3c2b3e8f52fc",
+      "feedback": {
+        "correctFr": "Oui. Le mot arrivé en premier a tout décidé : ห้าสิบ vaut cinquante, สิบห้า vaut quinze.",
+        "incorrectFr": "Réécoutez seulement la première syllabe. Si elle tombe de haut, c’est hâa, et le prix est 50. Si elle est courte et basse, c’est sìp, et le prix est 15.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3c-p1",
+      "drawIndex": 4,
+      "id": "5960c628-2039-57e8-b3da-9c9975439967",
+      "type": "audio_choice",
+      "itemId": "17c7f460-1f0b-5872-9c6a-5f81823e8e40",
+      "skill": "listening",
+      "audioAssetId": "44eea0bf-4294-5609-8d33-b2d9000a9db7",
+      "promptFr": "Écoutez le prix, puis choisissez le bon montant. Les deux options emploient exactement les mêmes syllabes : n’écoutez que l’ordre.",
+      "options": [
+        {
+          "id": "e1092d70-0c3e-5bf4-a85f-3c2b3e8f52fc",
+          "labelFr": "15 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e31d1427-600c-5fd4-93ae-4d4c46e9abed",
+          "labelFr": "50 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "e31d1427-600c-5fd4-93ae-4d4c46e9abed",
+      "feedback": {
+        "correctFr": "Oui. Le mot arrivé en premier a tout décidé : ห้าสิบ vaut cinquante, สิบห้า vaut quinze.",
+        "incorrectFr": "Réécoutez seulement la première syllabe. Si elle tombe de haut, c’est hâa, et le prix est 50. Si elle est courte et basse, c’est sìp, et le prix est 15.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3c-p1",
+      "drawIndex": 5,
+      "id": "11d95522-cb1e-59a9-8791-75e18875726f",
+      "type": "audio_choice",
+      "itemId": "17c7f460-1f0b-5872-9c6a-5f81823e8e40",
+      "skill": "listening",
+      "audioAssetId": "44eea0bf-4294-5609-8d33-b2d9000a9db7",
+      "promptFr": "Écoutez le prix, puis choisissez le bon montant. Les deux options emploient exactement les mêmes syllabes : n’écoutez que l’ordre.",
+      "options": [
+        {
+          "id": "e1092d70-0c3e-5bf4-a85f-3c2b3e8f52fc",
+          "labelFr": "15 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e31d1427-600c-5fd4-93ae-4d4c46e9abed",
+          "labelFr": "50 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "e31d1427-600c-5fd4-93ae-4d4c46e9abed",
+      "feedback": {
+        "correctFr": "Oui. Le mot arrivé en premier a tout décidé : ห้าสิบ vaut cinquante, สิบห้า vaut quinze.",
+        "incorrectFr": "Réécoutez seulement la première syllabe. Si elle tombe de haut, c’est hâa, et le prix est 50. Si elle est courte et basse, c’est sìp, et le prix est 15.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u03-l3c-p1",
+      "drawIndex": 6,
+      "id": "1fa778f7-4880-52e6-bb95-176de0ae9d18",
+      "type": "audio_choice",
+      "itemId": "ef744e77-d4be-57f3-9610-3286ef1a71e1",
+      "skill": "listening",
+      "audioAssetId": "06aa33d8-4626-5204-90d7-f751eddbf34e",
+      "promptFr": "Écoutez le prix, puis choisissez le bon montant. Les deux options emploient exactement les mêmes syllabes : n’écoutez que l’ordre.",
+      "options": [
+        {
+          "id": "e1092d70-0c3e-5bf4-a85f-3c2b3e8f52fc",
+          "labelFr": "15 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e31d1427-600c-5fd4-93ae-4d4c46e9abed",
+          "labelFr": "50 bahts",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "e1092d70-0c3e-5bf4-a85f-3c2b3e8f52fc",
+      "feedback": {
+        "correctFr": "Oui. Le mot arrivé en premier a tout décidé : ห้าสิบ vaut cinquante, สิบห้า vaut quinze.",
+        "incorrectFr": "Réécoutez seulement la première syllabe. Si elle tombe de haut, c’est hâa, et le prix est 50. Si elle est courte et basse, c’est sìp, et le prix est 15.",
+        "variants": []
+      }
+    },
+    {
       "poolId": "u03-l3c-p2",
       "drawIndex": 1,
       "id": "304beb6a-a39f-5386-a6ca-47a6f262a990",
@@ -552,6 +732,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u03-l3c-p1",
+      "promptFr": "Écoutez le prix, puis choisissez le bon montant. Les deux options emploient exactement les mêmes syllabes : n’écoutez que l’ordre.",
+      "mechanic": "audio_choice",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    },
     {
       "poolId": "u03-l3c-p2",
       "promptFr": "Claire, une femme, montre un objet sur un étal. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",

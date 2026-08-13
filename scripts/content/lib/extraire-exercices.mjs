@@ -403,12 +403,34 @@ function extraireAssociation(bloc, resoudreItem) {
  * options repetees a chaque tirage. Les deux sont legitimes : la premiere
  * quand les cartes ne bougent pas, la seconde quand elles dependent du mot.
  */
+/**
+ * Les options portées par la ligne d'un tirage.
+ *
+ * PIÈGE MESURÉ : une partie du corpus écrit chaque tirage avec ses propres
+ * SOUS-PUCES, que `lignesTirage` recolle sur une seule ligne.
+ *
+ *     1. Audio : réplique 3 du dialogue, « ไข่เท่าไรคะ », voix féminine.
+ *        - Question : « Que fait cette personne ? »
+ *        - Options : 1. Elle demande le prix. 2. Elle commande dix œufs.
+ *        - Réponse correcte : 1.
+ *
+ * Trois écarts cumulés faisaient échouer la lecture, et un seul suffisait :
+ * le tiret de sous-puce qui subsiste entre les options et la réponse, le
+ * mot « correcte » accolé à `Réponse`, et des options NUMÉROTÉES là où le
+ * motif n'attendait que des barres obliques.
+ */
 function optionsDuTirage(texte) {
   const trouve = texte.match(
-    /\bOptions?\s*:?\s*(.+?)\s*[.:;]\s*R[ée]ponse\s*:?\s*(.+?)\s*\.?\s*$/iu,
+    /\bOptions?\s*:?\s*(.+?)\s*[.:;]?\s*(?:[-*]\s*)?R[ée]ponse(?:\s+correcte)?\s*:?\s*(.+?)\s*\.?\s*$/iu,
   );
   if (trouve === null) return null;
   const brut = trouve[1].trim();
+
+  // « 1. … 2. … 3. … » est la forme la plus explicite ; on l'essaie d'abord,
+  // sinon la barre oblique découperait au mauvais endroit ou pas du tout.
+  const numerotees = optionsNumerotees(brut);
+  if (numerotees !== null) return numerotees;
+
   const libelles = (
     /^\d+(?:\s*,\s*\d+)+$/u.test(brut)
       ? brut.split(/\s*,\s*/u)
@@ -702,12 +724,25 @@ function extraireEcouteParTirage(bloc, resoudreItem) {
       if (libelles === null) {
         return { erreur: `tirage ${rang} : options du tirage non lisibles` };
       }
-      const reponse = texte.match(/R[ée]ponse\s*:?\s*([^.;]+)/iu)?.[1]?.trim();
+      const reponse = texte
+        .match(/R[ée]ponse(?:\s+correcte)?\s*:?\s*([^.;]+)/iu)?.[1]
+        ?.trim();
       if (reponse === undefined) {
         return { erreur: `tirage ${rang} : réponse illisible` };
       }
+      // La réponse se désigne par son libellé, ou par son RANG quand les
+      // options sont numérotées.
+      //
+      // L'ORDRE COMPTE, et une première version l'avait inversé : dans une
+      // leçon de nombres, les options SONT des chiffres, et « réponse 6 »
+      // désigne le libellé « 6 », pas le sixième. Lire le rang d'abord y
+      // faisait perdre huit exercices de u03-l3b. Le libellé prime donc, et
+      // le rang ne sert que lorsqu'aucune option ne porte ce texte.
       indice = libelles.findIndex((libelle) => libelle === reponse);
-      if (indice < 0) {
+      if (indice < 0 && /^\d+$/u.test(reponse)) {
+        indice = Number(reponse) - 1;
+      }
+      if (indice < 0 || indice >= libelles.length) {
         return {
           erreur: `tirage ${rang} : réponse « ${reponse} » hors options`,
         };
