@@ -133,31 +133,6 @@
   color: var(--color-ink-soft);
 }
 
-.networkStatus {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: var(--weight-semibold);
-  color: var(--color-ink-soft);
-  background: var(--color-mist);
-  border-radius: var(--radius-pill);
-  padding: 6px 13px;
-  margin-bottom: 18px;
-}
-
-.statusDot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--color-ink-soft);
-  flex-shrink: 0;
-}
-
-.statusDotOnline {
-  background: var(--color-jade);
-}
-
 /* ── L'itinéraire : trajectoire pointillée et jalons ─────────────── */
 .itinerary {
   position: relative;

@@ -2,16 +2,11 @@
 
 import { projectFixtureLearningPath } from "@thainaute/sync";
 import Link from "next/link";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-} from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { WebLocalExperienceStore } from "@/lib/client/local-experience-store";
 import { ToneCurve } from "@/components/brand/tone-curve";
+import { NetworkStatus, useOnline } from "@/components/ui/network-status";
 import { buttonClass } from "@/components/ui/button";
 import panel from "@/components/ui/panel.module.css";
 import styles from "./path.module.css";
@@ -34,15 +29,6 @@ interface PathPresentation {
   readonly statusDescription: string;
   readonly actionLabel: string;
   readonly actionHref: "/today" | "/learn/demo";
-}
-
-function subscribeToNetworkStatus(callback: () => void): () => void {
-  window.addEventListener("online", callback);
-  window.addEventListener("offline", callback);
-  return () => {
-    window.removeEventListener("online", callback);
-    window.removeEventListener("offline", callback);
-  };
 }
 
 function presentationFor(projection: PathProjection): PathPresentation {
@@ -131,11 +117,7 @@ export function PathExperience({ lesson }: PathExperienceProps) {
   const [readRevision, setReadRevision] = useState(0);
   const requestRevisionRef = useRef(0);
   const errorHeadingRef = useRef<HTMLHeadingElement>(null);
-  const online = useSyncExternalStore(
-    subscribeToNetworkStatus,
-    () => navigator.onLine,
-    () => true,
-  );
+  const online = useOnline();
 
   const requestRead = useCallback(() => {
     // Invalide d'abord toute promesse en vol, avant le prochain rendu React.
@@ -245,19 +227,11 @@ export function PathExperience({ lesson }: PathExperienceProps) {
         height={64}
         strokeWidth={7}
       />
-      <div className={styles.networkStatus} aria-live="polite">
-        <span
-          className={
-            online
-              ? styles.statusDot + " " + styles.statusDotOnline
-              : styles.statusDot
-          }
-          aria-hidden="true"
-        />
-        {online
-          ? "En ligne · progression locale chargée"
-          : "Hors ligne · progression lue sur cet appareil"}
-      </div>
+      <NetworkStatus
+        online={online}
+        enLigne="En ligne · progression locale chargée"
+        horsLigne="Hors ligne · progression lue sur cet appareil"
+      />
 
       <div>
         <aside className={styles.warning} aria-label="Statut du contenu">
