@@ -11,7 +11,6 @@ import { describe, expect, it } from "vitest";
 
 import {
   mobileUnit01MechanicsExpedition1c,
-  mobileUnit01MechanicsExpedition1e,
   type MechanicsExpeditionConfig,
   type MechanicsExpeditionExerciseConfig,
 } from "../lib/embedded-mechanics-expedition-config";
@@ -81,17 +80,20 @@ function submission(
 }
 
 describe("mécaniques locales de l'unité 1", () => {
-  it("expose les deux leçons sans dépendre d'un audio", () => {
+  it("expose la leçon qui ne dépend d'aucun audio", () => {
+    // Ce test portait aussi sur `u01-l1e`, retirée du bundle mobile parce
+    // qu'elle reste un brouillon : un brouillon est extractible d'un APK.
+    // Reste `u01-l1c`, seule leçon signée sans exercice d'écoute.
     expect(mobileUnit01MechanicsExpedition1c.exercises[0]?.exercise.type).toBe(
       "word_order",
     );
     expect(
-      mobileUnit01MechanicsExpedition1e.exercises.map(
+      mobileUnit01MechanicsExpedition1c.exercises.map(
         ({ exercise }) => exercise.type,
       ),
-    ).toEqual(["word_order", "reading"]);
-    expect(mechanicsAnswerKeys(mobileUnit01MechanicsExpedition1e)).toHaveLength(
-      2,
+    ).toEqual(["word_order"]);
+    expect(mechanicsAnswerKeys(mobileUnit01MechanicsExpedition1c)).toHaveLength(
+      1,
     );
   });
 
@@ -180,14 +182,14 @@ describe("mécaniques locales de l'unité 1", () => {
   });
 
   it("fait de missedOnce un cliquet de correction", () => {
-    const current = mobileUnit01MechanicsExpedition1e.exercises[0];
+    const current = mobileUnit01MechanicsExpedition1c.exercises[0];
     if (current?.exercise.type !== "word_order")
       throw new Error("exercise missing");
     const outbox = enqueueAttempt(
       createAttemptOutboxSnapshot(),
       submission(
         current.exercise.id,
-        mobileUnit01MechanicsExpedition1e.lesson.versionId,
+        mobileUnit01MechanicsExpedition1c.lesson.versionId,
         {
           kind: "word_order",
           tokenIds: current.exercise.correctOrder,
@@ -197,14 +199,19 @@ describe("mécaniques locales de l'unité 1", () => {
       ),
     );
     expect(
-      ingestMechanicsExpeditionOutbox(outbox, mobileUnit01MechanicsExpedition1e)
+      ingestMechanicsExpeditionOutbox(outbox, mobileUnit01MechanicsExpedition1c)
         .events[0]?.rating,
     ).toBe(0);
   });
 
   it("avance au prochain exercice de l'expédition", () => {
-    const first = mobileUnit01MechanicsExpedition1e.exercises[0];
-    const second = mobileUnit01MechanicsExpedition1e.exercises[1];
+    // L'avance est un comportement du moteur, pas une propriété du contenu.
+    // Le test s'appuyait sur une leçon qui portait deux exercices ; il
+    // tombait donc dès qu'elle sortait du bundle. La configuration typée
+    // en porte deux par construction, ce qui rend ce test indépendant de
+    // ce que le corpus publie.
+    const first = typedMechanicsConfig.exercises[0];
+    const second = typedMechanicsConfig.exercises[1];
     if (first === undefined || second === undefined)
       throw new Error("exercises missing");
     const snapshot = {
@@ -213,10 +220,7 @@ describe("mécaniques locales de l'unité 1", () => {
       },
     };
     expect(
-      nextMechanicsExpeditionExercise(
-        mobileUnit01MechanicsExpedition1e,
-        snapshot,
-      ),
+      nextMechanicsExpeditionExercise(typedMechanicsConfig, snapshot),
     ).toBe(second);
   });
 });

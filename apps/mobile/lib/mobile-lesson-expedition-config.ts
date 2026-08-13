@@ -14,7 +14,6 @@ import {
 } from "./embedded-audio-expedition-config";
 import {
   mobileUnit01MechanicsExpedition1c,
-  mobileUnit01MechanicsExpedition1e,
   type MechanicsExpeditionConfig,
   type MobileMechanicsExercise,
 } from "./embedded-mechanics-expedition-config";
@@ -139,9 +138,6 @@ const mobileUnit01MixedExpedition1d = createMobileLessonExpeditionConfig(
 const mobileUnit01MixedExpedition1f = createMobileLessonExpeditionConfig(
   mobileUnit01AudioExpedition1f,
 );
-const mobileUnit01MixedExpedition1e = createMobileLessonExpeditionConfig(
-  mobileUnit01MechanicsExpedition1e,
-);
 
 export const mobileUnit01MixedExpeditionConfigs: Readonly<
   Partial<Record<EmbeddedUnite01LessonKey, MobileLessonExpeditionConfig>>
@@ -151,7 +147,6 @@ export const mobileUnit01MixedExpeditionConfigs: Readonly<
   "u01-l1c": mobileUnit01MixedExpedition1c,
   "u01-l1d": mobileUnit01MixedExpedition1d,
   "u01-l1f": mobileUnit01MixedExpedition1f,
-  "u01-l1e": mobileUnit01MixedExpedition1e,
 };
 
 export function getMobileUnit01MixedExpeditionConfig(
@@ -169,5 +164,4 @@ export {
   mobileUnit01MixedExpedition1c,
   mobileUnit01MixedExpedition1d,
   mobileUnit01MixedExpedition1f,
-  mobileUnit01MixedExpedition1e,
 };

@@ -136,7 +136,9 @@ describe("écran Pratiquer mobile", () => {
     ).toBeTruthy();
     expect(screen.getByTestId("practice-lesson-u01-l1a")).toBeTruthy();
     expect(screen.getByTestId("practice-lesson-u01-l1b")).toBeTruthy();
-    expect(screen.getAllByText("DISPONIBLE")).toHaveLength(6);
+    // Cinq, et non six : `u01-l1e` reste un brouillon, et une build
+    // distribuable ne montre que ce que la signature couvre.
+    expect(screen.getAllByText("DISPONIBLE")).toHaveLength(5);
     expect(screen.queryAllByText("EN PRÉPARATION")).toHaveLength(0);
 
     fireEvent.click(

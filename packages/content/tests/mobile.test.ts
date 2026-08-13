@@ -24,10 +24,21 @@ describe("contenu embarqué mobile", () => {
       ),
     ).toBe(true);
   });
-  it("embarque les six leÃ§ons dans l'ordre du parcours", () => {
+  it("n'embarque que des leçons publiées, dans l'ordre du parcours", () => {
     const bundles = readEmbeddedUnite01LessonBundles();
 
-    expect(bundles).toHaveLength(6);
+    // Cinq et non six : `u01-l1e` reste un brouillon, et un brouillon est
+    // extractible d'un APK ou d'un IPA. Filtrer à l'affichage ne suffisait
+    // pas, son JSON partait quand même dans le bundle.
+    expect(bundles).toHaveLength(5);
+    expect(
+      bundles.every(
+        ({ lesson }) =>
+          lesson.workflowStatus === "published" &&
+          lesson.visibility === "public",
+      ),
+      "un paquet non publié ne doit jamais entrer dans le bundle mobile",
+    ).toBe(true);
     expect(bundles.map(({ lesson }) => lesson.lessonId)).toEqual(
       EMBEDDED_UNITE_01_LESSON_KEYS.map(
         (key) => readEmbeddedUnite01LessonBundle(key).lesson.lessonId,

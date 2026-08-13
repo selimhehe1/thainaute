@@ -10,13 +10,11 @@ import u01l1aAudioJson from "../data/audio/u01-l1a.v1.json";
 import u01l1bAudioJson from "../data/audio/u01-l1b.v1.json";
 import u01l1cAudioJson from "../data/audio/u01-l1c.v1.json";
 import u01l1dAudioJson from "../data/audio/u01-l1d.v1.json";
-import u01l1eAudioJson from "../data/audio/u01-l1e.v1.json";
 import u01l1fAudioJson from "../data/audio/u01-l1f.v1.json";
 import u01l1aLessonJson from "../data/lessons/u01-l1a.v1.json";
 import u01l1bLessonJson from "../data/lessons/u01-l1b.v1.json";
 import u01l1cLessonJson from "../data/lessons/u01-l1c.v1.json";
 import u01l1dLessonJson from "../data/lessons/u01-l1d.v1.json";
-import u01l1eLessonJson from "../data/lessons/u01-l1e.v1.json";
 import u01l1fLessonJson from "../data/lessons/u01-l1f.v1.json";
 
 import {
@@ -37,7 +35,6 @@ export const EMBEDDED_UNITE_01_LESSON_KEYS = [
   "u01-l1c",
   "u01-l1d",
   "u01-l1f",
-  "u01-l1e",
 ] as const;
 
 export type EmbeddedUnite01LessonKey =
@@ -66,16 +63,39 @@ const embeddedUnite01Bundles: Readonly<
     audioManifest: audioManifestSchema.parse(u01l1fAudioJson),
     lesson: lessonSchema.parse(u01l1fLessonJson),
   },
-  "u01-l1e": {
-    audioManifest: audioManifestSchema.parse(u01l1eAudioJson),
-    lesson: lessonSchema.parse(u01l1eLessonJson),
-  },
 };
 
 export function readEmbeddedUnite01LessonBundle(
   key: EmbeddedUnite01LessonKey,
 ): EmbeddedLessonBundle {
   return embeddedUnite01Bundles[key];
+}
+
+/**
+ * Les leçons embarquées qu'une build distribuable a le droit de montrer.
+ *
+ * L'ADR-0041 murait tout le contenu U01 parce qu'il était en brouillon, et
+ * qu'un écran marqué « interne » ne protège rien : le contenu reste
+ * extractible d'un APK ou d'un IPA. La raison disparaît pour une leçon
+ * signée, elle demeure entière pour les autres.
+ *
+ * POURQUOI CETTE LISTE EST AUSSI UNE ASSERTION : un import est statique,
+ * donc la liste ci-dessus est forcément écrite à la main, et `u01-l1e` y a
+ * figuré jusqu'ici alors qu'elle est en brouillon. Filtrer à l'affichage
+ * ne suffisait pas : son JSON partait quand même dans le bundle, et
+ * `check-public-export.mjs` l'a attrapé. Le module refuse donc de se
+ * charger si un paquet embarqué n'est pas publié, ce qui transforme un
+ * oubli d'import en panne immédiate plutôt qu'en fuite silencieuse.
+ */
+export const EMBEDDED_PUBLISHED_LESSON_KEYS = EMBEDDED_UNITE_01_LESSON_KEYS;
+
+for (const key of EMBEDDED_UNITE_01_LESSON_KEYS) {
+  const { lesson } = embeddedUnite01Bundles[key];
+  if (lesson.workflowStatus !== "published" || lesson.visibility !== "public") {
+    throw new Error(
+      `Le paquet ${key} est embarqué dans l'application mobile sans être publié. Retirez son import : un brouillon reste extractible d'un APK.`,
+    );
+  }
 }
 
 export function readEmbeddedUnite01LessonBundles(): readonly EmbeddedLessonBundle[] {

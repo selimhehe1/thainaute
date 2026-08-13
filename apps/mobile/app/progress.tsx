@@ -1,12 +1,3 @@
-import { UnpublishedContentScreen } from "../lib/unpublished-content-screen";
-
-export default function ProgressRoute() {
-  return (
-    <UnpublishedContentScreen
-      actionHref="/path"
-      actionLabel="Voir le parcours technique"
-      activeRoute="/progress"
-      title="Aucun progrès linguistique à afficher."
-    />
-  );
-}
+// Voir le commentaire de `practice.tsx` : le mur tombe pour ce qui est
+// signé, il reste pour ce qui ne l'est pas.
+export { default } from "../internal/progress-screen";
