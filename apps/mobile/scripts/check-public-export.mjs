@@ -55,7 +55,6 @@ function partitionnerLeCorpus() {
 
   for (const fichier of readdirSync(lessonsDirectory)) {
     if (!fichier.endsWith(".v1.json")) continue;
-    const cle = fichier.replace(/\.v1\.json$/u, "");
     const lesson = readJson(join(lessonsDirectory, fichier));
     const audioPath = join(audioDirectory, fichier);
     const audio = existsSync(audioPath) ? readJson(audioPath) : { entries: [] };
