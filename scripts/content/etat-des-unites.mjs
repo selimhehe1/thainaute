@@ -127,16 +127,38 @@ const totalAudio = [...parUnite.values()].reduce(
 const autres = new Set(
   [...parUnite.values()].flatMap((etat) => [...etat.autres]),
 );
+// Le commentaire suit le tableau au lieu de le raconter au passé. Écrit en
+// dur, il a affirmé « 0 leçons dépendent du RID, c'est LA porte du corpus »
+// la minute où la porte s'est ouverte : un document généré qui commente ses
+// propres chiffres doit changer de phrase quand ils changent.
+lignes.push("## Ce que le tableau dit", "");
+if (totalJuridique > 0) {
+  lignes.push(
+    `**${totalJuridique} leçons sur ${totalLecons} dépendent de la décision`,
+    "juridique sur le dictionnaire royal.** Ce n'est pas une porte parmi",
+    "d'autres : c'est LA porte du corpus, et aucune signature ne la lève.",
+    "",
+  );
+} else {
+  lignes.push(
+    "**Plus aucune leçon ne dépend de la décision juridique sur le",
+    "dictionnaire royal.** Elle a été prise le 13 août 2026 et tracée par",
+    "l'ADR-0043 ; les trois booléens de `RID-2554` autorisent la",
+    "vérification d'une graphie et sa citation par référence, jamais la",
+    "reproduction d'une définition.",
+    "",
+  );
+}
 lignes.push(
-  "## Ce que le tableau dit",
-  "",
-  `**${totalJuridique} leçons sur ${totalLecons} dépendent de la décision`,
-  "juridique sur le dictionnaire royal.** Ce n'est pas une porte parmi",
-  "d'autres : c'est LA porte du corpus. L'unité 1 est l'exception, parce que",
-  "ses items citent Volubilis et Wiktionary plutôt que le RID.",
-  "",
-  `Seules ${totalAudio} leçons attendent une voix, et ${totalSignature}`,
+  totalAudio === 0
+    ? `Aucune leçon n'attend de voix, et ${totalSignature}`
+    : `${totalAudio} leçons attendent une voix, et ${totalSignature}`,
   "sont publiables dès qu'une signature les couvre.",
+  "",
+  "Ce nombre ne dit pas qu'elles sont prêtes. Il dit ce qui reste à faire",
+  "pour les publier, pas ce qu'elles valent : une leçon peut franchir",
+  "toutes ces portes en n'ayant qu'un seul exercice jouable. Mesurer ce",
+  "point demande `node scripts/content/mesurer-extraction-exercices.mjs`.",
   "",
   "La revue par un locuteur natif reste en attente sur tout le corpus, et",
   "aucune signature ne peut en tenir lieu.",
