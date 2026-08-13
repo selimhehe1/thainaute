@@ -24,6 +24,7 @@ import {
   readCompiledLessonBundle,
   validateBundle,
 } from "../src/repository";
+import { getPublicationBlockers } from "../src/audit";
 
 /**
  * Dette audio explicite, le cas échéant, et pourquoi.
@@ -33,12 +34,16 @@ import {
  * sont listées ici pour que le fait soit écrit et compté, plutôt que caché
  * par une assertion relâchée.
  *
- * La liste est actuellement vide : l'autorisation de générer les audios de
- * 1B et 1F a été donnée et leurs manifestes résolvent maintenant les
- * exercices. Si une future dette est ajoutée, elle doit être accompagnée
- * d'une raison et faire échouer la validation audio de la leçon concernée.
+ * Toute dette ajoutée ici doit être accompagnée d'une raison et faire
+ * échouer la validation audio de la leçon concernée.
  */
-const AUDIO_EN_ATTENTE: Readonly<Record<string, string>> = {};
+const AUDIO_EN_ATTENTE: Readonly<Record<string, string>> = {
+  "u02-l2b":
+    "L'extraction a récupéré son exercice d'écoute le 13 août ; sa voix " +
+    "n'est pas produite. La leçon est un brouillon interne, et sa porte " +
+    "AUDIO_ASSET_MISSING la bloque. Le chiffrage de la production est dans " +
+    "docs/qa/chiffrage-audio-2026-08-13.md, en attente d'un budget.",
+};
 
 describe("audio des leçons compilées", () => {
   const identifiants = compiledLessonIds();
@@ -107,11 +112,22 @@ describe("audio des leçons compilées", () => {
         validateBundle(readCompiledLessonBundle(identifiant)!);
 
       if (AUDIO_EN_ATTENTE[identifiant] !== undefined) {
-        // Dette assumée : on exige tout de même un échec, et que son SEUL
-        // motif soit l'audio manquant. Toute autre invalidité reste
-        // bloquante, et une leçon qui guérirait ferait échouer ce test pour
-        // qu'on la retire de la liste.
-        await expect(executer()).rejects.toThrow(/Audio inconnu/u);
+        // Dette assumée. `validateBundle` la TOLÈRE, et c'est voulu depuis
+        // l'ADR-0040 : l'audio se produit après la compilation, donc un
+        // manifeste vide n'est pas une invalidité de paquet.
+        //
+        // Ce qui doit tenir, c'est la porte de PUBLICATION. On l'exige donc
+        // explicitement : une leçon en dette d'audio ne doit pas pouvoir
+        // être publiée, et une leçon qui guérirait ferait échouer ce test
+        // pour qu'on la retire de la liste.
+        await expect(executer()).resolves.not.toThrow();
+        const codes = getPublicationBlockers(
+          readCompiledLessonBundle(identifiant)!,
+        ).map(({ code }) => code);
+        expect(
+          codes,
+          `${identifiant} est listée en dette d'audio mais rien ne l'empêche d'être publiée`,
+        ).toContain("AUDIO_ASSET_MISSING");
         return;
       }
 

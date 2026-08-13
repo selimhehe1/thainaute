@@ -85,6 +85,75 @@ function lignesTirage(corps) {
  * en aval reste le juge : un découpage faux ne trouve pas sa réponse et
  * refuse le bloc, au lieu de compiler un corrigé faux.
  */
+/**
+ * Le corps du bloc, privé de son champ `Options`.
+ *
+ * POURQUOI : un champ se termine à la prochaine puce NON INDENTÉE, règle
+ * que `champ()` applique déjà. On la réapplique ici sur le texte brut,
+ * parce que `lignesTirage` lit tout le corps et prenait les options
+ * numérotées pour des tirages.
+ */
+function corpsHorsOptions(corps) {
+  const sortie = [];
+  let dansOptions = false;
+  for (const ligne of String(corps).split("\n")) {
+    if (/^[-*]\s*`?Options\b/u.test(ligne)) {
+      dansOptions = true;
+      continue;
+    }
+    if (dansOptions && /^[-*]\s/u.test(ligne)) dansOptions = false;
+    if (!dansOptions) sortie.push(ligne);
+  }
+  return sortie.join("\n");
+}
+
+/**
+ * Options écrites en liste numérotée sous l'étiquette `Options`.
+ *
+ *     - Options :
+ *       1. Un homme
+ *       2. Une femme
+ *       3. Impossible à savoir
+ *     - Réponse correcte : 1 (Un homme)
+ *
+ * PIÈGE : `champsPrefixes` replie la valeur sur une seule ligne, donc la
+ * liste arrive comme « 1. Un homme 2. Une femme 3. Impossible à savoir ».
+ * On la redécoupe sur ses numéros plutôt que d'aller chercher le texte
+ * brut, ce qui éviterait de dupliquer la lecture des champs.
+ *
+ * Ces blocs n'ont PAS de champ `Tirages` : leurs lignes numérotées sont
+ * les options elles-mêmes. C'était la cause du refus, `lignesTirage` les
+ * prenait pour des tirages et cherchait des options dedans.
+ */
+function optionsNumerotees(brut) {
+  if (!/^\s*1\.\s/u.test(brut)) return null;
+  const libelles = brut
+    .split(/\s*\d+\.\s+/u)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  return libelles.length >= 2 ? libelles : null;
+}
+
+/**
+ * Options écrites en sous-puces, chacune montrée sous plusieurs faces.
+ *
+ *     - Options, affichées en chiffres, en thaï et en transcription :
+ *       - 15 bahts / สิบห้าบาท / sìp·hâa bàat
+ *       - 50 bahts / ห้าสิบบาท / hâa·sìp bàat
+ *
+ * Le libellé retenu est la PREMIÈRE face, celle que la réponse cite. Les
+ * autres sont des façons de montrer la même option, pas d'autres options.
+ * Les découper en aurait inventé quatre là où la leçon en pose deux.
+ */
+function optionsEnPuces(brut) {
+  if (!/(?:^|\s)-\s/u.test(brut)) return null;
+  const libelles = brut
+    .split(/(?:^|\s)-\s+/u)
+    .map((part) => part.split(/\s+\/\s+/u)[0]?.trim() ?? "")
+    .filter(Boolean);
+  return libelles.length >= 2 ? libelles : null;
+}
+
 function optionsDeclarees(corps) {
   const champs = champsPrefixes(corps, "Options");
   const brut = champs[0]?.valeur ?? champ(corps, "Options");
@@ -93,10 +162,15 @@ function optionsDeclarees(corps) {
   const cites = [...brut.matchAll(ENTRE_GUILLEMETS)].map((t) => t[1]);
   if (cites.length >= 2) return cites;
 
+  const numerotees = optionsNumerotees(brut);
+  if (numerotees !== null) return numerotees;
+
   // Une sous-liste à puces emploie la barre oblique POUR SÉPARER LES FACES
   // d'une même option (« 15 bahts / สิบห้าบาท / sìp·hâa bàat »), pas les
-  // options entre elles. La découper donnerait des options fantômes : on
-  // laisse ce cas au refus tant qu'il n'est pas traité pour lui-même.
+  // options entre elles. Le libellé est la première face, celle que la
+  // réponse cite ; les autres sont des façons de la montrer.
+  const puces = optionsEnPuces(brut);
+  if (puces !== null) return puces;
   if (/(?:^|\s)-\s/u.test(brut)) return null;
 
   const barres = brut
@@ -345,6 +419,55 @@ function optionsDuTirage(texte) {
   return libelles.length >= 2 ? libelles : null;
 }
 
+/**
+ * Bloc d'écoute à question unique, sans champ `Tirages`.
+ *
+ * Le corpus en écrit surtout autour des dialogues :
+ *
+ *     - Audio : réplique 4 du dialogue, « แล้วเจอกันครับ », jouée seule.
+ *     - Consigne : « Écoutez bien la fin. Qui parle ? »
+ *     - Options :
+ *       1. Un homme
+ *       2. Une femme
+ *     - Réponse correcte : 1 (Un homme)
+ *
+ * Rend `null` quand ce n'est pas cette forme, pour laisser le chemin par
+ * tirages faire son travail. Le rang de la réponse est lu tel qu'il est
+ * écrit, en base 1 ; on vérifie qu'il désigne une option existante plutôt
+ * que de le tronquer silencieusement.
+ */
+function extraireEcouteTirageUnique(bloc, libelles, resoudreItem) {
+  // Les lignes numérotées du champ `Options` NE SONT PAS des tirages. Les
+  // compter comme tels était la cause du refus : l'extraction cherchait
+  // des options à l'intérieur d'une option.
+  if (lignesTirage(corpsHorsOptions(bloc.corps)).length > 0) return null;
+
+  const brutReponse = champsPrefixes(bloc.corps, "Réponse")[0]?.valeur;
+  if (brutReponse === undefined) return null;
+
+  const rang = Number(brutReponse.match(/^\s*(\d+)/u)?.[1]);
+  const indice = Number.isInteger(rang)
+    ? rang - 1
+    : libelles.findIndex((libelle) => libelle === brutReponse.trim());
+  if (indice < 0 || indice >= libelles.length) {
+    return { erreur: `réponse « ${brutReponse} » hors des options du bloc` };
+  }
+
+  // La graphie jouée est citée dans le champ `Audio`. Sans elle, aucune
+  // carte n'est créditable, et inventer un rattachement serait pire qu'un
+  // refus.
+  const brutAudio = champsPrefixes(bloc.corps, "Audio")[0]?.valeur ?? "";
+  const graphie = brutAudio.match(THAI_UNE)?.[0];
+  if (graphie === undefined) {
+    return { erreur: "aucune graphie thaïe citée dans le champ Audio" };
+  }
+
+  const itemId = resoudreItem(graphie);
+  if (itemId === null) return { erreur: `item introuvable pour ${graphie}` };
+
+  return { libelles, tirages: [{ rang: 1, itemId, indiceCorrect: indice }] };
+}
+
 function extraireEcoute(bloc, resoudreItem) {
   const libellesBloc = optionsDeclarees(bloc.corps);
 
@@ -361,6 +484,9 @@ function extraireEcoute(bloc, resoudreItem) {
     return extraireEcouteParTirage(bloc, resoudreItem);
   }
   const libelles = libellesBloc;
+
+  const unique = extraireEcouteTirageUnique(bloc, libelles, resoudreItem);
+  if (unique !== null) return unique;
 
   const tirages = [];
   for (const { rang, texte } of lignesTirage(bloc.corps)) {
