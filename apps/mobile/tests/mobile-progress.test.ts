@@ -12,7 +12,7 @@ import { readEmbeddedUnite01LessonBundle } from "@thainaute/content/mobile";
 import { describe, expect, it } from "vitest";
 
 import type { AudioExpeditionConfig } from "../lib/embedded-audio-expedition-config";
-import { mobileUnit01MechanicsExpedition1e } from "../lib/embedded-mechanics-expedition-config";
+import { mobileUnit01MechanicsExpedition1c } from "../lib/embedded-mechanics-expedition-config";
 import { projectMobileLearningProgress } from "../lib/mobile-progress";
 
 const bundle = readEmbeddedUnite01LessonBundle("u01-l1a");
@@ -79,20 +79,20 @@ function submission(
 
 function activeMechanicsExperience(): LocalExperienceSnapshot {
   return startLocalExpedition(onboarded(), {
-    lessonVersionId: mobileUnit01MechanicsExpedition1e.lesson.versionId,
-    exerciseIds: mobileUnit01MechanicsExpedition1e.exercises.map(
+    lessonVersionId: mobileUnit01MechanicsExpedition1c.lesson.versionId,
+    exerciseIds: mobileUnit01MechanicsExpedition1c.exercises.map(
       ({ exercise }) => exercise.id,
     ),
     startedAt,
   });
 }
 
-function mechanicsSubmission(index: 0 | 1): ValidatedAttemptSubmission {
-  const current = mobileUnit01MechanicsExpedition1e.exercises[index];
+function mechanicsSubmission(index: 0): ValidatedAttemptSubmission {
+  const current = mobileUnit01MechanicsExpedition1c.exercises[index];
   if (current === undefined) throw new Error("Missing mechanics exercise.");
   const base = {
     answeredAt: `2026-08-02T08:0${index + 1}:00.000Z`,
-    contentVersionId: mobileUnit01MechanicsExpedition1e.lesson.versionId,
+    contentVersionId: mobileUnit01MechanicsExpedition1c.lesson.versionId,
     deviceId,
     durationMs: 2_000,
     eventId: `30000000-0000-4000-8000-00000000000${index + 3}`,
@@ -244,13 +244,20 @@ describe("projection locale de Progrès", () => {
       successfulAttempts: 4,
     });
   });
-  it("projette les réponses typées des expéditions mécaniques", () => {
+  it("projette une réponse typée d'expédition mécanique", () => {
+    // Ce test portait deux exercices, empruntés à u01-l1e, retirée du
+    // bundle mobile parce qu'elle reste un brouillon : un brouillon est
+    // extractible d'un APK. Reste u01-l1c, qui n'en porte qu'un.
+    //
+    // Ce qui reste couvert : la correction et la projection d'une réponse
+    // word_order. Ce qui l'est ailleurs : association et recall, par
+    // mechanics-expedition-state.test.ts, sur une configuration typée qui
+    // ne dépend d'aucune leçon publiée.
     let outbox = createAttemptOutboxSnapshot();
     outbox = enqueueAttempt(outbox, mechanicsSubmission(0));
-    outbox = enqueueAttempt(outbox, mechanicsSubmission(1));
 
     const progress = projectMobileLearningProgress({
-      configs: { "u01-l1e": mobileUnit01MechanicsExpedition1e },
+      configs: { "u01-l1c": mobileUnit01MechanicsExpedition1c },
       experience: activeMechanicsExperience(),
       now: "2026-08-02T08:20:00.000Z",
       outbox,
@@ -259,19 +266,19 @@ describe("projection locale de Progrès", () => {
     expect(progress).toMatchObject({
       activeExpedition: {
         completedCount: 0,
-        key: "u01-l1e",
+        key: "u01-l1c",
         mode: "mechanics",
-        totalCount: 2,
+        totalCount: 1,
       },
-      attemptedCount: 2,
-      reviewedItems: 2,
-      successfulAttempts: 2,
+      attemptedCount: 1,
+      reviewedItems: 1,
+      successfulAttempts: 1,
     });
     expect(progress.lessons[0]).toMatchObject({
-      key: "u01-l1e",
+      key: "u01-l1c",
       mode: "mechanics",
-      attemptedCount: 2,
-      successfulAttempts: 2,
+      attemptedCount: 1,
+      successfulAttempts: 1,
     });
   });
 });

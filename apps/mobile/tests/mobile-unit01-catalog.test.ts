@@ -13,14 +13,16 @@ describe("catalogue mobile de l'unité 1", () => {
     expect(formatMobileUnit01ExerciseCount(21)).toBe("21 exercices locaux");
   });
 
-  it("conserve les six leçons dans l'ordre pédagogique", () => {
+  it("ne distribue que les leçons signées, dans l'ordre pédagogique", () => {
+    // Le catalogue énumérait les SIX leçons, dont u01-l1e qui reste un
+    // brouillon : la distribuer aurait mis un brouillon dans un APK. La
+    // porte est le statut de publication, pas une liste écrite à la main.
     expect(mobileUnit01Catalog.map(({ key }) => key)).toEqual([
       "u01-l1a",
       "u01-l1b",
       "u01-l1c",
       "u01-l1d",
       "u01-l1f",
-      "u01-l1e",
     ]);
   });
 
@@ -29,19 +31,12 @@ describe("catalogue mobile de l'unité 1", () => {
       mobileUnit01Catalog
         .filter(({ availability }) => availability === "preview")
         .map(({ key }) => key),
-    ).toEqual([
-      "u01-l1a",
-      "u01-l1b",
-      "u01-l1c",
-      "u01-l1d",
-      "u01-l1f",
-      "u01-l1e",
-    ]);
+    ).toEqual(["u01-l1a", "u01-l1b", "u01-l1c", "u01-l1d", "u01-l1f"]);
     expect(
       mobileUnit01Catalog
         .filter(({ availability }) => availability === "preview")
         .map(({ audioExerciseCount }) => audioExerciseCount),
-    ).toEqual([6, 10, 0, 6, 5, 0]);
+    ).toEqual([6, 10, 0, 6, 5]);
     expect(
       mobileUnit01Catalog
         .filter(({ availability }) => availability === "preview")

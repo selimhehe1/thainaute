@@ -80,23 +80,10 @@ const mobileUnit01MechanicsExpedition1c = createMechanicsExpeditionConfig(
   },
 );
 
-const mobileUnit01MechanicsExpedition1e = createMechanicsExpeditionConfig(
-  "u01-l1e",
-  {
-    bannerText: "Unité 1E · contenu interne · mécanique locale",
-    bannerTitle: "Expédition réelle — non publiable",
-    completionPrivacy:
-      "Vos réponses et prochaines révisions restent localement sur cet appareil.",
-    headerStep: "Expédition 1E · 2 exercices",
-    introEyebrow: "EXPÉDITION ACTIVE · UNITÉ 1E",
-  },
-);
-
 export const mobileUnit01MechanicsExpeditionConfigs: Readonly<
   Partial<Record<MechanicsExpeditionConfig["key"], MechanicsExpeditionConfig>>
 > = {
   "u01-l1c": mobileUnit01MechanicsExpedition1c,
-  "u01-l1e": mobileUnit01MechanicsExpedition1e,
 };
 
 export function getMobileUnit01MechanicsExpeditionConfig(
@@ -110,4 +97,4 @@ export function getMobileUnit01MechanicsExpeditionConfig(
   ];
 }
 
-export { mobileUnit01MechanicsExpedition1c, mobileUnit01MechanicsExpedition1e };
+export { mobileUnit01MechanicsExpedition1c };

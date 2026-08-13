@@ -1,5 +1,5 @@
 import {
-  EMBEDDED_UNITE_01_LESSON_KEYS,
+  EMBEDDED_PUBLISHED_LESSON_KEYS,
   readEmbeddedUnite01LessonBundle,
   type EmbeddedUnite01LessonKey,
   type LessonExercise,
@@ -72,8 +72,16 @@ function createCatalogItem(
   };
 }
 
+/**
+ * Le catalogue que la build distribuable montre.
+ *
+ * Il énumérait les SIX leçons de l'unité 1, dont u01-l1e qui reste un
+ * brouillon. Le distribuer aurait mis un brouillon dans un APK, ce que
+ * l'ADR-0041 interdit et que le contrôle d'export attrape. La porte est
+ * le statut de publication, pas une liste écrite à la main.
+ */
 export const mobileUnit01Catalog: readonly MobileUnit01CatalogItem[] =
-  EMBEDDED_UNITE_01_LESSON_KEYS.map(createCatalogItem);
+  EMBEDDED_PUBLISHED_LESSON_KEYS.map(createCatalogItem);
 
 export function findMobileUnit01CatalogItem(
   key: string,
