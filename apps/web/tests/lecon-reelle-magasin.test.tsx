@@ -61,4 +61,21 @@ describe("destination des tentatives", () => {
     // Et la branche pilotée par la prop doit bien exister.
     expect(source).toMatch(/attemptStorage === "learning"/u);
   });
+
+  it("la page de progrès lit la base où les vraies leçons écrivent", async () => {
+    // Le défaut avait survécu à sa moitié : la DESTINATION des tentatives
+    // était gelée par les tests ci-dessus, leur LECTURE ne l'était pas. La
+    // page de progrès projetait la fixture depuis `thainaute-demo-v1`, si
+    // bien que terminer une vraie leçon n'apparaissait nulle part.
+    const source = await lire("app/progress/page.tsx");
+
+    expect(
+      source,
+      "la page de progrès doit lire thainaute-learning-v1, sinon la progression des cours réels reste invisible",
+    ).toContain('storageKey="thainaute-learning-v1"');
+    expect(
+      source,
+      "elle doit projeter les leçons publiées, pas la fixture technique",
+    ).toContain("paquetsPublies");
+  });
 });

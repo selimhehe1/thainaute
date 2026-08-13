@@ -1,4 +1,5 @@
 import { authoringCatalog, readCompiledLessonBundle } from "@thainaute/content";
+import type { Lesson } from "@thainaute/content/schemas";
 
 /**
  * Les leçons qu'une personne peut réellement ouvrir aujourd'hui.
@@ -43,4 +44,16 @@ export function leconsPubliees(): readonly LeconPubliee[] {
 /** Nombre de leçons rédigées qui attendent encore leur signature. */
 export function leconsEnAttente(publiees: number): number {
   return authoringCatalog.length - publiees;
+}
+
+/**
+ * Les paquets complets des leçons publiées, pour qui a besoin du contenu et
+ * pas seulement du résumé : la projection de progression, par exemple, doit
+ * connaître les exercices pour savoir ce qui reste à faire.
+ */
+export function paquetsPublies(): readonly Lesson[] {
+  return leconsPubliees().flatMap(({ lessonId }) => {
+    const bundle = readCompiledLessonBundle(lessonId);
+    return bundle === null ? [] : [bundle.lesson];
+  });
 }
