@@ -8,7 +8,9 @@
       "itemId": "634cb525-0721-5f61-8274-957a7acab2e3",
       "variant": "pedagogical",
       "canonicalPath": "packages/content/assets/audio/u01-l1b/82f0b54b-60a2-550e-b6fd-7ebe73898446.wav",
-      "distributionPaths": [],
+      "distributionPaths": [
+        "apps/web/public/audio/u01-l1b/82f0b54b-60a2-550e-b6fd-7ebe73898446.wav"
+      ],
       "mimeType": "audio/wav",
       "sha256": "a81e95f69a53729275bbe67fa89e4cb1e1d5d731734f5048eb83ce4e55c8863b",
       "byteLength": 55244,
@@ -43,7 +45,9 @@
       "itemId": "f917075c-a2cd-51ba-a123-80cf3ea6ede4",
       "variant": "pedagogical",
       "canonicalPath": "packages/content/assets/audio/u01-l1b/56f1d76d-209b-57a3-9083-cb7a88b65d0f.wav",
-      "distributionPaths": [],
+      "distributionPaths": [
+        "apps/web/public/audio/u01-l1b/56f1d76d-209b-57a3-9083-cb7a88b65d0f.wav"
+      ],
       "mimeType": "audio/wav",
       "sha256": "580381df9b25103d745d6401004b1cfa8a28a53439cbbafe2eb3f16347b42a87",
       "byteLength": 48044,
@@ -78,7 +82,9 @@
       "itemId": "5851f77a-3381-55d7-b1ad-7cf1444e9dfa",
       "variant": "pedagogical",
       "canonicalPath": "packages/content/assets/audio/u01-l1b/71abf344-0bdf-5ee3-99c1-e1a6eec3c965.wav",
-      "distributionPaths": [],
+      "distributionPaths": [
+        "apps/web/public/audio/u01-l1b/71abf344-0bdf-5ee3-99c1-e1a6eec3c965.wav"
+      ],
       "mimeType": "audio/wav",
       "sha256": "47c509b79250b0611d72dcf481a6897d6ffcdddde5a0f4da948a767a294266e5",
       "byteLength": 55244,
@@ -113,7 +119,9 @@
       "itemId": "2c78f200-3ea6-5e16-8915-7906750dfd65",
       "variant": "pedagogical",
       "canonicalPath": "packages/content/assets/audio/u01-l1b/0add913c-4285-54b9-8763-ad1066c31be4.wav",
-      "distributionPaths": [],
+      "distributionPaths": [
+        "apps/web/public/audio/u01-l1b/0add913c-4285-54b9-8763-ad1066c31be4.wav"
+      ],
       "mimeType": "audio/wav",
       "sha256": "3de15b0eabd2b744b881bfbd7cef141929a5b79e9ef4af8a54038e12603a44ed",
       "byteLength": 91244,
@@ -148,7 +156,9 @@
       "itemId": "7d938caa-d331-5b12-906f-ef7cd8ac2300",
       "variant": "pedagogical",
       "canonicalPath": "packages/content/assets/audio/u01-l1b/5ef47340-70f3-5be7-af44-5f237c1cc640.wav",
-      "distributionPaths": [],
+      "distributionPaths": [
+        "apps/web/public/audio/u01-l1b/5ef47340-70f3-5be7-af44-5f237c1cc640.wav"
+      ],
       "mimeType": "audio/wav",
       "sha256": "f3ee03898122554139d04b58b1d7c893cf873e49cb3a71c2d0cd3c61968ff637",
       "byteLength": 55244,
@@ -183,7 +193,9 @@
       "itemId": "8f289dce-525b-53dd-bd11-b4a35f20c8e3",
       "variant": "pedagogical",
       "canonicalPath": "packages/content/assets/audio/u01-l1b/dcb6e5d8-a8b9-5d08-beeb-b690d983657f.wav",
-      "distributionPaths": [],
+      "distributionPaths": [
+        "apps/web/public/audio/u01-l1b/dcb6e5d8-a8b9-5d08-beeb-b690d983657f.wav"
+      ],
       "mimeType": "audio/wav",
       "sha256": "1ba78bf0a2b1360e3fe99b35d47ec7bd78890f6e320ffb58eefb607f39c74d94",
       "byteLength": 64844,
@@ -218,7 +230,9 @@
       "itemId": "5b5291ee-a233-545f-8240-e105049dda68",
       "variant": "pedagogical",
       "canonicalPath": "packages/content/assets/audio/u01-l1b/e8ff719b-c200-50ba-87e9-0e26164faf8c.wav",
-      "distributionPaths": [],
+      "distributionPaths": [
+        "apps/web/public/audio/u01-l1b/e8ff719b-c200-50ba-87e9-0e26164faf8c.wav"
+      ],
       "mimeType": "audio/wav",
       "sha256": "9206d6c7e6d8b7c2f8fc4b4b4d5d77febd8b204aa334a88cfc2db63cc1c38bb0",
       "byteLength": 52844,
