@@ -138,7 +138,13 @@ for (const { slug, texte, entieres, parties } of lecons) {
         detail = "aucun item du corpus ne la couvre";
       }
     }
-    verdicts.push({ slug, graphie, mecanique: bloc.mecanique ?? "?", action, detail });
+    verdicts.push({
+      slug,
+      graphie,
+      mecanique: bloc.mecanique ?? "?",
+      action,
+      detail,
+    });
   }
 }
 
