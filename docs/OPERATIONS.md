@@ -1,12 +1,68 @@
 # Guide d'exploitation et cible d'hébergement
 
-- Statut : cible technique acceptée, aucune ressource cloud créée
-- Date de vérification documentaire : 2026-08-07
+- Statut : cible technique acceptée ; un projet Supabase de développement
+  existe et porte les 13 migrations
+- Date de vérification documentaire : 2026-08-13
 - Portée : MVP et première bêta ; à réévaluer avant la production
 
 Ce guide applique le brief sans autoriser un déploiement. Toute ouverture de
 compte, création de projet, dépense, modification DNS, publication ou action de
 production nécessite encore une instruction explicite du fondateur.
+
+## Projet Supabase de développement
+
+`thainaute-dev`, référence `minvwksilqikqvgbpwsd`, région `eu-west-3`, créé le
+2 août 2026 dans l'organisation `Hehe`, plan `free`. Aucune facturation n'est
+possible sur ce plan. C'est un bac à sable de développement : il ne contient
+aucune donnée réelle et ne doit jamais en contenir.
+
+Supabase met en pause les projets gratuits inutilisés. Le projet peut donc être
+`INACTIVE` au retour ; il se réveille par le tableau de bord ou par l'API, et le
+réveil prend quelques minutes.
+
+**Ne rien mesurer pendant un réveil.** Une base encore en `COMING_UP` répond aux
+requêtes tout en présentant un état incomplet : le 13 août elle a rapporté zéro
+table publique et aucun schéma d'historique alors qu'elle en portait neuf et un.
+Attendre `ACTIVE_HEALTHY`, ou recouper avant de conclure.
+
+### État vérifié le 13 août 2026
+
+Les 13 migrations du dépôt sont appliquées, et leur contenu a été comparé aux
+fichiers par empreinte MD5 sur une normalisation qui ignore espaces et
+points-virgules : les 13 sont identiques au dépôt.
+
+Les advisors hébergés ne remontent **aucun constat en `WARN` ni `ERROR`**, ni en
+sécurité ni en performance. La posture hébergée vaut donc celle que la CI vérifie
+en local.
+
+Les neuf tables de `public` ont toutes RLS activé. Quatre d'entre elles
+(`audio_assets`, `content_reports`, `learning_items`, `lesson_versions`) n'ont
+aucune politique, ce que l'advisor signale en `INFO` : c'est voulu, et ce n'est
+pas une faille, car ces quatre tables n'accordent **aucun droit** à `anon` ni à
+`authenticated`. Deux verrous indépendants les ferment, et tout accès passe par
+des fonctions serveur. Les autres constats de performance sont des index jamais
+utilisés, ce qui n'a aucun sens sur une base sans lignes ni requêtes.
+
+### Le piège des versions de migration
+
+Le 2 août, les neuf premières migrations ont été appliquées par une route qui
+**réhorodate** les versions à l'heure d'application au lieu de conserver celles
+des noms de fichiers. `supabase db push` ne reconnaissait donc aucune des neuf et
+refusait d'avancer.
+
+La réparation a consisté à réécrire la colonne `version` de
+`supabase_migrations.schema_migrations` pour la faire correspondre aux noms de
+fichiers, après avoir prouvé par empreinte que le contenu appliqué était bien
+celui du dépôt. Aucune table, aucune donnée et aucune politique n'ont été
+touchées.
+
+**Toujours appliquer les migrations avec `supabase db push`**, jamais par un
+outil qui régénère les versions, sous peine de rendre l'historique distant
+irréconciliable avec le dépôt.
+
+Le `db push` du 13 août affiche des erreurs Docker : elles concernent un cache
+local optionnel, arrivent après l'application, et n'empêchent rien. La ligne qui
+compte est `Finished supabase db push.`
 
 ## Cible retenue
 
