@@ -1532,7 +1532,15 @@ export function ExpeditionExperience({
         <div className={styles.body}>
           <p className={styles.eyebrow}>Expédition · {plan.length} exercices</p>
           <h1 id="lesson-title">{lesson.titleFr}</h1>
-          <p className={styles.objective}>{lesson.objectiveFr}</p>
+          {/* L'objectif est écrit pour suivre « Objectif : » dans le
+              document d'autorat, d'où sa minuscule initiale : les 66 du
+              corpus commencent ainsi. L'interface avait retiré le cadre
+              sans rendre la majuscule, et la phrase démarrait au milieu
+              d'elle-même sous un grand titre. On lui rend son cadre. */}
+          <p className={styles.objective}>
+            <span className={styles.objectiveLabel}>Objectif</span>
+            {lesson.objectiveFr}
+          </p>
 
           {pageActive === undefined ? (
             <div
@@ -1689,7 +1697,12 @@ export function ExpeditionExperience({
             </div>
           ) : (
             <>
-              <h1 id="lesson-title" ref={cardHeading} tabIndex={-1}>
+              <h1
+                className={styles.consigne}
+                id="lesson-title"
+                ref={cardHeading}
+                tabIndex={-1}
+              >
                 {currentExercise.promptFr}
               </h1>
 

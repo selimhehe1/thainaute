@@ -37,6 +37,23 @@
   color: var(--color-ink-soft);
 }
 
+/* Seul `primary` disait son inactivité. « Page précédente », en `ghost`,
+   gardait son trait de plume corail sur la première page d'un cours : un
+   contrôle inerte qui a l'air actif. On retire le trait, qui EST le signal
+   d'action de cette variante, et on adoucit l'encre.
+
+   Pas d'opacité : elle abaisserait le contraste sous le seuil lisible.
+   `--color-ink-soft` reste à 6,4:1 sur le papier. */
+.ghost:disabled,
+.secondary:disabled,
+.danger:disabled {
+  color: var(--color-ink-soft);
+}
+
+.ghost:disabled::after {
+  display: none;
+}
+
 .primary {
   background: var(--color-coral);
   color: var(--color-paper);
