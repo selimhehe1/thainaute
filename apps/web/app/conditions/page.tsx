@@ -24,11 +24,13 @@ export default function ConditionsPage() {
 
       <h2 id="etat">État de développement</h2>
       <p>
-        Le service est en construction. À ce jour, aucun cours de thaï n’est
-        publié, et la revue par un locuteur natif n’a pas eu lieu. Les contenus
-        accessibles sont explicitement marqués comme techniques et non
-        publiables. Le service peut évoluer, être interrompu ou modifié sans
-        préavis pendant cette phase.
+        Le service est en construction. À ce jour, une première unité de cours
+        est publiée et la suite du parcours reste interne. La revue par un
+        locuteur natif thaï n’a eu lieu sur aucune leçon : chaque leçon publiée
+        l’indique. Les contenus qui ne sont pas des cours, comme la boucle de
+        démonstration des mécaniques d’exercice, restent explicitement marqués
+        comme techniques et non publiables. Le service peut évoluer, être
+        interrompu ou modifié sans préavis pendant cette phase.
       </p>
 
       <h2 id="usage">Usage attendu</h2>

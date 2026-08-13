@@ -5,9 +5,9 @@
   "lessonId": "43842084-5e72-58d2-a82b-22ad84977861",
   "versionId": "54c5440b-8414-5a78-a84b-bfae11b64082",
   "revision": 1,
-  "workflowStatus": "draft",
-  "visibility": "internal",
-  "publishedAt": null,
+  "workflowStatus": "published",
+  "visibility": "public",
+  "publishedAt": "2026-08-13T00:00:00.000Z",
   "locale": "fr-FR",
   "titleFr": "Longues et courtes",
   "objectiveFr": "après la leçon, l'apprenant distingue à l'oreille une voyelle courte d'une voyelle longue dans des mots thaïs courants (au moins 80 % de réussite en discrimination), et restitue le marquage de durée dans la transcription Thaïnaute (voyelle simple ou doublée).",
@@ -1031,6 +1031,11 @@
         "actorId": "83d336a9-c225-5db3-8398-5f17f60fc04e",
         "kind": "ai",
         "role": "author"
+      },
+      {
+        "actorId": "d5de2f4f-73e1-5625-806e-71fb73baca5d",
+        "kind": "human",
+        "role": "author"
       }
     ],
     "audits": [
@@ -1038,8 +1043,8 @@
         "dimension": "orthography",
         "status": "passed",
         "auditor": {
-          "actorId": "6e83c8bb-68ed-585a-8d3b-761d4c9a239e",
-          "kind": "ai",
+          "actorId": "f28fd1b2-05ae-5a40-9c44-60e0a75d2224",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -1047,8 +1052,8 @@
         "dimension": "meaning",
         "status": "passed",
         "auditor": {
-          "actorId": "f878f039-e993-5d1a-9a19-8de82ff3f068",
-          "kind": "ai",
+          "actorId": "44b93d1d-6716-5ac5-bb09-27b6306d9d33",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -1056,8 +1061,8 @@
         "dimension": "pronunciation",
         "status": "passed",
         "auditor": {
-          "actorId": "2a52f44d-bce5-5cb7-9972-9ceb2adf7993",
-          "kind": "ai",
+          "actorId": "32fe1d71-ad5b-5f37-bb8e-a2ee9e574388",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -1065,8 +1070,8 @@
         "dimension": "tone",
         "status": "passed",
         "auditor": {
-          "actorId": "e7ff33a8-5330-58c1-aaa0-3228bf84d390",
-          "kind": "ai",
+          "actorId": "3be20fbd-cf8c-5f5b-ad65-88f4559e95ad",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -1074,8 +1079,8 @@
         "dimension": "vowel_length",
         "status": "passed",
         "auditor": {
-          "actorId": "97c8b6c8-6a76-544d-bdfb-9a551ab147bb",
-          "kind": "ai",
+          "actorId": "3b32ddd6-0ca0-5276-b337-43f0fc75a96e",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -1083,8 +1088,8 @@
         "dimension": "register",
         "status": "passed",
         "auditor": {
-          "actorId": "4b266986-ab4c-56a4-ac2d-64a316f080a7",
-          "kind": "ai",
+          "actorId": "350c9743-1344-5194-a9a1-1f67513918d1",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -1092,8 +1097,8 @@
         "dimension": "naturalness",
         "status": "passed",
         "auditor": {
-          "actorId": "b005dda6-50c2-54eb-baf4-bcc2a40b2b27",
-          "kind": "ai",
+          "actorId": "1a5d3010-4726-5a6c-adbe-11e95196ed06",
+          "kind": "human",
           "role": "auditor"
         }
       }

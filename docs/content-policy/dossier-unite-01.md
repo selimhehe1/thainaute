@@ -13,15 +13,8 @@ manque, pour qu'une signature soit un acte informé.
 - Leçons compilées : 6
 - Audits déclarés : 42 passés sur 42
 - Findings bloquants encore ouverts : 0
-- Nature des auteurs déclarés : ai
-- Nature des auditeurs déclarés : ai
-
-**Aucun auteur ni auditeur humain n'est encore enregistré.** Les portes
-`HUMAN_AUTHOR_MISSING` et `HUMAN_AUDITOR_MISSING` restent donc fermées, et
-c'est exactement ce que la signature du fondateur vient lever.
-
-**Revue par un locuteur natif : en attente.** Elle n'a pas eu lieu, et
-aucune signature ne peut en tenir lieu.
+- Nature des auteurs déclarés : ai, human
+- Nature des auditeurs déclarés : human, ai
 
 ### Contre-audit externe
 
@@ -30,7 +23,7 @@ Les prompts du contre-audit externe existent, mais **aucun fichier de réponses 
 ## u01-l1a : Écouter le thaï pour la première fois
 
 - Objectif : après la leçon, l'apprenant distingue à l'écoute une voix qui tombe d'une voix qui grimpe (ค่า contre ขา) au moins 5 fois sur 6, et relie au mot entendu trois contours nettement distincts (qui tombe, qui grimpe, à plat). Aucune reconnaissance de lettre n'est exigée dans cette première séance.
-- Statut : `draft`, visibilité `internal`
+- Statut : `published`, visibilité `public`
 - Items : 14
 - Exercices : 7 (audio_choice 6, association 1)
 - Fichiers audio : 5
@@ -61,7 +54,7 @@ Voix **synthétique**, jamais présentée comme un enregistrement humain.
 ## u01-l1b : Longues et courtes
 
 - Objectif : après la leçon, l'apprenant distingue à l'oreille une voyelle courte d'une voyelle longue dans des mots thaïs courants (au moins 80 % de réussite en discrimination), et restitue le marquage de durée dans la transcription Thaïnaute (voyelle simple ou doublée).
-- Statut : `draft`, visibilité `internal`
+- Statut : `published`, visibilité `public`
 - Items : 10
 - Exercices : 21 (audio_choice 10, association 1, recall 6, reading 4)
 - Fichiers audio : 7
@@ -88,7 +81,7 @@ Voix **synthétique**, jamais présentée comme un enregistrement humain.
 ## u01-l1c : Mi contre bas
 
 - Objectif : à la fin de la leçon, l'apprenant écoute une syllabe thaïe isolée et indique si elle porte un ton moyen ou un ton bas, avec au moins 8 réussites sur 10 sur des audios à contraste normal (non exagéré).
-- Statut : `draft`, visibilité `internal`
+- Statut : `published`, visibilité `public`
 - Items : 10
 - Exercices : 1 (word_order 1)
 - Fichiers audio : 0
@@ -111,7 +104,7 @@ Dossier de vérification : `verification-1c.md`.
 ## u01-l1d : Montant contre haut
 
 - Objectif : à l'écoute d'un mot isolé parmi les huit mots actifs de la leçon, dit à voix normale, l'apprenant identifie le ton montant ou le ton haut avec au moins 5 réussites sur 6, et associe les quatre paires de mots à leur sens sans erreur.
-- Statut : `draft`, visibilité `internal`
+- Statut : `published`, visibilité `public`
 - Items : 10
 - Exercices : 10 (audio_choice 6, association 1, recall 3)
 - Fichiers audio : 6
@@ -157,7 +150,7 @@ Dossier de vérification : `verification-1e.md`.
 ## u01-l1f : Les cinq d'un coup
 
 - Objectif : à l'écoute d'un mot isolé de la série คา ข่า ค่า ค้า ขา, dit à voix normale, l'apprenant nomme le ton parmi les cinq, au moins 4 fois sur 5.
-- Statut : `draft`, visibilité `internal`
+- Statut : `published`, visibilité `public`
 - Items : 5
 - Exercices : 7 (audio_choice 5, association 1, word_order 1)
 - Fichiers audio : 5

@@ -55,14 +55,20 @@ describe("portes CLI du corpus", () => {
     expect(capture.errors.join("\n")).not.toContain("AUDIO_ASSET_MISSING");
   });
 
-  it("audit --release audite tout le corpus et bloque chaque brouillon", async () => {
+  it("audit --release laisse passer le signé et bloque tout le reste", async () => {
     const capture = capturedOutput();
 
     const status = await runContentCli(["audit", "--release"], capture.output);
 
     expect(status).toBe(1);
+    // Le corpus n'est plus uniformément brouillon : u01-l1a est signée et
+    // publiée, elle ne doit plus apparaître. Sa présence signalerait une
+    // porte qui s'est refermée sans qu'on le décide.
+    expect(capture.errors.join("\n")).not.toContain("u01-l1a [publication]");
+    // u01-l1e reste bloquée par ses sources : la signature ne lève pas une
+    // question juridique.
     expect(capture.errors.join("\n")).toContain(
-      "u01-l1a [publication] VISIBILITY_NOT_PUBLIC",
+      "u01-l1e [publication] VISIBILITY_NOT_PUBLIC",
     );
     expect(capture.errors.join("\n")).toContain(
       "u13-l13e [publication] VISIBILITY_NOT_PUBLIC",

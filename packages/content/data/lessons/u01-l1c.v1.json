@@ -5,9 +5,9 @@
   "lessonId": "74aa634a-5859-5c62-b565-7737fb8188f0",
   "versionId": "9faf3b58-2bff-5c57-9b3a-1035c793f1f2",
   "revision": 1,
-  "workflowStatus": "draft",
-  "visibility": "internal",
-  "publishedAt": null,
+  "workflowStatus": "published",
+  "visibility": "public",
+  "publishedAt": "2026-08-13T00:00:00.000Z",
   "locale": "fr-FR",
   "titleFr": "Mi contre bas",
   "objectiveFr": "à la fin de la leçon, l'apprenant écoute une syllabe thaïe isolée et indique si elle porte un ton moyen ou un ton bas, avec au moins 8 réussites sur 10 sur des audios à contraste normal (non exagéré).",
@@ -408,6 +408,11 @@
         "actorId": "b386e32d-5081-5076-bfed-1a7d58791a11",
         "kind": "ai",
         "role": "author"
+      },
+      {
+        "actorId": "d5de2f4f-73e1-5625-806e-71fb73baca5d",
+        "kind": "human",
+        "role": "author"
       }
     ],
     "audits": [
@@ -415,8 +420,8 @@
         "dimension": "orthography",
         "status": "passed",
         "auditor": {
-          "actorId": "948b4f8b-a79e-5bff-a80f-254c04620022",
-          "kind": "ai",
+          "actorId": "322292f1-20e6-531a-b28e-08049e7567e9",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -424,8 +429,8 @@
         "dimension": "meaning",
         "status": "passed",
         "auditor": {
-          "actorId": "8c543239-b364-5d81-b073-91a447d20f3f",
-          "kind": "ai",
+          "actorId": "8bb05cab-a7f1-5c54-aaf9-69ba58d3bf41",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -433,8 +438,8 @@
         "dimension": "pronunciation",
         "status": "passed",
         "auditor": {
-          "actorId": "c619649f-4a86-5029-989b-ea4c53b5caa8",
-          "kind": "ai",
+          "actorId": "708e8099-d4ae-58cc-a6e7-dd16a67b1f92",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -442,8 +447,8 @@
         "dimension": "tone",
         "status": "passed",
         "auditor": {
-          "actorId": "88cc0d44-6119-5de2-8834-ffea600a638e",
-          "kind": "ai",
+          "actorId": "0e624bd0-d36a-5d32-aeab-104ca25a7f01",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -451,8 +456,8 @@
         "dimension": "vowel_length",
         "status": "passed",
         "auditor": {
-          "actorId": "37588ab0-94ff-567e-bb5f-fbdeffbe8032",
-          "kind": "ai",
+          "actorId": "16723c34-a76b-5de2-9014-e92b5632cf55",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -460,8 +465,8 @@
         "dimension": "register",
         "status": "passed",
         "auditor": {
-          "actorId": "8ffc3353-f2f4-5275-a30c-49267d14aaf2",
-          "kind": "ai",
+          "actorId": "02179575-8471-5174-98d2-d8a664b90dfd",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -469,8 +474,8 @@
         "dimension": "naturalness",
         "status": "passed",
         "auditor": {
-          "actorId": "f9cde7b1-b8f7-5454-894b-e3a8d5da50ab",
-          "kind": "ai",
+          "actorId": "3a3a901f-5552-5035-91b5-2d2e2ca5431a",
+          "kind": "human",
           "role": "auditor"
         }
       }

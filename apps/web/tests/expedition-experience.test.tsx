@@ -35,6 +35,7 @@ vi.mock("next/navigation", () => ({
 
 const { lesson } = readFiveMechanicsFixtureBundle();
 const dialogueLesson = readCompiledLessonBundle("u01-l1e")?.lesson;
+const leconPubliee = readCompiledLessonBundle("u01-l1a")?.lesson;
 const OLD_FIXTURE_LESSON_ID = "10000000-0000-4000-8000-000000000002";
 const OLD_FIXTURE_EXERCISE_ID = "10000000-0000-4000-8000-000000000004";
 
@@ -260,6 +261,47 @@ describe("lecteur Expédition", () => {
       screen.getByRole("button", { name: "Commencer l’expédition" }),
     ).toBeInTheDocument();
     expect(closeRetryMigration).not.toHaveBeenCalled();
+  });
+
+  it("continue d’annoncer l’absence de revue native sur une leçon publiée", async () => {
+    if (leconPubliee === undefined) {
+      throw new Error("Leçon publiée u01-l1a absente du registre.");
+    }
+    // La publication effaçait cette ligne, donc l'avertissement disparaissait
+    // exactement quand une personne réelle lisait la leçon. Une signature du
+    // fondateur n'est pas une revue par un locuteur natif.
+    renderExpedition(undefined, leconPubliee);
+
+    const note = await screen.findByRole("note");
+    expect(note).toHaveTextContent("Revue native : en attente");
+    expect(note).toHaveTextContent("voix synthétique");
+    expect(note).not.toHaveTextContent("Brouillon");
+  });
+
+  it("annonce en plus le brouillon tant que la leçon n’est pas signée", async () => {
+    if (dialogueLesson === undefined) {
+      throw new Error("Leçon réelle u01-l1e absente du registre.");
+    }
+    renderExpedition(undefined, dialogueLesson);
+
+    const note = await screen.findByRole("note");
+    expect(note).toHaveTextContent("Brouillon");
+    expect(note).toHaveTextContent("Revue native : en attente");
+  });
+
+  it("n’invente pas de voix quand la leçon n’en fait entendre aucune", async () => {
+    if (leconPubliee === undefined) {
+      throw new Error("Leçon publiée u01-l1a absente du registre.");
+    }
+    render(
+      <WebAuthSessionProvider>
+        <ExpeditionExperience lesson={leconPubliee} voixSynthetique={false} />
+      </WebAuthSessionProvider>,
+    );
+
+    const note = await screen.findByRole("note");
+    expect(note).toHaveTextContent("Revue native : en attente");
+    expect(note).not.toHaveTextContent("voix synthétique");
   });
 
   it("rend les pages de cours réelles sans afficher les marqueurs Markdown", async () => {

@@ -93,6 +93,12 @@ interface ExpeditionProps {
    * aucun chemin et ne code aucune URL en dur.
    */
   readonly audioSources?: Readonly<Record<string, string>> | undefined;
+  /**
+   * La voix de cette leçon est-elle synthétique ? Dérivée du manifeste par
+   * la page, jamais devinée ici : le jour où une voix humaine remplacera la
+   * synthèse, une constante écrite en dur mentirait sans que rien n'échoue.
+   */
+  readonly voixSynthetique?: boolean | undefined;
   readonly analytics?: AnalyticsSink | undefined;
   /**
    * Où sont journalisées les tentatives de l'apprenant.
@@ -296,6 +302,7 @@ function subscribeToReducedMotion(callback: () => void): () => void {
 export function ExpeditionExperience({
   lesson,
   audioSources,
+  voixSynthetique = true,
   analytics: analyticsOverride,
   attemptStorage = "demo",
   storageHydrationTimeoutMs,
@@ -372,13 +379,23 @@ export function ExpeditionExperience({
    */
   const avertissement = useMemo(() => {
     if (lesson.visibility === "fixture") return "Donnée fictive, non publiable";
-    if (lesson.workflowStatus === "published") return null;
     // Le brief exige que « Revue native : en attente » soit affiche
     // honnetement. Il n'exige pas un encadre de quatre lignes repete a
     // chaque ecran : repetee, une mise en garde devient du papier peint que
-    // plus personne ne lit. Une ligne, discrete, qui dit les trois faits.
-    return "Brouillon · Revue native : en attente · voix synthétique";
-  }, [lesson.visibility, lesson.workflowStatus]);
+    // plus personne ne lit. Une ligne, discrete, qui dit les faits.
+    //
+    // CORRECTION : la publication faisait disparaitre cette ligne, donc
+    // l'avertissement s'effacait exactement au moment ou une personne
+    // reelle lisait la lecon. Une signature du fondateur ne vaut pas revue
+    // native, et `signatureUniteSchema` refuse meme de laisser ecrire le
+    // contraire. Seul « Brouillon » disparait a la publication.
+    const faits = [
+      lesson.workflowStatus === "published" ? null : "Brouillon",
+      "Revue native : en attente",
+      voixSynthetique ? "voix synthétique" : null,
+    ].filter((fait): fait is string => fait !== null);
+    return faits.length === 0 ? null : faits.join(" · ");
+  }, [lesson.visibility, lesson.workflowStatus, voixSynthetique]);
 
   // Le bouton d'accueil fait entendre le premier mot de la lecon, celui de
   // son premier exercice d'ecoute.

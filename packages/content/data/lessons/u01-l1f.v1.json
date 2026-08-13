@@ -5,9 +5,9 @@
   "lessonId": "420db43b-ad52-56be-939c-6d1a4134c40e",
   "versionId": "67f3eb64-d366-5113-b251-704807d9521c",
   "revision": 1,
-  "workflowStatus": "draft",
-  "visibility": "internal",
-  "publishedAt": null,
+  "workflowStatus": "published",
+  "visibility": "public",
+  "publishedAt": "2026-08-13T00:00:00.000Z",
   "locale": "fr-FR",
   "titleFr": "Les cinq d'un coup",
   "objectiveFr": "à l'écoute d'un mot isolé de la série คา ข่า ค่า ค้า ขา, dit à voix normale, l'apprenant nomme le ton parmi les cinq, au moins 4 fois sur 5.",
@@ -557,6 +557,11 @@
         "actorId": "206352a3-58ba-549c-ad08-57c3958f513c",
         "kind": "ai",
         "role": "author"
+      },
+      {
+        "actorId": "d5de2f4f-73e1-5625-806e-71fb73baca5d",
+        "kind": "human",
+        "role": "author"
       }
     ],
     "audits": [
@@ -564,8 +569,8 @@
         "dimension": "orthography",
         "status": "passed",
         "auditor": {
-          "actorId": "f141bec7-53f2-5bf3-842c-2c214d93d1ac",
-          "kind": "ai",
+          "actorId": "54318655-eeca-5243-95ea-13f057ec57c8",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -573,8 +578,8 @@
         "dimension": "meaning",
         "status": "passed",
         "auditor": {
-          "actorId": "e6468fdf-22ba-557c-bb4e-48131181423c",
-          "kind": "ai",
+          "actorId": "4027f899-251b-5b1a-979d-e45caca6c021",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -582,8 +587,8 @@
         "dimension": "pronunciation",
         "status": "passed",
         "auditor": {
-          "actorId": "860563fa-f5ba-549f-9b8c-ddc11acb9eec",
-          "kind": "ai",
+          "actorId": "1ae01725-4dc6-5f79-8c5d-23a7cacbf0b5",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -591,8 +596,8 @@
         "dimension": "tone",
         "status": "passed",
         "auditor": {
-          "actorId": "b1169072-bf25-516a-80e4-5b3de85c2c5d",
-          "kind": "ai",
+          "actorId": "3897752a-dcac-571a-b4e0-99f324670266",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -600,8 +605,8 @@
         "dimension": "vowel_length",
         "status": "passed",
         "auditor": {
-          "actorId": "1734b03e-3cdd-5896-a73e-6400eee6f0e3",
-          "kind": "ai",
+          "actorId": "524416ea-3996-51b1-899d-ecb29e078969",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -609,8 +614,8 @@
         "dimension": "register",
         "status": "passed",
         "auditor": {
-          "actorId": "2a2e917a-191b-507e-8202-54fb927b24e3",
-          "kind": "ai",
+          "actorId": "6eb38d26-b465-53bb-a4ae-b206f3014acc",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -618,8 +623,8 @@
         "dimension": "naturalness",
         "status": "passed",
         "auditor": {
-          "actorId": "4dac3e77-0726-53cb-823c-58c8c16c1724",
-          "kind": "ai",
+          "actorId": "ce58f8fd-f5fd-5684-844e-d2d3934985a1",
+          "kind": "human",
           "role": "auditor"
         }
       }

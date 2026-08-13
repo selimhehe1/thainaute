@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "unite": "01",
+  "signataire": { "nom": "Selim Aloui", "role": "fondateur" },
+  "signeLe": "2026-08-13T00:00:00.000Z",
+  "portee": "J'ai relu le dossier de preuve docs/content-policy/dossier-unite-01.md et j'engage ma responsabilite d'auteur et de relecteur sur ces cinq lecons. Cette signature n'est pas une revue par un locuteur natif, qui reste a venir. La lecon u01-l1e est volontairement exclue : elle cite RID-2554, dont les conditions de publication ne sont pas tranchees.",
+  "lecons": ["u01-l1a", "u01-l1b", "u01-l1c", "u01-l1d", "u01-l1f"],
+  "publier": true,
+  "revueNativeEffectuee": false
+}

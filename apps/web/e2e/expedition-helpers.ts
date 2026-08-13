@@ -1,33 +1,45 @@
 import { expect, type Page } from "@playwright/test";
 
-/** Onboarding court puis ouverture du lecteur, en mouvement réduit pour un
- * déroulé déterministe (bouton Continuer au lieu de l'auto-avance). */
-export async function openExpeditionAfterOnboarding(page: Page): Promise<void> {
+/**
+ * Repond aux trois questions d'accueil, en mouvement reduit pour un deroule
+ * deterministe (bouton Continuer au lieu de l'auto-avance).
+ *
+ * Le lecteur refuse de demarrer une expedition tant que l'accueil n'est pas
+ * termine : il propose « Preparer mon parcours » a la place du depart. Toute
+ * ouverture de lecon passe donc par ici.
+ */
+export async function terminerOnboarding(page: Page): Promise<void> {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/today");
   await page.getByRole("radio", { name: "5 minutes" }).check();
   await page.getByRole("radio", { name: "Préparer un séjour" }).check();
   await page.getByRole("radio", { name: "Je débute" }).check();
   await page.getByRole("button", { name: "Préparer ma session" }).click();
+}
+
+/** Onboarding court puis ouverture du lecteur sur la boucle technique. */
+export async function openExpeditionAfterOnboarding(page: Page): Promise<void> {
+  await terminerOnboarding(page);
   await page.getByRole("link", { name: "Commencer la session" }).click();
 }
 
 /**
- * Ouvre la page technique des cinq mecaniques. La lecon reelle de l'unite 1
- * n'en emploie que deux : sans cette route, la couverture de bout en bout
- * des trois autres disparaitrait.
+ * Ouvre la page technique des cinq mecaniques. Les lecons reelles de
+ * l'unite 1 n'en emploient que quatre : sans cette route, la couverture de
+ * bout en bout de l'ordre des mots disparaitrait.
  */
 export async function openMecaniquesFixture(page: Page): Promise<void> {
-  // Le lecteur exige l'etat d'accueil que /today met en place : on passe
-  // donc par l'onboarding, puis on rejoint la route technique au lieu de
-  // suivre le lien de session, qui mene a la lecon reelle.
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/today");
-  await page.getByRole("radio", { name: "5 minutes" }).check();
-  await page.getByRole("radio", { name: "Préparer un séjour" }).check();
-  await page.getByRole("radio", { name: "Je débute" }).check();
-  await page.getByRole("button", { name: "Préparer ma session" }).click();
+  await terminerOnboarding(page);
   await page.goto("/learn/mecaniques");
+}
+
+/** Ouvre une lecon reelle publiee, accueil deja termine. */
+export async function ouvrirLeconPubliee(
+  page: Page,
+  lessonId: string,
+): Promise<void> {
+  await terminerOnboarding(page);
+  await page.goto(`/learn/lecon/${lessonId}`);
 }
 
 /**
