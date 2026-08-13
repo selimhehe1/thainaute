@@ -113,11 +113,22 @@ describe("fixture de contenu", () => {
     expect(ids).toHaveLength(66);
     expect(new Set(ids).size).toBe(ids.length);
 
+    // Le corpus n'est plus uniformément brouillon depuis la signature de
+    // l'unité 1. Ce qui doit rester invariant, c'est l'ACCORD entre les deux
+    // champs : `published` va avec `public`, `draft` avec `internal`. Un
+    // paquet publié mais resté interne, ou l'inverse, serait une porte
+    // entrouverte.
     for (const lessonId of ids) {
       const bundle = readAuthoringCompiledLessonBundle(lessonId);
       expect(bundle).not.toBeNull();
-      expect(bundle?.lesson.workflowStatus).toBe("draft");
-      expect(bundle?.lesson.visibility).toBe("internal");
+      expect({
+        statut: bundle?.lesson.workflowStatus,
+        visibilite: bundle?.lesson.visibility,
+      }).toStrictEqual(
+        bundle?.lesson.workflowStatus === "published"
+          ? { statut: "published", visibilite: "public" }
+          : { statut: "draft", visibilite: "internal" },
+      );
       expect(bundle?.lesson.items.length).toBeGreaterThan(0);
       expect(bundle?.lesson.exercises.length).toBeGreaterThan(0);
     }

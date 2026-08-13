@@ -172,7 +172,7 @@ describe("accès aux brouillons d'autorat", () => {
     expect(mocks.authorize).toHaveBeenCalledOnce();
   });
 
-  it("sert le WAV canonique seulement après autorisation éditeur", async () => {
+  it("refuse la porte éditeur à une leçon devenue publique", async () => {
     mocks.configuration = {
       mode: "fixture",
       url: "https://project.supabase.co",
@@ -193,18 +193,17 @@ describe("accès aux brouillons d'autorat", () => {
     );
     const bytes = new Uint8Array(await response.arrayBuffer());
 
-    expect(response.status).toBe(200);
-    expect(response.headers.get("content-type")).toBe("audio/wav");
-    expect(response.headers.get("content-length")).toBe(
-      String(entry.byteLength),
-    );
-    expect(response.headers.get("cache-control")).toBe(
-      "private, no-store, max-age=0",
-    );
-    expect(response.headers.get("x-content-type-options")).toBe("nosniff");
-    expect(response.headers.get("vary")).toBe("Authorization");
-    expect(bytes.byteLength).toBe(entry.byteLength);
-    expect(new TextDecoder().decode(bytes.slice(0, 4))).toBe("RIFF");
+    // u01-l1a est SIGNÉE et publiée. Son audio doit désormais passer par la
+    // route publique, pas par la porte de prévisualisation éditoriale : cette
+    // porte n'existe que pour ce qui n'est pas encore publiable, et servir un
+    // contenu publié par un chemin réservé aux brouillons brouillerait la
+    // frontière que l'ADR-0041 protège.
+    expect(response.status).toBe(404);
+    // Le corps est une erreur, jamais l'audio : aucun octet du WAV ne doit
+    // sortir par ce chemin.
+    expect(response.headers.get("content-type")).not.toBe("audio/wav");
+    expect(bytes.byteLength).toBeLessThan(entry.byteLength);
+    expect(new TextDecoder().decode(bytes.slice(0, 4))).not.toBe("RIFF");
   });
 
   it("ne publie plus aucun chemin audio des manifestes internes", async () => {
@@ -224,8 +223,12 @@ describe("accès aux brouillons d'autorat", () => {
       "u01-l1f",
     ]) {
       const bundle = readCompiledLessonBundle(lessonId);
-      expect(bundle?.lesson.visibility).toBe("internal");
-      expect(bundle?.lesson.workflowStatus).toBe("draft");
+      // L'invariant n'est plus « tout est brouillon » mais « un brouillon ne
+      // publie aucun chemin audio ». Une leçon signée, elle, en publie, et
+      // c'est exactement ce qu'on attend d'elle.
+      const brouillon = bundle?.lesson.workflowStatus === "draft";
+      expect(bundle?.lesson.visibility).toBe(brouillon ? "internal" : "public");
+      if (!brouillon) continue;
       expect(publicAudioSources(bundle!)).toEqual({});
       expect(
         bundle?.audioManifest.entries.flatMap(

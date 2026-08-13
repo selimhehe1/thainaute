@@ -5,9 +5,9 @@
   "lessonId": "24feb701-6741-5958-aa19-70f4d7548494",
   "versionId": "d9a38b2a-1420-50a6-ae4a-12e2b2cd562e",
   "revision": 1,
-  "workflowStatus": "draft",
-  "visibility": "internal",
-  "publishedAt": null,
+  "workflowStatus": "published",
+  "visibility": "public",
+  "publishedAt": "2026-08-13T00:00:00.000Z",
   "locale": "fr-FR",
   "titleFr": "Montant contre haut",
   "objectiveFr": "à l'écoute d'un mot isolé parmi les huit mots actifs de la leçon, dit à voix normale, l'apprenant identifie le ton montant ou le ton haut avec au moins 5 réussites sur 6, et associe les quatre paires de mots à leur sens sans erreur.",
@@ -681,6 +681,11 @@
         "actorId": "24f46498-58ce-5405-be1e-ec9d17dc0afc",
         "kind": "ai",
         "role": "author"
+      },
+      {
+        "actorId": "d5de2f4f-73e1-5625-806e-71fb73baca5d",
+        "kind": "human",
+        "role": "author"
       }
     ],
     "audits": [
@@ -688,8 +693,8 @@
         "dimension": "orthography",
         "status": "passed",
         "auditor": {
-          "actorId": "5997a70f-9f35-5401-b46a-1372300c6d73",
-          "kind": "ai",
+          "actorId": "3a7ee419-8b2f-552d-b0a5-b6e27bb5cffa",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -697,8 +702,8 @@
         "dimension": "meaning",
         "status": "passed",
         "auditor": {
-          "actorId": "da1690fa-b853-55cc-be34-3eb6faefd325",
-          "kind": "ai",
+          "actorId": "46954d44-4ad0-5e79-9c65-fbc047ae95ce",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -706,8 +711,8 @@
         "dimension": "pronunciation",
         "status": "passed",
         "auditor": {
-          "actorId": "e8cc09ab-98f4-5e31-9cfe-ac69f79c6a00",
-          "kind": "ai",
+          "actorId": "860a9650-b01d-599f-8bb9-e4dd8f4bff26",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -715,8 +720,8 @@
         "dimension": "tone",
         "status": "passed",
         "auditor": {
-          "actorId": "f2e15755-bb54-5fb6-b052-7daffb7cbf26",
-          "kind": "ai",
+          "actorId": "99d83c4b-a2b3-5be1-9f4e-c5cd1c532fec",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -724,8 +729,8 @@
         "dimension": "vowel_length",
         "status": "passed",
         "auditor": {
-          "actorId": "ce572e42-bf1b-5142-b775-497f827f28d8",
-          "kind": "ai",
+          "actorId": "d922a628-b389-5ef5-b91e-d3f25140f621",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -733,8 +738,8 @@
         "dimension": "register",
         "status": "passed",
         "auditor": {
-          "actorId": "0730b455-f0c4-5027-985c-9365fe9772d8",
-          "kind": "ai",
+          "actorId": "36ad044a-84eb-5965-8700-4e5c4c4b1bf1",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -742,8 +747,8 @@
         "dimension": "naturalness",
         "status": "passed",
         "auditor": {
-          "actorId": "13d70303-ea3b-5204-a18d-037fbf928cf3",
-          "kind": "ai",
+          "actorId": "77c68669-32a5-5e6b-89b2-5d77a63ca0e1",
+          "kind": "human",
           "role": "auditor"
         }
       }

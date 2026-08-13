@@ -5,9 +5,9 @@
   "lessonId": "f80ef999-f755-5d28-8dd9-096af65058c0",
   "versionId": "588f4a02-d985-5d29-99dc-9d4a58ce9c77",
   "revision": 1,
-  "workflowStatus": "draft",
-  "visibility": "internal",
-  "publishedAt": null,
+  "workflowStatus": "published",
+  "visibility": "public",
+  "publishedAt": "2026-08-13T00:00:00.000Z",
   "locale": "fr-FR",
   "titleFr": "Écouter le thaï pour la première fois",
   "objectiveFr": "après la leçon, l'apprenant distingue à l'écoute une voix qui tombe d'une voix qui grimpe (ค่า contre ขา) au moins 5 fois sur 6, et relie au mot entendu trois contours nettement distincts (qui tombe, qui grimpe, à plat). Aucune reconnaissance de lettre n'est exigée dans cette première séance.",
@@ -703,6 +703,11 @@
         "actorId": "4420830a-5acb-5620-81fe-19b8e64d7d3f",
         "kind": "ai",
         "role": "author"
+      },
+      {
+        "actorId": "d5de2f4f-73e1-5625-806e-71fb73baca5d",
+        "kind": "human",
+        "role": "author"
       }
     ],
     "audits": [
@@ -710,8 +715,8 @@
         "dimension": "orthography",
         "status": "passed",
         "auditor": {
-          "actorId": "cf91c555-b52d-5fad-bacd-5f05a25d88ba",
-          "kind": "ai",
+          "actorId": "84abfd78-5638-500f-ae47-13a80b70630f",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -719,8 +724,8 @@
         "dimension": "meaning",
         "status": "passed",
         "auditor": {
-          "actorId": "9c44cef3-57fe-5aef-a974-3feb05196373",
-          "kind": "ai",
+          "actorId": "6ffe4c4c-2b69-57c7-ad0d-c0d1539ea8d0",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -728,8 +733,8 @@
         "dimension": "pronunciation",
         "status": "passed",
         "auditor": {
-          "actorId": "0e1d74f7-5214-5b2d-b4b3-943b19eacef8",
-          "kind": "ai",
+          "actorId": "aef00fcb-1230-500a-8938-8bb4edcc7467",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -737,8 +742,8 @@
         "dimension": "tone",
         "status": "passed",
         "auditor": {
-          "actorId": "86bdd362-4f09-52c5-97d6-f9461225c260",
-          "kind": "ai",
+          "actorId": "f752805d-26e0-58fc-aec9-db7ecd6adef1",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -746,8 +751,8 @@
         "dimension": "vowel_length",
         "status": "passed",
         "auditor": {
-          "actorId": "422228f8-e7c9-5c4e-a558-547aede43d3c",
-          "kind": "ai",
+          "actorId": "eeda92eb-7200-59f3-ad2d-35b004b46127",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -755,8 +760,8 @@
         "dimension": "register",
         "status": "passed",
         "auditor": {
-          "actorId": "393730a6-ef6c-571e-9ba6-c74ec60d1e53",
-          "kind": "ai",
+          "actorId": "fda9be5e-e80b-5291-aa75-7b0f204fcece",
+          "kind": "human",
           "role": "auditor"
         }
       },
@@ -764,8 +769,8 @@
         "dimension": "naturalness",
         "status": "passed",
         "auditor": {
-          "actorId": "977bd377-a05c-56e5-bb0a-553c40369e21",
-          "kind": "ai",
+          "actorId": "75185652-aad1-540b-b1bb-b1b98341aaa8",
+          "kind": "human",
           "role": "auditor"
         }
       }
