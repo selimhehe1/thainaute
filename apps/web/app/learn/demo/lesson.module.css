@@ -117,11 +117,44 @@
   text-wrap: balance;
 }
 
+/* La consigne d'un exercice est une INSTRUCTION, pas une affiche.
+ *
+ * Elle partageait le traitement du titre de leçon : 34 pixels, graisse 800,
+ * mesure de 22 caractères. Sur « Vous n'entendrez que deux mots, plusieurs
+ * fois chacun. C'est voulu : le but n'est pas de les retenir, mais
+ * d'entendre que la voix part dans deux directions opposées. Elle tombe, ou
+ * elle grimpe ? », cela donnait sept lignes de gras, et la question réelle
+ * finissait enterrée sous sa propre explication.
+ *
+ * Elle reste un `h1` : c'est la cible de focus de la carte et le titre de
+ * l'écran. Seul son rendu change. Le premier rôle visuel de cet écran doit
+ * être ce sur quoi on agit, pas ce qu'on lit.
+ */
+.body h1.consigne {
+  font-size: 19px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.005em;
+  line-height: 1.45;
+  margin: 0 0 18px;
+  max-width: 46ch;
+}
+
 .objective {
   color: var(--color-ink-soft);
   font-size: 15px;
   margin: 0;
   max-width: 50ch;
+}
+
+/* Le cadre que le texte d'autorat suppose. Sans lui, la phrase commence au
+   milieu d'elle-même, en minuscule, sous un titre de 40 pixels. */
+.objectiveLabel {
+  display: block;
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--color-coral-deep);
+  margin-bottom: 4px;
 }
 
 .eyebrow {
@@ -262,6 +295,15 @@
   font-size: 22px;
   line-height: 1.25;
   letter-spacing: -0.02em;
+}
+
+/* 496 des 648 titres d'enseignement du corpus commencent en minuscule :
+   ils sont écrits comme des intitulés de section dans un document, pas
+   comme des titres d'écran. La majuscule est une décision de rendu, pas
+   une modification de contenu ; retoucher 496 chaînes versionnées, dont
+   celles de leçons publiées et donc immuables, en serait une. */
+.coursTitre::first-letter {
+  text-transform: capitalize;
 }
 
 .coursTexte {
