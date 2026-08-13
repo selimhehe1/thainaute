@@ -71,12 +71,29 @@
   la limite déjà posée plus haut : conservation de la seule présence de la
   graphie, citation par référence, aucune définition reproduite.
 
-  **Décision qui reste à Selim.** `content/sources-registry.json` porte
-  aujourd'hui `commercialUse`, `redistribution` et `publicationAuthorized`
-  à `false` pour `RID-2554`, ce qui ferme la porte de publication. Les
-  faits ci-dessus soutiennent leur passage à `true` dans le périmètre
-  décrit. Le basculement est une validation juridique, réservée au
-  fondateur par `CLAUDE.md`, et n'est pas fait ici.
+  **Décision prise par Selim le 13 août 2026.** `content/sources-registry.json`
+  portait `commercialUse`, `redistribution` et `publicationAuthorized` à
+  `false` pour `RID-2554`, ce qui fermait la porte de publication de 61
+  leçons sur 66. Après lecture des faits ci-dessus, Selim Aloui a validé
+  leur passage à `true` dans le périmètre décrit, et uniquement dans
+  celui-ci. Voir [ADR-0043](../adr/0043-porte-rid-ouverte.md).
+
+  Ce que la décision autorise : vérifier qu'une graphie existe, qu'elle est
+  la forme normative, et citer l'entrée par référence.
+
+  Ce qu'elle n'autorise pas, et que ces trois booléens n'ont jamais couvert :
+  reproduire une définition, sa formulation ou son agencement, et moissonner
+  la base. Une compilation garde des droits propres, indépendamment du
+  statut juridique des faits qu'elle contient. Le cadre de consultation
+  décrit plus haut (une requête par mot, espacées d'au moins une seconde,
+  agent utilisateur identifiant le projet, conservation de la seule présence
+  de la graphie) reste en vigueur sans changement.
+
+  Cette décision est une validation juridique de fondateur, pas un avis
+  d'avocat. Elle repose sur des textes publics identifiés et vérifiables, et
+  elle est révocable : ramener les booléens à `false` referme la porte et
+  bloque toute publication ultérieure, sans toucher aux versions déjà
+  publiées, qui sont immuables par construction.
 
 - **The Unicode Standard** (chapitre « Southeast Asia » et fichiers de la
   base de caractères : `IndicPositionalCategory.txt`, `Scripts.txt`,

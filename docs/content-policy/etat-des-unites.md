@@ -11,30 +11,36 @@ décision juridique sur les trois booléens du dictionnaire royal.
 
 | Unité     | Leçons | Signature suffit | Voix manquante | Dépend du RID |
 | --------- | -----: | ---------------: | -------------: | ------------: |
-| 01        |      6 |                5 |              0 |             1 |
-| 02        |      5 |                0 |              0 |             5 |
-| 03        |      5 |                0 |              1 |             5 |
-| 04        |      5 |                0 |              1 |             5 |
-| 05        |      5 |                0 |              0 |             5 |
-| 06        |      5 |                0 |              0 |             5 |
-| 07        |      5 |                0 |              0 |             5 |
-| 08        |      5 |                0 |              0 |             5 |
-| 09        |      5 |                0 |              0 |             5 |
-| 10        |      5 |                0 |              0 |             5 |
-| 11        |      5 |                0 |              0 |             5 |
-| 12        |      5 |                0 |              0 |             5 |
-| 13        |      5 |                0 |              0 |             5 |
-| **total** | **66** |            **5** |                |               |
+| 01        |      6 |                6 |              0 |             0 |
+| 02        |      5 |                5 |              0 |             0 |
+| 03        |      5 |                4 |              1 |             0 |
+| 04        |      5 |                4 |              1 |             0 |
+| 05        |      5 |                5 |              0 |             0 |
+| 06        |      5 |                5 |              0 |             0 |
+| 07        |      5 |                5 |              0 |             0 |
+| 08        |      5 |                5 |              0 |             0 |
+| 09        |      5 |                5 |              0 |             0 |
+| 10        |      5 |                5 |              0 |             0 |
+| 11        |      5 |                5 |              0 |             0 |
+| 12        |      5 |                5 |              0 |             0 |
+| 13        |      5 |                5 |              0 |             0 |
+| **total** | **66** |           **64** |                |               |
 
 ## Ce que le tableau dit
 
-**61 leçons sur 66 dépendent de la décision
-juridique sur le dictionnaire royal.** Ce n'est pas une porte parmi
-d'autres : c'est LA porte du corpus. L'unité 1 est l'exception, parce que
-ses items citent Volubilis et Wiktionary plutôt que le RID.
+**Plus aucune leçon ne dépend de la décision juridique sur le
+dictionnaire royal.** Elle a été prise le 13 août 2026 et tracée par
+l'ADR-0043 ; les trois booléens de `RID-2554` autorisent la
+vérification d'une graphie et sa citation par référence, jamais la
+reproduction d'une définition.
 
-Seules 2 leçons attendent une voix, et 5
+2 leçons attendent une voix, et 64
 sont publiables dès qu'une signature les couvre.
+
+Ce nombre ne dit pas qu'elles sont prêtes. Il dit ce qui reste à faire
+pour les publier, pas ce qu'elles valent : une leçon peut franchir
+toutes ces portes en n'ayant qu'un seul exercice jouable. Mesurer ce
+point demande `node scripts/content/mesurer-extraction-exercices.mjs`.
 
 La revue par un locuteur natif reste en attente sur tout le corpus, et
 aucune signature ne peut en tenir lieu.
