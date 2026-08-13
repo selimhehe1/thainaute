@@ -72,7 +72,7 @@ const mobileUnit01MechanicsExpedition1c = createMechanicsExpeditionConfig(
   "u01-l1c",
   {
     bannerText: "Unité 1C · contenu interne · mécanique locale",
-    bannerTitle: "Expédition réelle — non publiable",
+    bannerTitle: "Expédition réelle · non publiable",
     completionPrivacy:
       "Vos réponses et prochaines révisions restent localement sur cet appareil.",
     headerStep: "Expédition 1C · 1 exercice",

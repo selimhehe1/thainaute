@@ -16,6 +16,20 @@ export const colors = {
   inkSoft: "#56607a",
   coralDeep: "#cf4a45",
   coralPale: "#fbeae8",
+  /**
+   * Le corail QUI PORTE DU TEXTE.
+   *
+   * `coral` est la couleur de marque : traits de plume, courbes tonales,
+   * pastilles, anneaux de focus. Elle ne porte jamais de texte, et c'est
+   * heureux : blanc sur `coral` donne 3,32:1, encre sur `coral` 3,73:1, et
+   * WCAG 2.2 AA exige 4,5:1 pour du texte de 15,5 px, même en gras. Le
+   * bouton principal du produit échouait donc sur tous les écrans.
+   *
+   * `coralAction` tient 4,85:1 avec `paper`, `coralActionDeep` 5,64:1 pour
+   * le survol. Mesuré, pas estimé : voir `tests/contraste.test.ts`.
+   */
+  coralAction: "#c74440",
+  coralActionDeep: "#b93a36",
   jadeInk: "#236b58",
   jadePale: "#e6f3ee",
   saffronHalo: "rgba(241, 184, 75, 0.16)",

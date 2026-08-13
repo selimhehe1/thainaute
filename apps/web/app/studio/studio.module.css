@@ -86,7 +86,7 @@
 
 .verdictBlocked {
   background: var(--color-coral-pale);
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
   border: 2px solid var(--color-coral);
 }
 
@@ -190,7 +190,7 @@
 }
 
 .auditFailed {
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
 }
 
 .auditPending {
@@ -213,7 +213,7 @@
   font-weight: var(--weight-display);
   font-size: 12.5px;
   background: var(--color-coral-pale);
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
   border-radius: 7px;
   padding: 2px 8px;
   margin-right: 8px;

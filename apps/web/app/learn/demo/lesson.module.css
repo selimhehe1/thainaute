@@ -153,7 +153,7 @@
   font-family: var(--font-serif-accent);
   font-style: italic;
   font-size: 13px;
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
   margin-bottom: 4px;
 }
 
@@ -161,7 +161,7 @@
   font-family: var(--font-serif-accent);
   font-style: italic;
   font-size: 15px;
-  color: var(--color-coral);
+  color: var(--color-coral-action);
   margin: 0 0 6px;
 }
 
@@ -345,7 +345,7 @@
   padding: 1px 5px;
   border-radius: 5px;
   background: var(--color-paper);
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
   font-family: var(--font-mono, ui-monospace, monospace);
   font-size: 0.92em;
 }
@@ -372,7 +372,7 @@
   font-family: var(--font-serif-accent);
   font-style: italic;
   font-size: 15px;
-  color: var(--color-coral);
+  color: var(--color-coral-action);
   margin: 0;
 }
 
@@ -395,7 +395,7 @@
   align-items: center;
   gap: 9px;
   background: none;
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
   border: 2px solid var(--color-coral);
   border-radius: var(--radius-pill);
   font-family: var(--font-sans);
@@ -450,7 +450,7 @@
 }
 
 .answer:hover {
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
 }
 
 .answerSelected {
@@ -495,7 +495,7 @@
   bottom: 7px;
   width: clamp(120px, 46%, 240px);
   height: 10px;
-  color: var(--color-coral);
+  color: var(--color-coral-action);
   opacity: 0;
   pointer-events: none;
 }
@@ -586,7 +586,7 @@
 }
 
 .matchCurve {
-  color: var(--color-coral);
+  color: var(--color-coral-action);
   flex: none;
 }
 
@@ -967,7 +967,7 @@
 
 .recordingProgress {
   font-size: 13.5px;
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
   font-weight: var(--weight-semibold);
   font-variant-numeric: tabular-nums;
   margin-top: 10px;

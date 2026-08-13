@@ -43,7 +43,7 @@
   font-family: var(--font-serif-accent);
   font-style: italic;
   font-size: 16px;
-  color: var(--color-coral);
+  color: var(--color-coral-action);
   margin: 0 0 10px;
 }
 
@@ -62,14 +62,14 @@
   font-family: var(--font-serif-accent);
   font-style: italic;
   font-weight: 400;
-  color: var(--color-coral);
+  color: var(--color-coral-action);
   letter-spacing: -0.02em;
 }
 
 .heroCurve {
   display: block;
   margin: 10px 0 16px;
-  color: var(--color-coral);
+  color: var(--color-coral-action);
   position: relative;
   z-index: 1;
 }
@@ -287,7 +287,7 @@
 }
 
 .footer a:hover {
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -182,7 +182,7 @@
 }
 
 .exportLink:hover {
-  color: var(--color-coral-deep);
+  color: var(--color-coral-action);
 }
 
 @media (max-width: 559px) {

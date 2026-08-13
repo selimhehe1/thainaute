@@ -74,7 +74,7 @@ export const thaiFrLanguagePack: LanguagePack = {
     taglineFr: "Le thaï, pensé en français",
     descriptionFr:
       "Bêta privée d'une méthode de thaï conçue pour les francophones.",
-    seoTitleFr: "Thaïnaute — Le thaï, pensé en français",
+    seoTitleFr: "Thaïnaute · Le thaï, pensé en français",
     microphonePermissionFr:
       "Autorisez Thaïnaute à utiliser le microphone pour enregistrer votre voix. La réécoute reste locale sur cet appareil.",
   },
