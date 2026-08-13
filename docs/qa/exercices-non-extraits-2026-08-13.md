@@ -81,18 +81,32 @@ ADR.
 absentes des options du bloc, 9 libellés non cités à droite, et une longue
 traîne de causes à un ou deux cas. À traiter par famille, comme le reste.
 
-## La décision qui appartient au fondateur
+## La décision, prise par le fondateur le 13 août 2026
+
+**Ces phrases deviennent des cartes à part entière.** Selim a tranché en
+faveur du contenu contre le raccourci : un apprenant qui reconnaît
+`ขอโทษครับ` a reconnu une phrase polie complète, pas un mot nu, et sa
+mémoire doit s'accrocher à ce qu'il a réellement entendu.
+
+Ce que cela engage, pour chacune des 37 : une entrée d'autorat complète
+avec IPA, syllabation, ton, longueur vocalique, registre et sources, puis
+un passage par les sept audits. C'est une tranche éditoriale, pas un
+correctif, et elle n'est pas faite ici.
+
+Jusque-là, ces blocs restent refusés. C'est le comportement voulu : un
+exercice sans carte identifiable ne doit pas être compilé avec une carte
+approchée.
+
+### La question telle qu'elle se posait
 
 Un exercice qui fait entendre `ขอโทษครับ` mesure-t-il la carte `ขอโทษ`, ou
 faut-il que `ขอโทษครับ` devienne une carte à part entière ?
 
-Les deux réponses sont défendables et elles ne coûtent pas la même chose.
-Créditer le préfixe ne demande aucun contenu nouveau mais attache la
-maîtrise d'une phrase polie à son mot nu. Déclarer la phrase comme item
-demande, pour chacune des 37, une entrée d'autorat complète : IPA,
-syllabation, ton, longueur vocalique, registre, sources, et un passage par
-les sept audits. C'est du travail éditorial réel, pas un correctif.
+Les deux réponses étaient défendables et elles ne coûtaient pas la même
+chose. Créditer le préfixe ne demandait aucun contenu nouveau mais attachait
+la maîtrise d'une phrase polie à son mot nu.
 
-Tant que la question n'est pas tranchée, ces 37 blocs restent refusés, ce
-qui est le comportement voulu : un exercice sans carte identifiable ne doit
-pas être compilé avec une carte approchée.
+Les deux échappatoires mécaniques ont été mesurées avant de poser la
+question, et toutes deux échouent : la règle du plus long préfixe donne 16
+bons cas sur 18, et l'extension du résolveur à tout le corpus n'en règle que
+2 sur 37.
