@@ -1,11 +1,7 @@
-import {
-  readAuthoringCompiledLessonBundle,
-  readAuthoringDraft,
-  publicAudioSources,
-  readCompiledLessonBundle,
-} from "@thainaute/content";
+import { readAuthoringDraft, publicAudioSources } from "@thainaute/content";
 import { notFound } from "next/navigation";
 
+import { lireCours, lireCoursPublie } from "@/lib/lecons-publiees";
 import { readContentStudioConfiguration } from "@/lib/server/content-studio/runtime";
 
 import { LessonHeader } from "@/components/layout/lesson-header";
@@ -18,11 +14,13 @@ import { EditorLessonPreview } from "./editor-lesson-preview";
 export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 
-function readCourseBundle(lecon: string) {
-  return (
-    readCompiledLessonBundle(lecon) ?? readAuthoringCompiledLessonBundle(lecon)
-  );
-}
+// La lecture des paquets vit dans `@/lib/lecons-publiees`, pour que cette
+// route et la liste des leçons publiées voient exactement la même chose.
+// Elles interrogeaient auparavant deux registres différents, si bien qu'une
+// leçon signée absente du registre écrit à la main aurait été ouvrable par
+// son adresse et invisible partout ailleurs.
+const readCourseBundle = lireCours;
+const readPublishedCourseBundle = lireCoursPublie;
 
 /**
  * La leçon fait-elle entendre une voix entièrement synthétique ?
@@ -39,14 +37,6 @@ function voixEntierementSynthetique(bundle: {
     entries.length > 0 &&
     entries.every(({ voiceKind }) => voiceKind === "synthetic_tts")
   );
-}
-
-function readPublishedCourseBundle(lecon: string) {
-  const bundle = readCourseBundle(lecon);
-  return bundle?.lesson.workflowStatus === "published" &&
-    bundle.lesson.visibility === "public"
-    ? bundle
-    : null;
 }
 
 /**

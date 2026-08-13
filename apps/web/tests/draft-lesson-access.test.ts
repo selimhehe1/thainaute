@@ -255,19 +255,31 @@ describe("accès aux brouillons d'autorat", () => {
     );
   });
 
-  it("ne pré-rend plus les identifiants de brouillon et retire le catalogue public", async () => {
+  it("ne pré-rend aucun identifiant de brouillon", async () => {
     const lessonPage = await readFile(
       join(process.cwd(), "app/learn/lecon/[lecon]/page.tsx"),
-      "utf8",
-    );
-    const pathPage = await readFile(
-      join(process.cwd(), "app/path/page.tsx"),
       "utf8",
     );
 
     expect(lessonPage).not.toContain("generateStaticParams");
     expect(lessonPage).not.toContain("authoringCompiledLessonIds");
-    expect(pathPage).not.toContain("authoringCatalog");
-    expect(pathPage).not.toContain("/learn/lecon/");
+  });
+
+  it("ne construit un lien de parcours qu’à partir d’un paquet publié", async () => {
+    // L'assertion précédente exigeait que `/path` ne contienne AUCUN lien de
+    // leçon. C'était vrai tant que rien n'était publié ; ce n'est plus
+    // l'invariant. La règle réelle est qu'un lien ne peut naître que d'un
+    // paquet ayant franchi la porte, et le titre d'un brouillon ne doit
+    // jamais sortir. `lireCoursPublie` est le seul chemin qui le garantit.
+    const parcours = await readFile(
+      join(process.cwd(), "app/path/parcours-reel.tsx"),
+      "utf8",
+    );
+
+    expect(parcours).toContain("lireCoursPublie");
+    expect(parcours).not.toContain("readAuthoringDraft");
+    // Le lien se construit dans la branche du paquet publié, jamais depuis
+    // l'entrée de catalogue seule.
+    expect(parcours).not.toMatch(/href=\{`\/learn\/lecon\/\$\{entree/u);
   });
 });
