@@ -675,8 +675,23 @@ function candidatsDeReponse(brut) {
 }
 
 function reponseParmi(texte, libelles) {
-  const brut = texte.match(/R[ée]ponse\s*:?\s*(.+)$/iu)?.[1]?.trim();
-  if (brut === undefined) return null;
+  // La notation la plus explicite nomme la réponse. À défaut, une partie du
+  // corpus l'écrit NUE après un deux-points :
+  //
+  //     1. Audio เงิน (ngoen, l'argent) : au début.
+  //
+  // On prend alors ce qui suit le DERNIER deux-points. Ce repli est sûr par
+  // construction : la valeur lue doit ensuite désigner une option DÉCLARÉE.
+  // Une lecture fausse ne correspond à rien et le bloc reste refusé, ce qui
+  // vaut infiniment mieux qu'un corrigé inventé.
+  const nomme = texte.match(/R[ée]ponse\s*:?\s*(.+)$/iu)?.[1]?.trim();
+  const dernierDeuxPoints = texte.lastIndexOf(":");
+  const brut =
+    nomme ??
+    (dernierDeuxPoints === -1
+      ? undefined
+      : texte.slice(dernierDeuxPoints + 1).trim());
+  if (brut === undefined || brut === "") return null;
 
   for (const candidat of candidatsDeReponse(brut)) {
     const graphie = candidat.match(THAI_UNE)?.[0];
