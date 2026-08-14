@@ -225,17 +225,22 @@ L’enregistrement reste privé, sur votre appareil.
 
 ## Items
 
-### Item 1 : ขอโทษครับ / ขอโทษค่ะ (réemploi assemblé, ขอโทษ publié par `u02-l2c` item 4)
+### Item 1 : ขอโทษครับ (réemploi assemblé, ขอโทษ publié par `u02-l2c` item 4)
 
-- `thai` : ขอโทษครับ / ขอโทษค่ะ
-- `codepoints` : ขอโทษครับ = U+0E02 U+0E2D U+0E42 U+0E17 U+0E29 U+0E04 U+0E23
-  U+0E31 U+0E1A ; ขอโทษค่ะ = U+0E02 U+0E2D U+0E42 U+0E17 U+0E29 U+0E04 U+0E48
-  U+0E30 (NFC)
-- `ipa` : /kʰɔː˩˩˦.tʰoːt̚˥˩.kʰrap̚˦˥/ ; /kʰɔː˩˩˦.tʰoːt̚˥˩.kʰaʔ˥˩/
-- `ton` : khǎww montant ; thôot descendant ; khráp haut ou khâ descendant
-- `longueur` : khǎww longue ; thôot longue ; khráp courte ou khâ courte
-- `fr` : excusez-moi ; pardon
-- `transcription` : khǎww·thôot khráp / khǎww·thôot khâ
+Cet item et le suivant formaient une seule entrée, « ขอโทษครับ / ขอโทษค่ะ ».
+Le compilateur refuse un item à deux graphies, et l'ADR-0042 pose l'identité
+d'une carte comme `(pack, graphie, sens)` : une entrée à deux graphies n'a donc
+jamais pu devenir une carte. La séparation ne change ni le sens, ni les tons,
+ni les sources ; elle donne à chaque forme la place que la décision prévoyait.
+
+- `thai` : ขอโทษครับ
+- `codepoints` : U+0E02 U+0E2D U+0E42 U+0E17 U+0E29 U+0E04 U+0E23 U+0E31
+  U+0E1A (NFC)
+- `ipa` : /kʰɔː˩˩˦.tʰoːt̚˥˩.kʰrap̚˦˥/
+- `ton` : khǎww montant ; thôot descendant ; khráp haut
+- `longueur` : khǎww longue ; thôot longue ; khráp courte
+- `fr` : excusez-moi ; pardon (locuteur homme)
+- `transcription` : khǎww·thôot khráp
 - `registre` : poli
 - `note_fr` : RÉEMPLOI. Rien de nouveau : ขอโทษ est un item publié de 2C, avec
   ses deux valeurs déjà enseignées, s’excuser et interpeller, et la particule
@@ -264,6 +269,29 @@ L’enregistrement reste privé, sur votre appareil.
     la page 9.
   - Fréquence, signal indicatif : FrequencyWords `th_50k.txt`, relevée le
     2026-08-04, ขอโทษ au rang 103 sur 50 000, 3 156 occurrences.
+
+### Item 1 bis : ขอโทษค่ะ (forme féminine, séparée de l'item 1)
+
+- `thai` : ขอโทษค่ะ
+- `codepoints` : U+0E02 U+0E2D U+0E42 U+0E17 U+0E29 U+0E04 U+0E48 U+0E30 (NFC)
+- `ipa` : /kʰɔː˩˩˦.tʰoːt̚˥˩.kʰaʔ˥˩/
+- `ton` : khǎww montant ; thôot descendant ; khâ descendant
+- `longueur` : khǎww longue ; thôot longue ; khâ courte
+- `fr` : excusez-moi ; pardon (locutrice femme)
+- `transcription` : khǎww·thôot khâ
+- `registre` : poli
+- `note_fr` : seule la particule finale change par rapport à l'item 1. Elle
+  tombe, là où khráp reste en haut : la phrase descend donc deux fois de
+  suite, sur thôot puis sur khâ. La particule dépend de la personne qui
+  parle, jamais de celle à qui l'on s'adresse.
+- `sources` :
+  - Mêmes sources que l'item 1 pour ขอโทษ : dossier de preuve de `u02-l2c`
+    item 4, RID 2554 (entrée autonome, contrôle reporté de 2C), VOLUBILIS
+    Database v26.2 feuille `sheet1` lignes 36710 à 36712 relevées le
+    2026-08-04.
+  - Particule ค่ะ, publiée par `u01-l1e` et reprise par `u02-l2c` item 2 :
+    Volubilis (`\kha`, ton descendant), RID 2554 (entrée autonome),
+    en.wiktionary.
 
 ### Item 2 : ไม่ใช่
 
@@ -332,20 +360,17 @@ L’enregistrement reste privé, sur votre appareil.
     2026-08-04, ไม่ใช่ au rang 91 sur 50 000, 3 703 occurrences. ใช่ seul au
     rang 2, 56 039 occurrences.
 
-### Item 3 : อันนี้ไม่ใช่ครับ / อันนี้ไม่ใช่ค่ะ
+### Item 3 : อันนี้ไม่ใช่ครับ
 
-- `thai` : อันนี้ไม่ใช่ครับ / อันนี้ไม่ใช่ค่ะ
-- `codepoints` : อันนี้ไม่ใช่ครับ = U+0E2D U+0E31 U+0E19 U+0E19 U+0E35 U+0E49
-  U+0E44 U+0E21 U+0E48 U+0E43 U+0E0A U+0E48 U+0E04 U+0E23 U+0E31 U+0E1A ;
-  อันนี้ไม่ใช่ค่ะ = U+0E2D U+0E31 U+0E19 U+0E19 U+0E35 U+0E49 U+0E44 U+0E21
-  U+0E48 U+0E43 U+0E0A U+0E48 U+0E04 U+0E48 U+0E30 (NFC)
-- `ipa` : /ʔan˧.niː˦˥.maj˥˩.t͡ɕʰaj˥˩.kʰrap̚˦˥/ ;
-  /ʔan˧.niː˦˥.maj˥˩.t͡ɕʰaj˥˩.kʰaʔ˥˩/ (assemblage de quatre éléments eux-mêmes
-  attestés, voir la limite déclarée au dossier)
-- `ton` : an moyen ; níi haut ; mâi descendant ; châi descendant ; khráp haut ou
-  khâ descendant
-- `longueur` : an brève ; níi longue ; mâi brève ; châi brève ; khráp ou khâ
-  courte
+Scindé de la forme féminine, pour la raison donnée à l'item 1.
+
+- `thai` : อันนี้ไม่ใช่ครับ
+- `codepoints` : U+0E2D U+0E31 U+0E19 U+0E19 U+0E35 U+0E49 U+0E44 U+0E21
+  U+0E48 U+0E43 U+0E0A U+0E48 U+0E04 U+0E23 U+0E31 U+0E1A (NFC)
+- `ipa` : /ʔan˧.niː˦˥.maj˥˩.t͡ɕʰaj˥˩.kʰrap̚˦˥/ (assemblage de quatre éléments
+  eux-mêmes attestés, voir la limite déclarée au dossier)
+- `ton` : an moyen ; níi haut ; mâi descendant ; châi descendant ; khráp haut
+- `longueur` : an brève ; níi longue ; mâi brève ; châi brève ; khráp courte
 - `fr` : ce n’est pas celui-ci ; ce n’est pas ça
 - `transcription` : an·níi mâi·châi khráp / an·níi mâi·châi khâ
 - `registre` : poli (par la particule finale ; sans elle, la phrase reste
@@ -375,6 +400,26 @@ L’enregistrement reste privé, sur votre appareil.
     2026-08-04.
   - Fréquence, signal indicatif : FrequencyWords `th_50k.txt`, relevée le
     2026-08-04, อันนี้ au rang 2 932, 134 occurrences.
+
+### Item 3 bis : อันนี้ไม่ใช่ค่ะ (forme féminine, séparée de l'item 3)
+
+- `thai` : อันนี้ไม่ใช่ค่ะ
+- `codepoints` : U+0E2D U+0E31 U+0E19 U+0E19 U+0E35 U+0E49 U+0E44 U+0E21
+  U+0E48 U+0E43 U+0E0A U+0E48 U+0E04 U+0E48 U+0E30 (NFC)
+- `ipa` : /ʔan˧.niː˦˥.maj˥˩.t͡ɕʰaj˥˩.kʰaʔ˥˩/ (même assemblage que l'item 3,
+  même limite déclarée au dossier)
+- `ton` : an moyen ; níi haut ; mâi descendant ; châi descendant ; khâ
+  descendant
+- `longueur` : an brève ; níi longue ; mâi brève ; châi brève ; khâ courte
+- `fr` : ce n'est pas celui-ci (locutrice femme)
+- `transcription` : an·níi mâi·châi khâ
+- `registre` : poli
+- `note_fr` : trois descentes de suite à la fin, sur mâi, châi puis khâ, là
+  où la forme masculine remonte sur khráp. C'est le seul écart entre les deux.
+- `sources` :
+  - Mêmes sources que l'item 3 : VOLUBILIS ligne 1579 pour อันนี้, l'item 2
+    de cette leçon pour ไม่ใช่, et le dossier de preuve de `u01-l1e` pour la
+    particule, tous relus le 2026-08-04.
 
 ### Item 4 : ปัญหา
 
@@ -432,18 +477,19 @@ L’enregistrement reste privé, sur votre appareil.
   - Fréquence, signal indicatif : FrequencyWords `th_50k.txt`, relevée le
     2026-08-04, ปัญหา au rang 3 676, 106 occurrences.
 
-### Item 5 : มีปัญหาครับ / มีปัญหาค่ะ
+### Item 5 : มีปัญหาครับ
 
-- `thai` : มีปัญหาครับ / มีปัญหาค่ะ
-- `codepoints` : มีปัญหาครับ = U+0E21 U+0E35 U+0E1B U+0E31 U+0E0D U+0E2B U+0E32
-  U+0E04 U+0E23 U+0E31 U+0E1A ; มีปัญหาค่ะ = U+0E21 U+0E35 U+0E1B U+0E31 U+0E0D
-  U+0E2B U+0E32 U+0E04 U+0E48 U+0E30 (NFC)
-- `ipa` : /miː˧.pan˧.haː˩˩˦.kʰrap̚˦˥/ ; /miː˧.pan˧.haː˩˩˦.kʰaʔ˥˩/
-- `ton` : mii moyen ; pan moyen ; hǎa montant ; khráp haut ou khâ descendant
-- `longueur` : mii longue ; pan brève ; hǎa longue ; khráp ou khâ courte
-- `fr` : j’ai un problème ; il y a un problème
+Scindé de la forme féminine, pour la raison donnée à l'item 1.
+
+- `thai` : มีปัญหาครับ
+- `codepoints` : U+0E21 U+0E35 U+0E1B U+0E31 U+0E0D U+0E2B U+0E32 U+0E04
+  U+0E23 U+0E31 U+0E1A (NFC)
+- `ipa` : /miː˧.pan˧.haː˩˩˦.kʰrap̚˦˥/
+- `ton` : mii moyen ; pan moyen ; hǎa montant ; khráp haut
+- `longueur` : mii longue ; pan brève ; hǎa longue ; khráp courte
+- `fr` : j’ai un problème ; il y a un problème (locuteur homme)
 - `litteral` : avoir ou il y a (มี) un problème (ปัญหา)
-- `transcription` : mii pan·hǎa khráp / mii pan·hǎa khâ
+- `transcription` : mii pan·hǎa khráp
 - `registre` : poli (par la particule finale)
 - `note_fr` : la chaîne porte les DEUX emplois de มี que 6D avait publiés, la
   possession et l’existence, et la source qui la glose en français les donne
@@ -493,6 +539,27 @@ L’enregistrement reste privé, sur votre appareil.
   - Fréquence, signal indicatif : FrequencyWords `th_50k.txt`, relevée le
     2026-08-04, มีปัญหา au rang 7 061, 55 occurrences, ce qui indique que la
     chaîne circule comme un bloc dans un corpus de sous-titres.
+
+### Item 5 bis : มีปัญหาค่ะ (forme féminine, séparée de l'item 5)
+
+- `thai` : มีปัญหาค่ะ
+- `codepoints` : U+0E21 U+0E35 U+0E1B U+0E31 U+0E0D U+0E2B U+0E32 U+0E04
+  U+0E48 U+0E30 (NFC)
+- `ipa` : /miː˧.pan˧.haː˩˩˦.kʰaʔ˥˩/
+- `ton` : mii moyen ; pan moyen ; hǎa montant ; khâ descendant
+- `longueur` : mii longue ; pan brève ; hǎa longue ; khâ courte
+- `fr` : j’ai un problème ; il y a un problème (locutrice femme)
+- `litteral` : avoir ou il y a (มี) un problème (ปัญหา)
+- `transcription` : mii pan·hǎa khâ
+- `registre` : poli (par la particule finale)
+- `note_fr` : la montée de hǎa est immédiatement suivie de la chute de khâ,
+  alors que la forme masculine enchaîne deux hauteurs hautes. Le contraste
+  est le plus audible de la paire.
+- `sources` :
+  - Mêmes sources que l'item 5, relues le 2026-08-04 : VOLUBILIS pour มี et
+    ปัญหา, contrôle de présence RID de la chaîne assemblée (absente, ce qui
+    est attendu d'un syntagme), et le dossier de preuve de `u01-l1e` pour la
+    particule ค่ะ.
 
 ### Item 6 : เปลี่ยน (réemploi, publié par `u08-l8a` item 7)
 
@@ -568,22 +635,21 @@ L’enregistrement reste privé, sur votre appareil.
   - Fréquence, signal indicatif : FrequencyWords `th_50k.txt`, relevée le
     2026-08-04, เปลี่ยน au rang 1 155, 334 occurrences.
 
-### Item 7 : ขอเปลี่ยนหน่อยครับ / ขอเปลี่ยนหน่อยค่ะ, instance du patron ขอ + VERBE + หน่อย
+### Item 7 : ขอเปลี่ยนหน่อยครับ, instance du patron ขอ + VERBE + หน่อย
 
-- `thai` : ขอเปลี่ยนหน่อยครับ / ขอเปลี่ยนหน่อยค่ะ
-- `codepoints` : ขอเปลี่ยนหน่อยครับ = U+0E02 U+0E2D U+0E40 U+0E1B U+0E25 U+0E35
-  U+0E48 U+0E22 U+0E19 U+0E2B U+0E19 U+0E48 U+0E2D U+0E22 U+0E04 U+0E23 U+0E31
-  U+0E1A ; ขอเปลี่ยนหน่อยค่ะ = U+0E02 U+0E2D U+0E40 U+0E1B U+0E25 U+0E35 U+0E48
-  U+0E22 U+0E19 U+0E2B U+0E19 U+0E48 U+0E2D U+0E22 U+0E04 U+0E48 U+0E30 (NFC)
-- `ipa` : /kʰɔː˩˩˦.plia̯n˨˩.nɔj˨˩.kʰrap̚˦˥/ ;
-  /kʰɔː˩˩˦.plia̯n˨˩.nɔj˨˩.kʰaʔ˥˩/ (patron attesté, rempli avec des mots
-  eux-mêmes attestés, voir la limite déclarée au dossier)
-- `ton` : khǎww montant ; plìan bas ; nàwi bas ; khráp haut ou khâ descendant
+Scindé de la forme féminine, pour la raison donnée à l'item 1.
+
+- `thai` : ขอเปลี่ยนหน่อยครับ
+- `codepoints` : U+0E02 U+0E2D U+0E40 U+0E1B U+0E25 U+0E35 U+0E48 U+0E22
+  U+0E19 U+0E2B U+0E19 U+0E48 U+0E2D U+0E22 U+0E04 U+0E23 U+0E31 U+0E1A (NFC)
+- `ipa` : /kʰɔː˩˩˦.plia̯n˨˩.nɔj˨˩.kʰrap̚˦˥/ (patron attesté, rempli avec des
+  mots eux-mêmes attestés, voir la limite déclarée au dossier)
+- `ton` : khǎww montant ; plìan bas ; nàwi bas ; khráp haut
 - `longueur` : khǎww longue ; plìan NON ÉTABLIE, valeur de `u08-l8a` item 7 ;
-  nàwi brève ; khráp ou khâ courte
+  nàwi brève ; khráp courte
 - `fr` : je voudrais l’échanger, s’il vous plaît
 - `litteral` : je demande (ขอ) de changer (เปลี่ยน) un peu (หน่อย)
-- `transcription` : khǎww plìan nàwi khráp / khǎww plìan nàwi khâ
+- `transcription` : khǎww plìan nàwi khráp
 - `registre` : poli, **par la particule finale seule**, publiée et sourcée par
   1E. Le patron ขอ … หน่อย est glosé par une source en « puis-je … ? ; je
   voudrais … s’il vous plaît », ce qui décrit sa FONCTION de requête, mais aucune
@@ -640,6 +706,38 @@ L’enregistrement reste privé, sur votre appareil.
   - Fréquence, signal indicatif : FrequencyWords `th_50k.txt`, relevée le
     2026-08-04, หน่อย au rang 777, 502 occurrences ; ขอ au rang 1 457, 267
     occurrences.
+
+### Item 7 bis : ขอเปลี่ยนหน่อยค่ะ (forme féminine, séparée de l'item 7)
+
+- `thai` : ขอเปลี่ยนหน่อยค่ะ
+- `codepoints` : U+0E02 U+0E2D U+0E40 U+0E1B U+0E25 U+0E35 U+0E48 U+0E22
+  U+0E19 U+0E2B U+0E19 U+0E48 U+0E2D U+0E22 U+0E04 U+0E48 U+0E30 (NFC)
+- `ipa` : /kʰɔː˩˩˦.plia̯n˨˩.nɔj˨˩.kʰaʔ˥˩/ (même patron et même limite déclarée
+  qu'à l'item 7)
+- `ton` : khǎww montant ; plìan bas ; nàwi bas ; khâ descendant
+- `longueur` : khǎww longue ; plìan NON ÉTABLIE, valeur de `u08-l8a` item 7 ;
+  nàwi brève ; khâ courte
+- `fr` : je peux changer, s'il vous plaît (locutrice femme)
+- `litteral` : je demande (ขอ) de changer (เปลี่ยน) un peu (หน่อย)
+- `transcription` : khǎww plìan nàwi khâ
+- `registre` : poli, par la particule finale seule
+- `note_fr` : la phrase reste basse sur ses deux syllabes centrales, puis
+  tombe encore sur khâ, alors que la forme masculine remonte. La longueur de
+  plìan reste non établie, exactement comme à l'item 7.
+- `sources` :
+  - VOLUBILIS Database v26.2, ligne 36067, relevée le 2026-08-04 : entrée du
+    patron « ขอ … หน่อย » lui-même, ThaiPhon `/khø … _nǿi`, TYPE xp, FRA
+    « puis-je … ? ; je voudrais … s'il vous plaît ». Même relevé qu'à
+    l'item 7, dont cet item n'est que la variante de particule.
+  - VOLUBILIS Database v26.2, lignes 36382, 36432, 36689, 36753 et 35102,
+    relevées le 2026-08-04 : cinq remplissages de la case par un verbe ou un
+    groupe verbal, qui établissent que le patron accepte เปลี่ยน.
+  - en.wiktionary, entrée « เปลี่ยน », consultée en rendu le 2026-08-04,
+    seconde jambe indépendante pour le verbe.
+  - Particule ค่ะ : dossier de preuve de `u01-l1e`, et RID 2554, entrée
+    autonome attestée.
+  - La limite déclarée au dossier de l'item 7 s'applique telle quelle : la
+    longueur de plìan n'est pas établie ici.
 
 ### Item 8 : เสีย (réemploi, publié par `u08-l8a` item 3)
 
