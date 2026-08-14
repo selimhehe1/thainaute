@@ -615,18 +615,15 @@ que tout se joue. L’enregistrement reste privé, sur votre appareil.
 Instance du patron [qui] + verbe + [quoi] + [particule], publié par `u05-l5d` et
 réemployé par `u06-l6d`.
 
-- `thai` : ผมปวดหัวครับ (homme) / ดิฉันปวดหัวค่ะ (femme)
-- `codepoints` :
-  - ผมปวดหัวครับ = U+0E1C U+0E21 U+0E1B U+0E27 U+0E14 U+0E2B U+0E31 U+0E27
-    U+0E04 U+0E23 U+0E31 U+0E1A (NFC)
-  - ดิฉันปวดหัวค่ะ = U+0E14 U+0E34 U+0E09 U+0E31 U+0E19 U+0E1B U+0E27 U+0E14
-    U+0E2B U+0E31 U+0E27 U+0E04 U+0E48 U+0E30 (NFC)
-- `ipa` : /pʰom˩˩˦.pua̯t̚˨˩.hua̯˩˩˦.kʰrap̚˦˥/ pour la forme masculine, séquence
-  composée des IPA publiées des quatre blocs
+- `thai` : ผมปวดหัวครับ
+- `codepoints` : U+0E1C U+0E21 U+0E1B U+0E27 U+0E14 U+0E2B U+0E31 U+0E27
+  U+0E04 U+0E23 U+0E31 U+0E1A (NFC)
+- `ipa` : /pʰom˩˩˦.pua̯t̚˨˩.hua̯˩˩˦.kʰrap̚˦˥/ (séquence composée des IPA
+  publiées des quatre blocs)
 - `ton` : phǒm montant ; pòuat bas ; hǒua montant ; khráp haut
 - `longueur` : voir les items d’origine
-- `fr` : J’ai mal à la tête.
-- `transcription` : phǒm pòuat·hǒua khráp / dì·chǎn pòuat·hǒua khâ
+- `fr` : J’ai mal à la tête. (locuteur homme)
+- `transcription` : phǒm pòuat·hǒua khráp
 - `registre` : poli
 - `note_fr` : la phrase entière, et elle ne demande rien de neuf. Vous prenez le
   squelette de 6D, vous mettez ปวด là où était มี, vous mettez la partie du
@@ -647,27 +644,57 @@ réemployé par `u06-l6d`.
     du jour est la même ossature avec le verbe du jour.
   - Composants : ผม et ดิฉัน sont publiés par `u02-l2d`, items 1 et 2 ; ครับ et
     ค่ะ par `u01-l1e` ; ปวด et หัว sont les items 1 et 2 ci-dessus.
+  - Attestations lexicales des composants, reprises de ces items et relues le
+    2026-08-04 : RID 2554, entrées « ปวด » et « หัว ๑ » ; VOLUBILIS v26.2,
+    lignes 79446 pour ปวด et 16463 pour หัว ; en.wiktionary, entrée « หัว ».
+    Elles portent les mots, jamais la phrase assemblée, ce que la réserve
+    ci-dessous dit explicitement.
   - **Ce que cela ne garantit pas** : aucune source ne donne cette phrase comme
     un bloc attesté. Elle est composée, comme le sont toutes les instances du
     parcours, et sa naturalité relève de l’audit. Voir l’incertitude 3.
 
-### Item 8 : ไม่ปวดครับ / ไม่ปวดค่ะ
+### Item 7 bis : ดิฉันปวดหัวค่ะ (forme féminine, séparée de l'item 7)
+
+Un item à deux graphies ne peut devenir aucune carte, l'identité étant
+`(pack, graphie, sens)` depuis l'ADR-0042. Cette entrée et l'item 7 n'en
+formaient qu'une.
+
+- `thai` : ดิฉันปวดหัวค่ะ
+- `codepoints` : U+0E14 U+0E34 U+0E09 U+0E31 U+0E19 U+0E1B U+0E27 U+0E14
+  U+0E2B U+0E31 U+0E27 U+0E04 U+0E48 U+0E30 (NFC)
+- `ipa` : /di˨˩.t͡ɕʰan˩˩˦.pua̯t̚˨˩.hua̯˩˩˦.kʰaʔ˥˩/ (séquence composée des IPA
+  publiées des quatre blocs, comme à l'item 7)
+- `ton` : dì bas ; chǎn montant ; pòuat bas ; hǒua montant ; khâ descendant
+- `longueur` : voir les items d’origine
+- `fr` : J’ai mal à la tête. (locutrice femme)
+- `transcription` : dì·chǎn pòuat·hǒua khâ
+- `registre` : poli
+- `note_fr` : la forme féminine compte cinq syllabes au lieu de quatre, parce
+  que le pronom ดิฉัน en fait deux. Elle finit en descendant sur khâ, là où la
+  forme masculine remonte sur khráp.
+- `sources` :
+  - Mêmes sources que l’item 7 : le patron [qui] + verbe + [quoi] +
+    [particule] publié par `u05-l5d` et réemployé par `u06-l6d`, les items
+    d’origine des quatre blocs, et la même réserve de composition portée à
+    l’incertitude 3.
+  - Particule ค่ะ : RID 2554, entrée autonome attestée, et VOLUBILIS ligne
+    28945 ; dossier de preuve de `u01-l1e`.
+
+### Item 8 : ไม่ปวดครับ
 
 Bloc assemblé, négation du verbe du jour par la règle publiée en `u04-l4d`.
+Scindé de la forme féminine, pour la raison donnée à l'item 7 bis.
 
-- `thai` : ไม่ปวดครับ (homme) / ไม่ปวดค่ะ (femme)
-- `codepoints` :
-  - ไม่ปวดครับ = U+0E44 U+0E21 U+0E48 U+0E1B U+0E27 U+0E14 U+0E04 U+0E23 U+0E31
-    U+0E1A (NFC)
-  - ไม่ปวดค่ะ = U+0E44 U+0E21 U+0E48 U+0E1B U+0E27 U+0E14 U+0E04 U+0E48 U+0E30
-    (NFC)
-- `ipa` : /maj˥˩.pua̯t̚˨˩/ pour le noyau ไม่ปวด, séquence composée des IPA
-  publiées de ไม่ (`u04-l4d`) et de ปวด (item 1)
-- `ton` : mâi descendant ; pòuat bas
-- `longueur` : mâi courte (diphtongue /aj/) ; pòuat NON ÉTABLIE
-- `fr` : Je n’ai pas mal.
+- `thai` : ไม่ปวดครับ
+- `codepoints` : U+0E44 U+0E21 U+0E48 U+0E1B U+0E27 U+0E14 U+0E04 U+0E23
+  U+0E31 U+0E1A (NFC)
+- `ipa` : /maj˥˩.pua̯t̚˨˩.kʰrap̚˦˥/ (séquence composée des IPA publiées de ไม่
+  (`u04-l4d`), de ปวด (item 1) et de la particule (`u01-l1e`))
+- `ton` : mâi descendant ; pòuat bas ; khráp haut
+- `longueur` : mâi courte (diphtongue /aj/) ; pòuat NON ÉTABLIE ; khráp courte
+- `fr` : Je n’ai pas mal. (locuteur homme)
 - `litteral` : pas (ไม่) avoir mal (ปวด)
-- `transcription` : mâi pòuat khráp / mâi pòuat khâ
+- `transcription` : mâi pòuat khráp
 - `registre` : poli
 - `note_fr` : la réponse négative, et elle s’obtient sans rien apprendre de
   neuf : ไม่ nie le mot qui le suit, donc il se pose devant ปวด, exactement
@@ -688,6 +715,28 @@ Bloc assemblé, négation du verbe du jour par la règle publiée en `u04-l4d`.
     par une règle sourcée, il n’est pas ATTESTÉ comme bloc. La différence est
     consignée à l’incertitude 3, et elle est plus faible ici qu’en 6D, où ไม่มี
     disposait de deux attestations lexicales.
+
+### Item 8 bis : ไม่ปวดค่ะ (forme féminine, séparée de l'item 8)
+
+- `thai` : ไม่ปวดค่ะ
+- `codepoints` : U+0E44 U+0E21 U+0E48 U+0E1B U+0E27 U+0E14 U+0E04 U+0E48
+  U+0E30 (NFC)
+- `ipa` : /maj˥˩.pua̯t̚˨˩.kʰaʔ˥˩/ (même composition qu'à l'item 8 ; la
+  particule est celle de `u01-l1e`)
+- `ton` : mâi descendant ; pòuat bas ; khâ descendant
+- `longueur` : mâi courte (diphtongue /aj/) ; pòuat NON ÉTABLIE ; khâ courte
+- `fr` : Je n’ai pas mal. (locutrice femme)
+- `litteral` : pas (ไม่) avoir mal (ปวด)
+- `transcription` : mâi pòuat khâ
+- `registre` : poli
+- `note_fr` : deux chutes encadrent une syllabe basse : la voix tombe sur mâi,
+  reste basse sur pòuat, puis tombe encore sur khâ. La forme masculine, elle,
+  remonte à la fin. La longueur de pòuat reste non établie, comme à l’item 8.
+- `sources` :
+  - Mêmes sources que l’item 8 : la règle de négation publiée par `u04-l4d`,
+    l’item 1 de cette leçon pour ปวด, et les mêmes réserves.
+  - Particule ค่ะ : RID 2554, entrée autonome attestée, et VOLUBILIS ligne
+    28945 ; dossier de preuve de `u01-l1e`.
 
 ## Exercices
 

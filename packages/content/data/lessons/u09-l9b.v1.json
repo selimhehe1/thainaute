@@ -220,6 +220,243 @@
       ]
     },
     {
+      "id": "0588b166-0a5b-56bd-a28e-3d5193ca567f",
+      "thaiRaw": "ผมปวดหัวครับ",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21",
+        "U+0E1B",
+        "U+0E27",
+        "U+0E14",
+        "U+0E2B",
+        "U+0E31",
+        "U+0E27",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "J’ai mal à la tête. (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm pòuat·hǒua khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผมปวดหัวครับ",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        },
+        {
+          "thaiRaw": "ผมปวดหัวครับ",
+          "ipa": "pua̯t̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ผมปวดหัวครับ",
+          "ipa": "hua̯˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ผมปวดหัวครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "83788a15-253a-562a-ad29-42e325524b50",
+      "thaiRaw": "ดิฉันปวดหัวค่ะ",
+      "unicodeCodePoints": [
+        "U+0E14",
+        "U+0E34",
+        "U+0E09",
+        "U+0E31",
+        "U+0E19",
+        "U+0E1B",
+        "U+0E27",
+        "U+0E14",
+        "U+0E2B",
+        "U+0E31",
+        "U+0E27",
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "J’ai mal à la tête. (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "dì·chǎn pòuat·hǒua khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ดิฉันปวดหัวค่ะ",
+          "ipa": "di˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "d",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉันปวดหัวค่ะ",
+          "ipa": "t͡ɕʰan˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ดิฉันปวดหัวค่ะ",
+          "ipa": "pua̯t̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ดิฉันปวดหัวค่ะ",
+          "ipa": "hua̯˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "h",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ดิฉันปวดหัวค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "2f9bac8e-bb4f-51c5-9ed2-5c6e6f7fc63b",
+      "thaiRaw": "ไม่ปวดครับ",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E1B",
+        "U+0E27",
+        "U+0E14",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "Je n’ai pas mal. (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi pòuat khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่ปวดครับ",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่ปวดครับ",
+          "ipa": "pua̯t̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ไม่ปวดครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "cf47f268-ebec-51fd-94e5-714bc721bd1b",
+      "thaiRaw": "ไม่ปวดค่ะ",
+      "unicodeCodePoints": [
+        "U+0E44",
+        "U+0E21",
+        "U+0E48",
+        "U+0E1B",
+        "U+0E27",
+        "U+0E14",
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "Je n’ai pas mal. (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mâi pòuat khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ไม่ปวดค่ะ",
+          "ipa": "maj˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ไม่ปวดค่ะ",
+          "ipa": "pua̯t̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "p",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ไม่ปวดค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
       "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [
@@ -289,37 +526,6 @@
         "WIKTIONARY-EN",
         "WIKTIONARY-TH"
       ]
-    },
-    {
-      "id": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
-      "thaiRaw": "ไม่",
-      "unicodeCodePoints": [
-        "U+0E44",
-        "U+0E21",
-        "U+0E48"
-      ],
-      "translationFr": "ne … pas ; non",
-      "transcription": {
-        "systemVersion": "thainaute-fr-v1-1",
-        "value": "mâi"
-      },
-      "syllables": [
-        {
-          "thaiRaw": "ไม่",
-          "ipa": "maj˥˩",
-          "tone": "falling",
-          "vowelLength": "short",
-          "initial": "m",
-          "final": "j"
-        }
-      ],
-      "register": "neutre",
-      "sourceIds": [
-        "RID-2554",
-        "VOLUBILIS-26-2",
-        "WIKTIONARY-EN",
-        "WIKTIONARY-TH"
-      ]
     }
   ],
   "exercises": [
@@ -328,7 +534,7 @@
       "drawIndex": 1,
       "id": "5d65f2c5-4084-523f-bdf7-8172502f7f55",
       "type": "word_order",
-      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
+      "itemId": "0588b166-0a5b-56bd-a28e-3d5193ca567f",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
@@ -387,7 +593,7 @@
       "drawIndex": 2,
       "id": "15f98be7-da69-57dc-9a2a-d1aed8e97fce",
       "type": "word_order",
-      "itemId": "21070bf6-b398-5f4d-8560-415c63c5cd85",
+      "itemId": "83788a15-253a-562a-ad29-42e325524b50",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
@@ -505,7 +711,7 @@
       "drawIndex": 4,
       "id": "e3db0838-1010-552d-9e8f-3038ff3b19c2",
       "type": "word_order",
-      "itemId": "b32290f1-c0b6-5b0f-854f-951e8670fa9e",
+      "itemId": "2f9bac8e-bb4f-51c5-9ed2-5c6e6f7fc63b",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",

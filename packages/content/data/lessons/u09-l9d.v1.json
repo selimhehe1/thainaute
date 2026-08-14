@@ -96,6 +96,443 @@
       ]
     },
     {
+      "id": "5bfa6026-894f-5f42-911f-c1686a18b7ad",
+      "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+      "unicodeCodePoints": [
+        "U+0E23",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19",
+        "U+0E02",
+        "U+0E32",
+        "U+0E22",
+        "U+0E22",
+        "U+0E32",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "où est la pharmacie ? (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ráan·khǎai·yaa yòuu thîi·nǎi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "raːn˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "kʰaːj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre, poli par la particule",
+      "sourceIds": [
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "a1ae8c18-55d8-5834-8c03-f7371a4d23d0",
+      "thaiRaw": "ร้านขายยาอยู่ที่ไหนคะ",
+      "unicodeCodePoints": [
+        "U+0E23",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19",
+        "U+0E02",
+        "U+0E32",
+        "U+0E22",
+        "U+0E22",
+        "U+0E32",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "où est la pharmacie ? (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ráan·khǎai·yaa yòuu thîi·nǎi khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนคะ",
+          "ipa": "raːn˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนคะ",
+          "ipa": "kʰaːj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนคะ",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนคะ",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนคะ",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนคะ",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนคะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre, poli par la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "5ac06eb8-2af4-5249-8cb9-8035eead61b9",
+      "thaiRaw": "ขอยาหน่อยครับ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E32",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "je voudrais un médicament, s’il vous plaît (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww yaa nàwi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอยาหน่อยครับ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอยาหน่อยครับ",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอยาหน่อยครับ",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ขอยาหน่อยครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre à poli, poli par หน่อย et par la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "167dd87b-ce05-56f1-9ba7-75410cad98c3",
+      "thaiRaw": "ขอยาหน่อยค่ะ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E32",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E48",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "je voudrais un médicament, s’il vous plaît (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww yaa nàwi khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอยาหน่อยค่ะ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอยาหน่อยค่ะ",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอยาหน่อยค่ะ",
+          "ipa": "nɔj˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ขอยาหน่อยค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre à poli, poli par หน่อย et par la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "1384e2bb-9d1a-5fb9-a6e9-17623e2e608a",
+      "thaiRaw": "มียาไหมครับ",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35",
+        "U+0E22",
+        "U+0E32",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "est-ce que vous avez un médicament ? (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii yaa mǎi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มียาไหมครับ",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "มียาไหมครับ",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "มียาไหมครับ",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "มียาไหมครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre, poli par la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "23c8dc15-6029-5e7b-87d3-3262417fdba3",
+      "thaiRaw": "มียาไหมคะ",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35",
+        "U+0E22",
+        "U+0E32",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E21",
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "est-ce que vous avez un médicament ? (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii yaa mǎi khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มียาไหมคะ",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "มียาไหมคะ",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "มียาไหมคะ",
+          "ipa": "maj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "m",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "มียาไหมคะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
       "id": "7b459b92-ea44-5023-bd07-cf77cc1dd710",
       "thaiRaw": "แล้ว",
       "unicodeCodePoints": [
@@ -124,6 +561,133 @@
         "RID-2554",
         "VOLUBILIS-26-2",
         "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "2564a807-4fb6-5414-91f1-6bb9446f59a3",
+      "thaiRaw": "กี่วันแล้วครับ",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E35",
+        "U+0E48",
+        "U+0E27",
+        "U+0E31",
+        "U+0E19",
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "depuis combien de jours ? (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kìi wan láeew khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "กี่วันแล้วครับ",
+          "ipa": "kiː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "กี่วันแล้วครับ",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "กี่วันแล้วครับ",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "กี่วันแล้วครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre, poli par la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "909a9dac-378e-53b6-9870-eab74886cb62",
+      "thaiRaw": "กี่วันแล้วคะ",
+      "unicodeCodePoints": [
+        "U+0E01",
+        "U+0E35",
+        "U+0E48",
+        "U+0E27",
+        "U+0E31",
+        "U+0E19",
+        "U+0E41",
+        "U+0E25",
+        "U+0E49",
+        "U+0E27",
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "depuis combien de jours ? (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kìi wan láeew khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "กี่วันแล้วคะ",
+          "ipa": "kiː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "กี่วันแล้วคะ",
+          "ipa": "wan˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "w",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "กี่วันแล้วคะ",
+          "ipa": "lɛːw˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "l",
+          "final": "w"
+        },
+        {
+          "thaiRaw": "กี่วันแล้วคะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre, poli par la particule",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
       ]
     },
     {
