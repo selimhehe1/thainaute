@@ -691,6 +691,238 @@
           }
         ]
       }
+    },
+    {
+      "poolId": "u04-l4b-p4",
+      "drawIndex": 1,
+      "id": "b9eedf3a-b070-56fe-858e-3553820fb57f",
+      "type": "recall",
+      "itemId": "05a77a3e-ca78-5ebf-abc9-ed3fc2fa5347",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "kin",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez ce que vous entendez syllabe par syllabe.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 5",
+            "textFr": "Oui. `io` note un i bref qui glisse vers ou, et l’accent se pose sur le i parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p4",
+      "drawIndex": 2,
+      "id": "9407441c-e0ca-5f28-9758-52582a85b6bc",
+      "type": "recall",
+      "itemId": "1a026af8-73af-5c22-b759-95c2bef64d19",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "dùeem",
+          "kind": "transcription"
+        },
+        {
+          "value": "dueem",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez ce que vous entendez syllabe par syllabe.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 5",
+            "textFr": "Oui. `io` note un i bref qui glisse vers ou, et l’accent se pose sur le i parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p4",
+      "drawIndex": 3,
+      "id": "d3440bed-bba1-5329-acb2-4152871e7527",
+      "type": "recall",
+      "itemId": "78b1cecc-94b3-5d1a-adf5-f3fa064bb7a2",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "hǐo",
+          "kind": "transcription"
+        },
+        {
+          "value": "hio",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez ce que vous entendez syllabe par syllabe.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 5",
+            "textFr": "Oui. `io` note un i bref qui glisse vers ou, et l’accent se pose sur le i parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p4",
+      "drawIndex": 4,
+      "id": "25283e90-e3e9-5663-90c1-dbb32382b1a8",
+      "type": "recall",
+      "itemId": "18d19707-ec63-512e-a19e-e19d3719a7b6",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "à·ràwi",
+          "kind": "transcription"
+        },
+        {
+          "value": "a·rawi",
+          "kind": "transcription"
+        },
+        {
+          "value": "arawi",
+          "kind": "transcription"
+        },
+        {
+          "value": "à ràwi",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez ce que vous entendez syllabe par syllabe.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 5",
+            "textFr": "Oui. `io` note un i bref qui glisse vers ou, et l’accent se pose sur le i parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p4",
+      "drawIndex": 5,
+      "id": "dc21c572-0faa-5c7d-8a7c-9bbe317c6f2e",
+      "type": "recall",
+      "itemId": "d8964c2c-692f-52bd-965f-024b4cc2198e",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "hǐo náam",
+          "kind": "transcription"
+        },
+        {
+          "value": "hio naam",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez ce que vous entendez syllabe par syllabe.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 5",
+            "textFr": "Oui. `io` note un i bref qui glisse vers ou, et l’accent se pose sur le i parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u04-l4b-p4",
+      "drawIndex": 6,
+      "id": "13c747d3-17a2-552c-9690-b29ed3b03147",
+      "type": "recall",
+      "itemId": "05d0911e-473a-5597-874f-926685132517",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "kin khâao",
+          "kind": "transcription"
+        },
+        {
+          "value": "kin khaao",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "Réécoutez une fois, puis écrivez ce que vous entendez syllabe par syllabe.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 3 et 5",
+            "textFr": "Oui. `io` note un i bref qui glisse vers ou, et l’accent se pose sur le i parce que c’est la première lettre du noyau."
+          }
+        ]
+      }
     }
   ],
   "teaching": [
@@ -773,6 +1005,14 @@
       "drawCount": 1,
       "passRequired": 1,
       "sampleSize": 1
+    },
+    {
+      "poolId": "u04-l4b-p4",
+      "promptFr": "Écoutez, puis écrivez le mot en transcription Thaïnaute.",
+      "mechanic": "recall",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
     }
   ],
   "provenance": {

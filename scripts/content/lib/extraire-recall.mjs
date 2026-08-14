@@ -318,6 +318,18 @@ const SEPARATEUR_VARIANTE = /^(?:,\s*(?:et\s+)?|\s*et\s+)/u;
  *  - « Publié par `u05-l5c` item 7. » est une note de provenance.
  * Toute autre prose résiduelle fait refuser le tirage, en la citant.
  */
+/**
+ * Répétition en prose d'une tolérance déjà déclarée par la politique du bloc,
+ * sans énumérer aucune forme : « variante sans accents acceptée », « et
+ * variantes sans diacritiques ». Elle n'ajoute aucune valeur à la clé.
+ *
+ * Le motif exige l'ABSENCE de forme citée entre accents graves : dès qu'une
+ * forme est écrite, c'est une énumération, et elle doit être lue comme telle
+ * par le chemin normal plutôt qu'ignorée ici.
+ */
+const CLAUSE_TOLERANCE_REPETEE =
+  /^(?:et\s+)?variantes?\s+(?:sans\s+(?:accents?|diacritiques?|signes?\s+de\s+ton|points?\s+médians?)|accept[ée]e?s?\s+sans\s+accents?)[^`]*\.?$/iu;
+
 const CLAUSE_REFUS = /^\*{0,2}refus[ée]e?s?\*{0,2}\s*:\s*/iu;
 const CLAUSE_PROVENANCE = /^(?:bloc\s+)?publi[ée]e?s?\s+(?:par|de|dans)\b/iu;
 /**
@@ -348,7 +360,7 @@ function normaliserComparaison(valeur) {
  * mot français « avec » comme une variante nue. Un corrigé contenant « avec »
  * serait publié, et l'apprenant invité à l'écrire.
  */
-function lireCle(cle) {
+function lireCle(cle, politique = null) {
   const premier = lireUneValeur(cle, null);
   if (premier === null) return { erreur: "réponse canonique illisible" };
   const valeurs = [premier.valeur];
@@ -396,6 +408,20 @@ function lireCle(cle) {
   }
   if (CLAUSE_PROVENANCE.test(reste)) return { valeurs };
   if (CLAUSE_ITEM_SOURCE.test(reste)) return { valeurs };
+
+  // Un tirage répète parfois en prose une tolérance que la politique du bloc
+  // déclare déjà : « variante sans accents acceptée ». Cette phrase n'ajoute
+  // aucune règle, et depuis que la politique compilée porte la tolérance, le
+  // moteur l'applique. On l'ignore donc, mais UNIQUEMENT quand la politique
+  // la porte réellement : sinon la clé publiée serait plus étroite que la
+  // promesse, ce qui est exactement le défaut que ce refus protégeait.
+  if (
+    politique !== null &&
+    CLAUSE_TOLERANCE_REPETEE.test(reste) &&
+    (tonsIgnores(politique) || pointMedianIgnore(politique))
+  ) {
+    return { valeurs };
+  }
 
   return { erreur: `prose résiduelle après la clé : « ${extrait(reste)} »` };
 }
@@ -493,7 +519,51 @@ const POLITIQUE_PAR_DEFAUT = {
   normalisation: "nfc",
   rognerEspaces: true,
   reduireEspaces: true,
+  ignorerCasse: false,
+  ignorerTons: false,
+  ignorerPointMedian: false,
 };
+
+/**
+ * Les trois tolérances que le corpus déclare et que le schéma sait désormais
+ * porter. Chacune est cherchée dans une PROPOSITION, bornée par `[^.;]`,
+ * pour la même raison que `POL_FORME_ACCEPTEE` : une phrase voisine parlant
+ * d'autre chose ne doit pas être lue comme une tolérance.
+ *
+ * Ces motifs ne décident d'aucun seuil pédagogique. Ils lisent ce que la
+ * leçon écrit. Une leçon qui ne promet rien reste stricte, ce qui est le cas
+ * de toute l'unité 1 publiée.
+ */
+const POL_CASSE =
+  /casse[^.;]{0,30}ignor|ignor[^.;]{0,20}casse|insensible à la casse/iu;
+
+/**
+ * Les tolérances que le schéma sait désormais porter, LUES AVEC LES MÊMES
+ * PRÉDICATS que le contrôle de fermeture plus bas.
+ *
+ * C'est la condition qui rend l'ensemble sûr : si la garde et la lecture
+ * divergeaient, la garde pourrait laisser passer une clé non énumérée que la
+ * politique compilée ne couvrirait pas, et l'exercice deviendrait plus strict
+ * que sa promesse sans que rien ne le signale.
+ *
+ * Une clause d'exception (« facultatifs SAUF sur la particule finale ») rend
+ * la tolérance conditionnelle mot par mot. Elle n'est pas représentable par un
+ * booléen, donc elle n'est pas lue comme une tolérance : la garde continue
+ * d'exiger l'énumération, et refuse.
+ */
+function tonsIgnores(texte) {
+  return (
+    POL_TON_FACULTATIF.test(texte) &&
+    !POL_TON_OBLIGATOIRE.test(texte) &&
+    !POL_EXCEPTION.test(texte)
+  );
+}
+
+function pointMedianIgnore(texte) {
+  const phrase = texte.match(PHRASE_SEPARATEUR)?.[0] ?? null;
+  if (phrase === null || SEP_EXIGE.test(phrase)) return false;
+  return SEP_OMISSION.test(phrase);
+}
 
 function lirePolitique(texte) {
   if (texte === null) return { ...POLITIQUE_PAR_DEFAUT };
@@ -501,6 +571,9 @@ function lirePolitique(texte) {
     normalisation: "nfc",
     rognerEspaces: POL_ROGNE.test(texte),
     reduireEspaces: POL_REDUIT.test(texte),
+    ignorerCasse: POL_CASSE.test(texte),
+    ignorerTons: tonsIgnores(texte),
+    ignorerPointMedian: pointMedianIgnore(texte),
   };
 }
 
@@ -575,7 +648,12 @@ function verifierFermeture(politique, tirages) {
   for (const tirage of tirages) {
     const acceptees = new Set(tirage.valeurs.map(normaliserComparaison));
     const canonique = tirage.valeurs[0];
-    if (tonFacultatif) {
+    // L'énumération n'est plus exigée quand la politique COMPILÉE porte la
+    // tolérance : le moteur l'applique alors lui-même, et la clé publiée
+    // n'est plus plus étroite que la promesse. `tonsIgnores` est le prédicat
+    // exact qui décide d'émettre `ignoreToneMarks`, donc les deux ne peuvent
+    // pas diverger.
+    if (tonFacultatif && !tonsIgnores(politique)) {
       const sansTon = sansAccentsDeTon(canonique);
       if (
         sansTon !== canonique &&
@@ -588,7 +666,10 @@ function verifierFermeture(politique, tirages) {
     if (toleranceVague) {
       return `tirage ${tirage.rang} : tolérance de séparateur déclarée sans dire quelles formes elle couvre`;
     }
-    if (omissionToleree) {
+    // Comme pour le ton : l'énumération n'est plus exigée quand la politique
+    // compilée porte la tolérance, `pointMedianIgnore` étant le prédicat
+    // exact qui décide d'émettre `ignoreMiddleDot`.
+    if (omissionToleree && !pointMedianIgnore(politique)) {
       const sansSeparateur = canonique.replaceAll("·", "");
       if (!acceptees.has(normaliserComparaison(sansSeparateur))) {
         return `tirage ${tirage.rang} : séparateur déclaré omissible, « ${sansSeparateur} » non énuméré`;
@@ -628,6 +709,12 @@ export function extraireRecall(bloc, resoudreItem) {
   if (lignes.length === 0)
     return { erreur: "aucun tirage numéroté dans le champ" };
 
+  // La politique est lue AVANT les tirages, parce qu'un tirage peut répéter
+  // en prose une tolérance qu'elle déclare déjà. Cette redondance n'ajoute
+  // aucune règle : elle ne doit donc pas faire refuser le tirage lorsque la
+  // politique compilée porte la tolérance.
+  const texteDeLaPolitique = texteDePolitique(bloc.corps);
+
   const analyses = [];
   for (const { rang, texte } of lignes) {
     const coupe = couperSurMarqueur(texte);
@@ -655,7 +742,7 @@ export function extraireRecall(bloc, resoudreItem) {
       };
     }
 
-    const cle = lireCle(coupe.cle);
+    const cle = lireCle(coupe.cle, texteDeLaPolitique);
     if (cle.erreur !== undefined)
       return { erreur: `tirage ${rang} : ${cle.erreur}` };
 
@@ -702,7 +789,7 @@ export function extraireRecall(bloc, resoudreItem) {
     return { erreur: "les rangs des tirages ne forment pas une suite 1..n" };
   }
 
-  const politique = texteDePolitique(bloc.corps);
+  const politique = texteDeLaPolitique;
   const defaut = verifierFermeture(politique, analyses);
   if (defaut !== null) return { erreur: defaut };
 

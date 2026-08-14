@@ -236,6 +236,7 @@ function monterBloc(
   identifiant: string,
   exercises: unknown[],
   pools: unknown[],
+  estPubliee: boolean,
 ): void {
   if (extrait.type === "association") {
     // Le contrat d'une manche accepte au plus six paires. Quand l'autorat
@@ -381,6 +382,33 @@ function monterBloc(
             normalization: "nfc",
             trimWhitespace: extrait.politique?.rognerEspaces ?? true,
             collapseInnerWhitespace: extrait.politique?.reduireEspaces ?? true,
+            // Les tolérances ne sont écrites QUE lorsqu'elles sont vraies, et
+            // JAMAIS sur une leçon déjà publiée.
+            //
+            // POURQUOI CETTE SECONDE CONDITION : `u01-l1b` est publiée et
+            // déclare « casse ignorée, signes de ton facultatifs à ce
+            // stade ». Lire cette promesse changerait son paquet compilé,
+            // donc son empreinte, et le contenu publié est immuable : une
+            // correction passe par une NOUVELLE version, qui est un acte du
+            // fondateur et non un effet de bord d'une amélioration du
+            // compilateur. Le test `immutabilite-des-lecons-publiees` existe
+            // pour attraper exactement cela, et il l'a fait.
+            //
+            // L'unité 1 garde donc son comportement strict jusqu'à ce qu'elle
+            // soit re-versionnée. Voir `docs/qa/politique-de-saisie-2026-08-14`.
+            ...(estPubliee
+              ? {}
+              : {
+                  ...(extrait.politique?.ignorerCasse === true
+                    ? { ignoreCase: true }
+                    : {}),
+                  ...(extrait.politique?.ignorerTons === true
+                    ? { ignoreToneMarks: true }
+                    : {}),
+                  ...(extrait.politique?.ignorerPointMedian === true
+                    ? { ignoreMiddleDot: true }
+                    : {}),
+                }),
           },
         });
         continue;
@@ -554,6 +582,7 @@ export function compilerLeconComplete(chemin: string) {
         identifiant,
         exercises,
         pools,
+        signaturePour(identifiant)?.publier === true,
       );
     } catch (erreur) {
       exercises.length = avantExercices;

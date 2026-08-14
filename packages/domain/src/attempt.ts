@@ -34,10 +34,26 @@ export type AttemptAnswer =
       readonly missedOnce?: boolean | undefined;
     };
 
+/**
+ * Les tolérances de saisie d'un rappel.
+ *
+ * POURQUOI LES TROIS DERNIÈRES EXISTENT : 76 exercices de rappel vivaient
+ * dans une leçon qui promet « casse ignorée », « signes de ton facultatifs »
+ * ou « point médian facultatif ». Vingt-trois tenaient la promesse en
+ * énumérant la variante à la main ; cinquante-trois la trahissaient, faute
+ * d'un endroit où la déclarer. Voir `docs/qa/politique-de-saisie-2026-08-14`.
+ *
+ * Ces champs ne décident d'aucun seuil pédagogique : ils rendent applicable
+ * ce que chaque leçon déclare déjà. Une leçon qui ne promet rien garde le
+ * comportement strict, ce qui est le cas de toute l'unité 1 publiée.
+ */
 export interface AttemptAnswerPolicy {
   readonly normalization: "nfc";
   readonly trimWhitespace: boolean;
   readonly collapseInnerWhitespace: boolean;
+  readonly ignoreCase?: boolean | undefined;
+  readonly ignoreToneMarks?: boolean | undefined;
+  readonly ignoreMiddleDot?: boolean | undefined;
 }
 
 /**
@@ -218,6 +234,21 @@ function normalizeRecallValue(
   if (policy.trimWhitespace) normalized = normalized.trim();
   if (policy.collapseInnerWhitespace) {
     normalized = normalized.replace(/\s+/gu, " ");
+  }
+  if (policy.ignoreCase === true) normalized = normalized.toLowerCase();
+  if (policy.ignoreMiddleDot === true) {
+    normalized = normalized.replaceAll("·", "");
+  }
+  if (policy.ignoreToneMarks === true) {
+    // Les signes de ton de la transcription Thaïnaute sont des diacritiques
+    // combinants une fois la chaîne décomposée. On ne touche QUE ceux-là :
+    // les caractères thaïs, eux, portent leurs marques de ton dans des points
+    // de code dédiés du bloc U+0E00, que cette plage ne contient pas. Une
+    // réponse écrite en thaï reste donc comparée à l'identique.
+    normalized = normalized
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/gu, "")
+      .normalize("NFC");
   }
   return normalized;
 }
