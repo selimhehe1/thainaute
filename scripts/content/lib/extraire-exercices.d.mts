@@ -49,6 +49,10 @@ export interface PolitiqueSaisie {
   readonly normalisation: "nfc";
   readonly rognerEspaces: boolean;
   readonly reduireEspaces: boolean;
+  /** Tolérances déclarées par la leçon, lues et non décidées ici. */
+  readonly ignorerCasse?: boolean;
+  readonly ignorerTons?: boolean;
+  readonly ignorerPointMedian?: boolean;
 }
 
 export type BlocExtrait =

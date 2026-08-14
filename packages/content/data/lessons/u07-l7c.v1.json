@@ -881,6 +881,282 @@
           }
         ]
       }
+    },
+    {
+      "poolId": "u07-l7c-p3",
+      "drawIndex": 1,
+      "id": "5bc4eeae-b6e9-5912-ba29-e79e0e1af8cf",
+      "type": "recall",
+      "itemId": "5a653239-e648-59bf-9c8a-78c5a74c5933",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "tawwn·cháao",
+          "kind": "transcription"
+        },
+        {
+          "value": "tawwn chaao",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "« La voyelle de tawwn est celle de",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 et 2",
+            "textFr": "C’est ça, et remarquez que ตอน s’écrit toujours pareil : seule la seconde syllabe change."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème `ou` manqué",
+            "textFr": "« La voyelle de thóuk est celle de"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, longueur manquée sur `cháao`",
+            "textFr": "« Deux a puis un o. La"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7c-p3",
+      "drawIndex": 2,
+      "id": "ab8544ec-ba47-55fd-b218-280251af7a50",
+      "type": "recall",
+      "itemId": "c8f45994-4a9a-5055-adcf-9e416899bfbb",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "tawwn·yen",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "« La voyelle de tawwn est celle de",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 et 2",
+            "textFr": "C’est ça, et remarquez que ตอน s’écrit toujours pareil : seule la seconde syllabe change."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème `ou` manqué",
+            "textFr": "« La voyelle de thóuk est celle de"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, longueur manquée sur `cháao`",
+            "textFr": "« Deux a puis un o. La"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7c-p3",
+      "drawIndex": 3,
+      "id": "f1252ba8-b5df-5f83-adc5-774140e57297",
+      "type": "recall",
+      "itemId": "2ca0118e-7713-595f-9452-81e323365b89",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "thóuk·wan",
+          "kind": "transcription"
+        },
+        {
+          "value": "thouk wan",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "« La voyelle de tawwn est celle de",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 et 2",
+            "textFr": "C’est ça, et remarquez que ตอน s’écrit toujours pareil : seule la seconde syllabe change."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème `ou` manqué",
+            "textFr": "« La voyelle de thóuk est celle de"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, longueur manquée sur `cháao`",
+            "textFr": "« Deux a puis un o. La"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7c-p3",
+      "drawIndex": 4,
+      "id": "28f7c1f0-f0d6-5e72-9a69-feb9cd20ce25",
+      "type": "recall",
+      "itemId": "eec9a0ed-621d-5af5-8755-6aceac575964",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "cháao",
+          "kind": "transcription"
+        },
+        {
+          "value": "chaao",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "« La voyelle de tawwn est celle de",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 et 2",
+            "textFr": "C’est ça, et remarquez que ตอน s’écrit toujours pareil : seule la seconde syllabe change."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème `ou` manqué",
+            "textFr": "« La voyelle de thóuk est celle de"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, longueur manquée sur `cháao`",
+            "textFr": "« Deux a puis un o. La"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7c-p3",
+      "drawIndex": 5,
+      "id": "a3878db3-4f31-56fb-a167-7a8f7214d425",
+      "type": "recall",
+      "itemId": "e2714eff-70fe-5455-b0b0-d2d9924b14ad",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "yen",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "« La voyelle de tawwn est celle de",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 et 2",
+            "textFr": "C’est ça, et remarquez que ตอน s’écrit toujours pareil : seule la seconde syllabe change."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème `ou` manqué",
+            "textFr": "« La voyelle de thóuk est celle de"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, longueur manquée sur `cháao`",
+            "textFr": "« Deux a puis un o. La"
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u07-l7c-p3",
+      "drawIndex": 6,
+      "id": "fa90d1fc-d9c4-58d8-97ab-16bd8552bc81",
+      "type": "recall",
+      "itemId": "7596ca9d-18dd-5149-b601-649b044c17c5",
+      "skill": "recall",
+      "promptFr": "Écoutez, puis écrivez en transcription Thaïnaute.",
+      "acceptedAnswers": [
+        {
+          "value": "wan",
+          "kind": "transcription"
+        }
+      ],
+      "answerPolicy": {
+        "normalization": "nfc",
+        "trimWhitespace": true,
+        "collapseInnerWhitespace": false,
+        "ignoreCase": true,
+        "ignoreToneMarks": true,
+        "ignoreMiddleDot": true
+      },
+      "feedback": {
+        "correctFr": "C’est ça.",
+        "incorrectFr": "« La voyelle de tawwn est celle de",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 et 2",
+            "textFr": "C’est ça, et remarquez que ตอน s’écrit toujours pareil : seule la seconde syllabe change."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, graphème `ou` manqué",
+            "textFr": "« La voyelle de thóuk est celle de"
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, longueur manquée sur `cháao`",
+            "textFr": "« Deux a puis un o. La"
+          }
+        ]
+      }
     }
   ],
   "teaching": [
@@ -944,6 +1220,14 @@
       "poolId": "u07-l7c-p2",
       "promptFr": "Remettez les blocs dans l’ordre. Un bloc est en trop : retirez-le.",
       "mechanic": "word_order",
+      "drawCount": 6,
+      "passRequired": 6,
+      "sampleSize": 6
+    },
+    {
+      "poolId": "u07-l7c-p3",
+      "promptFr": "Écoutez, puis écrivez en transcription Thaïnaute.",
+      "mechanic": "recall",
       "drawCount": 6,
       "passRequired": 6,
       "sampleSize": 6

@@ -101,10 +101,16 @@ const publicLessonExerciseSchema = z.discriminatedUnion("type", [
     type: z.literal("recall"),
     skill: z.literal("recall"),
     ...publicItemReference,
+    // Les tolérances déclarées par la leçon voyagent jusqu'au client : il
+    // évalue hors ligne, et une correction locale plus stricte que celle du
+    // serveur refuserait une réponse que la leçon annonce acceptée.
     answerPolicy: z.strictObject({
       normalization: z.literal("nfc"),
       trimWhitespace: z.boolean(),
       collapseInnerWhitespace: z.boolean(),
+      ignoreCase: z.boolean().optional(),
+      ignoreToneMarks: z.boolean().optional(),
+      ignoreMiddleDot: z.boolean().optional(),
     }),
   }),
   z.strictObject({

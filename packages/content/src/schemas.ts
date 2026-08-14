@@ -442,11 +442,19 @@ const recallExerciseSchema = z
       .array(recallAcceptedAnswerSchema)
       .min(1)
       .max(CONTENT_SCHEMA_LIMITS.acceptedAnswersPerRecall),
+    // Les trois dernières tolérances rendent applicable ce que la leçon
+    // déclare déjà dans sa politique de saisie. Elles sont FACULTATIVES et
+    // absentes par défaut : un paquet déjà publié garde exactement son
+    // comportement, ce qui préserve l'immutabilité du contenu publié.
+    // Voir `docs/qa/politique-de-saisie-2026-08-14.md`.
     answerPolicy: z
       .object({
         normalization: z.literal("nfc"),
         trimWhitespace: z.boolean(),
         collapseInnerWhitespace: z.boolean(),
+        ignoreCase: z.boolean().optional(),
+        ignoreToneMarks: z.boolean().optional(),
+        ignoreMiddleDot: z.boolean().optional(),
       })
       .strict(),
     feedback: feedbackSchema,
