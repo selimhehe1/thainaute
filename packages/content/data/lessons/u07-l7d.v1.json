@@ -380,6 +380,52 @@
   ],
   "exercises": [
     {
+      "poolId": "u07-l7d-p1",
+      "drawIndex": 1,
+      "id": "441b7087-9af3-55a2-97b7-7a0d37b69237",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Chaque mot de gauche a un sens. Associez-le au sens.",
+      "pairs": [
+        {
+          "id": "301612d0-0057-5dab-b295-0cedf38d1a70",
+          "itemId": "4c581765-8488-5a1e-9354-c081505732e8",
+          "labelFr": "dormir, se coucher"
+        },
+        {
+          "id": "931d403b-d6c4-5e22-b2b6-e0a03e86df46",
+          "itemId": "ca64341b-7775-51d9-b9cf-3a9efe1aab4f",
+          "labelFr": "travailler"
+        },
+        {
+          "id": "8ffa2fe0-ac95-59c2-973a-6e819def5d3c",
+          "itemId": "969eb7f8-8a81-5e89-a00a-b89ee4b8abe0",
+          "labelFr": "regarder"
+        },
+        {
+          "id": "a2e6818f-df54-5fb9-bc68-f0c6b24564f6",
+          "itemId": "c838aa15-cb55-53aa-9cf2-6970e80cb32e",
+          "labelFr": "la télé"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Reprenez la carte de gauche et écoutez-la. Deux des quatre mots ont deux syllabes, ทำงาน et ทีวี ; deux n’en ont qu’une, นอน et ดู.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paire 1 uniquement",
+            "textFr": "Oui, et vous l’aviez déjà : นอน est à vous depuis 7A."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paire 3 uniquement",
+            "textFr": "Oui, et vous l’aviez déjà : ดู est dans votre parcours depuis la toute première unité."
+          }
+        ]
+      }
+    },
+    {
       "poolId": "u07-l7d-p2",
       "drawIndex": 1,
       "id": "fb2199c4-ba7c-58b3-8ffe-e3718e917778",
@@ -797,6 +843,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u07-l7d-p1",
+      "promptFr": "Chaque mot de gauche a un sens. Associez-le au sens.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
     {
       "poolId": "u07-l7d-p2",
       "promptFr": "Placez les blocs dans l’ordre. Qui, ce qu’il fait, où, quand, la politesse.",

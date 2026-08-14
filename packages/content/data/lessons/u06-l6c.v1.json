@@ -656,6 +656,52 @@
           }
         ]
       }
+    },
+    {
+      "poolId": "u06-l6c-p4",
+      "drawIndex": 1,
+      "id": "c734f834-d186-5a3a-ad17-62bacb04cf46",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Associez chaque phrase thaïe à la situation où vous l’emploieriez.",
+      "pairs": [
+        {
+          "id": "c52de656-15d0-54e5-b623-b73c9341f5c1",
+          "itemId": "8a22d632-d7d5-5290-985e-e7f715f03fa0",
+          "labelFr": "vous demandez le nom d’une personne dont vous parlez, et non celui de la personne à qui vous parlez."
+        },
+        {
+          "id": "964bd5d0-8dda-5f8b-b51a-8fd4b4308d23",
+          "itemId": "c9abc059-e5de-5115-94b7-9cff3b87ea08",
+          "labelFr": "vous montrez une personne, sur une photo ou dans la pièce."
+        },
+        {
+          "id": "c944c17a-9808-5a84-a840-3073ef9ff887",
+          "itemId": "3f44c0aa-76dd-5389-b607-d80022900954",
+          "labelFr": "vous remerciez la personne à qui vous êtes en train de parler."
+        },
+        {
+          "id": "e68d387a-495b-5ee3-8b9d-a89f5831beb6",
+          "itemId": "c28a1f47-d283-5f21-b20e-bb4b3b2c1b9f",
+          "labelFr": "vous décrivez le caractère de quelqu’un."
+        },
+        {
+          "id": "942e5e6e-6369-5a57-9a92-bd6336e41bb7",
+          "itemId": "11cafeea-6670-546d-bd6c-5e710265507e",
+          "labelFr": "vous demandez à quoi ressemble quelqu’un."
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui. Le mot de personne change avec la situation ; le reste du bloc ne bouge pas.",
+        "incorrectFr": "Regardez le PREMIER mot de la phrase thaïe. เขา parle de quelqu’un, คุณ parle à quelqu’un ou de quelqu’un, คนนี้ montre quelqu’un. La situation suit ce premier mot.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paire 3 uniquement",
+            "textFr": "Oui, et retenez la seconde lecture : la même phrase peut aussi décrire quelqu’un d’absent, parce que คุณ vaut aussi pour la troisième personne dans la langue parlée."
+          }
+        ]
+      }
     }
   ],
   "teaching": [
@@ -734,6 +780,14 @@
       "drawCount": 5,
       "passRequired": 5,
       "sampleSize": 5
+    },
+    {
+      "poolId": "u06-l6c-p4",
+      "promptFr": "Associez chaque phrase thaïe à la situation où vous l’emploieriez.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
     }
   ],
   "provenance": {

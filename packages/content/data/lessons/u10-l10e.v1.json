@@ -77,6 +77,186 @@
       ]
     },
     {
+      "id": "394b0935-aa3f-5394-a82a-64c07730a26b",
+      "thaiRaw": "๒",
+      "unicodeCodePoints": [
+        "U+0E52"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๒",
+          "ipa": "sɔːŋ˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "534b38e9-0892-501e-984b-e013d810f355",
+      "thaiRaw": "๓",
+      "unicodeCodePoints": [
+        "U+0E53"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "sǎam"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๓",
+          "ipa": "saːm˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "s",
+          "final": "m"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b2b0a0dc-0421-58e3-8c70-418fbbaa1ffe",
+      "thaiRaw": "๕",
+      "unicodeCodePoints": [
+        "U+0E55"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "hâa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๕",
+          "ipa": "haː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "h",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "71d46846-f164-5166-a252-d8906bc3d165",
+      "thaiRaw": "๗",
+      "unicodeCodePoints": [
+        "U+0E57"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "jèt"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๗",
+          "ipa": "t͡ɕet̚˨˩",
+          "tone": "low",
+          "vowelLength": "short",
+          "initial": "t͡ɕ",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "068423b6-070f-57a2-a88d-697efa81e485",
+      "thaiRaw": "๘",
+      "unicodeCodePoints": [
+        "U+0E58"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pàeet"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๘",
+          "ipa": "pɛːt̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "t̚"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "fb3a9e7b-bd9b-5815-bae7-d0082b86d561",
+      "thaiRaw": "๙",
+      "unicodeCodePoints": [
+        "U+0E59"
+      ],
+      "translationFr": null,
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kâao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "๙",
+          "ipa": "kaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "k",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "UNICODE-17",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
       "id": "81ee493e-2330-57e0-b78f-0be66ce34285",
       "thaiRaw": "ขอข้าวผัดสองจานหน่อยครับ",
       "unicodeCodePoints": [
@@ -494,9 +674,150 @@
         "VOLUBILIS-26-2",
         "WIKTIONARY-EN"
       ]
+    },
+    {
+      "id": "5bfa6026-894f-5f42-911f-c1686a18b7ad",
+      "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+      "unicodeCodePoints": [
+        "U+0E23",
+        "U+0E49",
+        "U+0E32",
+        "U+0E19",
+        "U+0E02",
+        "U+0E32",
+        "U+0E22",
+        "U+0E22",
+        "U+0E32",
+        "U+0E2D",
+        "U+0E22",
+        "U+0E39",
+        "U+0E48",
+        "U+0E17",
+        "U+0E35",
+        "U+0E48",
+        "U+0E44",
+        "U+0E2B",
+        "U+0E19",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "où est la pharmacie ? (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ráan·khǎai·yaa yòuu thîi·nǎi khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "raːn˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "r",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "kʰaːj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "jaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "juː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "j",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "tʰiː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "naj˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "n",
+          "final": "j"
+        },
+        {
+          "thaiRaw": "ร้านขายยาอยู่ที่ไหนครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "neutre, poli par la particule",
+      "sourceIds": [
+        "VOLUBILIS-26-2"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u10-l10e-p2",
+      "drawIndex": 1,
+      "id": "ac042c69-1aa6-5c0d-946c-0ad574b3ac20",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Chaque signe de gauche est un chiffre. Associez-le à sa valeur. Touchez un signe, puis une valeur : aucun glisser-déposer n’est nécessaire.",
+      "pairs": [
+        {
+          "id": "70b02b7b-353e-5844-baa6-9aef06f616a8",
+          "itemId": "394b0935-aa3f-5394-a82a-64c07730a26b",
+          "labelFr": "2"
+        },
+        {
+          "id": "ad39f29e-0610-5026-b090-c168e8e34ba0",
+          "itemId": "534b38e9-0892-501e-984b-e013d810f355",
+          "labelFr": "3"
+        },
+        {
+          "id": "2a143c07-3c39-516d-8161-d8985cddbbcd",
+          "itemId": "b2b0a0dc-0421-58e3-8c70-418fbbaa1ffe",
+          "labelFr": "5"
+        },
+        {
+          "id": "f9b67cfd-d0d7-51db-9c09-aa28535b8afe",
+          "itemId": "71d46846-f164-5166-a252-d8906bc3d165",
+          "labelFr": "7"
+        },
+        {
+          "id": "3b5c8898-1331-5c47-ade9-306074f58590",
+          "itemId": "068423b6-070f-57a2-a88d-697efa81e485",
+          "labelFr": "8"
+        },
+        {
+          "id": "444dccc4-d0ac-5178-bd1b-cfb038e1ca51",
+          "itemId": "fb3a9e7b-bd9b-5815-bae7-d0082b86d561",
+          "labelFr": "9"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui. Un prix ne se devine pas, il se lit.",
+        "incorrectFr": "Reprenez la table des dix chiffres de la leçon 3B. Elle reste consultable pendant l’exercice.",
+        "variants": []
+      }
+    },
     {
       "poolId": "u10-l10e-p4",
       "drawIndex": 1,
@@ -734,7 +1055,7 @@
       "drawIndex": 1,
       "id": "2cc9eb17-6a71-57f9-8571-dc2838596036",
       "type": "word_order",
-      "itemId": "4f88a370-da83-51bd-b3c9-fea766689978",
+      "itemId": "5bfa6026-894f-5f42-911f-c1686a18b7ad",
       "skill": "production",
       "audioAssetId": null,
       "promptFr": "Vous venez de lire ce support. Remettez les étiquettes dans l’ordre pour poser la question.",
@@ -995,6 +1316,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u10-l10e-p2",
+      "promptFr": "Chaque signe de gauche est un chiffre. Associez-le à sa valeur. Touchez un signe, puis une valeur : aucun glisser-déposer n’est nécessaire.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
     {
       "poolId": "u10-l10e-p4",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
