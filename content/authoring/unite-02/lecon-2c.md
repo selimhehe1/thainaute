@@ -115,7 +115,7 @@ stockée, copiée ni redistribuée.
 - `thai` : ขอบคุณครับ
 - `codepoints` : U+0E02 U+0E2D U+0E1A U+0E04 U+0E38 U+0E13 U+0E04 U+0E23
   U+0E31 U+0E1A (NFC)
-- `ipa` : /kʰɔːp̚˨˩.kʰun˧/ + /kʰrap̚˦˥/ (bloc composé, voir sources)
+- `ipa` : /kʰɔːp̚˨˩.kʰun˧.kʰrap̚˦˥/ (bloc composé, voir sources)
 - `ton` : khàwwp bas ; khoun moyen ; khráp haut
 - `longueur` : khàwwp longue ; khoun courte ; khráp courte
 - `fr` : merci (locuteur homme)
@@ -157,7 +157,7 @@ stockée, copiée ni redistribuée.
 - `thai` : ขอบคุณค่ะ
 - `codepoints` : U+0E02 U+0E2D U+0E1A U+0E04 U+0E38 U+0E13 U+0E04 U+0E48
   U+0E30 (NFC)
-- `ipa` : /kʰɔːp̚˨˩.kʰun˧/ + /kʰaʔ˥˩/ (bloc composé, voir sources)
+- `ipa` : /kʰɔːp̚˨˩.kʰun˧.kʰaʔ˥˩/ (bloc composé, voir sources)
 - `ton` : khàwwp bas ; khoun moyen ; khâ descendant
 - `longueur` : khàwwp longue ; khoun courte ; khâ courte
 - `fr` : merci (locutrice femme)
@@ -403,6 +403,55 @@ stockée, copiée ni redistribuée.
     trois mots qui le composent. La question restante n’est plus une question
     de sourçage mais de naturalité de cette instance précise à un comptoir :
     elle est consignée pour la revue native.
+
+### Item 9 : ขอโทษครับ
+
+La leçon déclare déjà ขอบคุณครับ et ขอบคุณค่ะ comme blocs composés, aux items
+1 et 2. Elle enseigne la même paire pour ขอโทษ, l'affiche en grand spécimen et
+la fait écouter, sans jamais la déclarer. Ces deux items ferment cet écart. Ils
+n'ajoutent aucun fait linguistique : tous leurs champs dérivent de l'item 4
+ขอโทษ et de la particule, l'un et l'autre déjà sourcés dans cette leçon.
+
+- `thai` : ขอโทษครับ
+- `codepoints` : U+0E02 U+0E2D U+0E42 U+0E17 U+0E29 U+0E04 U+0E23 U+0E31
+  U+0E1A (NFC)
+- `ipa` : /kʰɔː˩˩˦.tʰoːt̚˥˩.kʰrap̚˦˥/ (bloc composé, voir sources)
+- `ton` : khǎww montant ; thôot descendant ; khráp haut
+- `longueur` : khǎww longue ; thôot longue ; khráp courte
+- `fr` : pardon, excusez-moi (locuteur homme)
+- `transcription` : khǎww·thôot khráp
+- `registre` : poli
+- `note_fr` : la voix monte, tombe, puis remonte pour la particule. C'est le
+  contraire de ขอบคุณครับ, qui monte par paliers du bas vers le haut. Le t de
+  thôot reste retenu avant la particule : ne l'ouvrez pas pour enchaîner.
+- `sources` :
+  - Item 4 ขอโทษ de cette leçon, et ses sources : Volubilis Database v26.2
+    (trois entrées distinctes), en.wiktionary, th.wiktionary et RID 2554,
+    toutes consultées le 2026-08-03.
+  - Particule ครับ, sourcée à l'item 1 de cette leçon : Volubilis
+    (`¯khrap`, adv., usage `(m.)`), en.wiktionary (IPA /kʰrap̚˦˥/) et RID 2554.
+  - Aucune source nouvelle n'est requise : la suite est une locution polie
+    formée d'une interjection attestée et de la particule du locuteur homme,
+    exactement comme ขอบคุณครับ à l'item 1.
+
+### Item 10 : ขอโทษค่ะ
+
+- `thai` : ขอโทษค่ะ
+- `codepoints` : U+0E02 U+0E2D U+0E42 U+0E17 U+0E29 U+0E04 U+0E48 U+0E30 (NFC)
+- `ipa` : /kʰɔː˩˩˦.tʰoːt̚˥˩.kʰaʔ˥˩/ (bloc composé, voir sources)
+- `ton` : khǎww montant ; thôot descendant ; khâ descendant
+- `longueur` : khǎww longue ; thôot longue ; khâ courte
+- `fr` : pardon, excusez-moi (locutrice femme)
+- `transcription` : khǎww·thôot khâ
+- `registre` : poli
+- `note_fr` : deux descentes de suite, sur thôot puis sur khâ, alors que la
+  forme masculine remonte à la fin. C'est le seul élément qui change entre les
+  deux blocs, comme entre les items 1 et 2.
+- `sources` :
+  - Item 4 ขอโทษ de cette leçon, et ses sources.
+  - Particule ค่ะ, sourcée à l'item 2 de cette leçon : Volubilis (`\kha`, ton
+    descendant), RID 2554 (entrée autonome), en.wiktionary.
+  - Aucune source nouvelle n'est requise, pour la même raison qu'à l'item 9.
 
 ## Exercices
 

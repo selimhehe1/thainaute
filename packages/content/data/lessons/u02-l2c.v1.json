@@ -15,6 +15,113 @@
   "audioManifestId": "b2b554cf-ef5d-58f6-924c-cc2e21acb66b",
   "items": [
     {
+      "id": "77066334-9315-5282-91fb-b93737fe97c9",
+      "thaiRaw": "ขอบคุณครับ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "merci (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàwwp·khoun khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰɔːp̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ขอบคุณครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "d39d889d-0c78-5150-b833-2cb36bbd28b6",
+      "thaiRaw": "ขอบคุณค่ะ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E1A",
+        "U+0E04",
+        "U+0E38",
+        "U+0E13",
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "merci (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàwwp·khoun khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอบคุณค่ะ",
+          "ipa": "kʰɔːp̚˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "p̚"
+        },
+        {
+          "thaiRaw": "ขอบคุณค่ะ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        },
+        {
+          "thaiRaw": "ขอบคุณค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
       "id": "19383b08-bd77-5e48-901a-7a34e18acbf4",
       "thaiRaw": "ไม่เป็นไร",
       "unicodeCodePoints": [
@@ -254,9 +361,181 @@
         "VOLUBILIS-26-2",
         "WIKTIONARY-TH"
       ]
+    },
+    {
+      "id": "249111f1-89d3-5557-b654-11a802de0fa0",
+      "thaiRaw": "ขอโทษครับ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E42",
+        "U+0E17",
+        "U+0E29",
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "pardon, excusez-moi (locuteur homme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww·thôot khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอโทษครับ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอโทษครับ",
+          "ipa": "tʰoːt̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ขอโทษครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "e9381522-1867-5a74-8ebb-194d3eae3fd3",
+      "thaiRaw": "ขอโทษค่ะ",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E2D",
+        "U+0E42",
+        "U+0E17",
+        "U+0E29",
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "pardon, excusez-moi (locutrice femme)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎww·thôot khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขอโทษค่ะ",
+          "ipa": "kʰɔː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        },
+        {
+          "thaiRaw": "ขอโทษค่ะ",
+          "ipa": "tʰoːt̚˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "t̚"
+        },
+        {
+          "thaiRaw": "ขอโทษค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u02-l2c-p1",
+      "drawIndex": 1,
+      "id": "166e7a02-73c9-5510-a547-b1ab903848b2",
+      "type": "audio_choice",
+      "itemId": "e9381522-1867-5a74-8ebb-194d3eae3fd3",
+      "skill": "listening",
+      "audioAssetId": "7ecc637d-7494-5fd3-bca2-bfbcd35f6445",
+      "promptFr": "Écoutez. Que dit cette personne ?",
+      "options": [
+        {
+          "id": "2f0745a9-1dea-509e-a98b-d028bc6d1f4e",
+          "labelFr": "Merci",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b4ad8aa9-5af6-5523-8f0b-7c2623ca7a01",
+          "labelFr": "Pardon",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "2e94a9ee-b60b-5a1b-a2d3-6fd54db6bb48",
+          "labelFr": "À plus tard",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "b4ad8aa9-5af6-5523-8f0b-7c2623ca7a01",
+      "feedback": {
+        "correctFr": "Oui. La première syllabe monte, khǎww, et la deuxième tombe, thôot. Dans ขอบคุณ, la première syllabe reste au contraire tout en bas et se ferme sur un p retenu.",
+        "incorrectFr": "Réécoutez seulement le début. Si la voix part du bas et grimpe, c’est ขอโทษ. Si elle reste plate et basse, puis se ferme d’un coup, c’est ขอบคุณ.",
+        "variants": []
+      }
+    },
+    {
+      "poolId": "u02-l2c-p2",
+      "drawIndex": 1,
+      "id": "1df32ad3-34fc-5926-8e23-5cf19059c54e",
+      "type": "reading",
+      "itemId": "249111f1-89d3-5557-b654-11a802de0fa0",
+      "skill": "reading",
+      "promptFr": "Que fait ce client ?",
+      "options": [
+        {
+          "id": "26caa523-23da-53ff-a8df-9433282db682",
+          "labelFr": "Il s’excuse d’avoir fait tomber quelque chose",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "79340ec0-4d1a-5261-8a5b-f9adb1af5b4a",
+          "labelFr": "Il s’adresse à l’employé pour lui poser une question",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "42956f2f-57f0-55dc-b290-448b4359114a",
+          "labelFr": "Il remercie l’employé",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "79340ec0-4d1a-5261-8a5b-f9adb1af5b4a",
+      "feedback": {
+        "correctFr": "Exactement. Ici ขอโทษ vaut “excusez-moi” : il ouvre l’échange, et la question arrive derrière. Après un incident, le même mot vaudrait “désolé”.",
+        "incorrectFr": "Deux indices dans la situation : l’employé n’a rien vu arriver, et une question suit. Une excuse, elle, revient toujours sur quelque chose qui vient de se passer.",
+        "variants": []
+      }
+    },
     {
       "poolId": "u02-l2c-p3",
       "drawIndex": 1,
@@ -345,6 +624,22 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u02-l2c-p1",
+      "promptFr": "Écoutez. Que dit cette personne ?",
+      "mechanic": "audio_choice",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
+    {
+      "poolId": "u02-l2c-p2",
+      "promptFr": "Que fait ce client ?",
+      "mechanic": "reading",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
     {
       "poolId": "u02-l2c-p3",
       "promptFr": "Claire, une femme, veut de l’eau au comptoir. Remettez les éléments dans l’ordre. Attention, un élément est de trop : retirez-le.",
