@@ -419,27 +419,26 @@ votre appareil.
     « to sell »), les deux relevées le 2026-08-04. Cette page porte elle aussi
     ร้านขายยา dans ses termes dérivés.
 
-### Item 3 : ร้านขายยาอยู่ที่ไหนครับ / ร้านขายยาอยู่ที่ไหนคะ, instance du patron [lieu] + อยู่ + ที่ไหน
+### Item 3 : ร้านขายยาอยู่ที่ไหนครับ, instance du patron [lieu] + อยู่ + ที่ไหน
 
-- `thai` : ร้านขายยาอยู่ที่ไหนครับ / ร้านขายยาอยู่ที่ไหนคะ
-- `codepoints` : ร้านขายยาอยู่ที่ไหนครับ = U+0E23 U+0E49 U+0E32 U+0E19 U+0E02
-  U+0E32 U+0E22 U+0E22 U+0E32 U+0E2D U+0E22 U+0E39 U+0E48 U+0E17 U+0E35 U+0E48
-  U+0E44 U+0E2B U+0E19 U+0E04 U+0E23 U+0E31 U+0E1A (NFC) ;
-  ร้านขายยาอยู่ที่ไหนคะ = U+0E23 U+0E49 U+0E32 U+0E19 U+0E02 U+0E32 U+0E22
-  U+0E22 U+0E32 U+0E2D U+0E22 U+0E39 U+0E48 U+0E17 U+0E35 U+0E48 U+0E44 U+0E2B
-  U+0E19 U+0E04 U+0E30 (NFC). Les deux séquences sont données EN ENTIER depuis
-  le second contre-audit interne du 2026-08-04 : la rédaction antérieure
-  factorisait le tronc commun et les deux finales, notation que le contrat
-  d’item n’admet pas parce qu’elle n’est pas recomputable graphie par graphie.
-- `ipa` : /raːn˦˥.kʰaːj˩˩˦.jaː˧ juː˨˩ tʰiː˥˩.naj˩˩˦/ (patron publié rempli avec
-  ร้านขายยา, voir sources)
+Scindé de la forme féminine, pour la raison donnée à l'item 4. Le contre-audit
+du 2026-08-04 avait déjà exigé que les deux séquences de points de code soient
+données EN ENTIER, la factorisation n'étant pas recomputable graphie par
+graphie. La séparation en deux items va au bout de cette exigence.
+
+- `thai` : ร้านขายยาอยู่ที่ไหนครับ
+- `codepoints` : U+0E23 U+0E49 U+0E32 U+0E19 U+0E02 U+0E32 U+0E22 U+0E22
+  U+0E32 U+0E2D U+0E22 U+0E39 U+0E48 U+0E17 U+0E35 U+0E48 U+0E44 U+0E2B U+0E19
+  U+0E04 U+0E23 U+0E31 U+0E1A (NFC)
+- `ipa` : /raːn˦˥.kʰaːj˩˩˦.jaː˧ juː˨˩ tʰiː˥˩.naj˩˩˦.kʰrap̚˦˥/ (patron publié
+  rempli avec ร้านขายยา, voir sources ; la particule est celle de `u01-l1e`)
 - `ton` : ráan haut ; khǎai montant ; yaa moyen ; yòuu bas ; thîi descendant ;
-  nǎi montant
+  nǎi montant ; khráp haut
 - `longueur` : ráan longue ; khǎai longue ; yaa longue ; yòuu longue ; thîi
-  longue ; nǎi courte
-- `fr` : où est la pharmacie ?
+  longue ; nǎi courte ; khráp courte
+- `fr` : où est la pharmacie ? (locuteur homme)
 - `litteral` : boutique-vendre-médicament se-trouve quel-endroit
-- `transcription` : ráan·khǎai·yaa yòuu thîi·nǎi khráp / … khá
+- `transcription` : ráan·khǎai·yaa yòuu thîi·nǎi khráp
 - `registre` : neutre, poli par la particule
 - `note_fr` : rien n’est nouveau ici sauf le lieu. L’ordre est celui de 5E, fixe
   et inverse du français : le lieu d’abord, le verbe ensuite, la question à la
@@ -465,19 +464,48 @@ votre appareil.
     C’est une COMPOSITION, elle est signalée comme telle, et sa naturalité est
     portée à l’incertitude 2.
 
-### Item 4 : ขอยาหน่อยครับ / ขอยาหน่อยค่ะ, instance du patron ขอ … หน่อย
+### Item 3 bis : ร้านขายยาอยู่ที่ไหนคะ (forme féminine, séparée de l'item 3)
 
-- `thai` : ขอยาหน่อยครับ / ขอยาหน่อยค่ะ
-- `codepoints` : ขอยาหน่อยครับ = U+0E02 U+0E2D U+0E22 U+0E32 U+0E2B U+0E19
-  U+0E48 U+0E2D U+0E22 U+0E04 U+0E23 U+0E31 U+0E1A (NFC) ; ขอยาหน่อยค่ะ =
-  U+0E02 U+0E2D U+0E22 U+0E32 U+0E2B U+0E19 U+0E48 U+0E2D U+0E22 U+0E04 U+0E48
-  U+0E30 (NFC). Deux séquences entières, une par graphie du champ `thai`.
-- `ipa` : /kʰɔː˩˩˦.jaː˧.nɔj˨˩/ (patron publié rempli avec ยา, voir sources)
-- `ton` : khǎww montant ; yaa moyen ; nàwi bas
-- `longueur` : khǎww longue ; yaa longue ; nàwi brève
-- `fr` : je voudrais un médicament, s’il vous plaît
+- `thai` : ร้านขายยาอยู่ที่ไหนคะ
+- `codepoints` : U+0E23 U+0E49 U+0E32 U+0E19 U+0E02 U+0E32 U+0E22 U+0E22
+  U+0E32 U+0E2D U+0E22 U+0E39 U+0E48 U+0E17 U+0E35 U+0E48 U+0E44 U+0E2B U+0E19
+  U+0E04 U+0E30 (NFC)
+- `ipa` : /raːn˦˥.kʰaːj˩˩˦.jaː˧ juː˨˩ tʰiː˥˩.naj˩˩˦.kʰaʔ˦˥/ (même patron qu'à
+  l'item 3 ; la particule est celle de `u02-l2b`)
+- `ton` : ráan haut ; khǎai montant ; yaa moyen ; yòuu bas ; thîi descendant ;
+  nǎi montant ; khá haut
+- `longueur` : ráan longue ; khǎai longue ; yaa longue ; yòuu longue ; thîi
+  longue ; nǎi courte ; khá courte
+- `fr` : où est la pharmacie ? (locutrice femme)
+- `litteral` : boutique-vendre-médicament se-trouve quel-endroit
+- `transcription` : ráan·khǎai·yaa yòuu thîi·nǎi khá
+- `registre` : neutre, poli par la particule
+- `note_fr` : c’est une QUESTION, donc la particule féminine est คะ. L’ordre
+  reste celui de 5E, fixe et inverse du français : le lieu d’abord, le verbe
+  ensuite, la question à la fin.
+- `sources` :
+  - Mêmes sources que l’item 3 : le patron [lieu] + อยู่ + ที่ไหน publié par
+    `u05-l5c`, rempli avec ร้านขายยา. C’est une COMPOSITION, signalée comme
+    telle, dont la naturalité est portée à l’incertitude 2.
+  - Particule คะ : RID 2554, vedette « คะ ๒ », et VOLUBILIS ligne 28944,
+    relevées le 2026-08-03 ; dossier de preuve de `u02-l2b`.
+
+### Item 4 : ขอยาหน่อยครับ, instance du patron ขอ … หน่อย
+
+Cet item et le suivant formaient une seule entrée. Un item à deux graphies ne
+peut devenir aucune carte, l'identité étant `(pack, graphie, sens)` depuis
+l'ADR-0042.
+
+- `thai` : ขอยาหน่อยครับ
+- `codepoints` : U+0E02 U+0E2D U+0E22 U+0E32 U+0E2B U+0E19 U+0E48 U+0E2D
+  U+0E22 U+0E04 U+0E23 U+0E31 U+0E1A (NFC)
+- `ipa` : /kʰɔː˩˩˦.jaː˧.nɔj˨˩.kʰrap̚˦˥/ (patron publié rempli avec ยา, voir
+  sources ; la particule est celle de `u01-l1e`)
+- `ton` : khǎww montant ; yaa moyen ; nàwi bas ; khráp haut
+- `longueur` : khǎww longue ; yaa longue ; nàwi brève ; khráp courte
+- `fr` : je voudrais un médicament, s’il vous plaît (locuteur homme)
 - `litteral` : demander médicament un-peu
-- `transcription` : khǎww yaa nàwi khráp / khǎww yaa nàwi khâ
+- `transcription` : khǎww yaa nàwi khráp
 - `registre` : neutre à poli, poli par หน่อย et par la particule
 - `note_fr` : le patron de 2C, celui qui contenait น้ำ en 2C et ข้าวผัด en 4C,
   rempli avec ยา. La mélodie fait un escalier qui descend, montant puis moyen
@@ -502,19 +530,44 @@ votre appareil.
     aucune ligne pour ขอยาหน่อย comme pour ขอยา. Composition signalée, naturalité
     portée à l’incertitude 2.
 
-### Item 5 : มียาไหมครับ / มียาไหมคะ, instance du patron มี + nom + ไหม
+### Item 4 bis : ขอยาหน่อยค่ะ (forme féminine, séparée de l'item 4)
 
-- `thai` : มียาไหมครับ / มียาไหมคะ
-- `codepoints` : มียาไหมครับ = U+0E21 U+0E35 U+0E22 U+0E32 U+0E44 U+0E2B U+0E21
-  U+0E04 U+0E23 U+0E31 U+0E1A (NFC) ; มียาไหมคะ = U+0E21 U+0E35 U+0E22 U+0E32
-  U+0E44 U+0E2B U+0E21 U+0E04 U+0E30 (NFC). Deux séquences entières, une par
-  graphie du champ `thai`.
-- `ipa` : /miː˧.jaː˧.maj˩˩˦/ (patron publié rempli avec ยา, voir sources)
-- `ton` : mii moyen ; yaa moyen ; mǎi montant
-- `longueur` : mii longue ; yaa longue ; mǎi courte
-- `fr` : est-ce que vous avez un médicament ?
+- `thai` : ขอยาหน่อยค่ะ
+- `codepoints` : U+0E02 U+0E2D U+0E22 U+0E32 U+0E2B U+0E19 U+0E48 U+0E2D
+  U+0E22 U+0E04 U+0E48 U+0E30 (NFC)
+- `ipa` : /kʰɔː˩˩˦.jaː˧.nɔj˨˩.kʰaʔ˥˩/ (même patron qu'à l'item 4 ; la
+  particule est celle de `u01-l1e`)
+- `ton` : khǎww montant ; yaa moyen ; nàwi bas ; khâ descendant
+- `longueur` : khǎww longue ; yaa longue ; nàwi brève ; khâ courte
+- `fr` : je voudrais un médicament, s’il vous plaît (locutrice femme)
+- `litteral` : demander médicament un-peu
+- `transcription` : khǎww yaa nàwi khâ
+- `registre` : neutre à poli, poli par หน่อย et par la particule
+- `note_fr` : l’escalier descendant du patron se termine ici par une chute
+  supplémentaire sur khâ, là où la forme masculine remonte sur khráp. Même
+  réserve qu’à l’item 4 : la phrase demande un médicament, pas un médicament
+  précis.
+- `sources` :
+  - Mêmes sources que l’item 4 pour le patron ขอ … หน่อย et pour ยา, avec la
+    même composition signalée et la même incertitude 2 : `rid-lookup.mjs
+ขอยาหน่อย` répond `absent` et VOLUBILIS ne rend aucune ligne.
+  - Particule ค่ะ : RID 2554, entrée autonome attestée, et VOLUBILIS ligne
+    28945, relevées le 2026-08-03 ; dossier de preuve de `u01-l1e`.
+
+### Item 5 : มียาไหมครับ, instance du patron มี + nom + ไหม
+
+Scindé de la forme féminine, pour la raison donnée à l'item 4.
+
+- `thai` : มียาไหมครับ
+- `codepoints` : U+0E21 U+0E35 U+0E22 U+0E32 U+0E44 U+0E2B U+0E21 U+0E04
+  U+0E23 U+0E31 U+0E1A (NFC)
+- `ipa` : /miː˧.jaː˧.maj˩˩˦.kʰrap̚˦˥/ (patron publié rempli avec ยา, voir
+  sources ; la particule est celle de `u01-l1e`)
+- `ton` : mii moyen ; yaa moyen ; mǎi montant ; khráp haut
+- `longueur` : mii longue ; yaa longue ; mǎi courte ; khráp courte
+- `fr` : est-ce que vous avez un médicament ? (locuteur homme)
 - `litteral` : avoir médicament [question]
-- `transcription` : mii yaa mǎi khráp / mii yaa mǎi khá
+- `transcription` : mii yaa mǎi khráp
 - `registre` : neutre, poli par la particule
 - `note_fr` : la seconde façon de demander, et elle ne dit pas la même chose que
   l’item 4. ขอยาหน่อย demande qu’on vous en donne ; มียาไหม demande seulement
@@ -614,6 +667,29 @@ votre appareil.
     `rid-lookup.mjs มียาไหม` répond `absent`, et la recherche VOLUBILIS ne rend
     aucune ligne. Composition signalée, naturalité portée à l’incertitude 2.
 
+### Item 5 bis : มียาไหมคะ (forme féminine, séparée de l'item 5)
+
+- `thai` : มียาไหมคะ
+- `codepoints` : U+0E21 U+0E35 U+0E22 U+0E32 U+0E44 U+0E2B U+0E21 U+0E04
+  U+0E30 (NFC)
+- `ipa` : /miː˧.jaː˧.maj˩˩˦.kʰaʔ˦˥/ (même patron qu'à l'item 5 ; la particule
+  est celle de `u01-l1e` et `u02-l2b`)
+- `ton` : mii moyen ; yaa moyen ; mǎi montant ; khá haut
+- `longueur` : mii longue ; yaa longue ; mǎi courte ; khá courte
+- `fr` : est-ce que vous avez un médicament ? (locutrice femme)
+- `litteral` : avoir médicament [question]
+- `transcription` : mii yaa mǎi khá
+- `registre` : poli
+- `note_fr` : c’est une QUESTION, donc la particule féminine est คะ et non
+  ค่ะ. Deux montées de suite à la fin, sur mǎi puis sur khá : c’est le repère
+  le plus sûr pour entendre qu’on vous interroge.
+- `sources` :
+  - Mêmes sources que l’item 5 pour le patron มี + nom + ไหม et pour ยา, avec
+    la même composition signalée et la même incertitude 2 : `rid-lookup.mjs
+มียาไหม` répond `absent` et VOLUBILIS ne rend aucune ligne.
+  - Particule คะ : RID 2554, vedette « คะ ๒ », et VOLUBILIS ligne 28944,
+    relevées le 2026-08-03 ; dossier de preuve de `u02-l2b`.
+
 ### Item 6 : แล้ว (graphie déjà lue en `u01-l1e` et `u06-l6e`, EMPLOI nouveau)
 
 - `thai` : แล้ว
@@ -669,24 +745,20 @@ votre appareil.
     /lɛːw˦˥ kʰun˧ laʔ˥˩/. Les deux valeurs de ton et de longueur reprises ici
     sont donc celles du parcours.
 
-### Item 7 : กี่วันแล้วครับ / กี่วันแล้วคะ
+### Item 7 : กี่วันแล้วครับ
 
-- `thai` : กี่วันแล้วครับ / กี่วันแล้วคะ
-- `codepoints` : กี่วันแล้วครับ = U+0E01 U+0E35 U+0E48 U+0E27 U+0E31 U+0E19
-  U+0E41 U+0E25 U+0E49 U+0E27 U+0E04 U+0E23 U+0E31 U+0E1A (NFC) ; กี่วันแล้วคะ =
-  U+0E01 U+0E35 U+0E48 U+0E27 U+0E31 U+0E19 U+0E41 U+0E25 U+0E49 U+0E27 U+0E04
-  U+0E30 (NFC). Deux séquences entières, une par graphie du champ `thai`.
-  **`u09-l9e` item 6 réemploie ce bloc et avait corrigé la notation de son
-  côté** en signalant que 9D portait encore la forme factorisée ; les deux
-  fichiers écrivent désormais la même chose, et le point signalé à la
-  consolidation de l’unité est clos.
-- `ipa` : /kiː˨˩ wan˧ lɛːw˦˥/ (kìi + วัน attesté ensemble, แล้ว ajouté, voir
-  sources)
-- `ton` : kìi bas ; wan moyen ; láeew haut
-- `longueur` : kìi longue ; wan brève ; láeew longue
-- `fr` : depuis combien de jours ?
+Scindé de la forme féminine, pour la raison donnée à l'item 4.
+
+- `thai` : กี่วันแล้วครับ
+- `codepoints` : U+0E01 U+0E35 U+0E48 U+0E27 U+0E31 U+0E19 U+0E41 U+0E25
+  U+0E49 U+0E27 U+0E04 U+0E23 U+0E31 U+0E1A (NFC)
+- `ipa` : /kiː˨˩.wan˧.lɛːw˦˥.kʰrap̚˦˥/ (kìi + วัน attesté ensemble, แล้ว
+  ajouté, voir sources ; la particule est celle de `u01-l1e`)
+- `ton` : kìi bas ; wan moyen ; láeew haut ; khráp haut
+- `longueur` : kìi longue ; wan brève ; láeew longue ; khráp courte
+- `fr` : depuis combien de jours ? (locuteur homme)
 - `litteral` : combien jour [accompli]
-- `transcription` : kìi wan láeew khráp / kìi wan láeew khá
+- `transcription` : kìi wan láeew khráp
 - `registre` : neutre, poli par la particule
 - `note_fr` : la leçon travaille cette phrase d’abord à l’écoute, à l’exercice 2,
   avant de la faire construire à l’exercice 4 ; c’est un choix de progression et
@@ -736,6 +808,28 @@ votre appareil.
     l’emploi final de แล้ว, trois fois. La soudure des deux est une COMPOSITION,
     signalée comme telle, et c’est le point le plus exposé de la leçon à l’audit
     de naturalité. Voir l’incertitude 1.
+
+### Item 7 bis : กี่วันแล้วคะ (forme féminine, séparée de l'item 7)
+
+- `thai` : กี่วันแล้วคะ
+- `codepoints` : U+0E01 U+0E35 U+0E48 U+0E27 U+0E31 U+0E19 U+0E41 U+0E25
+  U+0E49 U+0E27 U+0E04 U+0E30 (NFC)
+- `ipa` : /kiː˨˩.wan˧.lɛːw˦˥.kʰaʔ˦˥/ (même composition qu'à l'item 7 ; la
+  particule est celle de `u02-l2b`)
+- `ton` : kìi bas ; wan moyen ; láeew haut ; khá haut
+- `longueur` : kìi longue ; wan brève ; láeew longue ; khá courte
+- `fr` : depuis combien de jours ? (locutrice femme)
+- `litteral` : combien jour [accompli]
+- `transcription` : kìi wan láeew khá
+- `registre` : neutre, poli par la particule
+- `note_fr` : c’est une QUESTION, donc la particule féminine est คะ. La
+  mélodie monte marche après marche, bas puis moyen puis haut, et la particule
+  reste en haut : quatre syllabes sans jamais redescendre.
+- `sources` :
+  - Mêmes sources que l’item 7 : กี่ + วัน attestés ensemble, แล้ว ajouté,
+    avec la composition signalée et l’incertitude 1 reportée telle quelle.
+  - Particule คะ : RID 2554, vedette « คะ ๒ », et VOLUBILIS ligne 28944,
+    relevées le 2026-08-03 ; dossier de preuve de `u02-l2b`.
 
 ### Item 8 : สองวันแล้ว · สามวันแล้ว, instances du patron nombre + วัน + แล้ว
 
