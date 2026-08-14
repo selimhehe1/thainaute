@@ -877,6 +877,51 @@
       }
     },
     {
+      "poolId": "u08-l8c-p2",
+      "drawIndex": 1,
+      "id": "176aa241-e2ce-5817-880f-f3c4e470d4ae",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Associez chaque bloc thaï à ce qu’il veut dire.",
+      "pairs": [
+        {
+          "id": "5e6b3c9c-18da-55a0-955c-6f1304fc9863",
+          "itemId": "53e711b1-0695-5c94-92b2-f1eae6970f76",
+          "labelFr": "cher"
+        },
+        {
+          "id": "160f51b1-a331-5a51-9490-a461da406dac",
+          "itemId": "37fcf196-05db-5803-9862-62d8984887a6",
+          "labelFr": "bon marché"
+        },
+        {
+          "id": "8f50233e-fd67-5065-9294-5978c6bb60c2",
+          "itemId": "752aa6a6-a173-55e0-83b2-3808fd821fb5",
+          "labelFr": "grand"
+        },
+        {
+          "id": "a627c93e-0f8a-52c0-b363-cbc428843959",
+          "itemId": "9e563010-ab8d-58fc-a820-554d6f61d15b",
+          "labelFr": "petit"
+        },
+        {
+          "id": "dd5f7c1e-38af-58bf-945e-700968d6fd7c",
+          "itemId": "9244aeac-d0a9-5ede-8200-a79f91e0d106",
+          "labelFr": "trop cher"
+        },
+        {
+          "id": "15cbba98-39b9-5ad9-9079-35a20dc397dc",
+          "itemId": "bdc62c83-9724-5d7f-8217-5c313f43122b",
+          "labelFr": "trop petit"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Regardez la longueur du bloc thaï. S’il se termine par เกินไป, le français doit commencer par trop. Sinon, il n’y a pas de trop.",
+        "variants": []
+      }
+    },
+    {
       "poolId": "u08-l8c-p3",
       "drawIndex": 1,
       "id": "be9d9ab1-ec53-546c-a128-3d3da3233e75",
@@ -1246,6 +1291,14 @@
       "drawCount": 8,
       "passRequired": 8,
       "sampleSize": 8
+    },
+    {
+      "poolId": "u08-l8c-p2",
+      "promptFr": "Associez chaque bloc thaï à ce qu’il veut dire.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
     },
     {
       "poolId": "u08-l8c-p3",

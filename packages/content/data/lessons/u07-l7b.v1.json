@@ -373,6 +373,52 @@
   ],
   "exercises": [
     {
+      "poolId": "u07-l7b-p1",
+      "drawIndex": 1,
+      "id": "9e2f52d4-e9cb-5991-81cc-051cc2e78ca1",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Associez chaque mot thaï à ce qu’il désigne.",
+      "pairs": [
+        {
+          "id": "6f1401bc-12d0-5a43-b67f-ccb2e88671db",
+          "itemId": "09029612-9774-5162-a16f-6367bc4e8a8f",
+          "labelFr": "la maison"
+        },
+        {
+          "id": "ed8223a9-a04f-5385-81d0-bfe8b059179d",
+          "itemId": "7ce3b000-d133-573b-b96e-7fbe9a38fe71",
+          "labelFr": "la pièce"
+        },
+        {
+          "id": "66a432e0-b910-54ba-bd19-e4024961f8d1",
+          "itemId": "ab288715-c4ff-545a-9739-c4ca361fefcd",
+          "labelFr": "la chambre à coucher"
+        },
+        {
+          "id": "79e32494-84e7-5deb-b7c3-a012623ebded",
+          "itemId": "1dca9c43-9b6e-5855-82e3-d1be38398e3e",
+          "labelFr": "la cuisine"
+        },
+        {
+          "id": "0ef0c579-9e7d-5129-8797-2638061af5e9",
+          "itemId": "7f90abd6-6da7-548a-b0a5-accd8a74da96",
+          "labelFr": "les toilettes"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Trois de ces mots commencent par ห้อง, la pièce. Lisez ce qui vient après : นอน, dormir, donne la chambre ; ครัว, le lieu où l’on prépare les repas, donne la cuisine ; น้ำ, l’eau, que vous connaissez depuis 2C, donne la pièce d’eau.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, paires 3, 4 et 5 uniquement",
+            "textFr": "Oui, et regardez le début du mot : ห้อง, la pièce. Ce qui suit dit laquelle."
+          }
+        ]
+      }
+    },
+    {
       "poolId": "u07-l7b-p4",
       "drawIndex": 1,
       "id": "4f21235c-65b6-507a-9481-0cae87106f2f",
@@ -620,6 +666,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u07-l7b-p1",
+      "promptFr": "Associez chaque mot thaï à ce qu’il désigne.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
+    },
     {
       "poolId": "u07-l7b-p4",
       "promptFr": "Mettez les morceaux dans l’ordre pour dire cette phrase.",

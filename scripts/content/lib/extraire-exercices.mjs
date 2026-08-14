@@ -329,14 +329,44 @@ function extraireAssociation(bloc, resoudreItem) {
       erreurNumerotee = `tirage ${rang} : pas de séparateur ↔ unique`;
       break;
     }
-    const graphies = [...cote[0].matchAll(THAI)].map((t) => t[0]);
+    // Une partie du corpus écrit ses paires À L'ENVERS, le libellé d'abord :
+    //
+    //     « deux poissons » ↔ ตัว
+    //     « Vous abordez quelqu'un pour signaler quelque chose. » ↔ ขอโทษครับ
+    //
+    // C'est la même paire, orientée autrement. On la remet à l'endroit
+    // UNIQUEMENT quand la lecture est sans ambiguïté : aucune graphie à
+    // gauche, exactement une à droite.
+    //
+    // On ne touche PAS aux lignes à plusieurs graphies à gauche, qui sont des
+    // patrons à trou (« ผมชื่อ … ครับ ↔ Je m'appelle … »). Aucun item ne leur
+    // correspond, et en désigner un serait inventer.
+    let gauche = cote[0];
+    let droite = cote[1];
+    if (
+      [...gauche.matchAll(THAI)].length === 0 &&
+      [...droite.matchAll(THAI)].length === 1
+    ) {
+      [gauche, droite] = [droite, gauche];
+    }
+
+    const graphies = [...gauche.matchAll(THAI)].map((t) => t[0]);
     if (graphies.length !== 1) {
       erreurNumerotee = `tirage ${rang} : ${graphies.length} graphies à gauche`;
       break;
     }
-    const libelle = cote[1].match(/«\s*([^»]+?)\s*»/u)?.[1];
-    if (libelle === undefined) {
-      erreurNumerotee = `tirage ${rang} : libellé non cité à droite`;
+    // Le libellé est cité entre guillemets quand il y en a, sinon c'est le
+    // côté droit tel quel.
+    //
+    // PIÈGE MESURÉ : exiger les guillemets refusait 59 lignes de paires du
+    // corpus, dont les six de `u02-l2a` écrites « พา ↔ phaa ». Rien n'y est
+    // ambigu : la ligne est une entrée de liste numérotée, donc le libellé
+    // s'arrête avec elle, et le corpus n'y écrit jamais de prose. Les côtés
+    // droits observés sont des transcriptions, des gloses françaises, ou une
+    // graphie partenaire suivie de son indice de lecture.
+    const libelle = droite.match(/«\s*([^»]+?)\s*»/u)?.[1] ?? droite.trim();
+    if (libelle === "") {
+      erreurNumerotee = `tirage ${rang} : rien en face du séparateur`;
       break;
     }
     const itemId = resoudreItem(graphies[0]);

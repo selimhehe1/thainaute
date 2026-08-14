@@ -591,6 +591,51 @@
           }
         ]
       }
+    },
+    {
+      "poolId": "u02-l2a-p4",
+      "drawIndex": 1,
+      "id": "d7c85670-2f8e-5841-b189-c7eb14f71a41",
+      "type": "association",
+      "skill": "reading",
+      "promptFr": "Reliez chaque mot écrit à sa transcription.",
+      "pairs": [
+        {
+          "id": "2517dbb8-0b5c-545d-8e41-cfff297a0396",
+          "itemId": "14091eca-4f0d-5767-a1d8-ae0fea34c3a1",
+          "labelFr": "phaa"
+        },
+        {
+          "id": "4b5c5436-267e-539a-a6de-0218da180b62",
+          "itemId": "1b02c2c0-ac86-59c1-bf2e-fe7798bf823f",
+          "labelFr": "phôuut"
+        },
+        {
+          "id": "3c3a1217-68b0-5e2b-849e-72b40afe8bdd",
+          "itemId": "05692bb9-f1d0-5735-a866-858c559c74a0",
+          "labelFr": "phaww"
+        },
+        {
+          "id": "7ea4a434-d93f-505e-a48e-c3a4059e1cb7",
+          "itemId": "53e711b1-0695-5c94-92b2-f1eae6970f76",
+          "labelFr": "phaeeng"
+        },
+        {
+          "id": "289d6026-ad35-5256-b0b6-5d261637846f",
+          "itemId": "b4357e2c-cbcc-508f-b6c8-962371ccb674",
+          "labelFr": "phleeng"
+        },
+        {
+          "id": "c20d8eed-758c-52cd-a13a-b90c3ee1d724",
+          "itemId": "0962b3d1-10ff-53f2-92e4-679765122be3",
+          "labelFr": "pàa"
+        }
+      ],
+      "feedback": {
+        "correctFr": "Bonne association. Vous avez trouvé la voyelle là où elle se cachait : à droite, au-dessus, en dessous ou devant.",
+        "incorrectFr": "Ces deux cartes ne vont pas ensemble. Repérez d’abord la consonne, puis la voyelle qui l’entoure.",
+        "variants": []
+      }
     }
   ],
   "teaching": [
@@ -653,6 +698,14 @@
       "drawCount": 5,
       "passRequired": 5,
       "sampleSize": 5
+    },
+    {
+      "poolId": "u02-l2a-p4",
+      "promptFr": "Reliez chaque mot écrit à sa transcription.",
+      "mechanic": "association",
+      "drawCount": 1,
+      "passRequired": 1,
+      "sampleSize": 1
     }
   ],
   "provenance": {
