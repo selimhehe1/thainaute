@@ -652,20 +652,24 @@ ECONO ; INSOLITE ; (Covid-19)`, FRA « marché [m] ; bazar [m] ; halle [f] ;
     particule finale. La valeur de réponse figurait déjà dans la source
     th.wiktionary citée par 1E, sans être enseignée.
 
-### Item 11 : ค่ะ et คะ (réemploi, enseignés en `u01-l1e` et `u02-l2b`)
+### Item 11 : ค่ะ (réemploi, enseignée en `u01-l1e` et `u02-l2b`)
 
-- `thai` : ค่ะ · คะ
-- `codepoints` : ค่ะ U+0E04 U+0E48 U+0E30 (NFC) ; คะ U+0E04 U+0E30 (NFC)
-- `ipa` : ค่ะ /kʰaʔ˥˩/ ; คะ /kʰaʔ˦˥/
-- `ton` : khâ descendant ; khá haut
-- `longueur` : les deux courtes
-- `fr` : particules de politesse d’une locutrice
-- `transcription` : khâ · khá
+Cet item et le suivant formaient une seule entrée. Un item à deux graphies ne
+peut devenir aucune carte, l'identité étant `(pack, graphie, sens)` depuis
+l'ADR-0042. La séparation redistribue des champs déjà écrits séparément.
+
+- `thai` : ค่ะ
+- `codepoints` : U+0E04 U+0E48 U+0E30 (NFC)
+- `ipa` : /kʰaʔ˥˩/
+- `ton` : descendant
+- `longueur` : courte
+- `fr` : particule de politesse d’une locutrice, qui ferme une affirmation ou
+  un remerciement
+- `transcription` : khâ
 - `registre` : poli
 - `note_fr` : le partage vu en 2B revient tel quel. La locutrice emploie khâ,
-  descendant, pour fermer une affirmation ou un remerciement, et khá, haut,
-  après une question. Dans ce dialogue elle pose deux questions, répliques 3 et
-  5, donc khá deux fois ; et elle emploie khâ aux répliques 1 et 7.
+  descendant, pour fermer une affirmation ou un remerciement. Dans ce dialogue
+  elle l’emploie aux répliques 1 et 7.
 - `sources` :
   - RID 2554, entrées « ค่ะ » et « คะ », consultées le 2026-08-03. ค่ะ est
     définie comme le mot de réponse employé par les femmes et comme la finale
@@ -683,6 +687,32 @@ ECONO ; INSOLITE ; (Covid-19)`, FRA « marché [m] ; bazar [m] ; halle [f] ;
   - en.wiktionary, entrées « ค่ะ » et « คะ », https://en.wiktionary.org/wiki/ค่ะ
     et https://en.wiktionary.org/wiki/คะ, consultées le 2026-08-03 en rendu
     (IPA /kʰaʔ˥˩/ et /kʰaʔ˦˥/, romanisations Paiboon kâ et ká).
+  - Items publiés de `u01-l1e` et `u02-l2b`.
+
+### Item 11 bis : คะ (séparée de l'item 11)
+
+- `thai` : คะ
+- `codepoints` : U+0E04 U+0E30 (NFC)
+- `ipa` : /kʰaʔ˦˥/
+- `ton` : haut
+- `longueur` : courte
+- `fr` : particule de politesse d’une locutrice, qui ferme une question
+- `transcription` : khá
+- `registre` : poli
+- `note_fr` : khá est haut là où khâ tombe, et il ferme une QUESTION. Dans ce
+  dialogue la locutrice pose deux questions, répliques 3 et 5, donc khá deux
+  fois.
+- `sources` :
+  - RID 2554, vedette « คะ ๒ », consultée le 2026-08-03 : finale polie
+    employée par les femmes APRÈS une question ou une expression de doute,
+    avec des exemples interrogatifs. La vedette « คะ ๑ » est un fait de
+    versification sans rapport (faits cités par référence).
+  - VOLUBILIS.ods v26.2, feuille `Volubilis`, ligne 30140, relevée le
+    2026-08-03 : THA « คะ », ThaiPhon `¯kha`, USAGE `(f.)`, FRA « oui ;
+    [formule de politesse en fin de vocatif ou de phrase interrogative] ». Le
+    marqueur `¯` atteste le ton haut.
+  - en.wiktionary, entrée « คะ », https://en.wiktionary.org/wiki/คะ, consultée
+    le 2026-08-03 en rendu (IPA /kʰaʔ˦˥/, romanisation Paiboon ká).
   - Items publiés de `u01-l1e` et `u02-l2b`.
 
 ### Item 12 : ไหม (réemploi, enseigné en `u02-l2b`)

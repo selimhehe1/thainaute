@@ -425,21 +425,27 @@ sur votre appareil.
     portant la marque `(m.)`).
   - Prononciation, ton et longueur : établis par la leçon 1E.
 
-### Item 11 : ค่ะ et คะ (réemploi, enseignés en 1E et 2B)
+### Item 11 : ค่ะ (réemploi, enseigné en 1E et 2B)
 
-- `thai` : ค่ะ / คะ
-- `codepoints` : U+0E04 U+0E48 U+0E30 (ค่ะ) / U+0E04 U+0E30 (คะ) (NFC)
-- `ipa` : /kʰa˥˩/ (ค่ะ) / /kʰa˦˥/ (คะ)
-- `ton` : ค่ะ descendant ; คะ haut
-- `longueur` : courte dans les deux cas
-- `fr` : particules de politesse d’une locutrice ; ค่ะ ferme une affirmation ou
-  une demande, คะ ferme une question
-- `transcription` : khâ / khá
+Cet item et le suivant formaient une seule entrée, « ค่ะ et คะ ». Le
+compilateur refuse un item à deux graphies, et l'ADR-0042 pose l'identité
+d'une carte comme `(pack, graphie, sens)` : l'entrée ne pouvait donc devenir
+aucune carte, alors que la leçon oppose précisément ces deux particules. La
+séparation redistribue des champs déjà écrits séparément, sans rien ajouter.
+
+- `thai` : ค่ะ
+- `codepoints` : U+0E04 U+0E48 U+0E30 (NFC)
+- `ipa` : /kʰa˥˩/
+- `ton` : descendant
+- `longueur` : courte
+- `fr` : particule de politesse d’une locutrice, qui ferme une affirmation ou
+  une demande
+- `transcription` : khâ
 - `registre` : poli
-- `note_fr` : contraste travaillé en 2B, réemployé ici sans réenseignement. Dans
-  le dialogue, Nok emploie คะ une seule fois, sur sa question de prix, et ค่ะ
-  partout ailleurs. À l’écrit, la seule différence visible est le petit ่ ;
-  vérifier qu’il n’est jamais tronqué à l’affichage.
+- `note_fr` : contraste travaillé en 2B, réemployé ici sans réenseignement.
+  Dans le dialogue, Nok emploie ค่ะ partout sauf sur sa question de prix. À
+  l’écrit, la seule différence visible avec คะ est le petit ่ ; vérifier
+  qu’il n’est jamais tronqué à l’affichage.
 - `sources` :
   - RID 2554, entrée « ค่ะ », consultée le 2026-08-03 : graphie attestée comme
     entrée autonome, employée par une femme en fin de phrase pour informer
@@ -453,6 +459,28 @@ sur votre appareil.
     pour ค่ะ (« oui ; d’accord ; [formule de politesse en fin de réponse
     affirmative] », USAGE `(f.)`), relevées le 2026-08-03.
   - Prononciation, tons et longueurs : établis par les leçons 1E et 2B.
+
+### Item 11 bis : คะ (séparée de l'item 11)
+
+- `thai` : คะ
+- `codepoints` : U+0E04 U+0E30 (NFC)
+- `ipa` : /kʰa˦˥/
+- `ton` : haut
+- `longueur` : courte
+- `fr` : particule de politesse d’une locutrice, qui ferme une question
+- `transcription` : khá
+- `registre` : poli
+- `note_fr` : c’est la particule de la QUESTION, et elle monte là où ค่ะ
+  tombe. Dans le dialogue, Nok ne l’emploie qu’une fois, sur sa question de
+  prix. Le ่ absent est la seule différence écrite.
+- `sources` :
+  - RID 2554, entrée « คะ ๒ », consultée le 2026-08-03 : graphie attestée,
+    employée par une femme APRÈS une question ou une expression de doute, avec
+    l’exemple อะไรคะ (faits cités par référence).
+  - VOLUBILIS Database v26.2, ligne 28944 pour คะ (« [formule de politesse en
+    fin de vocatif ou de phrase interrogative] », USAGE `(f.)`), relevée le
+    2026-08-03.
+  - Prononciation, ton et longueur : établis par les leçons 1E et 2B.
 
 ### Item 12 : ขอบคุณ (réemploi, enseigné en 1E et 2C)
 

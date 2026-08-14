@@ -652,6 +652,63 @@
       ]
     },
     {
+      "id": "de8d77e0-edeb-5fd5-bb0c-ef6355da5e14",
+      "thaiRaw": "ค่ะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "particule de politesse d’une locutrice, après une affirmation",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค่ะ",
+          "ipa": "kʰaʔ˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "7a2a550a-4e7c-59a7-9428-1949931cfbce",
+      "thaiRaw": "คะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "particule de politesse d’une locutrice, après une question",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554"
+      ]
+    },
+    {
       "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
       "thaiRaw": "ผม",
       "unicodeCodePoints": [

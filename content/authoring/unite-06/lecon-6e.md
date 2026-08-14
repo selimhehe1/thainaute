@@ -785,16 +785,20 @@ privé, sur votre appareil.
   - Fréquence, signal indicatif : FrequencyWords `th_50k.txt`, relevée le
     2026-08-03, มาก au rang 1 301 et ไกล au rang 10 342.
 
-### Item 15 : ค่ะ et คะ (réemploi, enseignés en `u01-l1e` et `u02-l2b`)
+### Item 15 : ค่ะ (réemploi, enseignée en `u01-l1e` et `u02-l2b`)
 
-- `thai` : ค่ะ · คะ
-- `codepoints` : ค่ะ U+0E04 U+0E48 U+0E30 ; คะ U+0E04 U+0E30 (NFC)
-- `ipa` : ค่ะ /kʰaʔ˥˩/ ; คะ /kʰaʔ˦˥/
-- `ton` : ค่ะ descendant ; คะ haut
-- `longueur` : les deux courtes
-- `fr` : particules de politesse d’une locutrice, ค่ะ après une affirmation, คะ
-  après une question
-- `transcription` : khâ · khá
+Cet item et le suivant formaient une seule entrée. Un item à deux graphies ne
+peut devenir aucune carte, l'identité étant `(pack, graphie, sens)` depuis
+l'ADR-0042. La séparation redistribue des champs déjà écrits séparément, et
+elle sert ici la leçon, qui fait précisément travailler l'opposition des deux.
+
+- `thai` : ค่ะ
+- `codepoints` : U+0E04 U+0E48 U+0E30 (NFC)
+- `ipa` : /kʰaʔ˥˩/
+- `ton` : descendant
+- `longueur` : courte
+- `fr` : particule de politesse d’une locutrice, après une affirmation
+- `transcription` : khâ
 - `registre` : poli
 - `note_fr` : RÉEMPLOI, republié ici parce que la leçon fait pour la première
   fois apparaître les DEUX dans un même tour de parole, réplique 4. Le repère est
@@ -838,6 +842,36 @@ privé, sur votre appareil.
   - Renvoi : le dossier complet est celui de `u01-l1e` item 3 et de `u02-l2b`.
   - Fréquence, signal indicatif : FrequencyWords `th_50k.txt`, relevée le
     2026-08-03, ค่ะ au rang 21, คะ au rang 278, ครับ au rang 10.
+
+### Item 15 bis : คะ (séparée de l'item 15)
+
+- `thai` : คะ
+- `codepoints` : U+0E04 U+0E30 (NFC)
+- `ipa` : /kʰaʔ˦˥/
+- `ton` : haut
+- `longueur` : courte
+- `fr` : particule de politesse d’une locutrice, après une question
+- `transcription` : khá
+- `registre` : poli
+- `note_fr` : la leçon fait pour la première fois apparaître les deux formes
+  dans un MÊME tour de parole, réplique 4. Le repère de 2B tient à deux
+  étages : d’abord qui parle, et ces deux formes sont celles d’une locutrice ;
+  ensuite ce que fait la phrase, ค่ะ après une affirmation, คะ après une
+  question. Le piège nouveau est de croire que la seconde particule signale un
+  changement de locutrice, alors que c’est la même personne qui affirme puis
+  qui demande.
+- `sources` :
+  - RID 2554, entrée « คะ ๒ », consultée le 2026-08-03 : mot de fin employé
+    par une femme, dans DEUX contextes et non un seul, d’abord après une
+    question ou une expression de doute, ensuite après ซิ ou นะ, avec pour ce
+    second contexte deux exemples qui ne sont pas des questions (faits cités
+    par référence, définitions non reproduites). La répartition enseignée est
+    donc fondée mais NON exhaustive : la forme haute sort aussi ailleurs qu’en
+    question.
+  - en.wiktionary, entrée « คะ », consultée le 2026-08-03 (IPA /kʰaʔ˦˥/).
+  - Renvoi : le dossier complet est celui de `u01-l1e` item 3 et de `u02-l2b`.
+  - Fréquence, signal indicatif : FrequencyWords `th_50k.txt`, relevée le
+    2026-08-03, คะ au rang 278.
 
 ## Exercices
 
