@@ -526,9 +526,863 @@
         "WIKTIONARY-EN",
         "WIKTIONARY-TH"
       ]
+    },
+    {
+      "id": "8cdaeb1b-dff6-5d53-89b4-26507d1ea972",
+      "thaiRaw": "คน",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E19"
+      ],
+      "translationFr": "personne (le nom) ; classificateur des personnes",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khon"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คน",
+          "ipa": "kʰon˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "06ee8115-534b-55ef-bb8e-00b15e79586f",
+      "thaiRaw": "น้อง",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E07"
+      ],
+      "translationFr": "cadet, cadette ; frère ou sœur né après vous",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "náwwng"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "น้อง",
+          "ipa": "nɔːŋ˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "ŋ"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
+      "thaiRaw": "มี",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E35"
+      ],
+      "translationFr": "avoir ; posséder",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mii"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "มี",
+          "ipa": "miː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "a7777598-d903-5859-af94-00110bcfc5f4",
+      "thaiRaw": "ช้อน",
+      "unicodeCodePoints": [
+        "U+0E0A",
+        "U+0E49",
+        "U+0E2D",
+        "U+0E19"
+      ],
+      "translationFr": "la cuillère",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "cháwwn"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ช้อน",
+          "ipa": "t͡ɕʰɔːn˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "t͡ɕʰ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "5236972e-5f83-56b7-b338-613961ea8085",
+      "thaiRaw": "ถ่าน",
+      "unicodeCodePoints": [
+        "U+0E16",
+        "U+0E48",
+        "U+0E32",
+        "U+0E19"
+      ],
+      "translationFr": "le charbon de bois",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thàan"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ถ่าน",
+          "ipa": "tʰaːn˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "b4987ef2-5eb0-5b2d-a67d-397669c17149",
+      "thaiRaw": "เงิน",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E07",
+        "U+0E34",
+        "U+0E19"
+      ],
+      "translationFr": "l’argent (la monnaie)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "ngoen"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เงิน",
+          "ipa": "ŋɤn˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "ŋ",
+          "final": "n"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
+    },
+    {
+      "id": "5b3e34d5-0491-5295-b9b9-0db945f83a12",
+      "thaiRaw": "ตั๋ว",
+      "unicodeCodePoints": [
+        "U+0E15",
+        "U+0E31",
+        "U+0E4B",
+        "U+0E27"
+      ],
+      "translationFr": "le billet, le ticket",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "tǒua"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ตั๋ว",
+          "ipa": "tua̯˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "t",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 1,
+      "id": "901b8b85-0453-5b62-81db-d852027c9c8f",
+      "type": "audio_choice",
+      "itemId": "f6aff14b-e264-5bf4-9700-3c1f1451ca88",
+      "skill": "listening",
+      "audioAssetId": "251a4a16-137a-5da3-a27a-ea5bb69a04a8",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 2,
+      "id": "166ddcdf-ad76-55b6-bbf1-08b3d57de4d3",
+      "type": "audio_choice",
+      "itemId": "b4987ef2-5eb0-5b2d-a67d-397669c17149",
+      "skill": "listening",
+      "audioAssetId": "1f6497d7-3292-56e0-8457-1bb49c97a1de",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 3,
+      "id": "b9d212ba-b843-543c-87ca-19cddfecd9a1",
+      "type": "audio_choice",
+      "itemId": "8cdaeb1b-dff6-5d53-89b4-26507d1ea972",
+      "skill": "listening",
+      "audioAssetId": "1ff0b167-c475-5d7e-a3c1-36332d58ab21",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 4,
+      "id": "cde84d55-af0b-5d4a-874b-039e264d0581",
+      "type": "audio_choice",
+      "itemId": "6e059209-c538-5828-aea6-5931fb9c9b20",
+      "skill": "listening",
+      "audioAssetId": "a0541acb-411e-5bdc-9f79-04546930fb8f",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "403a7729-149e-5b54-a569-d20b926deb6e",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 5,
+      "id": "383eac66-6f2e-564d-9ff3-f97531161b15",
+      "type": "audio_choice",
+      "itemId": "d9713fa1-85a7-5133-bb68-d252ecfe30f5",
+      "skill": "listening",
+      "audioAssetId": "fa5f2358-954c-5ae5-a0d0-5de9d3b1829d",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "403a7729-149e-5b54-a569-d20b926deb6e",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 6,
+      "id": "d99e92c2-a4a6-5fd3-b055-8124f20b20cd",
+      "type": "audio_choice",
+      "itemId": "5236972e-5f83-56b7-b338-613961ea8085",
+      "skill": "listening",
+      "audioAssetId": "0e889bd8-475b-5da0-b891-a4d11d3539ef",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "403a7729-149e-5b54-a569-d20b926deb6e",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 7,
+      "id": "d81c7615-a6f8-5410-ad23-e618adb5e7f2",
+      "type": "audio_choice",
+      "itemId": "f8e46495-8539-58e1-97d6-ec30d01f3f9f",
+      "skill": "listening",
+      "audioAssetId": "618ebd07-02a5-561d-bcb1-3ffcaa67db8a",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "71882bee-5472-56e4-b90e-2e89e5910d08",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 8,
+      "id": "03a67918-54f9-5cc0-b309-a0a8f9b67c4d",
+      "type": "audio_choice",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
+      "skill": "listening",
+      "audioAssetId": "5e82e6a6-3e5b-5cd2-8b19-7084581d2dc5",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "71882bee-5472-56e4-b90e-2e89e5910d08",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 9,
+      "id": "42f952d2-e33b-5611-bcc4-111670e69978",
+      "type": "audio_choice",
+      "itemId": "5b3e34d5-0491-5295-b9b9-0db945f83a12",
+      "skill": "listening",
+      "audioAssetId": "00f9745e-5155-530e-af65-5b3ec1c879d3",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "71882bee-5472-56e4-b90e-2e89e5910d08",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 10,
+      "id": "28994cf8-18fe-526d-aab8-af5355755b72",
+      "type": "audio_choice",
+      "itemId": "5c65a406-fab3-5301-b779-f230ada32042",
+      "skill": "listening",
+      "audioAssetId": "21cc9271-0f0b-5124-ba89-f5ec3b16ee59",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 11,
+      "id": "55c207ae-9f2f-56e8-b585-72312b50f2f8",
+      "type": "audio_choice",
+      "itemId": "06ee8115-534b-55ef-bb8e-00b15e79586f",
+      "skill": "listening",
+      "audioAssetId": "70d69296-55c6-578f-bf72-b04638cec020",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u09-l9b-p2",
+      "drawIndex": 12,
+      "id": "3ef28d10-f6dd-5e8b-bd44-81379d6b2e3c",
+      "type": "audio_choice",
+      "itemId": "a7777598-d903-5859-af94-00110bcfc5f4",
+      "skill": "listening",
+      "audioAssetId": "cd7596b8-6869-5a8c-a141-bbedc791cf02",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "options": [
+        {
+          "id": "1e904b6f-d9a3-59a4-a7f1-5256f6dbe832",
+          "labelFr": "moyen",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "403a7729-149e-5b54-a569-d20b926deb6e",
+          "labelFr": "bas",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "71882bee-5472-56e4-b90e-2e89e5910d08",
+          "labelFr": "montant",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+          "labelFr": "haut",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "26fe800a-6cdd-5dec-a582-44b0ea9e1fdc",
+      "feedback": {
+        "correctFr": "Oui.",
+        "incorrectFr": "Écoutez le DÉPART, pas l’arrivée. Le montant part d’en bas et remonte ; le haut est déjà en haut au premier instant. Réécoutez หัว puis ท้อง l’un après l’autre.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 7 et 10",
+            "textFr": "C’est exactement la paire du jour : หัว remonte, ท้อง se pose en haut."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion moyen et bas",
+            "textFr": "Le moyen reste posé au milieu et n’y bouge pas ; le bas descend d’un cran et y reste. Réécoutez มี puis ปวด."
+          }
+        ]
+      }
+    },
     {
       "poolId": "u09-l9b-p4",
       "drawIndex": 1,
@@ -964,6 +1818,14 @@
     }
   ],
   "pools": [
+    {
+      "poolId": "u09-l9b-p2",
+      "promptFr": "Écoutez le mot, puis dites quel est son ton.",
+      "mechanic": "audio_choice",
+      "drawCount": 12,
+      "passRequired": 12,
+      "sampleSize": 12
+    },
     {
       "poolId": "u09-l9b-p4",
       "promptFr": "Mettez les tuiles dans l’ordre pour former la phrase demandée. Certaines tuiles ne servent pas : retirez-les.",
