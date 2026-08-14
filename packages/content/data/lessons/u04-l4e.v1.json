@@ -528,6 +528,63 @@
       ]
     },
     {
+      "id": "de8d77e0-edeb-5fd5-bb0c-ef6355da5e14",
+      "thaiRaw": "ค่ะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E48",
+        "U+0E30"
+      ],
+      "translationFr": "particule de politesse d’une locutrice, qui ferme une affirmation ou une demande",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâ"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค่ะ",
+          "ipa": "kʰa˥˩",
+          "tone": "falling",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
+      "id": "7a2a550a-4e7c-59a7-9428-1949931cfbce",
+      "thaiRaw": "คะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "particule de politesse d’une locutrice, qui ferme une question",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คะ",
+          "ipa": "kʰa˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2"
+      ]
+    },
+    {
       "id": "b876f998-b244-526f-baf6-eedcc424928f",
       "thaiRaw": "ขอบคุณ",
       "unicodeCodePoints": [

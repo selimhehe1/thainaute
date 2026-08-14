@@ -836,16 +836,20 @@ privé, sur votre appareil.
   - Fréquence, signal indicatif : FrequencyWords `th_50k.txt`, relevée le
     2026-08-03, แล้วเจอกัน au rang 393, avec 957 occurrences.
 
-### Item 16 : ค่ะ et คะ (réemploi, enseignés par `u01-l1e` et `u02-l2b`)
+### Item 16 : ค่ะ (réemploi, enseignée par `u01-l1e` et `u02-l2b`)
 
-- `thai` : ค่ะ / คะ
-- `codepoints` : ค่ะ = U+0E04 U+0E48 U+0E30 ; คะ = U+0E04 U+0E30 (NFC)
-- `ipa` : /kʰaʔ˥˩/ et /kʰaʔ˦˥/
-- `ton` : khâ descendant ; khá haut
-- `longueur` : courte pour les deux
-- `fr` : particule finale de politesse, locutrice femme ; ค่ะ ferme une
-  affirmation, คะ ferme une question
-- `transcription` : khâ / khá
+Cet item et le suivant formaient une seule entrée. Un item à deux graphies ne
+peut devenir aucune carte, l'identité étant `(pack, graphie, sens)` depuis
+l'ADR-0042. La séparation redistribue des champs déjà écrits séparément.
+
+- `thai` : ค่ะ
+- `codepoints` : U+0E04 U+0E48 U+0E30 (NFC)
+- `ipa` : /kʰaʔ˥˩/
+- `ton` : descendant
+- `longueur` : courte
+- `fr` : particule finale de politesse, locutrice femme, qui ferme une
+  affirmation
+- `transcription` : khâ
 - `registre` : poli
 - `note_fr` : RÉEMPLOI. La règle à deux étages est celle de `u02-l2b` et de
   `u06-l6e` page 6 : la forme dépend d’abord du locuteur, ensuite de ce que la
@@ -877,6 +881,32 @@ privé, sur votre appareil.
     `u06-l6e` emploie pour la syllabe voisine ล่ะ. Rien de ce qui est enseigné
     n’en dépend, mais la consolidation du parcours devra unifier les deux
     notations.
+
+### Item 16 bis : คะ (séparée de l'item 16)
+
+- `thai` : คะ
+- `codepoints` : U+0E04 U+0E30 (NFC)
+- `ipa` : /kʰaʔ˦˥/
+- `ton` : haut
+- `longueur` : courte
+- `fr` : particule finale de politesse, locutrice femme, qui ferme une question
+- `transcription` : khá
+- `registre` : poli
+- `note_fr` : le dialogue du jour en donne une instance nette à la réplique 2,
+  où la femme enchaîne สบายดีค่ะ, une affirmation, puis แล้วคุณล่ะคะ, une
+  question, dans un seul tour de parole. Aucune règle nouvelle n’est enseignée
+  ici, l’instance est simplement fournie.
+- `sources` :
+  - RID 2554, entrée « คะ », consultée le 2026-08-03 : elle porte DEUX
+    vedettes, dont « คะ ๒ » est la formule finale employée par une femme après
+    une question ou une marque de doute, ET après ซิ ou นะ. Ce second contexte
+    est consigné comme il l’était par `u06-l6e` (faits cités par référence).
+    La règle binaire enseignée est une SIMPLIFICATION de la leçon, pas le
+    contenu de la source.
+  - VOLUBILIS.ods v26.2, ligne 30140, relevée le 2026-08-03 : คะ, ThaiPhon
+    `¯kha`, marque `(f.)`, FRA « oui ; [formule de politesse en fin de vocatif
+    ou de phrase interrogative] ». Numéro de ligne identique à celui de
+    `u06-l6e`.
 
 ## Exercices
 
