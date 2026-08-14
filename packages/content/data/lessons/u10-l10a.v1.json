@@ -255,9 +255,901 @@
         "VOLUBILIS-26-2",
         "WIKTIONARY-EN"
       ]
+    },
+    {
+      "id": "20e65f80-4023-5527-9d01-b13b4703a3a9",
+      "thaiRaw": "คา",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E32"
+      ],
+      "translationFr": "rester coincé, être pris (aussi : herbe à toits de chaume)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khaa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คา",
+          "ipa": "kʰaː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "f8bb5385-0505-5051-b2cd-fd4c4af5d3eb",
+      "thaiRaw": "ข่า",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E48",
+        "U+0E32"
+      ],
+      "translationFr": "galanga (rhizome parfumé de la cuisine thaïe)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khàa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข่า",
+          "ipa": "kʰaː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "5e991a34-2a7e-5c52-beb1-726b83a281e3",
+      "thaiRaw": "ค่า",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E48",
+        "U+0E32"
+      ],
+      "translationFr": "valeur, prix",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค่า",
+          "ipa": "kʰaː˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8b3c716f-8414-5107-9da6-2f49fd641d16",
+      "thaiRaw": "ค้า",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "faire commerce, vendre",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "kháa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ค้า",
+          "ipa": "kʰaː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
+      "thaiRaw": "ขา",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E32"
+      ],
+      "translationFr": "jambe",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ขา",
+          "ipa": "kʰaː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "5851f77a-3381-55d7-b1ad-7cf1444e9dfa",
+      "thaiRaw": "ข้าว",
+      "unicodeCodePoints": [
+        "U+0E02",
+        "U+0E49",
+        "U+0E32",
+        "U+0E27"
+      ],
+      "translationFr": "riz",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khâao"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ข้าว",
+          "ipa": "kʰaːw˥˩",
+          "tone": "falling",
+          "vowelLength": "long",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "ac51834e-ccda-533c-a510-c2fccd4e5b9b",
+      "thaiRaw": "ปา",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E32"
+      ],
+      "translationFr": "lancer (jeter avec le bras)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "paa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปา",
+          "ipa": "paː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "443d9fea-1634-5612-b97e-64937e5560ab",
+      "thaiRaw": "ปู่",
+      "unicodeCodePoints": [
+        "U+0E1B",
+        "U+0E39",
+        "U+0E48"
+      ],
+      "translationFr": "grand-père paternel (le père du père)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "pòuu"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ปู่",
+          "ipa": "puː˨˩",
+          "tone": "low",
+          "vowelLength": "long",
+          "initial": "p",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "dcb06ffb-fee4-526c-b6cb-be66a07276eb",
+      "thaiRaw": "หมา",
+      "unicodeCodePoints": [
+        "U+0E2B",
+        "U+0E21",
+        "U+0E32"
+      ],
+      "translationFr": "chien",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "mǎa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "หมา",
+          "ipa": "maː˩˩˦",
+          "tone": "rising",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "courant, familier",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "4193b284-8a6e-5919-9b2d-7e9705221749",
+      "thaiRaw": "ม้า",
+      "unicodeCodePoints": [
+        "U+0E21",
+        "U+0E49",
+        "U+0E32"
+      ],
+      "translationFr": "cheval",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "máa"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ม้า",
+          "ipa": "maː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "m",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "2c666c9a-ab80-5d7b-b424-8730bc8b2f64",
+      "thaiRaw": "นี้",
+      "unicodeCodePoints": [
+        "U+0E19",
+        "U+0E35",
+        "U+0E49"
+      ],
+      "translationFr": "ce, cette (démonstratif)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "níi"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "นี้",
+          "ipa": "niː˦˥",
+          "tone": "high",
+          "vowelLength": "long",
+          "initial": "n",
+          "final": "aucune"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 1,
+      "id": "57f240ab-648c-5fbc-b1b7-f1a28652bc29",
+      "type": "audio_choice",
+      "itemId": "20e65f80-4023-5527-9d01-b13b4703a3a9",
+      "skill": "listening",
+      "audioAssetId": "2bf84219-171d-5218-9cac-dfdfbd1437f2",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "8160e033-0d82-5866-a191-a5da730afb55",
+          "labelFr": "คา",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "72153a57-e026-5c11-b721-5ab16f88d6c1",
+          "labelFr": "ค่า",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8977beb2-b269-5677-9546-187fb446b95e",
+          "labelFr": "ค้า",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "8160e033-0d82-5866-a191-a5da730afb55",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 2,
+      "id": "c83ac55f-666c-5615-8b75-3b6d4444b840",
+      "type": "audio_choice",
+      "itemId": "5e991a34-2a7e-5c52-beb1-726b83a281e3",
+      "skill": "listening",
+      "audioAssetId": "0394e4ac-36d9-5000-b211-e98714d2051a",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "804914fc-da3e-5edc-997d-269447ebb6e9",
+          "labelFr": "ค้า",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "62c5a6b5-563a-5466-bdb9-77acd2ac9c86",
+          "labelFr": "ค่า",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "0dba8c56-36b9-57b3-951c-2964ad1a1ba4",
+          "labelFr": "คา",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "62c5a6b5-563a-5466-bdb9-77acd2ac9c86",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 3,
+      "id": "e7a8cd53-8f44-5f65-8352-e9dcaf927cb8",
+      "type": "audio_choice",
+      "itemId": "8b3c716f-8414-5107-9da6-2f49fd641d16",
+      "skill": "listening",
+      "audioAssetId": "ae381d45-7066-5c48-93c3-14d4c58808e4",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "5a2129c9-62ea-55ca-9fd7-179b9243c503",
+          "labelFr": "คา",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "568ee6e3-1185-53a3-9bab-4c74e3911c35",
+          "labelFr": "ค่า",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "3e1cee8b-7d3b-506f-be0c-fbf5baa29666",
+          "labelFr": "ค้า",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "3e1cee8b-7d3b-506f-be0c-fbf5baa29666",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 4,
+      "id": "9a5fd100-2f12-553d-a274-58c4140d4384",
+      "type": "audio_choice",
+      "itemId": "cc2ef5b7-2ce1-5379-9f3c-55b34e03fc02",
+      "skill": "listening",
+      "audioAssetId": "31b02ca5-8d9b-5abd-9473-d8a94cf543b2",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "ed564982-d9ee-57ba-a156-9b597c30f5de",
+          "labelFr": "ขา",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "8b96d217-7157-57ae-8c1a-3cd0536e5229",
+          "labelFr": "ข่า",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "65e98ba3-a128-594e-b95f-98afedf0e4b0",
+          "labelFr": "คา",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "ed564982-d9ee-57ba-a156-9b597c30f5de",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 5,
+      "id": "d66ce815-4e1a-56ff-95d4-a49062f308fc",
+      "type": "audio_choice",
+      "itemId": "f8bb5385-0505-5051-b2cd-fd4c4af5d3eb",
+      "skill": "listening",
+      "audioAssetId": "8fbfbdcb-bf0b-5ae6-b28b-30d15e237e45",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "ab9e920c-f01e-523d-bfe2-9f6876c43b03",
+          "labelFr": "ค่า",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "0691980a-94a5-5b95-afc3-7e8e19d44986",
+          "labelFr": "ข่า",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "e1786aab-528a-556c-b545-492554efec6b",
+          "labelFr": "ขา",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "0691980a-94a5-5b95-afc3-7e8e19d44986",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 6,
+      "id": "e680de96-094f-5206-8947-c72650f86ea8",
+      "type": "audio_choice",
+      "itemId": "ac51834e-ccda-533c-a510-c2fccd4e5b9b",
+      "skill": "listening",
+      "audioAssetId": "12a9501e-51b1-51ac-84f4-f3156d59fd64",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "bf7024ea-2b24-5402-a61d-fc9da5cadbfc",
+          "labelFr": "ป่า",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "057472c1-4de5-54c6-80a4-f313e5811953",
+          "labelFr": "ปู",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "744d5fd3-6b8d-5746-9784-c29c105f1935",
+          "labelFr": "ปา",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "744d5fd3-6b8d-5746-9784-c29c105f1935",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 7,
+      "id": "e74b67bd-f685-5bb6-b19c-958468393574",
+      "type": "audio_choice",
+      "itemId": "0962b3d1-10ff-53f2-92e4-679765122be3",
+      "skill": "listening",
+      "audioAssetId": "3d99568f-b870-5b83-ae69-27c7c83bd783",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "2ec0af73-01a4-537d-9e22-2c554ddb64e8",
+          "labelFr": "ป่า",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "15a80ef9-3a07-53c1-9600-a7694b2644e1",
+          "labelFr": "ปา",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b63606c0-2772-5a6c-9a21-bc1ba5ca0138",
+          "labelFr": "ปี่",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "2ec0af73-01a4-537d-9e22-2c554ddb64e8",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 8,
+      "id": "3009e202-ad35-5841-b411-20c5178e656f",
+      "type": "audio_choice",
+      "itemId": "443d9fea-1634-5612-b97e-64937e5560ab",
+      "skill": "listening",
+      "audioAssetId": "8e2b6eea-da07-50f9-b3c0-ab956dd9d850",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "3c798e93-b883-55f9-8df2-c7f5f8c1bca0",
+          "labelFr": "ปี่",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "b29328db-fc45-519c-8b39-138091a7dc3f",
+          "labelFr": "ปู่",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "58c8e97a-49da-5b60-aba3-302571074d11",
+          "labelFr": "ปู",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "b29328db-fc45-519c-8b39-138091a7dc3f",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 9,
+      "id": "e310a488-825d-534a-baf8-7541a0ec05a5",
+      "type": "audio_choice",
+      "itemId": "dcb06ffb-fee4-526c-b6cb-be66a07276eb",
+      "skill": "listening",
+      "audioAssetId": "05701ec5-707f-5e39-a24b-eeac22a92fe9",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "a8a844bc-0c61-5f82-a8ea-e8973f49489f",
+          "labelFr": "ม้า",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "121ec755-ebfa-5ec4-9f01-418cce8efe0e",
+          "labelFr": "มา",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "1a91072f-c096-5fc0-bd00-67e81d96b752",
+          "labelFr": "หมา",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "1a91072f-c096-5fc0-bd00-67e81d96b752",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 10,
+      "id": "a59f231c-5b79-5b8b-9c0e-c540e494cfcb",
+      "type": "audio_choice",
+      "itemId": "4193b284-8a6e-5919-9b2d-7e9705221749",
+      "skill": "listening",
+      "audioAssetId": "27d0716b-3f04-5f65-a57d-bf4b80a08221",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "9769651b-24ec-581c-b7b8-9a6dad928115",
+          "labelFr": "ม้า",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "667ee36c-3821-5e17-8d1d-2c2d027db11e",
+          "labelFr": "หมา",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "070ce3cc-f436-5956-92a4-a8237f0d9992",
+          "labelFr": "มา",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "9769651b-24ec-581c-b7b8-9a6dad928115",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 11,
+      "id": "e2ffb414-509f-5b20-813c-a9c7dcc5cbe9",
+      "type": "audio_choice",
+      "itemId": "2c666c9a-ab80-5d7b-b424-8730bc8b2f64",
+      "skill": "listening",
+      "audioAssetId": "426b2844-3632-5d49-aef7-71fd43bf2d99",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "21ff6530-c21c-5ee6-89db-a57715b05f87",
+          "labelFr": "มี",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "6117c359-cb50-58a7-b231-7b4c3a1720f7",
+          "labelFr": "นี้",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "9b5f1028-a858-5f7a-815c-946c53846339",
+          "labelFr": "หนี",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "6117c359-cb50-58a7-b231-7b4c3a1720f7",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u10-l10a-p4",
+      "drawIndex": 12,
+      "id": "b72c8533-10d5-5f42-95c5-42513e81e31b",
+      "type": "audio_choice",
+      "itemId": "5851f77a-3381-55d7-b1ad-7cf1444e9dfa",
+      "skill": "listening",
+      "audioAssetId": "2ba436f0-160e-56bd-a709-2cf3ae2334fc",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "options": [
+        {
+          "id": "01802270-7d49-5feb-a608-f46e7d2158e9",
+          "labelFr": "ขาว",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "1c1fcc82-e595-5913-829b-5f59fde466ae",
+          "labelFr": "ก้าว",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "bda1a230-e556-5888-b0a0-bff9ab6dcfdc",
+          "labelFr": "ข้าว",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "bda1a230-e556-5888-b0a0-bff9ab6dcfdc",
+      "feedback": {
+        "correctFr": "Oui. Vous avez entendu le ton et vous avez su comment il s’écrit.",
+        "incorrectFr": "Réécoutez ปา puis ป่า l’un après l’autre. Le premier reste plat, le second descend et reste en bas.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 1 à 5",
+            "textFr": "Cinq mots, cinq tons, deux lettres et deux marques. C’est la série de la toute première leçon."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, confusion montant contre haut",
+            "textFr": "Réécoutez หมา puis ม้า. Le premier creuse avant de remonter, le second est perché dès le départ."
+          }
+        ]
+      }
+    },
     {
       "poolId": "u10-l10a-p5",
       "drawIndex": 1,
@@ -623,6 +1515,14 @@
   ],
   "pools": [
     {
+      "poolId": "u10-l10a-p4",
+      "promptFr": "Écoutez le mot, puis touchez l’écriture qui le note.",
+      "mechanic": "audio_choice",
+      "drawCount": 12,
+      "passRequired": 12,
+      "sampleSize": 12
+    },
+    {
       "poolId": "u10-l10a-p5",
       "promptFr": "Lisez le mot, puis écrivez-le en transcription Thaïnaute, accent de ton compris. Vous n’entendrez le mot qu’après avoir répondu.",
       "mechanic": "recall",
@@ -636,7 +1536,8 @@
       "RID-2554",
       "UNICODE-17",
       "VOLUBILIS-26-2",
-      "WIKTIONARY-EN"
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
     ],
     "generationActors": [
       {

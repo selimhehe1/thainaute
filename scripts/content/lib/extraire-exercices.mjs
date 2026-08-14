@@ -616,6 +616,60 @@ function tirageEnPaireMinimale(texte) {
 }
 
 /**
+ * Tirage qui donne sa réponse PUIS ses distracteurs, forme la plus répandue
+ * du corpus après la paire minimale :
+ *
+ *     1. Audio คา (khaa, moyen) : คา, contre ค่า et ค้า.
+ *     4. Audio ขา (khǎa, montant) : ขา, contre ข่า et คา.
+ *
+ * 119 lignes du corpus, sur dix leçons, l'écrivent ainsi. L'extraction les
+ * refusait pour « options du tirage non lisibles » alors que le jeu est
+ * entièrement écrit : la bonne réponse d'abord, les autres cartes après
+ * « contre ».
+ *
+ * Trois gardes rendent la lecture sûre. Le mot « contre » doit être présent,
+ * la réponse doit être une graphie thaïe, et chaque distracteur aussi : une
+ * ligne qui ne remplit pas ces trois conditions rend `null` et le bloc reste
+ * refusé, plutôt que de composer un jeu d'options approximatif.
+ */
+function tirageAvecDistracteurs(texte, rang = 1) {
+  const audio = texte.match(/Audio\s+([฀-๿]+)/u)?.[1];
+  if (audio === undefined) return null;
+
+  const segment = texte.match(/:\s*([฀-๿]+)\s*,\s*contre\s+(.+?)\s*\.?\s*$/u);
+  if (segment === null) return null;
+
+  const distracteurs = segment[2]
+    .split(/\s*(?:,|\bet\b)\s*/u)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  if (distracteurs.length === 0) return null;
+
+  // Chaque distracteur doit être une graphie thaïe NUE. Une prose glissée
+  // après « contre » ferait entrer un faux libellé dans le jeu de cartes.
+  const propres = distracteurs.filter((part) => /^[฀-๿]+$/u.test(part));
+  if (propres.length !== distracteurs.length) return null;
+
+  // La bonne réponse est écrite EN PREMIER dans cette notation. La laisser
+  // là serait un défaut de produit, pas une fidélité à la source : le
+  // lecteur affiche les options dans l'ordre stocké, sans les mélanger, et
+  // un apprenant réussirait ces tirages sans écouter. Le SRS en conclurait
+  // une maîtrise qui n'existe pas.
+  //
+  // La source dit d'ailleurs « ordre aléatoire à chaque tirage ». On fait
+  // donc tourner la position selon le RANG du tirage : la répartition est
+  // variée, et elle reste déterministe, donc reproductible d'une
+  // compilation à l'autre.
+  const cartes = [segment[1], ...propres];
+  const decalage = (rang - 1) % cartes.length;
+  const coupe = cartes.length - decalage;
+  const libelles = [...cartes.slice(coupe), ...cartes.slice(0, coupe)];
+  const indiceCorrect = libelles.indexOf(segment[1]);
+  if (indiceCorrect < 0) return null;
+  return { graphieAudio: audio, libelles, indiceCorrect };
+}
+
+/**
  * Un tirage qui ne réécrit pas ses options mais renvoie à un jeu déjà posé.
  *
  * POURQUOI CE CHEMIN EXISTE
@@ -728,7 +782,8 @@ function extraireEcouteParTirage(bloc, resoudreItem) {
   let jeuPrecedent = null;
 
   for (const { rang, texte } of lignes) {
-    const paire = tirageEnPaireMinimale(texte);
+    const paire =
+      tirageEnPaireMinimale(texte) ?? tirageAvecDistracteurs(texte, rang);
     const renvoi = renvoiVersUnJeuConnu(texte);
 
     let libelles;

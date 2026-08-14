@@ -249,9 +249,754 @@
         "VOLUBILIS-26-2",
         "WIKTIONARY-EN"
       ]
+    },
+    {
+      "id": "7d938caa-d331-5b12-906f-ef7cd8ac2300",
+      "thaiRaw": "เขา",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E02",
+        "U+0E32"
+      ],
+      "translationFr": "il, elle",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khǎo"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เขา",
+          "ipa": "kʰaw˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "w"
+        }
+      ],
+      "register": "neutre",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8c649ea6-42c1-56bf-bf81-e741d756dd54",
+      "thaiRaw": "ครับ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E23",
+        "U+0E31",
+        "U+0E1A"
+      ],
+      "translationFr": "particule de politesse d'un locuteur homme (fin de phrase)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khráp"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ครับ",
+          "ipa": "kʰrap̚˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰr",
+          "final": "p̚"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
+      "thaiRaw": "ผม",
+      "unicodeCodePoints": [
+        "U+0E1C",
+        "U+0E21"
+      ],
+      "translationFr": "je, moi (locuteur homme) ; par ailleurs : les cheveux",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "phǒm"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "ผม",
+          "ipa": "pʰom˩˩˦",
+          "tone": "rising",
+          "vowelLength": "short",
+          "initial": "pʰ",
+          "final": "m"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "8571e8be-a7b9-5e38-bec5-286ee3071718",
+      "thaiRaw": "คุณ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E38",
+        "U+0E13"
+      ],
+      "translationFr": "vous (marque de respect) ; devant le nom d’une personne : Monsieur, Madame",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khoun"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คุณ",
+          "ipa": "kʰun˧",
+          "tone": "mid",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "n"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "7a2a550a-4e7c-59a7-9428-1949931cfbce",
+      "thaiRaw": "คะ",
+      "unicodeCodePoints": [
+        "U+0E04",
+        "U+0E30"
+      ],
+      "translationFr": "particule finale d’une locutrice, en fin de question ou d’information donnée poliment",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "khá"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "คะ",
+          "ipa": "kʰaʔ˦˥",
+          "tone": "high",
+          "vowelLength": "short",
+          "initial": "kʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "poli",
+      "sourceIds": [
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
+    },
+    {
+      "id": "7a29ba21-4135-5dac-ba3c-0f92c012b5b7",
+      "thaiRaw": "เธอ",
+      "unicodeCodePoints": [
+        "U+0E40",
+        "U+0E18",
+        "U+0E2D"
+      ],
+      "translationFr": "toi, tu (entre proches)",
+      "transcription": {
+        "systemVersion": "thainaute-fr-v1-1",
+        "value": "thoee"
+      },
+      "syllables": [
+        {
+          "thaiRaw": "เธอ",
+          "ipa": "tʰɤː˧",
+          "tone": "mid",
+          "vowelLength": "long",
+          "initial": "tʰ",
+          "final": "aucune"
+        }
+      ],
+      "register": "familier",
+      "sourceIds": [
+        "RID-2554",
+        "VOLUBILIS-26-2",
+        "WIKTIONARY-EN",
+        "WIKTIONARY-TH"
+      ]
     }
   ],
   "exercises": [
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 1,
+      "id": "2df9e50c-30bc-5eb4-85a6-e3a2c3ace417",
+      "type": "audio_choice",
+      "itemId": "516ee5cc-d6ef-5b41-9fb9-8d8d2997b08f",
+      "skill": "listening",
+      "audioAssetId": "4297734c-e4b5-55c1-871f-f5e742314085",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "2dbc5598-1ee8-5f50-befc-b81c90d16cd0",
+          "labelFr": "ผม",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "eef73d9e-0b27-5c04-bd5d-7a5c0d4b7e6d",
+          "labelFr": "กู",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "6c1e05b5-fd85-505c-893e-7d03d4634952",
+          "labelFr": "ฉัน",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "2dbc5598-1ee8-5f50-befc-b81c90d16cd0",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 2,
+      "id": "a98f9f2a-b563-5b98-b1fc-48cdd135bb68",
+      "type": "audio_choice",
+      "itemId": "6b292295-cdc4-527c-9bbb-a6eac10553aa",
+      "skill": "listening",
+      "audioAssetId": "81eef51e-eb99-5adf-9ec3-a2a27e2b6bab",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "c3e4d3e0-fae4-54b4-86b9-2f95b71fa757",
+          "labelFr": "คุณ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "caec50e8-9a3f-57e2-a8b7-d9368ff546e1",
+          "labelFr": "กู",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "c5b119d4-aa14-5d6f-9f47-31417d269d92",
+          "labelFr": "ผม",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "caec50e8-9a3f-57e2-a8b7-d9368ff546e1",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 3,
+      "id": "4d71ce0d-7eba-5ab6-b350-8fb94d9eb669",
+      "type": "audio_choice",
+      "itemId": "8571e8be-a7b9-5e38-bec5-286ee3071718",
+      "skill": "listening",
+      "audioAssetId": "d8595501-cc00-54b1-9e12-24cb6fb6bdae",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "187f2e28-05b8-5b99-86df-cc290fd49a67",
+          "labelFr": "มึง",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "58a1677b-abd9-556c-8930-e4fe66d85fef",
+          "labelFr": "เธอ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "89d0d8f0-3273-5c16-8693-552c5aa42b0b",
+          "labelFr": "คุณ",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "89d0d8f0-3273-5c16-8693-552c5aa42b0b",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 4,
+      "id": "8c21d866-f622-56b7-a5e6-e7f79fc55690",
+      "type": "audio_choice",
+      "itemId": "e77347d5-debd-5228-bd30-7684e8d8c18a",
+      "skill": "listening",
+      "audioAssetId": "177beae4-7243-515f-8e6e-b5e52247b9eb",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "a513c8fc-56b8-5bde-b524-11e247bc2ed0",
+          "labelFr": "มึง",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "d4f4075c-2d20-5cfd-b741-e19a23e98fd4",
+          "labelFr": "คุณ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "7cbbe0b5-81f9-5b72-9eaa-c9540827f43c",
+          "labelFr": "เธอ",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "a513c8fc-56b8-5bde-b524-11e247bc2ed0",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 5,
+      "id": "9352278d-99cf-55a2-ab46-23fa61f66a12",
+      "type": "audio_choice",
+      "itemId": "7d938caa-d331-5b12-906f-ef7cd8ac2300",
+      "skill": "listening",
+      "audioAssetId": "c87d6e13-ab69-5ab1-9b96-0f26e6eb138f",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "7920d4e4-7525-5161-8a9a-487cf19431d1",
+          "labelFr": "แก",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "a66c6f45-b134-58f7-b2a5-4f4d4ce8ad23",
+          "labelFr": "เขา",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "7c899878-52d0-52f9-8558-ff007c67866a",
+          "labelFr": "มัน",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "a66c6f45-b134-58f7-b2a5-4f4d4ce8ad23",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 6,
+      "id": "df1e3371-802e-510b-ab6a-bd39cc1f2152",
+      "type": "audio_choice",
+      "itemId": "c4321a39-2111-529f-a0e2-6c21384584a0",
+      "skill": "listening",
+      "audioAssetId": "d8f13f27-26ba-52d1-98a7-960549b96c81",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "600f0287-0d1e-51be-a565-afc6c1674c8e",
+          "labelFr": "เธอ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "422c7c89-2d51-59a4-b3de-90ac5e843362",
+          "labelFr": "เขา",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "22703d69-73e3-5ba4-9b76-d43c435356de",
+          "labelFr": "แก",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "22703d69-73e3-5ba4-9b76-d43c435356de",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 7,
+      "id": "d3cf0e83-989d-5670-92c2-02a37132e14b",
+      "type": "audio_choice",
+      "itemId": "7a29ba21-4135-5dac-ba3c-0f92c012b5b7",
+      "skill": "listening",
+      "audioAssetId": "105bc393-d198-512c-93ac-ea0b27bb3e31",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "7281e783-9d70-50c3-83e1-89a6f8513d2c",
+          "labelFr": "เธอ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "255493fd-db01-5ccc-9a2b-a5a1de88bd6e",
+          "labelFr": "แก",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "0950497d-2304-59c3-94f2-3300cc38848c",
+          "labelFr": "คุณ",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "7281e783-9d70-50c3-83e1-89a6f8513d2c",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 8,
+      "id": "da72df75-5502-5930-8566-6753f2296145",
+      "type": "audio_choice",
+      "itemId": "08ef470e-328d-52c5-9daa-22274dfc8f20",
+      "skill": "listening",
+      "audioAssetId": "c509dc8c-42ff-56f8-b129-fe1ebf451cff",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "eba18d32-1904-5fea-9f6b-26689fc6ac2e",
+          "labelFr": "คน",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "1bbe6c61-472a-579e-8880-5ded85165780",
+          "labelFr": "มัน",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "f337ff4b-f1a0-5957-8f64-bb7cf93137f4",
+          "labelFr": "เขา",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "1bbe6c61-472a-579e-8880-5ded85165780",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 9,
+      "id": "529c2336-984c-5245-9666-ba10dab35815",
+      "type": "audio_choice",
+      "itemId": "8c649ea6-42c1-56bf-bf81-e741d756dd54",
+      "skill": "listening",
+      "audioAssetId": "ac124939-0c39-51a5-bb65-70ccabf19f27",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "dc8599f2-412d-5c10-b683-4f76ea25709c",
+          "labelFr": "เออ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "498cffea-48d3-58f9-b560-f1643eda7ef5",
+          "labelFr": "ค่ะ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "70d1fc1b-f50d-57d4-b715-d2c1d3fb573a",
+          "labelFr": "ครับ",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "70d1fc1b-f50d-57d4-b715-d2c1d3fb573a",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 10,
+      "id": "a3e3717a-a621-53b1-9dec-b7f9b171bbff",
+      "type": "audio_choice",
+      "itemId": "ccbe4f82-db18-5e45-a09e-3830852706ea",
+      "skill": "listening",
+      "audioAssetId": "100c0dd6-96d3-52c7-b747-385161bd75b3",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "c3206305-c6f0-5b5c-af9a-40fefc9a37be",
+          "labelFr": "เออ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "6a06d3c9-64fb-5e5b-a378-4cb7158a7039",
+          "labelFr": "ครับ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "86f6fd94-fd89-5c8e-8b8e-35ea0d1e3e91",
+          "labelFr": "ค่ะ",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "c3206305-c6f0-5b5c-af9a-40fefc9a37be",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 11,
+      "id": "308b450e-7ed2-51a0-8a58-21991b25070a",
+      "type": "audio_choice",
+      "itemId": "7a2a550a-4e7c-59a7-9428-1949931cfbce",
+      "skill": "listening",
+      "audioAssetId": "3f91a4e9-bd0f-5fd8-8d9d-aec1796a2855",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "289f9e43-fb1a-58b8-a8fe-2d0005002d0b",
+          "labelFr": "ค่ะ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "14451fba-4018-584e-a543-a2ecbb87ade7",
+          "labelFr": "คะ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "adf07b37-9c2e-5c13-b32d-b907e85e36bd",
+          "labelFr": "วะ",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "14451fba-4018-584e-a543-a2ecbb87ade7",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
+    {
+      "poolId": "u13-l13d-p1",
+      "drawIndex": 12,
+      "id": "8c8a3080-4036-5be2-95ff-e0698c84633c",
+      "type": "audio_choice",
+      "itemId": "0da81f62-db11-55cc-9cc4-41d99b449e59",
+      "skill": "listening",
+      "audioAssetId": "62403a3a-bc4d-5c51-ada6-cef214c9a858",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "options": [
+        {
+          "id": "8c653985-569c-52bd-931e-6a410709f6a5",
+          "labelFr": "ค่ะ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "62c9865a-bd44-5198-92f6-cdf6cbe84067",
+          "labelFr": "คะ",
+          "thaiRaw": null,
+          "transcription": null
+        },
+        {
+          "id": "13c09dfd-ed64-5327-98ca-c6cc3a35eaf3",
+          "labelFr": "วะ",
+          "thaiRaw": null,
+          "transcription": null
+        }
+      ],
+      "correctOptionId": "13c09dfd-ed64-5327-98ca-c6cc3a35eaf3",
+      "feedback": {
+        "correctFr": "Oui. Vous l’avez reconnue au son, et c’est tout ce qu’on vous demande d’en faire.",
+        "incorrectFr": "Réécoutez les deux à la suite. Ce sont deux mots différents pour la même place dans la phrase, et un seul est celui que ce cours vous fait dire.",
+        "variants": [
+          {
+            "selectedOptionId": null,
+            "labelFr": "correct, tirages 2, 4, 6, 8, 10 et 12",
+            "textFr": "Vous venez de reconnaître une forme marquée. Vous savez maintenant qu’elle est là ; vous n’avez pas à la dire."
+          },
+          {
+            "selectedOptionId": null,
+            "labelFr": "incorrect, tirages 11 et 12",
+            "textFr": "วะ et คะ ont la même voyelle très brève et le même ton haut. Ce qui les sépare est la consonne du début."
+          }
+        ]
+      }
+    },
     {
       "poolId": "u13-l13d-p2-m1",
       "drawIndex": 1,
@@ -421,6 +1166,14 @@
   ],
   "pools": [
     {
+      "poolId": "u13-l13d-p1",
+      "promptFr": "Écoutez, puis touchez ce que vous avez entendu.",
+      "mechanic": "audio_choice",
+      "drawCount": 12,
+      "passRequired": 12,
+      "sampleSize": 12
+    },
+    {
       "poolId": "u13-l13d-p2-m1",
       "promptFr": "Chaque forme de gauche dit quelque chose du rapport entre les personnes. Associez-la à ce qu’elle dit. Touchez une forme, puis l’autre : aucun glisser-déposer n’est nécessaire.",
       "mechanic": "association",
@@ -441,7 +1194,8 @@
     "sourceIds": [
       "RID-2554",
       "VOLUBILIS-26-2",
-      "WIKTIONARY-EN"
+      "WIKTIONARY-EN",
+      "WIKTIONARY-TH"
     ],
     "generationActors": [
       {

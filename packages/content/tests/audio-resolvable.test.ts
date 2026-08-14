@@ -43,6 +43,12 @@ const AUDIO_EN_ATTENTE: Readonly<Record<string, string>> = {
     "n'est pas produite. La leçon est un brouillon interne, et sa porte " +
     "AUDIO_ASSET_MISSING la bloque. Le chiffrage de la production est dans " +
     "docs/qa/chiffrage-audio-2026-08-13.md, en attente d'un budget.",
+  "u10-l10a":
+    "Ses douze exercices d'écoute étaient écrits en notation « réponse, " +
+    "contre distracteurs », que l'extraction ne lisait pas. Elle la lit " +
+    "depuis le 14 août, la leçon passe de 8 à 20 exercices, et les douze " +
+    "voix ne sont pas produites. Brouillon interne que AUDIO_ASSET_MISSING " +
+    "bloque.",
   "u02-l2c":
     "Ses items ขอบคุณครับ et ขอบคุณค่ะ notaient leur IPA « /A/ + /B/ », que " +
     "le compilateur refuse : la leçon perdait quatre items et deux blocs, dont " +
