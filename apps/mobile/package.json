@@ -62,9 +62,9 @@
     "@testing-library/react": "16.3.2",
     "@types/react": "19.2.18",
     "eslint-config-expo": "57.0.1",
-    "expo-doctor": "1.20.1",
+    "expo-doctor": "1.20.2",
     "jsdom": "30.0.1",
     "typescript": "6.0.3",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   }
 }
