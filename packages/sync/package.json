@@ -22,7 +22,7 @@
     "zod": "4.4.3"
   },
   "devDependencies": {
-    "fast-check": "4.9.0",
-    "vitest": "4.1.10"
+    "fast-check": "4.10.1",
+    "vitest": "4.1.11"
   }
 }
